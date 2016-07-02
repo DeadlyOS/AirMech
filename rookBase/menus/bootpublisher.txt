@@ -1,0 +1,25 @@
+onloadrun {
+sym set _InLogoSplash_ 1
+}
+MO PublisherLogoSplash {
+pos 5 -80
+}
+MO PublisherLegalLine {
+pos 350 960
+}
+MO PublisherLogoInputCatch {
+pos 0 0
+}
+onload {
+gameUI ignoreInputTime 1.5
+gameUI focusName PublisherLogoInputCatch
+pcmd_seq 305 0.1 gameui enableGroup PublisherLogoSplash PublisherLegalLine
+if retail pcmd_seq 305 7.0 gameui disableGroup PublisherLogoSplash PublisherLegalLine
+if retail pcmd_seq 305 7.5 clearmenu BootPublisher
+if !retail pcmd_seq 305 1.0 gameui disableGroup PublisherLogoSplash PublisherLegalLine
+if !retail pcmd_seq 305 1.5 clearmenu BootPublisher
+}
+onunload {
+console flushAllPendingSeq 305
+loadmenu BootCarbon
+}

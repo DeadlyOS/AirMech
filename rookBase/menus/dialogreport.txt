@@ -1,0 +1,19 @@
+onloadrun {
+]gameUI saveFocusID _savefocusid_dreport_
+}
+MO DialogReportBlack {
+pos 0 0
+layer 19
+}
+MO DialogReportMaster {
+pos 0 14
+layer 20
+}
+onload {
+addUIAnim DialogReportMaster mas_DialogPop
+if usingPad gameui focusNameTry DialogReportButtonClose
+gameui promoteToTop DialogReportMaster
+}
+onunload {
+]gameUI restoreFocusID _savefocusid_dreport_
+}

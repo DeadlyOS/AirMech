@@ -1,0 +1,33 @@
+menu3d addChild MenusVR MenusAirMechSkins /noVis
+menu3d setWorldPose MenusAirMechSkins	0.0 0.0 0.0
+menu3d setRootRot MenusAirMechSkins	0 0 0
+menu3d addChild MenusAirMechSkins MenuSkin0
+menu3d setWorldPose MenuSkin0	0 0 0
+menu3d setRootRot MenuSkin0	0 0 -110
+menu3d addChild MenuSkin0 $VrSkinName0 $VrSkinModel0 $VrSkinMat0 /noVis
+menu3d animate $VrSkinName0 $VrSkinAnim0 looping 0 0.5
+menu3d setWorldPose $VrSkinName0	0 -70 0
+menu3d setRootScale $VrSkinName0	16
+menu3d setRootRot $VrSkinName0 0 0 -40
+menu3d logicFnc $VrSkinName0 amFocusCapsule /radiusInner 30.0 /height 50.0 /skinDepth 20.0 /cmdfocus [menucmd TouchAirMechSkin $VrSkinName0] /cmdunfocus [menucmd UnTouchAirMechSkin $VrSkinName0]
+menu3d addChild MenusAirMechSkins MenuSkin1
+menu3d setWorldPose MenuSkin1	0 0 0
+menu3d setRootRot MenuSkin1	0 0 -180
+menu3d addChild MenuSkin1 $VrSkinName1 $VrSkinModel1 $VrSkinMat1 /noVis
+menu3d animate $VrSkinName1 $VrSkinAnim1 looping 0 0.5
+menu3d setWorldPose $VrSkinName1	0 -70 0
+menu3d setRootScale $VrSkinName1	16
+menu3d setRootRot $VrSkinName1 0 0 0
+menu3d logicFnc $VrSkinName1 amFocusCapsule /radiusInner 30.0 /height 50.0 /skinDepth 20.0 /cmdfocus [menucmd TouchAirMechSkin $VrSkinName1] /cmdunfocus [menucmd UnTouchAirMechSkin $VrSkinName1]
+menu3d addChild MenusAirMechSkins MenuSkin2
+menu3d setWorldPose MenuSkin2	0 0 0
+menu3d setRootRot MenuSkin2	0 0 -250
+menu3d addChild MenuSkin2 $VrSkinName2 $VrSkinModel2 $VrSkinMat2 /noVis
+menu3d animate $VrSkinName2 $VrSkinAnim2 looping 0 0.5
+menu3d setWorldPose $VrSkinName2	0 -70 0
+menu3d setRootScale $VrSkinName2	16
+menu3d setRootRot $VrSkinName2 0 0 40
+menu3d logicFnc $VrSkinName2 amFocusCapsule /radiusInner 30.0 /height 50.0 /skinDepth 20.0 /cmdfocus [menucmd TouchAirMechSkin $VrSkinName2] /cmdunfocus [menucmd UnTouchAirMechSkin $VrSkinName2]
+pcmd 0.0 menu3d addAnimScript $VrSkinName0 as_VRMenuAppear.txt
+pcmd 0.1 menu3d addAnimScript $VrSkinName1 as_VRMenuAppear.txt
+pcmd 0.2 menu3d addAnimScript $VrSkinName2 as_VRMenuAppear.txt

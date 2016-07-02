@@ -1,0 +1,259 @@
+Script net_setupForDelayedConnect {
+cmd "sym setNSet 6 Flair1Custom NoFlair"
+cmd "sym setNSet 6 Flair2Custom NoFlair"
+cmd "sym setNSet 6 Flair3Custom NoFlair"
+cmd "wallet updatePrices PricesReqOnLobbyJoin"
+}
+Script net_clientLeaveDueToBadConnection {
+ignoreInputTime 0.5
+cmd "echo menucmd: net_clientLeaveDueToBadConnection"
+rcmd "sym set _LastSrvLocSave_ $_LastSrvLoc_
+rcmd "net disconnect"
+cmd "gameui refreshFilterName NetGame"
+#if vr
+cmd "menucmd ReturnToMainMenuVR"
+cmd "pcmd 0.5 gameEvent systemNotify LostGSSConnection 1"
+#else
+cmd "menucmd MP_LoadMainMenu"
+cmd "pcmd 0.5 menucmd showBackendDialogClientBadConnectionSelfDiagnosed"
+#endif
+}
+Script net_clientLeaveDueToAFK {
+ignoreInputTime 0.75
+cmd "echo menucmd: net_clientLeaveDueToAFK"
+rcmd "sym set _LastSrvLocSave_ $_LastSrvLoc_
+rcmd "net disconnect"
+cmd "gameui refreshFilterName NetGame"
+#if vr
+cmd "menucmd ReturnToMainMenuVR"
+cmd "pcmd 0.5 gameEvent systemNotify LostGSSConnection 1"
+#else
+cmd "menucmd MP_LoadMainMenu"
+cmd "pcmd 0.5 menucmd showBackendDialogClientAFKSelfDiagnosed"
+#endif
+}
+Script net_lostHostConnection {
+ignoreInputTime 0.75
+cmd "echo menucmd: net_lostHostConnection"
+rcmd "net disconnect"
+cmd "gameui refreshFilterName NetGame"
+cmd "pcmd 0.5 sym set _LastSrvCode_ Lost network connection"
+#if vr
+cmd "menucmd ReturnToMainMenuVR"
+cmd "pcmd 0.55 gameEvent systemNotify LostGSSConnection 1"
+#else
+cmd "menucmd MP_LoadMainMenu"
+cmd "pcmd 0.5 if ubiServicesRunningAndLoggedIn runnow menucmd showBackendDialogGameSessionServerLostConnection"
+#endif
+cmd "pcmd 0.5 gameEvent systemNotify ConnectingToGSS 0"
+}
+Script net_hostConnectFailed {
+ignoreInputTime 0.75
+cmd "echo menucmd: net_hostConnectFailed"
+rcmd "net disconnect"
+cmd "gameui refreshFilterName NetGame"
+#if vr
+cmd "menucmd ReturnToMainMenuVR"
+cmd "pcmd 0.6 gameEvent systemNotify FailedGSSConnection 1"
+#else
+cmd "menucmd MP_LoadMainMenu"
+cmd "pcmd 0.5 menucmd showBackendDialogGameSessionServerConnectFailed"
+#endif
+cmd "pcmd 0.5 gameEvent systemNotify ConnectingToGSS 0"
+}
+Script net_hostKicked {
+ignoreInputTime 0.5
+cmd "echo menucmd: net_hostKicked"
+rcmd "net disconnect"
+cmd "gameui refreshFilterName NetGame"
+#if vr
+cmd "menucmd ReturnToMainMenuVR"
+cmd "pcmd 0.5 gameEvent systemNotify KickedFromGSS 1"
+#else
+cmd "menucmd MP_LoadMainMenu"
+cmd "pcmd 0.5 menucmd showBackendDialogGameSessionServerKicked"
+#endif
+}
+Script net_disconnectFailedToLoadRemoteMap {
+ignoreInputTime 0.75
+rcmd "net disconnect"
+cmd "gameui refreshFilterName NetGame"
+cmd "pcmd 0.5 sym set DisconnectReason GSS_RemoteMapLoadFailed"
+#if vr
+cmd "menucmd ReturnToMainMenuVR"
+cmd "pcmd 0.5 gameEvent systemNotify GSSDisconnectReason 1"
+#else
+cmd "menucmd MP_LoadMainMenu"
+cmd "pcmd 0.5 menucmd showNetDisconnectReason"
+#endif
+}
+Script net_disconnectReason {
+ignoreInputTime 0.75
+rcmd "net disconnect"
+cmd "gameui refreshFilterName NetGame"
+#if vr
+cmd "menucmd ReturnToMainMenuVR"
+cmd "pcmd 0.5 gameEvent systemNotify GSSDisconnectReason 1"
+#else
+cmd "menucmd MP_LoadMainMenu"
+cmd "pcmd 0.5 menucmd showNetDisconnectReason"
+#endif
+}
+Script showNetDisconnectReason {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption DialogDisconnectedTitle"
+cmd "sym setFrom BackendDialogText DisconnectReason"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "sym clear DisconnectReason"
+}
+Script net_GSSConnectionFailedPostDialog {
+cmd "echo menucmd: net_GSSConnectionFailedPostDialog"
+rcmd "net disconnect"
+cmd "gameui refreshFilterName NetGame"
+#if vr
+cmd "menucmd ReturnToMainMenuVR"
+#else
+cmd "if !consolePlatform menucmd MP_LoadMainMenu"
+#endif
+cmd "menuCmd net_refreshRoomList"
+}
+Script showBackendDialogGameNotFound {
+ignoreInputTime 0.25
+cmd "timer clearAsyncWait"
+cmd "sym setl BackendDialogCaption NetErrGameNotFoundTitle"
+cmd "sym setl BackendDialogText NetErrGameNotFoundBody"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym setl BackendDialogButton0Command menuCmd net_GSSConnectionFailedPostDialog"
+cmd "menucmd BackendDialog"
+cmd "if sym GoSpectate == 1 clearmenu Standby /fadeout 0.5"
+cmd "if sym GoSpectate == 1 menucmd StartupSpectateMode"
+cmd "gameEvent systemNotify ConnectingToGSS 0"
+}
+Script showBackendDialogClientBadConnectionSelfDiagnosed {
+cmd "timer clearAsyncWait"
+cmd "sym setl BackendDialogCaption NetErrSelfDiagTitle"
+cmd "sym setl BackendDialogText NetErrSelfDiagBody"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script showBackendDialogClientAFKSelfDiagnosed {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption NetErrLobbyAFKTitle"
+cmd "sym setl BackendDialogText NetErrLobbyAFKBody"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script showBackendDialogGameSessionServerLostConnection {
+ignoreInputTime 0.25
+cmd "timer clearAsyncWait"
+cmd "sym setl BackendDialogCaption NetErrGSSNATitle"
+cmd "sym setl BackendDialogText NetErrGSSNABody"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "if sym GoSpectate == 1 clearmenu Standby /fadeout 0.5"
+cmd "if sym GoSpectate == 1 menucmd StartupSpectateMode"
+cmd "gameEvent systemNotify ConnectingToGSS 0"
+}
+Script showBackendDialogGameSessionServerIsNotAvailable {
+ignoreInputTime 0.25
+cmd "timer clearAsyncWait"
+cmd "sym setl BackendDialogCaption NetErrGSSNATitle"
+cmd "sym setl BackendDialogText NetErrGSSNABody"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym setl BackendDialogButton0Command menuCmd net_GSSConnectionFailedPostDialog"
+cmd "menucmd BackendDialog"
+cmd "if sym GoSpectate == 1 clearmenu Standby /fadeout 0.5"
+cmd "if sym GoSpectate == 1 menucmd StartupSpectateMode"
+cmd "gameEvent systemNotify ConnectingToGSS 0"
+}
+Script showBackendDialogGameSessionServerConnectFailed {
+ignoreInputTime 0.25
+cmd "timer clearAsyncWait"
+cmd "sym setl BackendDialogCaption NetErrConnectFailedTitle"
+cmd "sym setl BackendDialogText NetErrConnectFailedBody"
+cmd "if consolePlatformHW runnow sym set BackendDialogText NetErrConnectFailedBody_console"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym setl BackendDialogButton0Command menuCmd net_refreshRoomList"
+cmd "menucmd BackendDialog"
+cmd "gameEvent systemNotify ConnectingToGSS 0"
+}
+Script showBackendDialogGameSessionServerKicked {
+ignoreInputTime 0.25
+cmd "timer clearAsyncWait"
+cmd "sym setl BackendDialogCaption NetErrKickedTitle"
+cmd "sym setl BackendDialogText NetErrKickedBody"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "gameEvent systemNotify ConnectingToGSS 0"
+}
+Script showBackendDialogGameSessionServerWrongPin {
+ignoreInputTime 0.25
+cmd "timer clearAsyncWait"
+cmd "sym setl BackendDialogCaption NetErrWrongPinTitle"
+cmd "sym setl BackendDialogText NetErrWrongPinBody"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym setl BackendDialogButton0Command menuCmd net_GSSConnectionFailedPostDialog"
+cmd "menucmd BackendDialog"
+cmd "gameEvent systemNotify ConnectingToGSS 0"
+}
+Script enterNetgameMenu {
+cmd "echo Script_enterNetgameMenu"
+cmd "net disconnect"
+cmd "gameui refreshFilterName NetGame"
+cmd "sym set LobbyState 1"
+cmd "sym set CurrentMenu MKLobby"
+cmd "gameui disableAll MainMenuButtons"
+cmd "addUIAnim MainMenuPlayFrame mas_MMExitLeft"
+cmd "if sym GL_ChatHidden == 1 addUIAnim MessageChatContainer mas_ChatShow"
+}
+Script showGameLobby {
+cmd "echo Script_showGameLobby"
+cmd "sym set IsSpectator 0"
+cmd "sym set _LobbyReady_ 0"
+cmd "sym set HexATC0 0x444444"
+cmd "sym set HexATC1 0x444444"
+cmd "gameUI refreshFilterName NetGameRoom"
+cmd "addUIAnim MainMenuPlayerInfo mas_BackShow"
+cmd "sym set MenuBack MF_NetGameSessionCancel"
+cmd "if usingPad pcmd 0.3 gameUI focusName MF_NetGameRoomReady"
+cmd "if usingMouse pcmd 0.3 gameUI focusName ChatTextEntry"
+}
+Script showGameLobbySpectator {
+cmd "echo showGameLobbySpectator"
+cmd "sym set IsSpectator 1"
+cmd "sym set _LobbyReady_ 0"
+cmd "sym set HexATC0 0x444444"
+cmd "sym set HexATC1 0x444444"
+cmd "gameUI refreshFilterName NetGameRoom"
+cmd "addUIAnim MainMenuPlayerInfo mas_BackShow"
+cmd "sym set MenuBack MF_NetGameSessionCancel"
+}
+Script net_refreshRoomList {
+cmd "rooms request"
+}
+Script CheckPingStuff {
+cmd "net gchatForced /latency"
+cmd "sym set _LatencyCheckOk_ 0"
+}
+Script OnNetDisconnect {
+#if vr
+rcmd "sym setFrom HeadCustom0 HeadLocal"
+rcmd "sym setFrom Pet1Custom0 Pet1Local"
+rcmd "sym setFrom Pet2Custom0 Pet2Local"
+rcmd "sym setFrom Pet3Custom0 Pet3Local"
+rcmd "sym setFrom AS0P0 ArmySlot0Custom0"
+rcmd "sym setFrom AS1P0 ArmySlot1Custom0"
+rcmd "sym setFrom AS2P0 ArmySlot2Custom0"
+rcmd "sym setFrom AS3P0 ArmySlot3Custom0"
+rcmd "sym setFrom AS4P0 ArmySlot4Custom0"
+rcmd "sym setFrom AS5P0 ArmySlot5Custom0"
+rcmd "sym setFrom AS6P0 ArmySlot6Custom0"
+rcmd "sym setFrom AS7P0 ArmySlot7Custom0"
+#endif
+}

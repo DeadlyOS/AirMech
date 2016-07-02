@@ -1,0 +1,26 @@
+onloadrun {
+sym set _InLogoSplash_ 1
+}
+MO BootArcInputCatch {
+pos 0 0
+}
+MO ArcHealthLogoSplash {
+pos 0 -60
+}
+onload {
+gameUI ignoreInputTime 1.5
+gameUI focusName BootArcInputCatch
+pcmd_seq 303 0.1  gameui enable ArcHealthLogoSplash
+if retail pcmd_seq 303 7.0 gameui disable ArcHealthLogoSplash
+if retail pcmd_seq 303 7.5 clearmenu BootArc
+if !retail pcmd_seq 303 1.0 gameui disable ArcHealthLogoSplash
+if !retail pcmd_seq 303 1.5 clearmenu BootArc
+}
+onunload {
+gameUI ignoreInputTime 0.2
+console flushAllPendingSeq 303
+loadmenu MenuLoginBackdrop /fadein 0.2
+loadmenu MenuLogin /fadein 0.2
+pcmd 0.2 menucmd MF_ArcLogin
+sym set _InLogoSplash_ 0
+}

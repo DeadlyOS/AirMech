@@ -1,0 +1,29 @@
+stopIfSymbol CurrentMenu == _SetupTransition_
+onloadrun {
+]gameUI saveFocusID _savefocusid_motd_
+sym set CurrentMenu null
+gameui ignoreInputTime 1.2
+sym set MotDLoaded 1
+sym push DisableConShop 1
+}
+MO ConMotDMaster {
+pos 0 370
+layer 13
+}
+onload {
+addUIAnim CM_MasterLogo mas_MenuCenter
+menuCmd ConMenuSharp
+pcmd 1.0 sym set CurrentMenu MotD
+addUIAnim ConMotDMaster mas_DialogPop
+input set padFocusFallback MotDFocus
+gameUI focusNameTry MotDFocus
+}
+onunloadrun {
+}
+onunload {
+input set padFocusFallback $_savefocusid_motd_
+sym pop DisableConShop
+sym set MotDLoaded 0
+sym set CurrentMenu CRoot
+menuCmd CMS_Root
+}

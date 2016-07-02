@@ -1,0 +1,23 @@
+onloadrun {
+]sym push CurrentMenu CCredits
+}
+MO ConCreditsOverlay {
+pos 0 0
+layer 0
+}
+MO ConCreditsList {
+pos 100 100
+layer 1
+}
+MO AirMechLogoCredits {
+pos 1200 780
+layer 1
+}
+onload {
+pcmd 1.0 gameui focusname ConCreditsList
+input set padFocusFallback ConCreditsList
+]sym push DisableConShop 1
+}
+onunload {
+]sym pop DisableConShop CurrentMenu
+}

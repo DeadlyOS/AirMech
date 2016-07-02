@@ -1,0 +1,78 @@
+add ParticleEmitter
+set Name RomanCandle, MaxParticles 512, Material mat_Stars4th
+set EmitPeriodBase 0.004, EmitPeriodVar 0.0, EmitVelocityBase 4.0, EmitVelocityVar 4.0, EmitVelocityWiggle 500
+set DragCoefficient 2.0
+set EmitPeriodBaseTimeModifier 0.02
+set ParticleLifespanBase 1.0, ParticleLifespanVar 1.5
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.1
+set ParticleGrowthXBase -0.005, ParticleGrowthXVar -0.01
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -120.0, ParticleSpinVar 100.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.6
+set ColorMode eColorMode_RGBFadeToSecondary
+set EmitPosConstantZOffset 0.1
+set EmitPosOnXYCircle 8
+set GravityScalar 2
+set GravityDirection "0 0 -1"
+set VisibilitySphereSize 200.0
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime -1.0
+add ParticleEmitter
+set Name PowerEmbers, MaxParticles 256, Material mat_particleTracer
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 70.0, EmitVelocityVar 80.0, EmitVelocityWiggle 60
+set DragCoefficient 3.0
+set EmitPeriodBaseTimeModifier -10.1
+set ParticleLifespanBase 0.2, ParticleLifespanVar 0.7
+set ParticleSizeXBase 0.40, ParticleSizeXVar 0.0
+set ParticleSizeYBase 0.5, ParticleSizeYVar 0.1
+set ParticleGrowthXBase -0.1, ParticleGrowthXVar 0.0
+set ParticleGrowthYBase -0.2, ParticleGrowthXVar 0.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set ColorMode eColorMode_RGBFadeToSecondary
+set EmitPosConstantZOffset 0.5
+set FlagNonSquareAspect 1
+set FlagOrientWithParticleTrajectory 1
+set GravityScalar 5.0
+set GravityDirection "0 0 -1"
+set FlagEmissionVelocityFromOffset 1
+set FlagActiveProcessingBeforeEmission 1
+set ParticleEmissionDir "1 0 1"
+add ParticleEmitter
+set Name CTFScoreTemplate, MaxParticles 512, Material mat_Stars4th
+set EmitPeriodBase 0.0001, EmitPeriodVar 0.0, EmitVelocityBase 5.0, EmitVelocityVar 10.0, EmitVelocityWiggle 100
+set DragCoefficient 2.0
+set StopAfterParticleCount 512
+set EmitPeriodBaseTimeModifier 0.02
+set ParticleLifespanBase 1.0, ParticleLifespanVar 2.0
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.2
+set ParticleGrowthXBase -0.005, ParticleGrowthXVar 0.01
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -120.0, ParticleSpinVar 100.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set ColorMode eColorMode_RGBFadeToSecondary
+set EmitPosConstantZOffset 1.5
+set EmitPosRandomXExtent 15.0
+set EmitPosRandomYExtent 10.2
+set EmitPosRandomZExtent 5.0
+set GravityScalar 0.6
+set GravityDirection "0  10 -1"
+set FlagCameraRelativeSystem 1
+set FlagCameraRelativeSystemLatched 1
+set CameraRelativeForward 20.0
+set CameraRelativeUp -5.0
+set VisibilitySphereSize 200.0
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime -1.0
+add ParticleEmitter initFrom CTFScoreTemplate
+set Name CTFScoreRed
+add ParticleEmitter initFrom CTFScoreTemplate
+set Name CTFScoreBlue
+add ParticleEmitter initFrom CTFScoreTemplate
+set Name CTFScoreGreen
+add ParticleEmitter initFrom CTFScoreTemplate
+set Name CTFScoreYellow

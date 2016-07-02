@@ -1,0 +1,19 @@
+onloadrun {
+gameui clearScrollableDrawHashes
+}
+MO PrivPolicyMaster {
+layer 27
+pos 0 0
+}
+onload {
+gameUI saveFocusID _privPolicyFocusRestore_
+sym push CurrentMenu PrivPolicyDialog
+sym push DisableConShop 1
+gameui promoteToTop PrivPolicyMaster
+gameUI focusNameTry PrivPolicyAccept
+}
+onunload {
+gameUI restoreFocusID _privPolicyFocusRestore_
+sym pop CurrentMenu DisableConShop
+sym set DontDisplayTips 0
+}

@@ -1,0 +1,2025 @@
+add MenuObject
+set Name EndgameOverlayWon
+set Texture effects/EndgameOverlay
+set Coords "0 0 16 16"
+set TileArea "1940 1100"
+set Color 0x081c25
+set StretchToFillScreen 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set DisabledSymInv MatchOverInSummary
+set Disabled 1
+add MenuObject initFrom EndgameOverlayWon
+set Name EndgameOverlayLost
+set Color 0x1f100c
+add MenuObject
+set Name HeaderEndgameTemplate
+set Coords "0 0 1150 60"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_RGBColor 1.0
+set RenderCB_Flags "/allCaps /outlined8x /fitX"
+set RenderCB_FontScale 1.2
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Offset "-40 0"
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+set DisabledAlpha 0.8
+set DisabledSymInv MatchOverInSummary
+set Child "BgLinesAnglePanA[EndgameLinesA] -220 -40	0x555555	/ifSym EndgameWon == 1"
+set Child "BgLinesAnglePanB[EndgameLinesB] -220 -60	0x224455	/ifSym EndgameWon == 1"
+set Child "BgLinesAnglePanA[EndgameLinesA] -220 -40	0xe0581c	/ifSym EndgameWon == 0"
+set Child "BgLinesAnglePanB[EndgameLinesB] -220 -60	0x8b2405	/ifSym EndgameWon == 0"
+add MenuObject
+set Name HeaderEndgamePvPPW
+set Texture menus/LargeChineseFonts
+set Coords "513 665 512 92"
+set SaveArgs 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+set DisabledAlpha 0.8
+set DisabledSymInv MatchOverInSummary
+set Child "BgLinesAnglePanA[EndgameLinesA] -220 -40	0x555555	/ifSym EndgameWon == 1"
+set Child "BgLinesAnglePanB[EndgameLinesB] -220 -60	0x224455	/ifSym EndgameWon == 1"
+set Child "BgLinesAnglePanA[EndgameLinesA] -220 -40	0xe0581c	/ifSym EndgameWon == 0"
+set Child "BgLinesAnglePanB[EndgameLinesB] -220 -60	0x8b2405	/ifSym EndgameWon == 0"
+add MenuObject initFrom HeaderEndgamePvPPW
+set Name HeaderEndgameCoopPW
+set Coords "7 758 497 89"
+add MenuObject initFrom HeaderEndgamePvPPW
+set Name HeaderEndgameSkirmishPW
+set Coords "512 764 494 84"
+add MenuObject initFrom HeaderEndgameTemplate
+set Name HeaderEndgameTemplate2
+set RenderCB_Text "PVP DEFEAT"
+add MenuObject
+set Name EndgameBackToGameXX
+set Texture menus/DialogFrames
+set Coords "603 407 53 91"
+set MirrorOnY 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "menuCmd EndgameHide"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set DisabledSymInv MatchOverInSummary
+set BlendMode BlendAdd
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name EndgameBackToGameVis
+set Coords "295 511 49 49"
+set CoordsFocused "350 511 49 49"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name EndgameBackToGame
+set Coords "0 0 49 49"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandPress "menuCmd EndgameHide"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set DisabledSymInv MatchOverInSummary
+set CommandGetFocus "playSound $MenuSoundFocus"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu SplashPromo /fadeout 0.1"
+set Child "PromoButtonCloseVis 0 0"
+add MenuObject
+set Name FinishButtons
+set ContainerOnly 1
+set HiddenCheckBySymbol InputPad
+set Child "EndgameReplayButton 920 320"
+add MenuObject
+set Name EG_HeaderTextTemplate
+set Coords "0 0 1700 50"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_RGBColor 1.0
+set RenderCB_Flags "/allCaps /shadowColor2 /outlined8x"
+set RenderCB_FontScale 1.2
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Offset "0 4"
+set RenderCB_Text @_Arg1_@
+add MenuObject
+set Name EG_CompareTextTemplate
+set Coords "0 0 500 50"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_RGBColor @_Arg2_@
+set RenderCB_FontScale 0.9
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+add MenuObject initFrom EG_CompareTextTemplate
+set Name EG_CompareTextLongTemplate
+set Coords "0 0 800 50"
+set HiddenCheckBySymbolInv @_Arg3_@
+set SaveArgs 3
+set RenderCB_Flags "/fitX"
+add MenuObject initFrom EG_CompareTextTemplate
+set Name EG_CompareTextCondTemplate
+set SaveArgs 3
+set RenderCB_Flags "/fitX"
+set Coords "0 0 300 50"
+set HiddenCheckBySymbolInv @_Arg3_@
+add MenuObject
+set Name EG_UpgradeClickBox
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "389 170"
+set Coords "0 0 380 170"
+set BlendMode BlendAdd
+set Color 0x000000
+set ColorFocused 0x221100
+set MouseInteract 1
+set Focus -2
+set CommandPress "menuCmd StorePromoUnlockOrInspectBundleTry StarterPack"
+add MenuObject
+set Name EG_UpgradeText
+set Coords "0 0 350 30"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_RGBColor 1.0
+set RenderCB_RGBColorFocused 1.0
+set RenderCB_Flags "/allCaps /nmi /fitX"
+set PulseAlpha "1.0 -0.3 0.0"
+set RenderCB_FontScale 0.8
+set RenderCB_DX 350
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text RewardsUpsellText
+set Child "EG_UpgradeClickBox -10 -30"
+add MenuObject
+set Name EG_RewardUnderline
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "250 5"
+add MenuObject
+set Name EG_CompareNumbersTemplate
+set Coords "0 0 500 50"
+set RenderCB_Font DroidSansBigNumbers
+set RenderCB _DrawText
+set RenderCB_RGBColor 1.0
+set RenderCB_FontScale 0.7
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlpha 0.33
+set Disabled @_Arg2_@
+set RenderCB_Offset "50 0"
+set RenderCB_ConsoleSymbol @_Arg1_@
+set Child "EG_RewardUnderline 0 70 	/ifSym _Arg2_ == 0"
+add MenuObject
+set Name EG_CompareTextNoneGold
+set ContainerOnly 1
+set Child "EG_CompareTextTemplate 0 0	RewardsHeaderNoVip	0.5"
+set Child "EG_CompareTextTemplate 330 0	RewardsHeaderGoldVip	0xffd542"
+add MenuObject
+set Name EG_CompareTextSilverGold
+set ContainerOnly 1
+set Child "EG_CompareTextTemplate 0 0	RewardsHeaderSilverVip	0.5"
+set Child "EG_CompareTextTemplate 330 0	RewardsHeaderGoldVip	0xffd542"
+add MenuObject
+set Name EG_CompareTextNoneDiamond
+set ContainerOnly 1
+set Child "EG_CompareTextTemplate 0 0	RewardsHeaderNoVip	0.5"
+set Child "EG_CompareTextTemplate 330 0	RewardsHeaderDiamondVip	0x6de2ff"
+add MenuObject
+set Name EG_CompareTextNoneGoldDiamond
+set ContainerOnly 1
+set Child "EG_CompareTextTemplate 0 0	RewardsHeaderNoVip	0.5"
+set Child "EG_CompareTextTemplate 330 0	RewardsHeaderGoldDiamondVip	0xffd542"
+add MenuObject
+set Name EG_HeaderTemplate
+set Texture hud/BuildTray
+set CoordsStart 		"977 254 10 20"
+set CoordsMid 			"987 254 10 20"
+set CoordsEnd 			"1003 254 10 20"
+set CoordsStartFocused 	"977 274 10 22"
+set CoordsMidFocused 	"987 274 10 22"
+set CoordsEndFocused 	"1003 274 10 22"
+set CoordsStartDisabled "977 296 10 20"
+set CoordsMidDisabled 	"987 296 10 20"
+set CoordsEndDisabled 	"1003 296 10 20"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 710
+set RenderCB_DY 62
+set Child "EG_CompareTextNoneGold 0 60		/ifSym AnyVipStatusShown == 0"
+set Child "EG_CompareTextNoneGold 0 60		/ifSym GoldVipStatusShown == 1"
+set Child "EG_CompareTextSilverGold 0 60		/ifSym VipStatusShown == 1"
+set Child "EG_CompareTextNoneDiamond 0 60		/ifSym DiamondVipStatusShown == 1"
+set Child "EG_CompareTextNoneGoldDiamond 0 60		/ifSym GoldDiamondVipStatusShown == 1"
+add MenuObject
+set Name EG_RewardIconXP
+set Texture hud/BuildTray
+set Coords 		"969 189 47 47"
+set DisabledAlpha 0.33
+set Disabled @_Arg1_@
+set SaveArgs 1
+add MenuObject initFrom EG_HeaderTemplate
+set Name EG_HeaderXP
+set Child "EventDoubleEndgameXP -210 -13"
+set Child "EG_HeaderTextTemplate 20 0	RewardsHeaderExperience"
+set Child "EG_CompareTextCondTemplate 0 90		RewardsHeaderXpBoostActive	0x9df472	BoostXPShown	/ifSym AnyVipStatusShown == 1	/ifSym VipStatusShown == 1"
+set Child "EG_CompareTextCondTemplate 330 90	RewardsHeaderXpBoostActive	0x9df472	BoostXPShown	/ifSym AnyVipStatusShown == 1 	/ifSym VipStatusShown == 0"
+set Child "EG_CompareTextCondTemplate 0 90		RewardsHeaderXpBoostActive	0x9df472	BoostXPShown	/ifSym AnyVipStatusShown == 0"
+set Child "EG_CompareTextCondTemplate 0 220		RewardsHeaderXpDoubleActive	0x9df472	EventDoubleXP	/ifSym AnyVipStatusShown == 0	/ifSym P_Level >= @EventDoubleXP_PLvlReq@"
+set Child "EG_CompareTextCondTemplate 330 220	RewardsHeaderXpDoubleActive	0x9df472	EventDoubleXP	/ifSym AnyVipStatusShown == 1 	/ifSym VipStatusShown == 0		/ifSym P_Level >= @EventDoubleXP_PLvlReq@"
+set Child "EG_CompareTextCondTemplate 0 220		RewardsHeaderXpDoubleActive	0x9df472	EventDoubleXP	/ifSym AnyVipStatusShown == 1	/ifSym VipStatusShown == 1		/ifSym P_Level >= @EventDoubleXP_PLvlReq@"
+set Child "EG_RewardIconXP 0 150	0	/ifSym AnyVipStatusShown == 0"
+set Child "EG_RewardIconXP 330 150	1	/ifSym AnyVipStatusShown == 0"
+set Child "EG_CompareNumbersTemplate 0 150	MR_ExpTotal	0			/ifSym AnyVipStatusShown == 0"
+set Child "EG_CompareNumbersTemplate 330 150	MR_ExpTotalU	1	/ifSym AnyVipStatusShown == 0"
+set Child "EG_UpgradeText 330 100									/ifSym AnyVipStatusShown == 0"
+set Child "EG_RewardIconXP 0 150	0	/ifSym VipStatusShown == 1"
+set Child "EG_RewardIconXP 330 150	1	/ifSym VipStatusShown == 1"
+set Child "EG_CompareNumbersTemplate 0 150	MR_ExpTotal	0			/ifSym VipStatusShown == 1"
+set Child "EG_CompareNumbersTemplate 330 150	MR_ExpTotalU	1	/ifSym VipStatusShown == 1"
+set Child "EG_RewardIconXP 0 150	1	/ifSym AnyVipStatusShown == 1	/ifSym VipStatusShown == 0"
+set Child "EG_RewardIconXP 330 150	0	/ifSym AnyVipStatusShown == 1	/ifSym VipStatusShown == 0"
+set Child "EG_CompareNumbersTemplate 0 150	MR_ExpTotalN	1		/ifSym AnyVipStatusShown == 1	/ifSym VipStatusShown == 0"
+set Child "EG_CompareNumbersTemplate 330 150	MR_ExpTotal	0		/ifSym AnyVipStatusShown == 1	/ifSym VipStatusShown == 0"
+add MenuObject
+set Name EG_RewardIconKudos
+set Texture hud/BuildTray
+set Coords "967 136 47 47"
+set DisabledAlpha 0.33
+set Disabled @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name EG_RewardIconHonor
+set Texture hud/BuildTray
+set Coords "982 461 38 47"
+set DisabledAlpha 0.33
+set Disabled @_Arg1_@
+set SaveArgs 1
+add MenuObject initFrom EG_HeaderTemplate
+set Name EG_HeaderKudos
+set CoordsStart 		"977 323 10 20"
+set CoordsMid 			"987 323 10 20"
+set CoordsEnd 			"1003 323 10 20"
+set CoordsStartFocused 	"977 343 10 22"
+set CoordsMidFocused 	"987 343 10 22"
+set CoordsEndFocused 	"1003 343 10 22"
+set CoordsStartDisabled "977 365 10 20"
+set CoordsMidDisabled 	"987 365 10 20"
+set CoordsEndDisabled 	"1003 365 10 20"
+set Child "EventDoubleEndgameK -210 -13"
+set Child "EG_HeaderTextTemplate 20 0	RewardsHeaderKudos"
+set Child "EG_CompareTextCondTemplate 0 90		RewardsHeaderKudosBoostActive	0xfca636	BoostKudosShown	/ifSym AnyVipStatusShown == 0"
+set Child "EG_CompareTextCondTemplate 330 90	RewardsHeaderKudosBoostActive	0xfca636	BoostKudosShown	/ifSym AnyVipStatusShown == 1 /ifSym VipStatusShown == 0"
+set Child "EG_CompareTextCondTemplate 0 90		RewardsHeaderKudosBoostActive	0xfca636	BoostKudosShown	/ifSym AnyVipStatusShown == 1 /ifSym VipStatusShown == 1"
+set Child "EG_CompareTextCondTemplate 0 220		RewardsHeaderKudosDoubleActive	0xfca636	EventDoubleK	/ifSym AnyVipStatusShown == 0"
+set Child "EG_CompareTextCondTemplate 330 220	RewardsHeaderKudosDoubleActive	0xfca636	EventDoubleK	/ifSym AnyVipStatusShown == 1 /ifSym VipStatusShown == 0"
+set Child "EG_CompareTextCondTemplate 0 220		RewardsHeaderKudosDoubleActive	0xfca636	EventDoubleK	/ifSym AnyVipStatusShown == 1 /ifSym VipStatusShown == 1"
+set Child "EG_RewardIconKudos 0 150		0	/ifSym AnyVipStatusShown == 0"
+set Child "EG_RewardIconKudos 330 150	1	/ifSym AnyVipStatusShown == 0"
+set Child "EG_CompareNumbersTemplate 0 150	MR_KudosTotal	0			/ifSym AnyVipStatusShown == 0"
+set Child "EG_CompareNumbersTemplate 330 150	MR_KudosTotalU	1	/ifSym AnyVipStatusShown == 0"
+set Child "EG_UpgradeText 330 100									/ifSym AnyVipStatusShown == 0"
+set Child "EG_RewardIconKudos 0 150		0	/ifSym VipStatusShown == 1"
+set Child "EG_RewardIconKudos 330 150	1	/ifSym VipStatusShown == 1"
+set Child "EG_CompareNumbersTemplate 0 150	MR_KudosTotal	0			/ifSym VipStatusShown == 1"
+set Child "EG_CompareNumbersTemplate 330 150	MR_KudosTotalU	1	/ifSym VipStatusShown == 1"
+set Child "EG_RewardIconKudos 0 150		1	/ifSym AnyVipStatusShown == 1	/ifSym VipStatusShown == 0"
+set Child "EG_RewardIconKudos 330 150	0	/ifSym AnyVipStatusShown == 1	/ifSym VipStatusShown == 0"
+set Child "EG_CompareNumbersTemplate 0 150	MR_KudosTotalN	1		/ifSym AnyVipStatusShown == 1	/ifSym VipStatusShown == 0"
+set Child "EG_CompareNumbersTemplate 330 150	MR_KudosTotal	0		/ifSym AnyVipStatusShown == 1	/ifSym VipStatusShown == 0"
+add MenuObject
+set Name EG_HeaderDrops
+set Texture hud/BuildTray
+set CoordsStart 		"977 392 10 20"
+set CoordsMid 			"987 392 10 20"
+set CoordsEnd 			"1003 392 10 20"
+set CoordsStartFocused 	"977 412 10 22"
+set CoordsMidFocused 	"987 412 10 22"
+set CoordsEndFocused 	"1003 412 10 22"
+set CoordsStartDisabled "977 434 10 20"
+set CoordsMidDisabled 	"987 434 10 20"
+set CoordsEndDisabled 	"1003 434 10 20"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 710
+set RenderCB_DY 62
+add MenuObject
+set Name EG_HeaderHonorBg
+set Texture effects/white
+set Coords "0 0 730 320"
+set Color 0xff380a
+set BlinkAlpha "0.2 0.5 0.25 0.5"
+set BlendMode BlendAdd
+add MenuObject
+set Name EG_HeaderHonorNew
+set Texture fonts/SpecialChars
+set Coords "351 95 72 72"
+set ScaleX 1.33, ScaleY 1.33
+add MenuObject
+set Name EG_DescTextTemplate
+set Coords "0 0 360 350"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_RGBColor @_Arg2_@
+set RenderCB_FontScale 0.7
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set RenderCB_BoolArg 1
+add MenuObject
+set Name EG_HeaderHonor
+set HiddenCheckBySymbolValue MR_HonorTotal=0
+set Texture hud/BuildTray
+set CoordsStart 		"977 392 10 20"
+set CoordsMid 			"987 392 10 20"
+set CoordsEnd 			"1003 392 10 20"
+set CoordsStartFocused 	"977 412 10 22"
+set CoordsMidFocused 	"987 412 10 22"
+set CoordsEndFocused 	"1003 412 10 22"
+set CoordsStartDisabled "977 434 10 20"
+set CoordsMidDisabled 	"987 434 10 20"
+set CoordsEndDisabled 	"1003 434 10 20"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 710
+set RenderCB_DY 62
+set Child "EG_HeaderHonorNew 640 -20"
+set Child "EG_HeaderHonorBg -10 -10"
+set Child "EG_CompareTextTemplate 0 60	TextNewReward	0xffffff"
+set Child "EG_DescTextTemplate 320 70	RewardsDescHonorWin			0xffffff	 	/ifSym EndgameWon == 1	/ifSym MR_WasRanked == 0"
+set Child "EG_DescTextTemplate 320 70	RewardsDescHonorLose		0xffffff		/ifSym EndgameWon == 0	/ifSym MR_WasRanked == 0"
+set Child "EG_DescTextTemplate 320 70	RewardsDescHonorWinRanked	0xffffff	 	/ifSym EndgameWon == 1 	/ifSym MR_WasRanked == 1"
+set Child "EG_DescTextTemplate 320 70	RewardsDescHonorLoseRanked	0xffffff		/ifSym EndgameWon == 0	/ifSym MR_WasRanked == 1"
+set Child "EG_HeaderTextTemplate 20 0	RewardsHeaderHonor"
+set Child "EG_RewardIconHonor 0 150		0"
+set Child "PStatusBarHonor 40 250		0"
+set Child "EG_CompareNumbersTemplate 0 150	MR_HonorTotal	0"
+add MenuObject
+set Name UpkeepBarsTeam0
+set Texture hud/PlayerStatus
+set CoordsStart 		"184 471 4 4"
+set CoordsMid 			"187 471 21 4"
+set CoordsEnd 			"208 471 4 4"
+set CoordsStartFocused 	"184 475 4 9"
+set CoordsMidFocused 	"187 475 21 9"
+set CoordsEndFocused 	"208 475 4 9"
+set CoordsStartDisabled "184 484 4 4"
+set CoordsMidDisabled 	"187 484 21 4"
+set CoordsEndDisabled 	"208 484 4 4"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 10
+set RenderCB_DY -&UpkeepTeam0_@_Arg1_@&
+set Coords "0 0 5 50"
+set FilterName UpkeepBars
+set ToolTip NewKudosBaseTip
+set MouseInteract 1
+set Color &Hex@TC0@&
+set SaveArgs 1
+set BlendMode BlendAdd
+add MenuObject initFrom UpkeepBarsTeam0
+set Name UpkeepBarsTeam1
+set RenderCB_DY -&UpkeepTeam1_@_Arg1_@&
+set Color &Hex@TC1@&
+set BlendMode BlendColorAdd
+add MenuObject
+set Name UpkeepBarsBox
+set ContainerOnly 1
+set Child "UpkeepBarsTeam0	0 0			0"
+set Child "UpkeepBarsTeam0	10 0		1"
+set Child "UpkeepBarsTeam0	20 0		2"
+set Child "UpkeepBarsTeam0	30 0		3"
+set Child "UpkeepBarsTeam0	40 0		4"
+set Child "UpkeepBarsTeam0	50 0		5"
+set Child "UpkeepBarsTeam0	60 0		6"
+set Child "UpkeepBarsTeam0	70 0		7"
+set Child "UpkeepBarsTeam0	80 0		8"
+set Child "UpkeepBarsTeam0	90 0		9"
+set Child "UpkeepBarsTeam0	100 0		10"
+set Child "UpkeepBarsTeam0	110 0		11"
+set Child "UpkeepBarsTeam0	120 0		12"
+set Child "UpkeepBarsTeam0	130 0		13"
+set Child "UpkeepBarsTeam0	140 0		14"
+set Child "UpkeepBarsTeam0	150 0		15"
+set Child "UpkeepBarsTeam0	160 0		16"
+set Child "UpkeepBarsTeam0	170 0		17"
+set Child "UpkeepBarsTeam0	180 0		18"
+set Child "UpkeepBarsTeam0	190 0		19"
+set Child "UpkeepBarsTeam0	200 0		20"
+set Child "UpkeepBarsTeam0	210 0		21"
+set Child "UpkeepBarsTeam0	220 0		22"
+set Child "UpkeepBarsTeam0	230 0		23"
+set Child "UpkeepBarsTeam0	240 0		24"
+set Child "UpkeepBarsTeam0	250 0		25"
+set Child "UpkeepBarsTeam0	260 0		26"
+set Child "UpkeepBarsTeam0	270 0		27"
+set Child "UpkeepBarsTeam0	280 0		28"
+set Child "UpkeepBarsTeam0	290 0		29"
+set Child "UpkeepBarsTeam0	300 0		30"
+set Child "UpkeepBarsTeam0	310 0		31"
+set Child "UpkeepBarsTeam0	320 0		32"
+set Child "UpkeepBarsTeam0	330 0		33"
+set Child "UpkeepBarsTeam0	340 0		34"
+set Child "UpkeepBarsTeam0	350 0		35"
+set Child "UpkeepBarsTeam0	360 0		36"
+set Child "UpkeepBarsTeam0	370 0		37"
+set Child "UpkeepBarsTeam0	380 0		38"
+set Child "UpkeepBarsTeam0	390 0		39"
+set Child "UpkeepBarsTeam0	400 0		40"
+set Child "UpkeepBarsTeam0	410 0		41"
+set Child "UpkeepBarsTeam0	420 0		42"
+set Child "UpkeepBarsTeam0	430 0		43"
+set Child "UpkeepBarsTeam0	440 0		44"
+set Child "UpkeepBarsTeam0	450 0		45"
+set Child "UpkeepBarsTeam0	460 0		46"
+set Child "UpkeepBarsTeam0	470 0		47"
+set Child "UpkeepBarsTeam0	480 0		48"
+set Child "UpkeepBarsTeam0	490 0		49"
+set Child "UpkeepBarsTeam0	500 0		50"
+set Child "UpkeepBarsTeam0	510 0		51"
+set Child "UpkeepBarsTeam0	520 0		52"
+set Child "UpkeepBarsTeam0	530 0		53"
+set Child "UpkeepBarsTeam0	540 0		54"
+set Child "UpkeepBarsTeam0	550 0		55"
+set Child "UpkeepBarsTeam0	560 0		56"
+set Child "UpkeepBarsTeam0	570 0		57"
+set Child "UpkeepBarsTeam0	580 0		58"
+set Child "UpkeepBarsTeam0	590 0		59"
+set Child "UpkeepBarsTeam1	0 0			0"
+set Child "UpkeepBarsTeam1	10 0		1"
+set Child "UpkeepBarsTeam1	20 0		2"
+set Child "UpkeepBarsTeam1	30 0		3"
+set Child "UpkeepBarsTeam1	40 0		4"
+set Child "UpkeepBarsTeam1	50 0		5"
+set Child "UpkeepBarsTeam1	60 0		6"
+set Child "UpkeepBarsTeam1	70 0		7"
+set Child "UpkeepBarsTeam1	80 0		8"
+set Child "UpkeepBarsTeam1	90 0		9"
+set Child "UpkeepBarsTeam1	100 0		10"
+set Child "UpkeepBarsTeam1	110 0		11"
+set Child "UpkeepBarsTeam1	120 0		12"
+set Child "UpkeepBarsTeam1	130 0		13"
+set Child "UpkeepBarsTeam1	140 0		14"
+set Child "UpkeepBarsTeam1	150 0		15"
+set Child "UpkeepBarsTeam1	160 0		16"
+set Child "UpkeepBarsTeam1	170 0		17"
+set Child "UpkeepBarsTeam1	180 0		18"
+set Child "UpkeepBarsTeam1	190 0		19"
+set Child "UpkeepBarsTeam1	200 0		20"
+set Child "UpkeepBarsTeam1	210 0		21"
+set Child "UpkeepBarsTeam1	220 0		22"
+set Child "UpkeepBarsTeam1	230 0		23"
+set Child "UpkeepBarsTeam1	240 0		24"
+set Child "UpkeepBarsTeam1	250 0		25"
+set Child "UpkeepBarsTeam1	260 0		26"
+set Child "UpkeepBarsTeam1	270 0		27"
+set Child "UpkeepBarsTeam1	280 0		28"
+set Child "UpkeepBarsTeam1	290 0		29"
+set Child "UpkeepBarsTeam1	300 0		30"
+set Child "UpkeepBarsTeam1	310 0		31"
+set Child "UpkeepBarsTeam1	320 0		32"
+set Child "UpkeepBarsTeam1	330 0		33"
+set Child "UpkeepBarsTeam1	340 0		34"
+set Child "UpkeepBarsTeam1	350 0		35"
+set Child "UpkeepBarsTeam1	360 0		36"
+set Child "UpkeepBarsTeam1	370 0		37"
+set Child "UpkeepBarsTeam1	380 0		38"
+set Child "UpkeepBarsTeam1	390 0		39"
+set Child "UpkeepBarsTeam1	400 0		40"
+set Child "UpkeepBarsTeam1	410 0		41"
+set Child "UpkeepBarsTeam1	420 0		42"
+set Child "UpkeepBarsTeam1	430 0		43"
+set Child "UpkeepBarsTeam1	440 0		44"
+set Child "UpkeepBarsTeam1	450 0		45"
+set Child "UpkeepBarsTeam1	460 0		46"
+set Child "UpkeepBarsTeam1	470 0		47"
+set Child "UpkeepBarsTeam1	480 0		48"
+set Child "UpkeepBarsTeam1	490 0		49"
+set Child "UpkeepBarsTeam1	500 0		50"
+set Child "UpkeepBarsTeam1	510 0		51"
+set Child "UpkeepBarsTeam1	520 0		52"
+set Child "UpkeepBarsTeam1	530 0		53"
+set Child "UpkeepBarsTeam1	540 0		54"
+set Child "UpkeepBarsTeam1	550 0		55"
+set Child "UpkeepBarsTeam1	560 0		56"
+set Child "UpkeepBarsTeam1	570 0		57"
+set Child "UpkeepBarsTeam1	580 0		58"
+set Child "UpkeepBarsTeam1	590 0		59"
+add MenuObject
+set Name EndgameV2Rewards
+set Coords "0 0 1920 900"
+set ContainerOnly 1
+set Child "EG_RewardRubbleReveal 780 -20 0.8 0.8"
+set Child "DropIconShadow[EG_RewardShadow] 1100 250"
+set Child "EG_Reward 1075 130"
+set Child "EG_HeaderDrops 840 60"
+set Child "EG_RewardNotAvailable 1050 30 /!mmGame"
+set Child "EG_NoReward 1050 30 /mmGame"
+set Child "EG_HeaderTextTemplate 860 60	RewardsHeaderDrops"
+set Child "EG_HeaderXP 20 60"
+set Child "EG_HeaderKudos 20 360"
+set Child "EG_HeaderHonor 840 360"
+add MenuObject
+set Name EndgameV2Stats
+set Coords "0 0 1920 900"
+set ContainerOnly 1
+set Child "EG_StatLabel 945 56 	LabelKills 0.7"
+set Child "EG_DeathsStatLabel 1060 56 	LabelDeaths 0.7"
+set Child "EG_StatLabel 1165 56 	LabelBuilt 0.7"
+set Child "EG_StatLabel 1280 56 	Score 1.0"
+set Child "EG_PlayerLine@TeamColor0@[EG_Player0] 0 80		0	@TeamColor0@	EndgameFinishButton .EG_P0Down"
+set Child "EG_PlayerLine@TeamColor2@[EG_Player2] 0 160		2	@TeamColor2@	.EG_P2Up .EG_P2Down"
+set Child "EG_PlayerLine@TeamColor4@[EG_Player4] 0 240		4	@TeamColor4@	.EG_P4Up .EG_P4Down"
+set Child "EG_PlayerLine@TeamColor1@[EG_Player1] 0 320		1	@TeamColor1@	.EG_P1Up .EG_P1Down"
+set Child "EG_PlayerLine@TeamColor3@[EG_Player3] 0 400		3	@TeamColor3@	.EG_P3Up .EG_P3Down"
+set Child "EG_PlayerLine@TeamColor5@[EG_Player5] 0 480		5	@TeamColor5@	.EG_P5Up _NA_"
+set Child "UpkeepBarsBox -150 870	/ifSym HasPetCanaryBird == 1"
+add MenuObject
+set Name EndgameV2StatsSkirmish
+set Coords "0 0 1920 900"
+set ContainerOnly 1
+set Child "EG_StatLabel 945 56 	LabelKills 0.7"
+set Child "EG_DeathsStatLabel 1060 56 	LabelDeaths 0.7"
+set Child "EG_StatLabel 1165 56 	LabelBuilt 0.7"
+set Child "EG_StatLabel 1280 56 	Score 1.0"
+set Child "EG_PlayerLine@TeamColor0@[EG_Player0] 0 80		0	@TeamColor0@	EndgameFinishButton .EG_P0Down"
+set Child "EG_PlayerLine@TeamColor2@[EG_Player2] 0 160		2	@TeamColor2@	.EG_P2Up .EG_P2Down"
+set Child "EG_PlayerLine@TeamColor4@[EG_Player4] 0 240		4	@TeamColor4@	.EG_P4Up .EG_P4Down"
+set Child "EG_PlayerLine@TeamColor1@[EG_Player1] 0 320		1	@TeamColor1@	.EG_P1Up .EG_P1Down"
+set Child "EG_PlayerLine@TeamColor3@[EG_Player3] 0 400		3	@TeamColor3@	.EG_P3Up .EG_P3Down"
+set Child "EG_PlayerLine@TeamColor5@[EG_Player5] 0 480		5	@TeamColor5@	.EG_P5Up _NA_"
+add MenuObject
+set Name EndgameV2StatsSurvival
+set Coords "0 0 1920 900"
+set ContainerOnly 1
+set Child "EG_StatLabel 945 56 	LabelKills 0.7"
+set Child "EG_DeathsStatLabel 1060 56 	LabelDeaths 0.7"
+set Child "EG_StatLabel 1165 56 	LabelBuilt 0.7"
+set Child "EG_StatLabel 1280 56 	Score 1.0"
+set Child "EG_PlayerLine@TeamColor0@[EG_Player0] 0 80		0	@TeamColor0@	EndgameFinishButton EG_Player1"
+set Child "EG_PlayerLine@TeamColor0@[EG_Player1] 0 160		1	@TeamColor0@	EG_Player0 EG_Player2"
+set Child "EG_PlayerLine@TeamColor0@[EG_Player2] 0 240		2	@TeamColor0@	EG_Player1 EG_Player3"
+set Child "EG_PlayerLine@TeamColor0@[EG_Player3] 0 320		3	@TeamColor0@	EG_Player2 _NA_"
+add MenuObject
+set Name EndgamePressStart
+set Coords "0 0 1920 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUText
+set RenderCB_Text ContinuePressStart
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xFFFFFF
+set PulseAlpha "2.0 -0.3 0.0"
+set DisabledSym MatchOverInSummary
+set HiddenCheckBySymbolInv InputPad
+add MenuObject
+set Name NumbersXPBase
+set RenderCB_Font Numbers80px
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 2
+set RenderCB _DrawText
+set Coords "0 0 200 60"
+set RenderCB_DX 0
+set RenderCB_DY 0
+add MenuObject
+set Name AmountXPGained
+set RenderCB_Font Numbers80px
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FontScale 0.5
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set Texture menus/Messages
+set Coords "407 370 130 100"
+set RenderCB_ConsoleSymbol MR_ExpTotal
+set SaveArgs 2
+set RenderCB _DrawText
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/allCaps /outlined8x /shadowColor2 /fitX"
+set RenderCB_DX 100
+set RenderCB_Offset "15 30"
+set RenderCB_DY 0
+set RenderOffsetX $_PLevelProgXPGain
+set FilterName EGXPUpdate
+add MenuObject initFrom NumbersXPBase
+set Name NumbersXPNow
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol P_Level_now
+add MenuObject initFrom NumbersXPBase
+set Name NumbersXPEnd
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol P_Level_end
+add MenuObject
+set Name EndgameXpBar
+set Texture effects/black
+set Coords "0 0 16 16"
+set TileArea "1940 120"
+set DisabledAlpha 0.7
+add MenuObject
+set Name EndgameXpBarGlow
+set Texture menus/MainWideBars
+set Coords "480 70 960 9"
+set CoordsInterpolatedDest "0 70 960 9"
+set CoordsInterpolantCommand "rook persistenceLvlProgressPrev"
+set ScaleX 1.72916667, ScaleY 4.0
+set BlendMode BlendAdd
+set PulseAlpha "8.0 -0.8 -3.9"
+add MenuObject
+set Name EndgameXpBarMain
+set Texture menus/MainWideBars
+set Coords "480 73 960 3"
+set CoordsInterpolatedDest "0 73 960 3"
+set CoordsInterpolantCommand "rook persistenceLvlProgressPrev"
+set ScaleX 1.72916667, ScaleY 6.0
+set MouseInteract 1
+set FirstDrawnChildren 1
+set Child "EndgameXpBarGlow 0 -5"
+add MenuObject
+set Name EndgameXpBarPrev
+set Texture menus/MainWideBars
+set Coords "512 73 105 3"
+set ScaleX 1.0, ScaleY 6.0
+set NoAlphaMod 1
+set Alpha 0.6
+add MenuObject
+set Name EndgameAirMechXpBarMain
+set Texture menus/LoadoutFrame
+set Coords "210 1012 407 10"
+set CoordsInterpolatedDest "3 1012 407 10"
+set CoordsInterpolantCommand "loadout airmechLvlProgress"
+set ScaleX 1.72916667, ScaleY 1.1
+add MenuObject
+set Name EndgameAirMechXpBarLabel
+set Coords "0 0 300 80"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/outlined8x /shadowed /shadowColor2"
+set RenderCB _DrawUText
+set RenderCB_Text Lbl_AirMechProficiency
+add MenuObject
+set Name EndgameProgressNext
+set Texture menus/Messages
+set Coords "6 367 370 114"
+set NoAlphaMod 1
+set Alpha 0.6
+add MenuObject
+set Name EndgameProgressNextText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xcccccc
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set Texture menus/Messages
+set Coords "0 0 400 40"
+set RenderCB_Text DispNextLevel
+set RenderCB _DrawUText
+set RenderCB_Flags "/allCaps /outlined8x /shadowColor2"
+set RenderCB_DX 0
+set RenderCB_DY 0
+add MenuObject
+set Name EndgameProgressBarDyn
+set Texture menus/Messages
+set CoordsStart 		"562 376 10 20"
+set CoordsMid 			"572 376 45 20"
+set CoordsEnd 			"617 376 10 20"
+set CoordsStartFocused 	"562 396 10 12"
+set CoordsMidFocused 	"572 396 45 12"
+set CoordsEndFocused 	"617 396 10 12"
+set CoordsStartDisabled "562 408 10 20"
+set CoordsMidDisabled 	"572 408 45 20"
+set CoordsEndDisabled 	"617 408 10 20"
+set RenderCB _Draw_G3x3
+set RenderCB_DX $_PLevelProgNewTotal
+set RenderOffsetX $_PLevelProgStartTotal
+set FilterName EGXPUpdate
+set RenderCB_DY 52
+set PulseAlpha "1.0 -0.2 0.0"
+add MenuObject
+set Name EndgameProgressXP
+set Texture menus/MainWideBars
+set Coords "30 54 2048 9"
+set ScaleX 1.0, ScaleY 2.6
+set Child "EndgameXpBarPrev -9 3"
+set Child "EndgameProgressNext 1570 -23"
+set Child "EndgameProgressNextText 1340 40"
+set Child "EndgameAirMechXpBarMain 0 -11 /ifSym ArcCustomized == 1"
+set Child "EndgameAirMechXpBarLabel 10 -70 /ifSym ArcCustomized == 1"
+set Child "EndgameXpBarMain 100 3"
+set Child "NumbersXPNow 55 15"
+set Child "NumbersXPEnd 1770 15"
+set Child "AmountXPGained 40 -95"
+set Child "EndgameProgressBarDyn 100 -13"
+add MenuObject
+set Name GenMenuButtonTemplateV2
+set Texture menus/EscMenu
+set Coords "6 786 450 81"
+set CoordsFocused "7 868 450 81"
+set CoordsPressed "5 866 450 81"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandFocusUp ">gameui focusnametry @_Arg4_@"
+set CommandFocusDown ">gameui focusnametry @_Arg5_@"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "playSound $MenuSoundClick"
+set CommandCancel "gameui ignoreInputTime 0.1"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set SaveArgs 5
+set MouseInteract 1
+set RenderCB_RGBColor "1.0 0.94 0.85"
+set RenderCB_RGBColorFocused "0.2 0.3 0.4"
+set RenderCB_Flags "/nmi /allCaps /fitX"
+set RenderCB_FontScale 0.9
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "-1 -1"
+set RenderCB_OffsetPressed "1 1"
+add MenuObject initFrom GenMenuButtonTemplateV2
+set Name EndgameContinueButton
+set Child "EndgameButtonRShoulder 450 10"
+set Child "EndgamePageNext 500 -9"
+set DrawWhenFocusedPad PressAFocusedObjBigger
+set DrawWhenFocusedOffsetPad "17 15 0"
+set RenderCB_Text Continue
+set CommandPress "menuCmd EndgameButtonContinue"
+set CommandCancel "menuCmd EndgameButtonCancel"
+set CommandFocusLeft "if sym MatchOverInSummary == 1 gameui focusnametry EndgameReplayButton"
+set CommandFocusUp "gameui focusnametry .EndgameButtonFocusUp"
+set CommandFocusDown ""
+add MenuObject initFrom GenMenuButtonTemplateV2
+set Name EndgameReplayButton
+set CommandPress "menucmd MP_ReplayLast"
+set CommandPress "sym set MatchOverReal 0"
+set CommandFocusRight "gameUI focusNameTry EndgameContinueButton"
+set CommandFocusUp "gameUI focusNameTry .EndgameButtonFocusUp"
+set DrawWhenFocusedPad PressAFocusedObjBigger
+set DrawWhenFocusedOffsetPad "17 15 0"
+set Coords "470 774 450 81"
+set RenderCB_RGBColor 0xc8f1fd
+set Child "EndgameButtonLShoulder -115 10"
+set Child "EndgamePageLast -150 -9"
+set RenderCB_Text EndgameReplay
+set CommandCancel "menuCmd EndgameButtonCancel"
+set CommandFocusDown ""
+add MenuObject
+set Name BlackBarTop
+set Texture effects/black
+set Coords "0 0 16 16"
+set TileArea "1940 120"
+set DisabledAlpha 0.7
+set DisabledSymInv MatchOverInSummary
+add MenuObject initFrom BlackBarTop
+set Name BlackBarBottom
+set TileArea "1940 250"
+add MenuObject
+set Name EndgameV2Master
+set Coords "0 0 1920 1080"
+set ContainerOnly 1
+set Child "EndgameOverlayWon[EndgameOverlay] -10 -10	/ifSym EndgameWon == 1"
+set Child "EndgameOverlayLost[EndgameOverlay] -10 -10	/ifSym EndgameWon == 0"
+set Child "BlackBarTop -10 -110"
+set Child "EndgameV2Rewards 2120 200"
+set Child "EndgameV2StatsPWContainer 250 150			/ifSym ArcCustomized == 1"
+set Child "EndgameV2Stats 2120 200								/ifSym netGameOrNetGameReplay == 1	/ifSym IsSurvivalMap == 0"
+set Child "EndgameV2StatsSkirmish[EndgameV2Stats] 2120 200		/ifSym netGameOrNetGameReplay == 0	/ifSym IsSurvivalMap == 0"
+set Child "EndgameV2StatsSurvival[EndgameV2Stats] 2120 200		/ifSym IsSurvivalMap == 1"
+set CommandOnCreate "rook do determineGameMode _EG_Mode_"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /!isSpectatorOrReplay	/ifSym EndgameWon == 1	/ifSym _EG_Mode_ == PVP			EG_PvPVictory /ifSym ArcCustomized == 0"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /!isSpectatorOrReplay	/ifSym EndgameWon == 0	/ifSym _EG_Mode_ == PVP			EG_PvPDefeat /ifSym ArcCustomized == 0"
+set Child "HeaderEndgamePvPPW[EndgameTitle] 116 -115	 /!isSpectatorOrReplay	/ifSym EndgameWon == 1	/ifSym _EG_Mode_ == PVP			EG_PvPVictory /ifSym ArcCustomized == 1"
+set Child "HeaderEndgamePvPPW[EndgameTitle] 116 -115	 /!isSpectatorOrReplay	/ifSym EndgameWon == 0	/ifSym _EG_Mode_ == PVP			EG_PvPDefeat /ifSym ArcCustomized == 1"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /!isSpectatorOrReplay	/ifSym EndgameWon == 1	/ifSym _EG_Mode_ == CTF			EG_CTFVictory"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /!isSpectatorOrReplay	/ifSym EndgameWon == 0	/ifSym _EG_Mode_ == CTF			EG_CTFDefeat"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /!isSpectatorOrReplay	/ifSym EndgameWon == 1	/ifSym _EG_Mode_ == COOP		EG_CoopVictory /ifSym ArcCustomized == 0"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /!isSpectatorOrReplay	/ifSym EndgameWon == 0	/ifSym _EG_Mode_ == COOP		EG_CoopDefeat /ifSym ArcCustomized == 0"
+set Child "HeaderEndgameCoopPW[EndgameTitle] 116 -115	 /!isSpectatorOrReplay	/ifSym EndgameWon == 1	/ifSym _EG_Mode_ == COOP		EG_CoopVictory /ifSym ArcCustomized == 1"
+set Child "HeaderEndgameCoopPW[EndgameTitle] 116 -115	 /!isSpectatorOrReplay	/ifSym EndgameWon == 0	/ifSym _EG_Mode_ == COOP		EG_CoopDefeat /ifSym ArcCustomized == 1"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /!isSpectatorOrReplay	/ifSym EndgameWon == 1	/ifSym _EG_Mode_ == SKIRMISH	EG_SkirmishVictory /ifSym ArcCustomized == 0"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /!isSpectatorOrReplay	/ifSym EndgameWon == 0	/ifSym _EG_Mode_ == SKIRMISH	EG_SkirmishDefeat /ifSym ArcCustomized == 0"
+set Child "HeaderEndgameSkirmishPW[EndgameTitle] 116 -115	 /!isSpectatorOrReplay	/ifSym EndgameWon == 1	/ifSym _EG_Mode_ == SKIRMISH	EG_SkirmishVictory /ifSym ArcCustomized == 1"
+set Child "HeaderEndgameSkirmishPW[EndgameTitle] 116 -115	 /!isSpectatorOrReplay	/ifSym EndgameWon == 0	/ifSym _EG_Mode_ == SKIRMISH	EG_SkirmishDefeat /ifSym ArcCustomized == 1"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /isSpectatorOrReplay	/ifSym _EG_Mode_ == PVP			EG_PvPComplete /ifSym ArcCustomized == 0"
+set Child "HeaderEndgameTemplate[EndgameTitle] 116 -115	 /isSpectatorOrReplay	/ifSym _EG_Mode_ == PVP			EG_PvPComplete /ifSym ArcCustomized == 1"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /isSpectatorOrReplay	/ifSym _EG_Mode_ == CTF			EG_CTFComplete"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /isSpectatorOrReplay	/ifSym _EG_Mode_ == COOP		EG_CoopComplete /ifSym ArcCustomized == 0"
+set Child "HeaderEndgameCoopPW[EndgameTitle] 116 -115	 /isSpectatorOrReplay	/ifSym _EG_Mode_ == COOP		EG_CoopComplete /ifSym ArcCustomized == 1"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /isSpectatorOrReplay	/ifSym _EG_Mode_ == SKIRMISH	EG_SkirmishComplete /ifSym ArcCustomized == 0"
+set Child "HeaderEndgameTemplate[EndgameTitle] 116 -115	 /isSpectatorOrReplay	/ifSym _EG_Mode_ == SKIRMISH	EG_SkirmishComplete /ifSym ArcCustomized == 1"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /ifSym EndgameWon == 1	/ifSym _EG_Mode_ == SURVIVAL	EG_SurvivalVictory"
+set Child "HeaderEndgameTemplate[EndgameTitle] 216 -100	 /ifSym EndgameWon == 0	/ifSym _EG_Mode_ == SURVIVAL	EG_SurvivalDefeat"
+set Child "EndgameBackToGame 1700 150"
+add MenuObject
+set Name EndgameV2StatsPWContainer
+set ContainerOnly 1
+set Child "BlackDialog30 0 0"
+set Child "EndgameV2Stats[EndgameV2StatsPW] 0 0				/ifSym netGameOrNetGameReplay == 1	/ifSym IsSurvivalMap == 0"
+set Child "EndgameV2StatsSkirmish[EndgameV2StatsPW] 0 0		/ifSym netGameOrNetGameReplay == 0	/ifSym IsSurvivalMap == 0"
+set Child "EndgameV2StatsSurvival[EndgameV2StatsPW] 0 0		/ifSym IsSurvivalMap == 1"
+add MenuObject
+set Name EndgameV2Bottom
+set Coords "0 0 1920 1080"
+set ContainerOnly 1
+set Child "BlackBarBottom -10 1090"
+set Child "EndgamePressStart 0 1008"
+set Child "EndgameProgressXP 0 1080"
+set Child "EndgameReplayButton 716 1080"
+set Child "EndgameContinueButton 716 1080"
+add MenuObject
+set Name EG_ItemIconTemplate
+set Texture UnitIconsRed
+set Coords "39 39 174 174"
+set ScaleX 0.4
+set ScaleY 0.4
+set ScaleRefToCoords 174
+add MenuObject
+set Name EndgameMessageTemplate
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set Coords "0 0 300 300"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text TempMatchmakingNote
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor "0.8"
+add MenuObject initFrom EndgameMessageTemplate
+set Name EndgameMessageRewardNA
+set RenderCB_Text EndgameMessageRewardNA
+add MenuObject initFrom EndgameMessageTemplate
+set Name EndgameMessageRewardNo
+set RenderCB_Text EndgameMessageRewardNo
+add MenuObject initFrom EndgameMessageTemplate
+set Name EndgameMessageRewardYes
+set RenderCB_Text EndgameMessageRewardYes
+add MenuObject
+set Name EG_Reward_Effect
+set Texture menus/DropEffect
+set Coords "0 0 512 512"
+set BlendMode BlendAdd
+set RotationPeriod -20
+set PulseAlpha "2.5 -0.8 -0.9"
+set ScaleX 0.8, ScaleY 0.8
+add MenuObject
+set Name RewardTitle
+set Coords "0 0 500 50"
+set RenderCB_DX 500
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set Layer 15
+set RenderCB _DrawDText
+set RenderCB_Flags "/outlined8x /embeddedSymCheck"
+set RenderCB_BoolArg 1
+set RenderCB_ConsoleSymbol _DropDisp_
+set SaveArgs 1
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 1"
+add MenuObject
+set Name EG_Reward
+set Texture @_FoundRewardIcon_@
+set TextureAlt @_FoundRewardIconAlt_@
+set NoDrawOnMissingTexture 1
+set SaveArgs 2
+set Coords "img"
+set ScaleRefToCoords 256.0
+set ScaleX 0.75, ScaleY 0.75
+set ToolTip @_FoundRewardTT_@
+set FilterName RewardUpdate
+set MouseInteract 1
+set HiddenCheckBySymbolInv _FoundReward_
+set FirstDrawnChildren 1
+set Child "EG_Reward_Effect -120 -110"
+set Child "RewardTitle -150 200"
+set CommandPress "if menuloaded EGCommonDialog clearmenu EGCommonDialog /fadeout 0.1"
+set CommandPress "if !menuloaded EGCommonDialog menucmd SetupDropDialog"
+set CommandPressAlt "if menuloaded EGCommonDialog clearmenu EGCommonDialog /fadeout 0.1"
+set CommandPressAlt "if !menuloaded EGCommonDialog menucmd SetupDropDialog"
+add MenuObject
+set Name EG_NoReward
+set Texture items/EmptyBoxIcon
+set Coords "0 0 512 512"
+set ScaleX 0.5, ScaleY 0.5
+set FilterName RewardUpdate
+set MouseInteract 1
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbol _FoundReward_
+add MenuObject
+set Name EG_RewardNotAvailable
+set Texture items/EmptyBoxIcon
+set Coords "0 0 512 512"
+set ScaleX 0.5, ScaleY 0.5
+set FilterName RewardUpdate
+set MouseInteract 1
+set HiddenCheckBySymbol _FoundReward_
+add MenuObject
+set Name EG_RewardRubble
+set Texture menus/EndgameRubble
+set Coords "0 0 1024 524"
+set ScaleX @_Arg1_@, ScaleY @_Arg1_@
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.2
+add MenuObject
+set Name EG_RewardRubbleReveal
+set Texture menus/EndgameRubble
+set Coords "0 524 1024 504"
+set ScaleX @_Arg1_@, ScaleY @_Arg1_@
+add MenuObject
+set Name EG_ItemSlotBackground
+set Texture menus/LoadoutGrid
+set Coords "10 10 166 166"
+set ScaleX 0.355
+set ScaleY 0.4
+set BlendMode BlendDestColor
+set NoAlphaMod 1
+set Alpha 0.2
+add MenuObject
+set Name EG_PlayerPilot
+set Texture pilots/&PilotCustom@_Arg1_@&Icon+lang
+set TextureAlt pilots/KenBotIcon
+set SaveArgs 1
+set NoAlphaMod 1
+set Alpha 0.5
+set Coords "56 74 200 76"
+set ToolTip MF_CustomDesc_Pilot&PilotCustom@_Arg1_@&
+set FilterName NetGameRoom
+set MouseInteract 1
+add MenuObject
+set Name EG_PlayerAirMech
+set Texture rooks/&PlayerRook@_Arg1_@&/Hangar@_Arg2_@
+set TextureAlt rooks/&PlayerRook@_Arg1_@&/HangarUnique
+set SaveArgs 2
+set ScaleX 0.5
+set ScaleY 0.5
+set Coords "0 33 512 152"
+set ToolTip MF_AirMech&PlayerRook@_Arg1_@&
+set FilterName NetGameRoom
+set MouseInteract 1
+add MenuObject initFrom EG_ItemIconTemplate
+set Name EG_PlayerItem
+set Texture items/&ItemCustom@_Arg1_@&Icon
+set SaveArgs 2
+set Coords "x256 39 39 174 174 x512 78 78 348 348"
+set ToolTip &ItemCustom@_Arg1_@&Desc
+set FilterName NetGameRoom
+set MouseInteract 1
+set FirstDrawnChildren 1
+set Child "EG_ItemSlotBackground 2 4"
+add MenuObject initFrom EG_ItemIconTemplate
+set Name EG_PlayerArmySlot
+set Texture units/&AS@_Arg3_@P@_Arg1_@&/Icons@_Arg2_@
+set TextureAlt units/&AS@_Arg3_@P@_Arg1_@&/IconUnique
+set NoDrawOnMissingTexture 1
+set SaveArgs 3
+set Coords "38 38 200 180"
+set ToolTip MF_CustomTip_&AS@_Arg3_@P@_Arg1_@&
+set MouseInteract 1
+set FirstDrawnChildren 1
+set Child "EG_ItemSlotBackground 2 4"
+set HiddenCheckBySymbol P_Player@_Arg1_@IsAI
+add MenuObject initFrom HudNameTemplate
+set Name EG_PlayerName
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /fitX /noCommaSep"
+set RenderCB_ConsoleSymbol P_Name@_Arg1_@
+set RenderCB_FontScale 0.8
+set Coords "0 0 305 32"
+set RenderCB_DX 190
+set RenderCB_DY 32
+set RenderCB_TextJustify JustifyXLeft
+set ToolTip TT_EG_PlayerName
+set MouseInteract 1
+set Focus -2
+set DrawAsLastChildWhenFocused 1
+set DrawWhenFocused FocusEndgameRow
+set DrawWhenFocusedOffset "-15 -26 0"
+set CommandFocusUp ">gameUI focusNameTry .EndgamePName@_Arg1_@_Up"
+set CommandFocusDown ">gameUI focusNameTry .EndgamePName@_Arg1_@_Down"
+set CommandGetFocus ">gameUI enable EndgameGamerCard@_Arg1_@"
+set CommandLoseFocus ">gameUI disable EndgameGamerCard@_Arg1_@"
+set CommandCancel "gameui focusnametry EndgameContinueButton"
+set CommandPress ">if sym MatchOverInSummary == 1 && sym P_Player@_Arg1_@IsAI == 0 runnow menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandPress ">if sym MatchOverInSummary == 0 && sym ArcCustomized == 1 && sym P_Player@_Arg1_@IsAI == 0 runnow menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+add MenuObject initFrom HudNumbersTemplate
+set Name EG_StatBuilt
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol EG_StatBuilt@_Arg1_@
+set RenderCB_FontScale 0.8
+set Coords "0 0 50 32"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_DX 50
+set RenderCB_DY 32
+set SaveArgs 1
+set ToolTip TT_EG_Built
+set MouseInteract 1
+add MenuObject initFrom EG_StatBuilt
+set Name EG_StatKilled
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol EG_StatKilled@_Arg1_@
+set ToolTip TT_EG_Destroyed
+set MouseInteract 1
+add MenuObject
+set Name EG_StatScore
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB_DX 200
+set RenderCB_DY 30
+set RenderCB_Flags "/outlined8x /useTextWidthForMIZone /noCommaSep"
+set SaveArgs 2
+set RenderCB_Offset "0 0"
+set ScaleX @_Arg2_@, ScaleY @_Arg2_@
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol R@_Arg1_@_Exp
+set ToolTip TT_EG_Score
+add MenuObject
+set Name EG_StatLabel
+set Coords "0 0 90 30"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_DX 100
+set RenderCB_DY 20
+set RenderCB_Flags "/outlined8x /FitX"
+set SaveArgs 2
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+add MenuObject initFrom EG_StatLabel
+set Name EG_DeathsStatLabel
+set RenderCB_DX 90
+add MenuObject
+set Name EG_PlayerArmy
+set ContainerOnly 1
+set SaveArgs 2
+set Child "EG_PlayerArmySlot 855 9 @_Arg1_@ @_Arg2_@ 7"
+set Child "EG_PlayerArmySlot 790 9 @_Arg1_@ @_Arg2_@ 6"
+set Child "EG_PlayerArmySlot 725 9 @_Arg1_@ @_Arg2_@ 5"
+set Child "EG_PlayerArmySlot 660 9 @_Arg1_@ @_Arg2_@ 4"
+set Child "EG_PlayerArmySlot 595 9 @_Arg1_@ @_Arg2_@ 3"
+set Child "EG_PlayerArmySlot 530 9 @_Arg1_@ @_Arg2_@ 2"
+set Child "EG_PlayerArmySlot 465 9 @_Arg1_@ @_Arg2_@ 1"
+set Child "EG_PlayerArmySlot 400 9 @_Arg1_@ @_Arg2_@ 0"
+set Child "EG_PlayerAirMech 160 9 @_Arg1_@ @_Arg2_@"
+set Child "EG_PlayerPilot 0 9 @_Arg1_@ @_Arg2_@"
+set Child "LobbyV1PlayerTalking -75 7 @_Arg1_@"
+add MenuObject
+set Name GamerCardButton
+set Coords "0 0 374 42"
+set RenderCB_Font ConsoleChars
+set RenderCB _DrawText
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Flags "/shadowed /allCaps /fitX"
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "62 0"
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+set SaveArgs 5
+set Child "GamerCardButtonLabel @_Arg3_@ 0 @_Arg4_@ @_Arg5_@"
+set Disabled 1
+set HiddenCheckBySymbol InputMK
+add MenuObject
+set Name GamerCardButtonLabel
+set Coords "0 0 374 42"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/shadowed /allCaps /fitX"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 190
+set RenderCB_DY 42
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Offset "62 2"
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+add MenuObject
+set Name EG_PlayerLineTemplate
+set Texture menus/DialogGeneral
+set Coords "274 0 6 80"
+set TileArea "1370 96"
+set TileAreaFullTexture 0
+set SaveArgs 4
+set MouseInteract 1
+set Focus -2
+set Color 0xaaaaaa
+set CommandFocusUp ">gameUI focusNameTry @_Arg3_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg4_@"
+set HiddenCheckBySymbolInv P_Player@_Arg1_@Exists
+set Child "EG_PlayerArmy 0 0 @_Arg1_@ @_Arg2_@"
+set Child "EG_PlayerName[EndgamePName@_Arg1_@] 10 30 @_Arg1_@"
+set Child "StatsSpecEndgame	935 32 @_Arg1_@ @_Arg2_@"
+set Child "EG_StatScore 1165 32 @_Arg1_@"
+set Child "GamerCardButton[EndgameGamerCard@_Arg1_@] 1325 25	/ifSym P_Player@_Arg1_@IsAI == 0		@FM_Select_Char@ 		1.0 60	 	BtnHint_GamerCard@GamertagEXT@"
+set CommandPress ">echo Clicked Player Line @_Arg_@ = $P_Name@_Arg1_@"
+set CommandPress ">if consolePlatform && sym P_Player@_Arg1_@IsAI == 0 runnow platform reqGamerCardForUser $P_Name@_Arg1_@"
+set CommandPress ">if !consolePlatform && sym P_Player@_Arg1_@IsAI == 0 runnow friends clickLink $P_Name@_Arg1_@"
+add MenuObject initFrom EG_PlayerLineTemplate
+set Name EG_PlayerLineBlue
+add MenuObject initFrom EG_PlayerLineTemplate
+set Name EG_PlayerLineRed
+set Coords "284 0 6 80"
+add MenuObject initFrom EG_PlayerLineTemplate
+set Name EG_PlayerLineGreen
+set Coords "294 0 6 80"
+add MenuObject initFrom EG_PlayerLineTemplate
+set Name EG_PlayerLineYellow
+set Coords "304 0 6 80"
+add MenuObject initFrom HudNumbersTemplate
+set Name EG_KudosEarned
+set RenderCB _DrawTextShadowed
+set RenderCB_ConsoleSymbol MR_KudosTotal
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXLeft
+add MenuObject
+set Name XPEarnedIcon
+set Texture hud/PlayerStatus
+set SaveArgs 1
+set Coords "253 464 43 48"
+set MouseInteract 1
+set ToolTip NewXPTip
+add MenuObject
+set Name EG_ProgressKudos
+set Texture hud/PlayerStatus
+set CoordsStart 		"184 471 4 4"
+set CoordsMid 			"187 471 21 4"
+set CoordsEnd 			"208 471 4 4"
+set CoordsStartFocused 	"184 475 4 9"
+set CoordsMidFocused 	"187 475 21 9"
+set CoordsEndFocused 	"208 475 4 9"
+set CoordsStartDisabled "184 484 4 4"
+set CoordsMidDisabled 	"187 484 21 4"
+set CoordsEndDisabled 	"208 484 4 4"
+set RenderCB _Draw_G3x3
+set RenderCB_DX $_KudosBaseTotal
+set RenderCB_DY 50
+set Coords "0 0 @_KudosBaseTotal@ 50"
+set FilterName EGKudosUpdate
+set ToolTip NewKudosBaseTip
+set MouseInteract 1
+set Color 0xe27e18
+add MenuObject initFrom EG_ProgressKudos
+set Name EG_ProgressKudosPilot
+set RenderCB_DX $_KudosPilotTotal
+set Coords "0 0 @_KudosPilotTotal@ 50"
+set Color 0x32baf8
+set ToolTip NewKudosPilotTip
+set RenderOffsetX $_KudosPilotStart
+add MenuObject initFrom EG_ProgressKudos
+set Name EG_ProgressKudosVIP
+set RenderCB_DX $_KudosVIPTotal
+set Coords "0 0 @_KudosVIPTotal@ 50"
+set Color 0xcb50e3
+set ToolTip NewKudosVIPTip
+set RenderOffsetX $_KudosVIPStart
+add MenuObject initFrom EG_ProgressKudos
+set Name EG_ProgressKudosBoost
+set RenderCB_DX $_KudosBoostTotal
+set Coords "0 0 @_KudosBoostTotal@ 50"
+set Color 0xa4e423
+set ToolTip NewKudosBoostTip
+set RenderOffsetX $_KudosBoostStart
+add MenuObject
+set Name EG_ProgressBarTemplate
+set Texture hud/PlayerStatus
+set CoordsStart 		"146 471 4 4"
+set CoordsMid 			"150 471 21 4"
+set CoordsEnd 			"171 471 4 4"
+set CoordsStartFocused 	"146 475 4 9"
+set CoordsMidFocused 	"150 475 21 9"
+set CoordsEndFocused 	"171 475 4 9"
+set CoordsStartDisabled "146 484 4 4"
+set CoordsMidDisabled 	"150 484 21 4"
+set CoordsEndDisabled 	"171 484 4 4"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 700
+set RenderCB_DY 50
+set Coords "0 0 700 50"
+add MenuObject initFrom EG_ProgressBarTemplate
+set Name EG_ProgressBarKudos
+set Child "EG_ProgressKudos 0 0"
+set Child "EG_ProgressKudosPilot 0 0"
+set Child "EG_ProgressKudosVIP 0 0"
+set Child "EG_ProgressKudosBoost 0 0"
+set Child "EG_KudosEarned 5 10"
+add MenuObject
+set Name EventDoubleEndgameXP
+set Texture menus/DoubleEvent
+set PulseAlpha "1.6 -0.2 1.0"
+set Coords "2 107 207 246"
+set MouseInteract 1
+set Focus -2
+set ToolTip EventMessageDoubleXP
+set HiddenCheckBySymbolInv EventDoubleXP
+set HiddenCheckByGameEngineHook EventDoubleXPOkForMe
+add MenuObject initFrom EventDoubleEndgameXP
+set Name EventDoubleEndgameK
+set Coords "209 107 207 246"
+set ToolTip EventMessageDoubleK
+set HiddenCheckBySymbolInv EventDoubleK
+add MenuObject initFrom DialogButtonTemplate
+set Name EndgameContinueButton_Console
+set CommandPress "loadmenu EndgameSummary.txt"
+set CommandFocusRight "gameUI focusNameTry AirMechQuestPopButton"
+set RenderCB_Text Continue
+set Anchor UpperRight
+set FocusDeathgrip 1
+set RenderCBExcludesDefaultRender 1
+set DrawWhenFocused ""
+set RenderCB _DrawUText
+set RenderCB_Text Continue_Console
+set RenderCB_Flags "/fitx"
+set RenderCB_DX 260
+set RenderCB_DY 67
+add MenuObject
+set Name EndgameNoticeTemplate
+set Texture menus/EndgameBanner
+set Coords "0 @_Arg1_@ 775 254"
+set Material defaultMaterial2DBlendColor
+add MenuObject initFrom EndgameNoticeTemplate
+set Name EndgameNoticeBlue
+set Color 0x099aff
+add MenuObject initFrom EndgameNoticeTemplate
+set Name EndgameNoticeRed
+set Color 0xd6490d
+add MenuObject initFrom EndgameNoticeTemplate
+set Name EndgameNoticeGreen
+set Color 0x4da33c
+add MenuObject initFrom EndgameNoticeTemplate
+set Name EndgameNoticeYellow
+set Color 0x9e5200
+add MenuObject initFrom PanelDarkGrayBorder
+set Name EndgameNoticeMasterItems
+set RenderCB_DX 826
+set RenderCB_DY 300
+set Coords "0 0 826 300"
+set Child "EndgameNotice&TeamColor@_PTagInd@& 26 26 @EndgameCoordsY@"
+set Child "EndgameContinueButton -80 34		/platform !consolePlatform"
+set Child "EndgameContinueButton_Console[EndgameContinueButton] -80 34 		/platform consolePlatform"
+add MenuObject
+set Name EndgameNoticeMaster
+set ContainerOnly 1
+set RenderCB_DX 826
+set RenderCB_DY 300
+set Coords "0 0 826 300"
+set Anchor Bottom
+set Child "EndgameNoticeMasterItems 0 0"
+add MenuObject initFrom HudNameTemplate
+set Name EndgameNameLocal
+set RenderCB _DrawTextShadowedNCS
+set RenderCB_ConsoleSymbol P_Name@_PTagInd@
+set RenderCB_FontScale 1.7
+set RenderCB_TextJustify JustifyXRight
+add MenuObject initFrom HudNameTemplate
+set Name EndgameNameEnemy
+set RenderCB _DrawTextShadowedNCS
+set RenderCB_ConsoleSymbol P_Name@_ETagInd@
+set RenderCB_FontScale 1.7
+add MenuObject initFrom HudNameTemplate
+set Name EndgameAirMechsLostLabel
+set RenderCB_Text StatAirMechsLost
+set RenderCB _DrawUTextShadowed
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXLeft
+add MenuObject initFrom EndgameAirMechsLostLabel
+set Name EndgameAirMechsKilledLabel
+set RenderCB_Text StatAirMechsKilled
+add MenuObject
+set Name EG_ChatLog
+set Coords "0 0 510 920"
+set RenderCB_DX 510
+set RenderCB_DY 920
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 0.65
+set RenderCB _DrawTextListChat
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 36
+set RenderCB_RGBColor 0x9d9d9d
+set RenderCB_Text _chat_
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name EG_ChatTextEntryHighlight
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "570 130"
+set Color 0x2f4147
+set PulseAlpha "2.0 -0.7 -0.9"
+set BlendMode BlendAdd
+add MenuObject
+set Name EG_ChatText
+set Coords "0 0 570 130"
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderBlocked 1
+set DrawWhenFocused EG_ChatTextEntryHighlight
+set RenderCB_DX 570
+set RenderCB_DY 130
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "8 7"
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /nmi"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_BoolArg 1
+set TextEditableMaxLen 140
+set RenderCB_Text ChatTextEntry
+set CommandEnterKey "console submitChat ChatTextEntry"
+add MenuObject
+set Name EG_ChatButton
+set Coords "817 4 187 69"
+set RenderCB_DX 187
+set RenderCB_DY 69
+set CoordsFocused "817 142 187 69"
+set CoordsPressed "815 140 187 69"
+set RenderCB_OffsetPressed "2 2"
+set Focus -2
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /nmi"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font RobotoBold
+set RenderCBExcludesDefaultRender 0
+set RenderCB_FontScale 0.8
+set MouseInteractClickToFocus 1
+set MouseInteract 1
+set Texture menus/DialogGeneral
+set RenderCB_Text Send
+set CommandPress "console submitChat ChatTextEntry"
+set CommandPress "gameUI focusName EG_ChatText"
+add MenuObject
+set Name EG_Chatbox
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "560 1080"
+set Color 0x1b2224
+set NoAlphaMod 1
+set Alpha 0.9
+set Coords "0 0 600 1090"
+set Child "EG_ChatInput 0 930		/isChatInputOk"
+set Child "EG_ChatLog 25 0"
+set Hidden 0
+add MenuObject
+set Name EG_ChatInput
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "600 180"
+set Color 0x000000
+set NoAlphaMod 1
+set Alpha 0.4
+set Child "EG_ChatText 10 10"
+add MenuObject initFrom DialogButtonTemplate
+set Name EndgameReplayButtonOld
+set CommandPress "menucmd MP_ReplayLast"
+set CommandFocusRight "gameUI focusNameTry EndgameFinishButton"
+set CommandFocusDown "gameUI focusNameTry .EG_ToPlayerRows"
+set RenderCB_Text EndgameReplay
+set HiddenCheckBySymbolInv _EgFinishOk_
+set HiddenCheckBySymbol InputPad
+set DrawWhenFocusedPad PressAFocusedObj
+set DrawWhenFocusedOffsetPad "-17 14 0"
+add MenuObject initFrom DialogButtonTemplate
+set Name EndgameFinishButton
+set CommandPress "menuCmd MP_LoadMainMenu local"
+set CommandPress "sym set _EgFinishOk_ 0"
+set CommandPress "sym set _EgRewardCountOk_ 0"
+set CommandFocusLeft "gameUI focusNameTry EndgameReplayButton"
+set CommandFocusDown "gameUI focusNameTry .EG_ToPlayerRows"
+set RenderCB_Text EndgameFinish
+set HiddenCheckBySymbolInv _EgFinishOk_
+set HiddenCheckBySymbol InputPad
+set DrawWhenFocusedPad PressAFocusedObj
+set DrawWhenFocusedOffsetPad "-17 14 0"
+add MenuObject
+set Name EGCommonDialog
+set ContainerOnly 1
+set Coords "340 0 631 492"
+set Anchor Center
+set FirstDrawnChildren 1
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set Disabled 1
+set FirstDrawnChildren 1
+set Child "EGCommonDialogBg 0 0 /ifSym _EGType_ != victory"
+set Child "QuestRedeemDialogDust -100 0"
+set Child "ButtonEGCommonDialogClose 568 13							EGCommonDialog  /ifSym _EGType_ != victory"
+set Child "EGCommonDialogIcon 497 372 /ifSym _EGType_ != victory"
+set Child "EGDrop 0 0 /ifSym _EGType_ == drop"
+set Child "EGReqCnt 0 0 /ifSym _EGType_ == reqcnt"
+set Child "EGLvlUp 0 0 /ifSym _EGType_ == lvlup"
+set Child "EGAMLvlUp 0 0 /ifSym _EGType_ == amlvlup"
+set Child "EGVictory 0 0 /ifSym _EGType_ == victory"
+set Child "EGLeaderboard 0 0 /ifSym _EGType_ == leaderboard"
+set Child "ContentGamepadBack[EGCommonDialog] 35 420"
+set CommandPress ">clearmenu EGCommonDialog /fadeout 0.1"
+set CommandCancel ">clearmenu EGCommonDialog /fadeout 0.1"
+add MenuObject
+set Name EGCommonDialogBg
+set Texture menus/Windows
+set Coords "340 0 631 492"
+set Focus -2
+set MouseInteract 1
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.25
+add MenuObject
+set Name EGCommonDialogIcon
+set Texture menus/Windows
+set Coords "0 479 120 103"
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject initFrom ButtonGenericClose
+set Name ButtonEGCommonDialogClose
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject
+set Name EGCommonDialogEscape
+set Texture effects/white
+set StretchToFillScreen 1
+set Focus -2
+set MouseInteract 1
+set BlendMode BlendDestColor
+set Color 0x585858
+set ColorFocused 0x585858
+set DisabledAlphaTimeOut 0.4
+set CommandPress ">if sym _EGType_ != victory clearmenu EGCommonDialog /fadeout 0.1"
+set CommandPress ">if sym _EGType_ == victory gameui disableAll EGVictory"
+set CommandPress ">if sym _EGType_ == victory pcmd 0.5 clearmenu EGCommonDialog /fadeout 0.1"
+add MenuObject
+set Name EGDrop
+set ContainerOnly 1
+set Child "CommonEGDialogDropRubble 230 230 0.6 0.6"
+set Child "DropIconShadow 200 320"
+set Child "ContentIconMaster[DropButton0] 225 210		_Drop_ _DropLink_ _DropType_ _DropDisp_ 0 Drop 0 -520 _NA_"
+set Child "EG_RewardRubble -40 110 0.65"
+set Child "EGCommonDialogConULabel 40 30	DropCaption	0.5		770"
+set Child "EGCommonDialogDropTitle 50 80 DropText"
+add MenuObject initFrom EG_RewardRubbleReveal
+set Name CommonEGDialogDropRubble
+set Anchor Center
+add MenuObject
+set Name EGCommonDialogLabelArc
+set Texture menus/LargeChineseFonts
+set Coords "680 850 345 87"
+set ScaleX 0.9, ScaleY 0.9
+add MenuObject
+set Name EGReqCnt
+set ContainerOnly 1
+set Child "DefeatImage 40 56"
+set Child "EGCommonDialogLabelGunner[EGCommonDialogTitle] 70 20						defeat_title	1.1		500		/ifSym ArcCustomized == 0"
+set Child "EGCommonDialogLabelArc[EGCommonDialogTitle] 35 20														/ifSym ArcCustomized == 1"
+set Child "EGCommonDialogReqCntText 55 100 defeat_subline"
+set Child "DefeatPartsButton 55 355"
+set Child "DefeatUnitsButton 335 355"
+set Child "DefeatPartsHint 45 285	0.6		/ifSym ArcCustomized == 0"
+set Child "DefeatUnitsHint 325 285	0.6		/ifSym ArcCustomized == 0"
+set Child "DefeatPartsHint 45 285	1.1		/ifSym ArcCustomized == 1"
+set Child "DefeatUnitsHint 325 285	1.1		/ifSym ArcCustomized == 1"
+add MenuObject
+set Name EGCommonDialogReqCntText
+set Coords "0 0 520 60"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_DX 520
+set RenderCB_DY 60
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/shadowed /shadowColor2 /fitX"
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text @_Arg1_@
+add MenuObject
+set Name DefeatImage
+set Texture menus/defeat_ruins
+set Coords "0 0 512 256"
+set ScaleX 1.08, ScaleY .85
+add MenuObject
+set Name DefeatPartsButton
+set Texture menus/MainBoxes
+set Coords "477 507 300 70"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUTextShadowed
+set RenderCB_RGBColor "0.9"
+set RenderCB_RGBColorFocused "1.0"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Focus -2
+set Color 0xc2f3ff
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/nmi /fitX /fitX_n20"
+set RenderCB_Text defeat_parts_button
+set ScaleX .8, ScaleY .8
+set CommandPress "gameUI ignoreInputTime 1.0"
+set CommandPress "menuCmd EndgameFinish"
+set CommandPress "pcmd 0.6 sym set ShowMotDHome 0"
+set CommandPress "pcmd 0.6 sym set VignetteFade 0"
+set CommandPress "pcmd 0.7 menuCmd MainMenuBarShop"
+set CommandPress "pcmd 1 gameui directPushName SL5"
+add MenuObject
+set Name DefeatUnitsButton
+set Texture menus/MainBoxes
+set Coords "477 507 300 70"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUTextShadowed
+set RenderCB_RGBColor "0.9"
+set RenderCB_RGBColorFocused "1.0"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Focus -2
+set Color 0xc2f3ff
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/nmi /fitX /fitX_n20"
+set RenderCB_Text defeat_units_button
+set ScaleX .8, ScaleY .8
+set CommandPress "gameUI ignoreInputTime 1.0"
+set CommandPress "menuCmd EndgameFinish"
+set CommandPress "pcmd 0.6 sym set ShowMotDHome 0"
+set CommandPress "pcmd 0.6 sym set VignetteFade 0"
+set CommandPress "pcmd 0.7 menuCmd MainMenuBarShop"
+set CommandPress "pcmd 1 gameui directPushName SL2"
+add MenuObject
+set Name DefeatPartsHint
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUTextShadowed
+set RenderCB_FontScale @_Arg1_@
+set RenderCB_RGBColor 0x5f8998
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text defeat_parts
+set RenderCB_BoolArg 1
+set RenderCB_DX 270
+set RenderCB_DY 20
+add MenuObject
+set Name DefeatUnitsHint
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUTextShadowed
+set RenderCB_FontScale @_Arg1_@
+set RenderCB_RGBColor 0x5f8998
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text defeat_units
+set RenderCB_BoolArg 1
+set RenderCB_DX 270
+add MenuObject
+set Name EGCommonDialogReqCntItem
+set Texture menus/ItemFrame&TR_Rarity@_Arg1_@&
+set Coords "0 0 204 256"
+set ScaleX 0.7, ScaleY 0.7
+set CommandGetFocus "playSound $MenuShopItemFocus"
+set CommandGetFocus ">addUIAnim ShopItem@_Arg1_@ mas_ShopItemUp"
+set CommandLoseFocus ">addUIAnim ShopItem@_Arg1_@ mas_ShopItemDown"
+set MouseInteractZoneExpandWhenFocused "0 0 0 4"
+set HiddenCheckBySymbol TR_Hidden@_Arg1_@
+set Child "ShopIconLg 13 30 				@_Arg1_@	0.6 0.6"
+set Child "ShopHighlightItem 0 0			@_Arg1_@	0.7"
+set Child "EGReqCntItemName 12 16				@_Arg1_@ /platform !consolePlatform"
+set Child "ShopUltimateGlow 13 14			@_Arg1_@"
+set MouseInteract 1
+set Focus -2
+set ToolTipDelayTime 0.0
+set DragSource &TR_DragSource@_Arg1_@&
+set FilterName CollectionUI
+set ToolTip &TR_Desc@_Arg1_@&
+set DrawForToolTip &TR_DFTT@_Arg1_@&
+set DrawForToolTipPositioning &TR_DFTTP@_Arg1_@&
+set CommandGetFocus ">sym set ShopItemActive $TR_ContentName@_Arg1_@"
+set CommandGetFocus ">input set padFocusFallback ShopItem@_Arg1_@"
+set CommandPress "gameUI ignoreInputTime 0.35"
+set CommandPress "sym set _PS4PendingClear_ 0"
+set CommandPress ">sym set _CustomObject $TR_Category@_Arg1_@"
+set CommandPress ">if isBundle $TR_ContentName@_Arg1_@ menucmd StorePromoUnlockOrInspectBundleTry $TR_ContentName@_Arg1_@"
+set CommandPress ">collection inspectOrExec @_Arg1_@ /reqcnt"
+set CommandPress ">collection lookupDiamondPrice $TR_ContentName@_Arg1_@ SellPriceDiamonds /mktlist"
+set CommandPressAlt "gameUI ignoreInputTime 0.35"
+set CommandPressAlt "sym set _PS4PendingClear_ 0"
+set CommandPressAlt "sym set DialogForceInspect 1"
+set CommandPressAlt ">sym set _CustomObject $TR_Category@_Arg1_@"
+set CommandPressAlt ">collection inspectOrExec @_Arg1_@ /reqcnt"
+set CommandGetFocus "sym set _ShowDescMode Default"
+set CommandGetFocus "floatsym set ScrollableShopLabelPos 0"
+set CommandGetFocus "sym set _ShopDescModeEn 1"
+set CommandGetFocus ">&TR_OnFocus@_Arg1_@&"
+set CommandGetFocus "sym set _PS4PendingClear_ 1"
+set CommandGetFocus ">sym set LastShopItemFocus $TR_ContentName@_Arg1_@"
+set CommandLoseFocus "sym set _ShopDescModeEn 0"
+set CommandLoseFocus "if ps4 && sym _PS4PendingClear_ == 1 && sym UnlockDialogActive == 0 runnow ps4 pendingClearStoreState"
+set CommandLoseFocus "sym set _PS4PendingClear_ 0"
+set SaveArgs 5
+set CommandFocusLeft ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg2_@"
+set CommandFocusUp ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg3_@"
+set CommandFocusRight ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg4_@"
+set CommandFocusDown ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg5_@"
+set DrawWhenFocusedOffset "-4 -5 0"
+add MenuObject
+set Name EGReqCntItemName
+set Coords "0 0 120 55"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set MirrorOnY 1
+set SaveArgs 1
+set RenderCB_BoolArg 1
+set RenderCB _DrawUText
+set RenderCB_FontScale 0.56
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Flags "/outlined /outlined8x /fitX /fitX_n20"
+set RenderCB_Offset "0 4"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol TR_Name@_Arg1_@
+set RenderCB_RGBColor 0xFFFFFF
+set HiddenCheckBySymbol TR_IsGiftwrapped@_Arg1_@
+add MenuObject
+set Name EGLvlUp
+set ContainerOnly 1
+set Child "EGCommonDialogLabelGunner[EGCommonDialogTitle] 40 20					EG_LvlUpTitle			0.8			500"
+set Child "EGCommonDialogLvlUpPilot 16 63"
+set Child "EGCommonDialogLvlUpNumBg 340 120"
+set Child "EGCommonDialogDesc[EGCommonDialogLvlDesc] 290 250					EG_LvlUpDesc			0.55		320"
+set Child "EGCommonDialogPilotPoints -20 0"
+add MenuObject
+set Name EGVictory
+set ContainerOnly 1
+set Child "EGCommonDialogVictoryPW[EGCommonDialogTitle] 220 20																/ifSym ArcCustomized == 1"
+set Child "EGCommonDialogLabelGunnerCenter[EGCommonDialogTitle] 65 30					EG_Victory		1.25		500		/ifSym ArcCustomized == 0"
+set Child "EGCommonDialogMedal -200 40"
+add MenuObject
+set Name EGLeaderboard
+set ContainerOnly 1
+set Child "EGCommonDialogLabelGunner[EGCommonDialogTitle] 40 20							EG_LeaderboardTitle				0.8		500"
+set Child "EGCommonDialogLvlUpPilot 16 63"
+set Child "EGCommonDialogLeaderboardTitle[EGCommonDialogLeaderboardName] 245 100		_EGLeaderboardName_				0.8		360"
+set Child "EGCommonDialogLeaderboardText[EGCommonDialogLeaderboardNewRank] 80 175		EG_LeaderboardNewRank			0.7		520"
+set Child "EGCommonDialogLeaderboardText[EGCommonDialogLeaderboardOldRank] 80 200		EG_LeaderboardOldRank			0.7		520"
+set Child "EGCommonDialogScoreText[EGCommonDialogLeaderboardScore] 300 250				EG_LeaderboardScore				0.7		300"
+add MenuObject
+set Name EGCommonDialogLeaderboardTitle
+set Coords "0 0 520 60"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 60
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/shadowed /shadowColor2 /fitX"
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_ConsoleSymbol @_Arg1_@
+set Disabled 1
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name EGCommonDialogLeaderboardText
+set Coords "0 0 520 60"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 60
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/shadowed /shadowColor2 /fitX"
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_Text @_Arg1_@
+set Disabled 1
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 0.5
+add MenuObject initFrom EGCommonDialogLeaderboardText
+set Name EGCommonDialogScoreText
+set RenderCB_Font Gunner_LangFallback
+add MenuObject
+set Name EGCommonDialogVictoryPW
+set Texture menus/LargeChineseFonts
+set NoDrawOnMissingTexture 1
+set Coords "0 936 173 87"
+set Disabled 1
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name EGCommonDialogMedal
+set Texture menus/VictoryMedal
+set NoDrawOnMissingTexture 1
+set Coords "0 0 1024 512"
+set Disabled 1
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name EGCommonDialogPilotPoints
+set ContainerOnly 1
+set Child "EGCommonDialogLvlUpIntro -60 375"
+set Child "EGCommonDialogLvlUpPilotPoints -30 375"
+set Child "EGCommonDialogLvlUpOutro 485 375"
+set HiddenCheckBySymbol ArcCustomized
+add MenuObject
+set Name EGCommonDialogLvlUpPilot
+set Texture pilots/train/@P_Avatar@+lang
+set TextureAlt pilots/train/@P_Avatar@
+set NoDrawOnMissingTexture 1
+set Coords "60 0 452 512"
+set ScaleX 0.8, ScaleY 0.8
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name EGCommonDialogLvlUpNumBg
+set CoordsAnimated "580 481 174 101"
+set CoordsAnimated "580 376 174 101"
+set CoordsAnimated "580 271 174 101"
+set CoordsAnimated "580 166 174 101"
+set CoordsAnimated "580 61 174 101"
+set Coords "754 61 89 51"
+set CoordsAnimationSymHash P_Level_Icon
+set Texture menus/TradeB
+set ScaleX 1.1, ScaleY 1.1
+set Child "EGCommonDialogNum 45 30	LvlUpNum 0.8 100"
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject
+set Name EGAMLvlUp
+set ContainerOnly 1
+set Child "EGCommonDialogLabelGunner[EGCommonDialogTitle] 40 20					EG_LvlUpTitle		0.95		500"
+set Child "EGCommonDialogAMLvlUpMech 16 200										LvlUpAM /ifSym LvlUpAM != Paladin /ifSym LvlUpAM != Angel"
+set Child "EGCommonDialogAMLvlUpPaladin[EGCommonDialogAMLvlUpMech] 16 200		LvlUpAM /ifSym LvlUpAM == Paladin"
+set Child "EGCommonDialogAMLvlUpAngel[EGCommonDialogAMLvlUpMech] 16 200			LvlUpAM /ifSym LvlUpAM == Angel"
+set Child "EGCommonDialogAMLvlInfo 10 30"
+set Child "EGCommonDialogAMLvlDesc 270 260										EG_LvlUpAMDesc		0.55		320"
+add MenuObject
+set Name EGCommonDialogAMLvlInfo
+set ContainerOnly 1
+set Child "EGCommonDialogAMLabel 80 95											LvlUpAM		0.8		500"
+set Child "EGCommonDialogAMLvlUpLevel 325 142"
+set Child "EGCommonDialogAMLvlUpLevelLabel 162 160"
+add MenuObject
+set Name EGCommonDialogAMLvlUpMech
+set Texture rooks/&@_Arg1_@&/HangarBlue
+set Coords "100 0 350 512"
+set Anchor Left
+set ScaleX 0.8, ScaleY 0.8
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.5
+add MenuObject initFrom EGCommonDialogAMLvlUpMech
+set Name EGCommonDialogAMLvlUpPaladin
+set Coords "0 0 375 512"
+set MirrorOnX 1
+add MenuObject initFrom EGCommonDialogAMLvlUpMech
+set Name EGCommonDialogAMLvlUpAngel
+set Coords "0 0 375 512"
+set MirrorOnX 1
+add MenuObject
+set Name EGCommonDialogAMLvlUpLevel
+set RenderCB _DrawText
+set RenderCB_Text ""
+set RenderCB_Font Gunner
+set RenderCB_ConsoleSymbol LvlUpNum
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /outlined8x /shadowed /shadowColor2"
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject
+set Name EGCommonDialogAMLvlUpLevelLabel
+set Coords "0 0 408 64"
+set RenderCB _DrawDText
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_Text LabelLevel
+set RenderCB_ConsoleSymbol ""
+set RenderCB_FontScale 0.35
+set RenderCB_RGBColor "0.9 0.6 0.1"
+set Coords "0 0 350 64"
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_Flags "/allCaps /outlined8x /shadowed /shadowColor2"
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject
+set Name EGCommonDialogLabelTemplate
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor 0xfed44d
+set RenderCB_Text @_Arg1_@
+set RenderCB_Flags "/shadowed /shadowColor2"
+set SaveArgs 3
+add MenuObject initFrom EGCommonDialogLabelTemplate
+set Name EGCommonDialogLabelGunner
+set RenderCB_Flags "/shadowed /shadowColor2 /fitX"
+set RenderCB_BoolArg 0
+set Disabled 1
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 1.0
+add MenuObject initFrom EGCommonDialogLabelGunner
+set Name EGCommonDialogLabelGunnerCenter
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject initFrom EGCommonDialogLabelTemplate
+set Name EGCommonDialogConULabel
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject initFrom EGCommonDialogLabelTemplate
+set Name EGCommonDialogNum
+set RenderCB_DY 35
+set RenderCB_Font Gunner
+set RenderCB _DrawText
+set RenderCB_Text ""
+set RenderCB_RGBColor 0xffffff
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_ConsoleSymbol @_Arg1_@
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject initFrom EGCommonDialogLabelTemplate
+set Name EGCommonDialogAMLabel
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text DispAirMech&@_Arg1_@&
+set RenderCB_Flags "/allCaps /outlined8x /shadowColor2 /fitX"
+set RenderCB_BoolArg 0
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject
+set Name EGCommonDialogDesc
+set Coords "0 0 300 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 300
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text @_Arg1_@
+set SaveArgs 2
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+set RenderCB_Flags "/nmi /shadowed /shadowColor2"
+add MenuObject initFrom EGCommonDialogDesc
+set Name EGCommonDialogAMLvlDesc
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Flags "/nmi /shadowed /shadowColor2"
+add MenuObject
+set Name EGCommonDialogDDesc
+set Coords "0 0 500 200"
+set RenderCB_DX 505
+set RenderCB_DY 200
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.6
+set Layer 15
+set RenderCB _DrawDText
+set RenderCB_Flags "/shadowed /embeddedSymCheck /shadowed /shadowColor2"
+set RenderCB_BoolArg 1
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 1
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+add MenuObject initFrom EGCommonDialogDDesc
+set Name EGCommonDialogDropTitle
+set RenderCB_FontScale 0.6
+set Coords "0 0 520 200"
+set RenderCB_DX 520
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject
+set Name EGCommonDialogLvlUpIntro
+set Coords "0 0 500 200"
+set RenderCB_DX 505
+set RenderCB_DY 200
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.55
+set Layer 15
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /embeddedSymCheck /shadowed /shadowColor2"
+set RenderCB_BoolArg 1
+set RenderCB_Text LvlUpPointDescIntro
+set SaveArgs 1
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject initFrom EGCommonDialogLvlUpIntro
+set Name EGCommonDialogLvlUpOutro
+set RenderCB_Text LvlUpPointDescOutro
+set RenderCB_TextJustify JustifyXLeft
+add MenuObject
+set Name EGCommonDialogLvlUpPilotPoints
+set Coords "0 0 500 200"
+set RenderCB_DX 505
+set RenderCB_DY 200
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.55
+set Layer 15
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /embeddedSymCheck /shadowed /shadowColor2"
+set RenderCB_BoolArg 1
+set RenderCB_ConsoleSymbol Train_PilotLvl
+set SaveArgs 1
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+set CommandOnCreate "training reqState"

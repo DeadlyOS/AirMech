@@ -1,0 +1,30 @@
+onloadrun {
+gameui clearScrollableDrawHashes
+]gameUI saveFocusID _savefocusid_dpromoinspect_
+]sym setZero BtnHint_PromoSelect
+}
+MO InspectPromoDialogMaster {
+pos 0 14
+layer 15
+}
+MO InspectPromoBlackDialog {
+pos 0 0
+layer 14
+}
+onload {
+gameui promoteToTop InspectPromoDialogMaster
+addUIAnim InspectPromoDialogMaster mas_DialogPop
+gameui focusNameTry InspectPromoDialogCancel
+sym push CurrentMenu InspectPromoDialog
+sym push DisableConShop 1
+gameui enableAll InspectingPromoUIRoot
+}
+onunloadrun {
+rookMenus previewClear
+}
+onunload {
+]sym setZero BtnHint_PromoSelect
+]sym pop CurrentMenu DisableConShop
+]gameUI restoreFocusID _savefocusid_dpromoinspect_
+if consolePlatform resources flushPromoCycle 10
+}

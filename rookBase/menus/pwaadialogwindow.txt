@@ -1,0 +1,17 @@
+blockLoadOnConsoleSym PWAADialogLoaded
+onloadrun {
+sym set PWAADialogLoaded 1
+}
+MO PWAADialogWindow {
+pos 600 250
+layer 10
+}
+onload {
+addUIAnim PWAADialogWindow mas_DialogPopFadein
+gameui promoteToTop PWAADialogWindow
+}
+onunloadrun {
+sym set PWAADialogLoaded 0
+}
+onunload {
+}

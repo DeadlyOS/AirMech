@@ -1,0 +1,26 @@
+onloadrun {
+gameUI ignoreInputTime 0.1
+sym set PromosLoaded 1
+}
+MO PromosMaster {
+pos 260 95
+layer 14
+}
+onload {
+addUIAnim PromosMaster mas_DialogPop
+addUIAnim PromoOktoberfestBeerR mas_BounceBeer /speed 1.5
+addUIAnim PromoOktoberfestBeerL mas_BounceBeer /speed 1.6
+addUIAnim PromoOktoberfestPretzel mas_BounceOktober /speed 0.8
+addUIAnim PromoOktoberfestHat mas_BounceOktober /speed 0.7
+addUIAnim PromoOktoberfestHotdog mas_BounceOktober /speed 0.6
+if usingpad pcmd 0.1 input set padFocusFallback MotDFocus
+if usingpad gameUI focusNameTry MotDFocus
+if usingpad pcmd 0.1 gameui focusnametry MotDFocus
+gameui promoteToTop PromosMaster
+}
+onunloadrun {
+menucmd PromoUpdate
+}
+onunload {
+sym set PromosLoaded 0
+}

@@ -1,0 +1,21 @@
+stopParse
+onloadrun {
+sym set BuyDiamondsDialogActive 1
+sym set BuyDiamondsDialogCanceled 0
+rook initDiamondPriceSymbols
+sym set PaymentProviderPaypal 1
+sym set P_Pay paypal
+rookMenus previewHide
+}
+MO BuyDiamondsDialogMaster {
+pos 0 10
+layer 17
+}
+onload {
+}
+onunload {
+sym set BuyDiamondsDialogActive 0
+}
+onunloadrun {
+rookMenus previewShow
+}

@@ -1,0 +1,40 @@
+onloadrun {
+]if sym VrCreditsLoaded == 1 menu3d setInvisible MenuCredits"
+]if sym VrCustomizeArmy == 1 runnow gameui hideAll VrMenuUnlock"
+]if sym PreviewingAirMechBoxBack == 1 runnow menu3d setInvisible BoxAirMech"
+]if sym PreviewingAirMechBoxBack == 1 runnow sym set DrawAirMechBox 0"
+]if sym VRQuestSelected == 1 menucmd QuestCardUnSelect"
+]menu3d remove MessageConfirm
+]menu3d add MessageConfirm /model vr/MessageConfirm.amf	/material mat_InfoBannerVR_UnlitStdBlend /rootScale 3 /rootRot 0 0 0 /worldPose 0 0 0 /requireExplicitClear /noVis
+]menu3d addChild MessageConfirm MessageConfirmPrompt /model vr/ButtonA.amf /material mat_MenuButtonsGamepad /rootScale 0.7 /rootRot 120 0 0  /worldPose -5 14.0 -9 /noVis /noShadowCast
+]menu3d addChild MessageConfirm MessageRecenterPrompt /model vr/ButtonY.amf /material mat_MenuButtonsGamepad /rootScale 0.7 /rootRot 120 0 0  /worldPose 5 14.0 -9 /noVis /noShadowCast
+]menu3d addChild MessageConfirm MessageRecenterDeco /model flair/MovieCamera/MovieCamera.amf /material mat_MovieCamera /worldPose 5 13.0 -13 /noVis /noShadowCast /rootScale 6 /rootRot 5 0 50
+]menu3d addChild MessageConfirm MessageConfirmDeco /model vr/MenuDecoStart.amf /material mat_MenuDecoStart /worldPose -5 13.0 -13 /noVis /noShadowCast /rootScale 0.35 /rootRot 70 0 180
+]menu3d logicFnc MessageConfirm trackOnHMD /offset 0 0 0 /mag 150 /radiusOuter 50 /timeout 0.2
+pausegame /menu3d MessageConfirm
+]echo loaded Message
+]if sym VrShowingRewardDialog == 1 ]menu3d addAnimScript QuestRewardItem as_VRQuestCardPush.txt
+]if sym VrShowingRewardDialog == 1 ]menu3d clearLogicFncs QuestRewardItem0
+]if sym VrShowingRewardDialog == 1 ]menu3d releaseBoneDirectControl QuestRewardItem0 bone_twist
+}
+MO MessageConfirmHmdRemounted {
+pos 512 0
+layer 30
+}
+onload {
+]pcmd t1 ]menu3d updateORTSnapshot2 MessageConfirm 512 0 512 500
+]menu3d addAnimScript MessageConfirm as_VRMessageAppear.txt 1.0
+]pcmd 1.0 ]menu3d addAnimScript MessageRecenterPrompt as_VRMessageAppear.txt 1.0
+]pcmd 1.1 ]menu3d addAnimScript MessageRecenterDeco as_VRMessageAppear.txt 0.7
+]pcmd 0.6 ]menu3d addAnimScript MessageConfirmPrompt as_VRMessageAppear.txt 1.0
+]pcmd 0.7 ]menu3d addAnimScript MessageConfirmDeco as_VRMessageAppear.txt 0.7
+]pcmd 0.6 ]menu3d addAnimScript MessageRecenterPrompt as_VRMessagePrompt.txt 1.2
+]pcmd 0.7 ]menu3d addAnimScript MessageConfirmPrompt as_VRMessagePrompt.txt 1.2
+]menu3d logicFnc MessageConfirm waitButton /button a /menucmd OVR_HmdRemountedWithFocus_Confirmed
+]menu3d logicFnc MessageConfirmPrompt waitButton /button y /menucmd OVR_HmdRemountedWithFocus_Recenter
+]pcmd 0.1 clearmenu MessageConfirm.txt
+]pcmd 0.1 if sym VrCreditsLoaded == 1 ]menu3d setVisible MenuCredits"
+]pcmd 0.1 if sym VrCustomizeArmy == 1 ]gameui showAll VrMenuUnlock"
+]pcmd 0.1 if sym PreviewingAirMechBoxBack == 1 runnow ]sym set DrawAirMechBox 1"
+]pcmd 0.1 if sym PreviewingAirMechBoxBack == 1 runnow ]menu3d setVisible BoxAirMech"
+}

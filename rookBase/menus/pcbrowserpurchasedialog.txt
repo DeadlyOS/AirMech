@@ -1,0 +1,18 @@
+onloadrun {
+sym inc PurchaseDialogLoaded
+echo $PurchaseDialogLoaded
+}
+MO PCBrowserPurchaseDialogMaster {
+pos 0 0
+layer $DialogBox_Layer
+}
+onload {
+]gameui promoteToTop PCBrowserPurchaseDialogMaster
+]sym push DisableConShop 1
+]sym push DisableInvites 1
+}
+onunload {
+]sym pop DisableConShop DisableInvites
+]wallet diamondPurchaseSuccess
+sym set PurchaseDialogLoaded 0
+}

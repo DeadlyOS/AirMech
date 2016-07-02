@@ -1,0 +1,20 @@
+blockLoadOnConsoleSym EditorImportMapScriptsWindowLoaded
+onloadrun {
+sym set EditorImportMapScriptsWindowLoaded 1
+sym set EditorMapListPage 0
+}
+MO EditorImportMapScriptsWindow {
+draggableUIElement
+pos $UI_OpenDialog_X $UI_OpenDialog_Y /screenClamp 200 300
+layer 13
+preDeleteRunCmd gameUI getLastRenderPos EditorImportMapScriptsWindow UI_OpenDialog_X UI_OpenDialog_Y
+}
+onload {
+addUIAnim EditorImportMapScriptsWindow mas_DialogPopFadein
+gameui promoteToTop EditorImportMapScriptsWindow
+}
+onunloadrun {
+sym set EditorImportMapScriptsWindowLoaded 0
+}
+onunload {
+}

@@ -1,0 +1,22 @@
+clearmenu
+clearmap noname
+#exec_if_sym_block _Arg1_ == Saucer {
+mdlprop /mdl rooks/Saucer/SaucerRobotStatic.amf /mtl mat_AirMechSaucerRed /anim rooks/Saucer/TransformDown.aaf 0.25 loop /lifespan 25 /pos 5 0 0
+mdlprop /mdl rooks/Saucer/SaucerRobotStatic.amf /mtl mat_AirMechSaucerRed /anim rooks/Saucer/TransformUp.aaf 0.25 loop /lifespan 25 /pos -5 0 0
+mdlprop /mdl rooks/Saucer/SaucerRobotStatic.amf /mtl mat_AirMechSaucerRed /anim rooks/Saucer/WalkF.aaf 0.25 loop /anim rooks/Saucer/WalkL.aaf 0.25 loop /lifespan 25 /pos 0 0 0
+mdlprop /mdl rooks/Saucer/SaucerRobotStatic.amf /mtl mat_AirMechSaucerRed /anim rooks/Saucer/Idle.aaf 0.25 loop /lifespan 25 /pos -5 5 0
+}
+#exec_if_sym_block _Arg1_ == TruckFlak {
+mdlprop /mdl units/TruckFlak/TruckFlak.amf /mtl mat_AirMechSaucerRed /anim units/TruckFlak/Fire.aaf 0.25 loop /lifespan 25 /pos 0 0 0
+}
+#exec_if_sym_block _Arg1_ == Stealth {
+mdlprop /mdl rooks/Stealth/StealthRobot.amf /mtl mat_AirMechStealthRed /anim rooks/Stealth/AttackA.aaf 0.25 loop /lifespan 25 /pos 5 0 0
+mdlprop /mdl rooks/Stealth/StealthRobot.amf /mtl mat_AirMechStealthRed /anim rooks/Stealth/AttackB.aaf 0.25 loop /lifespan 25 /pos -5 0 0
+mdlprop /mdl rooks/Stealth/StealthRobot.amf /mtl mat_AirMechStealthRed /anim rooks/Stealth/AttackC.aaf 0.25 loop /lifespan 25 /pos 0 0 0
+mdlprop /mdl rooks/Stealth/StealthRobot.amf /mtl mat_AirMechStealthRed /anim rooks/Stealth/GroundIdle.aaf 0.25 loop /lifespan 25 /pos -5 5 0
+}
+#exec_if_sym_block _Arg1_ isEmpty {
+mdlprop /mdl units/TurretDual/TurretDual.amf /mtl mat_TurretStandRed /mtl mat_TurretDualRed /anim units/TurretDual/DoorOpen.aaf 0.25 loop /lifespan 25 /pos 0 0 0
+mdlprop /mdl units/TurretDual/TurretDual.amf /mtl mat_TurretStandRed /mtl mat_TurretDualRed /anim units/TurretDual/DoorClose.aaf 0.25 loop /lifespan 25 /pos 4 0 0
+mdlprop /mdl units/TurretDual/TurretDual.amf /mtl mat_TurretStandRed /mtl mat_TurretDualRed /anim units/TurretDual/TurretFire.aaf 0.25 loop /lifespan 25 /pos -4 0 0
+}

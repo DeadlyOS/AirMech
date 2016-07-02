@@ -1,0 +1,23 @@
+stopparse
+blockLoadOnConsoleSym AnyFriendDialogOpen
+onloadrun {
+sym set _DisableReport_ 0
+if sym _FriendName_ ==sym P_Name runnow sym set _DisableReport_ 1
+]gameUI saveFocusID _savefocusid_dnotfriend_
+sym set AnyFriendDialogOpen 1
+friends reqinfosym _FriendName_
+sym set _FriendStatusCode_ 3
+}
+MO FriendOpen {
+pos 200 140
+draggableUIElement
+}
+onload {
+addUIAnim FriendOpen mas_DialogPopFadein
+gameui promoteToTop FriendOpen
+if usingPad gameui focusNameTry FriendButtonClose
+}
+onunload {
+]gameUI restoreFocusID _savefocusid_dnotfriend_
+]sym set AnyFriendDialogOpen 0
+}

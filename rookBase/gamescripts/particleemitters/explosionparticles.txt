@@ -1,0 +1,696 @@
+add ParticleEmitter
+set Name GlassSpin, MaxParticles 24, Material mat_GlassSpinBlue
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 5.0, EmitVelocityVar 5.5, EmitVelocityWiggle 800
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.2
+set StopAfterParticleCount 24
+set ParticleGrowthXBase -0.1, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.75, ParticleLifespanVar 0.5
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.9
+set EmitPosConstantZOffset 0.1
+set FlagParticleTexturePageRandom 1
+set GravityDirection "0 0 -1"
+set GravityScalar 15.0
+set InitialRotationMax 360
+set ParticleTexturePageDX 3
+set ParticleTexturePageDY 3
+set ParticleTexturePagePlayTime 0.4
+add ParticleEmitter initFrom GlassSpin
+set Name GlassSpinSmall
+set MaxParticles 16
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.5
+add ParticleEmitter initFrom GlassSpin
+set Name GlassSpinBlue, Material mat_GlassSpinOrange
+add ParticleEmitter initFrom GlassSpin
+set Name GlassSpinRed, Material mat_GlassSpinBlue
+add ParticleEmitter initFrom GlassSpin
+set Name GlassSpinGreen, Material mat_GlassSpinOrange
+add ParticleEmitter initFrom GlassSpin
+set Name GlassSpinYellow, Material mat_GlassSpinOrange
+add ParticleEmitter initFrom GlassSpinSmall
+set Name GlassSpinSmallBlue, Material mat_GlassSpinOrange
+add ParticleEmitter initFrom GlassSpinSmall
+set Name GlassSpinSmallRed, Material mat_GlassSpinBlue
+add ParticleEmitter initFrom GlassSpinSmall
+set Name GlassSpinSmallGreen, Material mat_GlassSpinOrange
+add ParticleEmitter initFrom GlassSpinSmall
+set Name GlassSpinSmallYellow, Material mat_GlassSpinOrange
+add ParticleEmitter
+set Name PaintFleck, MaxParticles 64, Material mat_PaintFleck
+set StopAfterParticleCount 64
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 8.0, EmitVelocityVar 5.0, EmitVelocityWiggle 1000
+set ParticleSizeXBase 0.18, ParticleSizeXVar 0.1
+set ParticleGrowthXBase -0.1, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.75, ParticleLifespanVar 0.5
+set ParticleColor 0xa7a7a7ff
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.9
+set EmitPosConstantZOffset 0.6
+set EmitPosRandomXExtent 4.0
+set EmitPosRandomYExtent 4.0
+set GravityDirection "0 0 -1"
+set GravityScalar 15.0
+set InitialRotationMax 360
+set FlagRenderPfxShadows 1
+add ParticleEmitter initFrom PaintFleck
+set Name PaintFleckBlue
+set ParticleColor 0x3a68a1ff
+add ParticleEmitter initFrom PaintFleck
+set Name PaintFleckRed
+set ParticleColor 0xa95041ff
+add ParticleEmitter initFrom PaintFleck
+set Name PaintFleckGreen
+set ParticleColor 0x50664fff
+add ParticleEmitter initFrom PaintFleck
+set Name PaintFleckYellow
+set ParticleColor 0x373737ff
+add ParticleEmitter initFrom PaintFleck
+set Name MissilePieces, MaxParticles 6
+set StopAfterParticleCount 6
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.1
+set ParticleSpinBase -360, ParticleSpinVar 720
+set SourceWorldVelocityPerParticle 0.25
+set ParticleColor 0x373737ff
+set EmitPosConstantZOffset 0.0
+set EmitPosRandomXExtent 0.0
+set EmitPosRandomYExtent 0.0
+add ParticleEmitter initFrom MissilePieces
+set Name FencePieces, MaxParticles 16
+set StopAfterParticleCount 16
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.1
+set ParticleSpinBase -360, ParticleSpinVar 720
+set SourceWorldVelocityPerParticle 0.25
+set ParticleColor 0x373737ff
+set EmitPosConstantZOffset 0.0
+set EmitPosRandomXExtent 0.0
+set EmitPosRandomYExtent 0.0
+add ParticleEmitter
+set Name NukePieces, MaxParticles 100, Material mat_PaintFleck
+set StopAfterParticleCount 100
+set EmitPeriodBase 0.005, EmitPeriodVar 0.0, EmitVelocityBase 20.0, EmitVelocityVar 10.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 0.3, ParticleSizeXVar 0.3
+set ParticleGrowthXBase 0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 2.0, ParticleLifespanVar 0.5
+set ParticleColor 0x373737ff
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.9
+set EmitPosConstantZOffset 0.6
+set GravityDirection "0 0 -1"
+set GravityScalar 28.0
+set EmitPosOnXYCylinder 1.0
+set EmitPosOnXYCylinderTimeModifier 22.0
+set InitialRotationMax 360
+set FlagRenderPfxShadows 1
+set DragCoefficient 1.0
+set ParticleSpinBase -360, ParticleSpinVar 720
+set SourceWorldVelocityPerParticle 0.25
+set ParticleColor 0x373737ff
+set EmitPosConstantZOffset -3.0
+set EmitPosRandomXExtent 0.0
+set EmitPosRandomYExtent 0.0
+set EmitPosOnXYCircle 8
+add ParticleEmitter initFrom MissilePieces
+set Name ArtilleryPieces, MaxParticles 3
+set StopAfterParticleCount 3
+add ParticleEmitter initFrom MissilePieces
+set Name TeslaPieces, MaxParticles 6
+set StopAfterParticleCount 6
+set SourceWorldVelocityPerParticle 0.1
+add ParticleEmitter initFrom MissilePieces
+set Name WarthogExplosionPieces, MaxParticles 1
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.1
+set StopAfterParticleCount 1
+set SourceWorldVelocityPerParticle 0.1
+add ParticleEmitter initFrom MissilePieces
+set Name AirMechPieces
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.1
+set EmitPosConstantZOffset 0.0
+set EmitPosRandomXExtent 0.0
+set EmitPosRandomYExtent 0.0
+add ParticleEmitter
+set Name ExpDestroy, MaxParticles 1, Material mat_particleExplosionSeq
+set EmitPeriodBase 0.001, EmitPeriodVar 0.1, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 4.0, ParticleSizeXVar 0.5
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 0.5
+set ParticleColor 0xffffffff
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set ParticleTexturePagePlayTime 0.5
+add ParticleEmitter initFrom ExpDestroy
+set Name ExpDestroySmall
+set ParticleSizeXBase 3.0, ParticleSizeXVar 0.5
+set EmitPosConstantZOffset 0.3
+add ParticleEmitter initFrom ExpDestroy
+set Name ExplosionSeq1
+add ParticleEmitter
+set Name "ExplosionSeq2", MaxParticles 4, Material mat_particleExplosionSeq2
+set EmitPeriodBase 0.4, EmitPeriodVar 0.1, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 4.0, ParticleSizeXVar 0.5
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 0.5
+set ParticleColor 0xffffffff
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set ParticleTexturePagePlayTime 0.5
+add ParticleEmitter
+set Name "ExplosionSeq3", MaxParticles 4, Material mat_particleExplosionSeq3
+set EmitPeriodBase 0.4, EmitPeriodVar 0.1, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 4.0, ParticleSizeXVar 0.5
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 1.0
+set ParticleColor 0xffffffff
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set ParticleTexturePagePlayTime 0.5
+add ParticleEmitter initFrom ExplosionSeq3
+set Name "ExplosionSeq3Medium", MaxParticles 2
+set ParticleSizeXBase 1.5, ParticleSizeXVar 0.5
+add ParticleEmitter
+set Name ExplosionSeq4, MaxParticles 1, Material mat_particleExplosionSeq4
+set EmitPeriodBase 0.4, EmitPeriodVar 0.1, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 1.5, ParticleSizeXVar 0.7
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.2, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 1.0
+set GravityScalar 0.0
+set ParticleColor 0xffffffff
+set InitialRotationMax 360.0
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 0.2
+add ParticleEmitter
+set Name Gunshot1, MaxParticles 1, Material mat_particleExplosionSeq4
+set EmitPeriodBase 0.4, EmitPeriodVar 0.1, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 1.5, ParticleSizeXVar 0.7
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.4, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 1.0
+set GravityScalar 0.0
+set ParticleColor 0xffffffff
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set ParticleTexturePagePlayTime 0.4
+add ParticleEmitter
+set Name "ExplosionSeq2Small", MaxParticles 1, Material mat_particleExplosionSeq2
+set EmitPeriodBase 0.4, EmitPeriodVar 0.1, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 1.0, ParticleSizeXVar 0.5
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 0.5
+set ParticleColor 0xffffffff
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set ParticleTexturePagePlayTime 0.5
+add ParticleEmitter
+set Name "ExplosionSeq3Small", MaxParticles 4, Material mat_particleExplosionSeq3
+set EmitPeriodBase 0.4, EmitPeriodVar 0.1, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 0.7, ParticleSizeXVar 0.2
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 1.0
+set ParticleColor 0xffffffff
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set ParticleTexturePagePlayTime 0.5
+add ParticleEmitter
+set Name "ExplosionSeq3Small_Cyan", MaxParticles 1, Material mat_particleShotColorImpacts_Cyan
+set EmitPeriodBase 0.4, EmitPeriodVar 0.1, EmitVelocityBase 1.0, EmitVelocityVar 1.0, EmitVelocityWiggle 50
+set ParticleSizeXBase 1.5, ParticleSizeXVar 0.5
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.1, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 0.25
+set ParticleColor 0xffffffff
+set InitialRotationMax 360.0
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 0.15
+add ParticleEmitter initFrom ExplosionSeq3Small_Cyan
+set Name ExplosionSeq3Small_Red, Material mat_particleShotColorImpacts_Red
+add ParticleEmitter initFrom ExplosionSeq3Small_Cyan
+set Name ExplosionSeq3Small_Magenta, Material mat_particleShotColorImpacts_Magenta
+add ParticleEmitter initFrom ExplosionSeq3Small_Cyan
+set Name ExplosionSeq3Small_Green, Material mat_particleShotColorImpacts_Green
+add ParticleEmitter initFrom ExplosionSeq3Small_Cyan
+set Name ExplosionSeq3Small_Yellow, Material mat_particleShotColorImpacts_Yellow
+add ParticleEmitter initFrom ExplosionSeq3Small_Cyan
+set Name ExplosionSeq3Small_Blue, Material mat_particleShotColorImpacts_Blue
+add ParticleEmitter initFrom ExplosionSeq3Small_Cyan
+set Name ExplosionSeq3Small_Pink, Material mat_particleShotColorImpacts_Pink
+add ParticleEmitter initFrom ExplosionSeq3Small_Cyan
+set Name ExplosionSeq3Small_Lightning, Material mat_particleShotColorImpacts_Lightning
+add ParticleEmitter initFrom ExplosionSeq3Small
+set Name "ExplosionSeq3Warthog"
+set EmitPosConstantZOffset 0.5
+set EmitPosRandomXExtent 1.0
+set EmitPosRandomYExtent 1.0
+add ParticleEmitter
+set Name "ExplosionSeqMedium", MaxParticles 4, Material mat_particleExplosionSeq
+set EmitPeriodBase 0.4, EmitPeriodVar 0.1, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 2.0, ParticleSizeXVar 0.5
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 0.5
+set ParticleColor 0xffffffff
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set ParticleTexturePagePlayTime 0.5
+add ParticleEmitter initFrom ExplosionSeqMedium
+set Name ExplosionSeqRocketJump
+set ParticleSizeXBase 1.5, ParticleSizeXVar 0.3
+add ParticleEmitter initFrom ExplosionSeqMedium
+set Name ExplosionSeqLarge
+set ParticleSizeXBase 2.5, ParticleSizeXVar 0.5
+set StopAfterParticleCount 8
+set EmitPeriodBase 0.03, EmitPeriodVar 0.0
+set EmitPosOnXYCircle 4.0
+add ParticleEmitter
+set Name ExplosionDebris, MaxParticles 40, Material mat_FX_Grenade_Debris
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 16.0, EmitVelocityVar 8.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.05
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set StopAfterParticleCount 40
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 1.0
+set DragCoefficient 2.0
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 10.0
+set FlagParticleTexturePageRandom 1
+set GravityDirection "0 0 -1"
+set GravityScalar 15.0
+set InitialRotationMax 360
+set ParticleSpinBase -360
+set ParticleSpinVar 720
+set EmitPosOnXYCircle 4.0
+set FlagSphericalEmissionVelocity 1
+add ParticleEmitter
+set Name ExplosionFireball, MaxParticles 256, Material mat_FireRound
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 2, EmitVelocityVar 0.2, EmitVelocityWiggle 500
+set StopAfterParticleCount 256
+set ParticleLifespanBase 0.3, ParticleLifespanVar 0.2
+set ParticleSizeXBase 1.5, ParticleSizeXVar 1.5
+set ParticleGrowthXBase -1.5, ParticleGrowthXVar -0.7
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -25.0, ParticleSpinVar 50.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.5
+set GravityScalar 0.0
+set EmitPosConstantZOffset 1.0
+set EmitPosOnXYCircle 5.0
+add ParticleEmitter
+set Name ExplosionWaveCannon, MaxParticles 12, Material mat_BombWaveCannon
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 2, EmitVelocityVar 1, EmitVelocityWiggle 500
+set StopAfterParticleCount 24
+set ParticleLifespanBase 1.0, ParticleLifespanVar 1
+set ParticleSizeXBase 2.5, ParticleSizeXVar 1.5
+set ParticleGrowthXBase -1.5, ParticleGrowthXVar -0.7
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase 15.0, ParticleSpinVar 50.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.1
+set GravityScalar 0.0
+set EmitPosConstantZOffset 1.0
+set EmitPosOnXYCircle 5.0
+add ParticleEmitter
+set Name ExplosionWaveCannonEmbers, MaxParticles 128, Material mat_particleShotColorImpacts_Green
+set EmitPeriodBase .1, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar 2, EmitVelocityWiggle 500
+set StopAfterParticleCount 64
+set ParticleLifespanBase 2.0, ParticleLifespanVar 1.0
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase 15.0, ParticleSpinVar 50.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.5
+set GravityDirection "0 0 1"
+set GravityScalar 2.0
+set EmitPosOnXYCircle 15.0
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 0.25
+add ParticleEmitter
+set Name ExplosionWaveCannonEmbersAmbient, MaxParticles 1024, Material mat_BombWaveCannon
+set EmitPeriodBase .1, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar 2, EmitVelocityWiggle 500
+set StopAfterParticleCount 2048
+set ParticleLifespanBase 2.0, ParticleLifespanVar 1.0
+set ParticleSizeXBase 4.2, ParticleSizeXVar 2.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase 15.0, ParticleSpinVar 50.0
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.4
+set AlphaModeParam2 0.7
+set GravityDirection "0 0 1"
+set GravityScalar 1.0
+set EmitPosOnXYCircle 16.0
+add ParticleEmitter
+set Name JunkAmbient, MaxParticles 512, Material mat_particleSmokePuff
+set EmitPeriodBase .1, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar 2, EmitVelocityWiggle 500
+set ParticleLifespanBase 4.0, ParticleLifespanVar 0.5
+set ParticleSizeXBase 1.8, ParticleSizeXVar 1.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase 2.0, ParticleSpinVar 10.0
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.4
+set AlphaModeParam2 0.7
+set GravityDirection "0 0 0.5"
+set GravityScalar 1.0
+set EmitPosOnXYCircle 2.0
+set ParticleSystemPrepopulateTime 3
+add ParticleEmitter
+set Name JunkAmbientSeether, MaxParticles 128, Material mat_particleSmokePuff
+set EmitPeriodBase .1, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar .25, EmitVelocityWiggle 500
+set ParticleLifespanBase 5.0, ParticleLifespanVar 1.5
+set ParticleSizeXBase 2.2, ParticleSizeXVar 4.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase 2.0, ParticleSpinVar 10.0
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.4
+set AlphaModeParam2 0.7
+set GravityDirection "0 0 0.05"
+set GravityScalar 0.1
+set EmitPosOnXYCircle 6.0
+add ParticleEmitter
+set Name JunkAmbientBlack, MaxParticles 64, Material mat_particleJunkCloud2
+set EmitPeriodBase .1, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar 2, EmitVelocityWiggle 500
+set ParticleLifespanBase 3.0, ParticleLifespanVar 1.5
+set ParticleSizeXBase 0.7, ParticleSizeXVar 0.3
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase 2.0, ParticleSpinVar 10.0
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.4
+set AlphaModeParam2 0.5
+set ParticleColor 0x33333322
+set GravityDirection "0 0 0.5"
+set GravityScalar 1.0
+set EmitPosOnXYCircle 0.2
+set ParticleSystemPrepopulateTime 3
+add ParticleEmitter
+set Name JunkAmbientFire, MaxParticles 32, Material mat_FireGlow
+set EmitPeriodBase .1, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar 2, EmitVelocityWiggle 500
+set ParticleLifespanBase 1.0, ParticleLifespanVar 0.3
+set ParticleSizeXBase 0.7, ParticleSizeXVar 0.5
+set InitialRotationMin 0.0, InitialRotationMax 200.0
+set ParticleSpinBase -22.0, ParticleSpinVar 10.0
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.3
+set AlphaModeParam2 0.4
+set GravityDirection "0 0 3"
+set GravityScalar 1.0
+set EmitPosOnXYCircle 0.1
+set ParticleSystemPrepopulateTime 8
+add ParticleEmitter
+set Name HighwayAmbient, MaxParticles 64, Material mat_particleHellSmoke
+set EmitPeriodBase .1, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar 2, EmitVelocityWiggle 500
+set ParticleLifespanBase 5.0, ParticleLifespanVar 1.25
+set ParticleSizeXBase 1.8, ParticleSizeXVar 1.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase 2.0, ParticleSpinVar 10.0
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.4
+set AlphaModeParam2 0.7
+set GravityDirection "0 0 0.5"
+set GravityScalar 1.0
+set EmitPosOnXYCircle 2.0
+set ParticleSystemPrepopulateTime 3
+add ParticleEmitter
+set Name KeepCloud, MaxParticles 512, Material mat_particleKeepCloudAlphaStrength
+set EmitPeriodBase .25, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar 0, EmitVelocityWiggle 0
+set ParticleLifespanBase 13.0, ParticleLifespanVar 4.25
+set ParticleSizeXBase 8.8, ParticleSizeXVar 2.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase 12.0, ParticleSpinVar 10.0
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.4
+set AlphaModeParam2 0.7
+set GravityDirection ".45 0 0"
+set GravityScalar 1.0
+set EmitPosConstantZOffset -13.0
+set EmitPosOnXYCircle 55.0
+set EmitPosRandomZExtent 7
+set VisibilitySphereSize 0
+set FlagFlatFacingParticles 1
+set FlagTransitionOutWithCameraUp 1
+set ParticleSystemPrepopulateTime 3
+add ParticleEmitter initFrom KeepCloud
+set Name WallCloud
+set GravityDirection "-0.1 0.05 0"
+set EmitPeriodBase .8
+set ParticleSpinBase 2.0, ParticleSpinVar 2.0
+set EmitPosOnXYCircle 155.0
+add ParticleEmitter initFrom KeepCloud
+set Name HellCloud
+set Material mat_particleHellSmokeAlphaStrength
+set ParticleColor 0x909090ff
+set EmitPeriodBase 0.4
+add ParticleEmitter initFrom KeepCloud
+set Name HellEmbers
+set Material mat_FireGlow
+set EmitPeriodBase 0.01
+set EmitVelocityBase 1, EmitVelocityVar 2, EmitVelocityWiggle 1
+set ParticleSizeXBase 0.07, ParticleSizeXVar 0.05
+set ParticleLifespanBase 4.0, ParticleLifespanVar 2.25
+set MaxParticles 8000
+add ParticleEmitter initFrom KeepCloud
+set Name JunkCloud
+set Material mat_particleJunkCloud
+set ParticleColor 0x909090ff
+set EmitPeriodBase .4
+set ParticleSpinBase 1.0, ParticleSpinVar 2.0
+set GravityDirection "0 0 .1"
+set EmitPosOnXYCircle 255.0
+set ParticleSizeXBase 14.8, ParticleSizeXVar 6.1
+add ParticleEmitter
+set Name ExplosionBlackSmoke, MaxParticles 256, Material mat_particleSmokePuff
+set EmitPeriodBase 0.001, EmitPeriodVar 0.00, EmitVelocityBase 0.5, EmitVelocityVar 0.5, EmitVelocityWiggle 500
+set EmitPosRandomXExtent 0.25, EmitPosRandomYExtent 0.25
+set DragCoefficient 0.0
+set StopAfterParticleCount 256
+set ParticleLifespanBase 1.2, ParticleLifespanVar 1.2
+set ParticleSizeXBase 2.0, ParticleSizeXVar 0.8
+set ParticleGrowthXBase -1.2, ParticleGrowthXVar -0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set EmitPosOnXYCircle 5.0
+set AlphaModeParam 0.5
+set AlphaModeParam2 0.8
+set GravityDirection "0 0 1"
+set ParticleColor 0xffaa2200
+set ParticleColorSecondary 0xAAAAAA00
+set ColorMode eColorMode_RGBFadeToSecondary
+set EmitPosConstantZOffset -0.5
+set GravityScalar 0.5
+add ParticleEmitter
+set Name ExplosionExpand, MaxParticles 512, Material mat_FireG
+set EmitPeriodBase 0.001, EmitPeriodVar 0.00, EmitVelocityBase 0.5, EmitVelocityVar 0.5, EmitVelocityWiggle 500
+set EmitPosRandomXExtent 0.25, EmitPosRandomYExtent 0.25
+set DragCoefficient 0.0
+set StopAfterParticleCount 512
+set ParticleLifespanBase 1.5, ParticleLifespanVar 1.0
+set ParticleSizeXBase 3.0, ParticleSizeXVar 0.8
+set ParticleGrowthXBase -1.2, ParticleGrowthXVar -0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 40.0
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.1
+set AlphaModeParam2 0.2
+set EmitPosOnXYCylinder 1.0
+set EmitPosOnXYCylinderTimeModifier 22.0
+set GravityDirection "0 0 1"
+set ColorMode eColorMode_RGBFadeToSecondary
+set EmitPosConstantZOffset 0.5
+set GravityScalar 0.0
+set VisibilitySphereSize 100.0
+add ParticleEmitter
+set Name HugeGlow, MaxParticles 6, Material mat_ParticleBrightFlare
+set EmitPeriodBaseTimeModifier 10.0
+set EmitPeriodBase 0.5, EmitPeriodVar 0.02, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 10.0, ParticleSizeXVar 13.0
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 1.0
+set ParticleLifespanBase 2.0, ParticleLifespanVar 1.3
+set StopAfterParticleCount 6
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.05
+set AlphaModeParam2 0.3
+set EmitPosOnXYCircle 10
+set EmitPosRandomZExtent 16
+set EmitPosConstantZOffset 4
+set FlagFlatFacingParticles 1
+set VisibilitySphereSize 100.0
+add ParticleEmitter
+set Name "ExplosionFire", MaxParticles 1, Material mat_particleExplosionSeq
+set EmitPeriodBase 0.1, EmitPeriodVar 0.2, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 0.5, ParticleSizeXVar 2.5
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 0.5
+set EmitPosRandomXExtent 0.5
+set EmitPosRandomYExtent 0.5
+set EmitPosRandomZExtent 1
+set ParticleColor 0xffffffff
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set ParticleTexturePagePlayTime 0.5
+add ParticleEmitter
+set Name Grenade_Debris, MaxParticles 8, Material mat_FX_Grenade_Debris
+set EmitPeriodBase 0.01, EmitPeriodVar 0.0, EmitVelocityBase 36.0, EmitVelocityVar 8.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.40, ParticleSizeXVar 0.05
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.12, ParticleLifespanVar 0.0
+set StopAfterParticleCount 8
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 1.0
+set DragCoefficient 2.0
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 10.0
+set FlagParticleTexturePageRandom 1
+set GravityDirection "0 0 -1"
+set GravityScalar 15.0
+set InitialRotationMax 360
+set ParticleSpinBase -360
+set ParticleSpinVar 720
+set FlagSphericalEmissionVelocity 1
+add ParticleEmitter
+set Name Grenade_Ring, MaxParticles 2, Material mat_FX_Grenade_Ring
+set EmitPeriodBase 0.08, EmitPeriodVar 0.0, EmitVelocityBase 1.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.20, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 12.5, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.30, ParticleLifespanVar 0.0
+set StopAfterParticleCount 2
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.35
+set ParticleColor 0xffffff00
+set FlagFlatFacingParticles 1
+add ParticleEmitter
+set Name Grenade_Flash, MaxParticles 1, Material mat_FX_Grenade_Flash
+set EmitPeriodBase 0.1, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.10, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 5.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.35, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set ParticleColor 0xffffff00
+add ParticleEmitter
+set Name Grenade_Fireball, MaxParticles 4, Material mat_FX_Grenade_Fire
+set EmitPeriodBase 0.01, EmitPeriodVar 0.0, EmitVelocityBase 2.25, EmitVelocityVar 0.25, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.02, ParticleSizeXVar 0.01
+set ParticleGrowthXBase 3.5, ParticleGrowthXVar 0.5
+set ParticleLifespanBase 0.25, ParticleLifespanVar 0.05
+set StopAfterParticleCount 4
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.75
+set GravityScalar -0.50
+set InitialRotationMax 360
+set ParticleSpinBase -90
+set ParticleSpinVar 180
+set FlagSphericalEmissionVelocity 1
+add ParticleEmitter
+set Name NukeDust, MaxParticles 128, Material mat_particleDirtPuff
+set EmitPeriodBase 0.001, EmitPeriodVar 0.00, EmitVelocityBase 14, EmitVelocityVar 2.5
+set FlagSphericalEmissionVelocity 1
+set EmitVelocityComponentScalar "1.6 1.6 0.4"
+set DragCoefficient 2.0
+set ParticleLifespanBase 8.0, ParticleLifespanVar 1.0
+set ParticleSizeXBase 2.0, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.25, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.1
+set GravityScalar 0.3
+set StopAfterParticleCount 128
+set VisibilitySphereSize 100.0
+add ParticleEmitter initFrom NukeDust
+set Name ArtilleryDust
+set EmitVelocityComponentScalar "0.9 0.9 0.4"
+set ParticleLifespanBase 0.6, ParticleLifespanVar 0.45
+set ParticleSizeXBase 0.5, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.25, ParticleGrowthXVar 0.1
+set VisibilitySphereSize 25.0
+set EmitPosConstantZOffset -1.6
+add ParticleEmitter
+set Name WhirlwindDust, MaxParticles 128, Material mat_particleDirtPuff
+set EmitPeriodBase 0.001, EmitPeriodVar 0.00, EmitVelocityBase 15, EmitVelocityVar 2.5
+set FlagSphericalEmissionVelocity 1
+set EmitVelocityComponentScalar "1 1 0.4"
+set DragCoefficient 6.0
+set ParticleLifespanBase 0.35, ParticleLifespanVar 1.0
+set ParticleSizeXBase 1.0, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.1, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.1
+set GravityScalar 0.3
+set VisibilitySphereSize 8.0
+set FlagActiveProcessingBeforeEmission 1
+add ParticleEmitter
+set Name ExplosionRing, MaxParticles 2, Material mat_ExplosionRing
+set EmitPeriodBase 0.2, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set StopAfterParticleCount 2
+set ParticleSizeXBase 0.5, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 3.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.7, ParticleLifespanVar 0.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.1
+set EmitPosConstantZOffset 0.2
+set FlagFlatFacingParticles 1
+set GravityScalar 40
+set FlagAllParticlesToBoneLatch 1
+set GravityDirection "0 0 1"
+add ParticleEmitter initFrom ExplosionRing
+set Name ExplosionRing2
+set ParticleSizeXBase 0.5, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 5.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set AlphaModeParam 0.1
+set EmitPosConstantZOffset -1.6
+add ParticleEmitter
+set Name ExplosionDust, MaxParticles 48, Material mat_particleDirtPuff
+set EmitPeriodBase 0.001, EmitPeriodVar 0.00, EmitVelocityBase 10, EmitVelocityVar 2.5
+set FlagSphericalEmissionVelocity 1
+set EmitVelocityComponentScalar "1 1 0.4"
+set DragCoefficient 6.0
+set ParticleLifespanBase 0.35, ParticleLifespanVar 1.0
+set ParticleSizeXBase 0.70, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.1, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.1
+set GravityScalar 0.3
+set StopAfterParticleCount 48
+set VisibilitySphereSize 5.0
+add ParticleEmitter initFrom ExplosionDust
+set Name ExplosionDustWarthog
+set EmitVelocityComponentScalar "1.1 1.1 0.4"
+set ParticleLifespanBase 0.3, ParticleLifespanVar 0.1
+set ParticleSizeXBase 0.3, ParticleSizeXVar 0.2
+set ParticleGrowthXBase 0.2, ParticleGrowthXVar 0.1

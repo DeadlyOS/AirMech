@@ -1,0 +1,60 @@
+stopIfSymbol TopMenuShop == 1
+onloadrun {
+]gameUI saveFocusID _savefocusid_shop_
+customize clearClassFilter
+sym set _ActiveLobbySelectScript_ SelectItemDialog.txt
+sym clear _cmode
+sym setZero _FocusItemList_ _FocusItemLast_
+sym push _Bind_CycleLoadoutOnShoulders_ 0
+sym push _Bind_MatchingUIBack_ 0
+sym push _Bind_SoloLoadout_ 0
+sym push CurrentMenu ConShop
+sym set ConShopMenu 1
+sym push _Bind_PrevNextOnShoulders_ 0
+sym set ConPromosRemaining 4
+if sym CurrentMenu == CHome
+sym set RedeemCode
+sym set ConMessageHasFocus 0
+}
+MO DialogShopBackground  {
+pos 0 0
+layer 12
+}
+MO ShopShadowVignette  {
+pos -250 -40
+layer 13
+}
+MO MainMenuShopFrame {
+pos 150 -20
+layer 14
+}
+onload {
+addUIAnim MainMenuShopFrame mas_DialogPop
+customize scrollCfgLobby $_CustomObject 35
+floatsym set customDrawerPosLobby 0
+if sym LoadoutAutosave == 0 menuCmd StoreLocalLoadout
+sym push SelectItemActive 1
+input set padFocusFallback ConSelectItem0
+gameui focusNameTry #ConLoadoutUnit@_ArmySelSlot@
+addUIAnim ConLoadoutUnitSelArrow #mas_UnitArrow@_ArmySelSlot@
+if usingPad gameUI focusNameTry $_GameShop_Last
+sym setZero ShowShopItems Shop_Diamonds Shop_Featured
+sym set Shop_Game 1
+}
+onunloadrun {
+}
+onunload {
+input set padFocusFallback $_savefocusid_shop_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_shop_
+gameUI ignoreInputTime 0.1
+console flushAllPendingSeq 320
+sym pop SelectItemActive
+sym pop _Bind_CycleLoadoutOnShoulders_
+sym pop _Bind_MatchingUIBack_
+sym pop _Bind_SoloLoadout_
+sym pop CurrentMenu
+sym set ConShopMenu 0
+sym pop _Bind_PrevNextOnShoulders_
+if sym CurrentMenu == CHome menuCmd ConMenuSharp
+if sym CurrentMenu == CRoot menuCmd ConMenuSharp
+}

@@ -1,0 +1,97 @@
+add MenuObject
+set Name KeyboardKeyTemplate
+set Texture menus/Tutorial
+set Coords "3 3 95 95"
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.4
+set RenderCB_DX 95
+set RenderCB_DY 90
+set RenderCB_RGBColor "1 1 1"
+set RenderCBExcludesDefaultRender 0
+set CoordsAnimationFrameTimer 0.5
+add MenuObject initFrom KeyboardKeyTemplate
+set Name KeyboardKeyUp
+set RenderCB_Text W
+set CoordsAnimated "101 3 95 95"
+set CoordsAnimated "3 3 95 95"
+set CoordsAnimated "3 3 95 95"
+set CoordsAnimated "3 3 95 95"
+add MenuObject initFrom KeyboardKeyTemplate
+set Name KeyboardKeyDown
+set RenderCB_Text S
+set CoordsAnimated "3 3 95 95"
+set CoordsAnimated "3 3 95 95"
+set CoordsAnimated "101 3 95 95"
+set CoordsAnimated "3 3 95 95"
+add MenuObject initFrom KeyboardKeyTemplate
+set Name KeyboardKeyLeft
+set RenderCB_Text A
+set CoordsAnimated "3 3 95 95"
+set CoordsAnimated "3 3 95 95"
+set CoordsAnimated "3 3 95 95"
+set CoordsAnimated "101 3 95 95"
+add MenuObject initFrom KeyboardKeyTemplate
+set Name KeyboardKeyRight
+set RenderCB_Text D
+set CoordsAnimated "3 3 95 95"
+set CoordsAnimated "101 3 95 95"
+set CoordsAnimated "3 3 95 95"
+set CoordsAnimated "3 3 95 95"
+add MenuObject
+set Name TutKeyboardWASD
+set ContainerOnly 1
+set Coords "0 0 300 200"
+set Child "KeyboardKeyUp 100 0"
+set Child "KeyboardKeyLeft 0 100"
+set Child "KeyboardKeyDown 100 100"
+set Child "KeyboardKeyRight 200 100"
+set Anchor Center
+add MenuObject initFrom TutBoxTemplate
+set Name TutKeyboardMove
+set Anchor Bottom
+set RenderCB_DX 1000
+set RenderCB_DY 250
+set Coords "0 0 1000 250"
+set Child "TutKeyboardWASD 0 10"
+add MenuObject
+set Name TutorialCharacterShadow
+set Texture menus/RowShadow
+set BlendMode BlendDestColor
+set MirrorOnX 1
+set Coords "256 0 256 148"
+set ScaleX 3.0, ScaleY 8.0
+add MenuObject
+set Name TutorialCharacter
+set Texture menus/TutorialGirl
+set Texture menus/Challenge@ChalPilotComm@+lang
+set Coords "0 0 1024 1024"
+set MirrorOnX 1
+set FirstDrawnChildren 1
+set Child "TutorialCharacterShadow 50 -300"
+add MenuObject
+set Name TutorialTextBubble
+set Texture menus/TutorialGirl
+set Coords "0 0 970 250"
+set RenderCBExcludesDefaultRender 0
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.78
+set RenderCB_BoolArg 1
+set RenderCB_DX 800
+set RenderCB_DY 170
+set RenderCB_Flags "/fitY /shadowed /shadowColor2"
+set RenderCB_ConsoleSymbol TutorialText
+set RenderCB_Offset "38 30 0"
+set NoAlphaMod 1
+set Alpha 0.8
+set RenderCB_FloatSymbol TutorialTimer
+set RenderCB_FloatArg 60.0
+set CommandOnCreate "floatsym set TutorialTimer 0.0"
+add MenuObject
+set Name TutorialMaster
+set ContainerOnly 1
+set Child "TutorialCharacter 1100 300"
+set Child "TutorialTextBubble 500 720"

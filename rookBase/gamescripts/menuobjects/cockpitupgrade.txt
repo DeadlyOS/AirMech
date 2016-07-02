@@ -1,0 +1,89 @@
+add MenuObject
+set Name UpgradeSlotIcon
+set Texture cockpit/OrderIcons@TeamColor@
+set Coords "0 64 192 192"
+set DisabledAlpha 0.0
+set Layer 5
+set ScaleX 0.8
+set ScaleY 0.8
+set DisplayAsFocusedIfParentFocused 1
+set Texture abilities/&Rook@_CWatch_@AB@_Arg1_@&
+set ScaleYCenter 0.25
+set DynGreyScale canUpgrade@_Arg1_@
+set SaveArgs 1
+set NoDrawOnMissingTexture 1
+add MenuObject
+set Name UpgradeSlotText
+set Coords "0 0 300 32"
+set Layer 3
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_FontScale 0.4
+set RenderCB_DX 300
+set RenderCB_DY 40
+set RenderCB_RGBColor 0.8
+set RenderCB_RGBColorFocused "1.0"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text ABName_&Rook@_CWatch_@AB@_Arg1_@&
+set BlendMode BlendAdd
+set RenderCB_Flags "/fitX"
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name UpgradeSlotTemplate
+set Coords "1 1 320 224"
+set Texture cockpit/UnitSlot@TeamColor@
+set Layer 3
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused ArmySlot7Highlight
+set DrawWhenFocusedOffset "-15 -15"
+set MouseInteractZoneExpandWhenFocused "-10 -10 10 10"
+set CommandGetFocus "playSound $CockpitIconsFocus"
+set CommandGetFocus ">addUIAnim UpgradeSlot@_Arg1_@ mas_CockpitSlot@_Arg2_@"
+set CommandLoseFocus ">addUIAnim UpgradeSlot@_Arg1_@ mas_CockpitSlotReset"
+set CommandPress ">player local do lvlAbility @_Arg1_@"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "if usingPad gameUI focusName UpgradeBoxBungie"
+set FocusChangeOnDPad 0
+set CommandFocusSpecial "gameUI focusName UpgradeBoxBungie"
+set CommandCancel "if sym QuickCockpitActive == 0 menuCmd CloseCockpit local"
+set CommandCancel "if sym QuickCockpitActive == 0 cbinding enable orderMenuAlt"
+set Child "AbilitySlotBuildLvl 0 -76	@_Arg1_@	/ifSym _AbilityPointSys == 0"
+set Child "AbilitySlotBuildTime 0 -38	@_Arg1_@	/ifSym _AbilityPointSys == 0"
+set Child "AbilitySlotCost 0 0			@_Arg1_@	/ifSym _AbilityPointSys == 0"
+set Child "AbilitySlotBuildLvl 0 0		@_Arg1_@	/ifSym _AbilityPointSys == 1"
+set Child "UpgradeSlotIcon 2 40		@_Arg1_@"
+set Child "UpgradeSlotText 6 6	@_Arg1_@ 5 -15"
+set SaveArgs 2
+set ToolTip MF_Tip_AB&Rook@_CWatch_@AB@_Arg1_@&
+set ToolTipPad MF_Tip_AB&Rook@_CWatch_@AB@_Arg1_@&
+add MenuObject
+set Name UpgradeBoxBungie
+set ContainerOnly 1
+set Coords "0 0 128 128"
+set Focus -2
+set FocusBungieArcStart -22.5
+set FocusBungieArcSizes 45
+set FocusSticky 1
+set FocusBungieTargetIDs "UpgradeSlot0 UpgradeSlot1 UpgradeSlot2 UpgradeSlot3 UpgradeSlot4 UpgradeSlot5 UpgradeSlot6 UpgradeSlot7"
+set CommandPress "echo Press-UpgradeBoxBungie"
+add MenuObject
+set Name UpgradeBox
+set ContainerOnly 1
+set Anchor Center
+set Hidden 1
+set Coords "0 0 976 688"
+set Child "QueueRemovePad 120 -89"
+set Child "QueueRemoveKey 120 -89"
+set Child "ArmySlotCenter 328 232"
+set Child "UpgradeSlotTemplate[UpgradeSlot0] 328 0			0	6"
+set Child "UpgradeSlotTemplate[UpgradeSlot1] 656 0			1	7"
+set Child "UpgradeSlotTemplate[UpgradeSlot2] 656 232		2	0"
+set Child "UpgradeSlotTemplate[UpgradeSlot3] 656 464		3	1"
+set Child "UpgradeSlotTemplate[UpgradeSlot4] 328 464		4	2"
+set Child "UpgradeSlotTemplate[UpgradeSlot5] 0 464			5	3"
+set Child "UpgradeSlotTemplate[UpgradeSlot6] 0 232			6	4"
+set Child "UpgradeSlotTemplate[UpgradeSlot7] 0 0			7	5"
+set Child "UpgradeBoxBungie 238 232"

@@ -1,0 +1,13 @@
+onloadrun {
+]menu3d remove FortInvite
+]menu3d addChild FortInside FortInvite /model vr/FortInvite.amf /material mat_InfoBannerVR_UnlitStdBlend /rootScale 1 /rootRot 0 0 0  /worldPose 0 0 0  /noShadowCast
+]menu3d addChild FortInvite FortInviteAccept /model vr/ButtonA.amf /material mat_MenuButtonsGamepad /rootScale 0.7 /rootRot 120 0 0  /worldPose 5 114.0 90  /noShadowCast
+}
+MO InviteNotification {
+pos 512 0
+layer 30
+}
+onload {
+]pcmd t1 ]menu3d updateORTSnapshot2 FortInvite 512 0 512 140
+]pcmd 0.5 clearmenu VrInviteNotify.txt
+}

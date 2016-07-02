@@ -1,0 +1,83 @@
+add MenuObject
+set Name ControlsTextLeft
+set RenderCB_FontScale 0.9
+set RenderCB_Font RobotoBold
+set Coords "0 0 500 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor 0xffffff
+set SaveArgs 1
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject initFrom ControlsTextLeft
+set Name ControlsTextLeft2
+set HiddenCheckBySymbol _VitaRemotePlay_
+add MenuObject initFrom ControlsTextLeft
+set Name ControlsTextLeft3
+set HiddenCheckBySymbolInv _VitaRemotePlay_
+add MenuObject initFrom ControlsTextLeft
+set Name ControlsTextRight
+set RenderCB_TextJustify JustifyXRight
+add MenuObject initFrom ControlsTextRight
+set Name ControlsTextRight2
+set HiddenCheckBySymbol _VitaRemotePlay_
+add MenuObject initFrom ControlsTextRight
+set Name ControlsTextRight3
+set HiddenCheckBySymbolInv _VitaRemotePlay_
+add MenuObject
+set Name ConControlsDummy
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set CommandCancel "menuCmd ConMenuOptControlsCancel"
+add MenuObject
+set Name ControlsGamepad
+set Texture menus/ControlsGamepad@GamepadStyle@
+set Coords "0 0 1024 512"
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+set Child "ConControlsDummy 0 0"
+set Child "ControlsTextRight	-335 20		/ifSym GamepadStyle == Xbox		ControlsTransform"
+set Child "ControlsTextRight	-335 72		/ifSym GamepadStyle == Xbox		ControlsBuildUpgrades"
+set Child "ControlsTextRight	-335 120	/ifSym GamepadStyle == Xbox		KBTaunt"
+set Child "ControlsTextRight	-335 172	/ifSym GamepadStyle == Xbox		ControlsMove"
+set Child "ControlsTextRight	-335 232	/ifSym GamepadStyle == Xbox		ControlsCallTeammate"
+set Child "ControlsTextRight	-335 318	/ifSym GamepadStyle == Xbox		ControlsAssignOrders"
+set Child "ControlsTextRight	43 -15		/ifSym GamepadStyle == Xbox		ControlsPauseContinue"
+set Child "ControlsTextLeft		828 22		/ifSym GamepadStyle == Xbox		ControlsPrimaryAbility"
+set Child "ControlsTextLeft		828 77		/ifSym GamepadStyle == Xbox		ControlsBuildUnits"
+set Child "ControlsTextLeft		828 132		/ifSym GamepadStyle == Xbox		ControlsRepeatBuild"
+set Child "ControlsTextLeft		828 188		/ifSym GamepadStyle == Xbox		ControlsDropUnit"
+set Child "ControlsTextLeft		828 240		/ifSym GamepadStyle == Xbox		ControlsPickupUnit"
+set Child "ControlsTextLeft		828 295		/ifSym GamepadStyle == Xbox		ControlsSecondaryAbility"
+set Child "ControlsTextLeft		828 352		/ifSym GamepadStyle == Xbox		ControlsAimShoot"
+set Child "ControlsTextRight	-350 27		/ifSym GamepadStyle == Xbone	ControlsTransform"
+set Child "ControlsTextRight	-350 80		/ifSym GamepadStyle == Xbone	ControlsBuildUpgrades"
+set Child "ControlsTextRight	-350 128	/ifSym GamepadStyle == Xbone	KBTaunt"
+set Child "ControlsTextRight	-350 180	/ifSym GamepadStyle == Xbone	ControlsMove"
+set Child "ControlsTextRight	-350 240	/ifSym GamepadStyle == Xbone	ControlsCallTeammate"
+set Child "ControlsTextRight	-350 325	/ifSym GamepadStyle == Xbone	ControlsAssignOrders"
+set Child "ControlsTextRight	15 0		/ifSym GamepadStyle == Xbone	ControlsPauseContinue"
+set Child "ControlsTextLeft		828 30		/ifSym GamepadStyle == Xbone	ControlsPrimaryAbility"
+set Child "ControlsTextLeft		828 85		/ifSym GamepadStyle == Xbone	ControlsBuildUnits"
+set Child "ControlsTextLeft		828 135		/ifSym GamepadStyle == Xbone	ControlsRepeatBuild"
+set Child "ControlsTextLeft		828 190		/ifSym GamepadStyle == Xbone	ControlsDropUnit"
+set Child "ControlsTextLeft		828 243		/ifSym GamepadStyle == Xbone	ControlsPickupUnit"
+set Child "ControlsTextLeft		828 297		/ifSym GamepadStyle == Xbone	ControlsSecondaryAbility"
+set Child "ControlsTextLeft		828 355		/ifSym GamepadStyle == Xbone	ControlsAimShoot"
+set Child "ControlsTextRight		-370 -12	/ifSym GamepadStyle == PS4		ControlsTransform"
+set Child "ControlsTextRight		-370 67		/ifSym GamepadStyle == PS4		ControlsBuildUpgrades"
+set Child "ControlsTextRight		-370 202	/ifSym GamepadStyle == PS4		ControlsAssignOrders"
+set Child "ControlsTextRight		-370 285	/ifSym GamepadStyle == PS4		ControlsMove"
+set Child "ControlsTextRight		-370 370	/ifSym GamepadStyle == PS4		KBTaunt"
+set Child "ControlsTextRight		105 12		/ifSym GamepadStyle == PS4		ControlsPauseContinue"
+set Child "ControlsTextLeft			840 -10		/ifSym GamepadStyle == PS4		ControlsPrimaryAbility"
+set Child "ControlsTextLeft			840 70		/ifSym GamepadStyle == PS4		ControlsBuildUnits"
+set Child "ControlsTextLeft			840 147		/ifSym GamepadStyle == PS4		ControlsRepeatBuild"
+set Child "ControlsTextLeft			840 200		/ifSym GamepadStyle == PS4		ControlsDropUnit"
+set Child "ControlsTextLeft			840 255		/ifSym GamepadStyle == PS4		ControlsPickupUnit"
+set Child "ControlsTextLeft			840 305		/ifSym GamepadStyle == PS4		ControlsSecondaryAbility"
+set Child "ControlsTextLeft			840 370		/ifSym GamepadStyle == PS4		ControlsAimShoot"

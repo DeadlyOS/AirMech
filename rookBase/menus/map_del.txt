@@ -1,0 +1,29 @@
+onloadrun {
+]gameUI saveFocusID _savefocusid_manual_
+sym set MapLoaded 1
+sym setNSet 8 BaseLayoutSlot NULL
+clearmenu UnlockDialog.txt /fadeout 0.25
+sym setZero BaseStructureShow BaseResourceShow BuiltHangar BuiltWarehouse BuiltComs BuiltTech BuiltWorkshop BuiltFactory BuiltArmory HasBpWorkshop HasBpTech HasBpFactory HasBpArmory
+sym setOne HasBpHangar HasBpWarehouse HasBpComs
+sym set BaseStructureNum 0
+}
+MO MapMain {
+pos 100 120
+draggableUIElement
+pos $UI_Map_X $UI_Map_Y /screenClamp 200 300
+preDeleteRunCmd gameUI getLastRenderPos MapMain UI_Map_X UI_Map_Y
+}
+onload {
+addUIAnim FriendsMain mas_DialogPop
+input set padFocusFallback ConLeaderItem0
+gameUI focusNameTry ConLeaderItem0
+gameui promoteToTop ManualMain
+}
+onunloadrun {
+backend save
+}
+onunload {
+input set padFocusFallback $_savefocusid_manual_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_manual_
+sym set MapLoaded 0
+}

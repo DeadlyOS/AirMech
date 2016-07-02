@@ -1,0 +1,35 @@
+clearmap
+pcmd 0 gfx set uniform fogargs $VrRoomFogArgs
+pcmd 0 gfx set uniform dfogargs $VrRoomFogArgs
+pcmd 0 echo $VrRoomFogArgs
+pcmd 0 gfx set clearColor 66 90 130 0
+pcmd 0 dirlight set /dir 0.416209 -0.424957 0.803854
+pcmd 0 dirlight set /diffuse 0.6 0.6 0.6
+pcmd 0 dirlight set /ambient 0.6 0.6 0.6
+menu3d add FortInside /model vr/FortUber.amf /material mat_FortUber1_Black
+menu3d addChild FortInside FortInside2 /model vr/FortUber2.amf /material mat_FortUber2_Black /worldPose 0 0 0 /parentVisCheck
+menu3d addChild FortInside TableFrame /model vr/TableFrameNew.amf	/material mat_TableFrame /noVis
+menu3d addChild TableFrame TableCoverPan  /model vr/TableCoverPan.amf	/material mat_TableCoverPan /parentVisCheck
+menu3d addChild FortInside FortSkybox /model vr/FortSkybox.amf	/material mat_FortUber1_Black /rootScale 19.0 /parentVisCheck  /rootRot 0 0 0 /worldPose 0 0 0
+menu3d addChild FortInside FortSkyboxNear /model vr/FortSkyboxNear.amf	/material mat_FortUber1_Black /rootScale 19.0 /parentVisCheck  /rootRot 0 0 0 /worldPose 0 0 0
+menu3d logicFnc FortSkybox useOffsetHMD /mag 0.5
+if menu3dexists FortSkyboxNear menu3d logicFnc FortSkyboxNear useOffsetHMD /mag 0.4
+menu3d addChild FortInside NetworkState /rootRot 0 0 0 /worldPose -330 400 120 /noVis
+menu3d addChild NetworkState NetworkStateDis /model vr/NetworkDis.amf /material mat_NetworkDis /rootRot 0 0 0 /worldPose 0 0 0 /rootScale 1.5 /hiddenCheckBySymbolInv _BackendNoConnection_ /parentVisCheck
+menu3d addChild NetworkStateDis BackendEnumState /model vr/BackendEnumState.amf /material mat_NetworkOk /rootRot 0 0 0 /worldPose 5 0 -25 /rootScale 20  /parentVisCheck
+menu3d addChild NetworkState NetworkStateOk /model vr/NetworkOk.amf /material mat_NetworkOk /rootRot 0 0 0 /worldPose 0 0 0 /rootScale 1.5 /hiddenCheckBySymbol _BackendNoConnection_ /parentVisCheck
+menu3d addChild FortInside VrDummy /rootRot 0 0 0 /worldPose 0 0 0 /rootScale 1 /noVis
+menu3d addChild FortInside Skylight /rootScale 1.0 /parentVisCheck  /rootRot 0 0 0 /worldPose 0 800 900
+menu3d addChild Skylight SkylightPrompt /model vr/ButtonA.amf /material mat_MenuButtonsGamepad  /rootScale 10 /rootRot 140 0 0  /worldPose 0 0 0 /hiddenCheckBySymbolInv _LookAtSkylight /hiddenCheckBySymbol VrTutorial
+gfx lerp diffuseBlendFactor /current 1 0.0
+menu3d animate FortInside2 vr/FortUber2_doorsClose.aaf stopAndHold 0 10.0
+sym init CurrentFortState closed
+menu3d setWorldPose FortInside	0.0 0.0 0.0
+menu3d setWorldPose TableFrame	0.0 0.0 0.0
+menu3d setRootScale TableFrame 1.2
+menu3d setWorldPose TableCoverPan	0.0 0.0 5.0
+menu3d setRootScale TableCoverPan 1.03
+menu3d setRootRot TableCoverPan 0 0 -90
+menu3d setRootScale FortInside 2.0
+menucmd CreateVRDebugPane
+pcmd 0.1 loadmenu VrTableLabel.txt

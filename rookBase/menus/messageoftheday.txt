@@ -1,0 +1,31 @@
+stopIfSymbol CurrentMenu == _SetupTransition_
+onloadrun {
+sym set CurrentMenu null
+gameui ignoreInputTime 1.2
+sym set MotDLoaded 1
+sym push DisableConShop 1
+sym set GL_ChatMinimized 1
+gameui hide MainBarBackButton
+}
+MO PcMotDMaster {
+pos 0 370
+layer -1
+}
+onload {
+addUIAnim CM_MasterLogo mas_MenuCenter
+pcmd 1.0 sym set CurrentMenu MotD
+addUIAnim PcMotDMaster mas_DialogPop
+input set padFocusFallback PcMotDFocus
+gameUI focusNameTry PcMotDFocus
+}
+onunloadrun {
+}
+onunload {
+sym pop DisableConShop
+sym set MotDLoaded 0
+menucmd MainMenuBackgroundSharp
+sym set CurrentMenu MKHome
+gameui show MainBarBackButton
+pcmd 0.2 addUIAnim MainMenuPromo mas_PromoEnter
+pcmd 0.1 gameUI focusNameTry MainBarButtonPlay
+}

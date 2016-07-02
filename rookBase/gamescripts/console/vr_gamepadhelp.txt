@@ -1,0 +1,20 @@
+menu3d remove GamepadHelp
+menu3d add GamepadHelp /model vr/Gamepad.amf	/material mat_Gamepad"
+menu3d logicFnc GamepadHelp trackStickL /bone bone_nudge_l /mag 5
+menu3d logicFnc GamepadHelp trackStickR /bone bone_nudge_r /mag 5
+menu3d logicFnc GamepadHelp trackStickL /bone bone_stick_l /mag 23
+menu3d logicFnc GamepadHelp trackStickR /bone bone_stick_r /mag 23
+menu3d logicFnc GamepadHelp trackButton /bone bone_button_a /button A /offset 0 0 -0.005 /transitionTime 0.05
+menu3d logicFnc GamepadHelp trackButton /bone bone_button_b /button B /offset 0 0 -0.005 /transitionTime 0.05
+menu3d logicFnc GamepadHelp trackButton /bone bone_button_x /button X /offset 0 0 -0.005 /transitionTime 0.05
+menu3d logicFnc GamepadHelp trackButton /bone bone_button_y /button Y /offset 0 0 -0.005 /transitionTime 0.05
+menu3d logicFnc GamepadHelp trackButton /bone bone_bumper_l /button LShoulder /offset 0 0 -0.005 /transitionTime 0.05
+menu3d logicFnc GamepadHelp trackButton /bone bone_bumper_r /button RShoulder /offset 0 0 -0.005 /transitionTime 0.05
+menu3d logicFnc GamepadHelp trackButton /bone bone_start /button start /offset 0 0 -0.005
+menu3d logicFnc GamepadHelp trackButton /bone bone_back /button back /offset 0 0 -0.005
+menu3d logicFnc GamepadHelp trackDPad /bone bone_dpad /mag 13
+menu3d setWorldPose GamepadHelp	0.0 -70.0 -60.0
+menu3d setRootScale GamepadHelp 105.0
+menu3d setRootRot GamepadHelp 0 0 0
+menu3d addChild GamepadHelp GpadTextHelp  /model vr/GpadTextHelp.amf	/material mat_GamepadPauseFill /attachToParentBone bone_root"
+pcmd 0.3 menu3d setUPanTarget GpadTextHelp -1 /time 0.8

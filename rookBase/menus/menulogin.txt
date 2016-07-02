@@ -1,0 +1,29 @@
+onloadrun {
+playerinputpause 1
+sym init LoginMenuCount 0
+if vr menucmd VRPrepareScene
+}
+MO DummyFocus {
+pos 0 0
+}
+MO LoginMasterCarbon +gameValidation !x360 {
+pos 0 0
+}
+onload {
+pcmd 0.12 addUIAnim Black mas_FadeOutLoading
+pcmd 0.12 addUIAnim AirMechLogoSplash mas_FadeOutLoading
+menuCmd FrontEndLoginCheck
+if !vr input set preferMouseKeyboard 1
+if sym LoginMenuCount == 0 loadmenu MouseCursor.txt
+if sym LoginMenuCount == 0 loadmenu watermark.txt
+if sym LoginMenuCount == 0 sym set _SrvDisconnect_ 0
+if sym LoginMenuCount == 0 gameUI showAll LoginMaster
+if sym LoginMenuCount == 0 gameUI hideAll LoginBaseSignIn
+sym inc LoginMenuCount
+}
+onunload {
+inputBinding enable cockpitClosed
+cbinding enable cockpitClosed
+inputBinding disable cockpitOpen
+cbinding disable cockpitOpen
+}

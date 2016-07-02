@@ -1,0 +1,11 @@
+stopIfSymbol BlockAllUI == 1
+stopIfVR
+MO HudBuildTab {
+rename HudBuildTab__2
+cmd "sym set _BTInd 2"
+pos $_BTXPos $_BTYPos
+safezone AA
+}
+onloadrun {
+if sym _BTSlideOut == 1 addUIAnim HudBuildTab__2 mas_BuildTabBuilding.txt
+}

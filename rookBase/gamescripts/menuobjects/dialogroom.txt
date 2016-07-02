@@ -1,0 +1,278 @@
+add MenuObject
+set Name DialogRoomNameBig
+set Coords "0 0 480 100"
+set RenderCB_DX 480
+set RenderCB_DY 100
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.25
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /noCommaSep /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol @_roomref_@DisplayName
+add MenuObject
+set Name DialogRoomStatusBig
+set Coords "0 0 580 100"
+set RenderCB_DX 580
+set RenderCB_DY 100
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set NoAlphaMod 1
+set Alpha 0.6
+set RenderCB_ConsoleSymbol _FriendState_
+add MenuObject
+set Name RoomPlayerList
+set RenderCB_FontScale 0.75
+set RenderCB_Font RobotoBold
+set Coords "0 0 580 530"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text RoomHoverToolTipHeader
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0xe6e6e6
+add MenuObject initFrom RoomPlayerList
+set Name RoomPlayerNameRef
+set Coords "0 0 580 30"
+set RenderCB_FontScaleFocused 0.9
+set RenderCB_OffsetFocused "0 -5"
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set MouseInteract 1
+set Focus -2
+set RenderCB_BoolArg 0
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /toU16"
+set RenderCB_Text ""
+set HiddenCheckBySymbolValue RoomMemberName@_Arg1_@=
+set RenderCB_ConsoleSymbol RoomMemberNameDeco@_Arg1_@
+set CommandPress ">if sym RoomMemberName@_Arg1_@ !isEmpty runnow menucmd EventLogUsernameSymOp RoomMemberName@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg2_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg3_@"
+set CommandCancel "menucmd CloseAllRoomDialogs"
+add MenuObject
+set Name DialogRoomBlack
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.66
+set MouseInteract 1
+set CommandPress "menucmd CloseAllRoomDialogs"
+add MenuObject
+set Name RoomButtonClose
+set Texture menus/Social
+set Coords "825 2 70 70"
+set CoordsFocused "825 72 70 70"
+set Anchor UpperRight
+set MouseInteract 1
+set Focus -2
+set CommandPress "menucmd CloseAllRoomDialogs"
+set CommandCancel "menucmd CloseAllRoomDialogs"
+set CommandFocusDown "gameui focusNameTry SpecJoinButton RoomJoinButton"
+add MenuObject
+set Name RoomButtonTemplate
+set Texture menus/Social
+set Coords "458 205 440 63"
+set CoordsFocused "458 205 440 63"
+set CoordsPressed "8 203 440 63"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text FR_InviteToParty
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set RenderCB_Flags "/nmi /shadowed"
+set RenderCB_DX 0, RenderCB_DY 0
+set Focus -2
+set DrawWhenFocused FocusFriendButtons
+set DrawWhenFocusedOffset "-1 -1 0"
+add MenuObject
+set Name RoomOptionsWarningTitle
+set RenderCB_FontScale 1.0
+set RenderCB_Font RobotoBold
+set Coords "0 0 428 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text RoomOptionsWarningTitle
+set RenderCB_RGBColor 0xffffff
+set PulseAlpha "0.4 -0.5 0.0"
+set Disabled 1
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name RoomOptionsWarningMessage
+set RenderCB_FontScale 0.55
+set RenderCB_Font Roboto
+set Coords "0 0 350 330"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text RoomOptionsWarningMessage
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor "0.85"
+set Disabled 1
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name RoomOptionUltimate
+set Texture menus/Faction
+set Coords "119 445 97 98"
+set ToolTip LobbyUltimateMessage
+set ScaleX 0.7, ScaleY 0.7
+set MouseInteract 1
+set Focus -2
+set DisabledAlphaTimeIn 0.5
+set Disabled 1
+set HiddenCheckBySymbolInv @_roomref_@Ultimates
+add MenuObject initFrom RoomOptionUltimate
+set Name RoomOptionInfinite
+set Coords "216 445 121 98"
+set ToolTip LobbyInfiniteMessage
+set HiddenCheckBySymbolInv @_roomref_@NoOTDmg
+add MenuObject initFrom RoomOptionUltimate
+set Name RoomOptionHyper
+set Coords "337 445 115 98"
+set ToolTip LobbyHyperMessage
+set HiddenCheckBySymbolInv @_roomref_@Hyper
+add MenuObject
+set Name GameOptionsWarning
+set Texture menus/Faction
+set Coords "596 382 428 333"
+set HiddenCheckBySymbolInv @_roomref_@OptionsWarn
+set Child "RoomOptionsWarningTitle 0 20"
+set Child "RoomOptionsWarningMessage 50 66"
+set Child "RoomOptionUltimate 60 230"
+set Child "RoomOptionInfinite 140 230"
+set Child "RoomOptionHyper 240 230"
+set MouseInteract 1
+set DisabledAlphaTimeIn 0.3
+set Disabled 1
+add MenuObject initFrom RoomButtonTemplate
+set Name RoomJoinButton
+set RenderCB_Text RM_JoinGame
+set CommandPress "sym setNset 6 HideSlot 1"
+set CommandPress "sym setNset 6 HideAISlot 1"
+set CommandPress "sym setNset 6 P_Rdy 0"
+set CommandPress "sym set P_RdyL 0"
+set CommandPress "gamemsg clearChat"
+set CommandPress ">sym set PrivateRoom $$@_roomref_@Private"
+set CommandPress ">backend joingame .@_roomref_@Name $@_roomref_@Id $$PO_Pin"
+set CommandPress ">rooms setFlagCh @_roomref_@"
+set CommandPress "menuCmd MF_NetGameSessionJoined"
+set CommandPress "gameui ignoreInputTime 0.2"
+set CommandPress "clearmenu DialogRoom /fadeout 0.15"
+set Child "GameOptionsWarning 434 -133"
+add MenuObject initFrom RoomButtonTemplate
+set Name SpecJoinButton
+set RenderCB_Text RM_SpectateGame
+set CommandPress "gameui ignoreInputTime 1.5"
+set CommandPress "gameUI focusNameTry DummyFocus"
+set CommandPress "sym setNset 6 HideSlot 1"
+set CommandPress "sym setNset 6 HideAISlot 1"
+set CommandPress "sym setNset 6 P_Rdy 0"
+set CommandPress "sym set P_RdyL 0"
+set CommandPress "gamemsg clearChat"
+set CommandPress ">sym set PrivateRoom $$@_roomref_@Private"
+set CommandPress ">backend spectategame @_roomref_@Name $@_roomref_@Id $$PO_Pin"
+set CommandPress "gameevent systemnotify ConnectingToGSS 1"
+set CommandPress ">rooms setFlagCh @_roomref_@"
+set CommandPress "menuCmd MF_NetGameSessionSpectate"
+set CommandPress "clearmenu DialogRoom /fadeout 0.15"
+set CommandCancel "menucmd CloseAllRoomDialogs"
+set CommandFocusUp "gameui focusNameTry .RPNR_JoinUp"
+add MenuObject
+set Name RoomJoinHeaderVignette
+set Texture effects/vignette
+set Coords "0 0 256 128"
+set ScaleX 1.933
+set ScaleY 1.742
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name RoomPinEntryBox
+set Coords "436 233 167 56"
+set CoordsFocused "436 298 167 56"
+set Texture menus/Faction
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 167
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB_Offset "14 5"
+set NoAlphaMod 1
+set Alpha 0.776
+set MouseInteractZoneExpand "-20 -20 0 10"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set TextEditableMaxLen 5
+set TextEditablePin 1
+set RenderCB_Text PO_Pin
+add MenuObject
+set Name LockBanner
+set Texture menus/DialogGeneral
+set Coords "100 929 391 95"
+set ScaleX 1.282
+set HiddenCheckBySymbolInv @_roomref_@Private
+set Child "RoomPinEntryBox 180 18"
+add MenuObject
+set Name RoomJoinHeader
+set Texture menus/DialogGeneral
+set Coords "474 300 78 27"
+set ScaleX 6.38, ScaleY 20.0
+set Color &@_roomref_@Color&
+add MenuObject
+set Name DialogRoomJoinMaster
+set MouseInteract 1
+set Focus -2
+set Texture menus/Social
+set CoordsStart "641 11 43 43"
+set CoordsMid "684 11 96 43"
+set CoordsEnd "780 11 43 43"
+set CoordsStartFocused "641 54 43 96"
+set CoordsMidFocused "684 54 96 96"
+set CoordsEndFocused "780 54 43 96"
+set CoordsStartDisabled "641 150 43 43"
+set CoordsMidDisabled "684 150 96 43"
+set CoordsEndDisabled "780 150 43 43"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 580
+set RenderCB_DY 700
+set Coords "0 0 580 700"
+set Anchor Center
+set Layer 24
+set MouseInteractZoneExpand "30 30 -30 -30"
+set Child "RoomJoinHeader 41 41"
+set Child "MF_InspectGameRoomIcons 0 48 @_roomtype_@ @_roomind_@"
+set Child "DialogRoomNameBig 50 84"
+set Child "RoomPlayerList 0 170"
+set Child "RoomPlayerNameRef[RoomPlayerNameRef0] 0 220		0	RoomButtonClose .RPNR0_Down"
+set Child "RoomPlayerNameRef[RoomPlayerNameRef1] 0 255		1	RoomPlayerNameRef0 .RPNR1_Down"
+set Child "RoomPlayerNameRef[RoomPlayerNameRef2] 0 290		2	.RPNR2_Up .RPNR2_Down"
+set Child "RoomPlayerNameRef[RoomPlayerNameRef3] 0 325		3	.RPNR3_Up .RPNR3_Down"
+set Child "RoomPlayerNameRef[RoomPlayerNameRef4] 0 360		4	.RPNR4_Up .RPNR4_Down"
+set Child "RoomPlayerNameRef[RoomPlayerNameRef5] 0 395		5	.RPNR5_Up @_roomtype_@JoinButton"
+set Child "RoomButtonClose -40 40	/platform !consolePlatform"
+set Child "MF_RoomServerPingDisplay 230 610 /platform !consolePlatformHW @_roomtype_@ @_roomind_@ /platform !arc"
+set Child "MF_RoomServerFlagDisplay 280 600 /platform !consolePlatformHW @_roomtype_@ @_roomind_@ /platform !arc"
+set Child "LockBanner 39 410"
+set Child "@_roomtype_@JoinButton 70 520"

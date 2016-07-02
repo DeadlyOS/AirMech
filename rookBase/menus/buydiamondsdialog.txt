@@ -1,0 +1,23 @@
+stopParse
+onloadrun {
+sym push DisableConShop 1
+sym set BuyDiamondsDialogActive 1
+sym set BuyDiamondsDialogCanceled 0
+rook initDiamondPriceSymbols
+sym set PaymentProviderPaypal 1
+sym set P_Pay paypal
+rookMenus previewHide
+}
+MO DiamondBundlesDialogItems {
+pos 460 40
+layer 17
+}
+onload {
+}
+onunload {
+sym pop DisableConShop
+sym set BuyDiamondsDialogActive 0
+}
+onunloadrun {
+rookMenus previewShow
+}

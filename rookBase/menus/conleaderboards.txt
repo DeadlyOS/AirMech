@@ -1,0 +1,46 @@
+onloadrun {
+gameUI saveFocusID _savefocusid_
+sym setZero _FocusItemList_ _FocusItemLast_
+sym push _Bind_CycleLoadoutOnShoulders_ 0
+sym push _Bind_MatchingUIBack_ 0
+sym push _Bind_SoloLoadout_ 0
+sym push CurrentMenu ConLeaderboards
+sym push _Bind_PrevNextOnShoulders_ 0
+}
+MO ConLeaderboardTypeLine {
+pos -5 162
+layer 10
+}
+MO DialogFriendBlack {
+pos 0 0
+layer 10
+}
+MO VignetteWin {
+pos 0 0
+layer 11
+}
+MO BlackCenterShadow {
+pos 0 0
+layer 12
+}
+MO CM_MasterLeaderboard {
+pos 0 0
+layer 13
+}
+onload {
+addUIAnim CM_MasterLeaderboard mas_DialogPop
+addUIAnim CM_ButtonHints_ConLeaderboards mas_ConButtonsUp
+input set padFocusFallback ConLeaderItem0
+gameUI focusNameTry ConLeaderItem0
+}
+onunloadrun {
+}
+onunload {
+input set padFocusFallback ConMenuBoards
+pcmd 0.1 gameUI focusNameTry ConMenuBoards
+sym pop _Bind_CycleLoadoutOnShoulders_
+sym pop _Bind_MatchingUIBack_
+sym pop _Bind_SoloLoadout_
+sym pop CurrentMenu
+sym pop _Bind_PrevNextOnShoulders_
+}

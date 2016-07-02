@@ -1,0 +1,2679 @@
+add MenuObject
+set Name ConMotDHeaderBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1940 90"
+set Color 0x387478
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name ConMotDMainBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1940 390"
+set Color 0x111111
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name ConMotDSideBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "400 480"
+set Color 0x273839
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name ConMotDTitle
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FontScale 1.3
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set RenderCB_ConsoleSymbol MotDTitle
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags " /fitX /outlined8x /shadowColor2"
+set Coords "0 0 1260 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name ConMotDMessage
+set RenderCB_RGBColor 0xe5e4e3
+set RenderCB_FontScale 0.90
+set BlendMode BlendAdd
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set RenderCB_ConsoleSymbol MotDMessage
+set SaveArgs 1
+set RenderCB _DrawUText
+set Coords "0 0 1100 350"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name MotDFocus
+set RenderBlocked 1
+set Coords "901 172 117 118"
+set Focus -2
+set Coords "0 0 50 50"
+set MouseInteract 1
+set CommandPress "]clearmenu MotD /fadeout 0.15"
+set CommandCancel "]clearmenu MotD /fadeout 0.15"
+set CommandPress "]clearmenu SplashPromo /fadeout 0.15"
+set CommandCancel "]clearmenu SplashPromo /fadeout 0.15"
+add MenuObject
+set Name ConMotDMaster
+set ContainerOnly 1
+set Child "ConMotDHeaderBackground 0 0"
+set Child "ConMotDMainBackground 0 90"
+set Child "ConMotDFrame -50 -37"
+set Child "MotDFocus 350 -10"
+set Child "EventDoubleEndgameK 120 30"
+set Child "EventDoubleEndgameXP 120 30"
+set Child "ConMotDTitle 360 20"
+set Child "ConMotDMessage 360 110"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPlayAirMech
+set RenderCB_Text ButtonPlayAirMech
+set CommandFocusDown "gameUI focusNameTry ConMenuHelpOptions"
+set CommandGetFocus "sym setZero ConMenuHelpOptions ConMenuBoards ConMenuExit ConMenuUplay ConMenuAchievements"
+set CommandGetFocus "if sym ConsoleMail == 1 runnow sym set ConMenuStats 0"
+set CommandGetFocus "sym set ConMenuPlayAirMech 1"
+set CommandGetFocus "input set padFocusFallback ConMenuPlayAirMech"
+set CommandGetFocus "sym set CurrentMenu CRoot"
+set CommandPress "menuCmd ConMenuPlayAirMechPress"
+set ScaleX 1.5
+set ScaleY 1.5
+set RenderCB_DX 525
+set RenderCB_DY 108
+set RenderCB_FontScale 0.65
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuHelpOptions
+set RenderCB_Text ButtonHelpOptionsNew
+set CommandFocusDown "gameUI focusNameTry ConMenuAchievements ConMenuBoards"
+set CommandFocusUp "gameUI focusNameTry ConMenuPlayAirMech"
+set CommandGetFocus "sym setZero ConMenuPlayAirMech ConMenuBoards ConMenuExit ConMenuUplay ConMenuAchievements"
+set CommandGetFocus "if sym ConsoleMail == 1 runnow sym set ConMenuStats 0"
+set CommandGetFocus "sym set ConMenuHelpOptions 1"
+set CommandGetFocus "input set padFocusFallback ConMenuHelpOptions"
+set CommandGetFocus "sym set CurrentMenu CRoot"
+set CommandPress "menuCmd ConMenuHelpOptionsPress"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPlay
+set RenderCB_Text ButtonPlay
+set CommandFocusDown "gameUI focusNameTry ConMenuWatch"
+set CommandFocusRight "gameUI focusNameTry .FocusGameEventCache"
+set CommandGetFocus "sym setZero ConMenuWatch ConMenuBoards ConMenuExit ConMenuUplay ConMenuQuests ConMenuMarket ConMenuStats"
+set CommandGetFocus "sym set ConMenuPlay 1"
+set CommandGetFocus "input set padFocusFallback ConMenuPlay"
+set CommandGetFocus "sym set CurrentMenu CHome"
+set CommandPress "menuCmd ConMenuPlayPress"
+set CommandCancel "menuCmd ConMenuBackToRoot"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuWatch
+set RenderCB_Text ButtonWatch
+set CommandFocusDown "gameUI focusNameTry ConMenuMarket"
+set CommandFocusUp "gameUI focusNameTry ConMenuPlay"
+set CommandFocusRight "gameUI focusNameTry .FocusGameEventCache"
+set CommandGetFocus "sym setZero ConMenuPlay ConMenuBoards ConMenuExit ConMenuUplay ConMenuQuests ConMenuMarket ConMenuStats"
+set CommandGetFocus "sym set ConMenuWatch 1"
+set CommandGetFocus "input set padFocusFallback ConMenuWatch"
+set CommandGetFocus "sym set CurrentMenu CHome"
+set CommandCancel "menuCmd ConMenuBackToRoot"
+set CommandPress "menuCmd ConMenuWatchPress"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMarket
+set RenderCB_Text ButtonShop
+set CommandFocusDown "gameUI focusNameTry ConMenuQuests"
+set CommandFocusUp "gameUI focusNameTry ConMenuWatch"
+set CommandFocusRight "gameUI focusNameTry .FocusGameEventCache"
+set CommandGetFocus "sym setZero ConMenuPlay ConMenuBoards ConMenuQuests ConMenuWatch ConMenuStats"
+set CommandGetFocus "sym set ConMenuMarket 1"
+set CommandGetFocus "input set padFocusFallback ConMenuMarket"
+set CommandGetFocus "sym set CurrentMenu CHome"
+set CommandPress "gameui ignoreInputTime 0.3"
+set CommandPress "loadmenu ConShop /fadein 0.25"
+set CommandCancel "menuCmd ConMenuBackToRoot"
+add MenuObject
+set Name ConGlowEndcap
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "10 66"
+set BlendMode BlendAdd
+set PulseAlpha "1.0 -0.8 -0.0"
+add MenuObject
+set Name ConQuestComplete
+set ContainerOnly 1
+set Child "ConGlowEndcap 0 0"
+set Child "ConGlowEndcap 441 0"
+set HiddenCheckBySymbolInv QuestComplete
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuQuests
+set RenderCB_Text ButtonQuests
+set CommandFocusDown "gameUI focusNameTry ConMenuStats ConMenuMail"
+set CommandFocusUp "gameUI focusNameTry ConMenuMarket"
+set CommandFocusRight "gameUI focusNameTry .FocusGameEventCache"
+set CommandGetFocus "sym setZero ConMenuPlay ConMenuWatch ConMenuExit ConMenuUplay ConMenuBoards ConMenuMarket ConMenuStats ConMenuMail"
+set CommandGetFocus "sym set ConMenuQuests 1"
+set CommandGetFocus "input set padFocusFallback ConMenuQuests"
+set CommandGetFocus "sym set CurrentMenu CHome"
+set CommandPress "loadmenu ConQuests /fadein 0.2"
+set CommandCancel "menuCmd ConMenuBackToRoot"
+set Child "ConQuestComplete -4 8"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuStats
+set RenderCB_Text ButtonStats
+set CommandFocusDown "if sym ConsoleMail == 1 runnow gameUI focusnameTry ConMenuExit ConMenuUplay"
+set CommandFocusUp "if sym ConsoleMail == 1 runnow gameUI focusNameTry ConMenuBoards"
+set CommandFocusUp "if sym ConsoleMail == 0 runnow gameUI focusNameTry ConMenuQuests"
+set CommandFocusRight "if sym ConsoleMail == 0 runnow gameUI focusNameTry .FocusGameEventCache"
+set CommandGetFocus "if sym ConsoleMail == 0 runnow sym setZero ConMenuPlay ConMenuWatch ConMenuExit ConMenuUplay ConMenuBoards ConMenuMarket ConMenuQuests ConMenuMail"
+set CommandGetFocus "if sym ConsoleMail == 1 runnow sym setZero ConMenuHelpOptions ConMenuAchievements ConMenuPlayAirMech ConMenuBoards ConMenuExit ConMenuUplay"
+set CommandGetFocus "sym set ConMenuStats 1"
+set CommandGetFocus "input set padFocusFallback ConMenuStats"
+set CommandGetFocus "if sym ConsoleMail == 0 runnow sym set CurrentMenu CHome"
+set CommandGetFocus "if sym ConsoleMail == 1 runnow sym set CurrentMenu CRoot"
+set CommandPress "menuCmd ConMenuStatsPress"
+set CommandCancel "menuCmd ConMenuBackToRoot"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMail
+set RenderCB_Text TT_Mail
+set CommandFocusUp "gameUI focusNameTry ConMenuQuests"
+set CommandFocusRight "gameUI focusNameTry .FocusGameEventCache"
+set CommandGetFocus "sym setZero ConMenuPlay ConMenuWatch ConMenuExit ConMenuUplay ConMenuBoards ConMenuMarket ConMenuQuests"
+set CommandGetFocus "sym set ConMenuMail 1"
+set CommandGetFocus "input set padFocusFallback ConMenuMail"
+set CommandGetFocus "sym set CurrentMenu CHome"
+set CommandPress "sym set MailInboxLoaded 0"
+set CommandPress "menuCmd ConMenuMailPress"
+set CommandCancel "menuCmd ConMenuBackToRoot"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuAchievements
+set RenderCB_Text ButtonAchievements
+set CommandFocusDown "gameUI focusNameTry ConMenuBoards"
+set CommandFocusUp "gameUI focusNameTry ConMenuHelpOptions"
+set CommandGetFocus "sym setZero ConMenuHelpOptions ConMenuPlayAirMech ConMenuBoards ConMenuExit ConMenuUplay"
+set CommandGetFocus "sym set ConMenuAchievements 1"
+set CommandGetFocus "input set padFocusFallback ConMenuAchievements"
+set CommandGetFocus "sym set CurrentMenu CRoot"
+set CommandPress "if sym ConsoleForPC == 0 menuCmd ConMenuAchievementsPress"
+set CommandPress "if sym ConsoleForPC == 1 loadmenu ConQuests /fadein 0.2"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuBoards
+set RenderCB_Text ButtonLeaderboards
+set CommandFocusDown "gameUI focusNameTry ConMenuStatsRoot ConMenuExit ConMenuUplay"
+set CommandFocusUp "gameUI focusNameTry ConMenuAchievements ConMenuHelpOptions"
+set CommandGetFocus "sym setZero ConMenuHelpOptions ConMenuAchievements ConMenuPlayAirMech ConMenuBoards ConMenuExit ConMenuUplay"
+set CommandGetFocus "if sym ConsoleMail == 1 runnow sym set ConMenuStats 0"
+set CommandGetFocus "sym set ConMenuBoards 1"
+set CommandGetFocus "input set padFocusFallback ConMenuBoards"
+set CommandGetFocus "sym set CurrentMenu CRoot"
+set CommandPress "menuCmd ConMenuBoardsPress"
+set CommandPress "sym set DisableConShop 1"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuExit
+set RenderCB_Text ButtonExit
+set CommandFocusUp "gameUI focusNameTry ConMenuStatsRoot ConMenuBoards"
+set CommandGetFocus "sym setZero ConMenuAchievements ConMenuPlayAirMech ConMenuBoards ConMenuHelpOptions"
+set CommandGetFocus "if sym ConsoleMail == 1 runnow sym set ConMenuStats 0"
+set CommandGetFocus "sym set ConMenuExit 1"
+set CommandGetFocus "input set padFocusFallback ConMenuExit"
+set CommandGetFocus "sym set CurrentMenu CRoot"
+set CommandPress "menuCmd ExitGameMainMenuConfirm"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuUplay
+set RenderCB_Text ButtonUplay
+set CommandFocusUp "gameUI focusNameTry ConMenuStatsRoot ConMenuBoards"
+set CommandGetFocus "sym setZero ConMenuAchievements ConMenuPlayAirMech ConMenuBoards ConMenuHelpOptions ConMenuExit"
+set CommandGetFocus "if sym ConsoleMail == 1 runnow sym set ConMenuStats 0"
+set CommandGetFocus "sym set ConMenuUplay 1"
+set CommandGetFocus "input set padFocusFallback ConMenuUplay"
+set CommandGetFocus "sym set CurrentMenu CRoot"
+set CommandPress "menuCmd ConMenuUplayPress"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuOptControls
+set RenderCB_Text ButtonOptControls
+set CommandFocusDown "gameUI focusNameTry ConMenuOptGameplay"
+set CommandGetFocus "sym setZero ConMenuOptGameplay ConMenuOptVideo ConMenuOptAudio ConMenuOptContact ConMenuOptRedeemCode ConMenuHelpTutorial ConMenuHelpCredits ConMenuHelpApp"
+set CommandGetFocus "sym set ConMenuOptControls 1"
+set CommandGetFocus "input set padFocusFallback ConMenuOptControls"
+set CommandGetFocus "sym set CurrentMenu COptions"
+set CommandPress "menuCmd ConMenuOptControlsPress"
+set CommandCancel "menuCmd ConMenuHelpOptionsCancel"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuOptGameplay
+set RenderCB_Text ButtonOptGameplay
+set CommandFocusDown "gameUI focusNameTry ConMenuOptVideo"
+set CommandFocusUp "gameUI focusNameTry ConMenuOptControls"
+set CommandGetFocus "sym setZero ConMenuOptControls ConMenuOptVideo ConMenuOptAudio ConMenuOptContact ConMenuOptRedeemCode ConMenuHelpTutorial ConMenuHelpCredits ConMenuHelpApp"
+set CommandGetFocus "sym set ConMenuOptGameplay 1"
+set CommandGetFocus "input set padFocusFallback ConMenuOptGameplay"
+set CommandGetFocus "sym set CurrentMenu COptions"
+set CommandPress "menuCmd ConMenuOptGameplayPress"
+set CommandCancel "menuCmd ConMenuHelpOptionsCancel"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuOptVideo
+set RenderCB_Text ButtonOptVideo
+set CommandFocusDown "gameUI focusNameTry ConMenuOptAudio"
+set CommandFocusUp "gameUI focusNameTry ConMenuOptGameplay"
+set CommandGetFocus "sym setZero ConMenuOptControls ConMenuOptGameplay ConMenuOptAudio ConMenuOptContact ConMenuOptRedeemCode ConMenuHelpTutorial ConMenuHelpCredits ConMenuHelpApp"
+set CommandGetFocus "sym set ConMenuOptVideo 1"
+set CommandGetFocus "input set padFocusFallback ConMenuOptVideo"
+set CommandGetFocus "sym set CurrentMenu COptions"
+set CommandPress "menuCmd ConMenuOptVideoPress"
+set CommandCancel "menuCmd ConMenuHelpOptionsCancel"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuOptAudio
+set RenderCB_Text ButtonOptAudio
+set CommandFocusDown "gameUI focusNameTry ConMenuOptContact ConMenuOptRedeemCode ConMenuHelpTutorial"
+set CommandFocusUp "gameUI focusNameTry ConMenuOptVideo"
+set CommandGetFocus "sym setZero ConMenuOptControls ConMenuOptGameplay ConMenuOptVideo ConMenuOptContact ConMenuOptRedeemCode ConMenuHelpTutorial ConMenuHelpCredits ConMenuHelpApp"
+set CommandGetFocus "sym set ConMenuOptAudio 1"
+set CommandGetFocus "input set padFocusFallback ConMenuOptAudio"
+set CommandGetFocus "sym set CurrentMenu COptions"
+set CommandPress "menuCmd ConMenuOptAudioPress"
+set CommandCancel "menuCmd ConMenuHelpOptionsCancel"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuOptContact
+set RenderCB_Text ButtonOptContact
+set CommandFocusDown "gameUI focusNameTry ConMenuHelpTutorial"
+set CommandFocusUp "gameUI focusNameTry ConMenuOptAudio"
+set CommandGetFocus "sym setZero ConMenuOptControls ConMenuOptGameplay ConMenuOptVideo ConMenuOptRedeemCode ConMenuOptAudio ConMenuHelpTutorial ConMenuHelpCredits ConMenuHelpApp"
+set CommandGetFocus "sym set ConMenuOptContact 1"
+set CommandGetFocus "input set padFocusFallback ConMenuOptContact"
+set CommandGetFocus "sym set CurrentMenu COptions"
+set CommandPress "menuCmd ConMenuOptContactPress"
+set CommandCancel "menuCmd ConMenuHelpOptionsCancel"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuOptRedeemCode
+set RenderCB_Text ButtonOptRedeemCode
+set CommandFocusDown "gameUI focusNameTry ConMenuHelpTutorial"
+set CommandFocusUp "gameUI focusNameTry ConMenuOptContact ConMenuOptAudio"
+set CommandGetFocus "sym setZero ConMenuOptControls ConMenuOptGameplay ConMenuOptVideo ConMenuOptContact ConMenuOptAudio ConMenuHelpTutorial ConMenuHelpCredits ConMenuHelpApp"
+set CommandGetFocus "sym set ConMenuOptRedeemCode 1"
+set CommandGetFocus "input set padFocusFallback ConMenuOptRedeemCode"
+set CommandPress "menuCmd ConMenuOptRedeemCodePress"
+set CommandCancel "menuCmd ConMenuHelpOptionsCancel"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuHelpTutorial
+set RenderCB_Text ButtonHelpTutorial
+set CommandFocusDown "gameUI focusNameTry ConMenuHelpCredits"
+set CommandFocusUp "gameUI focusNameTry ConMenuOptRedeemCode ConMenuOptContact ConMenuOptAudio"
+set CommandGetFocus "sym setZero ConMenuOptControls ConMenuOptGameplay ConMenuOptVideo ConMenuOptRedeemCode ConMenuOptAudio ConMenuOptContact ConMenuHelpCredits ConMenuHelpApp"
+set CommandGetFocus "sym set ConMenuHelpTutorial 1"
+set CommandGetFocus "input set padFocusFallback ConMenuHelpTutorial"
+set CommandGetFocus "sym set CurrentMenu COptions"
+set CommandPress "menuCmd MF_TutorialStart"
+set CommandCancel "menuCmd ConMenuHelpOptionsCancel"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuHelpCredits
+set RenderCB_Text ButtonHelpCredits
+set CommandPress "gameUI ignoreInputTime 1.2"
+set CommandFocusDown "gameUI focusNameTry ConMenuHelpApp"
+set CommandFocusUp "gameUI focusNameTry ConMenuHelpTutorial"
+set CommandGetFocus "sym setZero ConMenuOptControls ConMenuOptGameplay ConMenuOptVideo ConMenuOptRedeemCode ConMenuOptAudio ConMenuOptContact ConMenuHelpTutorial ConMenuHelpApp"
+set CommandGetFocus "sym set ConMenuHelpCredits 1"
+set CommandGetFocus "input set padFocusFallback ConMenuHelpCredits"
+set CommandGetFocus "sym set CurrentMenu COptions"
+set CommandPress "menuCmd ConMenuHelpCreditsPress"
+set CommandCancel "menuCmd ConMenuHelpOptionsCancel"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuHelpApp
+set RenderCB_Text MB_Help
+set CommandPress "gameUI ignoreInputTime 1.2"
+set CommandFocusUp "gameUI focusNameTry ConMenuHelpCredits"
+set CommandGetFocus "sym setZero ConMenuOptControls ConMenuOptGameplay ConMenuOptVideo ConMenuOptAudio ConMenuOptContact ConMenuHelpTutorial ConMenuHelpCredits"
+set CommandGetFocus "sym set ConMenuHelpApp 1"
+set CommandGetFocus "input set padFocusFallback ConMenuHelpApp"
+set CommandGetFocus "sym set CurrentMenu COptions"
+set CommandPress "xbone mshelp"
+set CommandCancel "menuCmd ConMenuHelpOptionsCancel"
+add MenuObject
+set Name ConCreditsList
+set Coords "0 0 1200 800"
+set RenderCB_DX 1200
+set RenderCB_DY 800
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 1000
+set RenderCB_RGBColor 0xa0a0a0
+set RenderCB_Text CREDITS
+set Focus -2
+set MouseInteract 1
+set CommandCancel "menuCmd ConMenuHelpCreditsCancel"
+set RenderCB_FloatArg 0.0
+set RenderCB_BoolArg 1
+set RenderCB_Options "/cache credits /stickscroll 1 /autoscroll 60 /onEnd [menuCmd ConMenuHelpCreditsCancel_ScrollEnd]"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_YClipConfig "400 0 700 0"
+add MenuObject
+set Name CM_RootButtonsMaster
+set ContainerOnly 1
+set Child "ConMenuPlayAirMech -55 -40"
+set Child "MultiPurposeBigLabelTemplate -55 -40 ButtonPlayAirMech	ConMenuPlayAirMech"
+set Child "ConMenuHelpOptions 0 2Nx90"
+set Child "MultiPurposeLabelTemplate 0 2Nx90 ButtonHelpOptionsNew	ConMenuHelpOptions"
+set Child "ConMenuAchievements 0 2Nx90		/platform xboxAny"
+set Child "MultiPurposeLabelTemplate 0 2Nx90 ButtonAchievements	ConMenuAchievements	/platform xboxAny"
+set Child "ConMenuBoards 0 2Nx90"
+set Child "MultiPurposeLabelTemplate 0 2Nx90 ButtonLeaderboards	ConMenuBoards"
+set Child "ConMenuStats[ConMenuStatsRoot] 0 2Nx90							/ifSym ConsoleMail == 1"
+set Child "MultiPurposeLabelTemplate 0 2Nx90 ButtonStats	ConMenuStats	/ifSym ConsoleMail == 1"
+set Child "ConMenuExit 0 2Nx90												/platform !hasUplayIntegration"
+set Child "MultiPurposeLabelTemplate 0 2Nx90 ButtonExit	ConMenuExit			/platform !hasUplayIntegration"
+set Child "ConMenuUplay 0 2Nx90												/platform hasUplayIntegration"
+set Child "MultiPurposeLabelTemplate 0 2Nx90 ButtonUplay	ConMenuUplay	/platform hasUplayIntegration"
+add MenuObject
+set Name CM_HomeButtonsMaster
+set ContainerOnly 1
+set Child "ConMenuPlay 0 0"
+set Child "MultiPurposeLabelTemplate 0 0 ButtonPlay	ConMenuPlay"
+set Child "ConMenuWatch 0 90"
+set Child "MultiPurposeLabelTemplate 0 90 ButtonWatch	ConMenuWatch"
+set Child "ConMenuMarket 0 180"
+set Child "MultiPurposeLabelTemplate 0 180 ButtonShop	ConMenuMarket"
+set Child "ConMenuQuests 0 270"
+set Child "MultiPurposeLabelTemplate 0 270 ButtonQuests	ConMenuQuests"
+set Child "ConMenuStats 0 360											/ifSym ConsoleMail == 0"
+set Child "MultiPurposeLabelTemplate 0 360 ButtonStats	ConMenuStats	/ifSym ConsoleMail == 0"
+set Child "ConMenuMail 0 360											/ifSym ConsoleMail == 1"
+set Child "MultiPurposeLabelTemplate 0 360 TT_Mail	ConMenuMail			/ifSym ConsoleMail == 1"
+add MenuObject
+set Name CM_HelpOptionsButtonsMaster
+set ContainerOnly 1
+set Child "ConMenuOptControls 0 2Nx80"
+set Child "MultiPurposeLabelTemplate 0 2Nx80 ButtonOptControls	ConMenuOptControls"
+set Child "ConMenuOptGameplay 0 2Nx80"
+set Child "MultiPurposeLabelTemplate 0 2Nx80 ButtonOptGameplay	ConMenuOptGameplay"
+set Child "ConMenuOptVideo 0 2Nx80"
+set Child "MultiPurposeLabelTemplate 0 2Nx80 ButtonOptVideo	ConMenuOptVideo"
+set Child "ConMenuOptAudio 0 2Nx80"
+set Child "MultiPurposeLabelTemplate 0 2Nx80 ButtonOptAudio	ConMenuOptAudio"
+set Child "ConMenuOptContact 0 2Nx80														/platform !hasUplayIntegration"
+set Child "MultiPurposeLabelTemplate 0 2Nx80 ButtonOptContact	ConMenuOptContact			/platform !hasUplayIntegration"
+set Child "ConMenuOptRedeemCode 0 2Nx80														/platform hasPlatformCodeRedeem"
+set Child "MultiPurposeLabelTemplate 0 2Nx80 ButtonOptRedeemCode	ConMenuOptRedeemCode	/platform hasPlatformCodeRedeem"
+set Child "ConMenuHelpTutorial 0 2Nx80"
+set Child "MultiPurposeLabelTemplate 0 2Nx80 ButtonHelpTutorial	ConMenuHelpTutorial"
+set Child "ConMenuHelpCredits 0 2Nx80"
+set Child "MultiPurposeLabelTemplate 0 2Nx80 ButtonHelpCredits	ConMenuHelpCredits"
+set Child "ConMenuHelpApp 0 2Nx80															/ifSym PLATFORM == XBONE"
+set Child "MultiPurposeLabelTemplate 0 2Nx80 MB_Help	ConMenuHelpApp						/ifSym PLATFORM == XBONE"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPlaySolo
+set RenderCB_Text ButtonSolo
+set CommandFocusDown "gameUI focusNameTry ConMenuPlayMultiplayer"
+set CommandGetFocus "sym setZero ConMenuPlayMultiplayer ConMenuPlayPractice"
+set CommandGetFocus "sym set ConMenuPlaySolo 1"
+set CommandGetFocus "input set padFocusFallback ConMenuPlaySolo"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandPress "menuCmd ConMenuPlaySoloPress"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPlayMultiplayer
+set RenderCB_Text ButtonMultiplayer
+set CommandFocusDown "gameUI focusNameTry ConMenuPlayPractice"
+set CommandFocusUp "gameUI focusNameTry ConMenuPlaySolo"
+set CommandGetFocus "sym setZero ConMenuPlaySolo ConMenuPlayPractice"
+set CommandGetFocus "sym set ConMenuPlayMultiplayer 1"
+set CommandGetFocus "input set padFocusFallback ConMenuPlayMultiplayer"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandPress "menuCmd ConMenuPlayMultiplayerPress"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPlayPractice
+set RenderCB_Text ButtonPractice
+set CommandFocusUp "gameUI focusNameTry ConMenuPlayMultiplayer"
+set CommandGetFocus "sym setZero ConMenuPlaySolo ConMenuPlayMultiplayer"
+set CommandGetFocus "sym set ConMenuPlayPractice 1"
+set CommandGetFocus "input set padFocusFallback ConMenuPlayPractice"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandPress "menuCmd ConMenuPlayPracticePress"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuSoloSkirmish
+set RenderCB_Text ButtonSkirmish
+set Child "SubsectionLabelTemplate[LabelSubSoloSkirmish] 0 0 ButtonSkirmish"
+set Child "ConMenuSoloSkirmishPlayers 0 0"
+set CommandFocusDown "gameUI focusNameTry ConMenuSoloSurvival"
+set CommandGetFocus "sym setZero ConMenuMapEditor ConMenuSoloSurvival ConMenuCoopSurvival ConMenuPracticeChallenges ConMenuPracticeTutorial ConMenuPlayCoop ConMenuPlayPvP"
+set CommandGetFocus "sym setOne ConMenuSoloSkirmish ConMenuPlaySolo"
+set CommandGetFocus "input set padFocusFallback ConMenuSoloSkirmish"
+set CommandGetFocus "sym set CurrentMenu CSolo"
+set CommandPress "if sym ConMenuSoloSkirmish1v1 == 0 && sym ConMenuSoloSkirmish2v2 == 0 && sym ConMenuSoloSkirmish3v3 == 0 && sym ConMenuSoloSkirmish2v3 == 0 && sym ConMenuSoloSkirmish1v2 == 0 && sym ConMenuSoloSkirmish1v3 == 0 runnow sym set ConMenuSoloSkirmish1v1 1"
+set CommandPress "menuCmd ConMenuSoloSkirmishPress"
+set CommandGetFocus "if sym PlaySoloTip == none addUIAnim PlaySoloTipVersus mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlaySoloTip Versus"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuSoloSkirmishPW
+set RenderCB_Text ButtonSkirmish
+set CommandPress ">sym setZero ConMenuMapEditor ConMenuSoloSurvival ConMenuCoopSurvival ConMenuSoloSkirmish1v1 ConMenuSoloSkirmish1v3 ConMenuSoloSkirmish1v2 ConMenuSoloSkirmish2v2 ConMenuSoloSkirmish2v3"
+set CommandPress ">sym setOne ConMenuPlaySolo ConMenuSoloSkirmish ConMenuSoloSkirmish3v3"
+set CommandPress ">sym set DNA_GameSize 3v3"
+set CommandPress "menuCmd ConMenuLobbySetup"
+set CommandPress "addUIAnim CM_MasterTrainPW mas_MenuLeft"
+set Child "SubsectionLabelTemplate[LabelSubSoloSkirmish] 0 0 ButtonSkirmish"
+set Child "ConMenuSoloSkirmishPlayers 0 0"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuSoloSurvival
+set RenderCB_Text ButtonSurvival
+set CommandFocusUp "gameUI focusNameTry ConMenuSoloSkirmish"
+set CommandFocusDown "gameUI focusNameTry ConMenuPracticeChallenges"
+set CommandGetFocus "sym setZero ConMenuMapEditor ConMenuSoloSkirmish ConMenuPracticeChallenges ConMenuPracticeTutorial ConMenuPlayCoop ConMenuPlayPvP"
+set CommandGetFocus "sym setOne ConMenuSoloSurvival ConMenuPlaySolo"
+set CommandGetFocus "input set padFocusFallback ConMenuSoloSurvival"
+set CommandGetFocus "sym set CurrentMenu CSolo"
+set CommandPress "sym set DNA_Match Survival"
+set CommandPress "menuCmd ConMenuLobbySetup"
+set CommandGetFocus "if sym PlaySoloTip == none addUIAnim PlaySoloTipWarzone mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlaySoloTip Survival"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuSoloSurvivalPW
+set RenderCB_Text ButtonSurvival
+set CommandGetFocus "sym setZero ConMenuMapEditor ConMenuSoloSkirmish ConMenuPracticeChallenges ConMenuPracticeTutorial ConMenuPlayCoop ConMenuPlayPvP"
+set CommandGetFocus "sym setOne ConMenuSoloSurvival ConMenuPlaySolo"
+set CommandGetFocus "input set padFocusFallback ConMenuSoloSurvival"
+set CommandPress "sym set DNA_Match Survival"
+set CommandPress "menuCmd ConMenuLobbySetup"
+set CommandPress "addUIAnim CM_MasterTrainPW mas_MenuLeft"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMapEditor
+set RenderCB_Text Label_Editor
+set HiddenCheckBySymbolInv IsMapEditorAccessOk
+set HiddenCheckBySymbol EditorDisabled
+set CommandFocusUp "gameUI focusNameTry ConMenuPracticeTutorial"
+set CommandGetFocus "sym setZero ConMenuSoloSurvival ConMenuPracticeChallenges ConMenuPracticeTutorial ConMenuPlayCoop ConMenuPlayPvP"
+set CommandGetFocus "sym setOne ConMenuMapEditor ConMenuPlaySolo"
+set CommandGetFocus "input set padFocusFallback ConMenuMapEditor"
+set CommandGetFocus "sym set CurrentMenu CSolo"
+set CommandPress "menuCmd LaunchEditor"
+set CommandGetFocus "if sym PlaySoloTip == none addUIAnim PlaySoloTipEditor mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlaySoloTip Editor"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMultiCoop
+set RenderCB_Text ButtonCoop
+set CommandFocusDown "gameUI focusNameTry ConMenuMultiVersus"
+set CommandGetFocus "sym setZero ConMenuMultiVersus ConMenuPvPCustom"
+set CommandGetFocus "sym set ConMenuMultiCoop 1"
+set CommandGetFocus "input set padFocusFallback ConMenuMultiCoop"
+set CommandGetFocus "sym set CurrentMenu CCoop"
+set CommandPress "menuCmd ConMenuMultiCoopPress"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuCoopSkirmish
+set RenderCB_Text ButtonSkirmish
+set CommandPress ">gameui disableAll PlaySoloTipVersus"
+set CommandFocusDown "gameUI focusNameTry ConMenuCoopSurvival"
+set CommandGetFocus "sym setZero ConMenuCoopSurvival"
+set CommandGetFocus "sym set ConMenuCoopSkirmish 1"
+set CommandGetFocus "input set padFocusFallback ConMenuCoopSkirmish"
+set CommandGetFocus "sym set CurrentMenu CCoop"
+set CommandPress "menuCmd ConMenuCoopSkirmishPress"
+set Child "SubsectionLabelTemplate[LabelSubCoopSkirmish] 0 0 ButtonSkirmish"
+set Child "ConMenuMultiSkirmishPlayers 0 0"
+set CommandGetFocus "if sym PlaySoloTip == none addUIAnim PlaySoloTipVersus mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlaySoloTip Versus"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuCoopSurvival
+set RenderCB_Text ButtonSurvival
+set CommandPress ">gameui disableAll PlaySoloTipWarzone"
+set CommandFocusUp "gameUI focusNameTry ConMenuCoopSkirmish"
+set CommandGetFocus "sym setZero ConMenuCoopSkirmish"
+set CommandGetFocus "sym set ConMenuCoopSurvival 1"
+set CommandGetFocus "input set padFocusFallback ConMenuCoopSurvival"
+set CommandGetFocus "sym set CurrentMenu CCoop"
+set CommandPress "menuCmd ConMenuCoopSurvivalPress"
+set Child "SubsectionLabelTemplate[LabelSubCoopSurvival] 0 0 ButtonSurvival"
+set Child "ConMenuMultiSurvivalPlayers 0 0"
+set CommandGetFocus "if sym PlaySoloTip == none addUIAnim PlaySoloTipWarzone mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlaySoloTip Survival"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMultiCoop2v2
+set RenderCB_Text Button2v2
+set CommandFocusDown "gameUI focusNameTry ConMenuMultiCoop3v3"
+set CommandGetFocus "sym setZero ConMenuMultiCoop3v3 ConMenuMultiCoop2v3"
+set CommandGetFocus "sym set ConMenuMultiCoop2v2 1"
+set CommandGetFocus "input set padFocusFallback ConMenuMultiCoop2v2"
+set CommandGetFocus "sym set CurrentMenu CCoopSub"
+set CommandCancel "menuCmd ConMenuCoopSkirmishPressCancel"
+set CommandPress "sym set DNA_GameSize 2v2"
+set CommandPress "menuCmd ConMenuLobbySetup"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMultiCoop3v3
+set RenderCB_Text Button3v3
+set CommandFocusUp "gameUI focusNameTry ConMenuMultiCoop2v2"
+set CommandFocusDown "gameUI focusNameTry ConMenuMultiCoop2v3"
+set CommandGetFocus "sym setZero ConMenuMultiCoop2v3 ConMenuMultiCoop2v2"
+set CommandGetFocus "sym set ConMenuMultiCoop3v3 1"
+set CommandGetFocus "input set padFocusFallback ConMenuMultiCoop3v3"
+set CommandGetFocus "sym set CurrentMenu CCoopSub"
+set CommandCancel "menuCmd ConMenuCoopSkirmishPressCancel"
+set CommandPress "sym set DNA_GameSize 3v3"
+set CommandPress "menuCmd ConMenuLobbySetup"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMultiCoop2v3
+set RenderCB_Text Button2v3
+set CommandFocusUp "gameUI focusNameTry ConMenuMultiCoop3v3"
+set CommandGetFocus "sym setZero ConMenuMultiCoop3v3 ConMenuMultiCoop2v2"
+set CommandGetFocus "sym set ConMenuMultiCoop2v3 1"
+set CommandGetFocus "input set padFocusFallback ConMenuMultiCoop2v3"
+set CommandGetFocus "sym set CurrentMenu CCoopSub"
+set CommandCancel "menuCmd ConMenuCoopSkirmishPressCancel"
+set CommandPress "sym set DNA_GameSize 2v3"
+set CommandPress "menuCmd ConMenuLobbySetup"
+add MenuObject
+set Name ConMenuMultiCancel
+set CommandPress ">menuCmd @_Arg1_@"
+set CommandPress ">gameui enableAll PlaySoloTipVersus"
+set MouseInteract 1
+set Focus -2
+set RenderBlocked 1
+set StretchToFillScreen 1
+set SaveArgs 1
+add MenuObject
+set Name ConMenuMultiSafeZone
+set Coords "0 0 480 300"
+set MouseInteract 1
+set RenderBlocked 1
+add MenuObject
+set Name ConMenuMultiSkirmishPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "ConMenuMultiCancel[ConMenuCoopSkirmishPressCancel] 0 0 	ConMenuCoopSkirmishPressCancel"
+set Child "ConMenuMultiSafeZone -20 -20"
+set Child "ConMenuMultiCoop3v3 0 0"
+set Child "ConMenuMultiCoop2v2 0 0"
+set Child "ConMenuMultiCoop2v3 0 0"
+set Child "MultiPurposeLabelTemplate[LabelCoop3v3] 0 0 Button3v3	ConMenuMultiCoop3v3"
+set Child "MultiPurposeLabelTemplate[LabelCoop2v2] 0 0 Button2v2	ConMenuMultiCoop2v2"
+set Child "MultiPurposeLabelTemplate[LabelCoop2v3] 0 0 Button2v3	ConMenuMultiCoop2v3"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMultiSurvival2P
+set RenderCB_Text Button2P
+set CommandFocusDown "gameUI focusNameTry ConMenuMultiSurvival3P"
+set CommandGetFocus "sym setZero ConMenuMultiSurvival3P ConMenuMultiSurvival4P"
+set CommandGetFocus "sym set ConMenuMultiSurvival2P 1"
+set CommandGetFocus "input set padFocusFallback ConMenuMultiSurvival2P"
+set CommandGetFocus "sym set CurrentMenu CCoopSub"
+set CommandCancel "menuCmd ConMenuCoopSurvivalPressCancel"
+set CommandPress "sym set DNA_GameSize 2P"
+set CommandPress "menuCmd ConMenuLobbySetup"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMultiSurvival3P
+set RenderCB_Text Button3P
+set CommandFocusUp "gameUI focusNameTry ConMenuMultiSurvival2P"
+set CommandFocusDown "gameUI focusNameTry ConMenuMultiSurvival4P"
+set CommandGetFocus "sym setZero ConMenuMultiSurvival4P ConMenuMultiSurvival2P"
+set CommandGetFocus "sym set ConMenuMultiSurvival3P 1"
+set CommandGetFocus "input set padFocusFallback ConMenuMultiSurvival3P"
+set CommandGetFocus "sym set CurrentMenu CCoopSub"
+set CommandCancel "menuCmd ConMenuCoopSurvivalPressCancel"
+set CommandPress "sym set DNA_GameSize 3P"
+set CommandPress "menuCmd ConMenuLobbySetup"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMultiSurvival4P
+set RenderCB_Text Button4P
+set CommandFocusUp "gameUI focusNameTry ConMenuMultiSurvival3P"
+set CommandGetFocus "sym setZero ConMenuMultiSurvival3P ConMenuMultiSurvival2P"
+set CommandGetFocus "sym set ConMenuMultiSurvival4P 1"
+set CommandGetFocus "input set padFocusFallback ConMenuMultiSurvival4P"
+set CommandGetFocus "sym set CurrentMenu CCoopSub"
+set CommandCancel "menuCmd ConMenuCoopSurvivalPressCancel"
+set CommandPress "sym set DNA_GameSize 4P"
+set CommandPress "menuCmd ConMenuLobbySetup"
+add MenuObject
+set Name ConMenuMultiSurvivalPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "ConMenuMultiCancel[ConMenuCoopSurvivalPressCancel] 0 0 	ConMenuCoopSurvivalPressCancel"
+set Child "ConMenuMultiSafeZone -20 -20"
+set Child "ConMenuMultiSurvival2P 0 0"
+set Child "ConMenuMultiSurvival3P 0 0"
+set Child "ConMenuMultiSurvival4P 0 0"
+set Child "MultiPurposeLabelTemplate[LabelSurvival2P] 0 0 Button2P	ConMenuMultiSurvival2P"
+set Child "MultiPurposeLabelTemplate[LabelSurvival3P] 0 0 Button3P	ConMenuMultiSurvival3P"
+set Child "MultiPurposeLabelTemplate[LabelSurvival4P] 0 0 Button4P	ConMenuMultiSurvival4P"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuMultiVersus
+set RenderCB_Text ButtonVersus
+set CommandFocusDown "gameUI focusNameTry ConMenuPvPCustom"
+set CommandFocusUp "gameUI focusNameTry ConMenuMultiCoop"
+set CommandGetFocus "sym setZero ConMenuMultiCoop ConMenuPvPCustom"
+set CommandGetFocus "sym set ConMenuMultiVersus 1"
+set CommandGetFocus "input set padFocusFallback ConMenuMultiVersus"
+set CommandGetFocus "if sym CurrentMenu != _SetupTransition_ runnow sym set CurrentMenu CMulti"
+set CommandPress "menuCmd ConMenuMultiVersusPress"
+set Child "SubsectionLabelTemplate[LabelSubVersus] 0 0 ButtonVersus"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPvPUnranked
+set RenderCB_Text ButtonUnranked
+set CommandFocusDown "gameUI focusNameTry ConMenuPvPRanked"
+set CommandGetFocus "sym setZero ConMenuPvPRanked ConMenuPvPCustom ConMenuPvPUltimate"
+set CommandGetFocus "sym set ConMenuPvPUnranked 1"
+set CommandGetFocus "input set padFocusFallback ConMenuPvPUnranked"
+set CommandGetFocus "sym set CurrentMenu CPvP"
+set CommandPress "menuCmd ConMenuPvPUnrankedPress"
+set Child "SubsectionLabelTemplate[LabelSubPvPUnranked] 0 0 ButtonUnranked"
+set Child "ConMenuPvPUnrankedPlayers 0 0"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPlayersButtonTemplate
+set RenderCB_Text @_Arg7_@
+set CommandFocusUp ">gameUI focusNameTry @_Arg3_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg4_@"
+set CommandGetFocus ">sym setZero @_Arg8_@ @_Arg9_@ @_Arg10_@ @_Arg11_@ @_Arg12_@"
+set CommandGetFocus ">sym set @_Arg2_@ 1"
+set CommandGetFocus ">input set padFocusFallback @_Arg2_@"
+set CommandGetFocus ">sym set CurrentMenu @_Arg5_@"
+set CommandCancel ">menuCmd @_Arg6_@"
+set CommandPress ">sym set DNA_GameSize @_Arg1_@"
+set CommandPress "menuCmd ConMenuLobbySetup"
+set SaveArgs 12
+add MenuObject
+set Name ConMenuPvPUnrankedPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "ConMenuMultiCancel[ConMenuPvPUnrankedPressCancel] 0 0 	ConMenuPvPUnrankedPressCancel"
+set Child "ConMenuMultiSafeZone -20 -20"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPUnranked1v1] 0 0	1v1 ConMenuPvPUnranked1v1	null ConMenuPvPUnranked2v2	CPvPSub	ConMenuPvPUnrankedPressCancel Button1v1 ConMenuPvPUnranked2v2 ConMenuPvPUnranked3v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPUnranked2v2] 0 0	2v2 ConMenuPvPUnranked2v2	ConMenuPvPUnranked1v1 ConMenuPvPUnranked3v3	CPvPSub	ConMenuPvPUnrankedPressCancel Button2v2 ConMenuPvPUnranked1v1 ConMenuPvPUnranked3v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPUnranked3v3] 0 0	3v3 ConMenuPvPUnranked3v3	ConMenuPvPUnranked2v2 null	CPvPSub	ConMenuPvPUnrankedPressCancel Button3v3 ConMenuPvPUnranked2v2 ConMenuPvPUnranked1v1"
+set Child "MultiPurposeLabelTemplate[LabelPvPUnranked1v1] 0 0 Button1v1	ConMenuPvPUnranked1v1"
+set Child "MultiPurposeLabelTemplate[LabelPvPUnranked2v2] 0 0 Button2v2	ConMenuPvPUnranked2v2"
+set Child "MultiPurposeLabelTemplate[LabelPvPUnranked3v3] 0 0 Button3v3	ConMenuPvPUnranked3v3"
+add MenuObject
+set Name ConMenuPvPUltimatePlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "ConMenuMultiCancel[ConMenuPvPUltimatePressCancel] 0 0 	ConMenuPvPUltimatePressCancel"
+set Child "ConMenuMultiSafeZone -20 -20"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPUltimate1v1] 0 0	1v1 ConMenuPvPUltimate1v1	null ConMenuPvPUltimate2v2	CPvPSub	ConMenuPvPUltimatePressCancel Button1v1 ConMenuPvPUltimate2v2 ConMenuPvPUltimate3v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPUltimate2v2] 0 0	2v2 ConMenuPvPUltimate2v2	ConMenuPvPUltimate1v1 ConMenuPvPUltimate3v3	CPvPSub	ConMenuPvPUltimatePressCancel Button2v2 ConMenuPvPUltimate1v1 ConMenuPvPUltimate3v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPUltimate3v3] 0 0	3v3 ConMenuPvPUltimate3v3	ConMenuPvPUltimate2v2 null	CPvPSub	ConMenuPvPUltimatePressCancel Button3v3 ConMenuPvPUltimate2v2 ConMenuPvPUltimate1v1"
+set Child "MultiPurposeLabelTemplate[LabelPvPUltimate1v1] 0 0 Button1v1	ConMenuPvPUltimate1v1"
+set Child "MultiPurposeLabelTemplate[LabelPvPUltimate2v2] 0 0 Button2v2	ConMenuPvPUltimate2v2"
+set Child "MultiPurposeLabelTemplate[LabelPvPUltimate3v3] 0 0 Button3v3	ConMenuPvPUltimate3v3"
+add MenuObject
+set Name ConMenuPvPCustomPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "ConMenuMultiCancel[PvPCustomCancelCatch] 0 0 	ConMenuPvPCustomPressCancel"
+set Child "ConMenuMultiSafeZone -20 -20"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPCustom1v1] 0 0	1v1 ConMenuPvPCustom1v1	null ConMenuPvPCustom2v2	CPvPSub	ConMenuPvPCustomPressCancel Button1v1 ConMenuPvPCustom2v2 ConMenuPvPCustom3v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPCustom2v2] 0 0	2v2 ConMenuPvPCustom2v2	ConMenuPvPCustom1v1 ConMenuPvPCustom3v3	CPvPSub	ConMenuPvPCustomPressCancel Button2v2 ConMenuPvPCustom1v1 ConMenuPvPCustom3v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPCustom3v3] 0 0	3v3 ConMenuPvPCustom3v3	ConMenuPvPCustom2v2 ConMenuPvPCustom2v3	CPvPSub	ConMenuPvPCustomPressCancel Button3v3 ConMenuPvPCustom2v2 ConMenuPvPCustom1v1"
+set Child "MultiPurposeLabelTemplate[LabelPvPCustom1v1] 0 0 Button1v1	ConMenuPvPCustom1v1"
+set Child "MultiPurposeLabelTemplate[LabelPvPCustom2v2] 0 0 Button2v2	ConMenuPvPCustom2v2"
+set Child "MultiPurposeLabelTemplate[LabelPvPCustom3v3] 0 0 Button3v3	ConMenuPvPCustom3v3"
+add MenuObject
+set Name ConMenuSoloSkirmishPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "ConMenuMultiCancel[SoloCancelCatch] 0 0 	ConMenuSoloSkirmishPressCancel"
+set Child "ConMenuMultiSafeZone -20 -20"
+set Child "ConMenuPlayersButtonTemplate[ConMenuSoloSkirmish1v1] 0 0	1v1 ConMenuSoloSkirmish1v1	null ConMenuSoloSkirmish2v2	CSoloSub	ConMenuSoloSkirmishPressCancel Button1v1 ConMenuSoloSkirmish2v2 ConMenuSoloSkirmish3v3 ConMenuSoloSkirmish1v3 ConMenuSoloSkirmish1v2 ConMenuSoloSkirmish2v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuSoloSkirmish2v2] 0 0	2v2 ConMenuSoloSkirmish2v2	ConMenuSoloSkirmish1v1 ConMenuSoloSkirmish3v3	CSoloSub	ConMenuSoloSkirmishPressCancel Button2v2 ConMenuSoloSkirmish1v1 ConMenuSoloSkirmish1v3 ConMenuSoloSkirmish3v3 ConMenuSoloSkirmish1v2 ConMenuSoloSkirmish2v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuSoloSkirmish3v3] 0 0	3v3 ConMenuSoloSkirmish3v3	ConMenuSoloSkirmish2v2 ConMenuSoloSkirmish2v3	CSoloSub	ConMenuSoloSkirmishPressCancel Button3v3 ConMenuSoloSkirmish2v2 ConMenuSoloSkirmish1v1 ConMenuSoloSkirmish1v3 ConMenuSoloSkirmish1v2 ConMenuSoloSkirmish2v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuSoloSkirmish2v3] 0 0	2v3 ConMenuSoloSkirmish2v3	ConMenuSoloSkirmish3v3 ConMenuSoloSkirmish1v2	CSoloSub	ConMenuSoloSkirmishPressCancel Button2v3 ConMenuSoloSkirmish2v2 ConMenuSoloSkirmish1v1 ConMenuSoloSkirmish3v3 ConMenuSoloSkirmish1v2 ConMenuSoloSkirmish1v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuSoloSkirmish1v2] 0 0	1v2 ConMenuSoloSkirmish1v2	ConMenuSoloSkirmish2v3 ConMenuSoloSkirmish1v3	CSoloSub	ConMenuSoloSkirmishPressCancel Button1v2 ConMenuSoloSkirmish2v2 ConMenuSoloSkirmish1v3 ConMenuSoloSkirmish3v3 ConMenuSoloSkirmish1v1 ConMenuSoloSkirmish2v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuSoloSkirmish1v3] 0 0	1v3 ConMenuSoloSkirmish1v3	ConMenuSoloSkirmish1v2 null	CSoloSub	ConMenuSoloSkirmishPressCancel Button1v3 ConMenuSoloSkirmish1v1 ConMenuSoloSkirmish2v2 ConMenuSoloSkirmish3v3 ConMenuSoloSkirmish1v2 ConMenuSoloSkirmish2v3"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish1v1] 0 0 Button1v1	ConMenuSoloSkirmish1v1"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish2v2] 0 0 Button2v2	ConMenuSoloSkirmish2v2"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish3v3] 0 0 Button3v3	ConMenuSoloSkirmish3v3"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish2v3] 0 0 Button2v3	ConMenuSoloSkirmish2v3"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish1v2] 0 0 Button1v2	ConMenuSoloSkirmish1v2"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish1v3] 0 0 Button1v3	ConMenuSoloSkirmish1v3"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPvPRanked
+set RenderCB_Text ButtonRanked
+set CommandFocusUp "gameUI focusNameTry ConMenuPvPUnranked"
+set CommandFocusDown "gameUI focusNameTry ConMenuPvPCustom"
+set CommandGetFocus "sym setZero ConMenuPvPUnranked ConMenuPvPUltimate ConMenuPvPCustom"
+set CommandGetFocus "sym set ConMenuPvPRanked 1"
+set CommandGetFocus "input set padFocusFallback ConMenuPvPRanked"
+set CommandGetFocus "sym set CurrentMenu CPvP"
+set CommandPress "menuCmd ConMenuPvPRankedPress"
+set Child "SubsectionLabelTemplate[LabelSubPvPRanked] 0 0 ButtonRanked"
+set Child "ConMenuPvPRankedPlayers 0 0"
+add MenuObject
+set Name ConMenuPvPRankedPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "ConMenuMultiCancel[ConMenuPvPRankedPressCancel] 0 0 	ConMenuPvPRankedPressCancel"
+set Child "ConMenuMultiSafeZone -20 -20"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPRanked1v1] 0 0	1v1 ConMenuPvPRanked1v1	null ConMenuPvPRanked2v2	CPvPSub	ConMenuPvPRankedPressCancel Button1v1 ConMenuPvPRanked2v2 ConMenuPvPRanked3v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPRanked2v2] 0 0	2v2 ConMenuPvPRanked2v2	ConMenuPvPRanked1v1 ConMenuPvPRanked3v3	CPvPSub	ConMenuPvPRankedPressCancel Button2v2 ConMenuPvPRanked1v1 ConMenuPvPRanked3v3"
+set Child "ConMenuPlayersButtonTemplate[ConMenuPvPRanked3v3] 0 0	3v3 ConMenuPvPRanked3v3	ConMenuPvPRanked2v2 null	CPvPSub	ConMenuPvPRankedPressCancel Button3v3 ConMenuPvPRanked2v2 ConMenuPvPRanked1v1"
+set Child "MultiPurposeLabelTemplate[LabelPvPRanked1v1] 0 0 Button1v1	ConMenuPvPRanked1v1"
+set Child "MultiPurposeLabelTemplate[LabelPvPRanked2v2] 0 0 Button2v2	ConMenuPvPRanked2v2"
+set Child "MultiPurposeLabelTemplate[LabelPvPRanked3v3] 0 0 Button3v3	ConMenuPvPRanked3v3"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPvPUltimate
+set RenderCB_Text ButtonUltimate
+set CommandFocusUp "gameUI focusNameTry ConMenuPvPCustom"
+set CommandGetFocus "sym setZero ConMenuPvPUnranked ConMenuPvPRanked ConMenuPvPCustom"
+set CommandGetFocus "sym set ConMenuPvPUltimate 1"
+set CommandGetFocus "input set padFocusFallback ConMenuPvPUltimate"
+set CommandGetFocus "sym set CurrentMenu CPvP"
+set CommandPress "menuCmd ConMenuPvPUltimatePress"
+set Child "SubsectionLabelTemplate[LabelSubPvPUltimate] 0 0 ButtonUltimate"
+set Child "ConMenuPvPUltimatePlayers 0 0"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPvPCustom
+set RenderCB_Text ButtonCustom
+set CommandFocusUp "gameUI focusNameTry ConMenuPvPRanked"
+set CommandFocusDown "gameUI focusNameTry ConMenuPvPUltimate"
+set CommandGetFocus "sym setZero ConMenuPvPRanked ConMenuPvPUnranked ConMenuPvPUltimate"
+set CommandGetFocus "sym set ConMenuPvPCustom 1"
+set CommandGetFocus "input set padFocusFallback ConMenuPvPCustom"
+set CommandGetFocus "if sym CurrentMenu != _SetupTransition_ runnow sym set CurrentMenu CPvP"
+set CommandPress "menuCmd ConMenuPvPCustomPress"
+set Child "SubsectionLabelTemplate[LabelSubPvPCustom] 0 0 ButtonCustom"
+set Child "ConMenuPvPCustomPlayers 0 0"
+add MenuObject
+set Name ConMenuLobbyStart
+set Texture menus/DialogFrames
+set Coords "0 258 512 73"
+set CoordsFocused "0 331 512 73"
+set CoordsPressed "-2 329 514 75"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 1.0
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set Focus -2
+set RenderCB_Flags "/nmi /shadowed"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB_Text ConMenuLobbyStart
+set CommandGetFocus "sym set ConMenuLobbyStart 1"
+set CommandGetFocus "input set padFocusFallback ConLobbyPlayerAirMechIcon0"
+set CommandGetFocus "sym set CurrentMenu CLobby"
+set CommandPress "gameui ignoreInputTime 0.3"
+set CommandPress "if sym MM_QueueEnabled == 1 && sym MM_PartyMembers > 1 menuCmd ConMenuLobbyQueue"
+set CommandPress "if sym MM_QueueEnabled == 1 && sym MM_PartyMembers == 1 menuCmd ConMenuLobbyQueueConfirmed"
+set CommandPress "if sym MM_QueueEnabled == 1 && sym MM_PartyMembers == 1 party focusChat"
+set CommandPress "if sym MM_ReadyEnabled == 1 runnow party2 lockin"
+set CommandPress "if sym _Bind_SoloLoadout_ == 1 menuCmd ConMenuPlaySoloPressStart"
+set CommandCancel "gameui focusnametry ConLobbyPlayerAirMechIcon0"
+set HiddenCheckBySymbol InputPad
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPracticeChallenges
+set RenderCB_Text ButtonChallenges
+set CommandFocusUp "gameUI focusNameTry ConMenuSoloSurvival"
+set CommandFocusDown "gameUI focusNameTry ConMenuPracticeTutorial"
+set CommandGetFocus "sym setZero ConMenuMapEditor ConMenuPracticeTutorial ConMenuSoloSkirmish ConMenuSoloSurvival ConMenuPlayCoop ConMenuPlayPvP"
+set CommandGetFocus "sym setOne ConMenuPracticeChallenges ConMenuPlaySolo"
+set CommandGetFocus "input set padFocusFallback ConMenuPracticeChallenges"
+set CommandGetFocus "sym set CurrentMenu CSolo"
+set CommandPress "menuCmd ConMenuPlayTrainingPress"
+set CommandGetFocus "if sym PlaySoloTip == none addUIAnim PlaySoloTipChallenges mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlaySoloTip Challenges"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPracticeTutorial
+set RenderCB_Text ButtonTutorial
+set CommandFocusUp "gameUI focusNameTry ConMenuPracticeChallenges"
+set CommandFocusDown "gameUI focusNameTry ConMenuMapEditor"
+set CommandGetFocus "sym setZero ConMenuMapEditor ConMenuPracticeChallenges ConMenuSoloSkirmish ConMenuSoloSurvival ConMenuPlayCoop ConMenuPlayPvP"
+set CommandGetFocus "sym setOne ConMenuPracticeTutorial ConMenuPlaySolo"
+set CommandGetFocus "input set padFocusFallback ConMenuPracticeTutorial"
+set CommandGetFocus "sym set CurrentMenu CSolo"
+set CommandPress "sym set DNA_Match Tutorial"
+set CommandPress "menuCmd MF_TutorialStart"
+set CommandGetFocus "if sym PlaySoloTip == none addUIAnim PlaySoloTipTutorial mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlaySoloTip Tutorial"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPracticeChallengesPW
+set RenderCB_Text ButtonChallenges
+set CommandPress "menuCmd ConMenuPlayTrainingPressPW"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPracticeTutorialPW
+set RenderCB_Text ButtonTutorial
+set CommandPress "sym set DNA_Match Tutorial"
+set CommandPress "menuCmd MF_TutorialStart"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConMenuPlayIntro
+set RenderCB_Text ButtonIntro
+set CommandFocusUp "gameUI focusNameTry ConMenuPlayTutorial"
+set CommandGetFocus "sym setZero ConMenuPlaySolo ConMenuPlayMultiplayer ConMenuPlayTraining ConMenuPlayCoop ConMenuPlayTutorial"
+set CommandGetFocus "sym set ConMenuPlayIntro 1"
+set CommandGetFocus "input set padFocusFallback ConMenuPlayIntro"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandPress "menuCmd TutorialStage1"
+add MenuObject
+set Name PlayMenuV1Template
+set Texture menus/@MainMenuSkin@
+set Coords "3 132 211 53"
+set CoordsFocused "216 132 211 53"
+set CoordsPressed "216 130 211 55"
+set MouseInteract 1
+set Disabled 1
+set Focus -2
+set DrawWhenFocused MainBarButtonUnderline
+set DrawWhenFocusedOffset "4 48"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text DialogButtonBack
+set RenderCB_RGBColor "0.83 0.91 0.94"
+set RenderCB_RGBColorFocused "0.1"
+set RenderCB_Flags "/nmi /allCaps /shadowColor2 /fitX"
+set RenderCB_FontScale 0.55
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_RGBColor "0.63 0.71 0.74"
+set RenderCB_RGBColorFocused "0.80 0.84 0.85"
+set RenderCB_Flags "/nmi /allCaps /fitX"
+set RenderCB_FontScale 0.7
+set RenderCB_DX 215
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "0 0"
+set RenderCB_OffsetPressed "0 3"
+set CommandGetFocus "sym set LobbyV1FocusSlot -1"
+set DisabledAlphaTimeIn 0.25
+set DisabledAlphaTimeOut 0.25
+set CommandPress "gameUI ignoreInputTime 0.2"
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandGetFocus "sym set EventMessageFocus 0"
+set HiddenCheckBySymbol InputPad
+add MenuObject initFrom PlayMenuV1Template
+set Name PlayMenuV1Back
+set CommandPress "if sym CurrentMenu == CLobby menuCmd ConMenuLobbyCancel"
+add MenuObject initFrom PlayMenuV1Template
+set Name BackgroundLobbyBackButton
+set CommandPress "gameui directPushNameIfEnabled MainBarButtonInLobbyButton"
+set HiddenCheckBySymbolInv LobbyState
+set HiddenCheckBySymbolValue CurrentMenu=CLobby
+set Disabled 0
+add MenuObject initFrom PlayMenuV1Template
+set Name PlayMenuBackButton
+set HiddenCheckBySymbolInv InPlayMenus
+set CommandPress ">gameui enableAll PlaySoloTipVersus PlaySoloTipWarzone"
+set CommandPress "if sym CurrentMenu == CPvP && sym CustomGameOptionsBrowse == 0 menuCmd ConMenuPlayPvPCancel"
+set CommandPress "if sym CurrentMenu == CPvP && sym CustomGameOptionsBrowse == 1  menuCmd PvPButtonCustomCancel"
+set CommandPress "if sym CurrentMenu == CPvPSub && sym ConMenuPvPUnranked == 1 menuCmd ConMenuPvPUnrankedPressCancel"
+set CommandPress "if sym CurrentMenu == CPvPSub && sym ConMenuPvPRanked == 1 menuCmd ConMenuPvPRankedPressCancel"
+set CommandPress "if sym CurrentMenu == CPvPSub && sym ConMenuPvPCustom == 1 menuCmd ConMenuPvPCustomPressCancel"
+set CommandPress "if sym CurrentMenu == CPvPSub && sym ConMenuPvPUltimate == 1 menuCmd ConMenuPvPUltimatePressCancel"
+set CommandPress "if sym CurrentMenu == CCoop menuCmd ConMenuPlayCoopCancel"
+set CommandPress "if sym CurrentMenu == CCoopSub && sym ConMenuCoopSkirmish == 1 menuCmd ConMenuCoopSkirmishPressCancel"
+set CommandPress "if sym CurrentMenu == CCoopSub && sym ConMenuCoopSurvival == 1  menuCmd ConMenuCoopSurvivalPressCancel"
+set CommandPress "if sym CurrentMenu == CSolo menuCmd ConMenuPlaySoloPressCancel"
+set CommandPress "if sym CurrentMenu == CSoloSub menuCmd ConMenuSoloSkirmishPressCancel"
+set CommandPress "if sym CurrentMenu == CPlay menuCmd MainMenuExitPlay"
+set CommandPress "if sym CurrentMenu == CLobby menuCmd ConMenuLobbyCancel"
+set CommandPress "if sym CurrentMenu == CTraining if sym ArcCustomized == 0 menuCmd ConMenuPlayTrainingCancel"
+set CommandPress "if sym CurrentMenu == CTraining if sym ArcCustomized == 1 menuCmd ConMenuPlayTrainingCancelPW"
+set CommandPress "if sym CurrentMenu == CTrain if sym ArcCustomized == 1 menuCmd ConMenuPlayTrainingCancelPW"
+set Disabled 0
+add MenuObject
+set Name PlayMenuV1Shop
+set Texture menus/Buttons
+set Coords "2 83 374 82"
+set CoordsFocused "1 166 374 82"
+set CoordsPressed "3 164 374 82"
+set MouseInteract 1
+set Focus -2
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "sym set LobbyV1FocusSlot -1"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_Text MB_Shop
+set RenderCB_RGBColor "0.83 0.91 0.94"
+set RenderCB_RGBColorFocused "0.1"
+set RenderCB_Flags "/nmi /allCaps /shadowColor2 /fitX"
+set RenderCB_FontScale 0.55
+set RenderCB_DX 320
+set RenderCB_DY 72
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "1 -1"
+set RenderCB_OffsetPressed "-1 1"
+set ScaleX 1.0
+set DisabledAlphaTimeIn 0.25
+set DisabledAlphaTimeOut 0.25
+set CommandPress "gameUI ignoreInputTime 0.2"
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandGetFocus "sym set EventMessageFocus 0"
+set CommandPress "if !menuloaded ConShop && sym DisableConShop == 0 loadmenu ConShop /fadein 0.15"
+set HiddenCheckBySymbol MM_Coordinate
+set HiddenCheckBySymbol2 InputPad
+add MenuObject
+set Name CM_PlayButtonsMaster
+set ContainerOnly 1
+set Child "PlayActiveBack[PlayActiveMove] -13 -500 Move"
+set Child "PlayV1Solo 0 0"
+set Child "PlayV1Coop 450 0"
+set Child "PlayV1PvP 900 0"
+set Child "PlayV1NoGSS 430 -17"
+add MenuObject
+set Name CM_PlayButtonsMasterPW
+set ContainerOnly 1
+set Child "PlayActiveBack[PlayActiveMove] -13 -500 Move"
+set Child "PlayV1SoloPW[PlayV1Solo] 130 100"
+set Child "PlayV1CoopPW[PlayV1Coop] 900 100"
+set Child "PlayV1PvP 450 0"
+set Child "Start3v3Button 530 750"
+set Child "PlayV1NoGSS 430 -17"
+add MenuObject
+set Name CM_TrainButtonsMasterPW
+set ContainerOnly 1
+set Child "ConMenuSoloSkirmishPW 0 0"
+set Child "MultiPurposeLabelTemplate 0 0 ButtonSkirmish	ConMenuSoloSkirmishPW"
+set Child "ConMenuSoloSurvivalPW 0 90"
+set Child "MultiPurposeLabelTemplate 0 90 ButtonSurvival	ConMenuSoloSurvivalPW"
+set Child "ConMenuPracticeChallengesPW 0 180"
+set Child "MultiPurposeLabelTemplate 0 180 ButtonChallenges	ConMenuPracticeChallengesPW"
+add MenuObject
+set Name CM_SoloButtonsMaster
+set ContainerOnly 1
+set Child "ConMenuSoloSkirmish 0 0"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish] 0 0 ButtonSkirmish	ConMenuSoloSkirmish"
+set Child "ConMenuSoloSurvival 0 90"
+set Child "MultiPurposeLabelTemplate[LabelSoloSurvival] 0 90 ButtonSurvival	ConMenuSoloSurvival"
+set Child "ConMenuPracticeChallenges 0 180"
+set Child "MultiPurposeLabelTemplate 0 180 ButtonChallenges	ConMenuPracticeChallenges"
+set Child "ConMenuPracticeTutorial 0 270"
+set Child "MultiPurposeLabelTemplate 0 270 ButtonTutorial	ConMenuPracticeTutorial"
+set Child "ConMenuMapEditor 0 360	/platform pc /platform !consolePlatform"
+set Child "MultiPurposeLabelTemplate 0 360 Label_Editor ConMenuMapEditor	/platform pc /platform !consolePlatform"
+set Child "PlaySoloTipVersus 450 -120				/ifSym ArcCustomized == 0"
+set Child "PlaySoloTipWarzone 450 -30				/ifSym ArcCustomized == 0"
+set Child "PlaySoloTipChallenges 450 60				/ifSym ArcCustomized == 0"
+set Child "PlaySoloTipTutorial 450 150				/ifSym ArcCustomized == 0"
+set Child "PlaySoloTipEditor 450 240				/ifSym ArcCustomized == 0"
+add MenuObject
+set Name CM_MultiButtonsMaster
+set ContainerOnly 1
+set Child "ConMenuMultiCoop 0 0"
+set Child "SubsectionLabelTemplate[LabelSubCoop] 0 0 ButtonCoop"
+set Child "MultiPurposeLabelTemplate[LabelCoop] 0 0 ButtonCoop	ConMenuMultiCoop"
+set Child "ConMenuMultiVersus 0 90"
+set Child "SubsectionLabelTemplate[LabelSubVersus] 0 0 ButtonVersus"
+set Child "MultiPurposeLabelTemplate[LabelVersus] 0 90 ButtonVersus	ConMenuMultiVersus"
+set Child "ConMenuPvPCustom 0 180"
+set Child "SubsectionLabelTemplate[LabelSubCustom] 0 0 ButtonCustom"
+set Child "MultiPurposeLabelTemplate[LabelCustom] 0 180 ButtonCustom	ConMenuPvPCustom"
+add MenuObject
+set Name CM_CoopButtonsMaster
+set ContainerOnly 1
+set Child "ConMenuMultiSafeZone -20 -20"
+set Child "ConMenuCoopSurvival 0 90"
+set Child "ConMenuCoopSkirmish 0 0"
+set Child "PlaySoloTipVersus 450 -120				/ifSym ArcCustomized == 0"
+set Child "PlaySoloTipWarzone 450 -30				/ifSym ArcCustomized == 0"
+set Child "MultiPurposeLabelTemplate[LabelCoopSurvival] 0 90 ButtonSurvival	ConMenuCoopSurvival"
+set Child "MultiPurposeLabelTemplate[LabelCoopSkirmish] 0 0 ButtonSkirmish	ConMenuCoopSkirmish"
+add MenuObject
+set Name CM_MultiVersusButtonsMaster
+set ContainerOnly 1
+set Hidden 1
+set Child "ConMenuMultiCancel[ConMenuMultiVersusPressCancel] 0 0 	ConMenuMultiVersusPressCancel"
+set Child "ConMenuMultiSafeZone -20 -20"
+set Child "ConMenuPvPUnranked 0 0"
+set Child "ConMenuPvPRanked 0 0"
+set Child "MultiPurposeLabelTemplate[LabelPvPxUnranked] 0 0 ButtonUnranked	ConMenuPvPUnranked"
+set Child "MultiPurposeLabelTemplate[LabelPvPxRanked] 0 0 ButtonRanked	ConMenuPvPRanked"
+add MenuObject
+set Name PvPButtonsText
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Coords "0 0 300 35"
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_RGBColor 	@_Arg2_@
+set RenderCB_Flags "/nmi /fitX /allCaps"
+set RenderCB_FontScale 1.0
+set RenderCB_Font Roboto
+set RenderCB_Offset "45 215"
+set RenderCB_OffsetFocused "42 218"
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set FocusedTimeIn 0.0
+set FocusedTimeOut 0.1
+set DisplayAsFocusedIfParentFocused 1
+set ScaleYCenter -20.0
+add MenuObject initFrom PvPButtonsText
+set Name PvPButtonCustomTag
+set RenderCB_Text ""
+set Coords "0 0 600 35"
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject
+set Name PvPButtonsTextBig
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Coords "0 0 500 35"
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_RGBColor 	0xf8a4c3
+set RenderCB_RGBColorFocused 	@_Arg2_@
+set RenderCB_Flags "/nmi /fitX /allCaps /shadowColor2 /outlined8x"
+set RenderCB_FontScale 1.0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "-4 2"
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set FocusedTimeIn 0.0
+set FocusedTimeOut 0.1
+set DisplayAsFocusedIfParentFocused 1
+set ScaleYCenter -20.0
+add MenuObject
+set Name PvPButtonsTemplate
+set Texture menus/PlayPvP
+set Coords "0 0 486 298"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "26 26 -26 -26"
+set DrawWhenFocused FocusConPlayPvPSmall
+set DrawWhenFocusedOffset "14 16 0"
+set ScaleXFocused 1.03, ScaleYFocused 1.03
+set FocusedTimeIn 0.0
+set FocusedTimeOut 0.1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandCancel "menucmd ConMenuPvPUnrankedPressCancel"
+add MenuObject initFrom PvPButtonsTemplate
+set Name PvPButtonUnranked1v1
+set Child "PvPButtonsText 0 0 ButtonUnranked 0x86b9bb"
+set CommandGetFocus "sym setZero ConMenuPvPRanked ConMenuPvPCustom"
+set CommandGetFocus "sym setOne ConMenuPvPUnranked"
+set MouseInteractZoneExpand "6 26 -26 -26"
+set CommandFocusLeft "gameui focusNameTry PvPButtonUnranked2v2"
+set CommandFocusDown "gameui focusNameTry PvPButtonRanked1v1"
+set CommandGetFocus "input set padFocusFallback PvPButtonUnranked1v1"
+set CommandGetFocus "sym setZero ConMenuPvPUnranked2v2 ConMenuPvPUnranked3v3"
+set CommandGetFocus "sym set ConMenuPvPUnranked1v1 1"
+set CommandPress "sym set DNA_GameSize 1v1"
+set CommandPress "menuCmd ConMenuLobbySetup"
+set CommandGetFocus "if sym PlayPvPTip == none addUIAnim PlayPvPTipUnranked mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlayPvPTip Unranked"
+set CommandGetFocus "sym set CustomGameOptionsBrowse 0"
+add MenuObject initFrom PvPButtonsTemplate
+set Name PvPButtonUnranked2v2
+set Coords "504 0 486 298"
+set MouseInteractZoneExpand "26 26 -6 -26"
+set Child "PvPButtonsText 0 0 ButtonUnranked 0x86b9bb"
+set CommandGetFocus "sym setZero ConMenuPvPRanked ConMenuPvPCustom"
+set CommandGetFocus "sym setOne ConMenuPvPUnranked"
+set CommandFocusRight "gameui focusNameTry PvPButtonUnranked1v1"
+set CommandFocusDown "gameui focusNameTry PvPButtonRanked2v2"
+set CommandGetFocus "input set padFocusFallback PvPButtonUnranked2v2"
+set CommandGetFocus "sym setZero ConMenuPvPUnranked1v1 ConMenuPvPUnranked3v3"
+set CommandGetFocus "sym set ConMenuPvPUnranked2v2 1"
+set CommandPress "sym set DNA_GameSize 2v2"
+set CommandPress "menuCmd ConMenuLobbySetup"
+set CommandGetFocus "if sym PlayPvPTip == none addUIAnim PlayPvPTipUnranked mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlayPvPTip Unranked"
+set CommandGetFocus "sym set CustomGameOptionsBrowse 0"
+add MenuObject initFrom PvPButtonsTemplate
+set Name PvPButtonRanked1v1
+set Coords "0 298 486 298"
+set MouseInteractZoneExpand "6 26 -26 -26"
+set Child "PvPButtonsText 0 0 ButtonRanked 0xe29234"
+set CommandGetFocus "sym setZero ConMenuPvPUnranked ConMenuPvPCustom"
+set CommandGetFocus "sym setOne ConMenuPvPRanked"
+set CommandFocusLeft "gameui focusNameTry PvPButtonRanked2v2"
+set CommandFocusUp "gameui focusNameTry PvPButtonUnranked1v1"
+set CommandFocusDown "gameui focusNameTry PvPButtonCustom"
+set CommandGetFocus "input set padFocusFallback PvPButtonRanked1v1"
+set CommandGetFocus "sym setZero ConMenuPvPRanked2v2 ConMenuPvPRanked3v3"
+set CommandGetFocus "sym set ConMenuPvPRanked1v1 1"
+set CommandPress "sym set DNA_GameSize 1v1"
+set CommandPress "menuCmd ConMenuLobbySetup"
+set CommandGetFocus "if sym PlayPvPTip == none addUIAnim PlayPvPTipRanked mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlayPvPTip Ranked"
+set CommandGetFocus "sym set CustomGameOptionsBrowse 0"
+add MenuObject initFrom PvPButtonsTemplate
+set Name PvPButtonRanked2v2
+set Coords "504 298 486 298"
+set MouseInteractZoneExpand "26 26 -6 -26"
+set Child "PvPButtonsText 0 0 ButtonRanked 0xe29234"
+set CommandGetFocus "sym setZero ConMenuPvPUnranked ConMenuPvPCustom"
+set CommandGetFocus "sym setOne ConMenuPvPRanked"
+set CommandFocusRight "gameui focusNameTry PvPButtonRanked1v1"
+set CommandFocusUp "gameui focusNameTry PvPButtonUnranked2v2"
+set CommandFocusDown "gameui focusNameTry PvPButtonCustom"
+set CommandGetFocus "input set padFocusFallback PvPButtonRanked2v2"
+set CommandGetFocus "sym setZero ConMenuPvPRanked1v1 ConMenuPvPRanked3v3"
+set CommandGetFocus "sym set ConMenuPvPRanked2v2 1"
+set CommandPress "sym set DNA_GameSize 2v2"
+set CommandPress "menuCmd ConMenuLobbySetup"
+set CommandGetFocus "if sym PlayPvPTip == none addUIAnim PlayPvPTipRanked mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlayPvPTip Ranked"
+set CommandGetFocus "sym set CustomGameOptionsBrowse 0"
+add MenuObject
+set Name PvPButtonCustomCancel
+set Coords "855 436 91 44"
+set CoordsFocused "855 392 91 44"
+set Texture menus/Mail
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandPress "playSound $MenuSoundClick"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set HiddenCheckBySymbolInv CustomGameOptionsBrowse
+set CommandPress "gameui ignoreInputTime 0.25"
+set CommandPress "menucmd PvPButtonCustomCancel"
+add MenuObject
+set Name PvPButtonCustomCatch
+set Coords "0 0 944 232"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+add MenuObject initFrom PvPButtonsTemplate
+set Name PvPButtonCustom
+set Coords "0 596 944 242"
+set DrawWhenFocused FocusConPlayPvPCustom
+set FirstDrawnChildren 1
+set Child "PvPButtonCustomCatch 0 0"
+set Child "PvPButtonsTextBig 44 95 ButtonCustom 0xffc2d8"
+set Child "PvPButtonCustomTag 0 -52 CustomTagline 0xbf6aa9"
+set Child "PvPButtonCustomCancel 826 23"
+set CommandGetFocus "sym setZero ConMenuPvPUnranked ConMenuPvPRanked"
+set CommandGetFocus "sym setOne ConMenuPvPCustom"
+set CommandFocusUp "gameui focusNameTry PvPButtonRanked2v2"
+set CommandGetFocus "input set padFocusFallback PvPButtonCustom"
+set CommandPress "menucmd PvPButtonCustomPress"
+set CommandGetFocus "if sym PlayPvPTip == none addUIAnim PlayPvPTipCustom mas_PlayPvPTipIn"
+set CommandGetFocus "sym set PlayPvPTip Custom"
+set DisabledSym CustomGameOptionsBrowse
+set DisabledAlpha 1.0
+set Child "CustomGamesButton[CustomGamesButtonSetup] 710 148	ButtonCreateSetup PvPCustomGameSetup	CustomGameOptionsBrowse"
+add MenuObject
+set Name PlayPvPTipTitle
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Coords "0 0 400 40"
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_RGBColor 	@_Arg2_@
+set RenderCB_Flags "/allCaps"
+set RenderCB_FontScale 0.8
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Text @_Arg1_@
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlphaTimeIn 0.15
+set DisabledSymValue PlayPvPTip!@_Arg3_@
+add MenuObject
+set Name PlayPvPTipDesc
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Coords "0 0 350 400"
+set SaveArgs 3
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_RGBColor 	@_Arg2_@
+set RenderCB_FontScale 0.6
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Text @_Arg1_@
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlphaTimeIn 0.15
+set DisabledSymValue PlayPvPTip!@_Arg3_@
+add MenuObject initFrom PlayPvPTipTitle
+set Name PlaySoloTipTitle
+set DisabledAlphaTimeOut 0.15
+set DisabledSymValue PlaySoloTip!@_Arg3_@
+add MenuObject initFrom PlayPvPTipDesc
+set Name PlaySoloTipDesc
+set DisabledAlphaTimeOut 0.15
+set DisabledSymValue PlaySoloTip!@_Arg3_@
+add MenuObject
+set Name PlayPvPTipBase
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Texture menus/PlayPvPTips
+set Coords "0 0 433 317"
+set SaveArgs 1
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlphaTimeIn 0.15
+set Focus -2
+set MouseInteract 1
+add MenuObject initFrom PlayPvPTipBase
+set Name PlaySolorTipBase
+set MirrorOnX 1
+add MenuObject initFrom PlayPvPTipBase
+set Name PlayPvPTipUnranked
+set Child "PlayPvPTipTitle 36 30 ButtonUnranked 0x54aec7	Unranked"
+set Child "PlayPvPTipDesc 36 70 PlayPvPTipUnranked 0xe1e1e1	Unranked"
+set DisabledSymValue PlayPvPTip!Unranked
+add MenuObject initFrom PlayPvPTipBase
+set Name PlayPvPTipRanked
+set Coords "433 142 433 317"
+set Child "PlayPvPTipTitle 36 40 ButtonRanked 0xca623f	Ranked"
+set Child "PlayPvPTipDesc 36 80 PlayPvPTipRanked 0xe1e1e1	Ranked"
+set DisabledSymValue PlayPvPTip!Ranked
+add MenuObject initFrom PlayPvPTipBase
+set Name PlayPvPTipCustom
+set Coords "0 587 433 317"
+set Child "PlayPvPTipTitle 36 45 ButtonCustom 0xb84f84	Custom"
+set Child "PlayPvPTipDesc 36 85 PlayPvPTipCustom 0xe1e1e1	Custom"
+set DisabledSymValue PlayPvPTip!Custom
+add MenuObject initFrom PlaySolorTipBase
+set Name PlaySoloTipVersus
+set Child "PlaySoloTipTitle 56 30				ButtonSkirmish			0x54aec7	Versus"
+set Child "PlaySoloTipDesc 56 70				solo_tooltip_versus		0xe1e1e1	Versus"
+set DisabledSymValue PlaySoloTip!Versus
+add MenuObject initFrom PlaySolorTipBase
+set Name PlaySoloTipWarzone
+set Child "PlaySoloTipTitle 56 30				ButtonSurvival			0x54aec7	Survival"
+set Child "PlaySoloTipDesc 56 70				solo_tooltip_warzone 	0xe1e1e1	Survival"
+set DisabledSymValue PlaySoloTip!Survival
+add MenuObject initFrom PlaySolorTipBase
+set Name PlaySoloTipChallenges
+set Child "PlaySoloTipTitle 56 30				ButtonChallenges		0x54aec7	Challenges"
+set Child "PlaySoloTipDesc 56 70				solo_tooltip_challenge	0xe1e1e1	Challenges"
+set DisabledSymValue PlaySoloTip!Challenges
+add MenuObject initFrom PlaySolorTipBase
+set Name PlaySoloTipTutorial
+set Child "PlaySoloTipTitle 56 30				ButtonTutorial			0x54aec7	Tutorial"
+set Child "PlaySoloTipDesc 56 70				solo_tooltip_tutorial	0xe1e1e1	Tutorial"
+set DisabledSymValue PlaySoloTip!Tutorial
+add MenuObject initFrom PlaySolorTipBase
+set Name PlaySoloTipEditor
+set Child "PlaySoloTipTitle 56 30				Label_Editor			0x54aec7	Editor"
+set Child "PlaySoloTipDesc 56 70				solo_tootip_mapeditor	0xe1e1e1	Editor"
+set DisabledSymValue PlaySoloTip!Editor
+add MenuObject
+set Name CM_PvPButtonsMaster
+set ContainerOnly 1
+set Child "ConMenuMultiSafeZone -20 -20"
+set Child "PvPButtonUnranked2v2 0 0					/ifSym ArcGACustomized == 0"
+set Child "PvPButtonUnranked1v1 454 0				/ifSym ArcGACustomized == 0"
+set Child "PvPButtonRanked2v2 0 280					/ifSym ArcGACustomized == 0"
+set Child "PvPButtonRanked1v1 454 280				/ifSym ArcGACustomized == 0"
+set Child "CustomGameOptionsBrowse 13 1380			/ifSym ArcGACustomized == 0"
+set Child "PvPButtonCustom 0 560					/ifSym ArcGACustomized == 0"
+set Child "PlayPvPTipUnranked -397 -10				/ifSym ArcGACustomized == 0"
+set Child "PlayPvPTipRanked -397 258				/ifSym ArcGACustomized == 0"
+set Child "PlayPvPTipCustom -397 460				/ifSym ArcGACustomized == 0"
+set Child "CM_PvPButtonMasterGA 300 190"
+add MenuObject
+set Name CM_PvPButtonMasterGA
+set ContainerOnly 1
+set Child "ConMenuPvPUnranked 0 0"
+set Child "ConMenuPvPCustom 0 90"
+set Child "ConMenuPvPUltimate 0 180"
+set Child "MultiPurposeLabelTemplate[LabelPvPUnranked] 0 0 ButtonUnranked	ConMenuPvPUnranked"
+set Child "MultiPurposeLabelTemplate[LabelPvPCustom] 0 90 ButtonCustom	ConMenuPvPCustom"
+set Child "MultiPurposeLabelTemplate[LabelPvPUltimate] 0 180 ButtonUltimate	ConMenuPvPUltimate"
+set HiddenCheckBySymbolInv ArcGACustomized
+add MenuObject
+set Name CM_PracticeButtonsMaster
+set ContainerOnly 1
+set Child "ConMenuPracticeChallenges 0 0"
+set Child "MultiPurposeLabelTemplate 0 0 ButtonChallenges	ConMenuPracticeChallenges"
+set Child "ConMenuPracticeTutorial 0 90"
+set Child "MultiPurposeLabelTemplate 0 90 ButtonTutorial	ConMenuPracticeTutorial"
+add MenuObject
+set Name BlackChatlogShadow
+set Texture menus/BlackCenterShadow
+set Coords "0 118 512 20"
+set ScaleY 54
+set ScaleX 1.5
+set MirrorOnX 1
+set BlendMode BlendDestColor
+add MenuObject
+set Name ConChatOverlay
+set ContainerOnly 1
+add MenuObject
+set Name CM_MasterLogo
+set ContainerOnly 1
+set Child "AirMechLogoOutline 100 90	1.1"
+set Child "AirMechLogoOutlineGlow -60 -50"
+set Child "ConsoleVersionNumber 0 1018"
+set Child "ConsoleVersionName 220 1010"
+add MenuObject
+set Name SwitchProfileGamepadText
+set Coords "0 0 350 47"
+set RenderCB_DX 350
+set RenderCB_DY 0
+set RenderCBExcludesDefaultRender 1
+set DrawWhenFocused ""
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.85
+set RenderCB_TextJustify JustifyXRight
+set Anchor Left
+set RenderCB_Flags "/shadowed /embeddedSymCheck /allCaps"
+set RenderCB_Text ProfileSwitch_XB1
+set HiddenCheckBySymbolInv InputPad
+add MenuObject
+set Name CurrentProfileName
+set Coords "0 0 350 32"
+set DisabledAlpha 0.5
+set RenderCB_DX 350
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Roboto
+set RenderCB_ConsoleSymbol P_Name
+set ToolTip TT_Name
+add MenuObject
+set Name ConMenuSwitchProfile
+set ContainerOnly 1
+set HiddenCheckBySymbol UplayQuestPopLoaded
+set Child "CurrentProfileName 40 0"
+set Child "SwitchProfileGamepadText 60 8"
+add MenuObject
+set Name CM_MasterRoot
+set ContainerOnly 1
+set Child "CM_RootButtonsMaster 330 470"
+set Child "ConMenuSwitchProfile 1490 985  /ifSym PLATFORM == XBONE"
+add MenuObject
+set Name CM_MasterHome
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "CM_HomeButtonsMaster 330 430"
+add MenuObject
+set Name CM_MasterPlay
+set ContainerOnly 1
+set Child "SimpleBackButton 40 140		/platform consolePlatform"
+set Child "PlayMenuV1Back 0 -3		/platform !consolePlatform"
+set Child "CM_PlayButtonsMaster 305 160  /ifSym ArcCustomized == 0"
+set Child "CM_PlayButtonsMasterPW 305 160 /ifSym ArcCustomized == 1"
+add MenuObject
+set Name ConStatsDummy
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set CommandCancel "menuCmd ConMenuStatsPressCancel"
+add MenuObject
+set Name CM_MasterStats
+set ContainerOnly 1
+set Child "ConStatsDummy 40 40"
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderStats] 120 220 ButtonStats	1.4	1.0"
+set Child "MM_StatsItems 460 180"
+add MenuObject
+set Name CM_MasterMail
+set ContainerOnly 1
+set Child "ConStatsDummy 40 40"
+set Child "SimpleBackButton 40 40"
+add MenuObject
+set Name CM_MasterSolo
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40		/platform consolePlatform"
+set Child "CM_SoloButtonsMaster 700 290"
+add MenuObject
+set Name CM_MasterTrainPW
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40		/platform consolePlatform"
+set Child "CM_TrainButtonsMasterPW 700 290"
+add MenuObject
+set Name CM_MasterHelpOptions
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderHelpOptions] 140 220 ButtonHelpOptionsNew  2.0	1.0"
+set Child "CM_HelpOptionsButtonsMaster 360 320"
+add MenuObject
+set Name CM_MasterOptControls
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderHelpOptions] 140 220 ButtonOptControls  2.0	1.0"
+set Child "ControlsGamepad 450 420"
+add MenuObject
+set Name CM_OptGameplayButtonsMaster
+set ContainerOnly 1
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt1] 60 0		GameShowXPNumbers MF_ShowXPNumbers OptionsNOP _NA_ ConGPOpt2"
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt2] 60 50		GameShowMoneyNumbers MF_ShowMoneyNumbers OptionsNOP ConGPOpt1 ConGPOpt3"
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt3] 60 100	GameShowDmgNumbers MF_ShowDmgNumbers OptionsNOP ConGPOpt2 ConGPOpt4"
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt4] 60 150	GameShowHealingNumbers MF_ShowHealingNumbers OptionsNOP ConGPOpt3 ConGPOpt5"
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt5] 60 200	GameShowEnemyAirMech MF_ShowEnemyAirMech OptionsNOP ConGPOpt4 ConGPOpt6"
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt6] 60 250	GameShowUnitHPBar MF_ShowUnitHPBar OptionsShowHealthBarsUpdate ConGPOpt5 ConGPOpt7"
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt7] 60 300	GameShowUnitHPNum MF_ShowUnitHPNum OptionsShowHealthBarsUpdate ConGPOpt6 ConGPOpt8"
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt8] 60 350	ColorBlind MF_ShowColorBlind OptionsColorBlindUpdate ConGPOpt7 ConGPOpt9"
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt9] 60 400	GameRangeMarkers MF_GameRangeMarkers OptionsGameRangeMarkersUpdate ConGPOpt8 ConGPOpt10"
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt10] 60 450	OptionShowTray MF_OptionShowTray OptionsNOP ConGPOpt9 ConGPOpt11"
+set Child "CheckboxInvTemplUpDownFocus[ConGPOpt11] 60 500  	OptionAutoBuilder MF_OptionAutoBuilderUnits OptionsNOP ConGPOpt10 OptionsNOP"
+add MenuObject
+set Name CM_MasterOptGameplay
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderHelpOptions] 140 220 ButtonOptGameplay  2.0	1.0"
+set Child "CM_OptGameplayButtonsMaster 360 360"
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name ConVideoScreenInset
+set RenderCB_Text BtnHint_ResizeScreen
+set CommandFocusDown "gameUI focusNameTry ConVideoOpt2"
+set CommandGetFocus "sym set ConVideoScreenInset 1"
+set CommandLoseFocus "sym set ConVideoScreenInset 0"
+set CommandGetFocus "input set padFocusFallback ConVideoScreenInset"
+set CommandGetFocus "sym set CurrentMenu COptVideo"
+set CommandPress "menuCmd ConScreenInsetToggle"
+add MenuObject
+set Name CM_OptVideoButtonsMaster
+set ContainerOnly 1
+set Child "ConVideoScreenInset 0 0		/platform hasFBResize"
+set Child "MultiPurposeLabelTemplate[LabelConVideoScreenInset] 0 0 BtnHint_ResizeScreen	ConVideoScreenInset		/platform hasFBResize"
+set Child "CheckboxInvTemplUpDownFocus[ConVideoOpt2] 60 110		CameraFX MF_CameraFX_console	GfxSettingCameraFXChanged	ConVideoScreenInset _NA_"
+add MenuObject
+set Name CM_MasterOptVideo
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderHelpOptions] 140 220 MB_Video 2.0	1.0"
+set Child "CM_OptVideoButtonsMaster 360 380"
+add MenuObject
+set Name CM_MasterOptScreenInset
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderHelpOptions] 140 220 MF_VideoScreenInsetTitle 2.0	1.0"
+set Child "ConsoleScreenInsetArrowTL 0 0"
+set Child "ConsoleScreenInsetArrowTR 1920 0"
+set Child "ConsoleScreenInsetArrowBL 0 1080"
+set Child "ConsoleScreenInsetArrowBR 1920 1080"
+add MenuObject
+set Name ConsoleScreenInsetCornerTL
+set Texture menus/ConLoadout
+set BlinkAlpha "0.5 0.2 0.8 0.2"
+set Coords "264 114 160 160"
+add MenuObject initFrom ConsoleScreenInsetCornerTL
+set Name ConsoleScreenInsetCornerTR
+set ScaleX -1
+add MenuObject initFrom ConsoleScreenInsetCornerTL
+set Name ConsoleScreenInsetCornerBL
+set ScaleY -1
+add MenuObject initFrom ConsoleScreenInsetCornerTL
+set Name ConsoleScreenInsetCornerBR
+set ScaleX -1
+set ScaleY -1
+add MenuObject
+set Name ConsoleScreenInsetShadowTL
+set Texture hud/Challenge
+set Coords "766 0 258 258"
+set ScaleX 3.0
+set ScaleY 3.0
+set MirrorOnX 1
+add MenuObject initFrom ConsoleScreenInsetShadowTL
+set Name ConsoleScreenInsetShadowTR
+set ScaleX -3
+add MenuObject initFrom ConsoleScreenInsetShadowTL
+set Name ConsoleScreenInsetShadowBL
+set ScaleY -3
+add MenuObject initFrom ConsoleScreenInsetShadowTL
+set Name ConsoleScreenInsetShadowBR
+set ScaleX -3
+set ScaleY -3
+add MenuObject
+set Name ConsoleScreenInsetAnalogStick
+set Texture hud/AnalogStick@GamepadStyle@
+set Coords img
+set ScaleX 0.7
+set ScaleY 0.7
+add MenuObject
+set Name ConsoleScreenIconUp
+set Texture menus/Buttons
+set Coords "805 644 53 53"
+add MenuObject
+set Name ConsoleScreenIconDown
+set Texture menus/Buttons
+set Coords "750 644 53 53"
+add MenuObject
+set Name ConsoleScreenIconLeft
+set Texture menus/Buttons
+set Coords "859 644 53 53"
+set MirrorOnX 1
+add MenuObject
+set Name ConsoleScreenIconRight
+set Texture menus/Buttons
+set Coords "859 644 53 53"
+add MenuObject
+set Name ConsoleScreenIconPlus
+set Texture menus/Buttons
+set Coords "912 644 53 53"
+add MenuObject
+set Name ConsoleScreenIconMinus
+set Texture menus/Buttons
+set Coords "968 644 53 53"
+add MenuObject
+set Name ConScreenStickLabel
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 0.9
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB _DrawText
+set Coords "0 0 100 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject initFrom ConsoleScreenInsetAnalogStick
+set Name ConsoleScreenInsetAnalogStickL
+set Child "ConsoleScreenIconUp 63 -30"
+set Child "ConsoleScreenIconLeft -25 50"
+set Child "ConsoleScreenIconRight 150 50"
+set Child "ConsoleScreenIconDown 63 140"
+set Child "ConScreenStickLabel 40 53	/ifSym GamepadStyle == Xbox		LS"
+set Child "ConScreenStickLabel 40 53	/ifSym GamepadStyle == Xbone	LS"
+set Child "ConScreenStickLabel 40 53	/ifSym GamepadStyle == PS4	L"
+add MenuObject initFrom ConsoleScreenInsetAnalogStick
+set Name ConsoleScreenInsetAnalogStickR
+set Child "ConsoleScreenIconPlus 63 -30"
+set Child "ConsoleScreenIconMinus -25 50"
+set Child "ConsoleScreenIconPlus 150 50"
+set Child "ConsoleScreenIconMinus 63 140"
+set Child "ConScreenStickLabel 40 53	/ifSym GamepadStyle == Xbox		RS"
+set Child "ConScreenStickLabel 40 53	/ifSym GamepadStyle == Xbone	RS"
+set Child "ConScreenStickLabel 40 53	/ifSym GamepadStyle == PS4	R"
+add MenuObject
+set Name ConScreenInsetText
+set RenderCB_RGBColor 0x000000
+set RenderCB_FontScale 1.2
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX"
+set Coords "0 0 450 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name ConScreenInsetButtons
+set Coords "944 230 450 450"
+set CoordsStart "944 230 12 12"
+set CoordsMid "956 230 47 12"
+set CoordsEnd "1003 230 12 12"
+set CoordsStartFocused "944 242 12 47"
+set CoordsMidFocused "956 242 47 47"
+set CoordsEndFocused "1003 242 12 47"
+set CoordsStartDisabled "944 289 12 12"
+set CoordsMidDisabled "956 289 47 12"
+set CoordsEndDisabled "1003 289 12 12"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 880
+set RenderCB_DY 100
+set Color 0x333333
+set NoAlphaMod 1
+set Alpha 0.85
+set HiddenCheckBySymbolInv InputPad
+set Child "ConsoleButtonFixed[ConsoleButtonBack] 600 25		 	1 	0.8		DialogButtonCancel	1"
+set Child "ConsoleButtonFixed[ConsoleButtonSelect2] 300 25		2 	0.8		MF_Reset	1"
+set Child "ConsoleButtonFixed[ConsoleButtonSelect1] 60 25		0 	0.8		DialogButtonOk	1"
+add MenuObject
+set Name ConScreenInsetBg
+set Coords "944 230 450 450"
+set CoordsStart "944 230 12 12"
+set CoordsMid "956 230 47 12"
+set CoordsEnd "1003 230 12 12"
+set CoordsStartFocused "944 242 12 47"
+set CoordsMidFocused "956 242 47 47"
+set CoordsEndFocused "1003 242 12 47"
+set CoordsStartDisabled "944 289 12 12"
+set CoordsMidDisabled "956 289 47 12"
+set CoordsEndDisabled "1003 289 12 12"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 880
+set RenderCB_DY 345
+set NoAlphaMod 1
+set Alpha 0.75
+set FirstDrawnChildren 1
+set Child "ConScreenInsetButtons 0 326"
+set Child "ConsoleScreenInsetAnalogStickL 130 70"
+set Child "ConsoleScreenInsetAnalogStickR 550 130"
+set Child "ConScreenInsetText 0 260	BtnHint_PositionScreen"
+set Child "ConScreenInsetText 415 30	BtnHint_ResizeScreen"
+add MenuObject
+set Name ConScreenInsetCatch
+set Texture hud/Screenshot
+set Coords "0 0 2048 1024"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus -2
+set RenderBlocked 1
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "menucmd ConScreenInsetOff"
+set CommandCancel "gameui ignoreInputTime 0.1"
+set CommandCancel "menucmd ConScreenInsetCancel"
+add MenuObject
+set Name ConScreenExamplePatch
+set Texture hud/Screenshot
+set Coords "1403 591 66 66"
+add MenuObject
+set Name ConScreenExample
+set Texture hud/Screenshot
+set Coords "0 0 2048 1024"
+set StretchToFillScreen 1
+set Disabled 1
+set Child "ConScreenExamplePatch 1373 666"
+add MenuObject
+set Name ConScreenInsetGuide
+set ContainerOnly 1
+set Child "ConScreenInsetCatch 0 0"
+set Child "ConScreenExample 0 0"
+set Child "ConsoleScreenInsetShadowTL 0 0"
+set Child "ConsoleScreenInsetShadowTR 1920 0"
+set Child "ConsoleScreenInsetShadowBL 0 1080"
+set Child "ConsoleScreenInsetShadowBR 1920 1080"
+set Child "ConScreenInsetBg 500 550"
+set Child "ConsoleScreenInsetCornerTL 0 0"
+set Child "ConsoleScreenInsetCornerTR 1920 0"
+set Child "ConsoleScreenInsetCornerBL 0 1080"
+set Child "ConsoleScreenInsetCornerBR 1920 1080"
+add MenuObject
+set Name CM_OptAudioButtonsMaster
+set ContainerOnly 1
+set Child "MF_OptionsVolumeSlider 0 0"
+set Child "MF_OptionsVolumeSliderAnnouncer 0 110"
+set Child "MF_OptionsVolumeSliderMenu 0 220"
+set Child "MF_OptionsVolumeSliderMusic 0 330"
+add MenuObject
+set Name CM_MasterOptAudio
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderHelpOptions] 140 220 ButtonOptAudio  2.0	1.0"
+set Child "CM_OptAudioButtonsMaster 360 380"
+add MenuObject
+set Name CM_OptContactButtonsMaster
+set ContainerOnly 1
+set Child "CheckboxInvTemplUpDownFocus[ConContactOpt1] 60 0		ContactSubscribe MF_ContactSubscribe	OptionsNOP _NA_ ConContactOpt2"
+set Child "CommandBoxTempl[ConContactOpt2] 60 50		MF_ContactUpdateEmail	OptionsUpdateContactEmail ConContactOpt1 _NA_"
+add MenuObject
+set Name CM_MasterOptContact
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderHelpOptions] 140 220 ButtonOptContact  2.0	1.0"
+set Child "CM_OptContactButtonsMaster 360 380"
+add MenuObject
+set Name CM_MasterMulti_old
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderMulti] 140 220 ButtonMultiplayer	2.0	1.0"
+set Child "CM_MultiCoopButtonsMaster 360 360"
+set Child "CM_MultiVersusButtonsMaster 360 450"
+set Child "CM_MultiButtonsMaster 360 360"
+add MenuObject
+set Name CM_MasterCoop
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40		/platform consolePlatform"
+set Child "CM_CoopButtonsMaster 700 360"
+add MenuObject
+set Name CM_MasterPvP
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40		/platform consolePlatform"
+set Child "CM_PvPButtonsMaster 440 120"
+add MenuObject
+set Name ConWaitMessage
+set RenderCB_FontScale 1.2
+set RenderCB_Font RobotoBold
+set Coords "0 0 1020 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol WaitMessage
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor "0.1"
+set RenderCB_FloatArg 2000.0
+add MenuObject
+set Name ConWaitMessagePW
+set Texture menus/MainMenuPW
+set Coords "8 961 585 56"
+set ScaleX 0.78, ScaleY 0.78
+add MenuObject
+set Name ConWaitRingBig
+set Texture menus/Buttons
+set Coords "0 702 827 322"
+set ScaleX 2.0, ScaleY 2.0
+set Focus -2
+set Child "ConWaitMessage 580 310 /ifSym ArcCustomized == 0"
+set Child "ConWaitMessagePW 850 310 /ifSym ArcCustomized == 1"
+add MenuObject
+set Name CM_MasterWait
+set ContainerOnly 1
+set Child "ConWaitRingBig 150 137"
+set Child "LoadingWaitCircle1 190 170"
+set Child "LoadingWaitCircle2 190 170"
+add MenuObject
+set Name CM_MasterPractice
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderPractice] 140 220 ButtonPractice	2.0	1.0"
+set Child "CM_PracticeButtonsMaster 360 360"
+add MenuObject
+set Name DebugLobbyIconLobby
+set Texture menus/ConLoadout
+set Coords "853 982 39 42"
+set ScaleX 1.3, ScaleY 1.3
+set HiddenCheckBySymbolInv MM_Lobby
+set NoAlphaMod 1
+set Alpha 0.2
+set SaveArgs 1
+add MenuObject initFrom DebugLobbyIconLobby
+set Name DebugLobbyIconQueue
+set Coords "989 982 28 42"
+set CoordsAnimated "989 982 28 42"
+set CoordsAnimated "990 982 28 42"
+set CoordsAnimated "991 982 28 42"
+set CoordsAnimated "992 982 28 42"
+set CoordsAnimated "993 982 28 42"
+set CoordsAnimated "994 982 28 42"
+set CoordsAnimated "995 982 28 42"
+set CoordsAnimated "996 982 28 42"
+set CoordsAnimated "997 982 28 42"
+set CoordsAnimated "998 982 28 42"
+set CoordsAnimated "999 982 28 42"
+set CoordsAnimated "1000 982 28 42"
+set CoordsAnimated "1001 982 28 42"
+set CoordsAnimationFrameTimer 0.05
+set HiddenCheckBySymbolInv MM_Queue
+add MenuObject initFrom DebugLobbyIconLobby
+set Name DebugLobbyIconConfirm
+set Coords "895 982 40 42"
+set HiddenCheckBySymbolInv MM_Confirm
+add MenuObject initFrom DebugLobbyIconLobby
+set Name DebugLobbyIconCoordinate
+set Coords "937 982 39 42"
+set HiddenCheckBySymbolInv MM_Coordinate
+add MenuObject
+set Name DebugLobbyState
+set Texture ]menus/CB_Twitch
+set Coords "1 133 19 19"
+set ContainerOnly 1
+set Child "DebugLobbyIconLobby 0 0"
+set Child "DebugLobbyIconQueue 5 0"
+set Child "DebugLobbyIconConfirm 0 0"
+set Child "DebugLobbyIconCoordinate 0 0"
+add MenuObject
+set Name CM_LabelsLobby
+set ContainerOnly 1
+set Child "LobbyLabelTemplate[LobbyLabelLevel3] 580 0 LobbyLabelLevel3"
+set Child "LobbyLabelTemplate[LobbyLabelLevel2] 290 0 LobbyLabelLevel2"
+set Child "LobbyLabelTemplate[LobbyLabelLevel1] 0 0 LobbyLabelLevel1"
+add MenuObject
+set Name LoadDevCountdown
+set Texture ]menus/CB_Twitch
+set Coords "1 133 19 19"
+set CoordsPressed "0 132 19 19"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-5 -5 5 5"
+set ScaleXFocused 1.4
+set ScaleYFocused 1.4
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.1
+set CommandPress "sym set MM_TimerSet 10"
+set CommandPress "loadmenu ConLobbyReady"
+set HiddenCheckBySymbolValue P_AccessLevel=0
+add MenuObject
+set Name CM_LobbyCountdownTimer
+set Coords "0 0 165 165"
+set RenderCB_Font Gunner
+set RenderCB_FontScale 1.9
+set RenderCB _DrawTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_ConsoleSymbol MM_Timer
+add MenuObject
+set Name CM_LobbyTimerCircle
+set Texture menus/WaitCircleBig
+set Coords "0 0 256 256"
+set RotationPeriod 1.0
+set ScaleX 1.2225
+set ScaleY 1.2225
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name CM_LobbyCountdownFrame
+set Coords "0 626 398 398"
+set Texture menus/ConLoadout
+set ScaleX 0.75, ScaleY 0.75
+set Child "CM_LobbyTimerCircle -8 -8"
+set Child "CM_LobbyCountdownTimer 67 50"
+set HiddenCheckBySymbolInv MM_Coordinate
+set Focus -2
+set MouseInteract 1
+set CommandPress "if sym P_AccessLevel != 0 clearmenu ConLobbyReady"
+add MenuObject
+set Name LobbyHeaderStatusMessagebox
+set Texture menus/ConLoadout
+set CoordsStart "302 401 42 36"
+set CoordsMid "344 401 16 36"
+set CoordsEnd "360 401 42 36"
+set CoordsStartFocused "302 437 42 156"
+set CoordsMidFocused "344 437 16 156"
+set CoordsEndFocused "360 437 42 156"
+set CoordsStartDisabled "302 593 42 33"
+set CoordsMidDisabled "344 593 16 33"
+set CoordsEndDisabled "360 593 42 33"
+set Focus -2
+set MouseInteract 1
+set NoAlphaMod 1
+set Alpha 0.5
+set RenderCB _Draw_G3x3
+set Coords "0 0 920 115"
+set RenderCB_DX 920
+set RenderCB_DY 115
+add MenuObject
+set Name LobbyV1ReadyButtonGo
+set Coords "457 277 142 142"
+set Texture menus/ConLoadout
+set Coords "457 123 142 142"
+set Hidden 1
+set HiddenCheckBySymbol MM_QueueEnabled
+add MenuObject initFrom LobbyV1ButtonBase
+set Name LobbyV1ReadyButton
+set RenderCB_Text LobbyReady
+set CommandPress "party2 lockin"
+set CommandPress "gameui show LobbyV1ReadyButtonGo"
+set CommandPress "backend save"
+set HiddenCheckBySymbolInv MM_ReadyEnabled
+set HiddenCheckBySymbol2 _Bind_SoloLoadout_
+set HiddenCheckBySymbolValue MyId>5
+set Child "LobbyV1ReadyButtonGo 50 -34"
+add MenuObject initFrom LobbyV1ButtonBase
+set Name LobbyV1QueueButton
+set RenderCB_Text @_Arg1_@
+set CommandPress "if sym MM_PartyMembers > 1 menuCmd ConMenuLobbyQueue"
+set CommandPress "if sym MM_PartyMembers == 1 menuCmd ConMenuLobbyQueueConfirmed"
+set CommandPress "if sym MM_PartyMembers == 1 party focusChat"
+set CommandPress "gameui hide LobbyV1ReadyButtonGo"
+set HiddenCheckBySymbolInv MM_QueueEnabled
+set HiddenCheckBySymbol2 _Bind_SoloLoadout_
+set HiddenCheckBySymbolValue MyId>5
+add MenuObject initFrom LobbyV1ButtonBase
+set Name LobbyV1SoloButton
+set RenderCB_Text LobbyReady
+set CommandPress "menuCmd ConMenuPlaySoloPressStart"
+set HiddenCheckBySymbolInv _Bind_SoloLoadout_
+set HiddenCheckBySymbolValue MyId>5
+add MenuObject initFrom LobbyV1ButtonBase
+set Name LobbyV1ReadyButtonDis
+set RenderCB_Text LobbyWait
+set Disabled 1
+add MenuObject
+set Name LobbyV1ButtonAttention
+set Texture menus/LoginCommon
+set Coords "0 714 510 85"
+set CoordsInterpolatedDest "512 714 510 85"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 10"
+set BlendMode BlendAdd
+set ScaleX 1.92
+add MenuObject
+set Name LobbyV1ReadyButtons
+set ContainerOnly 1
+set HiddenCheckBySymbol GL_ChatMinimized
+set HiddenCheckBySymbol2 InputPad
+set Child "LobbyV1ReadyButtonDis 0 0"
+set Child "LobbyV1ReadyButton 0 0"
+set Child "LobbyV1QueueButton 0 0 LobbyQueue"
+set Child "LobbyV1SoloButton 0 0 LobbyQueue"
+add MenuObject
+set Name LobbyV1ReadyButtonsUpper
+set ContainerOnly 1
+set HiddenCheckBySymbol2 InputPad
+set Child "LobbyV1ReadyButtonDis 0 0"
+set Child "LobbyV1ReadyButton 0 0"
+set Child "LobbyV1QueueButton 0 0 LobbyQueue"
+set Child "LobbyV1SoloButton 0 0"
+add MenuObject
+set Name CM_MasterLobby
+set ContainerOnly 1
+set Child "ConMapPreviewBackground 0 0		MapName"
+set Child "DebugLobbyState 1850 100"
+set Child "DebugLobbyState 20 1010"
+set Child "PlayMenuV1Back 0 -5	/platform !consolePlatform"
+set HiddenCheckBySymbol ConShopMenu
+add MenuObject
+set Name ConWatchRoomInfo
+set Texture menus/Messages
+set CoordsStart "471 4 40 63"
+set CoordsMid "547 4 32 63"
+set CoordsEnd "579 4 37 63"
+set CoordsStartFocused "471 67 40 49"
+set CoordsMidFocused "547 67 32 49"
+set CoordsEndFocused "579 67 37 49"
+set CoordsStartDisabled "471 116 40 35"
+set CoordsMidDisabled "547 116 32 35"
+set CoordsEndDisabled "579 116 37 35"
+set RenderCB _DrawUText_G3x3
+set RenderCB_Flags "/noScreenClamp"
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.62
+set RenderCB_BoolArg 1
+set RenderCB_DX 320
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text RoomHoverToolTip
+set RenderCB_YClipConfig "10 -20 -30 0"
+set RenderCB_YClipConfigIsOffsets 1
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.5
+set HiddenCheckBySymbol NoSpectateRooms
+set HiddenCheckBySymbolInv _OnWatchRoom
+add MenuObject
+set Name CM_MasterWatch
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "HeaderLabelTemplate[HeaderWatch] 100 230 ButtonWatch	1.4	1.0"
+set Child "ConNetGameBrowseItems 260 160"
+set Child "ConWatchRoomInfo 1260 260"
+add MenuObject
+set Name ConQuestPageTemp
+set Texture menus/Buttons
+set Coords "946 137 68 37"
+set DisabledSymInv @_Arg1_@PagePrevOk
+set DisabledAlphaTimeOut 0.0
+set SaveArgs 1
+set MirrorOnY 1
+set BlendMode BlendAdd
+set PulseAlpha "1.0 -0.5 0.0"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-50 -5 50 5"
+add MenuObject initFrom ConQuestPageTemp
+set Name ConQuestPrevious
+set CommandPress "menuCmd ConQuestsPagePrevious"
+add MenuObject initFrom ConQuestPageTemp
+set Name ConQuestNext
+set MirrorOnY 0
+set DisabledSymInv @_Arg1_@PageNextOk
+set CommandPress "menuCmd ConQuestsPageNext"
+add MenuObject
+set Name ConQuestsNavText
+set RenderCB_FontScale 1.3
+set RenderCB_Font RobotoBold
+set Coords "0 0 100 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol @_Arg1_@PageState
+set RenderCB_BoolArg 0
+set RenderCB_RGBColor "0.9"
+set SaveArgs 1
+add MenuObject
+set Name ConQuestsNavbox
+set ContainerOnly 1
+set Child "ConQuestsNavText 145 10		@_Arg1_@"
+set Child "ConQuestPrevious 0 0			@_Arg1_@"
+set Child "ConQuestNext 280 0			@_Arg1_@"
+add MenuObject
+set Name CM_QuestsList
+set ContainerOnly 1
+set Child "ConQuestsNavText 1050 -80		Quest"
+set Child "ConAirMechQuest[ConQuest0] 0 0	0"
+set Child "ConAirMechQuest[ConQuest1] 0 100	1"
+set Child "ConAirMechQuest[ConQuest2] 0 200	2"
+set Child "ConAirMechQuest[ConQuest3] 0 300	3"
+set Child "ConAirMechQuest[ConQuest4] 0 400	4"
+set Child "ConAirMechQuest[ConQuest5] 0 500	5"
+set Child "ConAirMechQuest[ConQuest6] 0 600	6"
+set Child "ConQuestPrevious 550 -45			Quest"
+set Child "ConQuestNext 550 698			Quest"
+add MenuObject
+set Name CM_MasterQuests
+set ContainerOnly 1
+set Child "SimpleBackButton[QuestsBack] 40 40"
+set Child "CM_QuestsList 160 220"
+set Child "HeaderLabelTemplate[HeaderQuests] 148 125 ButtonQuests	1.5	1.0"
+add MenuObject
+set Name ConLevelPreviewCover
+set Texture effects/VignetteColor
+set Coords "40 10 320 500"
+set ScaleY 0.435
+set CoordsFocused "0 0 1 1"
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name ConLevelPreviewTemplate
+set Texture /cache/&@_Arg1_@&
+set FilterName MapHashes
+set FilterName2 MapSelection
+set FilterOnlyFlags Textures
+set CommandOnCreate ">rook disabledMapCheck @_Arg4_@ _MapDisabled_"
+set DrawGreyScale $_MapDisabled_
+set NoDrawOnMissingTexture 1
+set Coords "20 20 708 480"
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set SaveArgs 4
+set DisplayAsFocusedIfParentFocused 1
+set DisabledSym _ColumnNumFade@_Arg3_@
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.1
+set DisabledAlpha 0.3
+add MenuObject
+set Name ConLevelLockIcon
+set Texture menus/DialogFrames
+set FilterName MapSelection
+set CommandOnCreate ">rook disabledMapCheck @_Arg1_@ !_LockHidden_"
+set Hidden $_LockHidden_
+set Coords "18 825 124 162"
+set ScaleX 0.7, ScaleY 0.7
+set SaveArgs 1
+add MenuObject
+set Name LevelStars
+set Texture menus/LoadoutGrid
+set Coords "56 732 117 37"
+set CoordsAnimated "134 732 117 37"
+set CoordsAnimated "95 732 117 37"
+set CoordsAnimated "56 732 117 37"
+set CoordsAnimated "17 732 117 37"
+set CoordsAnimated "1 732 1 1"
+set CoordsAnimationSymHash My@_Arg1_@Stars
+set SaveArgs 1
+add MenuObject
+set Name ConLevelMapName
+set Coords "0 0 275 30"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor 0xcccccc
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Flags "/allCaps /outlined8x /fitX_n20 /fitX_n10 /shadowColor2"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 -6"
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name ConLevelTemplate1
+set CoordsStart "796 184 24 24"
+set CoordsMid "820 184 24 24"
+set CoordsEnd "844 184 24 24"
+set CoordsStartFocused "796 208 24 24"
+set CoordsMidFocused "820 208 24 24"
+set CoordsEndFocused "844 208 24 24"
+set CoordsStartDisabled "796 232 24 24"
+set CoordsMidDisabled "820 232 24 24"
+set CoordsEndDisabled "844 232 24 24"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 577
+set RenderCB_DY 904
+set RenderCB_DX 348
+set RenderCB_DY 245
+set Focus -2
+set SaveArgs 6
+set MouseInteract 1
+set DisabledSym _ColumnNumFade@_Arg2_@
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.1
+set DisabledAlpha 0.3
+set DrawWhenFocused MapSelectFocus
+set DrawWhenFocusedOffset "4 4 0"
+set FilterName MapSelection
+set DrawGreyScale $_MapDisabled_
+set CommandOnCreate ">rook disabledMapCheck @_Arg1_@ _MapDisabled_"
+set CommandFocusLeft "pcmd t4 menuCmd ConLevelColumnsCleanup"
+set CommandFocusRight "pcmd t4 menuCmd ConLevelColumnsCleanup"
+set CommandFocusLeft "gameUI ignoreInputTime 0.1"
+set CommandFocusRight "gameUI ignoreInputTime 0.1"
+set CommandFocusLeft "gameUI ignoreInputTime 0.1"
+set CommandFocusLeft ">pcmd t3 gameui focusnametry @_Arg3_@"
+set CommandFocusUp ">pcmd t3 gameui focusnametry @_Arg4_@"
+set CommandFocusRight ">pcmd t3 gameui focusnametry @_Arg5_@"
+set CommandFocusDown ">pcmd t3 gameui focusnametry @_Arg6_@"
+set CommandGetFocus ">sym set MapName @_Arg1_@"
+set CommandGetFocus "sym set MapPreviewChange 1"
+set CommandGetFocus "pcmd 0 sym set MapPreviewChange 0"
+set CommandGetFocus "gameui refreshFilterName MapSelection"
+set CommandGetFocus "playSound $SubMenuFocus"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "sym clear CF_CustomMapName"
+set CommandPress "sym clear PO_CustomMapName"
+set CommandPress "menucmd OptionsCustomMapToggleValidate"
+set CommandPress ">if mapEnabled @_Arg1_@ runnow menuCmd ConMenuMapSelectStandardCancel"
+set CommandPress ">if mapEnabled @_Arg1_@ && sym _soloLaunch_ == 0 party2 setMapVote $MapName"
+set CommandPress "sym set EditorLoadCustomMapMode 0"
+set CommandCancel "sym set MapName $_MapSelectSave"
+set CommandCancel "gameui refreshFilterName MapSelection"
+set CommandCancel "menuCmd ConMenuMapSelectStandardCancel"
+set Child "ConLevelPreviewTemplate 14 14 	@_Arg7_@ 0.45 @_Arg2_@ @_Arg1_@"
+set Child "ConLevelPreviewCover 14 14 "
+set Child "LevelStars 20 186 @_Arg1_@		/platform !consolePlatformHW"
+set Child "ConLevelMapName 22 160 @_Arg1_@		/platform !consolePlatformHW"
+set Child "ConLevelLockIcon 230 20 	@_Arg1_@"
+add MenuObject
+set Name CustomLevelPreview
+set Texture "maps/ConMapPreviewMask"
+set NoDrawOnMissingTexture 1
+set Coords "20 20 708 480"
+set ScaleX @_Arg1_@
+set ScaleY @_Arg1_@
+set SaveArgs 3
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.1
+set DisabledAlpha 0.3
+add MenuObject
+set Name ConLevelCustom
+set CoordsStart "796 184 24 24"
+set CoordsMid "820 184 24 24"
+set CoordsEnd "844 184 24 24"
+set CoordsStartFocused "796 208 24 24"
+set CoordsMidFocused "820 208 24 24"
+set CoordsEndFocused "844 208 24 24"
+set CoordsStartDisabled "796 232 24 24"
+set CoordsMidDisabled "820 232 24 24"
+set CoordsEndDisabled "844 232 24 24"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 577
+set RenderCB_DY 904
+set RenderCB_DX 348
+set RenderCB_DY 245
+set Focus -2
+set SaveArgs 6
+set MouseInteract 1
+set DisabledSym _ColumnNumFade@_Arg2_@
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.1
+set DisabledAlpha 0.3
+set DrawWhenFocused MapSelectFocus
+set DrawWhenFocusedOffset "4 4 0"
+set HiddenCheckBySymbolValue _soloLaunch_!1
+set CommandFocusLeft "pcmd t4 menuCmd ConLevelColumnsCleanup"
+set CommandFocusRight "pcmd t4 menuCmd ConLevelColumnsCleanup"
+set CommandFocusLeft "gameUI ignoreInputTime 0.1"
+set CommandFocusRight "gameUI ignoreInputTime 0.1"
+set CommandFocusLeft "gameUI ignoreInputTime 0.1"
+set CommandFocusLeft ">pcmd t3 gameui focusnametry @_Arg3_@"
+set CommandFocusUp ">pcmd t3 gameui focusnametry @_Arg4_@"
+set CommandFocusRight ">pcmd t3 gameui focusnametry @_Arg5_@"
+set CommandFocusDown ">pcmd t3 gameui focusnametry @_Arg6_@"
+set CommandGetFocus ">sym set MapName CustomMaps"
+set CommandGetFocus "gameui refreshFilterName MapSelection"
+set CommandGetFocus "playSound $SubMenuFocus"
+set CommandPress "loadmenu LobbyMapListWindow /fadein 0.1"
+set Child "CustomLevelPreview 14 14 	0.45
+set Child "ConLevelPreviewCover 14 14 "
+set Child "ConLevelMapName 22 160 @_Arg1_@		/platform !consolePlatformHW"
+add MenuObject
+set Name CM_LevelTilesCommon
+set ContainerOnly 1
+set HiddenCheckBySymbolValue MapListMode!Common
+set Child "ConLevelTemplate1[ConLevelSimple] 0 0 	Simple	0	null null ConLevelDuel	ConLevelThar simplePreviewHash"
+set Child "ConLevelTemplate1[ConLevelThar] 0 230	Thar	0	null	ConLevelSimple ConLevelNesthorn null tharPreviewHash"
+set Child "ConLevelTemplate1[ConLevelDuel] 340 0 	Duel		1	ConLevelSimple null ConLevelChasm ConLevelNesthorn duelPreviewHash"
+set Child "ConLevelTemplate1[ConLevelNesthorn] 340 230 Nesthorn	1	ConLevelThar	ConLevelDuel	ConLevelCrater null nesthornPreviewHash"
+set Child "ConLevelTemplate1[ConLevelChasm] 680 0 Chasm		2	ConLevelDuel	null	ConLevelTwinPeaks ConLevelCrater chasmPreviewHash"
+set Child "ConLevelTemplate1[ConLevelCrater] 680 230 Crater	2	ConLevelNesthorn	ConLevelChasm	ConLevelVale null craterPreviewHash"
+set Child "ConLevelCustom 	1360 -230						CustomMaps		3	ConLevelChasm	null	ConLevelDecay ConLevelTwinPeaks customPreviewHash	/platform !consolePlatformHW"
+set Child "ConLevelTemplate1[ConLevelTwinPeaks] 1020 0 	  	TwinPeaks	3	ConLevelChasm	null	ConLevelSalt ConLevelVale twinpeaksPreviewHash"
+set Child "ConLevelTemplate1[ConLevelVale] 		1020 230  	Vale		3	ConLevelCrater	ConLevelTwinPeaks	ConLevelSandrim null valePreviewHash"
+set Child "ConLevelTemplate1[ConLevelSalt] 1360 0 Salt		4	ConLevelTwinPeaks	ConLevelDecay	null ConLevelSandrim saltPreviewHash"
+set Child "ConLevelTemplate1[ConLevelSandrim] 1360 230 Sandrim		4	ConLevelVale	ConLevelSalt	null null sandrimPreviewHash"
+#if arc
+add MenuObject
+set Name CM_LevelTilesSurvival
+set ContainerOnly 1
+set HiddenCheckBySymbolValue MapListMode!Survival
+set Child "ConLevelTemplate1[ConLevelSurvival] 0 0		Survival	0	null				null 	ConLevelSpiral		ConLevelSpiral		survivalPreviewHash"
+set Child "ConLevelTemplate1[ConLevelSpiral] 340 0		Spiral		0	ConLevelSurvival	null	ConLevelLastStand	ConLevelLastStand	spiralPreviewHash"
+set Child "ConLevelTemplate1[ConLevelLastStand] 680 0	LastStand	1	ConLevelSpiral		null	null				null				laststandPreviewHash"
+#else
+add MenuObject
+set Name CM_LevelTilesSurvival
+set ContainerOnly 1
+set HiddenCheckBySymbolValue MapListMode!Survival
+set Child "ConLevelTemplate1[ConLevelSurvival] 0 0		Survival	0	null				null 	ConLevelSpiral		ConLevelSpiral		survivalPreviewHash"
+set Child "ConLevelTemplate1[ConLevelSpiral] 340 0		Spiral		0	ConLevelSurvival	null	ConLevelLastStand	ConLevelLastStand	spiralPreviewHash"
+set Child "ConLevelTemplate1[ConLevelLastStand] 680 0	LastStand	1	ConLevelSpiral		null	null				ConLevelTwolnsurv	laststandPreviewHash"
+#endif
+add MenuObject
+set Name CM_LevelTilesWarzone
+set ContainerOnly 1
+set HiddenCheckBySymbolValue MapListMode!Survival
+set Child "ConLevelTemplate1[ConLevelKeep] 0 0			Keep		0	null				null 			ConLevelSpiral		ConLevelWall		keepPreviewHash"
+set Child "ConLevelTemplate1[ConLevelJunk] 340 0		Junk		0	ConLevelKeep		null			ConLevelLastStand	ConLevelHighway		junkPreviewHash"
+set Child "ConLevelTemplate1[ConLevelDenev] 680 0		Denev		1	ConLevelJunk		null			ConLevelTwolnsurv	ConLevelTwolnsurv	denevPreviewHash"
+set Child "ConLevelTemplate1[ConLevelTwolnsurv] 1020 0	Twolnsurv	1	ConLevelDenev		null			ConLevelSiam		null				twolnsurvPreviewHash"
+set Child "ConLevelTemplate1[ConLevelSiam] 1360 0		Siam		1	ConLevelTwolnsurv	null			null 				null				siamPreviewHash"
+set Child "ConLevelTemplate1[ConLevelWall] 0 230		Wall		0	null				ConLevelKeep 	ConLevelHighway		ConLevelSpiral		wallPreviewHash"
+set Child "ConLevelTemplate1[ConLevelHighway] 340 230	Highway		0	ConLevelWall		ConLevelJunk 	null				null				highwayPreviewHash"
+add MenuObject
+set Name CM_LevelTiles
+set ContainerOnly 1
+set Child "CM_LevelTilesCommon 0 -40"
+set Child "CM_LevelTilesSurvival 0 115 /ifSym ShowWarzoneMaps == 0"
+set Child "CM_LevelTilesWarzone 0 -40 /ifSym ShowWarzoneMaps == 1"
+add MenuObject
+set Name MapLabelDust
+set Texture menus/LargeChineseFonts
+set Coords "67 7 406 103"
+set ScaleX 1.2, ScaleY 1.2
+set HiddenCheckBySymbolValue MapName!@_Arg1_@
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelDuel
+set Coords "522 7 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelChasm
+set Coords "67 111 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelTwinPeaks
+set Coords "522 111 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelSalt
+set Coords "67 220 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelThar
+set Coords "522 220 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelNesthorn
+set Coords "67 333 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelCrater
+set Coords "522 333 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelVale
+set Coords "67 442 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelSandrim
+set Coords "522 442 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelCrossroards
+set Coords "67 543 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelSpiral
+set Coords "522 543 406 103"
+Add MenuObject initFrom MapLabelDust
+set Name MapLabelLastStand
+set Coords "67 648 406 103"
+add MenuObject
+set Name CM_MasterMapSelectStandard
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40	/platform consolePlatform"
+set Child "HeaderLabelSymMap 140 220 MapName	1.7	1.0 /ifSym ArcCustomized == 0"
+set Child "MapDescTemplate 140 312"
+set Child "MapLabelDust 140 115 Simple /ifSym ArcCustomized == 1"
+set Child "MapLabelDuel 140 115 Duel /ifSym ArcCustomized == 1"
+set Child "MapLabelChasm 140 115 Chasm /ifSym ArcCustomized == 1"
+set Child "MapLabelTwinPeaks 140 115 TwinPeaks /ifSym ArcCustomized == 1"
+set Child "MapLabelSalt 140 115 Salt /ifSym ArcCustomized == 1"
+set Child "MapLabelThar 140 115 Thar /ifSym ArcCustomized == 1"
+set Child "MapLabelNesthorn 140 115 Nesthorn /ifSym ArcCustomized == 1"
+set Child "MapLabelCrater 140 115 Crater /ifSym ArcCustomized == 1"
+set Child "MapLabelVale 140 115 Vale /ifSym ArcCustomized == 1"
+set Child "MapLabelSandrim 140 115 Sandrim /ifSym ArcCustomized == 1"
+set Child "MapLabelCrossroards 140 115 Survival /ifSym ArcCustomized == 1"
+set Child "MapLabelSpiral 140 115 Spiral /ifSym ArcCustomized == 1"
+set Child "MapLabelLastStand 140 115 LastStand /ifSym ArcCustomized == 1"
+set Child "CM_LevelTiles 140 520"
+add MenuObject
+set Name CM_MasterMPLobby
+set ContainerOnly 1
+set Child "HeaderLabelTemplate[HeaderMultiplayer] 140 220 PvP:1v1	2.0	1.0"
+set Child "ConLobbyCountdownTimer 1440 220"
+add MenuObject
+set Name CM_MasterCoopLobby
+set ContainerOnly 1
+set Child "HeaderLabelTemplate[HeaderCoop] 140 220 Coop	2.0	1.0"
+set Child "ConLobbyCountdownTimer 1440 220"
+add MenuObject
+set Name PlayTheTutorialBannerPW
+set Texture menus/MainMenuPW
+set Coords "13 838 415 112"
+set ScaleX 1.1, ScaleY 1.1
+add MenuObject
+set Name CM_MasterTraining
+set ContainerOnly 1
+set Child "HeaderLabelTemplate[HeaderTraining] 140 160 ButtonChallenges	2.0	1.0 /ifSym ArcCustomized == 0"
+set Child "PlayTheTutorialBannerPW[HeaderTraining] 140 110  /ifSym ArcCustomized == 1"
+set Child "Challenge_Pages 320 180"
+add MenuObject
+set Name CM_ButtonHints_MotD
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect1] 360 860		@DM_Select@ 	0.8		DialogButtonOk	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_CRoot
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect1] 920 960		@DM_Select@ 	0.8		BtnHint_Select	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_CHome
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 360 960			@DM_Cancel@		0.8		BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect1] 600 960		@DM_Select@ 	0.8		BtnHint_Select	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_CMail
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 360 960			@DM_Cancel@		0.8		BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect1] 600 960		@DM_Select@ 	0.8		BtnHint_Select	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_CPlay
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 360 960		@DM_Cancel@ 	0.8		BtnHint_Back	@_Arg1_@"
+set Child "CM_ButtonHints_CPlay_S0 0 0	@_Arg1_@
+add MenuObject
+set Name CM_ButtonHints_CPlay_S0
+set ContainerOnly 1
+set HiddenCheckBySymbol PlayModeLocked
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect1] 600 960		@DM_Select@ 	0.8		BtnHint_Select	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_FBGeneric
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 360 960		 	@DM_Cancel@ 	0.8		BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect1] 600 960		@DM_Select@ 	0.8		BtnHint_Select	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_CSoloLoadout
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 1360 960			@DM_Cancel@ 	0.8		BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect] 1600 960		 	@DM_Select@ 	0.8		BtnHint_Select	@_Arg1_@"
+set Child "ConsoleButtonShoulders[ConsoleButtonShouldersX] 890 960	 	0				0.8		BtnHint_Loadout	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_CAirMechSelect
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 1360 960		 	@DM_Cancel@ 	0.8		BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect] 1600 960		 	@DM_Select@ 	0.8		BtnHint_Select	@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonTransform] 1000 960	 	3 				0.8		BtnHint_Transform	@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonInspect] 720 960		 	2 				0.8		BtnHint_Inspect	@_Arg1_@"
+add MenuObject initFrom ConsoleButtonTemplate
+set Name ConsoleButtonSelectItem
+set DisabledSymInv SelectUnitsConInteractive
+add MenuObject
+set Name CM_ButtonHints_SelectUnitsCon
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 360 960		@DM_Cancel@ 	0.8		BtnHint_Back	 @_Arg1_@"
+set Child "ConsoleButtonSelectItem 600 960		 				@DM_Select@ 	0.8		BtnHint_Select	 @_Arg1_@"
+set Child "ConsoleButtonSelectItem 890 960		 				2 			    0.8		BtnHint_Inspect	 @_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConStats
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 140 960			@DM_Cancel@ 	0.8		BtnHint_Back		@_Arg1_@"
+set Child "ConsoleButtonHelperFromFont 350 960						JY 		1.0 100	 	BtnHint_Scroll 		@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConQuests
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 140 960			@DM_Cancel@ 	0.8		BtnHint_Back		@_Arg1_@"
+set Child "ConsoleButtonHelperFromFont 350 960						J 		1.0 100	 	BtnHint_Scroll 		@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConQuests_Popup
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolInv InputPad
+set DisabledSymValue CurrentMenu!CQuests
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 140 960			@DM_Cancel@ 	0.8		BtnHint_Back		CQuests"
+add MenuObject
+set Name CM_ButtonHints_ConWatch
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 140 960			@DM_Cancel@ 	0.8		BtnHint_Back		@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect1] 380 960		@DM_Select@ 	0.8		BtnHint_Select		@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConOptions
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 140 960			@DM_Cancel@ 	0.8		BtnHint_Back		@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect1] 380 960		@DM_Select@ 	0.8		BtnHint_Select		@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConShop
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 				140 960			@DM_Cancel@ 	0.8		BtnHint_Back		@_Arg1_@"
+set Child "ConsoleButtonTemplate 				380 960			@DM_Select@ 	0.8		BtnHint_Select		@_Arg1_@"
+set Child "ConsoleButtonDynValueEqTemplate		640 960			2 	0.8		BtnHint_Toggle		@_Arg1_@	BtnHint_OnFilter 0"
+set Child "ConsoleButtonHelperFromFont 			1100 960		K 		1.0 60	 	BtnHint_ExitShop	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConInviteList
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 340 960			@DM_Cancel@ 	0.8		BtnHint_Back			@_Arg1_@"
+set Child "ConsoleButtonTemplate 600 960			@DM_Select@ 	0.8		BtnHint_Invite			@_Arg1_@"
+set Child "ConsoleButtonTemplate 870 960			3 	0.8		BtnHint_GamerCard@GamertagEXT@	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConOptControls
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 140 960			@DM_Cancel@ 	0.8		BtnHint_Back		@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConOptGameplay
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			140 960		@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonHelperFromFont 		550 960		Z	 		1.0	60			BtnHint_Select	@_Arg1_@"
+set Child "ConsoleButtonTemplate 			1000 960	@DM_Select@ 	0.8			BtnHint_Toggle	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConOptVideo
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			140 960		@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate 			550 960		@DM_Select@ 	0.8			BtnHint_Toggle	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConOptScreenInset
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			140 960		@DM_Cancel@ 0.8			BtnHint_Back			@_Arg1_@"
+set Child "ConsoleButtonHelperFromFont 		550 960		J	 	1.0 60			BtnHint_PositionScreen	@_Arg1_@"
+set Child "ConsoleButtonHelperFromFont 		1000 960	Y 		1.0 60			BtnHint_ResizeScreen	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConOptAudio
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			140 960		@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonHelperFromFont 		550 960		Z	 	1.0	60			BtnHint_Select	@_Arg1_@"
+set Child "ConsoleButtonHelperFromFont 		1000 960	X 		1.0 60			BtnHint_Adjust	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConOptContact
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			140 960		 	@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate 			550 960		 	@DM_Select@ 	0.8			BtnHint_Toggle	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConMapSelect
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			140 960		 	@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate 			380 960		 	@DM_Select@ 	0.8			BtnHint_Select	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_ConLobby
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			140 990		@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate 			380 990		@DM_Select@ 	0.8			BtnHint_Select	@_Arg1_@"
+set Child "ConsoleButtonTemplateDynName		660 990		2 	0.8			BtnHint_Inspect_Dyn	@_Arg1_@"
+set Child "ConsoleButtonTemplate			920 990		3 	0.8			BtnHint_ToggleMode	@_Arg1_@"
+set Child "ConsoleButtonHelperFromFont 		1140 990	K 		1.0 60			BtnHint_Shop	@_Arg1_@"
+set Child "ConsoleButtonShoulders			1430 990	0.7		BtnHint_Loadout	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_CCredits
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			960 960		 	@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_SelectItemDialog
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			540 960		 	@DM_Select@ 	0.8			BtnHint_Select	@_Arg1_@"
+set Child "ConsoleButtonTemplate			860 960		 	2 	0.8			BtnHint_Inspect	@_Arg1_@"
+set Child "ConsoleButtonTemplate 			1180 960	 	@DM_Cancel@ 	0.8			BtnHint_Cancel	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_RoomDialog
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			500 960		 	@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonHelperFromFont	 	730 960			Z 			1.0 60			BtnHint_Choose	@_Arg1_@"
+set Child "ConsoleButtonTemplate 			1050 960	 	@DM_Select@ 	0.8			BtnHint_Select	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_UnlockDialog_S0
+set ContainerOnly 1
+set HiddenCheckBySymbol UnlockWillCostVIPShopTicket
+set SaveArgs 1
+set Child "ConsoleButtonTemplate					540 820		3 	0.8			BtnHint_ToggleInfo	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_UnlockDialog_S1
+set ContainerOnly 1
+set HiddenCheckBySymbolInv UnlockWillCostVIPShopTicket
+set SaveArgs 1
+set Child "ConsoleButtonDynValueEqTemplate			540 820		3	 	0.8			BtnHint_ToggleInfo	@_Arg1_@	VipTicketUnderstandCtx 0"
+set Child "ConsoleButtonDynValueEqHelperFromFont 	540 820		Z 		1.0 60			BtnHint_Choose	@_Arg1_@		VipTicketUnderstandCtx 1"
+add MenuObject
+set Name CM_ButtonHints_UnlockDialog
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 					300 820		@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "CM_ButtonHints_UnlockDialog_S0			0 0			@_Arg1_@"
+set Child "CM_ButtonHints_UnlockDialog_S1			0 0			@_Arg1_@"
+set Child "ConsoleButtonDynValueEqTemplate 			840 820		@DM_Select@ 	0.8			BtnHint_Select	@_Arg1_@		DialogPageDisplay 0"
+set Child "ConsoleButtonDynValueEqTemplate 			840 820		@DM_Select@ 	0.8			BtnHint_Select	@_Arg1_@		UnlockOnBuyConfirmUI 0"
+add MenuObject
+set Name CM_ButtonHints_InspectDialog
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonDynValueEqTemplate 		60 820		@DM_Select@ 	0.8			BtnHint_Select	@_Arg1_@		DialogPageDisplay 0"
+set Child "ConsoleButtonTemplate 				320 820		@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate 				560 820		3 				0.8			BtnHint_ToggleInfo	@_Arg1_@"
+set Child "ConsoleButtonDynTemplate 			860 820		/ifSym CapsuleRareChoicesLoaded == 0	2 				0.8			BtnHint_MarketList	@_Arg1_@	BtnHint_MktList"
+add MenuObject
+set Name CM_ButtonHints_InspectPromoDialog
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			300 960		@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonDynTemplate 		540 960		@DM_Select@ 	0.8			BtnHint_Select	@_Arg1_@	BtnHint_PromoSelect"
+add MenuObject
+set Name CM_ButtonHints_MarketListDialog
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			140 960		@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate 			380 960		@DM_Select@ 	0.8			BtnHint_Select	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_PauseMenu
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			140 960		@DM_Cancel@ 	0.8			BtnHint_Back	@_Arg1_@"
+set Child "ConsoleButtonTemplate 			380 960		@DM_Select@ 	0.8			BtnHint_Select	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints_VoiceMenu
+set ContainerOnly 1
+set SaveArgs 1
+set DisabledSymValue CurrentMenu!@_Arg1_@
+set Child "ConsoleButtonTemplate 			140 960		@DM_Cancel@ 	0.8			BtnHint_Back			@_Arg1_@"
+set Child "ConsoleButtonTemplate 			380 960		@DM_Select@ 	0.8			BtnHint_Select			@_Arg1_@"
+set Child "ConsoleButtonTemplate 			650 960		3 				0.8			BtnHint_GamerCard@GamertagEXT@	@_Arg1_@"
+add MenuObject
+set Name CM_ButtonHints
+set ContainerOnly 1
+set Hidden 1
+set HiddenCheckBySymbol BtnHint_HideAll
+set Child "CM_ButtonHints_MotD 0 0					MotD"
+set Child "CM_ButtonHints_CRoot 0 0					CRoot"
+set Child "CM_ButtonHints_CHome 0 0					CHome"
+set Child "CM_ButtonHints_CMail 0 0					CMail"
+set Child "CM_ButtonHints_CPlay 0 0					CPlay"
+set Child "CM_ButtonHints_CSoloLoadout 0 0			CSoloLoadout"
+set Child "CM_ButtonHints_CAirMechSelect 0 0		CAirMechSelect"
+set Child "CM_ButtonHints_SelectUnitsCon 0 0		SelectUnitsCon"
+set Child "CM_ButtonHints_ConStats 0 0				CStats"
+set Child "CM_ButtonHints_ConQuests 0 0				CQuests"
+set Child "CM_ButtonHints_ConWatch 0 0				CWatch"
+set Child "CM_ButtonHints_ConOptions 0 0			COptions"
+set Child "CM_ButtonHints_ConShop 0 0				ConShop"
+set Child "CM_ButtonHints_ConInviteList 0 0			ConInviteList"
+set Child "CM_ButtonHints_ConOptControls 0 0		COptControls"
+set Child "CM_ButtonHints_ConOptGameplay 0 0		COptGameplay"
+set Child "CM_ButtonHints_ConOptVideo 0 0			COptVideo"
+set Child "CM_ButtonHints_ConOptScreenInset 0 0		COptScreenInset"
+set Child "CM_ButtonHints_ConOptAudio 0 0			COptAudio"
+set Child "CM_ButtonHints_ConOptContact 0 0			COptContact"
+set Child "CM_ButtonHints_ConMapSelect 0 0			MapSelect"
+set Child "CM_ButtonHints_ConLobby 0 0				CLobby"
+set Child "CM_ButtonHints_CCredits 0 0				CCredits"
+set Child "CM_ButtonHints_InspectPromoDialog 0 0	InspectPromoDialog"
+set Child "CM_ButtonHints_SelectItemDialog 0 0		SelectItemDialog"
+set Child "CM_ButtonHints_RoomDialog 0 0			RoomDialog"
+set Child "CM_ButtonHints_FBGeneric 0 0				CSolo"
+set Child "CM_ButtonHints_FBGeneric 0 0				CSoloSub"
+set Child "CM_ButtonHints_FBGeneric 0 0				CCoop"
+set Child "CM_ButtonHints_FBGeneric 0 0				CCoopSub"
+set Child "CM_ButtonHints_FBGeneric 0 0				CPvP"
+set Child "CM_ButtonHints_FBGeneric 0 0				CPvPSub"
+set Child "CM_ButtonHints_FBGeneric 0 0				CMulti"
+set Child "CM_ButtonHints_FBGeneric 0 0				CMultiSub"
+set Child "CM_ButtonHints_FBGeneric 0 0				CPractice"
+set Child "CM_ButtonHints_FBGeneric 0 0				CTraining"
+add MenuObject
+set Name ConLoadoutAirMechVariantsBox
+set ContainerOnly 1
+set Child "ConAirMechSkinTemplate[AirMechSkin10] 1000 0		10 AirMechSkin9 AirMechSkin10 AirMechClass9 null"
+set Child "ConAirMechSkinTemplate[AirMechSkin9] 900 0		9 AirMechSkin8 AirMechSkin10 AirMechClass8 null"
+set Child "ConAirMechSkinTemplate[AirMechSkin8] 800 0		8 AirMechSkin7 AirMechSkin9 AirMechClass7 null"
+set Child "ConAirMechSkinTemplate[AirMechSkin7] 700 0		7 AirMechSkin6 AirMechSkin8 AirMechClass6 null"
+set Child "ConAirMechSkinTemplate[AirMechSkin6] 600 0		6 AirMechSkin5 AirMechSkin7 AirMechClass6 null"
+set Child "ConAirMechSkinTemplate[AirMechSkin5] 500 0		5 AirMechSkin4 AirMechSkin6 AirMechClass5 null"
+set Child "ConAirMechSkinTemplate[AirMechSkin4] 400 0		4 AirMechSkin3 AirMechSkin5 #ConButton@RookLocal_Class@ null"
+set Child "ConAirMechSkinTemplate[AirMechSkin3] 300 0		3 AirMechSkin2 AirMechSkin4 #ConButton@RookLocal_Class@ null"
+set Child "ConAirMechSkinTemplate[AirMechSkin2] 200 0		2 AirMechSkin1 AirMechSkin3 #ConButton@RookLocal_Class@ null"
+set Child "ConAirMechSkinTemplate[AirMechSkin1] 100 0		1 AirMechSkin0 AirMechSkin2 #ConButton@RookLocal_Class@ null"
+set Child "ConAirMechSkinTemplate[AirMechSkin0] 0 0		0 null AirMechSkin1 #ConButton@RookLocal_Class@ null"

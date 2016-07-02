@@ -1,0 +1,34 @@
+blockLoadOnConsoleSym _MenuPostAuthLoaded_
+onloadrun {
+]sym set _MenuPostAuthLoaded_ 1
+}
+MO LoadingBackdrop {
+layer 27
+pos 0 0
+}
+MO LoadingLogo_M {
+layer 28
+pos 774 -500
+}
+MO LoadingLogo_A {
+layer 28
+pos 774 1500
+}
+MO LoadingFlash {
+layer 29
+pos 20 30
+}
+onload {
+playsound AM_Logo
+addUIAnim LoadingLogo_M mas_LoadingShowM /speed 1.8
+pcmd 0.3 addUIAnim LoadingLogo_A mas_LoadingShowA /speed 1.8
+pcmd 0.7 addUIAnim LoadingFlash mas_LoadingFlash /speed 1.0
+}
+onload {
+gameui ignoreInputTime 2.0
+sym set CheckTutorialCycles 0
+pcmd 2.0 rook checkTutorial MenuPostAuth.txt /GoLoadMainMenuOrUpsellFirst
+}
+onunload {
+]sym set _MenuPostAuthLoaded_ 0
+}

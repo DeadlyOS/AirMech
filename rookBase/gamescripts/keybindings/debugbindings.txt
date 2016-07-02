@@ -1,0 +1,180 @@
+bindcmd control-F1 {
+dactions toggle
+}
+bindcmd control-F1 {
+gfx toggle stats
+}
+bindcmd control-F2 {
+gfx cyclequality
+}
+bindcmd control-F5 {
+gfx reloadshaders
+}
+bindcmd control-F7 {
+gfx toggle text
+}
+bindcmd control-F12 {
+gfx toggle ifh
+}
+bindcmd F3 {
+if sym GfxDetail == 0 sym set GfxDetail 1
+if sym GfxDetail == 1 sym set GfxDetail 2
+if sym GfxDetail == 2 sym set GfxDetail 0
+pcmd 0.1 gfx set resolution $Resolution $MSAA $$GfxDetail
+}
+bindcmd control-F3 {
+if sym Resolution == 1920x1080 sym set Resolution 2560x1600
+if sym Resolution == 2560x1600 sym set Resolution 1600x900
+if sym Resolution == 1600x900 sym set Resolution 1920x1080
+pcmd 0.1 gfx set resolution $$Resolution $MSAA $GfxDetail
+}
+bindcmd F4 {
+gfx toggle navmeshVisualization
+}
+bindcmd F6 {
+gfx toggle wireframeMode
+}
+bindcmd F7 {
+gfx toggle physicVisualization
+}
+bindcmd F9 {
+gfx toggle postProcessView
+}
+bindcmd F10 {
+gfx toggle orthographicProjection
+}
+bindcmd F11 {
+lights toggledebugdraw
+}
+bindcmd control-p {
+rook doLevelState ProfileSpawn
+}
+bindcmd alt-q {
+tool menureset hard
+echo menureset_hard
+}
+bindcmd control-q {
+heatfile flushFileCache
+lang flushDrawCaches
+state flushStateControllerCache
+tool menureset hard
+tool menureset animscripts
+tool menuCmdsReload
+cbinding reload
+if sym PauseUIOpen == 1 clearmenu MenuPause
+if sym PauseUIOpen == 0 inputBinding enable gamePause
+if sym PauseUIOpen == 0 cbinding enable gamePause
+sym set ConShopMenu 0
+sym set TempLoadoutLoaded 0
+sym set PlayMenuLoaded 0
+sym set FriendsLoaded 0
+sym set InventoryLoaded 0
+sym set PlayV1TopMenu 1
+sym set QuestsLoaded 0
+gameui show CM_ButtonHints
+}
+bindcmd control-f {
+gameUI focusName $MenuLastFocus0
+}
+bindcmd control-l {
+menuCmd LoadLobbyMatch
+}
+bindcmd alt-d {
+dview toggle
+}
+#if vr
+bindcmd control-d {
+if !menu3dExists ScreenTest menucmd DebugRTT
+if menu3dExists ScreenTest && !menu3dExists ScreenTest2 menu3d setInvisible ScreenTest
+if menu3dExists ScreenTest && !menu3dExists ScreenTest2 menucmd DebugRTT2
+if menu3dExists ScreenTest2 menu3d remove ScreenTest
+if menu3dExists ScreenTest2 menu3d remove ScreenTest2
+}
+#endif
+bindcmd alt-w {
+camera watch next
+}
+bindcmd "[" {
+dview cycledef -1
+}
+bindcmd "]" {
+dview cycledef 1
+}
+bindcmd p {
+reloadDefs
+}
+bindcmd shift-f {
+freecamera toggle
+}
+bindcmd shift-t {
+gfx toggle screenmsg
+}
+bindcmd pada-padx-padl3 {
+if sym P_AccessLevel > 0 player 0 changeTo GodMech
+}
+#if vr && 0
+bindcmd control-u {
+if sym FortStyle == 0 gfx lerp diffuseBlendFactor /current 1 1.0
+if sym FortStyle == 0 menu3d animate FortInside2 vr/FortUber2_doorsClose.aaf stopAndHold 0 0.35
+if sym FortStyle == 0 sym set FortStyle 1
+if sym FortStyle == 1 menu3d updateCfg FortInside /material mat_FortUber1_Red
+if sym FortStyle == 1 menu3d updateCfg FortInside2 /material mat_FortUber2_Red
+if sym FortStyle == 1 gfx lerp diffuseBlendFactor /current 0 0.0
+if sym FortStyle == 1 pcmd t1 gfx lerp diffuseBlendFactor /current 1 1.0
+if sym FortStyle == 1 sym set FortStyle 2
+if sym FortStyle == 2 gfx sinpan diffuseBlendFactor 0.10 0.9 1.0 40.0
+if sym FortStyle == 2 sym set FortStyle 3
+if sym FortStyle == 3 gfx lerp diffuseBlendFactor /current 0 1.0
+if sym FortStyle == 3 sym set FortStyle 4
+if sym FortStyle == 4 menu3d updateCfg FortInside /material mat_FortUber1
+if sym FortStyle == 4 menu3d updateCfg FortInside2 /material mat_FortUber2
+if sym FortStyle == 4 gfx lerp diffuseBlendFactor 1 0 1.0
+if sym FortStyle == 4 menu3d animate FortInside2 vr/FortUber2_doorsOpen.aaf stopAndHold 0 0.35
+if sym FortStyle == 4 sym set FortStyle 0
+}
+bindcmd control-i {
+menu3d remove LogoTest
+echo removed LogoTest
+menu3d remove AirMechLogoVR
+if sym LogoStyle == 0 menucmd TestCarbonLogo
+if sym LogoStyle == 0 sym set LogoStyle 1
+if sym LogoStyle == 1 menucmd TestAirMechLogo1
+if sym LogoStyle == 1 sym set LogoStyle 2
+if sym LogoStyle == 2 menucmd TestAirMechLogo2
+if sym LogoStyle == 2 sym set LogoStyle 0
+}
+bindcmd pady-padb-padback {
+menuCmd ReturnToMainMenuVR
+}
+#endif
+bindcmd control-g {
+if sym P_AccessLevel > 0 player 0 changeTo GodMech
+}
+bindcmd control-n {
+rook genNextAirMech DebugRook DebugRookSkin
+player 0 changeTo $$DebugRook
+pcmd t2 camera watch refresh
+}
+bindcmd alt-n {
+rook genNextSkin DebugRook DebugRookSkin
+player 0 changeTo $$DebugRookSkin
+pcmd t2 camera watch refresh
+}
+bindcmd control-b {
+if sym P_AccessLevel > 0 player 0 changeTo PilotBase
+}
+bindcmd control-c {
+editor toggle extentsEditMode
+}
+bindcmd control-minus {
+editor extentsEdit camera -1.0
+}
+bindcmd control-= {
+editor extentsEdit camera 1.0
+}
+bindcmd alt-minus {
+editor extentsEdit forcebox1 -1.0
+}
+bindcmd alt-= {
+editor extentsEdit forcebox1 1.0
+}

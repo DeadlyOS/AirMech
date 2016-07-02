@@ -1,0 +1,21 @@
+onloadrun {
+sym set EditorMapListWindowLoaded 1
+sym set EditorMapListPage 0
+sym set MapToLoad
+sym set EditorOpenMy 1
+}
+MO EditorMapManageWindow {
+draggableUIElement
+pos $UI_OpenDialog_X $UI_OpenDialog_Y /screenClamp 200 300
+layer 13
+preDeleteRunCmd gameUI getLastRenderPos EditorMapListWindow UI_OpenDialog_X UI_OpenDialog_Y
+}
+onload {
+addUIAnim EditorMapListWindow mas_DialogPopFadein
+gameui promoteToTop EditorMapListWindow
+}
+onunloadrun {
+sym set EditorMapListWindowLoaded 0
+}
+onunload {
+}

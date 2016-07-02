@@ -1,0 +1,1133 @@
+add MenuObject initFrom DialogTitle
+set Name DialogFriendTitle
+set RenderCB_Text NetFailDialogTitle
+add MenuObject
+set Name DialogFriendNameBig
+set Coords "0 0 650 100"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.25
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /noCommaSep"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol _FriendNameDeco_
+set Child "DialogFriendNameForMods -60 -350	/isMod"
+add MenuObject
+set Name FriendOpenTitle
+set Coords "0 0 300 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.70
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /noCommaSep /shadowColor2 /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text $_FriendNameDeco_
+add MenuObject
+set Name DialogFriendNameForMods
+set Coords "0 0 650 100"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_Flags "/noCommaSep"
+set RenderCB_Font DroidSansMono
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol _FriendNameDeco_
+add MenuObject
+set Name DialogFriendStatusBig
+set Coords "0 0 650 90"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/outlined8x /noCommaSep /toU16"
+set RenderCB_RGBColor "0.5 0.8 0.9"
+set RenderCB_ConsoleSymbol "_FriendState_"
+add MenuObject
+set Name DialogFriendBlack
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.66
+set MouseInteract 1
+set Focus -2
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject
+set Name FriendButtonClose
+set Texture menus/Social
+set Coords "825 2 70 70"
+set CoordsFocused "825 72 70 70"
+set Anchor UpperRight
+set MouseInteract 1
+set Focus -2
+set SaveArgs 2
+set CommandPress "menucmd CloseAllFriendDialogs"
+set CommandCancel "menucmd CloseAllFriendDialogs"
+set CommandFocusUp ">gameui focusNameTry @_Arg1_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg2_@"
+add MenuObject
+set Name FriendButtonTemplate
+set Texture menus/DialogFrames
+set Coords "0 258 512 73"
+set CoordsFocused "0 331 512 73"
+set CoordsPressed "-2 329 514 75"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xffffff
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set RenderCB_Flags "/nmi /shadowed"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB_Text FR_InviteToParty
+set Focus -2
+set SaveArgs 2
+set CommandCancel "menucmd CloseAllFriendDialogs"
+set CommandFocusUp ">gameui focusNameTry @_Arg1_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg2_@"
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonInviteParty
+set RenderCB_Text FR_InviteToGame
+set CommandPress "party2 invite -1 $_FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set DisabledSym _DisableInvite_
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 0.0, DisabledAlphaTimeIn 0.0
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonInviteTrade
+set RenderCB_Text FR_InviteToTrade
+set CommandPress "social inviteTrade $_FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set DisabledSym _DisableTrade_
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 0.0, DisabledAlphaTimeIn 0.0
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonReportPlayer
+set RenderCB_Text FR_ReportPlayer
+set CommandPress "loadmenu DialogReport"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set DisabledSym _DisableReport_
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 0.0, DisabledAlphaTimeIn 0.0
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonMessage
+set RenderCB_Text FR_SendPrivateMessage
+set CommandPress "rook do initChatMsgToSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 0.0, DisabledAlphaTimeIn 0.0
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonMail
+set RenderCB_Text FR_SendMail
+set CommandPress "sym set MailComposeTo $_FriendName_"
+set CommandPress "sym clear MailComposeSubject"
+set CommandPress "sym clear MailComposeBody"
+set CommandPress "gameui promoteToTop MailCompose"
+set CommandPress "loadmenu MailCompose.txt /fadein 0.15"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0, DisabledAlphaTimeIn 0.0
+add MenuObject initFrom FriendButtonMail
+set Name FriendButtonMailNotFriend
+set DisabledSymInv IsAnyVIP
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonDeleteFriend
+set RenderCB_Text FR_DeleteFriend
+set CommandPress "friends removeSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonFriendInvite
+set RenderCB_Text FR_InviteFriend
+set CommandPress "social inviteRecentlyMetSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set DisabledSym P_ChatBan
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonSpectateFriend
+set RenderCB_Text FR_SpectateFriend
+set CommandPress "social inviteRecentlyMetSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set Child "SpecRoomCameraSm 10 2"
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonRemovePlayer
+set RenderCB_Text FR_RemoveRecentlyMet
+set CommandPress "social ignoreRecentlyMetSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonIgnorePlayer
+set RenderCB_Text FR_IgnorePlayer
+set CommandPress "social ignorePlayerSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonAcceptRequest
+set RenderCB_Text FR_AcceptPlayer
+set CommandPress "friends acceptSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonDeclineRequest
+set RenderCB_Text FR_DeclinePlayer
+set CommandPress "friends ignoreSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonDeclineRequestAndIgnore
+set RenderCB_Text FR_IgnorePlayer
+set CommandPress "friends ignoreSym _FriendName_"
+set CommandPress "social ignoreRecentlyMetSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject initFrom FriendButtonTemplate
+set Name FriendButtonUnIgnorePlayer
+set RenderCB_Text FR_UnIgnorePlayer
+set CommandPress "social unIgnorePlayerSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject
+set Name AdminIconTemplate
+set MouseInteract 1
+set Focus -2
+set Texture menus/Social
+set Coords "945 1 77 77"
+set ScaleX 0.6, ScaleY 0.6
+set CommandPress "sym set FriendOptionsHide 0"
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconInfoHL
+set Coords "945 235 77 77"
+set BlendMode BlendAdd
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconInfo
+set DrawWhenFocused AdminIconInfoHL
+set Coords "945 235 77 77"
+set CommandPress "net gchatForced /info $_FriendName_"
+set CommandPress "net gchatForced /reports $_FriendName_"
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconNameHL
+set BlendMode BlendAdd
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconName
+set DrawWhenFocused AdminIconNameHL
+set CommandPress "sym set _buildcmd_ /namehistory $_FriendName_"
+set CommandPress "net lchatSym _buildcmd_"
+set CommandPress "pcmd 0.1 gamemsg log ------------------"
+set CommandPress "gameui directPushNameIfEnabled ChatroomButtonGameLog"
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconOpenHL
+set BlendMode BlendAdd
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconOpen
+set DrawWhenFocused AdminIconOpenHL
+set CommandPress "net gchatForced /open $_FriendName_"
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconMuteHL
+set Coords "945 79 77 77"
+set BlendMode BlendAdd
+add MenuObject
+set Name AdminLabelMute5
+set Coords "0 0 50 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB _DrawTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 0.9 0.0"
+set RenderCB_Text 5m
+add MenuObject initFrom AdminLabelMute5
+set Name AdminLabelMute60
+set RenderCB_Text 60m
+add MenuObject initFrom AdminLabelMute5
+set Name AdminLabelMute1Day
+set RenderCB_Text "24H"
+add MenuObject initFrom AdminLabelMute5
+set Name AdminLabelMute0
+set RenderCB_Text 0
+set RenderCB_RGBColor 0xffffff
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconMute5
+set Coords "945 79 77 77"
+set DrawWhenFocused AdminIconMuteHL
+set CommandPress "net gchatForced /mute $_FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set Child "AdminLabelMute5 0 0"
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconMute60
+set Coords "945 79 77 77"
+set DrawWhenFocused AdminIconMuteHL
+set CommandPress "net gchatForced /mute1hr $_FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set Child "AdminLabelMute60 0 0"
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconMute1D
+set Coords "945 79 77 77"
+set DrawWhenFocused AdminIconMuteHL
+set CommandPress "net gchatForced /mute1day $_FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set Child "AdminLabelMute1Day 0 0"
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconUnmute
+set Coords "945 79 77 77"
+set DrawWhenFocused AdminIconMuteHL
+set CommandPress "net gchatForced /unmute $_FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set Child "AdminLabelMute0 0 0"
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconKickHL
+set Coords "945 157 77 77"
+set BlendMode BlendAdd
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconKick
+set Coords "945 157 77 77"
+set DrawWhenFocused AdminIconKickHL
+set CommandPress "net gchatForced /kick $_FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconBuckyHL
+set Texture units/RocketTruck/IconsBlue
+set Coords "50 50 154 144"
+set ScaleX 0.3, ScaleY 0.3
+set BlendMode BlendAdd
+add MenuObject initFrom AdminIconTemplate
+set Name AdminIconBucky
+set Texture units/RocketTruck/IconsBlue
+set Coords "50 50 154 144"
+set ScaleX 0.3, ScaleY 0.3
+set DrawWhenFocused AdminIconBuckyHL
+set CommandPress "net gchatForced /cmd $_FriendName_ : loadmenu Standby"
+set CommandPress "net gchatForced /cmd $_FriendName_ : pcmd 5.0 clearmenu Standby"
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject
+set Name AdminMailPlayer
+set Texture menus/Mail
+set Coords "11 346 72 72"
+set CoordsFocused "12 425 72 72"
+set CoordsPressed "10 423 72 72"
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set ToolTip FR_SendMail
+set CommandPress "sym set MailComposeTo $_FriendName_"
+set CommandPress "sym clear MailComposeSubject"
+set CommandPress "sym clear MailComposeBody"
+set CommandPress "gameui promoteToTop MailCompose"
+set CommandPress "loadmenu MailCompose.txt /fadein 0.15"
+set CommandPress "menucmd CloseAllFriendDialogs"
+add MenuObject
+set Name AdminIconsMaster
+set Coords "0 0 70 463"
+set Texture effects/white
+set Color 0xff5200
+set ColorFocused 0xff5200
+set Focus -2
+set MouseInteract 1
+set NoAlphaMod 1
+set Alpha 0.9
+set HiddenCheckBySymbol FriendOptionsHide
+set Child "AdminIconInfo 10 70		/isMod"
+set Child "AdminIconName 10 10		/isMod"
+set Child "AdminIconMute5 10 190		/isMod"
+set Child "AdminIconUnmute 10 130	/isMod"
+set Child "AdminIconMute60 10 250	/isMod"
+set Child "AdminIconMute1D 10 310		/isMod"
+set Child "AdminIconKick 10 370		/isAdmin"
+set Child "AdminIconBucky 10 420		/isAdmin"
+set Child "AdminIconOpen 10 10		/isAdmin"
+add MenuObject
+set Name PInfoBanner
+set Coords "280 0 396 223"
+set ScaleX 1.251
+set Texture menus/Faction
+add MenuObject
+set Name FriendHeaderVignette
+set Texture menus/LoadingAMLogo
+set Coords "436 2 586 832"
+add MenuObject
+set Name FriendDividerHorizontal
+set Texture menus/MainBoxes
+set Coords "342 204 261 18"
+set TileArea "495 18"
+set TileAreaFullTexture 0
+add MenuObject
+set Name FriendNameDark
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0xb4542a
+set Color 0x48362d
+set NoAlphaMod 1
+set TileArea "586 120"
+set Alpha 0.8
+add MenuObject
+set Name FriendHeader
+set Texture menus/LoadingAMLogo
+set Coords "436 2 586 832"
+add MenuObject
+set Name FriendCloseVis
+set Coords "638 454 50 50"
+set CoordsFocused "637 397 50 50"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name FriendClose
+set Coords "0 0 50 50"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">clearmenu DialogFriend@_FriendOpenInd@ /fadeout 0.1"
+set Child "FriendCloseVis 0 0"
+add MenuObject
+set Name FriendPlayerLevelShadow
+set Texture menus/HomeBar
+set Coords "957 588 59 47"
+add MenuObject
+set Name FriendPlayerLevelNumber
+set Coords "0 0 90 50"
+set DisabledAlpha 0.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB _DrawText
+set	RenderCB_Flags "/outlined /outlined8x /shadowColor2"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol @_Arg1_@
+set FirstDrawnChildren 1
+set Child "FriendPlayerLevelShadow -6 -8"
+add MenuObject
+set Name FriendPlayerLevel
+set CoordsAnimated "580 481 174 101"
+set CoordsAnimated "580 376 174 101"
+set CoordsAnimated "580 271 174 101"
+set CoordsAnimated "580 166 174 101"
+set CoordsAnimated "580 61 174 101"
+set Coords "754 61 89 51"
+set CoordsAnimationSymHash @_Arg1_@_Icon
+set Texture menus/TradeB
+set DisabledAlpha 0.5
+set MouseInteract 1
+set SaveArgs 2
+set ScaleX 0.5, ScaleY 0.5
+set ToolTip @_Arg2_@
+set Child "FriendPlayerLevelNumber 0 0	@_Arg1_@"
+add MenuObject
+set Name FriendBarButtonTemplate
+set MouseInteract 1
+set Focus -2
+set Texture menus/Mail
+set Coords "929 63 42 40"
+set Color 0x7e8b8f
+set ColorFocused 0xa5bfc6
+set DisabledAlpha 0.3
+add MenuObject initFrom FriendBarButtonTemplate
+set Name FriendBarButtonMail
+set ToolTip FR_SendMail
+set SaveArgs 1
+set CommandPress ">sym set MailComposeTo $_FriendName@_FriendOpenInd@"
+set CommandPress "sym clear MailComposeSubject"
+set CommandPress "sym clear MailComposeBody"
+set CommandPress "gameui promoteToTop MailCompose"
+set CommandPress "loadmenu MailCompose.txt /fadein 0.15"
+add MenuObject initFrom FriendBarButtonMail
+set Name FriendBarButtonMailVip
+set HiddenCheckBySymbolInv IsAnyVIP
+add MenuObject initFrom FriendBarButtonMail
+set Name FriendBarButtonMailNonVip
+set HiddenCheckBySymbol IsAnyVIP
+set HiddenCheckBySymbolInv _FriendIsFriend@_FriendOpenInd@
+add MenuObject initFrom FriendBarButtonTemplate
+set Name FriendBarButtonOptions
+set Coords "978 63 42 40"
+set SaveArgs 1
+set CommandPress ">menucmd FriendOptionsList #FriendOptions@_FriendOpenInd@"
+add MenuObject
+set Name FriendButtonInviteBg
+set Texture effects/white
+set Coords "0 0 44 43"
+set Color 0x83becd
+add MenuObject initFrom FriendBarButtonTemplate
+set Name FriendBarButtonInvite
+set Texture menus/Mail
+set Coords "854 264 75 75"
+set CoordsFocused "854 180 75 75"
+set Color 0xffffff
+set ToolTip FR_InviteToGame
+set CommandPress ">party2 invite -1 $_FriendName@_FriendOpenInd@"
+set DisabledSym _DisableInvite_@_FriendOpenInd@
+set DisabledAlpha 0.3
+set SaveArgs 1
+set ScaleX 0.7, ScaleY 0.7
+set FirstDrawnChildren 1
+set Child "FriendButtonInviteBg 4 5"
+set DisabledAlphaTimeOut 0.0, DisabledAlphaTimeIn 0.0
+add MenuObject initFrom FriendBarButtonTemplate
+set Name FriendBarButtonReportPos
+set Coords "828 10 40 40"
+set Color 0x7dc16b
+set ColorFocused 0x97eb80
+set SaveArgs 1
+set CommandPress ">if sym _FriendName@_FriendOpenInd@ !isempty menucmd TryIssueReportPos local _FriendName@_FriendOpenInd@"
+set CommandPressAlt "if isMod sym toggle FriendOptionsHide"
+add MenuObject initFrom FriendBarButtonTemplate
+set Name FriendBarButtonReportNeg
+set Coords "877 10 40 40"
+set Color 0xd05e44
+set ColorFocused 0xff8569
+set HiddenCheckBySymbol _FriendIsFriend@_FriendOpenInd@
+set Color 0xcb6b4d
+set ColorFocused 0xeb8667
+set SaveArgs 1
+set CommandPress "if isMod sym toggle FriendOptionsHide"
+set CommandPress ">if !isMod if sym _FriendName@_FriendOpenInd@ !isempty menucmd TryIssueReportNeg local _FriendName@_FriendOpenInd@"
+set CommandPressAlt ">if isMod if sym _FriendName@_FriendOpenInd@ !isempty menucmd TryIssueReportNeg local _FriendName@_FriendOpenInd@"
+add MenuObject initFrom FriendBarButtonTemplate
+set Name FriendBarButtonFriendRequest
+set Coords "875 62 40 40"
+set SaveArgs 1
+set ToolTip FR_InviteFriend
+set CommandPress ">social inviteRecentlyMetSym  _FriendName@_FriendOpenInd@"
+set DisabledSym P_ChatBan
+set HiddenCheckBySymbol _FriendIsFriend@_FriendOpenInd@
+add MenuObject
+set Name FriendBarButtonIgnorePlayerOver
+set Texture menus/Mail
+set Coords "822 104 45 45"
+set Color 0xd05e44
+set ColorFocused 0xff8569
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom FriendBarButtonTemplate
+set Name FriendBarButtonIgnorePlayer
+set Coords "824 62 40 40"
+set SaveArgs 1
+set ToolTip FR_IgnorePlayer
+set CommandPress ">social ignorePlayerSym _FriendName@_FriendOpenInd@"
+set HiddenCheckBySymbol _FriendIsFriend@_FriendOpenInd@
+set Child "FriendBarButtonIgnorePlayerOver -2 -1"
+add MenuObject
+set Name FriendButtonBar
+set Texture effects/white
+set Coords "0 0 392 50"
+set Color 0x232b2d
+set BlendMode BlendAdd
+set Child "FriendBarButtonReportPos 55 5 /ifSym ArcCustomized == 0"
+set Child "FriendBarButtonReportNeg 105 5 /ifSym ArcCustomized == 0"
+set Child "FriendBarButtonFriendRequest 155 5 /ifSym ArcCustomized == 0"
+set Child "FriendBarButtonIgnorePlayer 205 5 /ifSym ArcCustomized == 0"
+set Child "FriendBarButtonFriendRequest 55 5 /ifSym ArcCustomized == 1"
+set Child "FriendBarButtonIgnorePlayer 105 5 /ifSym ArcCustomized == 1"
+set Child "FriendBarButtonInvite 0 -1"
+set Child "FriendBarButtonMailVip 295 6"
+set Child "FriendBarButtonMailNonVip 295 6"
+set Child "FriendBarButtonOptions[ListboxFriendOptions@_FriendOpenInd@] 345 6"
+add MenuObject
+set Name FriendStatusSm
+set Coords "0 0 160 90"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set BlendMode BlendAdd
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_Flags "/outlined8x /noCommaSep /toU16 /shadowColor2"
+set RenderCB_Flags "/noCommaSep /toU16"
+set RenderCB_RGBColor 0x8099a1
+set HiddenCheckBySymbolInv _FriendIsFriend_
+set RenderCB_ConsoleSymbol "_FriendState_"
+add MenuObject
+set Name FriendLastSeenText
+set Coords "0 0 396 90"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set BlendMode BlendAdd
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_Flags "/outlined8x /noCommaSep /toU16 /shadowColor2"
+set RenderCB_Flags "/noCommaSep /toU16"
+set RenderCB_RGBColor 0xcccccc
+set RenderCB_ConsoleSymbol "_FriendState_"
+add MenuObject
+set Name FriendLastSeen
+set Coords "0 0 396 90"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_Flags "/outlined8x /noCommaSep /toU16 /shadowColor2"
+set RenderCB_Flags "/noCommaSep /toU16"
+set RenderCB_RGBColor 0x8099a1
+set RenderCB_ConsoleSymbol "_FriendLastSeen_"
+set HiddenCheckBySymbolValue _FriendStatusCode_!0
+set Child "FriendLastSeenText 0 -25"
+add MenuObject
+set Name FriendOpenChatInputBg
+set Coords "0 0 382 62"
+set Texture effects/white
+set Texture effects/black
+set NoAlphaMod 1
+set Alpha 0.3
+add MenuObject
+set Name FriendOpenProfile
+set Coords "0 0 386 50"
+set CommandDoubleClick "if sym P_AccessLevel == 1 net gchatForced /open $_FriendName_"
+set RenderBlocked 1
+set MouseInteract 1
+add MenuObject
+set Name FriendOpenChatInputFocus
+set Coords "0 0 386 66"
+set Texture effects/white
+set Color 0x74d7c8
+set BlendMode BlendAdd
+set PulseAlpha "2.0 -0.5 -0.3"
+add MenuObject
+set Name FriendOpenChatInput
+set Coords "0 0 380 60"
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set Texture effects/white
+set NoAlphaMod 1
+set Alpha 0.5
+set Color 0x1e2527
+set ColorFocused 0x1e2527
+set DrawWhenFocused FriendOpenChatInputFocus
+set DrawWhenFocusedOffset "-3 -3"
+set DrawWhenFocusedOrder BeforeSelf
+set RenderCB_DX 360
+set RenderCB_DY 55
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.66
+set RenderCB_Offset "12 7"
+set MouseInteractZoneExpand "-5 -15 5 10"
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set NotActionableForPurposeOfGameInput 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x8099a1
+set RenderCB_RGBColorFocused 0xffffff
+set TextEditableMaxLen 99
+set RenderCB_Text ChatInput@_FriendOpenInd@
+set RenderCB_BoolArg 1
+set Child "DefaultChatMessage 10 -110"
+set CommandPress "gameui disable DefaultChatMessage"
+set CommandEnterKey ">if sym _FriendStatusCode_ != 0 net friendChatSym @_FriendOpenInd@ ChatInput@_FriendOpenInd@"
+set CommandEnterKey ">if sym _FriendStatusCode_ != 0 sym set ChatInput@_FriendOpenInd@"
+set CommandEnterKey ">if sym _FriendStatusCode_ != 0 floatsym set F@_FriendOpenInd@ChatPos 1.0"
+set CommandEnterKey ">if sym _FriendStatusCode_ == 0 sym set MailComposeTo $_FriendName@_FriendOpenInd@"
+set CommandEnterKey "if sym _FriendStatusCode_ == 0 sym clear MailComposeSubject"
+set CommandEnterKey ">if sym _FriendStatusCode_ == 0 sym set MailComposeBody $ChatInput@_FriendOpenInd@"
+set CommandEnterKey "if sym _FriendStatusCode_ == 0 gameui promoteToTop MailCompose"
+set CommandEnterKey "if sym _FriendStatusCode_ == 0 loadmenu MailCompose.txt /fadein 0.15"
+set SaveArgs 3
+set FirstDrawnChildren 1
+set Child "FriendOpenChatInputBg -1 -1"
+add MenuObject
+set Name DefaultChatMessage
+set RenderCBExcludesDefaultRender 1
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.66
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x8099a1
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Text Label_VoiceChat
+set SaveArgs 1
+add MenuObject
+set Name FriendOpenMessageLog
+set Coords "0 0 370 260"
+set RenderCB_DX 370
+set RenderCB_DY 260
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 0.66
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 11
+set RenderCB_RGBColor 0xdddddd
+set SaveArgs 1
+set RenderCB_Text _f@_Arg1_@chat_
+set RenderCB _DrawTextListFriend@_Arg1_@Chat
+set RenderCB_Offset "10 10"
+add MenuObject
+set Name FriendOpenBlockBg
+set Coords "0 0 394 465"
+set RenderBlocked 1
+set MouseInteract 1
+add MenuObject
+set Name FriendOpenFriendInviteBg
+set Coords "0 0 282 47"
+set Texture effects/white
+set Color 0x151b1d
+add MenuObject
+set Name FriendOpenFriendDecline
+set MouseInteract 1
+set Focus -2
+set Texture menus/Mail
+set RenderCB_Text FR_DeclinePlayer
+set RenderCBExcludesDefaultRender 0
+set Texture effects/white
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.60
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set Color 0x4c8887
+set ColorFocused 0x5aa8a7
+set RenderCB_Flags "/outlined8x /nmi /shadowColor2"
+set Coords "0 0 280 45"
+set RenderCB_DX 280
+set RenderCB_DY 42
+set SaveArgs 1
+set CommandPress ">friends ignoreSym _FriendName@_FriendOpenInd@"
+set CommandPress ">clearmenu DialogFriend@_FriendOpenInd@ /fadeout 0.1"
+set DisabledSym P_ChatBan
+set FirstDrawnChildren 1
+set Child "FriendOpenFriendInviteBg -1 -1"
+add MenuObject
+set Name FriendOpenFriendAccept
+set MouseInteract 1
+set Focus -2
+set Texture menus/Mail
+set RenderCB_Text FR_AcceptPlayer
+set RenderCBExcludesDefaultRender 0
+set Texture effects/white
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.60
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set Color 0x4c8887
+set ColorFocused 0x5aa8a7
+set RenderCB_Flags "/outlined8x /nmi /shadowColor2"
+set Coords "0 0 280 45"
+set RenderCB_DX 280
+set RenderCB_DY 42
+set SaveArgs 1
+set CommandPress "gameui ignoreInputTime 0.15"
+set CommandPress ">friends acceptSym _FriendName@_FriendOpenInd@"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set DisabledSym P_ChatBan
+set FirstDrawnChildren 1
+set Child "FriendOpenFriendInviteBg -1 -1"
+add MenuObject
+set Name FriendOpenNotFriend
+set ContainerOnly 1
+set HiddenCheckBySymbolValue _FriendStatusCode_!3
+set Child "FriendOpenFriendDecline 58 180"
+set Child "FriendOpenFriendAccept 58 120"
+add MenuObject
+set Name FriendOpenBg
+set MouseInteract 1
+set Focus -2
+set Texture menus/Mail
+set Color 0xc1c1c1
+set ColorFocused 0xc1c1c1
+set CoordsStart "719 342 19 19"
+set CoordsMid "738 342 93 19"
+set CoordsEnd "832 342 19 19"
+set CoordsStartFocused "719 361 19 93"
+set CoordsMidFocused "738 361 93 93"
+set CoordsEndFocused "832 361 19 93"
+set CoordsStartDisabled "719 455 19 19"
+set CoordsMidDisabled "738 455 93 32"
+set CoordsEndDisabled "832 455 19 19"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 430
+set RenderCB_DY 550
+set Coords "0 0 430 550"
+add MenuObject
+set Name FriendOpenNotify
+set Texture menus/Mail
+set CoordsStart "719 342 19 19"
+set CoordsMid "738 342 93 19"
+set CoordsEnd "832 342 19 19"
+set CoordsStartFocused "719 361 19 93"
+set CoordsMidFocused "738 361 93 93"
+set CoordsEndFocused "832 361 19 93"
+set CoordsStartDisabled "719 455 19 19"
+set CoordsMidDisabled "738 455 93 32"
+set CoordsEndDisabled "832 455 19 19"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 430
+set RenderCB_DY 500
+set Coords "0 0 430 500"
+set HiddenCheckBySymbolInv _f1chat_d_
+set BlendMode BlendAdd
+set PulseAlpha "3.0 -4.0 -0.5"
+add MenuObject
+set Name FriendOpenDebugNumber
+set Coords "0 0 380 100"
+set DisabledAlpha 0.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_Font Numbers80px
+set RenderCB_RGBColor 0x364246
+set RenderCB_Text &@_Arg1_@&
+set HiddenCheckBySymbolValue P_AccessLevel!1
+add MenuObject
+set Name FriendOpenScrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "FriendOpenScrollbarPos 0 0		@_Arg1_@"
+set ScaleY 0.56
+set ScaleX 1.0
+set Color 0x777777
+set NoAlphaMod 1
+set Alpha 0.18
+set HiddenCheckBySymbol @_Arg2_@
+set SaveArgs 2
+add MenuObject
+set Name FriendOpenScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult @_Arg1_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set ScaleX 1.0
+set Color 0x7e8b8f
+set ColorFocused 0xa5bfc6
+set Focus -2
+set CommandOnMouseDrag ">floatsym set @_Arg1_@ $_MouseRelY"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 0.56
+set SaveArgs 1
+add MenuObject
+set Name FriendOpenFlash
+set Coords "0 0 394 464"
+set Texture effects/white
+set DisabledSym DisableFriendFlash
+set BlendMode BlendAdd
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 0.05
+set Color 0x899a9f
+add MenuObject
+set Name FriendOpenNewMessage
+set Coords "0 0 394 464"
+set Texture effects/white
+set HiddenCheckBySymbolInv _f2chat_d_
+set PulseAlpha "0.5 -0.5 -0.2"
+set BlendMode BlendAdd
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 0.05
+set Color 0x899a9f
+add MenuObject
+set Name FriendPortraitPictureBg
+set Texture pilots/@P_AvatarO@Icon
+set Coords "29 0 209 256"
+set ScaleX 1.883, ScaleY 1.883
+set Alpha 0.10
+set NoAlphaMod 1
+set FilterName Avatar
+add MenuObject
+set Name FriendPortraitPictureFg
+set Texture pilots/@P_AvatarO@Icon
+set Coords "0 0 256 256"
+set CoordsFocused "0 0 1 1"
+set ScaleX 1.0, ScaleY 1.0
+set FilterName Avatar
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name FriendAvatar
+set Texture pilots/@P_AvatarO@Icon
+set Coords "80 50 176 116"
+set CoordsFocused "0 0 1 1"
+set ScaleX 0.7, ScaleY 0.7
+set FilterName Avatar
+add MenuObject
+set Name FriendOpenMessage
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 2
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set Coords "0 0 320 300"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name FriendOpenFriendUnignore
+set MouseInteract 1
+set Focus -2
+set Texture menus/Mail
+set RenderCBExcludesDefaultRender 0
+set Texture effects/white
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.60
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set Color 0xbc5231
+set ColorFocused 0xdf643d
+set RenderCB_Flags "/outlined8x /nmi /shadowColor2"
+set Coords "0 0 280 45"
+set RenderCB_DX 280
+set RenderCB_DY 42
+set SaveArgs 1
+set CommandPress "gameui ignoreInputTime 0.15"
+set RenderCB_Text FR_UnIgnorePlayer
+set CommandPress "social unIgnorePlayerSym _FriendName_"
+set CommandPress "menucmd CloseAllFriendDialogs"
+set DisabledSym P_ChatBan
+set FirstDrawnChildren 1
+set Child "FriendOpenFriendInviteBg -1 -1"
+add MenuObject
+set Name FriendOpenIgnored
+set Coords "0 0 394 434"
+set Texture effects/white
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolValue _FriendState_!FS_Ignored
+set Color 0x613434
+set ColorFocused 0x613434
+set Child "FriendOpenMessage 35 60	MsgFriendIgnored	0.65"
+set Child "PlayOverlayLock 150 220"
+set Child "FriendOpenFriendUnignore 55 276"
+set Child "FriendOpenIgnoreBorder -5 -85"
+add MenuObject
+set Name FriendOpen
+set MouseInteract 1
+set Focus -2
+set RenderBlocked 1
+set DragSource FriendsMain
+set CommandPress "gameui promoteToTop FriendOpen"
+set CommandDoubleClick "if sym P_AccessLevel == 1 net gchatForced /open $_FriendName_"
+set FirstDrawnChildren 1
+set Coords "0 0 396 50"
+set Child "FriendOpenBg -18 -18"
+set Child "FriendPortraitPictureBg 0 30"
+set Child "FriendOpenNotify -18 -18"
+set Child "FriendOpenDebugNumber 0 130	_FriendStatusCode_"
+set Child "AdminIconsMaster 395 0		/isMod"
+set Child "FriendOpenNotFriend 0 30"
+set Child "FriendOpenMessageLog 7 127	@_FriendOpenInd@"
+set Child "FriendOpenScrollbar 380 132	F@_FriendOpenInd@ChatPos F@_FriendOpenInd@ChatScrollBarHidden"
+set Child "FriendButtonBar 1 82"
+set Child "FriendAvatar 1 0"
+set Child "FriendPlayerLevelNumber 7 43		P_LevelO@_FriendOpenInd@ TT_LevelO@_FriendOpenInd@"
+set Child "FriendOpenTitle 80 11"
+set Child "FriendLastSeen 0 160"
+set Child "FriendStatusSm 110 60"
+set Child "FriendOpenChatInput 7 436"
+set Child "FriendClose[FriendClose@_FriendOpenInd@] 347 -3"
+set Child "FriendOpenIgnored 0 80"
+set Child "FriendOpenFlash 0 0"
+add MenuObject
+set Name DialogFriendMaster
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogFrames
+set CoordsStart "2 2 32 32"
+set CoordsMid "34 2 32 32"
+set CoordsEnd "78 2 32 32"
+set CoordsStartFocused "2 34 32 32"
+set CoordsMidFocused "34 34 32 32"
+set CoordsEndFocused "78 34 32 32"
+set CoordsStartDisabled "2 78 32 32"
+set CoordsMidDisabled "34 78 32 32"
+set CoordsEndDisabled "78 78 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 654
+set RenderCB_DY 900
+set Coords "0 0 653 900"
+set Anchor Center
+set FirstDrawnChildren 1
+set Child "DialogFriendBlack 34 34"
+set Child "FriendHeader 34 34"
+set Child "DialogPlayerLevel 220 210		P_LevelO TT_LevelO"
+set Child "DialogFriendNameBig 0 300"
+set Child "DialogFriendStatusBig 0 350"
+set Child "FriendButtonClose -40 40"
+set Child "FriendButtonInviteParty 70 430"
+set Child "FriendButtonReportPlayer 70 510"
+set Child "FriendButtonMessage 70 590"
+set Child "FriendButtonMail 70 670"
+set Child "FriendButtonDeleteFriend 70 750"
+set Child "FriendOpen 700 139"
+add MenuObject
+set Name DialogNotFriendMaster
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogFrames
+set CoordsStart "2 2 32 32"
+set CoordsMid "34 2 32 32"
+set CoordsEnd "78 2 32 32"
+set CoordsStartFocused "2 34 32 32"
+set CoordsMidFocused "34 34 32 32"
+set CoordsEndFocused "78 34 32 32"
+set CoordsStartDisabled "2 78 32 32"
+set CoordsMidDisabled "34 78 32 32"
+set CoordsEndDisabled "78 78 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 654
+set RenderCB_DY 900
+set Coords "0 0 653 900"
+set Anchor Center
+set FirstDrawnChildren 1
+set Child "DialogFriendBlack 34 34"
+set Child "FriendHeader 34 34"
+set Child "DialogPlayerLevel 220 210		P_LevelO TT_LevelO"
+set Child "DialogFriendNameBig 0 300"
+set Child "FriendButtonClose -40 40					_NA_ FriendButtonInviteParty"
+set Child "FriendButtonInviteParty 70 430			FriendButtonClose FriendButtonReportPlayer"
+set Child "FriendButtonReportPlayer 70 510			FriendButtonInviteParty FriendButtonFriendInvite"
+set Child "FriendButtonFriendInvite 70 590			FriendButtonReportPlayer FriendButtonRemovePlayer"
+set Child "FriendButtonMailNotFriend 70 670"
+set Child "FriendButtonIgnorePlayer 70 750			FriendButtonRemovePlayer _NA_"
+set Child "AdminIconsMaster -70 39"
+add MenuObject
+set Name DialogPlayerLevelNumber
+set Coords "0 0 214 121"
+set DisabledAlpha 0.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.5
+set RenderCB _DrawText
+set	RenderCB_Flags "/outlined /outlined8x"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject
+set Name DialogPlayerLevel
+set CoordsAnimated "580 481 174 101"
+set CoordsAnimated "580 376 174 101"
+set CoordsAnimated "580 271 174 101"
+set CoordsAnimated "580 166 174 101"
+set CoordsAnimated "580 61 174 101"
+set Coords "754 61 89 51"
+set CoordsAnimationSymHash @_Arg1_@_Icon
+set Texture menus/TradeB
+set DisabledAlpha 0.5
+set MouseInteract 1
+set SaveArgs 2
+set ScaleX 1.2, ScaleY 1.2
+set ToolTip @_Arg2_@
+set Child "DialogPlayerLevelNumber 0 0	@_Arg1_@"
+add MenuObject
+set Name DialogMyselfMaster
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogFrames
+set CoordsStart "2 2 32 32"
+set CoordsMid "34 2 32 32"
+set CoordsEnd "78 2 32 32"
+set CoordsStartFocused "2 34 32 32"
+set CoordsMidFocused "34 34 32 32"
+set CoordsEndFocused "78 34 32 32"
+set CoordsStartDisabled "2 78 32 32"
+set CoordsMidDisabled "34 78 32 32"
+set CoordsEndDisabled "78 78 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 654
+set RenderCB_DY 900
+set Coords "0 0 653 900"
+set Anchor Center
+set FirstDrawnChildren 1
+set Child "DialogFriendBlack 34 34"
+set Child "FriendHeader 34 34"
+set Child "DialogFriendNameBig 0 110"
+set Child "FriendButtonClose -40 40"
+set Child "DialogPlayerLevel 210 210		P_Level TT_Level"
+add MenuObject
+set Name DialogIgnoredPlayerMaster
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogFrames
+set CoordsStart "2 2 32 32"
+set CoordsMid "34 2 32 32"
+set CoordsEnd "78 2 32 32"
+set CoordsStartFocused "2 34 32 32"
+set CoordsMidFocused "34 34 32 32"
+set CoordsEndFocused "78 34 32 32"
+set CoordsStartDisabled "2 78 32 32"
+set CoordsMidDisabled "34 78 32 32"
+set CoordsEndDisabled "78 78 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 654
+set RenderCB_DY 900
+set Coords "0 0 653 900"
+set Anchor Center
+set FirstDrawnChildren 1
+set Child "DialogFriendBlack 34 34"
+set Child "FriendHeader 34 34"
+set Child "DialogPlayerLevel 220 210		P_LevelO TT_LevelO"
+set Child "DialogFriendNameBig 0 300"
+set Child "FriendButtonClose -40 40"
+set Child "FriendButtonUnIgnorePlayer 70 430"
+set Child "FriendButtonReportPlayer 70 590"
+set Child "AdminIconsMaster -70 39"
+add MenuObject
+set Name DialogPendingPlayerMaster
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogFrames
+set CoordsStart "2 2 32 32"
+set CoordsMid "34 2 32 32"
+set CoordsEnd "78 2 32 32"
+set CoordsStartFocused "2 34 32 32"
+set CoordsMidFocused "34 34 32 32"
+set CoordsEndFocused "78 34 32 32"
+set CoordsStartDisabled "2 78 32 32"
+set CoordsMidDisabled "34 78 32 32"
+set CoordsEndDisabled "78 78 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 654
+set RenderCB_DY 900
+set Coords "0 0 653 900"
+set Anchor Center
+set FirstDrawnChildren 1
+set Child "DialogFriendBlack 34 34"
+set Child "FriendHeader 34 34"
+set Child "DialogPlayerLevel 220 210		P_LevelO TT_LevelO"
+set Child "DialogFriendNameBig 0 300"
+set Child "FriendButtonClose -40 40"
+set Child "FriendButtonAcceptRequest 70 430"
+set Child "FriendButtonDeclineRequest 70 510"
+set Child "FriendButtonDeclineRequestAndIgnore 70 670"
+set Child "AdminIconsMaster -70 39"

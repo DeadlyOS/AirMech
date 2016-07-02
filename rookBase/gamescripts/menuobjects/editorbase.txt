@@ -1,0 +1,3629 @@
+add MenuObject
+set Name EditorHomeButton
+set Texture editor/Icons0
+set CommandGetFocus "playSound FocusSubtle"
+set Coords "394 403 58 50"
+set MouseInteract 1
+set HiddenCheckBySymbol EditingOfficialMap
+set Focus -2
+add MenuObject
+set Name EditorSandboxButtonFocus
+set Texture effects/white
+set Coords "0 0 78 78"
+set BlendMode BlendAdd
+set Color 0x444444
+add MenuObject
+set Name EditorSandboxButtonFocus2
+set Texture effects/white
+set Coords "0 0 62.5 62.5"
+set BlendMode BlendAdd
+set Color 0x444444
+add MenuObject
+set Name EditorSandboxResume
+set Texture hud/SpectateControls
+set CommandGetFocus "playSound FocusSubtle"
+set CommandPress "menucmd EditorResumeGame"
+set Coords "1 1 78 78"
+set DrawWhenFocused EditorSandboxButtonFocus
+set MouseInteract 1
+set HiddenCheckBySymbolInv SandboxMode
+set Focus -2
+add MenuObject
+set Name EditorSandboxPause
+set Texture hud/SpectateControls
+set CommandGetFocus "playSound FocusSubtle"
+set CommandPress "menucmd PauseMenuSandbox"
+set Coords "161 1 78 78"
+set ScaleX 0.8, ScaleY 0.8
+set DrawWhenFocused EditorSandboxButtonFocus2
+set MouseInteract 1
+set HiddenCheckBySymbolInv SandboxMode
+set Focus -2
+add MenuObject
+set Name EditorHomeButtonOfficial
+set Texture editor/Icons0
+set CommandGetFocus "playSound FocusSubtle"
+set Coords "453 403 58 50"
+set MouseInteract 1
+set HiddenCheckBySymbolInv EditingOfficialMap
+set Focus -2
+add MenuObject
+set Name EditorFocusTemplate
+set Texture editor/Icons0
+set Coords "459 341 48 48"
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name EditorIconTemplate
+set Texture editor/Icons0
+set Coords "450 288 48 48"
+set NoAlphaMod 1
+set Alpha 0.5
+set BlendMode BlendAdd
+add MenuObject
+set Name EditorActiveTemplate
+set Texture editor/Icons0
+set Coords "450 217 48 54"
+set HiddenCheckBySymbolInv @_Arg1_@
+set CommandGetFocus "playSound FocusSubtle"
+set BlendMode BlendAdd
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name EditorButtonTemplate
+set RenderBlocked 1
+set Coords "0 0 48 48"
+set MouseInteract 1
+set Focus -2
+set CommandGetFocus "playSound FocusSubtle"
+set Child "EditorActiveTemplate 0 0 @_Arg1_@"
+add MenuObject
+set Name EditorButtonActionTemplate
+set RenderBlocked 1
+set CommandGetFocus "playSound FocusSubtle"
+set Coords "0 0 48 48"
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name EditorDropListBuffer
+set Texture menus/Leaderboards
+set Coords "0 0 452 90"
+set RenderBlocked 1
+set MouseInteract 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue @_Arg1_@=null
+add MenuObject
+set Name EditorDropList_Base
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Texture effects/white
+set Coords "0 0 378 38"
+set Color 0x333333
+set ColorFocused 0xe27433
+set MouseInteract 1
+set SaveArgs 2
+set HiddenCheckBySymbolValue @_Arg1_@=null
+set FilterName Editor
+set Focus -2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "20 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+add MenuObject
+set Name EditorDropListItemHL
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "374 38"
+set Color 0x12252c
+set BlendMode BlendAdd
+add MenuObject initFrom EditorDropList_Base
+set Name EditorDropListMain
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "sym set ShowDroplistEditorMain 0"
+set CommandPress ">menucmd $@_Arg1_@"
+add MenuObject
+set Name EditorDropListBack
+set Texture menus/Leaderboards
+set Coords "0 0 552 90"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set CommandPress ">sym set ShowDroplistEditor@_Arg1_@ 0"
+add MenuObject
+set Name EditorDropListCancel
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set CommandGetFocus ">sym set ShowDroplistEditor@_Arg1_@ 0"
+add MenuObject
+set Name EditorDropListBox
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName Editor
+set HiddenCheckBySymbolInv ShowDroplistEditor@_Arg1_@
+set Child "EditorDropListCancel 0 0		@_Arg1_@"
+set Child "EditorDropListBack -20 -70	@_Arg1_@"
+set Child "EditorDropListBuffer -20 -20		 EditorList@_Arg1_@0"
+set Child "EditorDropListBuffer -20 30		 EditorList@_Arg1_@1"
+set Child "EditorDropListBuffer -20 68		 EditorList@_Arg1_@2"
+set Child "EditorDropListBuffer -20 106		 EditorList@_Arg1_@3"
+set Child "EditorDropListBuffer -20 144		 EditorList@_Arg1_@4"
+set Child "EditorDropListBuffer -20 182		 EditorList@_Arg1_@5"
+set Child "EditorDropListBuffer -20 220		 EditorList@_Arg1_@6"
+set Child "EditorDropListBuffer -20 258		 EditorList@_Arg1_@7"
+set Child "EditorDropListBuffer -20 296		 EditorList@_Arg1_@8"
+set Child "EditorDropListBuffer -20 334		 EditorList@_Arg1_@9"
+set Child "EditorDropListBuffer -20 372		 EditorList@_Arg1_@10"
+set Child "EditorDropListBuffer -20 410		 EditorList@_Arg1_@11"
+set Child "EditorDropList@_Arg1_@ 0 0		EditorList@_Arg1_@0 	Editor@_Arg1_@0"
+set Child "EditorDropList@_Arg1_@ 0 38		EditorList@_Arg1_@1 	Editor@_Arg1_@1"
+set Child "EditorDropList@_Arg1_@ 0 76		EditorList@_Arg1_@2 	Editor@_Arg1_@2"
+set Child "EditorDropList@_Arg1_@ 0 114		EditorList@_Arg1_@3 	Editor@_Arg1_@3"
+set Child "EditorDropList@_Arg1_@ 0 152		EditorList@_Arg1_@4 	Editor@_Arg1_@4"
+set Child "EditorDropList@_Arg1_@ 0 190		EditorList@_Arg1_@5 	Editor@_Arg1_@5"
+set Child "EditorDropList@_Arg1_@ 0 228		EditorList@_Arg1_@6 	Editor@_Arg1_@6"
+set Child "EditorDropList@_Arg1_@ 0 266		EditorList@_Arg1_@7 	Editor@_Arg1_@7"
+set Child "EditorDropList@_Arg1_@ 0 304		EditorList@_Arg1_@8 	Editor@_Arg1_@8"
+set Child "EditorDropList@_Arg1_@ 0 342		EditorList@_Arg1_@9 	Editor@_Arg1_@9"
+set Child "EditorDropList@_Arg1_@ 0 380		EditorList@_Arg1_@10 	Editor@_Arg1_@10"
+set Child "EditorDropList@_Arg1_@ 0 418		EditorList@_Arg1_@11 	Editor@_Arg1_@11"
+add MenuObject
+set Name EditorListboxBase
+set Texture menus/Leaderboards
+set Coords "3 188 512 66"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text HLB_Title_@HLB_Name@
+set FilterName HLB
+set Color 0x586c71
+set ColorFocused 0x658188
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.8
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "20 -2"
+set Child "LeaderboardSelectTitleArrow 468 22"
+add MenuObject initFrom EditorListboxBase
+set Name EditorListboxMain
+set Child "EditorDropListBox 0 62	Main"
+set CommandPress "sym set EditorDropListShowMain 1"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconPointer
+set Coords "0 0 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusPointer
+set Child "EditorIconPointer 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonPointer
+set Coords "0 0 48 48"
+set DrawWhenFocused EditorFocusPointer
+set Child "EditorIconPointer 0 0"
+set CommandPress "sym setZero EditorTransMove EditorTransRotate EditorTransScale EditorTransGroupSelect"
+set CommandPress "sym set EditorTransSelect 1"
+set CommandPress "allLayersPickable"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconMove
+set Coords "48 0 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusMove
+set Child "EditorIconMove 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonMove
+set Coords "48 0 48 48"
+set DrawWhenFocused EditorFocusMove
+set Child "EditorIconMove 0 0"
+set CommandPress "menucmd EditorSelectMove"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconRotate
+set Coords "96 0 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusRotate
+set Child "EditorIconRotate 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonRotate
+set Coords "96 0 48 48"
+set DrawWhenFocused EditorFocusRotate
+set Child "EditorIconRotate 0 0"
+set CommandPress "menucmd EditorSelectRotate"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconScale
+set Coords "144 0 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusScale
+set Child "EditorIconScale 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonScale
+set Coords "144 0 48 48"
+set DrawWhenFocused EditorFocusScale
+set Child "EditorIconScale 0 0"
+set CommandPress "menucmd EditorSelectScale"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconGroupSelect
+set Coords "96 48 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusGroupSelect
+set Child "EditorIconGroupSelect 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonGroupSelect
+set Coords "96 48 48 48"
+set DrawWhenFocused EditorFocusGroupSelect
+set Child "EditorIconGroupSelect 0 0"
+set CommandPress "menucmd EditorSelectGroupSelect"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconNavmesh
+set Coords "192 0 48 48"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconLayers
+set Coords "48 48 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusNavmesh
+set Child "EditorIconNavmesh 0 0"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusLayers
+set Child "EditorIconLayers 0 0"
+add MenuObject initFrom EditorButtonActionTemplate
+set Name EditorButtonNavmeshGen
+set Coords "192 0 48 48"
+set DrawWhenFocused EditorFocusNavmesh
+set HiddenCheckBySymbolInv EditorUsageFull
+set Child "EditorIconNavmesh 0 0"
+set CommandPress "gameUI ignoreInputTime 0.65"
+set CommandPress "details rip"
+set CommandPress "pcmd 0.5 editor do generateNavMesh"
+set CommandPress "pcmd 0.6 details push"
+add MenuObject initFrom EditorButtonActionTemplate
+set Name EditorButtonNavmeshShow
+set Coords "192 0 48 48"
+set DrawWhenFocused EditorFocusNavmesh
+set HiddenCheckBySymbolInv EditorUsageFull
+set Child "EditorIconNavmesh 0 0"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "gfx toggle navmeshVisualization"
+add MenuObject initFrom EditorButtonActionTemplate
+set Name EditorButtonLayersShow
+set Coords "48 48 48 48"
+set DrawWhenFocused EditorIconLayers
+set FirstDrawnChildren 1
+set Child "EditorActiveTemplate 0 0 EditorLayerWindowLoaded"
+set Child "EditorIconLayers 0 0"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "if !menuloaded EditorLayersWindow sym set EditorLayerWindowLoaded 0"
+set CommandPress "if !menuloaded EditorLayersWindow loadmenu EditorLayersWindow /fadein 0.05"
+set CommandPress "if menuloaded EditorLayersWindow clearmenu EditorLayersWindow /fadeout 0.1"
+add MenuObject initFrom EditorButtonActionTemplate
+set Name EditorButtonWireframe
+set Coords "192 0 48 48"
+set DrawWhenFocused EditorFocusNavmesh
+set HiddenCheckBySymbolInv EditorUsageFull
+set HiddenCheckBySymbol BuildRetail
+set Child "EditorIconNavmesh 0 0"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "gfx toggle wireframeMode"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconCreate
+set Coords "0 48 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusCreate
+set Child "EditorIconCreate 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonCreate
+set Coords "0 48 48 48"
+set DrawWhenFocused EditorFocusCreate
+set Child "EditorIconCreate 0 0"
+set CommandPress "sym setZero EditorPanelModify EditorPanelSMap EditorPanelTerrain EditorPanelWorld EditorPanelScripts"
+set CommandPress "sym set EditorPanelCreate 1"
+set CommandPress "editor set runTimeMode create"
+set CommandPress "menucmd EditorDisableTerrainEditing"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconModify
+set Coords "288 0 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusModify
+set Child "EditorIconModify 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonModify
+set Coords "288 0 48 48"
+set DrawWhenFocused EditorFocusModify
+set Child "EditorIconModify 0 0"
+set CommandPress "sym setZero EditorPanelCreate EditorPanelSMap EditorPanelTerrain EditorPanelWorld EditorPanelScripts"
+set CommandPress "sym set EditorPanelModify 1"
+set CommandPress "editor set runTimeMode modify"
+set CommandPress "menucmd EditorDisableTerrainEditing"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconSMap
+set Coords "336 0 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusSMap
+set Child "EditorIconSMap 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonSMap
+set Coords "336 0 48 48"
+set DrawWhenFocused EditorFocusSMap
+set HiddenCheckBySymbolInv EditorUsageFull
+set Child "EditorIconSMap 0 0"
+set CommandPress "sym setZero EditorPanelCreate EditorPanelModify EditorPanelTerrain EditorPanelWorld EditorPanelScripts"
+set CommandPress "sym set EditorPanelSMap 1"
+set CommandPress "editor set runTimeMode sampleMap"
+set CommandPress "menucmd EditorDisableTerrainEditing"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconTerrain
+set Coords "384 0 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusTerrain
+set Child "EditorIconTerrain 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonTerrain
+set Coords "384 0 48 48"
+set DrawWhenFocused EditorFocusTerrain
+set HiddenCheckBySymbolInv EditorUsageFull
+set Child "EditorIconTerrain 0 0"
+set CommandPress "sym setZero EditorPanelCreate EditorPanelModify EditorPanelSMap EditorPanelWorld EditorPanelScripts"
+set CommandPress "sym set EditorPanelTerrain 1"
+set CommandPress "sym set TerrainEditModeSelection 0"
+set CommandPress "menuCmd TerrainEditMode_SetFromSelection"
+set CommandPress "editor set runTimeMode terrain"
+set CommandPress "menucmd EditorRefreshTileVariants"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconWorld
+set Coords "240 0 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusWorld
+set Child "EditorIconWorld 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonWorld
+set Coords "240 0 48 48"
+set DrawWhenFocused EditorFocusWorld
+set HiddenCheckBySymbolInv EditorUsageFull
+set Child "EditorIconWorld 0 0"
+set CommandPress "sym setZero EditorPanelCreate EditorPanelModify EditorPanelSMap EditorPanelTerrain EditorPanelScripts"
+set CommandPress "sym set EditorPanelWorld 1"
+set CommandPress "editor set runTimeMode world"
+set CommandPress "menucmd EditorDisableTerrainEditing"
+add MenuObject initFrom EditorIconTemplate
+set Name EditorIconScripts
+set Coords "144 0 48 48"
+add MenuObject initFrom EditorFocusTemplate
+set Name EditorFocusScripts
+set Child "EditorIconScripts 0 0"
+add MenuObject initFrom EditorButtonTemplate
+set Name EditorButtonScripts
+set Coords "144 0 48 48"
+set DrawWhenFocused EditorFocusScripts
+set HiddenCheckBySymbolInv EditorUsageFull
+set Child "EditorIconScripts 0 0"
+set CommandPress "sym setZero EditorPanelCreate EditorPanelModify EditorPanelSMap EditorPanelTerrain EditorPanelWorld"
+set CommandPress "sym set EditorPanelScripts 1"
+set CommandPress "sym set EditorScriptMode 0"
+set CommandPress "sym set EventSelectionPage 0"
+set CommandPress "sym set ActionSelectionPage 0"
+set CommandPress "menucmd ScriptSelection_SetFromSelection"
+set CommandPress "editor do scrollEventPage"
+set CommandPress "editor set runTimeMode scripts"
+set CommandPress "menucmd EditorDisableTerrainEditing"
+add MenuObject
+set Name EditorWorldObjectHighlight
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "94 94"
+set RenderOffsetX -3
+set RenderOffsetY -3
+set Color 0x000000
+set ColorFocused 0x202020
+set BlendMode BlendAdd
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name EditorWorldObjectShadow
+set Texture menus/DoubleEvent
+set Coords "401 410 84 84"
+add MenuObject
+set Name EditorWorldObjectOutline
+set Texture &EditorPlaceable_IconLg@_Arg1_@&
+set TextureAlt &EditorPlaceable_IconLgA@_Arg1_@&
+set NoDrawOnMissingTexture 1
+set Coords img
+set ScaleRefToCoords 256.0
+set ScaleX 0.35
+set ScaleY 0.35
+set SaveArgs 1
+set FilterName CollectionUI
+set Color 0x444444
+add MenuObject initFrom EditorWorldObjectOutline
+set Name EditorWorldObjectIconSelected
+set HiddenCheckBySymbolValue _EditorSelWorldObject_!&EditorPlaceable_Name@_Arg1_@&
+set ScaleX 0.42
+set ScaleY 0.42
+set RenderOffsetX -8
+set RenderOffsetY -8
+set Color 0xffffff
+add MenuObject
+set Name EditorWorldObject
+set Texture &EditorPlaceable_IconLg@_Arg1_@&
+set TextureAlt &EditorPlaceable_IconLgA@_Arg1_@&
+set NoDrawOnMissingTexture 1
+set Coords img
+set ScaleRefToCoords 256.0
+set ScaleX 0.35
+set ScaleY 0.35
+set SaveArgs 1
+set MouseInteract 1
+set Focus -2
+set FilterName CollectionUI
+set CommandGetFocus "playSound FocusSubtle"
+set HiddenCheckBySymbol EditorPlaceable_ShowIconSm@_Arg1_@
+set DrawWhenFocused EditorWorldObjectHighlight
+set DrawWhenFocusedOrder BeforeSelf
+set ToolTip &EditorPlaceableTooltip@_Arg1_@&
+set FirstDrawnChildren 2
+set Child "EditorWorldObjectShadow 0 0"
+set Child "EditorWorldObjectOutline -3 2 @_Arg1_@
+set Child "EditorWorldObjectIconSelected -3 2 @_Arg1_@
+set CommandPressDown ">editor set placeUnitSym EditorPlaceable_Name@_Arg1_@"
+set CommandPressDown "editor set runtimemode create"
+add MenuObject
+set Name EditorArrowButtonOutline
+set Texture effects/white
+set Coords "0 0 104 42"
+set Color 0x1b1b1b
+add MenuObject
+set Name FocusEditorArrowButton
+set Texture effects/white
+set Coords "0 0 106 44"
+set Color 0x49c5bd
+add MenuObject
+set Name GenericArrowLeft
+set DefaultRotation -90
+set Texture menus/Leaderboards
+set Coords "473 162 29 25"
+set ScaleY 1.4
+set BlendMode BlendAdd
+add MenuObject initFrom GenericArrowLeft
+set Name GenericArrowRight
+set DefaultRotation 90
+add MenuObject
+set Name EditorGenericArrowTemplate
+set Texture effects/white
+set Coords "0 0 100 38"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusEditorArrowButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set CommandGetFocus "playSound FocusSubtle"
+set Focus -2
+set MouseInteract 1
+set FirstDrawnChildren 1
+set Child "EditorArrowButtonOutline -2 -2"
+add MenuObject initFrom EditorGenericArrowTemplate
+set Name EditorGenericArrowLeft
+set Child "GenericArrowLeft 28 2"
+add MenuObject initFrom EditorGenericArrowTemplate
+set Name EditorGenericArrowRight
+set Child "GenericArrowRight 43 2"
+add MenuObject initFrom EditorGenericArrowLeft
+set Name EditorPlaceableScrollLeft
+set CommandPress "if sym EditorPlaceType == 0 runnow sym dec EditorUnit_Page"
+set CommandPress "if sym EditorPlaceType == 0 runnow rook editorScrollUpdateUnits"
+set CommandPress "if sym EditorPlaceType == 1 runnow sym dec EditorProp_Page"
+set CommandPress "if sym EditorPlaceType == 1 runnow rook editorScrollUpdateProps"
+set CommandPress "if sym EditorPlaceType == 2 runnow sym dec EditorPrefab_Page"
+set CommandPress "if sym EditorPlaceType == 2 runnow rook editorScrollUpdatePrefabs"
+set CommandPress "if sym EditorPlaceType == 5 runnow sym dec EditorCombo_Page"
+set CommandPress "if sym EditorPlaceType == 5 runnow rook editorScrollUpdateCombos"
+set CommandPress "if sym EditorPlaceType == 6 runnow sym dec EditorPowerup_Page"
+set CommandPress "if sym EditorPlaceType == 6 runnow rook editorScrollUpdateCombos"
+set CommandPress "gameUI refreshfiltername CollectionUI"
+add MenuObject initFrom EditorGenericArrowRight
+set Name EditorPlaceableScrollRight
+set CommandPress "if sym EditorPlaceType == 0 runnow sym inc EditorUnit_Page"
+set CommandPress "if sym EditorPlaceType == 0 runnow rook editorScrollUpdateUnits"
+set CommandPress "if sym EditorPlaceType == 1 runnow sym inc EditorProp_Page"
+set CommandPress "if sym EditorPlaceType == 1 runnow rook editorScrollUpdateProps"
+set CommandPress "if sym EditorPlaceType == 2 runnow sym inc EditorPrefab_Page"
+set CommandPress "if sym EditorPlaceType == 2 runnow rook editorScrollUpdatePrefabs"
+set CommandPress "if sym EditorPlaceType == 5 runnow sym inc EditorCombo_Page"
+set CommandPress "if sym EditorPlaceType == 5 runnow rook editorScrollUpdateCombos"
+set CommandPress "gameUI refreshfiltername CollectionUI"
+add MenuObject
+set Name EditorUnitOptions
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorPlaceType!0
+set Child "GenericListboxMultiParent[ListboxPlaceUnitTeamSelect]	10	0 PlaceUnitTeamSelect EditorTeamSelect	0x333333 0x654736 0x333333 0xe27433"
+add MenuObject
+set Name EditorComboOptions
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorPlaceType!5
+set Child "EditorInputLabelPlain							20	0	Editor_ComboName"
+set Child "EditorInputPropertyBoxTemplate[ComboNameBox]		10	30	EditorComboNameValue"
+set Child "EditorBigButtonTemplate[EditorButtonCreateCombo]	5	80	Editor_AddCombo EditorAddCombo"
+add MenuObject
+set Name EditorPlaceableListBox
+set ContainerOnly 1
+set HiddenCheckBySymbolInv EditorUsageFull
+set Child "GenericListboxBase[ListboxPlaceableSelection] 10 -25 PlaceableSelectionActive PlaceableSelection	0x333333 0x654736 0x654736 0xe27433"
+add MenuObject
+set Name EditorPlaceableGrid
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorPlaceType>1
+set Child "EditorWorldObject 0 30		0"
+set Child "EditorWorldObject 80 30		1"
+set Child "EditorWorldObject 160 30		2"
+set Child "EditorWorldObject 240 30		3"
+set Child "EditorWorldObject 0 110		4"
+set Child "EditorWorldObject 80 110		5"
+set Child "EditorWorldObject 160 110	6"
+set Child "EditorWorldObject 240 110	7"
+set Child "EditorWorldObject 0 190		8"
+set Child "EditorWorldObject 80 190		9"
+set Child "EditorWorldObject 160 190	10"
+set Child "EditorWorldObject 240 190	11"
+set Child "EditorWorldObject 0 270		12"
+set Child "EditorWorldObject 80 270		13"
+set Child "EditorWorldObject 160 270	14"
+set Child "EditorWorldObject 240 270	15"
+set Child "EditorWorldObject 0 350		16"
+set Child "EditorWorldObject 80 350		17"
+set Child "EditorWorldObject 160 350	18"
+set Child "EditorWorldObject 240 350	19"
+set Child "EditorWorldObject 0 430		20"
+set Child "EditorWorldObject 80 430		21"
+set Child "EditorWorldObject 160 430	22"
+set Child "EditorWorldObject 240 430	23"
+set Child "EditorWorldObject 0 510		24"
+set Child "EditorWorldObject 80 510		25"
+set Child "EditorWorldObject 160 510	26"
+set Child "EditorWorldObject 240 510	27"
+set Child "EditorWorldObject 0 590		28"
+set Child "EditorWorldObject 80 590		29"
+set Child "EditorWorldObject 160 590	30"
+set Child "EditorWorldObject 240 590	31"
+add MenuObject
+set Name EditorPrefabItemHighlight
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "300 30"
+set Color 0x000000
+set ColorFocused 0x202020
+set BlendMode BlendAdd
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name EditorListItemTemplate
+set RenderCB_DX 300
+set RenderCB_DY 28
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2 /literalText"
+set RenderCB_FontScale 0.6
+set RenderCB_Offset "10 0"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB _DrawDText
+set MouseInteract 1
+set Focus -2
+set FirstDrawnChildren 1
+add MenuObject
+set Name EditorItemHighlightSym
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "300 30"
+set Color 0x202020
+set BlendMode BlendAdd
+set SaveArgs 2
+set HiddenCheckBySymbolValue @_Arg1_@!@_Arg2_@
+add MenuObject
+set Name EditorSelectListItemTemplate
+set RenderCB_DX 300
+set RenderCB_DY 28
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2 /literalText"
+set RenderCB_FontScale 0.6
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB _DrawText
+set MouseInteract 1
+set Focus -2
+set FirstDrawnChildren 1
+set Child "EditorItemHighlightSym 0 0	@_Arg1_@ @_Arg2_@"
+add MenuObject initFrom EditorListItemTemplate
+set Name EditorPlaceableListItem
+set RenderCB_ConsoleSymbol EditorPlaceable_Name@_Arg1_@
+set HiddenCheckBySymbol EditorPlaceable_ShowIconSm@_Arg1_@
+set SaveArgs 1
+set CommandPress "editor set runtimemode create"
+set CommandPress ">sym set EditorPlaceableIndex @_Arg1_@"
+set Child "EditorPrefabItemHighlight 0 0"
+add MenuObject
+set Name EditorPlaceableList
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorPlaceType<2
+set Child "EditorPlaceableListItem		5 30		0"
+set Child "EditorPlaceableListItem		5 60		1"
+set Child "EditorPlaceableListItem		5 90		2"
+set Child "EditorPlaceableListItem		5 120		3"
+set Child "EditorPlaceableListItem		5 150		4"
+set Child "EditorPlaceableListItem		5 180		5"
+set Child "EditorPlaceableListItem		5 210		6"
+set Child "EditorPlaceableListItem		5 240		7"
+set Child "EditorPlaceableListItem		5 270		8"
+set Child "EditorPlaceableListItem		5 300		9"
+set Child "EditorPlaceableListItem		5 330		10"
+set Child "EditorPlaceableListItem		5 360		11"
+set Child "EditorPlaceableListItem		5 390		12"
+set Child "EditorPlaceableListItem		5 420		13"
+set Child "EditorPlaceableListItem		5 450		14"
+set Child "EditorPlaceableListItem		5 480		15"
+set Child "EditorPlaceableListItem		5 510		16"
+set Child "EditorPlaceableListItem		5 540		17"
+set Child "EditorPlaceableListItem		5 570		18"
+add MenuObject
+set Name EditorPanelCreate
+set ContainerOnly 1
+set HiddenCheckBySymbolInv EditorPanelCreate
+set Child "EditorPlaceableListBox 0 0"
+set Child "EditorPlaceableGrid 0 0"
+set Child "EditorPlaceableList 0 0"
+set Child "EditorPlaceableScrollLeft	10	690"
+set Child "EditorInputLabel				140	695		PlaceableSelectionPageLabel"
+set Child "EditorPlaceableScrollRight	210	690"
+set Child "EditorUnitOptions 0 745"
+set Child "EditorComboOptions 0 745"
+add MenuObject
+set Name EditorMenuTextBarListboxActive
+set Texture effects/white
+set Coords "0 0 90 50"
+set Color 0x333333
+set BlendMode BlendAdd
+set SaveArgs 1
+set HiddenCheckBySymbolValue _ListboxName_!@_Arg1_@
+add MenuObject
+set Name EditorMenuTextBar
+set Texture effects/white
+set Coords "0 0 90 50"
+set Color 0x000000
+set ColorFocused 0x333333
+set BlendMode BlendAdd
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColor 0xcccccc
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set Child "EditorMenuTextBarListboxActive 0 0	@_Arg2_@"
+set CommandPress ">menucmd @_Arg2_@"
+add MenuObject
+set Name EditorBigButtonOutline
+set Texture effects/white
+set Coords "0 0 154 54"
+set Color 0x1b1b1b
+add MenuObject
+set Name FocusEditorBigButton
+set Texture effects/white
+set Coords "0 0 156 56"
+set Color 0x49c5bd
+add MenuObject
+set Name EditorBigButtonVisTemplate
+set Texture effects/white
+set Coords "0 0 150 50"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusEditorBigButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set FilterName BaseLayout
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set SaveArgs 2
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set FirstDrawnChildren 1
+set Child "EditorBigButtonOutline -2 -2"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorBigButtonTemplate
+set CommandPress ">menucmd @_Arg2_@"
+add MenuObject
+set Name EditorInputLabel
+set RenderCB_DX 240
+set RenderCB_DY 28
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.6
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB _DrawDText
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject
+set Name EditorInputLabelPlain
+set RenderCB_DX 240
+set RenderCB_DY 28
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.6
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB _DrawDText
+set RenderCB_Text @_Arg1_@
+add MenuObject
+set Name GenericInputBoxOutline
+set Texture effects/white
+set Coords "0 0 104 42"
+set Color 0x1b1b1b
+add MenuObject
+set Name EditorInputBoxTemplate
+set Coords "0 0 100 38"
+set Texture effects/white
+set Color 0x333333
+set ColorFocused 0x444444
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "8 0"
+set MouseInteractZoneExpand "-20 -20 0 10"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.65
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set TextEditableMaxLen 6
+set RenderCB_Text @_Arg1_@
+set FirstDrawnChildren 1
+set Child "GenericInputBoxOutline -2 -2"
+add MenuObject
+set Name EditorInputEntry
+set ContainerOnly 1
+set Child "EditorInputLabelPlain   	0   0		@_Arg1_@"
+set Child "EditorInputBoxTemplate   0	28 		@_Arg2_@"
+add MenuObject
+set Name EditorPanelSampleMap
+set ContainerOnly 1
+set HiddenCheckBySymbolInv EditorPanelSMap
+set Child "EditorInputEntry[EditorEntryMapMinX]			20 20	Editor_MinX			mapMinX"
+set Child "EditorInputEntry[EditorEntryMapMinY]			150 20	Editor_MinY			mapMinY"
+set Child "EditorInputEntry[EditorEntryMapMaxX]			20 100	Editor_MaxX			mapMaxX"
+set Child "EditorInputEntry[EditorEntryMapMaxY]			150 100	Editor_MaxY			mapMaxY"
+set Child "EditorInputEntry[EditorEntryMapRotation]		20 180	Editor_Rotation		mapRotation"
+set Child "EditorInputEntry[EditorEntryMapSpacing]		20 260	Editor_Spacing		mapSampleSpacing"
+set Child "EditorInputEntry[EditorEntryMapHeightOffset]	20 340	Editor_HeightOffset	mapSampleHeightOffset"
+set Child "EditorInputEntry[EditorEntryMapHeightMax]	150 340	Editor_HeightMax	mapSampleHeightMax"
+set Child "EditorInputEntry[EditorEntryMapMaxKernel]	20 420	Editor_MaxKernel	mapMaxKernelSize"
+set Child "EditorInputEntry[EditorEntryMapBlurKernel]	150 420	Editor_BlurKernel	mapBlurKernelSize"
+set Child "EditorBigButtonTemplate[EditorButtonGenSampleMap] 20 510	Editor_Gen_Smap EditorGenerateSampleMap"
+add MenuObject
+set Name EditorTerrainButtonHighlight
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "64 64"
+set Color 0x000000
+set ColorFocused 0x202020
+set BlendMode BlendAdd
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name EditorTerrainButtonTemplate
+set NoDrawOnMissingTexture 1
+set Coords "0 0 48 48"
+set ScaleX 1.3333
+set ScaleY 1.3333
+set SaveArgs 1
+set MouseInteract 1
+set Focus -2
+set FirstDrawnChildren 1
+set Child "EditorTerrainButtonHighlight 0 0"
+add MenuObject
+set Name EditorTerrainButtonShapeSelected
+set Texture effects/BlueGlow
+set Coords "0 0 16 16"
+set TileArea "64 64"
+set Color 0x202020
+set BlendMode BlendAdd
+set HiddenCheckBySymbolValue editorTerrainShapeSelected!@_Arg1_@
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainButtonShape
+set Texture editor/IconMeshGridEditSet@_Arg1_@
+set Child "EditorTerrainButtonShapeSelected 0 0	@_Arg1_@"
+set CommandPress ">sym set editorTerrainShapeSelected @_Arg1_@"
+set CommandPress ">editor set terrainShape @_Arg1_@"
+set CommandPress "menucmd EditorRefreshTileVariants"
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainVariantPrev
+set Texture editor/IconMeshGridEditVarPrev
+set CommandPress "sym dec EditorTileVariantPage"
+set CommandPress "editor do scrollTerrainVariants"
+set CommandPress "gameui refreshfiltername EditorTileVariants"
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainVariantNext
+set Texture editor/IconMeshGridEditVarNext
+set CommandPress "sym inc EditorTileVariantPage"
+set CommandPress "editor do scrollTerrainVariants"
+set CommandPress "gameui refreshfiltername EditorTileVariants"
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainVariantRandom
+set Texture editor/IconMeshGridEditRandom
+set CommandPress "editor set terrainVariantMod 0"
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainTileRotateCCW
+set Texture editor/IconMeshGridEditRotCCW
+set CommandPress "editor do terrainRotate 90.0"
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainTileRotateCW
+set Texture editor/IconMeshGridEditRotCW
+set CommandPress "editor do terrainRotate -90.0"
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainTileZup
+set Texture editor/IconMeshGridEditZup
+set CommandPress "editor do terrainMoveUp"
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainTileZdown
+set Texture editor/IconMeshGridEditZdown
+set CommandPress "editor do terrainMoveDown"
+add MenuObject
+set Name FocusEditorMirrorButton
+set Texture effects/white
+set Coords "0 0 64 64"
+set Color 0x49c5bd
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainTileMirrorB
+set Texture editor/IconMeshGridEditMirrorB
+set DrawWhenFocused FocusEditorMirrorButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set CommandPress "editor do terrainMirrorRotate"
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainTileRotateCopyOnX
+set Texture editor/IconMeshGridEditRotateCopyOnX
+set DrawWhenFocused FocusEditorMirrorButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set CommandPress "editor do terrainRotateCopyOnX"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorTerrainTileResetButton
+set CommandPress "editor do terrainResetTiles"
+add MenuObject
+set Name EditorTerrainListBox
+set ContainerOnly 1
+set HiddenCheckBySymbolInv EditorUsageFull
+set Child "GenericListboxBase[ListboxTerrainSelection] 10 -25 TerrainSelectionActive TerrainSelection	0x333333 0x654736 0x333333 0xe27433"
+add MenuObject
+set Name EditorTerrainPatternListBox
+set ContainerOnly 1
+set HiddenCheckBySymbolInv EditorUsageFull
+set Child "GenericListboxBase[ListboxTerrainPattern] 10 -25 TerrainPatternActive TerrainPattern	0x333333 0x654736 0x333333 0xe27433"
+add MenuObject initFrom EditorTerrainButtonTemplate
+set Name EditorTerrainButtonVariant
+set Texture &editorTerrainVarTexture@_Arg1_@&
+set Coords "0 0 64 64"
+set TileArea "64 64"
+set FilterName EditorTileVariants
+set CommandPress ">editor set terrainVariant EditorTerrainVariant@_Arg1_@"
+add MenuObject
+set Name EditorTerrainVariantBox
+set ContainerOnly 1
+set HiddenCheckBySymbolInv EditorUsageFull
+set Child "EditorTerrainButtonVariant	0	0		0"
+set Child "EditorTerrainButtonVariant	64	0 		1"
+set Child "EditorTerrainButtonVariant	128 0		2"
+set Child "EditorTerrainButtonVariant	192 0		3"
+set Child "EditorTerrainButtonVariant	256	0		4"
+set Child "EditorTerrainButtonVariant	0	64 		5"
+set Child "EditorTerrainButtonVariant	64  64		6"
+set Child "EditorTerrainButtonVariant	128 64		7"
+set Child "EditorTerrainButtonVariant	192	64		8"
+set Child "EditorTerrainButtonVariant	256	64 		9"
+set Child "EditorTerrainButtonVariant	0   128		10"
+set Child "EditorTerrainButtonVariant	64  128		11"
+set Child "EditorTerrainButtonVariant	128	128		12"
+set Child "EditorTerrainButtonVariant	192	128 	13"
+set Child "EditorTerrainButtonVariant	256 128		14"
+add MenuObject
+set Name EditorTerrainToolsBox
+set ContainerOnly 1
+set Child "EditorTerrainVariantPrev		0	0"
+set Child "EditorTerrainVariantNext		64	0"
+set Child "EditorTerrainVariantRandom   128 0"
+set Child "EditorTerrainTileRotateCCW	192	0"
+set Child "EditorTerrainTileRotateCW	256	0"
+set Child "EditorTerrainTileZdown		128	64"
+set Child "EditorTerrainTileZup			192	64"
+add MenuObject
+set Name EditorTerrainShapesBox
+set ContainerOnly 1
+set Child "EditorTerrainButtonShape		0	0		0"
+set Child "EditorTerrainButtonShape		64	0		1"
+set Child "EditorTerrainButtonShape		128	0		2"
+set Child "EditorTerrainButtonShape		192 0		3"
+set Child "EditorTerrainButtonShape		256	0		4"
+set Child "EditorTerrainButtonShape		0	64		5"
+set Child "EditorTerrainButtonShape		64	64		6"
+set Child "EditorTerrainButtonShape		128	64		7"
+set Child "EditorTerrainButtonShape		192	64		8"
+set Child "EditorTerrainButtonShape		256	64		9"
+add MenuObject
+set Name EditorTerrainRadioBrush
+set NoDrawOnMissingTexture 1
+set ScaleX 1.3333
+set ScaleY 1.3333
+set Texture editor/icon_brush
+set Coords "32 0 32 32"
+add MenuObject initFrom EditorTerrainRadioBrush
+set Name EditorEdgingRadioBrush
+set HiddenCheckBySymbolValue EditorTileMaterialMode!1
+add MenuObject initFrom EditorTerrainRadioBrush
+set Name EditorElevationRadioBrush
+set HiddenCheckBySymbolValue EditorTileMaterialMode!2
+add MenuObject initFrom EditorTerrainRadioBrush
+set Name EditorPaintMatRadioBrush
+set HiddenCheckBySymbolValue EditorTileMaterialMode!3
+add MenuObject
+set Name EditorTerrainEdgingPanel
+set ContainerOnly 1
+set Child "GenericListboxMultiParent[ListboxPanelTerrainEdging] 10	0	PanelTerrainEdging TerrainEdging	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorEdgingRadioBrush								5 60"
+set Child "EditorBigButtonTemplate[EditorButtonEdging]			55	50	Editor_Toggle_Edging EditorToggleEdging"
+set Child "EditorElevationRadioBrush							5 120"
+set Child "EditorBigButtonTemplate[EditorButtonHeight]			55	110	Editor_Toggle_HeightEdit EditorToggleHeightEdit"
+set Child "GenericListboxTiny[ListboxElevationEditLevel]		215 115 ElevationEditLevel ElevationEditLevel	0x213037 0x326870 0x314649 0x326870"
+set Child "EditorPaintMatRadioBrush								5 180"
+set Child "EditorBigButtonTemplate[EditorPaintMat]				55	170 Editor_Toggle_PaintedMat EditorTogglePaintedMaterialEdit"
+set Child "GenericListboxTiny[ListboxPaintMatValue]				215 175 PaintMatValue PaintMatValue	0x213037 0x326870 0x314649 0x326870"
+add MenuObject
+set Name EditorTerrainTilePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue TerrainEditModeSelection!0
+set Child "EditorTerrainListBox 0 40"
+set Child "EditorTerrainVariantBox	0 64"
+set Child "EditorTerrainToolsBox 0 256"
+set Child "EditorTerrainShapesBox 0 384"
+set Child "EditorTerrainEdgingPanel	0 530"
+add MenuObject
+set Name EditorTerrainOptionsPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue TerrainEditModeSelection!1
+set Child "EditorTerrainPatternListBox	0 0"
+set Child "EditorInputEntry[EditorEntryTerrainArrayX]	20	20		Editor_TerrainArrayX	TerrainArrayX"
+set Child "EditorInputEntry[EditorEntryTerrainArrayY]	150	20		Editor_TerrainArrayY	TerrainArrayY"
+set Child "EditorTerrainTileMirrorB			10	100"
+set Child "EditorTerrainTileRotateCopyOnX	84	100"
+set Child "EditorTerrainTileResetButton		165	110	Editor_ResetTiles"
+set Child "EditorBigButtonTemplate			5	175	Editor_Generate_MapTiles EditorGenerateMapTiles"
+set Child "EditorBigButtonTemplate 			165	175	Editor_Generate_VisibleTiles EditorGenerateVisibileTiles"
+set Child "EditorBigButtonTemplate			5	235	Editor_Nuke_VisibleTiles EditorNukeVisibileTiles"
+set Child "EditorBigButtonTemplate			165	235	Editor_Nuke_VisibleDetails EditorNukeVisibileDetails"
+set Child "EditorBigButtonTemplate			5 	295	Editor_Nuke_VisibleObjects EditorNukeVisibileObjects"
+add MenuObject
+set Name EditorPanelTerrain
+set ContainerOnly 1
+set HiddenCheckBySymbolInv EditorPanelTerrain
+set Child "GenericListboxMultiParent[ListboxPanelTerrainEditMode] 	10	10	PanelTerrainEditMode TerrainEditMode	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorTerrainTilePanel		0 50"
+set Child "EditorTerrainOptionsPanel	0 100"
+add MenuObject
+set Name EditorModifySelectionHighlight
+set Texture effects/white
+set Coords "0 0 16 10"
+set TileArea "280 30"
+set Color 0x000000
+set ColorFocused 0x202020
+set BlendMode BlendAdd
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name EditorModifySelectionFocused
+set Texture effects/white
+set Coords "0 0 16 10"
+set TileArea "280 30"
+set Color 0x444444
+set BlendMode BlendAdd
+set HiddenCheckBySymbolValue ActiveObjSelectionIndex!@_Arg1_@
+add MenuObject
+set Name EditorModifySelection
+set RenderCB_DX 240
+set RenderCB_DY 28
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.6
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol ModifySelectionName@_Arg1_@
+set DrawWhenFocused EditorModifySelectionHighlight
+set DrawWhenFocusedOrder BeforeSelf
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolInv ModifySelectionEnabled@_Arg1_@
+set CommandPress ">sym set ActiveObjSelectionIndex @_Arg1_@"
+set	CommandPress "editor do scrollModifyObjPage"
+set Child "EditorModifySelectionFocused 0 0  @_Arg1_@"
+add MenuObject initFrom EditorGenericArrowLeft
+set Name EditorModifySelectionScrollLeft
+set CommandPress "sym dec ModifySelectionPage"
+set CommandPress "editor do scrollModifyObjPage"
+add MenuObject initFrom EditorGenericArrowRight
+set Name EditorModifySelectionScrollRight
+set CommandPress "sym inc ModifySelectionPage"
+set CommandPress "editor do scrollModifyObjPage"
+add MenuObject
+set Name PropertyInputBoxOutline
+set Texture effects/white
+set Coords "0 0 284 42"
+set Color 0x1b1b1b
+add MenuObject
+set Name EditorInputPropertyBoxTemplate
+set Coords "0 0 280 38"
+set Texture effects/white
+set Color 0x333333
+set ColorFocused 0x444444
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 265
+set RenderCB_DY 38
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "8 0"
+set MouseInteractZoneExpand "0 -20 0 10"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.60
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set TextEditableMaxLen 30
+set RenderCB_Text @_Arg1_@
+set FirstDrawnChildren 1
+set Child "PropertyInputBoxOutline -2 -2"
+add MenuObject initFrom EditorInputPropertyBoxTemplate
+set Name EditorModifyPropertyBox
+set HiddenCheckBySymbolValue EditorObjPropertyType@_Arg2_@!0
+set CommandLoseFocus ">editor do updateObjSelectionProperty @_Arg2_@"
+add MenuObject
+set Name FocusEditorEntryButton
+set Texture effects/white
+set Coords "0 0 256 40"
+set Color 0x49c5bd
+add MenuObject
+set Name EditorEntryButtonTemplate
+set Texture effects/white
+set Coords "0 0 250 35"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusEditorEntryButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set RenderCB _DrawDText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set FilterName BaseLayout
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set SaveArgs 1
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set FirstDrawnChildren 1
+add MenuObject initFrom EditorEntryButtonTemplate
+set Name EditorModifyPropertyButton
+set SaveArgs 3
+set HiddenCheckBySymbolValue EditorObjPropertyType@_Arg2_@!2
+set CommandPress ">menucmd EditorModify${@_Arg3_@}"
+add MenuObject initFrom EditorInputLabel
+set Name EditorModifyPropertyLabel
+set SaveArgs 2
+set HiddenCheckBySymbolValue EditorObjPropertyType@_Arg2_@!3
+add MenuObject
+set Name EditorModifyPropertyEntry
+set ContainerOnly 1
+set SaveArgs 3
+set HiddenCheckBySymbolInv EditorObjPropertyEnabled@_Arg3_@
+set Child "EditorInputLabel				0   0		@_Arg1_@"
+set Child "EditorModifyPropertyBox		0	28 		@_Arg2_@ @_Arg3_@"
+set Child "EditorModifyPropertyButton	0	28		@_Arg2_@ @_Arg3_@ @_Arg1_@"
+set Child "EditorModifyPropertyLabel	0   28		@_Arg2_@ @_Arg3_@"
+add MenuObject
+set Name EditorPanelModify
+set ContainerOnly 1
+set HiddenCheckBySymbolInv EditorPanelModify
+set Child "EditorModifySelection 0 0	0"
+set Child "EditorModifySelection 0 30	1"
+set Child "EditorModifySelection 0 60	2"
+set Child "EditorModifySelection 0 90	3"
+set Child "EditorModifySelection 0 120	4"
+set Child "EditorModifySelectionScrollLeft	0	160"
+set Child "EditorModifySelectionScrollRight	210	160"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry0]		20	220		EditorObjPropertyName0	EditorObjPropertyValue0		0"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry1]		20	290		EditorObjPropertyName1	EditorObjPropertyValue1		1"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry2]		20	360		EditorObjPropertyName2	EditorObjPropertyValue2		2"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry3]		20	430		EditorObjPropertyName3	EditorObjPropertyValue3		3"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry4]		20	500		EditorObjPropertyName4	EditorObjPropertyValue4		4"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry5]		20	570		EditorObjPropertyName5	EditorObjPropertyValue5		5"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry6]		20	640		EditorObjPropertyName6	EditorObjPropertyValue6		6"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry7]		20	710		EditorObjPropertyName7	EditorObjPropertyValue7		7"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry8]		20	780		EditorObjPropertyName8	EditorObjPropertyValue8		8"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry9]		20	850		EditorObjPropertyName9	EditorObjPropertyValue9		9"
+set Child "EditorModifyPropertyEntry[ObjPropertyEntry10]	20	920		EditorObjPropertyName10	EditorObjPropertyValue10	10"
+add MenuObject
+set Name EditorGameSettingFocused
+set Texture effects/white
+set Coords "0 0 16 10"
+set TileArea "280 30"
+set Color 0x444444
+set BlendMode BlendAdd
+set HiddenCheckBySymbolValue ActiveGameSettingIndex!@_Arg1_@
+add MenuObject
+set Name EditorWorldSetting
+set RenderCB_DX 240
+set RenderCB_DY 28
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.6
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol EditorGameSettingName@_Arg1_@
+set DrawWhenFocused EditorModifySelectionHighlight
+set DrawWhenFocusedOrder BeforeSelf
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolInv EditorGameSettingEnabled@_Arg1_@
+set CommandPress ">sym set ActiveGameSettingIndex @_Arg1_@"
+set CommandPress "editor do scrollGameSettings"
+set CommandPress "gameui refreshfiltername EditorGameSettingFilter"
+set Child "EditorGameSettingFocused 0 0  @_Arg1_@"
+add MenuObject initFrom EditorGenericArrowLeft
+set Name EditorGameSettingScrollLeft
+set CommandPress "sym dec GameSettingSelectionPage"
+set CommandPress "editor do scrollGameSettings"
+add MenuObject initFrom EditorGenericArrowRight
+set Name EditorGameSettingScrollRight
+set CommandPress "sym inc GameSettingSelectionPage"
+set CommandPress "editor do scrollGameSettings"
+add MenuObject initFrom EditorInputPropertyBoxTemplate
+set Name EditorGameSettingPropertyBox
+set TextEditableFilename 1
+set HiddenCheckBySymbolValue EditorGameSettingPropertyType@_Arg2_@!0
+set CommandLoseFocus ">editor do updateActiveGameSettingProperty @_Arg2_@"
+set CommandLoseFocus "sym set EditorMapStateDirty 1"
+add MenuObject
+set Name EditorGameSettingListBox
+set ContainerOnly 1
+set SaveArgs 2
+set FilterName EditorGameSettingFilter
+set HiddenCheckBySymbolValue EditorGameSettingPropertyType@_Arg2_@!1
+set Child "GenericListboxBaseSymRef[ListboxEditorGameSetting@_Arg2_@]	0 0	EditorGameSetting @_Arg1_@ @_Arg2_@	0x333333 0x654736 0x654736 0xe27433"
+add MenuObject
+set Name EditorGameSettingPropertyEntry
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolInv EditorGameSettingPropertyEnabled@_Arg1_@
+set Child "EditorInputLabel   			 0   0		EditorGameSettingPropertyName@_Arg1_@"
+set Child "EditorGameSettingPropertyBox  0	28 		EditorGameSettingPropertyValue@_Arg1_@ @_Arg1_@"
+set Child "EditorGameSettingListBox		 0	28		EditorGameSettingPropertyName@_Arg1_@ @_Arg1_@"
+add MenuObject
+set Name EditorPanelWorldPropertyEntries
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EditorGameSettingSelection!@_Arg1_@
+set Child "EditorGameSettingPropertyEntry[GameSettingPropertyEntry0]	10	0		0"
+set Child "EditorGameSettingPropertyEntry[GameSettingPropertyEntry1]	10	70		1"
+set Child "EditorGameSettingPropertyEntry[GameSettingPropertyEntry2]	10	140		2"
+set Child "EditorGameSettingPropertyEntry[GameSettingPropertyEntry3]	10	210		3"
+set Child "EditorGameSettingPropertyEntry[GameSettingPropertyEntry4]	10	280		4"
+set Child "EditorGameSettingPropertyEntry[GameSettingPropertyEntry5]	10	350		5"
+set Child "EditorGameSettingPropertyEntry[GameSettingPropertyEntry6]	10	420		6"
+set Child "EditorGameSettingPropertyEntry[GameSettingPropertyEntry7]	10	490		7"
+set Child "EditorGameSettingPropertyEntry[GameSettingPropertyEntry8]	10	560		8"
+set Child "EditorGameSettingPropertyEntry[GameSettingPropertyEntry9]	10	630		9"
+add MenuObject initFrom EditorInputPropertyBoxTemplate
+set Name EditorGameSettingAirmechInfoBox
+set CommandLoseFocus ">editor do updateGameSettingAirmechInfo
+add MenuObject initFrom EditorInputPropertyBoxTemplate
+set Name EditorGameSettingAirmechInfoPlayerBox
+set CommandLoseFocus ">editor do updateGameSettingAirmechInfoPlayer
+add MenuObject
+set Name EditorPanelWorldAirmechInfo
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EditorGameSettingSelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	0	Editor_PlayerIndex"
+set Child "EditorGameSettingAirmechInfoPlayerBox[PlayerIndexBox]	10	30	EditorPlayerIndexValue"
+set Child "EditorInputLabelPlain									10	70	Editor_StartLocation"
+set Child "EditorGameSettingAirmechInfoBox[PlayerStartBox]			10	100	EditorPlayerStartValue"
+set Child "EditorInputLabelPlain									10	140	Editor_Pilot"
+set Child "EditorGameSettingAirmechInfoBox[PilotNameBox]			10	170	EditorPlayerPilotValue"
+set Child "EditorInputLabelPlain									10	210	Editor_ConditionAirmech"
+set Child "EditorGameSettingAirmechInfoBox[AirmechNameBox]			10	240	EditorPlayerAirmechValue"
+set Child "EditorInputLabelPlain									10	280	Editor_AIScript"
+set Child "EditorGameSettingAirmechInfoBox[PilotNameBox]			10	310	EditorPlayerAIScriptValue"
+set Child "EditorInputLabelPlain									10	350	Editor_Level"
+set Child "EditorGameSettingAirmechInfoBox[AirmechLevelBox]			10	380	EditorPlayerLevelValue"
+add MenuObject
+set Name EditorPanelWorld
+set ContainerOnly 1
+set HiddenCheckBySymbolInv EditorPanelWorld
+set Child "EditorWorldSetting 0 0		0"
+set Child "EditorWorldSetting 0 30		1"
+set Child "EditorWorldSetting 0 60		2"
+set Child "EditorWorldSetting 0 90		3"
+set Child "EditorWorldSetting 0 120		4"
+set Child "EditorGameSettingScrollLeft	0	160"
+set Child "EditorGameSettingScrollRight	210	160"
+set Child "EditorPanelWorldPropertyEntries	0 210	0"
+set Child "EditorPanelWorldAirmechInfo	0 210	1"
+add MenuObject initFrom EditorSelectListItemTemplate
+set Name EditorEventListItem
+set RenderCB_ConsoleSymbol EditorEvent_Name@_Arg2_@
+set SaveArgs 2
+set CommandPress ">if sym EditorEvent_Name@_Arg2_@ !isEmpty runnow sym set EditorEventIndex @_Arg2_@"
+add MenuObject initFrom EditorGenericArrowLeft
+set Name EditorEventScrollLeft
+set CommandPress "sym dec EventSelectionPage"
+set CommandPress "editor do scrollEventPage"
+add MenuObject initFrom EditorGenericArrowRight
+set Name EditorEventScrollRight
+set CommandPress "sym inc EventSelectionPage"
+set CommandPress "editor do scrollEventPage"
+add MenuObject
+set Name EditorEventList
+set ContainerOnly 1
+set Child "EditorEventListItem		5 30	EditorEventIndex	0"
+set Child "EditorEventListItem		5 60	EditorEventIndex	1"
+set Child "EditorEventListItem		5 90	EditorEventIndex	2"
+set Child "EditorEventListItem		5 120	EditorEventIndex	3"
+set Child "EditorEventListItem		5 150	EditorEventIndex	4"
+set Child "EditorEventListItem		5 180	EditorEventIndex	5"
+set Child "EditorEventListItem		5 210	EditorEventIndex	6"
+set Child "EditorEventListItem		5 240	EditorEventIndex	7"
+set Child "EditorEventListItem		5 270	EditorEventIndex	8"
+set Child "EditorEventListItem		5 300	EditorEventIndex	9"
+set Child "EditorEventScrollLeft 	10	340"
+set Child "EditorInputLabel			145	345	EventSelectionPageLabel"
+set Child "EditorEventScrollRight 	210	340"
+add MenuObject
+set Name EditorPanelEvents
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorScriptMode!0
+set Child "EditorEventList 0 0"
+set Child "EditorBigButtonTemplate[EditorButtonDefineEvent] 5	400	Editor_AddEvent EditorDefineScriptEvent"
+set Child "EditorBigButtonTemplate[EditorButtonRemoveEvent] 165 400	Editor_RemoveEvent EditorRemoveScriptEvent"
+set Child "EditorBigButtonTemplate[EditorButtonEditEvent]	5	460	Editor_EditEvent EditorEditScriptEvent"
+add MenuObject initFrom EditorGenericArrowLeft
+set Name EditorActionScrollLeft
+set CommandPress "sym dec ActionSelectionPage"
+set CommandPress "editor do scrollActionPage"
+add MenuObject initFrom EditorGenericArrowRight
+set Name EditorActionScrollRight
+set CommandPress "sym inc ActionSelectionPage"
+set CommandPress "editor do scrollActionPage"
+add MenuObject initFrom EditorSelectListItemTemplate
+set Name EditorActionListItem
+set RenderCB_ConsoleSymbol EditorAction_Name@_Arg2_@
+set SaveArgs 2
+set CommandPress ">if sym EditorAction_Name@_Arg2_@ !isEmpty runnow sym set EditorActionIndex @_Arg2_@"
+add MenuObject
+set Name EditorActionList
+set ContainerOnly 1
+set Child "EditorActionListItem		5 30	EditorActionIndex	0"
+set Child "EditorActionListItem		5 60	EditorActionIndex	1"
+set Child "EditorActionListItem		5 90	EditorActionIndex	2"
+set Child "EditorActionListItem		5 120	EditorActionIndex	3"
+set Child "EditorActionListItem		5 150	EditorActionIndex	4"
+set Child "EditorActionListItem		5 180	EditorActionIndex	5"
+set Child "EditorActionListItem		5 210	EditorActionIndex	6"
+set Child "EditorActionListItem		5 240	EditorActionIndex	7"
+set Child "EditorActionListItem		5 270	EditorActionIndex	8"
+set Child "EditorActionListItem		5 300	EditorActionIndex	9"
+set Child "EditorActionScrollLeft	10	340"
+set Child "EditorInputLabel			145	345	ActionSelectionPageLabel"
+set Child "EditorActionScrollRight	210	340"
+add MenuObject
+set Name EditorPanelActions
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorScriptMode!1
+set Child "EditorActionList 									0	0"
+set Child "EditorBigButtonTemplate[EditorButtonDefineAction]	5	400	Editor_DefineAction EditorDefineScriptAction"
+set Child "EditorBigButtonTemplate[EditorButtonRemoveAction] 	165	400 Editor_RemoveAction EditorRemoveScriptAction"
+set Child "EditorInputLabelPlain								20	480	Editor_ActionName"
+set Child "EditorInputPropertyBoxTemplate[ActionNameBox]		10	510	EditorActionNameValue"
+set Child "EditorBigButtonTemplate[EditorButtonAddAction] 		5	570 Editor_AddAction EditorAddScriptAction"
+set Child "EditorBigButtonTemplate[EditorButtonRenameAction] 	165	570 Editor_RenameAction EditorRenameScriptAction"
+add MenuObject initFrom EditorSelectListItemTemplate
+set Name EditorActionConditionListItem
+set RenderCB_ConsoleSymbol EditorActionCondition_Name@_Arg2_@
+set SaveArgs 2
+set CommandPress ">if sym EditorActionCondition_Name@_Arg2_@ !isEmpty runnow sym set EditorActionConditionIndex @_Arg2_@"
+add MenuObject initFrom EditorGenericArrowLeft
+set Name EditorActionConditionScrollLeft
+set CommandPress "sym dec ActionConditionSelectionPage"
+set CommandPress "editor do scrollActionConditionPage"
+add MenuObject initFrom EditorGenericArrowRight
+set Name EditorActionConditionScrollRight
+set CommandPress "sym inc ActionConditionSelectionPage"
+set CommandPress "editor do scrollActionConditionPage"
+add MenuObject
+set Name EditorActionConditionList
+set ContainerOnly 1
+set Child "EditorActionConditionListItem	5 30	EditorActionConditionIndex	0"
+set Child "EditorActionConditionListItem	5 60	EditorActionConditionIndex	1"
+set Child "EditorActionConditionListItem	5 90	EditorActionConditionIndex	2"
+set Child "EditorActionConditionListItem	5 120	EditorActionConditionIndex	3"
+set Child "EditorActionConditionListItem	5 150	EditorActionConditionIndex	4"
+set Child "EditorActionConditionListItem	5 180	EditorActionConditionIndex	5"
+set Child "EditorActionConditionListItem	5 210	EditorActionConditionIndex	6"
+set Child "EditorActionConditionListItem	5 240	EditorActionConditionIndex	7"
+set Child "EditorActionConditionListItem	5 270	EditorActionConditionIndex	8"
+set Child "EditorActionConditionListItem	5 300	EditorActionConditionIndex	9"
+set Child "EditorActionConditionScrollLeft	10	340"
+set Child "EditorInputLabel					145	345	ActionConditionSelectionPageLabel"
+set Child "EditorActionConditionScrollRight	210	340"
+add MenuObject
+set Name EditorPanelActionCondition
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorActionDefineMode!0
+set Child "EditorActionConditionList								0	0"
+set Child "EditorBigButtonTemplate[EditorButtonMoveUpCondition]		5	400	Editor_MoveUp EditorMoveConditionUp"
+set Child "EditorBigButtonTemplate[EditorButtonMoveDownCondition]	165	400	Editor_MoveDown EditorMoveConditionDown"
+set Child "EditorBigButtonTemplate[EditorButtonAddCondition]		5	460	Editor_AddCondition EditorDefineCondition"
+set Child "EditorBigButtonTemplate[EditorButtonRemoveCondition]		165	460	Editor_RemoveCondition EditorRemoveCondition"
+set Child "EditorBigButtonTemplate[EditorButtonEditCondition]		5	520	Editor_EditCondition EditorEditCondition"
+add MenuObject initFrom EditorSelectListItemTemplate
+set Name EditorActionCommandListItem
+set RenderCB_ConsoleSymbol EditorActionCommand_Name@_Arg2_@
+set SaveArgs 2
+set CommandPress ">if sym EditorActionCommand_Name@_Arg2_@ !isEmpty runnow sym set EditorActionCommandIndex @_Arg2_@"
+add MenuObject initFrom EditorGenericArrowLeft
+set Name EditorActionCommandScrollLeft
+set CommandPress "sym dec ActionCommandSelectionPage"
+set CommandPress "editor do scrollActionCommandPage"
+add MenuObject initFrom EditorGenericArrowRight
+set Name EditorActionCommandScrollRight
+set CommandPress "sym inc ActionCommandSelectionPage"
+set CommandPress "editor do scrollActionCommandPage"
+add MenuObject
+set Name EditorActionCommandList
+set ContainerOnly 1
+set Child "EditorActionCommandListItem		5	30		EditorActionCommandIndex	0"
+set Child "EditorActionCommandListItem		5	60		EditorActionCommandIndex	1"
+set Child "EditorActionCommandListItem		5	90		EditorActionCommandIndex	2"
+set Child "EditorActionCommandListItem		5	120		EditorActionCommandIndex	3"
+set Child "EditorActionCommandListItem		5	150		EditorActionCommandIndex	4"
+set Child "EditorActionCommandListItem		5	180		EditorActionCommandIndex	5"
+set Child "EditorActionCommandListItem		5	210		EditorActionCommandIndex	6"
+set Child "EditorActionCommandListItem		5	240		EditorActionCommandIndex	7"
+set Child "EditorActionCommandListItem		5	270		EditorActionCommandIndex	8"
+set Child "EditorActionCommandListItem		5	300		EditorActionCommandIndex	9"
+set Child "EditorActionCommandScrollLeft	10	340"
+set Child "EditorInputLabel					145	345	ActionCommandSelectionPageLabel"
+set Child "EditorActionCommandScrollRight	210	340"
+add MenuObject
+set Name EditorPanelActionCommand
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorActionDefineMode!1
+set Child "EditorActionCommandList								0	0"
+set Child "EditorBigButtonTemplate[EditorButtonMoveUpCommand]	5	400	Editor_MoveUp EditorMoveCommandUp"
+set Child "EditorBigButtonTemplate[EditorButtonMoveDownCommand]	165	400	Editor_MoveDown EditorMoveCommandDown"
+set Child "EditorBigButtonTemplate[EditorButtonDefineCommand]		5	460	Editor_AddCommand EditorDefineCommand"
+set Child "EditorBigButtonTemplate[EditorButtonRemoveCommand]	165	460	Editor_RemoveCommand EditorRemoveCommand"
+set Child "EditorBigButtonTemplate[EditorButtonEditCommand]		5	520	Editor_EditCommand EditorEditCommand"
+add MenuObject initFrom EditorEntryButtonTemplate
+set Name EditorTriggerEventButton
+set SaveArgs 1
+set CommandPress ">menucmd EditorOpenPickEventWindow @_Arg1_@ EditorPickTriggerEventCallback"
+add MenuObject
+set Name EditorClearTriggerEventButton
+set Coords "638 454 50 50"
+set CoordsFocused "637 397 50 50"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set MouseInteract 1
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "sym clear EditorActionEventValue"
+set CommandPress "editor do updateActionTriggerEvent"
+add MenuObject
+set Name EditorPanelDefineAction
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorScriptMode!3
+set Child "EditorBigButtonTemplate[EditorButtonCloseDefineAction]	80	30	Editor_Close EditorCloseDefineScriptAction"
+set Child "EditorInputLabelPlain									20	90	Editor_TriggerEventName"
+set Child "EditorClearTriggerEventButton							260	115"
+set Child "EditorTriggerEventButton									10	120	EditorActionEventValue"
+set Child "GenericListboxBase[ListboxActionDefineSelection]			10	170	ActionDefineSelectionActive ActionDefineSelection	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorPanelActionCondition	0 190"
+set Child "EditorPanelActionCommand		0 190"
+add MenuObject
+set Name EditorPanelDefineEvent
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorScriptMode!4
+set Child "EditorBigButtonTemplate[EditorButtonCloseDefineEvent]	80	30	Editor_Close EditorCloseDefineScriptEvent"
+add MenuObject initFrom EditorSelectListItemTemplate
+set Name EditorVariableListItem
+set RenderCB_ConsoleSymbol EditorVariable_Name@_Arg2_@
+set SaveArgs 2
+set CommandPress ">if sym EditorVariable_Name@_Arg2_@ !isEmpty runnow sym set EditorVariableIndex @_Arg2_@"
+add MenuObject initFrom EditorGenericArrowLeft
+set Name EditorVariableScrollLeft
+set CommandPress "sym dec VariableSelectionPage"
+set CommandPress "editor do scrollVariablePage"
+add MenuObject initFrom EditorGenericArrowRight
+set Name EditorVariableScrollRight
+set CommandPress "sym inc VariableSelectionPage"
+set CommandPress "editor do scrollVariablePage"
+add MenuObject
+set Name EditorVariableList
+set ContainerOnly 1
+set Child "EditorVariableListItem	5 30	EditorVariableIndex		0"
+set Child "EditorVariableListItem	5 60	EditorVariableIndex		1"
+set Child "EditorVariableListItem	5 90	EditorVariableIndex		2"
+set Child "EditorVariableListItem	5 120	EditorVariableIndex		3"
+set Child "EditorVariableListItem	5 150	EditorVariableIndex		4"
+set Child "EditorVariableListItem	5 180	EditorVariableIndex		5"
+set Child "EditorVariableListItem	5 210	EditorVariableIndex		6"
+set Child "EditorVariableListItem	5 240	EditorVariableIndex		7"
+set Child "EditorVariableListItem	5 270	EditorVariableIndex		8"
+set Child "EditorVariableListItem	5 300	EditorVariableIndex		9"
+set Child "EditorVariableScrollLeft		10	340"
+set Child "EditorInputLabel				145	345		VariableSelectionPageLabel"
+set Child "EditorVariableScrollRight	210	340"
+add MenuObject
+set Name EditorPanelVariables
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorScriptMode!2
+set Child "EditorVariableList 0 0"
+set Child "EditorBigButtonTemplate[EditorButtonDefineVariable]	5	400	Editor_AddVariable EditorDefineScriptVariable"
+set Child "EditorBigButtonTemplate[EditorButtonRemoveVariable]	165	400	Editor_RemoveVariable EditorRemoveScriptVariable"
+set Child "EditorBigButtonTemplate[EditorButtonEditVariable]	5	460	Editor_EditVariable EditorEditScriptVariable"
+add MenuObject
+set Name EditorPanelScriptOptions
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorScriptMode!5
+set Child "EditorBigButtonTemplate[EditorButtonImportScripts]	5	10	Editor_ImportScripts EditorPickScriptImportMap"
+add MenuObject
+set Name EditorPanelScripts
+set ContainerOnly 1
+set HiddenCheckBySymbolInv EditorPanelScripts
+set Child "GenericListboxBase[ListboxScriptSelection] 10 -25 ScriptSelectionActive ScriptSelection	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorPanelEvents		0 0"
+set Child "EditorPanelActions		0 0"
+set Child "EditorPanelDefineEvent	0 0"
+set Child "EditorPanelDefineAction	0 0"
+set Child "EditorPanelVariables		0 0"
+set Child "EditorPanelScriptOptions	0 20"
+add MenuObject initFrom GenericBackground
+set Name EditorRightPanelBg
+set CoordsStart "719 361 19 19"
+set CoordsMid "738 361 93 19"
+set CoordsEnd "832 361 19 19"
+set RenderCB_DX 370
+set RenderCB_DY 1068
+set Coords "0 0 600 500"
+set NoAlphaMod 1
+set Alpha 0.9
+add MenuObject
+set Name EditorRightPanel
+set ContainerOnly 1
+set Child "EditorRightPanelBg -15 0"
+set Child "EditorPanelCreate 5 50"
+set Child "EditorPanelModify 5 10"
+set Child "EditorPanelSampleMap 5 10"
+set Child "EditorPanelTerrain 5 10"
+set Child "EditorPanelWorld 5 10"
+set Child "EditorPanelScripts 5 50"
+add MenuObject
+set Name EditorPanelButtons
+set ContainerOnly 1
+set Child "EditorButtonCreate Nx52 0		EditorPanelCreate"
+set Child "EditorButtonModify Nx52 0		EditorPanelModify"
+set Child "EditorButtonSMap Nx52 0		EditorPanelSMap"
+set Child "EditorButtonTerrain Nx52 0	EditorPanelTerrain"
+set Child "EditorButtonWorld Nx52 0		EditorPanelWorld"
+set Child "EditorButtonScripts Nx52 0	EditorPanelScripts"
+add MenuObject
+set Name EditorTransformIcons
+set ContainerOnly 1
+set Child "EditorButtonPointer Nx52 0		EditorTransSelect"
+set Child "EditorButtonMove Nx52 0			EditorTransMove"
+set Child "EditorButtonRotate Nx52 0		EditorTransRotate"
+set Child "EditorButtonScale Nx52 0			EditorTransScale"
+set Child "EditorButtonGroupSelect Nx52 0	EditorTransGroupSelect"
+add MenuObject
+set Name EditorTopBarTextMenu
+set ContainerOnly 1
+set Child "EditorMenuTextBar[EditorMenuFile]	Nx100 0		Editor_File		EditorMenuFile"
+set Child "EditorMenuTextBar[EditorMenuEdit]	Nx100 0		Editor_Edit		EditorMenuEdit"
+set Child "EditorMenuTextBar[EditorMenuView]	Nx100 0		Editor_View		EditorMenuView"
+set Child "EditorMenuTextBar[EditorMenuRender]	Nx100 0		Editor_Render	EditorMenuRender /devonly"
+add MenuObject initFrom GenericBackground
+set Name EditorTopBarBg
+set RenderCB_DX 1980
+set RenderCB_DY 96
+set Coords "0 0 600 100"
+set NoAlphaMod 1
+set Alpha 0.9
+add MenuObject
+set Name EditorMapName
+set Coords "0 0 550 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xdddddd
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol MapName
+set RenderCB_Flags "/fitX"
+set SaveArgs 1
+add MenuObject
+set Name EditorTopBar
+set ContainerOnly 1
+set Child "EditorTopBarBg -25 -20"
+set Child "EditorSandboxResume 15 80"
+set Child "EditorRightPanel 1590 58"
+set Child "EditorTopBarTextMenu 64 7"
+set Child "EditorTransformIcons 460 10"
+set Child "EditorMapName 630 20"
+set Child "EditorButtonLayersShow 1340 10	"
+set Child "EditorButtonNavmeshShow 1200 10	"
+set Child "EditorButtonNavmeshGen 1252 10	"
+set Child "MailInboxButton 1500 9"
+set Child "FriendsOpenButton 1433 9"
+set Child "EditorHomeButton 5 10"
+set Child "EditorHomeButtonOfficial 5 10"
+set Child "EditorPanelButtons 1600 10"
+add MenuObject
+set Name EditorCommandWindowBG
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "650 440"
+set MouseInteract 1
+set Color @EditorColorBase@
+set ColorFocused @EditorColorBase@
+add MenuObject initFrom EditorEntryButtonTemplate
+set Name EditorCommandActionButton
+set SaveArgs 1
+set CommandPress ">menucmd EditorOpenPickActionWindow @_Arg1_@ NULL"
+add MenuObject
+set Name EditorCommandActionPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain		10	10	Editor_ActionName"
+set Child "EditorCommandActionButton	10	40	EditorCommandActionName"
+add MenuObject
+set Name EditorCommandEndgamePanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	10	Editor_Victory"
+set Child "GenericListboxMultiParent[ListboxCommandEndgameState] 	10	40	CommandEndgameState OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+add MenuObject initFrom EditorEntryButtonTemplate
+set Name EditorCommandEventButton
+set SaveArgs 1
+set CommandPress ">menucmd EditorOpenPickEventWindow @_Arg1_@ NULL"
+add MenuObject
+set Name EditorCommandEventPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	10	Editor_EventName"
+set Child "EditorCommandEventButton									10	40	EditorCommandEventName"
+set Child "EditorInputLabelPlain									10	90	Editor_EventEnabled"
+set Child "GenericListboxMultiParent[ListboxCommandEventEnabled] 	10	120	CommandEventEnabled OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+add MenuObject
+set Name EditorCommandMessagePanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain											10	5	Editor_CommandMessage"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandMessagePropertyBox]	10	30	CommandMessageString"
+add MenuObject
+set Name EditorCommandSurvivalSetWavePanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue SurvivalStyleOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain		10	5	Editor_VariableValue"
+set Child "EditorMenucmdButtonTemplate	10	30	EditorCommandVariableValue EditorOpenPickNumericParamMenu"
+add MenuObject
+set Name EditorCommandSurvivalSetProgressPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue SurvivalStyleOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain		10	5	Editor_UnitsDestroyed"
+set Child "EditorMenucmdButtonTemplate	10	30	EditorCommandVariableValue EditorOpenPickNumericParamMenuArg EditorCommandVariableType"
+set Child "EditorInputLabelPlain		310	5	Editor_TotalWaveUnits"
+set Child "EditorMenucmdButtonTemplate	310	30	EditorCommandVariableValue1 EditorOpenPickNumericParamMenuArg EditorCommandVariableType1"
+add MenuObject
+set Name EditorCommandGameStyleSurvivalPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue GameStyleOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	5	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxSurvivalStyleOption]	10	30	SurvivalStyleOption SurvivalStyleOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorCommandSurvivalSetWavePanel		0	70	0"
+set Child "EditorCommandSurvivalSetProgressPanel	0	70	1"
+add MenuObject
+set Name EditorCommandGameStylePanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain								330	-70	Editor_GameStyle"
+set Child "GenericListboxMultiParent[ListboxGameStyleOption]	330	-40	GameStyleOption GameStyleOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorCommandGameStyleSurvivalPanel					0	0	1"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPickLocationButton
+set CommandPress "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+set CommandPress "editor do initiateLocationPicking EditorCommandSpawnLocation EditorConditionFinishPickingCallback"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPickOrderSelLocButton
+set SaveArgs 2
+set CommandPress "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+set CommandPress "editor do initiateLocationPicking EditorCommandOrderSelectLocation EditorConditionFinishPickingCallback"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPickOrderSelTgtButton
+set SaveArgs 2
+set CommandPress "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+set CommandPress "editor do initiateLocationPicking EditorCommandOrderTargetLocation EditorConditionFinishPickingCallback"
+add MenuObject
+set Name EditorMoveLocToLocPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue MoveLocTargetSelection!@_Arg1_@
+set Child "EditorPickOrderSelTgtButton	10	10	Editor_TargetLocation"
+set Child "EditorInputLabel				180	20	EditorCommandOrderTargetLocation"
+add MenuObject
+set Name EditorMoveLocToPlayerPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue MoveLocTargetSelection!@_Arg1_@
+set Child "EditorInputLabelPlain										10	5	Editor_PlayerIndex"
+set Child "EditorInputPropertyBoxTemplate[MoveLocToPlayerPropertyBox]	10	30	CommandPlayerIndex"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPickUnitButton
+set CommandPress "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+set CommandPress "editor do initiateUnitPicking EditorPickingValue EditorConditionFinishPickingCallback"
+add MenuObject
+set Name EditorMoveLocToUnitPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue MoveLocTargetSelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	5	Editor_PickUnit"
+set Child "EditorMenucmdButtonTemplate[MoveLocPickUnitButton]		10	30	EditorQueryUnitValue EditorOpenPickUnitIdParamMenu"
+add MenuObject
+set Name EditorCommandMoveLocPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorPickOrderSelLocButton						10	10	Editor_SelectLocation"
+set Child "EditorInputLabel									180	20	EditorCommandOrderSelectLocation"
+set Child "EditorInputLabelPlain							330	-65	Editor_OrderMoveTo"
+set Child "GenericListboxMultiParent[ListboxMoveLocTarget]	330	-40	MoveLocTarget MoveLocTarget	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorMoveLocToLocPanel							0	70	0"
+set Child "EditorMoveLocToPlayerPanel						0	70	1"
+set Child "EditorMoveLocToUnitPanel							0	70	2"
+add MenuObject initFrom EditorEntryButtonTemplate
+set Name EditorCommandPickSoundButton
+set SaveArgs 1
+set CommandPress "if !menuloaded EditorSoundPickWindow runnow loadmenu EditorSoundPickWindow /fadein 0.1"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPlaySoundButton
+set CommandPress "playsound $EditorCommandPlaySound"
+add MenuObject
+set Name EditorCommandPlaySoundPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorCommandPickSoundButton		10	15	EditorCommandPlaySound"
+set Child "EditorPlaySoundButton			10	65	Editor_CommandPlaySound"
+add MenuObject initFrom EditorEntryButtonTemplate
+set Name EditorMenucmdButtonTemplate
+set SaveArgs 3
+set CommandPress ">menucmd @_Arg2_@ local @_Arg1_@ @_Arg3_@"
+add MenuObject
+set Name EditorCommandWaitPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain			10	10	Editor_TimeSeconds"
+set Child "EditorMenucmdButtonTemplate		10	40	EditorCommandWaitTime EditorOpenPickNumericParamMenu"
+add MenuObject
+set Name EditorCommandPilotDialogMessagePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue PilotDialogOptionSelection!1
+set Child "EditorInputLabelPlain										10	10	Editor_Pilot"
+set Child "GenericListboxMultiParent[ListboxPilotDialog]				10	40	PilotDialog PilotDialog	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorInputLabelPlain										330	10	Editor_CommandMessage"
+set Child "EditorInputPropertyBoxTemplate[PilotDialogTextPropertyBox]	330	40	CommandMessageString"
+add MenuObject
+set Name EditorCommandPilotDialogEnablePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue PilotDialogOptionSelection!0
+set Child "GenericListboxMultiParent[ListboxPilotDialogEnable] 	10	30	PilotDialogEnable OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+add MenuObject
+set Name EditorCommandPilotDialogPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain								330	-65	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxPilotDialogOption] 	330	-40	PilotDialogOption PilotDialogOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorCommandPilotDialogMessagePanel	0 0"
+set Child "EditorCommandPilotDialogEnablePanel 0 0"
+add MenuObject
+set Name EditorCommandGamePanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain								10	5	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxGameCommandOption]	10	30	GameCommandOption CommandOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorCommandEndgamePanel		0	70	0"
+set Child "EditorCommandMessagePanel		0	70	1"
+set Child "EditorCommandMoveLocPanel		0	70	2"
+set Child "EditorCommandPlaySoundPanel		0	70	3"
+set Child "EditorCommandGameStylePanel		0	70	4"
+set Child "EditorCommandWaitPanel			0	70	5"
+set Child "EditorCommandPilotDialogPanel	0	70	6"
+add MenuObject
+set Name EditorCommandPlayerExpPanel
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set ContainerOnly 1
+set SaveArgs 1
+set Child "EditorInputLabelPlain											330	5	Editor_PlayerIndex"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandPlayerPropertyBox]	330	30	CommandPlayerIndex"
+set Child "EditorInputLabelPlain											10	70	Editor_VariableValue"
+set Child "EditorMenucmdButtonTemplate										10	100	EditorCommandVariableValue EditorOpenPickNumericParamMenu"
+add MenuObject
+set Name EditorCommandPlayerCreditsPanel
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set ContainerOnly 1
+set SaveArgs 1
+set Child "EditorInputLabelPlain											330	5	Editor_PlayerIndex"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandPlayerPropertyBox]	330	30	CommandPlayerIndex"
+set Child "EditorInputLabelPlain											10	70	Editor_Operation"
+set Child "GenericListboxMultiParent[ListboxPlayerCreditsOperation]			10	100	PlayerCreditsOperation CommandVariableOperation	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain											330	70	Editor_VariableValue"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandValuePropertyBox]	330	100	EditorCommandVariableValue"
+add MenuObject
+set Name EditorCommandPlayerEnergyPanel
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set ContainerOnly 1
+set SaveArgs 1
+set Child "EditorInputLabelPlain											330	5	Editor_PlayerIndex"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandPlayerPropertyBox]	330	30	CommandPlayerIndex"
+set Child "EditorInputLabelPlain											10	70	Editor_Operation"
+set Child "GenericListboxMultiParent[ListboxPlayerEnergyOperation]			10	100	PlayerEnergyOperation CommandVariableOperation	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain											330	70	Editor_VariableValue"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandValuePropertyBox]	330	100	EditorCommandVariableValue"
+add MenuObject
+set Name EditorCommandPlayerHealthPanel
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set ContainerOnly 1
+set SaveArgs 1
+set Child "EditorInputLabelPlain											330	5	Editor_PlayerIndex"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandPlayerPropertyBox]	330	30	CommandPlayerIndex"
+set Child "EditorInputLabelPlain											10	70	Editor_Operation"
+set Child "GenericListboxMultiParent[ListboxPlayerHealthOperation]			10	100	PlayerHealthOperation CommandVariableOperation	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain											330	70	Editor_VariableValue"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandValuePropertyBox]	330	100	EditorCommandVariableValue"
+add MenuObject
+set Name EditorCommandPlayerPowerPanel
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set ContainerOnly 1
+set SaveArgs 1
+set Child "EditorInputLabelPlain											10	70	Editor_Operation"
+set Child "GenericListboxMultiParent[ListboxPlayerCommandOperation]			10	100	PlayerCommandOperation CommandVariableOperation	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain											330	70	Editor_VariableValue"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandValuePropertyBox]	330	100	EditorCommandVariableValue"
+add MenuObject
+set Name EditorCommandPlayerRevivePanel
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set ContainerOnly 1
+set SaveArgs 1
+set Child "EditorInputLabelPlain											330	5	Editor_PlayerIndex"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandPlayerPropertyBox]	330	30	CommandPlayerIndex"
+set Child "EditorInputLabelPlain											10	70	Editor_EventDelay"
+set Child "EditorInputPropertyBoxTemplate[PlayerCommandDelayPropertyBox]	10	100	EditorCommandVariableValue"
+add MenuObject
+set Name EditorCommandPlayerPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	5	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxPlayerCommandOption]	10	30	PlayerCommandOption CommandOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorCommandPlayerExpPanel								0	0	0"
+set Child "EditorCommandPlayerCreditsPanel							0	0	1"
+set Child "EditorCommandPlayerEnergyPanel							0	0	2"
+set Child "EditorCommandPlayerHealthPanel							0	0	3"
+set Child "EditorCommandPlayerPowerPanel							0	0	4"
+set Child "EditorCommandPlayerRevivePanel							0	0	5"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPickSpawnLocationButton
+set CommandPress "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+set CommandPress "editor do initiateLocationPicking EditorCommandSpawnLocation EditorConditionFinishPickingCallback"
+set CommandPress "sym clear EditorCommandSpawnElevator"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPickSpawnElevatorButton
+set CommandPress "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+set CommandPress "editor do initiateElevatorPicking EditorCommandSpawnElevator EditorConditionFinishPickingCallback"
+set CommandPress "sym clear EditorCommandSpawnLocation"
+add MenuObject initFrom EditorEntryButtonTemplate
+set Name EditorSpawnPickUnitButton
+set SaveArgs 2
+set CommandPress ">menucmd @_Arg2_@"
+add MenuObject
+set Name EditorCommandUnitKillUnitIdPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue UnitKillOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain			10	5	Editor_QueryUnit"
+set Child "EditorMenucmdButtonTemplate		10	30	EditorQueryUnitValue EditorOpenPickUnitIdParamMenu"
+add MenuObject
+set Name EditorCommandUnitKillLocationPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue UnitKillOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain								10	10	Editor_EventTeamId"
+set Child "GenericListboxMultiParent[ListboxUnitKillTeamSelect]	10	40	UnitKillTeamSelect EditorTeamSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorPickLocationButton								10	90	Editor_PickLocation"
+set Child "EditorInputLabel										180	100	EditorCommandSpawnLocation"
+add MenuObject
+set Name EditorCommandUnitKillPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain									320	-65 Editor_OptionTargetType"
+set Child "GenericListboxMultiParent[ListboxCommandUnitKillOption]	320	-40	CommandUnitKillOption UnitKillOption	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain									10	0	Editor_DestroyUnit"
+set Child "GenericListboxMultiParent[ListboxKillUnitDestroyEnable] 	10	30	KillUnitDestroyEnable OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorCommandUnitKillUnitIdPanel		0	70	0"
+set Child "EditorCommandUnitKillLocationPanel	0	70	1"
+add MenuObject
+set Name EditorCommandUnitOrderPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain								320	-70	Editor_UnitOrder"
+set Child "GenericListboxMultiParent[ListboxUnitOrderSelect]	320	-40	UnitOrderSelect EditorOrderSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain								10	10	Editor_EventTeamId"
+set Child "GenericListboxMultiParent[ListboxOrderTeamSelect]	10	40	OrderTeamSelect EditorTeamSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorPickOrderSelLocButton							10	90	Editor_SelectLocation"
+set Child "EditorInputLabel										180	100	EditorCommandOrderSelectLocation"
+set Child "EditorPickOrderSelTgtButton							10	150	Editor_TargetLocation"
+set Child "EditorInputLabel										180	160	EditorCommandOrderTargetLocation"
+add MenuObject
+set Name EditorCommandSpawnAtLocationPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue SpawnLocTypeSelectSelection!@_Arg1_@
+set Child "EditorPickSpawnLocationButton		10	5	Editor_PickLocation"
+set Child "EditorInputLabel						180	15	EditorCommandSpawnLocation"
+add MenuObject
+set Name EditorCommandSpawnAtElevatorPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue SpawnLocTypeSelectSelection!@_Arg1_@
+set Child "EditorPickSpawnElevatorButton		10	5	Editor_PickElevator"
+set Child "EditorInputLabel						180	15	EditorCommandSpawnElevator"
+add MenuObject
+set Name EditorCommandSpawnAtPositionPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue SpawnLocTypeSelectSelection!@_Arg1_@
+set Child "EditorInputLabelPlain			10	0	Editor_OptionPosition"
+set Child "EditorMenucmdButtonTemplate		10	25	EditorCommandVariableValue EditorOpenPickPositionParamMenu"
+add MenuObject
+set Name EditorCommandUnitSpawnPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain								10	5	Editor_SpawnUnit"
+set Child "EditorSpawnPickUnitButton							10	35	EditorPickUnitValue EditorOpenPickUnitMenu"
+set Child "EditorInputLabelPlain								320	-70	Editor_EventTeamId"
+set Child "GenericListboxMultiParent[ListboxSpawnTeamSelect]	320	-40	SpawnTeamSelect EditorTeamSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain								320	75	Editor_SpawnCount"
+set Child "EditorInputPropertyBoxTemplate[SpawnUnitCountBox]	320	105	EditorCommandSpawnCount"
+set Child "EditorInputLabelPlain								320	150	Editor_SpawnFacingDeg"
+set Child "EditorInputPropertyBoxTemplate[SpawnUnitRotZBox]		320	180	EditorCommandSpawnRotateZ"
+set Child "EditorInputLabelPlain								320	5	Editor_UnitOrder"
+set Child "GenericListboxMultiParent[ListboxSpawnOrderSelect]	320	30	SpawnOrderSelect SpawnOrderSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain								10	75	Editor_OptionSpawn"
+set Child "GenericListboxMultiParent[ListboxSpawnLocTypeSelect]	10	105	SpawnLocTypeSelect SpawnLocTypeSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorCommandSpawnAtLocationPanel					0	150	0"
+set Child "EditorCommandSpawnAtElevatorPanel					0	150	1"
+set Child "EditorCommandSpawnAtPositionPanel					0	150	2"
+add MenuObject
+set Name EditorCommandUnitHealthPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain												10	5	Editor_QueryUnit"
+set Child "EditorMenucmdButtonTemplate[UnitHealthPickUnitButton]				10	30	EditorQueryUnitValue EditorOpenPickUnitIdParamMenu"
+set Child "EditorInputLabelPlain												10	70	Editor_Operation"
+set Child "GenericListboxMultiParent[ListboxUnitHealthCommandVariableOperation]	10	100	UnitHealthCommandVariableOperation CommandVariableOperation	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain												340	70	Editor_VariableValue"
+set Child "EditorMenucmdButtonTemplate[UnitHealthPickValueButton]				340	100	EditorCommandVariableValue EditorOpenPickNumericParamMenuArg EditorCommandVariableType"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPickForEachUnitInLocButton
+set SaveArgs 2
+set CommandPress "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+set CommandPress "editor do initiateLocationPicking EditorCommandOrderSelectLocation EditorConditionFinishPickingCallback"
+add MenuObject
+set Name EditorCommandUnitForEachPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain							10	0	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxUnitForEach]	10	30	UnitForEach UnitForEach	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorInputLabelPlain							330	0	Editor_EventName"
+set Child "EditorCommandEventButton							330	30	EditorCommandEventName"
+set Child "EditorPickForEachUnitInLocButton					10	90	Editor_SelectLocation"
+set Child "EditorInputLabel									180	110	EditorCommandOrderSelectLocation"
+add MenuObject
+set Name EditorCommandUnitPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	5	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxUnitCommandOption]		10	30	UnitCommandOption CommandOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorCommandUnitKillPanel		0	70	0"
+set Child "EditorCommandUnitOrderPanel		0	70	1"
+set Child "EditorCommandUnitSpawnPanel		0	70	2"
+set Child "EditorCommandUnitHealthPanel		0	70	3"
+set Child "EditorCommandUnitForEachPanel	0	70	4"
+add MenuObject initFrom EditorEntryButtonTemplate
+set Name EditorCommandVariableButton
+set SaveArgs 1
+set CommandPress ">menucmd EditorOpenPickVariableWindow @_Arg1_@ @_Arg2_@ NULL"
+add MenuObject
+set Name EditorCommandVarNumericPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EditorCommandVariableType!@_Arg1_@
+set Child "EditorInputLabelPlain										10	0	Editor_Operation"
+set Child "GenericListboxMultiParent[ListboxCommandVariableOperation]	10	30	CommandVariableOperation CommandVariableOperation	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain										330	0	Editor_VariableValue"
+set Child "EditorMenucmdButtonTemplate									330	30	EditorCommandVariableValue EditorOpenPickNumericParamMenu"
+add MenuObject
+set Name EditorCommandVarTeamPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EditorCommandVariableType!@_Arg1_@
+set Child "EditorInputLabelPlain			10	5	Editor_EventTeamId"
+set Child "EditorMenucmdButtonTemplate		10	30	EditorCommandVariableValue EditorOpenPickTeamParamMenu"
+add MenuObject
+set Name EditorCommandVarUnitIdPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EditorCommandVariableType!@_Arg1_@
+set Child "EditorInputLabelPlain			10	5	Editor_QueryUnit"
+set Child "EditorMenucmdButtonTemplate		10	30	EditorCommandVariableValue EditorOpenPickUnitIdParamMenu"
+add MenuObject
+set Name EditorCommandVarUnitTypePanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EditorCommandVariableType!@_Arg1_@
+set Child "EditorInputLabelPlain			10	5	Editor_QueryUnit"
+set Child "EditorMenucmdButtonTemplate		10	30	EditorCommandVariableValue EditorOpenPickUnitTypeParamMenu"
+add MenuObject
+set Name EditorCommandVarPositionPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EditorCommandVariableType!@_Arg1_@
+set Child "EditorInputLabelPlain			10	0	Editor_OptionPosition"
+set Child "EditorMenucmdButtonTemplate		10	25	EditorCommandVariableValue EditorOpenPickPositionParamMenu"
+add MenuObject
+set Name EditorCommandVariablePanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain			10	10	Editor_VariableName"
+set Child "EditorCommandVariableButton		10	40	EditorCommandVariableName EditorCommandVariableType"
+set Child "EditorCommandVarNumericPanel		0	80	0"
+set Child "EditorCommandVarTeamPanel		0	80	1"
+set Child "EditorCommandVarUnitIdPanel		0	80	2"
+set Child "EditorCommandVarUnitTypePanel	0	80	3"
+set Child "EditorCommandVarPositionPanel	0	80	4"
+add MenuObject
+set Name EditorCommandControlPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue CommandCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain											10	5	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxControlCommandOption]			10	30	ControlCommandOption CommandOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorInputLabelPlain											10	80	Editor_PlayerIndex"
+set Child "EditorInputPropertyBoxTemplate[CommandControlPlayerPropertyBox]	10	110	CommandPlayerIndex"
+set Child "EditorInputLabelPlain											310	80	Editor_TrueFalse"
+set Child "GenericListboxMultiParent[ListboxCommandControlEnable] 			310	110	CommandControlEnable OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+add MenuObject initFrom EditorBigButtonTemplate
+set Name EditorButtonAddCommand
+set HiddenCheckBySymbolValue EditorEditingActionCommand!0
+add MenuObject initFrom EditorBigButtonTemplate
+set Name EditorButtonModifyCommand
+set HiddenCheckBySymbolValue EditorEditingActionCommand!1
+add MenuObject
+set Name EditorCommandDefinitionPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorActionDefineMode!1
+set Child "EditorInputLabelPlain						10	5	Editor_ActionCommand"
+set Child "GenericListboxBase[ListboxCommandCategory] 	10	30	CommandCategoryActive CommandCategory	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorButtonAddCommand						350	10	Editor_AddCommand EditorAddCommand"
+set Child "EditorButtonModifyCommand					350	10	Editor_EditCommand EditorConfirmEditCommand"
+set Child "EditorCommandActionPanel		0 70	0"
+set Child "EditorCommandControlPanel	0 70	1"
+set Child "EditorCommandEventPanel		0 70	2"
+set Child "EditorCommandGamePanel		0 70    3"
+set Child "EditorCommandPlayerPanel		0 70	4"
+set Child "EditorCommandUnitPanel		0 70	5"
+set Child "EditorCommandVariablePanel	0 70	6"
+add MenuObject initFrom EditorBigButtonTemplate
+set Name EditorButtonAddCondition
+set HiddenCheckBySymbolValue EditorEditingActionCondition!0
+add MenuObject initFrom EditorBigButtonTemplate
+set Name EditorButtonModifyCondition
+set HiddenCheckBySymbolValue EditorEditingActionCondition!1
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPickOutpostButton
+set CommandPress "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+set CommandPress "editor do initiateOutpostPicking EditorPickingValue EditorConditionFinishPickingCallback"
+add MenuObject
+set Name EditorConditionOutpostOwnedTeamPanel
+set ContainerOnly 1
+set Child "EditorInputLabelPlain								10	5	Editor_EventTeamId"
+set Child "GenericListboxMultiParent[ListboxOutpostTeamSelect]	10	30	OutpostTeamSelect EditorTeamSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain								330	0	Editor_TrueFalse"
+set Child "GenericListboxMultiParent[ListboxCondOutpostTeam] 	330	30	CondOutpostTeam OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorPickOutpostButton								10	80	Editor_PickOutpost"
+set Child "EditorInputLabel										180	90	EditorPickingValue"
+add MenuObject
+set Name EditorConditionOutpostPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue ConditionCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	5	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxOutpostConditionOption]	10	30	OutpostConditionOption ConditionOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorConditionOutpostOwnedTeamPanel						0	70"
+add MenuObject
+set Name EditorConditionPlayerPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue ConditionCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain										10	5	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxPlayerConditionOption]		10	30	PlayerConditionOption ConditionOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorInputLabelPlain										340	0	Editor_PlayerIndex"
+set Child "EditorInputPropertyBoxTemplate[CondPlayerIndexPropBox]		340	30	ConditionAirmechPlayerIndex"
+set Child "EditorInputLabelPlain										10	70	Editor_Comparison"
+set Child "GenericListboxMultiParent[ListboxPlayerCreditsCompareSelect]	10	100	PlayerCreditsCompareSelect EditorCompareSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain										340	70	Editor_VariableValue"
+set Child "EditorMenucmdButtonTemplate									340	100	EditorCommandVariableValue EditorOpenPickNumericParamMenu"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPickFortButton
+set CommandPress "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+set CommandPress "editor do initiateFortPicking EditorPickingValue EditorConditionFinishPickingCallback"
+add MenuObject
+set Name EditorConditionFortPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue ConditionCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	5	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxFortConditionOption]	10	30	FortConditionOption ConditionOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorInputLabelPlain									10	80	Editor_TrueFalse"
+set Child "GenericListboxMultiParent[ListboxConditionFortIsAlive] 	10	110	ConditionFortIsAlive OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorPickFortButton										10	160	Editor_PickFort"
+set Child "EditorInputLabel											180	170	EditorPickingValue"
+add MenuObject
+set Name EditorConditionUnitInLocationPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ConditionOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	5	Editor_TrueFalse"
+set Child "GenericListboxMultiParent[ListboxConditionInLocation]	10	30	ConditionInLocation OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorPickLocationButton									10	80	Editor_PickLocation"
+set Child "EditorInputLabel											180	90	EditorCommandSpawnLocation"
+set Child "EditorPickUnitButton										10	140	Editor_PickUnit"
+set Child "EditorInputLabel											180	150	EditorPickingValue"
+add MenuObject
+set Name EditorConditionUnitIsAlivePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ConditionOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain								10	5	Editor_TrueFalse"
+set Child "GenericListboxMultiParent[ListboxConditionIsAlive] 	10	30	ConditionIsAlive OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorPickUnitButton									10	80	Editor_PickUnit"
+set Child "EditorInputLabel										180	90	EditorPickingValue"
+add MenuObject
+set Name EditorConditionUnitIsTypePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ConditionOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain								340	-65	Editor_TrueFalse"
+set Child "GenericListboxMultiParent[ListboxConditionIsType] 	340	-40	ConditionIsType OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorInputLabelPlain								10	5	Editor_QueryUnit"
+set Child "EditorMenucmdButtonTemplate							10	30	EditorQueryUnitValue EditorOpenPickUnitIdParamMenu"
+set Child "EditorInputLabelPlain								340	5	Editor_CompareUnit"
+set Child "EditorMenucmdButtonTemplate							340	30	EditorPickUnitValue EditorOpenPickUnitMenu"
+add MenuObject
+set Name EditorConditionUnitOnTeamPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ConditionOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain								330	-65	Editor_TrueFalse"
+set Child "GenericListboxMultiParent[ListboxConditionOnTeam] 	330	-40	ConditionOnTeam OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorInputLabelPlain								330	0	Editor_EventTeamId"
+set Child "GenericListboxMultiParent[ListboxUnitOnTeamSelect]	330	30	UnitOnTeamSelect EditorTeamSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain								10	5	Editor_ConditionUnit"
+set Child "EditorMenucmdButtonTemplate							10	30	EditorQueryUnitValue EditorOpenPickUnitIdParamMenu"
+add MenuObject
+set Name EditorConditionUnitTotalRemainingPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ConditionOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain											10	0	Editor_EventTeamId"
+set Child "GenericListboxMultiParent[ListboxUnitsRemainTeamSelect]			10	30	UnitsRemainTeamSelect EditorTeamSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain											10	70	Editor_Comparison"
+set Child "GenericListboxMultiParent[ListboxUnitsRemainCompareSelect]		10	100	UnitsRemainCompareSelect EditorCompareSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain											340	70	Editor_VariableValue"
+set Child "EditorInputPropertyBoxTemplate[ConditionUnitQuantityPropertyBox]	340	100	ConditionUnitQuantity"
+add MenuObject
+set Name EditorConditionUnitPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue ConditionCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain									10	5	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxUnitConditionOption] 	10	30	UnitConditionOption ConditionOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorConditionUnitInLocationPanel						0	70	0"
+set Child "EditorConditionUnitIsAlivePanel							0	70	1"
+set Child "EditorConditionUnitIsTypePanel							0	70	2"
+set Child "EditorConditionUnitOnTeamPanel							0	70	3"
+set Child "EditorConditionUnitTotalRemainingPanel					0	70	4"
+add MenuObject initFrom EditorEntryButtonTemplate
+set Name EditorConditionVariableButton
+set SaveArgs 1
+set CommandPress ">menucmd EditorOpenPickVariableWindow @_Arg1_@ NULL NULL"
+add MenuObject
+set Name EditorConditionVariablePanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue ConditionCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain												10	0	Editor_VariableName"
+set Child "EditorConditionVariableButton										10	30  ConditionVariableName"
+set Child "EditorInputLabelPlain												10	80	Editor_Comparison"
+set Child "GenericListboxMultiParent[ListboxVariableCompareSelect]				10	110	VariableCompareSelect EditorCompareSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorInputLabelPlain												340	80	Editor_VariableValue"
+set Child "EditorInputPropertyBoxTemplate[ConditionVariableValuePropertyBox]	340	110	ConditionVariableValue"
+add MenuObject
+set Name EditorConditionAirmechInAirmodePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ConditionOptionSelection!@_Arg1_@
+add MenuObject
+set Name EditorConditionAirmechIsAlivePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ConditionOptionSelection!@_Arg1_@
+add MenuObject
+set Name EditorConditionAirmechInLocationPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ConditionOptionSelection!@_Arg1_@
+set Child "EditorPickLocationButton							10	20	Editor_PickLocation"
+set Child "EditorInputLabel									180	30	EditorCommandSpawnLocation"
+add MenuObject
+set Name EditorConditionAirmechIsTypePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ConditionOptionSelection!@_Arg1_@
+set Child "EditorInputLabelPlain							10	0	Editor_AMClass"
+set Child "GenericListboxMultiParent[ListboxAirmechClass] 	10	30	AirmechClass AirmechClass	0x333333 0x654736 0x654736 0xe27433"
+add MenuObject
+set Name EditorConditionAirmechPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue ConditionCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain											10	5	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxAirmechConditionOption]			10	30	AirmechConditionOption ConditionOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorInputLabelPlain											330	5	Editor_PlayerIndex"
+set Child "EditorInputPropertyBoxTemplate[CondAirmechPlayerInAirPropBox]	330	30	ConditionAirmechPlayerIndex"
+set Child "EditorInputLabelPlain											10	70	Editor_TrueFalse"
+set Child "GenericListboxMultiParent[ListboxCondAirmechAffirm] 				10	100	CondAirmechAffirm OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorConditionAirmechInAirmodePanel		0 140	0"
+set Child "EditorConditionAirmechIsAlivePanel		0 140	1"
+set Child "EditorConditionAirmechInLocationPanel	0 140	2"
+set Child "EditorConditionAirmechIsTypePanel		0 140	3"
+add MenuObject
+set Name EditorConditionDefinitionPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorActionDefineMode!0
+set Child "EditorInputLabelPlain							10	5	Editor_EventCategory"
+set Child "GenericListboxBase[ListboxConditionCategory]		10	30	ConditionCategoryActive ConditionCategory	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorButtonAddCondition							350	10	Editor_AddCondition EditorAddCondition"
+set Child "EditorButtonModifyCondition						350	10	Editor_EditCondition EditorConfirmEditCondition"
+set Child "EditorConditionAirmechPanel		0	70	0"
+set Child "EditorConditionOutpostPanel		0	70	1"
+set Child "EditorConditionPlayerPanel		0 	70	2"
+set Child "EditorConditionFortPanel			0	70	3"
+set Child "EditorConditionUnitPanel			0	70	4"
+set Child "EditorConditionVariablePanel		0	80	5"
+add MenuObject
+set Name EditorActionDefinitionPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorScriptDefinitionWindowMode!1
+set Child "EditorConditionDefinitionPanel						0	0"
+set Child "EditorCommandDefinitionPanel							0	0"
+add MenuObject
+set Name EditorEventContinuousPanel
+set HiddenCheckBySymbolValue EventOptionSelection!0
+set ContainerOnly 1
+set Child "EditorInputLabelPlain							20	0	Editor_EventDelay"
+set Child "EditorInputPropertyBoxTemplate[EventNameBox]		10	30	EditorEventContinuousDelay"
+add MenuObject
+set Name EditorEventCoreOptionPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EventCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain								20	0	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxEventCoreOption] 	10	30	EventCoreOption EventOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorEventContinuousPanel							0   80"
+add MenuObject
+set Name EditorEventUnitsDeathPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EventOptionSelection!0
+set Child "EditorInputLabelPlain								320	0	Editor_IgnoreDestroySpawn"
+set Child "GenericListboxMultiParent[ListboxIgnoreDestroySpawn] 320	30	IgnoreDestroySpawn IgnoreDestroySpawn	0x333333 0x654736 0x654736 0xe27433"
+add MenuObject
+set Name EditorEventUnitsEnterLocPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EventOptionSelection!1
+set Child "EditorPickLocationButton						10	90	Editor_PickLocation"
+set Child "EditorInputLabel								180	100	EditorCommandSpawnLocation"
+add MenuObject
+set Name EditorEventUnitsOptionPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EventCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain								20	0	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxEventUnitsOption] 	10	30	EventUnitsOption EventOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorEventUnitsDeathPanel							0	0"
+set Child "EditorEventUnitsEnterLocPanel						0	0"
+add MenuObject
+set Name EditorEventFortOptionPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EventCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain								20	0	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxEventFortOption] 	10	30	EventFortOption EventOption	0x333333 0x654736 0x654736 0xe27433"
+add MenuObject
+set Name EditorEventOutpostOptionPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EventCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain								20	0	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxEventOutpostOption]	10	30	EventOutpostOption EventOption	0x333333 0x654736 0x654736 0xe27433"
+add MenuObject initFrom EditorEntryButtonTemplate
+set Name EditorKeyBindingBox
+set CommandPress ">editor do initiateKeyPicking @_Arg2_@ @_Arg3_@"
+set CommandLoseFocus "editor do cancelKeyPicking"
+add MenuObject
+set Name EditorEventAirmechInputPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EventOptionSelection!1
+set Child "EditorInputLabelPlain											10	5	Editor_PlayerIndex"
+set Child "EditorInputPropertyBoxTemplate[AirmechInputPlayerPropertyBox]	10	30	CommandPlayerIndex"
+set Child "EditorInputLabelPlain											320	5	Editor_InputKey"
+set Child "EditorKeyBindingBox[AirmechInputKeyButton]						320	30	CommandKeyInput CommandKeyInput EditorFinishPickingInputKeyCallback"
+add MenuObject
+set Name EditorEventAirmechEnterLocPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EventOptionSelection!2
+set Child "EditorPickLocationButton					10	20	Editor_PickLocation"
+set Child "EditorInputLabel							180	30	EditorCommandSpawnLocation"
+add MenuObject
+set Name EditorEventAirmechOptionPanel
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue EventCategorySelection!@_Arg1_@
+set Child "EditorInputLabelPlain									20	0	Editor_EventOption"
+set Child "GenericListboxMultiParent[ListboxEventAirmechOption] 	10	30	EventAirmechOption EventOption	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorEventAirmechInputPanel								0	70"
+set Child "EditorEventAirmechEnterLocPanel							0	70"
+add MenuObject initFrom EditorBigButtonTemplate
+set Name EditorButtonAddEvent
+set HiddenCheckBySymbolValue EditorEditingEvent!0
+add MenuObject initFrom EditorBigButtonTemplate
+set Name EditorButtonModifyEvent
+set HiddenCheckBySymbolValue EditorEditingEvent!1
+add MenuObject
+set Name EditorEventDefinitionPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorScriptDefinitionWindowMode!0
+set Child "EditorInputLabelPlain								20	0	Editor_EventName"
+set Child "EditorInputPropertyBoxTemplate[EventNameBox]			10	30	EditorEventNameValue"
+set Child "EditorButtonAddEvent							 		350	20	Editor_AddEvent EditorAddScriptEvent"
+set Child "EditorButtonModifyEvent								350	20	Editor_EditEvent EditorModifyScriptEvent"
+set Child "EditorInputLabelPlain								20	80	Editor_EventCategory"
+set Child "GenericListboxBase[ListboxEventCategory] 			10  110 EventCategoryActive EventCategory	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorInputLabelPlain								320	80	Editor_EventEnabled"
+set Child "GenericListboxMultiParent[ListboxScriptEventEnabled] 320	110	ScriptEventEnabled OptionTrueFalse	0x333333 0x654736 0x654736 0xe27433"
+set Child "EditorEventAirmechOptionPanel						0	160		0"
+set Child "EditorEventCoreOptionPanel							0	160		1"
+set Child "EditorEventFortOptionPanel							0	160		2"
+set Child "EditorEventOutpostOptionPanel						0	160		3"
+set Child "EditorEventUnitsOptionPanel							0	160		4"
+add MenuObject initFrom EditorBigButtonTemplate
+set Name EditorButtonAddVariable
+set HiddenCheckBySymbolValue EditorEditingVariable!0
+add MenuObject initFrom EditorBigButtonTemplate
+set Name EditorButtonModifyVariable
+set HiddenCheckBySymbolValue EditorEditingVariable!1
+add MenuObject
+set Name EditorVariableNumericValuePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ValueTypeSelectSelection!0
+set Child "EditorInputLabelPlain								20	0	Editor_VariableValue"
+set Child "EditorInputPropertyBoxTemplate[VariableNameBox]		10	30	EditorVariableValueValue"
+add MenuObject
+set Name EditorVariableTeamValuePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ValueTypeSelectSelection!1
+set Child "EditorInputLabelPlain								10	0	Editor_EventTeamId"
+set Child "GenericListboxMultiParent[ListboxVariableTeamSelect]	10	30	VariableTeamSelect EditorTeamSelect	0x333333 0x654736 0x333333 0xe27433"
+add MenuObject
+set Name EditorVariableUnitIdValuePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ValueTypeSelectSelection!2
+set Child "EditorPickUnitButton			10	0	Editor_PickUnit"
+set Child "EditorInputLabel				180	10	EditorPickingValue"
+add MenuObject
+set Name EditorVariableUnitTypeValuePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ValueTypeSelectSelection!3
+set Child "EditorInputLabelPlain		10	0	Editor_PickUnit"
+set Child "EditorSpawnPickUnitButton	10	30	EditorPickUnitValue EditorOpenPickUnitMenu"
+add MenuObject
+set Name EditorVariableUnitGroupValuePanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ValueTypeSelectSelection!4
+set Child "EditorPickUnitButton			10	0	Editor_PickUnit"
+set Child "EditorInputLabel				180	10	EditorPickingValue"
+add MenuObject
+set Name EditorVariableDefinitionPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorScriptDefinitionWindowMode!2
+set Child "EditorInputLabelPlain								20	0	Editor_VariableName"
+set Child "EditorInputPropertyBoxTemplate[VariableNameBox]		10	30	EditorVariableNameValue"
+set Child "EditorButtonAddVariable						 		350	20	Editor_AddVariable EditorAddScriptVariable"
+set Child "EditorButtonModifyVariable							350	20	Editor_EditVariable EditorModifyScriptVariable"
+set Child "EditorInputLabelPlain								20	80	Editor_VariableType"
+set Child "GenericListboxMultiParent[ListboxVariableTypeSelect]	10	110	VariableTypeSelect ValueTypeSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorVariableNumericValuePanel						0	160"
+set Child "EditorVariableTeamValuePanel							0	160"
+set Child "EditorVariableUnitIdValuePanel						0	160"
+set Child "EditorVariableUnitTypeValuePanel						0	160"
+set Child "EditorVariableUnitGroupValuePanel					0	160"
+add MenuObject
+set Name EditorScriptDefinitionWindow
+set ContainerOnly 1
+set Child "EditorCommandWindowBG -312 -12"
+set Child "ButtonGenericClose[ButtonEditorCommandWindowClose]	295		-20		EditorScriptDefinitionWindow"
+set Child "EditorEventDefinitionPanel							-310	-10"
+set Child "EditorActionDefinitionPanel							-310	-10"
+set Child "EditorVariableDefinitionPanel						-310	-10"
+add MenuObject
+set Name EditorPickUnitSlot
+set Texture &EditorPickUnit_IconLg@_Arg1_@&
+set TextureAlt &EditorPickUnit_IconLgA@_Arg1_@&
+set NoDrawOnMissingTexture 1
+set Coords img
+set ScaleRefToCoords 256.0
+set ScaleX 0.35
+set ScaleY 0.35
+set SaveArgs 1
+set MouseInteract 1
+set Focus -2
+set FilterName CollectionUI
+set CommandGetFocus "playSound FocusSubtle"
+set HiddenCheckBySymbol EditorPickUnit_ShowIconSm@_Arg1_@
+set DrawWhenFocused EditorWorldObjectHighlight
+set DrawWhenFocusedOrder BeforeSelf
+set ToolTip &EditorPickUnitTooltip@_Arg1_@&
+set FirstDrawnChildren 2
+set Child "EditorWorldObjectShadow 0 0"
+set CommandPressDown ">sym set EditorPickUnitValue ${EditorPickUnit_Name@_Arg1_@}"
+set CommandPressDown "clearmenu EditorPickUnitWindow /fadeout 0.1"
+set CommandPressDown "menucmd ${EditorPickUnitCallbackCmd}"
+set CommandPressDown "sym clear EditorPickUnitCallbackCmd"
+add MenuObject
+set Name EditorMapArrowTemplate
+set Texture menus/HomeBar
+set Coords "718 237 138 82"
+set CoordsFocused "718 322 138 82"
+set Focus -2
+set MouseInteract 1
+set DisabledAlpha 0.33
+set ScaleX 0.6, ScaleY 0.6
+set SaveArgs 1
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorPickUnitArrowPrev
+set CommandPress "sym dec EditorPickUnitPage"
+set CommandPress "if sym EditorPickUnitType == 0 runnow rook editorScrollUpdatePickUnits"
+set CommandPress "if sym EditorPickUnitType == 1 runnow rook editorScrollUpdatePickInfantry"
+set CommandPress "gameui refreshfiltername CollectionUI"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorPickUnitArrowNext
+set MirrorOnX 1
+set CommandPress "sym inc EditorPickUnitPage"
+set CommandPress "if sym EditorPickUnitType == 0 runnow rook editorScrollUpdatePickUnits"
+set CommandPress "if sym EditorPickUnitType == 1 runnow rook editorScrollUpdatePickInfantry"
+set CommandPress "gameui refreshfiltername CollectionUI"
+add MenuObject
+set Name EditorPickUnitWindowBG
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "440 390"
+set Focus -2
+set MouseInteract 1
+set Color 0x444444
+set ColorFocused 0x444444
+add MenuObject initFrom ButtonGenericClose
+set Name PickUnitWindowCloseButton
+set CommandPress "sym clear EditorPickUnitCallbackCmd"
+add MenuObject
+set Name EditorPickUnitWindow
+set ContainerOnly 1
+set FilterName CollectionUI
+set Child "EditorPickUnitWindowBG 0 0"
+set Child "PickUnitWindowCloseButton	400	-10		EditorPickUnitWindow"
+set Child "EditorPickUnitSlot								0	0		0"
+set Child "EditorPickUnitSlot								80	0		1"
+set Child "EditorPickUnitSlot								160	0		2"
+set Child "EditorPickUnitSlot								240	0		3"
+set Child "EditorPickUnitSlot								320	0		4"
+set Child "EditorPickUnitSlot								0	80		5"
+set Child "EditorPickUnitSlot								80	80		6"
+set Child "EditorPickUnitSlot								160	80		7"
+set Child "EditorPickUnitSlot								240	80		8"
+set Child "EditorPickUnitSlot								320	80		9"
+set Child "EditorPickUnitSlot								0	160		10"
+set Child "EditorPickUnitSlot								80	160		11"
+set Child "EditorPickUnitSlot								160	160		12"
+set Child "EditorPickUnitSlot								240	160		13"
+set Child "EditorPickUnitSlot								320	160		14"
+set Child "EditorPickUnitSlot								0	240		15"
+set Child "EditorPickUnitSlot								80	240		16"
+set Child "EditorPickUnitSlot								160	240		17"
+set Child "EditorPickUnitSlot								240	240		18"
+set Child "EditorPickUnitSlot								320	240		19"
+set Child "EditorPickUnitArrowPrev							10	330"
+set Child "EditorPickUnitArrowNext							310	330"
+add MenuObject
+set Name EditorTestMapWindowBG
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "420 220"
+set Focus -2
+set MouseInteract 1
+set Color 0x444444
+set ColorFocused 0x444444
+add MenuObject
+set Name EditorSkirimish1v1Button
+add MenuObject
+set Name EditorTestMapSkirmishPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorGameSettingGameStyleActive!GameStyle_Skirmish
+set Child "EditorBigButtonTemplate[TestMap1v1Button]		20	20 1v1 EditorTestMap1v1"
+set Child "EditorBigButtonTemplate[TestMap2v2Button]		20	80 2v2 EditorTestMap2v2"
+set Child "EditorBigButtonTemplate[TestMap3v3Button]		20	140 3v3 EditorTestMap3v3"
+set Child "EditorBigButtonTemplate[TestMap1v2Button]		210	20 1v2 EditorTestMap1v2"
+set Child "EditorBigButtonTemplate[TestMap2v3Button]		210	80 2v3 EditorTestMap2v3"
+add MenuObject
+set Name EditorTestMapSurvivalPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorGameSettingGameStyleActive!GameStyle_Survival
+set Child "EditorBigButtonTemplate[TestMap1PButton]			20	20	Button1P EditorTestMap1P"
+set Child "EditorBigButtonTemplate[TestMap2PButton]			20	80	Button2P EditorTestMap2P"
+set Child "EditorBigButtonTemplate[TestMap3PButton]			20	140	Button3P EditorTestMap3P"
+set Child "EditorBigButtonTemplate[TestMap4PButton]			210	20	Button4P EditorTestMap4P"
+add MenuObject
+set Name EditorTestMapWindow
+set ContainerOnly 1
+set FilterName CollectionUI
+set Child "EditorTestMapWindowBG 0 0"
+set Child "ButtonGenericClose	380	-10		EditorTestMapWindow"
+set Child "EditorTestMapSkirmishPanel 0 0"
+set Child "EditorTestMapSurvivalPanel 0 0"
+add MenuObject initFrom EditorPrefabItemHighlight
+set Name EditorScriptItemPickHighlight
+set TileArea "380 30"
+add MenuObject
+set Name EditorScriptItemPickSlot
+set FilterName CollectionUI
+set RenderCB_DX 380
+set RenderCB_DY 28
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2 /literalText"
+set RenderCB_FontScale 0.6
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB _DrawDText
+set RenderCB_Text &EditorScriptItemName@_Arg1_@&
+set DisabledSymInv EditorScriptItemEnabled@_Arg1_@
+set MouseInteract 1
+set Focus -2
+set FirstDrawnChildren 1
+set SaveArgs 1
+set Child "EditorScriptItemPickHighlight	0	0"
+set CommandPressDown ">sym set ${EditorScriptItemPickSym} ${EditorScriptItemName@_Arg1_@}"
+set CommandPressDown ">sym set ${EditorScriptItemTypePickSym} ${EditorScriptItemType@_Arg1_@}"
+set CommandPressDown ">if sym EditorScriptItemPickCallback != NULL runnow menuCmd ${EditorScriptItemPickCallback}"
+set CommandPressDown "clearmenu EditorScriptItemPickWindow /fadeout 0.1"
+add MenuObject
+set Name EditorScriptItemPickWindowBG
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "440 370"
+set Focus -2
+set MouseInteract 1
+set Color 0x444444
+set ColorFocused 0x444444
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorScriptItemPickArrowPrev
+set CommandPress "sym dec EditorScriptItemPickPage"
+set CommandPress "editor do ${EditorScriptItemPickScroll}"
+set CommandPress "gameui refreshfiltername CollectionUI"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorScriptItemPickArrowNext
+set MirrorOnX 1
+set CommandPress "sym inc EditorScriptItemPickPage"
+set CommandPress "editor do ${EditorScriptItemPickScroll}"
+set CommandPress "gameui refreshfiltername CollectionUI"
+add MenuObject
+set Name EditorScriptItemPickWindow
+set ContainerOnly 1
+set FilterName CollectionUI
+set Child "EditorScriptItemPickWindowBG		0	0"
+set Child "ButtonGenericClose[CloseScriptPickWindowButton]	400	-10		EditorScriptItemPickWindow"
+set Child "EditorScriptItemPickSlot		10	10	0"
+set Child "EditorScriptItemPickSlot		10	40	1"
+set Child "EditorScriptItemPickSlot		10	70	2"
+set Child "EditorScriptItemPickSlot		10	100	3"
+set Child "EditorScriptItemPickSlot		10	130	4"
+set Child "EditorScriptItemPickSlot		10	160	5"
+set Child "EditorScriptItemPickSlot		10	190	6"
+set Child "EditorScriptItemPickSlot		10	220	7"
+set Child "EditorScriptItemPickSlot		10	250	8"
+set Child "EditorScriptItemPickSlot		10	280	9"
+set Child "EditorScriptItemPickArrowPrev		10	315"
+set Child "EditorScriptItemPickArrowNext		345	315"
+add MenuObject
+set Name EditorSoundPickSlot
+set FilterName CollectionUI
+set RenderCB_DX 380
+set RenderCB_DY 28
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2 /literalText"
+set RenderCB_FontScale 0.6
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB _DrawDText
+set RenderCB_Text &EditorSoundName@_Arg1_@&
+set DisabledSymInv EditorSoundEnabled@_Arg1_@
+set MouseInteract 1
+set Focus -2
+set FirstDrawnChildren 1
+set SaveArgs 1
+set Child "EditorScriptItemPickHighlight	0	0"
+set CommandPress "gameUI ignoreInputTime 0.2"
+set CommandPressDown ">sym set EditorCommandPlaySound ${EditorSoundName@_Arg1_@}"
+set CommandPressDown "pcmd 0.03 clearmenu EditorSoundPickWindow /fadeout 0.1"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorSoundPickArrowPrev
+set CommandPress "sym dec EditorSoundSelectionPage"
+set CommandPress "editor do scrollGameSounds"
+set CommandPress "gameui refreshfiltername CollectionUI"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorSoundPickArrowNext
+set MirrorOnX 1
+set CommandPress "sym inc EditorSoundSelectionPage"
+set CommandPress "editor do scrollGameSounds"
+set CommandPress "gameui refreshfiltername CollectionUI"
+add MenuObject
+set Name EditorSoundPickWindow
+set ContainerOnly 1
+set FilterName CollectionUI
+set Child "EditorScriptItemPickWindowBG		0	0"
+set Child "ButtonGenericClose[CloseSoundPickWindowButton]	400	-10		EditorSoundPickWindow"
+set Child "EditorSoundPickSlot	10	10	0"
+set Child "EditorSoundPickSlot	10	40	1"
+set Child "EditorSoundPickSlot	10	70	2"
+set Child "EditorSoundPickSlot	10	100	3"
+set Child "EditorSoundPickSlot	10	130	4"
+set Child "EditorSoundPickSlot	10	160	5"
+set Child "EditorSoundPickSlot	10	190	6"
+set Child "EditorSoundPickSlot	10	220	7"
+set Child "EditorSoundPickSlot	10	250	8"
+set Child "EditorSoundPickSlot	10	280	9"
+set Child "EditorSoundPickArrowPrev		10	315"
+set Child "EditorSoundPickArrowNext		345	315"
+set Child "EditorInputLabel				205	325 EditorSoundSelectionPageLabel"
+add MenuObject initFrom GenericBackgroundTabs
+set Name EditorMapListBg
+set RenderCB_DX 700
+set RenderCB_DY 580
+set Coords "0 0 600 500"
+add MenuObject initFrom GenericInset
+set Name EditorMapListInset
+set RenderCB_DX 320
+set RenderCB_DY 340
+set Coords "0 0 600 500"
+add MenuObject
+set Name EditorParamItemPickWindowBG
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "440 370"
+set Focus -2
+set MouseInteract 1
+set Color 0x444444
+set ColorFocused 0x444444
+add MenuObject
+set Name EditorParamItemPickSlot
+set RenderCB_DX 380
+set RenderCB_DY 28
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2 /literalText"
+set RenderCB_FontScale 0.6
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB _DrawDText
+set RenderCB_Text &EditorParamItemName@_Arg1_@&
+set DisabledSymInv EditorParamItemEnabled@_Arg1_@
+set MouseInteract 1
+set Focus -2
+set FirstDrawnChildren 1
+set FilterName CollectionUI
+set SaveArgs 1
+set Child "EditorScriptItemPickHighlight	0	0"
+set CommandPressDown ">sym set ${EditorParamItemPickSym} ${EditorParamItemName@_Arg1_@}"
+set CommandPressDown "clearmenu EditorParamItemPickWindow /fadeout 0.1"
+add MenuObject
+set Name EditorEventParamPanel
+set ContainerOnly 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue ParamTypeSelectSelection!0
+set Child "EditorParamItemPickSlot	10	0	0"
+set Child "EditorParamItemPickSlot	10	40	1"
+set Child "EditorParamItemPickSlot	10	80	2"
+set Child "EditorParamItemPickSlot	10	120	3"
+set Child "EditorParamItemPickSlot	10	160	4"
+set Child "EditorParamItemPickSlot	10	200	5"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorVariableParamPrev
+set CommandPress "sym dec EditorVariableParamPage"
+set CommandPress "editor do scrollVariableParameters"
+set CommandPress "gameUI refreshfiltername CollectionUI"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorVariableParamNext
+set MirrorOnX 1
+set CommandPress "sym inc EditorVariableParamPage"
+set CommandPress "editor do scrollVariableParameters"
+set CommandPress "gameUI refreshfiltername CollectionUI"
+add MenuObject
+set Name EditorVariableParamPanel
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue ParamTypeSelectSelection!@_Arg1_@
+set Child "EditorParamItemPickSlot	10	0	0"
+set Child "EditorParamItemPickSlot	10	40	1"
+set Child "EditorParamItemPickSlot	10	80	2"
+set Child "EditorParamItemPickSlot	10	120	3"
+set Child "EditorParamItemPickSlot	10	160	4"
+set Child "EditorParamItemPickSlot	10	200	5"
+set Child "EditorVariableParamPrev	10	250"
+set Child "EditorInputLabel			120	250	EditorVariableParamPageLabel"
+set Child "EditorVariableParamNext	200	250"
+add MenuObject
+set Name EditorLiteralNumericParamPanel
+set ContainerOnly 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue ParamTypeSelectSelection!1
+set Child "EditorInputPropertyBoxTemplate						10	10	EditorParamItemName0"
+set Child "EditorBigButtonTemplate[LiteralNumericConfirmButton]	280	250	Editor_Confirm EditorConfirmCommonLiteralParam"
+add MenuObject
+set Name EditorNumericParamPanel
+set ContainerOnly 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue EditorFieldValueType!0
+set Child "EditorEventParamPanel			0	0"
+set Child "EditorLiteralNumericParamPanel	0	0"
+set Child "EditorVariableParamPanel			0	0	2"
+add MenuObject
+set Name EditorLiteralTeamIdParamPanel
+set ContainerOnly 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue ParamTypeSelectSelection!1
+set Child "GenericListboxMultiParent[ListboxLiteralTeamParamSelect]	10	0	LiteralTeamParamSelect EditorTeamSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorBigButtonTemplate[LiteralTeamIdConfirmButton]		280	250	Editor_Confirm EditorConfirmTeamLiteralParam"
+add MenuObject
+set Name EditorTeamIdParamPanel
+set ContainerOnly 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue EditorFieldValueType!1
+set Child "EditorEventParamPanel			0	0"
+set Child "EditorLiteralTeamIdParamPanel	0	0"
+set Child "EditorVariableParamPanel			0	0	2"
+add MenuObject initFrom EditorBigButtonVisTemplate
+set Name EditorPickUnitLiteralButton
+set SaveArgs 3
+set CommandPress "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+set CommandPress "clearmenu EditorParamItemPickWindow /fadeout 0.1"
+set CommandPress ">editor do initiateUnitPicking @_Arg2_@ @_Arg3_@"
+add MenuObject
+set Name EditorLiteralUnitIdParamPanel
+set ContainerOnly 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue ParamTypeSelectSelection!1
+set Child "EditorPickUnitLiteralButton[PickUnitLiteralParamButton]	10	10	Editor_PickUnit EditorParamItemName0 EditorFinishPickingUnitIdLiteralCallback"
+set Child "EditorInputLabel											180	20	EditorParamItemName0"
+set Child "EditorBigButtonTemplate[LiteralUnitIdConfirmButton]		280	250	Editor_Confirm EditorConfirmCommonLiteralParam"
+add MenuObject
+set Name EditorUnitIdParamPanel
+set ContainerOnly 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue EditorFieldValueType!2
+set Child "EditorEventParamPanel			0	0"
+set Child "EditorLiteralUnitIdParamPanel	0	0"
+set Child "EditorVariableParamPanel			0	0	2"
+add MenuObject
+set Name EditorLiteralUnitTypeParamPanel
+set ContainerOnly 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue ParamTypeSelectSelection!1
+set Child "EditorMenucmdButtonTemplate								10	10	EditorParamItemName0 EditorOpenPickUnitToSymbolMenu"
+set Child "EditorBigButtonTemplate[LiteralUnitTypeConfirmButton]	280	250	Editor_Confirm EditorConfirmCommonLiteralParam"
+add MenuObject
+set Name EditorUnitTypeParamPanel
+set ContainerOnly 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue EditorFieldValueType!3
+set Child "EditorEventParamPanel			0	0"
+set Child "EditorLiteralUnitTypeParamPanel	0	0"
+set Child "EditorVariableParamPanel			0	0	2"
+add MenuObject
+set Name EditorPositionParamPanel
+set ContainerOnly 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolValue EditorFieldValueType!4
+set Child "EditorEventParamPanel		0	0"
+set Child "EditorVariableParamPanel		0	0	1"
+add MenuObject initFrom ButtonGenericClose
+set Name CloseParamPickWindowButton
+set CommandPress "sym set ParamTypeSelectSelection -1"
+set CommandPress "sym clear ${EditorParamItemPickSym}"
+add MenuObject
+set Name EditorParamItemPickWindow
+set ContainerOnly 1
+set FilterName CollectionUI
+set Child "EditorParamItemPickWindowBG		0	0"
+set Child "CloseParamPickWindowButton							400	-10		EditorParamItemPickWindow"
+set Child "GenericListboxMultiParent[ListboxParamTypeSelect]	10	10		ParamTypeSelect ParamTypeSelect	0x333333 0x654736 0x333333 0xe27433"
+set Child "EditorNumericParamPanel								0	60"
+set Child "EditorTeamIdParamPanel								0	60"
+set Child "EditorUnitIdParamPanel								0	60"
+set Child "EditorUnitTypeParamPanel								0	60"
+set Child "EditorPositionParamPanel								0	60"
+add MenuObject
+set Name StoryDialogEscapeBackground
+set Texture effects/FocusBlack
+set StretchToFillScreen 1
+set Focus -2
+set MouseInteract 1
+set CommandPress "sym set StoryMessageUnread 0"
+add MenuObject
+set Name StoryDialogCharacter
+set Texture menus/TutorialGirl
+set Texture menus/Challenge@ChalPilotComm@+lang
+set Coords "0 0 1024 1024"
+set MirrorOnX 1
+set FirstDrawnChildren 1
+add MenuObject
+set Name StoryDialogTextBubble
+set Texture menus/TutorialGirl
+set Coords "0 0 970 250"
+set RenderCBExcludesDefaultRender 0
+set RenderCB _DrawDText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.78
+set RenderCB_BoolArg 1
+set RenderCB_DX 800
+set RenderCB_DY 170
+set RenderCB_Flags "/fitY /shadowed /shadowColor2"
+set RenderCB_ConsoleSymbol TutorialText
+set RenderCB_Offset "38 30 0"
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name StoryDialogMaster
+set ContainerOnly 1
+set Child "StoryDialogEscapeBackground 0 0"
+set Child "StoryDialogCharacter 1100 300"
+set Child "StoryDialogTextBubble 500 720"
+add MenuObject
+set Name LayerVisibleFocus
+set Texture effects/white
+set Coords "0 0 363 30"
+set Color 0x111111
+set BlendMode BlendAdd
+add MenuObject
+set Name LayerDefaultYes
+set Texture editor/Icons0
+set Coords "405 456 34 30"
+set BlendMode BlendAdd
+set DrawWhenFocused LayerVisibleFocus
+set DrawWhenFocusedOffset "-200 0"
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue LayerDefault!Layer@_Arg1_@
+add MenuObject
+set Name LayerDefaultNo
+set Texture editor/Icons0
+set Coords "444 484 34 30"
+set BlendMode BlendAdd
+set DrawWhenFocused LayerVisibleFocus
+set DrawWhenFocusedOffset "-200 0"
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandPress ">sym set LayerDefault Layer@_Arg1_@"
+set HiddenCheckBySymbolValue LayerDefault=Layer@_Arg1_@
+add MenuObject
+set Name LayerVisibleBase
+set Texture editor/Icons0
+set Coords "444 456 34 30"
+set BlendMode BlendAdd
+set DrawWhenFocused LayerVisibleFocus
+set DrawWhenFocusedOffset "-260 0"
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+add MenuObject initFrom LayerVisibleBase
+set Name LayerVisibleOn
+set HiddenCheckBySymbolInv Layer_@_Arg1_@_Vis
+set CommandPress ">layerVisible @_Arg1_@ 0"
+add MenuObject initFrom LayerVisibleBase
+set Name LayerVisibleOff
+set Coords "444 484 34 30"
+set HiddenCheckBySymbol Layer_@_Arg1_@_Vis
+set CommandPress ">layerVisible @_Arg1_@ 1"
+add MenuObject initFrom LayerVisibleBase
+set Name LayerPickableOn
+set Coords "480 456 34 30"
+set DrawWhenFocusedOffset "-310 0"
+set HiddenCheckBySymbolInv Layer_@_Arg1_@_Pick
+set CommandPress ">layerPickable @_Arg1_@ 0"
+add MenuObject initFrom LayerVisibleBase
+set Name LayerPickableOff
+set Coords "480 484 34 30"
+set DrawWhenFocusedOffset "-310 0"
+set HiddenCheckBySymbol Layer_@_Arg1_@_Pick
+set CommandPress ">layerPickable @_Arg1_@ 1"
+add MenuObject initFrom LayerVisibleBase
+set Name CoreLayerVisibleOn
+set HiddenCheckBySymbolInv CoreLayer_@_Arg1_@_Vis
+set CommandPress ">coreLayerVisible @_Arg1_@ 0"
+add MenuObject initFrom LayerVisibleBase
+set Name CoreLayerVisibleOff
+set Coords "444 484 34 30"
+set HiddenCheckBySymbol CoreLayer_@_Arg1_@_Vis
+set CommandPress ">coreLayerVisible @_Arg1_@ 1"
+add MenuObject initFrom LayerVisibleBase
+set Name CoreLayerPickableOn
+set Coords "480 456 34 30"
+set DrawWhenFocusedOffset "-310 0"
+set HiddenCheckBySymbolInv CoreLayer_@_Arg1_@_Pick
+set CommandPress ">coreLayerPickable @_Arg1_@ 0"
+add MenuObject initFrom LayerVisibleBase
+set Name CoreLayerPickableOff
+set Coords "480 484 34 30"
+set DrawWhenFocusedOffset "-310 0"
+set HiddenCheckBySymbol CoreLayer_@_Arg1_@_Pick
+set CommandPress ">coreLayerPickable @_Arg1_@ 1"
+add MenuObject
+set Name EditorLayerNameBase
+set Texture effects/white
+set Coords "0 0 363 30"
+set Color 0x000000
+set ColorFocused 0x111111
+set BlendMode BlendAdd
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.6
+set RenderCB_Offset "0 0"
+set RenderCB _DrawText
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_Offset "15 0 0"
+set RenderCB_OffsetPressed "15 0 0"
+set RenderCB_RGBColor 0xeeeeee
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+add MenuObject initFrom EditorLayerNameBase
+set Name EditorLayerNameCore
+set RenderCB_ConsoleSymbol CoreLayer_@_Arg1_@_Name
+set Child "CoreLayerVisibleOn 260 0 @_Arg1_@"
+set Child "CoreLayerVisibleOff 260 0 @_Arg1_@"
+set Child "CoreLayerPickableOn 310 0 @_Arg1_@"
+set Child "CoreLayerPickableOff 310 0 @_Arg1_@"
+add MenuObject initFrom EditorLayerNameBase
+set Name EditorLayerNameVis
+set RenderCB_ConsoleSymbol Layer_@_Arg1_@_Name
+set MouseInteract 0
+set Focus 0
+add MenuObject initFrom EditorLayerNameBase
+set Name EditorLayerNameEdit
+set RenderCB_Text Layer_@_Arg1_@_Name
+set TextEditableMaxLen 16
+set MouseInteractClickToFocus 1
+set MouseInteractClickAwayToUnfocus 1
+set Hidden 1
+set CommandEnterKey ">gameui show Layer_@_Arg1_@_Name"
+set CommandEnterKey ">gameui hide Layer_@_Arg1_@_NameEdit"
+set CommandLoseFocus ">gameui show Layer_@_Arg1_@_Name"
+set CommandLoseFocus ">gameui hide Layer_@_Arg1_@_NameEdit"
+add MenuObject
+set Name EditorLayerName
+set Texture effects/white
+set Coords "0 0 363 30"
+set Color 0x000000
+set ColorFocused 0x111111
+set BlendMode BlendAdd
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set CommandDoubleClick ">gameui hide Layer_@_Arg1_@_Name"
+set CommandDoubleClick ">gameui show Layer_@_Arg1_@_NameEdit"
+set CommandDoubleClick ">gameui focusNameTry Layer_@_Arg1_@_NameEdit"
+set Child "EditorLayerNameVis[Layer_@_Arg1_@_Name] 0 0 @_Arg1_@"
+set Child "EditorLayerNameEdit[Layer_@_Arg1_@_NameEdit] 0 0 @_Arg1_@"
+set Child "LayerVisibleOn 260 0 @_Arg1_@"
+set Child "LayerVisibleOff 260 0 @_Arg1_@"
+set Child "LayerPickableOn 310 0 @_Arg1_@"
+set Child "LayerPickableOff 310 0 @_Arg1_@"
+set Child "LayerDefaultYes 200 0 @_Arg1_@"
+set Child "LayerDefaultNo 200 0 @_Arg1_@"
+add MenuObject
+set Name UserLayersList
+set ContainerOnly 1
+set Child "EditorLayersLine 23 5"
+set Child "EditorLayerName		0 10 	0"
+set Child "EditorLayerName		0 40 	1"
+set Child "EditorLayerName		0 70 	2"
+set Child "EditorLayerName		0 100 	3"
+set Child "EditorLayerName		0 130 	4"
+set Child "EditorLayerName		0 160 	5"
+set Child "EditorLayerName		0 190 	6"
+add MenuObject
+set Name LayersList
+set ContainerOnly 1
+set Child "EditorLayerNameCore 	0 Nx30 	3"
+set Child "EditorLayerNameCore 	0 Nx30 	5"
+set Child "EditorLayerNameCore 	0 Nx30 	6"
+set Child "UserLayersList 	0 Nx30 "
+add MenuObject initFrom GenericBackground
+set Name EditorLayerBg
+set RenderCB_DX 400
+set RenderCB_DY 410
+set Coords "0 0 600 500"
+set NoAlphaMod 1
+set Alpha 0.86
+add MenuObject
+set Name EditorLayersLine
+set Texture effects/white
+set Coords "0 0 323 1"
+set Color 0x5c6e73
+add MenuObject
+set Name EditorLayersWindowIcon
+set Texture editor/Icons0
+set Coords "48 48 48 54"
+set ScaleX 0.65, ScaleY 0.65
+set Color 0x5d6667
+set BlendMode BlendAdd
+add MenuObject
+set Name EditorLayersWindow
+set RenderBlocked 1
+set Coords "0 0 368 45"
+set MouseInteract 1
+set Focus -2
+set DragSource EditorLayersWindow
+set FirstDrawnChildren 2
+set SaveArgs 3
+set CommandPress "gameui promoteToTop EditorLayersWindow"
+set Child "EditorLayerBg -15 -15"
+set Child "LayersList 3 45"
+set Child "EditorLayersWindowIcon 10 6"
+set Child "GenericWindowTitle 30 0	Editor_Layers"
+set Child "GenericMenuClose[ButtonEditorLayerClose] 283 -4	EditorLayersWindow"
+add MenuObject initFrom FocusWhiteTechTemplate
+set Name EditorMapListWindowFlash
+set RenderCB_DX 688
+set RenderCB_DY 489
+set BlinkAlpha "0.4 0.1 1.0 0.1"
+set HiddenCheckBySymbolInv WindowFlash
+add MenuObject initFrom EditorMapListWindowFlash
+set Name LobbyMapListWindowFlash
+set RenderCB_DX 920
+set RenderCB_DY 551
+add MenuObject initFrom GenericTabButton
+set Name TabButtonMyMaps
+set RenderCB_Text Btn_LocalMaps
+set CommandPress "sym setZero EditorOpenPublic EditorOpenOfficial"
+set CommandPress "sym setOne EditorOpenMy"
+set CommandPress "menucmd EditorMaplistMyMaps"
+add MenuObject initFrom GenericTabButton
+set Name TabButtonPublicMaps
+set RenderCB_Text Btn_PublicMaps
+set CommandPress "sym setZero EditorOpenMy EditorOpenOfficial"
+set CommandPress "sym setOne EditorOpenPublic"
+set CommandPress "menucmd EditorMaplistPublic"
+add MenuObject initFrom GenericTabButton
+set Name TabButtonOfficialMaps
+set RenderCB_Text Btn_OfficialMaps
+set CommandPress "sym setZero EditorOpenPublic EditorOpenMy"
+set CommandPress "sym setOne EditorOpenOfficial"
+set CommandPress "menucmd EditorMaplistOfficial"
+add MenuObject
+set Name MissingThumbnailText
+set Coords "0 0 315 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x424f54
+set DisabledAlpha 1.0
+set RenderCB_Text EditorThumbnailMissing
+add MenuObject
+set Name MissingThumbnail
+set Texture menus/DialogFrames
+set Coords "169 832 315 178"
+set Child "MissingThumbnailText 0 72"
+add MenuObject
+set Name MapThumbnail
+set Texture &EditorMapListPreview@MapLoadingIndex@&
+set NoDrawOnMissingTexture 1
+set Coords "0 0 640 360"
+set ScaleX 0.49
+set ScaleY 0.49
+set FilterName EditorMapLayout
+set FirstDrawnChildren 3
+set Child "MissingThumbnail	0 0"
+add MenuObject
+set Name LoadMapMapNameText
+set Coords "0 0 305 50"
+set FilterName EditorMapLayout
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawDText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xd6dde0
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX"
+set RenderCB_Text &EditorMapListName@MapLoadingIndex@&
+add MenuObject initFrom LoadMapMapNameText
+set Name LoadMapMapVersionText
+set RenderCB_Text TempMapVersion
+set RenderCB_TextJustify JustifyXRight
+add MenuObject
+set Name LoadMapAuthorNameText
+set Coords "0 0 315 50"
+set FilterName EditorMapLayout
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawDText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xf79452
+set RenderCB_Text &EditorMapAuthorName@MapLoadingIndex@&
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX /literalText"
+add MenuObject
+set Name LoadMapDescriptionText
+set Coords "0 0 315 150"
+set FilterName EditorMapLayout
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.55
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawDText
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0x909fa5
+set RenderCB_Flags "/fitX /literalText"
+set RenderCB_Text &EditorMapListDesc@MapLoadingIndex@&
+add MenuObject
+set Name EditorMapListWindowDetails
+set ContainerOnly 1
+set Child "LoadMapMapNameText 10 140"
+set Child "LoadMapMapVersionText 0 140"
+set Child "LoadMapAuthorNameText 0 184"
+set Child "LoadMapDescriptionText 0 216"
+add MenuObject
+set Name EditorMapListLocalButtons
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorOpenMy!1
+set Child "SymDisableGenericButton 0 0	DialogButtonOpen ClickLoadMapFromDialog	MapToLoad"
+set Child "SymDisableGenericButton 183 0	DialogButtonCancel CancelLoadMapFromDialog"
+set Child "SymDisableGenericButton 0 55	DialogButtonDelete ClickDeleteMapFromDialog MapToLoad"
+add MenuObject
+set Name EditorMapListPublicButtons
+set ContainerOnly 1
+set Child "SymDisableGenericButton 	0 0	DialogButtonOpen ClickLoadMapFromDialog	MapToLoad"
+set Child "GenericStandardButtonTemplate 183 0	DialogButtonCancel CancelLoadMapFromDialog"
+add MenuObject
+set Name EditorMapListOfficialButtons
+set ContainerOnly 1
+set HiddenCheckBySymbolValue EditorOpenOfficial!1
+set Child "SymDisableGenericButton 0 0	DialogButtonOpen ClickLoadMapFromDialog	MapToLoad"
+set Child "SymDisableGenericButton 183 0	DialogButtonCancel CancelLoadMapFromDialog"
+add MenuObject
+set Name EditorMapListWindow
+set RenderBlocked 1
+set Coords "0 0 668 48"
+set MouseInteract 1
+set Focus -2
+set DragSource EditorMapListWindow
+set FirstDrawnChildren 3
+set SaveArgs 3
+set CommandPress "gameui promoteToTop EditorMapListWindow"
+set Child "GenericWindowClickout 0 0		EditorMapListWindowClickout"
+set Child "EditorMapListBg -15 -15"
+set Child "MapThumbnail 342 51"
+set Child "EditorMapListWindowDetails 342 51"
+set Child "EditorMapListInset 13 51"
+set Child "TabButtonMyMaps 3 1"
+set Child "GenericTabLabel 3 1 Btn_LocalMaps	EditorOpenMy"
+set Child "TabButtonPublicMaps 167 1"
+set Child "GenericTabLabel 167 1 Btn_PublicMaps	EditorOpenPublic"
+set Child "TabButtonOfficialMaps 331 1"
+set Child "GenericTabLabel 331 1 Btn_OfficialMaps	EditorOpenOfficial"
+set Child "EditorMapList 10 47"
+set Child "EditorMapPrev	25 425"
+set Child "EditorInputLabel	125	435		MapSelectionPageLabel"
+set Child "EditorMapNext	177	425"
+set Child "GenericMenuClose[ButtonEditorMapListClose] 583 -4	EditorMapListWindow"
+set Child "EditorMapListLocalButtons	295 395"
+set Child "EditorMapListPublicButtons	295 395"
+set Child "EditorMapListOfficialButtons	295 395"
+set Child "EditorMapListWindowFlash -10 -10"
+add MenuObject
+set Name EditorMapManageWindow
+set RenderBlocked 1
+set Coords "0 0 668 48"
+set MouseInteract 1
+set Focus -2
+set DragSource EditorMapManageWindow
+set FirstDrawnChildren 3
+set SaveArgs 3
+set CommandPress "gameui promoteToTop EditorMapManageWindow"
+set Child "GenericWindowClickout 0 0		EditorMapListWindowClickout"
+set Child "EditorMapListBg -15 -15"
+set Child "EditorMapListInset 13 51"
+set Child "TabButtonMyMaps 3 1"
+set Child "GenericTabLabel 3 1 Btn_LocalMaps	EditorOpenMy"
+set Child "EditorMapList 10 47"
+set Child "GenericMenuClose[ButtonEditorMapListClose] 583 -4	EditorMapListWindow"
+set Child "SymDisableGenericButton 295 405	DialogButtonOpen ClickLoadMapFromDialog	MapToLoad"
+set Child "SymDisableGenericButton 478 405	DialogButtonCancel CancelLoadMapFromDialog"
+set Child "EditorMapListWindowFlash -10 -10"
+add MenuObject
+set Name CustomMapUploadIndex
+set Coords "0 0 100 30"
+set RenderCB_DX 100
+set RenderCB_DY 30
+set RenderCB_Flags "/fitX"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.7
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set SaveArgs 2
+set RenderCB_Text @_Arg1_@
+add MenuObject
+set Name CustomMapUploadLineBg
+set Texture menus/Mail
+set CoordsStart "736 359 2 2"
+set CoordsMid "738 359 93 2"
+set CoordsEnd "832 359 2 2"
+set CoordsStartFocused "736 361 2 93"
+set CoordsMidFocused "738 361 93 93"
+set CoordsEndFocused "832 361 2 93"
+set CoordsStartDisabled "736 454 2 3"
+set CoordsMidDisabled "738 454 93 3"
+set CoordsEndDisabled "832 454 2 3"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 500
+set RenderCB_DY 43
+set Coords "0 0 500 500"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set NoAlphaMod 1
+set Alpha 0.92
+set Color 0xb7b7b7
+add MenuObject initFrom CustomRoomUnderline
+set Name CustomMapUploadUnderline
+set Coords "0 0 498 2"
+add MenuObject
+set Name CustomMapUploadLineTint
+set Texture effects/white
+set BlendMode BlendAdd
+set Color 0x0b0b0b
+set SaveArgs 2
+set Coords "0 0 500 42"
+add MenuObject
+set Name CustomMapUploadItemPicked
+set Texture effects/white
+set Coords "0 0 498 42"
+set Color 0x855d33
+set FilterName HLB
+set SaveArgs 1
+set HiddenCheckBySymbolValue EditorUploadMapIndex!@_Arg1_@
+add MenuObject
+set Name CustomMapUploadItem
+set Texture effects/white
+set Coords "0 0 500 44"
+set SaveArgs 3
+set Focus -2
+set MouseInteract 1
+set FilterName HLB
+set CommandPress ">sym set EditorUploadMapIndex @_Arg3_@"
+set CommandDoubleClick ">editor uploadmap @_Arg3_@"
+set Color 0x000000
+set ColorFocused 0x12293a
+set BlendMode BlendAdd
+set FirstDrawnChildren 2
+set Child "CustomMapUploadUnderline 1 43"
+set Child "CustomMapUploadLineBg 0 0"
+set Child "CustomMapUploadLineTint 0 0		@_Arg2_@"
+set Child "CustomMapUploadItemPicked 1 1	@_Arg3_@"
+set Child "CustomMapLeaderboardName 120 8	MyMaps_Name@_Arg1_@	0"
+set Child "CustomMapUploadIndex 5 8			@_Arg3_@"
+add MenuObject
+set Name CustomMapUploadList
+set ContainerOnly 1
+set Child "CustomMapUploadItem[CustomMapUploadItem0] 0 Nx45	0	1	0"
+set Child "CustomMapUploadItem[CustomMapUploadItem1] 0 Nx45	1	0	1"
+set Child "CustomMapUploadItem[CustomMapUploadItem2] 0 Nx45	2	1	2"
+set Child "CustomMapUploadItem[CustomMapUploadItem3] 0 Nx45	3	0	3"
+set Child "CustomMapUploadItem[CustomMapUploadItem4] 0 Nx45	4	1	4"
+set Child "CustomMapUploadItem[CustomMapUploadItem5] 0 Nx45	5	0	5"
+set Child "CustomMapUploadItem[CustomMapUploadItem6] 0 Nx45	6	1	6"
+set Child "CustomMapUploadItem[CustomMapUploadItem7] 0 Nx45	7	0	7"
+set Child "CustomMapUploadItem[CustomMapUploadItem8] 0 Nx45	8	1	8"
+set Child "CustomMapUploadItem[CustomMapUploadItem9] 0 Nx45	9	0	9"
+set Child "SymDisableGenericButton 510 0	Editor_UploadMap UploadMapFromDialog EditorUploadMapIndex"
+set Child "GenericStandardButtonTemplate 700 0	DialogButtonCancel CancelUploadMapFromDialog"
+add MenuObject
+set Name EditorMapUploadWindow
+set RenderBlocked 1
+set Coords "0 0 868 48"
+set MouseInteract 1
+set Focus -2
+set DragSource EditorMapUploadWindow
+set FirstDrawnChildren 3
+set SaveArgs 3
+set CommandPress "gameui promoteToTop EditorMapUploadWindow"
+set Child "GenericWindowClickout 0 0		EditorMapUploadWindowClickout"
+set Child "LobbyMapListBg -15 -15"
+set Child "CustomMapUploadList 10 48"
+set Child "CustomMapTabButton 0 1 Btn_LocalMaps	MyMaps	/ifSym HasAirMechPrime == 1"
+set Child "GenericMenuClose[ButtonEditorMapUploadClose] 814 -4	EditorMapUploadWindow"
+set Child "LobbyMapListWindowFlash -10 -10"
+add MenuObject initFrom EditorInputPropertyBoxTemplate
+set Name EditorSaveAsMapPropertyBox
+set TextEditableFilename 1
+add MenuObject initFrom EditorListItemTemplate
+set Name EditorSaveAsMapItem
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Coords "0 0 308 34"
+set RenderCBExcludesDefaultRender 0
+set Texture effects/white
+set BlendMode BlendAdd
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Offset "10 4"
+set Color 0x000000
+set ColorFocused 0x1e3b3e
+set RenderCB_Text &EditorMapListName@_Arg1_@&
+set DisabledSymInv EditorMapListOk@_Arg1_@
+set SaveArgs 1
+set FilterName EditorMapLayout
+set Child "EditorMapListSelected	2 2	@_Arg1_@"
+set CommandPress ">sym set EditorSaveAsMapName $EditorMapList@_Arg1_@"
+add MenuObject
+set Name EditorSaveAsMap
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName EditorMapLayout
+set HiddenCheckBySymbolValue EditorMapList@_Arg1_@=
+set Child "EditorSaveAsMapItem[EditorSaveAsMap@_Arg1_@] 8 8		@_Arg1_@"
+add MenuObject
+set Name EditorSaveAsMapList
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName EditorMapLayout
+set Child "EditorSaveAsMap[EditorSaveAsMap0] 0 0 		0"
+set Child "EditorSaveAsMap 0 Nx33 	1"
+set Child "EditorSaveAsMap 0 Nx33 	2"
+set Child "EditorSaveAsMap 0 Nx33 	3"
+set Child "EditorSaveAsMap 0 Nx33 	4"
+set Child "EditorSaveAsMap 0 Nx33 	5"
+set Child "EditorSaveAsMap 0 Nx33 	6"
+set Child "EditorSaveAsMap 0 Nx33 	7"
+set Child "EditorSaveAsMap 0 Nx33 	8"
+set Child "EditorSaveAsMap 0 Nx33 	9"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorSaveAsMapPrev
+set CommandPress "sym dec EditorMapListPage"
+set CommandPress "editor do enumerateCustomMaps"
+set CommandPress "gameui refreshfiltername EditorMapLayout"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorSaveAsMapNext
+set MirrorOnX 1
+set CommandPress "sym inc EditorMapListPage"
+set CommandPress "editor do enumerateCustomMaps"
+set CommandPress "gameui refreshfiltername EditorMapLayout"
+add MenuObject
+set Name EditorMapSaveAsWindow
+set RenderBlocked 1
+set Coords "0 0 668 48"
+set MouseInteract 1
+set Focus -2
+set DragSource EditorMapSaveAsWindow
+set FirstDrawnChildren 3
+set SaveArgs 3
+set CommandPress "gameui promoteToTop EditorMapSaveAsWindow"
+set Child "EditorMapListBg -15 -15"
+set Child "EditorMapListInset 13 51"
+set Child "EditorSaveAsMapList 10  47"
+set Child "EditorSaveAsMapPrev 25	 418"
+set Child "EditorSaveAsMapNext 177 418"
+set Child "EditorInputLabelPlain		350 70 TempMapName"
+set Child "EditorSaveAsMapPropertyBox	350 100 EditorSaveAsMapName"
+set Child "GenericMenuClose[ButtonEditorMapListClose] 583 -4	EditorMapSaveAsWindow"
+set Child "SymDisableGenericButton 295 415	EditorSaveMapAs ClickSaveAsMapFromDialog"
+set Child "SymDisableGenericButton 478 415	DialogButtonCancel CancelSaveAsMapFromDialog"
+add MenuObject initFrom EditorListItemTemplate
+set Name EditorImportMapScriptItem
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Coords "0 0 308 34"
+set RenderCBExcludesDefaultRender 0
+set Texture effects/white
+set BlendMode BlendAdd
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Offset "10 4"
+set Color 0x000000
+set ColorFocused 0x1e3b3e
+set RenderCB_Text &EditorMapListName@_Arg1_@&
+set DisabledSymInv EditorMapListOk@_Arg1_@
+set SaveArgs 1
+set FilterName EditorMapLayout
+set Child "EditorMapItemHighlight	0	0"
+set Child "EditorMapListSelected	2 2	@_Arg1_@"
+set CommandPress ">sym set EditorImportScriptMapName $EditorMapList@_Arg1_@"
+add MenuObject
+set Name EditorImportScriptMap
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName EditorMapLayout
+set HiddenCheckBySymbolValue EditorMapList@_Arg1_@=
+set Child "EditorImportMapScriptItem[EditorImportMapScript@_Arg1_@] 8 8		@_Arg1_@"
+add MenuObject
+set Name EditorImportScriptMapList
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName EditorMapLayout
+set Child "EditorImportScriptMap[EditorImportScriptMap0]	0 0 		0"
+set Child "EditorImportScriptMap							0 Nx33 	1"
+set Child "EditorImportScriptMap							0 Nx33 	2"
+set Child "EditorImportScriptMap							0 Nx33 	3"
+set Child "EditorImportScriptMap							0 Nx33 	4"
+set Child "EditorImportScriptMap							0 Nx33 	5"
+set Child "EditorImportScriptMap							0 Nx33 	6"
+set Child "EditorImportScriptMap							0 Nx33 	7"
+set Child "EditorImportScriptMap							0 Nx33 	8"
+set Child "EditorImportScriptMap							0 Nx33 	9"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorImportMapScriptPrev
+set CommandPress "sym dec EditorMapListPage"
+set CommandPress "editor do enumerateCustomMaps"
+set CommandPress "gameui refreshfiltername EditorMapLayout"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorImportMapScriptNext
+set MirrorOnX 1
+set CommandPress "sym inc EditorMapListPage"
+set CommandPress "editor do enumerateCustomMaps"
+set CommandPress "gameui refreshfiltername EditorMapLayout"
+add MenuObject
+set Name EditorImportMapScriptsWindow
+set RenderBlocked 1
+set Coords "0 0 668 48"
+set MouseInteract 1
+set Focus -2
+set DragSource EditorImportMapScriptsWindow
+set FirstDrawnChildren 3
+set SaveArgs 3
+set CommandPress "gameui promoteToTop EditorImportMapScriptsWindow"
+set Child "EditorMapListBg -15 -15"
+set Child "EditorMapListInset 13 51"
+set Child "EditorImportScriptMapList 10  47"
+set Child "EditorImportMapScriptPrev 25	 418"
+set Child "EditorImportMapScriptNext 177 418"
+set Child "GenericMenuClose[ButtonEditorMapListClose] 583 -4	EditorImportMapScriptsWindow"
+set Child "SymDisableGenericButton 295 415	Editor_ImportScripts ClickImportScriptsFromMap"
+set Child "SymDisableGenericButton 478 415	DialogButtonCancel EditorCancelImportScriptFromMap"
+add MenuObject
+set Name EditorMap
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName EditorMapLayout
+set HiddenCheckBySymbolValue EditorMapList@_Arg1_@=
+set Child "EditorMapItem[EditorMap@_Arg1_@] 8 8		@_Arg1_@"
+add MenuObject
+set Name EditorMapList
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 330 390"
+set CommandOnMouseDrag "if sym _Wheel < 0 runnow menucmd EditorScrollMapPrev"
+set CommandOnMouseDrag "if sym _Wheel > 0 runnow menucmd EditorScrollMapNext"
+set SaveArgs 1
+set FilterName EditorMapLayout
+set Child "EditorMap[EditorMap0] 0 0 		0"
+set Child "EditorMap 0 Nx33 	1"
+set Child "EditorMap 0 Nx33 	2"
+set Child "EditorMap 0 Nx33 	3"
+set Child "EditorMap 0 Nx33 	4"
+set Child "EditorMap 0 Nx33 	5"
+set Child "EditorMap 0 Nx33 	6"
+set Child "EditorMap 0 Nx33 	7"
+set Child "EditorMap 0 Nx33 	8"
+set Child "EditorMap 0 Nx33 	9"
+add MenuObject initFrom EditorPrefabItemHighlight
+set Name EditorMapItemHighlight
+set TileArea "280 30"
+add MenuObject
+set Name EditorMapListSelected
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "304 30"
+set FilterName EditorMapLayout
+set Color 0x2f565a
+set BlendMode BlendAdd
+set SaveArgs 1
+set HiddenCheckBySymbolValue MapToLoad!&EditorMapList@_Arg1_@&
+add MenuObject initFrom EditorListItemTemplate
+set Name EditorMapItem
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Coords "0 0 308 34"
+set RenderCBExcludesDefaultRender 0
+set Texture effects/white
+set BlendMode BlendAdd
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Offset "10 4"
+set Color 0x000000
+set ColorFocused 0x1e3b3e
+set RenderCB_Text &EditorMapListName@_Arg1_@&
+set DisabledSymInv EditorMapListOk@_Arg1_@
+set SaveArgs 1
+set FilterName EditorMapLayout
+set Child "EditorMapListSelected	2 2	@_Arg1_@"
+set CommandPress ">sym set MapToLoad $EditorMapList@_Arg1_@"
+set CommandPress ">sym set MapLoadingIndex @_Arg1_@"
+set CommandPress "gameui refreshfiltername EditorMapLayout"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorMapPrev
+set CommandPress "menucmd EditorScrollMapPrev"
+add MenuObject initFrom EditorMapArrowTemplate
+set Name EditorMapNext
+set MirrorOnX 1
+set CommandPress "menucmd EditorScrollMapNext"
+add MenuObject
+set Name EditorMapBG
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "585 440"
+set Color @EditorColorBase@
+set ColorFocused @EditorColorBase@
+add MenuObject
+set Name EditorInfoText
+set Coords "0 0 550 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.6
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawText
+set RenderCB_Font DroidSansMono
+set RenderCB_RGBColor 0xdddddd
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX"
+set SaveArgs 1
+add MenuObject
+set Name EditorBottomBar
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1592 30"
+set Color @EditorColorBase@
+set ColorFocused @EditorColorBase@
+set MouseInteract 1
+set Focus -2
+set NoAlphaMod 1
+set Alpha 0.4
+set Child "EditorInfoText 20 4	Edit_Intersection"
+set Child "EditorInfoText 480 4	Edit_MouseOver"
+set Child "EditorInfoText 1040 4	Edit_Selected"
+add MenuObject
+set Name EditorMaster
+set ContainerOnly 1
+set FilterName LoadMapStartup
+set Coords "0 0 1920 1080"
+set Child "EditorBottomBar 0 1050"
+set Child "EditorTopBar 0 -10"

@@ -1,0 +1,19 @@
+blockLoadOnConsoleSym MailMessageLoaded
+onloadrun {
+sym set MailMessageLoaded 1
+sym set _MessageDeleteEn 0
+}
+MO MailMessage {
+pos 470 140
+layer 14
+draggableUIElement
+}
+onload {
+gameui promoteToTop MailMessage
+}
+onunloadrun {
+sym set MailMessageLoaded 0
+sym set _MessageDeleteEn 0
+}
+onunload {
+}

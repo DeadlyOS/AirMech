@@ -1,0 +1,26 @@
+blockLoadOnConsoleSym InviteLoaded
+onloadrun {
+]gameUI saveFocusID _savefocusid_invite_
+sym set InviteLoaded 1
+clearmenu UnlockDialog.txt /fadeout 0.25
+floatsym set InvitePlayersPos 0
+social scrollupdate friends /inviteableOnly
+}
+MO InviteMain {
+pos 100 120
+draggableUIElement
+pos $UI_Invite_X $UI_Invite_Y /screenClamp 200 300
+layer 13
+}
+onload {
+input set padFocusFallback ConLeaderItem0
+]if usingpad gameui focusnametry InvitePlayerItem0 InvitePlayerDecoration
+gameui promoteToTop InviteMain
+}
+onunloadrun {
+}
+onunload {
+input set padFocusFallback $_savefocusid_invite_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_invite_
+sym set InviteLoaded 0
+}

@@ -1,0 +1,56 @@
+menucmd ClearArmyText
+menu3d addChild MenusVR MenusVRRoot
+menu3d setWorldPose MenusVRRoot	0.0 0.0 0.0
+sym set LastVrMenu Root
+sym set VrFirstRun 0
+sym set _PosPlay "65 -20"
+menu3d addChild MenusVRRoot MenuDiskPlay /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.45 0.45 1.0 /worldPose $$_PosPlay 0.0
+menu3d logicFnc MenuDiskPlay amFocusCapsule /radiusInner 22.0 /height 30.0 /skinDepth 7.0 /cmdfocus [menucmd TouchRoot Play] /cmdunfocus [menucmd UnTouchRoot Play]
+menu3d addChild MenusVRRoot MenuRingPlay /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.5 /worldPose $$_PosPlay 0.0
+menu3d addChild  MenusVRRoot MenuDecoPlay /model vr/MenuDecoStart.amf /material mat_MenuDecoStart /noVis /worldPose $$_PosPlay 20.0 /rootScale 1.7 /rootRot 50 0 -20
+menu3d addChild MenusVRRoot MenuLabelPlay /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosPlay -20.0 /rootScale 3.4 /rootRot 5 0 170
+sym set _PosHangar "-65 -35"
+menu3d addChild MenusVRRoot MenuDiskHangar /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.45 0.45 1.0 /worldPose $$_PosHangar 0.0
+menu3d logicFnc MenuDiskHangar amFocusCapsule /radiusInner 22.0 /height 30.0 /skinDepth 7.0 /cmdfocus [menucmd TouchRoot Hangar] /cmdunfocus [menucmd UnTouchRoot Hangar]
+menu3d addChild MenusVRRoot MenuRingHangar /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.5 /worldPose $$_PosHangar 0.0
+menu3d addChild  MenusVRRoot MenuDecoHangar /model rooks/Angel/AngelAir.amf /material mat_AngelGrey /noVis /worldPose $$_PosHangar 24.0 /rootScale 15 /rootRot -25 -30 -120
+menu3d addChild MenusVRRoot MenuLabelHangar /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosHangar -20.0 /rootScale 3.4 /rootRot 5 0 190
+sym set _PosArmy "-65 35"
+menu3d addChild MenusVRRoot MenuDiskArmy /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.45 0.45 1.0 /worldPose $$_PosArmy 0.0
+menu3d logicFnc MenuDiskArmy amFocusCapsule /radiusInner 22.0 /height 30.0 /skinDepth 7.0 /cmdfocus [menucmd TouchRoot Army] /cmdunfocus [menucmd UnTouchRoot Army]
+menu3d addChild MenusVRRoot MenuRingArmy /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.5 /worldPose $$_PosArmy 0.0
+menu3d addChild  MenusVRRoot MenuDecoArmy /model units/Tank/Tank.amf /material mat_Tank /material mat_TreadPanX /noVis /worldPose $$_PosArmy 4.0 /rootScale 12 /rootRot 0 0 -130
+menu3d addChild MenusVRRoot MenuLabelArmy /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose -40 -30 0.0 /rootScale 3.4 /rootRot 5 0 210
+sym set _PosOptions "-20 -70"
+menu3d addChild MenusVRRoot MenuDiskOptions /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.35 0.35 1.0 /worldPose $$_PosOptions 0
+menu3d logicFnc MenuDiskOptions amFocusCapsule /radiusInner 20.0 /height 50.0 /skinDepth 5.0 /cmdfocus [menucmd TouchRoot Options] /cmdunfocus [menucmd UnTouchRoot Options]
+menu3d addChild MenusVRRoot MenuRingOptions /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.4 /worldPose $$_PosOptions 0.0
+menu3d addChild MenusVRRoot MenuDecoOptions /worldPose $$_PosOptions 13.0 /rootRot 30 0 20 /rootScale 1.3
+menu3d addChild MenuDecoOptions MenuGear1 /model vr/MenuGear1.amf /material mat_MenuGears /rootScale 1 /noVis /worldPose 0 0 0
+menu3d addChild MenuDecoOptions MenuGear2 /model vr/MenuGear2.amf /material mat_MenuGears /rootScale 1 /noVis /worldPose -5 0 4.0
+menu3d addChild MenuDecoOptions MenuGear3 /model vr/MenuGear3.amf /material mat_MenuGears /rootScale 1 /noVis /worldPose 5 0 4.2
+menu3d addZSpin MenuGear1 MenuGear1 -20
+menu3d addZSpin MenuGear2 MenuGear2 120
+menu3d addZSpin MenuGear3 MenuGear3 -120
+menu3d addChild MenusVRRoot MenuLabelOptions /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosOptions -20.0 /rootScale 3.4 /rootRot 5 0 180
+pcmd 0.4 exec vr_quests.txt
+pcmd 0.2 menucmd ShowVrMenuSet Play
+pcmd 0.2 menucmd ShowVrMenuSet Options
+pcmd 0.1 menucmd ShowVrMenuSet Hangar
+pcmd 0.3 menucmd ShowVrMenuSet Army
+pcmd 0.5 menu3d setVisible MenuGear1
+pcmd 0.5 menu3d setVisible MenuGear2
+pcmd 0.5 menu3d setVisible MenuGear3
+pcmd 0.45 menu3d writeWorldPos MenuDiskOptions _WorldPosOptions /xy
+pcmd 0.45 menu3d writeWorldPos MenuDiskPlay _WorldPosPlay /xy
+pcmd 0.45 menu3d writeWorldPos MenuDiskHangar _WorldPosHangar /xy
+pcmd 0.45 menu3d writeWorldPos MenuDiskArmy _WorldPosArmy /xy
+pcmd 0.45 menu3d writeWorldPos MenuDiskQuests _WorldPosQuests /xy
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosOptions -3.4 /label MenuColOptions
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosPlay -3.4 /label MenuColPlay
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosHangar -3.4 /label MenuColHangar
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosArmy -3.4 /label MenuColArmy
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosQuests -3.4 /label MenuColQuests
+sym set PrevVrMenu Root
+pcmd 0.5 menu3d setVisible MenusVRRoot
+echo Finished loading MAIN

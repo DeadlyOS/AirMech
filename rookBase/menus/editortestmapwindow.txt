@@ -1,0 +1,16 @@
+blockLoadOnConsoleSym EditorTestMapWindowLoaded
+onloadrun {
+sym set EditorTestMapWindowLoaded 1
+sym set EditorTestMapMaxPlayers 2
+sym set EditorTestMapPMask 0
+}
+MO EditorTestMapWindow {
+pos 600 300
+layer 11
+}
+onload {
+addUIAnim EditorTestMapWindow mas_DialogPopFadein
+}
+onunloadrun {
+sym set EditorTestMapWindowLoaded 0
+}

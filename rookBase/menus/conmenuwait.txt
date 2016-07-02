@@ -1,0 +1,37 @@
+MO VignetteFade {
+layer 8
+pos 190 152
+rename VignetteWait
+}
+MO LoadingLogo_A {
+layer 10
+pos 274 1420
+rename WaitLetterA
+}
+MO LoadingLogo_M {
+layer 9
+pos 274 -580
+rename WaitLetterM
+}
+MO LoadingFlash {
+layer 11
+pos -480 -40
+}
+onload {
+]gameui enable VignetteWait
+]addUIAnim WaitLetterM mas_LoadingShowM /speed 1.8
+]pcmd 0.3 ]addUIAnim WaitLetterA mas_LoadingShowA /speed 1.8
+]pcmd 0.7 ]addUIAnim LoadingFlash mas_LoadingFlash /speed 1.0
+}
+onloadrun {
+]gameui ignoreInputTime 20.0
+]sym push CurrentMenu _SetupTransition_
+]sym push DisableConShop 1
+]sym push BtnHint_HideAll 1
+}
+onunloadrun {
+]sym pop CurrentMenu
+]sym pop DisableConShop
+]gameui ignoreInputTimeForce 0.15
+]pcmd 0.1 sym pop BtnHint_HideAll
+}

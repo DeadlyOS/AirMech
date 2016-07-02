@@ -1,0 +1,512 @@
+add MenuObject
+set Name RoomsWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1190 920"
+set CommandOnMouseDrag "floatsym scaledMod roomPos 0.15 $_Wheel 0 1"
+set CommandOnMouseDrag "rooms scrollUpdate"
+add MenuObject
+set Name RoomsScrollbar
+set Texture "menus/Scrollbar"
+set Layer 27
+set Coords "80 0 8 512"
+set Child "RoomsScrollbarPos -2 0"
+set ScaleY 1.4
+set ScaleX 3.0
+set Color 0x777777
+set NoAlphaMod 1
+set Alpha 0.3
+set HiddenCheckBySymbol HideRoomScrollBar
+add MenuObject
+set Name RoomsScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult roomPos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set CommandOnMouseDrag "floatsym set roomPos $_MouseRelY"
+set CommandOnMouseDrag "rooms scrollUpdate"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.4
+set ScaleX 3.0
+set Color 0x666666
+set ColorFocused 0xcccccc
+set Focus -2
+add MenuObject initFrom SimpleMenuTextTemplate
+set Name NoRoomsNote
+set RenderCB_Text BrowseNoGames
+set RenderCB_BoolArg 1
+set RenderCB_DX 680
+set RenderCB_DY 200
+set RenderCB_FontScale 0.8
+set HiddenCheckBySymbolInv NoRooms
+add MenuObject initFrom MF_ButtonsV2
+set Name MF_NetGameBrowseRefreshList
+set ScaleX 0.7
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.8
+set RenderCB_Text MF_NetGameBrowseRefreshList
+set FilterName NetGame
+set CommandCancel "if !consoleplatform menuCmd MainMenuBackButton"
+set CommandPress "menuCmd MF_NetGameBrowseRefreshList"
+set CommandCancel "if consoleplatform menuCmd ConMenuWatchCancel"
+set CommandFocusRight "if consoleplatform gameUI focusNameTry Con_NetGameBrowseJoinRoom0"
+set CommandFocusDown "if !consoleplatform gameUI focusNameTry MF_NetGameBrowseJoinRoom0"
+set CommandFocusUp "if !consoleplatform MainBarBackButton"
+set CommandGetFocus "input set padFocusFallback MF_NetGameBrowseRefreshList"
+set DefaultKeyboardControl 1
+add MenuObject
+set Name CustomGameRefreshList
+set FilterName NetGame
+set CommandPress "leaderboards get Maps"
+set CommandGetFocus "input set padFocusFallback CustomGameRefreshList"
+set DefaultKeyboardControl 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set Texture menus/Purchase
+set Coords "894 736 42 42"
+set DisabledAlpha 0.33
+set ScaleX 1.2
+set ScaleY 1.2
+set BlendMode BlendAdd
+set Color 0x4c696b
+set ColorFocused 0xffffff
+set FocusedTimeOut 0.1
+set HiddenCheckBySymbolInv P_AccessLevel
+add MenuObject initFrom PurchaseButtonTemplate
+set Name MF_NetGameBrowseResetFilter
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.8
+set RenderCB_Text MF_Reset
+set FilterName NetGame
+set CommandPress "sym set GF_PVP 1"
+set CommandPress "sym set GF_PVE 1"
+set CommandPress "sym set GF_COOP 1"
+set CommandPress "sym set GF_CTF 1"
+set CommandPress "rooms scrollUpdate"
+set CommandCancel "if consoleplatform gameui focusnametry MF_NetGameBrowseRefreshList"
+set DefaultKeyboardControl 1
+add MenuObject
+set Name WorldMapNeedSelection
+set Texture menus/DialogMain
+set PulseAlpha "0.75 0.0 -0.3"
+set Coords "134 273 53 104"
+set Anchor Right
+set MirrorOnX 1
+set Color 0xffcc22
+set ScaleX 0.5
+set ScaleY 0.5
+set HiddenCheckBySymbolInv WorldMapNeedSetup
+add MenuObject initFrom MF_ButtonsV2
+set Name MF_NetGameBrowseWorldMap
+set ScaleX 0.84
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.8
+set RenderCB_Text MF_NetGameBrowseWorldMap
+set FilterName NetGame
+set CommandPress "loadmenu worldmapdialog.txt /fadein 0.15"
+set CommandCancel "if consoleplatform gameui focusnametry MF_NetGameBrowseRefreshList"
+set DefaultKeyboardControl 1
+set Child "WorldMapNeedSelection -5	0"
+set RenderCB_DX 225
+set RenderCB_DY 63
+add MenuObject initFrom MF_FrameTemplate
+set Name MF_NetGameBrowseRoomsBackground
+set Layer 2
+set RenderCB_DX 1130
+set RenderCB_DY 900
+set Color 0xffffff
+add MenuObject
+set Name MF_NetGameRoom
+set ContainerOnly 1
+set SaveArgs 1
+set Child "MF_NetGameRoom_Regular 0 0		@_Arg1_@"
+set Child "MF_NetGameRoom_MMLink 0 0		@_Arg1_@"
+add MenuObject
+set Name CustomRoomLineFocus
+set Texture effects/white
+set Color 0x142526
+set BlendMode BlendAdd
+set Coords "0 0 1278 48"
+add MenuObject
+set Name MF_NetGameBrowseJoinRoom
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set Coords "0 0 1280 50"
+set DrawWhenFocused FocusBrowseCustomLine
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocusedOrder BeforeSelf
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress ">sym set _roomref_ Room@_Arg1_@"
+set CommandPress ">sym set _roomtype_ Room"
+set CommandPress ">sym set _roomind_ @_Arg1_@"
+set CommandPress "loadmenu DialogRoom /fadein 0.15"
+set CommandGetFocus ">rooms genPlayerList _playersInRoom_ Room@_Arg1_@Players"
+set DefaultKeyboardControl 1
+set ToolTip RoomHoverToolTip
+add MenuObject
+set Name CustomRoomColorAccent
+set Texture menus/QuestsFrame
+set SaveArgs 2
+set Coords "913 125 124 47"
+set CoordsAnimated "626 919 124 47"
+set CoordsAnimated "626 969 124 47"
+set CoordsAnimated "626 969 124 47"
+set CoordsAnimated "626 869 124 47"
+set CoordsAnimationSymHash Spec@_Arg2_@TypeIndex
+set SaveArgs 2
+set FilterName RoomsUpdated
+add MenuObject
+set Name CustomRoomColorTail
+set Texture menus/QuestsFrame
+set SaveArgs 2
+set Coords "913 125 40 47"
+set CoordsAnimated "762 919 40 47"
+set CoordsAnimated "762 969 40 47"
+set CoordsAnimated "762 969 40 47"
+set CoordsAnimated "762 869 40 47"
+set CoordsAnimationSymHash Spec@_Arg2_@TypeIndex
+set SaveArgs 2
+set FilterName RoomsUpdated
+add MenuObject initFrom CustomRoomUnderline
+set Name CustomMapUnderline
+set Coords "0 0 878 2"
+add MenuObject
+set Name CustomGamesMoreButton
+set Texture menus/DialogFrames
+set Coords "24 527 181 52"
+set CoordsFocused "205 528 181 52"
+set MouseInteract 1
+set Focus -2
+set CommandPress "playsound UI_CheckBoxChange"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 181
+set RenderCB_DY 52
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font Roboto
+set RenderCB_OffsetFocused "0 -1"
+set RenderCB_Text ButtonCustomMore
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi"
+set RenderCB_RGBColor 0xaee1e6
+set RenderCB_RGBColorFocused 0xffffff
+set CommandPress "menucmd PvPButtonCustomListMore"
+set DisabledSymInv CustomGameOptionsBrowse
+set DisabledAlphaTimeOut 0.1
+set HiddenCheckBySymbolInv CF_CustomMap
+add MenuObject
+set Name CustomRoomNavigate
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolInv CustomGameListMore
+set Child "LeaderboardMoreDown 80 550		HLB_Next"
+set Child "LeaderboardMoreUp -80 550		HLB_Prev"
+add MenuObject
+set Name CustomRoomFadeout
+set Texture menus/BackgroundPlay
+set Coords "0 256 1024 256"
+set DisabledSymInv CustomGameOptionsBrowse
+set ScaleX 2.0, ScaleY 2.0
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "0 368 0 0"
+set Child "CustomRoomNavigate 840 -236"
+set Child "CustomGamesMoreButton 830 372"
+set Child "CustomGamesButton[CustomGamesButtonSetup2] 830 372	ButtonCreateSetup PvPCustomGameSetup	CustomGameListMore"
+add MenuObject
+set Name MF_NetGameRoom_Regular
+set ContainerOnly 1
+set HiddenCheckBySymbolValue Room@_Arg1_@Type!0
+set SaveArgs 3
+set Child "CustomRoomUnderline 1 49"
+set Child "CustomGameRoomLineBg 0 0"
+set Child "CustomRoomLineTint 0 0	@_Arg2_@"
+set Child "CustomRoomColorAccent 1 1	 @_Arg3_@ @_Arg1_@"
+set Child "CustomRoomColorTail 1241 1	 @_Arg3_@ @_Arg1_@"
+set Child "MF_NetGameRoomFriendStar 304 4 @_Arg3_@ @_Arg1_@"
+set Child "MF_NetGameRoomName 20 8 @_Arg3_@ @_Arg1_@"
+set Child "MF_NetGameRoomNameFriend 20 8 @_Arg3_@ @_Arg1_@"
+set Child "MF_NetGameRoomDesc 20 52 @_Arg3_@ @_Arg1_@"
+set Child "MF_NetGameRoomIcons 20 83 @_Arg3_@ @_Arg1_@"
+set Child "MF_NetGameRoomSpecInfo 300 84 @_Arg3_@ @_Arg1_@"
+set Child "MF_RoomServerPingDisplay 347 43 @_Arg3_@ @_Arg1_@"
+set Child "MF_RoomServerFlagDisplay 330 0 @_Arg3_@ @_Arg1_@"
+set Child "MF_NetGameBrowseRoomVersion 170 113 @_Arg3_@ @_Arg1_@"
+set Child "MF_NetGameBrowseJoinRoom[MF_NetGameBrowseJoinRoom@_Arg1_@] 3 3 @_Arg1_@"
+add MenuObject
+set Name MF_NetGameRoom_MMLink
+set ContainerOnly 1
+set HiddenCheckBySymbolValue Room@_Arg1_@Type!1
+set SaveArgs 1
+set Child "MF_NetGameRoomFrame 0 0		Room @_Arg1_@"
+set Child "MF_NetGameRoomName 20 8 Room @_Arg1_@"
+set Child "MF_NetGameRoomDesc 20 52 Room @_Arg1_@"
+set Child "MF_Room_MMLink_FlagDisplay 348 10 Room @_Arg1_@"
+set Child "MF_NetGameBrowse_MMLink[MF_NetGameBrowse_MMLink@_Arg1_@] 3 3 @_Arg1_@"
+add MenuObject
+set Name MenuPlayBrowseWait
+set Texture effects/white
+set Coords "0 0 1280 500"
+set Color 0x696140
+set ColorFocused 0x696140
+set MouseInteract 1
+set Focus -2
+set NoAlphaMod 1
+set MouseInteractZoneExpand "-10 -10 10 10"
+set Alpha 0.5
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set HiddenCheckBySymbolInv _AsyncWait_
+set Child "WaitCircleBig 470 50"
+set Child "WaitCircleBig2 470 50"
+set Child "HourglassA 530 110"
+set SubsequentDrawCall 1
+add MenuObject
+set Name MenuPlayBrowseFrame
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolInv CustomGameOptionsBrowse
+set RenderCB_Flags "/noGSSConnectionOnly"
+set Child "MF_NetGameRoom_Regular 0 0 	0	0	@_Arg1_@"
+set Child "MF_NetGameRoom_Regular 0 Nx50 1	1	@_Arg1_@"
+set Child "MF_NetGameRoom_Regular 0 Nx50 2	0	@_Arg1_@"
+set Child "MF_NetGameRoom_Regular 0 Nx50 3	1	@_Arg1_@"
+set Child "MF_NetGameRoom_Regular 0 Nx50 4	0	@_Arg1_@"
+set Child "MF_NetGameRoom_Regular 0 Nx50 5	1	@_Arg1_@"
+set Child "MF_NetGameRoom_Regular 0 Nx50 6	0	@_Arg1_@"
+set Child "MF_NetGameRoom_Regular 0 Nx50 7	1	@_Arg1_@"
+set Child "MF_NetGameRoom_Regular 0 Nx50 8	0	@_Arg1_@"
+set Child "MF_NetGameRoom_Regular 0 Nx50 9	1	@_Arg1_@"
+set Child "MenuPlayBrowseWait 0 0"
+add MenuObject
+set Name GameRoomDarkEdge
+set Texture menus/DialogGeneral
+set MirrorOnY 1
+set Coords "841 339 63 50"
+set ScaleY 1.6
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject initFrom PanelEmbossedColor
+set Name MF_NetGameRoomFrame
+set RenderCB_DX 1280
+set RenderCB_DY 50
+set Color &@_Arg1_@@_Arg2_@Color&
+set SaveArgs 2
+set FilterName RoomsUpdated
+add MenuObject
+set Name MF_NetGameRoomNameTemp
+set RenderCB _DrawTextNoCommaSep
+set Coords "0 0 200 30"
+set RenderCB_DX 200
+set RenderCB_DY 30
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.9
+set RenderCB_ConsoleSymbol @_Arg1_@@_Arg2_@DisplayName
+set RenderCB_RGBColor 0xffffff
+add MenuObject initFrom MF_NetGameRoomNameTemp
+set Name MF_NetGameRoomName
+set RenderCB_DX 300
+set RenderCB_Flags "/shadowed /fitX"
+set HiddenCheckBySymbol @_Arg1_@@_Arg2_@HasFriends
+add MenuObject initFrom MF_NetGameRoomNameTemp
+set Name MF_NetGameRoomNameFriend
+set HiddenCheckBySymbolInv @_Arg1_@@_Arg2_@HasFriends
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set RenderCB_DX 300
+add MenuObject
+set Name MF_NetGameRoomDesc
+set RenderCB _DrawUText
+set RenderCB_DX 265
+set RenderCB_DY 30
+set RenderCB_Font Roboto
+set RenderCB_Flags "/toU16 /fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.7
+set RenderCB_ConsoleSymbol @_Arg1_@@_Arg2_@DetailsLoc
+add MenuObject
+set Name MF_NetGameRoomIcons
+set RenderCB _DrawText
+set Coords "0 0 200 30"
+set RenderCB_DX 200
+set RenderCB_DY 30
+set RenderCB_Font RoomIcons
+set RenderCB_Flags "/shadowed"
+set RenderCB_FontScale 1.0
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@@_Arg2_@Flags
+set RenderCB_RGBColor 0xffffff
+add MenuObject initFrom MF_NetGameRoomIcons
+set Name MF_InspectGameRoomIcons
+set RenderCB_FontScale 1.5
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 580 30"
+set RenderCB_DX 580
+add MenuObject
+set Name SpecatorEyeballIcon
+set Texture fonts/SpecialChars
+set Coords "267 53 52 32"
+add MenuObject
+set Name MF_NetGameRoomSpecInfo
+set RenderCB _DrawText
+set Coords "0 0 50 30"
+set RenderCB_DX 50
+set RenderCB_DY 30
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/shadowed"
+set RenderCB_FontScale 1.0
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@@_Arg2_@NumSpec
+set RenderCB_TextJustify JustifyXRight
+set Child "SpecatorEyeballIcon 56 0"
+set HiddenCheckBySymbolValue @_Arg1_@@_Arg2_@NumSpec=0
+add MenuObject
+set Name MF_NetGameRoomPlayers
+set RenderCB _DrawTextNoCommaSep
+set RenderCB_DX 200
+set RenderCB_DY 30
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.55
+set RenderCB_ConsoleSymbol @_Arg1_@@_Arg2_@Players
+set RenderCB_RGBColor "0.8 0.8 0.8"
+add MenuObject
+set Name MF_RoomServerPingDisplay
+set RenderCB _DrawPing
+set Coords "0 0 62 30"
+set RenderCB_DX 62
+set RenderCB_DY 30
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.75
+set RenderCB_ConsoleSymbol @_Arg1_@@_Arg2_@Ping
+set RenderCB_RGBColor "1.0 1.0 1.0"
+set RenderCB_TextJustify JustifyXCenter
+set Layer 2
+set ToolTip TT_RoomPing
+set MouseInteract 1
+add MenuObject
+set Name RoomPinEntryBoxHighlight
+set Texture menus/MainTiles+lang
+set PulseAlpha "2.5 -0.75 0.0"
+set BlendMode BlendAdd
+set Coords "208 940 204 67"
+add MenuObject
+set Name MF_RoomServerFlagDisplay
+set Coords "0 0 63 44"
+set RenderCB_DX 63
+set RenderCB_DY 44
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.75
+set RenderCB_ConsoleSymbol @_Arg1_@@_Arg2_@SrvFlagCh
+set RenderCB_Font SpecialChars
+set RenderCB _DrawText
+add MenuObject
+set Name MF_Room_MMLink_FlagDisplay
+set Coords "0 0 63 44"
+set RenderCB_DX 63
+set RenderCB_DY 44
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB_Text "R"
+set RenderCB_ConsoleSymbol ""
+set RenderCB_Font RoomIcons
+set RenderCB _DrawText
+add MenuObject
+set Name MF_NetGameBrowse_MMLink
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set Coords "0 0 411 129"
+set DrawWhenFocused FocusBrowseRoom
+set DrawWhenFocusedOffset "-5 -5 0"
+set SaveArgs 1
+set CommandPress ">menuCmd GoMatchFromBrowse $$Room@_Arg1_@Details"
+set DefaultKeyboardControl 1
+add MenuObject
+set Name MF_NetGameBrowseRoomVersion
+set RenderCB _DrawText
+set Coords "0 0 200 30"
+set RenderCB_Flags "/shadowed"
+set RenderCB_DX 200
+set RenderCB_DY 30
+set HiddenCheckBySymbolInv @_Arg1_@@_Arg2_@HideJoin
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.5
+set NoAlphaMod 1
+set Alpha 0.5
+set RenderCB_ConsoleSymbol @_Arg1_@@_Arg2_@Version
+set RenderCB_RGBColor "0.9 0.9 0.9"
+add MenuObject
+set Name SpectateWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1190 890"
+set CommandOnMouseDrag "rooms page spec $_Wheel"
+add MenuObject initFrom SimpleMenuTextTemplate
+set Name NoSpectateNote
+set RenderCB_Text SpectateNoGames
+set RenderCB_BoolArg 1
+set RenderCB_DX 680
+set RenderCB_DY 200
+set RenderCB_FontScale 0.8
+set HiddenCheckBySymbolInv NoSpectateRooms
+add MenuObject
+set Name LobbyOptionUltimate
+set Texture menus/Faction
+set Coords "119 445 97 98"
+set ToolTip LobbyUltimateMessage
+set BlinkAlpha "1.0 1.0 0.6 0.2"
+set ColorFocused 0xffee88
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolInv u_game
+add MenuObject initFrom LobbyOptionUltimate
+set Name LobbyUltimateDetect
+set HiddenCheckBySymbolInv u_gameDetect
+add MenuObject
+set Name ServerFlagDisplaySmall
+set Coords "0 0 63 44"
+set RenderCB_DX 63
+set RenderCB_DY 44
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.55
+set RenderCB_ConsoleSymbol PlayingOnServerFlagChar
+set RenderCB_Font SpecialChars
+set RenderCB _DrawText
+add MenuObject
+set Name ServerFlagDisplay
+set Coords "0 0 63 44"
+set RenderCB_DX 63
+set RenderCB_DY 44
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.4
+set RenderCB_ConsoleSymbol PlayingOnServerFlagChar
+set RenderCB_Font SpecialChars
+set RenderCB _DrawText
+set Child "ServerNoteDisplay 5 52"
+add MenuObject
+set Name ServerNoteDisplay
+set Coords "0 0 120 20"
+set DisabledAlpha 0.0
+set RenderCB_DX 120
+set RenderCB_DY 20
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.6
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.9 0.9 0.9"
+set RenderCB_ConsoleSymbol ServerFlagNote

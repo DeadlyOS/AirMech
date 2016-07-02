@@ -1,0 +1,19 @@
+stopIfVR
+onloadrun {
+sym set _KudosSrcX_ 320
+sym set _KudosSrcY_ 210
+}
+MO EndgameNoticeMaster {
+cmd "sym set _PTagInd $_LocalInd"
+cmd "sym set _ETagInd $_OtherInd"
+pos 0 190
+layer 1
+}
+onload {
+gameui focusNameTry EndgameContinueButton
+pcmd t0 gameui focusNameTry EndgameContinueButton
+pcmd t1 gameui focusNameTry EndgameContinueButton
+pcmd t2 gameui focusNameTry EndgameContinueButton
+}
+onunload {
+}

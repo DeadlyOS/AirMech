@@ -1,0 +1,87 @@
+add MenuObject initFrom DialogTitle
+set Name AsyncNoticeDialogTitle
+set RenderCB_Text AsyncNoticeDialogTitle
+add MenuObject
+set Name AsyncNoticeDialogMessage
+set Coords "0 0 334 138"
+set RenderCB_DX 500
+set RenderCB_DY 138
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set Layer 12
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Text @_AsyncDlgMsg_@
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.8 0.8 0.8"
+add MenuObject
+set Name AsyncNoticeDialogShadow
+set Texture effects/black
+set Coords "0 0 512 256"
+set StretchToFillScreen 1
+set MouseInteract 1
+add MenuObject
+set Name AsyncNoticeDialogMasterItems
+set MouseInteract 1
+set Focus -2
+set Texture menus/Messages
+set CoordsStart "617 1 52 115"
+set CoordsMid "669 1 28 115"
+set CoordsEnd "697 1 91 115"
+set CoordsStartFocused "617 116 52 34"
+set CoordsMidFocused "669 116 28 34"
+set CoordsEndFocused "697 116 91 34"
+set CoordsStartDisabled "617 215 52 90"
+set CoordsMidDisabled "669 215 28 90"
+set CoordsEndDisabled "697 215 91 90"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 760
+set RenderCB_DY 500
+set Coords "0 0 760 500"
+set FirstDrawnChildren 1
+set Child "BlackDialog 0 0"
+set Child "AsyncNoticeDialogTitle 0 50"
+set Child "AsyncNoticeDialogMessage 80 140"
+add MenuObject
+set Name AsyncNoticeDialogMaster
+set ContainerOnly 1
+set RenderCB_DX 760
+set RenderCB_DY 500
+set Coords "0 0 760 500"
+set Anchor Center
+set Layer 12
+set Child "AsyncNoticeDialogMasterItems 0 0"
+add MenuObject
+set Name AsyncNoticeDialogMasterV2
+set ContainerOnly 1
+set RenderCB_DX 600
+set RenderCB_DY 300
+set Coords "0 0 600 300"
+set Anchor Center
+set Layer 12
+set Child "AsyncNoticeDialogMasterItemsV2 0 0"
+add MenuObject
+set Name AsyncNoticeDialogMasterItemsV2
+set Texture menus/DialogBox
+set CoordsStart "8 80 88 89"
+set CoordsMid "94 80 79 89"
+set CoordsEnd "174 80 93 89"
+set CoordsStartFocused "8 169 88 200"
+set CoordsMidFocused "94 169 79 200"
+set CoordsEndFocused "174 169 93 200"
+set CoordsStartDisabled "8 370 88 91"
+set CoordsMidDisabled "94 370 79 91"
+set CoordsEndDisabled "174 370 93 91"
+set Focus -2
+set MouseInteract 1
+set RenderCB _Draw_G3x3
+set Coords "0 0 600 300"
+set RenderCB_DX 600
+set RenderCB_DY 300
+set RenderCB_YClipConfigIsOffsets 1
+set Child "DialogTitleAsyncV2 40 20 AsyncNoticeDialogTitle 550"
+set Child "DialogMessageV2 60 110							_AsyncDlgMsg_	540"
+add MenuObject initFrom DialogTitleV2
+set Name DialogTitleAsyncV2
+set RenderCB_Text @_Arg1_@

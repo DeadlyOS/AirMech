@@ -1,0 +1,38 @@
+menu3d remove *
+clearmap
+gfx hmd setPosition 0 -190 140
+gfx hmd setMoveScale 220
+pcmd 0.1 gfx set uniform fogargs 5000 1
+pcmd 0.1 gfx set uniform dfogargs $VrRoomFogArgs
+pcmd 0.1 gfx set clearColor 66 90 130 0"
+pcmd 0.1 dirlight set /dir 0.416209 0.424957 0.803854
+pcmd 0.1 dirlight set /diffuse 0.4 0.4 0.4
+pcmd 0.1 dirlight set /ambient 0.9 0.9 0.85
+menu3d add FortInside /model vr/FortInside.amf	/material mat_FortInside
+menu3d setWorldPose FortInside	0.0 0.0 0.0
+menu3d setRootScale FortInside 1.8
+menu3d addChild FortInside TableTop /model vr/TableTop.amf	/material mat_TableTop
+menu3d setWorldPose TableTop	0.0 0.0 0.0
+menu3d add UnitWedgeRoot
+menu3d setWorldPose UnitWedgeRoot	0 30.0 0.0
+menu3d addChild UnitWedgeRoot UnitWedge0 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge0	-52 -30 0 /rot 0 0 120
+menu3d setRootScale UnitWedge0 12
+menu3d addChild UnitWedge0 UnitW0 /model units/GruntUzi/GruntUzi_Ref.amf /material mat_GruntBlue
+menu3d setRootScale UnitW0 2.0
+menu3d setWorldPose UnitW0	0 -0.5 0.5 /rot 0 0 10
+menu3d animate UnitW0 units/InfantryLight/InfantryLight_Idle.aaf looping 0 0.7
+menu3d addChild UnitWedgeRoot UnitWedge2 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge2	52 -30 0 /rot 0 0 -120
+menu3d setRootScale UnitWedge2 12
+menu3d addChild UnitWedge2 UnitW2 /model units/GruntSwords/GruntSwords_Ref.amf /material mat_GruntBlue
+menu3d setRootScale UnitW2 2.0
+menu3d setWorldPose UnitW2	0 -0.5 0.0 /rot 0 0 -30
+menu3d animate UnitW2 units/InfantrySpy/InfantrySpy_Idle.aaf looping 0 0.5
+menu3d addChild UnitWedgeRoot UnitWedge1 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge1	0 60 0 /rot 0 0 0
+menu3d setRootScale UnitWedge1 12
+menu3d addChild UnitWedge1 UnitW1 /model units/GruntShield/GruntShield_Ref.amf /material mat_GruntBlue
+menu3d setRootScale UnitW1 2.0
+menu3d setWorldPose UnitW1	0 -0.5 0.5 /rot 0 0 160
+menu3d animate UnitW1 units/InfantryLight/InfantryLight_Idle.aaf looping 0 0.5

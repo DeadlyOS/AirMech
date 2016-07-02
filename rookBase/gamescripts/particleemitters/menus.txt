@@ -1,0 +1,178 @@
+add ParticleEmitter
+set Name MainMenuEmbers, MaxParticles 512, Material mat_PDotGold
+set EmitPeriodBase 0.2, EmitPeriodVar 0.15, EmitVelocityBase 2.0, EmitVelocityVar 3.0, EmitVelocityWiggle 100
+set DragCoefficient 0.2
+set ParticleLifespanBase 15.0, ParticleLifespanVar 2.0
+set ParticleSizeXBase 0.25, ParticleSizeXVar 0.0
+set ParticleSizeYBase 0.35, ParticleSizeYVar 0.0
+set ParticleGrowthYBase 0.005, ParticleGrowthXVar 0.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set ColorMode eColorMode_RGBFadeToSecondary
+set EmitPosConstantZOffset -8.5
+set EmitPosRandomXExtent 25.0
+set EmitPosRandomYExtent 20.2
+set EmitPosRandomZExtent 1.0
+set FlagNonSquareAspect 1
+set FlagOrientWithParticleTrajectory 1
+set GravityScalar 0.25
+set GravityDirection "-2 5 2"
+set FlagActiveProcessingBeforeEmission 1
+set FlagCameraRelativeSystem 1
+set FlagCameraRelativeSystemLatched 1
+set CameraRelativeForward 20.0
+set CameraRelativeUp -5.0
+set VisibilitySphereSize 200.0
+add ParticleEmitter
+set Name Story0Embers, MaxParticles 256, Material mat_PDotGold
+set EmitPeriodBase 0.07, EmitPeriodVar 0.03, EmitVelocityBase 2.0, EmitVelocityVar 3.0, EmitVelocityWiggle 800
+set DragCoefficient 0.2
+set ParticleLifespanBase 6.0, ParticleLifespanVar 4.0
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.15
+set ParticleSizeYBase 0.17, ParticleSizeYVar 0.12
+set ParticleGrowthXBase -0.005, ParticleGrowthXVar 0.0
+set ParticleGrowthYBase -0.005, ParticleGrowthXVar 0.0
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -120.0, ParticleSpinVar 100.0
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.1
+set AlphaModeParam2 0.7
+set ColorMode eColorMode_RGBFadeToSecondary
+set EmitPosConstantZOffset -8.5
+set EmitPosRandomXExtent 15.0
+set EmitPosRandomYExtent 10.2
+set EmitPosRandomZExtent 1.0
+set FlagNonSquareAspect 1
+set FlagOrientWithParticleTrajectory 1
+set GravityScalar 0.20
+set GravityDirection "-2 5 2"
+set FlagActiveProcessingBeforeEmission 1
+set FlagCameraRelativeSystem 1
+set FlagCameraRelativeSystemLatched 1
+set CameraRelativeForward 20.0
+set CameraRelativeUp -5.0
+set VisibilitySphereSize 200.0
+add ParticleEmitter initFrom Story0Embers
+set Name Story0EmbersBurst
+set EmitPosConstantZOffset 6.1
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0
+set ParticleSizeXBase 0.35
+set ParticleSizeYBase 0.4
+set EmitPosRandomXExtent 2.0
+set EmitPosRandomYExtent 0.5
+set EmitPosRandomZExtent 1.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 2.0
+set StopAfterParticleCount 60, EmitVelocityBase 1.0, EmitVelocityVar 2.0
+set FlagSphericalEmissionVelocity 1
+add ParticleEmitter
+set Name MenuSmokeBack, MaxParticles 512, Material mat_particleCloudAngry
+set EmitPeriodBase 0.1, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar 0, EmitVelocityWiggle 500
+set ParticleLifespanBase 5.0, ParticleLifespanVar 1.25
+set ParticleSizeXBase 20.8, ParticleSizeXVar 6.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase 2.0, ParticleSpinVar 6.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.2
+set AlphaModeParam2 0.7
+set ParticleColor 0x6bb6c4ff
+set ParticleColorSecondary 0x2c5473ff
+set ColorMode eColorMode_RGBFadeToSecondary
+set GravityDirection "0 0 0.5"
+set GravityScalar 1.0
+set ParticleSystemPrepopulateTime 3
+set EmitPosConstantZOffset -12.5
+set EmitPosRandomXExtent 35.0
+set EmitPosRandomYExtent 0.0
+set EmitPosRandomZExtent 2.0
+set GravityScalar 0.01
+set GravityDirection "-50 0 1"
+set FlagActiveProcessingBeforeEmission 1
+set FlagCameraRelativeSystem 1
+set FlagCameraRelativeSystemLatched 1
+set CameraRelativeForward 10.0
+set CameraRelativeUp -5.0
+set VisibilitySphereSize 200.0
+add ParticleEmitter initFrom MenuSmokeBack
+set Name MenuSmokeFront
+set CameraRelativeForward 3.0
+set ParticleSizeXBase 0.8, ParticleSizeXVar 2.1
+set ParticleColor 0xff7624ff
+set ParticleColorSecondary 0x7eebffff
+set CameraRelativeUp 4.0
+set EmitPosRandomXExtent 15.0
+set EmitPosRandomYExtent 0.0
+set EmitPosRandomZExtent 0.5
+set GravityScalar 0.01
+set GravityDirection "-7 0 1"
+add ParticleEmitter initFrom MenuSmokeBack
+set Name MenuSmokeDark
+set EmitPeriodBase 0.01, EmitPeriodVar 0.0, EmitVelocityBase 2, EmitVelocityVar 0, EmitVelocityWiggle 500
+set ParticleSizeXBase 3.8, ParticleSizeXVar 2.1
+set ParticleColor 0x202e3eff
+set ParticleColorSecondary 0x232932ff
+set EmitPosRandomXExtent 5.0
+set EmitPosRandomYExtent 0.0
+set EmitPosRandomZExtent 0.5
+set GravityScalar 0.01
+set GravityDirection "-7 0 1"
+set CameraRelativeForward 18.0
+set CameraRelativeUp 0.0
+set CameraRelativeRight 0.0
+add ParticleEmitter
+set Name MenuEmbersMetal, MaxParticles 512, Material mat_MetalEmbers
+set EmitPeriodBase 0.001, EmitPeriodVar 0.1, EmitVelocityBase 2.0, EmitVelocityVar 1.0, EmitVelocityWiggle 100
+set DragCoefficient 1.0
+set ParticleLifespanBase 5.0, ParticleLifespanVar 10.0
+set ParticleSizeXBase 0.3, ParticleSizeXVar 0.2
+set ParticleGrowthXBase -0.1, ParticleGrowthXVar 0.1
+set ParticleSpinBase -40.0, ParticleSpinVar 80.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.3
+set ParticleEmissionDir "-5 0 0"
+set ColorMode eColorMode_RGBFadeToSecondary
+set EmitPosConstantZOffset -18.5
+set EmitPosRandomXExtent 25.0
+set EmitPosRandomYExtent 20.2
+set EmitPosRandomZExtent 10.0
+set GravityScalar 0.3
+set GravityDirection "-2 1 5"
+set FlagActiveProcessingBeforeEmission 1
+set FlagCameraRelativeSystem 1
+set FlagCameraRelativeSystemLatched 1
+set CameraRelativeForward -2.0
+set CameraRelativeUp -8.0
+set VisibilitySphereSize 200.0
+set ParticleTexturePagePlayTime 120.0
+set ParticleTexturePageDX 3
+set ParticleTexturePageDY 3
+set FlagParticleTexturePageRandom 1
+set ParticleSystemPrepopulateTime 3
+add ParticleEmitter
+set Name MenuEmbersMetalStream, MaxParticles 512, Material mat_MetalEmbers
+set EmitPeriodBase 0.02, EmitPeriodVar 0.2, EmitVelocityBase 3.0, EmitVelocityVar 3.0, EmitVelocityWiggle 0
+set DragCoefficient 0.5
+set ParticleLifespanBase 5.0, ParticleLifespanVar 10.0
+set ParticleSizeXBase 0.6, ParticleSizeXVar 0.2
+set ParticleGrowthXBase -0.1, ParticleGrowthXVar 0.1
+set ParticleSpinBase -40.0, ParticleSpinVar 80.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.3
+set ParticleEmissionDir "-1 0 0"
+set ColorMode eColorMode_RGBFadeToSecondary
+set EmitPosRandomXExtent 4.0
+set EmitPosRandomYExtent 4.2
+set EmitPosRandomZExtent 1.0
+set GravityScalar 0.3
+set GravityDirection "-6 -1 2"
+set FlagActiveProcessingBeforeEmission 1
+set FlagCameraRelativeSystem 1
+set FlagCameraRelativeSystemLatched 1
+set CameraRelativeForward 28.0
+set CameraRelativeUp -14.0
+set CameraRelativeRight -16.0
+set VisibilitySphereSize 200.0
+set ParticleTexturePagePlayTime 120.0
+set ParticleTexturePageDX 3
+set ParticleTexturePageDY 3
+set FlagParticleTexturePageRandom 1
+set ParticleSystemPrepopulateTime 6

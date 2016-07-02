@@ -1,0 +1,65 @@
+onloadrun {
+menuCmd ConMenuBlur
+gameUI ignoreInputTime 0.1
+sym push MenuHomeNews 1
+sym set SplashPromoLoaded 1
+sym push GL_ChatMinimized 1
+sym push DisableConShop 1
+gameui hide MainBarBackButton
+}
+MO PromoBlackDialog {
+pos 0 0
+layer 13
+}
+MO VignetteInspect {
+pos 0 0
+layer 13
+}
+MO SplashPromoFrame {
+pos 260 25
+layer 15
+}
+MO SplashMenuPromos {
+pos 260 40
+layer 14
+}
+MO MotDFocus {
+pos 0 0
+layer 14
+}
+MO MotDMaster {
+pos 0 840
+layer 13
+}
+onload {
+addUIAnim SplashMenuPromos mas_DialogPop
+addUIAnim PromoOktoberfestBeerR mas_BounceBeer /speed 1.5
+addUIAnim PromoOktoberfestBeerL mas_BounceBeer /speed 1.6
+addUIAnim PromoOktoberfestPretzel mas_BounceOktober /speed 0.8
+addUIAnim PromoOktoberfestHat mas_BounceOktober /speed 0.7
+addUIAnim PromoOktoberfestHotdog mas_BounceOktober /speed 0.6
+pcmd 0.1 input set padFocusFallback MotDFocus
+gameUI focusNameTry MotDFocus
+pcmd 0.1 gameui focusnametry MotDFocus
+pcmd 0.1 sym push CurrentMenu SplashPromo
+}
+onunloadrun {
+sym pop MenuHomeNews
+}
+onunload {
+sym pop DisableConShop
+sym set CurrentMenu CPlay
+sym set SplashPromoLoaded 0
+if sym ArcCustomized == 1 sym set ShowMotDHome 1
+if sym CurrentMenu == CHome menuCmd MainMenuBackgroundSharp
+if sym CurrentMenu == CRoot menuCmd MainMenuBackgroundSharp
+menucmd MainMenuBackgroundSharp
+sym set CurrentMenu MKHome
+gameui show MainBarBackButton
+pcmd 0.2 addUIAnim MainMenuPromo mas_PromoEnter
+pcmd 0.1 gameUI focusNameTry MainBarButtonPlay
+]sym clear _CustomExecSlot
+}
+onloadrun {
+menucmd PromoUpdate
+}

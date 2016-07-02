@@ -1,0 +1,27 @@
+MO DepositLockedDiamonds1 {
+pos $_DiamondsSrcX_ $_DiamondsSrcY_
+layer 20
+}
+MO DepositLockedDiamonds2 {
+relposx $_DiamondsSrcX_ -10
+relposy $_DiamondsSrcY_ 8
+layer 20
+}
+MO DepositLockedDiamonds3 {
+relposx $_DiamondsSrcX_ -5
+relposy $_DiamondsSrcY_ 13
+layer 20
+}
+onload {
+gameUI showGroup DepositLockedDiamonds1 DepositLockedDiamonds2 DepositLockedDiamonds3
+pcmd 0 addUIAnim DepositLockedDiamonds1 mas_DepositLockedDiamonds /speed 0.9
+pcmd 0.1 addUIAnim DepositLockedDiamonds2 mas_DepositLockedDiamonds /speed 0.95
+pcmd 0.2 addUIAnim DepositLockedDiamonds3 mas_DepositLockedDiamonds
+pcmd 0.2 playSound UIOption01.wav
+pcmd 0.5 gameUI disable DepositLockedDiamonds1
+pcmd 0.6 gameUI disable DepositLockedDiamonds2
+pcmd 0.7 gameUI disable DepositLockedDiamonds3
+pcmd 1.2 clearmenu DepositLockedDiamonds
+}
+onunload {
+}

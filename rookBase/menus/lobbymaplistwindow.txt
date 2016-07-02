@@ -1,0 +1,26 @@
+onloadrun {
+sym set LobbyMapListWindowLoaded 1
+gameUI getLastRenderPos MouseCursorMaster UI_LobbyOpenDialog_X UI_LobbyOpenDialog_Y
+sym dec UI_LobbyOpenDialog_X 200
+sym dec UI_LobbyOpenDialog_Y 100
+leaderboards get Maps"
+pcmd t0 gameui refreshfiltername HLB
+pcmd 1.0 menucmd ChooseDefaultCustomMap
+}
+MO LobbyMapListWindow {
+draggableUIElement
+pos $UI_LobbyOpenDialog_X $UI_LobbyOpenDialog_Y /screenClamp 910 550
+layer 13
+}
+onload {
+gameui promoteToTop LobbyMapListWindow
+gameui refreshFilterName HLB
+}
+onunloadrun {
+sym set LobbyMapListWindowLoaded 0
+gameui ignoreInputTime 0.1
+}
+onunload {
+menucmd OptionsCustomMapToggleValidate
+if sym CurrentMenu == MapSelect menuCmd ConMenuMapSelectStandardCancel
+}

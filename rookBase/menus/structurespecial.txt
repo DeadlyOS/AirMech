@@ -1,0 +1,22 @@
+blockLoadOnConsoleSym StructureInspectLoaded
+onloadrun {
+gameUI getLastRenderPos #MapTile@BaseLayoutSlotSel@ _StructureInspectPosX _StructureInspectPosY
+sym inc _StructureInspectPosX -60
+sym set StructureInspectLoaded 1
+}
+MO StructureSpecialWindow {
+pos 100 120
+draggableUIElement
+pos $_StructureInspectPosX $_StructureInspectPosY /screenClamp 200 300
+layer 10
+}
+onload {
+addUIAnim StructureSpecialWindow mas_DialogPopFadein
+gameui promoteToTop StructureSpecialWindow
+}
+onunloadrun {
+sym set StructureInspectLoaded 0
+sym set StructureBuildLoaded 0
+}
+onunload {
+}

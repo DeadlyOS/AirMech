@@ -1,0 +1,92 @@
+add MenuObject
+set Name PowerUpMaster
+set Coords "0 0 350 350"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set FilterName LoadMapStartup
+set DragSourceSym _AdjustUISource_
+set HiddenCheckBySymbol PauseUIOpen
+set Child "PowerUpDragBG -10 -10"
+set Child "PowerUpIcon[PowerUpCountedIcon] -130 -132		R@RookIndex@_UberCounted		0.7"
+set Child "PowerUpIcon[PowerUpTimedIcon] -130 -132			R@RookIndex@_UberTimed			0.7"
+set Child "PowerUpAbilityIcon[PowerUpCountedAbilityIcon] -130.5 -134		R@RookIndex@_UberCounted		0.78"
+set Child "PowerUpAbilityIcon[PowerUpTimedAbilityIcon] -130.5 -134			R@RookIndex@_UberTimed			0.78"
+set Child "PowerUpClockIcon -110 -118						R@RookIndex@_UberTimed			0.9"
+set Child "PowerUpText[PowerUpCounted] 85 15				PowerUpCounted					R@RookIndex@_UberCounted	0.9"
+set Child "PowerUpText[PowerUpTimed] 85 15					PowerUpTimed					R@RookIndex@_UberTimed		0.9"
+set CommandGetFocus "if sym AdjustUIMode == 0 runnow sym clear _AdjustUISource_"
+set CommandGetFocus "if sym AdjustUIMode == 1 runnow sym set _AdjustUISource_ PowerUpMaster"
+set CommandLoseFocus "sym clear _AdjustUISource_"
+set CommandOnMouseDrag "if sym AdjustUIMode == 1 runnow sym set _AdjustUISource_ PowerUpMaster"
+add MenuObject
+set Name PowerUpIcon
+set Texture hud/PowerUp
+set Coords "0 0 93 93"
+set Anchor Center
+set ScaleX @_Arg2_@, ScaleY @_Arg2_@
+set DisabledSymValue @_Arg1_@=0
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+add MenuObject
+set Name PowerUpAbilityIcon
+set Texture hud/PowerUpIcons
+set SaveArgs 1
+set Coords "0 0 64 64"
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimated "128 0 64 64"
+set CoordsAnimated "192 0 64 64"
+set CoordsAnimated "0 64 64 64"
+set CoordsAnimated "64 64 64 64"
+set CoordsAnimated "128 64 64 64"
+set CoordsAnimated "192 64 64 64""
+set CoordsAnimated "0 128 64 64"
+set ScaleX @_Arg2_@, ScaleY @_Arg2_@
+set DisabledSymValue @_Arg1_@=0
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+set Anchor Center
+set CoordsAnimationSymHash PAMI@RookIndex@
+add MenuObject
+set Name PowerUpClockIcon
+set Texture menus/TimerSmall
+set Coords "0 0 48 48"
+set Anchor Center
+set ScaleX @_Arg2_@, ScaleY @_Arg2_@
+set DisabledSymValue @_Arg1_@=0
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+add MenuObject
+set Name PowerUpText
+set Coords "0 0 400 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_ConsoleSymbol @_Arg2_@
+set RenderCB_FontScale @_Arg3_@
+set RenderCB_Flags "/nmi /fitX /outlined8x"
+set DisabledSymValue @_Arg2_@=0
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+add MenuObject
+set Name PowerUpDragBG
+set Texture menus/DialogBox
+set CoordsStart "267 80 23 23"
+set CoordsMid "290 80 199 23"
+set CoordsEnd "489 80 23 23"
+set CoordsStartFocused "267 103 23 44"
+set CoordsMidFocused "290 103 199 44"
+set CoordsEndFocused "489 103 23 44"
+set CoordsStartDisabled "267 147 23 27"
+set CoordsMidDisabled "290 147 199 27"
+set CoordsEndDisabled "489 147 23 27"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 350, RenderCB_DY 100
+set DisabledSymInv AdjustUIMode
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.1

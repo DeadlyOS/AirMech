@@ -1,0 +1,1827 @@
+add MenuObject
+set Name GameLabelCTF
+set Texture menus/DialogGeneral
+set Coords "874 515 150 66"
+set MouseInteract 1
+set Anchor UpperRight
+set FilterName LoadMapStartup
+set ToolTip TT_CTF_Explain
+add MenuObject
+set Name GameLabelSurvival
+set Texture menus/DialogGeneral
+set Coords "804 713 220 66"
+set MouseInteract 1
+set Anchor UpperRight
+set FilterName LoadMapStartup
+set ToolTip TT_Survival_Explain
+add MenuObject
+set Name CanaryReport
+set Texture menus/MainTiles+lang
+set Coords "921 499 98 81"
+set CoordsFocused "921 581 98 81"
+set Anchor LowerRight
+set Focus -2
+set MouseInteract 1
+set FilterName LoadMapStartup
+set Hidden 1
+add MenuObject
+set Name TouchTabTemplate
+set Texture hud/TouchTabs@TeamColor@
+set Coords "32 8 208 240"
+set Focus -2
+set Anchor Left
+set MouseInteract 1
+set Hidden 1
+set ScaleX 0.8
+set ScaleY 0.8
+add MenuObject
+set Name TouchTabFadeTemplate
+set Texture hud/TouchTabs@TeamColor@
+set ScaleX 1.6
+set ScaleY 1.6
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.0
+set Disabled 1
+add MenuObject initFrom TouchTabFadeTemplate
+set Name TouchTabDropFade
+set Coords "272 388 104 120"
+add MenuObject initFrom TouchTabTemplate
+set Name TouchTabDrop
+set Coords "32 264 208 240"
+set Child "TouchTabDropFade 0 0"
+set CommandPress "doDrop"
+set CommandPress "gameUI enable TouchTabDropFade"
+set CommandPress "pcmd 0 gameUI disable TouchTabDropFade"
+add MenuObject initFrom TouchTabTemplate
+set Name TouchTabAir
+set Coords "32 264 208 240"
+add MenuObject initFrom TouchTabFadeTemplate
+set Name TouchTabRobotFade
+set Coords "400 260 104 120"
+add MenuObject initFrom TouchTabTemplate
+set Name TouchTabRobot
+set Coords "288 8 208 240"
+set CommandPress "doTransform"
+set Child "TouchTabRobotFade 0 0"
+set CommandPress "gameUI enable TouchTabRobotFade"
+set CommandPress "pcmd 0 gameUI disable TouchTabRobotFade"
+set Hidden 0
+add MenuObject initFrom TouchTabFadeTemplate
+set Name TouchTabCockpitFade
+set Coords "272 260 104 120"
+set MirrorOnX 1
+add MenuObject initFrom TouchTabTemplate
+set Name TouchTabCockpit
+set CommandPress "if inputBinding cockpitClosed player local tryOpenCockpit OpenCockpitToBuildMenu"
+set CommandPress "if inputBinding cockpitOpen menuCmd CloseCockpitToBuildMenu local"
+set Child "TouchTabCockpitFade 0 0"
+set CommandPress "gameUI enable TouchTabCockpitFade"
+set CommandPress "pcmd 0 gameUI disable TouchTabCockpitFade"
+set MirrorOnX 1
+set Anchor Right
+set Hidden 0
+add MenuObject
+set Name TouchMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set FilterName LoadMapStartup
+set Child "TouchTabDrop -4 0"
+set Child "TouchTabRobot -4 0"
+set Child "TouchTabCockpit 4 0"
+add MenuObject
+set Name GameStartCountdownTimer
+set Coords "0 0 165 165"
+set RenderCB_Font Gunner
+set RenderCB_FontScale 1.9
+set RenderCB _DrawTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_ConsoleSymbol _PreGameTimer
+add MenuObject
+set Name GameStartTimerCircle
+set Texture menus/WaitCircleBig
+set Coords "0 0 256 256"
+set RotationPeriod 1.0
+set ScaleX 1.2225
+set ScaleY 1.2225
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.6
+set Color 0xff0000
+add MenuObject
+set Name GameStartCounter
+set Coords "0 626 398 398"
+set Texture menus/ConLoadout
+set NoAlphaMod 1
+set FilterName LoadMapStartup
+set Alpha 0.65
+set ScaleX 0.75, ScaleY 0.75
+set Child "GameStartTimerCircle -8 -8"
+set Child "GameStartCountdownTimer 67 50"
+add MenuObject
+set Name WarningBorder
+set Texture hud/WarningBorder
+set Coords "0 0 256 128"
+set Layer 0
+set StretchToFillScreen 1
+set BlendMode BlendAdd
+set DisabledAlphaTimeOut 0.4
+set DisabledAlpha 0.0
+set Disabled 1
+add MenuObject
+set Name WarningBorderCritical
+set Texture hud/WarningBorder
+set Coords "0 0 256 128"
+set Layer 0
+set StretchToFillScreen 1
+set BlendMode BlendAdd
+set DisabledAlphaTimeOut 0.4
+set DisabledAlpha 0.0
+set Disabled 1
+add MenuObject
+set Name HelpTipKeyboard
+set Layer 15
+set Hidden 1
+set Anchor LowerLeft
+set DisabledAlphaTimeOut 1.0
+set Texture menus/ControlsHelp
+set Coords "1 1 1022 254"
+add MenuObject initFrom HelpTipKeyboard
+set Name HelpTipGamepad
+set Coords "1 256 1022 254"
+add MenuObject
+set Name HudBuildTabIconPending
+set Coords "14 65 228 114"
+set Texture units/&_BT_Name@_BTInd@&/Icons@TeamColor@
+set TextureAlt units/&_BT_Name@_BTInd@&/IconUnique
+set ScaleX 0.7
+set ScaleY 0.7
+set DrawGreyScale 1
+add MenuObject
+set Name HudBuildTabIconBuilding
+set Coords "14 65 228 114"
+set Material mat_bldUI@_BTInd@
+set Texture units/&_BT_Name@_BTInd@&/Icons@TeamColor@
+set TextureAlt units/&_BT_Name@_BTInd@&/IconUnique
+set Texture2 ]hud/AlphaBoxes
+set MatAlphaTestRefSymbol _BT_Prog@_BTInd@
+set BlendMode NoBlend
+set NoAlphaMod 1
+set Alpha 0.5
+set Layer 4
+set ScaleX 0.7
+set ScaleY 0.7
+set HiddenCheckBySymbol _BT_Wait@_BTInd@
+add MenuObject initFrom HudBuildTabIconBuilding
+set Name HudBuildTabIconBuildingUnder
+set Texture ]hud/AlphaWhite
+set Texture2 ]hud/AlphaBoxesAlt
+set Layer 3
+add MenuObject
+set Name HudBuildTabOverlay
+set Coords "23 99 160 80"
+set Texture hud/QueueTest
+set NoAlphaMod 1
+set Alpha 0.4
+add MenuObject
+set Name HudBuildTabFinish
+set Coords "270 65 228 114"
+set Texture units/&_BT_Name@_BTInd@&/Icons@TeamColor@
+set TextureAlt units/&_BT_Name@_BTInd@&/IconUnique
+set ScaleX 0.7
+set ScaleY 0.7
+set BlendMode BlendAdd
+set Disabled 1
+set DisabledAlphaTimeOut 0.33
+set DisabledAlphaTimeIn 0.0
+add MenuObject initFrom	HudNumbersTemplate
+set Name HudBuildTabTime
+set RenderCB_ConsoleSymbol _BT_Time@_BTInd@
+set RenderCB_FontScale 1.6
+set Coords "0 0 160 70"
+set RenderCB_DX 160
+set RenderCB_DY 70
+set NoAlphaMod 1
+set Alpha 0.8
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject
+set Name HudBuildTabAutobuilt
+set Coords "963 68 53 53"
+set Texture hud/BuildTray
+set Focus -2
+add MenuObject
+set Name HudBuildTabAutoDeployV2Src
+set Coords "814 310 64 48"
+set Texture hud/BuildTray
+set Focus -2
+set ScaleX 0.65
+set ScaleY 0.65
+set SaveArgs 1
+set HiddenCheckBySymbolValue _localClosestAutoDeployV2Src!=@_Arg1_@
+add MenuObject
+set Name HudBuildTab
+set Coords "2 93 188 93"
+set Texture hud/QueueTest
+set PosQuery bt@_BTInd@
+set Child "HudBuildTabIconPending 21 6"
+set Child "HudBuildTabOverlay 21 6"
+set Child "HudBuildTabIconBuildingUnder 21 6"
+set Child "HudBuildTabIconBuilding 21 6"
+set Child "HudBuildTabFinish 21 6"
+set Child "HudBuildTabTime 21 6"
+set Child "HudBuildTabAutobuilt 161 16			/ifSym _BT_AutoBuilt == 1"
+set Child "HudBuildTabAutoDeployV2Src 161 36	/ifSym _BT_AutoDeployV2Src != 0		@_BT_AutoDeployV2Src@"
+add MenuObject
+set Name HudExperienceBarFlash
+set PulseAlpha "0.3 -0.5 0.0"
+set Texture menus/MainWideBars
+set Coords "0 247 962 9"
+set ScaleX sz_1920
+set ScaleY 1.5
+set BlendMode BlendAdd
+set DisabledAlpha 0.0
+set DisabledAlphaTimeOut 0.5
+set Disabled 1
+add MenuObject
+set Name HudIngameXpBar
+set Texture menus/MainWideBars
+set Coords "960 247 962 9"
+set CoordsInterpolatedDest "0 247 962 9"
+set CoordsInterpolantCommand "checkRook @_PTagInd@ exp"
+set ScaleX sz_1920
+set ScaleY 1.5
+set MouseInteract 1
+set BlendMode BlendAdd
+set ToolTip TipMyXPBar
+add MenuObject
+set Name HudIngameXpTop
+set HiddenCheckBySymbolInv ShowXpBar
+set Texture menus/MainWideBars
+set Coords "0 78 1920 16"
+set Anchor Top
+set ScaleX sz_1920
+set NoAlphaMod 1
+set Alpha 0.5
+set FilterName LoadMapStartup
+set Child "HudIngameXpBar 0 1"
+set Child "HudExperienceBarFlash 0 1"
+add MenuObject
+set Name HudFortressBackground
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "384 0 384 43"
+set BlendMode NoBlend
+add MenuObject initFrom HudFortressBackground
+set Name HudFortressBackgroundEnemy
+set MirrorOnX 1
+add MenuObject
+set Name HudFortressShadowLocal
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "768 0 10 48"
+add MenuObject initFrom	HudNumbersTemplate
+set Name HudCreditsLocal
+set RenderCB_ConsoleSymbol CreditsDisp@RookIndex@
+set ToolTip	LabelCreditsCounter
+set RenderCB_DX 128
+set MouseInteract 1
+set RenderCB_Font Gunner
+set RenderCB_FontScale 0.28
+set RenderCB _DrawText
+set RenderCB_Flags "/useTextWidthForMIZone /outlined8x"
+add MenuObject initFrom	HudNumbersTemplate
+set Name HudIncomeLocal
+set RenderCB_ConsoleSymbol Income@RookIndex@
+set RenderCB_Text ""
+set RenderCB_RGBColor "0.4 0.95 0.4"
+set RenderCB_Font Gunner
+set RenderCB_FontScale 0.28
+set ToolTip	LabelIncomeCounter
+set RenderCB_DX 60
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXRight
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /useTextWidthForMIZone"
+add MenuObject initFrom	HudNumbersTemplate
+set Name HudPowerResLocal
+set RenderCB_ConsoleSymbol PowerRes@RookIndex@
+set ToolTip	LabelPowerRes
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FontScale 0.7
+set RenderCB_DX 60
+set RenderCB_DY 20
+set MouseInteract 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /useTextWidthForMIZone /noCommaSep"
+set RenderCB_TextJustify JustifyXRight
+add MenuObject initFrom	HudPowerResLocal
+set Name HudPowerLocal
+set RenderCB_ConsoleSymbol PowerMax@RookIndex@
+set RenderCB_RGBColor "0.5 0.9 1.0"
+set RenderCB_TextJustify JustifyXLeft
+set Child "HudPowerResLocal -62 0"
+add MenuObject
+set Name HudPowerArmyLocal
+set Coords "0 0 191 20"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text Upkeep
+set ToolTip	TT_UnitCapSelf
+set MouseInteract 1
+set RenderCB_ConsoleSymbol2 PowerMaint@RookIndex@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.8
+set RenderCB_DX 191
+set RenderCB_DY 20
+set RenderCB_Flags "/outlined8x /useTextWidthForMIZone /noCommaSep"
+add MenuObject
+set Name HudTimeTotal
+set Coords "0 0 200 30"
+set DisabledAlpha 0.6
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.4
+set RenderCB _MapPlayTime2
+set RenderCB_Font Gunner
+set RenderCB_RGBColor "0.75 0.75 0.75"
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name HudPlayerScore
+set RenderCB _DrawText
+set Coords "0 0 450 60"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_ConsoleSymbol R@RookIndex@_ScoreDisp
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Font Gunner
+set RenderCB_FontScale 0.6
+set RenderCB_Flags "/fitX /shadowed"
+set RenderCB_TextJustify JustifyXCenter
+set HiddenCheckBySymbolInv ShowPlayerScore
+set FilterName LoadMapStartup
+add MenuObject
+set Name HudUpkeepMaxArmyLocal
+set Coords "0 0 100 30"
+set RenderCB_Font Gunner
+set RenderCB _DrawText
+set ToolTip	TT_UnitCapSelf
+set MouseInteract 1
+set RenderCB_ConsoleSymbol PowerInT@_Arg1_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.35
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Flags "/outlined8x /useTextWidthForMIZone /noCommaSep"
+set SaveArgs 1
+add MenuObject
+set Name HudUpkeepCurrentArmyLocal
+set Coords "0 0 100 30"
+set RenderCB_Font Gunner
+set RenderCB _DrawText
+set ToolTip	TT_UnitCapSelf
+set MouseInteract 1
+set RenderCB_ConsoleSymbol PowerMaint@_Arg1_@
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Flags "/outlined8x /useTextWidthForMIZone /noCommaSep"
+set HiddenCheckBySymbolValue PowerUpkeepMax@_Arg1_@=1
+set SaveArgs 2
+add MenuObject initFrom HudUpkeepCurrentArmyLocal
+set Name HudUpkeepOverArmyLocal
+set HiddenCheckBySymbolValue PowerUpkeepMax@_Arg1_@=0
+set RenderCB_RGBColor "1.0 0.5 0.0"
+add MenuObject
+set Name HudPowerArmyTeam0
+set Coords "0 0 95 20"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol PowerMaint@_localAT@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.8
+set RenderCB_DX 95
+set RenderCB_DY 20
+set RenderCB_Flags "/outlined8x /useTextWidthForMIZone /noCommaSep"
+add MenuObject initFrom	HudPowerArmyTeam0
+set Name HudPowerArmyTeam1
+set RenderCB_ConsoleSymbol PowerMaint@_localET@
+add MenuObject initFrom	HudPowerResLocal
+set Name HudPowerResTeam0
+set RenderCB_ConsoleSymbol PowerRes@_localAT@
+add MenuObject initFrom	HudPowerResTeam0
+set Name HudPowerTeam0
+set RenderCB_ConsoleSymbol PowerMax@_localAT@
+set RenderCB_TextJustify JustifyXLeft
+set Child "HudPowerResTeam0 -62 0"
+set RenderCB_RGBColor "0.5 0.9 1.0"
+add MenuObject initFrom	HudPowerResLocal
+set Name HudPowerResTeam1
+set RenderCB_ConsoleSymbol PowerRes@_localET@
+add MenuObject initFrom	HudPowerResTeam1
+set Name HudPowerTeam1
+set RenderCB_ConsoleSymbol PowerMax@_localET@
+set RenderCB_TextJustify JustifyXLeft
+set Child "HudPowerResTeam1 -62 0"
+set RenderCB_RGBColor "0.5 0.9 1.0"
+add MenuObject initFrom	HudNumbersTemplate
+set Name HudPowerGenLocal
+set RenderCB_ConsoleSymbol PowerGen@RookIndex@
+set RenderCB_Text ""
+set RenderCB_RGBColor "1.0 0.8 0.3"
+set RenderCB_FontScale 0.7
+set ToolTip	LabelPowerGen
+set RenderCB_DX 60
+set RenderCB_DY 20
+set MouseInteract 1
+set HiddenCheckBySymbolValue PowerGenNeg@RookIndex@!0
+set RenderCB_TextJustify JustifyXRight
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /useTextWidthForMIZone"
+add MenuObject initFrom	HudPowerGenLocal
+set Name HudPowerGenTeam0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol PowerGen@_localAT@
+set HiddenCheckBySymbolValue PowerGenNeg@_localAT@!0
+add MenuObject initFrom	HudPowerGenLocal
+set Name HudPowerGenTeam1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol PowerGen@_localET@
+set HiddenCheckBySymbolValue PowerGenNeg@_localET@!0
+add MenuObject initFrom	HudPowerGenLocal
+set Name HudPowerGenLocalNeg
+set HiddenCheckBySymbolValue PowerGenNeg@RookIndex@!1
+set RenderCB_RGBColor "1.0 0.2 0.2"
+add MenuObject initFrom	HudPowerGenLocalNeg
+set Name HudPowerGenTeam0Neg
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol PowerGen@_localAT@
+set HiddenCheckBySymbolValue PowerGenNeg@_localAT@!1
+add MenuObject initFrom	HudPowerGenLocalNeg
+set Name HudPowerGenTeam1Neg
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol PowerGen@_localET@
+set HiddenCheckBySymbolValue PowerGenNeg@_localET@!1
+add MenuObject initFrom	HudPowerGenLocal
+set Name HudPowerGenLocalOther
+set RenderCB_ConsoleSymbol PowerGen@RookIndexOther@
+add MenuObject initFrom	HudPowerGenLocalNeg
+set Name HudPowerGenLocalNegOther
+set RenderCB_ConsoleSymbol PowerGen@RookIndexOther@
+set HiddenCheckBySymbolValue PowerGenNeg@RookIndexOther@!1
+set RenderCB_RGBColor "1.0 0.2 0.2"
+add MenuObject initFrom	HudPowerGenLocal
+set Name HudPowerInLocal
+set RenderCB_ConsoleSymbol PowerIn@RookIndex@
+set RenderCB_RGBColor "1.0 0.9 0.3"
+set ToolTip	LabelPowerIn
+add MenuObject initFrom	HudPowerInLocal
+set Name HudPowerInLocalOther
+set RenderCB_ConsoleSymbol PowerIn@RookIndexOther@
+add MenuObject initFrom	HudPowerGenLocal
+set Name HudPowerOutLocal
+set RenderCB_ConsoleSymbol PowerOut@RookIndex@
+set RenderCB_RGBColor "1.0 0.3 0.0"
+set ToolTip	LabelPowerOut
+add MenuObject initFrom	HudPowerOutLocal
+set Name HudPowerOutLocalOther
+set RenderCB_ConsoleSymbol PowerOut@RookIndexOther@
+add MenuObject initFrom	HudNumbersTemplate
+set Name HudUnitCountLocal
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_DX 40
+set RenderCB_ConsoleSymbol Units@RookIndex@
+add MenuObject initFrom	HudLabelTemplate
+set Name HudUnitCountLabelLocal
+set RenderCB_Text MaxUnits
+set RenderCB_ConsoleSymbol2 MaxUnits@RookIndex@
+set Child "HudUnitCountLocal -258 2"
+set ToolTip	LabelMaxUnitsCounter
+set MouseInteract 1
+set MouseInteractZoneExpand "-35 0 0 0"
+add MenuObject initFrom	HudNumbersTemplate
+set Name HudUnitCountLocal0
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_DX 40
+set RenderCB_ConsoleSymbol Units0
+add MenuObject initFrom	HudLabelTemplate
+set Name HudUnitCountLabelLocal0
+set RenderCB_Text MaxUnits
+set RenderCB_ConsoleSymbol2 MaxUnits0
+set Child "HudUnitCountLocal0 -258 2"
+set ToolTip	LabelMaxUnitsCounter
+set MouseInteract 1
+set MouseInteractZoneExpand "-35 0 0 0"
+add MenuObject initFrom	HudNumbersTemplate
+set Name HudUnitCountLocal1
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_DX 40
+set RenderCB_ConsoleSymbol Units1
+add MenuObject initFrom	HudLabelTemplate
+set Name HudUnitCountLabelLocal1
+set RenderCB_Text MaxUnits
+set RenderCB_ConsoleSymbol2 MaxUnits1
+set Child "HudUnitCountLocal1 -258 2"
+set ToolTip	LabelMaxUnitsCounter
+set MouseInteract 1
+set MouseInteractZoneExpand "-35 0 0 0"
+add MenuObject initFrom	HudNumbersTemplate
+set Name OutpostBonusFactoryCount
+set RenderCB_ConsoleSymbol Factories@_Arg1_@
+set RenderCB_Text ""
+set Coords "0 0 @_Arg3_@ @_Arg4_@"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY @_Arg4_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale @_Arg2_@
+set SaveArgs 4
+add MenuObject
+set Name OutpostBonusFactory
+set Texture menus/MainTiles+lang
+set HiddenCheckBySymbolInv HasFactories@_Arg1_@
+set Coords "4 242 72 72"
+set NoAlphaMod 1
+set Alpha 0.8
+set MouseInteract 1
+set ToolTip TT_HudFactory
+set SaveArgs 4
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set Child "OutpostBonusFactoryCount 0 30	@_Arg1_@ @_Arg2_@ @_Arg3_@ @_Arg4_@"
+add MenuObject initFrom	HudNumbersTemplate
+set Name OutpostBonusPowerstationCount
+set RenderCB_ConsoleSymbol Powerstations@_Arg1_@
+set RenderCB_Text ""
+set Coords "0 0 @_Arg3_@ @_Arg4_@"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY @_Arg4_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale @_Arg2_@
+set SaveArgs 4
+add MenuObject
+set Name OutpostBonusPowerstation
+set Texture menus/MainTiles+lang
+set HiddenCheckBySymbolInv HasPowerstations@_Arg1_@
+set Coords "77 242 72 72"
+set NoAlphaMod 1
+set Alpha 0.8
+set MouseInteract 1
+set ToolTip TT_HudPowerstation
+set SaveArgs 4
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set Child "OutpostBonusPowerstationCount 0 30	@_Arg1_@ @_Arg2_@ @_Arg3_@ @_Arg4_@"
+add MenuObject
+set Name TeamBuildTechTemplate
+set Texture menus/MainTiles+lang
+set Coords "384 242 72 72"
+set NoAlphaMod 1
+set Alpha 0.8
+set MouseInteract 1
+set ToolTip TT_HudPowerstation
+set SaveArgs 4
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+add MenuObject initFrom TeamBuildTechTemplate
+set Name TeamIsBuildingTech1
+set HiddenCheckBySymbol builtTech1T@_Arg1_@
+set HiddenCheckBySymbolInv bldTech1T@_Arg1_@
+set PulseAlpha "0.6 -0.5 1.0"
+add MenuObject initFrom TeamBuildTechTemplate
+set Name TeamHasBuiltTech1
+set Alpha 1.0
+set HiddenCheckBySymbolInv builtTech1T@_Arg1_@
+set HiddenCheckBySymbol bldTech2T@_Arg1_@
+set HiddenCheckBySymbol2 builtTech2T@_Arg1_@
+add MenuObject initFrom TeamBuildTechTemplate
+set Name TeamIsBuildingTech2
+set Texture menus/MainTiles+lang
+set Coords "459 242 72 72"
+set HiddenCheckBySymbol builtTech2T@_Arg1_@
+set HiddenCheckBySymbolInv bldTech2T@_Arg1_@
+set PulseAlpha "0.6 -0.5 1.0"
+add MenuObject initFrom TeamBuildTechTemplate
+set Name TeamHasBuiltTech2
+set Alpha 1.0
+set Texture menus/MainTiles+lang
+set Coords "459 242 72 72"
+set HiddenCheckBySymbolInv builtTech2T@_Arg1_@
+add MenuObject
+set Name HudRightShadow
+set Texture menus/DialogMain
+set Coords "10 402 390 50"
+add MenuObject
+set Name HudMasterAllyTeam0Spec
+set Texture menus/DialogMain
+set Coords "1 463 510 50"
+set FilterName LoadMapStartup
+set ScaleX 1.35
+set ContainerOnly 1
+set Child "HudUpkeepMaxArmyLocal 860 42			@_localAT@"
+set Child "HudUpkeepCurrentArmyLocal 810 8		@_localAT@ 	0.55"
+set Child "HudUpkeepOverArmyLocal 810 8			@_localAT@ 	0.55"
+add MenuObject
+set Name HudMasterAllyTeam1Spec
+set ContainerOnly 1
+set Coords "0 0 480 50"
+set FilterName LoadMapStartup
+set Anchor UpperRight
+set ContainerOnly 1
+set Child "HudUpkeepMaxArmyLocal -425 42			@_localET@"
+set Child "HudUpkeepCurrentArmyLocal -475 8		@_localET@ 	0.55"
+set Child "HudUpkeepOverArmyLocal -475 8			@_localET@ 	0.55"
+add MenuObject
+set Name HudInfoPlayerHealth
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "195 184 186 12"
+set CoordsInterpolatedDest "9 184 186 12"
+set CoordsInterpolantCommand "checkRook @_PTagInd@ health"
+add MenuObject
+set Name HudInfoPlayerHealthSpec
+set Texture hud/PlayerStatus
+set CoordsStart 		"2 471 4 4"
+set CoordsMid 			"6 471 21 4"
+set CoordsEnd 			"27 471 4 4"
+set CoordsStartFocused 	"2 475 4 9"
+set CoordsMidFocused 	"6 475 21 9"
+set CoordsEndFocused 	"27 475 4 9"
+set CoordsStartDisabled "2 484 4 4"
+set CoordsMidDisabled 	"6 484 21 4"
+set CoordsEndDisabled 	"27 484 4 4"
+set RenderCB _Draw_G3x3_HealthBar
+set RenderCB_IntArg @_PTagInd@
+set RenderCB_DX 186
+set RenderCB_DY 11
+add MenuObject
+set Name HudInfoPilotLeft
+set Texture pilots/&PilotCustom@_PTagInd@&Icon+lang
+set Coords "70 64 182 57"
+set ToolTip MF_CustomDesc_Pilot&PilotCustom@_PTagInd@&
+set MouseInteract 1
+set ScaleX 0.69
+set ScaleY 0.69
+add MenuObject initFrom HudInfoPilotLeft
+set Name HudInfoPilotRight
+set MirrorOnX 1
+add MenuObject
+set Name P_FactionTagHud
+set Coords "0 0 334 32"
+set DisabledAlpha 0.5
+set FilterName LoadMapStartup
+set RenderCB_DX 334
+set RenderCB_DY 28
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text SP
+set RenderCB_ConsoleSymbol2 P_FTag@_localET@
+set RenderCB_Flags "/shadowColor2 /outlined8x /noCommaSep /fitX"
+set SaveArgs 1
+set RenderCB_TextJustifyVertical JustifyYCenter
+add MenuObject initFrom P_FactionTagHud
+set Name P_FactionTagHudEnemyText
+add MenuObject initFrom P_FactionTagHud
+set Name P_FactionTagHudAllyText
+set RenderCB_ConsoleSymbol2 P_FTag@_localAT@
+add MenuObject
+set Name P_FactionTagHudAlly
+set Texture ]hud/HudFortressBar&TeamColor@_localAT@&
+set RenderCB _Draw_G3x3
+set CoordsStart "97 418 48 1"
+set CoordsMid "146 418 28 1"
+set CoordsEnd "218 418 40 1"
+set CoordsStartFocused "97 419 48 40"
+set CoordsMidFocused "146 419 28 40"
+set CoordsEndFocused "218 419 40 40"
+set CoordsStartDisabled "97 459 48 1"
+set CoordsMidDisabled "146 459 28 1"
+set CoordsEndDisabled "218 459 40 1"
+set RenderCB_DX 404
+set RenderCB_DY 42
+set Coords "0 0 404 42"
+set NoAlphaMod 1
+set Alpha 0.8
+set HiddenCheckBySymbolInv P_FTagSame@_localAT@
+set Child "P_FactionTagHudAllyText 33 0"
+add MenuObject
+set Name P_FactionTagHudEnemy
+set Texture ]hud/HudFortressBar&TeamColor@_localET@&
+set RenderCB _Draw_G3x3
+set CoordsStart "97 369 40 1"
+set CoordsMid "156 369 28 1"
+set CoordsEnd "210 369 48 1"
+set CoordsStartFocused "97 370 40 40"
+set CoordsMidFocused "156 370 28 40"
+set CoordsEndFocused "210 370 48 40"
+set CoordsStartDisabled "97 410 40 1"
+set CoordsMidDisabled "156 410 28 1"
+set CoordsEndDisabled "210 410 48 1"
+set RenderCB_DX 404
+set RenderCB_DY 42
+set Coords "0 0 404 42"
+set NoAlphaMod 1
+set Alpha 0.8
+set HiddenCheckBySymbolInv P_FTagSame@_localET@
+set Child "P_FactionTagHudEnemyText 35 0"
+add MenuObject
+set Name HudInfoAirMechLeft
+set Texture hud/PlayerStatus
+set SaveArgs 1
+set Coords "0 384 40 40"
+set CoordsAnimated "0 384 40 40"
+set CoordsAnimated "40 384 40 40"
+set CoordsAnimated "80 384 40 40"
+set CoordsAnimated "120 384 40 40"
+set CoordsAnimated "160 384 40 40"
+set CoordsAnimated "200 384 40 40"
+set CoordsAnimated "240 384 40 40"
+set CoordsAnimated "280 384 40 40"
+set CoordsAnimated "320 384 40 40"
+set CoordsAnimationSymHash PAMI@_Arg1_@
+add MenuObject
+set Name HudInfoBoostXp
+set Texture hud/PlayerStatus
+set SaveArgs 1
+set Coords "253 464 43 48"
+set MouseInteract 1
+set ToolTip TT_BoostXpIngame
+set HiddenCheckBySymbolInv P_BoostXp@_Arg1_@
+add MenuObject
+set Name HudInfoBoostKudos
+set Texture hud/PlayerStatus
+set SaveArgs 1
+set Coords "300 464 43 48"
+set MouseInteract 1
+set ToolTip TT_BoostKudosIngame
+set HiddenCheckBySymbolInv P_BoostKd@_Arg1_@
+set SymCondRenderOffsetX "P_BoostXp@_Arg1_@ 0 -41"
+add MenuObject
+set Name HudInfoBoostCake
+set Texture hud/PlayerStatus
+set SaveArgs 1
+set Coords "393 464 43 48"
+set MouseInteract 1
+set ToolTip TT_BoostCakeIngame
+set HiddenCheckBySymbolInv P_BoostYC@_Arg1_@
+set RenderOffsetX &P_BoostYCXOffset@_Arg1_@&
+add MenuObject initFrom HudInfoAirMechLeft
+set Name HudInfoAirMechRight
+set MirrorOnX 1
+add MenuObject
+set Name HudInfoAirMechDead
+set Texture hud/BuildTray
+set Coords "251 328 57 48"
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.85
+set RenderCB _DrawText
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Offset "0 -2"
+set RenderCB_Text ""
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set RenderCB_ConsoleSymbol AMResp@_Arg1_@
+set RenderCBExcludesDefaultRender 0
+set RenderCB_RGBColor 0xff4127
+set HiddenCheckBySymbol AMA@_Arg1_@
+add MenuObject initFrom HudInfoAirMechDead
+set Name HudInfoAirMechDeadRight
+set MirrorOnX 1
+set RenderCB_Offset "3 -2"
+add MenuObject initFrom HudInfoBoostXp
+set Name HudInfoBoostXpRight
+set MirrorOnX 1
+add MenuObject initFrom HudInfoBoostKudos
+set Name HudInfoBoostKudosRight
+set Coords "344 464 43 48"
+set SymCondRenderOffsetX "P_BoostXp@_Arg1_@ 0 41"
+add MenuObject initFrom HudInfoBoostCake
+set Name HudInfoBoostCakeRight
+set MirrorOnX 1
+add MenuObject initFrom HudNameTemplate
+set Name HudInfoName
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /fitX /noCommaSep /shadowColor2"
+set RenderCB_ConsoleSymbol P_Name@_PTagInd@
+set RenderCB_FontScale 0.7
+set Coords "0 0 235 30"
+set MouseInteractZoneExpand "80 0 10 0"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXRight
+add MenuObject initFrom HudInfoName
+set Name HudInfoNameRight
+set RenderCB_TextJustify JustifyXLeft
+add MenuObject initFrom HudInfoName
+set Name HudInfoNameSpec
+set MouseInteract 1
+set Focus -2
+set CommandPress ">if sym P_Player@_PTagInd@IsAI == 0 menucmd EventLogUsernameSymOp local P_Name@_PTagInd@"
+add MenuObject initFrom HudInfoNameSpec
+set Name HudInfoNameSpecRight
+set RenderCB_TextJustify JustifyXLeft
+set MouseInteractZoneExpand "0 0 -80 0"
+add MenuObject initFrom	HudNumbersTemplate
+set Name HudInfoGameLevel
+set RenderCB _DrawText
+set Coords "0 0 35 30"
+set RenderCB_DX 40
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol R@_PTagInd@_Level
+set RenderCB_FontScale 0.75
+add MenuObject initFrom	HudNumbersTemplate
+set Name HudPlayerCreditsSpec
+set RenderCB_ConsoleSymbol Credits@_Arg1_@
+set ToolTip	LabelCreditsCounter
+set RenderCB_Font Gunner
+set RenderCB_DX 128
+set SaveArgs 1
+set MouseInteract 1
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /useTextWidthForMIZone"
+set RenderCB_FontScale 0.35
+set RenderCB_RGBColor "0.2 1.0 0.4"
+set HiddenCheckBySymbolInv SpectateEconomy
+add MenuObject
+set Name HudInfoMasterLeft
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "9 131 315 48"
+set HiddenCheckBySymbolInv ShowAlliedPlayers
+set FilterName LoadMapStartup
+set Child "HudInfoPilotLeft 0 4"
+set Child "HudInfoGameLevel 238 -2"
+set Child "HudInfoPlayerHealth 85 32"
+set Child "HudInfoAirMechLeft 270 4		@_PTagInd@"
+set Child "HudInfoAirMechDead 270 0		@_PTagInd@"
+set Child "HudInfoBoostXp 312 0			@_PTagInd@"
+set Child "HudInfoBoostKudos 353 0		@_PTagInd@"
+set Child "HudInfoBoostCake 394 0		@_PTagInd@"
+set Child "HudInfoName 3 -1"
+add MenuObject
+set Name ArenaStatusFrame
+set Texture hud/HudFortressBar@TC_LocalPlayer@
+set Coords "398 123 425 55"
+set MirrorOnX @_Arg1_@
+set ScaleX 1.3, ScaleY 1.3
+set SaveArgs 1
+add MenuObject
+set Name HudArenaHealth
+set Texture ]hud/HudFortressBar&TC@_Arg1_@&
+set Coords "391 0 394 48"
+set ScaleX 1.3, ScaleY 1.3
+set CoordsInterpolatedDest "0 0 394 48"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommand "checkRook @_Arg1_@ health"
+set SaveArgs 4
+set MouseInteract 1
+set MirrorOnX @_Arg2_@
+set FirstDrawnChildren 1
+set Child "ArenaStatusFrame @_Arg4_@ 4 @_Arg3_@"
+add MenuObject
+set Name HudArenaMasterLeft
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "9 131 315 48"
+set FilterName LoadMapStartup
+set Child "HudInfoPilotLeft 0 4"
+set Child "HudInfoName 85 -3"
+set Child "HudInfoGameLevel 238 -2"
+set Child "HudInfoPlayerHealth 85 32"
+set Child "HudArenaHealth 270 -5		@_PTagInd@	0	1	0"
+set Child "HudInfoAirMechLeft 270 44		@_PTagInd@"
+set Child "HudInfoAirMechDead 270 40		@_PTagInd@"
+set Child "HudInfoBoostXp 312 40			@_PTagInd@"
+set Child "HudInfoBoostKudos 353 40		@_PTagInd@"
+set Child "HudInfoBoostCake 394 40		@_PTagInd@"
+add MenuObject
+set Name SpectateInfoBackbar
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "2000 42"
+set Color 0x000000
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name HudInfoMasterLeftSpec
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "9 134 315 45"
+set FilterName LoadMapStartup
+set FirstDrawnChildren 1
+set Child "SpectateInfoBackbar 0 0"
+set Child "HudInfoPilotLeft 0 1"
+set Child "HudInfoNameSpec 3 -6"
+set Child "HudInfoGameLevel 238 -5"
+set Child "HudInfoPlayerHealthSpec 85 29"
+set Child "HudInfoAirMechLeft 270 1		@_PTagInd@"
+set Child "HudInfoAirMechDead 270 -3		@_PTagInd@"
+set Child "AbilitiesSpecLeft 312 0"
+set Child "SpecArmyContainer 342 1 	@_PTagInd@ &TeamColor@_PTagInd@&"
+set Child "HudPlayerCreditsSpec 700 -3 @_PTagInd@"
+set Child "ToggleSpectateEconomy 315 0"
+add MenuObject
+set Name HudInfoHealthPatch
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "9 160 50 15"
+set ScaleX 4.0
+add MenuObject
+set Name HudArenaMasterRight
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "9 131 315 48"
+set MirrorOnX 1
+set FilterName LoadMapStartup
+set Child "HudInfoHealthPatch 74 29"
+set Child "HudInfoPilotRight 190 4"
+set Child "HudInfoName 75 2"
+set Child "HudInfoGameLevel 38 -2"
+set Child "HudArenaHealth -467 -5		@_PTagInd@	1	0	-40"
+set Child "HudInfoAirMechRight 4 44		@_PTagInd@"
+set Child "HudInfoAirMechDeadRight -12 40		@_PTagInd@"
+set Child "HudInfoBoostXpRight -40 40		@_PTagInd@"
+set Child "HudInfoBoostKudosRight -81 40		@_PTagInd@"
+set Child "HudInfoBoostCakeRight -122 40		@_PTagInd@"
+add MenuObject
+set Name HudInfoMasterRight
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "9 131 315 48"
+set MirrorOnX 1
+set Anchor UpperRight
+set HiddenCheckBySymbolInv ShowEnemyPlayers
+set FilterName LoadMapStartup
+set Layer 0
+set Child "HudInfoHealthPatch 74 29"
+set Child "HudInfoPilotRight 190 4"
+set Child "HudInfoNameRight 77 4"
+set Child "HudInfoGameLevel 38 -2"
+set Child "HudInfoAirMechRight 4 4		@_PTagInd@"
+set Child "HudInfoAirMechDeadRight -12 0		@_PTagInd@"
+set Child "HudInfoBoostXpRight -40 0		@_PTagInd@"
+set Child "HudInfoBoostKudosRight -81 0		@_PTagInd@"
+set Child "HudInfoBoostCakeRight -122 0		@_PTagInd@"
+add MenuObject
+set Name ToggleSpectateEconomy
+set Coords "0 0 500 42"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set CommandPress "sym toggle SpectateEconomy"
+add MenuObject
+set Name HudInfoMasterRightSpec
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "9 134 315 45"
+set MirrorOnX 1
+set Anchor UpperRight
+set FilterName LoadMapStartup
+set Layer 0
+set Child "HudInfoPilotRight 190 1"
+set Child "HudInfoNameSpecRight 78 -6"
+set Child "HudInfoGameLevel 38 -5"
+set Child "HudInfoPlayerHealthSpec 45 29"
+set Child "HudInfoAirMechRight 4 1		@_PTagInd@"
+set Child "HudInfoAirMechDeadRight -12 -3		@_PTagInd@"
+set Child "AbilitiesSpecRight -330 0"
+set Child "SpecArmyContainer -391 1 	@_PTagInd@ &TeamColor@_PTagInd@&"
+set Child "HudPlayerCreditsSpec -558 -3 @_PTagInd@"
+set Child "ToggleSpectateEconomy -500 0		/platform !consolePlatform"
+add MenuObject
+set Name SpecArmyContainer
+set ContainerOnly 1
+set SaveArgs 2
+set HiddenCheckBySymbolInv SpectateEconomy
+set HiddenCheckBySymbol P_Player@_Arg1_@IsAI
+set Child "SpecArmySlot 0 0 @_Arg1_@ @_Arg2_@ 0"
+set Child "SpecArmySlot 40 0 @_Arg1_@ @_Arg2_@ 1"
+set Child "SpecArmySlot 80 0 @_Arg1_@ @_Arg2_@ 2"
+set Child "SpecArmySlot 120 0 @_Arg1_@ @_Arg2_@ 3"
+set Child "SpecArmySlot 160 0 @_Arg1_@ @_Arg2_@ 4"
+set Child "SpecArmySlot 200 0 @_Arg1_@ @_Arg2_@ 5"
+set Child "SpecArmySlot 240 0 @_Arg1_@ @_Arg2_@ 6"
+set Child "SpecArmySlot 280 0 @_Arg1_@ @_Arg2_@ 7"
+set Child "SpecGuardSlot 330 0 @_Arg1_@ @_Arg2_@"
+add MenuObject
+set Name SpecArmySlotBackground
+set Texture menus/LoadoutGrid
+set Coords "0 0 186 186"
+set ScaleX 0.23
+set ScaleY 0.23
+add MenuObject
+set Name SpecArmySlotCount
+set RenderCB _DrawTextShadowedNMI
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol ASc@_Arg2_@P@_Arg1_@
+set SaveArgs 2
+set RenderCB_FontScale 0.25
+add MenuObject
+set Name SpecArmySlotBuildCount
+set RenderCB _DrawTextShadowedNMI
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol ASb@_Arg2_@P@_Arg1_@
+set SaveArgs 2
+set RenderCB_RGBColor "1 0.2 0.1"
+set RenderCB_FontScale 0.25
+add MenuObject
+set Name SpecArmySlot
+set Texture units/&AS@_Arg3_@P@_Arg1_@&/Icons@_Arg2_@
+set TextureAlt units/&AS@_Arg3_@P@_Arg1_@&/IconUnique
+set SaveArgs 3
+set Coords "38 38 200 180"
+set ToolTip MF_CustomTip_&AS@_Arg3_@P@_Arg1_@&
+set MouseInteract 1
+set ScaleX 0.23
+set ScaleY 0.23
+set FirstDrawnChildren 1
+set Child "SpecArmySlotBackground -2 -2"
+set Child "SpecArmySlotBuildCount 26 0 @_Arg1_@ @_Arg3_@"
+set Child "SpecArmySlotCount 0 20 @_Arg1_@ @_Arg3_@"
+add MenuObject
+set Name SpecGuardSlot
+set Texture units/&GuardCustom@_Arg1_@&/Icons@_Arg2_@
+set TextureAlt units/&GuardCustom@_Arg1_@&/IconUnique
+set SaveArgs 2
+set Coords "38 38 200 180"
+set ToolTip MF_CustomTip_&GuardCustom@_Arg1_@&
+set MouseInteract 1
+set ScaleX 0.23
+set ScaleY 0.23
+set FirstDrawnChildren 1
+set Child "SpecArmySlotBackground -2 -2"
+add MenuObject
+set Name HudGlobalPowerLocalFlash
+set Texture ]hud/PowerBarGradient
+set Coords "0 250 256 2"
+set CoordsInterpolatedDest "0 137 256 2"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult pPower@_localAT@
+set ToolTip	TipMyPowerBar
+set MouseInteract 1
+set ScaleX 1.5
+set ScaleY 4.0
+set BlendMode BlendAdd
+set PulseAlpha "0.3 -1.0 -0.5"
+add MenuObject
+set Name HudGlobalPowerLocalBackground
+set Texture hud/PowerBarGradient
+set Coords "128 126 12 386"
+set ScaleX 1.502
+set ScaleY 1.332
+set NoAlphaMod 1
+set Alpha 0.66
+add MenuObject initFrom HudGlobalPowerLocalBackground
+set Name HudGlobalPowerLocalBackgroundOther
+set MirrorOnX 1
+add MenuObject
+set Name HudPowerTest
+set Texture hud/PowerBars
+set Coords "961 0 400 128"
+add MenuObject
+set Name HudPowerCapacity
+set Texture ]hud/PowerBar@TC_LocalPlayer@
+set Coords "46 25 512 39"
+set CoordsInterpolatedDest "512 25 512 39"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult pPowerMax@RookIndex@
+set ToolTip	TipMyPowerBar
+add MenuObject initFrom HudPowerCapacity
+set Name HudPowerCapacityMirror
+set MirrorOnX 1
+add MenuObject initFrom HudPowerCapacity
+set Name HudPowerCapacityTeam0
+set CoordsInterpolantCommandResult pPowerMax@_localAT@
+add MenuObject initFrom HudPowerCapacity
+set Name HudPowerCapacityTeam1
+set CoordsInterpolantCommandResult pPowerMax@_localET@
+set MirrorOnX 1
+add MenuObject
+set Name HudGlobalPowerLocal
+set Texture ]hud/PowerBars
+set Coords "24 46 512 36"
+set CoordsInterpolatedDest "490 46 512 36"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult pPowerScl@RookIndex@
+set ToolTip	TT_NormalPower
+set MouseInteract 1
+set HiddenCheckBySymbolValue PowerLvl@RookIndex@!2
+add MenuObject initFrom HudGlobalPowerLocal
+set Name HudGlobalPowerTeam0
+set CoordsInterpolantCommandResult pPowerScl@_localAT@
+set HiddenCheckBySymbolValue PowerLvl@_localAT@!2
+add MenuObject initFrom HudGlobalPowerLocal
+set Name HudGlobalPowerTeam1
+set CoordsInterpolantCommandResult pPowerScl@_localET@
+set HiddenCheckBySymbolValue PowerLvl@_localET@!2
+set MirrorOnX 1
+add MenuObject initFrom HudGlobalPowerLocal
+set Name HudGlobalPowerLocalMax
+set Coords "24 0 512 36"
+set ToolTip	TT_HighPower
+set CoordsInterpolatedDest "490 0 512 36"
+set HiddenCheckBySymbolValue PowerLvl@RookIndex@!3
+add MenuObject initFrom HudGlobalPowerLocalMax
+set Name HudGlobalPowerMaxTeam0
+set CoordsInterpolantCommandResult pPowerScl@_localAT@
+set HiddenCheckBySymbolValue PowerLvl@_localAT@!3
+add MenuObject initFrom HudGlobalPowerLocalMax
+set Name HudGlobalPowerMaxTeam1
+set CoordsInterpolantCommandResult pPowerScl@_localET@
+set HiddenCheckBySymbolValue PowerLvl@_localET@!3
+set MirrorOnX 1
+add MenuObject initFrom HudGlobalPowerLocal
+set Name HudGlobalPowerLocalLow
+set Coords "24 92 512 36"
+set ToolTip	TT_LowPower
+set CoordsInterpolatedDest "490 92 512 36"
+set HiddenCheckBySymbolValue PowerLvl@RookIndex@!1
+add MenuObject initFrom HudGlobalPowerLocalLow
+set Name HudGlobalPowerLowTeam0
+set CoordsInterpolantCommandResult pPowerScl@_localAT@
+set HiddenCheckBySymbolValue PowerLvl@_localAT@!1
+add MenuObject initFrom HudGlobalPowerLocalLow
+set Name HudGlobalPowerLowTeam1
+set CoordsInterpolantCommandResult pPowerScl@_localET@
+set HiddenCheckBySymbolValue PowerLvl@_localET@!1
+set MirrorOnX 1
+add MenuObject initFrom HudGlobalPowerLocal
+set Name HudGlobalPowerLocalNone
+set Coords "24 92 512 36"
+set CoordsInterpolatedDest "490 92 512 36"
+set BlinkAlpha "0.0 0.2 1.0 0.2"
+set ToolTip	TT_NoPower
+set HiddenCheckBySymbolValue PowerLvl@RookIndex@!0
+add MenuObject initFrom HudGlobalPowerLocalNone
+set Name HudGlobalPowerNoneTeam0
+set CoordsInterpolantCommandResult pPowerScl@_localAT@
+set HiddenCheckBySymbolValue PowerLvl@_localAT@!0
+add MenuObject initFrom HudGlobalPowerLocalNone
+set Name HudGlobalPowerNoneTeam1
+set CoordsInterpolantCommandResult pPowerScl@_localET@
+set HiddenCheckBySymbolValue PowerLvl@_localET@!0
+set MirrorOnX 1
+add MenuObject initFrom HudGlobalPowerLocal
+set Name HudGlobalPowerLocalMirror
+set MirrorOnX 1
+add MenuObject initFrom HudGlobalPowerLocalMax
+set Name HudGlobalPowerLocalMaxMirror
+set MirrorOnX 1
+add MenuObject initFrom HudGlobalPowerLocalLow
+set Name HudGlobalPowerLocalLowMirror
+set MirrorOnX 1
+add MenuObject initFrom HudGlobalPowerLocalNone
+set Name HudGlobalPowerLocalNoneMirror
+set MirrorOnX 1
+add MenuObject
+set Name PowerBarsForSpec
+set ContainerOnly 1
+set Child "HudPowerCapacityTeam0 -510 18"
+set Child "HudPowerCapacityTeam1 189 18"
+set Child "HudGlobalPowerTeam0 -510 22"
+set Child "HudGlobalPowerMaxTeam0 -510 22"
+set Child "HudGlobalPowerLowTeam0 -510 22"
+set Child "HudGlobalPowerNoneTeam0 -510 22"
+set Child "HudGlobalPowerTeam1 189 22"
+set Child "HudGlobalPowerMaxTeam1 189 22"
+set Child "HudGlobalPowerLowTeam1 189 22"
+set Child "HudGlobalPowerNoneTeam1 189 22"
+add MenuObject
+set Name PowerBarsForPlayer
+set ContainerOnly 1
+set Child "HudPowerCapacity -510 18"
+set Child "HudPowerCapacityMirror 189 18"
+set Child "HudGlobalPowerLocal -510 22"
+set Child "HudGlobalPowerLocalMax -510 22"
+set Child "HudGlobalPowerLocalLow -510 22"
+set Child "HudGlobalPowerLocalNone -510 22"
+set Child "HudGlobalPowerLocalMirror 189 22"
+set Child "HudGlobalPowerLocalMaxMirror 189 22"
+set Child "HudGlobalPowerLocalLowMirror 189 22"
+set Child "HudGlobalPowerLocalNoneMirror 189 22"
+add MenuObject
+set Name HudPowerMaster
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "115 202 191 54"
+set Anchor Bottom
+set FilterName LoadMapStartup
+set FirstDrawnChildren 1
+set HiddenCheckBySymbolInv ShowPowerbar
+set Child "PowerBarsForPlayer 0 0"
+set Child "HudPowerGenLocal 110 30"
+set Child "HudPowerGenLocalNeg 110 30"
+set Child "HudPowerLocal 65 30"
+set Child "HudPowerArmyLocal 0 -3"
+set Child "HudUpkeepMaxArmyLocal 80 -40			$_localAT"
+set Child "HudUpkeepCurrentArmyLocal -20 -40	$_localAT"
+set Child "HudUpkeepOverArmyLocal -20 -40		$_localAT"
+add MenuObject
+set Name HudPowerOtherTC
+set Texture ]hud/HudFortressBar@TC_LocalPlayersEnemy@
+set Coords "210 202 96 54"
+add MenuObject initFrom HudGlobalPowerLocal
+set Name HudGlobalPowerLocalSpec
+set ScaleY 1.57
+set Child "HudPowerInLocal -20 -40"
+set Child "HudPowerOutLocal -20 -20"
+set Child "HudPowerResLocal 40 -30"
+add MenuObject
+set Name HudGlobalPowerLocalOther
+set Texture ]hud/PowerBarGradient
+set Coords "145 1 1 256"
+set CoordsInterpolatedDest "252 255 1 256"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult pPower@_localET@
+set ToolTip	TipMyPowerBar
+set MouseInteract 1
+set ScaleX 16
+set ScaleY 2.0
+set FirstDrawnChildren 1
+set Child "HudGlobalPowerLocalBackgroundOther -1 -1"
+set FilterName LoadMapStartup
+add MenuObject initFrom HudGlobalPowerLocalOther
+set Name HudGlobalPowerLocalOtherSpec
+set ScaleY 1.57
+set Child "HudPowerInLocalOther -40 -40"
+set Child "HudPowerOutLocalOther -40 -20"
+set Child "HudPowerResLocalOther -90 -30"
+add MenuObject
+set Name HudGlobalPowerLocalOut
+set Texture menus/MainWideBars
+set Coords "960 70 962 9"
+set CoordsInterpolatedDest "0 70 962 9"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult pPowerOut@_localAT@
+set ToolTip	TipMyPowerOut
+set MouseInteract 1
+set BlendMode BlendAdd
+set ScaleY 2.0
+set ScaleX 0.5
+set NoAlphaMod 1
+set Alpha 0.7
+set Color 0xff0000
+add MenuObject
+set Name HudGlobalPowerLocalIn
+set Texture menus/MainWideBars
+set Coords "960 70 962 9"
+set CoordsInterpolatedDest "0 70 962 9"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult pPowerIn@_localAT@
+set ToolTip	TipMyPowerIn
+set MouseInteract 1
+set BlendMode BlendAdd
+set ScaleY 2.0
+set ScaleX 0.5
+set NoAlphaMod 1
+set Alpha 0.7
+add MenuObject
+set Name HudGlobalPowerDetails
+set ContainerOnly 1
+set HiddenCheckBySymbolValue P_AccessLevel=0
+set Child "HudGlobalPowerLocalIn 0 0"
+set Child "HudGlobalPowerLocalOut 0 20"
+set Child "HudPowerInLocal 10 0"
+set Child "HudPowerOutLocal 10 20"
+add MenuObject
+set Name HudFortressHealthLocal
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "391 0 394 48"
+set CoordsInterpolatedDest "0 0 394 48"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult pBase@_localAT@
+set ToolTip	TipMyFortressHealthBar
+set MouseInteract 1
+set MirrorOnX 1
+set CommandPressAlt "if sym P_AccessLevel == 1 loadmenu ChartIngame /fadein 0.1"
+set NotActionableForPurposeOfGameInput 1
+add MenuObject initFrom HudFortressHealthLocal
+set Name HudFortressShieldLocal
+set Coords "391 64 394 28"
+set CoordsInterpolatedDest "0 64 394 28"
+set MatAlphaTestRefSymbol pBaseS@_localAT@
+set BlendMode BlendNoneAlphaTest
+set MirrorOnX 1
+add MenuObject
+set Name  HudFortressHealthLocalFlash
+set PulseAlpha "0.3 -1.0 -0.5"
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "0 0 394 43"
+set BlendMode BlendAdd
+set DisabledAlpha 0.0
+set DisabledAlphaTimeOut 0.5
+set Disabled 1
+set MirrorOnX 1
+add MenuObject initFrom HudFortressHealthLocal
+set Name HudFortressHealthEnemy
+set Texture ]hud/HudFortressBar@TC_LocalPlayersEnemy@
+set ToolTip	TipOtherFortressHealthBar
+set CoordsInterpolantCommandResult pBase@_localET@
+set MirrorOnX 0
+add MenuObject initFrom HudFortressHealthLocal
+set Name HudFortressShieldEnemy
+set Texture ]hud/HudFortressBar@TC_LocalPlayersEnemy@
+set Coords "391 64 394 28"
+set CoordsInterpolatedDest "0 64 394 28"
+set MatAlphaTestRefSymbol pBaseS@_localET@
+set CoordsInterpolantCommandResult pBase@_localET@
+set BlendMode BlendNoneAlphaTest
+set ToolTip	TipOtherFortressHealthBar
+set MirrorOnX 0
+add MenuObject initFrom HudFortressHealthEnemy
+set Name HudSurvivalWaveProgress
+set Texture ]hud/HudFortressBar@TC_SurvivalHorde@
+set ToolTip	""
+set CoordsInterpolantCommandResult waveProgress
+set Coords "391 0 394 48"
+set CoordsInterpolatedDest "0 0 394 48"
+set HiddenCheckBySymbol IsSpectator
+add MenuObject initFrom HudFortressHealthEnemy
+set Name HudSurvivalWaveProgressSpectator
+set Texture ]hud/HudFortressBar@TC_SurvivalHorde@
+set ToolTip	""
+set CoordsInterpolantCommandResult waveProgress
+set Coords "391 20 394 28"
+set CoordsInterpolatedDest "0 20 394 28"
+set MirrorOnX 1
+set ScaleX 0.93
+set HiddenCheckBySymbolInv IsSpectator
+add MenuObject
+set Name GameScoreTemplate
+set Coords "0 0 400 30"
+set DisabledAlpha 0.5
+set RenderCB_DX 400
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.75 0.75 0.75"
+add MenuObject initFrom GameScoreTemplate
+set Name GameTime
+set Coords "0 0 200 30"
+set DisabledAlpha 0.5
+set RenderCB_DX 200
+set RenderCB _GameTime
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_DX 90
+set ToolTip LabelTimeCountdown
+add MenuObject
+set Name MapControlPlayer
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set CoordsInterpolatedDest "170 23 208 12"
+set Coords "379 23 208 12"
+set CoordsInterpolantCommand "checkRook @_Arg1_@ mapcontrol"
+set MouseInteract 1
+set ToolTip TT_MapControl
+set SaveArgs 1
+set ScaleX 1.215
+add MenuObject initFrom MapControlPlayer
+set Name MapControlPlayerSpec
+set ScaleY 1.5
+set ScaleX 1.8225
+add MenuObject
+set Name MapControlEnemy
+set Texture ]hud/HudFortressBar@TC_LocalPlayersEnemy@
+set CoordsInterpolatedDest "170 23 208 12"
+set Coords "379 23 208 12"
+set CoordsInterpolantCommand "checkRook @_Arg1_@ mapcontrol"
+set SaveArgs 1
+set ScaleX 1.22
+set MirrorOnY 1
+set MirrorOnX 1
+add MenuObject initFrom MapControlEnemy
+set Name MapControlEnemySpec
+set ScaleY 1.5
+set ScaleX 1.83
+add MenuObject
+set Name MapControlBase
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set NoAlphaMod 1
+set Alpha 0.3
+set Coords "94 163 105 12"
+set ScaleX 2.43
+set ScaleY 1.2
+set SaveArgs 2
+set Child "MapControlEnemy 1 1	@_Arg2_@"
+set Child "MapControlPlayer 1 1	@_Arg1_@"
+add MenuObject
+set Name MapControlBaseSpec
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "94 163 105 12"
+set ScaleX 3.645
+set ScaleY 1.75
+set SaveArgs 2
+set NoAlphaMod 1
+set Alpha 0.3
+set Child "MapControlEnemySpec 1 1	@_Arg2_@"
+set Child "MapControlPlayerSpec 1 1	@_Arg1_@"
+add MenuObject
+set Name CTFStatusPlayerHighlight
+set Texture units/Core/Icons@TC_LocalPlayer@
+set Coords "25 25 206 206"
+set ScaleX 0.35
+set ScaleY 0.35
+set BlendMode BlendAdd
+set BlinkAlpha "0.2 0.1 0.4 0.1"
+add MenuObject
+set Name CTFStatusPlayer
+set Texture units/Core/Icons@TC_LocalPlayer@
+set Coords "25 25 206 206"
+set ScaleX 0.3
+set ScaleY 0.3
+set Child "CTFStatusPlayerHighlight -5 -5"
+set HiddenCheckBySymbolInv CTFCoreOut@_localAT@
+add MenuObject initFrom CTFStatusPlayerHighlight
+set Name CTFStatusEnemyHighlight
+set Texture units/Core/Icons@TC_LocalPlayersEnemy@
+add MenuObject
+set Name CTFStatusEnemy
+set Texture units/Core/Icons@TC_LocalPlayersEnemy@
+set Coords "25 25 206 206"
+set ScaleX 0.3
+set ScaleY 0.3
+set Child "CTFStatusEnemyHighlight -5 -5"
+set HiddenCheckBySymbolInv CTFCoreOut@_localET@
+add MenuObject
+set Name CTFStatusMaster
+set FilterName LoadMapStartup
+set Anchor Top
+set ContainerOnly 1
+set Coords "0 0 206 103"
+set Child "CTFStatusPlayer 40 0"
+set Child "CTFStatusEnemy 110 0"
+add MenuObject
+set Name OTWarningPulse
+set Texture menus/DialogGeneral
+set Coords "453 220 104 19"
+set ScaleX 2.0
+set ScaleY 2.0
+set PulseAlpha "0.3 -0.5 0.0"
+set BlendMode BlendAdd
+add MenuObject
+set Name OTWarning
+set Texture menus/DialogGeneral
+set Coords "453 220 104 19"
+set ScaleX 2.0
+set ScaleY 2.0
+set NoAlphaMod 1
+set Alpha 0.5
+set Child "OTWarningPulse 0 0"
+set MouseInteract 1
+set ToolTip TT_Overtime_Explain
+set HiddenCheckBySymbolInv _InOvertime
+add MenuObject
+set Name CountdownCaption
+set RenderCB_FontScale 0.7
+set RenderCB_Font RobotoBold
+set Coords "0 0 380 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text OverrunTitle
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlphaTimeOut 1.0
+set RenderCB_Flags "/shadowed /fitX"
+add MenuObject
+set Name CountdownCaptionOther
+#if arc
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "0 5"
+#else
+set RenderCB_FontScale 0.6
+#endif
+set RenderCB_Font RobotoBold
+set Coords "0 0 250 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text OverrunIngTitle
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlphaTimeOut 1.0
+set RenderCB_Flags "/shadowed /fitX"
+set PulseAlpha "1.0 -0.4 2.5"
+add MenuObject
+set Name HudCountdownTime
+set Coords "2 3 384 81"
+set Texture hud/Challenge
+set Texture hud/EndgamePlayer@TeamColor@
+set Coords "2 2 634 220"
+set DisabledAlphaTimeOut 1.0
+set ScaleX 0.6
+set ScaleY 0.6
+set MirrorOnY 1
+set PulseAlpha "1.0 -0.4 2.5"
+set DisabledAlphaTimeOut 1.0
+set FilterName LoadMapStartup
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 384
+set RenderCB_DY 105
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB _DrawText
+set RenderCB_Font Gunner
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlpha 0.5
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol _OverrunTimer
+set HiddenCheckBySymbolInv _OverrunEd
+set ToolTip OverrunTimer
+set MouseInteract 1
+set Child "CountdownCaption 0 101"
+add MenuObject
+set Name HudCountdownTimeOther
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "143 135 51 26"
+set DisabledAlphaTimeOut 1.0
+set ScaleX 5.0
+set ScaleY 2.3
+set NoAlphaMod 1
+set Alpha 0.8
+set FilterName LoadMapStartup
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.5
+set RenderCB _DrawTextShadowed
+set RenderCB_Font Gunner
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlpha 0.5
+set RenderCB_Text ""
+set RenderCB_Offset "0 5"
+set RenderCB_ConsoleSymbol _OverrunTimer
+set HiddenCheckBySymbolInv _OverrunIng
+set HiddenCheckBySymbol2 _Overrun
+set ToolTip OverrunIngTimer
+set MouseInteract 1
+set Child "CountdownCaptionOther 0 0"
+add MenuObject
+set Name HudOverrunStateOther
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "143 135 51 26"
+set DisabledAlphaTimeOut 1.0
+set ScaleX 5.0
+set ScaleY 4.0
+set NoAlphaMod 1
+set Alpha 0.8
+set FilterName LoadMapStartup
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+#if arc
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 40"
+#else
+set RenderCB_FontScale 0.5
+set RenderCB_Offset "0 21"
+#endif
+set RenderCB_BoolArg 1
+set RenderCB _DrawUTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlpha 0.5
+set RenderCB_Text OverrunIngState
+set HiddenCheckBySymbolInv _Overrun
+set HiddenCheckBySymbol2 _OverrunEd
+set ToolTip OverrunIngState
+set MouseInteract 1
+set Child "CountdownCaptionOther 0 0"
+add MenuObject
+set Name HudOverrunState
+set Coords "2 3 384 81"
+set Texture hud/Challenge
+set Texture hud/EndgamePlayer@TeamColor@
+set Coords "2 2 634 220"
+set DisabledAlphaTimeOut 1.0
+set ScaleX 0.6
+set ScaleY 0.7
+set MirrorOnY 1
+set DisabledAlphaTimeOut 1.0
+set FilterName LoadMapStartup
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 350
+set RenderCB_DY 105
+set RenderCB_Offset "15 20"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.6
+set RenderCB_BoolArg 1
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlpha 0.5
+set RenderCB_Text OverrunState
+set HiddenCheckBySymbolInv _Overrun
+set HiddenCheckBySymbol2 _OverrunIng
+set ToolTip OverrunState
+set MouseInteract 1
+set Child "CountdownCaption 0 120"
+add MenuObject
+set Name GameTimeMaster
+set FilterName LoadMapStartup
+set Anchor Top
+set Texture menus/DialogMain
+set Coords "300 463 210 50"
+set ScaleY 1.6
+set Child "HudFortressHealthLocal -384 0"
+set Child "HudFortressShieldLocal -384 0"
+set Child "HudFortressHealthLocalFlash -384 0"
+set Child "HudFortressHealthEnemy 210 0"
+set Child "HudFortressShieldEnemy 210 0"
+set Child "HudUnitCountLocal 10 4"
+set Child "HudCreditsLocal 10 40"
+set Child "HudIncomeLocal 140 32"
+set Child "HudCountdownTime -80 90"
+set Child "HudOverrunState -80 90"
+set Child "OutpostBonusFactory -200 53			@_localAT@ 1.0 72 20"
+set Child "OutpostBonusPowerstation -280 53		@_localAT@ 1.0 72 20"
+set Child "TeamIsBuildingTech1 380 -5		@_localAT@ 0.75"
+set Child "TeamHasBuiltTech1 380 -5		@_localAT@ 0.75"
+set Child "TeamIsBuildingTech2 450 -5		@_localAT@ 0.75"
+set Child "TeamHasBuiltTech2 450 -5		@_localAT@ 0.75"
+set Child "OTWarning 441 2"
+set Child "GameTime 505 5"
+add MenuObject
+set Name GameStatusCoverShieldL
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "371 127 26 31"
+set Hidden 0
+add MenuObject
+set Name GameStatusCoverShieldR
+set Texture ]hud/HudFortressBar@TC_LocalPlayersEnemy@
+set Coords "371 127 26 31"
+set MirrorOnX 1
+add MenuObject
+set Name GameStatusFrameMirror
+set Texture ]hud/HudFortressBar@TC_LocalPlayersEnemy@
+set Coords "398 126 429 55"
+set MirrorOnX 1
+add MenuObject
+set Name GameStatusFrame
+set Texture hud/HudFortressBar@TC_LocalPlayer@
+set Coords "398 126 625 55"
+set Child "GameStatusFrameMirror 625 0"
+add MenuObject
+set Name GameStatusFrameNoFort
+set Texture hud/HudFortressBar@TC_LocalPlayer@
+set Coords "823 126 200 55"
+set Child "GameStatusFrameMirror 200 0"
+add MenuObject
+set Name GameStatusNumbers
+set ContainerOnly 1
+set Child "HudUpkeepMaxArmyLocal 118 0			@_localAT@"
+set Child "HudUpkeepCurrentArmyLocal 18 0		@_localAT@	0.35"
+set Child "HudUpkeepOverArmyLocal 18 0			@_localAT@	0.35"
+set Child "HudCreditsLocal 6 10"
+set Child "HudIncomeLocal 140 10"
+add MenuObject
+set Name GameStatusMaster
+set FilterName LoadMapStartup
+set ContainerOnly 1
+set Anchor Top
+set Coords "0 0 1054 50"
+set HiddenCheckBySymbolInv ShowStatusBar
+set Child "GameStatusFrame 0 0"
+set Child "HudFortressHealthLocal 31 -7"
+set Child "HudFortressShieldLocal 31 1"
+set Child "GameStatusCoverShieldL 26 1"
+set Child "HudFortressHealthLocalFlash 31 -7"
+set Child "HudFortressHealthEnemy 630 -7"
+set Child "HudFortressShieldEnemy 630 1"
+set Child "GameStatusCoverShieldR 1002 1"
+set Child "P_FactionTagHudAlly -360 0"
+set Child "P_FactionTagHudEnemy 1016 0"
+set Child "GameStatusNumbers 400 3"
+set Child "HudCountdownTime 280 90"
+set Child "HudOverrunState 280 90"
+set Child "OutpostBonusFactory 160 20			@_localAT@ 1.0 72 20"
+set Child "OutpostBonusPowerstation 80 20		@_localAT@ 1.0 72 20"
+set Child "TeamIsBuildingTech1 240 20		@_localAT@ 1.0"
+set Child "TeamHasBuiltTech1 240 20		@_localAT@ 1.0"
+set Child "TeamIsBuildingTech2 320 20		@_localAT@ 1.0"
+set Child "TeamHasBuiltTech2 320 20		@_localAT@ 1.0"
+set Child "OTWarning 424 8"
+add MenuObject
+set Name GameStatusFrameArena
+set Texture hud/HudFortressBar@TC_LocalPlayer@
+set Coords "823 126 201 55"
+set Child "GameStatusFrameMirror 625 0"
+set ScaleX 1.2, ScaleY 1.1
+add MenuObject
+set Name GameStatusMasterArena
+set FilterName LoadMapStartup
+set ContainerOnly 1
+set Coords "0 0 1054 50"
+set Child "GameStatusFrameArena 0 0"
+set Child "GameStatusNumbers 0 3"
+set Child "HudCountdownTime 280 90"
+set Child "HudOverrunState 280 90"
+set Child "OTWarning 24 8"
+add MenuObject
+set Name GameTimeMasterTutorial
+set FilterName LoadMapStartup
+set Anchor Top
+set Texture menus/DialogMain
+set Coords "300 463 210 50"
+set ScaleY 1.6
+set Child "HudCreditsLocal 10 40"
+set Child "HudIncomeLocal 140 32"
+add MenuObject
+set Name GameTimeMasterSurvival
+set FilterName LoadMapStartup
+set ContainerOnly 1
+set Anchor Top
+set Coords "0 0 1054 50"
+set HiddenCheckBySymbolInv ShowStatusBar
+set Child "GameStatusFrame 0 0"
+set Child "HudFortressHealthLocal 31 -7"
+set Child "HudFortressShieldLocal 31 1"
+set Child "GameStatusCoverShieldL 26 1"
+set Child "HudFortressHealthLocalFlash 31 -7"
+set Child "GameStatusNumbers 400 3"
+set Child "HudCountdownTime 280 90"
+set Child "HudOverrunState 280 90"
+set Child "OutpostBonusFactory 160 20			@_localAT@ 1.0 72 20"
+set Child "OutpostBonusPowerstation 80 20		@_localAT@ 1.0 72 20"
+set Child "TeamIsBuildingTech1 240 20		@_localAT@ 1.0"
+set Child "TeamHasBuiltTech1 240 20		@_localAT@ 1.0"
+set Child "TeamIsBuildingTech2 320 20		@_localAT@ 1.0"
+set Child "TeamHasBuiltTech2 320 20		@_localAT@ 1.0"
+set Child "OTWarning 424 8"
+set Child "HudSurvivalWaveProgress 630 -7"
+add MenuObject
+set Name GameTimeMasterSurvivalNoFort
+set FilterName LoadMapStartup
+set ContainerOnly 1
+set Anchor Top
+set Coords "0 0 1054 50"
+set HiddenCheckBySymbolInv ShowStatusBar
+set Child "GameStatusFrameNoFort 425 0"
+set Child "GameStatusNumbers 400 3"
+set Child "HudCountdownTime 280 90"
+set Child "HudOverrunState 280 90"
+set Child "OutpostBonusFactory 160 20			@_localAT@ 1.0 72 20"
+set Child "OutpostBonusPowerstation 80 20		@_localAT@ 1.0 72 20"
+set Child "TeamIsBuildingTech1 240 20		@_localAT@ 1.0"
+set Child "TeamHasBuiltTech1 240 20		@_localAT@ 1.0"
+set Child "TeamIsBuildingTech2 320 20		@_localAT@ 1.0"
+set Child "TeamHasBuiltTech2 320 20		@_localAT@ 1.0"
+set Child "OTWarning 424 8"
+set Child "HudSurvivalWaveProgress 630 -7"
+add MenuObject
+set Name GameStatusMasterSpec
+set FilterName LoadMapStartup
+set ContainerOnly 1
+set Anchor Top
+set Coords "0 0 1054 50"
+set Child "GameStatusFrame 0 0"
+set Child "HudFortressHealthLocal 31 -7"
+set Child "HudFortressShieldLocal 31 1"
+set Child "GameStatusCoverShieldL 26 1"
+set Child "HudFortressHealthLocalFlash 31 -7"
+set Child "HudFortressHealthEnemy 630 -7"
+set Child "HudFortressShieldEnemy 630 1"
+set Child "GameStatusCoverShieldR 1002 1"
+set Child "P_FactionTagHudAlly -360 0"
+set Child "P_FactionTagHudEnemy 1016 0"
+set Child "HudTimeTotal 312 7"
+set Child "HudCountdownTime 280 90"
+set Child "HudOverrunState 280 90"
+set Child "OutpostBonusFactory 160 20			@_localAT@ 0.75 72 20"
+set Child "OutpostBonusPowerstation 80 20		@_localAT@ 0.75 72 20"
+set Child "TeamIsBuildingTech1 240 20		@_localAT@ 0.75"
+set Child "TeamHasBuiltTech1 240 20		@_localAT@ 0.75"
+set Child "TeamIsBuildingTech2 320 20		@_localAT@ 0.75"
+set Child "TeamHasBuiltTech2 320 20		@_localAT@ 0.75"
+set Child "OutpostBonusFactory 760 20			@_localET@ 0.75 72 20"
+set Child "OutpostBonusPowerstation 680 20		@_localET@ 0.75 72 20"
+set Child "TeamIsBuildingTech1 840 20		@_localET@ 0.75"
+set Child "TeamHasBuiltTech1 840 20		@_localET@ 0.75"
+set Child "TeamIsBuildingTech2 920 20		@_localET@ 0.75"
+set Child "TeamHasBuiltTech2 920 20		@_localET@ 0.75"
+set Child "OTWarning 424 8"
+add MenuObject
+set Name SurvivalWaveFrame
+set Texture hud/HudFortressBar@TC_LocalPlayersEnemy@
+set Coords "398 136 405 45"
+add MenuObject
+set Name GameStatusMasterSpecSurvival
+set FilterName LoadMapStartup
+set ContainerOnly 1
+set Anchor UpperRight
+set Coords "0 0 1054 50"
+set Child "SurvivalWaveFrame 470 30"
+set Child "HudSurvivalWaveProgressSpectator 500 32"
+set Child "GameStatusFrame 430 0"
+set Child "HudFortressHealthLocal 461 -7"
+set Child "HudFortressShieldLocal 461 1"
+set Child "HudFortressHealthLocalFlash 461 -7"
+set Child "GameStatusNumbers 830 3"
+set Child "SurvivalWave 590 55"
+set Child "SurvivalWaveProgress 760 55"

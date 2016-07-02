@@ -1,0 +1,71 @@
+add MenuObject initFrom DialogTitle
+set Name PCBrowserPurchaseDialogTitle
+set RenderCB_Text PCBrowserPurchaseDialogTitle
+add MenuObject initFrom DialogMessage
+set Name PCBrowserPurchaseDialogMessage
+set RenderCB_ConsoleSymbol ""
+set RenderCB_Text PCBrowserPurchaseDialogMessage
+add MenuObject
+set Name PCBrowserPurchaseDialogShadow
+set Texture effects/black
+set Coords "0 0 512 256"
+set StretchToFillScreen 1
+set Layer 19
+set NoAlphaMod 1
+set Alpha 0.7
+set MouseInteract 1
+add MenuObject initFrom DialogButtonTemplate
+set Name PCBrowserPurchaseDialogButtonOK
+set RenderCB_Text DialogButtonOk
+set CommandPress "clearmenu PCBrowserPurchaseDialog.txt"
+set CommandPress "clearmenu UnlockDialog.txt"
+set Anchor LowerRight
+add MenuObject
+set Name PCBrowserPurchaseDialogBox
+set MouseInteract 1
+set Focus -2
+set Texture menus/Messages
+set CoordsStart "617 1 52 115"
+set CoordsMid "669 1 28 115"
+set CoordsEnd "697 1 91 115"
+set CoordsStartFocused "617 116 52 34"
+set CoordsMidFocused "669 116 28 34"
+set CoordsEndFocused "697 116 91 34"
+set CoordsStartDisabled "617 215 52 90"
+set CoordsMidDisabled "669 215 28 90"
+set CoordsEndDisabled "697 215 91 90"
+set RenderCB _Draw_G3x3
+set Coords "0 0 760 500"
+set RenderCB_DX 760
+set RenderCB_DY 500
+set FirstDrawnChildren 1
+set Child "PCBrowserPurchaseDialogShadow 0 0"
+set Child "PCBrowserPurchaseDialogTitle 0 50"
+set Child "PCBrowserPurchaseDialogMessage 80 140"
+set Child "PCBrowserPurchaseDialogButtonOK -35 -55"
+add MenuObject
+set Name PCBrowserPurchaseDialogBoxV2
+set Texture menus/DialogBox
+set CoordsStart "8 80 88 89"
+set CoordsMid "94 80 79 89"
+set CoordsEnd "174 80 93 89"
+set CoordsStartFocused "8 169 88 200"
+set CoordsMidFocused "94 169 79 200"
+set CoordsEndFocused "174 169 93 200"
+set CoordsStartDisabled "8 370 88 91"
+set CoordsMidDisabled "94 370 79 91"
+set CoordsEndDisabled "174 370 93 91"
+set Focus -2
+set MouseInteract 1
+set RenderCB _Draw_G3x3
+set Coords "0 0 700 400"
+set RenderCB_DX 700
+set RenderCB_DY 400
+set RenderCB_YClipConfigIsOffsets 1
+set Child "DialogTitleTextV2 40 20								PCBrowserPurchaseDialogTitle	650"
+set Child "DialogMessageTextV2 40 110							PCBrowserPurchaseDialogMessage	720"
+set Child "DialogButton1_ConsoleOkV2[DialogButton1] 260 300"
+add MenuObject
+set Name PCBrowserPurchaseDialogMaster
+set ContainerOnly 1
+set Child "PCBrowserPurchaseDialogBoxV2 580 290"

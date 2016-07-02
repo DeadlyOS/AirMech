@@ -1,0 +1,254 @@
+add MenuObject
+set Name ChartTypeTemplate
+set Texture effects/white
+set Coords "0 0 200 50"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusEditorBigButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set FilterName BaseLayout
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set FirstDrawnChildren 1
+set Child "EditorBigButtonOutline -2 -2"
+set CommandPress ">menucmd @_Arg2_@"
+add MenuObject
+set Name ChartSelectionTemplate
+set Texture effects/white
+set Coords "0 0 200 40"
+set Color 0x000000
+set ColorFocused &Hex@_Arg2_@&
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set RenderCB _DrawText
+set RenderCB_Text @_Arg1_@
+set FilterName BaseLayout
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColor &Hex@_Arg2_@&
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set BlendMode BlendAdd
+set CommandGetFocus ">sym set #ChartDataset@_Arg3_@ 1"
+set CommandLoseFocus ">sym set #ChartDataset@_Arg3_@ 0"
+add MenuObject
+set Name ChartTypeButtons
+set ContainerOnly 1
+set Child "ChartTypeTemplate 0 0 	Credits			GenerateIncomeChart"
+set Child "ChartTypeTemplate 0 58 	GS_PowerUpkeep	GenerateUpkeepChart"
+add MenuObject
+set Name ChartDatasetButtons
+set ContainerOnly 1
+set Child "ChartSelectionTemplate 0 0 	Data1		@TC0@	0"
+set Child "ChartSelectionTemplate Nx200 0 	Data2	@TC1@	1"
+set Child "ChartSelectionTemplate Nx200 0 	Data3	@TC0@	2"
+set Child "ChartSelectionTemplate Nx200 0 	Data4	@TC1@	3"
+set Child "ChartSelectionTemplate Nx200 0 	Data5	@TC0@	4"
+set Child "ChartSelectionTemplate Nx200 0 	Data6	@TC1@	5"
+add MenuObject
+set Name ChartDotCommon
+set Texture effects/SelectRingDrop1&@_Arg2_@&
+set Coords "64 64 128 128"
+set SaveArgs 3
+set ScaleX 0.3, ScaleY 0.3
+set SymCondRenderOffsetY -@_Arg1_@
+set HiddenCheckBySymbolValue @_Arg1_@=
+set MouseInteract 1
+set Focus -2
+set ToolTip Credits
+set ToolTipDelayTime 0.0
+set ScaleXFocused 1.5
+set ScaleYFocused 1.5
+set FocusedTimeIn 0.02
+set FocusedTimeOut 0.2
+set MouseInteractZoneExpand "5 5 -5 -5"
+set CommandGetFocus ">sym set #ChartDataset@_Arg3_@ 1"
+set CommandLoseFocus ">sym set #ChartDataset@_Arg3_@ 0"
+add MenuObject
+set Name ChartBarCommon
+set Texture hud/PlayerStatus
+set Texture effects/SelectRingDrop1&@_Arg2_@&
+set CoordsStart 		"185 471 2 4"
+set CoordsMid 			"187 471 21 4"
+set CoordsEnd 			"207 471 2 4"
+set CoordsStartFocused 	"185 475 2 9"
+set CoordsMidFocused 	"187 475 21 9"
+set CoordsEndFocused 	"207 475 2 9"
+set CoordsStartDisabled "185 484 2 4"
+set CoordsMidDisabled 	"187 484 21 4"
+set CoordsEndDisabled 	"207 484 2 4"
+set CoordsStart 		"120 120 1 1"
+set CoordsMid 			"121 120 1 1"
+set CoordsEnd 			"122 120 1 1"
+set CoordsStartFocused 	"120 121 1 1"
+set CoordsMidFocused 	"121 121 1 1"
+set CoordsEndFocused 	"122 121 1 1"
+set CoordsStartDisabled "120 122 1 1"
+set CoordsMidDisabled 	"121 122 1 1"
+set CoordsEndDisabled 	"122 122 1 1"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 17
+set RenderCB_DY_Dynamic -@_Arg1_@
+set Coords "0 0 5 50"
+set DisabledAlpha 0.3
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeOutPreWait 0.2
+set ToolTip NewKudosBaseTip
+set MouseInteract 1
+set Color 0x444444
+set SaveArgs 3
+set BlendMode BlendAdd
+set DisabledSymInv ChartDataset@_Arg3_@
+add MenuObject
+set Name ChartDataTwoTeams
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ChartBarCommon 0 0 MainChart0_@_Arg1_@	TC0	0"
+set Child "ChartBarCommon 0 0 MainChart1_@_Arg1_@	TC1	1"
+set Child "ChartDotCommon -11 -20 MainChart0_@_Arg1_@	TC0	0"
+set Child "ChartDotCommon -11 -20 MainChart1_@_Arg1_@	TC1	1"
+add MenuObject
+set Name ChartGraphDataVis
+set ContainerOnly 1
+set Child "ChartDataTwoTeams Nx15 0 	0"
+set Child "ChartDataTwoTeams Nx15 0 	1"
+set Child "ChartDataTwoTeams Nx15 0 	2"
+set Child "ChartDataTwoTeams Nx15 0 	3"
+set Child "ChartDataTwoTeams Nx15 0 	4"
+set Child "ChartDataTwoTeams Nx15 0 	5"
+set Child "ChartDataTwoTeams Nx15 0 	6"
+set Child "ChartDataTwoTeams Nx15 0 	7"
+set Child "ChartDataTwoTeams Nx15 0 	8"
+set Child "ChartDataTwoTeams Nx15 0 	9"
+set Child "ChartDataTwoTeams Nx15 0 	10"
+set Child "ChartDataTwoTeams Nx15 0 	11"
+set Child "ChartDataTwoTeams Nx15 0 	12"
+set Child "ChartDataTwoTeams Nx15 0 	13"
+set Child "ChartDataTwoTeams Nx15 0 	14"
+set Child "ChartDataTwoTeams Nx15 0 	15"
+set Child "ChartDataTwoTeams Nx15 0 	16"
+set Child "ChartDataTwoTeams Nx15 0 	17"
+set Child "ChartDataTwoTeams Nx15 0 	18"
+set Child "ChartDataTwoTeams Nx15 0 	19"
+set Child "ChartDataTwoTeams Nx15 0 	20"
+set Child "ChartDataTwoTeams Nx15 0 	21"
+set Child "ChartDataTwoTeams Nx15 0 	22"
+set Child "ChartDataTwoTeams Nx15 0 	23"
+set Child "ChartDataTwoTeams Nx15 0 	24"
+set Child "ChartDataTwoTeams Nx15 0 	25"
+set Child "ChartDataTwoTeams Nx15 0 	26"
+set Child "ChartDataTwoTeams Nx15 0 	27"
+set Child "ChartDataTwoTeams Nx15 0 	28"
+set Child "ChartDataTwoTeams Nx15 0 	29"
+set Child "ChartDataTwoTeams Nx15 0 	30"
+set Child "ChartDataTwoTeams Nx15 0 	31"
+set Child "ChartDataTwoTeams Nx15 0 	32"
+set Child "ChartDataTwoTeams Nx15 0 	33"
+set Child "ChartDataTwoTeams Nx15 0 	34"
+set Child "ChartDataTwoTeams Nx15 0 	35"
+set Child "ChartDataTwoTeams Nx15 0 	36"
+set Child "ChartDataTwoTeams Nx15 0 	37"
+set Child "ChartDataTwoTeams Nx15 0 	38"
+set Child "ChartDataTwoTeams Nx15 0 	39"
+set Child "ChartDataTwoTeams Nx15 0 	40"
+set Child "ChartDataTwoTeams Nx15 0 	41"
+set Child "ChartDataTwoTeams Nx15 0 	42"
+set Child "ChartDataTwoTeams Nx15 0 	43"
+set Child "ChartDataTwoTeams Nx15 0 	44"
+set Child "ChartDataTwoTeams Nx15 0 	45"
+set Child "ChartDataTwoTeams Nx15 0 	46"
+set Child "ChartDataTwoTeams Nx15 0 	47"
+set Child "ChartDataTwoTeams Nx15 0 	48"
+set Child "ChartDataTwoTeams Nx15 0 	49"
+set Child "ChartDataTwoTeams Nx15 0 	50"
+set Child "ChartDataTwoTeams Nx15 0 	51"
+set Child "ChartDataTwoTeams Nx15 0 	52"
+set Child "ChartDataTwoTeams Nx15 0 	53"
+set Child "ChartDataTwoTeams Nx15 0 	54"
+set Child "ChartDataTwoTeams Nx15 0 	55"
+set Child "ChartDataTwoTeams Nx15 0 	56"
+set Child "ChartDataTwoTeams Nx15 0 	57"
+set Child "ChartDataTwoTeams Nx15 0 	58"
+set Child "ChartDataTwoTeams Nx15 0 	59"
+set Child "ChartDataTwoTeams Nx15 0 	60"
+set Child "ChartDataTwoTeams Nx15 0 	61"
+set Child "ChartDataTwoTeams Nx15 0 	62"
+set Child "ChartDataTwoTeams Nx15 0 	63"
+set Child "ChartDataTwoTeams Nx15 0 	64"
+set Child "ChartDataTwoTeams Nx15 0 	65"
+set Child "ChartDataTwoTeams Nx15 0 	66"
+set Child "ChartDataTwoTeams Nx15 0 	67"
+set Child "ChartDataTwoTeams Nx15 0 	68"
+set Child "ChartDataTwoTeams Nx15 0 	69"
+set Child "ChartDataTwoTeams Nx15 0 	70"
+set Child "ChartDataTwoTeams Nx15 0 	71"
+set Child "ChartDataTwoTeams Nx15 0 	72"
+set Child "ChartDataTwoTeams Nx15 0 	73"
+set Child "ChartDataTwoTeams Nx15 0 	74"
+set Child "ChartDataTwoTeams Nx15 0 	75"
+set Child "ChartDataTwoTeams Nx15 0 	76"
+set Child "ChartDataTwoTeams Nx15 0 	77"
+set Child "ChartDataTwoTeams Nx15 0 	78"
+set Child "ChartDataTwoTeams Nx15 0 	79"
+add MenuObject
+set Name ChartBarHorz
+set Texture effects/white
+set Coords "0 0 1200 3"
+set Color 0x999999
+add MenuObject
+set Name MasterChartWindow
+set Texture menus/Windows
+set CoordsStart "0 0 120 120"
+set CoordsMid "120 0 86 120"
+set CoordsEnd "206 0 120 120"
+set CoordsStartFocused "0 120 120 86"
+set CoordsMidFocused "120 120 86 86"
+set CoordsEndFocused "206 120 120 86"
+set CoordsStartDisabled "0 206 120 120"
+set CoordsMidDisabled "120 206 86 120"
+set CoordsEndDisabled "206 206 120 120"
+set RenderCB _Draw_G3x3
+set FirstDrawnChildren 1
+set RenderCB_DX 1500
+set RenderCB_DY 900
+set Coords "0 0 1500 900"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set NoAlphaMod 1
+set Alpha 0.95
+set FirstDrawnChildren 1
+set Child "GenericBackgroundEscape 0 0		ChartIngame"
+set Child "ButtonGenericClose[ButtonChartIngameClose] 1440 10	ChartIngame"
+set Child "ChartTypeButtons 20 20"
+set Child "ChartDatasetButtons 250 800"
+set Child "ChartGraphDataVis 250 800"
+set Child "ChartBarHorz 250 798"

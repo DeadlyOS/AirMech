@@ -1,0 +1,36 @@
+#if vr
+MO LoadingStub {
+}
+#else
+MO LoadingBackdrop {
+layer 28
+pos 0 0
+}
+MO LoadingLogo_M {
+layer 29
+pos 774 -500
+}
+MO LoadingLogo_A {
+layer 29
+pos 774 1500
+}
+#endif
+onload {
+]gameui ignoreInputTime 20.0
+#if vr
+#else
+]addUIAnim LoadingLogo_M mas_LoadingShowM
+]addUIAnim LoadingLogo_A mas_LoadingShowA
+#endif
+]gameUI disable PleaseWaitBlack
+]if sym _tryoutLaunch_ == 0 runnow rookMenus previewClear
+]sym push DisableConShop 1
+]sym push BtnHint_HideAll 1
+}
+onunload {
+]gameui ignoreInputTimeForce 0.15
+]sym pop DisableConShop
+]pcmd 0.1 sym pop BtnHint_HideAll
+#if vr
+#endif
+}

@@ -1,0 +1,21 @@
+blockLoadOnConsoleSym _HelpDialogLoaded_
+onloadrun {
+sym set _HelpDialogLoaded_ 1
+]gameUI saveFocusID _savefocusid_helpdialog_
+}
+MO BaseCampHelpContainer {
+pos 0 0
+layer 12
+layerInGame 21
+}
+onload {
+gameui promoteToTop BaseCampHelpContainer
+}
+onunloadrun {
+}
+onunload {
+]gameui ignoreInputTime 0.5
+input set padFocusFallback $_savefocusid_helpdialog_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_helpdialog_
+sym set _HelpDialogLoaded_ 0
+}

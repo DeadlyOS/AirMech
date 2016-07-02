@@ -1,0 +1,781 @@
+add MenuObject
+set Name FriendsOnlineCount
+set Coords "0 0 96 47"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold_NoFallback
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol FRC_Online
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+set HiddenCheckBySymbolValue FRC_Online=0
+add MenuObject
+set Name FriendsPendingCount
+set Coords "0 0 20 20"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.54
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold_NoFallback
+set RenderCB_RGBColor 0x448b52
+set RenderCB_OffsetFocused "0 -1"
+set DisplayAsFocusedIfParentFocused 1
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol FriendsPending
+set RenderCB_Flags "/nmi /fitX "
+add MenuObject
+set Name FriendsPending
+set Texture menus/MenuBarButtons
+set Coords "63 2 60 52"
+set CoordsFocused "63 3 60 52"
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolInv FriendsPending
+set Child "FriendsPendingCount 39 -1"
+add MenuObject
+set Name FriendMessagePending
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0x339b81
+set BlendMode BlendAdd
+set BlinkAlpha "0.2 0.25 0.5 0.65"
+set TileArea "60 52"
+set HiddenCheckBySymbolInv _f2chat_d_
+add MenuObject initFrom MenuBarOpenButton
+set Name MenuBarOpenButtonFriends
+set HiddenCheckBySymbolInv FriendsLoaded
+add MenuObject
+set Name FriendsOpenButton
+set Texture menus/MenuBarButtons
+set Coords "63 108 60 52"
+set CoordsFocused "63 56 60 52"
+set DrawWhenFocused FocusCloudFriends
+set DrawWhenFocusedOffset "-20 -23"
+set MouseInteract 1
+set Focus -2
+set ToolTip Sell_Friends
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPressAlt "gameUI ignoreInputTime 0.1"
+set CommandDoubleClick "gameUI ignoreInputTime 0.1"
+set CommandPress "if !menuloaded Friends loadmenu Friends /fadein 0.1"
+set CommandPress "if menuloaded Friends gameui promoteToTop FriendsMain"
+set CommandPressAlt "if menuloaded Friends clearmenu Friends /fadeout 0.1"
+set CommandDoubleClick "if menuloaded Friends clearmenu Friends /fadeout 0.1"
+set CommandGetFocus "input set padFocusFallback FriendsOpenButton"
+set CommandFocusLeft "gameui focusnametry PlayerPortrait"
+set CommandFocusRight "gameui focusnametry MailInboxButton"
+set FirstDrawnChildren 1
+set Child "MenuBarOpenButtonFriends -1 -1"
+set Child "FriendsPending 0 0"
+set Child "FriendMessagePending 0 0"
+add MenuObject
+set Name Friend2NameBase
+set Coords "0 0 300 53"
+set RenderCB_DX 300
+set RenderCB_DY 53
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_Font Roboto
+set RenderCB_Offset "40 5"
+set RenderCB_ConsoleSymbol DialogBoxMessage
+set RenderCB_FontScale 0.7
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_Flags " /noCommaSep /fitX_n20 /fitX_n10"
+set RenderCB_Text ""
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject initFrom Friend2NameBase
+set Name Friend2Name
+set RenderCB_ConsoleSymbol FR_Name@_Arg1_@
+set HiddenCheckBySymbolValue FR_StatusCode@_Arg1_@=0
+add MenuObject initFrom Friend2NameBase
+set Name RecentlyMet2Name
+set RenderCB_ConsoleSymbol RM_Name@_Arg1_@
+add MenuObject initFrom Friend2NameBase
+set Name IgnoredPlayer2Name
+set RenderCB_ConsoleSymbol IG_Name@_Arg1_@
+set RenderCB_RGBColor 0xeb7657
+set RenderCB_RGBColorFocused 0xff6e47
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom Friend2NameBase
+set Name Invite2Name
+set RenderCB_ConsoleSymbol INV_Name@_Arg1_@
+set HiddenCheckBySymbolValue INV_StatusCode@_Arg1_@=0
+add MenuObject initFrom Friend2NameBase
+set Name Friend2NameRequest
+set RenderCB_Text "@_FriendName_@"
+set RenderCB_ConsoleSymbol ""
+add MenuObject initFrom Friend2Name
+set Name Friend2NameOffline
+set HiddenCheckBySymbolValue FR_StatusCode@_Arg1_@!0
+set RenderCB _DrawText
+set Alpha 0.5
+set NoAlphaMod 1
+set RenderCB_Font Roboto
+add MenuObject
+set Name FriendItemHighlight
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0x33565a
+set BlendMode BlendAdd
+set PulseAlpha "4.3 -0.9 -0.7"
+set TileArea "314 36"
+add MenuObject
+set Name Friend2InfOnline
+set Texture menus/Mail
+set Coords "600 596 24 24"
+set SaveArgs 1
+set RenderOffsetX 11
+set RenderOffsetY 7
+set HiddenCheckBySymbolValue FR_StatusCode@_Arg1_@!1
+add MenuObject initFrom Friend2InfOnline
+set Name Friend2InfIngame
+set Coords "628 597 24 24"
+set HiddenCheckBySymbolValue FR_StatusCode@_Arg1_@!2
+add MenuObject initFrom Friend2InfOnline
+set Name Friend2InfOffline
+set Coords "600 676 24 24"
+set HiddenCheckBySymbolValue FR_StatusCode@_Arg1_@!0
+add MenuObject initFrom Friend2InfOnline
+set Name Friend2InfPending
+set Coords "630 624 27 30"
+set CoordsAnimated "630 624 27 30"
+set CoordsAnimated "630 624 27 30"
+set CoordsAnimated "630 624 27 30"
+set CoordsAnimated "630 624.5 27 30"
+set CoordsAnimated "630 625 27 30"
+set CoordsAnimated "630 625.5 27 30"
+set CoordsAnimated "630 626 27 30"
+set CoordsAnimated "630 626 27 30"
+set CoordsAnimated "630 626 27 30"
+set CoordsAnimated "630 625.5 27 30"
+set CoordsAnimated "630 625 27 30"
+set CoordsAnimated "630 624.5 27 30"
+set CoordsAnimationFrameTimer 0.05
+set HiddenCheckBySymbolValue FR_StatusCode@_Arg1_@!3
+add MenuObject
+set Name FriendStatusIcon
+set Texture menus/Mail
+set Coords "600 596 24 24"
+set CoordsAnimated "600 596 1 1"
+set CoordsAnimated "600 596 24 24"
+set CoordsAnimated "600 626 24 24"
+set CoordsAnimated "631 655 24 24"
+set CoordsAnimated "600 652 24 24"
+set CoordsAnimated "628 597 24 24"
+set CoordsAnimated "600 676 24 24"
+set CoordsAnimated "631 684 27 30"
+set CoordsAnimationSymHash FR_StatusEnum@_Arg1_@
+set SaveArgs 1
+set RenderOffsetX 11
+set RenderOffsetY 7
+add MenuObject
+set Name FriendItemIncoming
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0x457c6e
+set BlendMode BlendAdd
+set BlinkAlpha "0.33 0.25 0.5 0.65"
+set TileArea "314 34"
+set SaveArgs 1
+set HiddenCheckBySymbolInv _fchat_d_&@_Arg1_@&
+set FilterName FriendIncoming
+set FilterName2 FriendStatus
+add MenuObject
+set Name FriendItem
+set Texture menus/Social
+set Coords "314 5 301 36"
+set CoordsFocused "6 5 301 36"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set DrawWhenFocused FriendItemHighlight
+set FilterName FriendStatus
+set ToolTip TT_FriendsStatus&FR_StatusCode@_Arg1_@&
+set CommandGetFocus "gameui refreshFilterName FriendStatus"
+set CommandGetFocus "playSound $CustomizeSoundFocus"
+set CommandGetFocus "sym set Friend2ScrollbarDismiss 0"
+set CommandLoseFocus "sym set Friend2ScrollbarDismiss 1"
+set CommandPress ">sym setFrom _FriendName_ FR_Name@_Arg1_@"
+set CommandPress ">sym setFrom _FriendNameDeco_ FR_Name@_Arg1_@"
+set CommandPress ">sym set _FriendState_ $FR_State@_Arg1_@"
+set CommandPress ">sym set _FriendStatusCode_ $FR_StatusCode@_Arg1_@"
+set CommandPress "sym set _FriendFromParty_ 0"
+set CommandPress ">menucmd FriendOpenSym local FR_Name@_Arg1_@"
+set RenderCB_DX 480
+set RenderCB_DY 54
+set SaveArgs 1
+set HiddenCheckBySymbol FR_Hidden@_Arg1_@
+set Child "FriendItemIncoming 0 0	FR_Name@_Arg1_@"
+set Child "FriendStatusIcon 0 0	@_Arg1_@"
+set Child "Friend2InfPending -1 -1	@_Arg1_@"
+set Child "Friend2Name 0 0	@_Arg1_@"
+set Child "Friend2NameOffline 0 0	@_Arg1_@"
+set DisabledAlphaTimeIn 0.4
+set DisabledAlphaTimeOut 0.4
+set DragSource Friend.@_Arg1_@
+set DragTarget Friend.@_Arg1_@
+add MenuObject
+set Name RecentlyMetAdd
+set Texture menus/Mail
+set Coords "533 603 36 36"
+set Color 0xb6e2e2
+set ColorFocused 0xffffff
+set DisplayAsFocusedIfParentFocused 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set ScaleX 0.9, ScaleY 0.9
+set SaveArgs 1
+set Focus -2
+add MenuObject
+set Name RecentlyMetItem
+set Texture menus/Social
+set Coords "314 277 301 36"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set DrawWhenFocused FriendItemHighlight
+set CommandGetFocus "playSound $CustomizeSoundFocus"
+set CommandGetFocus "sym set RecentlyMet2ScrollbarDismiss 0"
+set CommandLoseFocus "sym set RecentlyMet2ScrollbarDismiss 1"
+set CommandPress "sym set _FriendState_ FS_RecentlyMet"
+set CommandPress ">sym setFrom _FriendName_ RM_Name@_Arg1_@"
+set CommandPress ">sym setFrom _FriendNameDeco_ RM_Name@_Arg1_@"
+set CommandPress "sym set _FriendFromParty_ 0"
+set CommandPress ">menucmd NonFriendOpenSym local RM_Name@_Arg1_@"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 2
+set HiddenCheckBySymbol RM_Hidden@_Arg1_@
+set Child "RecentlyMet2Name 5 0	@_Arg1_@"
+set Child "RecentlyMetAdd 5 3"
+add MenuObject
+set Name IgnoredPlayerBlock
+set Texture menus/Mail
+set Coords "494 603 36 36"
+set Color 0xbdbdbd
+set ColorFocused 0xffffff
+set DisplayAsFocusedIfParentFocused 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set ScaleX 0.9, ScaleY 0.9
+set SaveArgs 1
+set Focus -2
+add MenuObject
+set Name IgnoredPlayerItem
+set Texture menus/Social
+set Coords "314 343 301 36"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set DrawWhenFocused FriendItemHighlight
+set CommandGetFocus "playSound $CustomizeSoundFocus"
+set CommandGetFocus "sym set IgnoredPlayers2ScrollbarDismiss 0"
+set CommandLoseFocus "sym set IgnoredPlayers2ScrollbarDismiss 1"
+set CommandPress "sym set _FriendState_ FS_Ignored"
+set CommandPress ">sym setFrom _FriendName_ IG_Name@_Arg1_@"
+set CommandPress ">sym setFrom _FriendNameDeco_ IG_Name@_Arg1_@"
+set CommandPress "sym set _FriendFromParty_ 0"
+set CommandPress ">menucmd NonFriendOpenSym local IG_Name@_Arg1_@"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 2
+set HiddenCheckBySymbol IG_Hidden@_Arg1_@
+set Child "IgnoredPlayer2Name 5 0	@_Arg1_@"
+set Child "IgnoredPlayerBlock 5 3"
+add MenuObject
+set Name Friends2ScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 350 900"
+set CommandOnMouseDrag "floatsym scaledMod FriendsPos 0.05 $_Wheel 0 1"
+set CommandOnMouseDrag "social scrollUpdate friends"
+set DisabledSym Friend2ScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name Friends2Scrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "Friends2ScrollbarPos 0 0"
+set ScaleY 1.31
+set ScaleX 1.2
+set Color 0x111111
+set BlendMode BlendAdd
+set HiddenCheckBySymbol HideFriendsScrollBar
+set DisabledSym Friend2ScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name Friends2ScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult FriendsPos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set CommandOnMouseDrag "floatsym set FriendsPos $_MouseRelY"
+set CommandOnMouseDrag "social scrollUpdate friends"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.31
+set ScaleX 1.2
+set Color 0x657e84
+set ColorFocused 0xc2f3ff
+set Focus -2
+set CommandGetFocus "sym set Friend2ScrollbarDismiss 0"
+set CommandLoseFocus "sym set Friend2ScrollbarDismiss 1"
+set DisabledSym Friend2ScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name RecentlyMet2ScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 350 900"
+set CommandOnMouseDrag "floatsym scaledMod RecentlyMetPos 0.05 $_Wheel 0 1"
+set CommandOnMouseDrag "social scrollUpdate recentlyMet"
+set DisabledSym RecentlyMet2ScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name RecentlyMet2Scrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "RecentlyMet2ScrollbarPos 0 0"
+set ScaleY 1.31
+set ScaleX 1.2
+set Color 0x111111
+set BlendMode BlendAdd
+set HiddenCheckBySymbol HideRecentlyMetScrollBar
+set DisabledSym RecentlyMet2ScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name RecentlyMet2ScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult RecentlyMetPos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set CommandOnMouseDrag "floatsym set RecentlyMetPos $_MouseRelY"
+set CommandOnMouseDrag "social scrollUpdate recentlyMet"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.31
+set ScaleX 1.2
+set Color 0x657e84
+set ColorFocused 0xc2f3ff
+set Focus -2
+set CommandGetFocus "sym set RecentlyMet2ScrollbarDismiss 0"
+set CommandLoseFocus "sym set RecentlyMet2ScrollbarDismiss 1"
+set DisabledSym RecentlyMet2ScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name IgnoredPlayers2ScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 350 900"
+set CommandOnMouseDrag "floatsym scaledMod IgnoredPlayersPos 0.05 $_Wheel 0 1"
+set CommandOnMouseDrag "social scrollUpdate ignoredPlayers"
+set DisabledSym IgnoredPlayers2ScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name IgnoredPlayers2Scrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "IgnoredPlayers2ScrollbarPos 0 0"
+set ScaleY 1.31
+set ScaleX 1.2
+set Color 0x111111
+set BlendMode BlendAdd
+set HiddenCheckBySymbol HideIgnoredPlayersScrollBar
+set DisabledSym IgnoredPlayers2ScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name IgnoredPlayers2ScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult IgnoredPlayersPos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set CommandOnMouseDrag "floatsym set IgnoredPlayersPos $_MouseRelY"
+set CommandOnMouseDrag "social scrollUpdate ignoredPlayers"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.31
+set ScaleX 1.2
+set Color 0x657e84
+set ColorFocused 0xc2f3ff
+set Focus -2
+set CommandGetFocus "sym set IgnoredPlayers2ScrollbarDismiss 0"
+set CommandLoseFocus "sym set IgnoredPlayers2ScrollbarDismiss 1"
+set DisabledSym IgnoredPlayers2ScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name FriendAddButtonDesc
+set RenderCB_RGBColor 0xc1dddd
+set RenderCB_FontScale 0.65
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set RenderCB_Text Desc_AddFriend
+set SaveArgs 1
+set RenderCB _DrawUText
+set Coords "0 0 258 200"
+set BlendMode BlendAdd
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject initFrom LoginExtraButton
+set Name FriendAddButton
+set HiddenCheckBySymbolValue FR_Hidden0=0
+set RenderCB_Text Button_AddFriend
+set CommandPress "friends addv2sym FriendsFilterText"
+set Child "FriendAddButtonDesc -30 70"
+add MenuObject
+set Name FriendList
+set ContainerOnly 1
+set HiddenCheckBySymbolInv SocialShowFriends
+set Child "FriendItem 0 0	0"
+set Child "FriendItem 0 Nx34	1"
+set Child "FriendItem 0 Nx34	2"
+set Child "FriendItem 0 Nx34	3"
+set Child "FriendItem 0 Nx34	4"
+set Child "FriendItem 0 Nx34	5"
+set Child "FriendItem 0 Nx34	6"
+set Child "FriendItem 0 Nx34	7"
+set Child "FriendItem 0 Nx34	8"
+set Child "FriendItem 0 Nx34	9"
+set Child "FriendItem 0 Nx34	10"
+set Child "FriendItem 0 Nx34	11"
+set Child "FriendItem 0 Nx34	12"
+set Child "FriendItem 0 Nx34	13"
+set Child "FriendItem 0 Nx34	14"
+set Child "FriendItem 0 Nx34	15"
+set Child "FriendItem 0 Nx34	16"
+set Child "FriendItem 0 Nx34	17"
+set Child "FriendItem 0 Nx34	18"
+set Child "FriendItem 0 Nx34	19"
+set Child "FriendAddButton 60 0"
+set Child "FriendsCountTotal 2 708"
+set Child "Friends2Scrollbar 293 8"
+set Child "Friends2ScrollWheelZone 0 0"
+add MenuObject
+set Name RecentlyMetList
+set ContainerOnly 1
+set HiddenCheckBySymbolInv SocialShowRecent
+set Child "RecentlyMetItem 0 0	0"
+set Child "RecentlyMetItem 0 Nx34	1"
+set Child "RecentlyMetItem 0 Nx34	2"
+set Child "RecentlyMetItem 0 Nx34	3"
+set Child "RecentlyMetItem 0 Nx34	4"
+set Child "RecentlyMetItem 0 Nx34	5"
+set Child "RecentlyMetItem 0 Nx34	6"
+set Child "RecentlyMetItem 0 Nx34	7"
+set Child "RecentlyMetItem 0 Nx34	8"
+set Child "RecentlyMetItem 0 Nx34	9"
+set Child "RecentlyMetItem 0 Nx34	10"
+set Child "RecentlyMetItem 0 Nx34	11"
+set Child "RecentlyMetItem 0 Nx34	12"
+set Child "RecentlyMetItem 0 Nx34	13"
+set Child "RecentlyMetItem 0 Nx34	14"
+set Child "RecentlyMetItem 0 Nx34	15"
+set Child "RecentlyMetItem 0 Nx34	16"
+set Child "RecentlyMetItem 0 Nx34	17"
+set Child "RecentlyMetItem 0 Nx34	18"
+set Child "RecentlyMetItem 0 Nx34	19"
+set Child "RecentlyMet2Scrollbar 293 8"
+set Child "RecentlyMet2ScrollWheelZone 0 0"
+add MenuObject
+set Name IgnoredPlayerList
+set ContainerOnly 1
+set HiddenCheckBySymbolInv SocialShowIgnored
+set Child "IgnoredPlayerItem 0 0	0"
+set Child "IgnoredPlayerItem 0 Nx34	1"
+set Child "IgnoredPlayerItem 0 Nx34	2"
+set Child "IgnoredPlayerItem 0 Nx34	3"
+set Child "IgnoredPlayerItem 0 Nx34	4"
+set Child "IgnoredPlayerItem 0 Nx34	5"
+set Child "IgnoredPlayerItem 0 Nx34	6"
+set Child "IgnoredPlayerItem 0 Nx34	7"
+set Child "IgnoredPlayerItem 0 Nx34	8"
+set Child "IgnoredPlayerItem 0 Nx34	9"
+set Child "IgnoredPlayerItem 0 Nx34	10"
+set Child "IgnoredPlayerItem 0 Nx34	11"
+set Child "IgnoredPlayerItem 0 Nx34	12"
+set Child "IgnoredPlayerItem 0 Nx34	13"
+set Child "IgnoredPlayerItem 0 Nx34	14"
+set Child "IgnoredPlayerItem 0 Nx34	15"
+set Child "IgnoredPlayerItem 0 Nx34	16"
+set Child "IgnoredPlayerItem 0 Nx34	17"
+set Child "IgnoredPlayerItem 0 Nx34	18"
+set Child "IgnoredPlayerItem 0 Nx34	19"
+set Child "IgnoredPlayers2Scrollbar 288 8"
+set Child "IgnoredPlayers2ScrollWheelZone 0 0"
+add MenuObject
+set Name FriendsBackground
+set Texture menus/Mail
+set CoordsStart "670 720 180 260"
+set CoordsMid "850 720 50 260"
+set CoordsEnd "900 720 117 260"
+set CoordsStartFocused "670 980 180 10"
+set CoordsMidFocused "850 980 50 10"
+set CoordsEndFocused "900 980 117 10"
+set CoordsStartDisabled "670 990 180 26"
+set CoordsMidDisabled "850 990 50 26"
+set CoordsEndDisabled "900 990 117 26"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 410
+set RenderCB_DY 1133
+set Coords "0 0 350 900"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set CommandPress "gameui promoteToTop FriendsMain"
+add MenuObject
+set Name FriendsCloseVis
+set Coords "638 454 50 50"
+set CoordsFocused "637 397 50 50"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name FriendsClose
+set Coords "0 0 50 50"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu Friends /fadeout 0.1"
+set Child "FriendsCloseVis 0 0"
+add MenuObject
+set Name FriendsFilterHint
+set Coords "8 233 411 56"
+set DisabledAlpha 0.0
+set RenderCB_DX 270
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "12 -1"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x74a996
+set RenderCB_Text FriendsFilterHint
+set HiddenCheckBySymbolValue FriendsFilterText!""
+add MenuObject
+set Name FriendsFilterText
+set Coords "8 233 411 56"
+set CoordsFocused "8 298 411 56"
+set Texture menus/Faction
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 270
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "12 -1"
+set MouseInteractZoneExpand "-20 -20 0 -4"
+set Layer 3
+set Focus -2
+set ScaleX 0.72, ScaleY 0.8
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set TextEditableMaxLen 20
+set TextEditableUsernameLegacy 1
+set RenderCB_Text FriendsFilterText
+set CommandOnKeyboardEdit "menucmd FriendsFilterTextChanged"
+set Child "FriendsFilterHint 0 0"
+set CommandTabCycle "if sym FR_Hidden1 == 1 if sym FR_Hidden0 != 1 sym set FriendsFilterText $FR_Name0"
+set CommandEnterKey "if sym FR_Name0 == $FriendsFilterText && sym DialogBoxLoaded == 0 menucmd PopFirstFriend"
+set CommandEnterKey "if sym FR_Hidden0 == 1 && sym DialogBoxLoaded == 0 friends addv2sym FriendsFilterText"
+add MenuObject initFrom FriendItemHighlight
+set Name FriendsTabHighlight
+set TileArea "64 52"
+add MenuObject
+set Name FocusCloud
+set Texture effects/FocusCloud
+set Coords "0 0 64 64"
+set BlendMode BlendAdd
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimated "128 0 64 64"
+set CoordsAnimated "192 0 64 64"
+set CoordsAnimated "256 0 64 64"
+set CoordsAnimated "320 0 64 64"
+set CoordsAnimated "384 0 64 64"
+set CoordsAnimated "448 0 64 64"
+set CoordsAnimated "0 64 64 64"
+set CoordsAnimated "64 64 64 64"
+set CoordsAnimated "128 64 64 64"
+set CoordsAnimated "192 64 64 64"
+set CoordsAnimated "256 64 64 64"
+set CoordsAnimated "320 64 64 64"
+set CoordsAnimated "384 64 64 64"
+set CoordsAnimated "448 64 64 64"
+set CoordsAnimated "0 128 64 64"
+set CoordsAnimated "64 128 64 64"
+set CoordsAnimated "128 128 64 64"
+set CoordsAnimated "192 128 64 64"
+set CoordsAnimated "256 128 64 64"
+set CoordsAnimated "320 128 64 64"
+set CoordsAnimated "384 128 64 64"
+set CoordsAnimated "448 128 64 64"
+set CoordsAnimated "0 192 64 64"
+set CoordsAnimated "64 192 64 64"
+set CoordsAnimated "128 192 64 64"
+set CoordsAnimated "192 192 64 64"
+set CoordsAnimated "256 192 64 64"
+set CoordsAnimated "320 192 64 64"
+set CoordsAnimated "384 192 64 64"
+set CoordsAnimated "448 192 64 64"
+set CoordsAnimationFrameTimer 0.05
+set ScaleX 1.2, ScaleY 1.2
+add MenuObject initFrom FocusCloud
+set Name FocusCloud2
+set ScaleX 1.5, ScaleY 1.5
+add MenuObject initFrom FocusCloud
+set Name FocusCloudFriends
+set ScaleX 1.5, ScaleY 1.5
+add MenuObject
+set Name FriendsTabTemplate
+set Texture menus/Mail
+set Coords "690 594 64 44"
+set CoordsFocused "690 646 64 44"
+set MouseInteractZoneExpand "0 0 0 8"
+set DrawWhenFocused FriendsTabHighlight
+set DrawWhenFocused FocusCloud
+set DrawWhenFocusedOffset "-10 -13"
+set MouseInteract 1
+set Focus -2
+set ToolTip MB_Friends
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "menucmd FriendsScrollAllToTop"
+add MenuObject
+set Name FriendsTabATemplate
+set Texture menus/Mail
+set Coords "690 646 64 52"
+set MouseInteract 1
+set Focus -2
+set ToolTip MB_Friends
+add MenuObject initFrom FriendsTabTemplate
+set Name FriendsTabFriends
+set CommandPress "sym setZero SocialShowRecent SocialShowIgnored"
+set CommandPress "sym setOne SocialShowFriends"
+set HiddenCheckBySymbol SocialShowFriends
+add MenuObject initFrom FriendsTabATemplate
+set Name FriendsTabAFriends
+set HiddenCheckBySymbolInv SocialShowFriends
+add MenuObject initFrom FriendsTabTemplate
+set Name FriendsTabRecentlyMet
+set Coords "754 594 64 44"
+set CoordsFocused "754 646 64 44"
+set CommandPress "sym setZero SocialShowFriends SocialShowIgnored"
+set CommandPress "sym setOne SocialShowRecent"
+set ToolTip MB_RecentlyMet
+set HiddenCheckBySymbol SocialShowRecent
+add MenuObject initFrom FriendsTabATemplate
+set Name FriendsTabARecentlyMet
+set Coords "754 646 64 52"
+set ToolTip MB_RecentlyMet
+set HiddenCheckBySymbolInv SocialShowRecent
+add MenuObject initFrom FriendsTabTemplate
+set Name FriendsTabIgnored
+set Coords "818 594 64 44"
+set CoordsFocused "818 646 64 44"
+set ToolTip MB_IgnoredPlayers
+set CommandPress "sym setZero SocialShowFriends SocialShowRecent"
+set CommandPress "sym setOne SocialShowIgnored"
+set HiddenCheckBySymbol SocialShowIgnored
+add MenuObject initFrom FriendsTabATemplate
+set Name FriendsTabAIgnored
+set Coords "818 646 64 52"
+set ToolTip MB_IgnoredPlayers
+set HiddenCheckBySymbolInv SocialShowIgnored
+add MenuObject
+set Name FriendsTabsGroup
+set ContainerOnly 1
+set Child "FriendsTabFriends 0 0"
+set Child "FriendsTabRecentlyMet 64 0"
+set Child "FriendsTabIgnored 128 0"
+set Child "FriendsTabAFriends 0 0"
+set Child "FriendsTabARecentlyMet 64 0"
+set Child "FriendsTabAIgnored 128 0"
+add MenuObject
+set Name FriendsTextLabel
+set Coords "0 0 300 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolInv @_Arg3_@
+set SaveArgs 3
+add MenuObject
+set Name FriendsCountTotal
+set Coords "0 0 297 52"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXRight
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x37585a
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol FRC_Total
+add MenuObject
+set Name FriendsMain
+set RenderBlocked 1
+set Coords "0 0 318 55"
+set MouseInteract 1
+set Focus -2
+set DragSource FriendsMain
+set FirstDrawnChildren 1
+set Child "FriendsBackground -15 -15"
+set Child "FriendsTextLabel 20 11	MB_Friends	0.8	SocialShowFriends"
+set Child "FriendsTextLabel 20 11	MB_IgnoredPlayers	0.8	SocialShowIgnored"
+set Child "FriendsTextLabel 20 11	MB_RecentlyMet	0.8	SocialShowRecent"
+set Child "FriendList 2 120"
+set Child "RecentlyMetList 2 120"
+set Child "IgnoredPlayerList 2 120"
+set Child "FriendsFilterText 10 58"
+set Child "FriendsTabsGroup 2 815"
+set Child "FriendsClose 270 -2 /ifSym ArcCustomized == 0"
+set Child "GenericMenuClose[FriendsClose] 230 -4	Friends /ifSym ArcCustomized == 1"
+set CommandPress "gameui promoteToTop FriendsMain"

@@ -1,0 +1,43 @@
+add MenuObject
+set Name StandbyCircle
+set Texture menus/Standby
+set Coords "829 417 168 168"
+set ScaleX 2.0
+set ScaleY 2.0
+set RotationPeriod 2.0
+add MenuObject initFrom StandbyCircle
+set Name StandbyCircle2
+set RotationPeriod -1.7
+add MenuObject initFrom StandbyCircle
+set Name StandbyCircle3
+set RotationPeriod 1.2
+add MenuObject initFrom StandbyCircle
+set Name StandbyCircle4
+set RotationPeriod -2.5
+add MenuObject
+set Name StandbyBucky
+set Texture ]menus/Standby
+set Coords "-600 603 800 421"
+set ScaleX 2.0
+set ScaleY 2.0
+set CoordsInterpolatedDest "687 603 800 421"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 3"
+add MenuObject initFrom StandbyBucky
+set Name StandbyBucky2
+set MirrorOnX 1
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 4"
+set Coords "-800 603 800 421"
+set CoordsInterpolatedDest "487 603 800 421"
+add MenuObject
+set Name Standby
+set Texture menus/Standby
+set Coords "0 0 800 600"
+set Anchor Center
+set ScaleX 2.0
+set ScaleY 2.0
+set Child "StandbyCircle 0 0"
+set Child "StandbyCircle2 1264 0"
+set Child "StandbyCircle3 0 862"
+set Child "StandbyCircle4 1264 862"
+set Child "StandbyBucky 0 270"
+set Child "StandbyBucky2 0 50"

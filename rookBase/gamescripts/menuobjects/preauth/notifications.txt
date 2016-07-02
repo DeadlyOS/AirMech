@@ -1,0 +1,158 @@
+add MenuObject
+set Name BlackNotify
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.85
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name NotifySystemIconAsyncWait
+set Texture menus/CursorSpinner
+set Coords "30 30 68 68"
+set RotationPeriod 1.0
+set ScaleX 2.0
+set ScaleY 2.0
+add MenuObject initFrom NotifySystemIconAsyncWait
+set Name NotifySystemIconAsyncWaitGlow
+set BlendMode BlendAdd
+set Color 0x444444
+add MenuObject
+set Name NotifySystemIcon
+set Texture menus/Messages
+set Coords "0 128 147 156"
+set FirstDrawnChildren 1
+set Child "NotifySystemIconAsyncWait 0 6"
+set Child "NotifySystemIconAsyncWaitGlow 0 6"
+add MenuObject
+set Name BlackAsync
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.7
+set MouseInteract 1
+add MenuObject
+set Name AsyncWaitLogoSpin
+set Texture menus/Messages
+set Coords "0 128 147 156"
+set FirstDrawnChildren 1
+set DisabledSymInv _AsyncWait_
+set DisabledAlphaTimeIn 0.8
+set DisabledAlphaTimeOut 0.8
+set PlayerHiddenStateCheck ModeAsyncWait
+set Child "NotifySystemIconAsyncWait 0 6"
+set Child "NotifySystemIconAsyncWaitGlow 0 6"
+add MenuObject
+set Name LatencyWaitLogoSpin
+set Texture menus/Messages
+set Coords "0 128 147 156"
+set FirstDrawnChildren 1
+set DisabledAlphaTimeIn 0.8
+set DisabledAlphaTimeOut 0.8
+set HiddenCheckBySymbolInv _LatencyCheckAct_
+set Child "NotifySystemIconAsyncWait 0 6"
+set Child "NotifySystemIconAsyncWaitGlow 0 6"
+add MenuObject
+set Name NotifySystemMessage
+set Texture menus/Messages
+set CoordsStart "0 0 32 32"
+set CoordsMid "32 0 400 32"
+set CoordsEnd "432 0 32 32"
+set CoordsStartFocused "0 32 32 64"
+set CoordsMidFocused "32 32 400 64"
+set CoordsEndFocused "432 32 32 64"
+set CoordsStartDisabled "0 96 32 32"
+set CoordsMidDisabled "32 96 400 32"
+set CoordsEndDisabled "432 96 32 32"
+set Focus -2
+set MouseInteract 1
+set RenderCB _DrawUText_G3x3
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.8
+set RenderCB_BoolArg 1
+set RenderCB_DX 650
+set RenderCB_DY 500
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol NotifySystemMessage
+set RenderCB_YClipConfig "-110 130 -50 100"
+set RenderCB_YClipConfigIsOffsets 1
+set Child "NotifySystemIcon -120 -20"
+add MenuObject
+set Name NotifySystemMaster
+set ContainerOnly 1
+set Coords "0 0 1920 100"
+set HiddenCheckBySymbolInv _TitleScreenReached_
+set Child "BlackNotify 0 0"
+set Child "NotifySystemMessage 635 0"
+add MenuObject
+set Name NotificationTextTemplate
+set Coords "0 0 300 100"
+set RenderCB_DX 300
+set RenderCB_DY 100
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 1.1
+set RenderCB _DrawUTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text WelcomeMessage
+set RenderCB_BoolArg 1
+set Disabled 1
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.5
+add MenuObject initFrom NotificationTextTemplate
+set Name NotifyLevelUpT0
+set RenderCB_Text PromoA0
+set RenderCB_FontScale 0.9
+set Coords "0 0 500 200"
+set RenderCB_DX 500
+set RenderCB_DY 200
+set RenderCB_Text NotifyLevelUpT0
+add MenuObject initFrom NotificationTextTemplate
+set Name NotifyLevelUpT1
+set Coords "0 0 500 200"
+set RenderCB_DX 500
+set RenderCB_DY 200
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 1.4
+set RenderCB_Text NotifyLevelUpT1
+add MenuObject initFrom PanelResizeWhiteBorder
+set Name NotifyLevelUp
+set RenderCB_DX 500
+set RenderCB_DY 220
+set Coords "0 0 500 220"
+set Anchor Center
+set Disabled 1
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.5
+set Child "NotifyLevelUpT0 0 60"
+set Child "NotifyLevelUpT1 0 110"
+add MenuObject
+set Name LevelUpFlash
+set Texture hud/LevelUp
+set Coords "0 0 128 256"
+set BlendMode BlendAdd
+set Anchor Center
+set ScaleX 0.3
+add MenuObject initFrom NotifyLevelUpT1
+set Name NotifyLevelUpT1NP
+set RenderCB_Text NotifyLevelUpT1NP
+add MenuObject initFrom NotifyLevelUpT1
+set Name NotifyLevelUpNumber
+set RenderCB_Font Gunner
+set RenderCB_FontScale 1.0
+set RenderCB _DrawTextShadowed
+set RenderCB_ConsoleSymbol Local_Level
+add MenuObject
+set Name NotifyLevelUpNP
+set Texture hud/EndgamePlayer@TeamColor@
+set Coords "804 95 122 153"
+set Disabled 1
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.5
+set Child "NotifyLevelUpNumber -188 52"

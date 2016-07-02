@@ -1,0 +1,26 @@
+onloadrun {
+if sym MM_PartySize == 0 runNow sym set _DisableInvite_ 1
+if inGame runNow sym set _DisableInvite_ 1
+sym set _DisableReport_ 0
+if sym _FriendName_ ==sym P_Name runnow sym set _DisableReport_ 1
+]gameUI saveFocusID _dialogFriendRestoreFocus_
+sym set AnyFriendDialogOpen 1
+sym set FriendOptionsHide 0
+sym set DisableFriendFlash 0
+}
+MO FriendOpen {
+rename FriendOpen1
+pos $_DialogFriendPosX $_DialogFriendPosY /screenClamp 1030 638
+draggableUIElement
+}
+onload {
+addUIAnim FriendOpen1 mas_DialogPopFadein
+gameui promoteToTop FriendOpen1
+sym set DisableFriendFlash 1
+if usingPad gameui focusNameTry FriendButtonClose
+}
+onunload {
+sym set _DisableInvite_ 0
+]gameUI restoreFocusID _dialogFriendRestoreFocus_
+]sym set AnyFriendDialogOpen 0
+}

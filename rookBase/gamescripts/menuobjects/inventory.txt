@@ -1,0 +1,1227 @@
+add MenuObject initFrom MenuBarOpenButton
+set Name MenuBarOpenButtonInv
+set HiddenCheckBySymbolInv InventoryLoaded
+add MenuObject
+set Name InventoryOpenButton
+set Texture menus/MenuBarButtons
+set Coords "123 108 60 52"
+set CoordsFocused "123 56 60 52"
+set DrawWhenFocused FocusCloud
+set DrawWhenFocusedOffset "-10 -13"
+set MouseInteract 1
+set FirstDrawnChildren 1
+set Child "MenuBarOpenButtonInv -1 -1"
+set Focus -2
+set ToolTip Shop_Inventory
+set CommandGetFocus "input set padFocusFallback InventoryOpenButton"
+set CommandFocusLeft "gameui focusnametry MailInboxButton"
+set CommandFocusRight "gameui focusnametry ManualOpenButton"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPressAlt "gameUI ignoreInputTime 0.1"
+set CommandDoubleClick "gameUI ignoreInputTime 0.1"
+set CommandPress "if !menuloaded Inventory loadmenu Inventory /fadein 0.1"
+set CommandPress "if menuloaded Inventory gameui promoteToTop InventoryMain"
+set CommandPressAlt "if menuloaded Inventory clearmenu Inventory /fadeout 0.1"
+set CommandDoubleClick "if menuloaded Inventory clearmenu Inventory /fadeout 0.1"
+set CommandPress "collection invInit InventoryV2"
+set CommandPress "sym set InventoryDisplayType 0"
+add MenuObject
+set Name InventoryIconLg
+set Texture &TR2_IconLg@_Arg1_@&+lang
+set TextureAlt &TR2_IconLgA@_Arg1_@&+lang
+set DrawGreyScale &TR2_Greyed@_Arg1_@&
+set NoDrawOnMissingTexture 1
+set Coords "x256 32 32 192 192 x512 64 64 384 384 x1024 128 128 768 768"
+set ScaleX 0.40
+set ScaleY 0.40
+set ScaleRefToCoordsX 192.0
+set ScaleRefToCoordsY 192.0
+set SaveArgs 3
+set FilterName InvV2UI
+set FilterOnlyFlags Textures
+set FilterOnlyFlags Coords
+set HiddenCheckBySymbol TR2_ShowIconSm@_Arg1_@
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name InventoryIconSm
+set Texture &TR2_IconSm@_Arg1_@&+lang
+set TextureAlt QuestIcons/Default_UL_LG
+set DrawGreyScale &TR2_Greyed@_Arg1_@&
+set NoDrawOnMissingTexture 1
+set Coords "0 0 128 128"
+set Coords "x128 19 19 90 90 x256 38 38 180 180"
+set ScaleX 0.76
+set ScaleY 0.76
+set ScaleRefToCoordsX 99.0
+set ScaleRefToCoordsY 99.0
+set SaveArgs 1
+set FilterName InvV2UI
+set HiddenCheckBySymbolInv TR2_ShowIconSm@_Arg1_@
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name InventoryHighlightItem
+set Texture menus/ItemFrame&TR2_Rarity@_Arg1_@&
+set DrawGreyScaleSym TR2_Greyed@_Arg1_@
+set ScaleX 1.1, ScaleY 1.1
+set Coords "710 158 98 98"
+set CoordsFocused "612 158 98 98"
+set FilterName InvV2UI
+set FilterOnlyFlags Textures
+set DisplayAsFocusedIfParentFocused 1
+set SaveArgs 1
+add MenuObject
+set Name InventoryBadge
+set RenderCB_FontScale 01
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Font Badges
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text ""
+set RenderCB_DY 68
+set RenderCB_DX 68
+set RenderCB_ConsoleSymbol TR2_Badge@_Arg1_@
+set HiddenCheckBySymbolInv TR2_IsBadge@_Arg1_@
+add MenuObject
+set Name InventoryItemCount
+set Texture menus/Social
+set Coords "900 446 122 122"
+set RenderCB_FontScale 0.65
+set RenderCB_DX 30
+set RenderCB_DY 20
+set ScaleX 0.65, ScaleY 0.65
+set RenderCBExcludesDefaultRender 0
+set SaveArgs 1
+set RenderCB_Offset "46 48"
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol TR2_Count@_Arg1_@
+set RenderCB_RGBColor 0xffcc5d
+set HiddenCheckBySymbolValue TR2_Count@_Arg1_@=0
+set FilterName InvV2UI
+add MenuObject initFrom InventoryItemCount
+set Name InventoryItemInfCount
+set Texture menus/HomeBar
+set Coords "851 773 122 122"
+set RenderCB_ConsoleSymbol TR2_InfCount@_Arg1_@
+set HiddenCheckBySymbolValue TR2_InfCount@_Arg1_@<2
+set RenderCB_RGBColor 0xffffff
+add MenuObject
+set Name InventoryItemCoverGreyed
+set Texture effects/white
+set Color 0x213037
+set ColorFocused 0x213037
+set Coords "0 0 84 84"
+set CoordsFocused "0 0 1 1"
+set DisplayAsFocusedIfParentFocused 1
+set SaveArgs 1
+set NoAlphaMod 1
+set Alpha 0.7
+set HiddenCheckBySymbolInv TR2_Greyed@_Arg1_@
+add MenuObject
+set Name InventoryIsKnown
+set Texture menus/DialogGeneral
+set Coords "312 248 52 49"
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set SaveArgs 2
+set HiddenCheckBySymbolValue TR2_IsKnownSkill@_Arg1_@=0
+add MenuObject
+set Name InventoryOnTrialDyn
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0xffffff
+set BlendMode BlendAdd
+set PulseAlpha "3.0 -0.9 -0.7"
+set ScaleX @_Arg2_@
+set ScaleY @_Arg3_@
+set SaveArgs 2
+set HiddenCheckBySymbolInv TR2_IsOnTrial@_Arg1_@
+set Child "InventoryOnTrialDynIcon -5 50	@_Arg4_@"
+add MenuObject
+set Name InventoryOnTrialDynIcon
+set Texture menus/TrialIcon
+set Coords "0 0 32 32"
+set CoordsAnimated "0 0 32 32"
+set CoordsAnimated "32 0 32 32"
+set CoordsAnimated "64 0 32 32"
+set CoordsAnimated "96 0 32 32"
+set CoordsAnimated "0 32 32 32"
+set CoordsAnimated "32 32 32 32"
+set CoordsAnimated "64 32 32 32"
+set CoordsAnimated "96 32 32 32"
+set CoordsAnimated "0 64 32 32"
+set CoordsAnimated "32 64 32 32"
+set CoordsAnimated "64 64 32 32"
+set CoordsAnimated "96 64 32 32"
+set CoordsAnimated "64 64 32 32"
+set CoordsAnimated "32 64 32 32"
+set CoordsAnimated "0 64 32 32"
+set CoordsAnimated "96 32 32 32"
+set CoordsAnimated "64 32 32 32"
+set CoordsAnimated "32 32 32 32"
+set CoordsAnimated "0 32 32 32"
+set CoordsAnimated "96 0 32 32"
+set CoordsAnimated "64 0 32 32"
+set CoordsAnimated "32 0 32 32"
+set CoordsAnimated "0 0 32 32"
+set CoordsAnimationFrameTimer 0.1
+set SaveArgs 1
+set RenderOffsetY @_Arg1_@
+add MenuObject
+set Name InventoryOnTrialItem
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0xffffff
+set BlendMode BlendAdd
+set PulseAlpha "3.0 -0.9 -0.7"
+set ScaleX @_Arg2_@
+set ScaleY @_Arg3_@
+set SaveArgs 4
+set FilterName Customize
+set HiddenCheckBySymbolValue @ItemLocal@_TS=
+set Child "InventoryOnTrialDynIcon 0 50		@_Arg4_@"
+add MenuObject initFrom InventoryOnTrialItem
+set Name InventoryOnTrialPilot
+set HiddenCheckBySymbolValue @PilotLocal@_TS=
+add MenuObject initFrom InventoryOnTrialItem
+set Name InventoryOnTrialFlair1
+set HiddenCheckBySymbolValue @Flair1Local@_TS=
+add MenuObject initFrom InventoryOnTrialItem
+set Name InventoryOnTrialFlair2
+set HiddenCheckBySymbolValue @Flair2Local@_TS=
+add MenuObject initFrom InventoryOnTrialItem
+set Name InventoryOnTrialFlair3
+set HiddenCheckBySymbolValue @Flair3Local@_TS=
+add MenuObject initFrom InventoryOnTrialItem
+set Name InventoryOnTrialPet1
+set HiddenCheckBySymbolValue @Pet1Local@_TS=
+add MenuObject initFrom InventoryOnTrialItem
+set Name InventoryOnTrialPet2
+set HiddenCheckBySymbolValue @Pet2Local@_TS=
+add MenuObject initFrom InventoryOnTrialItem
+set Name InventoryOnTrialPet3
+set HiddenCheckBySymbolValue @Pet3Local@_TS=
+add MenuObject initFrom InventoryOnTrialItem
+set Name InventoryOnTrialHead
+set HiddenCheckBySymbolValue @HeadLocal@_TS=
+add MenuObject
+set Name InventoryOnTrialItemLobby
+set ContainerOnly 1
+set FilterName Customize
+set HiddenCheckBySymbolValue @ItemLocal@_TS=
+set Child "InventoryOnTrialDynIcon 0 50		@_Arg1_@"
+add MenuObject initFrom InventoryOnTrialItemLobby
+set Name InventoryOnTrialHeadLobby
+set HiddenCheckBySymbolValue @HeadLocal@_TS=
+add MenuObject initFrom InventoryOnTrialItemLobby
+set Name InventoryOnTrialFlair1Lobby
+set HiddenCheckBySymbolValue @Flair1Local@_TS=
+add MenuObject initFrom InventoryOnTrialItemLobby
+set Name InventoryOnTrialFlair2Lobby
+set HiddenCheckBySymbolValue @Flair2Local@_TS=
+add MenuObject initFrom InventoryOnTrialItemLobby
+set Name InventoryOnTrialFlair3Lobby
+set HiddenCheckBySymbolValue @Flair3Local@_TS=
+add MenuObject initFrom InventoryOnTrialItemLobby
+set Name InventoryOnTrialPet1Lobby
+set HiddenCheckBySymbolValue @Pet1Local@_TS=
+add MenuObject initFrom InventoryOnTrialItemLobby
+set Name InventoryOnTrialPet2Lobby
+set HiddenCheckBySymbolValue @Pet2Local@_TS=
+add MenuObject initFrom InventoryOnTrialItemLobby
+set Name InventoryOnTrialPet3Lobby
+set HiddenCheckBySymbolValue @Pet3Local@_TS=
+add MenuObject
+set Name InventoryOnTrial
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0xffffff
+set BlendMode BlendAdd
+set PulseAlpha "3.0 -0.9 -0.7"
+set ScaleX @_Arg2_@
+set ScaleY @_Arg3_@
+set SaveArgs 4
+set FilterName CustomDrawer
+set Hidden $_CustomHideTrial
+set Child "InventoryOnTrialIcon 0 50	@_Arg1_@ @_Arg4_@"
+add MenuObject
+set Name InventoryOnTrialIcon
+set Texture menus/TrialIcon
+set Coords "0 0 32 32"
+set CoordsAnimated "0 0 32 32"
+set CoordsAnimated "32 0 32 32"
+set CoordsAnimated "64 0 32 32"
+set CoordsAnimated "96 0 32 32"
+set CoordsAnimated "0 32 32 32"
+set CoordsAnimated "32 32 32 32"
+set CoordsAnimated "64 32 32 32"
+set CoordsAnimated "96 32 32 32"
+set CoordsAnimated "0 64 32 32"
+set CoordsAnimated "32 64 32 32"
+set CoordsAnimated "64 64 32 32"
+set CoordsAnimated "96 64 32 32"
+set CoordsAnimated "64 64 32 32"
+set CoordsAnimated "32 64 32 32"
+set CoordsAnimated "0 64 32 32"
+set CoordsAnimated "96 32 32 32"
+set CoordsAnimated "64 32 32 32"
+set CoordsAnimated "32 32 32 32"
+set CoordsAnimated "0 32 32 32"
+set CoordsAnimated "96 0 32 32"
+set CoordsAnimated "64 0 32 32"
+set CoordsAnimated "32 0 32 32"
+set CoordsAnimated "0 0 32 32"
+set CoordsAnimationFrameTimer 0.1
+set SaveArgs 2
+set RenderOffsetY @_Arg2_@
+set FilterName CustomDrawer
+set Hidden $_CustomHideTrial
+add MenuObject
+set Name InventoryItem
+set Texture menus/ItemFrame&TR2_Rarity@_Arg1_@&
+set DrawGreyScale &TR2_Greyed@_Arg1_@&
+set ScaleX 1.1, ScaleY 1.1
+set Coords "66 88 68 68"
+set RenderOffsetX 0
+set RenderOffsetY 0
+set CommandGetFocus "playSound $MenuShopItemFocus"
+set MouseInteractZoneExpandWhenFocused "0 0 0 4"
+set HiddenCheckBySymbol TR2_Hidden@_Arg1_@
+set Child "InventoryUltimateBg 1 1	@_Arg1_@"
+set Child "InventoryUltimateFg 1 1 	@_Arg1_@"
+set Child "InventoryIconSm 1 1 	@_Arg1_@"
+set Child "InventoryIconLg 1 1 	@_Arg1_@"
+set Child "InventoryGoldPlatedStamp 0 45 @_Arg1_@	0.6"
+set Child "InventoryHighlightItem -14 -15	@_Arg1_@"
+set Child "InventoryItemCount 3 2	@_Arg1_@"
+set Child "InventoryItemInfCount 3 2	@_Arg1_@"
+set Child "InventoryBadge 6 16	@_Arg1_@"
+set Child "InventoryUltimateGlow 1 2	@_Arg1_@"
+set Child "InventoryOnTrialDyn 0 0		@_Arg1_@	5	4.9		0"
+set Child "InventoryIsKnown -3 42 @_Arg1_@	0.75"
+set Child "SelectInventoryItem -2 -3	@_Arg1_@"
+set CommandPress ">if sym TR2_Greyed@_Arg1_@ == 0 && sym InventorySelected == @_Arg1_@ sym set InventorySelected -1"
+set CommandPress ">if sym TR2_Greyed@_Arg1_@ == 0 && sym InventorySelected != @_Arg1_@ sym set InventorySelected @_Arg1_@"
+set CommandPress ">if sym TR2_Greyed@_Arg1_@ == 0 && sym InventorySelected != @_Arg1_@ customize expUnitStatConfig $TR2_ContentName@_Arg1_@ 0 /resultSym CompObjIsUnit"
+set CommandPress ">if sym TR2_Greyed@_Arg1_@ == 1 gameUI ignoreInputTime 0.35"
+set CommandPress ">if sym TR2_Greyed@_Arg1_@ == 1 collection inspect @_Arg1_@ /invV2"
+set CommandPress ">if sym TR2_Greyed@_Arg1_@ == 1 collection lookupDiamondPrice $TR2_ContentName@_Arg1_@ SellPriceDiamonds /mktlist"
+set CommandPress ">if sym TR2_Greyed@_Arg1_@ == 1 sym set InventorySelected -1"
+set CommandDoubleClick "gameUI ignoreInputTime 0.35"
+set CommandDoubleClick ">collection inspect @_Arg1_@ /invV2"
+set CommandDoubleClick ">collection lookupDiamondPrice $TR2_ContentName@_Arg1_@ SellPriceDiamonds /mktlist"
+set CommandDoubleClick ">sym set InventorySelected @_Arg1_@"
+set MouseInteract 1
+set Focus -2
+set DragSource &TR2_DragSource@_Arg1_@&
+set FilterName InvV2UI
+set ToolTip &TR2_Desc@_Arg1_@&
+set DrawForToolTip &TR2_DFTT@_Arg1_@&
+set DrawForToolTipPositioning &TR2_DFTTP@_Arg1_@&
+set ToolTipDelayTime 0.25
+set CommandGetFocus ">sym set ShopItemActive $TR2_ContentName@_Arg1_@"
+set CommandGetFocus ">input set padFocusFallback @_Arg1_@"
+set CommandPressAlt "gameUI ignoreInputTime 0.35"
+set CommandPressAlt ">collection inspect @_Arg1_@ /invV2"
+set CommandPressAlt ">collection lookupDiamondPrice $TR2_ContentName@_Arg1_@ SellPriceDiamonds /mktlist"
+set CommandPressAlt ">collection genPartType $TR2_ContentName@_Arg1_@ _CustomPartType"
+set CommandPressAlt ">collection genPartAirMechType $TR2_ContentName@_Arg1_@ _CustomAirMechType"
+set CommandTopButton "gameUI ignoreInputTime 0.35"
+set CommandTopButton "sym set DialogForceInspect 1"
+set CommandTopButton ">collection inspectOrExec @_Arg1_@ /invV2"
+set CommandGetFocus ">&TR2_OnFocus@_Arg1_@&"
+set CommandGetFocus ">sym set LastShopItemFocus $TR2_ContentName@_Arg1_@"
+set SaveArgs 5
+set CommandFocusLeft ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg2_@"
+set CommandFocusUp ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg3_@"
+set CommandFocusRight ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg4_@"
+set CommandFocusDown ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg5_@"
+set DrawWhenFocusedOffset "-4 -5 0"
+set Child "InventoryItemCoverGreyed -5 -5	@_Arg1_@"
+add MenuObject
+set Name InventoryItemEmpty2
+set Texture menus/ShopParts+lang
+set Coords "0 648 189 242"
+set RenderOffsetX 7, RenderOffsetY 7
+set SaveArgs 1
+set ScaleX 0.44, ScaleY 0.35
+set HiddenCheckBySymbolInv TR2_Hidden@_Arg1_@
+add MenuObject
+set Name InventoryItemEmpty
+set Texture menus/Mail
+set Coords "177 560 78 78"
+set MouseInteract 1
+set Focus -2
+set RenderOffsetX -2
+set RenderOffsetY -1
+set ScaleX 1.07, ScaleY 1.05
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name CollectionHeaderBar
+set Texture effects/white
+set Coords "0 0 750 3"
+set Color 0x6d959a
+add MenuObject
+set Name CollectionHeaderWish
+set Texture menus/LandscapeCanyon
+set Coords "100 40 750 81"
+set SaveArgs 1
+set HiddenCheckBySymbolValue InvSetDisp@_Arg1_@!SetWishlistDisp
+add MenuObject
+set Name CollectionHeaderBg
+set Texture effects/white
+set Coords "0 0 750 50"
+set Color 0x314649
+set SaveArgs 1
+set Child "CollectionHeaderWish 0 -31"
+add MenuObject
+set Name CollectionHeaderBadge
+set Coords "0 0 500 60"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.75
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x82b6bd
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol InvSetBadge@_Arg1_@
+add MenuObject
+set Name CollectionHeaderCount
+set Coords "0 0 653 60"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x82b6bd
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol InvSetOwned@_Arg1_@
+add MenuObject
+set Name CollectionHeaderLabel
+set Coords "0 0 663 60"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.85
+set RenderCB_Offset "30 0"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol InvSetDisp@_Arg1_@
+set HiddenCheckBySymbol InvSetHidden@_Arg1_@
+set SaveArgs 3
+set FirstDrawnChildren 1
+set Child "CollectionHeaderBg 0 20		@_Arg1_@"
+set Child "CollectionHeaderBadge 90 0	@_Arg1_@"
+set Child "CollectionHeaderCount 90 0	@_Arg1_@"
+set Child "CollectionHeaderBar 0 70"
+add MenuObject
+set Name InventoryCollectionHeaders
+set ContainerOnly 1
+set HiddenCheckBySymbolValue InvInitMode=InventoryV2
+set Child "CollectionHeaderLabel 0 Nx85	0"
+set Child "CollectionHeaderLabel 0 Nx85	1"
+set Child "CollectionHeaderLabel 0 Nx85	2"
+set Child "CollectionHeaderLabel 0 Nx85	3"
+set Child "CollectionHeaderLabel 0 Nx85	4"
+set Child "CollectionHeaderLabel 0 Nx85	5"
+set Child "CollectionHeaderLabel 0 Nx85	6"
+add MenuObject
+set Name InventoryEmptyBoxes
+set ContainerOnly 1
+set HiddenCheckBySymbolValue InvInitMode!InventoryV2
+set Child "InventoryItemEmpty 0 0		0"
+set Child "InventoryItemEmpty 85 0		1"
+set Child "InventoryItemEmpty 170 0		2"
+set Child "InventoryItemEmpty 255 0		3"
+set Child "InventoryItemEmpty 340 0		4"
+set Child "InventoryItemEmpty 425 0		5"
+set Child "InventoryItemEmpty 510 0		6"
+set Child "InventoryItemEmpty 595 0		7"
+set Child "InventoryItemEmpty 0 85		0"
+set Child "InventoryItemEmpty 85 85		1"
+set Child "InventoryItemEmpty 170 85		2"
+set Child "InventoryItemEmpty 255 85		3"
+set Child "InventoryItemEmpty 340 85		4"
+set Child "InventoryItemEmpty 425 85		5"
+set Child "InventoryItemEmpty 510 85		6"
+set Child "InventoryItemEmpty 595 85		7"
+set Child "InventoryItemEmpty 0 170		0"
+set Child "InventoryItemEmpty 85 170		1"
+set Child "InventoryItemEmpty 170 170		2"
+set Child "InventoryItemEmpty 255 170		3"
+set Child "InventoryItemEmpty 340 170		4"
+set Child "InventoryItemEmpty 425 170		5"
+set Child "InventoryItemEmpty 510 170		6"
+set Child "InventoryItemEmpty 595 170		7"
+set Child "InventoryItemEmpty 0 255		0"
+set Child "InventoryItemEmpty 85 255		1"
+set Child "InventoryItemEmpty 170 255		2"
+set Child "InventoryItemEmpty 255 255		3"
+set Child "InventoryItemEmpty 340 255		4"
+set Child "InventoryItemEmpty 425 255		5"
+set Child "InventoryItemEmpty 510 255		6"
+set Child "InventoryItemEmpty 595 255		7"
+set Child "InventoryItemEmpty 0 340		0"
+set Child "InventoryItemEmpty 85 340		1"
+set Child "InventoryItemEmpty 170 340		2"
+set Child "InventoryItemEmpty 255 340		3"
+set Child "InventoryItemEmpty 340 340		4"
+set Child "InventoryItemEmpty 425 340		5"
+set Child "InventoryItemEmpty 510 340		6"
+set Child "InventoryItemEmpty 595 340		7"
+set Child "InventoryItemEmpty 0 425		0"
+set Child "InventoryItemEmpty 85 425		1"
+set Child "InventoryItemEmpty 170 425		2"
+set Child "InventoryItemEmpty 255 425		3"
+set Child "InventoryItemEmpty 340 425		4"
+set Child "InventoryItemEmpty 425 425		5"
+set Child "InventoryItemEmpty 510 425		6"
+set Child "InventoryItemEmpty 595 425		7"
+set Child "InventoryItemEmpty 0 510		0"
+set Child "InventoryItemEmpty 85 510		1"
+set Child "InventoryItemEmpty 170 510		2"
+set Child "InventoryItemEmpty 255 510		3"
+set Child "InventoryItemEmpty 340 510		4"
+set Child "InventoryItemEmpty 425 510		5"
+set Child "InventoryItemEmpty 510 510		6"
+set Child "InventoryItemEmpty 595 510		7"
+set Child "InventoryItemEmpty 0 595		0"
+set Child "InventoryItemEmpty 85 595		1"
+set Child "InventoryItemEmpty 170 595		2"
+set Child "InventoryItemEmpty 255 595		3"
+set Child "InventoryItemEmpty 340 595		4"
+set Child "InventoryItemEmpty 425 595		5"
+set Child "InventoryItemEmpty 510 595		6"
+set Child "InventoryItemEmpty 595 595		7"
+add MenuObject
+set Name InventoryContainer
+set ContainerOnly 1
+set HiddenCheckBySymbolValue InventoryDisplayMode!0
+set Child "InventoryEmptyBoxes 0 0"
+set Child "InventoryCollectionHeaders -67 0"
+set Child "InventoryItem[InventoryItem0] 0 0	0	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem1] 85 0	1	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem2] 170 0	2	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem3] 255 0	3	InventoryItem2	null	.FocusInventoryItem3R	InventoryItem8"
+set Child "InventoryItem[InventoryItem4] 340 0	4	InventoryItem3	null	.FocusInventoryItem4R	InventoryItem9"
+set Child "InventoryItem[InventoryItem5] 425 0	5	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem6] 510 0	6	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem7] 595 0	7	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem8] 0 85		8	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem9] 85 85		9	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem10] 170 85	10	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem11] 255 85	11	InventoryItem2	null	.FocusInventoryItem3R	InventoryItem8"
+set Child "InventoryItem[InventoryItem12] 340 85	12	InventoryItem3	null	.FocusInventoryItem4R	InventoryItem9"
+set Child "InventoryItem[InventoryItem13] 425 85	13	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem14] 510 85	14	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem15] 595 85	15	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem16] 0 170	16	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem17] 85 170	17	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem18] 170 170	18	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem19] 255 170	19	InventoryItem2	null	.FocusInventoryItem3R	InventoryItem8"
+set Child "InventoryItem[InventoryItem20] 340 170	20	InventoryItem3	null	.FocusInventoryItem4R	InventoryItem9"
+set Child "InventoryItem[InventoryItem21] 425 170	21	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem22] 510 170	22	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem23] 595 170	23	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem24] 0 255		24	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem25] 85 255	25	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem26] 170 255	26	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem27] 255 255	27	InventoryItem2	null	.FocusInventoryItem3R	InventoryItem8"
+set Child "InventoryItem[InventoryItem38] 340 255	28	InventoryItem3	null	.FocusInventoryItem4R	InventoryItem9"
+set Child "InventoryItem[InventoryItem29] 425 255	29	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem30] 510 255	30	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem31] 595 255	31	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem32] 0 340		32	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem33] 85 340	33	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem34] 170 340	34	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem35] 255 340	35	InventoryItem2	null	.FocusInventoryItem3R	InventoryItem8"
+set Child "InventoryItem[InventoryItem36] 340 340	36	InventoryItem3	null	.FocusInventoryItem4R	InventoryItem9"
+set Child "InventoryItem[InventoryItem37] 425 340	37	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem38] 510 340	38	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem39] 595 340	39	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem40] 0 425		40	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem41] 85 425	41	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem42] 170 425	42	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem43] 255 425	43	InventoryItem2	null	.FocusInventoryItem3R	InventoryItem8"
+set Child "InventoryItem[InventoryItem44] 340 425	44	InventoryItem3	null	.FocusInventoryItem4R	InventoryItem9"
+set Child "InventoryItem[InventoryItem45] 425 425	45	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem46] 510 425	46	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem47] 595 425	47	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem48] 0 510		48	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem49] 85 510	49	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem50] 170 510	50	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem51] 255 510	51	InventoryItem2	null	.FocusInventoryItem3R	InventoryItem8"
+set Child "InventoryItem[InventoryItem52] 340 510	52	InventoryItem3	null	.FocusInventoryItem4R	InventoryItem9"
+set Child "InventoryItem[InventoryItem53] 425 510	53	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem54] 510 510	54	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem55] 595 510	55	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem56] 0 595		56	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem57] 85 595		57	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem58] 170 595	58	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+set Child "InventoryItem[InventoryItem59] 255 595	59	InventoryItem2	null	.FocusInventoryItem3R	InventoryItem8"
+set Child "InventoryItem[InventoryItem60] 340 595	60	InventoryItem3	null	.FocusInventoryItem4R	InventoryItem9"
+set Child "InventoryItem[InventoryItem61] 425 595	61	.FocusInventoryItem0L	null	.FocusInventoryItem0R	InventoryItem5"
+set Child "InventoryItem[InventoryItem62] 510 595	62	InventoryItem0	null	.FocusInventoryItem1R	InventoryItem6"
+set Child "InventoryItem[InventoryItem63] 595 595	63	InventoryItem1	null	.FocusInventoryItem2R	InventoryItem7"
+add MenuObject
+set Name InventoryContainerL
+set ContainerOnly 1
+set HiddenCheckBySymbolValue InventoryDisplayMode!1
+set Child "ShopItemEmpty 0 0		0"
+set Child "ShopItemZero 0 0	"
+set Child "ShopItemEmpty 200 0		1"
+set Child "ShopItemEmpty 400 0		2"
+set Child "ShopItemEmpty 0 250		5"
+set Child "ShopItemEmpty 200 250	6"
+set Child "ShopItemEmpty 400 250	7"
+set Child "ShopItemEmpty 0 500		10"
+set Child "ShopItemEmpty 200 500	11"
+set Child "ShopItemEmpty 400 500	12"
+set Child "ShopItem[ShopItem0] 0 0		0	.FocusShopItem0L	null	.FocusShopItem0R	ShopItem5"
+set Child "ShopItem[ShopItem1] 200 0	1	ShopItem0	null	.FocusShopItem1R	ShopItem6"
+set Child "ShopItem[ShopItem2] 400 0	2	ShopItem1	null	.FocusShopItem2R	ShopItem7"
+set Child "ShopItem[ShopItem5] 0 250	5	.FocusShopItem5L	ShopItem0	.FocusShopItem5R	ShopItem10"
+set Child "ShopItem[ShopItem6] 200 250	6	ShopItem5	ShopItem1	.FocusShopItem6R	ShopItem11"
+set Child "ShopItem[ShopItem7] 400 250	7	ShopItem6	ShopItem2	.FocusShopItem7R	ShopItem12"
+set Child "ShopItem[ShopItem10] 0 500	10	.FocusShopItem10L	ShopItem5	.FocusShopItem10R	null"
+set Child "ShopItem[ShopItem11] 200 500	11	ShopItem10	ShopItem6	.FocusShopItem11R	null"
+set Child "ShopItem[ShopItem12] 400 500	12	ShopItem11	ShopItem7	.FocusShopItem12R	null"
+add MenuObject
+set Name InventoryDisplayOutline
+set Texture effects/white
+set Coords "0 0 54 54"
+set Color 0x1b1b1b
+add MenuObject
+set Name FocusInventoryDisplay
+set Texture effects/white
+set Coords "0 0 56 56"
+set Color 0x49c5bd
+add MenuObject
+set Name InventoryDisplayTemplate
+set Texture effects/white
+set Coords "0 0 50 50"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusInventoryDisplay
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set RenderCB _DrawText
+set RenderCB_Text @_Arg1_@
+set FilterName BaseLayout
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set FirstDrawnChildren 1
+set Child "InventoryDisplayOutline -2 -2"
+set CommandPress ">sym set InventoryDisplayMode @_Arg2_@"
+add MenuObject
+set Name InventoryDisplaySizes
+set ContainerOnly 1
+set Child "InventoryDisplayTemplate 0 0 	S	0"
+set Child "InventoryDisplayTemplate 0 55 	L	1"
+add MenuObject
+set Name InventoryModeTemplate
+set Texture effects/white
+set Coords "0 0 50 50"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusInventoryDisplay
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set RenderCB _DrawText
+set RenderCB_Text @_Arg1_@
+set FilterName BaseLayout
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set SaveArgs 2
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set FirstDrawnChildren 1
+set Child "InventoryDisplayOutline -2 -2"
+set CommandPress ">collection invInit @_Arg2_@"
+set CommandPress ">sym set InventoryDisplayType @_Arg3_@"
+add MenuObject
+set Name InventoryModes
+set ContainerOnly 1
+set Child "InventoryModeTemplate 0 0 	Inv	InventoryV2		0"
+set Child "InventoryModeTemplate 0 55 	Col	CollectableSets	1"
+set Child "InventoryModeTemplate 0 110 	Skl	BlueprintSets	2"
+add MenuObject
+set Name InventoryBackground
+set Texture menus/Mail
+set CoordsStart "1 1 65 70"
+set CoordsMid "66 1 465 70"
+set CoordsEnd "531 1 65 70"
+set CoordsStartFocused "1 68 65 2"
+set CoordsMidFocused "66 68 465 2"
+set CoordsEndFocused "531 68 65 2"
+set CoordsStartDisabled "1 296 65 26"
+set CoordsMidDisabled "66 296 465 26"
+set CoordsEndDisabled "531 296 65 26"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 806
+set RenderCB_DY 885
+set Coords "0 0 800 850"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set CommandPress "gameui promoteToTop InventoryMain"
+add MenuObject
+set Name InventoryCloseVis
+set Coords "638 454 50 50"
+set CoordsFocused "637 397 50 50"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name InventoryClose
+set Coords "0 0 50 50"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu Inventory /fadeout 0.1"
+set Child "InventoryCloseVis 0 0"
+add MenuObject
+set Name InventoryNanoforgeButton
+set Texture menus/HomeBar
+set Coords "4 4 262 64"
+set CoordsFocused "291 5 262 64"
+set CoordsPressed "290 3 262 64"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text HCubeDisp
+set MouseInteract 1
+set RenderCB_RGBColor "0.63 0.71 0.74"
+set RenderCB_RGBColorFocused "0.80 0.84 0.85"
+set RenderCB_Flags "/nmi  /fitX"
+set RenderCB_FontScale 0.75
+set RenderCB_DX 0
+set RenderCB_DY 0
+set ScaleX 0.76
+set ScaleY 0.76
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "0 -1"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "if !menuloaded Nanoforge loadmenu Nanoforge /fadein 0.1"
+set CommandPress "if menuloaded Nanoforge clearmenu Nanoforge /fadeout 0.1"
+add MenuObject
+set Name InventoryButtonNext
+set DisabledSymInv InventoryPageNextOk
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set Texture menus/Purchase
+set Coords "966 966 48 48"
+set CoordsPressed "966 966 48 48"
+set CommandPress "sym set InventorySelected -1"
+set CommandPress "collection page invv2 1"
+set DisabledAlpha 0.33
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set FocusedTimeOut 0.1
+add MenuObject
+set Name InventoryButtonPrevious
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set Texture menus/Purchase
+set DisabledSymInv InventoryPagePrevOk
+set Coords "966 966 48 48"
+set CoordsPressed "966 966 48 48"
+set MirrorOnX 1
+set CommandPress "sym set InventorySelected -1"
+set CommandPress "collection page invv2 -1"
+set DisabledAlpha 0.33
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set FocusedTimeOut 0.1
+add MenuObject
+set Name InventorySpecialLabel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Flags "/shadowColor2 /outlined8x"
+set SaveArgs 3
+add MenuObject
+set Name InventoryNavButtons
+set ContainerOnly 1
+set Child "InventoryButtonPrevious 0 0"
+set Child "InventoryButtonNext 120 0"
+set Child "InventorySpecialLabel 25 12	InventoryDisplayState	0.7	120"
+add MenuObject
+set Name InventoryFilterHint
+set Coords "8 233 411 46"
+set DisabledAlpha 0.0
+set RenderCB_DX 233
+set RenderCB_DY 40
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "12 0"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x777777
+set RenderCB_Text InventoryFilterHint
+set HiddenCheckBySymbolValue InvV2FilterText!""
+add MenuObject
+set Name InventoryFilterText
+set Texture effects/white
+set Coords "0 0 250 38"
+set FirstDrawnChildren 1
+set Child "GenericListboxOutlineSm -2 -2"
+set DisabledAlpha 0.0
+set Color 0x213037
+set ColorFocused 0x314649
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 250
+set RenderCB_DY 38
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "12 0"
+set MouseInteractZoneExpand "0 0 0 0"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set TextEditableMaxLen 16
+set RenderCB_Text InvV2FilterText
+set CommandOnKeyboardEdit "menucmd InvV2FilterTextChanged"
+set Child "InventoryFilterHint 0 0"
+set Child "FilterTextClear[FilterTextClearInv] 205 -3		InvV2FilterText InvV2FilterTextCleared"
+#if arc
+set TextEditableProfanityFiltered 1
+#endif
+add MenuObject
+set Name InventoryScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 795 920"
+set CommandOnMouseDrag "collection page invv2 $_Wheel"
+add MenuObject
+set Name InventoryFiltersBoxCancel
+set RenderBlocked 1
+set Coords "0 0 330 630"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus -2
+set CommandGetFocus "sym set ShowInventoryFilters 0"
+add MenuObject
+set Name InventoryFiltersBox
+set Texture menus/Windows
+set CoordsStart "0 0 120 120"
+set CoordsMid "120 0 86 120"
+set CoordsEnd "206 0 120 120"
+set CoordsStartFocused "0 120 120 86"
+set CoordsMidFocused "120 120 86 86"
+set CoordsEndFocused "206 120 120 86"
+set CoordsStartDisabled "0 206 120 120"
+set CoordsMidDisabled "120 206 86 120"
+set CoordsEndDisabled "206 206 120 120"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 300
+set RenderCB_DY 600
+set Coords "0 0 770 815"
+set MouseInteract 1
+set Focus -2
+set Color 0x4a5e5e
+set ColorFocused 0x4a5e5e
+set MouseInteractZoneExpand "-60 0 0 0"
+set HiddenCheckBySymbolInv ShowInventoryFilters
+set FirstDrawnChildren 1
+set Child "InventoryFiltersBoxCancel 	-15 -15"
+set Child "InventoryFiltersPlain		40 40		Inventory _Inv		_NA_ _NA_ _NA_ _NA_"
+set Child "InventoryFiltersWithAirmechs	40 40		Inventory _Inv		_NA_ _NA_ _NA_ _NA_"
+set Child "InventoryFiltersWithUnits	40 40		Inventory _Inv		_NA_ _NA_ _NA_ _NA_"
+add MenuObject
+set Name InventoryFilters
+set Texture menus/ShopFilter
+set Coords "220 1 72 72"
+set ScaleX 0.8, ScaleY 0.8
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolValue InvInitMode!InventoryV2
+set CommandPress "sym set ShowInventoryFilters 1"
+set Child "InventoryFiltersBox 61 -22"
+add MenuObject
+set Name InventoryHeaderLabel
+set Coords "252 271 232 40"
+set RenderCB_DX 238
+set RenderCB_DY 50
+set Texture menus/Purchase
+set RenderCB_FontScale 0.75
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCBExcludesDefaultRender 0
+set MouseInteractZoneExpand "10 10 -10 12"
+set CommandPress "gameui directPushNameIfEnabled FilterTextClearInv"
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+add MenuObject initFrom InventoryHeaderLabel
+set Name InventoryHeaderCollectionButton
+set HiddenCheckBySymbolValue InventoryDisplayType=1
+set Focus -2
+set MouseInteract 1
+set CoordsFocused "252 273 232 40"
+set RenderCB_Text MB_Collection
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffb268
+set RenderCB_Flags "/nmi /fitX"
+set CommandPress "collection invInit CollectableSets"
+set CommandPress "sym set InventoryDisplayType 1"
+set RenderCB_OffsetFocused "0 -2"
+add MenuObject initFrom InventoryHeaderLabel
+set Name InventoryHeaderCollectionText
+set RenderCB_Text MB_Collection
+set Focus -2
+set MouseInteract 1
+set RenderCBExcludesDefaultRender 1
+set CommandPress "collection invInit CollectableSets"
+set CommandPress "sym set InventoryDisplayType 1"
+set Child "InventoryHeaderCollectionButton 0 0"
+add MenuObject initFrom InventoryHeaderLabel
+set Name InventoryHeaderBlueprintsButton
+set HiddenCheckBySymbolValue InventoryDisplayType=2
+set Focus -2
+set MouseInteract 1
+set Coords "485 271 232 40"
+set CoordsFocused "485 273 232 40"
+set RenderCB_Text MB_Blueprints
+set RenderCB_RGBColor 0x7cce9f
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set CommandPress "collection invInit BlueprintSets"
+set CommandPress "sym set InventoryDisplayType 2"
+set RenderCB_OffsetFocused "0 -2"
+add MenuObject initFrom InventoryHeaderLabel
+set Name InventoryHeaderBlueprintsText
+set RenderCB_Text MB_Blueprints
+set Focus -2
+set MouseInteract 1
+set Coords "485 271 232 40"
+set RenderCBExcludesDefaultRender 1
+set CommandPress "collection invInit BlueprintSets"
+set CommandPress "sym set InventoryDisplayType 2"
+set Child "InventoryHeaderBlueprintsButton 0 0"
+add MenuObject initFrom InventoryHeaderLabel
+set Name InventoryHeaderInventoryButton
+set HiddenCheckBySymbolValue InventoryDisplayType=0
+set Focus -2
+set MouseInteract 1
+set Coords "19 347 232 40"
+set CoordsFocused "19 349 232 40"
+set RenderCB_Text Shop_Inventory
+set RenderCB_RGBColor 0x7edbff
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set CommandPress "collection invInit InventoryV2"
+set CommandPress "sym set InventoryDisplayType 0"
+set RenderCB_OffsetFocused "0 -2"
+add MenuObject initFrom InventoryHeaderLabel
+set Name InventoryHeaderInventoryText
+set RenderCB_Text Shop_Inventory
+set Focus -2
+set MouseInteract 1
+set Coords "19 347 232 40"
+set RenderCBExcludesDefaultRender 1
+set CommandPress "collection invInit InventoryV2"
+set CommandPress "sym set InventoryDisplayType 0"
+set Child "InventoryHeaderInventoryButton 0 0"
+add MenuObject
+set Name InventoryHeaderClick
+set Coords "0 0 238 50"
+set RenderBlocked 1
+set SaveArgs 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "10 10 -10 -5"
+set CommandPress "gameui promoteToTop InventoryMain"
+set Child "InventoryHeaderLabel 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@"
+set CommandPress "gameui directPushNameIfEnabled FilterTextClearInv"
+set CommandPress ">collection invInit @_Arg2_@"
+set CommandPress ">sym set InventoryDisplayType @_Arg3_@"
+add MenuObject
+set Name InventoryHeader
+set Texture menus/Purchase
+set Coords "12 263 789 66"
+set CoordsAnimated "12 263 789 66"
+set CoordsAnimated "12 339 789 66"
+set CoordsAnimated "12 417 789 66"
+set CoordsAnimationSymHash InventoryDisplayType
+set Child "InventoryHeaderInventoryText 7 8"
+set Child "InventoryHeaderCollectionText 240 8"
+set Child "InventoryHeaderBlueprintsText 473 8"
+add MenuObject
+set Name InventoryHeader_ARC
+set Texture menus/PurchaseSChinese
+set Coords "12 263 789 66"
+set CoordsAnimated "12 263 789 66"
+set CoordsAnimated "12 339 789 66"
+set CoordsAnimationSymHash InventoryDisplayType
+set Child "InventoryHeaderInventoryText 7 8"
+set Child "InventoryHeaderCollectionText 240 8"
+add MenuObject
+set Name InventorySideL
+set Texture menus/Purchase
+set Coords "12 263 10 66"
+set CoordsAnimated "19 323 10 6"
+set CoordsAnimated "19 399 10 6"
+set CoordsAnimated "19 476 10 6"
+set ScaleY 117.3
+set CoordsAnimationSymHash InventoryDisplayType
+add MenuObject
+set Name InventorySideR
+set Texture menus/Purchase
+set Coords "781 263 10 6"
+set CoordsAnimated "781 323 10 6"
+set CoordsAnimated "781 399 10 6"
+set CoordsAnimated "781 476 10 6"
+set ScaleY 117.3
+set CoordsAnimationSymHash InventoryDisplayType
+add MenuObject
+set Name InventoryFooter
+set Texture menus/Purchase
+set Coords "12 263 780 10"
+set CoordsAnimated "19 323 780 10"
+set CoordsAnimated "19 399 780 10"
+set CoordsAnimated "19 477 780 10"
+set CoordsAnimationSymHash InventoryDisplayType
+add MenuObject
+set Name InventoryFilterBackupOutline
+set Texture effects/white
+set Coords "0 0 42 42"
+set Color 0x1b1b1b
+add MenuObject
+set Name InventoryFilterBackupArrow
+set DisabledSymValue FilterSource=None
+set ScaleX 0.85, ScaleY 0.85
+set DefaultRotation 135
+set DisabledAlpha 0.1
+set Texture menus/Purchase
+set Coords "966 966 48 48"
+set CoordsPressed "966 966 48 48"
+add MenuObject
+set Name InventoryFilterBackup
+set Texture effects/white
+set MouseInteract 1
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "if sym FilterSource == Filter_All menucmd InvFilter_ClickList local 0"
+set CommandPress "if sym FilterSource == Filter_AirMechs_Inv menucmd InvFilterAirMechs_ClickList local 0"
+set CommandPress "if sym FilterSource == Filter_Units_Inv menucmd InvFilterUnits_ClickList local 0"
+set CommandPress "if sym FilterSource == Filter_Cosmetics_Inv menucmd InvFilterCosmetics_ClickList local 0"
+set CommandPress "if sym FilterSource == Filter_Other_Inv menucmd InvFilterOther_ClickList local 0"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set Focus -2
+set Color 0x213037
+set ColorFocused 0x326870
+set Coords "0 0 42 38"
+set FirstDrawnChildren 1
+set DisabledAlpha 1.0
+set Child "InventoryFilterBackupOutline -2 -2"
+set Child "InventoryFilterBackupArrow -2 -3"
+set DisabledSymValue FilterSource=None
+set HiddenCheckBySymbol InventoryDisplayType
+set ToolTip DialogButtonBack
+add MenuObject
+set Name InventoryHeaderSearch
+set Texture menus/Purchase
+set Coords "12 263 789 66"
+set CoordsAnimated "19 323 780 6"
+set CoordsAnimated "19 399 780 6"
+set CoordsAnimated "19 476 780 6"
+set ScaleY 10
+set CoordsAnimationSymHash InventoryDisplayType
+set Child "InventorySideL 0 59"
+set Child "InventoryFooter 0 756"
+set Child "InventorySideR 762 59"
+set Child "InventoryFilterText 328 8"
+set Child "ListboxInvFilter 58 8 Filter InvFilter	0x213037 0x326870 0x314649 0x326870"
+set Child "InventoryFilterBackup 18 8"
+set Child "InventoryNavButtons 600 2"
+add MenuObject
+set Name InventoryRarity
+set Texture menus/ItemFrame@_Arg1_@
+set ScaleX 0.65, ScaleY 0.65
+set Coords "66 88 68 68"
+set Focus -2
+set MouseInteract 1
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set FocusedTimeOut 0.1
+set ScaleXCenter 0
+set DisabledAlpha 0.3
+add MenuObject
+set Name InvFilter2Base
+set Texture menus/ShopFilter
+set ScaleX 0.8, ScaleY 0.8
+set Coords "1 1 72 72"
+set CoordsAnimated "585 1 72 72"
+set CoordsAnimated "585 74 72 72"
+set CoordsAnimated "585 147 72 72"
+set CoordsAnimated "585 220 72 72"
+set CoordsAnimated "585 366 72 72"
+set CoordsAnimated "585 293 72 72"
+add MenuObject initFrom InvFilter2Base
+set Name InvFilter2Active
+set Texture menus/ShopFilterActive
+set HiddenCheckBySymbolInv @_Arg1_@
+set CoordsAnimationPreset @_Arg2_@
+set SaveArgs 2
+add MenuObject initFrom InvFilter2Base
+set Name InvFilter2Button
+set SaveArgs 3
+set Child "InvFilter2Active 0 0 @_Arg1_@ @_Arg3_@"
+set CoordsAnimationPreset @_Arg3_@
+set ToolTip @_Arg2_@
+set ToolTipPad @_Arg2_@
+set DrawForToolTipPositioningPad "/mode offset /pos 40 0"
+set MouseInteract 1
+set Focus -2
+set ToolTipDelayTime 0.0
+set DrawWhenFocused InvFilterHighlight
+set DrawWhenFocusedOffset "-5 -5"
+set CommandGetFocus "sym set BtnHint_OnFilter 1"
+set CommandGetFocus "menucmd InvV2FilterStatusCheck"
+set CommandPress "pcmd 0 menucmd InvV2FilterStatusCheck"
+set CommandGetFocus "if sym Filter_Rarity5 == 1 && sym Filter_Rarity4 == 1 && sym Filter_Rarity3 == 1 && sym Filter_Rarity2 == 1 && sym Filter_Rarity1 == 1 && sym Filter_Rarity0 == 1 sym set Inv2Rarity 0"
+set CommandLoseFocus "sym set BtnHint_OnFilter 0"
+set CommandPress "if sym Inv2Rarity == 0 runnow sym setZero Filter_Rarity5 Filter_Rarity4 Filter_Rarity3 Filter_Rarity2 Filter_Rarity1 Filter_Rarity0"
+set CommandPress ">if sym Inv2Rarity != 0 runnow sym toggle @_Arg1_@"
+set CommandPress ">if sym Inv2Rarity == 0 runnow sym set @_Arg1_@ 1"
+set CommandPress "pcmd t2 collection page invv2 0"
+add MenuObject
+set Name InventoryRarityPanel
+set ContainerOnly 1
+set Child "InvFilter2Button 0 0		Filter_Rarity5	Filter_Rarity5	5"
+set Child "InvFilter2Button 0 60	Filter_Rarity4	Filter_Rarity4	4"
+set Child "InvFilter2Button 0 120	Filter_Rarity3	Filter_Rarity3	3"
+set Child "InvFilter2Button 0 180	Filter_Rarity2	Filter_Rarity2	2"
+set Child "InvFilter2Button 0 240	Filter_Rarity1	Filter_Rarity1	1"
+set Child "InvFilter2Button 0 300	Filter_Rarity0	Filter_Rarity0	0"
+add MenuObject
+set Name InventorySortBase
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set Texture menus/Purchase
+set Coords "894 736 42 42"
+set DisabledAlpha 0.33
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set FocusedTimeOut 0.1
+add MenuObject initFrom InventorySortBase
+set Name InventorySortReset
+set CommandPress "sym setOne Filter_Rarity5 Filter_Rarity4 Filter_Rarity3 Filter_Rarity2 Filter_Rarity1 Filter_Rarity0"
+set CommandPress "sym setZero Filter_Duplicates_Inv"
+set CommandPress "pcmd 0 collection page invv2 0"
+set ToolTip MF_Reset
+add MenuObject initFrom InventorySortBase
+set Name InventorySortAlph
+set Coords "894 787 42 40"
+set CoordsAnimated "894 787 42 40"
+set CoordsAnimated "852 787 42 40"
+set CoordsAnimationSymHash Inv2SortOrder
+set CommandPress "sym toggle Inv2SortOrder"
+set ToolTip Sort_Alphabetical
+add MenuObject initFrom InventorySortBase
+set Name InventorySortDups
+set Coords "898 826 49 49"
+set CoordsAnimated "895 826 49 49"
+set CoordsAnimated "844 826 49 49"
+set CoordsAnimationSymHash Filter_Duplicates_Inv
+set CommandPress "sym toggle Filter_Duplicates_Inv"
+set CommandPress "collection page invv2 0"
+set ToolTip Filter_Duplicates
+add MenuObject
+set Name InventorySortPanel
+set Texture menus/Purchase
+set Coords "960 214 59 697"
+set Child "InventorySortReset 7 10"
+set Child "InventorySortDups 2 572"
+set Child "InventoryRarityPanel 5 145"
+set HiddenCheckBySymbol InventoryDisplayType
+add MenuObject
+set Name InventoryMain
+set RenderBlocked 1
+set Coords "0 0 765 55"
+set MouseInteract 1
+set Focus -2
+set DragSource InventoryMain
+set FirstDrawnChildren 1
+set Child "InventoryBackground -15 -15"
+set Child "InventorySortPanel 10 110"
+set Child "InventoryHeader -7 -12			/ifSym ArcCustomized == 0"
+set Child "InventoryHeader_ARC -7 -12		/ifSym ArcCustomized == 1"
+set Child "InventoryScrollWheelZone -15 -15"
+set Child "InventoryHeaderSearch 0 50"
+set Child "InventoryContainer 78 122"
+set Child "InventoryClose 711 -2"
+set CommandPress "gameui promoteToTop InventoryMain"

@@ -1,0 +1,395 @@
+add MenuObject
+set Name HeaderSettings
+set Coords "0 0 1620 100"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawTextShadowed
+set RenderCB_Text MB_Settings
+set RenderCB _DrawUText
+set Disabled 1
+set RenderCB_RGBColor "0.35 0.49 0.5"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 2.0
+set Child "BackSettings -210 23"
+add MenuObject
+set Name BackSettings
+set Texture menus/MainTiles+lang
+set ToolTip MF_BackTip
+set Coords "481 435 204 52"
+set CoordsFocused "705 435 204 52"
+set Focus -2
+set MouseInteract 1
+set Disabled 1
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 2.0
+set CommandGetFocus "playSound $MenuBackFocus"
+set CommandPress "menuCmd SettingsClear"
+set CommandCancel "menuCmd SettingsClear"
+add MenuObject initFrom SubBarButtonTemplate
+set Name SubBarButtonGameplay
+set RenderCB_Text MB_General
+set CommandPress "if sym MenuSettingsLanguage == 1 sym set MenuSettingsLanguage 0"
+set CommandPress "if sym MenuSettingsControls == 1 sym set MenuSettingsControls 0"
+set CommandPress "if sym MenuSettingsVideo == 1 sym set MenuSettingsVideo 0"
+set CommandPress "if sym MenuSettingsAudio == 1 sym set MenuSettingsAudio 0"
+set CommandPress "sym set MenuSettingsGeneral 1"
+set CommandPress "sym setZero MenuSettingsGeneral0 MenuSettingsGeneral1 MenuSettingsGeneral2 MenuSettingsGeneral3"
+set CommandPress "sym set MenuSettingsGeneral0 1"
+add MenuObject initFrom SubBarLabelTemplate
+set Name SubBarLabelGameplay
+set RenderCB_Text MB_General
+set HiddenCheckBySymbolInv MenuSettingsGeneral
+set Disabled 0
+add MenuObject initFrom SubBarButtonTemplate
+set Name SubBarButtonLanguage
+set RenderCB_Text MB_Language
+set CommandPress "if sym MenuSettingsGeneral == 1 sym set MenuSettingsGeneral 0"
+set CommandPress "if sym MenuSettingsControls == 1 sym set MenuSettingsControls 0"
+set CommandPress "if sym MenuSettingsVideo == 1 sym set MenuSettingsVideo 0"
+set CommandPress "if sym MenuSettingsAudio == 1 sym set MenuSettingsAudio 0"
+set CommandPress "sym set MenuSettingsLanguage 1"
+add MenuObject initFrom SubBarLabelTemplate
+set Name SubBarLabelLanguage
+set RenderCB_Text MB_Language
+set HiddenCheckBySymbolInv MenuSettingsLanguage
+set Disabled 0
+add MenuObject initFrom SubBarButtonTemplate
+set Name SubBarButtonControls
+set RenderCB_Text MB_Controls
+set CommandPress "if sym MenuSettingsLanguage == 1 sym set MenuSettingsLanguage 0"
+set CommandPress "if sym MenuSettingsGeneral == 1 sym set MenuSettingsGeneral 0"
+set CommandPress "if sym MenuSettingsVideo == 1 sym set MenuSettingsVideo 0"
+set CommandPress "if sym MenuSettingsAudio == 1 sym set MenuSettingsAudio 0"
+set CommandPress "sym set MenuSettingsControls 1"
+set CommandPress "sym setZero MenuSettingsControls0 MenuSettingsControls1 MenuSettingsControls1A MenuSettingsControls2 MenuSettingsControls3 MenuSettingsControls4"
+set CommandPress "sym set MenuSettingsControls0 1"
+add MenuObject initFrom SubBarLabelTemplate
+set Name SubBarLabelControls
+set RenderCB_Text MB_Controls
+set HiddenCheckBySymbolInv MenuSettingsControls
+set Disabled 0
+add MenuObject initFrom SubBarButtonTemplate
+set Name SubBarButtonVideo
+set RenderCB_Text MB_Video
+set CommandPress "if sym MenuSettingsLanguage == 1 sym set MenuSettingsLanguage 0"
+set CommandPress "if sym MenuSettingsControls == 1 sym set MenuSettingsControls 0"
+set CommandPress "if sym MenuSettingsGeneral == 1 sym set MenuSettingsGeneral 0"
+set CommandPress "if sym MenuSettingsAudio == 1 sym set MenuSettingsAudio 0"
+set CommandPress "sym set MenuSettingsVideo 1"
+add MenuObject initFrom SubBarLabelTemplate
+set Name SubBarLabelVideo
+set RenderCB_Text MB_Video
+set HiddenCheckBySymbolInv MenuSettingsVideo
+set Disabled 0
+add MenuObject initFrom SubBarButtonTemplate
+set Name SubBarButtonAudio
+set RenderCB_Text MB_Audio
+set CommandPress "if sym MenuSettingsLanguage == 1 sym set MenuSettingsLanguage 0"
+set CommandPress "if sym MenuSettingsControls == 1 sym set MenuSettingsControls 0"
+set CommandPress "if sym MenuSettingsVideo == 1 sym set MenuSettingsVideo 0"
+set CommandPress "if sym MenuSettingsGeneral == 1 sym set MenuSettingsGeneral 0"
+set CommandPress "sym set MenuSettingsAudio 1"
+add MenuObject initFrom SubBarLabelTemplate
+set Name SubBarLabelAudio
+set RenderCB_Text MB_Audio
+set HiddenCheckBySymbolInv MenuSettingsAudio
+set Disabled 0
+add MenuObject
+set Name SettingsFrameGameplay
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsGeneral
+set Child "SettingsFrameGeneral0 -150 40"
+set Child "SettingsFrameGeneral1 -150 40"
+set Child "SettingsFrameGeneral2 -150 40"
+set Child "SettingsFrameGeneral3 -150 40"
+set Child "SettingsButtonTemplate[MenuSettingsGeneral0] -520 20				MenuSettingsGeneral0	_NA_ 	MenuSettingsGeneral1"
+set Child "SettingsLabelTemplate -520 24									MenuSettingsGeneral0"
+set Child "SettingsButtonTemplate[MenuSettingsGeneral1] -520 84				MenuSettingsGeneral1	_NA_ 	MenuSettingsGeneral2"
+set Child "SettingsLabelTemplate -520 88									MenuSettingsGeneral1"
+set Child "SettingsButtonTemplate[MenuSettingsGeneral2] -520 148			MenuSettingsGeneral2	_NA_ 	MenuSettingsGeneral3"
+set Child "SettingsLabelTemplate -520 152									MenuSettingsGeneral2"
+set Child "SettingsButtonTemplate[MenuSettingsGeneral3] -520 212			MenuSettingsGeneral3	_NA_ 	_NA_"
+set Child "SettingsLabelTemplate -520 216									MenuSettingsGeneral3"
+set Child "SettingsButtonResetHUD -520 765"
+add MenuObject
+set Name SettingsFrameGeneral0
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsGeneral0
+set Child "CheckboxInvTempl 0 0			GameShowXPNumbers MF_ShowXPNumbers OptionsNOP TT_GameShowXPNumbers"
+set Child "CheckboxInvTempl 0 Nx50		GameShowMoneyNumbers MF_ShowMoneyNumbers OptionsNOP TT_ShowMoneyNumbers"
+set Child "CheckboxInvTempl 0 Nx50		GameShowDmgNumbers MF_ShowDmgNumbers OptionsNOP TT_ShowDmgNumbers"
+set Child "CheckboxInvTempl 0 Nx50		GameShowHealingNumbers MF_ShowHealingNumbers OptionsNOP TT_ShowHealingNumbers"
+set Child "CheckboxInvTempl 0 Nx50		GameShowUnitHPBar MF_ShowUnitHPBar OptionsShowHealthBarsUpdate TT_ShowUnitHPBar"
+set Child "CheckboxInvTempl 0 Nx50		GameShowUnitHPNum MF_ShowUnitHPNum OptionsShowHealthBarsUpdate TT_ShowUnitHPNum"
+set Child "CheckboxInvTempl 0 Nx50		GameShowEnemyAirMech MF_ShowEnemyAirMech OptionsNOP TT_ShowEnemyAirMech"
+set Child "CheckboxInvTempl 0 Nx50		GameShowTT MF_ShowTooltipsInGame OptionsShowTooltipsInGameUpdate TT_ShowTooltipsInGame"
+set Child "CheckboxInvTempl 0 Nx50		GameMessageSubtle MF_GameMessageSubtle OptionsNOP TT_GameMessageSubtle"
+set Child "CheckboxInvTempl 0 Nx50		GameRangeMarkers MF_GameRangeMarkers OptionsGameRangeMarkersUpdate TT_GameRangeMarkers"
+set Child "CheckboxInvTempl 0 Nx50		OptionShowTray MF_OptionShowTray OptionsNOP TT_OptionShowTray"
+set Child "CheckboxTemplTT 0 Nx50			OrdersPro MF_OptionOrdersPro OptionsNOP TT_OptionOrdersPro"
+set Child "CheckboxInvTempl 0 Nx50		GameShowHotkeys MF_GameShowHotkeys OptionsNOP TT_GameShowHotkeys"
+set Child "CheckboxInvTempl 0 Nx50		BuildOrderPfx MF_OptionBuildOrderPfx OptionsNOP TT_OptionBuildOrderPfx"
+add MenuObject
+set Name SettingsFrameGeneral1
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsGeneral1
+set Child "CheckboxInvTempl 0 0		GameMouseLock MF_MouseLock OptionsMouseLockUpdate TT_MouseLock"
+set Child "CheckboxInvTempl 0 Nx50	RightClickUnitOps MF_RightClickUnitOps OptionsRightClickUnitOpsUpdate TT_RightClickUnitOps"
+set Child "CheckboxInvTempl 0 Nx50	DropUnitDirControl MF_DropUnitDirControl OptionsDropUnitDirControlUpdate TT_DropUnitDirControl"
+set Child "CheckboxInvTempl	0 Nx50	OptionAutoBuilder MF_OptionAutoBuilderUnits OptionsNOP TT_OptionAutoBuilderUnits"
+set Child "CheckboxInvTempl	0 Nx50	OptionDeployArmEnabled MF_OptionDeployArmEnabled OptionsNOP TT_OptionDeployArmEnabled /ifSym _DeployArmOption == 1"
+add MenuObject
+set Name SettingsFrameGeneral2
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsGeneral2
+set Child "CheckboxInvTempl 0 0		ColorBlind MF_ShowColorBlind OptionsColorBlindUpdate TT_ShowColorBlind"
+set Child "CheckboxInvTempl 0 Nx50		CursorOutline MF_CursorOutline OptionsNOP TT_CursorOutline"
+add MenuObject
+set Name SettingsFrameGeneral3
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsGeneral3
+set Child "CheckboxInvTempl 0 0		SpecChat MF_ShowSpecChat OptionsSpecChatUpdate TT_ShowSpecChat"
+set Child "CheckboxInvTempl 0 Nx50		GameShowRoomPIN MF_ShowRoomPIN OptionsNOP TT_ShowRoomPIN"
+set Child "CheckboxInvTempl 0 Nx50		NoCanaryNotify MF_NoCanaryNotify OptionsNOP TT_NoCanaryNotify	/platform !arc"
+set Child "CheckboxInvTempl 0 Nx50		ShowGlobalChat MF_ShowGlobalChat OptionsNOP TT_ShowGlobalChat	/ifSym P_AccessLevel == 1"
+add MenuObject
+set Name SettingsFrameLanguage
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsLanguage
+set Child "LoginLanguageDropdown 80 90		300 -300"
+set Child "CheckboxInvTemplNoTT 80 350  BadLangFilter MF_LanguageFilter BadLangFilterUpdate"
+add MenuObject
+set Name MenuDividerBindings
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "4 825"
+set Color 0x373e3a
+add MenuObject initFrom MenuDividerBindings
+set Name MenuBindingsResetBG
+set TileArea "350 40"
+add MenuObject
+set Name SettingsFrameControls
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsControls
+set Child "SettingsFrameControls0 350 0"
+set Child "SettingsFrameControls1 350 0"
+set Child "SettingsFrameControls1A 350 0"
+set Child "SettingsFrameControls2 350 0"
+set Child "SettingsFrameControls3 350 0"
+set Child "SettingsFrameControls4 350 0"
+set Child "SettingsButtonTemplate[MenuSettingsControls0] 0 4		MenuSettingsControls0	_NA_ 	MenuSettingsControls1"
+set Child "SettingsLabelTemplate 0 8		MenuSettingsControls0"
+set Child "SettingsButtonTemplate[MenuSettingsControls1] 0 68		MenuSettingsControls1	MenuSettingsControls0 	MenuSettingsControls1A"
+set Child "SettingsLabelTemplate 0 72		MenuSettingsControls1"
+set Child "SettingsButtonTemplate[MenuSettingsControls1A] 0 132		MenuSettingsControls1A	MenuSettingsControls1 	MenuSettingsControls2"
+set Child "SettingsLabelTemplate 0 136		MenuSettingsControls1A"
+set Child "SettingsButtonTemplate[MenuSettingsControls2] 0 196		MenuSettingsControls2	MenuSettingsControls1A 	MenuSettingsControls3"
+set Child "SettingsLabelTemplate 0 200		MenuSettingsControls2"
+set Child "SettingsButtonTemplate[MenuSettingsControls3] 0 260		MenuSettingsControls3	MenuSettingsControls2 	MenuSettingsControls4"
+set Child "SettingsLabelTemplate 0 264		MenuSettingsControls3"
+set Child "SettingsButtonTemplate[MenuSettingsControls4] 0 324		MenuSettingsControls4	MenuSettingsControls3 	_NA_"
+set Child "SettingsLabelTemplate 0 328		MenuSettingsControls4"
+set Child "SettingsButtonReset 0 750"
+add MenuObject
+set Name SettingsFrameControls0
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsControls0
+set Child "MF_Rebind 0 Nx35		0"
+set Child "MF_Rebind 0 Nx35		1"
+set Child "MF_Rebind 0 Nx35		2"
+set Child "MF_Rebind 0 Nx35		3"
+set Child "MF_Rebind 0 Nx35		4"
+set Child "MF_Rebind 0 Nx35		5"
+set Child "MF_Rebind 0 Nx35		6"
+set Child "MF_Rebind 0 Nx35		7"
+set Child "MF_Rebind 0 Nx35		8"
+set Child "MF_Rebind 0 Nx35		9"
+set Child "MF_Rebind 0 Nx35		10"
+set Child "MF_Rebind 0 Nx35		11"
+set Child "MF_Rebind 0 Nx35		12"
+set Child "MF_Rebind 0 Nx35		13"
+set Child "MF_Rebind 0 Nx35		14"
+set Child "MF_Rebind 0 Nx35		15"
+set Child "MF_Rebind 0 Nx35		16"
+add MenuObject
+set Name SettingsFrameControls1
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsControls1
+set Child "MF_Rebind 0 Nx35		17"
+set Child "MF_Rebind 0 Nx35		18"
+set Child "MF_Rebind 0 Nx35		19"
+set Child "MF_Rebind 0 Nx35		20"
+set Child "MF_Rebind 0 Nx35		21"
+set Child "MF_Rebind 0 Nx35		22"
+set Child "MF_Rebind 0 Nx35		23"
+set Child "MF_Rebind 0 Nx35		24"
+set Child "MF_Rebind 0 Nx35		25"
+set Child "MF_Rebind 0 Nx35		26"
+set Child "MF_Rebind 0 Nx35		27"
+set Child "MF_Rebind 0 Nx35		28"
+set Child "MF_Rebind 0 Nx35		29"
+set Child "MF_Rebind 0 Nx35		30"
+add MenuObject
+set Name SettingsFrameControls1A
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsControls1A
+set Child "MF_Rebind 0 Nx35		31"
+set Child "MF_Rebind 0 Nx35		32"
+set Child "MF_Rebind 0 Nx35		33"
+set Child "MF_Rebind 0 Nx35		34"
+set Child "MF_Rebind 0 Nx35		35"
+set Child "MF_Rebind 0 Nx35		36"
+set Child "MF_Rebind 0 Nx35		37"
+set Child "MF_Rebind 0 Nx35		38"
+set Child "MF_Rebind 0 Nx35		39"
+set Child "MF_Rebind 0 Nx35		40"
+add MenuObject
+set Name SettingsFrameControls2
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsControls2
+set Child "MF_Rebind 0 Nx35		41"
+set Child "MF_Rebind 0 Nx35		42"
+set Child "MF_Rebind 0 Nx35		43"
+set Child "MF_Rebind 0 Nx35		44"
+set Child "MF_Rebind 0 Nx35		45"
+set Child "MF_Rebind 0 Nx35		46"
+set Child "MF_Rebind 0 Nx35		47"
+set Child "MF_Rebind 0 Nx35		48"
+set Child "MF_Rebind 0 Nx35		49"
+add MenuObject
+set Name SettingsFrameControls3
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsControls3
+set Child "MF_Rebind 0 Nx35		50"
+set Child "MF_Rebind 0 Nx35		51"
+set Child "MF_Rebind 0 Nx35		52"
+set Child "MF_Rebind 0 Nx35		53"
+set Child "MF_Rebind 0 Nx35		54"
+set Child "MF_Rebind 0 Nx35		55"
+set Child "MF_Rebind 0 Nx35		56"
+set Child "MF_Rebind 0 Nx35		57"
+set Child "MF_Rebind 0 Nx35		58"
+set Child "MF_Rebind 0 Nx35		59"
+set Child "MF_Rebind 0 Nx35		60"
+set Child "MF_Rebind 0 Nx35		61"
+set Child "MF_Rebind 0 Nx35		62"
+set Child "MF_Rebind 0 Nx35		63"
+set Child "MF_Rebind 0 Nx35		64"
+set Child "MF_Rebind 0 Nx35		65"
+add MenuObject
+set Name SettingsFrameControls4
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsControls4
+set Child "MF_Rebind 0 Nx35		66"
+set Child "MF_Rebind 0 Nx35		67"
+set Child "MF_Rebind 0 Nx35		68"
+set Child "MF_Rebind 0 Nx35		69"
+set Child "MF_Rebind 0 Nx35		70"
+set Child "MF_Rebind 0 Nx35		71"
+set Child "MF_Rebind 0 Nx35		72"
+set Child "MF_Rebind 0 Nx35		73"
+set Child "MF_Rebind 0 Nx35		74"
+set Child "MF_Rebind 0 Nx35		75"
+set Child "MF_Rebind 0 Nx35		76"
+add MenuObject
+set Name SettingsFrameVideo
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsVideo
+set Child "MF_OptionsGfxDestructionDetailSlider 330 0"
+set Child "CheckboxInvTemplNoTT 320 80	DecalFX MF_DecalFX GfxSettingDecalFXChanged"
+set Child "CheckboxInvTemplNoTT 320 180	CameraFX MF_CameraFX GfxSettingCameraFXChanged"
+set Child "CheckboxInvTemplNoTT 320 230 CameraFO MF_CameraFireOffset GfxSettingCameraFOChanged"
+set Child "CheckboxTempl -310 310	GameWindowed MF_Fullscreen GfxSettingApplySettingChanged		/platform pc"
+set Child "MF_ApplyGfxSettings -160 370"
+set Child "_GfxMSAA_Dropdown -310 220		/platform pc"
+set Child "_GfxDetails_Dropdown -310 110"
+set Child "_GfxResolution_Dropdown -310 0"
+add MenuObject
+set Name AudioSettingsTextTemplate
+set Coords "0 0 1600 20"
+set DisabledAlpha 0.5
+set RenderCB_DX 1000
+set RenderCB_DY 20
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.7
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.7"
+add MenuObject initFrom AudioSettingsTextTemplate
+set Name AudioSettingsCreditEpic
+set RenderCB_Text Audio_Copyright_Music
+add MenuObject initFrom AudioSettingsTextTemplate
+set Name AudioSettingsCreditFLA
+set RenderCB_Text Audio_Copyright_Announcer
+add MenuObject
+set Name SettingsFrameAudio
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MenuSettingsAudio
+set Child "MF_OptionsVolumeSlider 0 0"
+set Child "MF_OptionsVolumeSliderAnnouncer 0 110"
+set Child "MF_OptionsVolumeSliderMenu 0 220"
+set Child "MF_OptionsVolumeSliderMusic 0 330"
+set Child "AudioSettingsCreditEpic -250 520"
+set Child "AudioSettingsCreditFLA -250 480"
+add MenuObject initFrom PanelDarkGrayBorder
+set Name SettingsBackground
+set RenderCB_DX 1620
+set RenderCB_DY 900
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name WheelZoneBlocker
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1920 1080"
+add MenuObject
+set Name SettingsBlack
+set Texture effects/Vignette
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set Disabled 1
+set EnabledAlpha 0.5
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.3
+set MouseInteract 1
+set Focus -2
+set CommandPress "menuCmd SettingsClear"
+set Child "WheelZoneBlocker 0 0"
+add MenuObject
+set Name SettingsButtons
+set ContainerOnly 1
+set Child "SubBarButtonGameplay 2Nx289 0"
+set Child "SubBarLabelGameplay 2Nx289 0"
+set Child "SubBarButtonLanguage 2Nx289 0 /ifSym ArcCustomized == 0"
+set Child "SubBarLabelLanguage 2Nx289 0 /ifSym ArcCustomized == 0"
+set Child "SubBarButtonControls 2Nx289 0"
+set Child "SubBarLabelControls 2Nx289 0"
+set Child "SubBarButtonVideo 2Nx289 0"
+set Child "SubBarLabelVideo 2Nx289 0"
+set Child "SubBarButtonAudio 2Nx289 0"
+set Child "SubBarLabelAudio 2Nx289 0"
+add MenuObject
+set Name HeaderSettingsPW
+set Texture menus/MainMenuPW
+set Coords "432 870 147 74"
+set ScaleX 0.9, ScaleY 0.9
+set Child "BackSettings -210 10"
+add MenuObject
+set Name SettingsMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "SettingsBlack 0 0"
+set Child "HeaderSettings 170 80 /ifSym ArcCustomized == 0"
+set Child "HeaderSettingsPW[HeaderSettings] 170 80 /ifSym ArcCustomized == 1"
+set Child "SettingsBackground 150 160"
+set Child "SettingsButtons 165 120"
+set Child "SettingsFrameGameplay 700 170"
+set Child "SettingsFrameLanguage 700 200"
+set Child "SettingsFrameControls 180 185"
+set Child "SettingsFrameVideo 700 350"
+set Child "SettingsFrameAudio 700 400"

@@ -1,0 +1,39 @@
+stopIfSymbol BlockAllUI == 1
+MO IngameVersionNumber +gameValidation !consoleHW {
+pos -140 10
+safezone xA
+}
+onloadrun {
+sym set _EnemyHudY 80
+sym set _AllyHudY 80
+}
+MO HudArenaMasterLeft {
+cmd "sym set _PTagInd 0"
+rename HudInfoMasterLeft0
+pos 0 -5
+safezone AA
+cmd "sym inc _AllyHudY 42"
+}
+MO HudArenaMasterRight  {
+cmd "sym set _PTagInd 1"
+rename HudInfoMasterRight1
+pos 1610 -5
+safezone SA
+cmd "sym inc _EnemyHudY 42"
+}
+MO PingMaster +gameValidation netgame +gameValidation !replay +gameValidation !tutorial {
+pos 310 -30
+safezone AS
+}
+MO PlayerStatusFloat +gameValidation watch_p0 {
+rename PlayerStatusFloat__0
+pos -80 -120
+cmd "sym set _PTagInd 0"
+}
+MO OutpostStatusFloat +gameValidation !tutorial +gameValidation rulesV2 {
+pos 0 0
+}
+onload {
+rookMenus abilityFocus 0
+if !netgame && !replay && !spectator runnow sym set P_Name0 $P_Name
+}

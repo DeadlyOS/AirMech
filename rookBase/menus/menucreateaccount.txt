@@ -1,0 +1,24 @@
+MO DummyFocus {
+pos 0 0
+}
+MO CreateAccountMaster {
+pos 0 0
+}
+onloadrun {
+}
+onload {
+clearmenu MenuLogin.txt /fadeout 0.15
+addUIAnim LoginUsernameTextBox mas_DialogPop
+gameUI hide CreateAccountAgreeCheck
+sym set CarbonPassword
+sym set MenuCreateAccountLoaded 1
+sym set CarbonCreateAccountNeedAgree 1
+sym set CarbonLogin
+sym set CarbonUsername
+sym set CreateAccountEmail
+sym set CreateAccountReferrer
+}
+onunload {
+sym set CarbonPassword
+sym set MenuCreateAccountLoaded 0
+}

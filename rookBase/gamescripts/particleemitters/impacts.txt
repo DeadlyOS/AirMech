@@ -1,0 +1,40 @@
+add ParticleEmitter
+set Name ShieldSparks, MaxParticles 24, Material mat_ImpactShieldRed
+set EmitPeriodBase 0.01, EmitPeriodVar 0.0, EmitVelocityBase 8.0, EmitVelocityVar 12.0, EmitVelocityWiggle 2000
+set ParticleSizeXBase 0.13, ParticleSizeXVar 0.3
+set ParticleGrowthXBase -0.3, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.1, ParticleLifespanVar 0.8
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.5
+set DragCoefficient 5.0
+set StopAfterParticleCount 24
+set GravityDirection "0 0 -1"
+set GravityScalar 45.0
+set FlagActiveProcessingBeforeEmission 1
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 120.0
+set FlagParticleTexturePageRandom 1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -400.0, ParticleSpinVar 800.0
+add ParticleEmitter initFrom ShieldSparks
+set Name ShieldSparksBlue, Material mat_ImpactShieldBlue
+add ParticleEmitter initFrom ShieldSparks
+set Name ShieldSparksRed, Material mat_ImpactShieldRed
+add ParticleEmitter initFrom ShieldSparks
+set Name ShieldSparksGreen, Material mat_ImpactShieldGreen
+add ParticleEmitter initFrom ShieldSparks
+set Name ShieldSparksYellow, Material mat_ImpactShieldYellow
+add ParticleEmitter
+set Name "QuickFlare", MaxParticles 1, Material mat_ParticleBrightFlare
+set EmitPeriodBase 0.1, EmitPeriodVar 0.02, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 4.0, ParticleSizeXVar 3.0
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 1.0
+set ParticleLifespanBase 0.8, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 0.4
+set EmitPosConstantZOffset 1
+set EmitPosRandomXExtent 1
+set EmitPosRandomYExtent 1
+set EmitPosRandomZExtent 1

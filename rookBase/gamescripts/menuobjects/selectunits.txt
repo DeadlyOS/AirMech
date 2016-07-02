@@ -1,0 +1,731 @@
+add MenuObject
+set Name LobbySelectArmyUnit
+set Texture menus/LoadoutGrid
+set RenderBlocked 1
+set Focus -2
+set Layer 2
+set MouseInteractZoneExpand "-5 -5 5 5"
+set MouseInteract 1
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set DisplayAsFocusedIfParentFocused 1
+set Disabled $_CustomDisabled
+set DisabledAlpha 0.2
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.15
+set DrawGreyScale $_CustomGreyed
+set CommandCancel "menuCmd MC_CustomDrawerCancel $C_BINDING"
+set Coords "0 0 120 100"
+set CommandGetFocus "floatsym setConcat2 MainMenuDescTimer $C_BINDING 0.0"
+set CommandGetFocus "playSound $CustomizeSoundFocus"
+set CommandPress "playSound $CustomizeSoundClick"
+set FilterName CustomDrawer
+set CommandOnCreate ">sym clear _SlotCheckUnlockName_"
+set CommandOnCreate ">customize slotCheck $_CustomObject @_Arg1_@ _CustomResult _CustomPath _CustomDisabled _CustomGreyed _CustomHideCost _CustomCostKudos _CustomCostDiamonds /ownedOnly /txtFilterSym DialogContentSelectFilterText /ultToSym _IsUltimate@_Arg1_@"
+set CommandOnCreate ">loadout getContentRaritySym _SlotCheckUnlockName_ LS_Rarity@_Arg1_@"
+set CommandPressAlt ">customize slotInspect $_CustomObject @_Arg1_@ /ownedOnly /txtFilterSym DialogContentSelectFilterText"
+set CommandPress ">if sym UnitLastFocus == null customize slotInspect $_CustomObject @_Arg1_@ /ownedOnly /txtFilterSym DialogContentSelectFilterText"
+set CommandPress ">if sym UnitLastFocus != null customize slotExec $_CustomObject @_Arg1_@ _CustomSymbol _CustomValue /ownedOnly /txtFilterSym DialogContentSelectFilterText"
+set CommandPress ">if sym UnitLastFocus != null menuCmd MC_LobbySelectObjectChoose local"
+set Child "IconCustomObjectRarity -6 -5		@_Arg1_@"
+set Child "SelectUltimateBg 0 0				_IsUltimate@_Arg1_@"
+set Child "IconCustomObject 0 0"
+set Child "ItemSelectEdge 0 0"
+set Child "SelectUltimateFg 0 0				_IsUltimate@_Arg1_@"
+set Child "ObjectSlotLocked 0 -10"
+set Child "MenuCustomDrawerSlotTrial 3 60"
+set Child "MenuCustomDrawerSlotCount 0 55"
+set CommandFocusLeft ">gameUI focusNameTry @_Arg2_@"
+set CommandFocusRight ">gameUI focusNameTry @_Arg3_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg4_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg5_@ LobbySelectItemDialogClose"
+set CommandGetFocus ">customize unitStatConfig $_CustomObject @_Arg1_@ 1 /ownedOnly /txtFilterSym DialogContentSelectFilterText"
+set SaveArgs 5
+set DragSource @_SlotCheckUnlockName_@
+set DragTarget ArmyItem.@_SlotCheckUnlockName_@
+set CommandPress "menuCmd LobbyArmyConfigUSelCancel"
+set CommandCancel "menucmd CloseSelectUnitsDialog"
+set DrawForToolTip UnitStatsToolTip
+set DrawForToolTipPositioning "/mode leftright /size 350 610 /xMargin 10 /yMargin 10 /modeSym _OnLeft_"
+set CommandActivateToolTip "gameui refreshFilterName StatsCompareNDSR"
+set ToolTipDelayTime 0.5
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyUnitSlotBg
+set RenderCB_DX 120
+set RenderCB_DY 101
+add MenuObject
+set Name LobbySelectUnitsContainer
+set ContainerOnly 1
+set Coords "0 0 1000 800"
+set FilterName CustomDrawer
+set Child "LobbyUnitSlotBg 0 0"
+set Child "LobbySelectArmyUnit[ObjectSlot0] 0 0			0 LobbyArmySlot1 ObjectSlot1 null ObjectSlot7"
+set Child "LobbyUnitSlotBg 130 0"
+set Child "LobbySelectArmyUnit[ObjectSlot1] 130 0		1 ObjectSlot0 ObjectSlot2 null ObjectSlot8"
+set Child "LobbyUnitSlotBg 260 0"
+set Child "LobbySelectArmyUnit[ObjectSlot2] 260 0		2 ObjectSlot1 ObjectSlot4 null ObjectSlot9"
+set Child "LobbyUnitSlotBg 390 0"
+set Child "LobbySelectArmyUnit[ObjectSlot3] 390 0		3 ObjectSlot2 ObjectSlot5 null ObjectSlot10"
+set Child "LobbyUnitSlotBg 520 0"
+set Child "LobbySelectArmyUnit[ObjectSlot4] 520 0		4 ObjectSlot3 ObjectSlot5 null ObjectSlot11"
+set Child "LobbyUnitSlotBg 650 0"
+set Child "LobbySelectArmyUnit[ObjectSlot5] 650 0		5 ObjectSlot4 ObjectSlot6 null ObjectSlot12"
+set Child "LobbyUnitSlotBg 780 0"
+set Child "LobbySelectArmyUnit[ObjectSlot6] 780 0		6 ObjectSlot5 null null ObjectSlot13"
+set Child "LobbyUnitSlotBg 0 110"
+set Child "LobbySelectArmyUnit[ObjectSlot7] 0 110		7 LobbyArmySlot2 ObjectSlot8 ObjectSlot0 ObjectSlot14"
+set Child "LobbyUnitSlotBg 130 110"
+set Child "LobbySelectArmyUnit[ObjectSlot8] 130 110		8 ObjectSlot7 ObjectSlot9 ObjectSlot1 ObjectSlot15"
+set Child "LobbyUnitSlotBg 260 110"
+set Child "LobbySelectArmyUnit[ObjectSlot9] 260 110		9 ObjectSlot8 ObjectSlot10 ObjectSlot2 ObjectSlot16"
+set Child "LobbyUnitSlotBg 390 110"
+set Child "LobbySelectArmyUnit[ObjectSlot10] 390 110	10 ObjectSlot9 ObjectSlot11 ObjectSlot3 ObjectSlot17"
+set Child "LobbyUnitSlotBg 520 110"
+set Child "LobbySelectArmyUnit[ObjectSlot11] 520 110	11 ObjectSlot10 ObjectSlot12 ObjectSlot4 ObjectSlot18"
+set Child "LobbyUnitSlotBg 650 110"
+set Child "LobbySelectArmyUnit[ObjectSlot12] 650 110	12 ObjectSlot11 ObjectSlot13 ObjectSlot5 ObjectSlot19"
+set Child "LobbyUnitSlotBg 780 110"
+set Child "LobbySelectArmyUnit[ObjectSlot13] 780 110	13 ObjectSlot12 null ObjectSlot6 ObjectSlot20"
+set Child "LobbyUnitSlotBg 0 220"
+set Child "LobbySelectArmyUnit[ObjectSlot14] 0 220		14 LobbyArmySlot2 ObjectSlot15 ObjectSlot7 ObjectSlot21"
+set Child "LobbyUnitSlotBg 130 220"
+set Child "LobbySelectArmyUnit[ObjectSlot15] 130 220	15 ObjectSlot14 ObjectSlot16 ObjectSlot8 ObjectSlot22"
+set Child "LobbyUnitSlotBg 260 220"
+set Child "LobbySelectArmyUnit[ObjectSlot16] 260 220	16 ObjectSlot15 ObjectSlot17 ObjectSlot9 ObjectSlot23"
+set Child "LobbyUnitSlotBg 390 220"
+set Child "LobbySelectArmyUnit[ObjectSlot17] 390 220	17 ObjectSlot16 ObjectSlot18 ObjectSlot10 ObjectSlot24"
+set Child "LobbyUnitSlotBg 520 220"
+set Child "LobbySelectArmyUnit[ObjectSlot18] 520 220	18 ObjectSlot17 ObjectSlot19 ObjectSlot11 ObjectSlot25"
+set Child "LobbyUnitSlotBg 650 220"
+set Child "LobbySelectArmyUnit[ObjectSlot19] 650 220	19 ObjectSlot18 ObjectSlot20 ObjectSlot12 ObjectSlot26"
+set Child "LobbyUnitSlotBg 780 220"
+set Child "LobbySelectArmyUnit[ObjectSlot20] 780 220	20 ObjectSlot19 null ObjectSlot13 ObjectSlot27"
+set Child "LobbyUnitSlotBg 0 330"
+set Child "LobbySelectArmyUnit[ObjectSlot21] 0 330		21 LobbyArmySlot3 ObjectSlot22 ObjectSlot14 ObjectSlot28"
+set Child "LobbyUnitSlotBg 130 330"
+set Child "LobbySelectArmyUnit[ObjectSlot22] 130 330	22 ObjectSlot21 ObjectSlot23 ObjectSlot15 ObjectSlot29"
+set Child "LobbyUnitSlotBg 260 330"
+set Child "LobbySelectArmyUnit[ObjectSlot23] 260 330	23 ObjectSlot22 ObjectSlot24 ObjectSlot16 ObjectSlot30"
+set Child "LobbyUnitSlotBg 390 330"
+set Child "LobbySelectArmyUnit[ObjectSlot24] 390 330	24 ObjectSlot23 ObjectSlot25 ObjectSlot17 ObjectSlot31"
+set Child "LobbyUnitSlotBg 520 330"
+set Child "LobbySelectArmyUnit[ObjectSlot25] 520 330	25 ObjectSlot24 ObjectSlot26 ObjectSlot18 ObjectSlot32"
+set Child "LobbyUnitSlotBg 650 330"
+set Child "LobbySelectArmyUnit[ObjectSlot26] 650 330	26 ObjectSlot25 ObjectSlot27 ObjectSlot19 ObjectSlot33"
+set Child "LobbyUnitSlotBg 780 330"
+set Child "LobbySelectArmyUnit[ObjectSlot27] 780 330	27 ObjectSlot26 null ObjectSlot20 ObjectSlot34"
+set Child "LobbyUnitSlotBg 0 440"
+set Child "LobbySelectArmyUnit[ObjectSlot28] 0 440		28 LobbyArmySlot3 ObjectSlot29 ObjectSlot21 ObjectSlot35"
+set Child "LobbyUnitSlotBg 130 440"
+set Child "LobbySelectArmyUnit[ObjectSlot29] 130 440	29 ObjectSlot28 ObjectSlot30 ObjectSlot22 ObjectSlot536"
+set Child "LobbyUnitSlotBg 260 440"
+set Child "LobbySelectArmyUnit[ObjectSlot30] 260 440	30 ObjectSlot29 ObjectSlot31 ObjectSlot23 ObjectSlot37"
+set Child "LobbyUnitSlotBg 390 440"
+set Child "LobbySelectArmyUnit[ObjectSlot31] 390 440	31 ObjectSlot30 ObjectSlot32 ObjectSlot24 ObjectSlot38"
+set Child "LobbyUnitSlotBg 520 440"
+set Child "LobbySelectArmyUnit[ObjectSlot32] 520 440	32 ObjectSlot31 ObjectSlot33 ObjectSlot25 ObjectSlot39"
+set Child "LobbyUnitSlotBg 650 440"
+set Child "LobbySelectArmyUnit[ObjectSlot33] 650 440	33 ObjectSlot32 ObjectSlot34 ObjectSlot26 ObjectSlot40"
+set Child "LobbyUnitSlotBg 780 440"
+set Child "LobbySelectArmyUnit[ObjectSlot34] 780 440	34 ObjectSlot33 null ObjectSlot27 ObjectSlot41"
+set Child "LobbyUnitSlotBg 0 550"
+set Child "LobbySelectArmyUnit[ObjectSlot35] 0 550		35 LobbyArmySlot3 ObjectSlot36 ObjectSlot28 null"
+set Child "LobbyUnitSlotBg 130 550"
+set Child "LobbySelectArmyUnit[ObjectSlot36] 130 550	36 ObjectSlot35 ObjectSlot37 ObjectSlot29 null"
+set Child "LobbyUnitSlotBg 260 550"
+set Child "LobbySelectArmyUnit[ObjectSlot37] 260 550	37 ObjectSlot36 ObjectSlot38 ObjectSlot30 null"
+set Child "LobbyUnitSlotBg 390 550"
+set Child "LobbySelectArmyUnit[ObjectSlot38] 390 550	38 ObjectSlot37 ObjectSlot39 ObjectSlot31 null"
+set Child "LobbyUnitSlotBg 520 550"
+set Child "LobbySelectArmyUnit[ObjectSlot39] 520 550	39 ObjectSlot38 ObjectSlot40 ObjectSlot32 null"
+set Child "LobbyUnitSlotBg 650 550"
+set Child "LobbySelectArmyUnit[ObjectSlot40] 650 550	40 ObjectSlot39 ObjectSlot41 ObjectSlot33 null"
+set Child "LobbyUnitSlotBg 780 550"
+set Child "LobbySelectArmyUnit[ObjectSlot41] 780 550	41 ObjectSlot40 null ObjectSlot34 null"
+set Child "LobbySelectScrollbar 908 0		7 6"
+set Child "LobbySelectWheelZone 0 0			7 6"
+add MenuObject
+set Name LobbyArmySlot
+set SaveArgs 5
+set CommandFocusLeft ">gameUI focusNameTry @_Arg2_@"
+set CommandFocusRight ">gameUI focusNameTry @_Arg3_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg4_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg5_@"
+set Texture menus/LoadoutGrid
+set Coords "0 0 186 186"
+set DrawWhenFocused MenuCustomArmySlotHighlight
+set DrawWhenFocusedOffset "-9 -9 0"
+set Focus -2
+set Layer 2
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set MouseInteract 1
+set CommandPress ">sym set _ArmySelSlot @_Arg1_@"
+set Child "MenuCustomArmySlotCover 0 0"
+set CommandGetFocus "playSound $SubMenuFocus"
+set CommandPress "playSound $SubMenuClick"
+set CommandGetFocus "floatsym setConcat2 MainMenuDescTimer $C_BINDING 0.0"
+set CommandPress "sym set UnitLastFocus #LobbyArmySlot@_Arg1_@"
+set Child "IconArmySlot 9 9			@_Arg1_@"
+set Child "IconArmySlotCount 9 9	@_Arg1_@"
+set Child "SlotFlashTemplate[SlotFlash@_Arg1_@] -10 -10"
+set CommandPress ">gameUI showAll LobbyArmySelect@_Arg1_@"
+set CommandPress ">gameUI show SlotFlash@_Arg1_@"
+set CommandPress "sym set SlotFlashActive 1"
+set CommandGetFocus "sym set _CustomObject units"
+set CommandGetFocus ">customize unitStatConfig army @_Arg1_@ 1 /noOffset"
+set FilterName Customize
+set DragSource &ArmySlot@_Arg1_@Custom0&.@_Arg1_@
+set DragTarget ArmySlot@_Arg1_@
+set CommandPressAlt ">customize slotInspect units $$ArmySlot@_Arg1_@Custom0"
+set CommandCancel "menucmd CloseSelectUnitsDialog"
+set DrawForToolTip UnitStatsToolTip
+set DrawForToolTipPositioning "/mode leftright /size 350 610 /xMargin 10 /yMargin 10 /modeSym _OnLeft_"
+set CommandActivateToolTip "gameui refreshFilterName StatsCompareNDSR"
+set ToolTipDelayTime 0.1
+add MenuObject
+set Name SlotFlashTemplate
+set Texture menus/LoadoutGrid
+set Coords "433 496 183 183"
+set BlinkAlpha "0.25 0.2 0.9 0.2"
+set BlendMode BlendAdd
+set Hidden 1
+set MouseInteract 1
+set CommandPress "menuCmd LobbyArmyConfigUSelCancel"
+add MenuObject
+set Name UnitsSetupSlotFlashCatchall
+set Coords "0 0 1380 930"
+set MouseInteract 1
+set RenderBlocked 1
+set CommandPress "menuCmd LobbyArmyConfigUSelCancel"
+set HiddenCheckBySymbolInv SlotFlashActive
+add MenuObject
+set Name LobbySelectUnitsDialogShadow
+set Texture effects/black
+set Coords "0 0 512 256"
+set StretchToFillScreen 1
+set Layer 11
+set NoAlphaMod 1
+set Alpha 0.5
+set MouseInteract 1
+set	CommandPress "menucmd CloseSelectUnitsDialog"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyUnitSlotMainBg
+set RenderCB_DX 166
+set RenderCB_DY 166
+add MenuObject
+set Name LobbyUnitsLoadout
+set ContainerOnly 1
+set Coords "0 0 802 242"
+set Child "LobbyUnitSlotMainBg 10 10"
+set Child "LobbyArmySlot[LobbyArmySlot7] 0 0		7	null LobbyArmySlot0 null LobbyArmySlot6"
+set Child "LobbyUnitSlotMainBg 200 10"
+set Child "LobbyArmySlot[LobbyArmySlot0] 190 0		0	LobbyArmySlot7 LobbyArmySlot1 null LobbyArmySlot4"
+set Child "LobbyUnitSlotMainBg 390 10"
+set Child "LobbyArmySlot[LobbyArmySlot1] 380 0		1	LobbyArmySlot0 ObjectSlot0 null LobbyArmySlot2"
+set Child "LobbyUnitSlotMainBg 10 200"
+set Child "LobbyArmySlot[LobbyArmySlot6] 0 190		6	null LobbyArmySlot2 LobbyArmySlot7 LobbyArmySlot5"
+set Child "LobbyUnitSlotMainBg 390 200"
+set Child "LobbyArmySlot[LobbyArmySlot2] 380 190	2	LobbyArmySlot6 ObjectSlot0 LobbyArmySlot1 LobbyArmySlot3"
+set Child "LobbyUnitSlotMainBg 10 390"
+set Child "LobbyArmySlot[LobbyArmySlot5] 0 380		5	null LobbyArmySlot4 LobbyArmySlot6 null"
+set Child "LobbyUnitSlotMainBg 200 390"
+set Child "LobbyArmySlot[LobbyArmySlot4] 190 380	4	LobbyArmySlot5 LobbyArmySlot3 LobbyArmySlot0 null"
+set Child "LobbyUnitSlotMainBg 390 390"
+set Child "LobbyArmySlot[LobbyArmySlot3] 380 380	3	LobbyArmySlot4 ObjectSlot0 LobbyArmySlot2 null"
+set Child "LobbyArmySelect0 0 0"
+set Child "LobbyArmySelect1 0 0"
+set Child "LobbyArmySelect2 0 0"
+set Child "LobbyArmySelect3 0 0"
+set Child "LobbyArmySelect4 0 0"
+set Child "LobbyArmySelect5 0 0"
+set Child "LobbyArmySelect6 0 0"
+set Child "LobbyArmySelect7 0 0"
+add MenuObject initFrom PanelEmbossedColor
+set Name LoadoutDisplayLobby
+set ContainerOnly 1
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor 1.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font RobotoBold
+set RenderCB_DX 178, RenderCB_DY 178
+set Color @_Arg2_@
+set HiddenCheckBySymbolValue ActiveLoadout!@_Arg3_@
+set SaveArgs 3
+set DisabledAlpha 1.0
+set EnabledAlpha 0.0
+set Child "LoadoutDisplayLobbyNumber 0 0	@_Arg1_@"
+set Child "LoadoutDisplayLabelEditTemplate	50	-3	@_Arg1_@	/platform !arc"
+set Child "LoadoutDisplayLabelEditArc		50	-3	@_Arg1_@	/platform arc"
+add MenuObject initFrom PanelEmbossedColor
+set Name HangarDisplayLobby
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor 1.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font RobotoBold
+set RenderCB_DX 178, RenderCB_DY 178
+set Color @_Arg2_@
+set HiddenCheckBySymbolValue ActiveLoadout!@_Arg3_@
+set SaveArgs 3
+set DisabledAlpha 1.0
+set EnabledAlpha 0.0
+set Child "LoadoutDisplayLobbyNumber 0 0	@_Arg1_@"
+set Child "LoadoutDisplayLabelEditTemplate 10 110	@_Arg1_@"
+add MenuObject
+set Name LoadoutDisplayLabelCancel
+set Coords "0 0 770 90"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogGeneral
+set CommandGetFocus "backend save"
+add MenuObject
+set Name LoadoutDisplayLabelEditTemplate
+set Coords "0 0 16 16"
+set TileArea "390 50"
+set Texture effects/white
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set BlendMode BlendAdd
+set Color 0x000000
+set ColorFocused 0x552200
+set RenderCB_DX 400
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYTop
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "8 -3"
+set Focus -2
+set RenderCB_Flags "/outlined8x /nmi /shadowColor2"
+set MouseInteract 1
+set RenderCB _DrawText
+set RenderCB_Font Gunner_Langfallback
+set RenderCB_RGBColor 0xcccccc
+set TextEditableMaxLen 12
+set RenderCB_Text	LDL@_Arg1_@
+set FirstDrawnChildren 1
+set Child "LoadoutDisplayLabelCancel -10 -10"
+set Child "LoadoutDisplayLabelEditHint 0 0 @_Arg1_@"
+#if arc
+set TextEditableProfanityFiltered 1
+#endif
+add MenuObject initFrom LoadoutDisplayLabelEditTemplate
+set Name LoadoutDisplayLabelEditArc
+set RenderCB_FontScale 1.3
+add MenuObject
+set Name LoadoutDisplayLabelEditHint
+set Coords "8 233 411 46"
+set DisabledAlpha 0.0
+set RenderCB_DX 400
+set RenderCB_DY 40
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "8 -2"
+set RenderCB_RGBColor 0xcccccc
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /nmi /shadowColor2"
+set RenderCB_Font Gunner_Langfallback
+set RenderCB_Text BtnHint_Loadout
+set DisabledSymValue LDL@_Arg1_@!""
+set DisabledAlphaTimeIn 0.0
+set DisabledAlphaTimeOut 0.0
+#if arc
+set TextEditableProfanityFiltered 1
+#endif
+add MenuObject
+set Name LoadoutDisplayLobbyNumber
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor 0xcccccc
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font Gunner
+set RenderCB_DX 30, RenderCB_DY 30
+set SaveArgs 1
+set RenderCB_FontScale 0.8
+add MenuObject
+set Name LoadoutDisplayContainer
+set ContainerOnly 1
+set Coords "0 0 802 242"
+set Child "LoadoutDisplayLobby 0 0	2	0xccff66	1"
+set Child "LoadoutDisplayLobby 0 0	3	0x88aaff	2"
+set Child "LoadoutDisplayLobby 0 0	4	0xffe86a	3"
+set Child "LoadoutDisplayLobby 0 0	5	0xa669cd	4"
+set Child "LoadoutDisplayLobby 0 0	6	0x89fffe	5"
+set Child "LoadoutDisplayLobby 0 0	7	0xff9710	6"
+set Child "LoadoutDisplayLobby 0 0	8	0xffbafe	7"
+set Child "LoadoutDisplayLobby 0 0	9	0xffbafe	8"
+set Child "LoadoutDisplayLobby 0 0	10	0xffbafe	9"
+set Child "LoadoutDisplayLobby 0 0	1	0xeb6157	0"
+add MenuObject
+set Name HangarDisplayContainer
+set ContainerOnly 1
+set Coords "0 0 802 242"
+set Child "HangarDisplayLobby 0 0	2	0xccff66	1"
+set Child "HangarDisplayLobby 0 0	3	0x88aaff	2"
+set Child "HangarDisplayLobby 0 0	4	0xffe86a	3"
+set Child "HangarDisplayLobby 0 0	5	0xa669cd	4"
+set Child "HangarDisplayLobby 0 0	6	0x89fffe	5"
+set Child "HangarDisplayLobby 0 0	7	0xff9710	6"
+set Child "HangarDisplayLobby 0 0	8	0xffbafe	7"
+set Child "HangarDisplayLobby 0 0	9	0xffbafe	8"
+set Child "HangarDisplayLobby 0 0	10	0xffbafe	9"
+set Child "HangarDisplayLobby 0 0	1	0xeb6157	0"
+add MenuObject
+set Name LoadoutSaveSlotLobby
+set Texture menus/DialogGeneral
+set RenderCB _DrawTextShadowedNMI
+set RenderCB_Text @_Arg1_@
+set RenderCBExcludesDefaultRender 0
+set Coords "399 528 123 51"
+set CoordsFocused "666 589 123 51"
+set CoordsPressed "533 589 123 51"
+set CoordsDisabled "399 589 123 51"
+set RenderCB_OffsetPressed "0 1"
+set RenderCB_OffsetDisabled "0 2"
+set RenderCB_RGBColor 0.8
+set RenderCB_RGBColorFocused 1.0
+set RenderCB_RGBColorDisabled 1.0
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font RobotoBold
+set RenderCB_DX 123, RenderCB_DY 46
+set Focus -2
+set HiddenCheckBySymbolInv LL@_Arg1_@
+set Color @_Arg2_@
+set ColorFocused @_Arg2_@
+set CommandPress "gameUI ignoreInputTime 0.15"
+set CommandPress "gameUI enableAll HangarSlotsContainer"
+set CommandPress "gameUI enableAll LoadoutSlotsContainer"
+set CommandPress "gameUI enableAll MyArmySlotsContainer"
+set CommandPress "sym setZero SaveSlotActive0 SaveSlotActive1 SaveSlotActive2 SaveSlotActive3 SaveSlotActive4 SaveSlotActive5 SaveSlotActive6 SaveSlotActive7"
+set CommandPress ">sym set SaveSlotActive@_Arg3_@ 1"
+set CommandPress "if sym LoadoutSetupAirMech == 1 addUIAnim MC_CustomAirMech mas_AirMechLeft"
+set CommandPress "if sym LoadoutSetupAirMech == 1 sym set LoadoutSetupAirMech 0"
+set CommandPress "if sym LoadoutSetupAirMech == 1 sym set LoadoutVariantLocked 0"
+set CommandPress "rook savePreset $ActiveLoadout"
+set CommandPress ">rook loadPreset @_Arg3_@"
+set CommandPress ">sym set ActiveLoadout @_Arg3_@"
+set CommandPress "gameUI hide #LoadoutQuickChangeLabel@ActiveLoadout@"
+set CommandPress ">gameUI show #LoadoutQuickChangeLabel@_Arg3_@"
+set CommandPress "gameui refreshFilterName CustomDrawer"
+set CommandPress "sym set UnsavedLoadout 0"
+set CommandPress "loadout customizeInit"
+set CommandPress "playsound $MenuSoundLoadoutChanged"
+set DisabledAlpha 1.0
+set DisabledAlphaTimeOut 2.0
+set NoAlphaMod 1
+set SaveArgs 3
+add MenuObject initFrom PanelResizeClear
+set Name LoadoutQuickChangeBuffer
+set TileArea "396 576"
+add MenuObject initFrom PanelResizeClear
+set Name LoadoutQuickChangeBuffer2
+set TileArea "250 105"
+add MenuObject initFrom PanelResizeClear
+set Name LoadoutQuickChangeCancel
+set CommandGetFocus "sym toggle LobbyQuickChangeListHidden"
+set CommandGetFocus "sym set ActiveLoadout $ActiveLoadoutLast"
+set CommandGetFocus "gameUI hide #LoadoutQuickChangeLabel@ActiveLoadout@"
+set CommandGetFocus "gameUI show #LoadoutQuickChangeLabel@ActiveLoadoutLast@"
+set CommandGetFocus "if sym ActiveLoadoutLast >= 0 rook loadPreset $ActiveLoadoutLast"
+set CommandGetFocus "if sym ActiveLoadoutLast >= 0 sym set UnsavedLoadout 0"
+set CommandGetFocus "sym set ActiveLoadout $ActiveLoadoutLast"
+set Child "LoadoutQuickChangeBuffer 50 50"
+set Child "LoadoutQuickChangeBuffer2 -200 70"
+set StretchToFillScreen 1
+add MenuObject initFrom PanelResizeFlat
+set Name LoadoutQuickChangeBackground
+set Color 0x222222
+set TileArea "296 492"
+add MenuObject initFrom ItemSelectHighlight
+set Name QuickChangeItemHighlight
+set TileArea "296 71"
+add MenuObject
+set Name LoadoutQuickChangeItem
+set Texture menus/DialogGeneral
+set RenderCB _DrawUTextShadowedNMI
+set RenderCB_Text NPrefix@_Arg1_@
+set RenderCB_ConsoleSymbol2 LDL@_Arg1_@
+set RenderCBExcludesDefaultRender 0
+set Coords "7 785 276 51"
+set RenderCB_Offset "14 0"
+set RenderCB_RGBColor 1.0
+set RenderCB_FontScale 0.85
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font RobotoBold
+set RenderCB_DX 223, RenderCB_DY 46
+set Focus -2
+set DrawWhenFocused QuickChangeItemHighlight
+set DrawWhenFocusedOffset "-10 -10 0"
+set HiddenCheckBySymbolInv LL@_Arg1_@
+set Color @_Arg2_@
+set ColorFocused @_Arg2_@
+set CommandOnCreate ">if sym ActiveLoadout == @_Arg3_@ gameUI disable LoadoutSaveSlot@_Arg3_@"
+set CommandGetFocus ">rook loadPreset @_Arg3_@"
+set CommandPress "sym set UnsavedLoadout 0"
+set CommandGetFocus "gameUI hide #LoadoutQuickChangeLabel@ActiveLoadout@"
+set CommandGetFocus ">gameUI show #LoadoutQuickChangeLabel@_Arg3_@"
+set CommandGetFocus ">sym set ActiveLoadout @_Arg3_@"
+set CommandPress "sym set LobbyQuickChangeListHidden 1"
+set DisabledAlpha 1.0
+set DisabledAlphaTimeOut 2.0
+set NoAlphaMod 1
+set SaveArgs 3
+add MenuObject
+set Name LoadoutQuickChangeLockedxx
+set Texture menus/DialogGeneral
+set RenderCB _DrawTextShadowedNMI
+set RenderCB_Text "Unlock Me"
+set RenderCBExcludesDefaultRender 0
+set Coords "7 785 276 51"
+set RenderCB_Offset "14 0"
+set RenderCB_RGBColor 0.5
+set RenderCB_RGBColorFocused 1.0
+set RenderCB_FontScale 0.85
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font RobotoBold
+set RenderCB_DX 223, RenderCB_DY 46
+set Focus -2
+set DrawWhenFocused QuickChangeItemHighlight
+set DrawWhenFocusedOffset "-10 -10 0"
+set HiddenCheckBySymbol LL@_Arg1_@
+set Color 0x777777
+set ColorFocused 0x777777
+set DisabledAlpha 1.0
+set DisabledAlphaTimeOut 2.0
+set NoAlphaMod 1
+set SaveArgs 3
+add MenuObject
+set Name LoadoutQuickChangeLocked
+set Texture menus/DialogGeneral
+set Coords "292 783 279 54"
+set CoordsFocused "576 783 279 54"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 3
+set Child "LoadoutQuickChangeItem[LoadoutQuickChangeItem@_Arg3_@] 1 1		@_Arg1_@ @_Arg2_@ @_Arg3_@"
+set CommandPress ">rook buyLoadoutSlot next @_Arg1_@"
+add MenuObject
+set Name LoadoutQuickChangeList
+set ContainerOnly 1
+set Layer 20
+set HiddenCheckBySymbol LobbyQuickChangeListHidden
+set Child "LoadoutQuickChangeCancel -100 -100"
+set Child "LoadoutQuickChangeBackground -9 -9"
+set Child "LoadoutQuickChangeLocked 0 60		2	0xccff66	1"
+set Child "LoadoutQuickChangeLocked 0 120		3	0x88aaff	2"
+set Child "LoadoutQuickChangeLocked 0 180		4	0xffe86a	3"
+set Child "LoadoutQuickChangeLocked 0 240		5	0xa669cd	4"
+set Child "LoadoutQuickChangeLocked 0 300		6	0x89fffe	5"
+set Child "LoadoutQuickChangeLocked 0 360		7	0xff9710	6"
+set Child "LoadoutQuickChangeLocked 0 420		8	0xffbafe	7"
+set Child "LoadoutQuickChangeLocked 0 0			1	0xeb6157	0"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyQuickChangeLabelBg
+set RenderCB_DX 296
+set RenderCB_DY 71
+add MenuObject initFrom ItemSelectHighlight
+set Name QuickChangeLabelHighlight
+set TileArea "306 81"
+add MenuObject
+set Name LoadoutQuickChangeLabel
+set Texture menus/DialogGeneral
+set RenderCB _DrawUTextShadowedNMI
+set RenderCB_Text NPrefix@_Arg1_@
+set RenderCB_ConsoleSymbol2 LDL@_Arg1_@
+set RenderCBExcludesDefaultRender 0
+set RenderCB_FontScale 0.85
+set Coords "7 785 276 51"
+set RenderCB_Offset "14 0"
+set RenderCB_RGBColor 1.0
+set MouseInteract 1
+set DrawWhenFocused QuickChangeLabelHighlight
+set DrawWhenFocusedOffset "-15 -15 0"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font RobotoBold
+set RenderCB_DX 223, RenderCB_DY 46
+set Focus -2
+set Hidden 1
+set Color @_Arg2_@
+set ColorFocused @_Arg2_@
+set CommandPress "sym toggle LobbyQuickChangeListHidden"
+set CommandPress "sym set ActiveLoadoutLast $ActiveLoadout"
+set FirstDrawnChildren 1
+set Child "LobbyQuickChangeLabelBg -10 -10"
+set DisabledAlpha 1.0
+set DisabledAlphaTimeOut 2.0
+set NoAlphaMod 1
+set SaveArgs 3
+set DisabledSymInv MM_CustomizeOk
+add MenuObject
+set Name LoadoutQuickChangeUnsaved
+set Texture menus/DialogGeneral
+set RenderCB _DrawTextShadowedNMI
+set RenderCB_Text "Unsaved Loadout"
+set RenderCBExcludesDefaultRender 0
+set Coords "7 785 276 51"
+set RenderCB_Offset "14 0"
+set RenderCB_RGBColor 1.0
+set RenderCB_FontScale 0.85
+set MouseInteract 1
+set DrawWhenFocused QuickChangeLabelHighlight
+set DrawWhenFocusedOffset "-15 -15 0"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font RobotoBold
+set RenderCB_DX 123, RenderCB_DY 46
+set Focus -2
+set Color 0x777777
+set ColorFocused 0x777777
+set CommandPress "sym toggle LobbyQuickChangeListHidden"
+set CommandPress "sym set ActiveLoadoutLast $ActiveLoadout"
+set FirstDrawnChildren 1
+set Child "LobbyQuickChangeLabelBg -10 -10"
+set DisabledAlpha 1.0
+set DisabledAlphaTimeOut 2.0
+set NoAlphaMod 1
+set DisabledSymInv MM_CustomizeOk
+add MenuObject
+set Name LoadoutAutosaveCheck
+set Texture menus/DialogGeneral
+set Coords "814 532 42 33"
+set HiddenCheckBySymbolInv LoadoutAutosave
+set DisabledAlphaTimeIn 0.0
+set DisabledAlphaTimeOut 0.1
+set ScaleX 0.75
+set ScaleY 0.75
+add MenuObject
+set Name LoadoutAutosaveCheckbox
+set Texture menus/DialogGeneral
+set Coords "357 201 32 32"
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "36 -1"
+set RenderCB_DX 200
+set RenderCB_DY 24
+set ScaleX 0.8
+set ScaleY 0.8
+set DisabledAlpha 0.3
+set DisabledSym UnsavedLoadout
+set RenderCB _DrawTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text "Autosave Changes"
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractZoneExpand "-50 0 0 0"
+set Focus -2
+set CommandPress "sym toggle LoadoutAutosave"
+set Child "LoadoutAutosaveCheck -1 -2"
+add MenuObject
+set Name LoadoutSaveSlotLocked
+set Texture menus/DialogGeneral
+set Coords "531 526 127 55"
+set CoordsFocused "664 526 127 55"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 3
+set Child "LoadoutSaveSlotLobby[LoadoutSaveSlot@_Arg3_@] 2 2		@_Arg1_@ @_Arg2_@ @_Arg3_@"
+set CommandPress ">rook buyLoadoutSlot next @_Arg1_@"
+add MenuObject
+set Name LoadoutSlotsContainer
+set ContainerOnly 1
+set Coords "0 0 802 242"
+set Child "LoadoutDisplayContainer 100 -660"
+set Child "LoadoutSaveSlotLocked 0 0		1	0xeb6157	0"
+set Child "LoadoutSaveSlotLocked 144 0		2	0xccff66	1"
+set Child "LoadoutSaveSlotLocked 288 0		3	0x88aaff	2"
+set Child "LoadoutSaveSlotLocked 432 0		4	0xffe86a	3"
+set Child "LoadoutSaveSlotLocked 0 72		5	0xa669cd	4"
+set Child "LoadoutSaveSlotLocked 144 72		6	0x89fffe	5"
+set Child "LoadoutSaveSlotLocked 288 72		7	0xff9710	6"
+set Child "LoadoutSaveSlotLocked 432 72		8	0xffbafe	7"
+add MenuObject
+set Name MyArmySlotsHidable
+set ContainerOnly 1
+set Coords "0 0 802 242"
+set HiddenCheckBySymbol LoadoutSetupAirMech
+set HiddenCheckBySymbol2 LoadoutConfigureUnits
+set Child "LoadoutSaveSlotLocked 0 100		1	0xeb6157	0"
+set Child "LoadoutSaveSlotLocked 0 160		2	0xccff66	1"
+set Child "LoadoutSaveSlotLocked 0 220		3	0x88aaff	2"
+set Child "LoadoutSaveSlotLocked 0 280		4	0xffe86a	3"
+set Child "LoadoutSaveSlotLocked 0 340		5	0xa669cd	4"
+set Child "LoadoutSaveSlotLocked 0 400		6	0x89fffe	5"
+set Child "LoadoutSaveSlotLocked 0 460		7	0xff9710	6"
+set Child "LoadoutSaveSlotLocked 0 520		8	0xffbafe	7"
+add MenuObject
+set Name MyArmySlotsContainer
+set ContainerOnly 1
+set Coords "0 0 802 242"
+set Child "LoadoutDisplayContainer 0 0"
+add MenuObject
+set Name HangarSlotsContainer
+set ContainerOnly 1
+set Coords "0 0 802 242"
+set Child "HangarDisplayContainer 1100 -80"
+set Child "LoadoutSaveSlotLocked 190 0		2	0xccff66	1"
+set Child "LoadoutSaveSlotLocked 340 0		3	0x88aaff	2"
+set Child "LoadoutSaveSlotLocked 490 0		4	0xffe86a	3"
+set Child "LoadoutSaveSlotLocked 640 0		5	0xa669cd	4"
+set Child "LoadoutSaveSlotLocked 790 0		6	0x89fffe	5"
+set Child "LoadoutSaveSlotLocked 940 0		7	0xff9710	6"
+set Child "LoadoutSaveSlotLocked 1090 0		8	0xffbafe	7"
+add MenuObject initFrom DialogTitle
+set Name LobbyUnitsTitleText
+set RenderCB_Text TitleUnitsSetup
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 1300
+set Anchor UpperLeft
+add MenuObject
+set Name LobbyUnitsTitle
+set Texture menus/MainTiles+lang
+set Coords "974 367 24 60"
+set TileArea "1604 60"
+set TileAreaFullTexture 0
+set Child "LobbyUnitsTitleText 20 3"
+set Child "LobbyUnitsClose 0 0"
+add MenuObject initFrom UnlockDialogCancelBase
+set Name LobbyUnitsClose
+set CommandPress "menucmd CloseSelectUnitsDialog"
+set CommandCancel "menucmd CloseSelectUnitsDialog"
+add MenuObject initFrom PanelResizeWhiteBorder
+set Name LobbySelectUnitsDialog
+set MouseInteract 1
+set Focus -2
+set RenderCB _Draw_G3x3
+set RenderCB_DX 1700
+set RenderCB_DY 990
+set Coords "0 0 1700 990"
+set MouseInteractZoneExpand "40 40 -40 -40"
+set Child "LobbyUnitsTitle 48 48"
+set Child "UnitsSetupSlotFlashCatchall 48 48"
+set Child "LobbySelectUnitsContainer 710 240"
+set Child "LobbyUnitsLoadout 86 180"
+set Child "LoadoutSlotsContainer 90 764"
+set Child "UnitFilterDropdown 710 166"
+add MenuObject
+set Name LobbySelectUnitsDialogMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set RenderCB_DX 1920
+set RenderCB_DY 1080
+set Layer 12
+set Child "LobbySelectUnitsDialogShadow 0 0"
+set Child "LobbySelectUnitsDialog 110 60"

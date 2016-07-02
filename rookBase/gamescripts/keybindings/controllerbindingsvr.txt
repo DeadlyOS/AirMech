@@ -1,0 +1,440 @@
+START PRESSED +paused +invSymCheck SplashVR ignoreInputTime 0.33 {
+pausegame 0
+menu3d addAnimScript GameStart as_MenuBlockExit.txt
+pcmd 0.3 menu3d remove GameStart
+}
+START PRESSED +symCheck SplashVR ignoreInputTime 0.33 {
+pausegame 0
+}
+START PRESSED +symCheck VRMenuLoaded ignoreInputTime 0.33 {
+menucmd VRMenuCancel
+}
+START PRESSED +invSymCheck _MapTransition +invSymCheck VRMenuLoaded +invSymCheck SplashVR ignoreInputTime 0.2 +frame_blockN _MyVrFocus_ 20 {
+menucmd AttemptToPauseVR
+}
+BACK PRESSED {
+gfx hmd recenter
+}
+A PRESSED !menu3dExists MessageConfirm +invSymCheck LoadNormalMapInVR +invSymCheck VRMenuLoaded +invSymCheck VrTutorial +invSymCheck PreviewingUnlockReady +symCheck LocalAM_AirMode -paused ignoreInputTime 0.1 {
+if sym MenuDialogCmd !isEmpty menucmd $MenuDialogCmd
+}
+A PRESSED !menu3dExists MessageConfirm +symCheck MenuTouch +invSymCheck VRMenuLoaded +invSymCheck VrTutorial +invSymCheck PreviewingUnlockReady +invSymCheck LocalAM_AirMode +invSymCheck _LookAtSkylight -paused ignoreInputTime 0.1 {
+if sym MenuDialogCmd isEmpty menucmd $MenuTouchCmd
+if sym MenuDialogCmd !isEmpty menucmd $MenuDialogCmd
+if sym VrShowingRewardDialog == 0 pfx menu3dspawn VrMenuButtonPress /menu3d #MenuDisk@_VrArg_@ /bone bone_root /try
+pfx stop VrMenu
+if sym MenuTouchCmd isEmpty && sym VrCustomizeMode == 1 menucmd VrCustomizeMode_APressed
+if sym MenuTouchCmd isEmpty && sym VrCustomizeArmy == 1 && !gamecheck watchAmAir menucmd VrCustomizeArmy_APressed
+}
+A PRESSED +symCheck MenuTouch +invSymCheck VRMenuLoaded +invSymCheck _LookAtSkylight +symCheck PreviewingUnlockReady ignoreInputTime 0.1 {
+if sym VrCustomizeArmy == 1 && sym CurrentUnitOwned == 0 && !gamecheck watchAmAir menucmd VrUnlockRequestSend local $TR_ContentNameVRTemp
+if sym VrCustomizeMode == 1 && sym CurrentAirMechOwned == 0 menucmd VrUnlockRequestSend local $TR_ContentNameVRTemp
+if sym VRFlairSelectMode == 1 && sym IsVrFlairUnlocked == 0 menucmd VrFlairUnlockRequestSend local $TR_ContentNameVRFlair
+}
+A PRESSED +invSymCheck VRMenuLoaded +symCheck _LookAtSkylight +invSymCheck VrTutorial +invSymCheck VRFortStateChanging ignoreInputTime 0.1 {
+sym set VRFortStateChanging 1
+sym set DemoCheat 0
+if sym CurrentFortState == open menucmd SetVrFortState closed
+if sym CurrentFortState == closed menucmd SetVrFortState open
+}
+A PRESSED +symCheckEither BuildCubeActive BuildCubeActiveLook +symCheck VrTutorial -paused +frame_blockN _MyVrUnitBuild_ 4 {
+if sym VrTutorialStage > 3 menucmd #GetReadyArmySlot@_BuildCubeIndex_@ local
+if sym VrTutorialStage > 3 menucmd PlaceOrder local
+if sym VrTutorialStage > 3 sym setFrom _BuildSlot _BuildCubeIndex_
+}
+A PRESSED +symCheckEither BuildCubeActive BuildCubeActiveLook +symCheck LoadNormalMapInVR +invSymCheck IsSpectator -paused +frame_blockN _MyVrUnitBuild_ 4 {
+menucmd #GetReadyArmySlot@_BuildCubeIndex_@ local
+menucmd PlaceOrder local
+sym setFrom _BuildSlot _BuildCubeIndex_
+}
+A PRESSED +symCheck TutorialHint  {
+sym set TutorialHint 0
+if sym VrTutorialStage == 6 menucmd PlayMechyVoice VR2_Disabled
+pcmd_seq Hint p6.0 sym set TutorialHint 1
+}
+B PRESSED !menu3dExists MessageConfirm +symCheck MenuTouch +invSymCheck VRMenuLoaded +invSymCheck PreviewingUnlockReady -paused ignoreInputTime 0.1 {
+if sym MenuDialogCancelCmd isEmpty menucmd $MenuTouchCancelCmd
+if sym MenuDialogCancelCmd !isEmpty menucmd $MenuDialogCancelCmd
+}
+B PRESSED +symCheck MenuTouch +invSymCheck VRMenuLoaded +symCheck PreviewingUnlockReady ignoreInputTime 0.1 {
+menucmd ShowUnlockReset
+}
+Y PRESSED +symCheck WorldZoomOk -paused +invSymCheck BuildCubeActive +invSymCheck BuildCubeActiveLook {
+sym set _VrTpOk_ 1
+sym set _BarrierTp 0
+sym set _AlsoRotate 0
+menucmd TeleportStartEffect
+pcmd_seq Hold p0.3 sym set _AlsoRotate 1
+player local tgtCameraInfo _CamGoOk _CamGoPos WorldViewRotationFake /airFacing
+if sym VrTutorial == 1 && sym _TutorialStage == C && sym VrTutorialStage == 3 pcmd_seq Hold p0.45 menucmd GpadTutCPart2_Ok
+}
+Y RELEASED +symCheck WorldZoomOk -paused +invSymCheck _CamGoOk {
+mdlprop clearids 1007
+console flushAllPendingSeq VrTeleportFx
+sym setZero _VrTpDown_ _VrTpOk_ _CamGoQuick _CamGoOk _CamGoPartial
+menucmd WorldShiftFx
+menu3d remove TeleportTarget
+sym setZero _CameraHoldR _CameraHoldL
+console flushAllPendingSeq Hold
+}
+Y RELEASED +symCheck WorldZoomOk -paused +symCheck _CamGoOk +invSymCheck _BarrierTp  {
+if sym _VrTpOk_ == 1 runnow player local tgtCameraInfo _CamGoOk _CamGoPos WorldViewRotation /airFacing
+if sym _VrTpOk_ == 1 && sym _AlsoRotate == 1 worldview rotateto $$WorldViewRotation /lin 0.05
+if sym _VrTpOk_ == 1 worldview moveto $WorldViewPosX $WorldViewPosY $WorldViewPosZ  /airmech /lin 0.05
+if sym _VrTpOk_ == 1 worldview orCondCmd /minRot 2 /minMove 2 /cmd gfx lerp vrFadeAlpha /current 0.25 0.06 /priority 1
+if sym _VrTpOk_ == 1 worldview orCondCmd /minRot 2 /minMove 2 /cmd pcmd 0.05 gfx lerp vrFadeAlpha /current 0 0.05 /priority 1
+mdlprop clearids 1007
+console flushAllPendingSeq VrTeleportFx
+if sym _VrTpOk_ == 1 menucmd WorldShiftFx
+if sym _VrTpOk_ == 1 playsound CameraTeleport
+sym setZero _VrTpDown_ _VrTpOk_ _CamGoQuick _CamGoOk _CamGoPartial
+menu3d remove TeleportTarget
+sym setZero _CameraHoldR _CameraHoldL
+console flushAllPendingSeq Hold
+}
+Y RELEASED +symCheck WorldZoomOk -paused +symCheck _CamGoOk +symCheck _BarrierTp  {
+mdlprop clearids 1007
+console flushAllPendingSeq VrTeleportFx
+sym setZero _VrTpDown_ _VrTpOk_ _CamGoQuick _CamGoOk _CamGoPartial
+menu3d remove TeleportTarget
+sym setZero _CameraHoldR _CameraHoldL
+}
+RShoulder PRESSED +symCheck WorldZoomOk -paused +invSymCheck _VrTpOk_ +invSymCheck _CameraHoldR  {
+if sym _CameraHoldL == 1 sym set _CamGoQuick 1
+if sym _CameraHoldL == 0 sym set _CamGoQuick 0
+menucmd TeleportStartEffect
+sym set _CameraHoldR 1
+}
+LShoulder PRESSED +symCheck WorldZoomOk -paused +invSymCheck _VrTpOk_ +invSymCheck _CameraHoldL  {
+if sym _CameraHoldR == 1 sym set _CamGoQuick 1
+if sym _CameraHoldR == 0 sym set _CamGoQuick 0
+menucmd TeleportStartEffect
+sym set _CameraHoldL 1
+}
+RShoulder RELEASED +symCheck WorldZoomOk -paused  {
+sym set _CameraHoldR 0
+sym set _CamGoOk 0
+if sym _CameraHoldL == 0 runnow sym set _CamGoQuick 0
+}
+LShoulder RELEASED +symCheck WorldZoomOk -paused {
+sym set _CameraHoldL 0
+sym set _CamGoOk 0
+if sym _CameraHoldR == 0 runnow sym set _CamGoQuick 0
+}
+RShoulder PRESSED +symCheck WorldZoomOk -paused +symCheck _CameraHoldL {
+player local tgtCameraInfo _CamGoOk _CamGoPos WorldViewRotation /airFacing
+worldview rotateto $$WorldViewRotation /lin 0.05
+worldview moveto $WorldViewPosX $WorldViewPosY $WorldViewPosZ  /airmech /lin 0.05
+worldview orCondCmd /minRot 2 /minMove 2 /cmd gfx lerp vrFadeAlpha /current 0.25 0.06 /priority 1
+worldview orCondCmd /minRot 2 /minMove 2 /cmd pcmd 0.05 gfx lerp vrFadeAlpha /current 0 0.05 /priority 1
+pcmd 0 mdlprop clearids 1007
+pcmd 0 console flushAllPendingSeq VrTeleportFx
+sym setZero _VrTpDown_ _CamGoOk _CamGoPartial _CameraHoldR
+menucmd WorldShiftFx
+playsound CameraTeleport
+menu3d remove TeleportTarget
+if sym VrTutorial == 1 && sym _TutorialStage == C && sym VrTutorialStage == 3b runnow menucmd GpadTutCPart2b_Ok
+}
+LShoulder PRESSED +symCheck WorldZoomOk -paused +symCheck _CameraHoldR {
+player local tgtCameraInfo _CamGoOk _CamGoPos WorldViewRotation /airFacing
+worldview rotateto $$WorldViewRotation /lin 0.05
+worldview moveto $WorldViewPosX $WorldViewPosY $WorldViewPosZ  /airmech /lin 0.05
+worldview orCondCmd /minRot 2 /minMove 2 /cmd gfx lerp vrFadeAlpha /current 0.25 0.06 /priority 1
+worldview orCondCmd /minRot 2 /minMove 2 /cmd pcmd 0.05 gfx lerp vrFadeAlpha /current 0 0.05 /priority 1
+pcmd 0 mdlprop clearids 1007
+pcmd 0 console flushAllPendingSeq VrTeleportFx
+sym setZero _VrTpDown_ _CamGoOk _CamGoPartial _CameraHoldL
+menucmd WorldShiftFx
+playsound CameraTeleport
+menu3d remove TeleportTarget
+if sym VrTutorial == 1 && sym _TutorialStage == C && sym VrTutorialStage == 3b runnow menucmd GpadTutCPart2b_Ok
+}
+RShoulder RELEASED +symCheck WorldZoomOk -paused +invSymCheck _VrTpOk_ +invSymCheck _CamGoQuick  {
+sym set _VrTpOk_ 0
+sym set _CamGoPartial 0
+sym set _CameraHoldR 0
+mdlprop clearids 1007
+console flushAllPendingSeq VrTeleportFx
+if sym WorldViewZoom < 4 menucmd WorldShiftFx
+if sym WorldViewZoom < 4 runnow sym inc WorldViewZoom
+if sym VrTutorial == 1 && sym VrTutorialStage < 7 && sym WorldViewZoom == 4 runnow sym set WorldViewZoom 3
+menucmd SetupWorldViewZoom
+if sym VrTutorial == 1 && sym _TutorialStage == C && sym VrTutorialStage == 2 && sym WorldViewZoom == 3 runnow menucmd GpadTutCPart2
+}
+LShoulder RELEASED +symCheck WorldZoomOk -paused +symCheck _CameraHoldR {
+pcmd 0 mdlprop clearids 1007
+console flushAllPendingSeq VrTeleportFx
+}
+RShoulder RELEASED +symCheck WorldZoomOk -paused +symCheck _CameraHoldL {
+pcmd 0 mdlprop clearids 1007
+console flushAllPendingSeq VrTeleportFx
+}
+LShoulder RELEASED +symCheck WorldZoomOk -paused +invSymCheck _VrTpOk_ +invSymCheck _CamGoQuick {
+sym set _VrTpOk_ 0
+sym set _CamGoPartial 0
+sym set _CameraHoldL 0
+mdlprop clearids 1007
+console flushAllPendingSeq VrTeleportFx
+if sym WorldViewZoom >= 1 menucmd WorldShiftFx
+if sym WorldViewZoom >= 1 runnow sym dec WorldViewZoom
+menucmd SetupWorldViewZoom
+if sym VrTutorial == 1 && sym _TutorialStage == C && sym VrTutorialStage == 1b && sym WorldViewZoom == 0 runnow menucmd GpadTutCPart1b
+}
+RShoulder PRESSED +symCheck WorldZoomOk -paused +symCheck _VrTpOk_ +invSymCheck _CamGoQuick {
+sym set _CamGoOk 0
+sym set _CameraHoldR 0
+sym inc WorldViewRotation 45
+sym quantizeInt WorldViewRotation 45 0 360
+worldview rotateto $$WorldViewRotation /lin 0.05
+worldview moveto $WorldViewPosX $WorldViewPosY $WorldViewPosZ  /airmech /lin 0.05
+menucmd WorldShiftFx
+playsound CameraTeleport
+gfx lerp vrFadeAlpha /current 0.25 0.06 /priority 1
+pcmd 0.05 gfx lerp vrFadeAlpha /current 0 0.05 /priority 1
+pcmd t1 sym set _BarrierTp 1
+if sym VrTutorial == 1 && sym _TutorialStage == C && sym VrTutorialStage == 4 runnow menucmd GpadTutCPart3_Ok
+}
+LShoulder PRESSED +symCheck WorldZoomOk -paused +symCheck _VrTpOk_ +invSymCheck _CamGoQuick {
+sym set _CamGoOk 0
+sym set _CameraHoldL 0
+sym dec WorldViewRotation 45
+sym quantizeInt WorldViewRotation 45 0 360
+worldview rotateto $$WorldViewRotation /lin 0.05
+worldview moveto $WorldViewPosX $WorldViewPosY $WorldViewPosZ  /airmech /lin 0.05
+menucmd WorldShiftFx
+playsound CameraTeleport
+gfx lerp vrFadeAlpha /current 0.25 0.06 /priority 1
+pcmd 0.05 gfx lerp vrFadeAlpha /current 0 0.05 /priority 1
+pcmd t1 sym set _BarrierTp 1
+if sym VrTutorial == 1 && sym _TutorialStage == C && sym VrTutorialStage == 4 runnow menucmd GpadTutCPart3_Ok
+}
+Y PRESSED +invSymCheck _VrTpDown_ +symCheckEither BuildCubeActive BuildCubeActiveLook +invSymCheck VRMenuLoaded +invSymCheck IsSpectator -paused +frame_blockN _MyVrFocus_ 8 {
+if sym VRMainMenu != 1 runnow rook genNextUnit #AS@_BuildCubeIndex_@P@net_local_player@ /excludePattern $_BuildCubeIndex_ #AS?P@net_local_player@ /noUltimates /cycleCategory 1 /reqOwn /extraWrite #ArmySlot@_BuildCubeIndex_@Custom0 /categoryToSym CurrentCategory
+if sym VRMainMenu == 1 && sym VrTutorial == 0 runnow sym setFrom PreviousCategory CurrentCategory"
+if sym VRMainMenu == 1 && sym VrTutorial == 0 runnow rook genNextUnit #AS@_BuildCubeIndex_@P@net_local_player@ /excludePattern $_BuildCubeIndex_ #AS?P@net_local_player@ /noUltimates /cycleCategory 1 /ownStateSym CurrentUnitOwned /extraWrite #ArmySlot@_BuildCubeIndex_@Custom0 /extraWriteIfOwned #UnitVRLast@_BuildCubeIndex_@ /categoryToSym CurrentCategory
+if sym VRMainMenu == 1 && sym VrTutorial == 1 runnow rook genNextUnit #AS@_BuildCubeIndex_@P@net_local_player@ /excludePattern $_BuildCubeIndex_ #AS?P@net_local_player@ /noUltimates /cycleCategory 1 /reqOwn /ownStateSym CurrentUnitOwned /extraWrite #ArmySlot@_BuildCubeIndex_@Custom0 /extraWriteIfOwned #UnitVRLast@_BuildCubeIndex_@ /categoryToSym CurrentCategory
+if sym VRMainMenu == 1 menucmd ChangeUnitColorForUnlock
+pcmd t0 menucmd BuildCubeUpPad
+pcmd t1 menuCmd SetupBuildCubeInfo
+}
+DPadUp PRESSED +invSymCheck _VrTpDown_ +symCheckEither BuildCubeActive BuildCubeActiveLook +invSymCheck IsSpectator +invSymCheck VRMenuLoaded -paused +frame_blockN _MyVrFocus_ 8 {
+gameui ignoreInputTime 0.1
+if sym VRMainMenu != 1 runnow rook genNextUnit #AS@_BuildCubeIndex_@P@net_local_player@ /excludePattern $_BuildCubeIndex_ #AS?P@net_local_player@ /noUltimates /cycleUnit -1 /reqOwn /extraWrite #ArmySlot@_BuildCubeIndex_@Custom0
+if sym VRMainMenu == 1 && sym VrTutorial == 0 runnow rook genNextUnit #AS@_BuildCubeIndex_@P@net_local_player@ /excludePattern $_BuildCubeIndex_ #AS?P@net_local_player@ /noUltimates /cycleUnit -1 /ownStateSym CurrentUnitOwned /extraWrite #ArmySlot@_BuildCubeIndex_@Custom0 /extraWriteIfOwned #UnitVRLast@_BuildCubeIndex_@
+if sym VRMainMenu == 1 && sym VrTutorial == 1 rook genNextUnit #AS@_BuildCubeIndex_@P@net_local_player@ /excludePattern $_BuildCubeIndex_ #AS?P@net_local_player@ /noUltimates /cycleUnit -1 /reqOwn /extraWrite #ArmySlot@_BuildCubeIndex_@Custom0
+if sym VRMainMenu == 1 menucmd ChangeUnitColorForUnlock
+pcmd t0 menucmd BuildCubeUpPad
+pcmd t1 menuCmd SetupBuildCubeInfo
+}
+DPadDown PRESSED +invSymCheck _VrTpDown_ +symCheckEither BuildCubeActive BuildCubeActiveLook +invSymCheck IsSpectator +invSymCheck VRMenuLoaded -paused +frame_blockN _MyVrFocus_ 8 {
+gameui ignoreInputTime 0.1
+if sym VRMainMenu != 1 runnow rook genNextUnit #AS@_BuildCubeIndex_@P@net_local_player@ /excludePattern $_BuildCubeIndex_ #AS?P@net_local_player@ /noUltimates /cycleUnit 1 /reqOwn /extraWrite #ArmySlot@_BuildCubeIndex_@Custom0
+if sym VRMainMenu == 1 && sym VrTutorial == 1 runnow rook genNextUnit #AS@_BuildCubeIndex_@P@net_local_player@ /excludePattern $_BuildCubeIndex_ #AS?P@net_local_player@ /noUltimates /cycleUnit 1 /reqOwn /extraWrite #ArmySlot@_BuildCubeIndex_@Custom0
+if sym VRMainMenu == 1 && sym VrTutorial == 0 runnow rook genNextUnit #AS@_BuildCubeIndex_@P@net_local_player@ /excludePattern $_BuildCubeIndex_ #AS?P@net_local_player@ /noUltimates /cycleUnit 1 /ownStateSym CurrentUnitOwned /extraWrite #ArmySlot@_BuildCubeIndex_@Custom0 /extraWriteIfOwned #UnitVRLast@_BuildCubeIndex_@
+if sym VRMainMenu == 1 menucmd ChangeUnitColorForUnlock
+pcmd t0 menucmd BuildCubeDownPad
+pcmd t1 menuCmd SetupBuildCubeInfo
+}
+DPadLeft PRESSED +invSymCheck _VrTpDown_ +symCheckEither BuildCubeActive BuildCubeActiveLook +invSymCheck IsSpectator +invSymCheck VRMenuLoaded -paused +frame_blockN _MyVrFocus_ 8 {
+gameui ignoreInputTime 0.1
+if sym _BuildCubeIndex_ > 0 runnow menucmd BuildCubeShiftFocusFromBinding local -1
+if sym VrTutorial == 1 && sym _TutorialStage == B && sym VrTutorialStage == 2 menucmd GpadBuildBarPart3
+}
+DPadRight PRESSED +invSymCheck _VrTpDown_ +symCheckEither BuildCubeActive BuildCubeActiveLook +invSymCheck IsSpectator +invSymCheck VRMenuLoaded -paused +frame_blockN _MyVrFocus_ 8 {
+gameui ignoreInputTime 0.1
+if sym _BuildCubeIndex_ < 7 runnow menucmd BuildCubeShiftFocusFromBinding local 1
+if sym VrTutorial == 1 && sym _TutorialStage == B && sym VrTutorialStage == 2 menucmd GpadBuildBarPart3
+}
+DPadUp PRESSED +symCheck LoadNormalMapInVR +symCheck _LocalAM_CarryingUnit +invSymCheck _VrTpDown_ +invSymCheck BuildCubeActive +invSymCheck BuildCubeActiveLook +invSymCheck VRMenuLoaded +frame_blockN _MyVrOrderIssue_ 60 {
+player local do setorder AttackEnemy
+player local do dropUnit
+pcmd 0.2 player local do setorder AttackEnemy
+pcmd 0.2 player local do dropUnit
+pcmd 0.4 player local do setorder AttackEnemy
+pcmd 0.4 player local do dropUnit
+pcmd 0.6 player local do setorder AttackEnemy
+pcmd 0.6 player local do dropUnit
+}
+DPadUp PRESSED +symCheck LoadNormalMapInVR +invSymCheck _LocalAM_CarryingUnit +invSymCheck _VrTpDown_ +invSymCheck BuildCubeActive +invSymCheck BuildCubeActiveLook +invSymCheck VRMenuLoaded {
+player local do setorder AttackEnemy
+if sym _TutorialStage == C && sym VrTutorialStage == 6 runnow menucmd GpadTutCPart6
+}
+DPadDown PRESSED +symCheck LoadNormalMapInVR +symCheck _LocalAM_CarryingUnit +invSymCheck _VrTpDown_ +invSymCheck BuildCubeActive +invSymCheck BuildCubeActiveLook +invSymCheck VRMenuLoaded +frame_blockN _MyVrOrderIssue_ 60 {
+player local do setorder HoldPosition
+player local do dropUnit
+pcmd 0.2 player local do setorder HoldPosition
+pcmd 0.2 player local do dropUnit
+pcmd 0.4 player local do setorder HoldPosition
+pcmd 0.4 player local do dropUnit
+pcmd 0.6 player local do setorder HoldPosition
+pcmd 0.6 player local do dropUnit
+}
+DPadDown PRESSED +symCheck LoadNormalMapInVR +invSymCheck _LocalAM_CarryingUnit +invSymCheck _VrTpDown_ +invSymCheck BuildCubeActive +invSymCheck BuildCubeActiveLook +invSymCheck VRMenuLoaded {
+player local do setorder HoldPosition
+}
+DPadLeft PRESSED +symCheck LoadNormalMapInVR +symCheck _LocalAM_CarryingUnit +invSymCheck _VrTpDown_ +invSymCheck BuildCubeActive +invSymCheck BuildCubeActiveLook +invSymCheck VRMenuLoaded +frame_blockN _MyVrOrderIssue_ 60 {
+player local do setorder FallBack
+player local do dropUnit
+pcmd 0.2 player local do setorder FallBack
+pcmd 0.2 player local do dropUnit
+pcmd 0.4 player local do setorder FallBack
+pcmd 0.4 player local do dropUnit
+pcmd 0.6 player local do setorder FallBack
+pcmd 0.6 player local do dropUnit
+}
+DPadLeft PRESSED +symCheck LoadNormalMapInVR +invSymCheck _LocalAM_CarryingUnit +invSymCheck _VrTpDown_ +invSymCheck BuildCubeActive +invSymCheck BuildCubeActiveLook +invSymCheck VRMenuLoaded {
+player local do setorder FallBack
+}
+DPadRight PRESSED +symCheck LoadNormalMapInVR +symCheck _LocalAM_CarryingUnit +invSymCheck _VrTpDown_ +invSymCheck BuildCubeActive +invSymCheck BuildCubeActiveLook +invSymCheck VRMenuLoaded +frame_blockN _MyVrOrderIssue_ 60 {
+player local do setorder CaptureOutpost
+player local do dropUnit
+pcmd 0.2 player local do setorder CaptureOutpost
+pcmd 0.2 player local do dropUnit
+pcmd 0.4 player local do setorder CaptureOutpost
+pcmd 0.4 player local do dropUnit
+pcmd 0.6 player local do setorder CaptureOutpost
+pcmd 0.6 player local do dropUnit
+}
+DPadRight PRESSED +symCheck LoadNormalMapInVR +invSymCheck _LocalAM_CarryingUnit +invSymCheck _VrTpDown_ +invSymCheck BuildCubeActive +invSymCheck BuildCubeActiveLook +invSymCheck VRMenuLoaded {
+player local do setorder CaptureOutpost
+}
+DPadRight PRESSED +invSymCheck LoadNormalMapInVR +frame_blockN _MyVrOrderIssue_ 60 {
+if sym _TutorialStage == B && sym VrTutorialStage == 6 player local do setorder CaptureOutpost
+if sym _TutorialStage == B && sym VrTutorialStage == 6 player local do dropUnit
+if sym _TutorialStage == B && sym VrTutorialStage == 6 pcmd 0.2 player local do setorder CaptureOutpost
+if sym _TutorialStage == B && sym VrTutorialStage == 6 pcmd 0.2 player local do dropUnit
+if sym _TutorialStage == B && sym VrTutorialStage == 6 pcmd 0.4 player local do setorder CaptureOutpost
+if sym _TutorialStage == B && sym VrTutorialStage == 6 pcmd 0.4 player local do dropUnit
+if sym _TutorialStage == B && sym VrTutorialStage == 6 pcmd 0.6 player local do setorder CaptureOutpost
+if sym _TutorialStage == B && sym VrTutorialStage == 6 pcmd 0.6 player local do dropUnit
+}
+DPadLeft PRESSED +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRSpecSelectMode {
+if sym Spec0Hidden == 0 menucmd CycleSpecPrev
+}
+DPadRight PRESSED +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRSpecSelectMode {
+if sym Spec0Hidden == 0 menucmd CycleSpecNext
+}
+DPadUp PRESSED !menu3dExists MessageConfirm +symCheck InVrLobby +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRMapSelectMode +invSymCheck VRMapMenuMode +symCheck MenuBotDifficultyActiveLook +invSymCheck VRMapSelectButton {
+gameui ignoreInputTime 0.1
+menucmd CycleBotDifficutlyRev
+}
+DPadDown PRESSED !menu3dExists MessageConfirm +symCheck InVrLobby +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRMapSelectMode +invSymCheck VRMapMenuMode +symCheck MenuBotDifficultyActiveLook +invSymCheck VRMapSelectButton {
+gameui ignoreInputTime 0.1
+menucmd CycleBotDifficutly
+}
+DPadLeft PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRMapSelectMode {
+gameui ignoreInputTime 0.1
+menucmd CycleMapPrev
+}
+DPadRight PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRMapSelectMode {
+gameui ignoreInputTime 0.1
+menucmd CycleMapNext
+}
+DPadLeft PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRLangSelectMode {
+menucmd CycleLangPrev
+}
+DPadRight PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRLangSelectMode {
+menucmd CycleLangNext
+}
+DPadLeft PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRQuestSelectMode {
+gameui ignoreInputTime 0.1
+if sym VRQuestsN > 1 && sym VRQuestSelected == 0 menucmd CycleQuestPrev
+if sym VRQuestSelected == 1 menucmd QuestCardUnSelect
+}
+DPadRight PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRQuestSelectMode  {
+gameui ignoreInputTime 0.1
+if sym VRQuestsN > 1 && sym VRQuestSelected == 0 menucmd CycleQuestNext
+if sym VRQuestSelected == 1 menucmd QuestCardUnSelect
+}
+DPadUp PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRFriendListMode {
+gameui ignoreInputTime 0.05
+menucmd FriendListUp
+}
+DPadDown PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRFriendListMode {
+gameui ignoreInputTime 0.05
+menucmd FriendListDown
+}
+DPadUp PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRAdjustAudio {
+menucmd VrVolumeUp $VolToChange
+}
+DPadDown PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRAdjustAudio {
+menucmd VrVolumeDown $VolToChange
+}
+DPadLeft PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRAdjustAudio {
+menucmd UnTouchAudio $VolumeLabel
+if sym VolumeLabel isEmpty menucmd TouchAudio Master
+if sym VolumeLabel == Master menucmd TouchAudio Music
+if sym VolumeLabel == Effects menucmd TouchAudio Master
+if sym VolumeLabel == Voice menucmd TouchAudio Effects
+if sym VolumeLabel == Music menucmd TouchAudio Voice
+}
+DPadRight PRESSED !menu3dExists MessageConfirm +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VRAdjustAudio {
+menucmd UnTouchAudio $VolumeLabel
+if sym VolumeLabel isEmpty menucmd TouchAudio Master
+if sym VolumeLabel == Master menucmd TouchAudio Effects
+if sym VolumeLabel == Effects menucmd TouchAudio Voice
+if sym VolumeLabel == Voice menucmd TouchAudio Music
+if sym VolumeLabel == Music menucmd TouchAudio Master
+}
+DPadUp !menu3dExists MessageConfirm PRESSED +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VrCustomizeMode {
+gameUI ignoreInputTime 0.05
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 runnow menucmd CycleAirMechHangar Prev
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 && sym _AirMechFocused != 0 runnow sym set _CycleAirMech 1"
+}
+DPadDown !menu3dExists MessageConfirm PRESSED +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VrCustomizeMode {
+gameUI ignoreInputTime 0.05
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 runnow menucmd CycleAirMechHangar Next
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 && sym _AirMechFocused != 8 runnow sym set _CycleAirMech 1"
+}
+DPadLeft !menu3dExists MessageConfirm PRESSED +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VrCustomizeMode {
+gameUI ignoreInputTime 0.05
+if sym VrCustomizeType != class pcmd 0 menucmd CycleFlairPrev
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 && sym #Has@AirMechActive@ == 1 menucmd PreviewAirMechSkin local Prev
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 && sym #Has@AirMechActive@ == 0 playsound AlertOutpostLost.wav
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 && sym #Has@AirMechActive@ == 0 menu3d addAnimScript MenuQuestCard0 as_VRAirMechQuestReset.txt"
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 && sym #Has@AirMechActive@ == 0 pcmd 0.1 menu3d addAnimScript MenuQuestCard0 as_VRMenuShake.txt
+}
+DPadRight !menu3dExists MessageConfirm PRESSED +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VrCustomizeMode {
+gameUI ignoreInputTime 0.05
+if sym VrCustomizeType != class pcmd 0 menucmd CycleFlairNext
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 && sym #Has@AirMechActive@ == 1 menucmd PreviewAirMechSkin local Next
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 && sym #Has@AirMechActive@ == 0 playsound AlertOutpostLost.wav
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 && sym #Has@AirMechActive@ == 0 menu3d addAnimScript MenuQuestCard0 as_VRAirMechQuestReset.txt"
+if sym VrCustomizeType == class && sym _CycleAirMech == 0 && sym #Has@AirMechActive@ == 0 pcmd 0.1 menu3d addAnimScript MenuQuestCard0 as_VRMenuShake.txt
+}
+DPadUp !menu3dExists MessageConfirm PRESSED +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VrCustomizeInLobbyMode {
+gameUI ignoreInputTime 0.1
+if sym _CycleAirMech == 0 runnow menucmd CycleAirMech local Prev
+if sym _CycleAirMech == 0 runnow sym set _CycleAirMech 1"
+}
+DPadDown !menu3dExists MessageConfirm PRESSED +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VrCustomizeInLobbyMode {
+gameUI ignoreInputTime 0.1
+if sym _CycleAirMech == 0 runnow menucmd CycleAirMech local Next
+if sym _CycleAirMech == 0 runnow sym set _CycleAirMech 1"
+}
+DPadLeft !menu3dExists MessageConfirm PRESSED +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VrCustomizeInLobbyMode {
+gameUI ignoreInputTime 0.1
+if sym _CycleAirMech == 0 runnow menucmd CycleAirMechSkin local Prev
+if sym _CycleAirMech == 0 runnow sym set _CycleAirMech 1"
+}
+DPadRight !menu3dExists MessageConfirm PRESSED +symCheck VRMainMenu +invSymCheck VRMenuLoaded +symCheck VrCustomizeInLobbyMode {
+gameUI ignoreInputTime 0.1
+if sym _CycleAirMech == 0 runnow menucmd CycleAirMechSkin local Next
+if sym _CycleAirMech == 0 runnow sym set _CycleAirMech 1"
+}
+DPadUp PRESSED +symCheck IsSpectator +invSymCheck _VrTpDown_ -paused {
+camera specScroll 0.65 0
+worldview offsetTo 0 20 0 /lin 0.1 /clampForceBox
+}
+DPadDown PRESSED +symCheck IsSpectator +invSymCheck _VrTpDown_ -paused {
+camera specScroll 0.65 0
+worldview offsetTo 0 -20 0 /lin 0.1 /clampForceBox
+}
+DPadLeft PRESSED +symCheck IsSpectator +invSymCheck _VrTpDown_ -paused {
+camera specScroll 0.65 0
+worldview offsetTo -20 0 0 /lin 0.1 /clampForceBox
+}
+DPadRight PRESSED +symCheck IsSpectator +invSymCheck _VrTpDown_ -paused {
+camera specScroll 0.65 0
+worldview offsetTo 20 0 0 /lin 0.1 /clampForceBox
+}

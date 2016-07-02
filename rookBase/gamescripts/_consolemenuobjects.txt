@@ -1,0 +1,874 @@
+add MenuObject
+set Name ConsoleAsyncWait
+set Texture menus/CursorSpinner
+set PlayerHiddenStateCheck ModeAsyncWait
+set Coords "30 30 68 68"
+set RotationPeriod 1.0
+set ScaleX 1.4
+set ScaleY 1.4
+set RenderOffsetX -34
+set RenderOffsetY -34
+add MenuObject
+set Name SimpleBackButton
+set Texture menus/BackIcon
+set BlendMode BlendAdd
+set HiddenCheckBySymbol InputPad
+set Focus -2
+set MouseInteract 1
+set Coords "0 0 127 128"
+set CoordsFocused "0 128 128 128"
+set CommandPress "if sym CurrentMenu == CPlay if console runnow menuCmd ConMenuPlayCancel"
+set CommandPress "if sym CurrentMenu == CPlay if !console runnow menuCmd MainMenuExitPlay"
+set CommandPress "if sym CurrentMenu == CMulti menuCmd ConMenuPlayMultiplayerCancel"
+set CommandPress "if sym CurrentMenu == CSolo menuCmd ConMenuPlaySoloPressCancel"
+set CommandPress "if sym CurrentMenu == CCoop menuCmd ConMenuPlayCoopPressCancel"
+set CommandPress "if sym CurrentMenu == CPvP menuCmd ConMenuPlayPvPPressCancel"
+set CommandPress "if sym CurrentMenu == CPractice menuCmd ConMenuPlayPracticePressCancel"
+set CommandPress "if sym CurrentMenu == CSoloLevel menuCmd ConMenuPlaySoloPressCancel"
+set CommandPress "if sym CurrentMenu == CSoloLoadout menuCmd ConMenuPlaySoloLoadoutCancel"
+set CommandPress "if sym CurrentMenu == CVersusLoadout menuCmd ConMenuPlayMultiplayerCancel"
+set CommandPress "if sym CurrentMenu == CCoopLoadout menuCmd ConMenuPlayCoopCancel"
+set CommandPress "if sym CurrentMenu == CTraining menuCmd ConMenuPlayTrainingCancel"
+set CommandPress "if sym CurrentMenu == CLobby menuCmd ConMenuLobbyCancel"
+set CommandPress "if sym CurrentMenu == CWatch menuCmd ConMenuWatchCancel"
+set CommandPress "if sym CurrentMenu == CQuests && sym ConQuestsMenu == 0 menuCmd ConMenuQuestsPressCancel"
+set CommandPress "if sym CurrentMenu == CQuests && sym ConQuestsMenu == 1 clearmenu ConQuests /fadeout 0.2"
+set CommandPress "if sym CurrentMenu == CPractice menuCmd ConMenuPlayPracticePressCancel"
+set CommandPress "if sym CurrentMenu == CTraining menuCmd ConMenuPlayTrainingCancel"
+set CommandPress "if sym CurrentMenu == COptions menuCmd ConMenuHelpOptionsCancel"
+set CommandPress "if sym CurrentMenu == CHome menuCmd ConMenuBackToRoot"
+set CommandPress "if sym CurrentMenu == COptControls menuCmd ConMenuOptControlsCancel"
+set CommandPress "if sym CurrentMenu == COptGameplay menuCmd ConMenuOptGameplayCancel"
+set CommandPress "if sym CurrentMenu == COptVideo menuCmd ConMenuOptVideoCancel"
+set CommandPress "if sym CurrentMenu == COptScreenInset menuCmd ConScreenInsetExit"
+set CommandPress "if sym CurrentMenu == COptAudio menuCmd ConMenuOptAudioCancel"
+set CommandPress "if sym CurrentMenu == COptContact menuCmd ConMenuOptContactCancel"
+set CommandPress "if sym CurrentMenu == CStats menuCmd ConMenuStatsPressCancel"
+set CommandPress "if sym CurrentMenu == MapSelect menuCmd ConMenuMapSelectStandardCancel"
+set CommandPress "if sym CurrentMenu == ConLeaderboards menuCmd ConMenuBoardsCancel"
+set CommandPress "if sym CurrentMenu == ConLeaderboards sym set DisableConShop 0"
+add MenuObject
+set Name MultiPurposeButtonTemplate
+set Texture menus/Buttons
+set Coords "2 0 374 82"
+set CoordsFocused "3 83 374 82"
+set CoordsPressed "0 80 374 82"
+set MouseInteractZoneExpand "0 -6 0 6"
+set MouseInteract 1
+set Focus -2
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "sym set MenuPlayCardMove 1"
+set CommandLoseFocus "sym set MenuPlayCardMove 0"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set MouseInteract 1
+set RenderCB_RGBColor "0.63 0.71 0.74"
+set RenderCB_RGBColorFocused "0.80 0.84 0.85"
+set RenderCB_Flags "/nmi /shadowed /allCaps /fitX"
+set RenderCB_FontScale 0.55
+set RenderCB_DX 420
+set RenderCB_DY 72
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "10 0"
+set RenderCB_OffsetFocused "9 -1"
+set RenderCB_OffsetPressed "12 2"
+set ScaleX 1.2
+set DisabledAlphaTimeIn 0.25
+set DisabledAlphaTimeOut 0.25
+set CommandPress "gameUI ignoreInputTime 0.2"
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandGetFocus "sym set EventMessageFocus 0"
+set DisabledAlpha 0.5
+add MenuObject initFrom MultiPurposeButtonTemplate
+set Name MultiPurposeTallButtonTemplate
+set Texture menus/Buttons
+set Coords "2 247 374 122"
+set CoordsFocused "3 370 374 122"
+set CoordsPressed "0 367 374 122"
+add MenuObject
+set Name MultiPurposeLabelBase
+set Texture menus/Buttons
+set Coords "2 164 374 82"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set PadGetFocusAsCommandPress 1
+set RenderCB_RGBColor "0.1"
+set RenderCB_Flags "/nmi /allCaps /fitX"
+set RenderCB_FontScale 0.55
+set RenderCB_DX 420
+set RenderCB_DY 72
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set RenderCB_Offset "10 0"
+set ScaleX 1.2
+add MenuObject
+set Name PressAFocusedObj
+set RenderCB_Font ConsoleChars
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol FM_Select_Char
+add MenuObject initFrom PressAFocusedObj
+set Name PressAFocusedObjBigger
+set RenderCB_FontScale 1.2
+add MenuObject initFrom MultiPurposeLabelBase
+set Name MultiPurposeWhiteTemplate
+set RenderCBExcludesDefaultRender 1
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor 0xFFFFFF
+set HiddenCheckBySymbolInv EventMessageFocus
+set SaveArgs 1
+add MenuObject initFrom MultiPurposeLabelBase
+set Name MultiPurposeLabelTemplate
+set CoordsAnimated "2 164 374 82"
+set CoordsAnimated "3 83 374 82"
+set CoordsAnimationSymHash EventMessageFocus
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolInv @_Arg2_@
+set SaveArgs 2
+set Child "MultiPurposeWhiteTemplate 0 0 	@_Arg1_@"
+add MenuObject initFrom MultiPurposeLabelBase
+set Name LobbyLabelTemplate
+set Coords "2 617 394 82"
+set ScaleX 0.82, ScaleY 0.82
+set RenderCB_DX 260
+set RenderCB_DY 60
+set RenderCB_FontScale 0.45
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "30 0"
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.25
+set SaveArgs 1
+add MenuObject initFrom MultiPurposeLabelBase
+set Name SubsectionLabelTemplate
+set RenderCB_Text @_Arg1_@
+set Coords "2 617 394 82"
+set RenderCB_RGBColor 0xffffff
+set PulseAlpha "2.0 -0.2 0.3"
+set SaveArgs 1
+set Disabled 1
+add MenuObject initFrom MultiPurposeLabelTemplate
+set Name MultiPurposeBigLabelTemplate
+set ScaleX 1.5
+set ScaleY 1.5
+set RenderCB_DX 525
+set RenderCB_DY 108
+set RenderCB_FontScale 0.65
+add MenuObject
+set Name HeaderLabelTemplate
+set Coords "0 0 960 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_RGBColor @_Arg3_@
+set RenderCB_Flags "/allCaps /fitX /outlined8x"
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 3
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledSymInv _MenuTransition_
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+add MenuObject
+set Name ConMapPreviewHeader
+set Texture /data/levels/@MapName@/preview
+set Coords "0 0 1024 342"
+set ScaleX 1.6
+set ScaleY 1.6
+set FilterName MapSelection
+set Texture2 maps/ConMapPreviewMask
+set Material mat_AlternateAlpha
+set Child "ConLobbyMapHeaderName 600 400"
+add MenuObject
+set Name ConMapPreviewBackground
+set Texture /data/levels/&@_Arg1_@&/preview
+set NoDrawOnMissingTexture 1
+set Coords "0 0 1024 512"
+set NoDisplayClipping 1
+set SaveArgs 1
+set ScaleX 2.0
+set ScaleY 2.0
+set Color 0xffccaa
+set FilterName MapSelection
+set Texture2 maps/ConMapPreviewMask
+set Material mat_AlternateAlpha
+set DisabledSymValue LobbyContainerOffset=-4000
+set MouseInteract 1
+set DisabledSym MapPreviewChange
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.5
+set HiddenCheckBySymbol PO_CustomMap 1
+set HiddenCheckBySymbolValue MapName=CustomMaps
+add MenuObject
+set Name ConLobbyMapSelectedBorder
+set Texture ]menus/ConLoadout
+set Coords "0 0 375 186"
+set NoAlphaMod 1
+set Alpha 0.67
+set MirrorOnX 1
+add MenuObject
+set Name ConLobbyMapFrame
+set Texture menus/ConLoadout
+set CoordsStart "541 448 20 20"
+set CoordsMid "561 448 111 20"
+set CoordsEnd "672 448 20 20"
+set CoordsStartFocused "541 468 20 16"
+set CoordsMidFocused "561 468 111 16"
+set CoordsEndFocused "672 468 20 16"
+set CoordsStartDisabled "541 484 20 115"
+set CoordsMidDisabled "561 484 111 115"
+set CoordsEndDisabled "672 484 20 115"
+set RenderCB _Draw_G3x3
+set Coords "0 0 333 200"
+set RenderCB_DX 333
+set RenderCB_DY 106
+add MenuObject
+set Name ConLobbyMapSelectedName
+set Coords "0 0 212 30"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol MapName
+set RenderCB_RGBColor 0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Flags "/allCaps /outlined8x /fitX_n20 /fitX_n10 /shadowColor2"
+set RenderCB_FontScale 0.9
+set BlendMode BlendAdd
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYBottom
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 -6"
+set DisplayAsFocusedIfParentFocused 1
+set FilterName MapSelection
+add MenuObject initFrom ConLobbyMapSelectedName
+set Name ConLobbyMapSelectedNameChoose
+set HiddenCheckBySymbolValue MapName=Random
+add MenuObject
+set Name CustomMapNameOnTab
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Texture effects/white
+set Coords "0 0 450 50"
+set Color 0x855d33
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 	0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "0 -2"
+set RenderCB_Flags "/nmi /fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.8
+set RenderCB_Font Roboto
+set RenderCB _DrawText
+set Coords "0 0 210 50"
+set RenderCB_FontScale 0.65
+set RenderCB_ConsoleSymbol PO_CustomMapName
+add MenuObject
+set Name ConLobbyMapSelectedCustomBg
+set Coords "1645 781 210 130"
+set Texture promos/PromoReferral
+set HiddenCheckBySymbolInv PO_CustomMap
+set Child "ConLobbyMapSelectedCustom 0 40"
+set Child "CustomMapNameOnTab 0 60"
+add MenuObject initFrom ConLobbyMapSelectedName
+set Name ConLobbyMapSelectedCustom
+set RenderCB_ConsoleSymbol ""
+set RenderCB_Text MF_CustomMap
+set RenderCB_Font RobotoBold
+set Coords "0 0 210 30"
+add MenuObject initFrom ConLobbyMapSelectedName
+set Name ConLobbyMapSelectedNameServer
+set SaveArgs 1
+set RenderCB_ConsoleSymbol ""
+set RenderCB_Text Random
+set HiddenCheckBySymbolValue MapName!Random
+add MenuObject initFrom ConLobbyMapSelectedName
+set Name ConLobbyMapSelectedNameOtherVote
+set SaveArgs 1
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject initFrom ConLobbyMapSelectedName
+set Name ConLobbyMapSelectedHeaderText
+set RenderCB_Text MapInfoHeader
+set RenderCB_ConsoleSymbol ""
+set HiddenCheckBySymbolInv _soloLaunch_
+set RenderCB_RGBColor 0xa0a0a0
+set RenderCB_RGBColorFocused 0xa0a0a0
+add MenuObject initFrom ConLobbyMapSelectedName
+set Name ConLobbyMapVoteSelectedHeaderText
+set RenderCB_Text MapVoteInfoHeader
+set RenderCB_ConsoleSymbol ""
+set HiddenCheckBySymbol _soloLaunch_
+set RenderCB_RGBColor 0xa0a0a0
+set RenderCB_RGBColorFocused 0xa0a0a0
+add MenuObject initFrom ConLobbyMapSelectedName
+set Name ConLobbyMapHeaderName
+set HiddenCheckBySymbolInv LobbyModeDetails
+set RenderCB_FontScale 0.8
+set RenderCB_RGBColor "1.0 0.9 0.7"
+set RenderCB_TextJustify JustifyXRight
+set Coords "0 0 600 64"
+add MenuObject
+set Name ConLobbyMapSelectedCover
+set Texture menus/ConLoadout@TeamColor@
+set FilterName Customize
+set Coords "1 1 268 205"
+set NoAlphaMod 1
+set Alpha 0.7
+set ScaleX 1.3
+add MenuObject
+set Name ConLobbyMapSelected
+set Texture /data/levels/@MapName@/preview
+set FilterName MapSelection
+set Coords "280 100 454 264"
+set ScaleX 0.7
+set ScaleY 0.7
+set DrawWhenFocused FocusConMapVote
+set DrawWhenFocusedOffset "-8 -6 0"
+set MouseInteractZoneExpand "0 0 0 0"
+set MouseInteractZoneExpandWhenFocused "0 0 15 0"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "input set padFocusFallback ConLobbyMapSelected"
+set CommandCancel "gameui focusNametry ConLobbyPlayerAirMechIcon0"
+set CommandFocusLeft "gameui focusNameTry ConLobbyPlayerAirMechIcon0"
+set CommandFocusRight "gameui focusNameTry ConLobbyEmpty3 ConLobbyPlayerAirMechIcon3"
+set MouseInteract 1
+set Focus -2
+set CommandLeftButton "if sym MM_CustomizeOk == 1 runnow gameui ignoreInputTime 0.2"
+set CommandLeftButton "if sym MM_CustomizeOk == 1 runnow menuCmd ConMenuMapSelectStandard"
+set CommandFocusUp "gameui focusNameTry ConLobbySpecSlot6"
+set CommandPress "if sym MM_CustomizeOk == 1 runnow gameui ignoreInputTime 0.2"
+set CommandPress "if sym MM_CustomizeOk == 1 runnow menuCmd ConMenuMapSelectStandard"
+set HiddenCheckBySymbol LobbyModeDetails
+set Child "ConLobbyMapSelectedCover -13 -9"
+set Child "ConLobbyMapSelectedHeaderText -4 -40"
+set Child "ConLobbyMapVoteSelectedHeaderText -4 -40"
+set Child "ConLobbyMapSelectedName -4 20"
+add MenuObject
+set Name LobbyV1Map_Base
+set FilterName MapSelection
+set Coords "170 0 704 512"
+set ScaleX 0.3
+set ScaleY 0.3
+set SaveArgs 1
+set Texture2 maps/ConMapPreviewMask
+set Material mat_AlternateAlpha
+set DrawWhenFocused LobbyV1MapVoteFocus
+set DrawWhenFocusedOffset "-6 17 0"
+set MouseInteractZoneExpand "0 0 0 0"
+set MouseInteractZoneExpandWhenFocused "0 0 15 0"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "input set padFocusFallback ConLobbyMapSelected"
+set CommandCancel "gameui focusNametry ConLobbyPlayerAirMechIcon0"
+set CommandFocusUp ">gameui focusNameTry ConLobbyPlayerPilotIcon@_Arg1_@"
+set CommandFocusDown ">gameui focusNameTry ConLobbyPlayerItemSlot@_Arg1_@"
+set CommandFocusLeft "menucmd LobbyV1FocusMemoryLeft local ConLobbyPlayerPilotIcon"
+set CommandFocusRight "menucmd LobbyV1FocusMemoryRight local ConLobbyPlayerPilotIcon"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbol LobbyModeDetails
+add MenuObject initFrom LobbyV1Map_Base
+set Name LobbyV1MapSelected
+set MouseInteractZoneExpand "0 20 0 0"
+set MouseInteractZoneExpandWhenFocused "0 0 0 0"
+set Texture /data/levels/@MapName@/preview
+set TextureAlt /data/obj/maps/ConMapPreviewMask
+set ToolTip MapLore@MapName@
+set SaveArgs 1
+set CommandGetFocus ">addUIAnim LobbyV1MapVote@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim LobbyV1MapVote@_Arg1_@ mas_LobbyItemReset"
+set CommandLeftButton "if sym _ServerSelectedMap != 1 if sym MM_CustomizeOk == 1 runnow gameui ignoreInputTime 0.2"
+set CommandLeftButton "if sym _ServerSelectedMap != 1 if sym MM_CustomizeOk == 1 runnow menuCmd ConMenuMapSelectStandard"
+set CommandPress "if sym _ServerSelectedMap != 1 && sym MM_CustomizeOk == 1 runnow gameui ignoreInputTime 0.2"
+set CommandPress "if sym _ServerSelectedMap != 1 if sym MM_CustomizeOk == 1 runnow menuCmd ConMenuMapSelectStandard"
+set CommandPressAlt "if sym PO_IsOwner == 1 loadmenu LobbyMapListWindow /fadein 0.1"
+set Child "ConLobbyMapSelectedNameChoose -4 120"
+set Child "ConLobbyMapSelectedNameServer -4 80"
+set Child "ConLobbyMapSelectedCustomBg 0 20"
+set CommandPress "sym set ShowMotDHome 0"
+set CommandGetFocus "if sym LobbyV1MyDetailsHide == 0 sym set LobbyV1DisplayMode 0"
+set HiddenCheckBySymbolValue LobbyV1DisplayMode!0
+add MenuObject initFrom LobbyV1Map_Base
+set Name LobbyV1MapVoteOther
+set MouseInteract 0
+set Focus 0
+set Disabled 1
+set DisabledAlpha 1.0
+set Texture /data/levels/&P_MapVote@_Arg1_@&/preview
+set Child "ConLobbyMapSelectedNameOtherVote -4 120	P_MapVote@_Arg1_@"
+add MenuObject
+set Name HeaderLabelLobbyTemplate
+set Coords "0 0 1700 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor @_Arg2_@
+set RenderCB_Flags "/allCaps /outlined8x"
+set RenderCB_FontScale @_Arg1_@
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 3
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledSymInv _MenuTransition_
+set RenderCB_Offset "0 0"
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+set RenderCB _DrawUText
+set RenderCB_Text ButtonLobby
+set SaveArgs 2
+set Child "ConLobbyCountdownTimer 750 0"
+add MenuObject initFrom HeaderLabelTemplate
+set Name HeaderLabelUTemplate
+set RenderCB _DrawUText
+add MenuObject initFrom HeaderLabelTemplate
+set Name HeaderLabelUDisTemplate
+set RenderCB _DrawUText
+set DisabledSymInv @_Arg4_@
+set SaveArgs 4
+set DisabledAlpha 0.4
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject initFrom HeaderLabelTemplate
+set Name HeaderLabelDTemplate
+set RenderCB _DrawDText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Text ""
+set RenderCB_Offset "0 0"
+add MenuObject
+set Name HeaderBoardTemplate
+set Coords "0 0 1700 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_RGBColor @_Arg3_@
+set RenderCB_Flags "/allCaps"
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 3
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledSymInv _MenuTransition_
+set RenderCB_Offset "0 0"
+set RenderCB_ConsoleSymbol @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+add MenuObject initFrom HeaderLabelTemplate
+set Name HeaderLabelSymTemplate
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Text ""
+add MenuObject initFrom HeaderLabelTemplate
+set Name HeaderLabelSymMap
+set RenderCB _DrawUText
+set RenderCB_FontScale 1.0
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Text ""
+add MenuObject initFrom HeaderLabelTemplate
+set Name HeaderShopTemplate
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Text ""
+add MenuObject initFrom HeaderLabelTemplate
+set Name HeaderLabelSymDisTemplate
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Text ""
+set DisabledSymInv @_Arg4_@
+set SaveArgs 4
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name ConLobbyCountdownTimer
+set Coords "0 0 165 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_FontScale 1.5
+set RenderCB _DrawText
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Flags "/outlined8x"
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_ConsoleSymbol _PreGameTimer
+set HiddenCheckBySymbolValue _MatchingUI_!1
+add MenuObject
+set Name ConLobbyLoadoutLabel
+set Coords "0 0 165 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_FontScale 0.25
+set RenderCB _DrawText
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_Text Loadout
+add MenuObject
+set Name ConLobbyLoadoutNum
+set Coords "0 0 60 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_FontScale 0.6
+set RenderCB _DrawSymNumMod
+set RenderCB_Flags "/outlined8x /shadowcolor2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol ActiveLoadout
+set RenderCB_IntArg 1
+add MenuObject
+set Name ConsoleButtonLabel
+set Coords "0 0 374 42"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/shadowed /allCaps /fitX"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 190
+set RenderCB_DY 42
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Offset "62 2"
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+set DisabledSymValue CurrentMenu!@_Arg2_@
+add MenuObject initFrom ConsoleButtonLabel
+set Name ConsoleButtonLabelDynName
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject
+set Name GamepadButtonLabel
+set Coords "0 0 374 42"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Flags " /fitX"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Offset "62 0"
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+set DisabledAlphaTimeInPreWait 1.0
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.1
+add MenuObject initFrom ConsoleButtonLabel
+set Name ConsoleButtonLabelCentered
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 205 42"
+set HiddenCheckBySymbol InputMK
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Offset "0 0"
+add MenuObject
+set Name ConsoleButtonLabelShoulder
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 1.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_ConsoleSymbol @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 362 42"
+set RenderCB_Offset "0 0"
+add MenuObject
+set Name ConsoleButtonTemplate
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 0 64 64"
+set SaveArgs 4
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimated "0 64 64 64"
+set CoordsAnimated "64 64 64 64"
+set CoordsAnimationPreset @_Arg1_@
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set Child "ConsoleButtonLabel 0 0 @_Arg3_@ @_Arg4_@"
+set DisabledSymValue CurrentMenu!@_Arg4_@
+set HiddenCheckBySymbol InputMK
+add MenuObject
+set Name ConsoleButtonTemplateDynName
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 0 64 64"
+set SaveArgs 4
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimated "0 64 64 64"
+set CoordsAnimated "64 64 64 64"
+set CoordsAnimationPreset @_Arg1_@
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set Child "ConsoleButtonLabelDynName 0 0 @_Arg3_@ @_Arg4_@"
+set DisabledSymValue CurrentMenu!@_Arg4_@
+set HiddenCheckBySymbol InputMK
+add MenuObject
+set Name ConsoleScreenInsetArrowTL
+set Texture menus/DialogGeneral
+set Coords "970 854 32 32"
+set ScaleX 3, ScaleY 3
+add MenuObject initFrom ConsoleScreenInsetArrowTL
+set Name ConsoleScreenInsetArrowTR
+set ScaleX -3, ScaleY 3
+add MenuObject initFrom ConsoleScreenInsetArrowTL
+set Name ConsoleScreenInsetArrowBL
+set ScaleX 3, ScaleY -3
+add MenuObject initFrom ConsoleScreenInsetArrowTL
+set Name ConsoleScreenInsetArrowBR
+set ScaleX -3, ScaleY -3
+add MenuObject
+set Name ConsoleButtonFixed
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 0 64 64"
+set SaveArgs 4
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimated "0 64 64 64"
+set CoordsAnimated "64 64 64 64"
+set CoordsAnimationPreset @_Arg1_@
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set Child "GamepadButtonLabel 0 0 @_Arg3_@ @_Arg4_@"
+set HiddenCheckBySymbol InputMK
+add MenuObject
+set Name ConsoleButtonSimple
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 0 64 64"
+set HiddenCheckBySymbolInv InputPad
+set SaveArgs 2
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimated "0 64 64 64"
+set CoordsAnimated "64 64 64 64"
+set CoordsAnimationPreset @_Arg1_@
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+add MenuObject initFrom ConsoleButtonTemplate
+set Name ConsoleButtonDynTemplate
+set SaveArgs 5
+set HiddenCheckBySymbolInv @_Arg5_@
+add MenuObject initFrom ConsoleButtonTemplate
+set Name ConsoleButtonDynValueEqTemplate
+set SaveArgs 6
+set HiddenCheckBySymbolValue @_Arg5_@=@_Arg6_@
+add MenuObject
+set Name ConsoleButtonHelperFromFont
+set Coords "0 0 374 42"
+set RenderCB_Font ConsoleChars
+set RenderCB _DrawText
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Flags "/shadowed /allCaps /fitX"
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Offset "62 0"
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+set SaveArgs 5
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set Child "ConsoleButtonLabel @_Arg3_@ 0 @_Arg4_@ @_Arg5_@"
+set DisabledSymValue CurrentMenu!@_Arg5_@
+set HiddenCheckBySymbol InputMK
+add MenuObject initFrom ConsoleButtonHelperFromFont
+set Name ConsoleButtonDynValueEqHelperFromFont
+set SaveArgs 7
+set HiddenCheckBySymbolValue @_Arg6_@=@_Arg7_@
+add MenuObject
+set Name ConsoleButtonRShoulder
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 128 112 64"
+set SaveArgs 2
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set ScaleX @_Arg1_@
+set ScaleY @_Arg1_@
+set DisabledSymValue CurrentMenu!@_Arg2_@
+set HiddenCheckBySymbol InputMK
+add MenuObject
+set Name ConsoleButtonRShoulderSimple
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 128 112 64"
+set SaveArgs 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set ScaleX @_Arg1_@
+set ScaleY @_Arg1_@
+add MenuObject initFrom ConsoleButtonRShoulder
+set Name ConsoleButtonLShoulder
+set Coords "0 192 112 64"
+add MenuObject initFrom ConsoleButtonRShoulder
+set Name ConsoleButtonShoulders
+set Coords "0 192 112 64"
+set SaveArgs 3
+set DisabledSymValue CurrentMenu!@_Arg3_@
+set HiddenCheckBySymbol InputMK
+set Child "ConsoleButtonRShoulder 270 0  @_Arg1_@ @_Arg3_@"
+set Child "ConsoleButtonLabelCentered 70 0 @_Arg2_@ @_Arg3_@"
+add MenuObject initFrom ConsoleButtonRShoulderSimple
+set Name ConsoleButtonShouldersNav
+set Coords "0 192 112 64"
+set SaveArgs 2
+set HiddenCheckBySymbolInv InputPad
+set Child "ConsoleButtonRShoulderSimple 270 0 @_Arg1_@"
+set Child "ConsoleButtonLabelShoulder 0 0 @_Arg2_@"
+add MenuObject
+set Name AirMechSkinLock
+set Coords "9 3 83 118"
+set CoordsAnimated "1 1 2 2"
+set CoordsAnimated "97 3 83 118"
+#if !arc
+set CoordsAnimated "9 3 83 118"
+#else
+set CoordsAnimated "446 122 83 118"
+#endif
+set CoordsAnimated "9 122 83 118"
+set CoordsAnimated "97 122 83 118"
+set CoordsAnimated "185 122 83 118"
+set CoordsAnimated "273 122 83 118"
+set CoordsAnimated "361 122 83 118"
+set CoordsAnimated "9 241 83 118"
+set CoordsAnimated "97 241 83 118"
+set CoordsAnimated "185 241 83 118"
+set CoordsAnimated "273 241 83 118"
+set CoordsAnimated "361 241 83 118"
+set CoordsAnimated "9 360 83 118"
+set CoordsAnimated "97 360 83 118"
+set CoordsAnimated "185 360 83 118"
+set CoordsAnimated "273 360	83 118"
+set CoordsAnimated "446 3 83 118"
+set CoordsAnimated "185 3 83 118"
+set CoordsAnimated "273 3 83 118"
+set CoordsAnimated "361 3 83 118"
+set CoordsAnimationSymHash @_Arg1_@
+set HiddenCheckBySymbolValue @_Arg1_@<0
+set Texture menus/Locks
+set DisabledAlpha 0.5
+set MouseInteract 1
+set ScaleX @_Arg2_@, ScaleY @_Arg2_@
+set SaveArgs 2
+set FilterName CustomDrawer
+set DefaultRotation -7
+set DisplayAsFocusedIfParentFocused 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+add MenuObject
+set Name ConAirMechSkinTemplate
+set TextureAlt menus/AlphaUnitCard
+set Texture @_CustomPath@IconUnique
+set Texture2 menus/AlphaUnitCard
+set Material mat_AlternateAlpha
+set FilterName CustomDrawer
+set Focus -2
+set MouseInteractZoneExpand "25 0 -25 0"
+set MouseInteractZoneExpandWhenFocused "-20 0 0 20"
+set NoDrawOnMissingTexture 1
+set DrawWhenFocused ConLobbySlotFocus75
+set MouseInteract 1
+set ScaleX 0.75
+set ScaleY 0.75
+set Disabled $_CustomDisabled
+set DisabledAlpha 0.2
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.15
+set DrawGreyScale $_CustomGreyed
+set Coords "5 0 246 256"
+set CommandGetFocus ">customize slotExecClass rooks @RookLocal@"
+set CommandGetFocus "playSound $CustomizeSoundFocus"
+set CommandGetFocus "sym set _CustomObject rooks"
+set CommandLeftButton ">customize slotInspect rooks @_Arg1_@"
+set CommandOnCreate ">customize slotCheck rooks @_Arg1_@ _CustomResult _CustomPath _CustomDisabled _CustomGreyed _CustomHideCost _CustomCostKudos _CustomCostDiamonds /unlockIconIndexSym RookClassLock@_Arg1_@"
+set CommandPressAlt ">customize slotInspect rooks @_Arg1_@"
+set CommandPress "playSound $CustomizeSoundClick"
+set CommandPress "gameUI ignoreInputTime 0.2"
+set CommandPress ">if sym LoadoutVariantLocked == 0 if usingMouse customize slotExecPre rooks @_Arg1_@ _CustomSymbol _CustomValue"
+set CommandPress "if sym LoadoutVariantLocked == 0 if usingMouse menuCmd MC_LobbySelectObjectChoose local"
+set CommandPress "if sym LoadoutVariantLocked == 0 if usingPad runnow menuCmd ClearAirMechSelectMenu"
+set CommandPress "if sym LoadoutVariantLocked == 1 runNow menuCmd LoadoutClickCustomAirMech_Locked"
+set CommandGetFocus ">if usingPad customize slotExecPre rooks @_Arg1_@ _CustomSymbol _CustomValue"
+set CommandGetFocus "if usingPad menuCmd MC_LobbySelectObjectUpdateSym local"
+set CommandCancel "if consolePlatform gameui focusname #ConButton@RookLocal_Class@"
+set FirstDrawnChildren 1
+set Child "ConLobbyPlayerArmySlotFrame 0 0 0.75"
+set Child "ConLobbySlotFade 0 0 0.75 1"
+set Child "ConLobbySlotGlow 0 0 0.75"
+set Child "AirMechSkinLock 50 40	RookClassLock@_Arg1_@ 1.0"
+set CommandFocusLeft ">gameUI focusNameTry @_Arg2_@"
+set CommandFocusRight ">gameUI focusNameTry @_Arg3_@"
+set CommandFocusUp "if consolePlatform gameui focusname #ConButton@RookLocal_Class@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg5_@"
+set CommandGetFocus ">customize unitStatConfig rooks @_Arg1_@ 1"
+set CommandGetFocus ">addUIAnim AirMechSkin@_Arg1_@ mas_LobbyItemOut"
+set CommandLoseFocus ">addUIAnim AirMechSkin@_Arg1_@ mas_LobbyItemDown"
+set CommandGetFocus ">customize slotCheck rooks @_Arg1_@ _CustomResult _CustomPath _CustomDisabled _CustomGreyed _CustomHideCost _CustomCostKudos _CustomCostDiamonds"
+set CommandGetFocus "gameui refreshFilterName SelectAirMech"
+set CommandGetFocus "pcmd t2 menuCmd SetAirMechDesc"
+set ToolTip &_CustomDrawerTip@_Arg1_@&
+set ToolTipDelayTime 0.15
+set SaveArgs 5

@@ -1,0 +1,15 @@
+onloadrun {
+rooms genNeedWorldMapSetup
+if sym WorldMapNeedSetup == 1 menucmd WorldMapNotify
+}
+MO WorldMapMaster {
+pos 56 40
+layer 11
+}
+onload {
+addUIAnim WorldMapMaster mas_DialogPop
+}
+onunload {
+backend save
+rooms genNeedWorldMapSetup
+}

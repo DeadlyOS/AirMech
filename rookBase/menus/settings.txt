@@ -1,0 +1,23 @@
+onloadrun {
+rookMenus previewHide
+menucmd GfxSettingApplyInitOnShowCfgMenu
+sym push CurrentMenu Settings
+}
+MO SettingsMaster {
+pos 0 -1080
+layer 21
+}
+onload {
+]gameUI enable SettingsBlack
+]gameUI enableAll HeaderSettings
+]addUIAnim HeaderSettings mas_SettingsHeader
+]addUIAnim SettingsMaster mas_MMEnterTop
+]if usingPad gameui focusnametry BackSettings
+]sym set GL_ChatMinimized 2
+]pcmd t2 menucmd GlobalChatReposition
+]gameui promoteToTop SettingsMaster
+}
+onunload {
+]if usingPad gameui focusnametry PauseButtonSettings
+]sym pop CurrentMenu
+}

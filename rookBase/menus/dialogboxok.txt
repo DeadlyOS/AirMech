@@ -1,0 +1,36 @@
+stopIfSymbol GoSpectate == 1
+onloadrun {
+]sym set DialogBoxLoaded 1
+]rookMenus previewHide
+]gameUI saveFocusID _dialogOkRestoreFocus_
+}
+MO DialogOkMasterV2 {
+pos 70 14
+layer $DialogBox_Layer
+}
+onload {
+]gameui ignoreInputTime 0.1
+]gameui promoteToTop DialogOkMasterV2
+]addUIAnim DialogOkMasterV2 mas_DialogPop
+]if usingPad ]gameUI focusName DialogButton1
+]if usingPad ]pcmd t0 ]gameUI focusNameTry DialogButton1
+]if usingPad ]pcmd t1 ]gameUI focusNameTry DialogButton1
+]if usingPad ]pcmd t2 ]gameUI focusNameTry DialogButton1
+]if usingPad ]pcmd t3 ]gameUI focusNameTry DialogButton1
+]if usingPad ]pcmd t4 ]gameUI focusNameTry DialogButton1
+]sym push CurrentMenu StdDialog
+]sym push DisableConShop 1
+]sym push DisableInvites 1
+}
+onunload {
+]sym set DialogBoxLoaded 0
+]sym set DialogBoxButton0 DialogButtonOk
+]sym set DialogBoxButton1 DialogButtonCancel
+]sym pop CurrentMenu DisableConShop DisableInvites
+]gameUI restoreFocusID _dialogOkRestoreFocus_
+]pcmd 0.001 if sym CurrentMenu == ConShop runnow gameUI focusNameTry ShopItem0
+]sym clear _DialogBoxContentName_
+}
+onunloadrun {
+]rookMenus previewShow
+}

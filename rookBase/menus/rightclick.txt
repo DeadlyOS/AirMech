@@ -1,0 +1,23 @@
+blockLoadOnConsoleSym RightClickLoaded
+onloadrun {
+gameUI getLastRenderPos MouseCursorMaster _RightClickPosX _RightClickPosY
+sym dec _RightClickPosY 10
+sym dec _RightClickPosX 20
+sym set RightClickLoaded 1
+sym set _RightClickEntries 0
+}
+MO GenericDropListBox {
+pos 100 120
+pos $_RightClickPosX $_RightClickPosY /screenClamp 300 100
+layer 10
+}
+onload {
+gameui promoteToTop GenericDropListBox
+}
+onunloadrun {
+sym set RightClickLoaded 0
+sym set _RightClickEntries 0
+pcmd 0.54 gameui refreshfiltername RightClick
+}
+onunload {
+}

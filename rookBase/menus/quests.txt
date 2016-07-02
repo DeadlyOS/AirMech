@@ -1,0 +1,23 @@
+blockLoadOnConsoleSym QuestsLoaded
+onloadrun {
+sym set QuestsLoaded 1
+clearmenu UnlockDialog.txt /fadeout 0.25
+sym set ShowQuestItems 0
+sym setOne QuestsAdvancedLocked QuestsPvPLocked QuestsDailyLocked QuestsCoopLocked QuestsCoreLocked
+sym setZero QuestsRookieLocked QuestsReadyLocked QuestsDoneLocked QuestsSocialLocked QuestsAirMechsLocked
+if sym StatMMWon >= $UnlockPvP_MMWon runnow sym set QuestsPvPLocked 0
+if sym StatOfflineWins > 0 runnow sym set QuestsCoopLocked 0
+if sym QuestsGroupCompleteRookie == 1 runnow sym set QuestsCoreLocked 0
+if sym QuestsGroupCompleteRookie == 1 runnow sym set QuestsDailyLocked 0
+if sym QuestsGroupCompleteCore == 1 runnow sym set QuestsAdvancedLocked 0
+if sym Lock_Quests == 0 sym setZero QuestsAdvancedLocked QuestsPvPLocked QuestsDailyLocked QuestsCoopLocked QuestsCoreLocked
+}
+onload {
+addUIAnim QuestsMain mas_QuestsIn
+if usingpad gameUI focusNameTry QuestSectionTileRookie
+}
+onunloadrun {
+}
+onunload {
+sym set QuestsLoaded 0
+}

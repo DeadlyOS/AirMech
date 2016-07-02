@@ -1,0 +1,22 @@
+onloadrun {
+gameUI getLastRenderPos PlayerPortrait _DialogPosX _DialogPosY
+sym inc _DialogPosX -10
+sym inc _DialogPosY -215
+if menuloaded SplashPromo clearmenu SplashPromo /fadeout 0.1
+}
+MO SGInvitationMain {
+pos 100 120
+pos $_DialogPosX $_DialogPosY
+layer 10
+}
+onload {
+addUIAnim SGInvitationMain mas_DialogPopFadein
+gameui promoteToTop SGInvitationMain
+gameui disable SGInvitationFlash
+pcmd_seq 88 1.5 addUIAnim SGInvitationMain mas_DialogBounce
+}
+onunloadrun {
+}
+onunload {
+console flushAllPendingSeq 88
+}

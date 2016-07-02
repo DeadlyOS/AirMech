@@ -1,0 +1,11 @@
+menu3d addChild MenusVR MenusVRLang /noVis
+menu3d addChild MenusVRLang MenusVRLangSpin
+menu3d setWorldPose MenusVRLang	0.0 0.0 20.0
+menu3d setWorldPose MenusVRLangSpin	0.0 0.0 0.0
+menu3d setRootRot MenusVRLangSpin	0 0 195
+menu3d addChild MenusVRLang MenuLabelCountry /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis
+menu3d setRootScale MenuLabelCountry	4
+menu3d setWorldPose MenuLabelCountry	-100.0 200.0 -60
+menu3d setRootRot MenuLabelCountry 0 0 200
+pcmd 1.6 menu3d setVisible MenusVRLang
+pcmd 0.2 menucmd VrMenuTextFocus Country

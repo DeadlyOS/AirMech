@@ -1,0 +1,121 @@
+add MenuObject
+set Name VrLeaderboardLine
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1190 50"
+set Color 0x111111
+add MenuObject
+set Name VrLeaderboardHeadline
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1190 60"
+set Color 0x815728
+add MenuObject
+set Name VrLeaderboardBackground
+set CoordsStart "796 184 24 24"
+set CoordsMid "820 184 24 24"
+set CoordsEnd "844 184 24 24"
+set CoordsStartFocused "796 208 24 24"
+set CoordsMidFocused "820 208 24 24"
+set CoordsEndFocused "844 208 24 24"
+set CoordsStartDisabled "796 232 24 24"
+set CoordsMidDisabled "820 232 24 24"
+set CoordsEndDisabled "844 232 24 24"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set MouseInteract 1
+set Focus -2
+set RenderCB_DX 1220
+set RenderCB_DY 800
+add MenuObject
+set Name VrLeaderboardNumberTemplate
+set Coords "0 0 80 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.0
+set SaveArgs 2
+add MenuObject initFrom VrLeaderboardNumberTemplate
+set Name VrLeaderboardPosition
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_FontScale 0.9
+add MenuObject initFrom VrLeaderboardNumberTemplate
+set Name VrLeaderboardRank
+set RenderCB_ConsoleSymbol @_Arg1_@
+set Coords "0 0 100 30"
+set RenderCB_DX 100
+set RenderCB_DY 30
+set RenderCB_FontScale 1.1
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject initFrom VrLeaderboardNumberTemplate
+set Name VrLeaderboardHeader
+set RenderCB_FontScale 0.9
+set Coords "0 0 650 30"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set RenderCB_Text @_Arg1_@@HLB_Name@
+set RenderCB_RGBColor 0xFFFFFF
+set FilterName HLB
+add MenuObject initFrom VrLeaderboardHeader
+set Name VrLeaderboardHeaderCenter
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 300 30"
+set RenderCB_DX 300
+set RenderCB_DY 32
+add MenuObject initFrom VrLeaderboardNumberTemplate
+set Name VrLeaderboardName
+set Coords "0 0 550 30"
+set RenderCB_TextJustify JustifyXLeft
+set SaveArgs 1
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Flags "/noCommaSep /outlined8x /shadowColor2 /fitX /toU16"
+set RenderCB _DrawUText
+add MenuObject
+set Name VrLeaderboardItemBg
+set Texture effects/white
+set Coords "0 0 930 88"
+set Color 0xaf0c00
+add MenuObject
+set Name VrLeaderboardItem
+set Texture effects/white
+set Coords "0 0 950 100"
+set SaveArgs 2
+set Color 0xff3b2c
+set BlendMode NoBlend
+set Child "VrLeaderboardItemBg 12 7"
+set Child "VrLeaderboardRank 15 20		HLB_R@_Arg1_@	@_Arg2_@"
+set Child "VrLeaderboardName 120 24		HLB_N@_Arg1_@	@_Arg2_@"
+set Child "VrLeaderboardPosition[LeaderboardScore] 770 24		HLB_S@_Arg1_@	@_Arg2_@"
+add MenuObject
+set Name VrLeaderboardList
+set ContainerOnly 1
+set Child "VrLeaderboardHeadline 5 -60"
+set Child "VrLeaderboardHeaderCenter -80 -48		HLB_Rank_"
+set Child "VrLeaderboardHeader 181 -48 	HLB_Desc_"
+set Child "VrLeaderboardHeaderCenter 783 -48	HLB_Data_"
+set Child "VrLeaderboardItem[VrLeaderItem0] 0 0		0	0.1"
+set Child "VrLeaderboardItem[VrLeaderItem1] 0 100	1	0.075"
+set Child "VrLeaderboardItem[VrLeaderItem2] 0 200	2	0.05"
+set Child "VrLeaderboardItem[VrLeaderItem3] 0 300	3	0.025"
+set Child "VrLeaderboardItem[VrLeaderItem4] 0 400	4	0.0"
+set Child "VrLeaderboardItem[VrLeaderItem5] 0 500	5	0.0"
+set Child "VrLeaderboardItem[VrLeaderItem6] 0 600	6	0.025"
+set Child "VrLeaderboardItem[VrLeaderItem7] 0 700	7	0.05"
+set Child "VrLeaderboardItem[VrLeaderItem8] 0 800	8	0.075"
+set Child "VrLeaderboardItem[VrLeaderItem9] 0 900	9	0.1"
+add MenuObject
+set Name VrLeaderboardMaster
+set ContainerOnly 1
+set Coords "0 0 1900 1000"
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrLeaderboardList 0 0"

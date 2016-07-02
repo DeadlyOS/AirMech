@@ -1,0 +1,15 @@
+MO ConScreenInsetGuide {
+layer $ScreenInset_Layer
+pos 0 0
+}
+onload {
+]gameui hide CM_ButtonHints_PauseMenu
+if sym MainMenuLoaded == 1 gameui enable ConScreenExample
+if ingame gameui disableGroup ConsoleScreenInsetShadowTL ConsoleScreenInsetShadowTR ConsoleScreenInsetShadowBL ConsoleScreenInsetShadowBR
+if sym MainMenuConsoleLoaded == 1 gameui enable ConScreenExample
+}
+onunload {
+if sym ConScreenInset == 2 gameui focusnametry ConVideoScreenInset PauseButtonResize
+sym set ConScreenInset 0
+]gameui show CM_ButtonHints_PauseMenu
+}

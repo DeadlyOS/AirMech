@@ -1,0 +1,15 @@
+MO NotifyHalftime {
+pos 0 400
+layer 15
+}
+MO NotifyFlash {
+pos 0 400
+layer 14
+}
+onload {
+addUIAnim NotifyFlash mas_NotifyStreak.txt /speed 1.0
+gameui enableAll NotifyLevelUpNP
+pcmd 4.0 gameui disableAll NotifyHalftime
+pcmd 2.0 gameui disable NotifyFlash
+pcmd 5.0 clearmenu NotifyHalftime.txt
+}

@@ -1,0 +1,45 @@
+blockLoadOnConsoleSym QuestRedeemDialogLoaded
+onloadrun {
+]gameUI saveFocusID _savefocusid_questredeemdialog_
+}
+MO QuestRedeemDialog {
+pos 0 -25
+layer 12
+layerInGame 21
+}
+MO QuestRedeemDialogEscape {
+pos 0 0
+layer 11
+layerInGame 20
+}
+onload {
+playsound MechDeployUnitHeavy.wav
+]pcmd 0.1 ]gameUI enable QuestRedeemDialog
+]pcmd 0.1 ]addUIAnim QuestRedeemDialog mas_QuestDialogStampIn
+]pcmd 0.125 ]gameUI enableAll QuestDialogInfo
+]pcmd 0.125 ]addUIAnim QuestDialogInfo mas_QuestDialogInfoIn
+]pcmd 0.125 ]gameUI enableAll QuestDialogRewards
+]pcmd 0.125 ]addUIAnim QuestDialogRewards mas_QuestDialogInfoIn
+]pcmd 0.2 ]gameUI enable QuestRedeemIcon
+]pcmd 0.3 ]gameUI enableAll QuestDialogRewardsItems
+]pcmd 0.3 ]addUIAnim QuestDialogItemIcon1 mas_QuestDialogIconIn
+]pcmd 0.3 ]addUIAnim QuestDialogItemIcon2 mas_QuestDialogIconIn
+]pcmd 0.3 ]addUIAnim QuestDialogItemIcon3 mas_QuestDialogIconIn
+]pcmd 0.3 ]gameUI enable ButtonQuestRedeemDialogClose
+addUIAnim QuestRedeemDialogDust mas_QuestDialogDustPuff
+input set padFocusFallback QuestRedeemDialog
+]if usingPad ]gameUI focusName QuestRedeemDialog
+]if usingPad ]pcmd t0 gameUI focusName QuestRedeemDialog
+]if usingPad ]pcmd t1 gameUI focusName QuestRedeemDialog
+]if usingPad ]pcmd t2 gameUI focusName QuestRedeemDialog
+]if usingPad ]pcmd t3 gameUI focusName QuestRedeemDialog
+]if usingPad ]pcmd 0.5 gameUI focusName QuestRedeemDialog
+gameui promoteToTop QuestRedeemDialog
+}
+onunloadrun {
+}
+onunload {
+input set padFocusFallback $_savefocusid_questredeemdialog_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_questredeemdialog_
+sym set QuestRedeemDialogLoaded 0
+}

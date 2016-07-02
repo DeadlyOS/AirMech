@@ -1,0 +1,33 @@
+blockLoadOnConsoleSym _NanoforgeLoaded_
+onloadrun {
+menucmd HCubeInitialize
+]gameUI saveFocusID _savefocusid_nanoforge_
+sym set _NanoforgeLoaded_ 1
+clearmenu UnlockDialog.txt /fadeout 0.25
+]if !MenuLoaded Inventory loadmenu Inventory /fadeIn 0.1
+pcmd 0.3 addUIAnim NanoforgeResults mas_NanoforgeResultsShow
+floatsym set NFChatPos 1.0
+gmsg NF <Y>Nanoforge</> initialized...
+}
+MO NanoforgeMain {
+pos 970 70
+draggableUIElement
+pos $UI_Nanoforge_X $UI_Nanoforge_Y /screenClamp 200 300
+layer 13
+preDeleteRunCmd gameUI getLastRenderPos NanoforgeMain UI_Nanoforge_X UI_Nanoforge_Y
+}
+onload {
+addUIAnim NanoforgeSlots mas_NanoforgeSlotsShow
+addUIAnim NanoforgeMain mas_DialogPopNoSrcMod
+gameUI promoteToTop NanoforgeMain
+}
+onunloadrun {
+}
+onunload {
+input set padFocusFallback $_savefocusid_nanoforge_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_nanoforge_
+sym set _NanoforgeLoaded_ 0
+sym set InventoryDisplayType 0
+menucmd HCubeClose
+gamemsg clearNanoforgeLog
+}

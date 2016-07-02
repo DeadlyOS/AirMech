@@ -1,0 +1,208 @@
+add MenuObject
+set Name BackgroundBomberClear
+set Texture menus/BgBomber
+set Coords "0 0 1024 1024"
+set StretchToFillScreen 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject
+set Name BgLinesAnglePanBase
+set Texture ]menus/BgLinesAngle
+set BlendMode BlendAdd
+set Coords "0 0 1024 128"
+set CoordsInterpolatedDest "1024 0 1024 128"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 60"
+set TileArea "2048 128"
+set Color @_Arg1_@
+set SaveArgs 1
+set TileAreaFullTexture 0
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject initFrom BgLinesAnglePanBase
+set Name BgLinesAngleVertA
+set DefaultRotation 90
+set ScaleX 4.0, ScaleY 2.0
+add MenuObject initFrom BgLinesAnglePanBase
+set Name BgLinesAnglePanA
+set DisabledSymInv BackgroundMenuBlur
+add MenuObject initFrom BgLinesAnglePanA
+set Name LoadingLinesAnglePanA
+add MenuObject initFrom BgLinesAnglePanA
+set Name BgLinesAnglePanB
+set TileArea "2048 168"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 33"
+add MenuObject initFrom BgLinesAnglePanB
+set Name BgLinesAngleVertB
+set DefaultRotation 90
+set ScaleX 2.0, ScaleY 2.0
+add MenuObject initFrom BgLinesAnglePanBase
+set Name LoadingLinesAnglePanB
+set TileArea "2048 168"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 33"
+add MenuObject
+set Name BackgroundBomber
+set Texture menus/BgBomberBlur
+set Coords "0 0 1024 1024"
+set StretchToFillScreen 1
+set DisabledSymInv BackgroundMenuBlur
+set DisabledAlpha 0.02
+set Child "VignetteBomber 0 0"
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.25
+set Child "BgLinesAnglePanA 0 110	0x555555	"
+set Child "BgLinesAnglePanB 0 90	0x224455	"
+add MenuObject
+set Name BackgroundHangar
+set Texture menus/BackgroundHangar
+set Coords "0 0 2048 1024"
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+set MouseInteract 1
+set DisabledSymValue BackgroundImage!Hangar
+add MenuObject initFrom BackgroundHangar
+set Name BackgroundShop
+set Texture menus/BackgroundShop
+set DisabledSymValue BackgroundImage!Shop
+add MenuObject initFrom BackgroundShop
+set Name BackgroundShopBlur
+set Texture menus/BackgroundShopBlur
+set Coords "0 0 1024 512"
+set ScaleX 2.0, ScaleY 2.0
+set DisabledAlphaTimeIn 1.75
+set DisabledAlphaTimeInPreWait 0.15
+add MenuObject initFrom BackgroundHangar
+set Name BackgroundMarket
+set Texture menus/BackgroundMarket
+set DisabledSymValue BackgroundImage!Market
+add MenuObject initFrom BackgroundMarket
+set Name BackgroundMarketBlur
+set Texture menus/BackgroundMarketBlur
+set Coords "0 0 1024 512"
+set ScaleX 2.0, ScaleY 2.0
+set DisabledAlphaTimeIn 1.75
+set DisabledAlphaTimeInPreWait 0.15
+add MenuObject initFrom BackgroundHangar
+set Name BackgroundWatch
+set Texture menus/BackgroundWatch
+set DisabledSymValue BackgroundImage!Watch
+add MenuObject initFrom BackgroundHangar
+set Name BackgroundPlay
+set Texture menus/BackgroundPlay
+set BlendMode NoBlend
+set Coords "0 0 1024 512"
+set DisabledSymValue BackgroundImage!Play
+set ScaleX 2.0, ScaleY 2.0
+set MouseInteract 1
+set Focus -2
+set Child "PlayLinesAnglePanA 0 260"
+set Child "PlayLinesAnglePanB 0 220"
+set CommandGetFocus "sym set PlayPvPTip none"
+set CommandGetFocus "sym set PlaySoloTip none"
+add MenuObject
+set Name PlayLinesAnglePanBase
+set Texture ]menus/BgLinesAngle
+set BlendMode BlendAdd
+set Coords "0 0 1024 128"
+set CoordsInterpolatedDest "1024 0 1024 128"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 60"
+set TileArea "2048 200"
+set Color 0xab3713
+set TileAreaFullTexture 0
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject initFrom PlayLinesAnglePanBase
+set Name PlayLinesAnglePanA
+set Color 0x626555
+set DisabledSymValue BackgroundImage!Play
+add MenuObject initFrom PlayLinesAnglePanBase
+set Name PlayLinesAnglePanB
+set TileArea "2048 268"
+set DisabledSymValue BackgroundImage!Play
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 33"
+add MenuObject initFrom PlayLinesAnglePanBase
+set Name ArchivesLinesAnglePanA
+set Color 0x626555
+add MenuObject initFrom PlayLinesAnglePanBase
+set Name ArchivesLinesAnglePanB
+set TileArea "2048 268"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 33"
+add MenuObject
+set Name VignetteOvermap
+set Texture effects/VignettePause
+set Coords "0 0 512 256"
+set StretchToFillScreen 1
+set DisabledSymInv OvermapFade
+set EnabledAlpha 0.6
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+set MouseInteract 1
+set Focus -2
+set CommandPress "if sym CurrentMenu == MKHome sym set OvermapFade 0"
+set CommandPress "menucmd DismissBasecampOverlays"
+set CommandPress "if sym ShowScrapper == 1 sym set OvermapFade 0"
+set CommandPress "if sym QuestsLoaded == 1 addUIAnim QuestsMain mas_QuestsOut"
+add MenuObject
+set Name MapZoomLevelIn
+set Texture menus/@MainMenuSkin@
+set Coords "1908 138 66 58"
+set CoordsFocused "1980 138 66 58"
+set MouseInteract 1
+set Focus -2
+set DisabledAlpha 0.5
+set DisabledSymValue MapZoomLevel=0
+set CommandPress "sym set MapZoomChange 1"
+set CommandPress "pcmd t1 sym set MapZoomChange 0"
+set CommandPress "if sym MapZoomLevel > 0 sym dec MapZoomLevel"
+set CommandPress "if sym MapZoomLevel == 2 menucmd PlayerRegionMove $PlayerPositionRegion"
+add MenuObject
+set Name MapZoomLevelOut
+set Texture menus/@MainMenuSkin@
+set Coords "1908 196 66 58"
+set CoordsFocused "1980 196 66 58"
+set MouseInteract 1
+set Focus -2
+set DisabledAlpha 0.5
+set DisabledSymValue MapZoomLevel=2
+set CommandPress "sym set MapZoomChange 1"
+set CommandPress "pcmd t1 sym set MapZoomChange 0"
+set CommandPress "if sym MapZoomLevel < 2 sym inc MapZoomLevel"
+set CommandPress "if sym MapZoomLevel == 0 menucmd PlayerRegionMove $PlayerPositionRegion"
+add MenuObject
+set Name MapZoomLevel
+set ContainerOnly 1
+set HiddenCheckBySymbolInv HasAirMechPrime
+set HiddenCheckBySymbol ArcGACustomized
+set Child "MapZoomLevelIn 0 0"
+set Child "MapZoomLevelOut 0 58"
+add MenuObject
+set Name Backgrounds
+set ContainerOnly 1
+set Child "MapFrameBlock 0 35		/ifSym ArcCustomized == 0"
+set Child "MapFrameBase 0 35		/ifSym ArcGACustomized == 0"
+set Child "MapFrameRegion 0 35		/ifSym ArcCustomized == 0"
+set Child "MapFrameCountry 0 35		/ifSym ArcCustomized == 0"
+set Child "MapZoomChange 0 0		/ifSym ArcCustomized == 0"
+set Child "VignetteOvermap 0 0"
+set Child "MainMenuPW 0 35"
+set Child "BackgroundPlay -10 45"
+set Child "BackgroundWatch -10 45"
+set Child "BackgroundHangar -10 45"
+set Child "BackgroundShop -10 45"
+set Child "BackgroundShopBlur -10 45"
+set Child "BackgroundMarket -10 45"
+set Child "BackgroundMarketBlur -10 45"
+set Child "BasecampScrapper 100 1050"
+add MenuObject
+set Name BomberReza
+set Texture menus/BomberReza
+set Coords "0 0 1024 1024"
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject
+set Name VignetteBomber
+set Texture effects/VignetteColor
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbol BackgroundMenuBlur

@@ -1,0 +1,104 @@
+onloadrun {
+rookMenus previewHide
+gameUI savefocusid _dialogRestoreFocus_
+sym push _Bind_CycleLoadoutOnShoulders_ 0
+sym push _Bind_MatchingUIBack_ 0
+sym push _Bind_SoloLoadout_ 0
+sym set _RookPrevious_ $RookLocal
+sym push CurrentMenu CAirMechSelect
+sym push LobbyStatusMessage ""
+sym set LoadoutSetupParts 0
+sym set ConAirMechRookLocalSave $RookLocal
+sym set ConAirMechHeadLocalSave $HeadLocal
+sym set ConAirMechPet1LocalSave $Pet1Local
+sym set ConAirMechPet2LocalSave $Pet2Local
+sym set ConAirMechPet3LocalSave $Pet3Local
+sym set ConAirMechFlair1LocalSave $Flair1Local
+sym set ConAirMechFlair2LocalSave $Flair2Local
+sym set ConAirMechFlair3LocalSave $Flair3Local
+sym set ConAirMechPart1LocalSave $Part1Local
+sym set ConAirMechPart2LocalSave $Part2Local
+sym set ConAirMechPart3LocalSave $Part3Local
+sym set ConAirMechPart4LocalSave $Part4Local
+sym set ConAirMechPart5LocalSave $Part5Local
+sym set ConAirMechPart6LocalSave $Part6Local
+sym set ConAirMechPart7LocalSave $Part7Local
+sym set ConAirMechPart8LocalSave $Part8Local
+sym set ConAirMechSelCanceled 0
+}
+MO DialogFriendBlack {
+pos 0 0
+layer 10
+}
+MO VignetteWin {
+pos 0 0
+layer 11
+}
+MO BlackCenterShadow {
+pos 0 0
+layer 12
+}
+MO CM_AirMechSelectMaster {
+pos 0 0
+layer 13
+}
+onload {
+addUIAnim CM_AirMechSelectMaster mas_DialogPop
+loadout customizeInit
+sym set LoadoutSetupAirMech 1
+sym set LoadoutConfigureUnits 0
+sym set SlotFlashActive 0
+gameui focusname #ConButton@RookLocal_Class@
+gameui enableAll ConsoleButtonTransform
+if sym LoadoutAutosave == 0 menuCmd StoreLocalLoadout
+]sym push DisableConTooltips 1
+}
+onunloadrun_forced {
+sym set ConAirMechSelCanceled 1
+}
+onunload {
+if sym ConAirMechSelCanceled == 1 runnow sym set RookLocal $ConAirMechRookLocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set HeadLocal $ConAirMechHeadLocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Pet1Local $ConAirMechPet1LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Pet2Local $ConAirMechPet2LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Pet3Local $ConAirMechPet3LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Flair1Local $ConAirMechFlair1LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Flair2Local $ConAirMechFlair2LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Flair3Local $ConAirMechFlair3LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Part1Local $ConAirMechPart1LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Part2Local $ConAirMechPart2LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Part3Local $ConAirMechPart3LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Part4Local $ConAirMechPart4LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Part5Local $ConAirMechPart5LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Part6Local $ConAirMechPart6LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Part7Local $ConAirMechPart7LocalSave
+if sym ConAirMechSelCanceled == 1 runnow sym set Part8Local $ConAirMechPart8LocalSave
+sym set LoadoutSetupAirMech 0
+gameUI focusID $_dialogRestoreFocus_
+input set padFocusFallback ConLobbyPlayerAirMechIcon0
+pcmd 0.1 gameui focusname ConLobbyPlayerAirMechIcon0
+sym set LoadoutSetupParts 0
+]sym pop DisableConTooltips
+}
+onunload_unforced {
+menuCmd StoreLoadout
+rook recustomizeLoadoutToServer
+}
+onunloadrun {
+sym pop _Bind_CycleLoadoutOnShoulders_
+sym pop _Bind_MatchingUIBack_
+sym pop _Bind_SoloLoadout_
+sym pop LobbyStatusMessage
+sym pop CurrentMenu
+rookMenus previewShow
+sym set LoadoutSetupAirMech 0
+sym set LoadoutConfigureUnits 0
+sym set SlotFlashActive 0
+gameUI ignoreInputTime 0.2
+}
+onunload_unforced {
+if sym LoadoutAutosave == 0 if sym UnsavedLoadout == 0 menuCmd UnsavedLoadoutTest
+if sym LoadoutAutosave == 1 rook savePreset $ActiveLoadout
+if sym LoadoutAutosave == 1 backend save
+rook recustomizeLoadoutToServer
+}

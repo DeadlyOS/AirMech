@@ -1,0 +1,32 @@
+blockLoadOnConsoleSym BaseCampTrainPilotLoaded
+onloadrun {
+sym set BaseCampTrainPilotLoaded 1
+customize clearClassFilter
+sym set _CustomObject pilots
+customize unitStatConfig pilot 0 0
+customize scrollCfgLobby $_CustomObject 20
+]pcmd 0.2 ]menucmd BaseCamp_TrainPilot_Load $P_Avatar
+]pcmd 0.2 ]addUIAnim BaseCampTrainingInfo mas_BaseCampTrainInfoShow"
+}
+MO BaseCampTrainPilot {
+pos 500 200
+layer 15
+}
+MO BaseCampTrainEscape {
+pos 0 0
+layer 14
+}
+onload {
+gameui ignoreInputTime 0.4
+gameui promoteToTop BaseCampTrainPilot
+addUIAnim BaseCampTrainPilot mas_DialogPopFadein
+]pcmd 0.3 ]addUIAnim BaseCampTrainInventoryBg mas_BaseCampTrainInventoryOut
+}
+onunloadrun {
+gameui ignoreInputTime 0.1
+sym set BaseCampTrainPilotLoaded 0
+customize clearClassFilter
+}
+onunload {
+customize scrollCfgLobby
+}

@@ -1,0 +1,17 @@
+onloadrun {
+sym set LobbyGameOptionsLoaded 1
+}
+MO BasePvPOptionsList {
+draggableUIElement
+pos $UI_LobbyGameOptions_X $UI_LobbyGameOptions_Y /screenClamp 368 378
+layer 13
+preDeleteRunCmd gameUI getLastRenderPos BasePvPOptionsList UI_LobbyGameOptions_X UI_LobbyGameOptions_Y
+}
+onload {
+gameui promoteToTop BasePvPOptionsList
+}
+onunloadrun {
+sym set LobbyGameOptionsLoaded 0
+}
+onunload {
+}

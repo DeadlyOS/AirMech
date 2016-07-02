@@ -1,0 +1,30 @@
+blockLoadOnConsoleSym FriendsLoaded
+onloadrun {
+]gameUI saveFocusID _savefocusid_friends_
+sym set FriendsLoaded 1
+clearmenu UnlockDialog.txt /fadeout 0.25
+menucmd FriendsScrollAllToTop
+social validateRecentlyMet
+sym setZero SocialShowRecent SocialShowIgnored
+sym setOne SocialShowFriends
+}
+MO FriendsMain {
+pos 100 120
+draggableUIElement
+pos $UI_Friends_X $UI_Friends_Y /screenClamp 200 300
+layer 13
+preDeleteRunCmd gameUI getLastRenderPos FriendsMain UI_Friends_X UI_Friends_Y
+}
+onload {
+addUIAnim FriendsMain mas_DialogPopNoSrcMod
+input set padFocusFallback ConLeaderItem0
+gameUI focusNameTry ConLeaderItem0
+gameui promoteToTop FriendsMain
+}
+onunloadrun {
+backend save
+}
+onunload {
+input set padFocusFallback $_savefocusid_friends_
+sym set FriendsLoaded 0
+}

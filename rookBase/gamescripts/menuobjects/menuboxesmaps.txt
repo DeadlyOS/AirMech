@@ -1,0 +1,465 @@
+add MenuObject
+set Name PrivateRoomPinEntryBoxHighlight
+set Coords "0 0 130 40"
+set Texture effects/white
+set BlinkAlpha "0.1 0.2 0.35 1.5"
+set BlendMode BlendAdd
+set Color 0x996100
+add MenuObject
+set Name PrivateRoomPinEntryBoxUnder
+set Coords "0 0 134 44"
+set Texture effects/white
+set Color 0x4a7b80
+set ColorFocused 0xffffff
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name PrivateRoomPinEntryBox
+set Coords "0 0 130 40"
+set Texture effects/white
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set DrawWhenFocused PrivateRoomPinEntryBoxHighlight
+set RenderCB_DX 0
+set RenderCB_DY 0
+set MouseInteractZoneExpand "-25 -10 0 25"
+set Color 0x28383a
+set ColorFocused 0xa04b1a
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "20 0"
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickAwayToUnfocus 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set TextEditableMaxLen 5
+set TextEditablePin 1
+set DisabledAlpha 0.5
+set DisabledSymInv PO_IsOwner
+set HiddenCheckBySymbolInv PrivateRoom
+set CommandLoseFocus "if sym MM_Lobby == 1 pcmd 0.5 sym setFrom CF_Pin PO_Pin"
+set CommandLoseFocus "if sym MM_Lobby == 1 sym setFrom MyRoomPIN PO_Pin"
+set CommandLoseFocus "if sym MM_Lobby != 1 pcmd 0.1 if sym CF_Pin != 0 sym setFrom MyRoomPIN CF_Pin"
+set CommandLoseFocus "if sym MM_Lobby != 1 pcmd 0.1 sym setFrom PO_Pin CF_Pin"
+set CommandLoseFocus "if sym ArcCustomized == 1 menucmd setPvPOptions"
+set CommandLoseFocus "if sym ArcCustomized != 1 && sym PO_IsOwner == 1 && sym MM_Lobby == 1 party2 setGameOptions pin PO_Pin"
+set CommandEnterKey "if sym ArcCustomized != 1 && sym PO_IsOwner == 1 && sym MM_Lobby == 1 party2 setGameOptions pin PO_Pin"
+set CommandEnterKey "gameui focusNameTry DummyFocus"
+set CommandEnterKey "if sym MM_Lobby == 1 sym setFrom CF_Pin PO_Pin"
+set CommandEnterKey "if sym MM_Lobby == 1 sym setFrom MyRoomPIN PO_Pin"
+set CommandEnterKey "if sym MM_Lobby != 1 sym setFrom MyRoomPIN CF_Pin"
+set SaveArgs 1
+set RenderCB_Text @_Arg1_@
+set FirstDrawnChildren 1
+set Child "PrivateRoomPinEntryBoxUnder -2 -2"
+add MenuObject initFrom PrivateRoomPinEntryBox
+set Name PrivateRoomPinEntryBoxDis
+set Coords "208 940 204 67"
+set Texture menus/MainTiles+lang
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 170
+set RenderCB_DY 30
+set MouseInteractZoneExpand "-25 -10 0 25"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "28 16"
+set Layer 3
+set Focus -2
+set MouseInteract 0
+set MouseInteractClickToFocus 0
+set RenderCB _DrawText
+set RenderCB_RGBColor ".5"
+set TextEditableMaxLen 5
+set TextEditablePin 1
+set HiddenCheckBySymbolInv PrivateRoom
+set ScaleX 0.85
+add MenuObject
+set Name PrivateRoomPinCancel
+set Texture menus/MainTiles+lang
+set Coords "121 937 72 72"
+set CoordsFocused "41 937 72 72"
+set MouseInteract 1
+set Focus -2
+set CommandPress "sym set PrivateRoom 0"
+add MenuObject
+set Name CreatePrivateRoomConfig
+set ContainerOnly 1
+set HiddenCheckBySymbolInv PrivateRoom
+set SaveArgs 1
+set Child "PrivateRoomPinEntryBox 50 -5	@_Arg1_@"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_ButtonLaunchEx
+set RenderCB_Text MB_LaunchEx
+set Layer 23
+add MenuObject
+set Name ButtonLaunchPulse
+set Texture menus/StatChart
+set Coords "313 409 322 114"
+set BlendMode BlendAdd
+set PulseAlpha "0.4 -0.4 -0.2"
+add MenuObject initFrom PanelResizeFlat
+set Name LaunchGameBannerPvP
+set Color 0x8c3b2e
+set RenderOffsetX -37
+set TileArea "1280 128"
+set Disabled 1
+add MenuObject initFrom LaunchGameBannerPvP
+set Name LaunchGameBannerCoop
+set Color 0xbd7422
+add MenuObject initFrom LaunchGameBannerPvP
+set Name LaunchGameBannerCTF
+set Color 0x834c8a
+add MenuObject
+set Name BlockServerForSolo
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "760 130"
+set Color 0x141414
+set MouseInteract 1
+set HiddenCheckBySymbolValue "LaunchGameMode!Solo"
+add MenuObject initFrom BlockServerForSolo
+set Name BlockServerForSurvival
+set HiddenCheckBySymbolValue "NumPlayers!1P"
+add MenuObject initFrom BlockServerForSolo
+set Name BlockServerForChallenge
+set HiddenCheckBySymbolValue "LaunchGameMode!Challenge"
+add MenuObject initFrom LaunchGameBannerPvP
+set Name LaunchGameBannerSolo
+set Color 0xbd7422
+add MenuObject initFrom LaunchGameBannerPvP
+set Name LaunchGameBannerSurvival
+set Color 0x518746
+add MenuObject initFrom LaunchGameBannerPvP
+set Name LaunchGameBannerChallenge
+set Color 0x4272aa
+add MenuObject initFrom PanelResizeWhiteBorder
+set Name MB_LaunchGameBorder
+set RenderCB_DX 1216
+set RenderCB_DY 864
+add MenuObject initFrom PanelResizeFlat
+set Name LaunchGameGrayBar
+set Color 0x444444
+set TileArea "1120 6"
+add MenuObject initFrom TextGeneralTemplate
+set Name LaunchGameTitle
+set RenderCB_Text LaunchDialogTitle
+set HiddenCheckBySymbol GameModeOnline
+set RenderCB _DrawUText
+set RenderCB_FontScale 1.0
+set RenderCB_DX 1216
+set RenderCB_DY 200
+set RenderCB_RGBColor "0.7 0.7 0.7"
+add MenuObject initFrom LaunchButtonTextTemplate
+set Name LaunchGameTitlePlayers
+set RenderCB_ConsoleSymbol NumPlayers
+set CommandPress "sym set $ActiveNumPlayers 0"
+set CommandPress "sym set LastNumPlayers $NumPlayers"
+set CommandPress "gameUI disable LaunchGameTitleMap"
+set CommandPress "gameUI disable LaunchGameTitleMode"
+set DisabledAlpha 1.0
+add MenuObject initFrom LaunchButtonTextWTemplate
+set Name LaunchGameTitleMap
+set RenderCB_ConsoleSymbol MapName
+set DrawWhenFocused ButtonGameModeHighlightW
+set CommandPress "sym toggle $ActiveMaplist"
+set CommandPress "sym set LastMapName $MapName"
+set DisabledAlpha 1.0
+add MenuObject
+set Name ButtonResizePulse
+set Texture menus/ButtonResize
+set Coords "34 34 29 29"
+set BlendMode BlendAdd
+set PulseAlpha "1.8 -0.8 -0.9"
+set ScaleX 1.3
+set ScaleY 1.3
+add MenuObject initFrom ButtonResizePulse
+set Name ButtonResizePulseSm
+set ScaleX 1.0
+set ScaleY 1.0
+add MenuObject initFrom LaunchButtonTextTemplate
+set Name LaunchGameTitleMode
+set RenderCB_ConsoleSymbol LaunchGameMode
+set CommandPress "sym toggle GameModeListHidden"
+set CommandPress "sym set LastGameMode $LaunchGameMode"
+set CommandPress "gameUI disable LaunchGameTitlePlayers"
+set DisabledAlpha 1.0
+add MenuObject initFrom PanelResizeFlat
+set Name ButtonGameModeHighlight
+set Coords "0 0 288 110"
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.1
+add MenuObject initFrom PanelResizeFlat
+set Name ButtonGameModeHighlightW
+set Coords "0 0 432 110"
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.1
+add MenuObject initFrom PanelResizeFlat
+set Name ButtonGameModeHighlightSm
+set Coords "0 0 288 64"
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.1
+add MenuObject initFrom PanelResizeClear
+set Name GameModeBuffer
+set TileArea "408 488"
+add MenuObject initFrom PanelResizeClear
+set Name GameModeCancel
+set Color 0x222BB2
+set CommandGetFocus "sym toggle GameModeListHidden"
+set CommandGetFocus "sym set LaunchGameMode $LastGameMode"
+set CommandGetFocus "gameUI enable LaunchGameTitlePlayers"
+set CommandGetFocus "menuCmd CheckIfOnlineMode"
+set Child "GameModeBuffer 50 50"
+set StretchToFillScreen 1
+add MenuObject initFrom PanelResizeFlat
+set Name GameModeBackground
+set Color 0x222222
+set TileArea "308 394"
+add MenuObject initFrom ButtonResize
+set Name ButtonGamePlayers
+set Coords "0 0 296 118"
+set RenderCB_DX 296
+set RenderCB_DY 118
+set Child "LaunchGameTitlePlayers 0 0"
+set Child "ButtonResizePulse 255 77"
+set Child "MB_MenuNumPlayers -3 0"
+set Child "MB_MenuNumPlayersCoop -3 0"
+set Child "MB_MenuNumPlayersSolo -3 0"
+set Child "MB_MenuNumPlayersSurvival -3 0"
+set Child "MB_MenuNumPlayersChallenge -3 0"
+add MenuObject initFrom ButtonResize
+set Name ButtonGameMap
+set Coords "0 0 440 118"
+set RenderCB_DX 440
+set RenderCB_DY 118
+set Child "LaunchGameTitleMap 0 0"
+set Child "ButtonResizePulse 399 77"
+set Child "MB_MenuMaplist -3 -174"
+set Child "MB_MenuMaplistCTF -3 -174"
+set Child "MB_MenuMaplistSurvival -3 -40"
+set Child "MB_MenuMaplistChallenge -3 -40"
+add MenuObject initFrom PanelResizeFlat
+set Name MapNameTemplate
+set Color 0x333333
+set ColorFocused 0x555555
+set TileArea "422 56"
+set Focus -2
+set MouseInteract 1
+set RenderCB _DrawUTextShadowedNMI
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 422
+set RenderCB_DY 56
+set RenderCB_RGBColor "0.72 0.72 0.72"
+set RenderCB_RGBColorFocused "1.0 1.0 1.0"
+set RenderCB_Text @_Arg1_@
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandGetFocus "gameUI disable #MapPreview@MapName@"
+set CommandGetFocus ">sym set MapName @_Arg1_@"
+set CommandGetFocus ">if sym LaunchGameMode == PvP sym set MapNameCommon @_Arg1_@"
+set CommandGetFocus ">if sym LaunchGameMode == Coop sym set MapNameCommon @_Arg1_@"
+set CommandGetFocus ">if sym LaunchGameMode == CTF sym set MapNameCTF @_Arg1_@"
+set CommandGetFocus ">if sym LaunchGameMode == Solo sym set MapNameCommon @_Arg1_@"
+set CommandGetFocus ">if sym LaunchGameMode == Survival sym set MapNameSurvival @_Arg1_@"
+set CommandGetFocus ">if sym LaunchGameMode == Challenge sym set MapNameChallenge @_Arg1_@"
+set CommandGetFocus ">gameUI enable MapPreview@_Arg1_@"
+set CommandPress "sym toggle $ActiveMaplist"
+add MenuObject initFrom PanelResizeClear
+set Name MapListBuffer
+set TileArea "530 844"
+add MenuObject initFrom PanelResizeClear
+set Name MapListCancel
+set CommandGetFocus "sym set $ActiveMaplist 1"
+set CommandGetFocus "gameUI disable #MapPreview@MapName@"
+set CommandGetFocus "sym set MapName $LastMapName"
+set CommandGetFocus "gameUI enable #MapPreview@LastMapName@"
+set Child "MapListBuffer 50 50"
+set StretchToFillScreen 1
+add MenuObject initFrom PanelResizeFlat
+set Name MapListBackground
+set Color 0x222222
+set TileArea "430 724"
+add MenuObject
+set Name MB_MenuMaplist
+set ContainerOnly 1
+set HiddenCheckBySymbol LaunchMaplistHidden
+set Child "MapListCancel -100 -100"
+set Child "MapListBackground -4 -4"
+set Child "MapNameTemplate[MB_MapDuel] 0 0			Duel"
+set Child "MapNameTemplate[MB_MapNesthorn] 0 60		Nesthorn"
+set Child "MapNameTemplate[MB_MapSandrim] 0 120		Sandrim"
+set Child "MapNameTemplate[MB_MapSimple] 0 180		Simple"
+set Child "MapNameTemplate[MB_MapThar] 0 240		Thar"
+set Child "MapNameTemplate[MB_MapTwinPeaks] 0 300	TwinPeaks"
+set Child "MapNameTemplate[MB_MapChasm] 0 360		Chasm"
+set Child "MapNameTemplate[MB_MapVale] 0 420		Vale"
+set Child "MapNameTemplate[MB_MapCrater] 0 480		Crater"
+set Child "MapNameTemplate[MB_MapSalt] 0 540		Salt"
+set Child "MapNameTemplate[MB_MapRath] 0 600		Rath"
+set Child "MapNameTemplate[MB_MapRandom] 0 660		Random"
+add MenuObject initFrom PanelResizeFlat
+set Name MapListBackgroundCTF
+set Color 0x222222
+set TileArea "430 604"
+add MenuObject
+set Name MB_MenuMaplistCTF
+set ContainerOnly 1
+set HiddenCheckBySymbol LaunchMaplistHiddenCTF
+set Child "MapListCancel -100 -100"
+set Child "MapListBackgroundCTF -4 -4"
+set Child "MapNameTemplate[MB_MapDuel] 0 0			Duel"
+set Child "MapNameTemplate[MB_MapNesthorn] 0 60		Nesthorn"
+set Child "MapNameTemplate[MB_MapSandrim] 0 120		Sandrim"
+set Child "MapNameTemplate[MB_MapSimple] 0 180		Simple"
+set Child "MapNameTemplate[MB_MapThar] 0 240		Thar"
+set Child "MapNameTemplate[MB_MapTwinPeaks] 0 300	TwinPeaks"
+set Child "MapNameTemplate[MB_MapChasm] 0 360		Chasm"
+set Child "MapNameTemplate[MB_MapVale] 0 420		Vale"
+set Child "MapNameTemplate[MB_MapCrater] 0 480		Crater"
+set Child "MapNameTemplate[MB_MapRandom] 0 540		Random"
+add MenuObject initFrom PanelResizeFlat
+set Name MapListBackgroundSurvival
+set Color 0x222222
+set TileArea "430 244"
+add MenuObject
+set Name MB_MenuMaplistSurvival
+set HiddenCheckBySymbol LaunchMaplistSurvivalHidden
+set ContainerOnly 1
+set Child "MapListCancel -100 -100"
+set Child "MapListBackgroundSurvival -4 -4"
+set Child "MapNameTemplate[MB_MapSurvival] 0 0		Survival"
+set Child "MapNameTemplate[MB_MapSpiral] 0 60		Spiral"
+set Child "MapNameTemplate[MB_MapLastStand] 0 120	LastStand"
+set Child "MapNameTemplate[MB_MapRandom] 0 180		Random"
+add MenuObject initFrom PanelResizeFlat
+set Name MapListBackgroundChallenge
+set Color 0x222222
+set TileArea "430 124"
+add MenuObject
+set Name MB_MenuMaplistChallenge
+set HiddenCheckBySymbol LaunchMaplistChallengeHidden
+set ContainerOnly 1
+set Child "MapListCancel -100 -100"
+set Child "MapListBackgroundChallenge -4 -4"
+set Child "MapNameTemplate[MB_MapC_CaptureA] 0 0		C_CaptureA"
+set Child "MapNameTemplate[MB_MapC_CaptureB] 0 60		C_CaptureB"
+add MenuObject initFrom PanelResizeFlat
+set Name NumPlayersTemplate
+set Color 0x333333
+set ColorFocused 0x555555
+set TileArea "296 70"
+set Focus -2
+set MouseInteract 1
+set RenderCB _DrawUTextShadowedNMI
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 1.2
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 296
+set RenderCB_DY 70
+set RenderCB_RGBColor "0.72 0.72 0.72"
+set RenderCB_RGBColorFocused "1.0 1.0 1.0"
+set RenderCB_Text @_Arg1_@
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress ">sym set NumPlayers @_Arg1_@"
+set CommandPress ">if sym LaunchGameMode == PvP sym set NumPlayersCommon @_Arg1_@"
+set CommandPress ">if sym LaunchGameMode == Coop sym set NumPlayersCoop @_Arg1_@"
+set CommandPress ">if sym LaunchGameMode == CTF sym set NumPlayersCommon @_Arg1_@"
+set CommandPress ">if sym LaunchGameMode == Solo sym set NumPlayersSolo @_Arg1_@"
+set CommandPress ">if sym LaunchGameMode == Survival sym set NumPlayersSurvival @_Arg1_@"
+set CommandPress ">if sym LaunchGameMode == Challenge sym set NumPlayersChallenge @_Arg1_@"
+set CommandPress "sym set $ActiveNumPlayers 1"
+set CommandPress "if sym LaunchGameMode == Survival menuCmd CheckIfOnlineModeSurvival"
+set CommandPress "gameUI enable LaunchGameTitleMap"
+set CommandPress "gameUI enable LaunchGameTitleMode"
+add MenuObject initFrom PanelResizeClear
+set Name NumPlayersBuffer
+set TileArea "530 474"
+add MenuObject initFrom PanelResizeClear
+set Name NumPlayersCancel
+set CommandGetFocus "sym set $ActiveNumPlayers 1"
+set CommandGetFocus "sym set NumPlayers $LastNumPlayers
+set CommandGetFocus "gameUI enable LaunchGameTitleMap"
+set CommandGetFocus "gameUI enable LaunchGameTitleMode"
+set Child "NumPlayersBuffer 50 50"
+set StretchToFillScreen 1
+add MenuObject initFrom PanelResizeFlat
+set Name NumPlayersBackground
+set Color 0x222222
+set TileArea "304 226"
+add MenuObject
+set Name MB_MenuNumPlayers
+set ContainerOnly 1
+set HiddenCheckBySymbol LaunchNumPlayersHidden
+set Child "NumPlayersBackground -4 -4"
+set Child "NumPlayersCancel -100 -100"
+set Child "NumPlayersTemplate[MB_NP3v3] 0 0			3v3"
+set Child "NumPlayersTemplate[MB_NP2v2] 0 74		2v2"
+set Child "NumPlayersTemplate[MB_NP1v1] 0 148		1v1"
+add MenuObject initFrom PanelResizeFlat
+set Name NumPlayersBackgroundCoop
+set Color 0x222222
+set TileArea "304 226"
+add MenuObject
+set Name MB_MenuNumPlayersCoop
+set HiddenCheckBySymbol LaunchNumPlayersCoopHidden
+set ContainerOnly 1
+set Child "NumPlayersBackgroundCoop -4 -4"
+set Child "NumPlayersCancel -100 -100"
+set Child "NumPlayersTemplate[MB_NPO1P] 0 0			2v2C"
+set Child "NumPlayersTemplate[MB_NPO2P] 0 74		3v3C"
+set Child "NumPlayersTemplate[MB_NPO3P] 0 148		2v3C"
+add MenuObject initFrom PanelResizeFlat
+set Name NumPlayersBackgroundSolo
+set Color 0x222222
+set TileArea "304 448"
+add MenuObject
+set Name MB_MenuNumPlayersSolo
+set HiddenCheckBySymbol LaunchNumPlayersSoloHidden
+set ContainerOnly 1
+set Child "NumPlayersBackgroundSolo -4 -4"
+set Child "NumPlayersCancel -100 -100"
+set Child "NumPlayersTemplate[MB_NPP1P] 0 0			1v1C"
+set Child "NumPlayersTemplate[MB_NPP1Pa] 0 74		2v2C"
+set Child "NumPlayersTemplate[MB_NPP1Pb] 0 148		3v3C"
+set Child "NumPlayersTemplate[MB_NPP2P] 0 222		1v2C"
+set Child "NumPlayersTemplate[MB_NPP2Pc] 0 296		2v3C"
+set Child "NumPlayersTemplate[MB_NPP3P] 0 370		1v3C"
+add MenuObject initFrom PanelResizeFlat
+set Name NumPlayersBackgroundSurvival
+set Color 0x222222
+set TileArea "304 300"
+add MenuObject
+set Name MB_MenuNumPlayersSurvival
+set HiddenCheckBySymbol LaunchNumPlayersSurvivalHidden
+set ContainerOnly 1
+set Child "NumPlayersBackgroundSurvival -4 -4"
+set Child "NumPlayersCancel -100 -100"
+set Child "NumPlayersTemplate[MB_NPS1P] 0 0			1P"
+set Child "NumPlayersTemplate[MB_NPS2P] 0 74		2P"
+set Child "NumPlayersTemplate[MB_NPS3P] 0 148		3P"
+set Child "NumPlayersTemplate[MB_NPS4P] 0 222		4P"
+add MenuObject initFrom PanelResizeFlat
+set Name NumPlayersBackgroundChallenge
+set Color 0x222222
+set TileArea "304 78"
+add MenuObject
+set Name MB_MenuNumPlayersChallenge
+set HiddenCheckBySymbol LaunchNumPlayersChallengeHidden
+set ContainerOnly 1
+set Child "NumPlayersBackgroundChallenge -4 -4"
+set Child "NumPlayersCancel -100 -100"
+set Child "NumPlayersTemplate[MB_NPC1P] 0 0		1P"

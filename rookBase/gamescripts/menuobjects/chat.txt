@@ -1,0 +1,39 @@
+add MenuObject
+set Name ChatBackgroundCommon
+set CoordsStart "796 184 24 24"
+set CoordsMid "820 184 24 24"
+set CoordsEnd "844 184 24 24"
+set CoordsStartFocused "796 208 24 24"
+set CoordsMidFocused "820 208 24 24"
+set CoordsEndFocused "844 208 24 24"
+set CoordsStartDisabled "796 232 24 24"
+set CoordsMidDisabled "820 232 24 24"
+set CoordsEndDisabled "844 232 24 24"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 700
+set RenderCB_DY 904
+set MouseInteract 1
+set Focus -2
+set NoAlphaMod 1
+set Alpha 0.85
+set Coords "0 0 680 700"
+set DragTarget Party
+set CommandPress "gameui promoteToTop MasterChatContainer"
+set NotActionableForPurposeOfGameInput 1
+set MouseInteractClickToFocus 1
+set MouseInteractZoneExpand "10 6 -21 -52"
+add MenuObject initFrom ChatBackgroundCommon
+set Name ChatBackground
+set MouseInteractClickToFocus 1
+set NotActionableForPurposeOfGameInput 1
+set HiddenCheckBySymbol GL_ChatMinimized
+add MenuObject initFrom ChatBackgroundCommon
+set Name ChatBackgroundMin
+set RenderCB_DX 700
+set RenderCB_DY 70
+set Alpha 0.7
+set MouseInteractZoneExpand "10 6 -21 -6"
+set HiddenCheckBySymbolInv GL_ChatMinimized
+set CommandPress "if sym GL_ChatMinimized == 1 if sym LobbyModeDetails == 1 menuCmd ConLobbyDetailsClose"
+set CommandPress "sym set GL_ChatMinimized 0"

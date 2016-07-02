@@ -1,0 +1,32 @@
+stopIfVR
+stopIfSymbol DisableCrossOrders == 1
+onloadrun {
+cbinding disable orderMenuAlt
+sym set QuickOrderTab 1
+sym set _CrossOrdersOpen_ 1
+inputBinding enable orderNumberRow
+sym set SetOrderAndDrop 1
+sym set _coinit_ 1
+if sym TryoutLoaded == 1 runnow sym set _CrossPosX 300
+if sym TryoutLoaded != 1 runnow sym set _CrossPosX 1600
+if vr runnow sym set _CrossPosX 1600
+}
+MO CrossOrderContainer {
+pos $_CrossPosX 770 /vrOffscreen
+}
+onload {
+gameUI enableAll CrossOrderContainer
+if usingPad gameUI showGroup ButtonA ButtonBHoldPosition $LastUnitOrder
+if usingMouse gameUI showGroup ShortcutHoldPosition ShortcutAttackEnemy ShortcutPatrolArea ShortcutLinkUnit ShortcutCaptureOutpost CrossRightClickMessage
+gameUI focusName #CrossOrder&HeldUnitOrder@net_local_player@&
+pcmd t3	sym set _coinit_ 0
+}
+onunloadrun {
+sym set _CrossOrdersOpen_ 0
+inputBinding disable orderNumberRow
+rookMenus abilityFocus 0
+}
+onunload {
+sym set QuickOrderTab 0
+cbinding enable orderMenuAlt
+}

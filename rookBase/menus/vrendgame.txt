@@ -1,0 +1,46 @@
+blockLoadOnConsoleSym VrEndgameLoaded
+onloadrun {
+sym set VrEndgameLoaded 1
+sym set VrEndgameRender 1
+sound fadeOutBus 1 0.25
+menu3d remove MessageConfirm EndgameBar EndgameMechy Mechy Gamepad
+console flushAllPendingSeq Hint
+console flushAllPendingSeq Tutorial
+menu3d add EndgameBar /model vr/EndgameWin.amf	/material mat_VrEndgameWinBlue /requireExplicitClear /noVis /rootScale 4 /worldPose 0 120 100 /rootRot -10 0 0
+if sym TC0 == Red menu3d updateCfg EndgameBar /material mat_VrEndgameWinRed
+menu3d addChild EndgameBar EndgameLabel /model vr/EndgameLabel.amf /material mat_VrGamepadText /attachToParentBone bone_label /noVis
+if sym VrTutorial == 0 menu3d addChild FortInside EndgameMechy /model rooks/Mechy/Mechy_Ref.amf /material mat_MechyBlue /material mat_MechyThrust /worldPose 0 200 20 /rootScale 20 /rootRot -10 0 0 /noVis
+if sym VrTutorial == 1 menu3d addChild FortInside EndgameMechy /model rooks/Mechy/Mechy_Ref.amf /material mat_MechyBlue /material mat_MechyThrust /worldPose 0 200 20 /rootScale 24 /rootRot 0 0 0 /noVis
+if sym EndgameWon == 0 && sym IsSpectator == 0 menu3d animate EndgameMechy rooks/Mechy/Mechy_Lose.aaf looping 0 1.0
+if sym EndgameWon == 1 || sym IsSpectator == 1 menu3d animate EndgameMechy rooks/Mechy/Mechy_Horray_1.aaf looping 0 1.0
+if sym EndgameWon == 0 runnow console writeWorldPos pBase1 _WorldPosFort
+if sym EndgameWon == 1 runnow console writeWorldPos pBase1 _WorldPosFort
+}
+MO VrEndgameDialog {
+pos 0 500
+layer 30
+}
+onload {
+pcmd t2 menu3d UpdateORTSnapshot2 EndgameLabel 0 500 1000 300
+pcmd t3 sym set VrEndgameRender 0
+pcmd 1.15 menu3d addAnimScript EndgameBar as_VREndgameIn.txt
+pcmd 1.15 menu3d addAnimScript EndgameLabel as_VRMenuIn.txt
+pcmd 1.3 menu3d addAnimScript EndgameMechy as_VRMenuIn.txt
+if sym VrTutorial != 1 menucmd PlayEndgameMusic
+if sym VrTutorial == 1 pcmd p2.0 sound fadeOutBus 1 0.25"
+if sym VrTutorial == 1 pcmd p2.0 playsound VR3_Complete /onMenu3dBone EndgameMechy bone_head /busId 1"
+if sym VrTutorial == 1 pcmd p2.0 menu3d animate EndgameMechy rooks/Mechy/Mechy_Hover_1.aaf looping 0 1.0
+if sym VrTutorial == 1 pcmd p2.1 menu3d animate EndgameMechy rooks/Mechy/Mechy_Talk_2.aaf looping 1 1.0
+menucmd ClearBuildBar
+if sym VrTutorial != 1 pcmd 2.5 menu3d logicFnc EndgameLeavePrompt waitButton /button a /menucmd VrEndgameLeave
+if sym VrTutorial != 1 pcmd 2.0 menu3d addChild EndgameBar EndgameLeavePrompt /model vr/ButtonA.amf /material mat_MenuButtonsGamepad /rootScale 1 /rootRot 80 0 0  /worldPose 0 -8.0 -8 /noVis /noShadowCast
+if sym VrTutorial != 1 pcmd 2.3 menu3d addAnimScript EndgameLeavePrompt as_VRMessagePrompt.txt 1.0
+if sym VrTutorial != 1 pcmd 2.0 menu3d addAnimScript EndgameLeavePrompt as_VRMessageAppear.txt 1.0
+if sym VrTutorial != 1 pcmd_seq VrEndgameWait 60.0 menucmd VrEndgameLeave
+if sym VrTutorial == 1 pcmd p24.0 menucmd VrEndgameLeave
+}
+onunload {
+sym set VrEndgameLoaded 0
+}
+onunloadrun {
+}

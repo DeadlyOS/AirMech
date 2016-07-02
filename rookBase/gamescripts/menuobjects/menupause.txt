@@ -1,0 +1,306 @@
+add MenuObject initFrom MF_Template
+set Name MP_ResumeGame
+set Layer 20
+set RenderCB_Text MP_ResumeGame
+set CommandFocusUp "gameUI focusName MP_MainMenu"
+set CommandFocusDown "gameUI focusName MP_MainMenu"
+set CommandGetFocus "sym setConcat2 MenuLastFocus $C_BINDING {Name}"
+set CommandGetFocus "playsound $MenuSoundFocus"
+set CommandPress "playsound $MenuSoundClick"
+set CommandPress "menuCmd MP_ResumeGame $C_BINDING"
+set CommandCancel "menuCmd MP_ResumeGame $C_BINDING"
+set DefaultKeyboardControl 1
+add MenuObject initFrom MF_Template
+set Name MP_MainMenu
+set Layer 20
+set RenderCB_Text MP_MainMenu
+set CommandFocusUp "gameUI focusName MP_ResumeGame"
+set CommandFocusDown "gameUI focusName MP_ResumeGame"
+set CommandGetFocus "sym setConcat2 MenuLastFocus $C_BINDING {Name}"
+set CommandGetFocus "playsound $MenuSoundFocus"
+set CommandPress "playsound $MenuSoundClick"
+set CommandPress "menuCmd MP_LoadMainMenu local"
+set CommandCancel "menuCmd MP_ResumeGame local"
+set DefaultKeyboardControl 1
+add MenuObject
+set Name PauseCenterIcon
+set Texture menus/Pause
+set Coords "2 2 162 162"
+set CoordsFocused "168 2 162 162"
+set MouseInteract 1
+set Focus -2
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set DisabledAlphaTimeOut 0.2
+set Anchor Center
+set PulseAlpha "2.0 -0.4 0.0"
+set CommandPress "]playsound $MenuSoundClick"
+set CommandPress "]menuCmd MP_ResumeGame local"
+set HiddenCheckBySymbol GameModeOnline
+set CommandFocusDown "]gameui focusNameTry PauseButtonRestart PauseButtonBack"
+add MenuObject
+set Name PauseTipsTitle
+set RenderCB_FontScale 0.9
+set RenderCB_Font Roboto
+set Coords "0 0 540 30"
+set RenderCB_DX 540, RenderCB_DY 40
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol PauseTipTitle
+set RenderCB_RGBColor "0.2"
+add MenuObject
+set Name PauseTipsText
+set RenderCB_FontScale 0.58
+set RenderCB_Font Roboto
+set Coords "0 0 590 140"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol GameTip
+set RenderCB_RGBColor "0.3"
+add MenuObject
+set Name PauseTipsIcon
+set Texture menus/Pause
+set Coords "903 174 111 111"
+set ScaleX 0.7, ScaleY 0.7
+add MenuObject
+set Name PauseTipsBox
+set ContainerOnly 1
+set Child "PauseTipsIcon 0 0"
+set Child "PauseTipsTitle 80 23
+set Child "PauseTipsText 20 80"
+add MenuObject
+set Name PauseButtonTextTemplate
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set Coords "0 0 135 30"
+set RenderCB_DX 135, RenderCB_DY 30
+set RenderCB _DrawUText
+set RenderCB_Flags "/allCaps /fitX /fitX_n20"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text Restart
+set RenderCB_RGBColor "0.8"
+set RenderCB_RGBColorFocused "1.0"
+set NoAlphaMod 1
+set Alpha 0.7
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom PauseButtonTextTemplate
+set Name PauseButtonTextRestart
+set RenderCB_Text Label_Restart
+add MenuObject initFrom PauseButtonTextTemplate
+set Name PauseButtonTextBack
+set RenderCB_Text Label_Return
+add MenuObject initFrom PauseButtonTextTemplate
+set Name PauseButtonTextList
+set RenderCB_Text Label_List
+add MenuObject initFrom PauseButtonTextTemplate
+set Name PauseButtonTextQuit
+set RenderCB_Text Label_Quit
+add MenuObject initFrom PauseButtonTextTemplate
+set Name PauseButtonTextEdit
+set RenderCB_Text Label_Edit
+add MenuObject
+set Name PauseButtonIconTemplate
+set Texture menus/Pause
+set Coords "473 7 126 126"
+set DisplayAsFocusedIfParentFocused 1
+set Color 0xaaaaaa
+set ColorFocused 0xffffff
+set NoAlphaMod 1
+add MenuObject initFrom PauseButtonIconTemplate
+set Name PauseButtonIconRestart
+set Color 0xffab4d
+set BlinkAlpha "0.2 0.2 0.7 5.0"
+add MenuObject initFrom PauseButtonIconTemplate
+set Name PauseButtonIconBack
+set Coords "607 15 98 110"
+add MenuObject initFrom PauseButtonIconTemplate
+set Name PauseButtonIconList
+set Coords "848 19 115 108"
+add MenuObject initFrom PauseButtonIconTemplate
+set Name PauseButtonIconQuit
+set Coords "808 173 90 108"
+set CoordsFocused "717 173 90 108"
+add MenuObject initFrom PauseButtonIconTemplate
+set Name PauseButtonIconEdit
+set Coords "907 303 113 107"
+add MenuObject
+set Name PauseButtonTemplate
+set Texture menus/Pause
+set Coords "8 301 139 206"
+set CoordsFocused "163 301 139 206"
+set MouseInteract 1
+set Focus -2
+set CommandPress "playsound $MenuSoundClick"
+set CommandCancel "menuCmd MP_ResumeGame local"
+add MenuObject initFrom PauseButtonTemplate
+set Name PauseButtonRestart
+set HiddenCheckBySymbol GameModeOnline
+set CommandFocusUp "gameui focusNameTry PauseCenterIcon"
+set CommandFocusLeft "gameui focusNameTry PauseButtonList PauseButtonQuit"
+set CommandPress "if sym MenuPlayChallenge == 1 rook do notifyMapQuit"
+set CommandPress "if sym MenuPlayChallenge == 1 loadmap reload"
+set CommandPress "if sym MenuPlayChallenge == 0 && !netgame && !challengeMap menucmd RestartMatchConfirm"
+set CommandPress "if sym MenuPlayChallenge == 0 && !netgame && challengeMap menucmd RestartChallengeConfirm"
+set Child "PauseButtonIconRestart 7 10"
+set Child "PauseButtonTextRestart 0 140"
+add MenuObject initFrom ChallengeButtonTemplate
+set Name ChallengeEndButtonRestart
+set HiddenCheckBySymbol ChallengeHideRestart
+set CommandFocusLeft "gameui focusNameTry PauseButtonList"
+set CommandFocusRight "gameui focusNameTry ChallengeButtonNext"
+set CommandPress "menucmd RestartChallengeConfirm"
+set Child "PauseButtonIconRestart 7 10"
+set Child "PauseButtonTextRestart 0 140"
+add MenuObject initFrom PauseButtonTemplate
+set Name PauseButtonBack
+set HiddenCheckBySymbolInv GameModeOnline
+set CommandFocusUp "gameui focusNameTry PauseCenterIcon"
+set CommandFocusLeft "gameui focusNameTry PauseButtonList PauseButtonQuit"
+set CommandPress "menuCmd MP_ResumeGame local"
+set Child "PauseButtonIconBack 22 18"
+set Child "PauseButtonTextBack 0 140"
+add MenuObject initFrom ChallengeButtonTemplate
+set Name PauseButtonList
+set HiddenCheckBySymbolInv InChallengeMap
+set CommandPress "menucmd ListChallengeConfirm"
+set Child "PauseButtonIconList 15 18"
+set Child "PauseButtonTextList 0 140"
+set CommandFocusUp "gameui focusNameTry PauseCenterIcon"
+set CommandFocusRight "gameui focusNameTry PauseButtonRestart ChallengeEndButtonRestart PauseButtonBack ChallengeButtonNext ChallengeButtonCompletedAll"
+set CommandFocusLeft "gameui focusNameTry PauseButtonQuit"
+add MenuObject initFrom PauseButtonTemplate
+set Name PauseButtonQuit
+set CommandFocusUp "]gameui focusNameTry PauseCenterIcon"
+set CommandFocusRight "]gameui focusNameTry PauseButtonList PauseButtonRestart PauseButtonBack"
+set CommandPress "]if !gameover ]menuCmd MP_LoadMainMenuReqConfirm local"
+set CommandPress "]if gameover ]menuCmd MP_LoadMainMenu local"
+set CommandPress "]if gameover ]sym set _EgFinishOk_ 0"
+set CommandPress "]if gameover ]sym set _EgRewardCountOk_ 0"
+set Child "PauseButtonIconQuit 15 18"
+set Child "PauseButtonTextQuit 0 140"
+add MenuObject initFrom PauseButtonTemplate
+set Name PauseButtonEdit
+set CommandFocusUp "gameui focusNameTry PauseCenterIcon"
+set CommandFocusLeft "gameui focusNameTry PauseButtonBack PauseButtonList PauseButtonRestart"
+set HiddenCheckBySymbolValue HasCanaryBird=0
+set CommandPress "if !netgame menucmd EditorStartReq_Runtime"
+set Child "PauseButtonIconEdit 15 18"
+set Child "PauseButtonTextEdit 0 140"
+add MenuObject
+set Name PauseBarBottom
+set Texture menus/Pause
+set CoordsStart "3 176 9 1"
+set CoordsMid "12 176 672 1"
+set CoordsEnd "685 176 9 1"
+set CoordsStartFocused "3 177 9 71"
+set CoordsMidFocused "12 177 672 71"
+set CoordsEndFocused "685 177 9 71"
+set CoordsStartDisabled "3 248 9 35"
+set CoordsMidDisabled "12 248 672 35"
+set CoordsEndDisabled "685 248 9 35"
+set RenderCB _Draw_G3x3I
+set SpecialPosX 0.66
+set SpecialPosY 0.1
+set RenderCB_DX 1920
+set RenderCB_DY 230
+set Coords "0 0 1920 220"
+set Child "PauseTipsBox 850 27"
+set Child "PauseButtonRestart 650 30"
+set Child "PauseButtonEdit 1650 30"
+set Child "PauseButtonBack 650 30"
+set Child "PauseButtonList 450 30"
+set Child "PauseButtonQuit 50 30"
+add MenuObject
+set Name MP_PauseMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+add MenuObject
+set Name ConPausePlayerMic
+set Texture menus/Messages
+set SaveArgs 1
+set Coords "924 11 41 59"
+set CoordsAnimated "924 11 41 59"
+set CoordsAnimated "968 11 41 59"
+set ScaleX 0.85, ScaleY 0.85
+set BlendMode BlendAdd
+set HiddenCheckBySymbolInv P_HasVoice@_Arg1_@
+set CoordsAnimationSymHash P_Muted@_Arg1_@
+add MenuObject
+set Name ConPausePlayerTalk
+set Texture menus/Messages
+set SaveArgs 1
+set Coords "935 90 32 55"
+set CoordsAnimated "935 90 32 55"
+set CoordsAnimated "976 90 32 55"
+set HiddenCheckBySymbolInv P_HasVoice@_Arg1_@
+set BlendMode BlendAdd
+set CoordsAnimationSymHash P_Voice@_Arg1_@
+add MenuObject
+set Name ConPausePlayerName
+set Texture menus/EscMenu
+set Coords "6 786 450 81"
+set CoordsFocused "7 868 450 81"
+set RenderCBExcludesDefaultRender 0
+set DisabledAlpha 0.5
+set SaveArgs 4
+set RenderCB_DX 270
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "25 24"
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawText
+set RenderCB_Flags "/fitX /nmi"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_RGBColorFocused "0.2"
+set RenderCB_ConsoleSymbol P_Name@_Arg1_@
+set MouseInteract 1
+set Focus -2
+set ScaleX 0.8
+set ToolTip TT_Name
+set CommandPress ">voice togglemute @_Arg1_@"
+set CommandPress ">echo togglemute @_Arg1_@"
+set CommandCancel "menuCmd PauseMenu_ManageVoiceCancel"
+set CommandCancel "echo PauseMenu_ManageVoiceCancel"
+set CommandPressAlt ">menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandTopButton ">menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg3_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg4_@"
+set Child "VoiceMuteErrorDisplay[VoiceMuteErrorDisplay@_Arg1_@] -4 -2	@_Arg1_@"
+set Child "ConPausePlayerMic -43 14	@_Arg1_@"
+set Child "ConPausePlayerTalk -77 14	@_Arg1_@"
+set CommandOnCreate "sym set VoiceListEmpty 0"
+add MenuObject
+set Name VoiceButtons
+set ContainerOnly 1
+set Hidden 1
+set Coords "0 0 300 300"
+set Child "ConPausePlayerName[VoiceList0] 0 0		0 TC0	_NA_		.VListDown0		/ifSym P_Player0IsAI == 0 /ifSym P_ShowVoice0 != 0 /!isSpectator"
+set Child "ConPausePlayerName[VoiceList2] 0 Nx80	2 TC0	VoiceList0	.VListDown2 	/ifSym P_Player2IsAI == 0 /ifSym P_ShowVoice2 != 0 /!isSpectator"
+set Child "ConPausePlayerName[VoiceList4] 0 Nx80	4 TC0	.VListUp4	.VListDown4 	/ifSym P_Player4IsAI == 0 /ifSym P_ShowVoice4 != 0 /!isSpectator"
+set Child "ConPausePlayerName[VoiceList1] 0 Nx80	1 TC1	.VListUp1	.VListDown1 	/ifSym P_Player1IsAI == 0 /ifSym P_ShowVoice1 != 0 /!isSpectator"
+set Child "ConPausePlayerName[VoiceList3] 0 Nx80	3 TC1	.VListUp3	VoiceList5 		/ifSym P_Player3IsAI == 0 /ifSym P_ShowVoice3 != 0 /!isSpectator"
+set Child "ConPausePlayerName[VoiceList5] 0 Nx80	5 TC1	.VListUp5	_NA_			/ifSym P_Player5IsAI == 0 /ifSym P_ShowVoice5 != 0 /!isSpectator"
+set Child "ConPausePlayerName[VoiceList0] 0 0		6 TC0	_NA_		.VListDown0		/ifSym P_ShowVoice6 != 0 /isSpectator"
+set Child "ConPausePlayerName[VoiceList2] 0 Nx80	7 TC0	VoiceList0	.VListDown2 	/ifSym P_ShowVoice7 != 0 /isSpectator"
+add MenuObject
+set Name ConPauseMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "ControlsGamepad 450 -512	/ifSym InChallengeMap != 1"
+add MenuObject
+set Name PauseMenuMaster
+set ContainerOnly 1
+set FilterName LoadMapStartup
+set Coords "0 0 1920 1080"
+set Child "PauseOverlayOffline 0 0	/ifSym GameModeOnline == 0"
+set Child "PauseOverlayOnline 0 0	/ifSym GameModeOnline == 1"
+set Child "EscMenuPause -700 130	/ifSym GameModeOnline == 1"
+set Child "EscMenuPause -700 130	/ifSym GameModeOnline == 0	/ifSym InChallengeMap == 0"
+set Child "EscMenuPause -650 130	/ifSym InChallengeMap == 1"

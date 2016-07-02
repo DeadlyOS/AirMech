@@ -1,0 +1,73 @@
+clearmap
+pcmd 0 gfx set uniform fogargs 5000 1
+pcmd 0 gfx set uniform dfogargs $VrRoomFogArgs
+pcmd 0 gfx set clearColor 66 90 130 0
+pcmd 0 dirlight set /dir 0.416209 0.424957 0.803854
+pcmd 0 dirlight set /diffuse 0.6 0.6 0.6
+pcmd 0 dirlight set /ambient 0.6 0.6 0.6
+gfx hmd setPosition /sym CamPositionMenu
+menu3d add UnitWedgeRoot
+menu3d setWorldPose UnitWedgeRoot	0 0.0 30.0
+menu3d addChild UnitWedgeRoot UnitWedge0 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge0	-42 -42 0 /rot 0 0 135
+menu3d setRootScale UnitWedge0 12
+menu3d addChild UnitWedge0 UnitW0 /model units/InfantryHeavy/InfantryHeavy_Ref.amf /material mat_InfantryBlue
+menu3d setRootScale UnitW0 1.5
+menu3d setWorldPose UnitW0	0 -0.5 0
+menu3d animate UnitW0 units/InfantryHeavy/InfantryHeavy_Idle.aaf looping 0 0.5
+menu3d addChild UnitWedgeRoot UnitWedge2 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge2	0 -60 0 /rot 0 0 180
+menu3d setRootScale UnitWedge2 12
+menu3d addChild UnitWedge2 UnitW2 /model units/InfantryDemo/InfantryDemo_Ref.amf /material mat_InfantryBlue
+menu3d setRootScale UnitW2 1.5
+menu3d setWorldPose UnitW2	0 -0.5 0
+menu3d animate UnitW2 units/InfantryDemo/InfantryDemo_Idle.aaf looping 0 0.5
+menu3d addChild UnitWedgeRoot UnitWedge1 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge1	0 60 0
+menu3d setRootScale UnitWedge1 12
+menu3d addChild UnitWedge1 UnitW1 /model units/tank/Tank.amf /material mat_TankBlue /material mat_TreadPanX
+menu3d setRootScale UnitW1 1.5
+menu3d setWorldPose UnitW1	0 0 0
+menu3d addChild UnitWedgeRoot UnitWedge3 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge3	-60 0 0 /rot 0 0 90
+menu3d setRootScale UnitWedge3 12
+menu3d addChild UnitWedge3 UnitW3 /model units/bertha/Bertha.amf /material mat_BerthaBlue
+menu3d setRootScale UnitW3 1.5
+menu3d setWorldPose UnitW3	0 -0.5 0
+menu3d animate UnitW3 units/Bertha/LegsDown.aaf playonce 0 1
+menu3d addChild UnitWedgeRoot UnitWedge4 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge4	42 -42 0 /rot 0 0 -135
+menu3d setRootScale UnitWedge4 12
+menu3d addChild UnitWedge4 UnitW4 /model units/TankDrill/TankDrill.amf /material mat_TankDrillBlue /material mat_TreadPanX
+menu3d setRootScale UnitW4 1.5
+menu3d setWorldPose UnitW4	0 -0.5 0
+menu3d animate UnitW4 units/TankDrill/Idle.aaf looping 0 0.5
+menu3d addChild UnitWedgeRoot UnitWedge5 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge5	60 0 0 /rot 0 0 -90
+menu3d setRootScale UnitWedge5 12
+menu3d addChild UnitWedge5 UnitW5 /model units/RocketTruckU/RocketTruckU.amf /material mat_RocketTruckBlue
+menu3d setRootScale UnitW5 1.5
+menu3d setWorldPose UnitW5	0 -0.5 0
+menu3d addChild UnitWedgeRoot UnitWedge6 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge6	42 42 0 /rot 0 0 -45
+menu3d setRootScale UnitWedge6 12
+menu3d addChild UnitWedge6 UnitW6 /model units/TurretDual/TurretDual.amf /material mat_TurretStandBlue /material mat_TurretDualBlue
+menu3d setRootScale UnitW6 1.5
+menu3d setWorldPose UnitW6	0 -0.5 0
+menu3d animate UnitW6 units/TurretDual/LegsDown.aaf playonce 0 1
+menu3d addChild UnitWedgeRoot UnitWedge7 /model vr/UnitWedge.amf	/material mat_ArrowBlue
+menu3d setWorldPose UnitWedge7	-42 42 0 /rot 0 0 45
+menu3d setRootScale UnitWedge7 12
+menu3d addChild UnitWedge7 UnitW7 /model units/SupplyTank/SupplyTank.amf /material mat_SupplyTankBlue
+menu3d setRootScale UnitW7 1.5
+menu3d setWorldPose UnitW7	0 0 0
+if sym EndgameWon == 1 runnow menu3d add AirMech /model rooks/FighterA_Beta/FighterBeta_Ref.amf /material mat_AirMechFighterBeta
+if sym EndgameWon != 1 runnow menu3d add AirMech /model rooks/Striker/Striker_Export.amf /material mat_FighterClassicBlue
+menu3d setRootScale AirMech 33
+menu3d setWorldPose AirMech	0 0 25 /rot 0 0 230
+menu3d animate AirMech rooks/Striker/Striker_Stand.aaf looping 0 0.85
+menu3d setRootScale UnitWedgeRoot 1.25
+menu3d addChild FortInside TableTop /model vr/TableTop.amf	/material mat_TableTop
+menu3d setWorldPose TableTop	0.0 0.0 15
+menu3d setRootScale TableTop 1.05
+menu3d setVisible TableFrame

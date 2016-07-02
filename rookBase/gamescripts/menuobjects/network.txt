@@ -1,0 +1,91 @@
+add MenuObject
+set Name PingVoteHighlight
+set Texture fonts/SpecialChars+lang
+set Coords "206 97 49 29"
+add MenuObject
+set Name PingInfo
+set ContainerOnly 1
+set HiddenCheckBySymbol HideSlot@_Arg1_@
+set SaveArgs 1
+set Child "PingVoteKick -48 3 	@_Arg1_@"
+set Child "PingVoteKickAFK -48 3 	@_Arg1_@"
+set Child "PingVoteKickSlow -48 3 @_Arg1_@"
+set Child "PingPing 0  0 		@_Arg1_@"
+set Child "PingName 55 0		@_Arg1_@"
+add MenuObject initFrom HudNameTemplate
+set Name PingName
+set RenderCB _DrawTextShadowedNCS
+set RenderCB_ConsoleSymbol P_Name@_Arg1_@
+set RenderCB_FontScale 0.8
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_DX 235
+set RenderCB_TextJustify JustifyXLeft
+set Alpha 0.75
+set NoAlphaMod 1
+add MenuObject initFrom PingName
+set Name PingPing
+set RenderCB_ConsoleSymbol Ping@_Arg1_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawPing
+set RenderCB_Flags "/shadowed"
+add MenuObject initFrom HudNameTemplate
+set Name BaseVoteKick
+set HiddenCheckBySymbol2 IsSpectator
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawText
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused PingVoteHighlight
+set DrawWhenFocusedOffset "-3 1 0"
+add MenuObject initFrom BaseVoteKick
+set Name PingVoteKick
+set HiddenCheckBySymbol HideVK@_Arg1_@
+set RenderCB_Font SpecialChars
+set RenderCB_Text e
+set ToolTip TT_VoteKick
+set CommandPress ">echo Vote Kick $$P_Name@_Arg1_@"
+set CommandPress ">net chat /votekick $$P_Name@_Arg1_@ LAG"
+add MenuObject initFrom BaseVoteKick
+set Name PingVoteKickAFK
+set HiddenCheckBySymbol HideVKAFK@_Arg1_@
+set RenderCB_Font SpecialChars
+set RenderCB_Text z
+set ToolTip TT_VoteKickAFK
+set CommandPress ">echo Vote Kick $$P_Name@_Arg1_@"
+set CommandPress ">net chat /afkkick $$P_Name@_Arg1_@ AFK"
+add MenuObject initFrom BaseVoteKick
+set Name PingVoteKickSlow
+set HiddenCheckBySymbol HideVKSlow@_Arg1_@
+set RenderCB_Font SpecialChars
+set RenderCB_Text H
+set ToolTip TT_VoteKickSlow
+set CommandPress ">echo Vote Kick $$P_Name@_Arg1_@"
+set CommandPress ">net chat /votekick $$P_Name@_Arg1_@ CPU"
+add MenuObject
+set Name PingMaster
+set FilterName LoadMapStartup
+set ContainerOnly 1
+set Coords "0 0 200 100"
+set Child "BadPingTip -10 -150				/ifSym _LagHandler_ == 0	/platform !consolePlatformHW		BadPing"
+set Child "BadPingTip -10 -150				/ifSym _LagHandler_ == 0	/platform consolePlatformHW			BadPing_console"
+set Child "BadFallingBehind -10 -150		/ifSym _LagHandler_ == 1"
+set Child "ServerFlagDisplaySmall -35 -35	/platform !consolePlatform	/platform !arc"
+set Child "PingInfo 0 	0		0			/platform !consolePlatform"
+set Child "PingInfo 300 0		1			/platform !consolePlatform"
+set Child "PingInfo 0 	30		2			/platform !consolePlatform"
+set Child "PingInfo 300 30		3			/platform !consolePlatform"
+set Child "PingInfo 0 	60		4			/platform !consolePlatform"
+set Child "PingInfo 300 60		5			/platform !consolePlatform"
+add MenuObject
+set Name SpecTimeControl
+set Coords "0 0 200 30"
+set RenderCB_DX 200
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font Gunner
+set RenderCB_FontScale 0.4
+set RenderCB _GameTime
+set RenderCB_Flags "/outlined8x"

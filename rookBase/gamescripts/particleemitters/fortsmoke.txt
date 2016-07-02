@@ -1,0 +1,52 @@
+add ParticleEmitter
+set Name FortSmokeBase, MaxParticles 64, Material mat_particleSmokePuffBase
+set EmitPeriodBase 0.18, EmitPeriodVar 0.05, EmitVelocityBase 0.5, EmitVelocityVar 0.4, EmitVelocityWiggle 100
+set EmitPeriodBaseTimeModifier 0.01
+set EmitPosRandomXExtent 0.15, EmitPosRandomYExtent 0.15
+set DragCoefficient 0.0
+set ParticleLifespanBase 3.7, ParticleLifespanVar 2.2
+set ParticleSizeXBase 0.6, ParticleSizeXVar 0.3
+set ParticleGrowthXBase 0.1, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.35
+set ParticleColor 0xffffffff
+set EmitPosConstantZOffset 0.2
+set GravityScalar 0.5
+add ParticleEmitter initFrom FortSmokeBase
+set Name FortSmoke5s
+set ParticleSystemLifespan 5.0
+set FlagSystemLifespanGracefullTermination 1
+add ParticleEmitter initFrom FortSmokeBase
+set Name FactorySmoke2s
+set ParticleLifespanBase 2.2, ParticleLifespanVar 1.2
+set ParticleSizeXBase 0.45, ParticleSizeXVar 0.2
+set ParticleSystemLifespan 2.0
+set FlagSystemLifespanGracefullTermination 1
+add ParticleEmitter initFrom FortSmokeBase
+set Name FenceSmoke
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.5
+set ParticleSizeXBase 1.5, ParticleSizeXVar 0.5
+set ParticleSystemLifespan 0.5
+set FlagSystemLifespanGracefullTermination 1
+add ParticleEmitter initFrom FortSmokeBase
+set Name FenceSmokeLarge
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.5
+set ParticleSizeXBase 4.0, ParticleSizeXVar 1.0
+set ParticleSystemLifespan 0.5
+set FlagSystemLifespanGracefullTermination 1
+add ParticleEmitter initFrom FortSmokeBase
+set Name MissileSiloSmoke
+set ParticleLifespanBase 1.5, ParticleLifespanVar 0.8
+set ParticleSizeXBase 1.8, ParticleSizeXVar 0.2
+set ParticleSystemLifespan 2.0
+set AlphaModeParam 0.1
+set FlagSystemLifespanGracefullTermination 1
+add ParticleEmitter initFrom FortSmokeBase
+set Name WallSmoke
+set ParticleLifespanBase 3.2, ParticleLifespanVar 1.2
+set ParticleSizeXBase 4.0, ParticleSizeXVar 0.2
+set ParticleSystemLifespan 3.0
+set AlphaModeParam 0.1
+set FlagSystemLifespanGracefullTermination 1

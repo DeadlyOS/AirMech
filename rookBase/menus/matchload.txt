@@ -1,0 +1,16 @@
+onload {
+pcmd 0.2 clearmenu $MainMenu
+gameui refreshFilterName LoadingAirMechIcons
+}
+onunload {
+if menuloaded DialogBoxOk clearmenu DialogBoxOk
+}
+#if vr
+MO LoadingStub {
+}
+#else
+MO MatchLoadMaster {
+pos 0 0
+layer 25
+}
+#endif

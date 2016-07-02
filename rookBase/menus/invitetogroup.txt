@@ -1,0 +1,21 @@
+onloadrun {
+social scrollupdate friends /inviteableOnly
+sym inc GroupInvite_X 60
+sym dec GroupInvite_Y 680
+}
+MO InviteToGroup {
+pos 100 120
+draggableUIElement
+pos $GroupInvite_X $GroupInvite_Y
+layer 13
+}
+onload {
+addUIAnim InviteToGroup mas_DialogPopFadein
+input set padFocusFallback ConLeaderItem0
+]if usingpad gameui focusnametry InvitePlayerItem0 InvitePlayerDecoration
+gameui promoteToTop InviteToGroup
+}
+onunloadrun {
+}
+onunload {
+}

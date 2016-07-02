@@ -1,0 +1,42 @@
+onloadrun {
+]gfx set uniform filterargs 2 0.33
+]if sym MenuPlayChallenge == 0 menucmd GetRandomGameTip
+]sym set PauseUIOpen 1
+}
+MO PauseBarBottom {
+pos 0 1080
+layer 18
+}
+MO Vignette {
+pos 0 0
+layer 15
+}
+MO ConPauseMaster {
+pos 0 0
+layer 20
+}
+onload {
+]gameui ignoreInputTime 0.2
+]addUIAnim PauseBarBottom mas_IngameBotbarEnter
+]addUIAnim ControlsGamepad mas_PauseControllerEnter
+]gameui enableAll ControlsGamepad
+]addUIAnim Vignette mas_FadeInFast
+]gameUI show Vignette
+]gameUI show MB_ControlsHelp
+]if sym InChallengeMap == 1 loadmenu Lesson
+]if usingPad ]gameUI focusNameTry PauseButtonRestart PauseButtonBack
+]if usingPad ]pcmd t0 gameUI focusNameTry PauseButtonRestart PauseButtonBack
+]if usingPad ]pcmd t1 gameUI focusNameTry PauseButtonRestart PauseButtonBack
+]if usingPad ]pcmd t2 gameUI focusNameTry PauseButtonRestart PauseButtonBack
+]if usingPad ]pcmd t3 gameUI focusNameTry PauseButtonRestart PauseButtonBack
+]if !netGame ]pausegame 1
+]playerinputpause 1 local
+]gamemsg clearTR
+]addUIAnim IngameTopbar mas_IngameTopbarEnter
+]addUIAnim ChallengeTime mas_IngameTopbarEnter
+}
+onunload {
+]inputBinding enable cockpitClosed
+]gameUI focusID $FocusBeforeMenu
+]sym set PauseUIOpen 0
+}

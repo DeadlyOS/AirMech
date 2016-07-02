@@ -1,0 +1,19 @@
+onloadrun {
+sym set _DisableReport_ 1
+}
+MO DialogMyselfMaster {
+pos 0 14
+layer 20
+}
+onload {
+addUIAnim DialogMyselfMaster mas_DialogPop
+gameui promoteToTop DialogMyselfMaster
+gameUI saveFocusID MenuPreInspectFocus
+sym push CurrentMenu InspectDialog
+sym push DisableConShop 1
+if usingPad gameui focusNameTry FriendButtonClose
+}
+onunloadrun {
+gameUI restoreFocusID MenuPreInspectFocus
+sym pop CurrentMenu DisableConShop
+}

@@ -1,0 +1,89 @@
+onloadrun {
+]if !netGame ]pausegame 1
+]playerinputpause 1 local
+]if sym ReplayActive == 1 ]sym set CheatsAllowed 0
+]sym set PauseUIOpen 1
+if sym MenuPlayChallenge == 0 menucmd GetRandomGameTip
+if challengeMap runnow lang flushDrawCaches
+sym set VoiceListEmpty 1
+sym set IngameChat 0
+]addUIAnim HudInfoMasterLeft0 mas_IngameHideLeft
+]addUIAnim HudInfoMasterLeft1 mas_IngameHideLeft
+]addUIAnim HudInfoMasterLeft2 mas_IngameHideLeft
+]addUIAnim HudInfoMasterLeft3 mas_IngameHideLeft
+]addUIAnim HudInfoMasterLeft4 mas_IngameHideLeft
+]addUIAnim HudInfoMasterLeft5 mas_IngameHideLeft
+]addUIAnim HudInfoMasterRight0 mas_IngameHideRight
+]addUIAnim HudInfoMasterRight1 mas_IngameHideRight
+]addUIAnim HudInfoMasterRight2 mas_IngameHideRight
+]addUIAnim HudInfoMasterRight3 mas_IngameHideRight
+]addUIAnim HudInfoMasterRight4 mas_IngameHideRight
+]addUIAnim HudInfoMasterRight5 mas_IngameHideRight
+]addUIAnim PingMaster mas_IngameHideRight
+]gameui hideGroup HudBuildTab HudBuildTab__0 HudBuildTab__1 HudBuildTab__2 HudBuildTab__3 HudBuildTab__4 HudBuildTab__5
+]gameui hideGroup PlayerStatusFloat__0 PlayerStatusFloat__1 PlayerStatusFloat__2 PlayerStatusFloat__3 PlayerStatusFloat__4 PlayerStatusFloat__5
+]addUIAnim IngameChatContainer mas_IngameHideBottom
+]addUIAnim ChallengeTime mas_IngameHideTop
+}
+MO PauseMenuMaster {
+pos 0 0
+layer 20
+}
+MO InGameGlobalChat +gameValidation !console +gameValidation !spectator {
+pos 0 -80
+layer 22
+}
+onload {
+]gameui ignoreInputTime t12
+]sym set PauseBackgroundEnable 1
+]gamemsg clearTR
+]if sym InChallengeMap == 1 ]floatsym set S_Chal 0.0
+]addUIAnim TutorialMaster mas_IngameHideTutorial
+]addUIAnim EscLessonObject mas_IngameLessonEnter
+]addUIAnim EscMenuPause mas_IngamePauseEnter
+]if !vr runnow ]addUIAnim EscMenuPause mas_IngamePauseEnter
+]if vr ]addUIAnim EscMenuPause mas_IngamePauseEnterVR
+]addUIAnim ChallengePilot mas_IngamePilotEnter
+]addUIAnim LessonPaused mas_IngamePilotTextEnter
+]if sym LessonObject == LessonBuild runnow menuCmd LessonBuild
+]if sym LessonObject == LessonSocket runnow menuCmd LessonSocket
+]if sym LessonObject == LessonCommand runnow menuCmd LessonCommand
+]if sym LessonObject == LessonAbilities runnow menuCmd LessonAbilities
+]playsound UI_BadgeEquip
+]if usingPad ]gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t0 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t1 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t2 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t3 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t4 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t5 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t6 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t7 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t8 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t9 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t10 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t11 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]if usingPad ]pcmd t12 gameUI focusNameTry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4
+]sym set _ChatPosX 570
+]addUIAnim InGameGlobalChat mas_ChatPosition
+]gameui hide ChatShowButton
+]gameui hide ChatHideButton
+]pcmd t2 ]gameui disable ChatShowButton
+]pcmd t2 ]gameui show InGameGlobalChat
+]gameui show ChatShowButton
+]pcmd t5 ]if sym DNA_Match == Challenge ]sym set GL_ChatMinimized 2
+]pcmd t6 menucmd GlobalChatReposition
+}
+onunloadrun {
+]if sym ConScreenInset == 1 ]menucmd ConScreenInsetClear
+}
+onunload {
+]inputBinding enable cockpitClosed
+]gameUI focusID $FocusBeforeMenu
+]sym set PauseUIOpen 0
+]clearmenu VoiceList
+]inputBinding enable gamePause
+]cbinding enable gamePause
+]console flushAllPendingSeq 333
+]if sym CurrentMenu == InGameVoice ]sym pop CurrentMenu
+}

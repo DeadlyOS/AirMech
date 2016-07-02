@@ -1,0 +1,50 @@
+onloadrun {
+gameui ignoreInputTime 0.2
+if sym CurrentMenu == CHome && console menuCmd ConMenuBlur
+if sym CurrentMenu == CRoot && console menuCmd ConMenuBlur
+gameui clearScrollableDrawHashes
+clearmenu DialogBoxOk.txt
+clearmenu BackendDialog.txt
+sym set InspectDialogState 1
+if sym DialogPageDisplay == 0 sym set DialogPageDisplay 1
+if sym DialogForceInspect == 1 sym set DialogPageDisplay 0
+sym push GL_ChatMinimized 1
+sym push _Bind_CycleLoadoutOnShoulders_ 0
+sym set DialogForceInspect 0
+sym set DialogPageCount 1
+if sym _ShowUnitBG_ == 1 runnow sym set DialogPageCount 2
+if sym _ShowUnitBG_ == 1 && sym CurrentMenu == SelectUnitsCon && sym SelectUnitsConUnowned == 1 customize expUnitStatConfig $_UnlockObjectName 1 /noPreviewMod /unownedOnly /customFilter $_ConUnitsFilterType_
+if sym _ShowUnitBG_ == 1 && sym CurrentMenu == SelectUnitsCon && sym SelectUnitsConUnowned == 0 customize expUnitStatConfig $_UnlockObjectName 1 /noPreviewMod /ownedOnly /customFilter $_ConUnitsFilterType_
+if sym _ShowUnitBG_ == 1 && sym CurrentMenu != SelectUnitsCon && sym _CustomObject == guardians customize expGuardianStatConfig $_UnlockObjectName 1 /noPreviewMod /ownedOnly
+if sym _ShowUnitBG_ == 1 && sym CurrentMenu != SelectUnitsCon && sym _CustomObject != guardians customize expUnitStatConfig $_UnlockObjectName 1 /noPreviewMod /ownedOnlyIfIntIndex
+if sym _ShowRookBG_ == 1 runnow sym set DialogPageCount 3
+if sym _ShowRookBG_ == 1 runnow customize expRookStatConfig $_UnlockObjectName 1
+if sym _ShowRookBG_ == 0 && sym _ShowUnitBG_ == 0 sym set DialogPageDisplay 1
+if sym DialogPageCount < $DialogPageDisplay sym set DialogPageDisplay 1
+}
+MO InspectDialogMaster {
+pos 0 0
+layer 15
+}
+onload {
+gameui promoteToTop InspectDialogMaster
+addUIAnim InspectDialogMaster mas_DialogPop
+gameUI saveFocusID MenuPreInspectFocus
+sym push CurrentMenu InspectDialog
+sym push DisableConShop 1
+if usingpad && sym WishlistButtonsHide == 0 pcmd 0.1 gameui focusnametry InspectOptionFrame ConWishlistButtonAdd ConWishlistButtonRemove InspectDialogCancel
+if usingpad && sym WishlistButtonsHide == 1 pcmd 0.1 gameui focusnametry InspectOptionFrame InspectDialogCancel
+input set padFocusFallback InspectDialogCancel
+}
+onunloadrun {
+gameui ignoreInputTime 0.15
+sym setZero CanShowPartIcons _CustomPartType _CustomAirMechType
+rookMenus previewClear
+sym pop _ShowFrameFG_
+sym pop GL_ChatMinimized
+gameUI restoreFocusID MenuPreInspectFocus
+sym pop CurrentMenu DisableConShop _Bind_CycleLoadoutOnShoulders_
+if sym CurrentMenu == CHome && console menuCmd ConMenuSharp
+if sym CurrentMenu == CRoot && console menuCmd ConMenuSharp
+if consolePlatform resources flushPromoCycle 10
+}

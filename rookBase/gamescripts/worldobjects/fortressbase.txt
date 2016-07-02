@@ -1,0 +1,247 @@
+add WorldObject
+set Name FortressTemplate
+set Model structures/fortress/FortressMain.amf
+set Material "mat_FortressBase"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Model structures/fortress/FortressBase_1.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroup Material Concrete Model structures/fortress/FortressBase_2.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Box 6.5 6.5 3.5"
+set HitPoints 12000
+set SpecialType RookFort
+set CreditsEarned 145
+set PowerGen 50
+set StateController Fort
+set SampleHeightOffset 0.0
+set PointSize 7.5
+set ArmorType 75.0
+set FuelTankCapacity 250000
+set FullChargeTime 2.0
+set ChargeOrbModel structures/Fortress/FortFuelReserve.amf
+set ChargeOrbModelStateAnim structures/fortress/FortFuelReserveCharge.aaf
+set ChargeOrbMaterial mat_FuelReserve<
+set ChargeOrbOffset "0 0 -0.4"
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "3.34 3.4 3.2"
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "-3.34 3.34 3.2"
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "3.36 -3.31 3.2"
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "-3.3 -3.38 3.2"
+set SubModel structures/fortress/FortressTanks.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressScaffold.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressPistons.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressWallSide.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressWallSide.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 90"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressWallEnt.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 180"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressWallSide.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 270"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressDoor.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 180"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressTurbine.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressTurbine02.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 90"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressTurbine.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 180"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressTurbine02.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 270"
+set SubTranslation "0 0 0"
+#if _xmas
+set SubModel structures/fortress/XmasFortressWallSide.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressWallSide.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 90"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressWallSide.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 180"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressWallSide.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 270"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressTurbine.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressTurbine.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 90"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressTurbine.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 180"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressTurbine.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 270"
+set SubTranslation "0 0 0"
+#endif
+add WorldObject initFrom FortressTemplate
+set Name FortressBase
+set Collision "dmult 1 armorMod -60 Group ObjectSupportGroupCol Material Concrete Model structures/fortress/FortressBase_3.col 1.0"
+add WorldObject initFrom FortressTemplate
+set Name FortressBaseSurvival
+set CreditsEarned 120
+set HitPoints 6000
+set Collision "dmult 1 armorMod -60 Group ObjectSupportGroupCol Material Concrete Model structures/fortress/FortressBase_3.col 1.0"
+add WorldObject
+set Name FortressBaseCTF
+set Model structures/fortress/FortressMain.amf
+set Material "mat_FortressBase"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Model structures/fortress/FortressBase_1.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroup Material Concrete Model structures/fortress/FortressBase_2.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Box 6 6 1.5"
+set Collision "Group ObjectSupportGroupCol Material Concrete Model structures/fortress/FortressBase_3.col 1.0"
+set HitPoints 12000
+set SpecialType RookFortCTF
+set CreditsEarned 160
+set PowerGen 50
+set StateController FortCTF
+set SampleHeightOffset 0.0
+set PointSize 7.5
+set ArmorType 75.0
+set FuelTankCapacity 250000
+set FullChargeTime 2.0
+set ChargeOrbModel structures/Fortress/FortFuelReserve.amf
+set ChargeOrbModelStateAnim structures/fortress/FortFuelReserveCharge.aaf
+set ChargeOrbMaterial mat_FuelReserve<
+set ChargeOrbOffset "0 0 -0.4"
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "3.34 3.4 3.2"
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "-3.34 3.34 3.2"
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "3.36 -3.31 3.2"
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "-3.3 -3.38 3.2"
+set SubModel structures/fortress/FortressTanks.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressScaffold.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressPistons.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressWallSide.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressWallSide.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 90"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressWallCTF.amf
+set SubMaterial "mat_FortressBase mat_FortressBaseCTF"
+set SubRotation "0 0 180"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressWallSide.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 270"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressDoor.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 180"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressTurbine.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressTurbine02.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 90"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressTurbine.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 180"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/FortressTurbine02.amf
+set SubMaterial "mat_FortressBase"
+set SubRotation "0 0 270"
+set SubTranslation "0 0 0"
+#if _xmas
+set SubModel structures/fortress/XmasFortressWallSide.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressWallSide.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 90"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressWallSideCTF.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 180"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressWallSide.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 270"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressTurbine.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 0"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressTurbine.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 90"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressTurbine.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 180"
+set SubTranslation "0 0 0"
+set SubModel structures/fortress/XmasFortressTurbine.amf
+set SubMaterial "mat_XmasFortress<"
+set SubRotation "0 0 270"
+set SubTranslation "0 0 0"
+#endif

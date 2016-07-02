@@ -1,0 +1,24 @@
+onloadrun {
+}
+MO IntroPanContainer {
+pos 0 0
+}
+onload {
+console flushAllPendingSeq IntroPan
+music stop
+music start 07_Everything_That_Was_Before
+pcmd_seq IntroPan 1.5 gameui enable IntroSceneBg
+pcmd_seq IntroPan 3.0 gameui enable IntroPanText1
+pcmd_seq IntroPan 6.5 gameui enable IntroPanText2
+pcmd_seq IntroPan 11.5 gameui enable IntroPanText3
+pcmd_seq IntroPan 6.5 gameui enable VignetteStory
+pcmd_seq IntroPan 14.5 gameui disable IntroPanText1
+pcmd_seq IntroPan 15.0 gameui disable IntroPanText2
+pcmd_seq IntroPan 15.5 gameui disable IntroPanText3
+gameUI ignoreInputTime 1.0
+addUIAnim IntroSceneBg mas_IntroParalaxL0 /speed 0.03
+addUIAnim IntroParalaxL1 mas_IntroParalaxL1 /speed 0.03
+addUIAnim IntroParalaxL2 mas_IntroParalaxL2 /speed 0.029
+}
+onunload {
+}

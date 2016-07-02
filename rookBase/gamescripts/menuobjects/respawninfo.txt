@@ -1,0 +1,200 @@
+add MenuObject
+set Name RespawnTip
+set Coords "0 0 500 250"
+set RenderCB_DX 500
+set RenderCB_DY 250
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB _DrawUTextShadowed
+set RenderCB_BoolArg 1
+set RenderCB_Font RobotoBold
+set RenderCB_ConsoleSymbol GameTip
+add MenuObject
+set Name RespawnTimetotalText
+set Coords "0 0 240 50"
+set RenderCB_DX 240
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 1.1
+set RenderCB_RGBColor "0.6 0.6 0.6"
+set RenderCB _DrawTextShadowed
+set RenderCB_Font Roboto
+set RenderCB_ConsoleSymbol MyRespawnTime
+add MenuObject initFrom RespawnTimetotalText
+set Name RespawnTimeleftText
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_ConsoleSymbol MyRespawnTimer
+set RenderCB_RGBColor "1 1 1"
+set Child "RespawnTimetotalText 240 0"
+add MenuObject
+set Name RespawnTimeText
+add MenuObject
+set Name RespawnHealthtotalText
+set Coords "0 0 240 50"
+set RenderCB_DX 240
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.6
+set RenderCB _DrawTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_ConsoleSymbol MyRespawnHP
+set RenderCB_RGBColor "0.6 0.6 0.6"
+add MenuObject initFrom RespawnHealthtotalText
+set Name RespawnHealthleftText
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_ConsoleSymbol MyRespawnHPC
+set RenderCB_RGBColor "1 1 1"
+set Child "RespawnHealthtotalText 240 0"
+add MenuObject
+set Name RespawnProgressBackground
+set Texture hud/PlayerStatus
+set CoordsStart 		"146 471 4 4"
+set CoordsMid 			"150 471 21 4"
+set CoordsEnd 			"171 471 4 4"
+set CoordsStartFocused 	"146 475 4 9"
+set CoordsMidFocused 	"150 475 21 9"
+set CoordsEndFocused 	"171 475 4 9"
+set CoordsStartDisabled "146 484 4 4"
+set CoordsMidDisabled 	"150 484 21 4"
+set CoordsEndDisabled 	"171 484 4 4"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 480
+set RenderCB_DY 60
+set Coords "0 0 480 60"
+set NoAlphaMod 1
+set Alpha 0.75
+add MenuObject
+set Name RespawnProgressBarRight
+set Texture hud/PlayerStatus
+set CoordsStart 		"110 471 4 4"
+set CoordsMid 			"114 471 21 4"
+set CoordsEnd 			"135 471 4 4"
+set CoordsStartFocused 	"110 475 4 9"
+set CoordsMidFocused 	"114 475 21 9"
+set CoordsEndFocused 	"135 475 4 9"
+set CoordsStartDisabled "110 484 4 4"
+set CoordsMidDisabled 	"114 484 21 4"
+set CoordsEndDisabled 	"135 484 4 4"
+set RenderCB _Draw_G3x3
+set RenderCB_Flags "/leftExtending"
+set RenderCB_DX 125
+set RenderCB_DX_Dynamic MyRespawnBarDX
+set RenderCB_DY 60
+set Coords "0 0 250 60"
+set MouseInteract 1
+set RenderOffsetX 0
+set Color 0x6df53c
+add MenuObject
+set Name RespawnProgressBar
+set Texture hud/PlayerStatus
+set CoordsStart 		"110 471 4 4"
+set CoordsMid 			"114 471 21 4"
+set CoordsEnd 			"135 471 4 4"
+set CoordsStartFocused 	"110 475 4 9"
+set CoordsMidFocused 	"114 475 21 9"
+set CoordsEndFocused 	"135 475 4 9"
+set CoordsStartDisabled "110 484 4 4"
+set CoordsMidDisabled 	"114 484 21 4"
+set CoordsEndDisabled 	"135 484 4 4"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 125
+set RenderCB_DX_Dynamic MyRespawnBarDX
+set RenderCB_DY 60
+set Coords "0 0 250 60"
+set MouseInteract 1
+set RenderOffsetX 0
+set Color 0x6df53c
+set FirstDrawnChildren 1
+set Child "RespawnProgressBackground 0 0"
+set Child "RespawnProgressBarRight 480 0"
+set Child "RespawnTimeleftText -10 -2"
+set Child "RespawnHealthleftText -4 36"
+add MenuObject
+set Name RespawnFasterTime
+set Coords "0 0 200 50"
+set RenderCB_DX 240
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.7
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font RobotoBold
+set RenderCB_Text RespawnFasterTime
+set RenderCB_OffsetFocused "0 0"
+set RenderCB_OffsetPressed "2 2"
+set DisplayAsPressedIfParentPressed 1
+set DisabledSymInv RespawnFasterOk
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.25
+add MenuObject
+set Name RespawnFasterCost
+set Coords "0 0 200 50"
+set RenderCB_DX 240
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.7
+set RenderCB_RGBColor "1.0
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font RobotoBold
+set RenderCB_Text RespawnFasterCost
+set RenderCB_OffsetFocused "0 0"
+set RenderCB_OffsetPressed "2 2"
+set DisplayAsPressedIfParentPressed 1
+set DisabledSymInv RespawnFasterOk
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.25
+add MenuObject
+set Name RespawnFasterGamepadHint
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 64 64 64"
+set ScaleX 0.9
+set ScaleY 0.9
+set BlinkAlpha "0.0 0.25 1.0 0.25"
+set HiddenCheckBySymbolInv InputPad
+set DisabledSymInv RespawnFasterOk
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.25
+add MenuObject
+set Name RespawnFasterButton
+set Texture menus/HomeBar
+set Coords "6 905 247 104"
+set CoordsPressed "257 905 247 104"
+set ScaleX 1.1
+set DisabledSymInv RespawnFasterOk
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.25
+set MouseInteract 1
+set Focus -2
+set Child "RespawnFasterTime 50 20"
+set Child "RespawnFasterCost 50 60"
+set Child "RespawnFasterGamepadHint 26 28"
+set CommandPress "if usingmouse player local payFastRespawn RespawnFasterOk"
+set CommandLeftButton "player local payFastRespawn RespawnFasterOk"
+add MenuObject
+set Name RespawnBoxesBuilding
+set Coords "0 0 512 64"
+set Material mat_bldUI@_BTInd@
+set Texture units/&_BT_Name@_BTInd@&/Icons@TeamColor@
+set TextureAlt units/&_BT_Name@_BTInd@&/IconUnique
+set Texture2 ]hud/AlphaBoxesBig
+set MatAlphaTestRefSymbol _BT_Prog@_BTInd@
+set BlendMode NoBlend
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject initFrom InfoBoxTemplate
+set Name RespawnInfoMaster
+set MouseInteract 1
+set Focus -2
+set RenderCB_DX 720
+set RenderCB_DY 245
+set Coords "0 0 720 245"
+set Child "RespawnProgressBar 110 8"
+set Child "RespawnTip 110 80"
+set Child "RespawnFasterButton 210 -97	/!tryout"

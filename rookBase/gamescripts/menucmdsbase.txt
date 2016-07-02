@@ -1,0 +1,420 @@
+Include MenuCmds/LoginCmds.txt
+Include MenuCmds/NetGameCmds.txt
+Include MenuCmds/VRCmds.txt
+#if vr
+Include MenuCmds/VRFortInteriorCmds.txt
+#endif
+Script BootTitleScreenStart {
+ignoreInputTime 1.0
+cmd "]console flushAllPendingSeq 315"
+cmd "]clearmenu BootTitleScreen.txt /fadeout 0.2"
+cmd "]sym set _TitleScreenStart_ 1"
+}
+Script CreateAgreeTab {
+cmd "]sym toggle CarbonCreateAccountNeedAgree"
+cmd "]menucmd CreateAccountValidate local 0"
+}
+Script SkipBootCarbon {
+ignoreInputTime 1.5
+cmd "]console flushAllPendingSeq 303"
+cmd "]gameui disable CarbonGamesLogoSplash"
+cmd "]pcmd_seq 303 0.55 ]clearmenu BootCarbon"
+}
+Script SkipBootArc {
+ignoreInputTime 1.5
+cmd "]console flushAllPendingSeq 303"
+cmd "]gameui disable CarbonGamesLogoSplash"
+cmd "]pcmd_seq 303 0.55 ]clearmenu BootArc"
+}
+Script SkipBootPublisher {
+ignoreInputTime 1.5
+cmd "]console flushAllPendingSeq 305"
+cmd "]gameui disableGroup PublisherLogoSplash PublisherLegalLine"
+cmd "]pcmd_seq 305 0.55 ]clearmenu BootPublisher"
+}
+Script MP_LoadCommon {
+cmd "]cbinding disable gamePause"
+cmd "]cbinding disable orderMenu"
+cmd "]cbinding disable orderMenuAlt"
+cmd "]cbinding disable cockpitOpen"
+cmd "]cbinding disable cockpitClosed"
+cmd "]inputBinding disable gamePause"
+cmd "]inputBinding disable orderMenu"
+cmd "]inputBinding disable orderMenuAlt"
+cmd "]inputBinding disable cockpitOpen"
+cmd "]inputBinding disable cockpitClosed"
+cmd "]menu3d remove *"
+cmd "if sym AIDifficulty == 0 sym set AIColor 0.7"
+cmd "if sym AIDifficulty != 0 sym set AIColor 1.0"
+cmd "]sym set Background3dLoaded 0"
+cmd "]clearmenu"
+cmd "]clearmap noname"
+cmd "]playerinputpause 0"
+}
+Script GoLoadMainMenuOrUpsell {
+ignoreInputTime 0.1
+#if 0
+rcmd "if consolePlatformHW || arc runnow sym setZero Upsell2ndDay"
+cmd "]if sym Upsell2ndDay == 1 ]loadmenu Upsell"
+cmd "]if sym Upsell2ndDay != 1 ]loadmenu $MainMenu"
+cmd "]if sym Upsell2ndDay == 1 ]sym setZero Upsell2ndDay"
+#else
+rcmd "sym setZero Upsell2ndDay"
+cmd "]loadmenu $MainMenu"
+#endif
+}
+Script GoLoadMainMenuNoUpsell {
+ignoreInputTime 0.1
+cmd "]loadmenu $MainMenu"
+}
+Script GoLoadMainMenuOrUpsellFirst {
+ignoreInputTime 0.1
+rcmd "loadmenu MenuBlackout.txt /requireExplicitClear"
+cmd "if !consolePlatformHW runnow menucmd GoLoadMainMenuOrUpsell"
+cmd "if consolePlatformHW runnow menucmd GoLoadMainMenuNoUpsell"
+}
+Script DeclineAmazingOffer {
+cmd "loadmenu $MainMenu"
+}
+Script AcceptedAmazingOffer {
+cmd "loadmenu $MainMenu"
+}
+Script MP_LoadMainMenu {
+ignoreInputTime 1.0
+cmd "]log MenuCmd: MP_LoadMainMenu"
+rcmd "net disconnect"
+rcmd "matching disconnect"
+cmd "loadmenu MenuFadeOut"
+rcmd "pcmd 0.46 clearmap noname"
+rcmd "pcmd 0.48 loadmenu MenuBlackout.txt /requireExplicitClear"
+rcmd "pcmd 0.5 menucmd MP_LoadCommon"
+rcmd "pcmd 0.5 menucmd GoLoadMainMenuOrUpsell"
+}
+Script MP_ReplayLast {
+ignoreInputTime 0.3
+cmd "log MenuCmd: MP_ReplayLast"
+cmd "sym setZero MatchOverInSummary MatchOver MatchOverReal"
+cmd "menucmd EndgameHide"
+cmd "clearmenu EndgameV2.txt /fadeout 0.2"
+cmd "sym set _EgFinishOk_ 0"
+cmd "sym set _EgRewardCountOk_ 0"
+cmd "net disconnect"
+cmd "matching disconnect"
+cmd "party2 leave"
+cmd "loadmap replay999_last__"
+}
+Script MP_LoadMainMenuReqConfirm {
+cmd "]log MenuCmd: MP_LoadMainMenuReqConfirm"
+cmd "]sym set MenuLastFocus MB_ResumeGame"
+cmd "]sym set DialogBoxTitle DialogTitleExitGame"
+cmd "]sym set DialogBoxMessage DialogMessageExitGame"
+cmd "]if consolePlatformHW runnow sym set DialogBoxMessage DialogMessageExitGame_console"
+cmd "]if spectator runNow sym set DialogBoxMessage DialogMessageSpecExitGame"
+cmd "]if spectator runNow sym set DialogBoxTitle DialogTitleExitSpectate"
+cmd "]if replay runNow sym set DialogBoxMessage DialogMessageReplayExitGame"
+cmd "]if replay runNow sym set DialogBoxTitle DialogTitleExitReplay"
+cmd "]if tutorial runNow sym set DialogBoxMessage DialogMessageExitTutorial"
+cmd "]if tutorial runNow sym set DialogBoxTitle DialogTitleExitTutorial"
+cmd "]sym set DialogMenuCmdOnButton1 MP_LoadMainMenuConfirmed"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]sym clear _CustomExecSlot"
+cmd "]loadmenu DialogBox.txt /fadein 0.15"
+}
+Script ExitGameMainMenuConfirm {
+cmd "]log MenuCmd: ExitGameMainMenuConfirm"
+cmd "]sym set DialogBoxTitle DialogTitleExitAirmech"
+cmd "]sym set DialogBoxMessage DialogMessageExitAirMech"
+cmd "]if consolePlatform runnow sym set DialogBoxTitle DialogTitleExitAirmech_console"
+cmd "]if consolePlatform runnow sym set DialogBoxMessage DialogMessageExitAirMech_console"
+cmd "]sym set DialogMenuCmdOnButton1 ExitGameMainMenuConfirmed"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBox.txt /fadein 0.15"
+}
+Script ExitGameMainMenuConfirmed {
+cmd "]log MenuCmd: ExitGameMainMenuConfirmed"
+cmd "]exit"
+}
+Script EnterEditorModeConfirm {
+cmd "log MenuCmd: EnterEditorModeConfirm"
+cmd "sym set DialogBoxTitle DialogTitleEnterEditor"
+cmd "sym set DialogBoxMessage DialogMessageEnterEditor"
+cmd "sym set DialogMenuCmdOnButton1 EnterEditorModeConfirmed"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt /fadein 0.15"
+}
+Script EnterEditorModeConfirmed {
+cmd "clearmenu"
+cmd "tool menureset hard"
+cmd "tool menureset animscripts"
+cmd "tool menuCmdsReload"
+cmd "loadmenu editor"
+}
+Script ExitMatchmakingConfirm {
+cmd "]log MenuCmd: ExitMatchmakingConfirm"
+cmd "]sym set DialogBoxTitle MM_ExitTitle"
+cmd "]sym set DialogBoxMessage MM_ExitText"
+cmd "]sym set DialogMenuCmdOnButton1 MP_LoadMainMenu"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBox.txt"
+}
+Script RestartMatchMenuConfirmed {
+cmd "log MenuCmd: RestartMatchMenuConfirmed"
+rcmd "rook do notifyMapQuit"
+cmd "sym set PauseUIOpen 0"
+cmd "camera watch 0"
+cmd "loadmap reload"
+}
+Script RestartMatchConfirm {
+ignoreInputTime 0.15
+cmd "log MenuCmd: RestartMatchConfirm"
+cmd "sym set DialogBoxTitle DialogTitleRestartMatch"
+cmd "sym set DialogBoxMessage DialogMessageRestartMatch"
+cmd "sym set DialogMenuCmdOnButton1 RestartMatchMenuConfirmed"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script RestartChallengeMenuConfirmed {
+ignoreInputTime 0.15
+rcmd "rook do notifyMapQuit"
+cmd "sym set PauseUIOpen 0"
+cmd "camera watch 0"
+cmd "loadmap reload"
+}
+Script RestartChallengeConfirm {
+ignoreInputTime 0.15
+cmd "log MenuCmd: RestartChallengeConfirm"
+cmd "sym set DialogBoxTitle DialogTitleRestartChallenge"
+cmd "sym set DialogBoxMessage DialogMessageRestartChallenge"
+cmd "sym set DialogMenuCmdOnButton1 RestartChallengeMenuConfirmed"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script RestartThisMapConfirm {
+ignoreInputTime 0.15
+cmd "|if challengeMap runnow menucmd RestartChallengeConfirm"
+cmd "if !challengeMap runnow menucmd RestartMatchConfirm"
+}
+Script ListChallengeConfirm_Go {
+ignoreInputTime 0.5
+cmd "menucmd EndgameFinish"
+cmd "sym set ChallengeExitList 1"
+cmd "menucmd MP_LoadMainMenuConfirmed"
+}
+Script ListChallengeConfirm {
+cmd "]log MenuCmd: ListChallengeConfirm"
+cmd "]sym set DialogBoxTitle DialogTitleExitGame"
+cmd "]sym set DialogBoxMessage DialogMessageExitGameList"
+cmd "]if replay runNow sym set DialogBoxMessage DialogMessageReplayExitGame"
+cmd "]if replay runNow sym set DialogBoxTitle DialogTitleExitReplay"
+cmd "]sym set DialogMenuCmdOnButton1 ListChallengeConfirm_Go"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBox.txt /fadein 0.15"
+}
+Script MP_LoadMainMenuConfirmed {
+ignoreInputTime 1.0
+cmd "echo MP_LoadMainMenuConfirmed"
+cmd "log MenuCmd: MP_LoadMainMenuConfirmed"
+rcmd "gfx set clearColor 0 0 0 0"
+rcmd "rook do notifyMapQuit"
+rcmd "net disconnect"
+rcmd "matching disconnect"
+rcmd "party2 leaveIfInSolo"
+cmd "loadmenu MenuFadeOut"
+rcmd "pcmd 0.46 clearmap noname"
+rcmd "pcmd 0.48 loadmenu MenuBlackout.txt /requireExplicitClear"
+rcmd "pcmd 0.5 menucmd MP_LoadCommon"
+rcmd "pcmd 0.5 menucmd GoLoadMainMenuOrUpsell"
+cmd "sym set MatchmakingStep 0"
+}
+Script MP_NOP {
+}
+Script VR_Splash {
+cmd "]gfx set uniform fogargs $VrRoomFogArgs"
+cmd "]gfx set uniform dfogargs $VrRoomFogArgs"
+cmd "]echo $VrRoomFogArgs"
+cmd "]gfx set clearColor 33 46 67 0"
+cmd "]dirlight set /dir 0.416209 0.424957 0.803854 "
+cmd "]dirlight set /diffuse 0.4 0.4 0.4"
+cmd "]dirlight set /ambient 0.9 0.9 0.85"
+cmd "]menu3d add AirMechLogoVR /model vr/AirMechLogoVR3D.amf	/material mat_AirMechLogoVR"
+cmd "]menu3d setWorldPose AirMechLogoVR	0.0 420.0 -50.0"
+cmd "]menu3d setRootScale AirMechLogoVR 200"
+cmd "]menu3d setRootRot AirMechLogoVR 60 0 0"
+cmd "]menu3d add VRGround /model vr/VRGround.amf	/material mat_VRGround
+cmd "]menu3d setWorldPose VRGround	0.0 0.0 0.0
+cmd "]menu3d setRootRot VRGround 0 0 0"
+cmd "]menu3d setRootScale VRGround 1.8"
+}
+Script VR_Splash2 {
+cmd "]gfx set uniform fogargs $VrRoomFogArgs"
+cmd "]gfx set uniform dfogargs $VrRoomFogArgs"
+cmd "]echo $VrRoomFogArgs"
+cmd "]gfx set clearColor 33 46 67 0"
+cmd "]dirlight set /dir 0.416209 0.424957 0.803854 "
+cmd "]dirlight set /diffuse 0.4 0.4 0.4"
+cmd "]dirlight set /ambient 0.9 0.9 0.85"
+cmd "]menu3d add AirMechLogoVR /model vr/AirMechLogo3D.amf	/material mat_AirMechLogoTexture"
+cmd "]menu3d setWorldPose AirMechLogoVR	0.0 90.0 10.0"
+cmd "]menu3d setRootScale AirMechLogoVR 60 60 60"
+cmd "]menu3d add VRGround /model vr/VRGround.amf	/material mat_VRGround
+cmd "]menu3d setWorldPose VRGround	0.0 0.0 0.0
+}
+Script MP_PostAuthFirst {
+cmd "]if sym _GotAutoExecSrv_ == 0 ]cfg reqAutoExecSrv"
+cmd "]if sym _GotGameData_ == 0 ]cfg updateGameData /ifsym _GotAutoExecSrv_"
+cmd "]if sym _GotPrices_ == 0 ]wallet updatePrices"
+cmd "]if sym _GotPingData_ == 0 ]rooms requestSrvPings"
+cmd "]if sym _GotQuestsData_ == 0 ]quests requestQuestsData"
+#if !vr
+cmd "]if sym _GotTrainingCfg_ == 0 ]training req"
+cmd "]if sym _GotTrainingCfg_ == 0 ]training validateState Pilot"
+#endif
+}
+Script MP_PostAuth {
+cmd "]if sym _InLogoSplash_ == 1 menucmd MP_PostAuth"
+cmd "]if sym _InLogoSplash_ == 0 && !vr loadmenu MenuPostAuth.txt /fadein 0.5"
+cmd "]if sym _InLogoSplash_ == 0 && vr loadmenu MenuPostAuthVR.txt /fadein 0.5"
+}
+Script VRPrepareScene {
+ignoreInputTime 1.0
+cmd "gfx hmd setPosition /sym CamPositionMenu"
+cmd "gfx hmd setMoveScale 110"
+cmd "menu3d remove *"
+cmd "loadmenu VRMenusRTT"
+cmd "sym set SplashVR 1"
+cmd "sym set devmode 0"
+cmd "exec vr_fortress.txt"
+cmd "sym set _soloLaunch_ 1"
+cmd "sym set MyId 0"
+cmd "input set padFocusFallback MenuBlock1"
+cmd "sym set _NumPlayers 1"
+cmd "sym set MatchmakingType Solo"
+cmd "pcmd 0 timer clearAsyncWait"
+cmd "gfx lerp vrFadeAlpha /current 0 0.35"
+cmd "sym set InsideFortress 0"
+cmd "loadmenu MenuBlackout"
+cmd "pcmd 4.0 menucmd ShowOculusLogo"
+}
+Script VRBuildWorld {
+cmd "menu3d addChild TableFrame TableCoverPan  /model vr/TableCoverPan.amf	/material mat_TableCoverPan"
+cmd "menu3d setWorldPose TableCoverPan	0.0 0.0 5.0"
+cmd "menu3d setRootScale TableCoverPan 1.03"
+cmd "menu3d setRootRot TableCoverPan 0 0 -90"
+cmd "menu3d add AirMechLogoVR /model vr/AirMechLogoVR3D.amf /material mat_AirMechLogoVR"
+cmd "menu3d setWorldPose AirMechLogoVR	-15.0 60.0 100.0"
+cmd "menu3d setRootScale AirMechLogoVR 100"
+cmd "menu3d setRootRot AirMechLogoVR 70 0 0"
+}
+Script MP_LoadLogin {
+cmd "]if vr ]menucmd VRPrepareScene"
+cmd "]sym set CarbonUsername"
+cmd "]sym set CarbonCreateAccountNeedAgree 1"
+cmd "]echo MP_LoadLogin"
+cmd "]log MenuCmd: MP_LoadLogin"
+rcmd "menucmd MP_LoadCommon"
+cmd "]if carbonPayment && !consolePlatform runnow loadmenu MenuLoginBackdrop.txt"
+cmd "]if carbonPayment && !consolePlatform runnow loadmenu MenuLogin.txt"
+cmd "]if steam && !vr runnow loadmenu MenuLoginBackdrop.txt"
+cmd "]if steam && !vr runnow loadmenu MenuLogin.txt"
+cmd "]if arc && sym _LoadLoginCount_ == 0 runnow loadmenu BootArc.txt"
+cmd "]if arc && sym _LoadLoginCount_ != 0 runnow loadmenu MenuLoginBackdrop.txt"
+cmd "]if arc && sym _LoadLoginCount_ != 0 runnow loadmenu MenuLogin.txt"
+cmd "]if arc && sym _LoadLoginCount_ != 0 runnow menucmd MF_ArcLogin"
+cmd "]if consolePlatform && sym _LoadLoginCount_ == 0 runnow loadmenu BootPublisher.txt"
+cmd "]if consolePlatform && sym _LoadLoginCount_ != 0 runnow clearmenu"
+cmd "]if consolePlatform &&	sym _LoadLoginCount_ != 0 runnow loadmenu BootTitleScreen.txt /fadein 0.2"
+cmd "]if consolePlatform ]rook autoLogin"
+cmd "]if x360 menucmd MF_X360Login"
+cmd "]if ps4 menucmd MF_PS4Login"
+cmd "]if xbone menucmd MF_XboneLogin"
+cmd "]if steamvr || steamBPM menucmd MF_SteamLogin"
+cmd "]if oculusvr menucmd MF_OculusLogin"
+cmd "]sym inc _LoadLoginCount_"
+}
+Script MP_UnloadLogin {
+cmd "echo MP_UnloadLogin"
+cmd "log MenuCmd: MP_UnloadLogin"
+cmd "clearmenu MenuLogin.txt /fadeout 0.25"
+cmd "clearmenu MenuLoginBackdrop.txt /fadeout 0.25"
+cmd "if menuloaded MenuLinkAccount clearmenu MenuLinkAccount.txt /fadeout 0.15"
+}
+Script MP_LoadLoginBackdrop_OnStartup {
+cmd "echo MP_LoadLoginBackdrop"
+cmd "log MenuCmd: MP_LoadLoginBackdrop"
+rcmd "menucmd MP_LoadCommon"
+cmd "]if !menuloaded MenuLoginBackdrop && !arc runnow loadmenu MenuLoginBackdrop"
+}
+Script MP_LoadLoginBackdrop {
+cmd "echo MP_LoadLoginBackdrop"
+cmd "log MenuCmd: MP_LoadLoginBackdrop"
+rcmd "menucmd MP_LoadCommon"
+cmd "]if !menuloaded MenuLoginBackdrop runnow loadmenu MenuLoginBackdrop"
+}
+Script WorldMapNotify {
+cmd "log MenuCmd: WorldMapNotify"
+cmd "sym set DialogBoxTitle DialogTitleWorldSetup"
+cmd "sym set DialogBoxMessage DialogMessageWorldSetup"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBoxOk.txt"
+cmd "serverselect refresh"
+}
+Script SwitchToPad {
+cmd "gameUI focusNameTry $_padFocusFallback"
+cmd "]if sym IsSpectator == 1 gameUI focusNameTry DummyFocus"
+cmd "echo switch to gamepad"
+cmd "sym set HideCursor 1"
+cmd "if sym CurrentMenu == CLobby addUIAnim CM_LabelsLobby mas_MenuCenter"
+cmd "if sym CurrentMenu == CLobby menucmd LobbyContainerReposition"
+cmd "if sym CurrentMenu == CLobby menucmd MM_ConLobbyMessageUpdate"
+}
+Script SwitchToMouseKB {
+cmd "echo switch to mousekb"
+cmd "sym set HideCursor 0"
+cmd "if sym CurrentMenu == CLobby addUIAnim CM_LabelsLobby mas_MenuRight"
+cmd "if sym CurrentMenu == CLobby menucmd LobbyContainerReposition"
+cmd "if sym CurrentMenu == CLobby menucmd MM_ConLobbyMessageUpdate"
+}
+Script OnClearMap {
+rcmd "gamemsg clearSTD"
+rcmd "gamemsg clearTR"
+rcmd "sym setZero HasLessonIntro HasLessonOutro InChallengeMap AutoDeployDeactivate AutoDeployActive DisableCrossOrders"
+rcmd "sym setZero BuildCubeActiveLook"
+rcmd "sym setOne _CrossOrdersCanOpen_"
+rcmd "sym clear CSWave"
+rcmd "clearmenu QuestCompletePopup"
+rcmd "clearmenu UplayQuestCompletePopup"
+rcmd "clearmenu Lesson"
+rcmd "clearmenu hudPreChallenge.txt"
+rcmd "if sym ConScreenInset == 1 runnow menucmd ConScreenInsetClear"
+rcmd "sym set _Laggard_ System"
+rcmd "console flushAllPendingSeq QuestNotify"
+rcmd "sound fadeOutBus 2 0.25"
+cmd "console flushAllPendingSeq QuestNotify"
+#if vr
+cmd "console flushAllPendingSeq VrTeleportFx"
+cmd "sym setZero BuildCubeActive BuildCubeActiveLook"
+#endif
+cmd "sym setZero Hint_MaxCredits_C Hint_Credits20_C Hint_Credits40_C"
+cmd "clearmenu specBufferingInProgress.txt"
+cmd "clearmenu specBuffering.txt"
+}
+Script OnCleanupLoadMapMenu {
+rcmd "pcmd 1.0 clearmenu MatchLoad.txt /fadeout 0.5"
+}
+Script PromoUpdate {
+cmd "gameUI disableAll $DisabledPromos"
+cmd "gameUI disableAll $OffPromos"
+cmd "gameUI enableAll $CurrentPromo"
+}
+Script onFriendStateUpdate  {
+rcmd "gameui refreshFilterName FriendIncoming"
+}

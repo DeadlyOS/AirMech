@@ -1,0 +1,292 @@
+add MenuObject
+set Name TouchFeedback
+set Texture effects/SelectRingLink
+set Coords "0 0 128 128"
+set ScaleX 0.5
+set ScaleY 0.5
+set Anchor Center
+set Layer MouseTop
+add MenuObject
+set Name MouseCursorWait
+set Texture menus/CursorSpinner
+set PlayerHiddenStateCheck ModeAsyncWait
+set Coords "30 30 68 68"
+set Layer MouseBottom
+set RotationPeriod 1.0
+set ScaleX 0.8
+set ScaleY 0.8
+set RenderOffsetX -34
+set RenderOffsetY -34
+add MenuObject
+set Name MouseCursorDefault
+set Texture hud/MouseCursorBlue
+set PlayerHiddenStateCheck ModeDefault
+set Coords "0 0 46 52"
+set Layer MouseBottom
+set IsCursorDynAlpha 1
+set ScaleX 1.2
+set ScaleY 1.2
+set IsTopPass 2
+set FirstDrawnChildren 1
+set Child "MouseCursorOutline -10 -10"
+add MenuObject
+set Name MouseCursorHandPulse
+set Texture hud/MouseCursorBlue
+set Coords "315 83 18 22"
+set PulseAlpha "0.8 -0.5 1.0"
+set ScaleX 1.2
+set ScaleY 1.2
+set IsTopPass 2
+add MenuObject
+set Name MouseCursorShovel
+set Texture hud/MouseCursorBlue
+set PlayerHiddenStateCheck ModeOnShovelState
+set Hidden 1
+set Coords "330 155 94 94"
+set CoordsAnimated "330 155 94 94"
+set CoordsAnimated "330 155 94 94"
+set CoordsAnimated "330 155 94 94"
+set CoordsAnimated "330 155 94 94"
+set CoordsAnimated "330 155 94 94"
+set CoordsAnimated "330 155 94 94"
+set CoordsAnimated "330 155 94 94"
+set CoordsAnimated "330 155 94 94"
+set CoordsAnimated "330 155 94 94"
+set CoordsAnimated "329.5 155.5 94 94"
+set CoordsAnimated "329 156 94 94"
+set CoordsAnimated "328.5 156.5 94 94"
+set CoordsAnimated "328 157 94 94"
+set CoordsAnimated "327.5 157.5 94 94"
+set CoordsAnimated "327 158 94 94"
+set CoordsAnimated "326.5 158.5 94 94"
+set CoordsAnimated "326 159 94 94"
+set CoordsAnimated "326 159 94 94"
+set CoordsAnimated "326 159 94 94"
+set CoordsAnimated "326 159 94 94"
+set CoordsAnimated "326 159 94 94"
+set CoordsAnimated "326 159 94 94"
+set CoordsAnimated "326 159 94 94"
+set CoordsAnimationFrameTimer 0.04
+set Layer MouseBottom
+set IsCursorDynAlpha 1
+set IsTopPass 2
+add MenuObject
+set Name MouseCursorHand
+set Texture hud/MouseCursorBlue
+set PlayerHiddenStateCheck ModeOnExternalLink
+set Coords "249 57 54 60"
+set Layer MouseBottom
+set IsCursorDynAlpha 1
+set ScaleX 1.2
+set ScaleY 1.2
+set Child "MouseCursorHandPulse 31 32"
+set IsTopPass 2
+add MenuObject initFrom MouseCursorDefault
+set Name MouseCursorBuild
+set PlayerHiddenStateCheck ModeUnitBuilding
+set CoordsAnimated "0 0 46 52"
+set CoordsAnimated "64 0 46 52"
+set CoordsAnimated "128 0 46 52"
+set CoordsAnimated "192 0 46 52"
+set CoordsAnimated "0 64 46 52"
+set CoordsAnimated "64 64 46 52"
+set CoordsAnimated "128 64 46 52"
+set CoordsAnimated "192 64 46 52"
+set CoordsAnimated "128 64 46 52"
+set CoordsAnimated "64 64 46 52"
+set CoordsAnimated "0 64 46 52"
+set CoordsAnimated "192 0 46 52"
+set CoordsAnimated "128 0 46 52"
+set CoordsAnimated "64 0 46 52"
+set CoordsAnimationFrameTimer 0.05
+set Hidden 1
+add MenuObject initFrom MouseCursorDefault
+set Name MouseCursorReady
+set PlayerHiddenStateCheck ModeUnitReady
+set CoordsAnimated "0 192 46 52"
+set CoordsAnimated "64 192 46 52"
+set CoordsAnimated "128 192 46 52"
+set CoordsAnimated "192 192 46 52"
+set CoordsAnimated "128 192 46 52"
+set CoordsAnimated "64 192 46 52"
+set CoordsAnimated "0 192 46 52"
+set CoordsAnimated "64 192 46 52"
+set CoordsAnimated "128 192 46 52"
+set CoordsAnimated "192 192 46 52"
+set CoordsAnimated "128 192 46 52"
+set CoordsAnimated "64 192 46 52"
+set CoordsAnimated "0 192 46 52"
+set CoordsAnimated "64 192 46 52"
+set CoordsAnimated "128 192 46 52"
+set CoordsAnimated "192 192 46 52"
+set CoordsAnimated "128 192 46 52"
+set CoordsAnimated "64 192 46 52"
+set CoordsAnimated "0 128 46 52"
+set CoordsAnimated "64 128 46 52"
+set CoordsAnimated "128 128 46 52"
+set CoordsAnimated "192 128 46 52"
+set CoordsAnimated "128 128 46 52"
+set CoordsAnimated "64 128 46 52"
+set CoordsAnimationFrameTimer 0.05
+set Hidden 1
+add MenuObject initFrom MouseCursorReady
+set Name MouseCursorActiveRegion
+set PlayerHiddenStateCheck ModeActiveRegion
+add MenuObject initFrom MouseCursorDefault
+set Name MouseCursorHeld
+set PlayerHiddenStateCheck CarryingUnit
+set Coords "256 0 46 52"
+set Hidden 1
+add MenuObject initFrom MouseCursorDefault
+set Name MouseCursorPickup
+set PlayerHiddenStateCheck ReadyToPickupUnit
+set CoordsAnimated "320 16 32 48"
+set CoordsAnimated "320 15 32 48"
+set CoordsAnimated "320 14 32 48"
+set CoordsAnimated "320 13 32 48"
+set CoordsAnimated "320 12 32 48"
+set CoordsAnimated "320 11 32 48"
+set CoordsAnimated "320 10 32 48"
+set CoordsAnimated "320 9 32 48"
+set CoordsAnimated "320 8 32 48"
+set CoordsAnimated "320 7 32 48"
+set CoordsAnimated "320 6 32 48"
+set CoordsAnimated "320 7 32 48"
+set CoordsAnimated "320 9 32 48"
+set CoordsAnimated "320 13 32 48"
+set CoordsAnimated "320 15 32 48"
+set CoordsAnimationFrameTimer 0.04
+set Layer MouseTop
+set Hidden 1
+add MenuObject initFrom MouseCursorDefault
+set Name MouseCursorDrop
+set PlayerHiddenStateCheck ReadyToDropUnit
+set CoordsAnimated "352 0 32 48"
+set CoordsAnimated "352 1 32 48"
+set CoordsAnimated "352 2 32 48"
+set CoordsAnimated "352 3 32 48"
+set CoordsAnimated "352 4 32 48"
+set CoordsAnimated "352 5 32 48"
+set CoordsAnimated "352 6 32 48"
+set CoordsAnimated "352 7 32 48"
+set CoordsAnimated "352 8 32 48"
+set CoordsAnimated "352 7 32 48"
+set CoordsAnimated "352 5 32 48"
+set CoordsAnimated "352 3 32 48"
+set CoordsAnimated "352 1 32 48"
+set CoordsAnimationFrameTimer 0.04
+set Layer MouseTop
+set Hidden 1
+add MenuObject
+set Name MouseCursorOutline
+set Texture hud/MouseCursorBlue
+set ScaleX 1.2
+set ScaleY 1.2
+set Coords "248 120 63 69"
+set Layer MouseTop
+set IsTopPass 2
+set HiddenCheckBySymbolInv CursorOutline
+set IsCursorDynAlpha 1
+add MenuObject
+set Name MouseCursorMaster
+set NeverUnload 1
+set ContainerOnly 1
+set IsCursor 1
+set HiddenCheckBySymbol HideCursor
+set Coords "0 0 64 64"
+set Layer MouseTop
+set Child "MouseCursorDefault 0 0"
+set Child "MouseCursorHand -24 0"
+set Child "MouseCursorShovel -10 -80"
+set Child "MouseCursorBuild 0 0"
+set Child "MouseCursorReady 0 0"
+set Child "MouseCursorActiveRegion 0 0"
+set Child "MouseCursorHeld 0 0"
+set Child "MouseCursorPickup 15 21"
+set Child "MouseCursorDrop 17 19"
+set Child "MouseCursorWait 52 0"
+set Child "MouseToolTip 30 -20"
+add MenuObject
+set Name MouseCursorMasterNacl
+set NeverUnload 1
+set ContainerOnly 1
+set IsCursor 1
+set Coords "0 0 64 64"
+set Layer MouseTop
+set Child "MouseToolTip 30 -20"
+set IsTopPass 2
+add MenuObject
+set Name MouseCursorMasterConsole
+set NeverUnload 1
+set ContainerOnly 1
+set IsCursor 1
+set Layer MouseTop
+set Child "ConsoleToolTip 30 -20"
+add MenuObject initFrom MouseCursorMaster
+set Name MouseCursorMasterTemp
+set NeverUnload 0
+add MenuObject initFrom MouseCursorMasterNacl
+set Name MouseCursorMasterNaclTemp
+set NeverUnload 0
+add MenuObject initFrom MouseCursorMasterConsole
+set Name MouseCursorMasterConsoleTemp
+set NeverUnload 0
+add MenuObject initFrom MouseToolTip
+set Name BadPingTip
+set Anchor None
+set RenderCB_Text @_Arg1_@
+set RenderCB_ConsoleSymbol ""
+set Hidden 1
+set SaveArgs 1
+set PlayerHiddenStateCheck BadPing
+set FilterName LoadMapStartup
+set RenderCB _DrawUText_G3x3
+add MenuObject initFrom MouseToolTip
+set Name BadFallingBehind
+set Anchor None
+set RenderCB_Text NetFallingBehind
+set RenderCB_ConsoleSymbol ""
+set Hidden 1
+set PlayerHiddenStateCheck NetFallingBehind
+set FilterName LoadMapStartup
+set RenderCB _DrawUText_G3x3
+add MenuObject
+set Name ServerDowntimeNotifier
+set ContainerOnly 1
+set NeverUnload 1
+set Coords "0 0 1920 1080"
+set HiddenCheckBySymbol DowntimeHidden
+set Child "ServerDowntimeTimer 0 0"
+set Child "ServerDowntimeReason 0 35"
+add MenuObject
+set Name ServerDowntimeTimer
+set Anchor Bottom
+set NeverUnload 1
+set Coords "0 0 800 60"
+set RenderCB_DX 800
+set RenderCB_DY 60
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /fitX"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text DowntimeNotify
+set DisabledAlpha 1.0
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject
+set Name ServerDowntimeReason
+set Anchor Bottom
+set NeverUnload 1
+set Coords "0 0 1000 60"
+set RenderCB_DX 1000
+set RenderCB_DY 60
+set RenderCB_FontScale 1.0
+set RenderCB_BoolArg 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /fitX"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.8 0.8 0.8"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol _DowntimeReason_
+set DisabledAlpha 1.0
+set RenderCB_TextJustify JustifyXCenter

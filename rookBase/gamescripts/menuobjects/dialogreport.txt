@@ -1,0 +1,356 @@
+add MenuObject
+set Name DialogReportTitle
+set Coords "0 0 654 100"
+set RenderCB_DX 654
+set RenderCB_DY 100
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.85
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/noCommaSep"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text DialogReportTitle
+add MenuObject
+set Name DialogReportNameBig
+set Coords "0 0 654 100"
+set RenderCB_DX 654
+set RenderCB_DY 100
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.25
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_Flags "/noCommaSep"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol _FriendName_
+add MenuObject
+set Name DialogReportMessage
+set Coords "0 0 480 500"
+set RenderCB_DX 480
+set RenderCB_DY 500
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.7
+set RenderCB _DrawUTextShadowed
+set RenderCB_BoolArg 1
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_Text DialogReportMessage
+add MenuObject
+set Name DialogReportMessageRemaining
+set Coords "0 0 440 100"
+set RenderCB_DX 440
+set RenderCB_DY 100
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.55
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.75"
+set RenderCB_Text ReportCardCountRemaining
+set HiddenCheckBySymbolValue ReportCardCount=0
+add MenuObject
+set Name DialogReportMessageNone
+set Coords "0 0 440 100"
+set RenderCB_DX 440
+set RenderCB_DY 100
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.55
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "1.0 0.5 0.3"
+set RenderCB_Text ReportCardCountNone
+set HiddenCheckBySymbolValue ReportCardCount!0
+set BlinkAlpha "0.5 0.25 1.0 1.0"
+add MenuObject
+set Name DialogReportButtonClose
+set Texture menus/Social
+set Coords "825 2 70 70"
+set CoordsFocused "825 72 70 70"
+set Anchor UpperRight
+set MouseInteract 1
+set Focus -2
+set CommandPress "clearmenu DialogReport"
+add MenuObject
+set Name DialogReportCount
+set Texture menus/Social
+set Coords "562 478 46 46"
+set Color 0xcc5522
+set RenderCB_FontScale 1.2
+set RenderCB_DX 45
+set RenderCB_DY 55
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "0 2"
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol ReportCardCount
+set RenderCB_RGBColor 0xffffff
+add MenuObject
+set Name DialogReportIcon
+set Texture misc/ReportCard
+set Coords "img"
+set ScaleX 0.6, ScaleY 0.6
+set ScaleRefToCoords 256.0
+set Child "DialogReportCount 123 113"
+add MenuObject
+set Name ReportReasonTemplate
+set Texture menus/DialogFrames
+set Coords "0 258 512 73"
+set CoordsFocused "0 331 512 73"
+set CoordsPressed "-2 329 514 75"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text FR_InviteToParty
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set RenderCB_Flags "/nmi /shadowed /fitX"
+set RenderCB_DX 0, RenderCB_DY 0
+set Focus -2
+set Disabled 1
+set DisabledAlphaTimeIn 0.25
+add MenuObject initFrom ReportReasonTemplate
+set Name ReportReasonHelpful
+set RenderCB_Text DialogReportHelpful
+set DisabledAlphaTimeInPreWait 0.2
+set CommandPress "menucmd TryIssueReport PosHelpful"
+add MenuObject initFrom ReportReasonTemplate
+set Name ReportReasonSkilled
+set RenderCB_Text DialogReportSkilled
+set DisabledAlphaTimeInPreWait 0.4
+set CommandPress "menucmd TryIssueReport PosSkilled"
+add MenuObject initFrom ReportReasonTemplate
+set Name ReportReasonTeamplayer
+set RenderCB_Text DialogReportTeamplayer
+set DisabledAlphaTimeInPreWait 0.6
+set CommandPress "menucmd TryIssueReport PosTeamplayer"
+add MenuObject initFrom ReportReasonTemplate
+set Name ReportReasonSexy
+set RenderCB_Text DialogReportSexy
+set DisabledAlphaTimeInPreWait 0.8
+set CommandPress "menucmd TryIssueReport PosSexy"
+add MenuObject initFrom ReportReasonTemplate
+set Name ReportReasonLanguage
+set RenderCB_Text DialogReportLanguage
+set DisabledAlphaTimeInPreWait 0.2
+set CommandPress "menucmd TryIssueReport NegLanguage"
+add MenuObject initFrom ReportReasonTemplate
+set Name ReportReasonSabotage
+set RenderCB_Text DialogReportSabotage
+set DisabledAlphaTimeInPreWait 0.4
+set CommandPress "menucmd TryIssueReport NegSabotage"
+add MenuObject initFrom ReportReasonTemplate
+set Name ReportReasonLag
+set RenderCB_Text DialogReportLag
+set DisabledAlphaTimeInPreWait 0.6
+set CommandPress "menucmd TryIssueReport NegLag"
+add MenuObject initFrom ReportReasonTemplate
+set Name ReportReasonMarket
+set RenderCB_Text DialogReportMarket
+set DisabledAlphaTimeInPreWait 0.8
+set CommandPress "menucmd TryIssueReport NegMarket"
+add MenuObject
+set Name ReportDialogCancel
+set Texture menus/DialogFrames
+set Coords "1 439 254 73"
+set CoordsFocused "257 439 254 73"
+set CoordsPressed "255 437 256 75"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text DialogButtonCancel
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set RenderCB_Flags "/nmi /shadowed /fitX"
+set RenderCB_DX 0, RenderCB_DY 0
+set Focus -2
+set Disabled 1
+set DisabledAlphaTimeInPreWait 1.2
+set DisabledAlphaTimeIn 0.5
+set CommandPress "clearmenu DialogReport"
+add MenuObject
+set Name ReportCardBoxGreen
+set Texture menus/DialogFrames
+set CoordsStart "114 2 32 32"
+set CoordsMid "146 2 32 32"
+set CoordsEnd "190 2 32 32"
+set CoordsStartFocused "114 34 32 32"
+set CoordsMidFocused "146 34 32 32"
+set CoordsEndFocused "190 34 32 32"
+set CoordsStartDisabled "114 78 32 32"
+set CoordsMidDisabled "146 78 32 32"
+set CoordsEndDisabled "190 78 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 292
+set RenderCB_DY 147
+set Color 0x6dbe73
+add MenuObject
+set Name ReportCardBoxRed
+set Texture menus/DialogFrames
+set CoordsStart "114 2 32 32"
+set CoordsMid "146 2 32 32"
+set CoordsEnd "190 2 32 32"
+set CoordsStartFocused "114 34 32 32"
+set CoordsMidFocused "146 34 32 32"
+set CoordsEndFocused "190 34 32 32"
+set CoordsStartDisabled "114 78 32 32"
+set CoordsMidDisabled "146 78 32 32"
+set CoordsEndDisabled "190 78 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 292
+set RenderCB_DY 147
+set Color 0xbd4f32
+add MenuObject
+set Name ReportCardImgNegative
+set Texture menus/DialogFrames
+set Coords "147 120 139 136"
+set Focus -2
+set MouseInteract 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set MouseInteractZoneExpandWhenFocused "0 0 0 12"
+set CommandGetFocus "addUIAnim ReportCardImgNegative mas_FeedbackDown"
+set CommandLoseFocus "addUIAnim ReportCardImgNegative mas_FeedbackZero"
+set CommandPress "gameUI disableAll ReportCardPositive"
+set CommandPress "gameUI disable DialogReportMessage"
+set CommandPress "addUIAnim ReportCardImgNegative mas_FeedbackZero"
+set CommandPress "gameUI show ReportCardNegativeBlock"
+set CommandPress "addUIAnim ReportCardNegative mas_ReportNegCenter"
+set CommandPress "gameUI enableGroup DialogReportColorNeg ReportReasonLanguage ReportReasonSabotage ReportReasonLag ReportReasonMarket ReportDialogCancel"
+add MenuObject
+set Name ReportCardImgPositive
+set Texture menus/DialogFrames
+set Coords "3 117 139 136"
+set Focus -2
+set MouseInteract 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set MouseInteractZoneExpandWhenFocused "0 0 0 12"
+set CommandGetFocus "addUIAnim ReportCardImgPositive mas_FeedbackUp"
+set CommandLoseFocus "addUIAnim ReportCardImgPositive mas_FeedbackZero"
+set CommandPress "gameUI disableAll ReportCardNegative"
+set CommandPress "gameUI disable DialogReportMessage"
+set CommandPress "addUIAnim ReportCardImgPositive mas_FeedbackZero"
+set CommandPress "gameUI show ReportCardPositiveBlock"
+set CommandPress "addUIAnim ReportCardPositive mas_ReportPosCenter"
+set CommandPress "gameUI enableGroup DialogReportColorPos ReportReasonHelpful ReportReasonSkilled ReportReasonTeamplayer ReportReasonSexy ReportDialogCancel"
+add MenuObject
+set Name ReportCardPositiveBlock
+set Texture effects/white
+set Coords "0 0 296 153"
+set RenderBlocked 1
+set MouseInteract 1
+set Hidden 1
+add MenuObject initFrom ReportCardPositiveBlock
+set Name ReportCardNegativeBlock
+add MenuObject
+set Name ReportCardPositive
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "298 153"
+set Child "ReportCardBoxGreen 3 3"
+set Child "ReportCardImgPositive 80 5"
+set Child "ReportCardPositiveBlock 0 0"
+add MenuObject
+set Name ReportCardNegative
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "298 153"
+set Child "ReportCardBoxRed 3 3"
+set Child "ReportCardImgNegative 80 15"
+set Child "ReportCardNegativeBlock 0 0"
+add MenuObject
+set Name DialogReportColor
+set Texture menus/DialogFrames
+set CoordsStart "114 2 32 32"
+set CoordsMid "146 2 32 32"
+set CoordsEnd "190 2 32 32"
+set CoordsStartFocused "114 34 32 32"
+set CoordsMidFocused "146 34 32 32"
+set CoordsEndFocused "190 34 32 32"
+set CoordsStartDisabled "114 78 32 32"
+set CoordsMidDisabled "146 78 32 32"
+set CoordsEndDisabled "190 78 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 587
+set RenderCB_DY 834
+set Color 0x3e4854
+set DisabledAlphaTimeIn 0.5
+add MenuObject initFrom DialogReportColor
+set Name DialogReportColorNeg
+set Disabled 1
+set Color 0x622b25
+add MenuObject initFrom DialogReportColor
+set Name DialogReportColorPos
+set Disabled 1
+set Color 0x365d39
+add MenuObject
+set Name DialogReportBlack
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.66
+set MouseInteract 1
+set CommandPress "clearmenu DialogReport"
+add MenuObject
+set Name DialogReportMaster
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogFrames
+set CoordsStart "2 2 32 32"
+set CoordsMid "34 2 32 32"
+set CoordsEnd "78 2 32 32"
+set CoordsStartFocused "2 34 32 32"
+set CoordsMidFocused "34 34 32 32"
+set CoordsEndFocused "78 34 32 32"
+set CoordsStartDisabled "2 78 32 32"
+set CoordsMidDisabled "34 78 32 32"
+set CoordsEndDisabled "78 78 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 654
+set RenderCB_DY 900
+set Coords "0 0 653 900"
+set Anchor Center
+set Child "DialogReportColor 33 33"
+set Child "DialogReportColorPos 33 33"
+set Child "DialogReportColorNeg 33 33"
+set Child "ReportCardPositive 30 190"
+set Child "ReportCardNegative 326 190"
+set Child "DialogReportIcon 20 30"
+set Child "DialogReportTitle 0 30"
+set Child "DialogReportMessage 100 380"
+set Child "DialogReportNameBig 0 85"
+set Child "DialogReportButtonClose -40 40"
+set Child "ReportReasonHelpful 70 380"
+set Child "ReportReasonSkilled 70 460"
+set Child "ReportReasonTeamplayer 70 540"
+set Child "ReportReasonSexy 70 620"
+set Child "ReportReasonLanguage 70 380"
+set Child "ReportReasonSabotage 70 460"
+set Child "ReportReasonLag 70 540"
+set Child "ReportReasonMarket 70 620"
+set Child "ReportDialogCancel 200 700"
+set Child "DialogReportMessageRemaining 100 784"
+set Child "DialogReportMessageNone 100 784"

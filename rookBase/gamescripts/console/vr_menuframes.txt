@@ -1,0 +1,69 @@
+menu3d addChild MenusVR MenuHangar /worldPose 0 0 0
+menu3d addChild MenuHangar MenuFrames /rootRot 0 0 0 /worldPose 0 0 0
+sym set _PosFlair "0 -70"
+menu3d addChild MenuHangar MenuDiskFlair /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.45 0.45 1.0 /worldPose $$_PosFlair 0.0
+menu3d logicFnc MenuDiskFlair amFocusCapsule /radiusInner 22.0 /height 30.0 /skinDepth 7.0 /cmdfocus [menucmd TouchHangar Flair] /cmdunfocus [menucmd UnTouchHangar Flair]
+menu3d addChild MenuHangar MenuRingFlair /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.5 /worldPose $$_PosFlair 0.0
+menu3d addChild MenuHangar MenuDecoFlair /model flair/JetpackCat/JetpackCat.amf /material mat_JetpackCat /noVis /worldPose $$_PosFlair 24.0 /rootScale 15 /rootRot 0 0 -180
+menu3d addChild MenuHangar MenuLabelFlair /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosFlair -20.0 /rootScale 3.4 /rootRot 5 0 190
+menu3d animate MenuDecoFlair flair/JetpackCat/Idle.aaf looping 0 0.5
+pcmd 0.2 menucmd ShowVrMenuSet Flair
+menu3d addChild MenuHangar MenuLockFrame /model vr/Lock.amf  /material mat_VrLock /rootRot 10 15 5 /rootScale 1.1 /worldPose 2.0 110.0 100.0 /noVis
+menu3d addChild MenuHangar MenuDpadHint0Frames /model vr/Dpad1.amf /material mat_Gamepad  /material mat_RenderToTextureVR_UnlitStdBlend  /rootScale 30 /rootRot 90 0 30 /noVis
+menu3d setWorldPose MenuDpadHint0Frames	-80.0 100.0 100.0
+menu3d logicFnc MenuDpadHint0Frames trackDPad /bone bone_root /mag 13
+menu3d addChild MenuHangar MenuDpadHint1Frames /model vr/Dpad2.amf /material mat_Gamepad  /material mat_RenderToTextureVR_UnlitStdBlend  /rootScale 30 /rootRot 90 0 -30 /noVis
+menu3d setWorldPose MenuDpadHint1Frames	80.0 100.0 100.0
+menu3d logicFnc MenuDpadHint1Frames trackDPad /bone bone_root /mag 13
+pcmd 0.4 menu3d addAnimScript MenuDpadHint0Frames as_VRMenuIn.txt
+pcmd 0.6 menu3d addAnimScript MenuDpadHint1Frames as_VRMenuIn.txt
+pcmd 0.4 menucmd VrMenuCheckAirMechLock
+if sym RookLocal_Base == Angel menu3d setRootRot MenuFrames	0 0 320
+if sym RookLocal_Base == FighterA menu3d setRootRot MenuFrames	0 0 0
+if sym RookLocal_Base == Chopper menu3d setRootRot MenuFrames	0 0 40
+if sym RookLocal_Base == Warthog menu3d setRootRot MenuFrames	0 0 80
+if sym RookLocal_Base == Stealth menu3d setRootRot MenuFrames	0 0 120
+if sym RookLocal_Base == Saucer menu3d setRootRot MenuFrames	0 0 160
+if sym RookLocal_Base == Paladin menu3d setRootRot MenuFrames	0 0 200
+if sym RookLocal_Base == FighterNeo menu3d setRootRot MenuFrames	0 0 240
+if sym RookLocal_Base == Osprey menu3d setRootRot MenuFrames	0 0 280
+menu3d logicFnc MenuFrames menuCmdTicker /timeout 0.3 /menucmd CheckDrawAirMechTextures
+menu3d addChild MenusVR MenuFrameFocus /model vr/MenuPictureFrameFocus.amf /material mat_MenuPictureFrameFocus /noVis /rootScale 1.8 /rootRot 0 0 180
+menu3d setWorldPose MenuFrameFocus	0 105 8
+menu3d addChild MenuFrames MenuFrame0 /rootRot 0 0 180
+menu3d addChild MenuFrame0 MenuFrameFighterA /model vr/MenuPictureFrame.amf  /material mat_VrPictureAirMech /material mat_MenuPictureFrame /rootRot 10 0 0 /rootScale 2.2
+menu3d setWorldPose MenuFrame0	0 0 0
+menu3d setWorldPose MenuFrameFighterA	0 -110 -2
+menu3d addChild MenuFrames MenuFrame1 /rootRot 0 0 140
+menu3d addChild MenuFrame1 MenuFrameChopper /model vr/MenuPictureFrame.amf /material mat_VrPictureAirMech  /material mat_MenuPictureFrame /rootRot 10 0 0 /rootScale 2.2
+menu3d setWorldPose MenuFrame1	0 0 0
+menu3d setWorldPose MenuFrameChopper	0 -110 -2
+menu3d addChild MenuFrames MenuFrame2 /rootRot 0 0 100
+menu3d addChild MenuFrame2 MenuFrameWarthog /model vr/MenuPictureFrame.amf /material mat_VrPictureAirMech /material mat_MenuPictureFrame /rootRot 10 0 0 /rootScale 2.2
+menu3d setWorldPose MenuFrame2	0 0 0
+menu3d setWorldPose MenuFrameWarthog	0 -110 -2
+menu3d addChild MenuFrames MenuFrame3 /rootRot 0 0 60
+menu3d addChild MenuFrame3 MenuFrameStealth /model vr/MenuPictureFrame.amf /material mat_VrPictureAirMech /material mat_MenuPictureFrame /rootRot 10 0 0 /rootScale 2.2
+menu3d setWorldPose MenuFrame3	0 0 0
+menu3d setWorldPose MenuFrameStealth	0 -110 -2
+menu3d addChild MenuFrames MenuFrame4 /rootRot 0 0 20
+menu3d addChild MenuFrame4 MenuFrameSaucer /model vr/MenuPictureFrame.amf /material mat_VrPictureAirMech /material mat_MenuPictureFrame /rootRot 10 0 0 /rootScale 2.2
+menu3d setWorldPose MenuFrame4	0 0 0
+menu3d setWorldPose MenuFrameSaucer	0 -110 -2
+menu3d addChild MenuFrames MenuFrame5 /rootRot 0 0 -20
+menu3d addChild MenuFrame5 MenuFramePaladin /model vr/MenuPictureFrame.amf /material mat_VrPictureAirMech /material mat_MenuPictureFrame /rootRot 10 0 0 /rootScale 2.2
+menu3d setWorldPose MenuFrame5	0 0 0
+menu3d setWorldPose MenuFramePaladin	0 -110 -2
+menu3d addChild MenuFrames MenuFrame6 /rootRot 0 0 -60
+menu3d addChild MenuFrame6 MenuFrameFighterNeo /model vr/MenuPictureFrame.amf /material mat_VrPictureAirMech /material mat_MenuPictureFrame /rootRot 10 0 0 /rootScale 2.2
+menu3d setWorldPose MenuFrame6	0 0 0
+menu3d setWorldPose MenuFrameFighterNeo	0 -110 -2
+menu3d addChild MenuFrames MenuFrame7 /rootRot 0 0 -100
+menu3d addChild MenuFrame7 MenuFrameOsprey /model vr/MenuPictureFrame.amf /material mat_VrPictureAirMech /material mat_MenuPictureFrame /rootRot 10 0 0 /rootScale 2.2
+menu3d setWorldPose MenuFrame7	0 0 0
+menu3d setWorldPose MenuFrameOsprey	0 -110 -2
+menu3d addChild MenuFrames MenuFrame8 /rootRot 0 0 -140
+menu3d addChild MenuFrame8 MenuFrameAngel /model vr/MenuPictureFrame.amf /material mat_VrPictureAirMech /material mat_MenuPictureFrame /rootRot 10 0 0 /rootScale 2.2
+menu3d setWorldPose MenuFrame8	0 0 0
+menu3d setWorldPose MenuFrameAngel	0 -110 -2
+menucmd DrawAirMechTextures

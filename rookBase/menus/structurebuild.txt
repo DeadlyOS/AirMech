@@ -1,0 +1,26 @@
+blockLoadOnConsoleSym StructureBuildLoaded
+onloadrun {
+sym set BuildListOffset 0
+gameUI getLastRenderPos #MapTile@BaseLayoutSlotSel@ _StructureInspectPosX _StructureInspectPosY
+gameUI getLastRenderPos #MapTile@BaseLayoutSlotSel@ _StructureBuildPosX _StructureBuildPosY
+sym inc _StructureInspectPosX -220
+sym inc _StructureInspectPosY $BuildListOffset
+sym set StructureBuildLoaded 1
+}
+MO StructureBuildWindow {
+pos 100 120
+pos $_StructureBuildPosX $_StructureBuildPosY /screenClamp 0 300 /minClamp 330 0
+layer 10
+}
+onload {
+addUIAnim StructureBuildWindow mas_DialogPopFadein
+gameui promoteToTop StructureBuildWindow
+}
+onunloadrun {
+sym set StructureBuildLoaded 0
+sym set BaseStructureToBuild Blank
+sym set BaseStructureShow 0
+gameui refreshfiltername BaseLayout
+}
+onunload {
+}

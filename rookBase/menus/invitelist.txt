@@ -1,0 +1,18 @@
+stopIfInGame
+MO InvitePlayerMaster  {
+pos 0 0
+}
+onloadrun {
+]sym set DialogInviteListLoaded 1
+]sym push _Bind_CycleLoadoutOnShoulders_ 0
+}
+onload {
+]addUIAnim InvitePlayerMaster mas_DialogPop
+]if usingpad gameui focusnametry ConFrSelect0 InvitePlayerDecoration
+]sym push CurrentMenu ConInviteList
+}
+onunload {
+]if usingpad gameui focusnametry $_LastInviteButtonFocus
+]sym pop CurrentMenu _Bind_CycleLoadoutOnShoulders_
+]sym set DialogInviteListLoaded 0
+}

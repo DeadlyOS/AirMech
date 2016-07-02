@@ -1,0 +1,66 @@
+stopIfSymbol ConShopMenu == 1
+onloadrun {
+customize clearClassFilter
+sym set _ActiveLobbySelectScript_ SelectItemDialog.txt
+sym clear _cmode
+sym setZero _FocusItemList_ _FocusItemLast_
+sym push CurrentMenu MenuShop
+sym set ConShopMenu 1
+sym set ConPromosRemaining 4
+sym set _NoShopResults 0
+sym set ShopSection ButtonShop
+sym set ShopFilterText
+sym set RedeemCode
+sym set ConMessageHasFocus 0
+sym set Shop_Top 0
+sym setZero ShowShopItems Shop_Diamonds Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Pets Shop_Cosmetics Shop_Ultimates Shop_Other Shop_Inventory
+if sym MainMenuShopSelect == Game	menucmd ShoplistFilter
+if sym MainMenuShopSelect == Market	menucmd MarketlistFilter
+clearmenu ListboxShop
+clearmenu ListboxMarket
+menucmd ClearShopFilterStates
+menucmd ShoplistFilterCollapse
+sym set Filter_VipShop 0
+sym set Filter_NotOwned 1
+if sym VIPShopTicketCount >= 1 sym set Filter_VipShop 1
+}
+MO MainMenuShopTop {
+pos 0 -80
+layer 13
+}
+MO MainMenuShopFrame {
+pos 0 -90
+layer 13
+}
+onload {
+customize scrollCfgLobby $_CustomObject 35
+floatsym set customDrawerPosLobby 0
+if sym LoadoutAutosave == 0 menuCmd StoreLocalLoadout
+input set padFocusFallback MainBarButtonShop
+if sym MainMenuLoaded != 1 gameui focusNameTry TopShopGameShop #ConLoadoutUnit@_ArmySelSlot@
+addUIAnim ConLoadoutUnitSelArrow #mas_UnitArrow@_ArmySelSlot@
+if sym MainMenuLoaded != 1 if usingPad gameUI focusNameTry $_GameShop_Last
+sym setZero ShowShopItems Shop_Diamonds Shop_Featured Shop_Market
+sym set Shop_Game 1
+if sym MainMenuShopSelect == Market	sym setZero Shop_Game Sort_Reverse Shop_Top _NoShopResults Filter_MyListings
+if sym MainMenuShopSelect == Market	sym setOne ShowShopItems Shop_Market
+if sym ShopListBox == 1	sym setOne ShowShopItems
+if sym ShopListBox == 1	&& sym MainMenuShopSelect == Game loadmenu ListboxShop
+if sym ShopListBox == 1	&& sym MainMenuShopSelect == Market loadmenu ListboxMarket
+if sym MainMenuShopSelect == Market	menuCmd ShopButtonPressPre
+if sym MainMenuShopSelect == Market	menuCmd ButtonPressShop_Market
+if sym MainMenuShopSelect == Market	sym set BackgroundImage Market
+if sym MainMenuShopSelect != Market	sym set BackgroundImage Shop
+if !consoleplatformHW if usingpad gameui focusNameTry Shop_AirMechs ShopItem0
+pcmd t1 gameui directPushNameIfEnabled SL0
+pcmd t1 gameui directPushNameIfEnabled ML0
+}
+onunloadrun {
+}
+onunload {
+console flushAllPendingSeq 320
+sym set ConShopMenu 0
+clearmenu ListboxShop
+clearmenu ListboxMarket
+sym set ShopFilterText
+}

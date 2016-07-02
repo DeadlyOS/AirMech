@@ -1,0 +1,186 @@
+stopIfSymbol MatchOverInSummary == 1
+stopIfSymbol BlockAllUI == 1
+MO PingMaster +gameValidation !replay {
+pos 440 950
+safezone AS
+}
+MO IngameVersionNumber +gameValidation !consoleHW {
+pos -140 1000
+safezone xS
+}
+onloadrun {
+]sym set _AllyTeam0HudY -1
+]sym set _AllyTeam1HudY -1
+]sym set IsSpectator 1
+}
+MO MinimapSpectateMaster +gameValidation !android {
+pos 0  700
+safezone AS
+}
+MO HudInfoMasterLeftSpec +gameValidation ok_p0 {
+cmd "sym set _PTagInd 0"
+pos 0 $_AllyTeam0HudY
+safezone AA
+cmd "sym inc _AllyTeam0HudY 42"
+}
+MO HudInfoMasterLeftSpec +gameValidation ok_p2 {
+cmd "sym set _PTagInd 2"
+pos 0 $_AllyTeam0HudY
+safezone AA
+cmd "sym inc _AllyTeam0HudY 42"
+}
+MO HudInfoMasterLeftSpec +gameValidation ok_p4 {
+cmd "sym set _PTagInd 4"
+pos 0 $_AllyTeam0HudY
+safezone AA
+cmd "sym inc _AllyTeam0HudY 42"
+}
+MO HudInfoMasterRightSpec +gameValidation ok_p1 {
+cmd "sym set _PTagInd 1"
+pos 0 $_AllyTeam1HudY
+safezone SA
+cmd "sym inc _AllyTeam1HudY 42"
+}
+MO HudInfoMasterRightSpec +gameValidation ok_p3 {
+cmd "sym set _PTagInd 3"
+pos 0 $_AllyTeam1HudY
+safezone SA
+cmd "sym inc _AllyTeam1HudY 42"
+}
+MO HudInfoMasterRightSpec +gameValidation ok_p5 {
+cmd "sym set _PTagInd 5"
+pos 0 $_AllyTeam1HudY
+safezone SA
+cmd "sym inc _AllyTeam1HudY 42"
+}
+MO GameStatusMasterSpec +gameValidation !tutorial +gameValidation !survival {
+cmd "rook genLocalTeams _localAT _localET"
+pos 0 $_AllyTeam1HudY
+safezone xA
+}
+#if 0
+MO GameStatusMasterSpecSurvival +gameValidation !tutorial +gameValidation survival {
+cmd "rook genLocalTeams _localAT _localET"
+pos 0 $_AllyTeam0HudY
+safezone xA
+}
+#else
+MO GameTimeMasterSurvival +gameValidation !tutorial +gameValidation survival +gameValidation localfort {
+cmd "rook genLocalTeams _localAT _localET"
+pos 0 $_AllyTeam0HudY
+safezone nA
+}
+MO GameTimeMasterSurvivalNoFort +gameValidation !tutorial +gameValidation survival +gameValidation !localfort {
+cmd "rook genLocalTeams _localAT _localET"
+pos 0 $_AllyTeam0HudY
+safezone nA
+}
+#endif
+MO HudMasterAllyTeam0Spec +gameValidation !survival  {
+cmd "sym set _PTagInd 0"
+pos 0 0
+safezone xA
+}
+MO HudMasterAllyTeam1Spec +gameValidation !survival  {
+cmd "sym set _PTagInd 1"
+pos 0 0
+safezone xA
+}
+MO TeamStatusFloat +gameValidation watch_friend_p0_ex {
+rename PlayerStatusFloat__0
+pos -80 -120
+cmd "sym set _PTagInd 0"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p1_ex {
+rename PlayerStatusFloat__1
+pos -80 -120
+cmd "sym set _PTagInd 1"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p2_ex {
+rename PlayerStatusFloat__2
+pos -80 -120
+cmd "sym set _PTagInd 2"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p3_ex {
+rename PlayerStatusFloat__3
+pos -80 -120
+cmd "sym set _PTagInd 3"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p4_ex {
+rename PlayerStatusFloat__4
+pos -80 -120
+cmd "sym set _PTagInd 4"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p5_ex {
+rename PlayerStatusFloat__5
+pos -80 -120
+cmd "sym set _PTagInd 5"
+}
+MO PlayerStatusFloat +gameValidation watch_p0 {
+rename PlayerStatusFloat__0
+pos -80 -120
+cmd "sym set _PTagInd 0"
+}
+MO PlayerStatusFloat +gameValidation watch_p1 {
+rename PlayerStatusFloat__1
+pos -80 -120
+cmd "sym set _PTagInd 1"
+}
+MO PlayerStatusFloat +gameValidation watch_p2 {
+rename PlayerStatusFloat__2
+pos -80 -120
+cmd "sym set _PTagInd 2"
+}
+MO PlayerStatusFloat +gameValidation watch_p3 {
+rename PlayerStatusFloat__3
+pos -80 -120
+cmd "sym set _PTagInd 3"
+}
+MO PlayerStatusFloat +gameValidation watch_p4 {
+rename PlayerStatusFloat__4
+pos -80 -120
+cmd "sym set _PTagInd 4"
+}
+MO PlayerStatusFloat +gameValidation watch_p5 {
+rename PlayerStatusFloat__5
+pos -80 -120
+cmd "sym set _PTagInd 5"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p0 {
+pos -80 -120
+cmd "sym set _PTagInd 0"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p1 {
+pos -80 -120
+cmd "sym set _PTagInd 1"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p2 {
+pos -80 -120
+cmd "sym set _PTagInd 2"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p3 {
+pos -80 -120
+cmd "sym set _PTagInd 3"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p4 {
+pos -80 -120
+cmd "sym set _PTagInd 4"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p5 {
+pos -80 -120
+cmd "sym set _PTagInd 5"
+}
+MO OutpostStatusFloat +gameValidation !tutorial +gameValidation rulesV2 {
+pos 0 0
+}
+MO SpectateTimeControls +gameValidation !console {
+pos 1050 975
+layer 25
+}
+MO SpectateUpkeep +gameValidation !console {
+pos 1300 1060
+layer 25
+}
+onload {
+if !netgame && !replay && !spectator runnow sym set P_Name0 $P_Name
+}

@@ -1,0 +1,55 @@
+onloadrun {
+gameUI saveFocusID _savefocusid_
+customize clearClassFilter
+sym set _ActiveLobbySelectScript_ SelectItemDialog.txt
+sym clear _cmode
+sym clear DialogContentSelectFilterText
+sym push _Bind_CycleLoadoutOnShoulders_ 0
+sym push _Bind_MatchingUIBack_ 0
+sym push _Bind_SoloLoadout_ 0
+sym push CurrentMenu SelectItemDialog
+sym push _Bind_PrevNextOnShoulders_ 1
+sym push DisableConShop 1
+}
+MO LobbySelectItemDialogMaster {
+pos -200 0
+}
+onload {
+customize scrollCfgLobby $_CustomObject 35
+floatsym set customDrawerPosLobby 0
+if sym LoadoutAutosave == 0 menuCmd StoreLocalLoadout
+sym set SelectItemActive 1
+input set padFocusFallback LobbySelectItemDialogClose
+loadout partPointsUpdate
+}
+onunloadrun {
+gameui ignoreInputTime 0.1
+if sym _CustomObject == pilots && sym P_Avatar != $PilotLocal social setavatar $PilotLocal
+sym set _CustomObject units
+customize clearClassFilter
+sym clear ItemDialogType
+}
+onunloadrun_unforced {
+if sym LoadoutAutosave == 0 && sym UnsavedLoadout == 0 menuCmd UnsavedLoadoutTest
+if sym LoadoutAutosave == 1 loadout storePerAMLoadout
+if sym LoadoutAutosave == 1 rook savePreset $ActiveLoadout
+if sym LoadoutAutosave == 1 backend save
+menucmd OnSelectItemDialogClosed
+}
+onunload {
+input set padFocusFallback LobbyGoButton
+gameUI restoreFocusID _savefocusid_
+gameUI ignoreInputTime 0.1
+customize scrollCfgLobby
+pcmd t2 sym set SelectItemActive 0
+loadout partPointsUpdate
+gameui refreshFilterName Avatar
+sym pop _Bind_CycleLoadoutOnShoulders_
+sym pop _Bind_MatchingUIBack_
+sym pop _Bind_SoloLoadout_
+sym pop CurrentMenu
+sym pop _Bind_PrevNextOnShoulders_
+sym pop DisableConShop
+sym set ShowPartCount 0
+sym clear DialogContentSelectFilterText
+}

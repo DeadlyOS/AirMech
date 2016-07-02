@@ -1,0 +1,331 @@
+valuemap ProjEffect = None, Default, TankShell, TurretShell, ChainGunTurretShell, FlakTurretShell, ArmorCarShell, LightInf, Missile, Rocket, InfRocket, AirmechMissile, AirmechBomb, AirmechBombUberPowerup, AirmechUnitBomb,  AirmechUnitBombJuly4th, AirmechUnitBombHalloween, AirmechUnitBombXmas, AirmechUnitBombEgg, AirmechUnitBombUltimate, AirmechSwordProj, ShotDownMissile, AegisShotDownMissile, Artillery, Grenade, ThrownHammer, SniperShot, TeslaTower, TeslaTowerChained, VulcanShell, AirmechUnitBombsWaveCannon, PowerupDeathRayPulse, PowerupWarthog, PowerupHammer, PowerupSniper, AirmechUnitBombsAirstrike
+valuemap ExpEffect = None, Small, Medium, Large
+valuemap RenderGroups = Top, Default, Decals, MeshTerrain, FX
+valuemap UnitSpecials = None, Artillery, Aegis, Sniper, LineTraceHit, LineTraceHitStasis, Grenades, Pyro, UNITLAST, Bombs, Booster, Guardian
+valuemap GuardianPowers = None, Radar, Repair, Blaster, Energy, Blades
+valuemap CriticalHitZones = None, Back
+valuemap ProtectedHitZones = None, Front
+template WorldObject
+property Name flag keyfield
+property VariantOf
+property TypeNameOverride
+property Level type int, default 1
+property StateController
+property IsDetail type bool, default 0
+property DetailQuality type int, default 3
+property EditorIcon type string, default "Unknown"
+property MeshGridTerrainObj type bool, default 0
+property MeshGridTerrainDecl type string, default "...."
+property SelectionSphere type vector3, default "1.5 0.5 0"
+property Color type vector3, default "1 1 1"
+property RenderScale type vector3, default 1
+property BoundingSphereMod type float, default 0.0
+property Model
+property Material default "defaultMaterial"
+property RenderGroup type enum, valuemap RenderGroups, default Default
+property UnitSpecial type enum, valuemap UnitSpecials, default None
+property DmgPassThroughChance type int, default 10
+property GuardianPower type enum, valuemap GuardianPowers, default None
+property GuardianEnergyDrain type float, default 0.0
+property GuardianOrbitalPeriod type float, default 0.0
+property CriticalHitZone type enum, valuemap CriticalHitZones, default None
+property ProtectedHitZone type enum, valueMap ProtectedHitZones, default None
+property PresetBoneOffset type vector3
+property PickupClawCfg type vector3, default "0.6 1.0 1"
+property MineWeightMask type int, default 7
+property UseOptBSphere type bool, default 0
+property OptBSphereMod type vector4
+property SampleHeightOffset type float, default 0
+property SubModel
+property SubMaterial
+property SubRotation type vector3
+property SubTranslation type vector3
+property CollisionZRel type float, default 0
+property Collision default "None"
+property PhysMaterial default "default"
+property PhysCollisionGroup default "World"
+property EditLayer default "default"
+property FullTerrainCollision type bool, default 0
+property Center type vector3, default "0 0 0"
+property TerminationEffect default "Explode"
+property TerminationParticles default "Explosion"
+property DestructionEffects_1 default ""
+property DestructionEffects_2 default ""
+property DestructionEffects_3 default ""
+property DestructionEffects_4 default ""
+property DestructionEffects_5 default ""
+property DestructionEffects_6 default ""
+property DestructionEffects_7 default ""
+property DestructionEffects_8 default ""
+property DestructionEffects_9 default ""
+property DestructionEffects_10 default ""
+property CameraShakeOnDestroyed type vector3, default "50.0 0.7 0.7"
+property DestructionEffects
+property FiringConfig, type vector4
+property DBlastRMin type float, default 3.0
+property DBlastRMax type float, default 8.0
+property DBlastDmg type float, default 0.0
+property UnitDamage40 default "UnitDamage50"
+property UnitDamage70 default "UnitDamage80"
+property UnitDamage90 default "FireBurnDamage"
+property UnitSpawnOnDestroy default ""
+property UnitSpawnOnDestroyChance type int, default 0
+property UnitSpawnOnDestroyChance2 type int, default 0
+property HPModTransportWeight type float, default 0.0
+property PlaceMinDist type float, default 0.0
+property DestroySounds default "DestroyDefault.wav"
+property DestroyDecal default "unitDestruction"
+property PowerUp
+property SpecialType
+property Mass type float, default 10.0
+property LinearDamp type float, default 0.0
+property AngularDamp type float, default 0.6
+property NavmeshIndex type int, default 0
+property NavmeshObstacle type int, default 1
+property NavmeshAvoid type int, default 1
+property AlwaysVisible type bool, default 0
+property NeverVisible type bool, default 0
+property VisibleInEditorOnly type bool, default 0
+property HighlightOnMouseOver type bool, default 1
+property TreadMarkDecalDef1 default "tankTreads -0.53 -0.3 0.35"
+property TreadMarkDecalDef2 default "tankTreads 0.53 -0.3 0.35"
+property ParticlesOnRookDrop default "UnitPlacedFromRook DirtFleck"
+property ParticlesOnRookPickup default "UnitPickupFromRook DirtFleck"
+property SustainFireTime type float, default 8000.0
+property ReloadTime type float, default 0.0
+property RangeBlast type float, default 8.0
+property RangeFalloff type float, default 0.9
+property Range type float, default 12.0
+property MinRange type float, default 0.0
+property TargetZOffset type float, default 0.7
+property VisionRange type float, default 14.0
+property RadarRange type float, default 14.0
+property RadarJamRange type float, default 0.0
+property RangeArc type float, default 70.0
+property RotationResetDelay type float, default 2.0
+property RotationResetDelayRandom type float, default 0.5
+property RotationWanderPeriod type float, default 5.0
+property RotationWanderMaxArc type float, default 60.0
+property AimWanderSpeed type float, default 0.4
+property PointSize type float, default 0.0
+property FireArcForNoZTurret type float, default 65.0
+property FireArcForNoZTurretWhileMoving type float, default 65.0
+property SocketTurretSpeedBuff type float, default 1.0
+property FireDelayNoPower type float, default 0.0
+property FireDelay type float, default 2.9
+property FireDelayStasisMult type float, default 0.5
+property FireAltDelay type float, default 0.0
+property FireAnimSpeed type float, default 1.0
+property HasRegularShot type bool, default 1
+property FortDamageScalar type float, default 1.0
+property MeleeDPS type float, default 0.0
+property KineticDamage type float, default 0.0
+property ShotDamage type float, default 50.0
+property OutpostMultDmg type float, default 1.0
+property FortMultDmg type float, default 1.0
+property ShotDamageOnAirMult type float, default 0.5
+property ShotDamageOnGndMult type float, default 1.0
+property ShotIsAAOnly type bool, default 0
+property ShotLifespan type float, default 8.0
+property ShotSize type vector3, default "0.05 0.6 0.0"
+property ShotLinearDamp type float, default 0.0
+property ShotDamageVelocityInfluence type float, default 0.0
+property ShotChanceRoll type float, default 0.0
+property ShotDodgeable type float, default 0.0
+property ShotDodge type float, default 0.0
+property ArmDelay type float, default 2.0
+property ShotPowerCost type float, default 0.0
+property ShotSpeed type float, default 10.5
+property ShotAimWiggle type int, default 0
+property ShotAimLeadingEffectiveness type float, default 0.0
+property ShotAimHorizontalCylOffset type float, default 0.0
+property ShotAimHorizontalCylOffsetBase type float, default 0.0
+property ShotCanDmgFort type bool, default true
+property ShotModel type string
+property ShotMaterial type string
+property ShotParticles
+property ShotFFParticles
+property ShotMuzzleFlash default MuzzleFlash
+property ShotFireSounds default "FiringArmoredCar.wav"
+property ShotProjEffects type enum, valuemap ProjEffect, default LightInf
+property MissileProjEffects type enum, valuemap ProjEffect, default Missile
+property ExpEffects type enum, valuemap ExpEffect, default None
+property DynamicFlyToRange type float, default 0
+property TgtOPApproachDSqrMult type float, default 0.9
+property TargetReqFOWCheck type bool, default false
+property TgtD_Infantry	type float, default 1.0
+property TgtD_Turrets	type float, default 1.0
+property TgtD_MovingUnits type float, default 1.0
+property TgtD_AirMechs	type float, default 1.0
+property TgtD_Outposts	type float, default 1.0
+property TgtD_OutpostFocused type float, default 0.5
+property HasMissiles type bool, default 0
+property NeedToAimToFireMissiles type bool, default 1
+property MissileLobFire type float, default 0
+property MissileLobHeight type float, default 6.0
+property MissileModel type string, default effects/Rocket.amf
+property MissileMaterial type string, default mat_Booster
+property MissileRange type float, default 20
+property MissileFireDelay type float, default 0.0
+property MissileDamage type float, default 50.0
+property MissileLifespan type float, default 4.0
+property MissileTurning type float, default 20.0
+property MissileSpeed type float, default 25.0
+property MissileWiggle type int, default 1500
+property MissileIsHoming type bool, default true
+property MissileCanDmgFort type bool, default true
+property MissilePowerCost type float, default 0.0
+property MissileParticles
+property MissileFireSounds default "FiringRocket.wav"
+property MissileSpawnZOffset type float, default 0.0
+property HitPoints type float, default 150
+property HPOnOPL type float, default 400
+property UVPanRate type float, default 0
+property HealRateMod type float, default 1.0
+property AirmechImpactDmgScalar type float, default 1.0
+property UnitImpactDmgScalar type float, default 1.0
+property GeneralDmgScalar type float, default 1.0
+property ArmorType type float, default 50.0
+property WeaponType type float, default 50.0
+property AimTurnRate type float, default 60.0
+property AimTurnRateVertical type float, default 0.0
+property AimZSpinP
+property AimZSpinN
+property AimUpSpin
+property AimZSpinRatio type float, default 0.0
+property AimUpDefault type float, default 0.0
+property Acceleration type float, default 2.0
+property Deceleration type float, default 5.0
+property MoveSpeed type float, default 2.0
+property MoveSpeedMultWhenFiring type float, default 1.0
+property AtTargetDistance type float, default 0.75
+property UnitTurnRate type float, default 60.0
+property MoveWhileTurningMaxAngle type float, default 360.0
+property MustMoveInFacingDirection type bool, default 0
+property MustStopToFire type bool, default 0
+property ThreePointTurn type float, default 0.0
+property SteerWheel1
+property SteerWheel2
+property SteerWheelAngConv type float, default 0.4
+property TerrainNormalAdjustmentRate type float, default 0.05
+property MoveAnimation type string
+property MoveAnimationSpeed type float, default 1.0
+property MoveAnimationSpeedRand type float, default 0.0
+property IdleAnimation type string
+property IdleAnimationSpeed type float, default 1.0
+property IdleAnimationSpeedRand type float, default 0.0
+property FireAnimation type string
+property FireAnimationAlt type string
+property FlyAnimation type string
+property AttackPrepareAnim
+property AttackRelaxAnim
+property DeployAnim
+property DeployTime type float, default 2.0
+property DefendAnim
+property PropAnim
+property PropAnimSpeed type float, default 1.0
+property PropScale type float, default 0.75
+property AlignToTerrainNormal type bool, default 1
+property AlwaysRadarShow type bool, default 0
+property PanicAnimation type string
+property PanicAnimationSpeed type float, default 1.0
+property CanBePaniced type bool, default 0
+property MovePanicSpeed type float, default 4.0
+property PanicedByRookRadius type float, default 10.0
+property PanicCooldownTimer type float, default 2.0
+property PanicDuration type float, default 3.0
+property Cost type int, default 100
+property BoneFirePoint
+property BoneFirePointAlt
+property BoneFirePoint2
+property BoneFirePointAlt2
+property BoneAimHorizontal
+property BoneAimVertical
+property AimVerticalAnimPos type vector3
+property AimVerticalAnim
+property ReloadAnim
+property CanAimToward type bool, default 1
+property CanHitAir type bool, default 0
+property CanHitGround type bool, default 1
+property CanHitAirMechAnyForm type bool, default 0
+property PickupIndicatorScale type float, default 3.0
+property SupplyRepairRate type float, default 0
+property SupplyRepairRateAM type float, default 0
+property SupplyServiceThreshold type float, default 0.75
+property SupplyDetectRadius type float, default 7
+property SupplyWorkingRadius type float, default 7.5
+property SupplyWorkingRadiusNP type float, default 0.0
+property SupplySourceParticles default "SupplyRecharge"
+property SupplySourceParticlesSpawnPeriod type float, default 0.2
+property SupplyPowerCost type float, default 0.0
+property MineDisarmRate type float, default 0
+property MineDisarmResistance type float, default 1.0
+property MarkerMesh type string, default OutpostMarker.amf
+property MarkerMaterial type string, default mat_OutpostMarker
+property FullChargeTime type float, default 4.5
+property RechargeDelay type float, default 0.0
+property RechargeRate type float, default 0.15
+property ChargePresentReq type float, default 0
+property CreditsEarned type int, default 40
+property PowerGen type float, default -2.0
+property PowerGenPerQ type float, default 0
+property PowerGenPerTM type float, default 0
+property OrbRechargeBonus type float, default 0
+property BulbHP type float, default 100.0
+property BulbRegen type float, default 10.0
+property ShieldHP type float, default 0
+property ShieldRegenDelay type float, default 3.0
+property FuelTankCapacity type int, default 0
+property Attachments
+property Spawner_ClearCheckRadius type float, default 1.0
+property Spawner_SpawnList default ""
+property Spawner_SpawnOrderRandom type bool, default 1
+property Spawner_SpawnDelayBase type float, default 5.0
+property Spawner_SpawnDelayRand type float, default 3.0
+property Spawner_SpawnDelayNoSpace type float, default 0.2
+property Spawner_MaxSimultaneousCount type int, default 5
+property Spawner_MaxTotalCount type int, default 0
+property Spawner_SpawnAnimation default ""
+property Spawner_SpawnBaseOffset type vector3, default "-2.0 -2.0 0.0"
+property Spawner_SpawnRandOffset type vector3, default "4.0 4.0 0.0"
+property Spawner_SpawnBaseRotation type vector3, default "0 0 0"
+property Spawner_SpawnRandRotation type vector3, default "0 0 0"
+property Spawner_RenderInEditModeOnly type bool, default 1
+property Spawner_SpawnedObjData
+property EditorAlignToTerrainNormal type bool, default 1
+property ZSpinDefs
+property AbductRes type float, default 1.0
+property SalvageValue type float, default 0.0
+property SalvageTime type float, default 2.0
+property AuraDefenseMod type vector3, default "0.93 0.88 0.82"
+property AuraOffenseMod type vector3, default "1.07 1.12 1.18"
+property AuraSpeedMod type vector3, default "1.18 1.25 1.33"
+property AuraBuffHeal type vector3, default "8 10 12"
+property DebufOffenseMod type vector3, default "0.93 0.86 0.79"
+property MissileSiloTiming type vector3, default "10.0 3.0 15.0"
+property HitPointsMod type float, default 1.0
+property MissileDamageMod type float, default 1.0
+property MissileSpeedMod type float, default 1.0
+property ShotDamageMod type float, default 1.0
+property FireDelayMod type float, default 1.0
+property RangeMod type float, default 1.0
+property MoveSpeedMod type float, default 1.0
+property SupplyRepairRateMod type float, default 1.0
+property PowerGenMod type float, default 1.0
+property CarryWeightMod type float, default 1.0
+property BuildTimeMod type float, default 1.0
+property BuildCostMod type float, default 1.0
+property SalvageValueMod type float, default 1.0
+property SustainFireTimeMod type float, default 1.0
+property ReloadTimeMod type float, default 1.0
+property AimTurnRateMod type float, default 1.0
+property OverrideCreditsPaidForUnit type int, default 0
+property AllowNeutralPickup type bool, default 0
+property ChargeOrbModel
+property ChargeOrbModelStateAnim
+property ChargeOrbOffset type vector3, default "0 0 0"
+property ChargeOrbMaterial
+property Stub
+exec _templatesRookData.txt
+includeFolder	data/gameScripts/WorldObjects
+includeFolder	data/gameScripts/WorldObjects/Units

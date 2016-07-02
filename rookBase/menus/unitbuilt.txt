@@ -1,0 +1,11 @@
+stopIfSymbol BlockAllUI == 1
+MO UnitIconTray {
+rename UnitBuilt@UnitBuiltCurrent@
+cmd "sym op UnitBuiltNumber firstToBack"
+cmd "sym op UnitBuiltNumber copyFirst UnitBuiltCurrent"
+pos $_BTXPos $_BTYPos
+safezone AA
+}
+onloadrun {
+if sym _BTSlideOut == 1 addUIAnim HudBuildTab__3 mas_BuildTabBuilding.txt
+}

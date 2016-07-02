@@ -1,0 +1,11 @@
+menu3d addChild MenusVR MenusVRArmy  /noVis /worldPose 0 0 0
+menu3d addChild MenusVRArmy ArmyLockGrid /model vr/LockGrid.amf	/material mat_TableGridLocked /rootRot 0 0 0 /worldPose 0 -20 0.1 /rootScale 50.0 /noShadowCast /hiddenCheckBySymbol CurrentUnitOwned
+menu3d addChild MenusVRArmy MenuArmyUnlock /model vr/UnlockDisk.amf /material mat_CoverDisk /rootScale 1.5 1.5 2.5 /worldPose 0 -20 -8 /noVis
+pcmd 0.1 menu3d addAnimScript MenuArmyUnlock as_VRMenuAppear.txt 0.5
+sym set _WorldPosUnit 2 0
+menucmd SetupBuildCubeInfo
+spawn VRUnitPreview /posSym _WorldPosUnit /posZ 1 /label MenuColBlock
+spawn VRMenuSphereCol5 /posSym _WorldPosUnit /posZ -10 /label MenuColUnlock
+gameui ignoreInputTime 0.9
+menucmd SetupBuildCubes
+pcmd 0.1 menu3d addAnimScript BuildCubeRoot as_VRMenuBuildCubeConfig.txt 1.0

@@ -1,0 +1,87 @@
+add WorldObject
+set Name Mine
+set StateController Mine
+set RadarRange 0
+set Model units/Mine/Mine.amf
+set Material "mat_Mine"
+set Collision "Trigger Group TriggersMine CapsuleZ 1.25 1.0"
+set SpecialType Unit
+set WeaponType 75.0
+set ShotDamage 1000
+set ShotDamageOnAirMult 0.25
+set RangeBlast 3.5
+set RangeFalloff 0.9
+set Range 3.5
+set ShotSpeed 50
+set ShotLifespan 0.8
+set ShotMuzzleFlash MuzzleFlash
+set HitPoints 1500
+set DeployAnim units/Mine/Drop.aaf
+set CanHitGround 0
+set CanHitAir 0
+set MoveSpeed 0.0
+set Mass 0.0
+set HPModTransportWeight -600
+set NavmeshObstacle 0
+set PlaceMinDist 2.0
+set MineWeightMask 2
+set PickupIndicatorScale 2.0
+set ZSpinDefs "bone_middle 220.0"
+set ArmDelay 10.0
+set DestructionEffects_1  "1 0.2 0  0.5 0    0 0 ExplosionSeq3  /vcb:100 /reqVis"
+set DestructionEffects_2  "1 2 0  0.5 3   0 0  GlassSpinSmall@TC@  /vcb:100 /reqVis"
+set DestructionEffects_3  "1 1 0  7 2  2 0  MediumSmoke ExplosionFire FireBurnBig /dcl:shotGroundImpacts /dch:80 /mdl:units/Mine/MineDxBody.amf /mtl:mat_MineDx /bne:bone_middle /emt:Z /grp:DebrisM /col [Group DebrisM Box 0.5 0.5 0.2] /mas:1000 /skt:5"
+set CameraShakeOnDestroyed "50 0.7 0.7"
+add WorldObject initFrom Mine
+set Name MineLight
+set StateController MineLight
+set Model units/MineLight/MineLight.amf
+set RenderScale 1.0
+set WeaponType 25.0
+set ShotDamage 600
+set HitPoints 800
+set RangeBlast 3.0
+set RangeFalloff 0.9
+set Range 3.0
+set HPModTransportWeight -300
+set ShotDamageOnAirMult 0.0
+set PlaceMinDist 1.5
+set MineWeightMask 1
+set PickupIndicatorScale 1.7
+set ArmDelay 1.5
+set DestructionEffects_3  "1 0.75 1.0  7.0 2.0  2.0 0.0  MediumSmoke ExplosionFire FireBurnBig /dcl:shotGroundImpacts /dch:80 /mdl:units/Mine/MineDxBody.amf /mtl:mat_MineDx /bne:bone_middle /emt:Z /grp:DebrisM /col [Group DebrisM Box 0.5 0.5 0.2] /mas:1000.0 /skt:5.0"
+set CameraShakeOnDestroyed "30.0 0.7 0.7"
+add WorldObject
+set Name MineSlow
+set StateController MineSlow
+set Model units/MineSlow/MineSlow.amf
+set Material mat_MineSlow
+set Collision "Trigger Group TriggersMine CapsuleZ 5.0 1.0"
+set SpecialType Unit
+set WeaponType 75.0
+set RenderScale 1.0
+set ShotDamage 0
+set ShotDamageOnAirMult 0.25
+set Range 3.5
+set ShotSpeed 50
+set ShotLifespan 0.8
+set ShotMuzzleFlash MuzzleFlash
+set HitPoints 1300
+set ZSpinDefs "bone_spin 2220.0 /still"
+set DeployTime 2.0
+set CanHitGround 0
+set CanHitAir 0
+set MoveSpeed 0.0
+set Mass 0.0
+set HPModTransportWeight -600
+set NavmeshObstacle 0
+set MineDisarmResistance 2.0
+set DestructionEffects_1  "1 0.2 0.0  0.5 0.0    0 0 ExpBlastRingSmall  /vcb:75 /reqVis"
+set DestructionEffects_2  "1 2.0 2.0  0.5 3.0   0 0  GlassSpinSmall@TC@  /vcb:40 /reqVis"
+set DestructionEffects_3  "1 1.0 1.0  7.0 2.0  2.0 0.0  MediumSmoke FireBurnBig /dcl:shotGroundImpacts /dch:80 /mdl:units/MineSlow/MineSlowDxBody.amf /mtl:mat_MineSlowDx /bne:bone_root /emt:Z /grp:DebrisM /col [Group DebrisM Box 0.5 0.5 0.2] /mas:1000.0 /skt:5.0"
+set CameraShakeOnDestroyed "50.0 0.7 0.7"
+add WorldObject initFrom MineSlow
+set Name MineSlowU
+set StateController MineSlowU
+set Model units/MineSlowU/MineSlowU.amf
+set ZSpinDefs "bone_spin2 -500.0 /still"

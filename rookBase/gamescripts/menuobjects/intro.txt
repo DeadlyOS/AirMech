@@ -1,0 +1,59 @@
+add MenuObject
+set Name IntroSceneBg
+set Texture menus/IntroSceneBg
+set Coords "0 0 2048 2048"
+set MouseInteract 1
+set ScaleY 1.129
+set Disabled 1
+set DisabledAlphaTimeIn 18.0
+set DisabledAlphaTimeOut 2.0
+add MenuObject
+set Name IntroParalaxL1
+set Texture menus/IntroParalaxL1
+set Coords "0 0 2048 1024"
+add MenuObject
+set Name IntroParalaxL2
+set Texture menus/IntroParalaxL2
+set Coords "0 0 2048 1024"
+add MenuObject
+set Name IntroPanText
+set Coords "0 0 400 400"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set DrawWhenFocused ""
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_BoolArg 1
+set RenderCB_FontScale 0.8
+set RenderCB_Flags "/shadowed"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text IntroPanText1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 1.0
+set Disabled 1
+set RenderCB_FloatArg 30.0
+add MenuObject initFrom IntroPanText
+set Name IntroPanText1
+set RenderCB_Text IntroPanText1
+set RenderCB_FloatSymbol IntroPanText1
+set CommandOnCreate "floatsym set IntroPanText1 0.0"
+add MenuObject initFrom IntroPanText
+set Name IntroPanText2
+set RenderCB_Text IntroPanText2
+set RenderCB_FloatSymbol IntroPanText2
+set CommandOnCreate "floatsym set IntroPanText2 0.0"
+add MenuObject initFrom IntroPanText
+set Name IntroPanText3
+set RenderCB_Text IntroPanText3
+set RenderCB_FloatSymbol IntroPanText3
+set CommandOnCreate "floatsym set IntroPanText3 0.0"
+add MenuObject
+set Name IntroPanContainer
+set ContainerOnly 1
+set Child "IntroSceneBg 0 0"
+set Child "IntroParalaxL1 0 1870"
+set Child "IntroParalaxL2 0 3370"
+set Child "IntroPanText1 750 360"
+set Child "IntroPanText2 750 440"
+set Child "IntroPanText3 750 540"

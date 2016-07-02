@@ -1,0 +1,209 @@
+stopIfSymbol MainMenuConsoleLoaded == 1
+onloadrun {
+net disconnect
+matching disconnect
+menuCmd OnExitMap local
+if sym MainMenuConsoleLoaded == 1 echo MainMenuConsoleLoaded_already_set_DANGER
+if sym P_Pay == google sym set P_Pay paypal
+sym set MainMenuConsoleLoaded 1
+sym set AirMechDisplayRobot 0
+sym set PauseUIOpen 0
+sym set HideCursor 0
+sym set InStorySeq 0
+sym set ShopListBox 0
+sym set LobbyModeDetails 0
+sym set BackgroundMenuBlur 0
+gfx set orthographicProjection 0
+input set padFocusFallback ConMenuPlayAirMech
+pfx stop MainMenuEmbers
+if !maploaded if sym Background3dLoaded != 1 menuCmd MenuBackgroundBomber
+if sym AIDifficulty == 0 runnow sym set AIColor 0.7
+if sym AIDifficulty != 0 runnow sym set AIColor 1.0
+gfx set uniform interlace 0.0
+rook initBoostInfo
+menucmd GfxResetFogState
+rook inMenu MainMenu
+gameUI ignoreInputTime 1.2
+loadout partPointsUpdate
+sym set LaunchGameCmd $LaunchGameMode
+if sym LaunchGameMode == PvP runnow sym set MapName $MapNameCommon
+if sym LaunchGameMode == Coop runnow sym set MapName $MapNameCommon
+if sym LaunchGameMode == CTF runnow sym set MapName $MapNameCTF
+if sym LaunchGameMode == Solo runnow sym set MapName $MapNameCommon
+if sym LaunchGameMode == Survival runnow sym set MapName $MapNameSurvival
+if sym LaunchGameMode == Challenge runnow sym set MapName $MapNameChallenge
+if sym LaunchGameMode == PvP sym set NumPlayers $NumPlayersCommon
+if sym LaunchGameMode == Coop sym set NumPlayers $NumPlayersCoop
+if sym LaunchGameMode == CTF sym set NumPlayers $NumPlayersCommon
+if sym LaunchGameMode == Solo sym set NumPlayers $NumPlayersSolo
+if sym LaunchGameMode == Survival sym set NumPlayers $NumPlayersSurvival
+if sym LaunchGameMode == Challenge sym set NumPlayers $NumPlayersChallenge
+if sym LaunchGameMode == PvP sym set ActiveMaplist LaunchMaplistHidden
+if sym LaunchGameMode == PvP sym set MapMode 0
+if sym LaunchGameMode == Coop sym set ActiveMaplist LaunchMaplistHidden
+if sym LaunchGameMode == Coop sym set MapMode 1
+if sym LaunchGameMode == CTF sym set ActiveMaplist LaunchMaplistHiddenCTF
+if sym LaunchGameMode == CTF sym set MapMode 3
+if sym LaunchGameMode == Solo sym set ActiveMaplist LaunchMaplistHidden
+if sym LaunchGameMode == Solo sym set MapMode 0
+if sym LaunchGameMode == Survival sym set ActiveMaplist LaunchMaplistSurvivalHidden
+if sym LaunchGameMode == Survival sym set MapMode 2
+if sym LaunchGameMode == Challenge sym set ActiveMaplist LaunchMaplistChallengeHidden
+if sym LaunchGameMode == PvP sym set ActiveNumPlayers LaunchNumPlayersHidden
+if sym LaunchGameMode == Coop sym set ActiveNumPlayers LaunchNumPlayersCoopHidden
+if sym LaunchGameMode == CTF sym set ActiveNumPlayers LaunchNumPlayersHidden
+if sym LaunchGameMode == Solo sym set ActiveNumPlayers LaunchNumPlayersSoloHidden
+if sym LaunchGameMode == Survival sym set ActiveNumPlayers LaunchNumPlayersSurvivalHidden
+if sym LaunchGameMode == Challenge sym set ActiveNumPlayers LaunchNumPlayersChallengeHidden
+if sym GSS_Ok_Locs == 0 runnow sym set ReturnToLobby 0
+if sym GSS_Ok_Locs == 0 runnow party2 leave
+if sym GSS_Ok_Locs == 0 sym setZero ConMenuPlayCoop ConMenuPlayPvP
+if sym GSS_Ok_Locs == 0 sym set ConMenuPlaySolo 1
+}
+MO BackgroundBomber {
+pos 0 0
+}
+MO VignetteFade {
+pos 0 0
+}
+MO CM_MasterRoot {
+pos 1920 0
+}
+MO CM_MasterHome {
+pos 1920 0
+}
+MO CM_MasterLogo {
+pos 1920 0
+}
+MO CM_MasterPlay {
+pos 1920 0
+}
+MO CM_MasterSolo {
+pos 1920 0
+}
+MO CM_MasterCoop {
+pos 1920 0
+}
+MO CM_MasterPvP {
+pos 1920 0
+}
+MO CM_MasterWait {
+layer 1
+pos 1920 0
+}
+MO CM_MasterLobby {
+pos 1920 0
+}
+MO CM_LabelsLobby {
+pos 1920 -5
+safezone xa
+}
+MO CM_MasterPractice {
+pos 1920 0
+}
+MO CM_MasterTraining {
+pos 1920 0
+}
+MO CM_MasterMPLobby {
+pos 1920 0
+}
+MO CM_MasterCoopLobby {
+pos 1920 0
+}
+MO CM_MasterMapSelectStandard {
+pos 1920 0
+layer 2
+}
+MO CM_MasterWatch {
+pos 1920 0
+}
+MO CM_MasterHelpOptions {
+pos 1920 0
+}
+MO CM_MasterOptControls {
+pos 1920 0
+}
+MO CM_MasterOptGameplay {
+pos 1920 0
+}
+MO CM_MasterOptVideo {
+pos 1920 0
+}
+MO CM_MasterOptScreenInset {
+pos 1920 0
+}
+MO CM_MasterOptAudio {
+pos 1920 0
+}
+MO CM_MasterOptContact {
+pos 1920 0
+}
+MO CM_MasterStats {
+pos 1920 0
+}
+MO CM_ConMessagesMaster {
+pos 0 0
+layer 29
+}
+MO CM_ButtonHints {
+pos 0 0
+layer 30
+}
+MO VignetteConMen {
+pos 0 0
+}
+MO ConMenuCurrency {
+pos 1420 35
+layer 30
+}
+MO ConMenuShopHintHolder {
+pos 60 35
+layer 30
+}
+MO DummyFocus {
+pos 0 0
+layer 34
+}
+MO AsyncWaitLogoSpin {
+pos 95 135
+layer 34
+}
+onload {
+pfx worldspawn MainMenuEmbers /tag MainMenuEmbers
+sym set ConMenuSetupDone 0
+echo $CurrentMenu
+if sym MainMenuCount == 0 && sym MotDOn == 1 && sym IsFirstStartup == 0 runnow loadmenu MotD /fadein 0.15
+if sym MotDLoaded == 0 if sym CurrentMenu == CRoot runnow menuCmd CMS_Root
+if sym MotDLoaded == 0 if sym CurrentMenu == CHome runnow menuCmd CMS_Home
+if sym MotDLoaded == 0 if sym CurrentMenu == CTraining runnow menuCmd CMS_Training
+if sym ReturnToLobby == 1 runnow menucmd MainMenuInParty
+if sym MM_PartySize >= 1 && sym ReturnToLobby == 0 menucmd LeavePartyNow
+if sym MM_PartySize == 0 runnow party2 leaveIfInSolo
+if sym MotDLoaded == 0 && sym CurrentMenu != CRoot && sym ReturnToLobby == 0 runnow pcmd t4 menuCmd CMS_CheckForComplete
+sym set ReturnToLobby 0
+pcmd t6 sym set ConMenuSetupDone 0
+addUIAnim CM_LevelTiles mas_LevelTilesReset
+gm evt_scroll 1
+if menuloaded BackendDialog gameui focusName BackendDialogButton0
+pcmd 1.0 gameUI enableAll ConsoleButtonSelect
+sym setZero IsSpectator GSS_Lockin
+gameui disableImmediateAll CM_ButtonHints
+pcmd 0.1 gameui enableAll CM_ButtonHints
+pcmd 0.2 gameui show CM_ButtonHints
+pcmd 0.2 sym set BlockConShop 0
+music start $AlbumTrackCurrent
+menucmd CycleMainMenuTrack
+echo count: $MainMenuCount
+if sym MainMenuCount == 0 loadmenu MouseCursor.txt
+if sym MainMenuCount == 0 pcmd_seq ReAuth 0.5 if hasUplayIntegration && sym UPlayAskForceSkip == 0 && sym UPlayAsk < $UPlayAskMax && sym UPlayLinked == 0 && backendIsConnected menucmd DoUPlayAsk
+sym inc MainMenuCount
+pcmd 2.0 sym set IsFirstStartup 0
+}
+onunloadrun {
+if sym MainMenuCount != 0 sym set IsFirstStartup 0
+sym set MainMenuConsoleLoaded 0
+menu3d remove *
+sym set Background3dLoaded 0
+gfx lerp interlace $current 0.0 0.0
+echo unloaded_mainconsole
+}

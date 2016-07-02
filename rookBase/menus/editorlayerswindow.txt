@@ -1,0 +1,18 @@
+blockLoadOnConsoleSym EditorLayerWindowLoaded
+onloadrun {
+sym set EditorLayerWindowLoaded 1
+}
+MO EditorLayersWindow {
+draggableUIElement
+pos $UI_EditorLayers_X $UI_EditorLayers_Y /screenClamp 368 378
+layer 13
+preDeleteRunCmd gameUI getLastRenderPos EditorLayersWindow UI_EditorLayers_X UI_EditorLayers_Y
+}
+onload {
+gameui promoteToTop EditorLayersWindow
+}
+onunloadrun {
+sym set EditorLayerWindowLoaded 0
+}
+onunload {
+}

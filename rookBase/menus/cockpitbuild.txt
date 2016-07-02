@@ -1,0 +1,51 @@
+stopIfVR
+onloadrun {
+gameUI saveFocusID FocusBeforeCockpit
+gfx lerp interlace $current 1.25 0.15
+gfx lerp rgbdisplacement $current 1.5 0.15
+gfx lerp zoom $current 0.5 0.075
+sym setZero _UnitsBox _UpgradeBox
+if sym OpenCockpitButton <= 3 runnow sym setOne _UnitsBox
+if sym OpenCockpitButton == 4 runnow sym setOne _UpgradeBox
+if sym OpenCockpitButton == 5 runnow sym setOne _UpgradeBox
+if sym OpenCockpitButton == 6 runnow sym setOne _UnitsBox
+}
+MO CockpitColorBackground {
+pos 0 0
+layer -2
+}
+MO CockpitBuildUnit {
+pos 0 0
+safezone xA
+layer 10
+}
+onload {
+if sym _UnitsBox == 1 gameUI show UnitsBox
+menuCmd OpenCockpitSetup
+if sym _UpgradeBox == 1 gameUI show UpgradeBox
+if usingPad gameUI show QueueRemovePad
+if usingMouse gameUI show QueueRemoveKey
+cbinding enable cockpitOpen
+gameUI disableImmediateAll UnitsScreen
+gameUI enable UnitsScreen
+sym set ChoosingUnit 1
+sym set CockpitIsOpen 1
+if sym OpenCockpitButton == 1 menuCmd BuildUnitSetup
+if sym OpenCockpitButton == 2 menuCmd BuildUnitSetup
+if sym OpenCockpitButton == 3 menuCmd BuildUnitSetup
+if sym OpenCockpitButton == 4 if rulesV2 menuCmd UpgradeAirMechSetup
+if sym OpenCockpitButton == 5 if rulesV2 menuCmd UpgradeAirMechSetup
+}
+onunload {
+cbinding enable orderMenu
+cbinding enable orderMenuAlt
+cbinding disable cockpitOpen
+inputBinding disable cockpitOpen
+inputBinding enable cockpitClosed
+if sym QuickCockpitActive == 0 cbinding enable orderMenuQuick
+sym set QuickCockpitActive 0
+sym set OpenCockpitButton 0
+sym set ChoosingUnit 0
+gameUI focusId $FocusBeforeCockpit
+sym set CockpitIsOpen 0
+}

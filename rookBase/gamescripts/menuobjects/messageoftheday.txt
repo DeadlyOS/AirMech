@@ -1,0 +1,276 @@
+add MenuObject
+set Name PcMotDHeaderBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1940 70"
+set Color 0x05444d
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name PcMotDHeaderUnderline
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "780 4"
+set Color 0x703b07
+set BlendMode BlendAdd
+set DisabledSymInv ShowMotDHome
+set DisabledAlphaTimeInPreWait 0.4
+set HiddenCheckBySymbolValue PatchnotesRead!@PN_Version@
+add MenuObject
+set Name PcMotDMainBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1940 390"
+set Color 0x111111
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name PcMotDSideBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "400 480"
+set Color 0x273839
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name PcMotDTitle
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FontScale 1.0
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set RenderCB_ConsoleSymbol MotDTitle
+set SaveArgs 1
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 3
+set Color 0xff4455
+set DisabledAlphaTimeInPreWait 0.2
+set RenderCB _DrawUText
+set Texture menus/Tutorial
+set Coords "0 0 800 280"
+set DisabledSymInv ShowMotDHome
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustifyVertical JustifyYBottom
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name PcMotDMessage
+set RenderCB_RGBColor 0xe5e4e3
+set RenderCB_FontScale 0.8
+set DisabledAlphaTimeInPreWait 0.6
+set BlendMode BlendAdd
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set DisabledSymInv ShowMotDHome
+set RenderCB_ConsoleSymbol MotDMessage
+set SaveArgs 1
+set RenderCB _DrawUText
+set Coords "0 0 800 550"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name MotDPatchNotesContinued
+set Coords "0 0 800 800"
+set RenderCB_DX 800
+set RenderCB_DY 100
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.7
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_Text MessageConinueReading
+add MenuObject
+set Name PatchnotesCheck
+set Texture menus/Messages
+set Coords "759 367 251 120"
+set ScaleX 0.7, ScaleY 0.7
+set PulseAlpha "2.0 -0.2 -0.4"
+add MenuObject
+set Name MotDPatchNotesBackground
+set CoordsStart "796 184 24 24"
+set CoordsMid "820 184 24 24"
+set CoordsEnd "844 184 24 24"
+set CoordsStartFocused "796 208 24 24"
+set CoordsMidFocused "820 208 24 24"
+set CoordsEndFocused "844 208 24 24"
+set CoordsStartDisabled "796 232 24 24"
+set CoordsMidDisabled "820 232 24 24"
+set CoordsEndDisabled "844 232 24 24"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 870
+set RenderCB_DY 820
+set MouseInteract 1
+set Focus -2
+set NoAlphaMod 1
+set Alpha 0.66
+set MouseInteractZoneExpand "10 6 -21 -6"
+set Coords "0 0 850 800"
+set Child "MotDPatchNotesContinued 0 760"
+set Child "PatchnotesCheck 702 2"
+set DrawWhenFocused FocusPatchnotesHome
+set DrawWhenFocusedOffset "5 5"
+set CommandPress "if sym PatchnotesRead != $PN_Version patchnotes update"
+set CommandPress "if sym PatchnotesRead != $PN_Version pcmd 0.2 backend save"
+set CommandPress "sym set PatchnotesRead $PN_Version"
+set CommandPress "lang flushDrawCaches"
+set CommandPress "menucmd UI_Nav_PatchNotes"
+add MenuObject
+set Name PatchnotesIcon
+set Texture menus/PublisherLogo_PC
+set BlendMode BlendAdd
+set Color 0x333333
+set Coords "0 0 512 512"
+add MenuObject
+set Name MotDPatchNotes
+set Coords "0 0 800 800"
+set RenderCB_DX 800
+set RenderCB_DY 800
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 0.7
+set RenderCB _DrawPatchNotes
+set RenderCB_Flags "/nmi"
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 26
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_Text _patchnotes_
+set HiddenCheckBySymbolValue PatchnotesRead=@PN_Version@
+set HiddenCheckBySymbolInv ShowMotDHome
+set FirstDrawnChildren 1
+set Child "MotDPatchNotesBackground -35 -30"
+add MenuObject
+set Name PcMotDFocus
+set RenderBlocked 1
+set Coords "901 172 117 118"
+set Focus -2
+set Coords "0 0 50 50"
+set MouseInteract 1
+set CommandPress "]clearmenu MessageOfTheDay /fadeout 0.1"
+set CommandCancel "]clearmenu MessageOfTheDay /fadeout 0.1"
+set CommandPress "]clearmenu SplashPromo /fadeout 0.15"
+set CommandCancel "]clearmenu SplashPromo /fadeout 0.15"
+add MenuObject
+set Name VignetteMotD
+set Texture effects/VignetteMotD
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set DisabledSymInv ShowMotDHome
+add MenuObject
+set Name PcMotDShowPromos
+set Texture menus/TradeB
+set Coords "208 964 126 48"
+set CoordsFocused "336 964 126 48"
+set RenderCB_Text Btn_Promo
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCBExcludesDefaultRender 0
+set RenderCB_RGBColor 0x1d1d1d
+set RenderCB_RGBColorFocused "0.80 0.84 0.85"
+set RenderCB_Flags "/nmi /allCaps /fitX"
+set RenderCB_FontScale 0.32
+set RenderCB_DX 124
+set RenderCB_DY 42
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set MouseInteract 1
+set Focus -2
+set DisabledSymInv ShowMotDHome
+set HiddenCheckBySymbol ArcCustomized
+set HiddenCheckBySymbol2 ArcGACustomized
+set CommandPress "if !menuloaded Promos loadmenu Promos /fadein 0.1"
+add MenuObject
+set Name PcMotDShowMotD
+set Texture menus/TradeB
+set Coords "208 964 126 48"
+set CoordsFocused "336 964 126 48"
+set RenderCB_Text Btn_Promo
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCBExcludesDefaultRender 0
+set RenderCB_RGBColor 0x1d1d1d
+set RenderCB_RGBColorFocused "0.80 0.84 0.85"
+set RenderCB_Flags "/nmi /allCaps /fitX"
+set RenderCB_FontScale 0.32
+set RenderCB_DX 124
+set RenderCB_DY 42
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set MouseInteract 1
+set Focus -2
+set DisabledSymValue CurrentMenu!MKHome
+set HiddenCheckBySymbol ArcCustomized
+set HiddenCheckBySymbol2 ArcGACustomized
+set CommandPress "sym set ShowMotDHome 1"
+set CommandPress "menucmd DismissBasecampOverlays"
+add MenuObject
+set Name PcMotDTournamentGlow
+set Texture menus/Purchase2+lang
+set Coords "17 332 754 81"
+set BlendMode BlendAdd
+set PulseAlpha "1.0 -0.9 -0.7"
+add MenuObject
+set Name PcMotDTournament
+set Texture menus/Purchase2+lang
+set Coords "17 332 754 81"
+set CoordsFocused "17 248 754 81"
+set HiddenCheckBySymbolInv EventTournament
+set DisabledSymInv ShowMotDHome
+set HiddenCheckBySymbolValue PatchnotesRead!@PN_Version@
+set Child "PcMotDTournamentGlow 0 0"
+set CommandPress "net openlink https://www.carbongames.com/forums/viewtopic.php?f=21&t=22351"
+set Focus -2
+set MouseInteract 1
+set IsExternalLinkAction 1
+add MenuObject
+set Name PcNewsGlow
+set Texture menus/News
+set Coords "0 0 2048 438"
+set BlendMode BlendAdd
+set PulseAlpha "3.0 -0.2 0.5"
+set DisabledSymInv ShowMotDHome
+add MenuObject
+set Name PcNewsLexi
+set Texture menus/News
+set Coords "29 1266 194 336"
+set DisabledSymInv ShowMotDHome
+add MenuObject
+set Name PcNewsCloseButton
+set Texture menus/News
+set Coords "59 1160 90 90"
+set Focus -2
+set MouseInteract 1
+set ScaleXFocused 1.1, ScaleYFocused 1.1
+set DisabledSymInv ShowMotDHome
+set CommandPress "sym set ShowMotDHome 0"
+set CommandPress "sym set VignetteFade 0"
+set CommandPress "if menuloaded Promos clearmenu Promos /fadeout 0.1"
+set CommandPress "if menuloaded SplashPromo clearmenu SplashPromo /fadeout 0.1"
+add MenuObject
+set Name PcNewsBg
+set Texture menus/News
+set Coords "409 444 1300 665"
+set Child "PcNewsGlow -450 -180"
+set Child "AirMechLogoOutlineHome 190 -100	1.1"
+set Child "AirMechLogoOutlineGlowHome 0 -170"
+set Child "PcMotDTitle 120 80"
+set Child "PcMotDMessage 120 230"
+set Child "PcNewsLexi 1010 252"
+set Child "PcNewsCloseButton 1195 45"
+set DisabledSymInv ShowMotDHome
+add MenuObject
+set Name PcMotDMaster
+set ContainerOnly 1
+set Child "VignetteMotD 0 0"
+set Child "PcMotDFocus 350 -10"
+set Child "PcMotDTournament 120 140"
+set Child "PcNewsBg 300 -150"
+set Child "QuestSectionTileHome 110 -250		Ready		Check		0xf3942f"
+set HiddenCheckBySymbol ArcCustomized
+set HiddenCheckBySymbol2 ArcGACustomized

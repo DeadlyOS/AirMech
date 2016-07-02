@@ -1,0 +1,26 @@
+onloadrun {
+gameUI saveFocusID _sel_units_savefocusid_
+customize clearClassFilter
+sym set _ActiveLobbySelectScript_ NA
+sym clear _cmode
+}
+MO LobbySelectUnitsDialogMaster {
+pos 0 0
+}
+onload {
+customize scrollCfgLobby $_CustomObject 42
+floatsym set customDrawerPosLobby 0
+if usingPad gameUI focusNameTry LobbyArmySlot@ActiveLoadout@
+input set padFocusFallback LobbyArmySlot0
+}
+onunloadrun {
+if sym LoadoutAutosave == 0 && sym UnsavedLoadout == 0 menuCmd UnsavedLoadoutTest
+if sym LoadoutAutosave == 1 rook savePreset $ActiveLoadout
+if sym LoadoutAutosave == 1 backend save
+}
+onunload {
+input set padFocusFallback LobbyGoButton
+gameUI restoreFocusID _sel_units_savefocusid_
+gameUI ignoreInputTime 0.1
+customize scrollCfgLobby
+}

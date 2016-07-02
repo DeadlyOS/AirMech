@@ -1,0 +1,14 @@
+MO UplayQuestPop {
+pos 1485 925
+layer 15
+}
+onload {
+gameUI saveFocusID _uplayPopupRestoreFocus_
+gameUI focusNameTry UplayQuestPopButton
+sym set UplayPendingQuestRedeem 0
+sym set UplayQuestPopLoaded 1
+}
+onunload {
+gameUI restoreFocusID _uplayPopupRestoreFocus_
+sym set UplayQuestPopLoaded 0
+}

@@ -1,0 +1,421 @@
+add MenuObject initFrom DialogTitle
+set Name LobbySelectPilotDialogTitle
+set RenderCB_Text AsyncNoticeDialogTitle
+add MenuObject
+set Name LobbySelectPilotDialogMessage
+set Coords "0 0 334 138"
+set RenderCB_DX 500
+set RenderCB_DY 138
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set Layer 12
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Text @_AsyncDlgMsg_@
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.8 0.8 0.8"
+add MenuObject
+set Name LobbySelectPilotDialogShadow
+set Texture effects/black
+set Coords "0 0 512 256"
+set StretchToFillScreen 1
+set Layer 11
+set MouseInteract 1
+add MenuObject
+set Name LobbySelectPilotDialogMasterItems
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogGeneral
+set CoordsStart "342 6 36 85"
+set CoordsMid "378 6 12 85"
+set CoordsEnd "390 6 36 85"
+set CoordsStartFocused "342 91 36 87"
+set CoordsMidFocused "378 91 12 87"
+set CoordsEndFocused "390 91 36 87"
+set CoordsStartDisabled "342 178 36 24"
+set CoordsMidDisabled "378 178 12 24"
+set CoordsEndDisabled "390 178 36 24"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 760
+set RenderCB_DY 500
+set Coords "0 0 760 500"
+set Child "AsyncNoticeDialogTitle 0 26"
+set Child "AsyncNoticeDialogMessage 120 120"
+add MenuObject
+set Name LobbySelectPilotDialogMaster
+set ContainerOnly 1
+set RenderCB_DX 760
+set RenderCB_DY 500
+set Coords "0 0 760 500"
+set Anchor Center
+set Layer 12
+set Child "AsyncNoticeDialogMasterItems 0 0"
+add MenuObject
+set Name LobbySelectWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 940 650"
+set SaveArgs 2
+set CommandOnMouseDrag ">customize scrollUpdateLobby @_Arg1_@ @_Arg2_@ /paged $_Wheel"
+add MenuObject
+set Name LobbySelectScrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set SaveArgs 2
+set Child "LobbySelectScrollbarPos -2 0		@_Arg1_@ @_Arg2_@"
+set ScaleY 1.27
+set ScaleX 3.0
+set Color 0x777777
+set NoAlphaMod 1
+set Alpha 0.3
+set HiddenCheckBySymbol HideLobbyScrollBar
+add MenuObject
+set Name LobbySelectScrollbarPos
+set Texture "menus/Scrollbar"
+set SaveArgs 2
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult customDrawerPosLobby
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set Color 0x666666
+set ColorFocused 0xcccccc
+set Focus -2
+set CommandOnMouseDrag "floatsym set customDrawerPosLobby $_MouseRelY"
+set CommandOnMouseDrag ">customize scrollUpdateLobby @_Arg1_@ @_Arg2_@"
+set MouseZoneInsetsForRel "0 0 40 40"
+set ScaleY 1.27
+set ScaleX 3.0
+add MenuObject initFrom DialogTitle
+set Name LobbySelectItemDialogTitle
+set RenderCB_Text AsyncNoticeDialogTitle
+add MenuObject
+set Name LobbySelectItemContainer
+set ContainerOnly 1
+set Coords "0 0 1000 820"
+set FilterName CustomDrawer
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot0] 0 0		0 null ObjectSlot1 null ObjectSlot7"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot1] 130 0		1 ObjectSlot0 ObjectSlot2 null ObjectSlot8"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot2] 260 0		2 ObjectSlot1 ObjectSlot3 null ObjectSlot9"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot3] 390 0		3 ObjectSlot2 ObjectSlot4 null ObjectSlot10"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot4] 520 0		4 ObjectSlot3 ObjectSlot5 null ObjectSlot11"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot5] 650 0		5 ObjectSlot4 ObjectSlot6 null ObjectSlot12"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot6] 780 0		6 ObjectSlot5 null null ObjectSlot13"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot7] 0 110		7 null ObjectSlot8 ObjectSlot0 ObjectSlot14"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot8] 130 110	8 ObjectSlot7 ObjectSlot9 ObjectSlot1 ObjectSlot15"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot9] 260 110	9 ObjectSlot8 ObjectSlot10 ObjectSlot2 ObjectSlot16"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot10] 390 110	10 ObjectSlot9 ObjectSlot11 ObjectSlot3 ObjectSlot17"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot11] 520 110	11 ObjectSlot10 ObjectSlot12 ObjectSlot4 ObjectSlot18"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot12] 650 110	12 ObjectSlot11	ObjectSlot13 ObjectSlot5 ObjectSlot19"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot13] 780 110	13 ObjectSlot12	null ObjectSlot6 ObjectSlot20"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot14] 0 220	14 null ObjectSlot15 ObjectSlot7 ObjectSlot21"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot15] 130 220	15 ObjectSlot14 ObjectSlot16 ObjectSlot8 ObjectSlot22"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot16] 260 220	16 ObjectSlot15 ObjectSlot17 ObjectSlot9 ObjectSlot23"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot17] 390 220	17 ObjectSlot16 ObjectSlot18 ObjectSlot10 ObjectSlot24"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot18] 520 220	18 ObjectSlot17 ObjectSlot19 ObjectSlot11 ObjectSlot25"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot19] 650 220	19 ObjectSlot18	ObjectSlot20 ObjectSlot12 ObjectSlot26"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot20] 780 220	20 ObjectSlot19	null ObjectSlot13 ObjectSlot27"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot21] 0 330	21 null ObjectSlot22 ObjectSlot14 ObjectSlot28"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot22] 130 330	22 ObjectSlot21 ObjectSlot23 ObjectSlot15 ObjectSlot29"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot23] 260 330	23 ObjectSlot22 ObjectSlot24 ObjectSlot16 ObjectSlot30"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot24] 390 330	24 ObjectSlot23 ObjectSlot25 ObjectSlot17 ObjectSlot31"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot25] 520 330	25 ObjectSlot24 ObjectSlot26 ObjectSlot18 ObjectSlot32"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot26] 650 330	26 ObjectSlot25 ObjectSlot27 ObjectSlot19 ObjectSlot33"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot27] 780 330	27 ObjectSlot26 null ObjectSlot20 ObjectSlot34"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot28] 0 440	28 null ObjectSlot29 ObjectSlot21 _NA_"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot29] 130 440	29 ObjectSlot28 ObjectSlot30 ObjectSlot22 _NA_"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot30] 260 440	30 ObjectSlot29 ObjectSlot31 ObjectSlot23 _NA_"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot31] 390 440	31 ObjectSlot30 ObjectSlot32 ObjectSlot24 _NA_"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot32] 520 440	32 ObjectSlot31 ObjectSlot33 ObjectSlot25 _NA_"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot33] 650 440	33 ObjectSlot32 ObjectSlot34 ObjectSlot26 _NA_"
+set Child "LobbySelectObjectSlotTemplate[ObjectSlot34] 780 440	34 ObjectSlot33 null ObjectSlot27 null"
+set Child "LobbySelectWheelZone 0 0			7 5"
+add MenuObject
+set Name LobbySelectItemDialogShadow
+set Texture effects/black
+set Coords "0 0 512 256"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.5
+set MouseInteract 1
+set	CommandPress "clearmenu SelectItemDialog.txt /fadeout 0.1"
+add MenuObject
+set Name LobbySelectItemDialogClose
+set MouseInteract 1
+set Focus -2
+set Texture menus/Social
+set Coords "825 2 70 70"
+set CoordsPressed "825 2 70 70"
+set CoordsFocused "825 72 70 70"
+set CommandFocusDown "gameUI focusNameTry ObjectSlot6 ObjectSlot5 ObjectSlot4 ObjectSlot3 ObjectSlot2 ObjectSlot1 ObjectSlot0"
+set CommandPress "clearmenu SelectItemDialog.txt"
+set CommandCancel "clearmenu SelectItemDialog.txt"
+add MenuObject
+set Name LobbySelectItemDialogClose_Console
+set RenderCBExcludesDefaultRender 1
+set RenderCB _Null
+set CommandPress "clearmenu SelectItemDialog.txt"
+set CommandCancel "clearmenu SelectItemDialog.txt"
+add MenuObject
+set Name LoadoutSelectHeaderColor
+set Texture menus/DialogGeneral
+set Coords "474 300 78 27"
+set ScaleX 12.4 ScaleY 16.0
+set Color 0x6d6d6d
+set SaveArgs 2
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name ItemSelectTitle
+set Texture menus/Social
+set Coords "0 0 980 40"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_DX 980
+set RenderCB_DY 40
+set RenderCB_Text @ItemDialogTitle@
+add MenuObject initFrom ItemSelectTitle
+set Name ItemSelectTitleRJ
+set RenderCB_TextJustify JustifyXRight
+add MenuObject initFrom ItemSelectTitleRJ
+set Name PartPointStateHeader
+set Coords "0 0 280 40"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 1.0
+set RenderCB_DX 280
+set RenderCB_DY 40
+set RenderCB_Text PartPointUsage
+add MenuObject
+set Name ItemSelectShopHint
+set Coords "0 0 400 100"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYTop
+set SaveArgs 1
+set RenderCB_FontScale @_Arg1_@
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_Text ItemSelectShopHint
+set RenderCB_RGBColor 0xcccccc
+add MenuObject
+set Name DialogContentSelectFilterText
+set Coords "8 233 411 56"
+set CoordsFocused "8 298 411 56"
+set Texture menus/Faction
+set DisabledAlpha 0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 411
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "14 5"
+set MouseInteractZoneExpand "-20 -20 0 10"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set TextEditableMaxLen 16
+set RenderCB_Text @_Arg1_@
+set SaveArgs 3
+set CommandOnKeyboardEdit "menucmd @_Arg3_@"
+set Child "FilterTextClear 350 1	@_Arg1_@ @_Arg2_@"
+#if arc
+set TextEditableProfanityFiltered 1
+#endif
+add MenuObject
+set Name ItemSelectNavTemplate
+set Texture menus/HomeBar
+set Coords "718 237 138 82"
+set CoordsFocused "718 322 138 82"
+set Focus -2
+set MouseInteract 1
+set DisabledAlpha 0.33
+add MenuObject initFrom ItemSelectNavTemplate
+set Name ItemSelectNavPrevious
+set DisabledSymInv @_Arg1_@PagePrevOk
+set CommandPress "customize scrollUpdateLobby 7 5 /paged -1"
+set SaveArgs 1
+add MenuObject initFrom ItemSelectNavTemplate
+set Name ItemSelectNavNext
+set DisabledSymInv @_Arg1_@PageNextOk
+set MirrorOnX 1
+set CommandPress "customize scrollUpdateLobby 7 5 /paged 1"
+set SaveArgs 1
+add MenuObject
+set Name ItemSelectNavText
+set RenderCB_FontScale 1.0
+set RenderCB_Font RobotoBold
+set Coords "0 0 100 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@PagesCurr
+set RenderCB_BoolArg 0
+set RenderCB_RGBColor "0.9"
+set SaveArgs 1
+add MenuObject
+set Name ItemSelectNavigateMouse
+set ContainerOnly 1
+set HiddenCheckBySymbol InputPad
+set SaveArgs 1
+set Child "ItemSelectNavPrevious 0 0	@_Arg1_@"
+set Child "ItemSelectNavNext 238 0	@_Arg1_@"
+add MenuObject
+set Name ItemSelectButtonRShoulder
+set Texture hud/Buttons@GamepadStyle@
+set DisabledSymInv @_Arg1_@PageNextOk
+set DisabledAlpha 0.33
+set Coords "0 128 112 64"
+set SaveArgs 2
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+add MenuObject initFrom ItemSelectButtonRShoulder
+set Name ItemSelectButtonLShoulder
+set DisabledSymInv @_Arg1_@PagePrevOk
+set Coords "0 192 112 64"
+add MenuObject
+set Name ItemSelectNavigatePad
+set ContainerOnly 1
+set HiddenCheckBySymbolInv InputPad
+set SaveArgs 1
+set Child "ItemSelectButtonRShoulder 238 10 @_Arg1_@ 1.0"
+set Child "ItemSelectButtonLShoulder 30 10 @_Arg1_@ 1.0"
+add MenuObject
+set Name ItemSelectNavigate
+set ContainerOnly 1
+set SaveArgs 1
+set Child "ItemSelectNavText 138 20	@_Arg1_@"
+set Child "ItemSelectNavigateMouse 0 0	@_Arg1_@"
+set Child "ItemSelectNavigatePad 0 0	@_Arg1_@"
+add MenuObject
+set Name UnitsSelectNavTemplate
+set Texture menus/HomeBar
+set Coords "718 237 138 82"
+set CoordsFocused "718 322 138 82"
+set Focus -2
+set MouseInteract 1
+set DisabledAlpha 0.33
+add MenuObject initFrom UnitsSelectNavTemplate
+set Name UnitsSelectNavPrevious
+set DisabledSymInv @_Arg1_@PagePrevOk
+set CommandPress "sym set _CustomObject units"
+set CommandPress "customize scrollUpdateLobby 5 5 /paged -1"
+set SaveArgs 1
+add MenuObject initFrom UnitsSelectNavTemplate
+set Name UnitsSelectNavNext
+set DisabledSymInv @_Arg1_@PageNextOk
+set MirrorOnX 1
+set CommandPress "sym set _CustomObject units"
+set CommandPress "customize scrollUpdateLobby 5 5 /paged 1"
+set SaveArgs 1
+add MenuObject
+set Name UnitsSelectNavText
+set RenderCB_FontScale 1.0
+set RenderCB_Font RobotoBold
+set Coords "0 0 100 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@PagesCurr
+set RenderCB_BoolArg 0
+set RenderCB_RGBColor "0.9"
+set SaveArgs 1
+add MenuObject
+set Name UnitsSelectNavigate
+set ContainerOnly 1
+set SaveArgs 1
+set Child "UnitsSelectNavText 138 20	@_Arg1_@"
+set Child "UnitsSelectNavPrevious 0 0	@_Arg1_@"
+set Child "UnitsSelectNavNext 238 0	@_Arg1_@"
+add MenuObject
+set Name LobbySelectItemDialogMasterItems
+set MouseInteract 1
+set Focus -2
+set Texture menus/Social
+set CoordsStart "641 11 43 43"
+set CoordsMid "684 11 96 43"
+set CoordsEnd "780 11 43 43"
+set CoordsStartFocused "641 54 43 96"
+set CoordsMidFocused "684 54 96 96"
+set CoordsEndFocused "780 54 43 96"
+set CoordsStartDisabled "641 150 43 43"
+set CoordsMidDisabled "684 150 96 43"
+set CoordsEndDisabled "780 150 43 43"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 1050
+set RenderCB_DY 820
+set MouseInteractZoneExpand "20 20 -20 -20"
+set Coords "0 0 1050 820"
+set Child "LoadoutSelectHeaderColor 41 41"
+set Child "ItemSelectTitle 35 50				/ifSym ShowPartCount == 0"
+set Child "ItemSelectTitle 35 50				/ifSym ShowPartCount == 1	/ifSym _PartsUsePP == 0"
+set Child "ItemSelectTitleRJ -110 50		/ifSym ShowPartCount == 1	/ifSym _PartsUsePP == 1		/platform !consolePlatform"
+set Child "ItemSelectTitleRJ 0 50			/ifSym ShowPartCount == 1	/ifSym _PartsUsePP == 1		/platform consolePlatform"
+set Child "LoadoutAirMechPoints 360 50		/ifSym ShowPartCount == 1	/ifSym _PartsUsePP == 1"
+set Child "PartPointStateHeader 70 52		/ifSym ShowPartCount == 1	/ifSym _PartsUsePP == 1"
+set Child "LobbySelectItemContainer 75 110"
+set Child "LobbySelectItemDialogClose 906 40		/platform !consolePlatform"
+set Child "LobbySelectItemDialogClose_Console[LobbySelectItemDialogClose] 845 44		/platform consolePlatform"
+set Child "ItemSelectNavigate 605 674	ItemSel"
+set Child "DialogContentSelectFilterText 70 665 	DialogContentSelectFilterText DialogContentSelectFilterTextCleared DialogContentSelectFilterTextChanged		/platform !consolePlatform"
+set Child "ItemSelectShopHint 80 727 	0.55	/platform !consolePlatform"
+set Child "ItemSelectShopHint 80 684	0.65	/platform consolePlatform"
+set Child "DialogMasterShopIcon 503 665"
+add MenuObject
+set Name DialogMasterShopIcon
+set Texture menus/Mail
+set Coords "885 493 86 86"
+set Focus -2
+set MouseInteract 1
+set ScaleXFocused 1.1, ScaleYFocused 1.1
+set FocusedTimeIn 0.15
+set FocusedTimeOut 0.1
+set HiddenCheckBySymbolValue ItemDialogType!Parts
+set Child "DialogMasterShopLabel -8 70"
+set CommandPress "gameUI ignoreInputTime 0.15"
+set CommandPress "pcmd 0.5 sym set ShopFromHangar 1"
+set CommandPress "clearmenu SelectItemDialog /fadeOut 0.1"
+set CommandPress "if sym CurrentMenu != MKHome menuCmd MainMenuBackButton"
+set CommandPress "if sym CurrentMenu != MKHome pcmd 0.15 menuCmd MainMenuBarShop"
+set CommandPress "pcmd 0.3 menucmd JumpToShopParts"
+add MenuObject
+set Name DialogMasterShopLabel
+set Coords "0 0 100 50"
+set RenderCB_DX 100, RenderCB_DY 40
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Flags "/allCaps /fitX /shadowed /shadowColor2"
+set RenderCB_Text MB_Shop
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.6
+add MenuObject
+set Name LobbySelectItemDialogMaster
+set ContainerOnly 1
+set Layer 25
+set Child "LobbySelectItemDialogShadow 0 0"
+set Child "LobbySelectItemDialogMasterItems 460 155"

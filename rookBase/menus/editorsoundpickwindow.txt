@@ -1,0 +1,17 @@
+blockLoadOnConsoleSym EditorSoundPickWindowLoaded
+onloadrun {
+sym set EditorSoundPickWindowLoaded 1
+sym set EditorSoundSelectionPage 0
+editor do scrollGameSounds
+gameui refreshfiltername CollectionUI
+}
+MO EditorSoundPickWindow {
+pos 600 300
+layer 11
+}
+onload {
+addUIAnim EditorSoundPickWindow mas_DialogPopFadein
+}
+onunloadrun {
+sym set EditorSoundPickWindowLoaded 0
+}

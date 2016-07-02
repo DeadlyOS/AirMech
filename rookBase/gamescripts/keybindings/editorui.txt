@@ -1,0 +1,57 @@
+TBCMD {
+Text "Edit Mode Toggle"
+Tooltip "Toggle between game and edit mode"
+Icon "resources/unknown.png"
+cmd loadmap
+cmd "editor toggle editMode"
+}
+TBSEP {
+}
+TBCMD {
+Text "Undo"
+Tooltip "Undo last UI operation."
+Icon "resources/editundo.png"
+cmd "editor do undo"
+}
+TBCMD {
+Text "Redo"
+Tooltip "Redo last UI operation."
+Icon "resources/editredo.png"
+cmd "editor do redo"
+}
+TBSEP {
+}
+TBCMD {
+Text "Toggle Wireframe"
+Tooltip "Toggle graphics wireframe mode"
+Icon "resources/terrainedit.png"
+cmd "gfx toggle wireframeMode"
+}
+TBCMD {
+Text "Toggle Physics Visualization"
+Tooltip "Toggle physics visualization mode."
+Icon "resources/BulletLogo.png"
+cmd "gfx toggle physicVisualization"
+}
+TBSEP {
+}
+TBCMD {
+Text "Generate Recast"
+Tooltip "Generate Recast Navmesh"
+Icon "resources/RecastLogo.png"
+cmd "details rip"
+cmd "pcmd 0.5 editor do generateNavMesh"
+cmd "pcmd 0.6 details push"
+}
+TBSEP {
+}
+TABENTER {
+Text "Decals"
+cmd pushLayers
+cmd "allLayersPickable false"
+cmd "coreLayerPickable <Terrain> true"
+}
+TABEXIT {
+Text "Decals"
+cmd popLayers
+}

@@ -1,0 +1,95 @@
+add MenuObject
+set Name PleaseWaitTitle
+set Coords "0 0 1000 50"
+set RenderCB_DX 1000
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.3
+set Anchor Top
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Text DialogMMConnectingTitle
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 1"
+add MenuObject
+set Name PleaseWaitMessage
+set Coords "0 0 500 200"
+set RenderCB_DX 600
+set RenderCB_DY 200
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.9
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_BoolArg 1
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.8 0.8 0.8"
+set RenderCB_Text DialogMMConnectingMessage
+add MenuObject
+set Name PleaseWaitItems
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogGeneral
+set CoordsStart "342 6 36 85"
+set CoordsMid "378 6 12 85"
+set CoordsEnd "390 6 36 85"
+set CoordsStartFocused "342 91 36 87"
+set CoordsMidFocused "378 91 12 87"
+set CoordsEndFocused "390 91 36 87"
+set CoordsStartDisabled "342 178 36 24"
+set CoordsMidDisabled "378 178 12 24"
+set CoordsEndDisabled "390 178 36 24"
+set RenderCB _Draw_G3x3
+set Coords "0 0 760 500"
+set RenderCB_DX 760
+set RenderCB_DY 500
+set Child "PleaseWaitTitle 0 26"
+set Child "PleaseWaitMessage 80 130"
+set Child "GenericSearchingDots 220 320
+add MenuObject
+set Name PleaseWaitBackgroundPanL
+set Texture ]menus/CloudsBlueDark
+set BlendMode BlendDestColor
+set StretchToFillScreen 1
+set Coords "0 0 256 256"
+set CoordsInterpolatedDest "256 256 256 256"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 20"
+set TileArea "256 256"
+set TileAreaFullTexture 0
+add MenuObject
+set Name PleaseWaitBackgroundPanR
+set Texture ]menus/CloudsBlueDark
+set BlendMode BlendColorAdd
+set StretchToFillScreen 1
+set Coords "256 0 256 256"
+set CoordsInterpolatedDest "0 256 256 256"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 16"
+set TileArea "256 256"
+set TileAreaFullTexture 0
+set NoAlphaMod 1
+set Alpha 0.2
+add MenuObject
+set Name PleaseWaitBackground
+set Texture menus/BgRobotHead
+set Coords "0 0 1920 1024"
+set MouseInteract 1
+set ScaleY 1.05
+set Child "PleaseWaitBackgroundPanR 0 0"
+set Child "PleaseWaitBackgroundPanL 0 0"
+add MenuObject
+set Name PleaseWaitBlack
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set MouseInteract 1
+set DisabledAlphaTimeOut 1.0
+add MenuObject
+set Name PleaseWaitMaster
+set ContainerOnly 1
+set Coords "0 0 760 500"
+set RenderCB_DX 760
+set RenderCB_DY 500
+set Anchor Center
+set Layer 22
+set Child "PleaseWaitItems 0 0"

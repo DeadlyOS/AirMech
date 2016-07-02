@@ -1,0 +1,16 @@
+stopIfSymbol BlockAllUI == 1
+MO UnitIconBuilt {
+pos $_BuildSlotPosX $_BuildSlotPosY
+rename UnitIconBuilt6
+layer -2
+}
+MO UnitIconBuiltEdge {
+pos $_BuildSlotPosX $_BuildSlotPosY
+rename UnitIconBuiltEdge6
+layer -2
+}
+onloadrun {
+addUIAnim UnitIconBuilt6 mas_UnitBuilt.txt
+addUIAnim UnitIconBuiltEdge6 mas_UnitBuilt.txt
+pcmd 1.0 clearmenu UnitBuilt6
+}

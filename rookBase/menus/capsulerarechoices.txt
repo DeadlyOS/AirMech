@@ -1,0 +1,28 @@
+blockLoadOnConsoleSym CapsuleRareChoicesLoaded
+onloadrun {
+]gameUI saveFocusID _savefocusid_capsulerarechoices_
+sym set CapsuleRareChoicesLoaded 1
+}
+MO CapsuleRareChoices {
+pos 650 280
+layer 13
+}
+onload {
+addUIAnim CapsuleRareChoices mas_DialogPop
+input set padFocusFallback ChoiceButton1
+]if usingPad ]gameUI focusName ChoiceButton1
+]if usingPad ]pcmd t0 gameUI focusName ChoiceButton1
+]if usingPad ]pcmd t1 gameUI focusName ChoiceButton1
+]if usingPad ]pcmd t2 gameUI focusName ChoiceButton1
+]if usingPad ]pcmd t3 gameUI focusName ChoiceButton1
+]if usingPad ]pcmd 0.5 gameUI focusName ChoiceButton1
+gameui promoteToTop CapsuleRareChoices
+}
+onunloadrun {
+backend save
+}
+onunload {
+input set padFocusFallback $_savefocusid_capsulerarechoices_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_capsulerarechoices_
+sym set CapsuleRareChoicesLoaded 0
+}

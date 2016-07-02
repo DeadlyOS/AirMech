@@ -1,0 +1,198 @@
+add MenuObject
+set Name PartyTabInfFriend
+set Texture menus/Social
+set Coords "314 5 301 59"
+set CoordsFocused "6 5 301 59"
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolValue PartyColorCode@_Arg1_@!1
+add MenuObject
+set Name PartyTabInfNotFriend
+set Texture menus/Social
+set Coords "314 277 301 59"
+set CoordsFocused "6 277 301 59"
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolValue PartyColorCode@_Arg1_@!0
+add MenuObject
+set Name PartyTabInfSelf
+set Texture menus/Social
+set Coords "314 137 301 59"
+set CoordsFocused "6 137 301 59"
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolValue PartyColorCode@_Arg1_@!2
+add MenuObject
+set Name PartyTabInfBg
+set Texture menus/Social
+set Coords "224 934 210 54"
+set CoordsAnimated "224 934 210 54"
+set CoordsAnimated "13 876 210 54"
+set CoordsAnimated "224 876 210 54"
+set CoordsAnimated "13 934 210 54"
+set CoordsAnimationSymHash _PartyState_
+set BlendMode NoBlend
+add MenuObject
+set Name PartyTabInfFg
+set Texture menus/Social
+set Coords "224 934 210 54"
+set CoordsAnimated "224 934 210 54"
+set CoordsAnimated "13 876 210 54"
+set CoordsAnimated "224 876 210 54"
+set CoordsAnimated "13 934 210 54"
+set CoordsAnimationSymHash _PartyState_
+add MenuObject
+set Name PartyTabInfFocused
+set Texture menus/Social
+set Coords "19 876 202 54"
+set Coords "230  934 203 54"
+set CoordsAnimated "230 934 203 54"
+set CoordsAnimated "19 876 203 54"
+set CoordsAnimated "230 876 203 54"
+set CoordsAnimated "19 934 203 54"
+set CoordsAnimationSymHash _PartyState_
+set BlendMode BlendAdd
+set MirrorOnY 1
+add MenuObject
+set Name PartyTabLeaveBg
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "58 67"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name PartyTabLeave
+set Texture menus/Social
+set Coords "672 282 38 47"
+set CoordsFocused "626 282 38 47"
+set CoordsPressed "625 281 40 49"
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolValue _PartySize_=0
+set CommandPress "party leave"
+set FirstDrawnChildren 1
+set Child "PartyLeaveBg -10 -10"
+add MenuObject
+set Name PartyTabName
+set Coords "0 0 208 46"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Font RobotoBold
+set RenderCB_Offset "0 14"
+set RenderCB_ConsoleSymbol DialogBoxMessage
+set RenderCB_FontScale 0.75
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /fitx /fitx_n20"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol PartyOName@_Arg1_@
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject
+set Name PartyTabLeaderPromote
+set Texture menus/Social
+set Coords "831 276 66 38"
+set CoordsFocused "831 147 66 38"
+set ScaleX 0.66, ScaleY 0.66
+set DrawGreyScale 1
+set NoAlphaMod 1
+set Alpha 0.7
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolInv _PartyLeader_
+set CommandPress ">party promoteSym PartyName@_Arg1_@"
+add MenuObject
+set Name MockupPartyBadge
+set Texture fonts/Badges
+set Coords "3 182 66 40"
+add MenuObject
+set Name PartyTabInf
+set Texture menus/Social
+set Coords "13 877 208 46"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set CommandPress ">sym setFrom _FriendName_ PartyOName@_Arg1_@"
+set CommandPress ">sym set _FriendState_ $PartyOState@_Arg1_@"
+set CommandPress ">sym set _FriendStatusCode_ $PartyOStatusCode@_Arg1_@"
+set CommandPress "sym set _FriendFromParty_ 1"
+set CommandPress ">if sym _FriendStatusCode_ == -1 runNow loadmenu DialogNotFriend /fadein 0.15"
+set CommandPress ">if sym _FriendStatusCode_ != -1 runNow loadmenu DialogFriend /fadein 0.15"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set HiddenCheckBySymbol PartyOHidden@_Arg1_@
+set Child "PartyTabInfBg 0 0"
+set Child "PartyTabInfFg 0 0"
+set Child "PartyTabName 4 0			@_Arg1_@"
+set DisabledAlphaTimeIn 0.4
+set DisabledAlphaTimeOut 0.4
+set DrawWhenFocused PartyTabInfFocused
+set DrawWhenFocusedOffset "6 0 0"
+add MenuObject
+set Name PartySelfBg
+set Texture menus/MainBoxes
+set Coords "325 404 308 54"
+set CoordsAnimated "325 404 308 54"
+set CoordsAnimated "325 233 308 54"
+set CoordsAnimated "325 347 308 54"
+set CoordsAnimated "325 290 308 54"
+set CoordsAnimationSymHash _PartyState_
+set BlendMode NoBlend
+add MenuObject
+set Name PartySelfFocused
+set Texture menus/MainBoxes
+set Coords "328 404 302 54"
+set CoordsAnimated "325 404 308 54"
+set CoordsAnimated "325 233 308 54"
+set CoordsAnimated "325 347 308 54"
+set CoordsAnimated "325 290 308 54"
+set CoordsAnimationSymHash _PartyState_
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.4
+set MirrorOnY 1
+add MenuObject
+set Name PartySelfFg
+set Texture menus/Social
+set Coords "0 0 296 54"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "80 0 10 0"
+set DrawWhenFocused PartySelfFocused
+set DrawWhenFocusedOffset "3 0 0"
+set CommandPress "loadmenu Manual /fadein 0.1"
+add MenuObject
+set Name PartyAddBlockButton
+set Texture menus/MainWideBars
+set Coords "0 0 69 54"
+set Focus -2
+set MouseInteract 1
+set HiddenCheckBySymbolValue LobbyState=0
+add MenuObject
+set Name PartyAddButton
+set Texture menus/Social
+set Coords "451 877 69 54"
+set CoordsFocused "451 934 69 54"
+set HiddenCheckBySymbolValue MM_PartySize>1
+set HiddenCheckBySymbolInv MainMenuLoaded
+set Focus -2
+set MouseInteract 1
+set CommandPress "if sym _MatchingUI_ == 0 menuCmd JumpToFriends"
+set CommandPress "if sym _MatchingUI_ == 1 gameUI ignoreInputTime 0.25"
+set CommandPress "if sym _MatchingUI_ == 1 menuCmd ExitMatchmaking"
+set CommandPress "if sym _MatchingUI_ == 1 pcmd 0.2 menuCmd JumpToFriends"
+set Child "PartyAddBlockButton 0 0"
+add MenuObject
+set Name PartyWaitCircle1
+set Texture menus/WaitCircleBig
+set Coords "0 0 256 256"
+set RotationPeriod 1.0
+set ScaleX 0.2
+set ScaleY 0.2
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbolInv MainMenuLoaded
+add MenuObject initFrom PartyWaitCircle1
+set Name PartyWaitCircle2
+set RotationPeriod -3.3

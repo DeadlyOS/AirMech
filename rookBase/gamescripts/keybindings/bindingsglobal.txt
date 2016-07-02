@@ -1,0 +1,94 @@
+bindcmd F10 {
+}
+bindcmd F11 {
+}
+bindcmd F12 {
+}
+bindcmd F8 {
+if sym P_AccessLevel > 0 echo record_start
+if sym P_AccessLevel > 0 gameui record test
+}
+bindcmd control-r {
+if vr gfx hmd recenter
+}
+bindcmd control-g {
+if vr exec vr_grunts.txt
+}
+bindcmd control-x {
+if sym P_AccessLevel > 0 sym toggle ShowPaxMenu
+if sym P_AccessLevel == 0 if pax sym toggle ShowPaxMenu
+}
+#if !vr
+bindcmd escape {
+gameui ignoreInputTime 0.15
+if sym CurrentMenu == SplashPromo clearmenu SplashPromo /fadeout 0.1
+if MenuLoaded TempLoadout if sym CustomizeFromLobby == 1 clearmenu TempLoadout /fadeout 0.1
+if !MenuLoaded EscMenu && sym CurrentMenu != SplashPromo pcmd 0.2 menuCmd #LoadEscMenu_@CurrentMenu@
+if MenuLoaded EscMenu clearmenu EscMenu
+if MenuLoaded ConShop clearmenu ConShop /fadeout 0.15
+}
+#endif
+bindcmd shift-escape {
+gameui ignoreInputTime 0.15
+if !MenuLoaded EscMenu menuCmd #LoadEscMenu_@CurrentMenu@
+if MenuLoaded EscMenu clearmenu EscMenu /fadeout 0.15
+if MenuLoaded ConShop clearmenu ConShop /fadeout 0.15
+}
+bindcmd space {
+if vr gfx hmd recenter
+}
+bindcmd padr3-padl3 {
+if !consolePlatformHW && !arc && sym MainMenuLoaded == 1 runNow menuCmd SwitchToPadMenu
+if !consolePlatformHW && !arc && sym MainMenuConsoleLoaded == 1 runNow menuCmd SwitchToKeyboardMenu
+}
+#if !retail
+bindcmd padrightshoulder-paddown-pady {
+dview cycledef 1
+dactions off
+}
+bindcmd padrightshoulder-padup-pady {
+dview cycledef -1
+dactions off
+}
+bindcmd padrightshoulder-padleft-pady {
+dactions toggle
+dview off
+}
+bindcmd padrightshoulder-padright-pady {
+dactions toggle
+dview off
+}
+#endif
+#if vr
+bindcmd padup +symCheck VRMainMenu {
+sym inc KCheat 1
+if sym KCheat > 2 sym set KCheat 0
+}
+bindcmd paddown {
+sym inc KCheat 1
+if sym KCheat > 4 || sym KCheat < 3 sym set KCheat 0
+}
+bindcmd padleft {
+if sym KCheat == 4 || sym KCheat == 6 sym inc KCheat 1
+if sym KCheat != 4 && sym KCheat != 6 sym set KCheat 0
+}
+bindcmd padright {
+if sym KCheat == 5 || sym KCheat == 7 sym inc KCheat 1
+if sym KCheat != 5 && sym KCheat != 7 sym set KCheat 0
+}
+bindcmd padb {
+if sym KCheat == 8 || sym KCheat == 10 sym inc KCheat 1
+if sym KCheat != 8 && sym KCheat != 10 sym set KCheat 0
+}
+bindcmd pada {
+if sym KCheat == 9 || sym KCheat == 11 sym inc KCheat 1
+if sym KCheat != 9 && sym KCheat != 11 sym set KCheat 0
+}
+bindcmd padstart-paddown {
+]sym toggle VRTutVoice
+]playSound VoiceE /pos $VR_VoicePos
+}
+bindcmd pady {
+if sym VRMainMenu == 1 menucmd DemoSetup
+}
+#endif

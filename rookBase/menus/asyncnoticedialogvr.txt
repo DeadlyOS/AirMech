@@ -1,0 +1,20 @@
+blockLoadOnConsoleSym AsyncNoticeDialogVrLoaded
+onloadrun {
+]sym set AsyncNoticeDialogVrLoaded 1
+}
+MO VrAsync {
+pos 790 390
+layer 30
+}
+onload {
+]playerinputpause 1 local
+]menu3d add AsyncNoticeDialog /model vr/AsyncNoticeDialog.amf	/material mat_AsyncDialog /rootScale 0.8 /rootRot -90 0 0 /requireExplicitClear /noVis
+]menu3d logicFnc AsyncNoticeDialog trackOnHMD /offset 0 50 0 /mag 100 /radiusOuter 30 /timeout 0.5
+]pcmd 0.1 menu3d addAnimScript AsyncNoticeDialog as_VRMenuIn.txt
+}
+onunload {
+]playerinputpause 0 local
+]sym set AsyncNoticeDialogVrLoaded 0
+]menu3d remove AsyncNoticeDialog
+]menu3d addAnimScript AsyncNoticeDialog as_VRMenuOut.txt
+}

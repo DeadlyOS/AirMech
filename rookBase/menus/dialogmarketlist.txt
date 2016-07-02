@@ -1,0 +1,39 @@
+onloadrun {
+if sym CurrentMenu == CHome && console menuCmd ConMenuBlur
+if sym CurrentMenu == CRoot && console menuCmd ConMenuBlur
+gameui clearScrollableDrawHashes
+clearmenu DialogBoxOk.txt
+sym set InspectDialogState 1
+if sym DialogPageDisplay == 0 sym set DialogPageDisplay 1
+if sym DialogForceInspect == 1 sym set DialogPageDisplay 0
+sym set DialogForceInspect 0
+sym set DialogPageCount 1
+echo market_list_menu_loaded
+if sym _ShowUnitBG_ == 1 runnow sym set DialogPageCount 2
+if sym _ShowUnitBG_ == 1 customize expUnitStatConfig $_UnlockObjectName 1 /noPreviewMod
+if sym _ShowRookBG_ == 1 runnow sym set DialogPageCount 3
+if sym _ShowRookBG_ == 1 runnow customize expRookStatConfig $_UnlockObjectName 1
+if sym _ShowRookBG_ == 0 && sym _ShowUnitBG_ == 0 sym set DialogPageDisplay 1
+}
+MO MarketListDialogMaster {
+pos 0 0
+layer 15
+}
+onload {
+addUIAnim ShopFrameSell mas_DialogPop
+gameui promoteToTop MarketListDialogMaster
+sym push CurrentMenu MarketListDialog
+sym push DisableConShop 1
+sym set DialogMarketList 1
+if usingPad pcmd 0.1 gameUI focusNameTry SellPriceDiamondsBox
+input set padFocusFallback InspectDialogCancel
+}
+onunloadrun {
+rookMenus previewClear
+sym pop _ShowFrameFG_
+gameUI restoreFocusID MenuPreMarketListFocus
+sym pop CurrentMenu DisableConShop
+sym set DialogMarketList 0
+if sym CurrentMenu == CHome && console menuCmd ConMenuSharp
+if sym CurrentMenu == CRoot && console menuCmd ConMenuSharp
+}

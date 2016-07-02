@@ -1,0 +1,28 @@
+blockLoadOnConsoleSym StructureInspectLoaded
+onloadrun {
+gameUI getLastRenderPos #MapTile@BaseLayoutSlotSel@ _StructureInspectPosX _StructureInspectPosY
+sym inc _StructureInspectPosX -60
+sym inc _StructureInspectPosY -200
+sym set StructureInspectLoaded 1
+sym set StructureToUpgrade $BaseLayoutSlotP
+basecamp genProcList $BaseLayoutSlotP _GenProcList 6
+basecamp genCanUpgrade $BaseLayoutSlotP _GenCanUpgrade /benefitsSymbol _GenUpgradeBenefits
+basecamp genBonusStates  $BaseLayoutSlotP _GenBonusState /lineYOffset 22 /procYOffset 32
+basecamp genCoreActionCost $BaseLayoutSlotP upgrade _GenCostUpgrade
+}
+MO StrucureInspectWindow {
+pos 100 120
+draggableUIElement
+pos $_StructureInspectPosX $_StructureInspectPosY /screenClamp 200 300
+layer 10
+}
+onload {
+addUIAnim StrucureInspectWindow mas_DialogPopFadein
+gameui promoteToTop StrucureInspectWindow
+}
+onunloadrun {
+sym set StructureInspectLoaded 0
+sym set StructureBuildLoaded 0
+}
+onunload {
+}

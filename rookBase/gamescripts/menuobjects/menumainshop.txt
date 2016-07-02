@@ -1,0 +1,4215 @@
+add MenuObject
+set Name ShopListBuffer
+set Texture menus/Leaderboards
+set Coords "0 0 340 70"
+set RenderBlocked 1
+set MouseInteract 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue @_ListboxName_@@_Arg1_@=
+add MenuObject
+set Name ShopListItemOutlineMain
+set Texture effects/white
+set Coords "0 0 304 46"
+set Color 0x1b1b1b
+add MenuObject
+set Name SubShopListItemOutlineMain
+set Texture effects/white
+set Coords "0 0 264 46"
+set Color 0x1b1b1b
+add MenuObject
+set Name ShopListItemActivated
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set Texture menus/MainMenuGrad
+set Coords "653 134 312 49"
+set HiddenCheckBySymbolInv Filter_@_Arg1_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 	0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "40 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text Shop_@_Arg1_@
+add MenuObject
+set Name SubShopListItemActivated
+set RenderCB_DX 200
+set RenderCB_DY 50
+set SaveArgs 2
+set Texture menus/MainMenuGrad
+set Coords "653 134 256 49"
+set HiddenCheckBySymbolInv &@_Arg1_@&
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 	0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "40 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg2_@
+add MenuObject initFrom SubShopListItemActivated
+set Name SubMarketListItemActivated
+set Coords "653 194 256 49"
+add MenuObject
+set Name MarketListItemActivated
+set RenderCB_DX 200
+set RenderCB_DY 50
+set SaveArgs 1
+set Texture menus/MainMenuGrad
+set Coords "653 194 312 49"
+set HiddenCheckBySymbolInv Filter_@_Arg1_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 	0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "40 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text Shop_@_Arg1_@
+add MenuObject
+set Name ShopListItemFocus
+set Texture menus/MainMenuGrad
+set Coords "1282 130 314 56"
+set BlendMode BlendAdd
+set PulseAlpha "2.0 -0.2 0.0"
+add MenuObject initFrom ShopListItemFocus
+set Name MarketListItemFocus
+set Coords "1282 190 314 56"
+add MenuObject initFrom ShopListItemFocus
+set Name SubShopListItemFocus
+set ScaleX 0.822
+add MenuObject initFrom SubShopListItemFocus
+set Name SubMarketListItemFocus
+set Coords "1282 190 314 56"
+add MenuObject
+set Name ShopListItemBase
+set RenderCB_DX 200
+set RenderCB_DY 50
+set Texture menus/MainMenuGrad
+set Coords "971 133 309 51"
+set DrawWhenFocused ShopListItemFocus
+set DrawWhenFocusedOrder BeforeChildren
+set DrawWhenFocusedOffset "-3 -3"
+set MouseInteract 1
+set SaveArgs 3
+set FilterName Generic
+set Focus -2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 	0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "40 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPressAlt "playSound $MenuSoundClick"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPressAlt "gameUI ignoreInputTime 0.1"
+set CommandOnCreate "sym inc _ShoplistEntries"
+set CommandOnCreate "sym inc _ShoplistHeight 38"
+add MenuObject
+set Name ShopListExpand
+set Texture menus/Mail
+set Coords "881 117 26 30"
+set Color 0x75a19a
+set ColorFocused 0xffffff
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set MouseInteractZoneExpand "-10 -5 0 5"
+set CommandPress "sym set ListboxExpand 1"
+set CommandPress ">pcmd 0 gameui directPushNameIfEnabled SL@_Arg1_@"
+set CommandPress ">echo SL@_Arg1_@"
+add MenuObject initFrom ShopListItemBase
+set Name ShopListItem
+set RenderCB_Text Shop_@_Arg2_@
+set Child "ShopListItemActivated 0 0 @_Arg2_@"
+set CommandPress "gameui ignoreInputTime 0.05"
+set CommandPress "sym set ListboxExpand 1"
+set CommandPress "if sym ListboxExpand == 1 pcmd 0 clearmenu ListboxShop /fadeout 0.1"
+set CommandPress "sym setZero Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Parts Shop_Cosmetics Shop_Flair Shop_Other Shop_Boosts Shop_Inventory Shop_Ultimates Shop_Pets Shop_Market Shop_Ultimates"
+set CommandPress ">sym set Shop_@_Arg2_@ 1"
+set CommandPress "sym setNSet 12 SubShopFilter"
+set CommandPress "sym setNSet 12 SubShopFilterName"
+set CommandPress "menuCmd ShopButtonPressPre"
+set CommandPress ">menucmd ShopFilter_ClickList local @_Arg2_@ @_Arg3_@"
+set CommandPress ">collection shopInit @_Arg2_@"
+set Child "ShopListExpand 10 10	@_Arg1_@	/ifImmediate @_Arg3_@ == 1"
+set CommandFocusUp ">gameUI focusNameTryList SL @_Arg1_@ 15 -1 /tryOnFail ConMenuLobbyCancel"
+set CommandFocusDown ">gameUI focusNameTryList SL @_Arg1_@ 15 1 /tryOnFail ConMenuLobbyCancel"
+set CommandGetFocus ">input set padFocusFallback SL@_Arg1_@"
+set CommandPress "playSound ui/UI_menu_swipe_down.wav"
+add MenuObject initFrom ShopListItemBase
+set Name SubShopListItem
+set ScaleX 0.82
+set DrawWhenFocused SubShopListItemFocus
+set Child "SubShopListItemActivated 0 0 @_Arg2_@ &@_Arg3_@&"
+set RenderCB_ConsoleSymbol @_Arg3_@
+set CommandPress "sym setZero Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_Fliers Filter_Ultimates"
+set CommandPress "sym setZero Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+set CommandPress "sym setZero Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_Tracers Filter_EnginePfx Filter_Auras"
+set CommandPress "menucmd ClearOtherFilters"
+set CommandPress ">sym set &@_Arg2_@& 1"
+set CommandPress "menuCmd ShopButtonPressPre"
+set CommandPress "collection scrollUpdate paged"
+set CommandPress "if sym Filter_Parts == 1 pcmd 0.1 gameui refreshFilterName PartIcons"
+set CommandPressAlt ">sym toggle &@_Arg2_@&"
+set CommandPressAlt "menuCmd ShopButtonPressPre"
+set CommandPressAlt "collection scrollUpdate paged"
+add MenuObject initFrom ShopListItemBase
+set Name SubMarketListItem
+set Coords "971 193 309 51"
+set ScaleX 0.82
+set DrawWhenFocused SubMarketListItemFocus
+set Child "SubMarketListItemActivated 0 0 @_Arg2_@ &@_Arg3_@&"
+set RenderCB_ConsoleSymbol @_Arg3_@
+set CommandPress "sym setZero Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_Fliers Filter_Ultimates"
+set CommandPress "sym setZero Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+set CommandPress "sym setZero Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_Tracers Filter_EnginePfx Filter_Auras"
+set CommandPress "menucmd ClearOtherFilters"
+set CommandPress ">sym set &@_Arg2_@& 1"
+set CommandPress "menuCmd ShopButtonPressPre"
+set CommandPress "collection scrollUpdate paged"
+set CommandPressAlt ">sym toggle &@_Arg2_@&"
+set CommandPressAlt "menuCmd ShopButtonPressPre"
+set CommandPressAlt "collection scrollUpdate paged"
+add MenuObject
+set Name MarketListExpand
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Texture menus/Mail
+set Coords "881 117 26 30"
+set Color 0xf6a439
+set ColorFocused 0xffffff
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set MouseInteractZoneExpand "-10 -5 0 5"
+set CommandPress "sym set ListboxExpand 1"
+set CommandPress ">pcmd 0 gameui directPushNameIfEnabled ML@_Arg1_@"
+set CommandPress ">echo ML@_Arg1_@"
+add MenuObject
+set Name MarketListItem
+set RenderCB_DX 200
+set RenderCB_DY 50
+set Texture menus/MainMenuGrad
+set Coords "971 193 309 51"
+set DrawWhenFocused MarketListItemFocus
+set DrawWhenFocusedOrder BeforeChildren
+set DrawWhenFocusedOffset "-3 -3"
+set MouseInteract 1
+set SaveArgs 2
+set FilterName Generic
+set Focus -2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 	0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "40 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text Shop_@_Arg2_@
+set Child "MarketListItemActivated 0 0 @_Arg2_@"
+set Child "MarketListExpand 10 10	@_Arg1_@	/ifImmediate @_Arg3_@ == 1"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "gameUI ignoreInputTime 0.12"
+set CommandPress "sym set ListboxExpand 1"
+set CommandPress "if sym ListboxExpand == 1 pcmd 0 clearmenu ListboxMarket /fadeout 0.1"
+set CommandPress "sym setZero Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Parts Shop_Cosmetics Shop_Flair Shop_Other Shop_Boosts Shop_Inventory Shop_Ultimates Shop_Pets Shop_ShowAll Filter_Wishlist"
+set CommandPress ">sym set Shop_@_Arg2_@ 1"
+set CommandPress "sym setNSet 12 SubShopFilter"
+set CommandPress "sym setNSet 12 SubShopFilterName"
+set CommandPress "menuCmd ShopButtonPressPre"
+set CommandPress ">menucmd MarketFilter_ClickList local @_Arg2_@ @_Arg3_@"
+set CommandPress "pcmd 0 collection scrollUpdate paged"
+set CommandPress "playSound ui/UI_menu_swipe_down.wav"
+set CommandOnCreate "sym inc _ShoplistEntries"
+set CommandOnCreate "sym inc _ShoplistHeight 38"
+add MenuObject
+set Name ShopListItemHL
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "378 38"
+set Color 0x12252c
+set BlendMode BlendAdd
+add MenuObject
+set Name ShopListMore
+set Texture menus/MainMenuGrad
+set Coords "1604 134 50 22"
+set HiddenCheckBySymbolValue _ShoplistEntries<@ShopListEntriesMax@
+add MenuObject initFrom ShopListMore
+set Name MarketListMore
+set Coords "1604 156 50 22"
+add MenuObject
+set Name ShopListBox
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName ShopList
+set HiddenCheckBySymbolValue MainMenuShopSelect=Market
+set Child "ShopListItem[SL#Nx] 0 Nx46			#Nx	Featured 0  /ifSym ShopFilter0 is !empty"
+set Child "ShopListItem[SL#Nx] 0 Nx46			#Nx	AirMechs 1  /ifSym ShopFilter1 is !empty"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter0	SubShopFilterName0  /ifSym SubShopFilter0 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter1	SubShopFilterName1  /ifSym SubShopFilter1 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter2	SubShopFilterName2  /ifSym SubShopFilter2 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter3	SubShopFilterName3  /ifSym SubShopFilter3 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter4	SubShopFilterName4  /ifSym SubShopFilter4 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter5	SubShopFilterName5  /ifSym SubShopFilter5 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter6	SubShopFilterName6  /ifSym SubShopFilter6 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter7	SubShopFilterName7  /ifSym SubShopFilter7 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter8	SubShopFilterName8  /ifSym SubShopFilter8 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter9	SubShopFilterName9  /ifSym SubShopFilter9 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "ShopListItem[SL#Nx] 0 Nx46			#Nx	Units 1    /ifSym ShopFilter2 is !empty"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter0	SubShopFilterName0  /ifSym SubShopFilter0 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter1	SubShopFilterName1  /ifSym SubShopFilter1 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter2	SubShopFilterName2  /ifSym SubShopFilter2 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter3	SubShopFilterName3  /ifSym SubShopFilter3 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter4	SubShopFilterName4  /ifSym SubShopFilter4 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter5	SubShopFilterName5  /ifSym SubShopFilter5 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter6	SubShopFilterName6  /ifSym SubShopFilter6 is !empty	/ifSym SubShopFilter == Units"
+set Child "ShopListItem[SL#Nx] 0 Nx46		#Nx	Pilots	0   		/ifSym ShopFilter3 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "ShopListItem[SL#Nx] 0 Nx46		#Nx	Items 	0			/ifSym ShopFilter4 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "ShopListItem[SL#Nx] 0 Nx46		#Nx	Parts	1    		/ifSym ShopFilter5 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter0	SubShopFilterName0  /ifSym SubShopFilter0 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter1	SubShopFilterName1  /ifSym SubShopFilter1 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter2	SubShopFilterName2  /ifSym SubShopFilter2 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter3	SubShopFilterName3  /ifSym SubShopFilter3 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter4	SubShopFilterName4  /ifSym SubShopFilter4 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter5	SubShopFilterName5  /ifSym SubShopFilter5 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter6	SubShopFilterName6  /ifSym SubShopFilter6 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter7	SubShopFilterName7  /ifSym SubShopFilter7 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter8	SubShopFilterName8  /ifSym SubShopFilter8 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter9	SubShopFilterName9  /ifSym SubShopFilter9 is !empty	/ifSym SubShopFilter == Parts"
+set Child "ShopListItem[SL#Nx] 0 Nx46		#Nx	Cosmetics	1 		/ifSym ShopFilter6 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter0	SubShopFilterName0  /ifSym SubShopFilter0 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter1	SubShopFilterName1  /ifSym SubShopFilter1 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter2	SubShopFilterName2  /ifSym SubShopFilter2 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter3	SubShopFilterName3  /ifSym SubShopFilter3 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter4	SubShopFilterName4  /ifSym SubShopFilter4 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter5	SubShopFilterName5  /ifSym SubShopFilter5 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter6	SubShopFilterName6  /ifSym SubShopFilter6 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "ShopListItem[SL#Nx] 0 Nx46		#Nx	Other 	1			/ifSym ShopFilter7 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter0	SubShopFilterName0  /ifSym SubShopFilter0 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter1	SubShopFilterName1  /ifSym SubShopFilter1 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter2	SubShopFilterName2  /ifSym SubShopFilter2 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter3	SubShopFilterName3  /ifSym SubShopFilter3 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter4	SubShopFilterName4  /ifSym SubShopFilter4 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter5	SubShopFilterName5  /ifSym SubShopFilter5 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubShopListItem[SL#Nx] 40 Nx46	#Nx	SubShopFilter6	SubShopFilterName6  /ifSym SubShopFilter6 is !empty	/ifSym SubShopFilter == Other"
+set Child "ShopListItem[SL#Nx] 0 Nx46		#Nx	Boosts	0   		/ifSym ShopFilter8 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "ShopListItem[SL#Nx] 0 Nx46		#Nx	Bundles	0 			/ifSym ShopFilter9 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "ShopListMore 120 740	"
+set Child "ShopFiltersListbox 0 -80	"
+add MenuObject
+set Name MarketListBox
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName ShopList
+set HiddenCheckBySymbolValue MainMenuShopSelect=Game
+set Child "MarketListItem[ML#Nx] 0 0			#Nx	ShowAll       	/ifSym MarketFilter0 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "MarketListItem[ML#Nx] 0 Nx46		#Nx	AirMechs 1	/ifSym MarketFilter1 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter0	SubShopFilterName0  /ifSym SubShopFilter0 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter1	SubShopFilterName1  /ifSym SubShopFilter1 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter2	SubShopFilterName2  /ifSym SubShopFilter2 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter3	SubShopFilterName3  /ifSym SubShopFilter3 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter4	SubShopFilterName4  /ifSym SubShopFilter4 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter5	SubShopFilterName5  /ifSym SubShopFilter5 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter6	SubShopFilterName6  /ifSym SubShopFilter6 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter7	SubShopFilterName7  /ifSym SubShopFilter7 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter8	SubShopFilterName8  /ifSym SubShopFilter8 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter9	SubShopFilterName9  /ifSym SubShopFilter9 is !empty	/ifSym SubShopFilter == AirMechs"
+set Child "MarketListItem[ML#Nx] 0 Nx46		#Nx	Units  1  	/ifSym MarketFilter2 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter0	SubShopFilterName0  /ifSym SubShopFilter0 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter1	SubShopFilterName1  /ifSym SubShopFilter1 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter2	SubShopFilterName2  /ifSym SubShopFilter2 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter3	SubShopFilterName3  /ifSym SubShopFilter3 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter4	SubShopFilterName4  /ifSym SubShopFilter4 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter5	SubShopFilterName5  /ifSym SubShopFilter5 is !empty	/ifSym SubShopFilter == Units"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter6	SubShopFilterName6  /ifSym SubShopFilter6 is !empty	/ifSym SubShopFilter == Units"
+set Child "MarketListItem[ML#Nx] 0 Nx46		#Nx	Pilots 0   	/ifSym MarketFilter3 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "MarketListItem[ML#Nx] 0 Nx46		#Nx	Items 	0	/ifSym MarketFilter4 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "MarketListItem[ML#Nx] 0 Nx46		#Nx	Parts  1  	/ifSym MarketFilter5 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter0	SubShopFilterName0  /ifSym SubShopFilter0 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter1	SubShopFilterName1  /ifSym SubShopFilter1 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter2	SubShopFilterName2  /ifSym SubShopFilter2 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter3	SubShopFilterName3  /ifSym SubShopFilter3 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter4	SubShopFilterName4  /ifSym SubShopFilter4 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter5	SubShopFilterName5  /ifSym SubShopFilter5 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter6	SubShopFilterName6  /ifSym SubShopFilter6 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter7	SubShopFilterName7  /ifSym SubShopFilter7 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter8	SubShopFilterName8  /ifSym SubShopFilter8 is !empty	/ifSym SubShopFilter == Parts"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter9	SubShopFilterName9  /ifSym SubShopFilter9 is !empty	/ifSym SubShopFilter == Parts"
+set Child "MarketListItem[ML#Nx] 0 Nx46		#Nx	Cosmetics 1	/ifSym MarketFilter6 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter0	SubShopFilterName0  /ifSym SubShopFilter0 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter1	SubShopFilterName1  /ifSym SubShopFilter1 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter2	SubShopFilterName2  /ifSym SubShopFilter2 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter3	SubShopFilterName3  /ifSym SubShopFilter3 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter4	SubShopFilterName4  /ifSym SubShopFilter4 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter5	SubShopFilterName5  /ifSym SubShopFilter5 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter6	SubShopFilterName6  /ifSym SubShopFilter6 is !empty	/ifSym SubShopFilter == Cosmetics"
+set Child "MarketListItem[ML#Nx] 0 Nx46		#Nx	Other 1		/ifSym MarketFilter7 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter0	SubShopFilterName0  /ifSym SubShopFilter0 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter1	SubShopFilterName1  /ifSym SubShopFilter1 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter2	SubShopFilterName2  /ifSym SubShopFilter2 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter3	SubShopFilterName3  /ifSym SubShopFilter3 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter4	SubShopFilterName4  /ifSym SubShopFilter4 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter5	SubShopFilterName5  /ifSym SubShopFilter5 is !empty	/ifSym SubShopFilter == Other"
+set Child "SubMarketListItem[ML#Nx] 40 Nx46	#Nx	SubShopFilter6	SubShopFilterName6  /ifSym SubShopFilter6 is !empty	/ifSym SubShopFilter == Other"
+set Child "MarketListItem[ML#Nx] 0 Nx46		#Nx	Crates 0		/ifSym MarketFilter8 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "MarketListItem[ML#Nx] 0 Nx46		#Nx	Boosts  0 		/ifSym MarketFilter9 is !empty	/ifSym _ShoplistEntries < @ShopListEntriesMax@"
+set Child "MarketListMore 120 740	"
+set Child "ShopFiltersMarketListbox 0 -80"
+add MenuObject initFrom ListLabelTemplate
+set Name ListLabelShop_New
+set RenderCB_Text Shop_New
+set HiddenCheckBySymbolInv Shop_New
+set Disabled 0
+add MenuObject initFrom ListButtonTemplate
+set Name ListButtonShop_New
+set RenderCB_Text Shop_New
+set CommandPress "sym setZero Shop_New Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Parts Shop_Pets Shop_Flair Shop_Other Shop_Sale Shop_Market"
+set CommandPress "sym set Shop_New 1"
+add MenuObject initFrom ListLabelTemplate
+set Name ListLabelShop_AirMechs
+set RenderCB_Text Shop_AirMechs
+set HiddenCheckBySymbolInv Shop_AirMechs
+set Disabled 0
+add MenuObject initFrom ListButtonTemplate
+set Name ListButtonShop_AirMechs
+set RenderCB_Text Shop_AirMechs
+set CommandPress "sym setZero Shop_New Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Parts Shop_Pets Shop_Flair Shop_Other Shop_Sale Shop_Diamonds Shop_Bundles Shop_Market"
+set CommandPress "sym set Shop_AirMechs 1"
+add MenuObject
+set Name ShopItemName
+set Coords "0 0 178 55"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set MirrorOnY 1
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_FontScale 0.56
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Flags "/outlined /outlined8x /fitX /fitX_n20"
+set RenderCB_Offset "0 4"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol TR_Name@_Arg1_@
+set RenderCB_RGBColor 0xFFFFFF
+set HiddenCheckBySymbol TR_IsGiftwrapped@_Arg1_@
+add MenuObject initFrom ShopItemName
+set Name ShopItemSeller
+set RenderCB_RGBColor "0.5 0.9 1.0"
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined /outlined8x /fitX /noCommaSep"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol TR_Seller@_Arg1_@
+set SaveArgs 1
+set HiddenCheckBySymbol TR_IsGiftwrapped@_Arg1_@
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name ShopItemCount
+set Texture menus/Social
+set Coords "834 330 184 236"
+set RenderCB_FontScale 0.9
+set RenderCB_DX 30
+set RenderCB_DY 20
+set RenderCBExcludesDefaultRender 0
+set SaveArgs 1
+set RenderCB_Offset "146 197"
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol TR_Count@_Arg1_@
+set RenderCB_RGBColor "1.0 1.0 0.5"
+set HiddenCheckBySymbolValue TR_Count@_Arg1_@=0
+set FilterName CollectionUI
+add MenuObject
+set Name ShopItemInfCount
+set Texture menus/HomeBar
+set Coords "786 655 184 236"
+set RenderCB_FontScale 0.9
+set RenderCB_DX 30
+set RenderCB_DY 20
+set RenderCBExcludesDefaultRender 0
+set SaveArgs 1
+set RenderCB_Offset "146 197"
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol TR_InfCount@_Arg1_@
+set RenderCB_RGBColor "0.75"
+set HiddenCheckBySymbolValue TR_InfCount@_Arg1_@<2
+set FilterName CollectionUI
+add MenuObject
+set Name ShopCountedItemBg
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "178 230"
+set NoAlphaMod 1
+set Alpha 0.5
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set SaveArgs 2
+set HiddenCheckBySymbolValue TR_Count@_Arg1_@=0
+add MenuObject
+set Name ShopVIPTicketOnlyFrame
+set Texture menus/Social
+set Coords "621 347 208 262"
+set HiddenCheckBySymbolInv TR_VipTicket@_Arg1_@
+add MenuObject
+set Name ShopLimitedItemBg
+set Texture menus/Social
+set Coords "563 700 178 230"
+set HiddenCheckBySymbolValue TR_IsLimited@_Arg1_@=0
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set SaveArgs 2
+add MenuObject
+set Name ShopIconSm
+set Texture &TR_IconSm@_Arg1_@&+lang
+set TextureAlt QuestIcons/Default_UL_LG
+set NoDrawOnMissingTexture 1
+set Coords "0 0 128 128"
+set Coords "x128 15 0 99 128 x256 29 0 198 256"
+set ScaleX 1.796875
+set ScaleY 1.796875
+set ScaleRefToCoordsX 99.0
+set ScaleRefToCoordsY 128.0
+set SaveArgs 1
+set FilterName CollectionUI
+set HiddenCheckBySymbolInv TR_ShowIconSm@_Arg1_@
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom ShopIconSm
+set Name TradeIconSm
+add MenuObject
+set Name ShopButtonUnlock
+set Texture menus/HomeBar
+set Coords "785 412 171 46"
+set CoordsFocused "785 458 171 50"
+set Focus -2
+set DisplayAsFocusedIfParentFocused 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set DisabledAlpha 0.2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name MarketCancelListing
+set Texture menus/HomeBar
+set Coords "785 908 171 46"
+set CoordsFocused "785 955 171 50"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /nmi /fitX"
+set RenderCB_RGBColor "0.95"
+set RenderCB_RGBColorFocused "1.0"
+set RenderCB_FontScale 0.65
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Focus -2
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set DisabledAlpha 0.2
+set RenderCB_Text DialogButtonCancel
+set HiddenCheckBySymbolInv TR_CanCancel@_Arg1_@
+set SaveArgs 1
+add MenuObject initFrom PStatusBarCurrencyTemplateSymEmb
+set Name ShopPriceDiamonds
+set RenderCB_ConsoleSymbol TR_PriceD@_Arg1_@
+set SaveArgs 1
+set RenderCB_FontScale 0.6
+set RenderCB_RGBColor 0xe5ffff
+set RenderCB_TextJustify JustifyXRight
+add MenuObject initFrom PStatusBarCurrencyTemplateSymEmb
+set Name ShopPriceDiamondsBig
+set RenderCB_ConsoleSymbol TR_PriceD@_Arg1_@
+set SaveArgs 1
+set RenderCB_FontScale 0.7
+set RenderCB_RGBColor 0xe5ffff
+add MenuObject initFrom PStatusBarCurrencyTemplate
+set Name ShopPriceBuyBig
+set Coords "0 0 60 20"
+set RenderCB_DX 180
+set RenderCB _DrawUText
+set RenderCB_Text DialogButtonBuy
+set SaveArgs 1
+set RenderCB_FontScale 0.7
+set RenderCB_RGBColor 0xe5ffff
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject initFrom PStatusBarCurrencyTemplateSymEmb
+set Name ShopPriceKudos
+set RenderCB_ConsoleSymbol TR_PriceK@_Arg1_@
+set SaveArgs 1
+set RenderCB_FontScale 0.6
+set RenderCB_RGBColor 0xffe599
+set RenderCB_TextJustify JustifyXLeft
+add MenuObject initFrom PStatusBarCurrencyTemplateSymEmb
+set Name ShopPriceKudosBig
+set RenderCB_ConsoleSymbol TR_PriceK@_Arg1_@
+set SaveArgs 1
+set RenderCB_FontScale 0.7
+set RenderCB_RGBColor 0xffe599
+add MenuObject initFrom ShopPriceDiamonds
+set Name ShopPriceDiamonds_Dis
+set RenderCB_AlphaOverride 0.35
+add MenuObject initFrom ShopPriceDiamondsBig
+set Name ShopPriceDiamondsBig_Dis
+set RenderCB_AlphaOverride 0.35
+add MenuObject initFrom ShopPriceBuyBig
+set Name ShopPriceBuyBig_Dis
+set RenderCB_AlphaOverride 0.35
+add MenuObject initFrom ShopPriceKudos
+set Name ShopPriceKudos_Dis
+set RenderCB_AlphaOverride 0.35
+add MenuObject initFrom ShopPriceKudosBig
+set Name ShopPriceKudosBig_Dis
+set RenderCB_AlphaOverride 0.35
+add MenuObject
+set Name ShopPriceOr
+set Texture menus/DialogGeneral
+set Coords "0 0 50 20"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set RenderCB _DrawDText
+set RenderCB_FontScale 0.45
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Flags "/fitX"
+set RenderCB_Offset "0 4"
+set RenderCB_Text OR
+set RenderCB_RGBColor "0.7"
+add MenuObject initFrom ShopPriceOr
+set Name ShopUnlockReqMsg
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol TR_Msg@_Arg1_@
+set RenderCB_BoolArg 1
+set RenderCB_DX 166
+set Coords "0 0 171 60"
+set RenderCB_Flags "/outlined8x"
+set RenderCB_FontScale 0.5
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "3 6"
+set HiddenCheckBySymbol TR_MsgLong@_Arg1_@
+set RenderCB_RGBColor "0.86, 0.58, 0.22"
+add MenuObject initFrom ShopUnlockReqMsg
+set Name ShopUnlockReqMsgLong
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbolInv TR_MsgLong@_Arg1_@
+set RenderCB_Offset "0 -55"
+add MenuObject
+set Name ShopUnlockOverlayPriceKD
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue TR_PriceMode@_Arg1_@!KD
+set Child "ShopPriceDiamonds -15 0	@_Arg1_@"
+set Child "ShopPriceKudos 15 0		@_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlayPriceK
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue TR_PriceMode@_Arg1_@!K
+set Child "ShopPriceKudosBig 0 0		@_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlayPriceD
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue TR_PriceMode@_Arg1_@!D
+set Child "ShopPriceDiamondsBig 0 0		@_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlayPriceC
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue TR_PriceMode@_Arg1_@!C
+set Child "ShopPriceBuyBig 0 0		@_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlayPriceKD_Dis
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue TR_PriceMode@_Arg1_@!KD
+set Child "ShopPriceDiamonds_Dis -15 0	@_Arg1_@"
+set Child "ShopPriceKudos_Dis 15 0		@_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlayPriceK_Dis
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue TR_PriceMode@_Arg1_@!K
+set Child "ShopPriceKudosBig_Dis 0 0		@_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlayPriceD_Dis
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue TR_PriceMode@_Arg1_@!D
+set Child "ShopPriceDiamondsBig_Dis 0 0		@_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlayPriceC_Dis
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue TR_PriceMode@_Arg1_@!C
+set Child "ShopPriceBuyBig_Dis 0 0		@_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlay
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbol TR_IsOwned@_Arg1_@
+set HiddenCheckBySymbol2 TR_IsGiftwrapped@_Arg1_@
+set DisplayAsFocusedIfParentFocused 1
+set Child "ShopUnlockOverlay_NotUnlockable 0 10 @_Arg1_@"
+set Child "ShopUnlockOverlay_Unlockable 0 10 @_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlay_Unlockable
+set Texture menus/ConLoadout
+set Coords "754 214 178 65"
+set NoAlphaMod 1
+set Alpha 0.8
+set SaveArgs 1
+set HiddenCheckBySymbol TR_Greyed@_Arg1_@
+set DisplayAsFocusedIfParentFocused 1
+set Child "ShopButtonUnlock 3 17"
+set Child "ShopUnlockOverlayPriceKD 0 25 @_Arg1_@"
+set Child "ShopUnlockOverlayPriceK 0 25 @_Arg1_@"
+set Child "ShopUnlockOverlayPriceD 0 25 @_Arg1_@"
+set Child "ShopUnlockOverlayPriceC 0 25 @_Arg1_@"
+add MenuObject initFrom PStatusBarCurrencyTemplate
+set Name ShopPriceBoost
+set Coords "0 0 60 20"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol BoostCost@_Arg1_@
+set SaveArgs 1
+set RenderCB_FontScale 0.8
+set RenderCB_RGBColor "0.9 1.0 1.0"
+set RenderCB_TextJustify JustifyXLeft
+set Child "PStatusBarDiamondsIconScaled -28 0 0.9"
+add MenuObject
+set Name ShopUnlockOverlayPriceBoost
+set ContainerOnly 1
+set SaveArgs 1
+set Child "ShopPriceBoost 80 20		@_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlay_Boost
+set Texture menus/ConLoadout
+set Coords "754 214 178 65"
+set NoAlphaMod 1
+set Alpha 0.8
+set SaveArgs 1
+set DisplayAsFocusedIfParentFocused 1
+set Child "ShopButtonUnlock 3 12"
+set Child "ShopUnlockOverlayPriceBoost 0 0 @_Arg1_@"
+add MenuObject
+set Name ShopUnlockOverlay_NotUnlockable
+set Texture menus/ConLoadout
+set Coords "754 214 178 65"
+set NoAlphaMod 1
+set Alpha 0.8
+set SaveArgs 1
+set HiddenCheckBySymbolInv TR_Greyed@_Arg1_@
+set DisplayAsFocusedIfParentFocused 1
+set Child "ShopUnlockOverlayPriceKD_Dis 0 32 @_Arg1_@"
+set Child "ShopUnlockOverlayPriceK_Dis 0 32 @_Arg1_@"
+set Child "ShopUnlockOverlayPriceD_Dis 0 32 @_Arg1_@"
+set Child "ShopUnlockOverlayPriceC_Dis 0 32 @_Arg1_@"
+set Child "ShopUnlockReqMsg 2 -5 @_Arg1_@"
+set Child "ShopUnlockReqMsgLong 2 -5 @_Arg1_@"
+add MenuObject
+set Name ShopIconLg
+set Texture &TR_IconLg@_Arg1_@&+lang
+set TextureAlt &TR_IconLgA@_Arg1_@&+lang
+set NoDrawOnMissingTexture 1
+set Coords "x256 29 0 198 256 x512 58 0 396 512 x1024 116 0 768 1024"
+set ScaleX @_Arg2_@
+set ScaleY @_Arg3_@
+set ScaleRefToCoordsX 198.0
+set ScaleRefToCoordsY 256.0
+set SaveArgs 3
+set FilterName CollectionUI
+set HiddenCheckBySymbol TR_ShowIconSm@_Arg1_@
+set DisplayAsFocusedIfParentFocused 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+add MenuObject initFrom ShopIconLg
+set Name NanoforgeIconLg
+set Disabled 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.2
+set DisabledSym TR_HiddenHCube@_Arg3_@
+set FilterOnlyFlags Textures
+set FilterOnlyFlags Coords
+add MenuObject initFrom ShopIconLg
+set Name TradeIconLg
+set ScaleX 0.696
+set ScaleY 0.696
+add MenuObject
+set Name MailIconLg
+set Texture &TR_IconLg@_Arg1_@&
+set TextureAlt &TR_IconLgA@_Arg1_@&
+set NoDrawOnMissingTexture 1
+set Coords "x256 32 32 192 192 x512 64 64 384 384 x1024 116 0 768 1024"
+set ScaleX 0.35
+set ScaleY 0.35
+set ScaleRefToCoordsX 192.0
+set ScaleRefToCoordsY 192.0
+set SaveArgs 1
+set FilterName CollectionUI
+set HiddenCheckBySymbol TR_ShowIconSm@_Arg1_@
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name ShopIconBoost
+set Texture misc/Boost@_Arg1_@
+set NoDrawOnMissingTexture 1
+set Coords "29 0 198 256"
+set ScaleX 0.896
+set ScaleY 0.896
+set SaveArgs 1
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name ShopUltimateStar
+set Texture menus/LoadoutGrid
+set Coords "16 732 39 38"
+set HiddenCheckBySymbolInv TR_IsUltimate@_Arg1_@
+set ToolTip TT_RoomWithFriends
+add MenuObject
+set Name ShopUltimateFg
+set Texture ]menus/CloudsBlueDark
+set BlendMode BlendAdd
+set HiddenCheckBySymbolInv TR_IsUltimate@_Arg1_@
+set Coords "0 0 256 256"
+set CoordsInterpolatedDest "256 256 256 256"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 10"
+set TileArea "178 230"
+set SaveArgs 1
+set TileAreaFullTexture 0
+add MenuObject initFrom ShopUltimateFg
+set Name TradeUltimateFg
+set TileArea "109 141"
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+add MenuObject initFrom ShopUltimateFg
+set Name MailUltimateFg
+set TileArea "74 74"
+add MenuObject initFrom ShopUltimateFg
+set Name InventoryUltimateFg
+set TileArea "74 74"
+set HiddenCheckBySymbolInv TR2_IsUltimate@_Arg1_@
+add MenuObject initFrom ShopUltimateFg
+set Name SelectUltimateFg
+set TileArea "118 100"
+set HiddenCheckBySymbolInv @_Arg1_@
+set SaveArgs 1
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name ShopUltimateBg
+set Texture ]menus/CloudsBlueDark
+set BlendMode BlendAdd
+set HiddenCheckBySymbolInv TR_IsUltimate@_Arg1_@
+set Coords "256 0 256 256"
+set CoordsInterpolatedDest "0 256 256 256"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 16"
+set TileArea "178 230"
+set SaveArgs 1
+set TileAreaFullTexture 0
+add MenuObject initFrom ShopUltimateBg
+set Name TradeUltimateBg
+set TileArea "109 141"
+set DisplayAsFocusedIfParentFocused 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+add MenuObject initFrom ShopUltimateBg
+set Name MailUltimateBg
+set TileArea "74 74"
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom ShopUltimateBg
+set Name InventoryUltimateBg
+set TileArea "74 74"
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolInv TR2_IsUltimate@_Arg1_@
+add MenuObject initFrom ShopUltimateBg
+set Name SelectUltimateBg
+set TileArea "118 100"
+set HiddenCheckBySymbolInv @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name ShopUltimateGlow
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "178 230"
+set Color 0xff5400
+set BlendMode BlendAdd
+set PulseAlpha "2.4 -0.9 -0.8"
+set HiddenCheckBySymbolInv TR_IsUltimate@_Arg1_@
+add MenuObject initFrom ShopUltimateGlow
+set Name TradeUltimateGlow
+set TileArea "109 141"
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+add MenuObject initFrom ShopUltimateGlow
+set Name MailUltimateGlow
+set TileArea "69 69"
+add MenuObject initFrom ShopUltimateGlow
+set Name InventoryUltimateGlow
+set TileArea "69 69"
+set HiddenCheckBySymbolInv TR2_IsUltimate@_Arg1_@
+add MenuObject
+set Name ShopUltimateStamp
+set Texture menus/Faction
+set Coords "119 445 97 98"
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set SaveArgs 2
+set NoAlphaMod 1
+set Color 0xffdd53
+set Alpha 0.8
+set Focus -2
+set HiddenCheckBySymbolInv TR_IsUltimate@_Arg1_@
+add MenuObject
+set Name TradeRemoveItem
+set Texture menus/TradeA
+set Coords "7 862 44 44"
+set ScaleX 0.7
+set ScaleY 0.7
+set ScaleXFocused 1.25
+set ScaleYFocused 1.25
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.1
+set MouseInteract 1
+set Focus -2
+set CommandPress ">menucmd RemoveItemFrom@_Arg1_@"
+add MenuObject
+set Name HCubeRemoveItem
+set Texture menus/TradeA
+set Coords "7 862 44 44"
+set ScaleX 0.7
+set ScaleY 0.7
+set ScaleXFocused 1.25
+set ScaleYFocused 1.25
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.1
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress ">menucmd RemoveItemFromHCube local @_Arg1_@"
+add MenuObject
+set Name ShopLimitedStamp
+set Texture menus/Social
+set Coords "497 821 54 40"
+set NoAlphaMod 1
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set SaveArgs 2
+set Alpha 0.9
+set Focus -2
+set HiddenCheckBySymbolValue TR_IsLimited@_Arg1_@=0
+add MenuObject
+set Name ShopGoldPlatedStamp
+set Texture menus/Social
+set Coords "530 942 54 40"
+set NoAlphaMod 1
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set SaveArgs 2
+set Alpha 0.9
+set Focus -2
+set HiddenCheckBySymbolValue TR_IsGoldPlated@_Arg1_@=0
+add MenuObject initFrom ShopGoldPlatedStamp
+set Name InventoryGoldPlatedStamp
+set HiddenCheckBySymbolValue TR2_IsGoldPlated@_Arg1_@=0
+add MenuObject
+set Name ShopHighlightItem
+set Texture menus/ItemFrame&TR_Rarity@_Arg1_@&
+set Coords "204 0 204 256"
+set CoordsFocused "408 0 204 256"
+set FilterName CollectionUI
+set DisplayAsFocusedIfParentFocused 1
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set SaveArgs 2
+add MenuObject
+set Name MailHighlightItem
+set Texture menus/ItemFrame&TR_Rarity@_Arg1_@&
+set Coords "710 158 98 98"
+set CoordsFocused "612 158 98 98"
+set FilterName CollectionUI
+set DisplayAsFocusedIfParentFocused 1
+set SaveArgs 1
+add MenuObject
+set Name MarketLimitedFactionTab
+set Texture menus/HomeBar
+set Coords "699 904 69 53"
+add MenuObject
+set Name MarketLimitedFactionGift
+set Texture menus/HomeBar
+set Coords "699 904 69 53"
+set SaveArgs 1
+set HiddenCheckBySymbolInv TR_LimitedFaction@_Arg1_@
+add MenuObject
+set Name MarketLimitedFaction
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "8 230"
+set Color 0x2ec231
+set SaveArgs 1
+set HiddenCheckBySymbolInv TR_LimitedFaction@_Arg1_@
+set Child "MarketLimitedFactionTab 8 50"
+add MenuObject
+set Name MarketLimitedPlayerTab
+set Texture menus/HomeBar
+set Coords "699 957 69 53"
+add MenuObject
+set Name MarketLimitedPlayerGift
+set Texture menus/HomeBar
+set Coords "699 957 69 53"
+set SaveArgs 1
+set PulseAlpha "1.0 -1.5 3.3"
+set HiddenCheckBySymbolInv TR_LimitedPlayer@_Arg1_@
+add MenuObject
+set Name MarketGiftPersonalFlags
+set ContainerOnly 1
+set Child "MarketLimitedPlayerGift 0 0"
+set Child "MarketLimitedFactionGift 0 0"
+set HiddenCheckBySymbolValue _WrappingPaperClicks@_Arg1_@_!0
+add MenuObject
+set Name MarketLimitedPlayer
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "8 230"
+set Color 0xf96dda
+set SaveArgs 1
+set HiddenCheckBySymbolInv TR_LimitedPlayer@_Arg1_@
+set Child "MarketLimitedPlayerTab 8 50"
+add MenuObject
+set Name ShopWrappingPaper
+set Texture menus/wrap/@WrapPaperStyle@
+set ScaleX 1.23, ScaleY 1.23
+set Coords "0 0 204 256"
+set CoordsAnimated "0 0 204 256"
+set CoordsAnimated "204 0 204 256"
+set CoordsAnimated "408 0 204 256"
+set CoordsAnimated "612 0 204 256"
+set CoordsAnimated "816 0 204 256"
+set CoordsAnimated "0 256 204 256"
+set CoordsAnimated "204 256 204 256"
+set CoordsAnimated "408 256 204 256"
+set CoordsAnimated "612 256 204 256"
+set CoordsAnimationSymHash _WrappingPaperClicks@_Arg1_@_
+set HiddenCheckBySymbolInv TR_IsGiftwrapped@_Arg1_@
+set MouseInteractZoneExpand "25 25 -16 -20"
+set CommandGetFocus ">addUIAnim ShopItem@_Arg1_@ mas_ShopItemUp"
+set CommandLoseFocus ">addUIAnim ShopItem@_Arg1_@ mas_ShopItemDown"
+set SaveArgs 1
+set Focus -2
+set MouseInteract 1
+set CommandPress ">sym inc _WrappingPaperClicks@_Arg1_@_"
+set CommandPress "gameUI ignoreInputTime 0.15"
+set CommandPress ">if sym _WrappingPaperClicks@_Arg1_@_ >= 9 sym set TR_IsGiftwrapped@_Arg1_@ 0"
+set CommandPress ">if sym _WrappingPaperClicks@_Arg1_@_ >= 9 sym set TR_WasGiftwrapped@_Arg1_@ 1"
+set CommandPress ">if sym _WrappingPaperClicks@_Arg1_@_ >= 9 gameUI ignoreInputTime 0.8"
+set CommandPress ">if sym _WrappingPaperClicks@_Arg1_@_ >= 9 gameui enable PresentReveal@_Arg1_@"
+set CommandPress ">if sym _WrappingPaperClicks@_Arg1_@_ >= 9 pcmd 0.1 gameui disable PresentReveal@_Arg1_@"
+set Child "MarketGiftPersonalFlags 36 45 @_Arg1_@"
+add MenuObject
+set Name ShopWrappingPaperOpened
+set Texture menus/wrap/@WrapPaperStyle@
+set ScaleX 1.23, ScaleY 1.23
+set Coords "816 256 204 256"
+set HiddenCheckBySymbolInv TR_WasGiftwrapped@_Arg1_@
+add MenuObject
+set Name ShopWrappingPaperPreview
+set Texture menus/wrap/@WrapPaperStyle@
+set ScaleX 1.23, ScaleY 1.23
+set Coords "0 0 204 256"
+set CoordsAnimated "0 0 204 256"
+set CoordsAnimated "207 0 204 256"
+set CoordsAnimated "410 0 204 256"
+set CoordsAnimated "614 0 204 256"
+set CoordsAnimated "818 0 204 256"
+set CoordsAnimated "0 256 204 256"
+set CoordsAnimated "204 256 204 256"
+set CoordsAnimated "412 256 204 256"
+set CoordsAnimated "614 256 200 256"
+set CoordsAnimated "816 256 204 256"
+set CoordsAnimated "816 256 204 256"
+set CoordsAnimated "816 256 204 256"
+set CoordsAnimated "816 256 204 256"
+set CoordsAnimated "816 256 204 256"
+set CoordsAnimated "816 256 204 256"
+set CoordsAnimated "816 256 204 256"
+set CoordsAnimated "816 256 204 256"
+set CoordsAnimated "816 256 204 256"
+set CoordsAnimated "614 256 200 256"
+set CoordsAnimated "412 256 204 256"
+set CoordsAnimated "204 256 204 256"
+set CoordsAnimated "0 256 204 256"
+set CoordsAnimated "818 0 204 256"
+set CoordsAnimated "614 0 204 256"
+set CoordsAnimated "410 0 204 256"
+set CoordsAnimated "207 0 204 256"
+set CoordsAnimated "0 0 204 256"
+set CoordsAnimated "0 0 204 256"
+set CoordsAnimated "0 0 204 256"
+set CoordsAnimated "0 0 204 256"
+set CoordsAnimated "0 0 204 256"
+set CoordsAnimated "0 0 204 256"
+set CoordsAnimationFrameTimer 0.1
+set HiddenCheckBySymbolInv Shop_Giftwrap
+add MenuObject
+set Name PresentReveal
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "180 230"
+set BlendMode BlendAdd
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.05
+set MouseInteract 1
+set Focus -2
+set Disabled 1
+add MenuObject
+set Name ShopItemEmpty
+set Texture menus/ShopParts+lang
+set Coords "0 648 189 242"
+set RenderOffsetX 7, RenderOffsetY 7
+set SaveArgs 1
+set HiddenCheckBySymbolInv TR_Hidden@_Arg1_@
+add MenuObject
+set Name ShopItemZero
+set Texture menus/HomeBar
+set Coords "204 650 192 246"
+set RenderOffsetX 7, RenderOffsetY 7
+set MouseInteract 1
+set Focus -2
+set CommandCancel "sym set ShowShopItems 0"
+set CommandCancel "gameui focusname $_GameShop_Last"
+add MenuObject
+set Name ShopItemStickers
+set Coords "0 0 20 155"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_FontScale 1.0
+set RenderCB_Font SpecialChars
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYTop
+set RenderCB_BoolArg 1
+set RenderCB_ConsoleSymbol TR_StateDeco@_Arg1_@
+add MenuObject
+set Name ShopTimeRemainingSpin
+set Texture menus/StoreTiles
+set Coords "760 970 34 34"
+set RotationPeriod -1
+set BlendMode BlendAdd
+add MenuObject initFrom ShopTimeRemainingSpin
+set Name ShopTimeRemainingSpin2
+set RotationPeriod -10
+set ScaleX 0.9, ScaleY 0.9
+add MenuObject
+set Name ShopTimeRemaining
+set Texture menus/StoreTiles
+set Coords "572 961 184 56"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.75
+set RenderCBExcludesDefaultRender 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+set RenderCB_Offset "5 13"
+set RenderCB_RGBColor 0xffffff
+set HiddenCheckBySymbol Shop_Market
+set HiddenCheckBySymbolValue DSale_&TR_ContentName@_Arg1_@&==0
+set RenderCB_ConsoleSymbol DSale_&TR_ContentName@_Arg1_@&
+set SaveArgs 1
+set FilterName CollectionUI
+set DisabledAlphaTimeOut 0.0
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+set Child "ShopTimeRemainingSpin 10 10"
+set Child "ShopTimeRemainingSpin2 12 12"
+add MenuObject
+set Name ShopItem
+set Texture menus/ItemFrame&TR_Rarity@_Arg1_@&
+set Coords "0 0 204 256"
+set CommandGetFocus "playSound $MenuShopItemFocus"
+set CommandGetFocus ">addUIAnim ShopItem@_Arg1_@ mas_ShopItemUp"
+set CommandLoseFocus ">addUIAnim ShopItem@_Arg1_@ mas_ShopItemDown"
+set MouseInteractZoneExpandWhenFocused "0 0 0 4"
+set HiddenCheckBySymbol TR_Hidden@_Arg1_@
+set Child "ShopUltimateBg 13 13 	@_Arg1_@"
+set Child "ShopUltimateFg 13 13 	@_Arg1_@"
+set Child "ShopIconSm 13 13 	@_Arg1_@"
+set Child "ShopIconLg 13 13 	@_Arg1_@ 0.8984 0.8984"
+set Child "MarketLimitedFaction 14 13 @_Arg1_@"
+set Child "MarketLimitedPlayer 14 13 @_Arg1_@"
+set Child "ShopGoldPlatedStamp 20 107 @_Arg1_@	1.0"
+set Child "ShopUnlockOverlay 14 165	@_Arg1_@"
+set Child "MarketCancelListing 18 148	@_Arg1_@"
+set Child "ShopHighlightItem 0 0	@_Arg1_@	1.0"
+set Child "ShopContentLock 2 0	@_Arg1_@ 0.8"
+set Child "ShopItemCount 14 13	@_Arg1_@"
+set Child "ShopItemInfCount 14 13	@_Arg1_@"
+set Child "ShopItemStickers 160 0	@_Arg1_@"
+set Child "ShopItemName 13 16		@_Arg1_@ /platform !consolePlatform"
+set Child "ShopItemSeller 13 36		@_Arg1_@"
+set Child "CollectionBadge 0 90	@_Arg1_@"
+set Child "ShopUltimateGlow 13 14	@_Arg1_@"
+set Child "PresentReveal[PresentReveal@_Arg1_@] 7 6"
+set Child "ShopWrappingPaperOpened[ShopWrappingPaperO@_Arg1_@] -27 -35	@_Arg1_@"
+set Child "ShopWrappingPaper[ShopWrappingPaper@_Arg1_@] -31 -35	@_Arg1_@"
+set Child "ShopTimeRemaining 0 145	@_Arg1_@"
+set Child "PartTypeIcon 17 142 @_Arg1_@"
+set Child "AirMechTypeIcon 130 142 @_Arg1_@"
+set Child "PartTypeIconMarket 17 142 @_Arg1_@"
+set Child "AirMechTypeIconMarket 130 142 @_Arg1_@"
+set Child "PartTypeIconOwned 17 124 @_Arg1_@"
+set Child "AirMechTypeIconOwned 130 124 @_Arg1_@"
+set Child "PartTypeIconLocked 17 124 @_Arg1_@"
+set Child "AirMechTypeIconLocked 130 124 @_Arg1_@"
+set MouseInteract 1
+set Focus -2
+set ToolTipDelayTime 0.5
+set DragSource &TR_DragSource@_Arg1_@&
+set FilterName CollectionUI
+set ToolTip &TR_Desc@_Arg1_@&
+set DrawForToolTip &TR_DFTT@_Arg1_@&
+set DrawForToolTipPositioning &TR_DFTTP@_Arg1_@&
+set CommandGetFocus ">sym set ShopItemActive $TR_ContentName@_Arg1_@"
+set CommandGetFocus ">input set padFocusFallback ShopItem@_Arg1_@"
+set CommandPress "gameUI ignoreInputTime 0.35"
+set CommandPress "sym set _PS4PendingClear_ 0"
+set CommandPress ">sym set ShopItemInspect @_Arg1_@"
+set CommandPress ">collection inspectOrExec @_Arg1_@"
+set CommandPress ">collection lookupDiamondPrice $TR_ContentName@_Arg1_@ SellPriceDiamonds /mktlist"
+set CommandPressAlt "gameUI ignoreInputTime 0.35"
+set CommandPressAlt "sym set _PS4PendingClear_ 0"
+set CommandPressAlt "sym set DialogForceInspect 1"
+set CommandPressAlt ">collection inspectOrExec @_Arg1_@"
+set CommandPressAlt ">sym set ShopItemInspect @_Arg1_@"
+set CommandGetFocus "sym set _ShowDescMode Default"
+set CommandGetFocus "floatsym set ScrollableShopLabelPos 0"
+set CommandGetFocus "sym set _ShopDescModeEn 1"
+set CommandGetFocus ">&TR_OnFocus@_Arg1_@&"
+set CommandGetFocus "sym set _PS4PendingClear_ 1"
+set CommandGetFocus ">sym set LastShopItemFocus $TR_ContentName@_Arg1_@"
+set CommandLoseFocus "sym set _ShopDescModeEn 0"
+set CommandLoseFocus "if ps4 && sym _PS4PendingClear_ == 1 && sym UnlockDialogActive == 0 runnow ps4 pendingClearStoreState"
+set CommandLoseFocus "sym set _PS4PendingClear_ 0"
+set CommandCancel "if consolePlatform runnow sym set _ShowDescMode Default"
+set CommandCancel "if consolePlatform runnow sym set _ShopDescModeEn 0"
+set CommandCancel "if consolePlatform && sym Shop_Game == 1 menuCmd CancelShop_Sections"
+set CommandCancel "if consolePlatform && sym Shop_Game == 0 && sym DialogBoxLoaded == 0 menuCmd ReturnToShopTop"
+set CommandCancel "if !consolePlatform && sym Shop_Market == 1 gameui directPushName MarketButtonBackMainMenu"
+set CommandCancel "if !consolePlatform && sym Shop_Market != 1 gameui directPushName GameShopButtonBack"
+set CommandLeftButton "gameui focusnametry Filter_Pilots Filter_Units Filter_AirMechs Filter_Stationary Filter_NotOwned"
+set SaveArgs 5
+set CommandFocusLeft ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg2_@"
+set CommandFocusUp ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg3_@"
+set CommandFocusRight ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg4_@"
+set CommandFocusDown ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg5_@"
+set DrawWhenFocusedOffset "-4 -5 0"
+add MenuObject
+set Name PartTypeIcon
+set Texture menus/PartIcons
+set Coords "0 0 100 100"
+set CoordsAnimated "0 0 0 0"
+set CoordsAnimated "0 0 100 100"
+set CoordsAnimated "100 0 100 100"
+set CoordsAnimated "200 0 100 100"
+set CoordsAnimated "300 0 100 100"
+set CoordsAnimated "400 0 100 100"
+set CoordsAnimationSymHash TR_PartType@_Arg1_@
+set ScaleX 0.55, ScaleY 0.55
+set MouseInteract 1
+set SaveArgs 2
+set DisabledSym Shop_Market
+set DisabledAlphaTimeIn 0.0
+set DisabledAlphaTimeOut 0.0
+set HiddenCheckBySymbol TR_IsOwned@_Arg1_@
+set HiddenCheckBySymbol2 TR_Greyed@_Arg1_@
+set ToolTip TT_PartType&TR_PartType@_Arg1_@&
+set FilterName CollectionUI
+add MenuObject initFrom PartTypeIcon
+set Name PartTypeIconLocked
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbol2 ""
+set HiddenCheckBySymbolInv TR_Greyed@_Arg1_@
+add MenuObject initFrom PartTypeIcon
+set Name PartTypeIconOwned
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbolInv TR_IsOwned@_Arg1_@
+set SymCondRenderOffsetY "Filter_NotOwned 0 59"
+add MenuObject initFrom PartTypeIcon
+set Name PartTypeIconMarket
+set DisabledSym TR_IsGiftwrapped@_Arg1_@
+set DisabledSymInv Shop_Market
+add MenuObject initFrom PartTypeIcon
+set Name PartTypeInspectIcon
+set DisabledSym ""
+set DisabledSymValue CanShowPartIcons!1
+set CoordsAnimationSymHash TR_PartType@ShopItemInspect@
+set ScaleX 1, ScaleY 1
+set ToolTip TT_PartType&TR_PartType@ShopItemInspect@&
+add MenuObject initFrom PartTypeInspectIcon
+set Name PartTypeInspectIcon2
+set DisabledSymValue CanShowPartIcons!2
+set CoordsAnimationSymHash _CustomPartType
+set ToolTip TT_PartType@_CustomPartType@
+add MenuObject
+set Name AirMechTypeIcon
+set Texture menus/AirMechIcons
+set Coords "0 0 100 100"
+set CoordsAnimated "0 0 0 0"
+set CoordsAnimated "0 0 100 100"
+set CoordsAnimated "100 0 100 100"
+set CoordsAnimated "200 0 100 100"
+set CoordsAnimated "300 0 100 100"
+set CoordsAnimated "400 0 100 100"
+set CoordsAnimated "0 100 100 100"
+set CoordsAnimated "100 100 100 100"
+set CoordsAnimated "200 100 100 100"
+set CoordsAnimated "300 100 100 100"
+set CoordsAnimated "400 100 100 100"
+set CoordsAnimated "0 200 100 100"
+set CoordsAnimated "100 200 100 100"
+set CoordsAnimationSymHash TR_AirMechType@_Arg1_@
+set ScaleX 0.55, ScaleY 0.55
+set MouseInteract 1
+set SaveArgs 2
+set ToolTip TT_AirMechType&TR_AirMechType@_Arg1_@&
+set DisabledSym Shop_Market
+set DisabledAlphaTimeIn 0.0
+set DisabledAlphaTimeOut 0.0
+set HiddenCheckBySymbol TR_IsOwned@_Arg1_@
+set HiddenCheckBySymbol2 TR_Greyed@_Arg1_@
+set FilterName CollectionUI
+set SymCondRenderOffsetX "TR_ShowingCount@_Arg1_@ -41 0"
+add MenuObject initFrom AirMechTypeIcon
+set Name AirMechTypeIconLocked
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbol2 ""
+set HiddenCheckBySymbolInv TR_Greyed@_Arg1_@
+add MenuObject initFrom AirMechTypeIcon
+set Name AirMechTypeIconOwned
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbolInv TR_IsOwned@_Arg1_@
+set SymCondRenderOffsetY "Filter_NotOwned 0 59"
+add MenuObject initFrom AirMechTypeIcon
+set Name AirMechTypeIconMarket
+set DisabledSym TR_IsGiftwrapped@_Arg1_@
+set DisabledSymInv Shop_Market
+add MenuObject initFrom AirMechTypeIcon
+set Name AirMechTypeInspectIcon
+set DisabledSym ""
+set DisabledSymValue CanShowPartIcons!1
+set CoordsAnimationSymHash TR_AirMechType@ShopItemInspect@
+set ScaleX 1, ScaleY 1
+set ToolTip TT_AirMechType&TR_AirMechType@ShopItemInspect@&
+add MenuObject initFrom AirMechTypeInspectIcon
+set Name AirMechTypeInspectIcon2
+set DisabledSymValue CanShowPartIcons!2
+set CoordsAnimationSymHash _CustomAirMechType
+set ToolTip TT_AirMechType@_CustomAirMechType@
+add MenuObject initFrom ShopItem
+set Name ShopItemNoDrag
+set DragSource ""
+add MenuObject
+set Name Inspect_ZoomTip_base
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FontScale 0.9
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_Offset "0 0"
+set RenderCB_BoolArg 1
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2"
+set Coords "0 0 1000 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+add MenuObject initFrom Inspect_ZoomTip_base
+set Name Inspect_ZoomTip
+set RenderCB_Text Inspect_ZoomTip
+set HiddenCheckBySymbolInv InputMK
+add MenuObject initFrom Inspect_ZoomTip_base
+set Name Inspect_ZoomTip_console
+set RenderCB_Text Inspect_ZoomTip_console
+set Coords "0 0 450 80"
+set HiddenCheckBySymbol InputMK
+add MenuObject initFrom Inspect_ZoomTip_base
+set Name Inspect_QuitTip_console
+set RenderCB_Text Inspect_QuitTip_console
+set RenderCB_TextJustify JustifyXCenter
+set HiddenCheckBySymbol InputMK
+add MenuObject initFrom LobbyV1ButtonBase
+set Name TryOutQuit
+set RenderCB_Text BtnHint_Finished
+set HiddenCheckBySymbolInv DialogPageDisplay
+set CommandPress "menucmd FinishTryout"
+set Child "Inspect_ZoomTip -1170 60"
+set HiddenCheckBySymbolInv InputMK
+add MenuObject
+set Name TryOutToggleInfoText
+set Coords "0 0 400 42"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.9
+set RenderCB_DX 500
+set RenderCB_DY 42
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Offset "62 2"
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+add MenuObject
+set Name TryOutToggleInfo
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 0 64 64"
+set SaveArgs 4
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimated "0 64 64 64"
+set CoordsAnimated "64 64 64 64"
+set CoordsAnimationPreset @_Arg1_@
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set Child "TryOutToggleInfoText -10 -2 @_Arg3_@"
+set HiddenCheckBySymbol InputMK
+add MenuObject
+set Name TryOutPromoMaster
+set ContainerOnly 1
+set FilterName LoadMapStartup
+set Child "InspectTryoutPanel 625 50"
+set Child "TryOutQuit 1540 970"
+set Child "Inspect_QuitTip_console 1160 990"
+set Child "Inspect_ZoomTip_console 930 990"
+set Child "TryOutToggleInfo			50 990		3 	0.7			BtnHint_ToggleInfo InGame"
+set Child "TryoutBuyCancel 0 0"
+set Child "UnlockDiamondsConfirm 1465 280"
+set Child "UnlockKudosConfirm 1465 280"
+set Child "InspectDialogShowInfo 1851 368"
+add MenuObject
+set Name TradeItem
+set Texture menus/ItemFrame&TR_Rarity@_Arg1_@&
+set Coords "0 0 204 256"
+set SaveArgs 2
+set ScaleX 0.61, ScaleY 0.61
+set HiddenCheckBySymbol TR_Hidden@_Arg1_@
+set Child "TradeUltimateBg 8 8 	@_Arg1_@"
+set Child "TradeUltimateFg 8 8 	@_Arg1_@"
+set Child "ShopIconLg 8 8 	@_Arg1_@	0.55 0.55"
+set Child "ShopGoldPlatedStamp 7 80 @_Arg1_@	0.8"
+set Child "ShopHighlightItem 0 0	@_Arg1_@	0.61"
+set Child "TradeUltimateGlow 4 4	@_Arg1_@"
+set Child "TradeRemoveItem 48 112	@_Arg1_@"
+set MouseInteract 1
+set Focus -2
+set DragSource &TR_DragSource@_Arg1_@&
+set DragTarget @_Arg2_@
+set FilterName CollectionUI
+set ToolTip &TR_Desc@_Arg1_@&
+set DrawForToolTip &TR_DFTT@_Arg1_@&
+set DrawForToolTipPositioning &TR_DFTTP@_Arg1_@&
+set CommandPress ">collection inspect @_Arg1_@"
+set CommandGetFocus ">&TR_OnFocus@_Arg1_@&"
+add MenuObject
+set Name MailItemCallout
+set Texture menus/Mail
+set Coords "223 507 70 49"
+set BlendMode BlendAdd
+set PulseAlpha "1.0 1.9 -0.5"
+set CoordsAnimationFrameTimer 0.07
+set CoordsAnimated "223 507 70 49"
+set CoordsAnimated "220 507 70 49"
+set CoordsAnimated "218 507 70 49"
+set CoordsAnimated "219 507 70 49"
+set CoordsAnimated "220 507 70 49"
+set CoordsAnimated "221 507 70 49"
+set CoordsAnimated "222 507 70 49"
+add MenuObject
+set Name MailItemBase
+set Texture menus/ItemFrame&TR_Rarity@_Arg1_@&
+set Coords "66 88 68 68"
+set SaveArgs 2
+set RenderOffsetX 5
+set RenderOffsetY 5
+set HiddenCheckBySymbol TR_Hidden@_Arg1_@
+set Child "MailUltimateBg 1 1 	@_Arg1_@"
+set Child "MailUltimateFg 1 1 	@_Arg1_@"
+set Child "MailIconLg 2 1 	@_Arg1_@	0.55 0.55"
+set Child "ShopGoldPlatedStamp -2 40 @_Arg1_@	0.8"
+set Child "MailHighlightItem -14 -15	@_Arg1_@"
+set Child "MailUltimateGlow 1 1	@_Arg1_@"
+set MouseInteract 1
+set Focus -2
+set FilterName CollectionUI
+set ToolTip &TR_Desc@_Arg1_@&
+set DrawForToolTip &TR_DFTT@_Arg1_@&
+set DrawForToolTipPositioning &TR_DFTTP@_Arg1_@&
+set CommandPressAlt ">collection inspect @_Arg1_@"
+set CommandGetFocus ">&TR_OnFocus@_Arg1_@&"
+add MenuObject initFrom MailItemBase
+set Name MailItemInteractable
+set DragSource &TR_DragSource@_Arg1_@&
+set DragTarget @_Arg2_@
+set CommandPress ">menucmd RemoveItemFrom@_Arg1_@"
+add MenuObject initFrom MailItemInteractable
+set Name MailItem
+set SaveArgs 3
+set Child "MailItemCallout[MailItemCallout@_Arg1_@] -78 10"
+set	CommandFocusLeft ">gameUI focusNameTryList MessageAttachment @_Arg3_@ 4 -1  /tryOnFail .FocusLastSelectedMessage"
+set	CommandFocusRight ">gameUI focusNameTryList MessageAttachment @_Arg3_@ 4 1 "
+set CommandCancel "menucmd ReqGameMailClose"
+add MenuObject initFrom MailItemInteractable
+set Name ComposeItem
+add MenuObject initFrom MailItemBase
+set Name MailItemSent
+set CommandPress ">collection inspect @_Arg1_@"
+add MenuObject
+set Name HCubeItem
+set ContainerOnly 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set SaveArgs 3
+set ScaleX 0.61, ScaleY 0.61
+set HiddenCheckBySymbol TR_Hidden@_Arg1_@
+set Child "ShopCountedItemBg 8 8 	@_Arg1_@	0.61"
+set Child "TradeUltimateBg 8 8 	@_Arg1_@"
+set Child "TradeUltimateFg 8 8 	@_Arg1_@"
+set Child "NanoforgeIconLg 8 8 	@_Arg1_@	0.55 0.55 @_Arg3_@"
+set Child "ShopGoldPlatedStamp 7 80 @_Arg1_@	0.8"
+set Child "TradeUltimateGlow 4 4	@_Arg1_@"
+set Child "HCubeRemoveItem 48 112	@_Arg3_@"
+set MouseInteract 1
+set Focus -2
+set DragSource &TR_DragSource@_Arg1_@&
+set DragTarget @_Arg2_@
+set FilterName CollectionUI
+set ToolTip &TR_Desc@_Arg1_@&
+set DrawForToolTip &TR_DFTT@_Arg1_@&
+set DrawForToolTipPositioning &TR_DFTTP@_Arg1_@&
+set CommandPress ">collection inspect @_Arg1_@"
+set CommandGetFocus ">&TR_OnFocus@_Arg1_@&"
+add MenuObject
+set Name ShopBoostName
+set Texture menus/DialogGeneral
+set Coords "798 334 178 55"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set MirrorOnY 1
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_FontScale 0.56
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Flags "/outlined /fitX"
+set RenderCB_Offset "0 4"
+set RenderCB_Text Filter_Boost@_Arg1_@
+set RenderCB_RGBColor 0xFFFFFF
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name BoostDayCount
+set Texture menus/HomeBar
+set Coords "0 0 192 100"
+set RenderCB_FontScale 0.8
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set RenderCB_Font DroidSansBigNumbers
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined"
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject
+set Name ShopBoostItem
+set Texture menus/HomeBar
+set Coords "204 650 192 246"
+set CoordsFocused "7 650 192 246"
+set CommandGetFocus ">addUIAnim ShopItem@_Arg1_@ mas_ShopItemUp"
+set CommandLoseFocus ">addUIAnim ShopItem@_Arg1_@ mas_ShopItemDown"
+set SaveArgs 7
+set Child "ShopIconBoost 7 6 @_Arg3_@"
+set Child "ShopBoostName 7 6		@_Arg3_@"
+set Child "BoostDayCount 0 70	@_Arg1_@"
+set Child "ShopUnlockOverlay_Boost 7 171	@_Arg2_@"
+set MouseInteract 1
+set Focus -2
+set CommandPress ">rook buyBoost @_Arg2_@"
+set HiddenCheckBySymbolInv Shop_Boosts
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@ $_Shop_Last"
+set CommandFocusRight ">gameui focusNameTry @_Arg5_@"
+set CommandFocusUp ">gameui focusNameTry @_Arg6_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg7_@"
+set CommandCancel "gameui focusName $_Shop_Last"
+set DrawWhenFocused FocusShopCard
+set DrawWhenFocusedOffset "-4 -5 0"
+add MenuObject
+set Name ShopWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1000 750"
+set CommandOnMouseDrag "collection page shop $_Wheel"
+add MenuObject
+set Name SellItemButtonBlocker
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "200 83"
+set Color 0x141414
+set ColorFocused 0x141414
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbol MarketCanList
+add MenuObject initFrom PurchaseButtonTemplate
+set Name SellItemButton
+set DrawWhenFocused FocusShortButtons
+set DrawWhenFocusedOffset "2 2 0"
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.8
+set RenderCB_Text SellItemButton
+set HiddenCheckBySymbolInv Shop_MyCollection
+set HiddenCheckBySymbol2 MarketDisabled
+set DefaultKeyboardControl 1
+set DisabledAlpha 0.2
+set DragTarget SellOnMarket
+set Child "SellItemButtonBlocker -10 -10"
+add MenuObject
+set Name PlayTheTutorialButtoner
+set Texture menus/Social
+set Coords "458 205 440 63"
+set CoordsPressed "8 203 440 63"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Text PlayTheTutorialButton
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set RenderCB_Flags "/nmi /shadowed"
+set RenderCB_DX 0, RenderCB_DY 0
+set Focus -2
+set CommandPress "menuCmd MF_TutorialStart
+set DrawWhenFocused FocusFriendButtons
+set DrawWhenFocusedOffset "-1 -1 0"
+add MenuObject
+set Name ShopItemsContainer
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ShowShopItems
+set Child "ShopItemEmpty 0 0		0"
+set Child "ShopItemZero 0 0	"
+set Child "ShopItemEmpty 200 0		1"
+set Child "ShopItemEmpty 400 0		2"
+set Child "ShopItemEmpty 600 0		3"
+set Child "ShopItemEmpty 800 0		4"
+set Child "ShopItemEmpty 0 250		5"
+set Child "ShopItemEmpty 200 250	6"
+set Child "ShopItemEmpty 400 250	7"
+set Child "ShopItemEmpty 600 250	8"
+set Child "ShopItemEmpty 800 250	9"
+set Child "ShopItemEmpty 0 500		10"
+set Child "ShopItemEmpty 200 500	11"
+set Child "ShopItemEmpty 400 500	12"
+set Child "ShopItemEmpty 600 500	13"
+set Child "ShopItemEmpty 800 500	14"
+set Child "ShopItem[ShopItem0] 0 0		0	.FocusShopItem0L	null	.FocusShopItem0R	ShopItem5"
+set Child "ShopItem[ShopItem1] 200 0	1	ShopItem0	null	.FocusShopItem1R	ShopItem6"
+set Child "ShopItem[ShopItem2] 400 0	2	ShopItem1	null	.FocusShopItem2R	ShopItem7"
+set Child "ShopItem[ShopItem3] 600 0	3	ShopItem2	null	.FocusShopItem3R	ShopItem8"
+set Child "ShopItem[ShopItem4] 800 0	4	ShopItem3	null	.FocusShopItem4R	ShopItem9"
+set Child "ShopItem[ShopItem5] 0 250	5	.FocusShopItem5L	ShopItem0	.FocusShopItem5R	ShopItem10"
+set Child "ShopItem[ShopItem6] 200 250	6	ShopItem5	ShopItem1	.FocusShopItem6R	ShopItem11"
+set Child "ShopItem[ShopItem7] 400 250	7	ShopItem6	ShopItem2	.FocusShopItem7R	ShopItem12"
+set Child "ShopItem[ShopItem8] 600 250	8	ShopItem7	ShopItem3	.FocusShopItem8R	ShopItem13"
+set Child "ShopItem[ShopItem9] 800 250	9	ShopItem8	ShopItem4	.FocusShopItem9R	ShopItem14"
+set Child "ShopItem[ShopItem10] 0 500	10	.FocusShopItem10L	ShopItem5	.FocusShopItem10R	null"
+set Child "ShopItem[ShopItem11] 200 500	11	ShopItem10	ShopItem6	.FocusShopItem11R	null"
+set Child "ShopItem[ShopItem12] 400 500	12	ShopItem11	ShopItem7	.FocusShopItem12R	null"
+set Child "ShopItem[ShopItem13] 600 500	13	ShopItem12	ShopItem8	.FocusShopItem13R	null"
+set Child "ShopItem[ShopItem14] 800 500	14	ShopItem13	ShopItem9	.FocusShopItem14R	null"
+set Child "ShopWheelZone 0 0"
+add MenuObject
+set Name SuggestedItemsContainer
+set ContainerOnly 1
+set Child "ShopItemEmpty 0 0		0"
+set Child "ShopItemEmpty 200 0		1"
+set Child "ShopItemEmpty 400 0		2"
+set Child "ShopItemEmpty 600 0		3"
+set Child "ShopItemEmpty 800 0		4"
+set Child "ShopItem[SuggestedItem0] 0 0		0	null	null	SuggestedItem1	null"
+set Child "ShopItem[SuggestedItem1] 200 0	1	SuggestedItem0	null	SuggestedItem2	null"
+set Child "ShopItem[SuggestedItem2] 400 0	2	SuggestedItem1	null	SuggestedItem3	null"
+set Child "ShopItem[SuggestedItem3] 600 0	3	SuggestedItem2	null	SuggestedItem4	null"
+set Child "ShopItem[SuggestedItem4] 800 0	4	SuggestedItem3	null	null	null"
+add MenuObject
+set Name ShopBoostItemsContainer
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Boosts
+set Child "ShopBoostItem[ShopBoostItem0] 0 0		1 0	K		NA ShopBoostItem1 NA ShopBoostItem5"
+set Child "ShopBoostItem[ShopBoostItem1] 200 0		3 1	K		ShopBoostItem0 ShopBoostItem2 NA ShopBoostItem6"
+set Child "ShopBoostItem[ShopBoostItem2] 400 0		7 2 K		ShopBoostItem1 ShopBoostItem3 NA ShopBoostItem7"
+set Child "ShopBoostItem[ShopBoostItem3] 600 0		15 3 K		ShopBoostItem2 ShopBoostItem4 NA ShopBoostItem8"
+set Child "ShopBoostItem[ShopBoostItem4] 800 0		30 4 K		ShopBoostItem3 NA NA ShopBoostItem9"
+set Child "ShopBoostItem[ShopBoostItem5] 0 250		1 5	XP		NA ShopBoostItem6 ShopBoostItem0 NA"
+set Child "ShopBoostItem[ShopBoostItem6] 200 250	3 6	XP		ShopBoostItem5 ShopBoostItem7 ShopBoostItem1 NA"
+set Child "ShopBoostItem[ShopBoostItem7] 400 250	7 7 XP		ShopBoostItem6 ShopBoostItem8 ShopBoostItem2 NA"
+set Child "ShopBoostItem[ShopBoostItem8] 600 250	15 8 XP		ShopBoostItem7 ShopBoostItem9 ShopBoostItem3 NA"
+set Child "ShopBoostItem[ShopBoostItem9] 800 250	30 9 XP		ShopBoostItem8 NA ShopBoostItem4 NA"
+add MenuObject
+set Name MainMenuShopFocus
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1315 884"
+set Color 0x111111
+set ColorFocused 0x111111
+set Focus -2
+set MouseInteract 1
+set RenderBlocked 1
+add MenuObject
+set Name ShopOptionsCanvas
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "516 836"
+set Color 0x222c2d
+add MenuObject
+set Name CheckMarkShop
+set Texture menus/HomeBar
+set Coords "671 428 47 42"
+set HiddenCheckBySymbolInv @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name CheckboxShopFilter
+set Texture menus/HomeBar
+set Coords "623 428 42 42"
+set CoordsFocused "723 428 42 42"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 8"
+set RenderCB_DX 200
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX /fitX_n20 /fitX_n10"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg2_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set SaveArgs 7
+set CommandPress ">sym toggle @_Arg1_@"
+set CommandPress ">menucmd @_Arg3_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey ">menucmd @_Arg3_@"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set CommandFocusUp ">gameui focusNameTry @_Arg4_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg5_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg6_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg7_@"
+set CommandCancel ">if usingPad runnow gameui focusNameTry @_Arg6_@"
+set Child "CheckMarkShop 0 0 @_Arg1_@"
+add MenuObject initFrom CheckboxShopFilter
+set Name CheckboxShopFilterLong
+set RenderCB_DX 370
+set RenderCB_TextJustify JustifyXRight
+set MouseInteractZoneExpand "0 -10 -50 10"
+set RenderCB_Offset "-380 8"
+set HiddenCheckBySymbolInv ConShopMenu
+add MenuObject
+set Name ShopFilterBase
+set Texture menus/ShopFilter
+set Coords "1 1 72 72"
+set CoordsAnimated "1 1 72 72"
+set CoordsAnimated "1 74 72 72"
+set CoordsAnimated "1 147 72 72"
+set CoordsAnimated "1 220 72 72"
+set CoordsAnimated "1 293 72 72"
+set CoordsAnimated "1 366 72 72"
+set CoordsAnimated "74 1 72 72"
+set CoordsAnimated "74 74 72 72"
+set CoordsAnimated "74 147 72 72"
+set CoordsAnimated "74 220 72 72"
+set CoordsAnimated "74 293 72 72"
+set CoordsAnimated "74 366 72 72"
+set CoordsAnimated "147 1 72 72"
+set CoordsAnimated "147 74 72 72"
+set CoordsAnimated "147 147 72 72"
+set CoordsAnimated "147 220 72 72"
+set CoordsAnimated "147 293 72 72"
+set CoordsAnimated "147 366 72 72"
+set CoordsAnimated "220 1 72 72"
+set CoordsAnimated "220 74 72 72"
+set CoordsAnimated "220 147 72 72"
+set CoordsAnimated "220 220 72 72"
+set CoordsAnimated "220 293 72 72"
+set CoordsAnimated "220 366 72 72"
+set CoordsAnimated "293 1 72 72"
+set CoordsAnimated "293 74 72 72"
+set CoordsAnimated "293 147 72 72"
+set CoordsAnimated "293 220 72 72"
+set CoordsAnimated "293 293 72 72"
+set CoordsAnimated "293 366 72 72"
+set CoordsAnimated "366 1 72 72"
+set CoordsAnimated "366 74 72 72"
+set CoordsAnimated "366 147 72 72"
+set CoordsAnimated "366 220 72 72"
+set CoordsAnimated "366 293 72 72"
+set CoordsAnimated "366 366 72 72"
+set CoordsAnimated "439 1 72 72"
+set CoordsAnimated "439 74 72 72"
+set CoordsAnimated "439 147 72 72"
+set CoordsAnimated "439 220 72 72"
+set CoordsAnimated "439 293 72 72"
+set CoordsAnimated "439 366 72 72"
+set CoordsAnimated "512 1 72 72"
+set CoordsAnimated "512 74 72 72"
+set CoordsAnimated "512 147 72 72"
+set CoordsAnimated "512 220 72 72"
+set CoordsAnimated "512 293 72 72"
+set CoordsAnimated "512 366 72 72"
+set CommandGetFocus "playSound $CustomizeSoundFocus"
+add MenuObject
+set Name ShopFilterHalfAirMechs
+set Texture menus/ShopFilter
+set Coords "36 1 36 72"
+set HiddenCheckBySymbolInv Filter_HalfAirMechs
+add MenuObject initFrom ShopFilterHalfAirMechs
+set Name InventoryFilterHalfAirMechs
+set HiddenCheckBySymbolInv Filter_HalfAirMechs_Inv
+add MenuObject
+set Name ShopFilterHalfUnits
+set Texture menus/ShopFilter
+set Coords "36 74 36 72"
+set HiddenCheckBySymbolInv Filter_HalfUnits
+add MenuObject initFrom ShopFilterHalfUnits
+set Name InventoryFilterHalfUnits
+set HiddenCheckBySymbolInv Filter_HalfUnits_Inv
+add MenuObject initFrom ShopFilterBase
+set Name ShopFilterButton
+set SaveArgs 3
+set Child "ShopFilterActive 0 0 @_Arg1_@ @_Arg3_@"
+set CoordsAnimationPreset @_Arg3_@
+set ToolTip @_Arg2_@
+set ToolTipPad @_Arg2_@
+set DrawForToolTipPositioningPad "/mode offset /pos 40 0"
+set MouseInteract 1
+set Focus -2
+set ToolTipDelayTime 0.0
+set DrawWhenFocused ShopFilterHighlight
+set DrawWhenFocusedOffset "-7 -7"
+set CommandGetFocus "sym set BtnHint_OnFilter 1"
+set CommandLoseFocus "sym set BtnHint_OnFilter 0"
+add MenuObject initFrom ShopFilterBase
+set Name ShopFilterActive
+set Texture menus/ShopFilterActive
+set HiddenCheckBySymbolInv @_Arg1_@
+set CoordsAnimationPreset @_Arg2_@
+set SaveArgs 2
+add MenuObject
+set Name ShopFilterHighlight
+set Texture menus/ShopParts+lang
+set Coords "202 760 86 86"
+set BlendMode BlendAdd
+set PulseAlpha "2.0 -0.4 -0.2"
+add MenuObject
+set Name InvFilterHighlight
+set Texture menus/ShopParts+lang
+set Coords "202 760 86 86"
+set BlendMode BlendAdd
+set ScaleX 0.8, ScaleY 0.8
+set PulseAlpha "2.0 -0.4 -0.2"
+add MenuObject initFrom ShopFilterButton
+set Name ShopSortTemplate
+set CommandPressAlt ">sym toggle @_Arg1_@"
+set CommandPressAlt ">menucmd @_Arg8_@"
+set CommandPressAlt "playsound UI_CheckBoxChange"
+set CommandPress ">sym set @_Arg1_@ 1"
+set CommandPress ">menucmd @_Arg8_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set Child "DotSortShopUp 0 0 @_Arg1_@"
+set SaveArgs 8
+set CommandCancel "sym set _ShowDescMode Default"
+set CommandCancel "sym set _ShopDescModeEn 0"
+set CommandCancel "if sym Shop_Game == 1 menuCmd CancelShop_Sections"
+set CommandCancel "if sym Shop_Game == 0 menuCmd ReturnToShopTop"
+set CommandGetFocus ">input set padFocusFallback @_Arg1_@"
+set CommandFocusUp ">gameui focusNameTry @_Arg5_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg7_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg6_@"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey ">menucmd @_Arg8_@"
+add MenuObject initFrom ShopFilterButton
+set Name ShopFilterTemplate
+set SaveArgs 8
+set CommandPressAlt ">sym toggle @_Arg1_@"
+set CommandPressAlt ">menucmd @_Arg8_@"
+set CommandPressAlt "playsound UI_CheckBoxChange"
+set CommandPress "sym setZero Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Duplicates Filter_Badges Filter_Crates"
+set CommandPress "sym setZero Filter_FighterA Filter_Chopper Filter_Bomber Filter_Saucer Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians"
+set CommandPress "menucmd ClearOtherFilters"
+set CommandPress ">sym set @_Arg1_@ 1"
+set CommandPress ">menucmd @_Arg8_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandLeftButton ">sym toggle @_Arg1_@"
+set CommandLeftButton ">menucmd @_Arg8_@"
+set CommandLeftButton "playsound UI_CheckBoxChange"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey ">menucmd @_Arg8_@"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set CommandGetFocus ">input set padFocusFallback @_Arg1_@"
+set CommandFocusUp ">gameui focusNameTry @_Arg5_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg7_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg6_@"
+set CommandCancel "gameui focusnametry GameShopButtonBack"
+add MenuObject initFrom ShopFilterButton
+set Name InventoryFilterTemplate
+set SaveArgs 8
+set CommandPressAlt ">sym toggle @_Arg1_@"
+set CommandPressAlt ">menucmd @_Arg8_@"
+set CommandPressAlt "playsound UI_CheckBoxChange"
+set CommandPress "sym setZero Filter_Variants_Inv Filter_Colors_Inv Filter_Pets_Inv Filter_Hats_Inv Filter_Contrails_Inv Filter_EnginePfx_Inv Filter_Tracers_Inv Filter_Auras_Inv Filter_FunStats_Inv Filter_AirMechOwned_Inv Filter_Limited_Inv Filter_BoostK_Inv Filter_BoostXP_Inv Filter_AirMechs_Inv Filter_Units_Inv Filter_Parts_Inv Filter_Pilots_Inv Filter_Items_Inv Filter_Cosmetics_Inv Filter_Bundles_Inv Filter_Other_Inv Filter_Sets_Inv Filter_Recipes_Inv Filter_Ultimates_Inv Filter_Boosts_Inv Filter_Duplicates_Inv Filter_Badges_Inv Filter_Crates_Inv"
+set CommandPress "sym setZero Filter_FighterA_Inv Filter_Chopper_Inv Filter_Bomber_Inv Filter_Saucer_Inv Filter_FighterNeo_Inv Filter_Osprey_Inv Filter_Warthog_Inv Filter_Paladin_Inv Filter_Angel_Inv Filter_Infantry_Inv Filter_Combat_Inv Filter_Support_Inv Filter_Stationary_Inv Filter_Alternates_Inv Filter_Guardians_Inv"
+set CommandPress "menucmd ClearOtherFiltersInv2"
+set CommandPress ">sym set @_Arg1_@ 1"
+set CommandPress ">menucmd @_Arg8_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandLeftButton ">sym toggle @_Arg1_@"
+set CommandLeftButton ">menucmd @_Arg8_@"
+set CommandLeftButton "playsound UI_CheckBoxChange"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey ">menucmd @_Arg8_@"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set CommandGetFocus ">input set padFocusFallback @_Arg1_@"
+set CommandFocusUp ">gameui focusNameTry @_Arg5_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg7_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg6_@"
+add MenuObject initFrom InventoryFilterTemplate
+set Name InventoryFilter2Template
+set ScaleX 0.8, ScaleY 0.8
+set DrawWhenFocused InvFilterHighlight
+set DrawWhenFocusedOffset "-5 -5"
+add MenuObject initFrom ShopFilterButton
+set Name ShopFilterToggleTemplate
+set SaveArgs 8
+set CommandPressAlt ">sym toggle @_Arg1_@"
+set CommandPressAlt ">menucmd @_Arg8_@"
+set CommandPressAlt "playsound UI_CheckBoxChange"
+set CommandPress ">sym toggle @_Arg1_@"
+set CommandPress ">menucmd @_Arg8_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandLeftButton ">sym toggle @_Arg1_@"
+set CommandLeftButton ">menucmd @_Arg8_@"
+set CommandLeftButton "playsound UI_CheckBoxChange"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey ">menucmd @_Arg8_@"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set CommandGetFocus ">input set padFocusFallback @_Arg1_@"
+set CommandFocusUp ">gameui focusNameTry @_Arg5_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg7_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg6_@"
+set CommandCancel "gameui focusnametry GameShopButtonBack"
+add MenuObject initFrom ShopFilterButton
+set Name InventoryFilterToggleTemplate
+set SaveArgs 8
+set CommandPressAlt ">sym toggle @_Arg1_@"
+set CommandPressAlt ">menucmd @_Arg8_@"
+set CommandPressAlt "playsound UI_CheckBoxChange"
+set CommandPress ">sym toggle @_Arg1_@"
+set CommandPress ">menucmd @_Arg8_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandLeftButton ">sym toggle @_Arg1_@"
+set CommandLeftButton ">menucmd @_Arg8_@"
+set CommandLeftButton "playsound UI_CheckBoxChange"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey ">menucmd @_Arg8_@"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set CommandGetFocus ">input set padFocusFallback @_Arg1_@"
+set CommandFocusUp ">gameui focusNameTry @_Arg5_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg7_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg6_@"
+add MenuObject initFrom ShopFilterButton
+set Name ShopFilterSupTemplate
+set HiddenCheckBySymbolInv @_Arg9_@
+set SaveArgs 9
+set CommandPress "sym setZero Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_NotOwned Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Duplicates Filter_Badges Filter_Crates"
+set CommandPress "sym setZero Filter_FighterA Filter_Chopper Filter_Bomber Filter_Saucer Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians"
+set CommandPress "menucmd ClearOtherFilters"
+set CommandPress ">sym set @_Arg1_@ 1"
+set CommandPress ">menucmd @_Arg8_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandLeftButton ">sym toggle @_Arg1_@"
+set CommandLeftButton ">menucmd @_Arg8_@"
+set CommandLeftButton "playsound UI_CheckBoxChange"
+set CommandPressAlt ">sym toggle @_Arg1_@"
+set CommandPressAlt ">menucmd @_Arg8_@"
+set CommandPressAlt "playsound UI_CheckBoxChange"
+set CommandFocusUp ">gameui focusNameTry @_Arg5_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg7_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg6_@"
+set CommandCancel "gameui focusnametry GameShopButtonBack"
+add MenuObject initFrom ShopFilterButton
+set Name InventoryFilterSupTemplate
+set HiddenCheckBySymbolInv @_Arg9_@
+set SaveArgs 9
+set CommandPress "sym setZero Filter_Variants_Inv Filter_Colors_Inv Filter_Pets_Inv Filter_Hats_Inv Filter_Contrails_Inv Filter_EnginePfx_Inv Filter_Tracers_Inv Filter_Auras_Inv Filter_FunStats_Inv Filter_NotOwned_Inv Filter_OnSale_Inv Filter_AirMechOwned_Inv Filter_Limited_Inv Filter_BoostK_Inv Filter_BoostXP_Inv Filter_Parts_Inv Filter_Pilots_Inv Filter_Items_Inv Filter_Cosmetics_Inv Filter_Bundles_Inv Filter_Other_Inv Filter_Sets_Inv Filter_Recipes_Inv Filter_Ultimates_Inv Filter_Boosts_Inv Filter_Duplicates_Inv Filter_Badges_Inv Filter_Crates_Inv"
+set CommandPress "sym setZero Filter_FighterA_Inv Filter_Chopper_Inv Filter_Bomber_Inv Filter_Saucer_Inv Filter_FighterNeo_Inv Filter_Osprey_Inv Filter_Warthog_Inv Filter_Paladin_Inv Filter_Angel_Inv Filter_Infantry_Inv Filter_Combat_Inv Filter_Support_Inv Filter_Stationary_Inv Filter_Alternates_Inv Filter_Guardians_Inv"
+set CommandPress "menucmd ClearOtherFiltersInv2"
+set CommandPress ">sym set @_Arg1_@ 1"
+set CommandPress ">menucmd @_Arg8_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandLeftButton ">sym toggle @_Arg1_@"
+set CommandLeftButton ">menucmd @_Arg8_@"
+set CommandLeftButton "playsound UI_CheckBoxChange"
+set CommandPressAlt ">sym toggle @_Arg1_@"
+set CommandPressAlt ">menucmd @_Arg8_@"
+set CommandPressAlt "playsound UI_CheckBoxChange"
+set CommandFocusUp ">gameui focusNameTry @_Arg5_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg7_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg6_@"
+add MenuObject initFrom ShopFilterButton
+set Name ShopFilterPartsTemplate
+set SaveArgs 8
+set CommandPress "sym setZero Filter_FighterA Filter_Chopper Filter_Bomber Filter_Saucer Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+set CommandPress ">sym set @_Arg1_@ 1"
+set CommandPress ">menucmd @_Arg8_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandLeftButton ">sym toggle @_Arg1_@"
+set CommandLeftButton ">menucmd @_Arg8_@"
+set CommandLeftButton "playsound UI_CheckBoxChange"
+set CommandPressAlt ">sym toggle @_Arg1_@"
+set CommandPressAlt ">menucmd @_Arg8_@"
+set CommandPressAlt "playsound UI_CheckBoxChange"
+set CommandFocusUp ">gameui focusNameTry @_Arg5_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg7_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg6_@"
+set CommandCancel "gameui focusnametry GameShopButtonBack"
+add MenuObject initFrom ShopFilterButton
+set Name ShopFilterSubTemplate
+set SaveArgs 9
+set CommandPress "sym setZero Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_NotOwned Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Duplicates Filter_Badges Filter_Crates"
+set CommandPress "sym setZero Filter_FighterA Filter_Chopper Filter_Bomber Filter_Saucer Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians"
+set CommandPress "menucmd ClearOtherFilters"
+set CommandPress ">sym set @_Arg1_@ 1"
+set CommandPress ">menucmd @_Arg8_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandLeftButton ">sym toggle @_Arg1_@"
+set CommandLeftButton ">menucmd @_Arg8_@"
+set CommandLeftButton "playsound UI_CheckBoxChange"
+set CommandPressAlt ">sym toggle @_Arg1_@"
+set CommandPressAlt ">menucmd @_Arg8_@"
+set CommandPressAlt "playsound UI_CheckBoxChange"
+set CommandFocusUp ">gameui focusNameTry @_Arg5_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg7_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg6_@"
+set CommandCancel "gameui focusnametry GameShopButtonBack"
+add MenuObject
+set Name DotSortHighlight
+set Texture menus/HomeBar
+set Coords "722 474 45 45"
+add MenuObject
+set Name DotSortShopDown
+set RenderBlocked 1
+set Coords "0 0 72 72"
+set HiddenCheckBySymbolInv Sort_Reverse
+set CommandPress "menucmd ShopSortForward"
+set CommandPress "playsound UI_CheckBoxChange"
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name DotSortShopUp
+set RenderBlocked 1
+set Coords "0 0 72 72"
+set HiddenCheckBySymbolInv @_Arg1_@
+set Child "DotSortShopDown 0 0"
+set CommandPress "menucmd ShopSortReverse"
+set CommandPress "playsound UI_CheckBoxChange"
+set SaveArgs 1
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name MultiboxShopSort_Base
+set Texture menus/HomeBar
+set Coords "622 474 45 45"
+set CoordsFocused "722 474 45 45"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "50 8"
+set RenderCB_DX 300
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg1_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set SaveArgs 2
+set CommandPress ">sym toggle @_Arg1_@"
+set CommandPress ">menucmd @_Arg2_@"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey ">menucmd @_Arg2_@"
+set Child "DotSortShopUp 0 0 @_Arg1_@"
+add MenuObject initFrom MultiboxShopSort_Base
+set Name MultiboxShopSort
+set SaveArgs 6
+set CommandFocusUp ">gameui focusNameTry @_Arg4_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg6_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg3_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg5_@"
+set CommandCancel ">if usingPad runnow gameui focusNameTry @_Arg4_@"
+add MenuObject initFrom MultiboxShopSort_Base
+set Name MultiboxShopSortName
+set RenderCB_Text @_Arg3_@
+set SaveArgs 7
+set CommandFocusUp ">gameui focusNameTry @_Arg4_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg5_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg6_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg7_@"
+set CommandCancel ">if usingPad runnow gameui focusNameTry @_Arg6_@"
+add MenuObject
+set Name ShopFiltersCosmeticsHasTicket
+set ContainerOnly 1
+set Child "ShopFilterToggleTemplate[Filter_VipShop] 0 0	Filter_VipShop	Filter_VipShop 35		_NA_ Filter_NotOwned ShopItem0 _NA_		ShopFilterClick"
+add MenuObject
+set Name ShopFiltersUnits
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Units
+set Child "ShopFilterSubTemplate[Filter_Combat] 0 0		Filter_Combat		Filter_Combat 11		_NA_ GameShopButtonDiamonds Filter_Infantry Filter_Guardians		ShopFilterSupUnitsOnlyClick	Filter_Units"
+set Child "ShopFilterSubTemplate[Filter_Infantry] 75 0	Filter_Infantry		Filter_Infantry 6		Filter_Combat GameShopButtonDiamonds Filter_Stationary Filter_Support		ShopFilterSupUnitsOnlyClick	Filter_Units"
+set Child "ShopFilterSubTemplate[Filter_Stationary] 150 0	Filter_Stationary	Filter_Stationary 10	Filter_Infantry GameShopButtonDiamonds ShopItem0 Filter_Alternates	ShopFilterSupUnitsOnlyClick	Filter_Units"
+set Child "ShopFilterSubTemplate[Filter_Guardians] 0 75	Filter_Guardians	Filter_Guardians 9		_NA_ Filter_Combat Filter_Support Filter_NotOwned		ShopFilterSupUnitsOnlyClick	Filter_Units"
+set Child "ShopFilterSubTemplate[Filter_Support] 75 75	Filter_Support			Filter_Support 8		Filter_Guardians Filter_Infantry Filter_Alternates Filter_Duplicates		ShopFilterSupUnitsOnlyClick	Filter_Units"
+set Child "ShopFilterSubTemplate[Filter_Alternates] 150 75	Filter_Alternates	Filter_Alternates 20	Filter_Support Filter_Stationary ShopItem0 _NA_		ShopFilterSupUnitsOnlyClick	Filter_Units"
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 0 150	Filter_NotOwned	Filter_NotOwned 18		_NA_ Filter_Guardians ShopItem0 Filter_VipShop		ShopFilterToggleClick"
+set Child "ShopFiltersCosmeticsHasTicket 0 225"
+add MenuObject
+set Name ShopFiltersListbox
+set ContainerOnly 1
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 0 0	Filter_NotOwned	Filter_NotOwned 18		_NA_ Filter_Guardians ShopItem0 Filter_VipShop		ShopFilterToggleClick"
+set Child "ShopFiltersCosmeticsHasTicket 75 0	/ifSym VIPShopTicketCount != 0"
+add MenuObject
+set Name ShopFiltersAirMechs
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_AirMechs
+set Child "ShopFilterSupTemplate[Filter_FighterA] 0 0		Filter_FighterA		DispAirMechFighterA 0		_NA_ GameShopButtonDiamonds Filter_Chopper Filter_Saucer		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Chopper] 75 0		Filter_Chopper		DispAirMechChopper 26		Filter_FighterA GameShopButtonDiamonds Filter_Bomber Filter_Osprey	ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Bomber] 150 0		Filter_Bomber		DispAirMechStealth 27	Filter_Chopper GameShopButtonDiamonds ShopItem0 Filter_Warthog	ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Saucer] 0 75		Filter_Saucer		DispAirMechSaucer 30		_NA_ Filter_FighterA Filter_Osprey Filter_FighterNeo		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Osprey] 75 75		Filter_Osprey		DispAirMechOsprey 32		Filter_Saucer Filter_Chopper Filter_Warthog Filter_Paladin		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Warthog] 150 75	Filter_Warthog		DispAirMechWarthog 33	Filter_Osprey Filter_Bomber ShopItem0 Filter_Angel		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_FighterNeo] 0 150	Filter_FighterNeo	DispAirMechFighterNeo 31		_NA_ Filter_Saucer Filter_Paladin Filter_NotOwned		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Paladin] 75 150		Filter_Paladin		DispAirMechPaladin 34		Filter_FighterNeo Filter_Osprey Filter_Angel Filter_NotOwned		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Angel] 150 150		Filter_Angel		DispAirMechAngel 29	Filter_Paladin Filter_Warthog ShopItem0 Filter_NotOwned		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 0 225	Filter_NotOwned	Filter_NotOwned 18		_NA_ Filter_FighterNeo ShopItem0 Filter_VipShop		ShopFilterToggleClick"
+set Child "ShopFiltersCosmeticsHasTicket 0 300"
+add MenuObject
+set Name ShopFiltersPilots
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Pilots
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 0 0	Filter_NotOwned	Filter_NotOwned 18		_NA_ GameShopButtonDiamonds ShopItem0 Filter_VipShop		ShopFilterToggleClick"
+set Child "ShopFiltersCosmeticsHasTicket 0 75"
+add MenuObject
+set Name ShopFiltersItems
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Items
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 0 0	Filter_NotOwned	Filter_NotOwned 18		_NA_ GameShopButtonDiamonds ShopItem0 Filter_VipShop		ShopFilterToggleClick"
+set Child "ShopFiltersCosmeticsHasTicket 0 75"
+add MenuObject
+set Name ShopFiltersParts
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Parts
+set Child "ShopFilterPartsTemplate[Filter_FighterA] 0 0		Filter_FighterA		DispAirMechFighterA 0		_NA_ GameShopButtonDiamonds Filter_Chopper Filter_Saucer		ShopFilterPartsClick"
+set Child "ShopFilterPartsTemplate[Filter_Chopper] 75 0		Filter_Chopper		DispAirMechChopper 26		Filter_FighterA GameShopButtonDiamonds Filter_Bomber Filter_Osprey	ShopFilterPartsClick"
+set Child "ShopFilterPartsTemplate[Filter_Bomber] 150 0		Filter_Bomber		DispAirMechStealth 27	Filter_Chopper GameShopButtonDiamonds ShopItem0 Filter_Warthog	ShopFilterPartsClick"
+set Child "ShopFilterPartsTemplate[Filter_Saucer] 0 75		Filter_Saucer		DispAirMechSaucer 30		_NA_ Filter_FighterA Filter_Osprey Filter_FighterNeo		ShopFilterPartsClick"
+set Child "ShopFilterPartsTemplate[Filter_Osprey] 75 75		Filter_Osprey		DispAirMechOsprey 32		Filter_Saucer Filter_Chopper Filter_Warthog Filter_Paladin		ShopFilterPartsClick"
+set Child "ShopFilterPartsTemplate[Filter_Warthog] 150 75	Filter_Warthog		DispAirMechWarthog 33	Filter_Osprey Filter_Bomber ShopItem0 Filter_Angel		ShopFilterPartsClick"
+set Child "ShopFilterPartsTemplate[Filter_FighterNeo] 0 150	Filter_FighterNeo	DispAirMechFighterNeo 31		_NA_ Filter_Saucer Filter_Paladin Filter_NotOwned		ShopFilterPartsClick"
+set Child "ShopFilterPartsTemplate[Filter_Paladin] 75 150	Filter_Paladin		DispAirMechPaladin 34		Filter_FighterNeo Filter_Osprey Filter_Angel Filter_NotOwned		ShopFilterPartsClick"
+set Child "ShopFilterPartsTemplate[Filter_Angel] 150 150	Filter_Angel		DispAirMechAngel 29	Filter_Paladin Filter_Warthog ShopItem0 Filter_NotOwned		ShopFilterPartsClick"
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 0 225	Filter_NotOwned	Filter_NotOwned 18		_NA_ Filter_FighterNeo ShopItem0 Filter_VipShop		ShopFilterToggleClick"
+set Child "ShopFiltersCosmeticsHasTicket 0 300"
+add MenuObject
+set Name ShopFiltersOther
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Other
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 0 0	Filter_NotOwned	Filter_NotOwned 18		_NA_ GameShopButtonDiamonds ShopItem0 Filter_VipShop		ShopFilterToggleClick"
+set Child "ShopFiltersCosmeticsHasTicket 0 75"
+add MenuObject
+set Name ShopFiltersUltimates
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Ultimates
+set Child "ShopFilterTemplate[Filter_Items] 0 0		Filter_Items	Shop_Items 3			_NA_ GameShopButtonDiamonds Filter_Units Filter_NotOwned		ShopFilterClick"
+set Child "ShopFilterTemplate[Filter_Units] 75 0	Filter_Units	Shop_Units 1			Filter_Items GameShopButtonDiamonds Filter_Pilots Filter_NotOwned		ShopFilterUnitsClick"
+set Child "ShopFilterTemplate[Filter_Pilots] 150 0	Filter_Pilots	Shop_Pilots 13			Filter_Units GameShopButtonDiamonds ShopItem0 Filter_NotOwned		ShopFilterClick"
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 0 75	Filter_NotOwned	Filter_NotOwned 18		_NA_ Filter_Items ShopItem0 Filter_VipShop		ShopFilterToggleClick"
+set Child "ShopFiltersCosmeticsHasTicket 0 150"
+add MenuObject
+set Name ShopFiltersCosmetics
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Cosmetics
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 0 0	Filter_NotOwned	Filter_NotOwned 18		Sort_ListTime GameShopButtonDiamonds ShopItem0 Filter_VipShop		ShopFilterToggleClick"
+set Child "ShopFiltersCosmeticsHasTicket 0 75"
+add MenuObject
+set Name InventoryFiltersSidebar
+set ContainerOnly 1
+set SaveArgs 6
+set Child "@_Arg1_@FilterTemplate[Filter_AirMechs@_Arg2_@] 0 0	Filter_AirMechs@_Arg2_@	Shop_AirMechs 0			@_Arg3_@ @_Arg4_@ Filter_Units@_Arg2_@ Filter_Parts@_Arg2_@		@_Arg1_@FilterAirMechsClick"
+set Child "@_Arg1_@FilterHalfAirMechs 36 0"
+set Child "@_Arg1_@FilterTemplate[Filter_Units@_Arg2_@] 75 0	Filter_Units@_Arg2_@	Shop_Units 1			Filter_AirMechs@_Arg2_@ @_Arg4_@ Filter_Pilots@_Arg2_@ Filter_Boosts@_Arg2_@		@_Arg1_@FilterUnitsClick"
+set Child "@_Arg1_@FilterHalfUnits 111 0"
+set Child "@_Arg1_@FilterTemplate[Filter_Pilots@_Arg2_@] 150 0	Filter_Pilots@_Arg2_@	Shop_Pilots 13			Filter_Units @_Arg4_@ @_Arg5_@ Filter_Items@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Parts@_Arg2_@] 0 75	Filter_Parts@_Arg2_@	Shop_Parts 2			@_Arg3_@ Filter_AirMechs@_Arg2_@ Filter_Boosts@_Arg2_@ Filter_Other@_Arg2_@ 	@_Arg1_@FilterClickPartsMaster"
+set Child "@_Arg1_@FilterTemplate[Filter_Boosts@_Arg2_@] 75 75	Filter_Boosts@_Arg2_@	Shop_Boosts 5			Filter_Parts@_Arg2_@ Filter_Units@_Arg2_@ Filter_Items@_Arg2_@ Filter_Cosmetics@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Items@_Arg2_@] 150 75	Filter_Items@_Arg2_@	Shop_Items 3			Filter_Boosts@_Arg2_@ Filter_Pilots@_Arg2_@ @_Arg5_@ Filter_Ultimates@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Other@_Arg2_@] 0 150	Filter_Other@_Arg2_@	Shop_Other 15				@_Arg3_@ Filter_Parts Filter_Cosmetics Filter_Bundles		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Cosmetics@_Arg2_@] 75 150	Filter_Cosmetics@_Arg2_@	Shop_Cosmetics 4	Filter_Other@_Arg2_@ Filter_Boosts@_Arg2_@ Filter_Ultimates@_Arg2_@ Filter_Sets@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Ultimates@_Arg2_@] 150 150	Filter_Ultimates@_Arg2_@	Shop_Ultimates 17	Filter_Cosmetics@_Arg2_@ Filter_Items@_Arg2_@ @_Arg5_@ Filter_Duplicates@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterToggleTemplate[Filter_Wishlist@_Arg2_@] 0 300	Filter_Wishlist@_Arg2_@	Filter_Wishlist 38		@_Arg3_@ Filter_Bundles@_Arg2_@ Filter_Badges@_Arg2_@ Filter_RarityA@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Badges@_Arg2_@] 75 300	Filter_Badges@_Arg2_@	Filter_Badges 39			Filter_Wishlist@_Arg2_@ Filter_Sets@_Arg2_@ Filter_Crates@_Arg2_@ Filter_RarityB@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Crates@_Arg2_@] 150 300	Filter_Crates@_Arg2_@	Filter_Crates 41		Filter_Badges@_Arg2_@ Filter_Duplicates@_Arg2_@ @_Arg5_@ Filter_RarityC@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterToggleTemplate[Filter_RarityA@_Arg2_@] 0 375	Filter_RarityA@_Arg2_@	Filter_RarityA 42	@_Arg3_@ Filter_Wishlist@_Arg2_@ Filter_RarityB@_Arg2_@ Filter_Recipes@_Arg2_@		@_Arg1_@FilterToggleClick"
+set Child "@_Arg1_@FilterToggleTemplate[Filter_RarityB@_Arg2_@] 75 375	Filter_RarityB@_Arg2_@	Filter_RarityB 43	Filter_RarityA@_Arg2_@ Filter_Badges@_Arg2_@ Filter_RarityC@_Arg2_@ Filter_Recipes@_Arg2_@		@_Arg1_@FilterToggleClick"
+set Child "@_Arg1_@FilterToggleTemplate[Filter_RarityC@_Arg2_@] 150 375	Filter_RarityC@_Arg2_@	Filter_RarityC 44	Filter_RarityB@_Arg2_@ Filter_Crates@_Arg2_@ @_Arg5_@ Filter_Recipes@_Arg2_@		@_Arg1_@FilterToggleClick"
+add MenuObject
+set Name InventoryFiltersGeneric
+set ContainerOnly 1
+set SaveArgs 6
+set Child "@_Arg1_@FilterTemplate[Filter_AirMechs@_Arg2_@] 0 0	Filter_AirMechs@_Arg2_@	Shop_AirMechs 0			@_Arg3_@ @_Arg4_@ Filter_Units@_Arg2_@ Filter_Parts@_Arg2_@		@_Arg1_@FilterAirMechsClick"
+set Child "@_Arg1_@FilterHalfAirMechs 36 0"
+set Child "@_Arg1_@FilterTemplate[Filter_Units@_Arg2_@] 75 0	Filter_Units@_Arg2_@	Shop_Units 1			Filter_AirMechs@_Arg2_@ @_Arg4_@ Filter_Pilots@_Arg2_@ Filter_Boosts@_Arg2_@		@_Arg1_@FilterUnitsClick"
+set Child "@_Arg1_@FilterHalfUnits 111 0"
+set Child "@_Arg1_@FilterTemplate[Filter_Pilots@_Arg2_@] 150 0	Filter_Pilots@_Arg2_@	Shop_Pilots 13			Filter_Units @_Arg4_@ @_Arg5_@ Filter_Items@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Parts@_Arg2_@] 0 75	Filter_Parts@_Arg2_@	Shop_Parts 2			@_Arg3_@ Filter_AirMechs@_Arg2_@ Filter_Boosts@_Arg2_@ Filter_Other@_Arg2_@ 	@_Arg1_@FilterClickPartsMaster"
+set Child "@_Arg1_@FilterTemplate[Filter_Boosts@_Arg2_@] 75 75	Filter_Boosts@_Arg2_@	Shop_Boosts 5			Filter_Parts@_Arg2_@ Filter_Units@_Arg2_@ Filter_Items@_Arg2_@ Filter_Cosmetics@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Items@_Arg2_@] 150 75	Filter_Items@_Arg2_@	Shop_Items 3			Filter_Boosts@_Arg2_@ Filter_Pilots@_Arg2_@ @_Arg5_@ Filter_Ultimates@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Other@_Arg2_@] 0 150	Filter_Other@_Arg2_@	Shop_Other 15				@_Arg3_@ Filter_Parts Filter_Cosmetics Filter_Bundles		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Cosmetics@_Arg2_@] 75 150	Filter_Cosmetics@_Arg2_@	Shop_Cosmetics 4	Filter_Other@_Arg2_@ Filter_Boosts@_Arg2_@ Filter_Ultimates@_Arg2_@ Filter_Sets@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Ultimates@_Arg2_@] 150 150	Filter_Ultimates@_Arg2_@	Shop_Ultimates 17	Filter_Cosmetics@_Arg2_@ Filter_Items@_Arg2_@ @_Arg5_@ Filter_Duplicates@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterToggleTemplate[Filter_Wishlist@_Arg2_@] 0 300	Filter_Wishlist@_Arg2_@	Filter_Wishlist 38		@_Arg3_@ Filter_Bundles@_Arg2_@ Filter_Badges@_Arg2_@ Filter_RarityA@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Badges@_Arg2_@] 75 300	Filter_Badges@_Arg2_@	Filter_Badges 39			Filter_Wishlist@_Arg2_@ Filter_Sets@_Arg2_@ Filter_Crates@_Arg2_@ Filter_RarityB@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Crates@_Arg2_@] 150 300	Filter_Crates@_Arg2_@	Filter_Crates 41		Filter_Badges@_Arg2_@ Filter_Duplicates@_Arg2_@ @_Arg5_@ Filter_RarityC@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterToggleTemplate[Filter_RarityA@_Arg2_@] 0 375	Filter_RarityA@_Arg2_@	Filter_RarityA 42	@_Arg3_@ Filter_Wishlist@_Arg2_@ Filter_RarityB@_Arg2_@ Filter_Recipes@_Arg2_@		@_Arg1_@FilterToggleClick"
+set Child "@_Arg1_@FilterToggleTemplate[Filter_RarityB@_Arg2_@] 75 375	Filter_RarityB@_Arg2_@	Filter_RarityB 43	Filter_RarityA@_Arg2_@ Filter_Badges@_Arg2_@ Filter_RarityC@_Arg2_@ Filter_Recipes@_Arg2_@		@_Arg1_@FilterToggleClick"
+set Child "@_Arg1_@FilterToggleTemplate[Filter_RarityC@_Arg2_@] 150 375	Filter_RarityC@_Arg2_@	Filter_RarityC 44	Filter_RarityB@_Arg2_@ Filter_Crates@_Arg2_@ @_Arg5_@ Filter_Recipes@_Arg2_@		@_Arg1_@FilterToggleClick"
+add MenuObject initFrom InventoryFiltersGeneric
+set Name InventoryFiltersPlain
+set HiddenCheckBySymbol Filter_Units@_Arg2_@
+set HiddenCheckBySymbol2 Filter_AirMechs@_Arg2_@
+set SaveArgs 6
+set Child "@_Arg1_@FilterTemplate[Filter_Bundles@_Arg2_@] 		0 225	Filter_Bundles@_Arg2_@		Shop_Bundles 23			_NA_ Filter_Other@_Arg2_@ Filter_Sets@_Arg2_@ Filter_Wishlist@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Sets@_Arg2_@] 		75 225	Filter_Sets@_Arg2_@			Shop_Sets 21				Filter_Bundles@_Arg2_@ Filter_Cosmetics@_Arg2_@ Filter_Duplicates@_Arg2_@ Filter_Badges@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Duplicates@_Arg2_@] 	150 225	Filter_Duplicates@_Arg2_@	Filter_Duplicates 22	Filter_Sets@_Arg2_@ Filter_Ultimates@_Arg2_@ @_Arg5_@ Filter_Crates@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Recipes@_Arg2_@] 0 450	Filter_Recipes@_Arg2_@	Filter_Recipes 28			_NA_ Filter_RarityA@_Arg2_@ @_Arg5_@ _NA_		@_Arg1_@FilterClick		/platform !consolePlatformHW"
+add MenuObject initFrom InventoryFiltersGeneric
+set Name InventoryFiltersWithAirmechs
+set HiddenCheckBySymbol Filter_Units@_Arg2_@
+set HiddenCheckBySymbolInv Filter_AirMechs@_Arg2_@
+set SaveArgs 6
+set Child "@_Arg1_@FilterTemplate[Filter_Bundles@_Arg2_@] 0 225	Filter_Bundles@_Arg2_@	Shop_Bundles 23					_NA_ Filter_Other@_Arg2_@ Filter_Sets@_Arg2_@ Filter_FighterA@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Sets@_Arg2_@] 75 225	Filter_Sets@_Arg2_@		Shop_Sets 21					Filter_Bundles@_Arg2_@ Filter_Cosmetics@_Arg2_@ Filter_Duplicates@_Arg2_@ Filter_Chopper@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Duplicates@_Arg2_@] 150 225	Filter_Duplicates@_Arg2_@	Filter_Duplicates 22	Filter_Sets@_Arg2_@ Filter_Ultimates@_Arg2_@ _NA_ Filter_Bomber@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterSupTemplate[Filter_FighterA@_Arg2_@] 0 300		Filter_FighterA@_Arg2_@		DispAirMechFighterA 0		_NA_ Filter_Bundles@_Arg2_@ Filter_Chopper@_Arg2_@ Filter_Saucer@_Arg2_@		@_Arg1_@FilterSupAirMechsClick	Filter_AirMechs@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Chopper@_Arg2_@] 75 300		Filter_Chopper@_Arg2_@		DispAirMechChopper 26		Filter_FighterA@_Arg2_@ Filter_Sets@_Arg2_@ Filter_Bomber@_Arg2_@ Filter_Osprey@_Arg2_@	@_Arg1_@FilterSupAirMechsClick	Filter_AirMechs@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Bomber@_Arg2_@] 150 300		Filter_Bomber@_Arg2_@		DispAirMechStealth 27		Filter_Chopper@_Arg2_@ Filter_Duplicates@_Arg2_@ @_Arg5_@ Filter_Warthog@_Arg2_@	@_Arg1_@FilterSupAirMechsClick	Filter_AirMechs@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Saucer@_Arg2_@] 0 375		Filter_Saucer@_Arg2_@		DispAirMechSaucer 30		_NA_ Filter_FighterA@_Arg2_@ Filter_Osprey@_Arg2_@ Filter_FighterNeo@_Arg2_@		@_Arg1_@FilterSupAirMechsClick	Filter_AirMechs@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Osprey@_Arg2_@] 75 375		Filter_Osprey@_Arg2_@		DispAirMechOsprey 32		Filter_Saucer@_Arg2_@ Filter_Chopper@_Arg2_@ Filter_Warthog@_Arg2_@ Filter_Paladin@_Arg2_@		@_Arg1_@FilterSupAirMechsClick	Filter_AirMechs@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Warthog@_Arg2_@] 150 375	Filter_Warthog@_Arg2_@		DispAirMechWarthog 33		Filter_Osprey@_Arg2_@ Filter_Bomber@_Arg2_@ @_Arg5_@ Filter_Angel@_Arg2_@		@_Arg1_@FilterSupAirMechsClick	Filter_AirMechs@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_FighterNeo@_Arg2_@] 0 450	Filter_FighterNeo@_Arg2_@	DispAirMechFighterNeo 31	_NA_ Filter_Saucer@_Arg2_@ Filter_Paladin@_Arg2_@ _NA_		@_Arg1_@FilterSupAirMechsClick	Filter_AirMechs@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Paladin@_Arg2_@] 75 450		Filter_Paladin@_Arg2_@		DispAirMechPaladin 34		Filter_FighterNeo@_Arg2_@ Filter_Osprey@_Arg2_@ Filter_Angel@_Arg2_@ _NA_		@_Arg1_@FilterSupAirMechsClick	Filter_AirMechs@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Angel@_Arg2_@] 150 450		Filter_Angel@_Arg2_@		DispAirMechAngel 29	Filter_Paladin@_Arg2_@ Filter_Warthog@_Arg2_@ _NA_ @_Arg5_@		@_Arg1_@FilterSupAirMechsClick	Filter_AirMechs@_Arg2_@"
+add MenuObject initFrom InventoryFiltersGeneric
+set Name InventoryFiltersWithUnits
+set HiddenCheckBySymbol Filter_AirMechs@_Arg2_@
+set HiddenCheckBySymbolInv Filter_Units@_Arg2_@
+set SaveArgs 6
+set Child "@_Arg1_@FilterTemplate[Filter_Bundles@_Arg2_@] 0 225	Filter_Bundles@_Arg2_@	Shop_Bundles 23						_NA_ Filter_Other@_Arg2_@ Filter_Sets@_Arg2_@ Filter_Combat@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Sets@_Arg2_@] 75 225	Filter_Sets@_Arg2_@		Shop_Sets 21						Filter_Bundles@_Arg2_@ Filter_Cosmetics@_Arg2_@ Filter_Duplicates@_Arg2_@ Filter_Infantry@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterTemplate[Filter_Duplicates@_Arg2_@] 150 225	Filter_Duplicates@_Arg2_@	Filter_Duplicates 22	Filter_Sets@_Arg2_@ Filter_Ultimates@_Arg2_@ @_Arg5_@ Filter_Stationary@_Arg2_@		@_Arg1_@FilterClick"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Combat@_Arg2_@] 0 300		Filter_Combat@_Arg2_@		Filter_Combat 11		_NA_ Filter_Bundles@_Arg2_@ Filter_Infantry@_Arg2_@ Filter_Guardians@_Arg2_@		@_Arg1_@FilterSupUnitsClick	Filter_Units@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Infantry@_Arg2_@] 75 300	Filter_Infantry@_Arg2_@		Filter_Infantry 6		Filter_Combat@_Arg2_@ Filter_Sets@_Arg2_@ Filter_Stationary@_Arg2_@ Filter_Support@_Arg2_@		@_Arg1_@FilterSupUnitsClick	Filter_Units@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Stationary@_Arg2_@] 150 300	Filter_Stationary@_Arg2_@	Filter_Stationary 10	Filter_Infantry@_Arg2_@ Filter_Duplicates@_Arg2_@ @_Arg5_@ Filter_Alternates@_Arg2_@	@_Arg1_@FilterSupUnitsClick	Filter_Units@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Guardians@_Arg2_@] 0 375	Filter_Guardians@_Arg2_@	Filter_Guardians 9		_NA_ Filter_Combat@_Arg2_@ Filter_Support@_Arg2_@ _NA_		@_Arg1_@FilterSupUnitsClick	Filter_Units@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Support@_Arg2_@] 75 375	Filter_Support@_Arg2_@			Filter_Support 8		Filter_Guardians@_Arg2_@ Filter_Infantry@_Arg2_@ Filter_Alternates@_Arg2_@ _NA_		@_Arg1_@FilterSupUnitsClick	Filter_Units@_Arg2_@"
+set Child "@_Arg1_@FilterSupTemplate[Filter_Alternates@_Arg2_@] 150 375	Filter_Alternates@_Arg2_@	Filter_Alternates 20	Filter_Support@_Arg2_@ Filter_Stationary@_Arg2_@ @_Arg5_@ _NA_		@_Arg1_@FilterSupUnitsClick	Filter_Units@_Arg2_@"
+add MenuObject
+set Name ShopFiltersInventory
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Inventory
+set Child "InventoryFiltersPlain		0 0				Shop _ 		_NA_ GameShopButtonDiamonds ShopItem0 _NA_"
+set Child "InventoryFiltersWithAirmechs	0 0				Shop _ 		_NA_ GameShopButtonDiamonds ShopItem0 _NA_"
+set Child "InventoryFiltersWithUnits	0 0				Shop _ 		_NA_ GameShopButtonDiamonds ShopItem0 _NA_"
+add MenuObject
+set Name MyListingsCountLabel
+set RenderCB_FontScale 0.9
+set RenderCB_Font RobotoBold
+set Coords "0 0 100 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol _MktListingsAmt_
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject
+set Name ShopFiltersMarket
+set HiddenCheckBySymbolInv Shop_Market
+set ContainerOnly 1
+set Child "ShopFiltersMarketPlain 0 0"
+set Child "ShopFiltersMarketWithAirmechs 0 0"
+set Child "ShopFiltersMarketWithUnits 0 0"
+add MenuObject
+set Name ShopFiltersMarketTemplate
+set ContainerOnly 1
+set Child "ShopFilterTemplate[Filter_AirMechs] 0 0	Filter_AirMechs	Shop_AirMechs 0			_NA_ GameShopButtonDiamonds Filter_Units Filter_Parts		ShopFilterAirMechsClick"
+set Child "ShopFilterHalfAirMechs 36 0"
+set Child "ShopFilterTemplate[Filter_Units] 75 0	Filter_Units	Shop_Units 1			Filter_AirMechs GameShopButtonDiamonds Filter_Pilots Filter_Boosts		ShopFilterUnitsClick"
+set Child "ShopFilterHalfUnits 111 0"
+set Child "ShopFilterTemplate[Filter_Pilots] 150 0	Filter_Pilots	Shop_Pilots 13			Filter_Units GameShopButtonDiamonds ShopItem0 Filter_Items		ShopFilterClick"
+set Child "ShopFilterTemplate[Filter_Parts] 0 75	Filter_Parts	Shop_Parts 2			_NA_ Filter_AirMechs Filter_Boosts Filter_Other 	ShopFilterClickPartsMaster"
+set Child "ShopFilterTemplate[Filter_Boosts] 75 75	Filter_Boosts	Shop_Boosts 5			Filter_Parts Filter_Units Filter_Items Filter_Cosmetics		ShopFilterClick"
+set Child "ShopFilterTemplate[Filter_Items] 150 75	Filter_Items	Shop_Items 3			Filter_Boosts Filter_Pilots ShopItem0 Filter_Ultimates		ShopFilterClick"
+set Child "ShopFilterTemplate[Filter_Other] 0 150	Filter_Other	Shop_Other 15					_NA_ Filter_Parts Filter_Cosmetics Sort_PriceD		ShopFilterClick"
+set Child "ShopFilterTemplate[Filter_Cosmetics] 75 150	Filter_Cosmetics	Shop_Cosmetics 4		Filter_Other Filter_Boosts Filter_Ultimates Sort_ListTime		ShopFilterClick"
+set Child "ShopFilterTemplate[Filter_Ultimates] 150 150	Filter_Ultimates	Shop_Ultimates 17		Filter_Cosmetics Filter_Items ShopItem0 Filter_MyListings		ShopFilterClick"
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 0 300	Filter_NotOwned	Filter_NotOwned 18		_NA_ Sort_PriceD Filter_NotInShop Filter_RarityA		ShopFilterToggleClick"
+set Child "ShopFilterToggleTemplate[Filter_NotInShop] 75 300	Filter_NotInShop	Filter_NotInShop 19		Filter_NotOwned Sort_ListTime Filter_Wishlist Filter_RarityB		ShopFilterToggleClick"
+set Child "ShopFilterToggleTemplate[Filter_Wishlist] 150 300	Filter_Wishlist	Filter_Wishlist 38		Filter_NotInShop Filter_MyListings ShopItem0 Filter_RarityC		ShopFilterToggleClick"
+set Child "ShopFilterToggleTemplate[Filter_RarityA] 0 375		Filter_RarityA	Filter_RarityA 42					_NA_ Filter_NotOwned Filter_RarityB _NA_		ShopFilterToggleClick"
+set Child "ShopFilterToggleTemplate[Filter_RarityB] 75 375	Filter_RarityB	Filter_RarityB 43		Filter_RarityA Filter_NotInShop Filter_RarityC _NA_		ShopFilterToggleClick"
+set Child "ShopFilterToggleTemplate[Filter_RarityC] 150 375	Filter_RarityC	Filter_RarityC 44		Filter_RarityB Filter_Wishlist ShopItem0 _NA_		ShopFilterToggleClick"
+add MenuObject initFrom ShopFiltersMarketTemplate
+set Name ShopFiltersMarketPlain
+set HiddenCheckBySymbol Filter_Units
+set HiddenCheckBySymbol2 Filter_AirMechs
+set Child "ShopSortTemplate[Sort_PriceD] 				0 225	Sort_PriceD			Sort_PriceD 36			_NA_ Filter_Other Sort_ListTime Filter_NotOwned		ShopSortPriceD"
+set Child "ShopSortTemplate[Sort_ListTime] 				75 225	Sort_ListTime		Sort_ListTime 37		Sort_PriceD Filter_Cosmetics Filter_MyListings Filter_NotInShop		ShopSortReleaseDateToggle"
+set Child "ShopFilterToggleTemplate[Filter_MyListings]	150 225	Filter_MyListings	Filter_MyListings 45	Sort_ListTime Filter_Ultimates ShopItem0 Filter_Wishlist		ShopFilterToggleClick"
+set Child "MyListingsCountLabel 136 245"
+add MenuObject
+set Name ShopFiltersMarketListbox
+set ContainerOnly 1
+set Child "ShopSortTemplate[Sort_PriceD] 				0 0	Sort_PriceD			Sort_PriceD 36			_NA_ Filter_Other Sort_ListTime Filter_NotOwned		ShopSortPriceD"
+set Child "ShopSortTemplate[Sort_ListTime] 				75 0	Sort_ListTime		Sort_ListTime 37		Sort_PriceD Filter_Cosmetics Filter_MyListings Filter_NotInShop		ShopSortReleaseDateToggle"
+set Child "ShopFilterToggleTemplate[Filter_MyListings]	150 0	Filter_MyListings	Filter_MyListings 45	Sort_ListTime Filter_Ultimates ShopItem0 Filter_Wishlist		ShopFilterToggleClick"
+set Child "ShopFilterToggleTemplate[Filter_Wishlist]	225 0	Filter_Wishlist	Filter_Wishlist 38	Sort_ListTime Filter_Ultimates ShopItem0 Filter_Wishlist		ShopFilterToggleClick"
+set Child "MyListingsCountLabel 136 20"
+set Child "ShopFilterToggleTemplate[Filter_NotOwned] 300 0	Filter_NotOwned	Filter_NotOwned 18		_NA_ Filter_Guardians ShopItem0 Filter_VipShop		ShopFilterToggleClick"
+add MenuObject initFrom ShopFiltersMarketTemplate
+set Name ShopFiltersMarketWithAirmechs
+set HiddenCheckBySymbol Filter_Units
+set HiddenCheckBySymbolInv Filter_AirMechs
+set Child "ShopSortTemplate[Sort_PriceD] 				0 225	Sort_PriceD			Sort_PriceD 36			_NA_ Filter_Other Sort_ListTime Filter_FighterA		ShopSortPriceD"
+set Child "ShopSortTemplate[Sort_ListTime] 				75 225	Sort_ListTime		Sort_ListTime 37		Sort_PriceD Filter_Cosmetics Filter_MyListings Filter_Chopper		ShopSortReleaseDateToggle"
+set Child "ShopFilterToggleTemplate[Filter_MyListings]	150 225	Filter_MyListings	Filter_MyListings 45	Sort_ListTime Filter_Ultimates ShopItem0 Filter_Bomber		ShopFilterToggleClick"
+set Child "MyListingsCountLabel 136 245"
+set Child "ShopFilterSupTemplate[Filter_FighterA] 0 300		Filter_FighterA		FighterADisp 0		_NA_ Sort_PriceD Filter_Chopper Filter_Saucer		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Chopper] 75 300		Filter_Chopper		ChopperDisp 26		Filter_FighterA Sort_ListTime Filter_Bomber Filter_Osprey	ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Bomber] 150 300		Filter_Bomber		BomberDisp 27		Filter_Chopper Filter_MyListings ShopItem0 Filter_Warthog	ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Saucer] 0 375		Filter_Saucer		SaucerDisp 30		_NA_ Filter_FighterA Filter_Osprey Filter_FighterNeo		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Osprey] 75 375		Filter_Osprey		OspreyDisp 32		Filter_Saucer Filter_Chopper Filter_Warthog Filter_Paladin		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Warthog] 150 375	Filter_Warthog		WarthogDisp 33		Filter_Osprey Filter_Bomber ShopItem0 Filter_Angel		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_FighterNeo] 0 450	Filter_FighterNeo	FighterNeoDisp 31	_NA_ Filter_Saucer Filter_Paladin _NA_		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Paladin] 75 450		Filter_Paladin		PaladinDisp 34		Filter_FighterNeo Filter_Osprey Filter_Angel _NA_		ShopFilterSupAirMechsClick	Filter_AirMechs"
+set Child "ShopFilterSupTemplate[Filter_Angel] 150 450		Filter_Angel		AngelDisp 29		Filter_Paladin Filter_Warthog ShopItem0 _NA_		ShopFilterSupAirMechsClick	Filter_AirMechs"
+add MenuObject initFrom ShopFiltersMarketTemplate
+set Name ShopFiltersMarketWithUnits
+set HiddenCheckBySymbol Filter_AirMechs
+set HiddenCheckBySymbolInv Filter_Units
+set Child "ShopSortTemplate[Sort_PriceD] 				0 225	Sort_PriceD			Sort_PriceD 36			_NA_ Filter_Other Sort_ListTime Filter_Combat		ShopSortPriceD"
+set Child "ShopSortTemplate[Sort_ListTime] 				75 225	Sort_ListTime		Sort_ListTime 37		Sort_PriceD Filter_Cosmetics Filter_MyListings Filter_Infantry		ShopSortReleaseDateToggle"
+set Child "ShopFilterToggleTemplate[Filter_MyListings]	150 225	Filter_MyListings	Filter_MyListings 45	Sort_ListTime Filter_Ultimates ShopItem0 Filter_Stationary		ShopFilterToggleClick"
+set Child "MyListingsCountLabel 136 245"
+set Child "ShopFilterSupTemplate[Filter_Combat] 0 300		Filter_Combat		Filter_Combat 11		_NA_ Sort_PriceD Filter_Infantry Filter_Guardians		ShopFilterSupUnitsClick	Filter_Units"
+set Child "ShopFilterSupTemplate[Filter_Infantry] 75 300	Filter_Infantry		Filter_Infantry 6		Filter_Combat Sort_ListTime Filter_Stationary Filter_Support		ShopFilterSupUnitsClick	Filter_Units"
+set Child "ShopFilterSupTemplate[Filter_Stationary] 150 300	Filter_Stationary	Filter_Stationary 10	Filter_Infantry Filter_MyListings ShopItem0 Filter_Alternates	ShopFilterSupUnitsClick	Filter_Units"
+set Child "ShopFilterSupTemplate[Filter_Guardians] 0 375	Filter_Guardians	Filter_Guardians 9		_NA_ Filter_Combat Filter_Support _NA_		ShopFilterSupUnitsClick	Filter_Units"
+set Child "ShopFilterSupTemplate[Filter_Support] 75 375	Filter_Support			Filter_Support 8		Filter_Guardians Filter_Infantry Filter_Alternates _NA_		ShopFilterSupUnitsClick	Filter_Units"
+set Child "ShopFilterSupTemplate[Filter_Alternates] 150 375	Filter_Alternates	Filter_Alternates 20	Filter_Support Filter_Stationary ShopItem0 _NA_		ShopFilterSupUnitsClick	Filter_Units"
+add MenuObject
+set Name ShopMessageNoResults
+set RenderCB_FontScale 0.63
+set RenderCB_Font Roboto
+set Coords "0 0 580 330"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text @_Arg1_@
+set SaveArgs 2
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor "0.8"
+set HiddenCheckBySymbolValue MainMenuShopSelect=@_Arg2_@
+add MenuObject
+set Name ShopButtonNoResults
+set Texture menus/MainBoxes
+set Coords "477 507 300 70"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_RGBColor "0.75"
+set RenderCB_RGBColorFocused "1.0"
+set RenderCB_FontScale 0.8
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Focus -2
+set Color 0x999999
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Flags "/nmi /shadowed"
+set DisabledAlpha 0.2
+set RenderCB_Text @_Arg1_@
+set SaveArgs 3
+set CommandPress ">menuCmd @_Arg2_@"
+set HiddenCheckBySymbolValue MainMenuShopSelect=@_Arg3_@
+set HiddenCheckBySymbol @_Arg4_@
+set CommandFocusLeft "gameui focusNameTry $_Shop_Last"
+set CommandFocusRight "gameui focusNameTry CSF_First"
+add MenuObject
+set Name ShopFrameNoResults
+set HiddenCheckBySymbolInv _NoShopResults
+set Texture menus/Social
+set CoordsStart "641 11 43 43"
+set CoordsMid "684 11 96 43"
+set CoordsEnd "780 11 43 43"
+set CoordsStartFocused "641 54 43 96"
+set CoordsMidFocused "684 54 96 96"
+set CoordsEndFocused "780 54 43 96"
+set CoordsStartDisabled "641 150 43 43"
+set CoordsMidDisabled "684 150 96 43"
+set CoordsEndDisabled "780 150 43 43"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 680
+set RenderCB_DY 350
+set Coords "0 0 680 350"
+set Child "ShopMessageNoResults 50 100	Filter_NoResultsShop	Market"
+set Child "ShopMessageNoResults 50 100	Filter_NoResultsMarket	Game"
+set Child "ShopButtonNoResults 180 190	/platform !consolePlatform	Button_NoResultsShop NoResultsShowVip Market	Filter_VipShop"
+set Child "ShopButtonNoResults 180 190	/platform !consolePlatform	Button_NoResultsMarket NoResultsShowAll Game	Shop_Game"
+add MenuObject
+set Name RedeemCodeDialogCancelVis
+set Coords "449 4 58 58"
+set CoordsFocused "386 4 58 58"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/MainTiles+lang
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name RedeemCodeDialogCancel
+set Coords "0 0 58 58"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "gameui ignoreInputTime 0.2"
+set CommandPress "clearmenu DialogRedeemCode.txt"
+set CommandCancel "gameui ignoreInputTime 0.2"
+set CommandCancel "clearmenu DialogRedeemCode.txt"
+set Child "RedeemCodeDialogCancelVis 0 0"
+add MenuObject
+set Name EnterCodesBackground
+set Texture promos/BomberHelix
+set Coords "0 260 1024 764"
+set ScaleX 1.23
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name ShopFrameEnterCodes
+set RenderBlocked 1
+set Coords "0 0 1334 840"
+set Focus -2
+set MouseInteract 1
+set FirstDrawnChildren 2
+set Child "InspectBlackDialog 0 0"
+set Child "VignetteInspect 0 0"
+set Child "EnterCodesBackground 38 38"
+set Child "CodeEntryTitle 0 200		CodeEntryTitle"
+set Child "CodeEntryMsg 360 320		MB_CodeRedeemMsg"
+set Child "CodeEntryBox 410 360"
+set Child "CodeSubmitButton 560 424"
+set Child "InspectDialogFrameWide 0 0"
+set Child "RedeemCodeDialogCancel 1240 38"
+add MenuObject
+set Name RedeemCodeDialogMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "ShopFrameEnterCodes 283 120"
+add MenuObject
+set Name SetReferralDialogCancel
+set Coords "0 0 58 58"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "gameui ignoreInputTime 0.2"
+set CommandPress "clearmenu DialogSetReferral.txt"
+set CommandCancel "gameui ignoreInputTime 0.2"
+set CommandCancel "clearmenu DialogSetReferral.txt"
+set Child "RedeemCodeDialogCancelVis 0 0"
+add MenuObject
+set Name FrameSetReferral
+set RenderBlocked 1
+set Coords "0 0 1334 840"
+set Focus -2
+set MouseInteract 1
+set FirstDrawnChildren 2
+set Child "InspectBlackDialog 0 0"
+set Child "VignetteInspect 0 0"
+set Child "EnterCodesBackground 38 38"
+set Child "CodeEntryTitle 0 200		SetReferralTitle"
+set Child "CodeEntryMsg 360 310		SetReferralMessage"
+set Child "ReferredByBoxEnter 465 410"
+set Child "ReferredByGoButton 560 474"
+set Child "InspectDialogFrameWide 0 0"
+set Child "SetReferralDialogCancel 1240 38"
+add MenuObject
+set Name SetReferralDialogMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "FrameSetReferral 283 120"
+add MenuObject
+set Name SellFrameClose
+set Texture menus/Social
+set Coords "825 2 70 70"
+set CoordsFocused "825 72 70 70"
+set MouseInteract 1
+set Focus -2
+set CommandPress "menuCmd MyCollectionSellCancel"
+add MenuObject
+set Name SellFrameTitle
+set Texture menus/Social
+set Coords "0 0 940 63"
+set RenderCB _DrawUTextShadowed
+set RenderCB_Font Roboto
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text SellFrameTitle
+add MenuObject
+set Name SellFeeLabel
+set Texture menus/Social
+set Coords "0 0 340 63"
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text MktListingFeeMsg
+add MenuObject initFrom PanelDarkGrayBorder
+set Name MktLockedRateMsgBackground
+set RenderCB_DX 487
+set RenderCB_DY 290
+set NoAlphaMod 1
+set Alpha 0.75
+add MenuObject
+set Name MktLockedRateMsg
+set Texture menus/Social
+set Coords "0 0 440 240"
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_BoolArg 1
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text MktLockedRateMsg
+set HiddenCheckBySymbol IsAnyVIP
+set HiddenCheckBySymbolValue _MktLockedRate_=0
+set FirstDrawnChildren 1
+set Child "MktLockedRateMsgBackground -20 -40"
+set Child "MarketListPromoStarter -4 114"
+add MenuObject
+set Name MktTaxRateMsg
+set Texture menus/Social
+set Coords "0 0 340 63"
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text MktTaxRateMsg
+add MenuObject
+set Name SellPriceDiamondsBox
+set Coords "436 233 167 56"
+set CoordsFocused "436 298 167 56"
+set Texture menus/Faction
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 167
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB_Offset "14 5"
+set MouseInteractZoneExpand "-20 -20 0 10"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set TextEditableMaxLen 6
+set TextEditablePin 1
+set RenderCB_Text SellPriceDiamonds
+set Child "PStatusBarDiamondsIcon -40 10"
+set CommandOnKeyboardEdit "menucmd ListMarketPriceEdited"
+set CommandLoseFocus "menucmd ListMarketPriceEdited_Checked"
+set CommandFocusUp "if sym SellPriceDiamonds < 850000 sym inc SellPriceDiamonds 50"
+set CommandFocusDown "if sym SellPriceDiamonds > 50 sym dec SellPriceDiamonds 50"
+set CommandFocusUp "menucmd ListMarketPriceEdited_Checked"
+set CommandFocusDown "menucmd ListMarketPriceEdited_Checked"
+set CommandFocusRight "gameui focusNameTry ShopSellTime1Hr"
+set CommandPress "if consolePlatformHW menucmd ConListPriceVKBDEntry"
+add MenuObject
+set Name SellToPlayerNameBox
+set Coords "436 233 167 56"
+set CoordsFocused "436 298 167 56"
+set Texture menus/Faction
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 267
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "14 2"
+set MouseInteractZoneExpand "-20 -20 0 10"
+set Layer 3
+set ScaleY 0.8
+set ScaleX 1.5
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /fitX /fitX_n50 /fitX_n10"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set TextEditableMaxLen 15
+set TextEditableProfanityFiltered 1
+set TextEditableUsernameLegacy 1
+set HiddenCheckBySymbolInv Sell_Player
+set RenderCB_Text Sell_PlayerName
+set CommandEnterKey "gameUI focusName SellCreateListingButton"
+set CommandPress "if consolePlatformHW menucmd ConSellToVKBDEntry"
+set CommandFocusLeft "gameUI focusNameTry ShopSellToPlayer"
+add MenuObject initFrom SellToPlayerNameBox
+set Name SellToPlayerNameBoxConsole
+set RenderCB _DrawDSelText
+set TextEditableMaxLen 0
+set TextEditableProfanityFiltered 0
+set TextEditableUsernameLegacy 0
+add MenuObject
+set Name ShopSellHeader
+set Texture menus/DialogGeneral
+set Coords "474 300 78 27"
+set ScaleX 11.76, ScaleY 24.0
+set Color 0x568f5a
+add MenuObject
+set Name SellShopDot
+set Texture menus/HomeBar
+set Coords "779 534 29 29"
+set HiddenCheckBySymbolInv @_Arg1_@
+add MenuObject
+set Name SellShopOptionWho
+set Texture menus/HomeBar
+set Coords "622 474 45 45"
+set CoordsFocused "722 474 45 45"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "50 8"
+set RenderCB_DX 150
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg1_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set SaveArgs 5
+set CommandEnterKey "sym setZero Sell_Anyone Sell_Faction Sell_Friends Sell_Player"
+set CommandPress "sym setZero Sell_Anyone Sell_Faction Sell_Friends Sell_Player"
+set CommandPress ">sym toggle @_Arg1_@"
+set CommandPress "menucmd SellOptionWho"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey "menucmd SellOptionWho"
+set CommandFocusUp ">gameui focusNameTry @_Arg2_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg3_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg5_@"
+set Child "SellShopDot 8 8 @_Arg1_@"
+add MenuObject initFrom SellShopOptionWho
+set Name SellShopOptionWho_Renamed
+set SaveArgs 6
+set RenderCB_Text @_Arg6_@
+add MenuObject
+set Name SellShopOptionTime
+set Texture menus/HomeBar
+set Coords "622 474 45 45"
+set CoordsFocused "722 474 45 45"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "50 8"
+set RenderCB_DX 100
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg1_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set SaveArgs 5
+set CommandEnterKey "sym setZero Sell_Time1 Sell_Time2 Sell_Time3 Sell_Time4"
+set CommandPress "sym setZero Sell_Time1 Sell_Time2 Sell_Time3 Sell_Time4"
+set CommandPress ">sym toggle @_Arg1_@"
+set CommandPress "menucmd SellOptionTime"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey "menucmd SellOptionTime"
+set CommandFocusUp ">gameui focusNameTry @_Arg2_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg3_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg4_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg5_@"
+set Child "SellShopDot 8 8 @_Arg1_@"
+add MenuObject
+set Name SellShopTax
+set Texture menus/HomeBar
+set RenderCB_DX 100
+set RenderCB_DY 24
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_ConsoleSymbol SellTaxDiamonds
+set MouseInteract 1
+set MouseInteractZoneExpand "-45 -10 40 10"
+set Focus -2
+set CommandPress "menucmd PromoUnlockTry misc BookTaxes"
+add MenuObject
+set Name SellShopOptionFee
+set Texture menus/HomeBar
+set Coords "622 474 45 45"
+set CoordsFocused "722 474 45 45"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "90 8"
+set RenderCB_DX 100
+set RenderCB_DY 24
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_ConsoleSymbol @_Arg2_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-85 -10 -50 10"
+set Focus -2
+set SaveArgs 6
+set CommandPress "sym setZero Sell_FeeK Sell_FeeD"
+set CommandPress ">sym toggle @_Arg1_@"
+set CommandPress "menucmd SellOptionFee"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey "menucmd SellOptionFee"
+set Child "SellShopDot 8 8 @_Arg1_@"
+set CommandFocusUp ">gameui focusNameTry @_Arg3_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg4_@"
+set CommandFocusLeft ">gameui focusNameTry @_Arg5_@"
+set CommandFocusRight ">gameui focusNameTry @_Arg6_@"
+add MenuObject initFrom SellShopOptionFee
+set Name SellShopOptionFeeHide
+set HiddenCheckBySymbolInv Sell_Anyone
+set Child "PStatusBarKudosIcon 52 4"
+add MenuObject
+set Name SellCreateListingButton
+set Texture menus/HomeBar
+set Coords "4 4 262 66"
+set CoordsFocused "291 4 262 66"
+set CoordsPressed "291 1 262 66"
+set ScaleX 1.7
+set RenderCB _DrawUText
+set DrawWhenFocused FocusFriendButtons
+set DrawWhenFocusedOffset "-1 -1 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Focus -2
+set MouseInteract 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Flags /nmi
+set DisabledAlpha 0.2
+set RenderCB_Text MktCreateListing
+set CommandPress "menuCmd GoCreateMarketListing"
+set CommandFocusUp "gameui focusNameTry ShopSellFeeDiamonds"
+add MenuObject
+set Name GiftwrapFee
+set Texture menus/HomeBar
+set RenderCB_DX 100
+set RenderCB_DY 24
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_ConsoleSymbol GiftwrapFee
+set HiddenCheckBySymbolInv Shop_Giftwrap
+set Child "PStatusBarDiamondsIcon -34 -5"
+add MenuObject
+set Name TotalMarketPrice
+set Texture menus/HomeBar
+set RenderCB_DX 100
+set RenderCB_DY 24
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 1.2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_ConsoleSymbol SellTotalDiamonds
+set Child "PStatusBarDiamondsIcon -34 -5"
+add MenuObject
+set Name AddItUpLine
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "200 3"
+set Color 0xbbbbbb
+add MenuObject
+set Name MarketListDialogBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1258 764"
+set Color 0x254631
+set NoAlphaMod 1
+set Alpha 0.9
+add MenuObject
+set Name MktTaxInfo
+set ContainerOnly 1
+set Child "MktLockedRateMsg 920 40"
+set Child "PStatusBarDiamondsIcon 600 400"
+set Child "SellShopTax 633 405"
+set Child "MktTaxRateMsg 220 388"
+set HiddenCheckBySymbolInv ShowMktTaxInfo
+add MenuObject
+set Name ShopSellPrice
+set ContainerOnly 1
+set Child "TotalMarketPrice 30 170"
+set Child "AddItUpLine 0 150"
+set Child "SellPriceDiamondsBox 25 0"
+set Child "MktTaxInfo -570 -320"
+add MenuObject
+set Name MarketListPromoStarter
+set Coords "464 717 455 120"
+set Texture menus/ShopTilesTopA
+set CommandGetFocus "addUIAnim ShopTopPromoStarter mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim ShopTopPromoStarter mas_DiamondPackDown"
+set CommandGetFocus "input set padFocusFallback ShopTopPromoStarter"
+set HiddenCheckBySymbol HasStarterPack
+set Focus -2
+set MouseInteract 1
+set CommandFocusUp "gameUI focusNameTry ShopTopGameShop"
+set CommandFocusLeft "gameUI focusNameTry ShopTopPromoPrime ShopTopPromoBoosts"
+set CommandFocusRight "gameUI focusNameTry ShopTopPromoFeatured"
+set DrawWhenFocused FocusShopTopPromo
+set DrawWhenFocusedOffset "2 0 0"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "menuCmd StorePromoUnlockOrInspectBundleTry StarterPack"
+set CommandCancel "if consolePlatform runnow clearmenu ConShop /fadeout $ConShopFadeoutTime"
+set Child "ShopTopPromoStarterIcon 20 -10"
+set Child "GameShopTopPromoName 145 6 Promo9000_Desc"
+set Child "GameShopTopPromoDesc 145 55 MarketList_StarterDesc"
+add MenuObject
+set Name ShopFrameSell
+set RenderBlocked 1
+set Coords "0 0 1334 840"
+set Focus -2
+set MouseInteract 1
+set MouseInteract 1
+set Focus -2
+set FirstDrawnChildren 2
+set Child "InspectBlackDialog 0 0"
+set Child "VignetteInspect 0 0"
+set Child "DialogUnderItemCover 142 162"
+set Child "InfoPartsBackground 38 38"
+set Child "InfoUnitsBackground 38 38"
+set Child "InfoOtherBackground 38 38"
+set Child "InfoDialogBackground 38 38"
+set Child "MarketListDialogBackground 38 38"
+set Child "ShopItem[ShopItemToList] 280 140		List"
+set Child "SellFrameTitle 30 44"
+set Child "SellFeeLabel 365 625"
+set Child "ShopWrappingPaperPreview 251 105"
+set Child "ShopSellPrice 270 450"
+set Child "InspectDialogFrameWide 0 0"
+set Child "MainBarVIPDiamondBox 1060 38"
+set Child "InspectDialogCancelSell 1240 38"
+set Child "SellShopOptionWho[ShopSellToAnyone] 970 470	/platform !consolePlatformHW 	Sell_Anyone		SellPriceDiamondsBox 	ShopSellToFaction 	ShopSellTime1Hr 	_NA_"
+set Child "SellShopOptionWho[ShopSellToFaction] 970 520	/platform !consolePlatformHW 	Sell_Faction	ShopSellToAnyone 		ShopSellToPlayer 	ShopSellTime8Hr 	_NA_"
+set Child "SellShopOptionWho[ShopSellToPlayer] 970 570	/platform !consolePlatformHW 	Sell_Player		ShopSellToFaction 		.ShopSellToPlayerFocusDown 	ShopSellTime1D 		SellToPlayerNameBox"
+set Child "SellShopOptionWho[ShopSellToAnyone] 970 470	/platform consolePlatformHW 	Sell_Anyone		_NA_ 	ShopSellToPlayer 	ShopSellTime1Hr 	_NA_"
+set Child "SellShopOptionWho_Renamed[ShopSellToPlayer] 970 570	/platform consolePlatformHW 	Sell_Player		ShopSellToAnyone 		.ShopSellToPlayerFocusDown 	ShopSellTime1D 		SellToPlayerNameBox		LeaderBoardGamertag@GamertagEXT@"
+set Child "SellToPlayerNameBox 1020 570 /platform !consolePlatformHW"
+set Child "SellToPlayerNameBoxConsole[SellToPlayerNameBox] 1020 570 /platform consolePlatformHW"
+set Child "SellShopOptionTime[ShopSellTime1Hr] 720 470	Sell_Time1		_NA_ ShopSellTime8Hr SellPriceDiamondsBox ShopSellToAnyone"
+set Child "SellShopOptionTime[ShopSellTime8Hr] 720 520	Sell_Time2		ShopSellTime1Hr ShopSellTime1D SellPriceDiamondsBox ShopSellToFaction"
+set Child "SellShopOptionTime[ShopSellTime1D] 720 570	Sell_Time3		ShopSellTime8Hr ShopSellFeeDiamonds SellPriceDiamondsBox ShopSellToPlayer"
+set Child "PStatusBarDiamondsIcon 772 640"
+set Child "SellShopOptionFee[ShopSellFeeDiamonds] 720 635	Sell_FeeD	_ListCostD		ShopSellTime1D SellCreateListingButton _NA_ .ShopSellFeeDiamondsFocusRight"
+set Child "SellShopOptionFeeHide[ShopSellFeeKudos] 890 635	Sell_FeeK	_ListCostK		ShopSellToPlayer SellCreateListingButton ShopSellFeeDiamonds ShopSellGiftwrap"
+set Child "CheckboxShopFilter[ShopSellGiftwrap] 1065 635	Shop_Giftwrap	Shop_Giftwrap 	ShopAddGiftwrap		ShopSellToPlayer SellCreateListingButton .ShopSellGiftwrapFocusLeft _NA_"
+set Child "CheckboxShopFilterLong[GoToMarketAfterList] 600 718	GoToMarketAfterList	GoToMarketAfterList 	ShopClickGoToMarketAfterList	ShopSellToPlayer SellCreateListingButton .ShopSellGiftwrapFocusLeft _NA_ 	/platform !consolePlatform"
+set Child "SellCreateListingButton 680 710"
+add MenuObject
+set Name MarketListDialogMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "ShopFrameSell 283 120"
+set Child "CM_ButtonHints_MarketListDialog 0 0		MarketListDialog"
+add MenuObject
+set Name FilterTextClear
+set Texture menus/Social
+set Coords "825 2 70 70"
+set CoordsFocused "825 72 70 70"
+set MouseInteract 1
+set Focus -2
+set ScaleX 0.66, ScaleY 0.66
+set SaveArgs 2
+set CommandPress "gameUI ignoreInputTime 0.05"
+set CommandPress ">sym set @_Arg1_@"
+set CommandPress ">menucmd @_Arg2_@"
+set HiddenCheckBySymbolValue InvV2FilterText=
+add MenuObject
+set Name ShopFilterText
+set Coords "8 233 411 56"
+set CoordsFocused "8 298 411 56"
+set Texture menus/Faction
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 411
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "14 5"
+set MouseInteractZoneExpand "-20 -20 0 10"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set TextEditableMaxLen 16
+set RenderCB_Text ShopFilterText
+set CommandOnKeyboardEdit "menucmd ShopFilterTextChanged"
+set Child "FilterTextClear 310 1		ShopFilterText ShopFilterTextCleared"
+#if arc
+set TextEditableProfanityFiltered 1
+#endif
+add MenuObject initFrom ShopFilterText
+set Name ShopFilterTextMarket
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbolInv Shop_Market
+add MenuObject
+set Name MainMenuShopFilter
+set HiddenCheckBySymbolInv ShowShopItems
+set Texture menus/ShopParts+lang
+set Coords "0 648 189 242"
+set CoordsStart "0 648 32 32"
+set CoordsMid "32 648 102 32"
+set CoordsEnd "157 648 32 32"
+set CoordsStartFocused "0 680 32 180"
+set CoordsMidFocused "32 680 102 180"
+set CoordsEndFocused "157 680 32 180"
+set CoordsStartDisabled "0 858 32 32"
+set CoordsMidDisabled "32 858 102 32"
+set CoordsEndDisabled "157 858 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 320
+set RenderCB_DY 558
+set Focus -2
+set MouseInteract 1
+set Child "ShopFiltersUnits  20 20"
+set Child "ShopFiltersAirMechs  20 20"
+set Child "ShopFiltersPilots  20 20"
+set Child "ShopFiltersItems  20 20"
+set Child "ShopFiltersParts  20 20"
+set Child "ShopFiltersCosmetics  20 20"
+set Child "ShopFiltersOther  20 20"
+set Child "ShopFiltersUltimates  20 20"
+set Child "ShopFiltersInventory 20 20"
+set Child "ShopFiltersMarket 20 20"
+add MenuObject
+set Name ShopListNew
+set Texture menus/HomeBar
+set Coords "924 525 73 56"
+set CoordsPressed "922 523 75 58"
+set DisplayAsPressedIfParentPressed 1
+add MenuObject
+set Name MainMenuShopButtons
+set ContainerOnly 1
+set Child "ListButtonVipTemplate[Shop_Featured] 0 0		Shop_Featured	MainBarButtonShop 	Shop_Diamonds	0"
+set Child "ListButtonNonVipTemplate[Shop_Premium] 0 0		Shop_Premium	MainBarButtonShop 	Shop_Diamonds Shop_Featured"
+set Child "ListButtonTemplate[Shop_Diamonds] 0 100		Shop_Diamonds	.To_Shop_Featured 	Shop_Game	0"
+set Child "ListButtonTemplate[Shop_Game] 0 200		Shop_Game	Shop_Diamonds 	Shop_Market	1"
+set Child "ListButtonTemplate[Shop_Market] 0 300		Shop_Market	Shop_Game 	Shop_MyCollection	1"
+set Child "ListButtonTemplate[Shop_MyCollection] 0 400		Shop_MyCollection	Shop_Market 	_NA_	1"
+set Child "ListLabelVipTemplate 0 0		Shop_Featured Shop_Featured"
+set Child "ListLabelNonVipTemplate 4 4		Shop_Premium	Shop_Featured"
+set Child "ListLabelTemplate 0 103		Shop_Diamonds"
+set Child "ListLabelTemplate 0 203		Shop_Game"
+set Child "ListLabelTemplate 0 303		Shop_Market"
+set Child "ListLabelTemplate 0 403		Shop_MyCollection"
+set Child "ListLabelVipTemplate 0 0		Shop_Featured Shop_Featured"
+set Child "ListLabelNonVipTemplate 4 4		Shop_Premium	Shop_Featured"
+set Child "ListLabelPadTemplate 0 103		Shop_Diamonds"
+set Child "ListLabelPadTemplate 0 203		Shop_Game"
+set Child "ListLabelPadTemplate 0 303		Shop_Market"
+set Child "ListLabelPadTemplate 0 403		Shop_MyCollection"
+add MenuObject
+set Name ShopPromosPc
+set ContainerOnly 1
+set Child "ShopTopPromoPrime 500 880"
+set Child "ShopTopPromoStarter 30 880"
+add MenuObject
+set Name GameShopSections
+set ContainerOnly 1
+set HiddenCheckBySymbol ShowShopItems
+set HiddenCheckBySymbolInv Shop_Game
+set Child "ShopPromosPc 2 -91			/platform !consoleplatform"
+set Child "GameShopButtonLarge[Shop_Units] 0 0			Shop_Units		GameShopButtonDiamonds 	_NA_	Shop_AirMechs	Shop_Pilots	0"
+set Child "GameShopButtonLarge[Shop_AirMechs] 330 0		Shop_AirMechs		Shop_Units 	_NA_	Shop_Ultimates	Shop_Parts	1"
+set Child "GameShopButtonLarge[Shop_Ultimates] 660 0	Shop_Ultimates	Shop_AirMechs 	_NA_	.FocusGameEventCache	Shop_Cosmetics	2"
+set Child "GameShopButtonMedium[Shop_Pilots] 0 394		Shop_Pilots	GameShopPromo	Shop_Units 	Shop_Parts	Shop_Boosts	3"
+set Child "GameShopButtonSmall[Shop_Parts] 330 394	Shop_Parts	Shop_Pilots	Shop_AirMechs	Shop_Cosmetics	Shop_Items	4"
+set Child "GameShopButtonMedium[Shop_Cosmetics] 660 394		Shop_Cosmetics		Shop_Parts	Shop_Ultimates	.FocusGameEventCache 	Shop_Other	5"
+set Child "GameShopButtonSmall[Shop_Boosts] 0 616		Shop_Boosts		GameShopPromo	Shop_Pilots	Shop_Items 	_NA_	6"
+set Child "GameShopButtonMedium[Shop_Items] 330 562		Shop_Items		Shop_Boosts	Shop_Parts	Shop_Other 	_NA_	7"
+set Child "GameShopButtonSmall[Shop_Other] 660 616		Shop_Other		Shop_Items	Shop_Cosmetics	.FocusGameEventCache 	_NA_	8"
+add MenuObject
+set Name ConMainMenuShopButtons
+set ContainerOnly 1
+set Child "ListButtonVipTemplate[Shop_Featured] 0 0		Shop_Featured	MainBarButtonShop 	Shop_Diamonds	0"
+set Child "ListLabelVipTemplate 0 0		Shop_Featured Shop_Featured"
+set Child "ListButtonNonVipTemplate[Shop_Premium] 0 0		Shop_Premium	MainBarButtonShop 	Shop_Diamonds Shop_Featured"
+set Child "ListLabelNonVipTemplate 4 4		Shop_Premium	Shop_Featured"
+set Child "ListButtonTemplate[Shop_Diamonds] 0 64		Shop_Diamonds	.To_Shop_Featured 	Shop_Units	0"
+set Child "ListLabelTemplate 0 64		Shop_Diamonds"
+set Child "ListButtonTemplate[Shop_Units] 0 128		Shop_Units	Shop_Diamonds 	Shop_AirMechs	1"
+set Child "ListLabelTemplate 0 128		Shop_Units"
+set Child "ListButtonTemplate[Shop_AirMechs] 0 192		Shop_AirMechs	Shop_Units 	Shop_Parts	1"
+set Child "ListLabelTemplate 0 192		Shop_AirMechs"
+set Child "ListButtonTemplate[Shop_Parts] 0 256		Shop_Parts	Shop_AirMechs 	Shop_Pilots	1"
+set Child "ListLabelTemplate 0 256		Shop_Parts"
+set Child "ListButtonTemplate[Shop_Pilots] 0 320		Shop_Pilots	Shop_Parts 	Shop_Items	1"
+set Child "ListLabelTemplate 0 320		Shop_Pilots"
+set Child "ListButtonTemplate[Shop_Items] 0 384		Shop_Items	Shop_Pilots 	Shop_Cosmetics	1"
+set Child "ListLabelTemplate 0 384		Shop_Items"
+set Child "ListButtonTemplate[Shop_Cosmetics] 0 448		Shop_Cosmetics	Shop_Items 	Shop_Boosts	1"
+set Child "ListLabelTemplate 0 448		Shop_Cosmetics"
+set Child "ListButtonTemplate[Shop_Boosts] 0 512		Shop_Boosts	Shop_Cosmetics 	Shop_Other	1"
+set Child "ListLabelTemplate 0 512		Shop_Boosts"
+set Child "ListButtonTemplate[Shop_Other] 0 576		Shop_Other	Shop_Boosts 	Shop_MyCollection	1"
+set Child "ListLabelTemplate 0 576		Shop_Other"
+set Child "ListButtonTemplate[Shop_MyCollection] 0 640		Shop_MyCollection	Shop_Other 	Shop_Market	1"
+set Child "ListLabelTemplate 0 640		Shop_MyCollection"
+set Child "ListButtonTemplate[Shop_Market] 0 704		Shop_Market	Shop_MyCollection 	_NA_	1"
+set Child "ListLabelTemplate 0 704		Shop_Market"
+add MenuObject
+set Name ShopNavTemplate
+set Texture menus/HomeBar
+set Coords "718 237 138 82"
+set CoordsFocused "718 322 138 82"
+set Focus -2
+set MouseInteract 1
+set DisabledAlpha 0.33
+set CommandGetFocus "playSound $MenuSoundFocus"
+add MenuObject initFrom ShopNavTemplate
+set Name ShopNavPrevious
+set ScaleX 0.7, ScaleY 0.7
+set DisabledSymInv @_Arg1_@PagePrevOk
+set CommandPress ">collection page @_Arg1_@ -1"
+set SaveArgs 1
+add MenuObject initFrom ShopNavTemplate
+set Name ShopNavNext
+set ScaleX 0.7, ScaleY 0.7
+set DisabledSymInv @_Arg1_@PageNextOk
+set MirrorOnX 1
+set CommandPress ">collection page @_Arg1_@ 1"
+set SaveArgs 1
+add MenuObject initFrom ShopNavTemplate
+set Name HangarLoadoutPrevious
+set ScaleX 0.6, ScaleY 0.6
+set DisabledSym PickAirMechVariant
+set CommandPress "menucmd ChangeLoadoutPrev"
+set SaveArgs 1
+add MenuObject initFrom ShopNavTemplate
+set Name HangarLoadoutNext
+set ScaleX 0.6, ScaleY 0.6
+set DisabledSym PickAirMechVariant
+set MirrorOnX 1
+set CommandPress "menucmd ChangeLoadoutNext"
+set SaveArgs 1
+add MenuObject
+set Name ConShopNavPrevious
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 192 112 64"
+set DisabledSymInv @_Arg1_@PagePrevOk
+set CommandPress ">collection page @_Arg1_@ -1"
+set SaveArgs 1
+add MenuObject
+set Name ConShopNavNext
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 128 112 64"
+set DisabledSymInv @_Arg1_@PageNextOk
+set CommandPress ">collection page @_Arg1_@ 1"
+set SaveArgs 1
+add MenuObject
+set Name ShopNavText
+set RenderCB_FontScale 1.0
+set RenderCB_Font RobotoBold
+set Coords "0 0 100 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@PagesCurr
+set RenderCB_BoolArg 0
+set RenderCB_RGBColor 0xe5e5e5
+set SaveArgs 1
+add MenuObject
+set Name HideNavBoosts
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "500 94"
+set Color 0x141414
+set ColorFocused 0x141414
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolInv Shop_Boosts
+add MenuObject initFrom MF_ButtonsV2
+set Name ShopMarketRefresh
+set DrawWhenFocused FocusShortButtons
+set DrawWhenFocusedOffset "2 2 0"
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.8
+set RenderCB_Text MF_NetGameBrowseRefreshList
+set HiddenCheckBySymbolInv Shop_Market
+set CommandPress "menuCmd MarketRefreshButtonClicked"
+set DefaultKeyboardControl 1
+set ScaleX 0.7
+add MenuObject
+set Name ShopMarketRefresh_ConsoleStub
+set ContainerOnly 1
+add MenuObject
+set Name HangarLoadoutNavText
+set RenderCB_FontScale 0.8
+set RenderCB_Font RobotoBold
+set Coords "0 0 100 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbolGen "rook do genLoadoutDisp _LoadoutDisp"
+set RenderCB_ConsoleSymbol _LoadoutDisp
+set RenderCB_BoolArg 0
+set RenderCB_RGBColor 0xcccccc
+set SaveArgs 1
+add MenuObject
+set Name LoadoutWheelZone
+set RenderBlocked 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1230 810"
+set CommandOnMouseDrag "if !menuloaded SelectItemDialog && !menuloaded UnlockDialog && sym _Wheel == -1 && sym PickAirMechVariant == 0 menucmd ChangeLoadoutPrev"
+set CommandOnMouseDrag "if !menuloaded SelectItemDialog && !menuloaded UnlockDialog && sym _Wheel == 1 && sym PickAirMechVariant == 0  menucmd ChangeLoadoutNext"
+add MenuObject
+set Name HangarLoadoutNav
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbol LoadoutConfigureUnits
+set HiddenCheckBySymbol2 LoadoutSetupAirMech
+set Child "LoadoutWheelZone -840 0"
+set Child "HangarLoadoutNavText 58 8"
+set Child "HangarLoadoutPrevious 0 0"
+set Child "HangarLoadoutNext 138 0"
+add MenuObject
+set Name ShopPageNav
+set ContainerOnly 1
+set SaveArgs 1
+set Child "ShopNavText 142 10	@_Arg1_@"
+set Child "ShopNavPrevious 50 0	@_Arg1_@"
+set Child "ShopNavNext 238 0	@_Arg1_@"
+add MenuObject
+set Name ConShopPageNav
+set ContainerOnly 1
+set SaveArgs 1
+set Child "ShopNavText 124 20		@_Arg1_@"
+set Child "ConShopNavPrevious 0 0	@_Arg1_@"
+set Child "ConShopNavNext 224 0		@_Arg1_@"
+add MenuObject
+set Name ShopNavigate
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ShowShopItems
+set HiddenCheckBySymbol2 _HideShopTopBar
+set SaveArgs 1
+set Child "ShopPageNav 700 20	@_Arg1_@			/platform !consolePlatform"
+set Child "ConShopPageNav 320 10	@_Arg1_@	/platform consolePlatform"
+set Child "SellItemButton 802 6		/platform !consolePlatform"
+set Child "ShopFilterText 60 20	/platform !consolePlatform"
+set Child "ShopMarketRefresh 542 14	/platform !consolePlatform"
+set Child "ShopMarketRefresh_ConsoleStub[ShopMarketRefresh] 802 6	/platform consolePlatform"
+add MenuObject
+set Name MarketTermsTitle
+set Texture menus/Social
+set Coords "0 0 798 60"
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/shadowed /fitX /allCaps"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text MarketTermsTitle
+add MenuObject
+set Name MarketTermsHeader
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "798 60"
+set Color 0xff7700
+set Child "MarketTermsTitle 0 0"
+add MenuObject
+set Name CheckboxMarketTerms
+set Texture menus/HomeBar
+set Coords "623 428 42 42"
+set CoordsFocused "723 428 42 42"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 8"
+set RenderCB_DX 580
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text MarketTermsCheckbox
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set SaveArgs 3
+set CommandPress "sym toggle MarketAcceptTermsCheck"
+set CommandPress "if sym MarketAcceptTermsCheck == 1 gameui focusNameTry MarketTermsButton"
+set CommandCancel "menuCmd ReturnToShopTop"
+set CommandGetFocus "input set padFocusFallback CheckboxMarketTerms"
+set CommandEnterKey "sym toggle MarketAcceptTermsCheck"
+set CommandEnterKey "if sym MarketAcceptTermsCheck == 1 gameui focusNameTry MarketTermsButton"
+set Child "CheckMarkShop 0 0 MarketAcceptTermsCheck"
+set CommandFocusDown "gameui focusNameTry MarketTermsButton"
+set HiddenCheckBySymbolInv Shop_Market
+set HiddenCheckBySymbol MarketAcceptTerms
+set HiddenCheckBySymbolValue MarketCanBuy=0
+add MenuObject
+set Name MarketTermsButton
+set Texture menus/Social
+set Coords "458 205 440 63"
+set CoordsPressed "8 203 440 63"
+set RenderCB _DrawUText
+set DrawWhenFocused FocusFriendButtons
+set DrawWhenFocusedOffset "-1 -1 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Focus -2
+set MouseInteract 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Flags /nmi
+set DisabledAlpha 0.2
+set DisabledSymInv MarketAcceptTermsCheck
+set HiddenCheckBySymbolValue MarketCanBuy=0
+set RenderCB_Text MarketTermsButton
+set CommandPress "sym set MarketAcceptTerms 1"
+set CommandPress "backend save"
+set CommandPress "gameUI focusNameTry ShopItem0 ShopItemEmpty"
+set CommandCancel "menuCmd ReturnToShopTop"
+set CommandFocusUp "gameui focusNameTry CheckboxMarketTerms"
+add MenuObject
+set Name MarketTermsText
+set Coords "0 0 758 600"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYTop
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 17
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_Text MarketTerms
+add MenuObject
+set Name MarketTermsAcceptBlockerText
+set Texture menus/Social
+set Coords "0 0 798 60"
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.82
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/shadowed /fitX /allCaps"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text MarketTermsBlocked
+set RenderCB_RGBColor "0.9 0.3 0.2"
+add MenuObject
+set Name MarketTermsAcceptBlocker
+set Texture effects/white
+set Coords "0 0 798 143"
+set TileArea "798 143"
+set Color 0x141414
+set ColorFocused 0x141414
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "menuCmd StorePromoUnlockOrInspectBundleTry StarterPack"
+set NoAlphaMod 1
+set Alpha 0.8
+set HiddenCheckBySymbol MarketCanBuy
+set Child "MarketTermsAcceptBlockerText 0 30
+add MenuObject
+set Name MarketTermsFrame
+set Texture menus/Social
+set CoordsStart "641 11 43 43"
+set CoordsMid "684 11 96 43"
+set CoordsEnd "780 11 43 43"
+set CoordsStartFocused "641 54 43 96"
+set CoordsMidFocused "684 54 96 96"
+set CoordsEndFocused "780 54 43 96"
+set CoordsStartDisabled "641 150 43 43"
+set CoordsMidDisabled "684 150 96 43"
+set CoordsEndDisabled "780 150 43 43"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 880
+set RenderCB_DY 750
+set Coords "0 0 880 750"
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "35 35 -35 -35"
+set Child "MarketTermsHeader 41 41"
+set Child "MarketTermsText 81 124"
+set Child "CheckboxMarketTerms 210 570"
+set Child "MarketTermsButton 235 625"
+set Child "MarketTermsAcceptBlocker 41 565"
+add MenuObject
+set Name ShopMarketBlocker
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0xaa5533
+set ColorFocused 0xaa5533
+set PulseAlpha "3.0 -0.8 -0.4"
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolInv Shop_Market
+set HiddenCheckBySymbol2 MarketAcceptTerms
+set Child "MarketTermsFrame 50 50"
+set StretchToFillScreen 1
+set CommandPress "gameui directpushname MainBarButtonShop"
+set CommandCancel "gameui directpushname MainBarButtonShop"
+add MenuObject
+set Name BuyDiamondBundles
+set ContainerOnly 1
+set HiddenCheckBySymbolInv BuyDiamondsOld
+set Child "DiamondBundle5 0 0"
+set Child "DiamondBundle10 332 0"
+set Child "DiamondBundle20 664 0"
+set Child "DiamondBundle35 0 393"
+set Child "DiamondBundle50 332 393"
+set Child "DiamondBundle100 664 393"
+add MenuObject
+set Name BuyDiamondPacks
+set ContainerOnly 1
+set HiddenCheckBySymbol BuyDiamondsOld
+add MenuObject
+set Name ShopFrameBuyDiamonds
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Diamonds
+set Child "BuyDiamondPacks 10 10"
+set Child "BuyDiamondBundles 0 0"
+add MenuObject
+set Name GetPremiumPrimePrice
+set Coords "0 0 374 32"
+set DisabledAlpha 0.75
+set RenderCB_DX 280
+set RenderCB_DY 30
+set RenderCB_FontScale 0.65
+set RenderCB_Font DroidSansBigNumbers
+set RenderCB _DrawUText_G3x1
+set Texture hud/Challenge
+set RenderCB_YClipConfig "-20 130 -114 80"
+set CoordsStart "5 180 36 65"
+set CoordsMid "39 180 20 65"
+set CoordsEnd "59 180 46 65"
+set RenderCB_Text _blank_
+set RenderCB_ConsoleSymbol2 PrimeBundle_Price
+add MenuObject
+set Name GetPremiumMainImage
+set Texture menus/SplashUpsellD2
+set Coords "60 0 1860 1024"
+set MouseInteract 1
+set Focus -2
+set ScaleX 0.836, ScaleY 0.836
+set CommandPress "backend statOnce getpremium:backgroundClick"
+add MenuObject
+set Name GetPremiumVipPerks
+set Texture menus/TradeB
+set Coords "654 614 365 404"
+set MouseInteractZoneExpand "-15 300 15 15"
+set CommandPress "menucmd PromoUnlockTry misc HCube"
+add MenuObject
+set Name ShopGetPremium
+set HiddenCheckBySymbolInv Shop_Featured
+set HiddenCheckBySymbol AnyVipStatusShown
+set Texture menus/DialogGeneral
+set CoordsStart "32 416 32 32"
+set CoordsMid "32 416 32 32"
+set CoordsEnd "64 416 32 32"
+set CoordsStartFocused "32 448 32 32"
+set CoordsMidFocused "32 448 32 32"
+set CoordsEndFocused "64 448 32 32"
+set CoordsStartDisabled "32 480 32 32"
+set CoordsMidDisabled "32 480 32 32"
+set CoordsEndDisabled "64 480 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 1600
+set RenderCB_DY 910
+set Focus -2
+set MouseInteract 1
+set Child "GetPremiumMainImage 0 26"
+set Child "ButtonPremiumStarter 348 284"
+set Child "ButtonPremiumPrime 892 336"
+set Child "GetPremiumVipPerks 30 426"
+add MenuObject
+set Name GameShopPromoDesc
+set RenderCB_RGBColor "0.4"
+set RenderCB_FontScale 0.85
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set RenderCB_Text Shop_FeaturedDesc
+set RenderCB _DrawUText
+set Coords "0 0 280 542"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.0
+add MenuObject
+set Name GameShopPromo
+set Texture menus/ShopParts+lang
+set Coords "1 0 315 645"
+set DisabledSym ShowShopItems
+set MouseInteract 1
+set Focus -2
+set SaveArgs 2
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.0
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandGetFocus "addUIAnim GameShopPromo mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim GameShopPromo mas_DiamondPackDown"
+set DrawWhenFocused FocusShopPromo
+set DrawWhenFocusedOffset "-3 -1 0"
+set MouseInteractZoneExpandWhenFocused "0 0 5 5"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "sym setZero Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Parts Shop_Cosmetics Shop_Flair Shop_Other Shop_Boosts Shop_Inventory Shop_Ultimates Shop_Pets Shop_Market"
+set CommandPress "sym set ShowShopItems 1"
+set CommandPress "menuCmd ShopButtonPress"
+set CommandPress "menuCmd ButtonPressShop_FeaturedList"
+set CommandPress "if sym Shop_Featured == 1 sym set Shop_Featured 0"
+set CommandPress "if sym Shop_Diamonds == 1 sym set Shop_Diamonds 0"
+set CommandPress "sym set Shop_Game 1"
+set CommandPress "collection shopInit Featured"
+set CommandGetFocus ">input set padFocusFallback GameShopPromo"
+set CommandGetFocus ">sym set _GameShop_Last GameShopPromo"
+set CommandPress "sym set ShopSection Shop_Featured"
+set CommandFocusUp "gameUI focusNameTry GameShopButtonMarket GameShopButtonDiamonds GameShopButtonInventory"
+set CommandFocusRight "gameUI focusNameTry Shop_Units DiamondBundle5"
+set CommandFocusDown "gameUI focusNameTry GameShopCodesButton"
+set CommandFocusDown ">gameUI focusNameTryList GameShopPromo @_Arg1_@ 3 1"
+set CommandCancel "gameUI ignoreInputTime 0.3"
+set CommandCancel "menuCmd ReturnToShopTop"
+set Child "GameShopButtonText -10 540 Shop_Featured	/platform consolePlatform"
+set Child "GameShopPromoDesc 20 20 Shop_Featured"
+add MenuObject initFrom GameShopPromo
+set Name GameShopPromoForCodes
+set Coords "638 0 315 495"
+set DrawWhenFocused FocusShopPromoForCodes
+set Child "GameShopButtonText -10 440 Shop_Featured	/platform !consolePlatform"
+add MenuObject
+set Name GameShopButtonBackTemplate
+set Coords "316 429 316 103"
+set CoordsFocused "316 536 316 103"
+set CoordsPressed "314 534 316 103"
+set Texture menus/ShopParts+lang
+set CommandGetFocus "addUIAnim GameShopButtonBack mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim GameShopButtonBack mas_DiamondPackDown"
+set DrawWhenFocused FocusDiamondButton
+set DrawWhenFocusedOffset "-2 -2 0"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set MouseInteractZoneExpandWhenFocused "0 0 0 8"
+set MouseInteract 1
+set Focus -2
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuBackClick"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_Text MF_Back
+set SaveArgs 3
+set MouseInteract 1
+set RenderCB_RGBColor "1.0 0.94 0.85"
+set RenderCB_RGBColorFocused "0.2 0.3 0.4"
+set RenderCB_Flags "/nmi /allCaps /fitX"
+set RenderCB_FontScale 0.6
+set RenderCB_DX 316
+set RenderCB_DY 92
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "10 0"
+set RenderCB_OffsetFocused "9 -1"
+set RenderCB_OffsetPressed "11 1"
+set CommandFocusDown "gameUI focusNameTry GameShopButtonDiamonds"
+set CommandFocusRight "gameUI focusNameTry Shop_Units DiamondBundle5 ShopItem0"
+add MenuObject initFrom GameShopButtonBackTemplate
+set Name GameShopButtonBack
+set CommandPress "pcmd 0.001 sym set _NoShopResults 0"
+set CommandPress "if sym Shop_Diamonds == 1 menucmd CancelShop_Diamonds"
+set CommandPress "if sym Shop_Game == 0 && sym DialogBoxLoaded == 0 && consolePlatform menuCmd ReturnToShopTop"
+set CommandPress "if sym Shop_Game == 0 && sym DialogBoxLoaded == 0 && !consolePlatform gameui directPushNameIfEnabled MainBarBackButton"
+set CommandPress "if sym Shop_Game == 1 && sym ShowShopItems == 1 menucmd CancelShop_Sections"
+set CommandPress "if sym Shop_Game == 1 && sym ShowShopItems != 1 && consolePlatform menuCmd ReturnToShopTop"
+set CommandPress "if sym Shop_Game == 1 && sym ShowShopItems != 1 && !consolePlatform gameui directPushNameIfEnabled MainBarBackButton"
+set CommandCancel "pcmd 0.001 sym set _NoShopResults 0"
+set CommandCancel "if sym Shop_Diamonds == 1 menucmd CancelShop_Diamonds"
+set CommandCancel "if sym Shop_Game == 0 && sym DialogBoxLoaded == 0 && consolePlatform menuCmd ReturnToShopTop"
+set CommandCancel "if sym Shop_Game == 0 && sym DialogBoxLoaded == 0 && !consolePlatform gameui directPushNameIfEnabled MainBarBackButton"
+set CommandCancel "if sym Shop_Game == 1 && sym ShowShopItems == 1 menucmd CancelShop_Sections"
+set CommandCancel "if sym Shop_Game == 1 && sym ShowShopItems != 1 && consolePlatform menuCmd ReturnToShopTop"
+set CommandCancel "if sym Shop_Game == 1 && sym ShowShopItems != 1 && !consolePlatform gameui directPushNameIfEnabled MainBarBackButton"
+add MenuObject initFrom GameShopButtonBackTemplate
+set Name GameShopButtonBackMainMenu
+set CommandPress "if menuloaded MenuShop menucmd MainMenuBackButton"
+set CommandPress "if menuloaded ConShop clearmenu ConShop /fadeout 0.1"
+set HiddenCheckBySymbol ShowShopItems
+add MenuObject initFrom GameShopButtonBackTemplate
+set Name MarketButtonBackMainMenu
+set CommandPress "if menuloaded MenuShop menucmd MainMenuBackButton"
+set CommandPress "if menuloaded ConShop clearmenu ConShop /fadeout 0.1"
+set HiddenCheckBySymbolInv Shop_Market
+add MenuObject
+set Name HomeExtraButton
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Texture menus/DialogFrames
+set Coords "738 103 281 95"
+set CoordsFocused "738 4 281 95"
+set MouseInteract 1
+set SaveArgs 2
+set Focus -2
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 	0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "0 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 1.0
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set CommandPress ">menucmd @_Arg2_@"
+set DisabledSymValue CurrentMenu!MKHome
+set HiddenCheckBySymbol ArcCustomized
+add MenuObject
+set Name HomeExtraButtonQuests
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Texture menus/DialogFrames
+set Coords "738 103 281 95"
+set CoordsFocused "738 4 281 95"
+set MouseInteract 1
+set SaveArgs 2
+set Focus -2
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 	0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "0 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 1.0
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set CommandPress ">menucmd @_Arg2_@"
+set DisabledSymInv _GotQuestsData_
+set DisabledSymValue CurrentMenu!MKHome
+set HiddenCheckBySymbol ArcCustomized
+add MenuObject
+set Name HomeExtraButtonsShadow
+set Texture menus/RowShadow
+set Coords "285 50 218 50"
+set DefaultRotation -90
+set ScaleX 4.0, ScaleY 10.0
+set BlendMode BlendDestColor
+add MenuObject
+set Name HomeExtraButtons
+set ContainerOnly 1
+set Child "HomeExtraButtonsShadow -270 0"
+set HiddenCheckBySymbol ArcGACustomized
+add MenuObject
+set Name ShopColumnFixed
+set ContainerOnly 1
+set Child "MainMenuShopFilter -6 190"
+set Child "GameShopButtonDiamonds -5 92	/platform consolePlatform"
+set Child "GameShopButtonDiamondsNoConsole[GameShopButtonDiamonds] -5 92	/platform !consolePlatform"
+set Child "GameShopButtonBack -5 -6"
+set Child "GameShopPromo -5 190	0							/platform consolePlatform"
+set Child "GameShopPromoForCodes[GameShopPromo] -5 190	0	/platform !consolePlatform"
+set Child "GameShopButtonMarket -5 740	0	/platform !consolePlatform"
+set Child "GameShopButtonCodes -5 678	0	/platform !consolePlatform"
+add MenuObject
+set Name ShopShadowVignette
+set Texture effects/VignetteShadow
+set Coords "0 0 512 256"
+set Color 0x778899
+set ScaleX 3.9, ScaleY 5.6
+add MenuObject initFrom ShopShadowVignette
+set Name ConShopShadowVignette
+set ScaleX 4.9
+add MenuObject
+set Name ShopUnitStats_Child
+set ContainerOnly 1
+set HiddenCheckBySymbolValue _ShowDescMode!Unit
+set HiddenCheckBySymbolInv _ShopDescModeEn
+set HiddenCheckBySymbol _NoShopResults
+set Child "MS_StatNameUnitB 20 24"
+set Child "HoverInfoUnit 20 64		B"
+add MenuObject
+set Name ShopAirMechStats_Child
+set ContainerOnly 1
+set HiddenCheckBySymbolValue _ShowDescMode!AirMech
+set HiddenCheckBySymbolInv _ShopDescModeEn
+set HiddenCheckBySymbol _NoShopResults
+set Child "MS_StatNameUnitB 20 24"
+set Child "LoadoutInfoAirMech 20 64		B"
+add MenuObject
+set Name ShopDefaultStats_Child
+set ContainerOnly 1
+set HiddenCheckBySymbolValue _ShowDescMode!Default
+set HiddenCheckBySymbolInv _ShopDescModeEn
+set HiddenCheckBySymbol _NoShopResults
+set Child "MS_StatNameUnitA 20 24"
+set Child "LoadoutInfoOther 20 30"
+add MenuObject
+set Name ShopItemStats
+set Texture menus/ShopParts+lang
+set HiddenCheckBySymbolInv ShowShopItems
+set ContainerOnly 1
+set Coords "0 0 404 753"
+set Focus -2
+set MouseInteract 1
+set CommandPress "if sym GL_ChatMinimized == 0 sym set GL_ChatMinimized 1"
+set CoordsStart "0 648 32 32"
+set CoordsMid "32 648 102 32"
+set CoordsEnd "157 648 32 32"
+set CoordsStartFocused "0 680 32 180"
+set CoordsMidFocused "32 680 102 180"
+set CoordsEndFocused "157 680 32 180"
+set CoordsStartDisabled "0 858 32 32"
+set CoordsMidDisabled "32 858 102 32"
+set CoordsEndDisabled "157 858 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 404
+set RenderCB_DY 753
+set Child "ShopUnitStats_Child 0 0"
+set Child "ShopAirMechStats_Child 0 0"
+set Child "ShopDefaultStats_Child 0 0"
+add MenuObject
+set Name GameShopTopButtonName
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 0.75
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/allCaps /outlined8x /fitX"
+set Texture menus/ShopTiles
+set Coords "0 0 405 42"
+set RenderCB_DX 0
+set RenderCB_DY 0
+add MenuObject
+set Name GameShopTopButtonDesc
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FontScale 0.75
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB _DrawUText
+set Coords "0 0 405 200"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+add MenuObject
+set Name ShopTopInventory
+set Coords "7 7 455 675"
+set Texture menus/ShopTilesTopA
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set CommandGetFocus "addUIAnim ShopTopInventory mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim ShopTopInventory mas_DiamondPackDown"
+set DrawWhenFocused FocusShopTopButton
+set DrawWhenFocusedOffset "2 0 0"
+set MouseInteractZoneExpandWhenFocused "0 0 5 5"
+set Focus -2
+set MouseInteract 1
+set SaveArgs 6
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "gameUI ignoreInputTime 0.4"
+set CommandPress "sym set Shop_Inventory 1"
+set CommandPress "sym set Shop_Top 0"
+set CommandPress "sym set Shop_Game 0"
+set CommandPress "sym set _NoShopResults 0"
+set CommandPress "menuCmd ShopButtonPressPre"
+set CommandPress "menuCmd ButtonPressShop_Inventory"
+set CommandGetFocus "input set padFocusFallback ShopTopInventory"
+set CommandGetFocus "sym set _GameShop_Last ShopTopInventory"
+set CommandFocusRight "gameUI focusNameTry ShopTopGameShop"
+set CommandFocusUp "gameUI focusNameTry MainBarButtonShop"
+set CommandFocusRight "gameUI focusNameTry Shop_Units StoreTilePrimeBundle StoreTileBooster4x DiamondBundle5 ShopItem0"
+set CommandFocusDown "gameUI focusNameTry ShopTopPromoPrime ShopTopPromoBoosts"
+set CommandCancel "gameUI ignoreInputTime 0.3"
+set CommandCancel "if sym MainMenuLoaded == 1 gameui focusNameTry MainBarButtonShop"
+set CommandCancel "if !consolePlatform runnow gameUI focusNameTry Shop_Game"
+set CommandCancel "if consolePlatform runnow clearmenu ConShop /fadeout $ConShopFadeoutTime"
+set RenderCB_Offset "20 -20"
+set Child "GameShopTopButtonName 25 452 Shop_Inventory"
+set Child "GameShopTopButtonDesc 25 512 Shop_InventoryDesc"
+add MenuObject
+set Name ShopTopGameShop
+set Coords "464 7 455 675"
+set Texture menus/ShopTilesTopA
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set CommandGetFocus "addUIAnim ShopTopGameShop mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim ShopTopGameShop mas_DiamondPackDown"
+set DrawWhenFocused FocusShopTopButton
+set DrawWhenFocusedOffset "2 0 0"
+set MouseInteractZoneExpandWhenFocused "0 0 5 5"
+set Focus -2
+set MouseInteract 1
+set SaveArgs 6
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "sym set Shop_Game 1"
+set CommandPress "sym set Shop_Top 0"
+set CommandPress ">collection shopInit Shop_Inventory /run"
+set CommandPress "pcmd 0.001 sym set _NoShopResults 0"
+set CommandPress "menuCmd ShopFilterResetAll"
+set CommandCancel "if sym MainMenuLoaded == 1 gameui focusNameTry MainBarButtonShop"
+set CommandPress "if usingPad pcmd t2 gameui focusnametry Shop_AirMechs"
+set CommandGetFocus "input set padFocusFallback ShopTopGameShop"
+set CommandGetFocus "sym set _GameShop_Last ShopTopGameShop"
+set CommandFocusLeft "gameUI focusNameTry ShopTopInventory"
+set CommandFocusRight "if sym MarketCanBuy == 1 gameUI focusNameTry ShopTopMarket"
+set CommandFocusRight "if sym MarketCanBuy == 0 gameUI focusNameTry ShopTopMarketLocked"
+set CommandFocusUp "gameUI focusNameTry MainBarButtonShop"
+set CommandFocusRight "gameUI focusNameTry Shop_Units StoreTilePrimeBundle StoreTileBooster4x DiamondBundle5 ShopItem0"
+set CommandFocusDown "gameUI focusNameTry ShopTopPromoStarter ShopTopPromoDiamonds"
+set CommandCancel "gameUI ignoreInputTime 0.3"
+set CommandCancel "if !consolePlatform runnow gameUI focusNameTry Shop_Game"
+set CommandCancel "if consolePlatform runnow clearmenu ConShop /fadeout $ConShopFadeoutTime"
+set RenderCB_Offset "20 -20"
+set Child "GameShopTopButtonName 25 452 Shop_Game"
+set Child "GameShopTopButtonDesc 25 512 Shop_GameDesc"
+add MenuObject
+set Name ShopTopMarketOverlayLocked
+set Texture effects/white
+set MouseInteract 1
+set Focus -2
+set CommandPress "sym set PlayV1TopMenu 1"
+set DrawWhenFocusedOffset "-5 -5"
+set Color 0x111111
+set ColorFocused 0x111111
+set Coords "0 0 16 16"
+set TileArea "435 660"
+set NoAlphaMod 1
+set Alpha 0.5
+set MouseInteractZoneExpand "0 0 0 10"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name ShopTopMarketLocked
+set Coords "600 20 416 522"
+set Texture menus/TradeA
+set ScaleX 1.1, ScaleY 1.1
+set MouseInteract 1
+set Focus -2
+set CommandGetFocus "addUIAnim ShopTopMarket mas_MenuPlayUp"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandLoseFocus "addUIAnim ShopTopMarket mas_MenuPlayDown"
+set CommandFocusLeft "gameUI focusNameTry ShopTopGameShop"
+set CommandFocusDown "gameUI focusNameTry ShopTopPromoFeatured"
+set CommandCancel "gameUI focusNameTry ShopTopGameShop"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "menuCmd StorePromoUnlockOrInspectBundleTry StarterPack"
+set DrawWhenFocused MarketOverlayLockedFocus
+set DrawWhenFocusedOffset "2 24"
+set MouseInteractZoneExpand "0 -35 0 60"
+set HiddenCheckBySymbol MarketCanBuy
+set FirstDrawnChildren 1
+set Child "ShopTopMarketOverlayLocked 12 32"
+set Child "PlayTopLockText 20 340	Lock_MarketUse"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name ShopTopMarket
+set Coords "7 7 455 675"
+set Texture menus/ShopTilesTopB
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set CommandGetFocus "addUIAnim ShopTopMarket mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim ShopTopMarket mas_DiamondPackDown"
+set DrawWhenFocused FocusShopTopButton
+set DrawWhenFocusedOffset "2 0 0"
+set MouseInteractZoneExpandWhenFocused "0 0 5 5"
+set Focus -2
+set MouseInteract 1
+set SaveArgs 6
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "sym set Shop_Market 1"
+set CommandPress "sym setZero Shop_Game Sort_Reverse Shop_Top _NoShopResults Filter_MyListings"
+set CommandPress "menuCmd ShopButtonPressPre"
+set CommandPress "menuCmd ButtonPressShop_Market"
+set CommandGetFocus "input set padFocusFallback ShopTopMarket"
+set CommandGetFocus "sym set _GameShop_Last ShopTopMarket"
+set CommandFocusLeft "gameUI focusNameTry ShopTopGameShop"
+set CommandFocusUp "gameUI focusNameTry GameShopButtonInventory"
+set CommandFocusRight "gameUI focusNameTry .FocusGameEventCache"
+set CommandFocusDown "gameUI focusNameTry ShopTopPromoFeatured"
+set CommandCancel "gameUI ignoreInputTime 0.3"
+set CommandCancel "if sym MainMenuLoaded == 1 gameui focusNameTry MainBarButtonShop"
+set CommandCancel "if !consolePlatform runnow gameUI focusNameTry Shop_Game"
+set CommandCancel "if consolePlatform runnow clearmenu ConShop /fadeout $ConShopFadeoutTime"
+set RenderCB_Offset "20 -20"
+set Child "GameShopTopButtonName 25 452 Shop_Market"
+set Child "GameShopTopButtonDesc 25 512 Shop_MarketDesc"
+set Child "ShopTopMarketLocked -2 -24"
+add MenuObject
+set Name GameShopTopPromoName
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 0.4
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/allCaps /outlined8x /fitX"
+set Texture menus/ShopTiles
+set Coords "0 0 298 42"
+set RenderCB_DX 0
+set RenderCB_DY 0
+add MenuObject initFrom GameShopTopPromoName
+set Name GameShopSecondPromoName
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.5
+set Coords "0 0 270 42"
+add MenuObject
+set Name GameShopTopPromoDesc
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FontScale 0.5
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "-5 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB _DrawUText
+set Coords "0 0 1300 10"
+set Coords "0 0 305 342"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+add MenuObject
+set Name ShopTopPromoPrimeIcon
+set Coords "13 858 139 144"
+set Texture menus/ShopTilesTopA
+add MenuObject
+set Name ShopTopPromoPrime
+set Coords "7 717 455 120"
+set Texture menus/ShopTilesTopA
+set CommandGetFocus "addUIAnim ShopTopPromoPrime mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim ShopTopPromoPrime mas_DiamondPackDown"
+set CommandGetFocus "input set padFocusFallback ShopTopPromoPrime"
+set HiddenCheckBySymbol HasAirMechPrime
+set HiddenCheckBySymbolInv PrimeBundleEn
+set Focus -2
+set MouseInteract 1
+set CommandFocusUp "gameUI focusNameTry ShopTopInventory"
+set CommandFocusRight "gameUI focusNameTry ShopTopPromoStarter ShopTopPromoDiamonds"
+set DrawWhenFocused FocusShopTopPromo
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set DrawWhenFocusedOffset "2 0 0"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "menuCmd StorePromoUnlockOrInspectPrimeBundleTry"
+set CommandCancel "if consolePlatform runnow clearmenu ConShop /fadeout $ConShopFadeoutTime"
+set Child "ShopTopPromoPrimeIcon 20 -10"
+set Child "GameShopTopPromoName 145 6 PromoAirMechPrime_Desc"
+set Child "GameShopTopPromoDesc 145 55 Shop_PrimeDesc"
+add MenuObject
+set Name ShopTopPromoBoostsIcon
+set Coords "354 846 141 159"
+set Texture menus/ShopTilesTopB
+add MenuObject
+set Name ShopTopPromoBoosts
+set Coords "495 847 455 120"
+set Texture menus/ShopTilesTopB
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandGetFocus "addUIAnim ShopTopPromoBoosts mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim ShopTopPromoBoosts mas_DiamondPackDown"
+set CommandGetFocus "input set padFocusFallback ShopTopPromoBoosts"
+set HiddenCheckBySymbolInv HasAirMechPrime
+set Focus -2
+set MouseInteract 1
+set CommandFocusUp "gameUI focusNameTry ShopTopInventory"
+set CommandFocusRight "gameUI focusNameTry ShopTopPromoStarter ShopTopPromoDiamonds"
+set DrawWhenFocused FocusShopTopPromo
+set DrawWhenFocusedOffset "2 0 0"
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "sym setZero Shop_Market Shop_Top"
+set CommandPress "sym setOne ShowShopItems"
+set CommandPress "menuCmd ShopButtonPress"
+set CommandPress "menuCmd ButtonPressShop_Boosts"
+set CommandPress "sym set Shop_Game 1"
+set CommandPress "pcmd t2 sym set Filter_NotOwned 0"
+set CommandPress "pcmd t2 collection shopInit Boosts"
+set CommandCancel "if consolePlatform runnow clearmenu ConShop /fadeout $ConShopFadeoutTime"
+set Child "ShopTopPromoBoostsIcon 14 -22"
+set Child "GameShopTopPromoName 145 6 Shop_BoostsPromo"
+set Child "GameShopTopPromoDesc 145 55 Shop_BoostsDesc"
+add MenuObject
+set Name ShopTopPromoStarterIcon
+set Coords "152 858 139 144"
+set Texture menus/ShopTilesTopA
+add MenuObject
+set Name ShopTopPromoStarter
+set Coords "464 717 455 120"
+set Texture menus/ShopTilesTopA
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandGetFocus "addUIAnim ShopTopPromoStarter mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim ShopTopPromoStarter mas_DiamondPackDown"
+set CommandGetFocus "input set padFocusFallback ShopTopPromoStarter"
+set HiddenCheckBySymbol HasStarterPack
+set HiddenCheckBySymbolInv StarterPackEn
+set Focus -2
+set MouseInteract 1
+set CommandFocusUp "gameUI focusNameTry ShopTopGameShop"
+set CommandFocusLeft "gameUI focusNameTry ShopTopPromoPrime ShopTopPromoBoosts"
+set CommandFocusRight "gameUI focusNameTry ShopTopPromoFeatured"
+set DrawWhenFocused FocusShopTopPromo
+set DrawWhenFocusedOffset "2 0 0"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set CommandPress "menuCmd StorePromoUnlockOrInspectBundleTry StarterPack"
+set CommandCancel "if consolePlatform runnow clearmenu ConShop /fadeout $ConShopFadeoutTime"
+set Child "ShopTopPromoStarterIcon 20 -10"
+set Child "GameShopTopPromoName 145 6 Promo9000_Desc"
+set Child "GameShopTopPromoDesc 145 55 Shop_StarterDesc"
+add MenuObject
+set Name ShopTopPromoDiamondsIcon
+set Coords "157 846 197 178"
+set Texture menus/ShopTilesTopB
+add MenuObject
+set Name ShopTopPromoDiamonds
+set Coords "464 717 455 120"
+set Texture menus/ShopTilesTopB
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandGetFocus "addUIAnim ShopTopPromoDiamonds mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim ShopTopPromoDiamonds mas_DiamondPackDown"
+set CommandGetFocus "input set padFocusFallback ShopTopPromoDiamonds"
+set HiddenCheckBySymbolInv HasStarterPack
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set Focus -2
+set MouseInteract 1
+set CommandFocusUp "gameUI focusNameTry ShopTopGameShop"
+set CommandFocusLeft "gameUI focusNameTry ShopTopPromoPrime ShopTopPromoBoosts"
+set CommandFocusRight "gameUI focusNameTry ShopTopPromoFeatured"
+set DrawWhenFocused FocusShopTopPromo
+set DrawWhenFocusedOffset "2 0 0"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "if sym BuyDiamondsOld == 1 sym setZero _NoShopResults ShowShopItems Shop_Top"
+set CommandPress "if sym BuyDiamondsOld == 1 menuCmd ButtonPressShop_Diamonds"
+set CommandPress "if sym BuyDiamondsOld != 1 menuCmd OpenNewDiamondBuyDialog"
+set CommandCancel "if consolePlatform runnow clearmenu ConShop /fadeout $ConShopFadeoutTime"
+set Child "ShopTopPromoDiamondsIcon -10 -33"
+set Child "GameShopTopPromoName 145 6 Shop_Diamonds"
+set Child "GameShopTopPromoDesc 145 55 Shop_DiamondsDesc"
+set Child "DiamondSaleSticker 46 15	1.2"
+add MenuObject
+set Name ShopTopPromoFeaturedIcon
+set Coords "6 858 115 131"
+set Texture menus/ShopTilesTopB
+add MenuObject
+set Name ShopTopPromoFeatured
+set Coords "7 717 455 120"
+set Texture menus/ShopTilesTopB
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandGetFocus "addUIAnim ShopTopPromoFeatured mas_DiamondPackUp"
+set CommandLoseFocus "addUIAnim ShopTopPromoFeatured mas_DiamondPackDown"
+set CommandGetFocus "input set padFocusFallback ShopTopPromoFeatured"
+set Focus -2
+set MouseInteract 1
+set CommandFocusUp "gameUI focusNameTry ShopTopMarketLocked ShopTopMarket"
+set CommandFocusLeft "gameUI focusNameTry ShopTopPromoStarter ShopTopPromoDiamonds"
+set CommandFocusRight "gameUI focusNameTry .FocusGameEventCache"
+set DrawWhenFocused FocusShopTopPromo
+set DrawWhenFocusedOffset "2 0 0"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set CommandPress "sym setZero Shop_Market Shop_Top"
+set CommandPress "sym setOne ShowShopItems"
+set CommandPress "menuCmd ShopButtonPress"
+set CommandPress "menuCmd ButtonPressShop_FeaturedList"
+set CommandPress "sym set Shop_Game 1"
+set CommandPress "collection shopInit Featured"
+set CommandCancel "if consolePlatform runnow clearmenu ConShop /fadeout $ConShopFadeoutTime"
+set Child "ShopTopPromoFeaturedIcon 20 -10"
+set Child "GameShopTopPromoName 145 6 Shop_Featured"
+set Child "GameShopTopPromoDesc 145 55 Shop_FeaturedDesc"
+add MenuObject
+set Name MainMenuShopTop
+set ContainerOnly 1
+set HiddenCheckBySymbolInv Shop_Top
+set Child "ShopTopInventory 0 150	/platform consolePlatform"
+set Child "ShopTopGameShop 450 150"
+set Child "ShopTopMarket 900 150"
+set Child "ShopTopPromoBoosts 0 824"
+set Child "ShopTopPromoPrime 0 824"
+set Child "ShopTopPromoStarter 450 824"
+set Child "ShopTopPromoDiamonds 450 824"
+set Child "ShopTopPromoFeatured 900 824"
+add MenuObject
+set Name ShopWhiteout
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1308 830"
+set BlendMode BlendAdd
+set Color 0x883300
+set Disabled 1
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.0
+add MenuObject initFrom ShopWhiteout
+set Name ShopMarketTrans
+set Texture effects/white
+set Color 0x006699
+add MenuObject
+set Name ListBoxStub
+set ContainerOnly 1
+set Coords "0 0 32 32"
+add MenuObject
+set Name MainMenuShopFrame
+set ContainerOnly 1
+set Child "MainMenuShopFocus 0 163"
+set Child "HeaderShopTemplate 20 110 ShopSection	1.4	1.0	/platform consolePlatform"
+set Child "ShopItemsContainer 346 270"
+set Child "ShopFrameNoResults 455 380 "
+set Child "ListBoxStub 20 262				/ifSym ShopListBox == 1"
+set Child "ShopNavigate 340 170		Shop	"
+set Child "ShopFrameBuyDiamonds	330 180"
+set Child "ShopMarketBlocker	317 177"
+set Child "ShopItemStats	1350 184		/platform consolePlatform"
+set Child "ShopMarketTrans	20 190		/platform !consolePlatform"
+set Child "ShopWhiteout	20 190		/platform !consolePlatform"
+add MenuObject
+set Name ReqCntItem
+set Texture menus/ItemFrame&TR_Rarity@_Arg1_@&
+set Coords "0 0 204 256"
+set CommandGetFocus "playSound $MenuShopItemFocus"
+set CommandGetFocus ">addUIAnim ShopItem@_Arg1_@ mas_ShopItemUp"
+set CommandLoseFocus ">addUIAnim ShopItem@_Arg1_@ mas_ShopItemDown"
+set MouseInteractZoneExpandWhenFocused "0 0 0 4"
+set HiddenCheckBySymbol TR_Hidden@_Arg1_@
+set Child "ShopUltimateBg 13 13 	@_Arg1_@"
+set Child "ShopUltimateFg 13 13 	@_Arg1_@"
+set Child "ShopIconSm 13 13 	@_Arg1_@"
+set Child "ShopIconLg 13 13 	@_Arg1_@ 0.8984 0.8984"
+set Child "MarketLimitedFaction 14 13 @_Arg1_@"
+set Child "MarketLimitedPlayer 14 13 @_Arg1_@"
+set Child "ShopGoldPlatedStamp 20 107 @_Arg1_@	1.0"
+set Child "ShopUnlockOverlay 14 165	@_Arg1_@"
+set Child "ShopHighlightItem 0 0	@_Arg1_@	1.0"
+set Child "ShopContentLock 2 0	@_Arg1_@ 0.8"
+set Child "ShopItemCount 14 13	@_Arg1_@"
+set Child "ShopItemInfCount 14 13	@_Arg1_@"
+set Child "ShopItemStickers 160 -40	@_Arg1_@"
+set Child "ShopItemName 13 16		@_Arg1_@ /platform !consolePlatform"
+set Child "CollectionBadge 0 90	@_Arg1_@"
+set Child "ShopUltimateGlow 13 14	@_Arg1_@"
+set MouseInteract 1
+set Focus -2
+set ToolTipDelayTime 0.0
+set DragSource &TR_DragSource@_Arg1_@&
+set FilterName CollectionUI
+set ToolTip &TR_Desc@_Arg1_@&
+set DrawForToolTip &TR_DFTT@_Arg1_@&
+set DrawForToolTipPositioning &TR_DFTTP@_Arg1_@&
+set CommandGetFocus ">sym set ShopItemActive $TR_ContentName@_Arg1_@"
+set CommandGetFocus ">input set padFocusFallback ShopItem@_Arg1_@"
+set CommandPress "gameUI ignoreInputTime 0.35"
+set CommandPress "sym set _PS4PendingClear_ 0"
+set CommandPress ">sym set _CustomObject $TR_Category@_Arg1_@"
+set CommandPress ">if isBundle $TR_ContentName@_Arg1_@ menucmd StorePromoUnlockOrInspectBundleTry $TR_ContentName@_Arg1_@"
+set CommandPress ">collection inspectOrExec @_Arg1_@ /reqcnt"
+set CommandPress ">collection lookupDiamondPrice $TR_ContentName@_Arg1_@ SellPriceDiamonds /mktlist"
+set CommandPressAlt "gameUI ignoreInputTime 0.35"
+set CommandPressAlt "sym set _PS4PendingClear_ 0"
+set CommandPressAlt "sym set DialogForceInspect 1"
+set CommandPressAlt ">sym set _CustomObject $TR_Category@_Arg1_@"
+set CommandPressAlt ">collection inspectOrExec @_Arg1_@ /reqcnt"
+set CommandGetFocus "sym set _ShowDescMode Default"
+set CommandGetFocus "floatsym set ScrollableShopLabelPos 0"
+set CommandGetFocus "sym set _ShopDescModeEn 1"
+set CommandGetFocus ">&TR_OnFocus@_Arg1_@&"
+set CommandGetFocus "sym set _PS4PendingClear_ 1"
+set CommandGetFocus ">sym set LastShopItemFocus $TR_ContentName@_Arg1_@"
+set CommandLoseFocus "sym set _ShopDescModeEn 0"
+set CommandLoseFocus "if ps4 && sym _PS4PendingClear_ == 1 && sym UnlockDialogActive == 0 runnow ps4 pendingClearStoreState"
+set CommandLoseFocus "sym set _PS4PendingClear_ 0"
+set SaveArgs 5
+set CommandFocusLeft ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg2_@"
+set CommandFocusUp ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg3_@"
+set CommandFocusRight ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg4_@"
+set CommandFocusDown ">if sym DialogBoxLoaded == 0 runnow gameUI focusNameTry @_Arg5_@"
+set DrawWhenFocusedOffset "-4 -5 0"

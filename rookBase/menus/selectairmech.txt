@@ -1,0 +1,43 @@
+onloadrun {
+sym set DialogBoxLoaded 1
+sym set LoadoutSetupAirMech 1
+sym set LoadoutOnlyAirMech 1
+rookMenus previewHide
+gameUI savefocusid _dialogRestoreFocus_
+menucmd ReadyPerAMLoadout
+}
+MO SelectAirMechMaster {
+pos 100 100
+layer 14
+draggableUIElement
+}
+onload {
+addUIAnim SelectAirMechMaster mas_DialogPop
+loadout customizeInit
+sym set LoadoutConfigureUnits 0
+sym set SlotFlashActive 0
+sym set SelectItemActive 0
+gameui promoteToTop SelectAirMechMaster
+if sym LoadoutAutosave == 0 menuCmd StoreLocalLoadout
+}
+onunload {
+sym set DialogBoxLoaded 0
+sym set LoadoutSetupAirMech 0
+sym set LoadoutOnlyAirMech 0
+gameUI focusID $_dialogRestoreFocus_
+}
+onunload_unforced {
+menuCmd StoreLoadout
+}
+onunloadrun {
+rookMenus previewShow
+sym set LoadoutSetupAirMech 0
+sym set LoadoutConfigureUnits 0
+sym set SlotFlashActive 0
+}
+onunloadrun_unforced {
+if sym LoadoutAutosave == 0 if sym UnsavedLoadout == 0 menuCmd UnsavedLoadoutTest
+if sym LoadoutAutosave == 1 rook savePreset $ActiveLoadout
+if sym LoadoutAutosave == 1 backend save
+rook recustomizeLoadoutToServer
+}

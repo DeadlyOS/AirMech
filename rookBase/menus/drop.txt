@@ -1,0 +1,30 @@
+stopIfSymbol GoSpectate == 1
+blockLoadOnConsoleSym DropLoaded
+onloadrun {
+]gameUI saveFocusID _savefocusid_drop_
+sym set DropLoaded 1
+clearmenu UnlockDialog.txt /fadeout 0.25
+}
+MO DropMain {
+pos $UI_Drop_X $UI_Drop_Y
+layer 13
+}
+onload {
+addUIAnim DropMain mas_DialogPop
+input set padFocusFallback DropButton0
+]if usingPad ]gameUI focusName DropButton0
+]if usingPad ]pcmd t0 gameUI focusName DropButton0
+]if usingPad ]pcmd t1 gameUI focusName DropButton0
+]if usingPad ]pcmd t2 gameUI focusName DropButton0
+]if usingPad ]pcmd t3 gameUI focusName DropButton0
+]if usingPad ]pcmd 0.5 gameUI focusName DropButton0
+gameui promoteToTop DropMain
+}
+onunload {
+input set padFocusFallback $_savefocusid_drop_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_drop_
+sym set DropLoaded 0
+sym set _EndGameSeqMsg_ 0
+}
+onunloadrun {
+}

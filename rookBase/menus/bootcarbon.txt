@@ -1,0 +1,22 @@
+onloadrun {
+sym set _InLogoSplash_ 1
+}
+MO CarbonLogoInputCatch {
+pos 0 0
+}
+MO CarbonGamesLogoSplash {
+pos 0 -60
+}
+onload {
+gameUI ignoreInputTime 1.5
+gameUI focusName CarbonLogoInputCatch
+pcmd_seq 303 0.1  gameui enable CarbonGamesLogoSplash
+if retail pcmd_seq 303 7.0 gameui disable CarbonGamesLogoSplash
+if retail pcmd_seq 303 7.5 clearmenu BootCarbon
+if !retail pcmd_seq 303 1.0 gameui disable CarbonGamesLogoSplash
+if !retail pcmd_seq 303 1.5 clearmenu BootCarbon
+}
+onunload {
+console flushAllPendingSeq 303
+loadmenu BootTitleScreen.txt /fadein 0.2
+}

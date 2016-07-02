@@ -1,0 +1,450 @@
+add MenuObject initFrom MenuBarOpenButton
+set Name MenuBarOpenButtonManual
+set HiddenCheckBySymbolInv ManualLoaded
+add MenuObject
+set Name ManualOpenButton
+set Texture menus/MenuBarButtons
+set Coords "314 108 64 52"
+set CoordsAnimated "314 108 64 52"
+set CoordsAnimated "314 55 64 52"
+set CoordsAnimationSymHash ManualLoaded
+set DrawWhenFocused FocusCloud
+set DrawWhenFocusedOffset "-10 -13"
+set MouseInteract 1
+set Focus -2
+set ToolTip TT_FieldGuide
+set Child "MenuBarOpenButtonManual 3 0"
+set CommandGetFocus "input set padFocusFallback ManualOpenButton"
+set CommandFocusLeft "gameui focusnametry InventoryOpenButton"
+set CommandFocusRight "gameui focusnametry LeaderboardsButton"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "if !menuloaded Manual loadmenu Manual /fadein 0.1"
+set CommandPress "if menuloaded Manual clearmenu Manual /fadeout 0.1"
+set CommandPressAlt "if menuloaded Manual clearmenu Manual /fadeout 0.1"
+add MenuObject
+set Name ManualLabelTemplate
+set Texture menus/LoadoutGrid
+set Coords "12 821 184 43"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX"
+set MouseInteract 1
+set Focus -2
+set RenderCB_RGBColor "0.8"
+set RenderCB_FontScale 0.6
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set MirrorOnY 1
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolInv @_Arg2_@
+set SaveArgs 2
+add MenuObject initFrom ManualLabelTemplate
+set Name ManualButtonTemplate
+set Coords "380 821 184 43"
+set CoordsFocused "196 821 184 43"
+set CoordsPressed "196 820 184 43"
+set RenderCB_RGBColor "0.38 0.41 0.44"
+set RenderCB_RGBColorFocused "0.80 0.84 0.85"
+set RenderCB_OffsetFocused "0 -1"
+set RenderCB_OffsetPressed "0 1"
+set Focus -2
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolInv ""
+set SaveArgs 2
+add MenuObject
+set Name LearnFaqText
+set Coords "0 0 1200 800"
+set RenderCB_DX 1200
+set RenderCB_DY 800
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 0.6
+set RenderCB _DrawFAQ
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 32
+set RenderCB_RGBColor 0x808080
+set RenderCB_Text _faq_
+set RenderCB_DX 1000
+set RenderCB_DY 800
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 0.6
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 32
+add MenuObject
+set Name LearnFaqScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1050 1060"
+set CommandOnMouseDrag "floatsym scaledMod FAQPos 0.025 $_Wheel 0 1"
+add MenuObject
+set Name LearnFaqScrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "LearnFaqScrollbarPos 0 0"
+set ScaleY 1.55
+set ScaleX 3.0
+set Color 0x777777
+set NoAlphaMod 1
+set Alpha 0.18
+set HiddenCheckBySymbol FAQScrollBarHidden
+add MenuObject
+set Name LearnFaqScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult FAQPos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set Color 0x666666
+set ColorFocused 0xcccccc
+set Focus -2
+set CommandOnMouseDrag "floatsym set FAQPos $_MouseRelY"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.55
+set ScaleX 3.0
+add MenuObject
+set Name ManualFaqFrame
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ManualFaq
+set Child "LearnFaqText 20 0"
+set Child "LearnFaqScrollbar 1051 -15"
+set Child "LearnFaqScrollWheelZone 0 0"
+add MenuObject initFrom ManualButtonTemplate
+set Name ManualButtonQuests
+set RenderCB_Text MB_Quests
+set CommandPress "sym setZero ManualStats ManualPatchnotes ManualVideos ManualHelp ManualFaq ManualFaction"
+set CommandPress "sym setOne ManualQuests"
+add MenuObject initFrom ManualButtonTemplate
+set Name ManualButtonStats
+set RenderCB_Text MB_Stats
+set CommandPress "sym setZero ManualQuests ManualPatchnotes ManualVideos ManualHelp ManualFaq ManualFaction"
+set CommandPress "sym setOne ManualStats"
+add MenuObject initFrom ManualButtonTemplate
+set Name ManualButtonPatchnotes
+set RenderCB_Text MB_Patchnotes
+set CommandPress "if sym PatchnotesRead != $PN_Version patchnotes update"
+set CommandPress "if sym PatchnotesRead != $PN_Version pcmd 0.2 backend save"
+set CommandPress "sym set PatchnotesRead $PN_Version"
+set CommandPress "sym setZero ManualStats ManualQuests ManualVideos ManualHelp ManualFaq ManualFaction"
+set CommandPress "sym setOne ManualPatchnotes"
+add MenuObject initFrom ManualButtonTemplate
+set Name ManualButtonVideos
+set RenderCB_Text MB_Videos
+set CommandPress "sym setZero ManualStats ManualPatchnotes ManualQuests ManualHelp ManualFaq ManualFaction"
+set CommandPress "sym setOne ManualVideos"
+add MenuObject initFrom ManualButtonTemplate
+set Name ManualButtonHelp
+set RenderCB_Text MB_Help
+set CommandPress "sym setZero ManualStats ManualPatchnotes ManualVideos ManualQuests ManualFaq ManualFaction"
+set CommandPress "sym setZero ManualHelp0 ManualHelp1 ManualHelp2 ManualHelp3 ManualHelp4 ManualHelp5"
+set CommandPress "sym setOne ManualHelp ManualHelp0"
+add MenuObject initFrom ManualButtonTemplate
+set Name ManualButtonFaq
+set RenderCB_Text MB_Faq
+set CommandPress "sym setZero ManualStats ManualPatchnotes ManualVideos ManualHelp ManualQuests ManualFaction"
+set CommandPress "sym setOne ManualFaq"
+set CommandPress "if sym _GotFAQ_ == 0 runnow faq update"
+set CommandPress "if sym _GotFAQ_ == 0 runnow sym set _GotFAQ_ 1"
+add MenuObject initFrom ManualButtonTemplate
+set Name ManualButtonFaction
+set RenderCB_Text MB_Faction
+set CommandPress "sym setZero ManualStats ManualPatchnotes ManualVideos ManualHelp ManualQuests ManualFaq"
+set CommandPress "sym setOne ManualFaction"
+add MenuObject
+set Name ManualTabBar
+set ContainerOnly 1
+set Child "ManualButtonStats 		2Nx180 0"
+set Child "ManualLabelTemplate 		2Nx180 0	MB_Stats	ManualStats"
+set Child "ManualButtonPatchnotes 	2Nx180 0"
+set Child "ManualLabelTemplate 		2Nx180 0	MB_Patchnotes	ManualPatchnotes"
+set Child "ManualButtonVideos 		2Nx180 0								/platform !arc /ifSym ArcGACustomized == 0"
+set Child "ManualLabelTemplate 		2Nx180 0	MB_Videos	ManualVideos	/platform !arc /ifSym ArcGACustomized == 0"
+set Child "ManualButtonHelp 		2Nx180 0"
+set Child "ManualLabelTemplate 		2Nx180 0	MB_Help	ManualHelp"
+set Child "ManualButtonFaq 			2Nx180 0								/platform !arc /ifSym ArcGACustomized == 0"
+set Child "ManualLabelTemplate 		2Nx180 0	MB_Faq	ManualFaq			/platform !arc /ifSym ArcGACustomized == 0"
+set Child "ManualButtonFaction 		2Nx180 0"
+set Child "ManualLabelTemplate 		2Nx180 0	MB_Faction	ManualFaction"
+add MenuObject
+set Name ManualBackground
+set Texture menus/Windows
+set CoordsStart "0 0 120 120"
+set CoordsMid "120 0 86 120"
+set CoordsEnd "206 0 120 120"
+set CoordsStartFocused "0 120 120 86"
+set CoordsMidFocused "120 120 86 86"
+set CoordsEndFocused "206 120 120 86"
+set CoordsStartDisabled "0 206 120 120"
+set CoordsMidDisabled "120 206 86 120"
+set CoordsEndDisabled "206 206 120 120"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 1105
+set RenderCB_DY 915
+set Coords "0 0 770 815"
+set MouseInteract 1
+set Focus -2
+set Color 0x4a5e5e
+set ColorFocused 0x4a5e5e
+set MouseInteractZoneExpand "15 15 -15 -15"
+set CommandPress "gameui promoteToTop ManualMain"
+add MenuObject
+set Name ManualCloseVis
+set Coords "295 511 49 49"
+set CoordsFocused "350 511 49 49"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name ManualClose
+set Coords "0 0 49 49"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu Manual /fadeout 0.1"
+set Child "ManualCloseVis 0 0"
+add MenuObject
+set Name ManualTextLabel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_Text @_Arg1_@
+set SaveArgs 3
+set RenderCB_Flags "/fitX"
+set RenderCB_DX 600
+set RenderCB_DY 0
+add MenuObject
+set Name ManualStatsFrame
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ManualStats
+set Coords "0 0 64 64"
+set Child "MM_Stats_PC 0 -110		"
+set Child "StatsWheelZone 0 0"
+set Child "StatsScrollbar 1054 0		/platform !consolePlatform"
+add MenuObject
+set Name ManualPatchnotesFrame
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ManualPatchnotes
+set Child "HomePatchNotes 0 0"
+set Child "PatchNotesScrollbar 1031 -15"
+set Child "PatchNotesScrollWheelZone 0 0"
+add MenuObject
+set Name ManualVideos_PC
+set ContainerOnly 1
+set Child "VideoLinkEagleShadow 0 100	http://youtu.be/DSgwAjCvPvY	Beginner Tutorial 0xb3e3ff"
+set Child "VideoLinkEagleShadow 260 100	http://youtu.be/0xXNZwkf6Es	Intermediate Tutorial 0x76cdff"
+set Child "VideoLinkEbob 520 100 		http://youtu.be/qXEq6ggUGBA	Auto-Build Explained 0xffa798"
+set Child "VideoLinkareyouwhy 780 100	http://www.youtube.com/user/areyouwhy0x	Commentated Matches 0xdaffd7"
+set Child "VideoLinkEagleShadow 0 300	http://youtu.be/DcSArZ4n8e8	Units Overview 0x76cdff"
+set Child "VideoLinkInvaderMEEN 260 300	http://mobamonster.com/airmech-ultimate-guide-player-market/	Player Market 0xffa798"
+set Child "VideoLinkInvaderMEEN 520 300	http://mobamonster.com/what-are-loadouts/	Explaining Loadouts 0x76cdff"
+set Child "VideoLinkEagleShadow 780 300	http://youtu.be/_T0SwleUTjY	Menu Tutorial 0xffa798"
+set Child "VideoLinkEagleShadow 780 500	http://youtu.be/Tj4y5mzfBNA	Best Loadout 0x76cdff"
+set Child "VideoLinkEagleShadow 0 500	http://youtu.be/iwPi4lJ0e70	Warthog Guide 0x9fff98"
+set Child "VideoLinkEagleShadow 260 500	http://youtu.be/VM7R_NAkiIY	Angel Guide 0x9fff98"
+set Child "VideoLinkEagleShadow 520 500	http://youtu.be/gGiOZA_nWA0	Neo Guide 0x9fff98"
+add MenuObject
+set Name ManualVideosFrame
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ManualVideos
+set Child "VideoHeaderMessage 0 0"
+set Child "ManualVideos_PC 0 0 /platform !arc"
+add MenuObject
+set Name ManualHelpButtonContainer
+set ContainerOnly 1
+set Child "ManualHelpButton[ManualHelp0] 22 20		ManualHelp0"
+set Child "ManualHelpButtonSelected 22 24			ManualHelp0"
+set Child "ManualHelpButton[ManualHelp1] 282 20		ManualHelp1"
+set Child "ManualHelpButtonSelected 282 24			ManualHelp1"
+set Child "ManualHelpButton[ManualHelp2] 542 20		ManualHelp2"
+set Child "ManualHelpButtonSelected 542 24			ManualHelp2"
+set Child "ManualHelpButton[ManualHelp3] 802 20		ManualHelp3"
+set Child "ManualHelpButtonSelected 802 24			ManualHelp3"
+set Child "ManualHelpButton[ManualHelp4] 282 90		ManualHelp4"
+set Child "ManualHelpButtonSelected 282 94			ManualHelp4"
+set Child "ManualHelpButton[ManualHelp5] 542 90		ManualHelp5"
+set Child "ManualHelpButtonSelected 542 94			ManualHelp5"
+add MenuObject
+set Name ManualHelpVisualContainer
+set ContainerOnly 1
+set Child "ManualHelpPickupPic 60 105				ManualHelp0"
+set Child "ManualHelpDesc 120 705					ManualHelp0"
+set Child "ManualHelpMovePic 60 105					ManualHelp1"
+set Child "ManualHelpDesc 120 705					ManualHelp1"
+set Child "ManualHelpShootPic 60 105				ManualHelp2"
+set Child "ManualHelpDesc 120 705					ManualHelp2"
+set Child "ManualHelpTransformPic 60 105			ManualHelp3"
+set Child "ManualHelpDesc 120 705					ManualHelp3"
+set Child "ManualHelpLessonBuild 60 105				ManualHelp4"
+set Child "ManualHelpDesc 120 705					ManualHelp4"
+set Child "ManualHelpCommandPic 60 105				ManualHelp5"
+set Child "ManualHelpDesc 120 705					ManualHelp5"
+add MenuObject
+set Name ManualHelpFrame
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ManualHelp
+set Child "ManualHelpButtonContainer 0 -10"
+set Child "ManualHelpVisualContainer 0 0"
+add MenuObject initFrom SubBarButtonTemplate
+set Name ManualHelpButton
+set Coords "4 578 262 64"
+set CoordsFocused "272 578 262 64"
+set CoordsPressed "270 576 262 64"
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set Disabled 0
+set SaveArgs 1
+set ScaleX 0.95
+set DrawWhenFocused ""
+set RenderCB_DX 210
+set RenderCB_DY 65
+set RenderCB_FontScale 0.78
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "20 -2"
+set RenderCB_OffsetFocused "20 -2"
+set RenderCB_OffsetPressed "22 0"
+set RenderCB_Flags "/nmi /fitX /outlined8x /shadowColor2"
+set CommandPress "sym setZero ManualHelp0 ManualHelp1 ManualHelp2 ManualHelp3 ManualHelp4 ManualHelp5"
+set CommandPress ">sym setOne @_Arg1_@"
+set SaveArgs 1
+add MenuObject initFrom SubBarLabelTemplate
+set Name ManualHelpButtonSelected
+set Coords "538 582 262 55"
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolInv @_Arg1_@
+set Disabled 0
+set ScaleX 0.952
+set DrawWhenFocused ""
+set RenderCB_DX 210
+set RenderCB_DY 55
+set RenderCB_FontScale 0.78
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/nmi /fitX /outlined8x /shadowColor2"
+set RenderCB_Offset "20 -2"
+set RenderCB_OffsetFocused "20 -2"
+set RenderCB_OffsetPressed "22 0"
+add MenuObject
+set Name ManualHelpDesc
+set RenderCB_RGBColor 0xe5e4e3
+set RenderCB_FontScale 0.75
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@Desc
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set RenderCB_DX 850
+set RenderCB_DY 0
+set HiddenCheckBySymbolInv @_Arg1_@
+set RenderCB_BoolArg 1
+add MenuObject
+set Name ManualHelpPickupPic
+set Texture menus/help/LessonPickup
+set Coords "0 0 983 646"
+set HiddenCheckBySymbolInv @_Arg1_@
+set Child "LessonPickupAni 300 80"
+set Child "LessonPickupMouse 284 460"
+set Child "LessonPickupPad 500 290"
+add MenuObject
+set Name ManualHelpMovePic
+set Texture menus/help/LessonMove
+set Coords "0 0 983 646"
+set HiddenCheckBySymbolInv @_Arg1_@
+set Child "LessonMoveMouse 579 360"
+set Child "LessonMovePad 500 290"
+add MenuObject
+set Name ManualHelpShootPic
+set Texture menus/help/LessonShoot
+set Coords "0 0 983 646"
+set HiddenCheckBySymbolInv @_Arg1_@
+set Child "LessonShootMouse 679 420"
+set Child "LessonShootPad 500 290"
+add MenuObject
+set Name ManualHelpTransformPic
+set Texture menus/help/LessonTransform
+set Coords "0 0 983 643"
+set HiddenCheckBySymbolInv @_Arg1_@
+set Child "LessonTransformMouse 635 445"
+set Child "LessonTransformAni 200 80"
+set Child "LessonTransformPad 500 290"
+add MenuObject
+set Name ManualHelpLessonBuild
+set Texture menus/help/LessonBuild
+set Coords "0 0 983 646"
+set HiddenCheckBySymbolInv @_Arg1_@
+set Child "LessonBuildMenu 260 0"
+set Child "LessonBuildClick 394 90"
+set Child "LessonBuildPad 500 290"
+set Child "LessonBuildKey 130 460"
+set Child "LessonBuildScrollDown 135 270"
+set CommandOnCreate "menucmd LessonBuild"
+add MenuObject
+set Name ManualHelpCommandPic
+set Texture menus/help/LessonPickup
+set Coords "0 0 983 646"
+set HiddenCheckBySymbolInv @_Arg1_@
+set Child "LessonCommandUnits 200 280"
+set Child "LessonCommandAirMech 120 80"
+set Child "LessonCommandMouse 84 460"
+set Child "LessonCommandCapture 764 440"
+set Child "LessonCommandPad 500 290"
+set Child "LessonCommandCapturePad 500 290 /ifSym GamepadStyle != PS4"
+set Child "LessonCommandCapturePadPS4 500 290 /ifSym GamepadStyle == PS4"
+set CommandOnCreate "menucmd LessonCommand"
+add MenuObject
+set Name ManualFactionFrame
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ManualFaction
+set Child "FactionBanner 0 0"
+set Child "FactionPreviewName 0 65"
+set Child "FactionPreviewFactionName 0 110"
+set Child "FactionCreateFrame -20 300"
+add MenuObject
+set Name ManualMain
+set RenderBlocked 1
+set Coords "0 0 1080 55"
+set MouseInteract 1
+set Focus -2
+set DragSource ManualMain
+set FirstDrawnChildren 2
+set Child "ManualBackground -15 -15"
+set Child "ManualTextLabel 25 9	Title_Manual	0.8	770"
+set Child "ManualFaqFrame 0 110"
+set Child "ManualHelpFrame 0 100"
+set Child "ManualVideosFrame 20 130"
+set Child "ManualStatsFrame -2 90"
+set Child "ManualPatchnotesFrame 20 110"
+set Child "ManualFactionFrame 0 95"
+set Child "ManualTabBar -4 50"
+set Child "ManualClose 1024 0"
+set CommandPress "gameui promoteToTop ManualMain"

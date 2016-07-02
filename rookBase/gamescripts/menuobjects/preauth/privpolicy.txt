@@ -1,0 +1,102 @@
+add MenuObject
+set Name PrivPolicyScrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "PrivPolicyScrollbarPos -2 0"
+set ScaleY 1.4
+set ScaleX 2.0
+set Color 0x000000
+set NoAlphaMod 1
+set Alpha 0.3
+add MenuObject
+set Name PrivPolicyScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult Scrollable1Pos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set Color 0x888888
+set ColorFocused 0xcccccc
+set Focus -2
+set CommandOnMouseDrag "floatsym set Scrollable1Pos $_MouseRelY"
+set StickScrollByMenuCallback PrivPolicyScroller
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.4
+set ScaleX 2.0
+add MenuObject
+set Name PrivPolicyScrollScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1200 650"
+set CommandOnMouseDrag "floatsym scaledMod Scrollable1Pos 0.025 $_Wheel 0 1"
+add MenuObject
+set Name PrivPolicyBackground
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus 0
+set NoAlphaMod 0
+set DisabledAlpha 0.75
+set FocusedTimeIn 0.0
+set FocusedTimeOut 0.0
+add MenuObject
+set Name PrivPolicyText
+set Coords "0 0 1200 650"
+set RenderCB _DrawUTextScrollable1
+set RenderCB_Flags "/noSymReplace"
+set RenderCBExcludesDefaultRender 1
+set RenderCB_DX 1200
+set RenderCB_DY 650
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xc0c0c0
+set RenderCB_FontScale 0.7
+set RenderCB_Text PRIVPOLICY
+set RenderCB_FloatArg 2000.0
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 25
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set CommandOnCreate "floatsym set Scrollable1Pos 0"
+add MenuObject
+set Name PrivPolicyButtonTemplate
+set Texture menus/LoginBase
+set Coords "0 89 275 71"
+set CoordsFocused "0 169 275 71"
+set CoordsPressed "-2 167 277 71"
+set RenderCB_DX 273
+set RenderCB_DY 62
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 0.8"
+set RenderCB_RGBColorDisabled "0.5 0.5 0.5"
+set DrawWhenFocusedOffset "-1 -1 0"
+set MouseInteract 1
+set Focus -2
+set DisabledAlpha 1.0
+set RenderCBExcludesDefaultRender 0
+add MenuObject initFrom PrivPolicyButtonTemplate
+set Name PrivPolicyAccept
+set RenderCB_Text DialogButtonOk
+set CommandPress "playSound MenuChoose"
+set CommandPress "clearmenu privpolicy.txt"
+set CommandCancel "playSound MenuChoose"
+set CommandCancel "clearmenu privpolicy.txt"
+add MenuObject
+set Name PrivPolicyMaster
+set Coords "0 0 720 720"
+set ContainerOnly 1
+set Anchor Center
+set Child "PrivPolicyBackground 0 0"
+set Child "PrivPolicyText -300 0"
+set Child "PrivPolicyScrollScrollWheelZone -300 0"
+set Child "PrivPolicyAccept 200 720"
+set Child "PrivPolicyScrollbar 1000 20"

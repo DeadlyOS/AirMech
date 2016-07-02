@@ -1,0 +1,465 @@
+add MenuObject
+set Name Story0Background
+set Texture menus/Story0Background
+set Coords "0 0 1024 1024"
+set MouseInteract 1
+set ScaleY 1.1605
+set ScaleX 2.0625
+set Disabled 1
+set BlendMode BlendAdd
+set Color 0x666666
+set DisabledAlphaTimeIn 10.0
+set DisabledAlphaTimeOut 2.0
+add MenuObject
+set Name Story0AlphaStriker
+set Texture menus/Story0AlphaStriker
+set Coords "0 0 1024 1024"
+set MouseInteract 1
+set Focus -2
+set CommandPress "menuCmd TutorialStage2"
+set Disabled 1
+set DisabledAlphaTimeIn 3.0
+set DisabledAlphaTimeOut 2.0
+add MenuObject
+set Name StoryMaster
+set ContainerOnly 1
+set Child "Story0Background -190 -60"
+set Child "Story0AlphaStriker 180 60"
+set Child "VignetteStory 0 0"
+set Child "StoryMessageMaster 1000 0"
+add MenuObject
+set Name StoryMessageTemplate
+set RenderCB_FontScale 0.85
+set RenderCB_Font Roboto
+set Coords "0 0 800 400"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeOut 1.5
+set Disabled 1
+add MenuObject
+set Name InputCatchPrologue
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameUI ignoreInputTime 1.0"
+set CommandPress "echo try_skip_Prologue"
+set CommandPress "console flushAllPendingSeq 301"
+set CommandPress "gameui disable InputCatchPrologue"
+set CommandPress "menuCmd IntroSkipPrologue"
+add MenuObject
+set Name InputCatchCarbon
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameUI ignoreInputTime 1.0"
+set CommandPress "echo try_skip_Carbon"
+set CommandPress "gameui disable InputCatchCarbon"
+set CommandPress "menuCmd IntroSkipCarbon"
+add MenuObject
+set Name InputCatchAirMech
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameUI ignoreInputTime 1.0"
+set CommandPress "echo try_skip_AirMech"
+set CommandPress "gameui disable InputCatchAirMech"
+set CommandPress "menuCmd IntroSkipAirMech"
+add MenuObject
+set Name InputCatchStory
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameUI ignoreInputTime 1.0"
+set CommandPress "echo try_skip_Story"
+set CommandPress "console flushAllPendingSeq 305"
+set CommandPress "gameui disable InputCatchStory"
+set CommandPress "menuCmd IntroSkipStory"
+add MenuObject
+set Name PrologueSkip
+set RenderCBExcludesDefaultRender 1
+set Coords "0 0 400 47"
+set RenderCB_DX 400
+set RenderCB_DY 0
+set DrawWhenFocused ""
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.65"
+set RenderCB_FontScale 0.75
+set RenderCB_Flags "/shadowed /embeddedSymCheck /allCaps"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text IntroContinue
+set HiddenCheckBySymbolInv InputPad
+set DisabledAlphaTimeIn 3.0
+set DisabledAlphaTimeOut 3.0
+set Disabled 1
+add MenuObject
+set Name PrologueMessageMaster
+set ContainerOnly 1
+set Child "StoryMessageTemplate[TextStory0A] 560 220		Story0A"
+set Child "StoryMessageTemplate[TextStory0B] 560 400		Story0B"
+set Child "StoryMessageTemplate[TextStory0C] 560 650		Story0C"
+set Child "InputCatchPrologue 0 0"
+set Child "VignetteStory 0 0"
+set Child "PrologueSkip[PrologueSkip0] 750 1000"
+add MenuObject
+set Name DescriptionBoxMessage
+set Coords "0 0 480 300"
+set Anchor Center
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.6
+set RenderCB_BoolArg 1
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB_Flags "/shadowed /shadowColor2"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text @_Arg1_@
+set DisabledAlphaTimeIn 0.25
+set DisabledAlphaTimeOut 0.25
+set Disabled 1
+set Color @_Arg2_@
+set SaveArgs 2
+add MenuObject
+set Name StoryMessageMaster
+set ContainerOnly 1
+set Child "StoryMessageTemplate[TextStory1A] 0 200		Story1A"
+set Child "StoryMessageTemplate[TextStory1B] 0 400		Story1B"
+set Child "StoryMessageTemplate[TextStory1C] 0 650		Story1C"
+set Child "InputCatchStory 0 0"
+set Child "PrologueSkip[PrologueSkip1] -200 1000"
+add MenuObject
+set Name PilotSelectBackground
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.8
+set MouseInteract 1
+set CommandPress "if sym PilotSelectCancelScript != null menuCmd $PilotSelectCancelScript"
+add MenuObject
+set Name StoryBlockInput
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name PilotInfoBackground
+set Texture menus/PilotSelect
+set Coords "0 0 608 594"
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject initFrom PilotInfoBackground
+set Name PilotInfoBackgroundLeft
+set Child "SelectPilotName 45 30		DispPilotErik 0xd99ad5 	-23 Erik 1.2 /ifSym ArcCustomized == 0"
+set Child "SelectPilotName 45 40		DispPilotErik 0xd99ad5 	-23 Erik 0.8 /ifSym ArcCustomized == 1"
+set Child "SelectPilotDesc 45 140		PilotErikDesc"
+set Child "DescriptionBoxMessage 0 90 IntroErikDesc 0xd99ad5"
+add MenuObject initFrom PilotInfoBackground
+set Name PilotInfoBackgroundCenter
+set Child "SelectPilotName 45 30		DispPilotKira 0xd99ad5 	-23 Kira 1.2 /ifSym ArcCustomized == 0"
+set Child "SelectPilotName 45 40		DispPilotKira 0xd99ad5 	-23 Kira 0.8 /ifSym ArcCustomized == 1
+set Child "SelectPilotDesc 45 140		PilotKiraDesc"
+set Child "DescriptionBoxMessage 0 90 IntroKiraDesc 0xd99ad5"
+add MenuObject initFrom PilotInfoBackground
+set Name PilotInfoBackgroundRight
+set Child "SelectPilotName 45 30		DispPilotSamson 0xd99ad5 	-23 Samson 1.2 /ifSym ArcCustomized == 0"
+set Child "SelectPilotName 45 40		DispPilotSamson 0xd99ad5 	-23 Samson 0.8 /ifSym ArcCustomized == 1
+set Child "SelectPilotDesc 45 140		PilotSamsonDesc"
+set Child "DescriptionBoxMessage 0 90 IntroSamsonDesc 0xd99ad5"
+add MenuObject
+set Name SelectPilotName
+set Coords "0 0 521 100"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set SaveArgs 3
+set RenderCB_Flags "/outlined8x /allCaps /fitX /shadowColor2"
+set RenderCB_FontScale @_Arg5_@
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set Disabled 1
+set DisabledAlphaTimeIn 0.25
+set DisabledAlphaTimeOut 0.25
+add MenuObject
+set Name SelectPilotDesc
+set Coords "0 0 521 100"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set SaveArgs 3
+set RenderCB_Flags "/shadowed /shadowColor2"
+set RenderCB_FontScale @_Arg5_@
+set RenderCB_RGBColor "0.8 0.35 0.15"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set Disabled 1
+set DisabledAlphaTimeIn 0.25
+set DisabledAlphaTimeOut 0.25
+add MenuObject
+set Name SelectPilotPrompt
+set Coords "0 0 1920 100"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_Text SelectPilotPrompt
+set RenderCB_RGBColor 1.0
+set RenderCB_Flags "/outlined8x /allCaps /fitX"
+set RenderCB_FontScale 1.2
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set Disabled 1
+set DisabledAlphaTimeInPreWait 0.2
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.6
+add MenuObject
+set Name SelectPilotPromptArc
+set Texture menus/LargeChineseFonts
+set Coords "0 848 675 90"
+set Disabled 1
+set DisabledAlphaTimeInPreWait 0.2
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.6
+add MenuObject
+set Name SelectPilotBack
+set Texture effects/black
+set Coords "0 0 16 16"
+set TileArea "321 1024"
+set Disabled 1
+add MenuObject
+set Name SelectPilotTemplate
+set Texture menus/SelectPilots+lang
+set Coords "0 0 321 1024"
+set MouseInteract 1
+set Focus -2
+set NoAlphaMod 1
+set Alpha 0.5
+set CommandCancel "menuCmd $PilotSelectCancelScript"
+add MenuObject
+set Name GlowPilotLeft
+set Texture menus/SelectPilots+lang
+set Coords "0 0 321 1024"
+set BlendMode BlendAdd
+set PulseAlpha "2.4 -0.8 -1.0"
+set DisabledAlphaTimeIn 0.05
+set DisabledAlphaTimeOut 0.3
+add MenuObject initFrom GlowPilotLeft
+set Name GlowPilotCenter
+set Coords "321 0 321 1024"
+add MenuObject initFrom GlowPilotLeft
+set Name GlowPilotRight
+set Coords "642 0 321 1024"
+add MenuObject
+set Name ActivePilotTemplate
+set Texture menus/SelectPilots+lang
+set Coords "0 0 321 1024"
+set Disabled 1
+set DisabledAlphaTimeIn 0.05
+set DisabledAlphaTimeOut 0.6
+set FirstDrawnChildren 1
+set Child "SelectPilotBack 0 0"
+add MenuObject initFrom ActivePilotTemplate
+set Name ActivePilotLeft
+set Child "GlowPilotLeft 0 0"
+add MenuObject initFrom ActivePilotTemplate
+set Name ActivePilotCenter
+set Coords "321 0 321 1024"
+set Child "GlowPilotCenter 0 0"
+add MenuObject initFrom ActivePilotTemplate
+set Name ActivePilotRight
+set Coords "642 0 321 1024"
+set Child "GlowPilotRight 0 0"
+add MenuObject initFrom SelectPilotTemplate
+set Name SelectPilotLeft
+set Child "ActivePilotLeft 0 0"
+set RenderBlocked 1
+set CommandGetFocus "gameui enableAll ActivePilotLeft"
+set CommandGetFocus "gameui enableAll PilotInfoBackgroundLeft"
+set CommandGetFocus "input set padFocusFallback SelectPilotLeft"
+set CommandGetFocus "sym set SelectPilotName $SelectPilotLeft"
+set CommandLoseFocus "if sym PilotSelectCancelScript != ResetPilots gameui disableAll ActivePilotLeft"
+set CommandLoseFocus "if sym PilotSelectCancelScript != ResetPilots gameui disableAll PilotInfoBackgroundLeft"
+set CommandGetFocus "addUIAnim SelectPilotLeft mas_SelectPilotUp"
+set CommandLoseFocus "if sym PilotSelectCancelScript != ResetPilots addUIAnim SelectPilotLeft mas_SelectPilotDown"
+set CommandFocusRight "gameui focusnametry SelectPilotCenter"
+set CommandPress "if sym PilotSelectCancelScript != ResetPilots menuCmd ChoosePilotLeft"
+set CommandPress "if usingPad if sym PilotSelectCancelScript == ResetPilots menuCmd TutorialAcceptPilot"
+add MenuObject initFrom SelectPilotTemplate
+set Name SelectPilotCenter
+set Coords "321 0 321 1024"
+set Child "ActivePilotCenter 0 0"
+set RenderBlocked 1
+set CommandGetFocus "input set padFocusFallback SelectPilotCenter"
+set CommandGetFocus "gameui enableAll ActivePilotCenter"
+set CommandGetFocus "gameui enableAll PilotInfoBackgroundCenter"
+set CommandGetFocus "sym set SelectPilotName $SelectPilotCenter"
+set CommandLoseFocus "if sym PilotSelectCancelScript != ResetPilots gameui disableAll ActivePilotCenter"
+set CommandLoseFocus "if sym PilotSelectCancelScript != ResetPilots gameui disableAll PilotInfoBackgroundCenter"
+set CommandGetFocus "addUIAnim SelectPilotCenter mas_SelectPilotUp"
+set CommandLoseFocus "if sym PilotSelectCancelScript != ResetPilots addUIAnim SelectPilotCenter mas_SelectPilotDown"
+set CommandFocusRight "gameui focusnametry SelectPilotRight"
+set CommandFocusLeft "gameui focusnametry SelectPilotLeft"
+set CommandPress "if sym PilotSelectCancelScript != ResetPilots menuCmd ChoosePilotCenter"
+set CommandPress "if usingPad if sym PilotSelectCancelScript == ResetPilots menuCmd TutorialAcceptPilot"
+add MenuObject initFrom SelectPilotTemplate
+set Name SelectPilotRight
+set Coords "642 0 321 1024"
+set Child "ActivePilotRight 0 0"
+set RenderBlocked 1
+set CommandGetFocus "input set padFocusFallback SelectPilotRight"
+set CommandGetFocus "gameui enableAll ActivePilotRight"
+set CommandGetFocus "gameui enableAll PilotInfoBackgroundRight"
+set CommandGetFocus "sym set SelectPilotName $SelectPilotRight"
+set CommandLoseFocus "if sym PilotSelectCancelScript != ResetPilots gameui disableAll ActivePilotRight"
+set CommandLoseFocus "if sym PilotSelectCancelScript != ResetPilots gameui disableAll PilotInfoBackgroundRight"
+set CommandGetFocus "addUIAnim SelectPilotRight mas_SelectPilotUp"
+set CommandLoseFocus "if sym PilotSelectCancelScript != ResetPilots addUIAnim SelectPilotRight mas_SelectPilotDown"
+set CommandFocusLeft "gameui focusnametry SelectPilotCenter"
+set CommandPress "if sym PilotSelectCancelScript != ResetPilots menuCmd ChoosePilotRight"
+set CommandPress "if usingPad if sym PilotSelectCancelScript == ResetPilots menuCmd TutorialAcceptPilot"
+add MenuObject
+set Name BackgroundPilotTemplate
+set Texture menus/SelectPilots+lang
+set Coords "0 0 321 1024"
+set BlendMode BlendAdd
+set Color 0x888888
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.5
+set DisabledAlpha 0.4
+add MenuObject initFrom BackgroundPilotTemplate
+set Name BackgroundPilotLeft
+add MenuObject initFrom BackgroundPilotTemplate
+set Name BackgroundPilotCenter
+set Coords "321 0 321 1024"
+add MenuObject initFrom BackgroundPilotTemplate
+set Name BackgroundPilotRight
+set Coords "642 0 321 1024"
+add MenuObject
+set Name PilotSelectContainer
+set Texture effects/black
+set Coords "0 0 16 16"
+set TileArea "963 1024"
+set Child "BackgroundPilotLeft 0 0"
+set Child "BackgroundPilotCenter 321 0"
+set Child "BackgroundPilotRight 642 0"
+set Child "SelectPilotLeft 0 0"
+set Child "SelectPilotCenter 321 0"
+set Child "SelectPilotRight 642 0"
+set Child "PilotInfoBackgroundLeft -140 350"
+set Child "PilotInfoBackgroundCenter 180 350"
+set Child "PilotInfoBackgroundRight 500 350"
+add MenuObject
+set Name PilotSelectCover
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set DisabledAlphaTimeOut 2.0
+set MouseInteract 1
+set Focus -2
+add MenuObject initFrom DialogButtonTemplate
+set Name PilotChooseCancel
+set Coords "630 4 187 69"
+set CoordsFocused "630 142 187 69"
+set CoordsPressed "629 141 187 69"
+set CoordsDisabled "630 73 187 69"
+set CommandPress "]menuCmd ResetPilots"
+set CommandFocusLeft "]gameUI focusNameTry PilotChooseAccept"
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.1
+set Disabled 1
+set HiddenCheckBySymbol InputPad
+add MenuObject initFrom DialogButtonTemplate
+set Name PilotChooseAccept
+set Coords "443 4 187 69"
+set CoordsFocused "443 142 187 69"
+set CoordsPressed "442 141 187 69"
+set CoordsDisabled "443 73 187 69"
+set CommandPress "]menuCmd TutorialAcceptPilot"
+set CommandFocusRight "]gameUI focusNameTry PilotChooseCancel"
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.1
+set Disabled 1
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name PilotChooseGamepad
+set ContainerOnly 1
+set HiddenCheckBySymbolInv InputPad
+set Child "GamepadButtonLabel 118 60 DialogBoxCancelText"
+set Child "GamepadButtonLabel 120 10 Confirm_Console"
+add MenuObject
+set Name ConfirmPilotSelectMessage
+set RenderCB_FontScale 0.9
+set RenderCB_Font Roboto
+set Coords "0 0 600 600"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol ConfirmPilotSelectMessage
+set SaveArgs 1
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.1
+set Disabled 1
+set Child "PilotChooseAccept 80 110"
+set Child "PilotChooseCancel 290 110"
+set Child "PilotChooseGamepad 0 110"
+add MenuObject
+set Name PilotSelectInputCatch
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "console flushAllPendingSeq 302"
+set CommandPress "gameui hide PilotSelectInputCatch"
+add MenuObject
+set Name CM_ButtonHints_PilotSelect
+set ContainerOnly 1
+set SaveArgs 1
+set Disabled 1
+set HiddenCheckBySymbolInv InputPad
+set HiddenCheckBySymbol HidePilotBtnHelp
+set Child "ConsoleButtonHelperFromFont 		630 960			X 		1.0 60			BtnHint_Choose	PilotSelect"
+set Child "ConsoleButtonTemplate 			1040 960		@DM_Select@ 	0.8		BtnHint_Select	PilotSelect"
+add MenuObject
+set Name PilotSelectMaster
+set ContainerOnly 1
+set Child "PilotSelectBackground 0 0"
+set Child "VignetteStory 0 0"
+set Child "PilotSelectContainer 478 38"
+set Child "ConfirmPilotSelectMessage 850 420"
+set Child "PilotSelectCover 0 0"
+set Child "SelectPilotPrompt 0 250 /ifSym ArcCustomized == 0"
+set Child "SelectPilotPromptArc[SelectPilotPrompt] 620 250 /ifSym ArcCustomized == 1"
+set Child "CM_ButtonHints_PilotSelect 0 0"
+set Child "ConMenuSwitchProfile 1490 985	/ifSym PLATFORM == XBONE"
+set Child "CurrentProfileName 1470 1005	/!consolePlatform"

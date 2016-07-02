@@ -1,0 +1,76 @@
+add WorldObject
+set Name CrateAGreen
+set Model deco/Crate1.amf
+set Material mat_Crate
+set CollisionZRel 0.5
+set Collision "NavMeshIgnore Box 0.5 0.5 0.5"
+set SpecialType Scenery
+set HitPoints 5
+set DestroySounds DestroyEnvObj01.wav
+set DestructionEffects_1  "1 0.2 0.0   0.5 0.0    0 0 ExpBlastRingSmall  /vcb:75 /reqVis"
+set DestructionEffects_2  "1 0.2 0.0   0.5 0.0    0 0 ExplosionDust  /vcb:100 /reqVis"
+set DestructionEffects_3  "6 1.0 1.0   5.0 2.0    10.0 5.0 /ntc /mdl:deco/Urban/DxCrateSplinter.amf /mtl:mat_CrateADestroy /bne:bone_root /emt:H /grp:Debris /col [Group Debris Box 0.01 0.01 0.01] /skt:5.0 /lte:50 /vcb:40"
+set DestructionEffects_4  "1 1.0 0.0   15.0 5.0   2.0 3.0  /ntc /mdl:deco/Urban/DxCrateFrameA.amf /mtl:mat_CrateADestroy /bne:bone_root /emt:H /grp:Debris /col [Group Debris Box 0.5 0.05 0.5] /skt:5.0 /lte:50 /vcb:40"
+set DestructionEffects_5  "1 1.0 0.0   15.0 5.0   4.0 3.0  /ntc /mdl:deco/Urban/DxCrateFrameB.amf /mtl:mat_CrateADestroy /bne:bone_root /emt:H /grp:Debris /col [Group Debris Box 0.5 0.05 0.5] /skt:5.0 /lte:50 /vcb:40"
+set DestructionEffects_6  "1 1.0 0.0   10.0 5.0   6.0 3.0  /ntc /mdl:deco/Urban/DxCrateSide.amf /mtl:mat_CrateADestroy /bne:bone_root /emt:H /grp:Debris /col [Group Debris Box 0.5 0.05 0.5] /skt:5.0 /lte:50 /vcb:20"
+set DestructionEffects_7  "1 1.0 0.0   10.0 5.0   6.0 3.0  /ntc /mdl:deco/Urban/DxCrateDoor.amf /mtl:mat_CrateADestroy /bne:bone_root /emt:H /grp:Debris /col [Group Debris Box 0.4 0.05 0.3] /skt:5.0 /lte:50 /vcb:20"
+set CameraShakeOnDestroyed = "0.0 0.0 0.0"
+add WorldObject initFrom CrateAGreen
+set Name Crate1
+set Model deco/Crate1.amf
+set Material mat_Crate
+add WorldObject initFrom CrateAGreen
+set Name Crate2
+set Model deco/Crate2.amf
+set Material mat_Crate
+add WorldObject initFrom CrateAGreen
+set Name Crate3
+set Model deco/Crate3.amf
+set Material mat_Crate
+add WorldObject initFrom CrateAGreen
+set Name Crate4
+set Model deco/Crate4.amf
+set Material mat_Crate
+add WorldObject initFrom CrateAGreen
+set Name Crate5
+set Model deco/Crate5.amf
+set Material mat_Crate
+add WorldObject initFrom CrateAGreen
+set Name Crate6
+set Model deco/Crate6.amf
+set Material mat_Crate
+add WorldObject
+set Name Container1
+set Model deco/Container1.amf
+set Material mat_Crate
+set Collision "NoNavMesh Group ObjectSupportGroupCol Model deco/Container1.col 1.5"
+add WorldObject
+set Name Container2
+set Model deco/Container2.amf
+set Material mat_Crate
+set Collision "NoNavMesh Group ObjectSupportGroupCol Model deco/Container2.col 1.5"
+add WorldObject
+set Name Container3
+set Model deco/Container3.amf
+set Material mat_Crate
+set Collision "NoNavMesh Group ObjectSupportGroupCol Model deco/Container3.col 1.5"
+add WorldObject
+set Name Container4
+set Model deco/Container4.amf
+set Material mat_Crate
+set Collision "NoNavMesh Group ObjectSupportGroupCol Model deco/Container4.col 1.5"
+add WorldObject initFrom Container4
+set Name Container5
+set Model deco/Container5.amf
+add WorldObject initFrom Container4
+set Name Container6
+set Model deco/Container6.amf
+add WorldObject initFrom Container4
+set Name Container7
+set Model deco/Container7.amf
+add WorldObject
+set Name BlockDeferred
+set Model "deco/Block.amf"
+set Material "mat_BlockDeferred"
+set Collision "Group ObjectSupportGroupCol Material Dirt staticoffset 0 0 0 Box 8 8 8"
+set Collision "Group ObjectSupportGroup Material Dirt staticoffset 0 0 16 Box 10 10 0.01"

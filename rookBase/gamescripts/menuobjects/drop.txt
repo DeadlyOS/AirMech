@@ -1,0 +1,437 @@
+add MenuObject
+set Name ContentVignette
+set Texture effects/VignetteUnder
+set Coords "0 0 515 256"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "clearmenu @_Arg1_@"
+add MenuObject
+set Name ContentBackground
+set Texture menus/Mail
+set CoordsStart "1 1 65 70"
+set CoordsMid "66 1 465 70"
+set CoordsEnd "531 1 65 70"
+set CoordsStartFocused "1 68 65 2"
+set CoordsMidFocused "66 68 465 2"
+set CoordsEndFocused "531 68 65 2"
+set CoordsStartDisabled "1 296 65 26"
+set CoordsMidDisabled "66 296 465 26"
+set CoordsEndDisabled "531 296 65 26"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 595
+set RenderCB_DY 530
+set Coords "0 0 595 530"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set SaveArgs 1
+set CommandPress ">gameui promoteToTop @_Arg1_@"
+add MenuObject
+set Name DropCloseVis
+set Coords "638 454 50 50"
+set CoordsFocused "637 397 50 50"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name ContentClose
+set Coords "0 0 33 33"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 0.1"
+set Child "DropCloseVis 0 0"
+add MenuObject initFrom ContentClose
+set Name DropClose
+set CommandPress "clearmenu Drop /fadeout 0.1"
+add MenuObject initFrom ContentClose
+set Name ChoicesClose
+set CommandPress "clearmenu CapsuleRareChoices /fadeout 0.1"
+add MenuObject
+set Name ContentTextLabel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 3
+add MenuObject
+set Name ContentMessage
+set Coords "0 0 500 200"
+set RenderCB_DX 505
+set RenderCB_DY 200
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.6
+set Layer 15
+set RenderCB _DrawDText
+set RenderCB_Flags "/shadowed /embeddedSymCheck"
+set RenderCB_BoolArg 1
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 1
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.8 0.8 0.8"
+add MenuObject
+set Name ChoiceTitle
+set Coords "0 0 500 100"
+set RenderCB_DX 505
+set RenderCB_DY 100
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.55
+set Layer 15
+set RenderCB _DrawDText
+set RenderCB_Flags "/shadowed /embeddedSymCheck"
+set RenderCB_BoolArg 1
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 1"
+set DisabledAlpha 0.0
+set Disabled 1
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name DropIconTemplate
+set Anchor Center
+set SaveArgs 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set DisplayAsFocusedIfParentFocused 1
+set DisabledAlpha 0.0
+set Disabled 0
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.2
+set FocusedTimeIn 0.1
+set FocusedTimeOut 0.1
+add MenuObject initFrom DropIconTemplate
+set Name DropUnitIcon
+set Texture units/@_Arg1_@/Icons@TeamColor@
+set TextureAlt units/@_Arg1_@/IconUnique
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 200.0
+add MenuObject initFrom DropIconTemplate
+set Name DropPartIcon
+set Texture parts/@_Arg1_@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 200.0
+add MenuObject initFrom DropIconTemplate
+set Name DropItemIcon
+set Texture items/@_Arg1_@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom DropIconTemplate
+set Name DropMiscIcon
+set Texture misc/@_Arg1_@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 200.0
+add MenuObject initFrom DropIconTemplate
+set Name DropFrameIcon
+set Texture frames/@_Arg1_@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom DropIconTemplate
+set Name DropPlanIcon
+set Texture recipes/@_Arg1_@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom DropIconTemplate
+set Name DropBluePrintIcon
+set Texture blueprints/@_Arg1_@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom DropIconTemplate
+set Name DropFlairIcon
+set Texture flair/@_Arg1_@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom DropIconTemplate
+set Name DropPetIcon
+set Texture flair/@_Arg1_@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+set NoAlphaMod 0
+add MenuObject initFrom DropIconTemplate
+set Name DropPilotIcon
+set Texture pilots/@_Arg1_@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom DropIconTemplate
+set Name DropAirMechIcon
+set Texture rooks/@_Arg1_@/Icons@TeamColor@
+set TextureAlt rooks/@_Arg1_@/IconUnique
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject
+set Name ChoiceEffect
+set Texture menus/CapsuleRareChoices
+set Coords "152 888 132 132"
+set ScaleX 1.5, ScaleY 1.5
+set BlendMode BlendAdd
+set PulseAlpha "2.5 -0.25 -0.7"
+set Disabled 1
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.0
+add MenuObject
+set Name ChoiceBackground
+set Texture menus/CapsuleRareChoices
+set Coords "3 885 136 136"
+set Anchor Center
+set NoDrawOnMissingTexture 1
+set ScaleX 1.155, ScaleY 1.155
+set ScaleXFocused 1.1, ScaleYFocused 1.1
+set DisplayAsFocusedIfParentFocused 1
+set DisabledAlpha 0.0
+set Disabled 0
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set FocusedTimeIn 0.1
+set FocusedTimeOut 0.1
+add MenuObject initFrom PanelResizeClear
+set Name ContentIconMaster
+set TileArea "140 140"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 3
+set Child "@_Arg9_@[@_Arg9_@@_Arg5_@] 2 0"
+set Child "ChoiceEffect[ChoiceEffect@_Arg5_@] -30 -28 /ifSym CommonEgDialogLoaded == 0"
+set Child "DropUnitIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == units				&@_Arg1_@&
+set Child "DropPartIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ hasPrefix part		&@_Arg1_@&
+set Child "DropItemIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == items				&@_Arg1_@&
+set Child "DropMiscIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == misc				&@_Arg1_@&
+set Child "DropFrameIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == frame				&@_Arg1_@&
+set Child "DropPlanIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == recipe 			&@_Arg1_@&
+set Child "DropBluePrintIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == baseBP		&@_Arg1_@&
+set Child "DropFlairIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == flairs			&@_Arg1_@&
+set Child "DropPetIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == pets				&@_Arg1_@&
+set Child "DropPetIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == heads				&@_Arg1_@&
+set Child "DropPilotIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == pilots			&@_Arg1_@&
+set Child "DropAirMechIcon[@_Arg6_@@_Arg5_@] 0 0 /ifSym @_Arg3_@ == rooks			&@_Arg1_@&
+set Child "ChoiceTitle[ChoiceTitle@_Arg5_@] -185 155 &@_Arg4_@&"
+set CommandOnCreate ">sym set ChoiceSelected 0"
+set CommandOnCreate ">sym set ContentType @_Arg6_@"
+set CommandOnCreate ">sym clear ContentDFTT@_Arg5_@"
+set CommandOnCreate ">if sym @_Arg3_@ == units runnow sym set ContentDFTT@_Arg5_@ UnitStatsToolTip"
+set CommandOnCreate ">if sym @_Arg3_@ == rooks runnow sym set ContentDFTT@_Arg5_@ AirMechStatsToolTip2"
+set CommandOnCreate ">if sym @_Arg3_@ == pilots runnow sym set ContentTT@_Arg5_@ MF_CustomDesc_Pilot&@_Arg1_@&"
+set CommandOnCreate ">if sym @_Arg3_@ != pilots runnow sym set ContentTT@_Arg5_@ &@_Arg1_@&Desc"
+set CommandGetFocus "playSound $MenuShopItemFocus"
+set CommandGetFocus ">sym set ContentType @_Arg6_@"
+set CommandGetFocus ">if sym @_Arg3_@ == units customize expUnitStatConfig &@_Arg1_@& 1"
+set CommandGetFocus ">if sym @_Arg3_@ == rooks customize expRookStatConfig &@_Arg1_@& 1"
+set CommandGetFocus ">if sym ContentType == Choice runnow gameui ignoreInputTime 0.1"
+set CommandGetFocus ">if sym ContentType == Choice && sym ChoiceSelected == 0 runnow addUIAnim Choice@_Arg5_@ mas_ChoiceMoveUp"
+set CommandGetFocus ">if sym ContentType == Choice && sym ChoiceSelected == 0 runnow addUIAnim ChoiceEffect@_Arg5_@ mas_ChoiceMoveUp"
+set CommandGetFocus ">if sym ContentType == Choice && sym ChoiceSelected == 0 runnow addUIAnim ChoiceBackground@_Arg5_@ mas_ChoiceMoveUp"
+set CommandGetFocus ">if sym ContentType == Choice runnow gameUI enable ChoiceEffect@_Arg5_@"
+set CommandLoseFocus ">if sym ContentType == Choice runnow gameui ignoreInputTime 0.1"
+set CommandLoseFocus ">if sym ContentType == Choice runnow gameUI disable ChoiceEffect@_Arg5_@"
+set CommandLoseFocus ">if sym ContentType == Choice runnow addUIAnim Choice@_Arg5_@ mas_ChoiceMoveDown"
+set CommandLoseFocus ">if sym ContentType == Choice runnow addUIAnim ChoiceEffect@_Arg5_@ mas_ChoiceMoveDown"
+set CommandLoseFocus ">if sym ContentType == Choice runnow addUIAnim ChoiceBackground@_Arg5_@ mas_ChoiceMoveDown"
+set CommandFocusLeft ">if sym ContentType == Choice runnow gameUI focusNameTry ChoiceButton1"
+set CommandFocusRight ">if sym ContentType == Choice runnow gameUI focusNameTry ChoiceButton2"
+set CommandPress ">if sym ContentType == Drop runnow menucmd PromoUnlockTry &@_Arg3_@& &@_Arg1_@&"
+set CommandPress ">if sym ContentType == Choice runnow menucmd SelectCapsule@_CapsuleType_@Choice@_Arg5_@"
+set CommandPress "sym set ChoiceSelected 1"
+set CommandPressAlt ">menucmd PromoUnlockTry &@_Arg3_@& &@_Arg1_@&"
+set CommandTopButton ">menucmd PromoUnlockTry &@_Arg3_@& &@_Arg1_@&"
+set CommandCancel "if sym ContentType == Drop runnow clearmenu Drop"
+set CommandCancel "if sym ContentType == Choice runnow clearmenu CapsuleRareChoices"
+set ToolTip &ContentTT@_Arg5_@&
+set DrawForToolTip &ContentDFTT@_Arg5_@&
+set DrawForToolTipPositioning "/mode leftright /xMargin @_Arg8_@ /yMargin 0 /modeSym @_Arg7_@"
+set DrawForToolTipPositioningPad "/mode leftright /xMargin @_Arg8_@ /yMargin 0 /modeSym @_Arg7_@"
+set ToolTipDelayTime 0.1
+set Disabled 1
+add MenuObject
+set Name DropIconShadow
+set Texture effects/DropShadow
+set Coords img
+set ScaleY 0.5
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 200.0
+set NoAlphaMod 1
+set Alpha 0.7
+add MenuObject
+set Name ContentGamepadText
+set RenderCBExcludesDefaultRender 1
+set DrawWhenFocused ""
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.8 0.8 0.8"
+set RenderCB_FontScale 0.75
+set RenderCB_Flags "/shadowed /embeddedSymCheck /allCaps"
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolInv InputPad
+add MenuObject
+set Name ContentGamepadSelect
+set Texture hud/Buttons@GamepadStyle@
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimationPreset @DM_Select@
+set ScaleX 0.6
+set ScaleY 0.6
+set HiddenCheckBySymbolInv InputPad
+set Child "ContentGamepadText 45 6 BtnHint_Select"
+add MenuObject
+set Name ContentGamepadInspect
+set Texture hud/Buttons@GamepadStyle@
+set Coords "64 64 64 64"
+set ScaleX 0.6
+set ScaleY 0.6
+set HiddenCheckBySymbolInv InputPad
+set Child "ContentGamepadText 45 6  BtnHint_Inspect"
+add MenuObject
+set Name ContentGamepadInspect2
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 0 64 64"
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimationPreset @DM_Select@
+set ScaleX 0.6
+set ScaleY 0.6
+set HiddenCheckBySymbolInv InputPad
+set Child "ContentGamepadText 45 6  BtnHint_Inspect"
+add MenuObject
+set Name ContentGamepadBack
+set Texture hud/Buttons@GamepadStyle@
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimationPreset @DM_Cancel@
+set ScaleX 0.6
+set ScaleY 0.6
+set HiddenCheckBySymbolInv InputPad
+set Child "ContentGamepadText 45 6  BtnHint_Back"
+add MenuObject
+set Name ContentGamepadOk
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 0 64 64"
+set ScaleX 0.6
+set ScaleY 0.6
+set HiddenCheckBySymbolInv InputPad
+set Child "ContentGamepadText 45 6 DialogButtonOk"
+add MenuObject
+set Name DropMain
+set RenderBlocked 1
+set Coords "0 0 500 55"
+set MouseInteract 1
+set Focus -2
+set FirstDrawnChildren 1
+set Child "ContentVignette 0 0 Drop"
+set Child "ContentBackground -15 -15		DropMain"
+set Child "EG_RewardRubbleReveal -25 150 0.6 0.6"
+set Child "DropIconShadow 170 340"
+set Child "ContentIconMaster[DropButton0] 205 210		_Drop_ _DropLink_ _DropType_ _DropDisp_ 0 Drop 0 -520 _NA_"
+set Child "DropClose 512 0"
+set Child "ContentTextLabel 20 10	DropCaption	0.8		770"
+set Child "ContentMessage 30 60 DropText"
+set Child "ContentGamepadBack[DropButton0] 20 415"
+set Child "ContentGamepadInspect2[DropButton1] 160 415"
+add MenuObject
+set Name CapsuleRareTop
+set SaveArgs 1
+set Texture menus/Capsule@_CapsuleType_@Choices
+set Coords "0 0 512 336"
+set ScaleX 0.7, ScaleY 0.7
+set NoDrawOnMissingTexture 1
+set Alpha 1.0
+set DisabledAlpha 0.0
+set Disabled 0
+set DisabledAlphaTimeOut 0.35
+set DisabledAlphaTimeIn 0.35
+add MenuObject initFrom CapsuleRareTop
+set Name CapsuleGothicTop
+set Texture menus/CapsuleGothicChoices
+set Coords "0 0 512 405"
+add MenuObject initFrom CapsuleGothicTop
+set Name CapsuleSteampunkTop
+set Texture menus/CapsuleSteampunkChoices
+add MenuObject
+set Name CapsuleRareMiddle
+set Texture menus/Capsule@_CapsuleType_@Choices
+set Coords "0 336 512 274"
+set ScaleX 0.7, ScaleY 0.7
+set NoDrawOnMissingTexture 1
+set Alpha 1.0
+set DisabledAlpha 0.0
+set Disabled 0
+set DisabledAlphaTimeOut 0.35
+set DisabledAlphaTimeIn 0.35
+add MenuObject initFrom CapsuleRareMiddle
+set Name CapsuleGothicMiddle
+set Texture menus/CapsuleGothicChoices
+set Coords "0 405 512 274"
+add MenuObject initFrom CapsuleGothicMiddle
+set Name CapsuleSteampunkMiddle
+set Texture menus/CapsuleSteampunkChoices
+add MenuObject
+set Name CapsuleRareBottom
+set Texture menus/Capsule@_CapsuleType_@Choices
+set Coords "0 611 512 274"
+set ScaleX 0.7, ScaleY 0.7
+set NoDrawOnMissingTexture 1
+set Alpha 1.0
+set DisabledAlpha 0.0
+set Disabled 0
+set DisabledAlphaTimeOut 0.35
+set DisabledAlphaTimeIn 0.35
+add MenuObject initFrom CapsuleRareBottom
+set Name CapsuleGothicBottom
+set Texture menus/CapsuleGothicChoices
+set Coords "0 679 512 274"
+add MenuObject initFrom CapsuleGothicBottom
+set Name CapsuleSteampunkBottom
+set Texture menus/CapsuleSteampunkChoices
+add MenuObject
+set Name CapsuleRare
+set ContainerOnly 1
+set Child "CapsuleRareMiddle 10 -40							/ifSym _CapsuleType_ != Gothic /ifSym _CapsuleType_ != Steampunk"
+set Child "CapsuleGothicMiddle[CapsuleRareMiddle] 10 -40	/ifSym _CapsuleType_ == Gothic"
+set Child "CapsuleSteampunkMiddle[CapsuleRareMiddle] 10 -40	/ifSym _CapsuleType_ == Steampunk"
+set Child "ContentIconMaster[ChoiceButton2] 125 0		_Choice2_ _Choice2Link_ _Choice2Type_ _Choice2Disp_ 2 Choice 0 -270 ChoiceBackground"
+set Child "ContentIconMaster[ChoiceButton1] 125 0		_Choice1_ _Choice1Link_ _Choice1Type_ _Choice1Disp_ 1 Choice 1 -550 ChoiceBackground"
+set Child "CapsuleRareBottom 10 0							/ifSym _CapsuleType_ != Gothic /ifSym _CapsuleType_ != Steampunk"
+set Child "CapsuleGothicBottom[CapsuleRareBottom] 10 0		/ifSym _CapsuleType_ == Gothic"
+set Child "CapsuleSteampunkBottom[CapsuleRareBottom] 10 0	/ifSym _CapsuleType_ == Steampunk"
+set Child "CapsuleRareTop 10 -80							/ifSym _CapsuleType_ != Gothic /ifSym _CapsuleType_ != Steampunk"
+set Child "CapsuleGothicTop[CapsuleRareTop] 10 -80			/ifSym _CapsuleType_ == Gothic"
+set Child "CapsuleSteampunkTop[CapsuleRareTop] 10 -80		/ifSym _CapsuleType_ == Steampunk"
+add MenuObject
+set Name CapsuleRareChoices
+set RenderBlocked 1
+set Coords "0 0 500 55"
+set MouseInteract 1
+set Focus -1
+set FirstDrawnChildren 1
+set Child "ContentVignette 0 0 CapsuleRareChoices"
+set Child "ContentBackground -15 -15		CapsuleRareChoices"
+set Child "CapsuleRare 90 210"
+set Child "ChoicesClose 512 0"
+set Child "ContentTextLabel 20 10	ChoicesCaption	0.8		770"
+set Child "ContentMessage 30 70 ChoicesText"
+set Child "ContentGamepadSelect[ChoiceButton0] 20 415"
+set Child "ContentGamepadBack[ChoiceButton0] 210 415"
+set Child "ContentGamepadInspect[ChoiceButton0] 380 415"

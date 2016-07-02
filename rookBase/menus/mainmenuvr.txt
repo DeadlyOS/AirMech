@@ -1,0 +1,58 @@
+blockLoadOnConsoleSym MainMenuLoaded
+onloadrun {
+cbinding disable gameIsLive
+sym init MainMenuCount 0
+sym setZero PauseUIOpen InPlayMenus MapBase LoadoutSetupAirMech
+sym init MainMenuCountSession 0
+sym set P_Pay paypal
+sym set MainMenuLoaded 1
+sym set PlayV1TopMenu 1
+sym set HideProgressBars 0
+sym toggle _ChatAdType_
+if sym AIDifficulty == 0 runnow sym set AIColor 0.7
+if sym AIDifficulty != 0 runnow sym set AIColor 1.0
+if sym PilotLocal == NoPilot && walletUnlocked Raven runnow sym set PilotLocal Raven
+if sym PilotLocal == NoPilot && walletUnlocked Mako runnow sym set PilotLocal Mako
+if sym PilotLocal == NoPilot && walletUnlocked Hawk runnow sym set PilotLocal Hawk
+if sym PilotLocal == NoPilot && walletUnlocked Kira runnow sym set PilotLocal Kira
+if sym PilotLocal == NoPilot && walletUnlocked Erik runnow sym set PilotLocal Erik
+if sym PilotLocal == NoPilot && walletUnlocked Samson runnow sym set PilotLocal Samson
+gfx set uniform interlace 0.0
+rook initBoostInfo
+sym set _FontTestY 50
+rook inMenu MainMenu
+loadout partPointsUpdate
+sym set _DiamondsSrcX_ 0
+sym set _DiamondsSrcY_ 0
+sym setZero IsSpectator GSS_Lockin
+sym set InStorySeq 0
+sym set LowAndFree 0
+sym setZero SaveSlotActive0 SaveSlotActive1 SaveSlotActive2 SaveSlotActive3 SaveSlotActive4 SaveSlotActive5 SaveSlotActive6 SaveSlotActive7
+sym set #SaveSlotActive@ActiveLoadout@ 1
+pfx stop LoginEmbers
+}
+onload {
+sym set CurrentMenu VRHome
+pcmd 0.5 sym set CurrentMenu VRHome
+sound updateVolumes
+sym set IsInNetGame 0
+sym set LobbyState 0
+sym cTrim RookLocal _ RookLocal_Base /chopLast U
+sym inc MainMenuCount
+sym inc MainMenuCountSession
+sym set ReturnToLobby 0
+sym set HideCursor 0
+pfx stop embers
+loadmenu QuickMenuVR
+}
+onunload {
+inputBinding disable frontEnd
+cbinding disable frontEnd
+inputBinding enable cockpitClosed
+cbinding enable cockpitClosed
+inputBinding disable cockpitOpen
+cbinding disable cockpitOpen
+}
+onunloadrun {
+sym set MainMenuLoaded 0
+}

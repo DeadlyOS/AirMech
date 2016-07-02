@@ -1,0 +1,473 @@
+add ParticleEmitter
+set Name "ShipThrustersSaucer", MaxParticles 256
+set Material mat_particlePolyTrail
+set EmitPeriodBase 0.01, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar 0, EmitVelocityWiggle 0
+set ParticleLifespanBase 0.3, ParticleLifespanVar 0.00
+set ParticleSizeXBase 2.2, ParticleSizeXVar 0
+set ParticleGrowthXBase -0.2, ParticleGrowthXVar 0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 1.0
+set ParticleColor 0x2222DDff
+set ParticleColorSecondary 0x0000ffff
+set ColorMode eColorMode_RGBFadeToSecondary
+set VisibilitySphereSize 8.0
+set FlagPolyTrailSystem 1
+add ParticleEmitter initFrom ShipThrustersSaucer
+set Name ShipThrustersSaucerOrange
+set ParticleColor 0xffae00ff
+set ParticleColorSecondary 0xffae00ff
+set EmitPeriodBase 0.02
+add ParticleEmitter
+set Name "ShipThrustersMin", MaxParticles 256
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 1, EmitVelocityVar 1, EmitVelocityWiggle 200
+set ParticleLifespanBase 0.1, ParticleLifespanVar 0.05
+set ParticleSizeXBase 0.3, ParticleSizeXVar 0
+set ParticleGrowthXBase -0.5, ParticleGrowthXVar 0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 1.0
+set ParticleColor 0x2222DDff
+set ParticleColorSecondary 0x0000ffff
+set ColorMode eColorMode_RGBFadeToSecondary
+set VisibilitySphereSize 8.0
+add ParticleEmitter
+set Name ShipThrustersMed, MaxParticles 256
+set EmitPeriodBase 0.003, EmitPeriodVar 0, EmitVelocityBase 1.8, EmitVelocityVar 1, EmitVelocityWiggle 35
+set ParticleLifespanBase 0.3, ParticleLifespanVar 0.1
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.15
+set ParticleGrowthXBase -0.1, ParticleGrowthXVar 0
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 0.3
+set ParticleColor 0x2222DDff
+set ParticleColorSecondary 0x0000ffff
+set ColorMode eColorMode_RGBFadeToSecondary
+set VisibilitySphereSize 8.0
+add ParticleEmitter initFrom ShipThrustersMin
+set Name ShipThrustersMinRed
+set ParticleColor 0xff0605ff
+add ParticleEmitter initFrom ShipThrustersMin
+set Name ShipThrustersMinCyan
+set EmitPeriodBase 0.006
+set ParticleColor 0xffffbb05
+set ParticleColorSecondary 0x00ffbb05
+add ParticleEmitter initFrom ShipThrustersMin
+set Name ShipExhaustGoth
+set EmitPeriodBase 0.003, EmitPeriodVar 0, EmitVelocityBase 0, EmitVelocityVar 0, EmitVelocityWiggle 35
+set ParticleLifespanBase 0.05
+set ParticleSizeXBase 0.25
+set ParticleColor 0xff0605ff
+add ParticleEmitter initFrom ShipThrustersMin
+set Name ShipThrustersBlue
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.15
+set ParticleColor 0x00a6ffff
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.3
+add ParticleEmitter initFrom ShipThrustersMin
+set Name ShipThrustersGreen
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.15
+set ParticleColor 0x139213ff
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.3
+add ParticleEmitter initFrom ShipThrustersMin
+set Name ShipThrustersPet
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0
+set ParticleLifespanBase 0.3, ParticleLifespanVar 0.05
+add ParticleEmitter initFrom ShipThrustersMin
+set Name ShipThrustersPetBig
+set ParticleSizeXBase 0.25, ParticleSizeXVar 0
+set ParticleLifespanBase 0.3, ParticleLifespanVar 0.05
+add ParticleEmitter
+set Name "ShipThrustersSnowFlakes", MaxParticles 128, Material mat_SnowFlake
+set EmitPeriodBase 0.035, EmitPeriodVar 0.05, EmitVelocityBase 3.0, EmitVelocityVar 0.5, EmitVelocityWiggle 500
+set ParticleLifespanBase 2, ParticleLifespanVar 0.5
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.1
+set AlphaModeParam 0.15
+Set AlphaModeParam2 0.6
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.3
+set VisibilitySphereSize 8.0
+set EmitPosConstantZOffset 0.0
+set EmitPosRandomXExtent 0.1
+set EmitPosRandomYExtent 0.1
+set EmitPosRandomZExtent 0.2
+set GravityDirection "0 0 -1"
+set GravityScalar 1.0
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set FlagActiveProcessingBeforeEmission 1
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 120.0
+set FlagParticleTexturePageRandom 1
+add ParticleEmitter initFrom ShipThrustersSnowFlakes
+set Name ShipThrustersSnowFlakesBig
+set EmitPeriodBase 0.5, EmitPeriodVar 0.05, EmitVelocityBase 3.0, EmitVelocityVar 0.5, EmitVelocityWiggle 500
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.1
+set ParticleSpinBase 0
+set ParticleSpinVar -180
+add ParticleEmitter
+set Name ShipThrustersBlueIon, MaxParticles 128, Material mat_particleIonBlue, FlagPolyTrailSystem 1
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 500
+set DragCoefficient 1.0
+set ParticleLifespanBase 0.18, ParticleLifespanVar 0.05
+set ParticleSizeXBase 0.4, ParticleSizeXVar 0.08
+set ParticleGrowthXBase 0.1, ParticleGrowthXVar 0.1
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.4
+set VisibilitySphereSize 15.0
+set FlagActiveProcessingBeforeEmission 1
+add ParticleEmitter initFrom ShipThrustersBlueIon
+set Name ShipThrustersPurpleIon, Material mat_particleIonPurple
+set ParticleSizeXBase 0.3, ParticleSizeXVar 0.08
+add ParticleEmitter
+set Name "ShipThrustersPurpleIonDots", MaxParticles 4, Material mat_PDotIonPurple
+set EmitPeriodBase 0.2, EmitPeriodVar 0.05, EmitVelocityBase 1.5, EmitVelocityVar 1.5, EmitVelocityWiggle 500
+set ParticleLifespanBase 0.25, ParticleLifespanVar 0.4
+set ParticleSizeXBase 0.085, ParticleSizeXVar 0.05
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set VisibilitySphereSize 8.0
+set EmitPosConstantZOffset 0.0
+set EmitPosRandomXExtent 0.1
+set EmitPosRandomYExtent 0.1
+set EmitPosRandomZExtent 0.2
+set GravityDirection "0 0 -1"
+set GravityScalar 1.0
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set FlagActiveProcessingBeforeEmission 1
+add ParticleEmitter initFrom ShipThrustersSnowFlakes
+set Name SnowFlakesSmall
+set EmitPeriodBase 0.7 EmitPeriodVar 0.05, EmitVelocityBase 0.75, EmitVelocityVar 0.25, EmitVelocityWiggle 500
+set ParticleSizeXBase 0.065, ParticleSizeXVar 0.05
+set FlagSphericalEmissionVelocity 1
+set EmitPosConstantZOffset -0.5
+add ParticleEmitter initFrom ShipThrustersSnowFlakes
+set Name ShipThrustersHearts, Material mat_particleHearts
+set AlphaModeParam 0.8
+set EmitPeriodBase 0.03, EmitPeriodVar 0.02
+set EmitVelocityWiggle 900, EmitVelocityBase 5.0, EmitVelocityVar 2.5
+set DragCoefficient 3.0
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.15
+set GravityDirection "0 0 1"
+set GravityScalar 6.0
+set ParticleSpinBase -180
+set ParticleSpinVar 380
+set ParticleLifespanBase 1, ParticleLifespanVar 0.5
+add ParticleEmitter initFrom ShipThrustersHearts
+set Name ShipThrustersHeartsR
+set Material mat_particleHeartsR
+set ParticleTexturePageDX 3
+set ParticleTexturePageDY 3
+add ParticleEmitter initFrom ShipThrustersHearts
+set Name ShipThrustersHeartsBig
+set EmitPeriodBase 0.1, EmitPeriodVar 0.0, EmitVelocityBase 1.0, EmitVelocityVar 2.5, EmitVelocityWiggle 800
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.25
+set FlagSphericalEmissionVelocity 1
+set ParticleSpinBase 0
+set ParticleSpinVar -180
+set ParticleLifespanBase 0.3, ParticleLifespanVar 0.5
+add ParticleEmitter initFrom ShipThrustersHeartsBig
+set Name ShipThrustersHeartsRBig
+set Material mat_particleHeartsR
+set ParticleTexturePageDX 3
+set ParticleTexturePageDY 3
+add ParticleEmitter initFrom ShipThrustersHearts
+set Name ShipThrustersHeartsSmall
+set EmitPeriodBase 0.7 EmitPeriodVar 0.05, EmitVelocityBase 0.75, EmitVelocityVar 0.25, EmitVelocityWiggle 500
+set ParticleSizeXBase 0.065, ParticleSizeXVar 0.05
+set FlagSphericalEmissionVelocity 1
+set EmitPosConstantZOffset -0.5
+add ParticleEmitter initFrom ShipThrustersSnowFlakes
+set Name ShipThrustersEco, Material mat_particleEco
+set EmitPeriodBase 0.05, EmitPeriodVar 0.02, EmitVelocityWiggle 900, EmitVelocityBase 5.0, EmitVelocityVar 2.5
+set ParticleLifespanBase 1, ParticleLifespanVar 0.5
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.1
+set GravityDirection "0 0 1"
+set GravityScalar 6.0
+set DragCoefficient 3.0
+set ParticleSpinBase -180
+set ParticleSpinVar 380
+set FlagReqZPlaneBounce 1
+set FlagRenderPfxShadows 1
+set AlphaModeParam 0.8
+add ParticleEmitter
+set Name ShellCasingsTemp, MaxParticles 32, Material mat_particleShellCasing
+set EmitPeriodBase 0.04, EmitPeriodVar 0.0, EmitVelocityBase 1.0, EmitVelocityVar 0.5, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 1.5, ParticleLifespanVar 0.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.9
+set EmitPosConstantZOffset -0.25
+set ParticleColor 0xffffffff
+set FlagSphericalEmissionVelocity 1
+set FlagReqZPlaneBounce 1
+set GravityDirection "0 0 -1"
+set GravityScalar 15.0
+set InitialRotationMax 360
+set ParticleSpinBase -360
+set ParticleSpinVar 720
+set FlagRenderPfxShadows 1
+add ParticleEmitter
+set Name ShipThrustersCandy, MaxParticles 128, Material mat_CandyPfx
+set EmitPeriodBase 0.1, EmitPeriodVar 0.1, EmitVelocityBase 1.0, EmitVelocityVar 1.5, EmitVelocityWiggle 800
+set ParticleLifespanBase 2, ParticleLifespanVar 0.5
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0, ParticleGrowthXVar 0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.9
+set VisibilitySphereSize 8.0
+set EmitPosConstantZOffset 0.0
+set EmitPosRandomXExtent 0.1
+set EmitPosRandomYExtent 0.1
+set EmitPosRandomZExtent 0.2
+set GravityDirection "0 0 -1"
+set FlagReqZPlaneBounce 1
+set GravityScalar 10.0
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set FlagActiveProcessingBeforeEmission 1
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 120.0
+set FlagParticleTexturePageRandom 1
+set FlagRenderPfxShadows 1
+add ParticleEmitter initFrom ShipThrustersCandy
+set Name ContrailsCandy
+set EmitVelocityBase 1.2
+set EmitPeriodBase 0.0166, EmitPeriodVar 0.0
+set ParticleLifespanBase 0.8, ParticleLifespanVar 0.1
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.12
+add ParticleEmitter
+set Name ShipThrustersPlayStation, MaxParticles 128, Material mat_PlayStationBits
+set EmitPeriodBase 0.05, EmitPeriodVar 0.025, EmitVelocityBase 5.0, EmitVelocityVar 0.5, EmitVelocityWiggle 500
+set ParticleLifespanBase 1, ParticleLifespanVar 0.5
+set ParticleSizeXBase 0.25, ParticleSizeXVar 0.2
+set ParticleGrowthXBase 0, ParticleGrowthXVar 0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set DragCoefficient 3.0
+set AlphaModeParam 0.6
+set FlagSphericalEmissionVelocity 1
+set VisibilitySphereSize 8.0
+set EmitPosConstantZOffset -0.75
+set EmitPosRandomXExtent 0.1
+set EmitPosRandomYExtent 0.1
+set EmitPosRandomZExtent 0.2
+set GravityDirection "0 0 -1"
+set GravityScalar 2.0
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set FlagActiveProcessingBeforeEmission 1
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 120.0
+set FlagParticleTexturePageRandom 1
+add ParticleEmitter
+set Name "ShipThrustersMax", MaxParticles 128, Material mat_particleDustPuff
+set EmitPeriodBase 0.005, EmitPeriodVar 0, EmitVelocityBase 0.6, EmitVelocityVar 0, EmitVelocityWiggle 0
+set ParticleLifespanBase 0.1, ParticleLifespanVar 0.05
+set ParticleSizeXBase 0.3, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0, ParticleGrowthXVar 0
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 0.3
+set VisibilitySphereSize 8.0
+add ParticleEmitter
+set Name "SmokeTrailEngineBig", MaxParticles 32, Material mat_particleDustPuff
+set EmitPeriodBase 0.02, EmitPeriodVar 0.005, EmitVelocityBase 0.1, EmitVelocityVar 0.2, EmitVelocityWiggle 500
+set ParticleLifespanBase 0.4, ParticleLifespanVar 0.2
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.2
+set ParticleGrowthXBase 1.2, ParticleGrowthXVar 0.5
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.3
+set ParticleColor 0xff662200
+set ParticleColorSecondary 0xffffff00
+set ColorMode eColorMode_RGBFadeToSecondary
+add ParticleEmitter
+set Name "ContrailsSmokeBlack", MaxParticles 128, Material mat_particleDustPuff
+set EmitPeriodBase 0.02, EmitPeriodVar 0.005, EmitVelocityBase 1.0, EmitVelocityVar 0.8, EmitVelocityWiggle 500
+set DragCoefficient 1.0
+set ParticleLifespanBase 0.4, ParticleLifespanVar 0.6
+set ParticleSizeXBase 0.5, ParticleSizeXVar 0.08
+set ParticleGrowthXBase 0.7, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.4
+set ParticleColor 0x63636300
+set ParticleColorSecondary 0x36363600
+set ColorMode eColorMode_RGBFadeToSecondary
+add ParticleEmitter initFrom ContrailsSmokeBlack
+set Name "ContrailsSmokeRed"
+set ParticleColor 0xd9171700
+set ParticleColorSecondary 0xc3333300
+add ParticleEmitter initFrom ContrailsSmokeBlack
+set Name "ContrailsSmokeBlue"
+set ParticleColor 0x1772d900
+set ParticleColorSecondary 0x115bae00
+add ParticleEmitter initFrom ContrailsSmokeBlack
+set Name "ContrailsSmokeGreen"
+set ParticleColor 0x35a24400
+set ParticleColorSecondary 0x1c8a2c00
+add ParticleEmitter initFrom ContrailsSmokeBlack
+set Name "ContrailsSmokeOrange"
+set ParticleColor 0xdb813100
+set ParticleColorSecondary 0xe4620c00
+add ParticleEmitter
+set Name TransportSupportThrusters, MaxParticles 256
+set EmitPeriodBase 0.004, EmitPeriodVar 0.002, EmitVelocityBase 6.0, EmitVelocityVar 0.8, EmitVelocityWiggle 20
+set ParticleLifespanBase 0.09, ParticleLifespanVar 0.03
+set ParticleSizeXBase 0.18, ParticleSizeXVar 0.04
+set ParticleGrowthXBase -0.12, ParticleGrowthXVar 0.0
+set EmitPosRandomXExtent 0.04, EmitPosRandomYExtent 0.04, EmitPosRandomZExtent 0.04
+set FlagProcessWhenNotVisible 1
+set ParticleColor 0x2222DDff
+set ParticleColorSecondary 0x0000ffff
+set ColorMode eColorMode_RGBFadeToSecondary
+add ParticleEmitter
+set Name BoosterTrails, MaxParticles 128, Material mat_particlePolyTrailLight, FlagPolyTrailSystem 1
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.4, ParticleSizeXVar 0.0
+set ParticleColor 0xff9600ff
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set GravityScalar 0
+set VisibilitySphereSize 15.0
+set FlagActiveProcessingBeforeEmission 1
+add ParticleEmitter
+set Name Contrails, MaxParticles 128, Material mat_particlePolyTrailLight, FlagPolyTrailSystem 1
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.09, ParticleSizeXVar 0.0
+set ParticleColor 0xdfCCAA99
+set ParticleLifespanBase 0.28, ParticleLifespanVar 0.0
+set GravityScalar 0
+set VisibilitySphereSize 15.0
+set FlagActiveProcessingBeforeEmission 1
+add ParticleEmitter initFrom Contrails
+set Name ContrailsFlair
+set ParticleSizeXBase 0.35
+set ParticleGrowthXBase -0.5
+set ParticleLifespanBase 0.38
+set VisibilitySphereSize 25.0
+add ParticleEmitter initFrom ContrailsFlair
+set Name ContrailsRed
+set ParticleColor 0xff0100ff
+add ParticleEmitter initFrom ContrailsFlair
+set Name ContrailsGreen
+set ParticleColor 0x05ff06ff
+add ParticleEmitter initFrom ContrailsFlair
+set Name ContrailsCyan
+set ParticleColor 0x0ae3eeff
+add ParticleEmitter initFrom ContrailsFlair
+set Name ContrailsMagenta
+set ParticleColor 0xcb00b6ff
+add ParticleEmitter initFrom ContrailsFlair
+set Name ContrailsBlue
+set ParticleColor 0x00a6ffff
+add ParticleEmitter initFrom ContrailsFlair
+set Name ContrailsOrange
+set ParticleColor 0xff9c00ff
+add ParticleEmitter initFrom ContrailsFlair
+set Name ContrailsPink
+set ParticleColor 0xff00fcff
+add ParticleEmitter initFrom Contrails
+set Name ContrailsRainbow, Material mat_ParticleRainbow
+set ParticleLifespanBase 0.38
+set ParticleSizeXBase 0.4, ParticleSizeXVar 0.0
+set ParticleColor 0xffffffff
+set ParticleColorSecondary 0xffffffff
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.0
+Set AlphaModeParam2 0.2
+add ParticleEmitter initFrom Contrails
+set Name ContrailsLightning, Material mat_ElectricTrail
+set PolyTrailVTileDistance 8.0
+set ParticleColor 0xffffffff
+set ParticleColorSecondary 0xffffffff
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set ParticleSizeXBase 2.8, ParticleSizeXVar 0.0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.15
+Set AlphaModeParam2 0.6
+set VisibilitySphereSize 22.0
+add ParticleEmitter initFrom ContrailsLightning
+set Name ContrailsRainbow2, Material mat_ParticleRainbow2
+set ParticleSizeXBase 0.4, ParticleSizeXVar 0.0
+set PolyTrailVTileDistance 20.0
+set AlphaModeParam 0.02
+Set AlphaModeParam2 0.5
+add ParticleEmitter initFrom ContrailsLightning
+set Name EngineRainbow, Material mat_ParticleRainbow3
+set ParticleSizeXBase 1.0, ParticleSizeXVar 0.0
+set PolyTrailVTileDistance 10.0
+set AlphaModeParam 0.01
+Set AlphaModeParam2 0.5
+set ParticleGrowthXBase -10.5, ParticleGrowthXVar 0
+add ParticleEmitter initFrom ContrailsLightning
+set Name ContrailsLightningSmall
+set PolyTrailVTileDistance 8.0
+set ParticleLifespanBase 0.25, ParticleLifespanVar 0.0
+set ParticleSizeXBase 2.0, ParticleSizeXVar 0.0
+add ParticleEmitter initFrom Contrails
+set Name ContrailsBlack, Material mat_DarkTrail
+set PolyTrailVTileDistance 8.0
+set ParticleColor 0xffffff
+set ParticleColorSecondary 0x000000
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set ParticleSizeXBase 1.5, ParticleSizeXVar 0.0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.01
+Set AlphaModeParam2 0.4
+set VisibilitySphereSize 22.0
+add ParticleEmitter initFrom Contrails
+set Name ContrailsSpider, Material mat_spiderSilkTrail
+set PolyTrailVTileDistance 14.0
+set ParticleColor 0xffffffff
+set ParticleColorSecondary 0xffffffff
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set ParticleSizeXBase 0.5, ParticleSizeXVar 0.2
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.06
+Set AlphaModeParam2 0.9
+set VisibilitySphereSize 22.0
+set GravityScalar 5.0
+set GravityDirection "0 0 -1"
+set FlagSphericalEmissionVelocity 1
+set DragCoefficient 3.0
+add ParticleEmitter initFrom Contrails
+set Name ContrailsStars, Material mat_particleStreamerStars
+set PolyTrailVTileDistance 2.55
+set ParticleColor 0xffffffff
+set ParticleColorSecondary 0xffffffff
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set ParticleSizeXBase 0.85, ParticleSizeXVar 0.0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.15
+Set AlphaModeParam2 0.6
+set VisibilitySphereSize 22.0
+add ParticleEmitter initFrom Contrails
+set Name ContrailsPinkPetal, Material mat_particleCCPinkPetals
+set PolyTrailVTileDistance 2.5
+set ParticleColor 0xffffffff
+set ParticleColorSecondary 0xffffffff
+set ParticleLifespanBase 0.6, ParticleLifespanVar 0.0
+set ParticleSizeXBase 0.7, ParticleSizeXVar 0.0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.1
+Set AlphaModeParam2 0.6
+set VisibilitySphereSize 22.0
+add ParticleEmitter initFrom Contrails
+set Name ContrailsRedGreen, Material mat_particleStreamerRedGreen
+set PolyTrailVTileDistance 2.7
+set ParticleColor 0xffffffff
+set ParticleColorSecondary 0xffffffff
+set ParticleLifespanBase 0.425, ParticleLifespanVar 0.0
+set ParticleSizeXBase 0.7225, ParticleSizeXVar 0.0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.06
+Set AlphaModeParam2 0.7
+set VisibilitySphereSize 22.0

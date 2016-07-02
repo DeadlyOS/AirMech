@@ -1,0 +1,30 @@
+onloadrun {
+sym set DialogBoxLoaded 1
+rookMenus previewHide
+gameUI saveFocusID _dialogEnhRestoreFocus_
+menuCmd ClearOtherMenus
+sym push DisableConShop 1
+sym push DisableInvites 1
+}
+MO DialogEnhMaster {
+pos 0 14
+layer $DialogBox_Layer
+}
+onload {
+]gameui promoteToTop DialogEnhMaster
+]addUIAnim DialogEnhMaster mas_DialogPop
+]if usingPad ]gameUI focusNameTry DialogButton1
+]sym push CurrentMenu EnhDialog
+}
+onunload {
+]sym set DialogBoxLoaded 0
+]gameUI restoreFocusID _dialogEnhRestoreFocus_
+]sym set DialogBoxButton0 DialogButtonOk
+]sym set DialogBoxButton1 DialogButtonCancel
+]sym pop CurrentMenu DisableConShop DisableInvites
+]sym clear EnhDialogActionY
+]sym clear EnhDialogActionX
+}
+onunloadrun {
+rookMenus previewShow
+}

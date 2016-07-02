@@ -1,0 +1,14 @@
+absoluteTimes
+-replace
+kf time 0.0 {
+intMode square
+offset = .cOffsetX 0 0
+}
+kf time 0.4 {
+offset = 800 0 0
+}
+Cmd start "if sym ArcCustomized == 0 menucmd SetupQuestSections"
+Cmd start "if sym ArcCustomized == 1 menucmd SetupQuestSectionsPW"
+Cmd start "addUIAnim Backgrounds mas_BackgroundRight"
+Cmd start "sym set OvermapFade 1"
+Cmd start "sym set QuestsLoaded 1"

@@ -1,0 +1,637 @@
+add MenuObject initFrom MenuBarOpenButton
+set Name MenuBarOpenButtonLeaderboards
+set HiddenCheckBySymbolInv BaseLeaderboardsLoaded
+add MenuObject
+set Name LeaderboardsButton
+set Texture menus/MenuBarButtons
+set Coords "249 108 64 52"
+set CoordsFocused "249 55 64 52"
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused FocusCloud
+set DrawWhenFocusedOffset "-10 -13"
+set ToolTip TT_Leaderboards
+set HiddenCheckBySymbol ArcGACustomized
+set Child "MenuBarOpenButtonLeaderboards 1 0"
+set CommandPress "menucmd ToggleLeaderboards"
+set CommandPressAlt "menucmd ToggleLeaderboards" =
+add MenuObject
+set Name LeaderboardsVignette
+set Texture effects/VignetteUnder
+set Coords "0 0 515 256"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "menuCmd ClearLeaderboards"
+add MenuObject
+set Name ConLeaderboardBorder
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1206 63"
+set Color 0x546b79
+add MenuObject
+set Name ConLeaderboardLine
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1200 60"
+set Color 0x222e37
+add MenuObject
+set Name BaseLeaderboardLine
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1190 50"
+set Color 0x111111
+add MenuObject
+set Name ConLeaderboardTypeLine
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1940 80"
+add MenuObject
+set Name ConLeaderboardHeadline
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1200 65"
+set Color 0x815728
+add MenuObject
+set Name BaseLeaderboardHeadline
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1190 60"
+set Color 0x815728
+add MenuObject
+set Name ConLeaderboardEndcap
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "10 60"
+set BlendMode BlendAdd
+set PulseAlpha "1.0 -0.8 -0.0"
+add MenuObject
+set Name ConLeaderboardFocus
+set ContainerOnly 1
+set Child "ConLeaderboardEndcap 0 0"
+set Child "ConLeaderboardEndcap 1210 0"
+add MenuObject
+set Name ConLeaderboardBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1220 688"
+set Color 0x1b2329
+set Color 0x0f161c
+set Alpha 0.85
+set NoAlphaMod 1
+add MenuObject
+set Name BaseLeaderboardBackground
+set CoordsStart "796 184 24 24"
+set CoordsMid "820 184 24 24"
+set CoordsEnd "844 184 24 24"
+set CoordsStartFocused "796 208 24 24"
+set CoordsMidFocused "820 208 24 24"
+set CoordsEndFocused "844 208 24 24"
+set CoordsStartDisabled "796 232 24 24"
+set CoordsMidDisabled "820 232 24 24"
+set CoordsEndDisabled "844 232 24 24"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set MouseInteract 1
+set Focus -2
+set RenderCB_DX 1220
+set RenderCB_DY 800
+add MenuObject
+set Name ConListMoreDown
+set Texture menus/Buttons
+set Coords "949 139 66 34"
+set BlendMode BlendAdd
+set PulseAlpha "1.0 -0.8 3.0"
+set SaveArgs 1
+set HiddenCheckBySymbolInv @_Arg1_@
+add MenuObject initFrom ConListMoreDown
+set Name ConListMoreUp
+set MirrorOnY 1
+add MenuObject
+set Name LeaderboardNumberTemplate
+set Coords "0 0 80 30"
+set DisabledAlpha 0.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject initFrom LeaderboardNumberTemplate
+set Name LeaderboardPosition
+set SaveArgs 1
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject initFrom LeaderboardNumberTemplate
+set Name LeaderboardRank
+set SaveArgs 1
+set RenderCB_ConsoleSymbol @_Arg1_@
+set Coords "0 0 145 30"
+set RenderCB_DX 145
+set RenderCB_DY 30
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_TextJustify JustifyXLeft
+add MenuObject initFrom LeaderboardNumberTemplate
+set Name LeaderboardHeader
+set Coords "0 0 650 30"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject initFrom LeaderboardHeader
+set Name LeaderboardScoreHeader
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol LB_ScoreHeaderName
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_DX 500
+set RenderCB_DY 32
+add MenuObject initFrom LeaderboardNumberTemplate
+set Name LeaderboardName
+set Coords "0 0 280 30"
+set RenderCB_TextJustify JustifyXLeft
+set SaveArgs 1
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject
+set Name ConLeaderboardItem
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1200 60"
+set SaveArgs 1
+set Focus -2
+set MouseInteract 1
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandCancel "menuCmd ConMenuBoardsCancel"
+set CommandCancel "addUIAnim CM_ButtonHints_ConLeaderboards mas_ConButtonsDown"
+set CommandCancel "clearmenu ConLeaderboards /fadeout 0.2"
+set CommandGetFocus ">input set padFocusFallback ConLeaderItem@_Arg1_@"
+set DrawWhenFocused ConLeaderboardFocus
+set DrawWhenFocusedOffset "-10 0 0"
+set Color 0x000000
+set ColorFocused 0x12293a
+set BlendMode BlendAdd
+set CommandGetFocus ">sym set _LastItemFocus_ ConLeaderItem@_Arg1_@"
+set CommandGetFocus "if sym _FocusItemList_ == $_FocusItemListLast_ runnow gameUI ignoreInputTime 0.04"
+set CommandGetFocus ">if sym _FocusItemList_ == $_FocusItemListLast_ && sym _FocusItemList_ > @_Arg1_@ addUIAnim CM_QuestsList mas_ConQuestMoveDown"
+set CommandGetFocus ">if sym _FocusItemList_ == $_FocusItemListLast_ && sym _FocusItemList_ < @_Arg1_@ addUIAnim CM_QuestsList mas_ConQuestMoveUp"
+set CommandGetFocus ">sym setSumI _FocusItemListRight_ @_Arg1_@ 1"
+set CommandGetFocus ">sym setSumI _FocusItemListLeft_ @_Arg1_@ -1"
+set CommandGetFocus ">sym set _FocusItemListLast_ @_Arg1_@"
+set CommandGetFocus ">sym set _FocusItemList_ @_Arg1_@"
+set CommandFocusUp "gameUI focusNameTry #ConLeaderItem@_FocusItemListLeft_@"
+set CommandFocusDown "gameUI focusNameTry #ConLeaderItem@_FocusItemListRight_@"
+set CommandFocusUp ">if literal @_Arg1_@ == 0 platform leaderboards pageup"
+set CommandFocusDown ">if literal @_Arg1_@ == 9 platform leaderboards pagedown"
+set FirstDrawnChildren 1
+set Child "LeaderboardRank 15 12		LB_Row@_Arg1_@"
+set Child "LeaderboardName 180 12		LB_Tag@_Arg1_@"
+set Child "LeaderboardPosition[LeaderboardScore] 900 12		LB_Scr@_Arg1_@"
+set CommandFocusRight "gameUI ignoreInputTime 0.2"
+set CommandFocusRight ">sym setFrom _FriendName_ FR_Name@_Arg1_@"
+set CommandFocusRight ">sym set _FriendState_ $FR_State@_Arg1_@"
+set CommandFocusRight ">sym set _FriendStatusCode_ $FR_StatusCode@_Arg1_@"
+set CommandFocusRight "sym set _FriendFromParty_ 0"
+set CommandFocusRight ">menucmd LeaderboardRowClick local @_Arg1_@"
+add MenuObject
+set Name BaseLeaderboardNumberTemplate
+set Coords "0 0 80 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.0
+set SaveArgs 2
+add MenuObject initFrom BaseLeaderboardNumberTemplate
+set Name BaseLeaderboardPosition
+set RenderCB_ConsoleSymbol @_Arg1_@
+set DisabledAlphaTimeInPreWait @_Arg2_@
+set DisabledSymInv _MenuTransition_
+add MenuObject initFrom BaseLeaderboardNumberTemplate
+set Name BaseLeaderboardRank
+set RenderCB_ConsoleSymbol @_Arg1_@
+set Coords "0 0 100 30"
+set RenderCB_DX 100
+set RenderCB_DY 30
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_TextJustify JustifyXCenter
+set DisabledAlphaTimeInPreWait @_Arg2_@
+set DisabledSymInv _MenuTransition_
+add MenuObject initFrom BaseLeaderboardNumberTemplate
+set Name BaseLeaderboardHeader
+set RenderCB_FontScale 0.9
+set Coords "0 0 650 30"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set RenderCB_Text @_Arg1_@@HLB_Name@
+set RenderCB_RGBColor 0xFFFFFF
+set FilterName HLB
+add MenuObject initFrom BaseLeaderboardHeader
+set Name BaseLeaderboardHeaderCenter
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 300 30"
+set RenderCB_DX 300
+set RenderCB_DY 32
+add MenuObject initFrom BaseLeaderboardNumberTemplate
+set Name BaseLeaderboardName
+set Coords "0 0 280 30"
+set RenderCB_TextJustify JustifyXLeft
+set SaveArgs 1
+set RenderCB_ConsoleSymbol @_Arg1_@
+set DisabledAlphaTimeInPreWait @_Arg2_@
+set DisabledSymInv _MenuTransition_
+set RenderCB_Flags "/noCommaSep /toU16"
+set RenderCB _DrawUText
+add MenuObject
+set Name BaseLeaderboardItem
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1200 60"
+set RenderBlocked 1
+set SaveArgs 2
+set Focus -2
+set MouseInteract 1
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandCancel "menuCmd ConMenuBoardsCancel"
+set CommandCancel "addUIAnim CM_ButtonHints_ConLeaderboards mas_ConButtonsDown"
+set CommandCancel "clearmenu ConLeaderboards /fadeout 0.2"
+set CommandGetFocus ">input set padFocusFallback ConLeaderItem@_Arg1_@"
+set Color 0x000000
+set ColorFocused 0x12293a
+set BlendMode BlendAdd
+set CommandGetFocus ">sym set _LastItemFocus_ ConLeaderItem@_Arg1_@"
+set CommandGetFocus "if sym _FocusItemList_ == $_FocusItemListLast_ runnow gameUI ignoreInputTime 0.04"
+set CommandGetFocus ">if sym _FocusItemList_ == $_FocusItemListLast_ && sym _FocusItemList_ > @_Arg1_@ addUIAnim CM_QuestsList mas_ConQuestMoveDown"
+set CommandGetFocus ">if sym _FocusItemList_ == $_FocusItemListLast_ && sym _FocusItemList_ < @_Arg1_@ addUIAnim CM_QuestsList mas_ConQuestMoveUp"
+set CommandGetFocus ">sym setSumI _FocusItemListRight_ @_Arg1_@ 1"
+set CommandGetFocus ">sym setSumI _FocusItemListLeft_ @_Arg1_@ -1"
+set CommandGetFocus ">sym set _FocusItemListLast_ @_Arg1_@"
+set CommandGetFocus ">sym set _FocusItemList_ @_Arg1_@"
+set CommandFocusUp "gameUI focusNameTry #ConLeaderItem@_FocusItemListLeft_@"
+set CommandFocusDown "gameUI focusNameTry #ConLeaderItem@_FocusItemListRight_@"
+set CommandFocusUp ">if literal @_Arg1_@ == 0 platform leaderboards pageup"
+set CommandFocusDown ">if literal @_Arg1_@ == 9 platform leaderboards pagedown"
+set Child "BaseLeaderboardRank 15 12		HLB_R@_Arg1_@	@_Arg2_@"
+set Child "BaseLeaderboardName 180 12		HLB_N@_Arg1_@	@_Arg2_@"
+set Child "BaseLeaderboardPosition[LeaderboardScore] 900 12		HLB_S@_Arg1_@	@_Arg2_@"
+set CommandFocusRight "gameUI ignoreInputTime 0.1"
+set CommandFocusRight ">sym setFrom _FriendName_ FR_Name@_Arg1_@"
+set CommandFocusRight ">sym set _FriendState_ $FR_State@_Arg1_@"
+set CommandFocusRight ">sym set _FriendStatusCode_ $FR_StatusCode@_Arg1_@"
+set CommandFocusRight "sym set _FriendFromParty_ 0"
+set CommandFocusRight ">menucmd LeaderboardRowClick local @_Arg1_@"
+add MenuObject
+set Name CM_LeaderboardList
+set ContainerOnly 1
+set Child "ConLeaderboardBackground -10 -75"
+set Child "ConLeaderboardHeadline 0 -65"
+set Child "LeaderboardHeader 10 -48		LeaderBoardRank"
+set Child "LeaderboardHeader 185 -48 	LeaderBoardGamertag@GamertagEXT@"
+set Child "LeaderboardScoreHeader 650 -48"
+set Child "ConLeaderboardItem[ConLeaderItem0] 0 0	0"
+set Child "ConLeaderboardLine 0 60	2"
+set Child "ConLeaderboardItem[ConLeaderItem1] 0 60	1"
+set Child "ConLeaderboardItem[ConLeaderItem2] 0 120	2"
+set Child "ConLeaderboardLine 0 180	3"
+set Child "ConLeaderboardItem[ConLeaderItem3] 0 180	3"
+set Child "ConLeaderboardItem[ConLeaderItem4] 0 240	4"
+set Child "ConLeaderboardLine 0 300	5"
+set Child "ConLeaderboardItem[ConLeaderItem5] 0 300	5"
+set Child "ConLeaderboardItem[ConLeaderItem6] 0 360	6"
+set Child "ConLeaderboardLine 0 420	7"
+set Child "ConLeaderboardItem[ConLeaderItem7] 0 420	7"
+set Child "ConLeaderboardItem[ConLeaderItem8] 0 480	8"
+set Child "ConLeaderboardLine 0 540	9"
+set Child "ConLeaderboardItem[ConLeaderItem9] 0 540	9"
+set Child "ConListMoreDown 1130 590		LB_MoreDown"
+set Child "ConListMoreUp 1130 -26		LB_MoreUp"
+add MenuObject
+set Name LeaderboardMore
+set Texture menus/Leaderboards
+set Coords "4 6 158 50"
+set CoordsDisabled "4 117 158 50"
+set CoordsFocused "4 61 158 50"
+set SaveArgs 1
+set Focus -2
+set MouseInteract 1
+set DisabledSymInv @_Arg1_@
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set DisabledAlpha 0.2
+add MenuObject initFrom LeaderboardMore
+set Name LeaderboardMoreDown
+set CommandPress "gameui ignoreInputTime 0.05"
+set CommandPress "if sym HLB_Next == 1 leaderboards pagenext"
+set MirrorOnY 1
+add MenuObject initFrom LeaderboardMore
+set Name LeaderboardMoreUp
+set CommandPress "gameui ignoreInputTime 0.05"
+set CommandPress "if sym HLB_Prev == 1 leaderboards pageprev"
+add MenuObject initFrom LeaderboardMore
+set Name LeaderboardToMe
+set Coords "181 4 158 50"
+set CoordsDisabled "181 115 158 50"
+set CoordsFocused "181 59 158 50"
+set CommandPress "gameui ignoreInputTime 0.05"
+set CommandPress "if sym HLB_IExist == 1 leaderboards gotome"
+add MenuObject
+set Name LeaderboardWheelZone
+set RenderBlocked 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1230 810"
+set CommandOnMouseDrag "if sym _Wheel == -1 gameui directPushName LeaderboardMoreUp"
+set CommandOnMouseDrag "if sym _Wheel == 1 gameui directPushName LeaderboardMoreDown"
+add MenuObject
+set Name BaseLeaderboardList
+set ContainerOnly 1
+set Child "BaseLeaderboardHeadline 5 -60"
+set Child "BaseLeaderboardHeaderCenter -80 -48		HLB_Rank_"
+set Child "BaseLeaderboardHeader 181 -48 	HLB_Desc_"
+set Child "BaseLeaderboardHeaderCenter 783 -48	HLB_Data_"
+set Child "BaseLeaderboardItem[BaseLeaderItem0] 0 0		0	0.1"
+set Child "BaseLeaderboardLine 5 55	2"
+set Child "BaseLeaderboardItem[BaseLeaderItem1] 0 50	1	0.075"
+set Child "BaseLeaderboardItem[BaseLeaderItem2] 0 100	2	0.05"
+set Child "BaseLeaderboardLine 5 155	3"
+set Child "BaseLeaderboardItem[BaseLeaderItem3] 0 150	3	0.025"
+set Child "BaseLeaderboardItem[BaseLeaderItem4] 0 200	4	0.0"
+set Child "BaseLeaderboardLine 5 255	5"
+set Child "BaseLeaderboardItem[BaseLeaderItem5] 0 250	5	0.0"
+set Child "BaseLeaderboardItem[BaseLeaderItem6] 0 300	6	0.025"
+set Child "BaseLeaderboardLine 5 355	7"
+set Child "BaseLeaderboardItem[BaseLeaderItem7] 0 350	7	0.05"
+set Child "BaseLeaderboardItem[BaseLeaderItem8] 0 400	8	0.075"
+set Child "BaseLeaderboardLine 5 455	9"
+set Child "BaseLeaderboardItem[BaseLeaderItem9] 0 450	9	0.1"
+set Child "LeaderboardToMe 700 530			HLB_IExist"
+set Child "LeaderboardMoreDown 520 530		HLB_Next"
+set Child "LeaderboardMoreUp 520 -141		HLB_Prev"
+set Child "LeaderboardWheelZone -10 -155"
+add MenuObject
+set Name CM_ButtonHints_ConLeaderboards
+set ContainerOnly 1
+set SaveArgs 1
+set Child "ConsoleButtonTemplate[ConsoleButtonBack] 160 960				 	@DM_Cancel@ 	0.8		BtnHint_Back					@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonBottom] 820 960			 	3 				0.8		BtnHint_Bottom					@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonTop] 1200 960				 	2 				0.8		BtnHint_Top						@_Arg1_@"
+set Child "ConsoleButtonTemplate[ConsoleButtonSelect] 1450 960			 	@DM_Select@ 	0.8		BtnHint_ToggleMode				@_Arg1_@"
+set Child "ConsoleButtonHelperFromFont 350 960						R 		1.0 60	 	BtnHint_GamerCard@GamertagEXT@	@_Arg1_@"
+add MenuObject
+set Name CM_MasterLeaderboard
+set ContainerOnly 1
+set Child "SimpleBackButton 40 40"
+set Child "CM_LeaderboardList 350 330"
+set Child "HeaderLabelTemplate[HeaderLeaderboard] 230 90 ButtonLeaderboards		1.6	0xd28846"
+set Child "HeaderBoardTemplate[HeaderLeaderboard1] 100 200 LB_Disp_Curr		0.5	1.0"
+set Child "HeaderBoardTemplate[HeaderLeaderboard1] 100 170 LB_Disp_Mode		0.4	1.0"
+set Child "HeaderBoardTemplate[HeaderLeaderboard2] -520 200 LB_Disp_Prev	0.4	0x6b5944"
+set Child "HeaderBoardTemplate[HeaderLeaderboard2] 760 200 LB_Disp_Next		0.4	0x6b5944"
+set Child "ConsoleButtonLShoulder 570 195 		0.85 ConLeaderboards"
+set Child "ConsoleButtonRShoulder 1250 195 		0.85 ConLeaderboards"
+set Child "CM_ButtonHints_ConLeaderboards 0 220	ConLeaderboards"
+add MenuObject
+set Name LeaderboardBackButton
+set Texture menus/BackIcon
+set BlendMode BlendAdd
+set HiddenCheckBySymbol InputPad
+set Focus -2
+set MouseInteract 1
+set Coords "0 0 127 128"
+set CoordsFocused "0 128 128 128"
+set CommandPress "menuCmd ClearLeaderboards"
+add MenuObject
+set Name HeaderLeaderboard
+set Coords "0 0 1700 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_RGBColor 0xffffff
+set NoAlphaMod 1
+set Alpha 0.5
+set BlendMode BlendAdd
+set RenderCB_Flags "/allCaps"
+set RenderCB_FontScale 1.6
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 3
+set RenderCB_TextJustify JustifyXLeft
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledSymInv _MenuTransition_
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.1
+add MenuObject
+set Name LeaderboardSelectTitleArrow
+set Texture menus/Leaderboards
+set Coords "475 160 29 25"
+set BlendMode BlendAdd
+add MenuObject
+set Name LeaderboardSelectBase
+set Texture menus/Leaderboards
+set Coords "3 188 512 66"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text HLB_Title_@HLB_Name@
+set FilterName HLB
+set Color 0x586c71
+set ColorFocused 0x658188
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.8
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "20 -2"
+set Child "LeaderboardSelectTitleArrow 468 22"
+add MenuObject initFrom LeaderboardSelectBase
+set Name LeaderboardSelectTitle
+set Child "LeaderboardDropListBox 0 62	Title"
+set CommandPress "sym set HLB_DropListShowTitle 1"
+add MenuObject initFrom LeaderboardSelectBase
+set Name LeaderboardSelectFilter
+set Child "LeaderboardDropListBox 0 62	Filter"
+set RenderCB_Text HLB_Title_@HLB_Filter@
+set CommandPress "sym set HLB_DropListShowFilter 1"
+add MenuObject
+set Name LeaderboardDropListItemHL
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "497 50"
+set Color 0x12252c
+set BlendMode BlendAdd
+add MenuObject
+set Name LeaderboardDropListBuffer
+set Texture menus/Leaderboards
+set Coords "0 0 552 90"
+set RenderBlocked 1
+set MouseInteract 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue @_Arg1_@=null
+add MenuObject
+set Name LeaderboardDropListBack
+set Texture menus/Leaderboards
+set Coords "0 0 552 90"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set CommandPress ">sym set HLB_DropListShow@_Arg1_@ 0"
+add MenuObject
+set Name LeaderboardDropListCancel
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set CommandGetFocus ">sym set HLB_DropListShow@_Arg1_@ 0"
+add MenuObject
+set Name LeaderboardDropList_Base
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Color 0x739296
+set ColorFocused 0x739296
+set MouseInteract 1
+set SaveArgs 2
+set HiddenCheckBySymbolValue @_Arg2_@=null
+set FilterName HLB
+set Focus -2
+add MenuObject initFrom LeaderboardDropList_Base
+set Name LeaderboardDropListTitle
+set Texture menus/Leaderboards
+set Coords "3 198 512 53"
+set DrawWhenFocused LeaderboardDropListItemHL
+set DrawWhenFocusedOffset "4 0"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "20 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.8
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text HLB_Title_&@_Arg1_@&
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress ">sym set HLB_DropListShowTitle 0"
+set CommandPress ">sym set HLB_Name $$@_Arg1_@"
+set CommandPress ">leaderboards get $$@_Arg1_@"
+add MenuObject initFrom LeaderboardDropList_Base
+set Name LeaderboardDropListFilter
+set Texture menus/Leaderboards
+set Coords "3 198 512 53"
+set DrawWhenFocused LeaderboardDropListItemHL
+set DrawWhenFocusedOffset "4 0"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "20 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_FontScale 0.8
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text HLB_Title_&@_Arg1_@&
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress ">sym set HLB_DropListShowFilter 0"
+set CommandPress ">sym op &@_Arg1_@& gennset 12 HLB_LeaderboardTitle"
+set CommandPress ">pcmd t0 sym set HLB_Filter &@_Arg1_@&"
+set CommandPress "pcmd t0 gameui refreshfiltername HLB"
+set CommandPress ">pcmd t1 sym set HLB_Name $$HLB_LeaderboardTitle0"
+set CommandPress ">pcmd t1 leaderboards get $$HLB_LeaderboardTitle0"
+add MenuObject
+set Name LeaderboardDropListBox
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName HLB
+set HiddenCheckBySymbolInv HLB_DropListShow@_Arg1_@
+set Child "LeaderboardDropListCancel 0 0		@_Arg1_@"
+set Child "LeaderboardDropListBack -20 -70	@_Arg1_@"
+set Child "LeaderboardDropListBuffer -20 -20		 HLB_Leaderboard@_Arg1_@0"
+set Child "LeaderboardDropListBuffer -20 30		 	 HLB_Leaderboard@_Arg1_@1"
+set Child "LeaderboardDropListBuffer -20 80		 	 HLB_Leaderboard@_Arg1_@2"
+set Child "LeaderboardDropListBuffer -20 130		 HLB_Leaderboard@_Arg1_@3"
+set Child "LeaderboardDropListBuffer -20 180		 HLB_Leaderboard@_Arg1_@4"
+set Child "LeaderboardDropListBuffer -20 230		 HLB_Leaderboard@_Arg1_@5"
+set Child "LeaderboardDropListBuffer -20 280		 HLB_Leaderboard@_Arg1_@6"
+set Child "LeaderboardDropListBuffer -20 330		 HLB_Leaderboard@_Arg1_@7"
+set Child "LeaderboardDropListBuffer -20 380		 HLB_Leaderboard@_Arg1_@8"
+set Child "LeaderboardDropListBuffer -20 430		 HLB_Leaderboard@_Arg1_@9"
+set Child "LeaderboardDropListBuffer -20 480		 HLB_Leaderboard@_Arg1_@10"
+set Child "LeaderboardDropListBuffer -20 530		 HLB_Leaderboard@_Arg1_@11"
+set Child "LeaderboardDropList@_Arg1_@ 0 0		HLB_Leaderboard@_Arg1_@0 	HLB_Leaderboard@_Arg1_@0"
+set Child "LeaderboardDropList@_Arg1_@ 0 50		HLB_Leaderboard@_Arg1_@1 	HLB_Leaderboard@_Arg1_@1"
+set Child "LeaderboardDropList@_Arg1_@ 0 100	HLB_Leaderboard@_Arg1_@2 	HLB_Leaderboard@_Arg1_@2"
+set Child "LeaderboardDropList@_Arg1_@ 0 150	HLB_Leaderboard@_Arg1_@3 	HLB_Leaderboard@_Arg1_@3"
+set Child "LeaderboardDropList@_Arg1_@ 0 200	HLB_Leaderboard@_Arg1_@4 	HLB_Leaderboard@_Arg1_@4"
+set Child "LeaderboardDropList@_Arg1_@ 0 250	HLB_Leaderboard@_Arg1_@5 	HLB_Leaderboard@_Arg1_@5"
+set Child "LeaderboardDropList@_Arg1_@ 0 300	HLB_Leaderboard@_Arg1_@6 	HLB_Leaderboard@_Arg1_@6"
+set Child "LeaderboardDropList@_Arg1_@ 0 350	HLB_Leaderboard@_Arg1_@7 	HLB_Leaderboard@_Arg1_@7"
+set Child "LeaderboardDropList@_Arg1_@ 0 400	HLB_Leaderboard@_Arg1_@8 	HLB_Leaderboard@_Arg1_@8"
+set Child "LeaderboardDropList@_Arg1_@ 0 450	HLB_Leaderboard@_Arg1_@9 	HLB_Leaderboard@_Arg1_@9"
+set Child "LeaderboardDropList@_Arg1_@ 0 500	HLB_Leaderboard@_Arg1_@10 	HLB_Leaderboard@_Arg1_@10"
+set Child "LeaderboardDropList@_Arg1_@ 0 550	HLB_Leaderboard@_Arg1_@11 	HLB_Leaderboard@_Arg1_@11"
+add MenuObject
+set Name LeaderboardsCloseVis
+set Coords "638 454 50 50"
+set CoordsFocused "637 397 50 50"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name LeaderboardsClose
+set Coords "0 0 50 50"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu BaseLeaderboards /fadeout 0.1"
+set Child "LeaderboardsCloseVis 0 0"
+add MenuObject
+set Name MasterLeaderboards
+set RenderBlocked 1
+set Coords "0 0 1190 55"
+set MouseInteract 1
+set Focus -2
+set DragSource MasterLeaderboards
+set CommandPress "gameui promoteToTop MasterLeaderboards"
+set FirstDrawnChildren 1
+set Child "BaseLeaderboardBackground -15 -15"
+set Child "LeaderboardsClose 1140 0"
+set Child "ManualTextLabel 25 9	TT_Leaderboards	0.8	770"
+set Child "BaseLeaderboardList -5 190"
+set Child "LeaderboardSelectTitle 5 50"
+set Child "LeaderboardSelectFilter 680 50"
+set Child "HeaderBoardTemplate[HeaderLeaderboard1] 0 30 LB_Disp_Curr		0.5	1.0"
+set Child "HeaderBoardTemplate[HeaderLeaderboard1] 0 0 LB_Disp_Mode		0.4	1.0"
+set Child "HeaderBoardTemplate[HeaderLeaderboard2] -520 200 LB_Disp_Prev	0.4	0x6b5944"
+set Child "HeaderBoardTemplate[HeaderLeaderboard2] 760 200 LB_Disp_Next		0.4	0x6b5944"
+set Child "ConsoleButtonLShoulder 570 195 Xbox 0.85 ConLeaderboards"
+set Child "ConsoleButtonRShoulder 1250 195 		0.85 ConLeaderboards"
+set Child "CM_ButtonHints_ConLeaderboards 0 220	ConLeaderboards"

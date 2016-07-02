@@ -1,0 +1,28 @@
+onloadrun {
+gameUI getLastRenderPos $ListboxParent _ListboxPosX _ListboxPosY
+if sym ListboxType == Friends runnow sym dec _ListboxPosX 252
+if sym ListboxType == Friends runnow sym inc _ListboxPosY 47
+if sym ListboxType == Default runnow sym inc _ListboxPosY 38
+if sym ListboxType == Editor runnow sym inc _ListboxPosY 53
+sym set ListboxLoaded 1
+sym set _ListboxEntries 0
+sym set _ListboxHeight 0
+}
+MO GenericDropListBox {
+pos 100 120
+pos $_ListboxPosX $_ListboxPosY /screenClamp 300 100
+layer 10
+}
+onload {
+gameui promoteToTop GenericDropListBox
+}
+onunloadrun {
+sym set ListboxLoaded 0
+sym set _ListboxEntries 0
+sym set _ListboxHeight 0
+sym set ListboxType Default
+sym set _ListboxName_
+pcmd 0.54 gameui refreshfiltername Listbox
+}
+onunload {
+}

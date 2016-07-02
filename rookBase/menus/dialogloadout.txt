@@ -1,0 +1,38 @@
+onloadrun {
+sym set DialogBoxLoaded 1
+rookMenus previewHide
+gameUI savefocusid _dialogRestoreFocus_
+}
+MO DialogLoadoutMaster {
+pos 300 80
+layer 10
+}
+onload {
+addUIAnim DialogLoadoutMaster mas_DialogPop
+loadout customizeInit
+sym set LoadoutSetupAirMech 0
+sym set LoadoutConfigureUnits 0
+sym set SlotFlashActive 0
+sym set SelectItemActive 0
+sym set LoadoutOnlyAirMech 0
+sym push GL_ChatMinimized 1
+if sym LoadoutAutosave == 0 menuCmd StoreLocalLoadout
+}
+onunload {
+sym set DialogBoxLoaded 0
+sym set LoadoutSetupAirMech 0
+gameUI focusID $_dialogRestoreFocus_
+menuCmd StoreLoadout
+}
+onunloadrun {
+rookMenus previewShow
+if sym LoadoutAutosave == 0 if sym UnsavedLoadout == 0 menuCmd UnsavedLoadoutTest
+if sym LoadoutAutosave == 1 rook savePreset $ActiveLoadout
+if sym LoadoutAutosave == 1 backend save
+rook recustomizeLoadoutToServer
+sym set LoadoutSetupAirMech 0
+sym set LoadoutOnlyAirMech 0
+sym set LoadoutConfigureUnits 0
+sym set SlotFlashActive 0
+if sym GL_ChatMinimized == 1 sym pop GL_ChatMinimized
+}

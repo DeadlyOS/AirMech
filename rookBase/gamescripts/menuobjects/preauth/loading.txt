@@ -1,0 +1,325 @@
+add MenuObject
+set Name LoadingAirMechBackground
+set Coords "0 0 367 512"
+set Texture menus/LoadingCard&TC@_Arg2_@&
+set MirrorOnX @_Arg1_@
+add MenuObject
+set Name LoadingAirMechIcon
+set Texture rooks/&PlayerRook@_Arg1_@&/Hangar&TC@_Arg2_@&
+set TextureAlt rooks/&PlayerRook@_Arg1_@&/HangarUnique
+set Coords "547 0 442 512"
+set CoordsAnimated "567 -50 400 570"
+set CoordsAnimated "45 -50 400 570"
+set CoordsAnimationSymHash PlayerRookDispMode@_Arg1_@
+set ScaleX 0.85, ScaleY 0.85
+set NoDrawOnMissingTexture 1
+set NoDrawChildrenOnMissingTexture 1
+set FirstDrawnChildren 1
+set SaveArgs 2
+set MirrorOnX @_Arg2_@
+set Child "LoadingAirMechBackground -14 -10 @_Arg2_@"
+set FilterName LoadingAirMechIcons
+add MenuObject
+set Name LoadingPlayerPilotBorder
+set Coords "0 0 256 256"
+set ScaleX @_Arg1_@, ScaleY @_Arg1_@
+set SaveArgs 1
+set Texture menus/CircleBorder
+add MenuObject
+set Name LoadingPlayerPilotIcon
+set Coords "0 0 256 256"
+set DisplayAsFocusedIfParentFocused 1
+set FilterName NetGameRoom
+set Texture2 menus/CircleAlpha
+set Material mat_AlternateAlpha
+set CommandGetFocus "playSound $SubMenuFocus"
+set Texture pilots/&PilotCustom@_Arg1_@&Icon+lang
+set TextureAlt pilots/NoPilotIcon
+set ScaleX 0.8, ScaleY 0.8
+set MirrorOnX @_Arg2_@
+set SaveArgs 2
+set Child "LoadingPlayerPilotBorder 0 0	0.8"
+add MenuObject
+set Name LoadingPlayerPilotTemplate
+set Texture menus/FrameUnitCardSt
+set Coords "0 0 246 256"
+set SaveArgs 1
+set FirstDrawnChildren 1
+add MenuObject
+set Name LoadingNameTemplate
+set Coords "0 0 350 32"
+set FilterName NetGameRoom
+set RenderCB _DrawTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYTop
+set RenderCB_DX 295
+set RenderCB_DY 0
+set RenderCB_Offset "10 0"
+set RenderCB_RGBColor 1.0
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /noCommaSep /fitX"
+set RenderCB_ConsoleSymbol P_Name@_Arg1_@
+set RenderCB_FontScale 1.0
+add MenuObject
+set Name LoadingTextLoading
+set Coords "0 0 1940 32"
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor 1.0
+set RenderCB_Flags "/outlined8x /noCommaSep /allCaps"
+set RenderCB_Text SplashLoading
+set RenderCB_FontScale 0.8
+set PulseAlpha "1.2 -0.5 0.0"
+add MenuObject
+set Name LoadingActiveBackOver
+set Texture ]menus/SelectWideVert
+set Coords "0 0 256 512"
+set CoordsInterpolatedDest "0 512 256 512"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 3"
+set BlendMode BlendAdd
+set ScaleX 1.7, ScaleY 2.9
+set MirrorOnX 1
+set DisabledSymInv LoadingPlayerCard@_Arg1_@
+add MenuObject initFrom LoadingActiveBackOver
+set Name PlayActiveBackOver
+set DisabledSymInv MenuPlayCard@_Arg1_@
+set Color 0x6bc6ce
+add MenuObject
+set Name LoadingActiveBack
+set Texture ]menus/SelectWideVert
+set Coords "0 512 256 512"
+set CoordsInterpolatedDest "0 0 256 512"
+set CoordsInterpolantCommand "genMenuFloat loop 0 -1 2"
+set BlendMode BlendAdd
+set ScaleX 1.7, ScaleY 2.9
+set DisabledSymInv LoadingPlayerCard@_Arg1_@
+add MenuObject initFrom LoadingActiveBack
+set Name PlayActiveBack
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 0.8
+set DisabledAlphaTimeOut 0.4
+set DisabledSymInv MenuPlayCard@_Arg1_@
+add MenuObject
+set Name LoadingAirMechTemplate
+set Texture menus/FrameAirMechCard&TC@_Arg2_@&
+set RenderBlocked 1
+set Coords "70 0 363 668"
+set Focus -2
+set MirrorOnX @_Arg2_@
+set ScaleX 0.9, ScaleY 0.9
+set MouseInteractZoneExpand "10 10 -10 -10"
+set MouseInteractZoneExpandWhenFocused "-10 -10 10 40"
+set MouseInteract 1
+set CommandGetFocus "]playSound $SubMenuFocus"
+set CommandPress "]playSound $SubMenuClick"
+set CommandPress ">]menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandPressAlt ">]sym toggle PlayerRookDispMode@_Arg1_@"
+set CommandGetFocus "]floatsym setConcat2 MainMenuDescTimer $C_BINDING 0.0"
+set CommandGetFocus ">]addUIAnim LoadingAirMechTemplate@_Arg1_@ mas_LoadingItemUp"
+set CommandGetFocus ">]sym set LoadingPlayerCard@_Arg1_@ 1"
+set CommandLoseFocus ">]sym set LoadingPlayerCard@_Arg1_@ 0"
+set CommandLoseFocus ">]addUIAnim LoadingAirMechTemplate@_Arg1_@ mas_ShopItemDown"
+set CommandFocusLeft ">gameUI focusnametry @_Arg4_@"
+set CommandFocusRight ">gameUI focusnametry @_Arg5_@"
+set FirstDrawnChildren 3
+set SaveArgs 5
+set Child "LoadingActiveBack -50 -500 @_Arg1_@"
+set Child "LoadingAirMechIcon 0 0 @_Arg1_@"
+set Child "MC_AirMechPartsOverlay 10 9"
+set Child "LoadingPlayerPilotIcon 65 380 @_Arg1_@  @_Arg2_@"
+set Child "LoadingNameTemplate 10 13 @_Arg1_@		/platform !consolePlatformHW"
+set Child "LoadingActiveBackOver -50 -500 @_Arg1_@"
+add MenuObject
+set Name MatchLoadBackground
+set Texture menus/BgBomberBlur
+set Coords "0 0 1024 1024"
+set StretchToFillScreen 1
+set Child "VignetteBomber 0 0"
+add MenuObject
+set Name LoadingHeaderMapName
+set Coords "0 0 1920 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_RGBColor 1.0
+set RenderCB_Flags "/allCaps /outlined8x"
+set RenderCB_FontScale 1.1
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Offset "0 0"
+set RenderCB_ConsoleSymbol _Map_
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+add MenuObject
+set Name LoadingMatchProgressUnder
+set Texture menus/MainWideBars
+set Coords "0 87 1920 16"
+set ScaleY 2.24
+set NoAlphaMod 1
+set Alpha 0.2
+add MenuObject
+set Name LoadingMatchProgressBar
+set Texture menus/MainWideBars
+set Coords "960 247 962 9"
+set CoordsInterpolatedDest "0 247 962 9"
+set CoordsInterpolantCommand "genMenuFloat symInterp MapLoadProgressLast MapLoadProgressCurr 5"
+set ScaleX 2.0
+set ScaleY 3.5
+set MouseInteract 1
+set BlendMode BlendAdd
+set ToolTip TipMyXPBar
+add MenuObject
+set Name MatchLoadMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "MatchLoadBackground 0 0"
+set Child "ConMapPreviewBackground -100 200		_Map_"
+set Child "LoadingLinesAnglePanA 0 90	0x555555"
+set Child "LoadingLinesAnglePanB 0 70	0x224455"
+set Child "LoadingMatchProgressUnder 0 138"
+set Child "LoadingMatchProgressBar 0 140"
+set Child "LoadingTextLoading 0 80"
+set Child "LoadingHeaderMapName 0 130"[
+set CommandOnCreate "sym set _LG_Mode_"
+set CommandOnCreate "pcmd t2 rook do determineGameMode _LG_Mode_"
+set Child "LoadingCoopPlayerTemplates 0 0 		COOP"
+set Child "LoadingSurvivalPlayerTemplates 0 0 	SURVIVAL"
+set Child "LoadingDefaultPlayerTemplates 0 0 	CTF"
+set Child "LoadingDefaultPlayerTemplates 0 0 	PVP"
+set Child "LoadingDefaultPlayerTemplates 0 0 	SKIRMISH"
+add MenuObject
+set Name LoadingCoopPlayerTemplates
+set ContainerOnly 1
+set HiddenCheckBySymbolValue _LG_Mode_!@_Arg1_@
+set SaveArgs 1
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate5] 1570 260		5	1	1	LoadingAirMechTemplate3 null /ifSym MatchmakingPlayers == 3v3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate3] 1270 250		3	1	1	LoadingAirMechTemplate1 LoadingAirMechTemplate5 /ifSym MatchmakingPlayers == 3v3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate1] 970 240		1	1	1	LoadingAirMechTemplate0 LoadingAirMechTemplate3 /ifSym MatchmakingPlayers == 3v3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate4] 10 260		4	0	1	null LoadingAirMechTemplate2 					/ifSym MatchmakingPlayers == 3v3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate2] 310 250		2	0	1	LoadingAirMechTemplate4 LoadingAirMechTemplate0 /ifSym MatchmakingPlayers == 3v3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate0] 610 240		0	0	1	LoadingAirMechTemplate2 LoadingAirMechTemplate1 /ifSym MatchmakingPlayers == 3v3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate3] 1460 250		3	1	1	LoadingAirMechTemplate1 null 					/ifSym MatchmakingPlayers == 2v2"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate1] 1060 250		1	1	1	LoadingAirMechTemplate0 LoadingAirMechTemplate3 /ifSym MatchmakingPlayers == 2v2"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate2] 120 250		2	0	1	null LoadingAirMechTemplate0 					/ifSym MatchmakingPlayers == 2v2"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate0] 520 250		0	0	1	LoadingAirMechTemplate2 LoadingAirMechTemplate1 /ifSym MatchmakingPlayers == 2v2"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate5] 1570 260		5	1	1	LoadingAirMechTemplate3 null 					/ifSym MatchmakingPlayers == 2v3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate3] 1270 250		3	1	1	LoadingAirMechTemplate1 LoadingAirMechTemplate5 /ifSym MatchmakingPlayers == 2v3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate1] 970 240		1	1	1	LoadingAirMechTemplate0 LoadingAirMechTemplate3 /ifSym MatchmakingPlayers == 2v3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate2] 120 250		2	0	1	null LoadingAirMechTemplate0 					/ifSym MatchmakingPlayers == 2v3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate0] 520 250		0	0	1	LoadingAirMechTemplate2 LoadingAirMechTemplate1 /ifSym MatchmakingPlayers == 2v3"
+add MenuObject
+set Name LoadingSurvivalPlayerTemplates
+set ContainerOnly 1
+set HiddenCheckBySymbolValue _LG_Mode_!@_Arg1_@
+set SaveArgs 1
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate1] 1160 250		1	1	1	LoadingAirMechTemplate0 null /ifSym max_players == 2"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate0] 420 250		0	0	1	null LoadingAirMechTemplate1 /ifSym max_players == 2"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate1] 1060 250		1	1	1	LoadingAirMechTemplate0 LoadingAirMechTemplate3 /ifSym max_players == 3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate2] 120 250		2	0	1	null LoadingAirMechTemplate0 			 		/ifSym max_players == 3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate0] 520 250		0	0	1	LoadingAirMechTemplate2 LoadingAirMechTemplate1 /ifSym max_players == 3"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate3] 1270 250		3	1	1	LoadingAirMechTemplate1 LoadingAirMechTemplate5 /ifSym max_players == 4"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate1] 970 240		1	1	1	LoadingAirMechTemplate0 LoadingAirMechTemplate3 /ifSym max_players == 4"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate2] 310 250		2	0	1	LoadingAirMechTemplate4 LoadingAirMechTemplate0 /ifSym max_players == 4"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate0] 610 240		0	0	1	LoadingAirMechTemplate2 LoadingAirMechTemplate1 /ifSym max_players == 4"
+add MenuObject
+set Name LoadingDefaultPlayerTemplates
+set ContainerOnly 1
+set HiddenCheckBySymbolValue _LG_Mode_!@_Arg1_@
+set SaveArgs 1
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate5] 1570 260		5	1	1	LoadingAirMechTemplate3 null 					/ifSym max_players == 6"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate3] 1270 250		3	1	1	LoadingAirMechTemplate1 LoadingAirMechTemplate5 /ifSym max_players == 6"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate1] 970 240		1	1	1	LoadingAirMechTemplate0 LoadingAirMechTemplate3 /ifSym max_players == 6"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate4] 10 260		4	0	1	null LoadingAirMechTemplate2 					/ifSym max_players == 6"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate2] 310 250		2	0	1	LoadingAirMechTemplate4 LoadingAirMechTemplate0 /ifSym max_players == 6"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate0] 610 240		0	0	1	LoadingAirMechTemplate2 LoadingAirMechTemplate1 /ifSym max_players == 6"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate3] 1460 250		3	1	1	LoadingAirMechTemplate1 null 					/ifSym max_players == 4"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate1] 1060 250		1	1	1	LoadingAirMechTemplate0 LoadingAirMechTemplate3 /ifSym max_players == 4"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate2] 120 250		2	0	1	null LoadingAirMechTemplate0 					/ifSym max_players == 4"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate0] 520 250		0	0	1	LoadingAirMechTemplate2 LoadingAirMechTemplate1 /ifSym max_players == 4"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate1] 1160 250		1	1	1	LoadingAirMechTemplate0 null /ifSym max_players == 2"
+set Child "LoadingAirMechTemplate[LoadingAirMechTemplate0] 420 250		0	0	1	null LoadingAirMechTemplate1 /ifSym max_players == 2"
+add MenuObject
+set Name LoadingBigBack
+set Texture menus/LoadingBigBack
+set Coords "0 0 2048 1024"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name LoadingFlash
+set Texture hud/LevelUp
+set Coords "0 0 128 256"
+set BlendMode BlendAdd
+set Anchor Center
+set Hidden 1
+add MenuObject
+set Name LoadingWaitCircle1
+set Texture menus/WaitCircleBig
+set Coords "0 0 256 256"
+set RotationPeriod 1.0
+set ScaleX 2.22
+set ScaleY 2.22
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject initFrom LoadingWaitCircle1
+set Name LoadingWaitCircle2
+set RotationPeriod -3.3
+set MirrorOnX 1
+add MenuObject initFrom LoadingWaitCircle1
+set Name LoadingWaitCircle3
+set RotationPeriod 14.3
+set NoAlphaMod 1
+set Alpha 0.15
+set ScaleX 5.8
+set ScaleY 5.8
+add MenuObject initFrom LoadingWaitCircle3
+set Name LoadingWaitCircle4
+set RotationPeriod -8.3
+set MirrorOnX 1
+add MenuObject
+set Name LoadingBackdrop
+set ContainerOnly 1
+set Child "LoadingBigBack 0 0"
+set Child "LoadingWaitCircle3 230 -200"
+set Child "LoadingWaitCircle4 230 -200"
+set Child "LoadingWaitCircle1 690 252"
+set Child "LoadingWaitCircle2 690 252"
+add MenuObject
+set Name LoadingStub
+set ContainerOnly 1
+add MenuObject
+set Name LoadingLogo_AGlow
+set Texture menus/LoadingAMLogo
+set Coords "0 622 412 394"
+set BlendMode BlendAdd
+set DisabledSymInv _AMLogoGlow_
+set DisabledAlphaTimeOut 2.5
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeInPreWait 1.0
+add MenuObject
+set Name LoadingLogo_APulse
+set Texture menus/LoadingAMLogo
+set Coords "0 622 412 394"
+set BlendMode BlendAdd
+set PulseAlpha "3.4 -0.7 -0.9"
+set Hidden 1
+add MenuObject
+set Name LoadingLogo_A
+set Texture menus/LoadingAMLogo
+set Coords "0 0 412 284"
+set Child "LoadingLogo_AGlow 0 0"
+set Child "LoadingLogo_APulse 0 0"
+add MenuObject
+set Name LoadingLogo_M
+set Texture menus/LoadingAMLogo
+set Coords "0 287 412 312"

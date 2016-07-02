@@ -1,0 +1,28 @@
+onloadrun {
+}
+MO SplashCarbonMaster {
+pos 0 0
+}
+MO InputCatchCarbon {
+pos 0 0
+}
+onload {
+gameui enable VignetteStory
+addUIAnim CarbonGamesLogoSplash mas_CarbonSplash
+addUIAnim CarbonGamesLogoPresents mas_CarbonSplash
+gameUI ignoreInputTime 2.0
+pcmd 0.5 gameui focusname InputCatchCarbon
+input set padFocusFallback InputCatchCarbon
+pcmd_seq 303 1.5 gameui enable CarbonGamesLogoSplash
+pcmd_seq 303 1.25 pfx worldspawn Story0EmbersBurst /pos 40.0 50.0 0 /tag embers
+pcmd_seq 303 1.0 gameui enable CarbonGamesLogoGlow
+pcmd_seq 303 3.0 gameui enable CarbonGamesLogoPresents
+pcmd_seq 303 6.6 gameui disable CarbonGamesLogoSplash
+pcmd_seq 303 7.2 gameui disable CarbonGamesLogoPresents
+pcmd_seq 303 5.0 gameui disable CarbonGamesLogoGlow
+pcmd_seq 303 8.0 gameui disable VignetteStory
+pcmd_seq 303 8.0 gameui enable CarbonGamesSplashCover
+pcmd_seq 303 10.0 menuCmd SplashAirMech
+}
+onunload {
+}

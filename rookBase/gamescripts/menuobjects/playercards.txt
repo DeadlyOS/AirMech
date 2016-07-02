@@ -1,0 +1,448 @@
+add MenuObject
+set Name FUnitMarker
+set Layer 0
+set Texture hud/PlayerStatus
+set Coords "463 303 34 33"
+set Hidden 1
+add MenuObject
+set Name FRecycleProgress
+set Layer 1
+set Texture hud/PlayerStatus
+set Coords "256 352 256 23"
+set CoordsInterpolatedDest "0 352 256 23"
+set CoordsInterpolantCommand "checkRook @_PTagInd@ recycle"
+set BlendMode BlendAdd
+set ScaleX 1.05
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeInPreWait 0.2
+add MenuObject
+set Name FRecycleSymbol
+set Layer 2
+set Texture hud/PlayerStatus
+set Coords "301 263 140 76"
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeInPreWait 0.2
+add MenuObject
+set Name FRecycleMaster
+set Layer 0
+set Texture hud/PlayerStatus
+set Coords "6 261 279 78"
+set Child "FRecycleProgress 6 27"
+set Child "FRecycleSymbol 70 3"
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeInPreWait 0.2
+add MenuObject
+set Name FSelfDestructProgress
+set Layer 1
+set Texture hud/PlayerStatus
+set Coords "256 224 256 23"
+set CoordsInterpolatedDest "0 224 256 23"
+set CoordsInterpolantCommand "checkRook @_PTagInd@ sd"
+set BlendMode BlendAdd
+set ScaleX 1.05
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeInPreWait 0.2
+add MenuObject
+set Name FSelfDestructSymbol
+set Layer 2
+set Texture hud/PlayerStatus
+set Coords "301 135 140 76"
+set PulseAlpha "0.3 -1.0 -0.25"
+set BlendMode BlendAdd
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeInPreWait 0.2
+add MenuObject
+set Name FSelfDestructMaster
+set Layer 0
+set Texture hud/PlayerStatus
+set Coords "6 133 279 78"
+set Child "FSelfDestructProgress 6 27"
+set Child "FSelfDestructSymbol 70 3"
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeInPreWait 0.2
+add MenuObject
+set Name FHeldUnitIcon
+set FilterName HeldUnitInfo
+set Coords "1 30 254 196"
+set Texture units/&HeldUnitName@_Arg1_@@_PTagInd@&/Icons&HeldUnitColor@_Arg1_@@_PTagInd@&
+set TextureAlt units/&HeldUnitName@_Arg1_@@_PTagInd@&/IconUnique
+set NoDrawOnMissingTexture 1
+set Layer 0
+set ScaleX 0.42
+set ScaleY 0.42
+set NoAlphaMod 1
+set SaveArgs 1
+add MenuObject
+set Name FHeldUnitHealth
+set Layer 0
+set Texture hud/PlayerStatus
+set Coords "249 91 242 17"
+set CoordsInterpolatedDest "7 91 242 17"
+set CoordsInterpolantCommand "checkRook @_PTagInd@ health_cu"
+set CoordsInterpolantCommandResult _health_cu@_Arg1_@
+set BlendMode BlendAdd
+set SaveArgs 1
+set ScaleX 0.33
+set ScaleY 0.6
+add MenuObject
+set Name FHeldUnitHealthBackground
+set Coords "170 237 86 14"
+set Texture hud/QueueTest
+set Layer 0
+set Child "FHeldUnitHealth 3 3			@_Arg1_@"
+add MenuObject
+set Name FHeldUnitStatusEntry
+set Coords "411 412 86 86"
+set Texture hud/OrderCross@TeamColor@+lang
+set Layer 0
+set NoAlphaMod 1
+set Alpha 0.8
+set HiddenCheckBySymbol HeldUnitHidden@_Arg1_@@_PTagInd@
+set Child "FHeldUnitIcon -10 2					@_Arg1_@"
+set Child "FHeldUnitHealthBackground 0 -11		@_Arg1_@"
+add MenuObject
+set Name FHeldUnitStatus
+set ContainerOnly 1
+set Coords "170 0 86 86"
+set Texture hud/QueueTest
+set NoAlphaMod 1
+set Alpha 0.5
+set Hidden 1
+set Child "FHeldUnitStatusEntry -75 -39		3"
+set Child "FHeldUnitStatusEntry -50 -26		2"
+set Child "FHeldUnitStatusEntry -25 -13		1"
+set Child "FHeldUnitStatusEntry 0 	0		0"
+add MenuObject
+set Name FPlayerNameTemplate
+set Coords "0 0 308 32"
+set DisabledAlpha 0.5
+set RenderCB_DX 308
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.7
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText_G3x1
+set RenderCB_Flags "/shadowed /noCommaSep"
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set CoordsStart "863 197 4 30"
+set CoordsMid "870 197 20 30"
+set CoordsEnd "914 197 14 30"
+add MenuObject initFrom FPlayerNameTemplate
+set Name FPlayerName
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_Text SP
+set RenderCB_ConsoleSymbol2 P_Name@_PTagInd@
+set CoordsStart "866 197 4 30"
+set CoordsMid "870 197 20 30"
+set CoordsEnd "914 197 16 30"
+add MenuObject initFrom FPlayerName
+set Name FTeamName
+set CoordsStart "863 197 4 30"
+add MenuObject initFrom PStatusBarDiamondsIcon
+set Name FPlayerLocPin
+set HiddenCheckBySymbolInv P_LocPin@_PTagInd@
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "78 213 29 37"
+add MenuObject initFrom FPlayerName
+set Name FPlayerLocPulse
+set BlendMode BlendAdd
+set HiddenCheckBySymbolInv P_Loc@_PTagInd@
+set BlinkAlpha "0.0 0.1 1.0 0.2"
+set CoordsStart "870 197 4 30"
+set CoordsEnd "1019 197 3 30"
+add MenuObject initFrom FPlayerLocPulse
+set Name FTeamLocPulse
+set CoordsStart "863 197 4 30"
+set CoordsEnd "1019 197 3 30"
+add MenuObject initFrom FPlayerLocPulse
+set Name FPlayerSelfPulse
+set CoordsStart "866 197 4 30"
+set CoordsEnd "914 197 14 30"
+add MenuObject initFrom FPlayerSelfPulse
+set Name FTeamSelfPulse
+set CoordsStart "863 197 4 30"
+set CoordsStart "870 197 4 30"
+add MenuObject initFrom FPlayerName
+set Name FPlayerLoc
+set FilterName LoadMapStartup
+set CoordsStart "870 197 4 30"
+set CoordsEnd "1019 197 3 30"
+set PosQuery os:@_PTagInd@
+set Child "FPlayerLocPulse 0 0"
+set Child "FPlayerLocPin 10 -22"
+add MenuObject initFrom FPlayerName
+set Name FPlayerLocPinScr
+set FilterName LoadMapStartup
+set PosQuery pn:@_PTagInd@
+set HiddenCheckBySymbolInv P_LocPin@_PTagInd@
+set Child "FPlayerName 0 0"
+set Child "FPlayerLocPin 10 -22"
+add MenuObject initFrom FPlayerNameTemplate
+set Name FEnemyName
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text SP
+set RenderCB_ConsoleSymbol2 P_Name@_PTagInd@
+set CoordsStart "955 197 16 30"
+set CoordsMid "870 197 20 30"
+set CoordsEnd "1019 197 3 30"
+set Anchor UpperRight
+add MenuObject
+set Name FPlayerStatusHealth
+set Texture hud/PlayerStatus
+set Coords "249 91 242 17"
+set CoordsInterpolatedDest "7 91 242 17"
+set CoordsInterpolantCommand "checkRook @_PTagInd@ health"
+set BlendMode BlendAdd
+set ScaleX 0.6
+set ScaleY 0.6
+add MenuObject
+set Name FPlayerStatusHealthBlock
+set Texture hud/PlayerStatus
+set CoordsStart 		"2 471 4 4"
+set CoordsMid 			"6 471 21 4"
+set CoordsEnd 			"27 471 4 4"
+set CoordsStartFocused 	"2 475 4 9"
+set CoordsMidFocused 	"6 475 21 9"
+set CoordsEndFocused 	"27 475 4 9"
+set CoordsStartDisabled "2 484 4 4"
+set CoordsMidDisabled 	"6 484 21 4"
+set CoordsEndDisabled 	"27 484 4 4"
+set RenderCB _Draw_G3x3_HealthBar
+set RenderCB_IntArg @_PTagInd@
+set RenderCB_DX 145
+set RenderCB_DY 11
+add MenuObject
+set Name  FPlayerStatusHealthFlash
+set PulseAlpha "0.3 -1.0 -0.25"
+set Texture hud/PlayerStatus
+set Coords "7 91 242 17"
+set BlendMode BlendAdd
+set DisabledAlpha 0.0
+set DisabledAlphaTimeOut 0.5
+set Disabled 1
+set ScaleX 0.6
+set ScaleY 0.6
+add MenuObject initFrom FPlayerStatusHealth
+set Name FEnemyStatusHealth
+set Coords "249 3 242 17"
+set CoordsInterpolatedDest "7 3 242 17"
+set CoordsInterpolantCommand "checkRook @_PTagInd@ health"
+add MenuObject
+set Name FEnemyStatusHealthBlock
+set Texture hud/PlayerStatus
+set CoordsStart 		"36 471 4 4"
+set CoordsMid 			"40 471 21 4"
+set CoordsEnd 			"61 471 4 4"
+set CoordsStartFocused 	"36 475 4 9"
+set CoordsMidFocused 	"40 475 21 9"
+set CoordsEndFocused 	"61 475 4 9"
+set CoordsStartDisabled "36 484 4 4"
+set CoordsMidDisabled 	"40 484 21 4"
+set CoordsEndDisabled 	"61 484 4 4"
+set RenderCB _Draw_G3x3_HealthBar
+set RenderCB_IntArg @_PTagInd@
+set RenderCB_DX 145
+set RenderCB_DY 11
+add MenuObject
+set Name FPlayerStatusEnergy
+set Texture hud/PlayerStatus
+set Coords "144 342 144 7"
+set CoordsInterpolatedDest "0 342 144 7"
+set CoordsInterpolantCommand "checkRook @_PTagInd@ fuel"
+set BlendMode BlendAdd
+add MenuObject
+set Name  FPlayerStatusEnergyIcon
+set PulseAlpha "0.22 -0.9 -0.1"
+set Texture hud/PlayerStatus
+set Coords "462 382 46 49"
+set BlendMode BlendAdd
+add MenuObject
+set Name  FPlayerStatusEnergyFlash
+set PulseAlpha "0.22 -0.9 -0.1"
+set Texture hud/PlayerStatus
+set Coords "7 4 242 7"
+set BlendMode BlendAdd
+set DisabledAlpha 0.0
+set DisabledAlphaTimeOut 0.5
+set Disabled 1
+set ScaleX 0.6
+set ScaleY 1.1
+set Child "FPlayerStatusEnergyIcon 146 -20"
+add MenuObject initFrom FPlayerStatusEnergy
+set Name FEnemyStatusEnergy
+set Texture hud/PlayerStatus
+set Coords "144 342 144 7"
+set CoordsInterpolatedDest "0 342 144 7"
+set CoordsInterpolantCommand "checkRook @_PTagInd@ fuel"
+add MenuObject initFrom	HudNumbersTemplate
+set Name FCurrentLevel
+set RenderCB_ConsoleSymbol R@_PTagInd@_Level
+set RenderCB_FontScale 0.35
+set Coords "0 0 32 32"
+set RenderCB_DX 32
+set RenderCB_DY 26
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Font Gunner
+set Layer 2
+add MenuObject
+set Name FAbilityPointNotice
+set Coords "489 200 23 23"
+set BlinkAlpha "1.0 1.4 0.5 0.2"
+set Texture hud/PlayerStatus
+set HiddenCheckBySymbolInv Rook@_PTagInd@CanUpgrade
+add MenuObject initFrom	FCurrentLevel
+set Name FCurrentLevelEnemy
+set RenderCB_RGBColor "1 0.3 0.3"
+add MenuObject
+set Name FPlayerStatusCarryWeightBar
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "10 75"
+set TileAreaYSym CarryW@_PTagInd@
+set NoAlphaMod 1
+set Alpha 0.66
+set BlendMode BlendAdd
+set RenderOffsetSym CarryOffset@_PTagInd@
+add MenuObject
+set Name FPlayerStatusCarryWeightTooMuch
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "16 80"
+set Color 0xff3300
+set NoAlphaMod 1
+set BlendMode BlendAdd
+set BlinkAlpha "0.0 0.2 0.6 0.2"
+set HiddenCheckBySymbolInv CarryO@_PTagInd@
+add MenuObject
+set Name FPlayerStatusCarryWeightFrame
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set CoordsStart 		"850 197 4 4"
+set CoordsMid 			"853 197 6 4"
+set CoordsEnd 			"862 197 3 4"
+set CoordsStartFocused 	"850 201 4 9"
+set CoordsMidFocused 	"853 201 6 9"
+set CoordsEndFocused 	"862 201 3 9"
+set CoordsStartDisabled "850 226 4 4"
+set CoordsMidDisabled 	"853 226 6 4"
+set CoordsEndDisabled 	"862 226 3 4"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 17
+set RenderCB_DY 80
+set FirstDrawnChildren 1
+set Child "FPlayerStatusCarryWeightTooMuch 0 0"
+set Child "FPlayerStatusCarryWeightBar 3 3"
+add MenuObject initFrom	HudNumbersTemplate
+set Name OutpostIncomeLocal
+set RenderCB_ConsoleSymbol D_Income
+set RenderCB_Text ""
+set RenderCB_RGBColor "0.4 0.95 0.4"
+set RenderCB_FontScale 0.65
+set ToolTip	LabelIncomeCounter
+set Coords "0 0 82 30"
+set RenderCB_DX 79
+set RenderCB_DY 30
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /useTextWidthForMIZone"
+add MenuObject
+set Name OutpostTimeToDrain
+set Coords "0 0 82 30"
+set RenderCB_DX 82
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.85
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol D_Time
+add MenuObject initFrom	HudNumbersTemplate
+set Name OutpostPowerLocal
+set RenderCB_ConsoleSymbol D_Power
+set RenderCB_Text ""
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 0.85
+set ToolTip	LabelIncomeCounter
+set Coords "0 0 82 30"
+set RenderCB_DX 82
+set RenderCB_DY 30
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /useTextWidthForMIZone"
+add MenuObject
+set Name OutpostStatusFloat
+set Texture ]hud/HudFortressBar&TeamColor@net_local_player@&
+set FilterName LoadMapStartup
+set PosQuery crs
+set Coords "756 183 82 71"
+set Child "OutpostIncomeLocal 0 26"
+set Child "OutpostPowerLocal 0 5"
+add MenuObject
+set Name PlayerStatusFloat
+set FilterName LoadMapStartup
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "850 227 172 27"
+set IsOnPlayer $_PTagInd
+set FirstDrawnChildren 1
+set Child "FPlayerName 0 -30"
+set Child "FPlayerSelfPulse 0 -30"
+set Child "FPlayerStatusHealthBlock 24 3"
+set Child "FPlayerStatusHealthFlash 24 3"
+set Child "FPlayerStatusEnergy 24 17"
+set Child "FPlayerStatusEnergyFlash 24 17"
+set Child "FCurrentLevel -3 -4"
+set Child "FHeldUnitStatus 53 -110"
+set Child "FPlayerStatusCarryWeightFrame -16 -53"
+set Child "FAbilityPointNotice -11 16"
+set Child "FRecycleMaster -60 180"
+set Child "FSelfDestructMaster -60 180"
+add MenuObject
+set Name TeamStatusFloat
+set FilterName LoadMapStartup
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "850 227 172 27"
+set IsOnPlayer $_PTagInd
+set FirstDrawnChildren 1
+set Child "FTeamName 0 -30"
+set Child "FTeamSelfPulse 0 -30"
+set Child "FPlayerStatusHealthBlock 24 3"
+set Child "FPlayerStatusEnergy 24 17"
+set Child "FCurrentLevel -3 -4"
+add MenuObject
+set Name FEnemyStatusFlag
+set Texture hud/PlayerStatus
+set Coords "457 457 51 51"
+set ScaleX 0.7
+set ScaleY 0.7
+set BlendMode BlendAdd
+set HiddenCheckBySymbolInv GameShowEnemyAirMech
+add MenuObject initFrom FEnemyStatusFlag
+set Name FEnemyStatusFlagFlip
+set MirrorOnX 1
+set MirrorOnY 1
+add MenuObject
+set Name EnemyStatusFloat
+set FilterName LoadMapStartup
+set Texture ]hud/HudFortressBar&TeamColor@_PTagInd@&
+set Coords "850 227 172 27"
+set MirrorOnX 1
+set IsOnPlayer $_PTagInd
+set FirstDrawnChildren 1
+set Child "FEnemyStatusFlag 139 24"
+set Child "FEnemyStatusFlagFlip 0 144"
+set Child "FEnemyName 0 -30"
+set Child "FEnemyStatusHealthBlock 4 3"
+set Child "FEnemyStatusEnergy 4 17"
+set Child "FCurrentLevelEnemy 145 -4"

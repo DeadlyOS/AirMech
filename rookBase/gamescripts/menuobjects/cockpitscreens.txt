@@ -1,0 +1,947 @@
+add MenuObject
+set Name QueueRemoveBackground
+set Coords "5 10 310 30"
+set Texture cockpit/UnitSlot@TeamColor@
+set ScaleX 2.4
+set ScaleY 2.4
+add MenuObject
+set Name QueueRemoveBackgroundActive
+set Coords "5 10 310 30"
+set Texture cockpit/UnitSlot@TeamColor@
+set ScaleX 2.4
+set ScaleY 2.4
+set Focus -2
+set MouseInteract 1
+set CommandPress "build local cancel"
+set CommandPressAlt "build local cancelAll"
+set CommandPress "playSound UIBadSelection.wav"
+set CommandPressAlt "playSound UIBadSelection.wav"
+add MenuObject
+set Name QueueRemoveTemplate
+set Coords "0 0 700 60"
+set RenderCB_DX 700
+set RenderCB_DY 60
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUTextShadowed
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 1"
+set DisabledAlpha 1.0
+set RenderCB_TextJustify JustifyXCenter
+set Hidden 1
+add MenuObject initFrom QueueRemoveTemplate
+set Name QueueRemoveKey
+set RenderCB_Text QueueRemoveKey
+set FirstDrawnChildren 1
+set Child "QueueRemoveBackgroundActive -10 -15"
+add MenuObject initFrom PadButtonTemplate
+set Name ButtonQueueRemove
+set Coords "0 64 64 64"
+set DisabledAlphaTimeIn 0.0
+set DisabledAlphaTimeInPreWait 0.0
+set Hidden 0
+set Disabled 0
+set ScaleX 1.0
+set ScaleY 1.0
+add MenuObject initFrom QueueRemoveTemplate
+set Name QueueRemovePad
+set RenderCB_Text QueueRemovePad
+set FirstDrawnChildren 1
+set Child "QueueRemoveBackground -10 -15"
+add MenuObject
+set Name CockpitDummy
+set Focus -2
+set ContainerOnly 1
+set Coords "0 0 8 8"
+set CommandGetFocus "pcmd 0.1 gameUI focusName $NextFocus@C_BINDING@"
+set CommandPress "gameUI focusName $NextFocus@C_BINDING@"
+set CommandCancel "gameUI focusName $NextFocus@C_BINDING@"
+add MenuObject
+set Name TextCockpitTemplate
+set Coords "0 0 128 32"
+set Layer 3
+set RenderCB _DrawUText
+set RenderCB_Font Gunner
+set RenderCB_FontScale 0.35
+set RenderCB_DX 216
+set RenderCB_DY 32
+set RenderCB_RGBColor $TextColorBlue
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject initFrom TextCockpitTemplate
+set Name TextSlotTemplate
+set Coords "0 0 300 80"
+set RenderCB_DX 300
+set RenderCB_DY 80
+set Disabled 1
+set Layer 5
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 0.6
+set RenderCB_FontScale 0.4
+set RenderCB_BoolArg 1
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "5 5"
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/fitX"
+add MenuObject initFrom TextCockpitTemplate
+set Name SymbolCockpitTemplate
+set Coords "0 0 128 32"
+set Layer 3
+set RenderCB _DrawText
+set RenderCB_FontScale 0.35
+set RenderCB_DX 216
+set RenderCB_DY 32
+set RenderCB_RGBColor $TextColorBlue
+add MenuObject initFrom SymbolCockpitTemplate
+set Name TextCockpitNumbers
+set RenderCB_FontScale 0.5
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font Gunner
+add MenuObject initFrom TextCockpitTemplate
+set Name TextCockpitNames
+set RenderCB_FontScale 0.4
+set RenderCB_TextJustify JustifyXLeft
+add MenuObject initFrom	TextCockpitNumbers
+set Name TextCockpitUnitCost
+set RenderCB_ConsoleSymbol DispSlotCost
+add MenuObject initFrom	TextCockpitNumbers
+set Name TextCockpitCredits
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 0.6
+set Layer 10
+set NoAlphaMod 1
+set Alpha 0.5
+set RenderCB_ConsoleSymbol Credits@C_BINDING@
+add MenuObject initFrom	TextCockpitNumbers
+set Name TextCockpitUnitCount
+set Coords "0 0 860 32"
+set RenderCB_DX 860
+set RenderCB_DY 32
+set RenderCB _DrawTextShadowed
+set RenderCB _DrawUText
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text UnitCount
+set RenderCB_ConsoleSymbol2 Units@C_BINDING@
+add MenuObject initFrom TextCockpitNumbers
+set Name TextCockpitUnitCountLabel
+set RenderCB_Text Units
+add MenuObject initFrom	TextCockpitNames
+set Name TextCockpitUnitDescription
+set RenderCB _UnitOrderNames
+add MenuObject
+set Name CS_TextTest
+set Texture cockpit/CockpitScreensTest
+set Coords "0 0 1024 1024"
+set Layer 0
+add MenuObject
+set Name ScreenUnitHighlight
+set Texture cockpit/ScreenSideSelect@TeamColor@
+set Coords "0 0 160 160"
+set CoordsAnimated "0 0 160 160"
+set CoordsAnimated "176 0 160 160"
+set CoordsAnimated "352 0 160 160"
+set CoordsAnimated "0 168 160 160"
+set CoordsAnimated "176 168 160 160"
+set CoordsAnimated "352 168 160 160"
+set CoordsAnimated "176 168 160 160"
+set CoordsAnimated "0 168 160 160"
+set CoordsAnimated "352 0 160 160"
+set CoordsAnimated "176 0 160 160"
+set CoordsAnimationFrameTimer 0.05
+set Layer 7
+set ScaleX 2.0
+set ScaleY 2.5
+set BlendMode BlendAdd
+add MenuObject
+set Name HighlightBox
+set Texture cockpit/HighlightBox@TeamColor@
+set Coords "0 0 128 128"
+set CoordsAnimated "0 0 128 128"
+set CoordsAnimated "128 0 128 128"
+set CoordsAnimated "0 128 128 128"
+set CoordsAnimated "128 128 128 128"
+set CoordsAnimated "0 128 128 128"
+set CoordsAnimated "128 0 128 128"
+set CoordsAnimationFrameTimer 0.1
+set Layer 1
+set BlendMode BlendAdd
+add MenuObject initFrom ScreenUnitHighlight
+set Name ScreenOrderHighlight
+set Hidden 1
+add MenuObject initFrom ScreenUnitHighlight
+set Name IconHighlight
+set ScaleX 1.15
+set ScaleY 1.15
+add MenuObject initFrom ScreenUnitHighlight
+set Name IconArrowHighlight
+set Texture cockpit/ScreenArrowSelect@TeamColor@
+set ScaleX 1.15
+set ScaleY 1.15
+add MenuObject
+set Name UnitIconTemplate
+set Texture cockpit/OrderIcons@TeamColor@
+set Coords "40 0 215 226"
+set DisabledAlpha 0.0
+set Layer 5
+set ScaleX 0.8
+set ScaleY 0.8
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set ScaleXCenter 0.0
+set FocusedTimeIn 0.06
+set FocusedTimeOut 0.2
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name ArmySlotHighlight
+set Texture cockpit/UnitSlot@TeamColor@
+set PulseAlpha "1.5 0.0 -0.5"
+set Coords "338 1 169 121"
+set ScaleX 2.0
+set ScaleY 2.2
+set Layer 4
+add MenuObject initFrom ArmySlotHighlight
+set Name ArmySlot0Highlight
+set DynGreyScale canBuild0
+add MenuObject initFrom ArmySlotHighlight
+set Name ArmySlot4Highlight
+set DynGreyScale canBuild4
+add MenuObject initFrom ArmySlotHighlight
+set Name ArmySlotCornerHighlight
+set ScaleX 2.1
+set ScaleY 2.1
+add MenuObject initFrom ArmySlotCornerHighlight
+set Name ArmySlot1Highlight
+set DynGreyScale canBuild1
+add MenuObject initFrom ArmySlotCornerHighlight
+set Name ArmySlot3Highlight
+set DynGreyScale canBuild3
+add MenuObject initFrom ArmySlotCornerHighlight
+set Name ArmySlot5Highlight
+set DynGreyScale canBuild5
+add MenuObject initFrom ArmySlotCornerHighlight
+set Name ArmySlot7Highlight
+set DynGreyScale canBuild7
+add MenuObject initFrom ArmySlotHighlight
+set Name ArmySlotSideHighlight
+set ScaleX 2.2
+set ScaleY 2.0
+add MenuObject initFrom ArmySlotSideHighlight
+set Name ArmySlot2Highlight
+set DynGreyScale canBuild2
+add MenuObject initFrom ArmySlotSideHighlight
+set Name ArmySlot6Highlight
+set DynGreyScale canBuild6
+add MenuObject
+set Name OrderIconTemplate
+set Texture cockpit/OrderIcons@TeamColor@
+set Coords "0 0 128 128"
+set Layer 4
+set BlendMode BlendColorAdd
+set DisabledAlpha 0.0
+set Disabled 1
+add MenuObject
+set Name IconSale
+set Texture cockpit/IconSale
+set Coords "0 0 128 93"
+set Layer 5
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set FocusedTimeIn 0.06
+set FocusedTimeOut 0.2
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolInv ArmySale@_Arg1_@
+add MenuObject
+set Name ArmySlotTemplate
+set Coords "1 1 320 224"
+set Texture cockpit/UnitSlot@TeamColor@
+set Layer 3
+set MouseInteract 1
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.06
+set FocusedTimeOut 0.2
+set Focus -2
+set CommandGetFocus "playSound $CockpitIconsFocus"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "sym set ChoosingUnit 0"
+set CommandPress "menuCmd PlaceOrder local"
+set CommandPressAlt "sym set QuickCockpitActive 2"
+set CommandPressAlt "menuCmd PlaceOrder local"
+set FocusChangeOnDPad 0
+set CommandFocusSpecial "gameUI focusName UnitsBoxBungie"
+set CommandCancel "if sym QuickCockpitActive == 0 menuCmd CloseCockpit local"
+set CommandCancel "if sym QuickCockpitActive == 0 cbinding enable orderMenuAlt"
+set Child "IconSale 200 0		@_Arg1_@"
+add MenuObject
+set Name UnitPictureTemplate
+set Layer 4
+set Disabled 1
+set Texture cockpit/HudCockpitUnitPics@TeamColor@
+set Coords "190 0 190 224"
+set DisabledAlpha 0.0
+set ScaleX 1.0
+set ScaleY 1.0
+add MenuObject initFrom UnitPictureTemplate
+set Name UnitSlotStatusHeld
+set Coords "918 210 54 55"
+set Layer 5
+add MenuObject
+set Name OrderPictureTemplate
+set Layer 4
+set Texture cockpit/OrderIcons@TeamColor@
+set Coords "0 0 128 128"
+set DisabledAlpha 0.0
+set ScaleX 1.5
+set ScaleY 1.5
+set BlendMode BlendColorAdd
+add MenuObject initFrom TextCockpitNumbers
+set Name ArmySlotCost
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 1.1
+set RenderCB_Offset "85 145"
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_ConsoleSymbolGen ">customize slotDisplayGen @_Arg1_@ DispSlotName DispSlotCost DispSlotTime"
+set RenderCB_ConsoleSymbol DispSlotCost
+add MenuObject initFrom TextCockpitNumbers
+set Name ArmySlotLvl
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 1.1
+set RenderCB_Offset "85 145"
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_ConsoleSymbolGen ">customize slotDisplayGen @_Arg1_@ DispSlotName DispSlotCost DispSlotTime DispSlotLvl"
+set RenderCB_ConsoleSymbol DispSlotLvl
+add MenuObject
+set Name ArmySlotPop
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "6 466 151 26"
+set CoordsAnimated "6 466 4 4"
+set CoordsAnimated "6 466 151 26"
+set CoordsAnimated "31 466 151 26"
+set CoordsAnimated "56 466 151 26"
+set CoordsAnimated "81 466 151 26"
+set CoordsAnimated "106 466 151 26"
+set CoordsAnimated "131 466 151 26"
+set CoordsAnimationSymHash DispUnitPop@_Arg1_@
+set SaveArgs 1
+add MenuObject initFrom TextCockpitNumbers
+set Name AbilitySlotCost
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 1.1
+set RenderCB_Offset "85 145"
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_ConsoleSymbolGen ">customize abDisplayGen @_Arg1_@ DispSlotCost DispSlotTime DispSlotLvl"
+set RenderCB_ConsoleSymbol DispSlotCost
+add MenuObject initFrom TextCockpitNumbers
+set Name ArmySlotBuildTime
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 1.0
+set RenderCB_Offset "85 145"
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_ConsoleSymbolGen ">customize slotDisplayGen @_Arg1_@ DispSlotName DispSlotCost DispSlotTime"
+set RenderCB_ConsoleSymbol DispSlotTime
+add MenuObject initFrom TextCockpitNumbers
+set Name AbilitySlotBuildTime
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 1.0
+set RenderCB_Offset "85 145"
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_ConsoleSymbolGen ">customize abDisplayGen @_Arg1_@ DispSlotCost DispSlotTime DispSlotLvl"
+set RenderCB_ConsoleSymbol DispSlotTime
+add MenuObject initFrom TextCockpitNumbers
+set Name AbilitySlotBuildLvl
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 1.0
+set RenderCB_Offset "85 145"
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_ConsoleSymbolGen ">customize abDisplayGen @_Arg1_@ DispSlotCost DispSlotTime DispSlotLvl"
+set RenderCB_ConsoleSymbol DispSlotLvl
+add MenuObject
+set Name ArmyStatBarShadow
+set ScaleX 1.5
+set Texture cockpit/UnitSlot@TeamColor@
+set Coords "333 131 14 120"
+add MenuObject
+set Name ArmyStatBarLabel
+set Texture cockpit/UnitSlot@TeamColor@
+set Hidden 1
+set Coords "9 226 126 28"
+add MenuObject
+set Name ArmyStatBarTemplate
+set Texture cockpit/StatBars
+set Coords "135 0 120 24"
+set CoordsInterpolatedDest "15 0 120 24"
+set CoordsInterpolantCommand NOP
+set ScaleX 2.3
+set ScaleY 1.1
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+add MenuObject initFrom ArmyStatBarTemplate
+set Name ArmyStatDamageTemplate
+set CoordsInterpolantCommandResult _u@_ArmySlot@Dmg@C_BINDING@
+add MenuObject initFrom ArmyStatBarTemplate
+set Name ArmyStatHealthTemplate
+set CoordsInterpolantCommandResult _u@_ArmySlot@Hp@C_BINDING@
+add MenuObject initFrom ArmyStatBarTemplate
+set Name ArmyStatSpeedTemplate
+set CoordsInterpolantCommandResult _u@_ArmySlot@Spd@C_BINDING@
+add MenuObject initFrom ArmyStatBarTemplate
+set Name ArmyStatBuildtimeTemplate
+set CoordsInterpolantCommandResult _u@_ArmySlot@Bld@C_BINDING@
+add MenuObject initFrom ArmyStatBarTemplate
+set Name ArmyStatBuildcostTemplate
+set ScaleY 2.9
+set CoordsInterpolantCommandResult _u@_ArmySlot@Cst@C_BINDING@
+add MenuObject
+set Name StatContainer
+set ContainerOnly 1
+set Child "ArmyStatDamageTemplate 20 20"
+set Child "ArmyStatHealthTemplate 20 50"
+set Child "ArmyStatSpeedTemplate 20 80"
+set Child "ArmyStatBuildtimeTemplate 20 110"
+set Child "ArmyStatBuildcostTemplate 20 140"
+set Child "ArmyStatBarLabel -6 123"
+add MenuObject initFrom StatContainer
+set Name StatContainerArmySlot0
+set Child "ArmySlotCost 0 0		0"
+add MenuObject initFrom StatContainer
+set Name StatContainerArmySlot1
+set Child "ArmySlotCost 0 0		1"
+add MenuObject initFrom StatContainer
+set Name StatContainerArmySlot2
+set Child "ArmySlotCost 0 0		2"
+add MenuObject initFrom StatContainer
+set Name StatContainerArmySlot3
+set Child "ArmySlotCost 0 0		3"
+add MenuObject initFrom StatContainer
+set Name StatContainerArmySlot4
+set Child "ArmySlotCost 0 0		4"
+add MenuObject initFrom StatContainer
+set Name StatContainerArmySlot5
+set Child "ArmySlotCost 0 0		5"
+add MenuObject initFrom StatContainer
+set Name StatContainerArmySlot6
+set Child "ArmySlotCost 0 0		6"
+add MenuObject initFrom StatContainer
+set Name StatContainerArmySlot7
+set Child "ArmySlotCost 0 0		7"
+add MenuObject
+set Name StatBarTextTemplate
+set Coords "0 0 320 30"
+set DisabledAlpha 0.0
+set RenderCB_DX 320
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set Layer 12
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+add MenuObject initFrom	StatBarTextTemplate
+set Name StatBarTextPower
+set RenderCB_Text StatPower
+add MenuObject initFrom	StatBarTextTemplate
+set Name StatBarTextDefense
+set RenderCB_Text StatDefense
+add MenuObject initFrom	StatBarTextTemplate
+set Name StatBarTextSpeed
+set RenderCB_Text StatSpeed
+add MenuObject initFrom	StatBarTextTemplate
+set Name StatBarTextCost
+set RenderCB_Text StatCost
+set RenderCB_FontScale 1.2
+add MenuObject initFrom	StatBarTextTemplate
+set Name StatBarTextBuildTime
+set RenderCB_Text StatBuildTime
+add MenuObject
+set Name ArmySlotCenter
+set Coords "1 1 320 224"
+set Texture cockpit/UnitSlot@TeamColor@
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.06
+set FocusedTimeOut 0.2
+add MenuObject
+set Name ArmySlotCenterText
+set Coords "1 1 320 224"
+set ContainerOnly 1
+set Child "StatBarTextPower 20 20"
+set Child "StatBarTextDefense 20 50"
+set Child "StatBarTextSpeed 20 80"
+set Child "StatBarTextBuildTime 20 110"
+set Child "StatBarTextCost 20 160"
+add MenuObject initFrom StatBarTextTemplate
+set Name ArmySlotHotKey
+set RenderCB _DrawBindingValues
+set RenderCB_Text "Build @_Arg1_@"
+set SaveArgs 3
+set RenderCB_OffsetFocused "@_Arg2_@ @_Arg3_@"
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_FontScale 0.75
+add MenuObject initFrom TextCockpitTemplate
+set Name BuildBlockedText
+set Coords "0 0 100 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 0.4
+set RenderCB_TextJustify JustifyXCenter
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB _DrawText
+set RenderCB_Font Gunner
+set RenderCB_Text @_Arg1_@
+set RenderCB_Flags "/shadowed"
+add MenuObject
+set Name Tech1Icon
+set Texture menus/MainTiles+lang
+set Coords "384 242 72 72"
+add MenuObject initFrom Tech1Icon
+set Name Tech2Icon
+set Coords "459 242 72 72"
+add MenuObject initFrom TextCockpitTemplate
+set Name BuildBlockedCost
+set Coords "0 0 100 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXCenter
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Flags "/shadowed"
+add MenuObject
+set Name TechRequirement1
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "0 263 320 101"
+set Child "Tech1Icon 22 15"
+set Child "BuildBlockedCost 200 32 Tech1Cost"
+set HiddenCheckBySymbol exTech1
+add MenuObject
+set Name TechRequirement2
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "0 263 320 101"
+set Child "Tech2Icon 22 15"
+set Child "BuildBlockedCost 200 32 Tech2Cost"
+set HiddenCheckBySymbol exTech2
+add MenuObject
+set Name TechRequirement
+set ContainerOnly 1
+set HiddenCheckBySymbol hasTech@_Arg1_@
+set Child "TechRequirement2 0 0"
+set Child "TechRequirement1 0 0"
+add MenuObject initFrom ArmySlotTemplate
+set Name ArmySlot_InGameCommon
+set DrawForToolTip notryout:UnitStatsToolTip
+set DrawForToolTipPositioning "/mode leftright /size 150 610 /xMargin 10 /yMargin 10 /modeSym _OnLeft_"
+set DrawForToolTipPad notryout:UnitStatsToolTip
+set DrawForToolTipPositioningPad "/mode abs /size 150 610 /pos 1500 250"
+set CommandActivateToolTip "gameui refreshFilterName StatsCompareNDSR"
+set CommandGetFocus ">sym set _BuildSlot @_Arg1_@"
+add MenuObject initFrom ArmySlot_InGameCommon
+set Name ArmySlot0
+set CommandOnCreate "sym set _ArmySlot 0"
+set ScaleYFocused 1.1
+set ScaleXFocused 1.0
+set ScaleYCenter 0.0
+set DrawWhenFocused ArmySlot0Highlight
+set DrawWhenFocusedOffset "-9 -32"
+set CommandGetFocus "gameUI enable ArmySlot0Text"
+set CommandLoseFocus "gameUI disable ArmySlot0Text"
+set CommandFocusRight "gameUI focusName ArmySlot1"
+set CommandFocusLeft "gameUI focusName ArmySlot7"
+set CommandFocusDown "gameUI focusName ArmySlot4"
+set Child "ArmySlotLvl 0 -76		0"
+set Child "ArmySlotBuildTime 0 -38	0"
+set Child "ArmySlotCost 0 0		0"
+set Child "ArmySlotIcon 2 30	0"
+set Child "ArmySlotPop 160 190	0"
+set Child "ArmySlotText[ArmySlot0Text] 2 2	0 5 -15"
+set Child "TechRequirement 0 110 0"
+set CommandGetFocus "customize unitStatConfig army 0 1 /noOffset"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCB_TextJustify JustifyXCenter
+set CommandGetFocus "menuCmd GetReadyArmySlot0 local"
+set CommandGetFocus "gameUI enable ArmySlot0Pic"
+set CommandLoseFocus "if sym ChoosingUnit == 1 gameUI disable ArmySlot0Pic"
+set DynGreyScale canBuild0
+add MenuObject initFrom ArmySlot_InGameCommon
+set Name ArmySlot1
+set CommandOnCreate "sym set _ArmySlot 1"
+set ScaleXCenter 0.0
+set ScaleYCenter 0.0
+set DrawWhenFocused ArmySlot1Highlight
+set DrawWhenFocusedOffset "-9 -20"
+set CommandGetFocus "gameUI enable ArmySlot1Text"
+set CommandLoseFocus "gameUI disable ArmySlot1Text"
+set CommandFocusLeft "gameUI focusName ArmySlot0"
+set CommandFocusDown "gameUI focusName ArmySlot2"
+set Child "ArmySlotLvl 0 -76		1"
+set Child "ArmySlotBuildTime 0 -38	1"
+set Child "ArmySlotCost 0 0		1"
+set Child "ArmySlotIcon 2 30		1"
+set Child "ArmySlotPop 160 190	1"
+set Child "ArmySlotText[ArmySlot1Text] 2 2	1 5 -7"
+set Child "TechRequirement 0 110 1"
+set CommandGetFocus "customize unitStatConfig army 1 1 /noOffset"
+set CommandGetFocus "menuCmd GetReadyArmySlot1 local"
+set CommandGetFocus "gameUI enable ArmySlot1Pic"
+set CommandLoseFocus "if sym ChoosingUnit == 1 gameUI disable ArmySlot1Pic"
+set DynGreyScale canBuild1
+add MenuObject initFrom ArmySlot_InGameCommon
+set Name ArmySlot2
+set CommandOnCreate "sym set _ArmySlot 2"
+set ScaleXCenter 0.0
+set ScaleXFocused 1.1
+set ScaleYFocused 1.0
+set DrawWhenFocused ArmySlot2Highlight
+set DrawWhenFocusedOffset "-9 -9"
+set CommandGetFocus "gameUI enable ArmySlot2Text"
+set CommandLoseFocus "gameUI disable ArmySlot2Text"
+set CommandFocusLeft "gameUI focusName ArmySlot6"
+set CommandFocusUp "gameUI focusName ArmySlot1"
+set CommandFocusDown "gameUI focusName ArmySlot3"
+set Child "ArmySlotLvl 0 -76		2"
+set Child "ArmySlotBuildTime 0 -38	2"
+set Child "ArmySlotCost 0 0		2"
+set Child "ArmySlotIcon 2 30	2"
+set Child "ArmySlotPop 160 190	2"
+set Child "ArmySlotText[ArmySlot2Text] 2 2	2 0 0"
+set Child "TechRequirement 0 110 2"
+set CommandGetFocus "customize unitStatConfig army 2 1 /noOffset"
+set CommandGetFocus "menuCmd GetReadyArmySlot2 local"
+set CommandGetFocus "gameUI enable ArmySlot2Pic"
+set CommandLoseFocus "if sym ChoosingUnit == 1 gameUI disable ArmySlot2Pic"
+set DynGreyScale canBuild2
+add MenuObject initFrom ArmySlot_InGameCommon
+set Name ArmySlot3
+set CommandOnCreate "sym set _ArmySlot 3"
+set ScaleXCenter 0.0
+set ScaleYCenter 1.0
+set DrawWhenFocused ArmySlot3Highlight
+set DrawWhenFocusedOffset "-9 -9"
+set CommandGetFocus "gameUI enable ArmySlot3Text"
+set CommandLoseFocus "gameUI disable ArmySlot3Text"
+set CommandFocusLeft "gameUI focusName ArmySlot4"
+set CommandFocusUp "gameUI focusName ArmySlot2"
+set Child "ArmySlotLvl 0 -76		3"
+set Child "ArmySlotBuildTime 0 -38	3"
+set Child "ArmySlotCost 0 0		3"
+set Child "ArmySlotIcon 2 30	3"
+set Child "ArmySlotPop 160 190	3"
+set Child "ArmySlotText[ArmySlot3Text] 2 2	3 0 0"
+set Child "TechRequirement 0 110 3"
+set CommandGetFocus "customize unitStatConfig army 3 1 /noOffset"
+set CommandGetFocus "menuCmd GetReadyArmySlot3 local"
+set CommandGetFocus "gameUI enable ArmySlot3Pic"
+set CommandLoseFocus "if sym ChoosingUnit == 1 gameUI disable ArmySlot3Pic"
+set DynGreyScale canBuild3
+add MenuObject initFrom ArmySlot_InGameCommon
+set Name ArmySlot4
+set CommandOnCreate "sym set _ArmySlot 4"
+set ScaleYFocused 1.1
+set ScaleXFocused 1.0
+set ScaleYCenter 1.0
+set DrawWhenFocused ArmySlot4Highlight
+set DrawWhenFocusedOffset "-9 -11"
+set CommandGetFocus "gameUI enable ArmySlot4Text"
+set CommandLoseFocus "gameUI disable ArmySlot4Text"
+set CommandFocusRight "gameUI focusName ArmySlot3"
+set CommandFocusUp "gameUI focusName ArmySlot0"
+set CommandFocusLeft "gameUI focusName ArmySlot5"
+set Child "ArmySlotLvl 0 -76		4"
+set Child "ArmySlotBuildTime 0 -38	4"
+set Child "ArmySlotCost 0 0		4"
+set Child "ArmySlotIcon 2 30	4"
+set Child "ArmySlotPop 160 190	4"
+set Child "ArmySlotText[ArmySlot4Text] 2 2	4 0 0"
+set Child "TechRequirement 0 110 4"
+set CommandGetFocus "customize unitStatConfig army 4 1 /noOffset"
+set CommandGetFocus "menuCmd GetReadyArmySlot4 local"
+set CommandGetFocus "gameUI enable ArmySlot4Pic"
+set CommandLoseFocus "if sym ChoosingUnit == 1 gameUI disable ArmySlot4Pic"
+set DynGreyScale canBuild4
+add MenuObject initFrom ArmySlot_InGameCommon
+set Name ArmySlot5
+set CommandOnCreate "sym set _ArmySlot 5"
+set ScaleXCenter 1.0
+set ScaleYCenter 1.0
+set DrawWhenFocused ArmySlot5Highlight
+set DrawWhenFocusedOffset "-26 -9"
+set CommandGetFocus "gameUI enable ArmySlot5Text"
+set CommandLoseFocus "gameUI disable ArmySlot5Text"
+set CommandFocusRight "gameUI focusName ArmySlot4"
+set CommandFocusUp "gameUI focusName ArmySlot6"
+set Child "ArmySlotLvl 0 -76		5"
+set Child "ArmySlotBuildTime 0 -38	5"
+set Child "ArmySlotCost 0 0		5"
+set Child "ArmySlotIcon 2 30	5"
+set Child "ArmySlotPop 160 190	5"
+set Child "ArmySlotText[ArmySlot5Text] 2 2	5 -8 5"
+set Child "TechRequirement 0 110 5"
+set CommandGetFocus "customize unitStatConfig army 5 1 /noOffset"
+set CommandGetFocus "menuCmd GetReadyArmySlot5 local"
+set CommandGetFocus "gameUI enable ArmySlot5Pic"
+set CommandLoseFocus "if sym ChoosingUnit == 1 gameUI disable ArmySlot5Pic"
+set DynGreyScale canBuild5
+add MenuObject initFrom ArmySlot_InGameCommon
+set Name ArmySlot6
+set CommandOnCreate "sym set _ArmySlot 6"
+set ScaleXFocused 1.1
+set ScaleYFocused 1.0
+set ScaleXCenter 1.0
+set DrawWhenFocused ArmySlot6Highlight
+set DrawWhenFocusedOffset "-42 -9"
+set CommandGetFocus "gameUI enable ArmySlot6Text"
+set CommandLoseFocus "gameUI disable ArmySlot6Text"
+set CommandFocusRight "gameUI focusName ArmySlot2"
+set CommandFocusUp "gameUI focusName ArmySlot7"
+set CommandFocusDown "gameUI focusName ArmySlot5"
+set Child "ArmySlotLvl 0 -76		6"
+set Child "ArmySlotBuildTime 0 -38	6"
+set Child "ArmySlotCost 0 0		6"
+set Child "ArmySlotIcon 2 30	6"
+set Child "ArmySlotPop 160 190	6"
+set Child "ArmySlotText[ArmySlot6Text] 2 2	6 -20 5"
+set Child "TechRequirement 0 110 6"
+set CommandGetFocus "customize unitStatConfig army 6 1 /noOffset"
+set CommandGetFocus "menuCmd GetReadyArmySlot6 local"
+set CommandGetFocus "gameUI enable ArmySlot6Pic"
+set CommandLoseFocus "if sym ChoosingUnit == 1 gameUI disable ArmySlot6Pic"
+set DynGreyScale canBuild6
+add MenuObject initFrom ArmySlot_InGameCommon
+set Name ArmySlot7
+set CommandOnCreate "sym set _ArmySlot 7"
+set ScaleXCenter 1.0
+set ScaleYCenter 0.0
+set DrawWhenFocused ArmySlot7Highlight
+set DrawWhenFocusedOffset "-26 -20"
+set CommandGetFocus "gameUI enable ArmySlot7Text"
+set CommandLoseFocus "gameUI disable ArmySlot7Text"
+set CommandFocusRight "gameUI focusName ArmySlot0"
+set CommandFocusDown "gameUI focusName ArmySlot6"
+set Child "ArmySlotLvl 0 -76		7"
+set Child "ArmySlotBuildTime 0 -38	7"
+set Child "ArmySlotCost 0 0		7"
+set Child "ArmySlotIcon 2 30	7"
+set Child "ArmySlotPop 160 190	7"
+set Child "ArmySlotText[ArmySlot7Text] 2 2	7 -8 -7"
+set Child "TechRequirement 0 110 7"
+set CommandGetFocus "customize unitStatConfig army 7 1 /noOffset"
+set CommandGetFocus "menuCmd GetReadyArmySlot7 local"
+set CommandGetFocus "gameUI enable ArmySlot7Pic"
+set CommandLoseFocus "if sym ChoosingUnit == 1 gameUI disable ArmySlot7Pic"
+set DynGreyScale canBuild7
+add MenuObject initFrom TextSlotTemplate
+set Name ArmySlotText
+set RenderCB_ConsoleSymbolGen ">customize slotDisplayGen @_Arg1_@ DispSlotName DispSlotCost DispSlotTime"
+set RenderCB_ConsoleSymbol DispSlotName
+set RenderCB_OffsetFocused "@_Arg2_@ @_Arg3_@"
+set SaveArgs 3
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_FontScale 0.35
+add MenuObject initFrom UnitIconTemplate
+set Name ArmySlotIcon
+set Texture units/&AS@_Arg1_@P@net_local_player@&/Icons@TeamColor@
+set TextureAlt units/&AS@_Arg1_@P@net_local_player@&/IconUnique
+set ScaleYCenter 0.25
+set DynGreyScale canBuild@_Arg1_@
+set SaveArgs 1
+add MenuObject initFrom UnitPictureTemplate
+set Name ArmySlot0Pic
+add MenuObject initFrom UnitPictureTemplate
+set Name ArmySlot1Pic
+add MenuObject initFrom UnitPictureTemplate
+set Name ArmySlot2Pic
+add MenuObject initFrom UnitPictureTemplate
+set Name ArmySlot3Pic
+add MenuObject initFrom UnitPictureTemplate
+set Name ArmySlot4Pic
+add MenuObject initFrom UnitPictureTemplate
+set Name ArmySlot5Pic
+add MenuObject initFrom UnitPictureTemplate
+set Name ArmySlot6Pic
+add MenuObject initFrom UnitPictureTemplate
+set Name ArmySlot7Pic
+add MenuObject initFrom UnitPictureTemplate
+set Name OrderSlotHint1
+set Coords "760 209 50 50"
+add MenuObject initFrom UnitPictureTemplate
+set Name OrderSlotHint3
+set Coords "860 209 50 50"
+add MenuObject initFrom UnitPictureTemplate
+set Name OrderSlotHint4
+set Coords "760 259 50 50"
+add MenuObject initFrom UnitPictureTemplate
+set Name OrderSlotHint5
+set Coords "810 259 50 50"
+add MenuObject
+set Name UnitsScreen
+set Coords "0 0 320 400"
+set ContainerOnly 1
+set DrawWhenFocused ScreenUnitHighlight
+set Focus -2
+set CommandFocusUp "menuCmd ChooseUnitBoxUp local"
+set CommandFocusRight "menuCmd ChooseUnitBoxRight local"
+set CommandFocusDown "menuCmd ChooseUnitBoxDown local"
+set CommandFocusLeft "menuCmd ChooseUnitBoxLeft local"
+set CommandGetFocus "sym setConcat2 UnitReadableName $C_BINDING $UnitReadableName_Memory@C_BINDING@"
+set CommandGetFocus "sym setConcat2 OrderReadableName $C_BINDING NA"
+set CommandGetFocus "sym setConcat2 UIUnitDesc $C_BINDING $UIUnitDesc_Memory@C_BINDING@"
+set CommandGetFocus "floatsym setConcat2 UIUnitDescTimer $C_BINDING 0.0"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "menuCmd UnitChosen local"
+set CommandCancel "if sym QuickCockpitActive == 0 gameUI focusName DummyFocus"
+set CommandCancel "if sym QuickCockpitActive == 0 menuCmd TryToCloseCockpit local"
+set Child "ArmySlot0Pic 20 55"
+set Child "ArmySlot1Pic 20 55"
+set Child "ArmySlot2Pic 20 55"
+set Child "ArmySlot3Pic 20 55"
+set Child "ArmySlot4Pic 20 55"
+set Child "ArmySlot5Pic 20 55"
+set Child "ArmySlot6Pic 20 55"
+set Child "ArmySlot7Pic 20 55"
+set Child "UnitSlotStatusHeld 17 52"
+set Child "ArmySlotText[ArmySlot7Text] -30 20	7 -8 -7"
+set Child "ArmySlotText[ArmySlot6Text] -30 20	6 -20 5"
+set Child "ArmySlotText[ArmySlot5Text] -30 20	5 -8 5"
+set Child "ArmySlotText[ArmySlot4Text] -30 20	4 0 0"
+set Child "ArmySlotText[ArmySlot3Text] -30 20	3 0 0"
+set Child "ArmySlotText[ArmySlot2Text] -30 20	2 0 0"
+set Child "ArmySlotText[ArmySlot1Text] -30 20	1 5 -7"
+set Child "ArmySlotText[ArmySlot0Text] -30 20	0 5 -15"
+add MenuObject
+set Name UnitsBoxBungie
+set ContainerOnly 1
+set Coords "0 0 128 128"
+set Focus -2
+set FocusBungieArcStart -22.5
+set FocusBungieArcSizes 45
+set FocusSticky 1
+set FocusBungieTargetIDs "ArmySlot0 ArmySlot1 ArmySlot2 ArmySlot3 ArmySlot4 ArmySlot5 ArmySlot6 ArmySlot7"
+set CommandPress "echo Press-UnitsBoxBungie"
+add MenuObject
+set Name UnitsBoxCenter
+set Texture cockpit/ArmyCenter@TeamColor@
+set Coords "0 0 284 284"
+set Layer 1
+add MenuObject
+set Name UnitsBox
+set ContainerOnly 1
+set Anchor Center
+set Hidden 1
+set Coords "0 0 976 688"
+set Child "QueueRemovePad 130 -89"
+set Child "QueueRemoveKey 130 -89"
+set Child "ArmySlotCenter 328 232"
+set Child "ArmySlot0 328 0			0"
+set Child "ArmySlot1 656 0			1"
+set Child "ArmySlot2 656 232		2"
+set Child "ArmySlot3 656 464		3"
+set Child "ArmySlot4 328 464		4"
+set Child "ArmySlot5 0 464			5"
+set Child "ArmySlot6 0 232			6"
+set Child "ArmySlot7 0 0			7"
+set Child "UnitsBoxBungie 238 232"
+add MenuObject
+set Name UpgradeBox3
+set ContainerOnly 1
+set Anchor Center
+set Coords "0 0 976 688"
+set Hidden 1
+set Child "ArmySlotCenter 328 232"
+set Child "ArmySlotTemplate 328 0			0"
+set Child "ArmySlotTemplate 656 0			1"
+set Child "ArmySlotTemplate 656 232		2"
+set Child "ArmySlotTemplate 656 464		3"
+set Child "ArmySlotTemplate 328 464		4"
+set Child "ArmySlotTemplate 0 464			5"
+set Child "ArmySlotTemplate 0 232			6"
+set Child "ArmySlotTemplate 0 0			7"
+set Child "CockpitUpgradeAirMech 0 0"
+add MenuObject
+set Name UpgradeBox2
+set ContainerOnly 1
+set Anchor Center
+set Hidden 1
+set Coords "0 0 976 688"
+set Child "QueueRemovePad 120 -89"
+set Child "QueueRemoveKey 120 -89"
+set Child "ArmySlotCenter 328 232"
+set Child "ArmySlot0 328 0			0"
+set Child "ArmySlot1 656 0			1"
+set Child "ArmySlot2 656 232		2"
+set Child "ArmySlot3 656 464		3"
+set Child "ArmySlot4 328 464		4"
+set Child "ArmySlot5 0 464			5"
+set Child "ArmySlot6 0 232			6"
+set Child "ArmySlot7 0 0			7"
+set Child "UnitsBoxBungie 238 232"
+add MenuObject
+set Name CockpitSideMousezone
+set MouseInteract 1
+set Texture cockpit/CockpitSideZone@TeamColor@
+set Focus -2
+set Disabled 1
+set EnabledAlpha 0.0
+set Coords "0 0 64 512"
+set ScaleX 2.0
+set ScaleY 1.5
+add MenuObject initFrom CockpitSideMousezone
+set Name CockpitSideMousezoneR
+set CommandPress "menuCmd MapToBuildShift local"
+set CommandPress "gameUI disable CockpitSideMousezoneR"
+set CommandPress "gameUI enable CockpitSideMousezoneL"
+set Anchor Right
+add MenuObject initFrom CockpitSideMousezone
+set Name CockpitSideMousezoneL
+set MirrorOnX 1
+set CommandPress "menuCmd BuildToMapShift local"
+set CommandPress "gameUI disable CockpitSideMousezoneL"
+set CommandPress "gameUI enable CockpitSideMousezoneR"
+set Anchor Left
+add MenuObject
+set Name CockpitColorBackground
+set Texture hud/EndgamePlayer@TC_LocalPlayer@
+set Coords "830 171 66 37"
+set TileAreaFullTexture 0
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name CockpitBuildUnit
+set Coords "0 0 1920 1080"
+set ContainerOnly 1
+set Focus -2
+set RenderCB_Flags "/inGameOnly"
+set Child "UnitsBox 0 0		/ifSym _UnitsBox == 1"
+set Child "UpgradeBox 0 0	/ifSym _UpgradeBox == 1"
+set Child "CockpitDummy 0 0"
+add MenuObject
+set Name CockpitUpgradeAirMech2
+set Coords "0 0 1920 1080"
+set ContainerOnly 1
+set Focus -2
+set RenderCB_Flags "/inGameOnly"
+set Child "UpgradeBox 0 0"

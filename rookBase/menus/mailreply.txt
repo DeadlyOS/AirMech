@@ -1,0 +1,22 @@
+blockLoadOnConsoleSym MailReplyLoaded
+onloadrun {
+if menuloaded MailCompose.txt clearmenu MailCompose.txt
+sym set MailReplyLoaded 1
+sym set MailSendFailed 0
+menuCmd GameMailComposeInitialize
+}
+MO MailReply {
+pos 370 60
+layer 15
+draggableUIElement
+}
+onload {
+gameui promoteToTop MailReply
+}
+onunloadrun {
+}
+onunload {
+sym set MailReplyLoaded 0
+sym set MailComposeLoaded 0
+menuCmd GameMailComposeInitialize
+}

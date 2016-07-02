@@ -1,0 +1,1431 @@
+add MenuObject
+set Name MailNotifyUnreadCount
+set Coords "0 0 20 20"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.54
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold_NoFallback
+set RenderCB_RGBColor 0x448b52
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol GameMailUnread
+set RenderCB_Flags "/nmi /fitX "
+set RenderCB_OffsetFocused "0 -1"
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolInv GameMailUnread
+add MenuObject initFrom MailNotifyUnreadCount
+set Name MailNotifyUnreadFlash
+set PulseAlpha "2.0 -0.5 15.5"
+set HiddenCheckBySymbolValue GameMailUnread=0
+add MenuObject initFrom MailNotifyUnreadCount
+set Name MailNotifyUnreadNormal
+set HiddenCheckBySymbolValue GameMailUnread=0
+add MenuObject
+set Name MailInboxNotify
+set Texture menus/MenuBarButtons
+set Coords "1 2 60 52"
+set CoordsFocused "1 3 60 52"
+set HiddenCheckBySymbolInv GameMailUnread
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom MenuBarOpenButton
+set Name MenuBarOpenButtonMail
+set HiddenCheckBySymbolInv MailInboxLoaded
+add MenuObject
+set Name MailInboxButton
+set Texture menus/MenuBarButtons
+set Coords "1 108 60 52"
+set CoordsFocused "1 56 60 52"
+set DrawWhenFocused FocusCloud
+set DrawWhenFocusedOffset "-10 -13"
+set MouseInteract 1
+set Focus -2
+set ToolTip TT_Mail
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPressAlt "gameUI ignoreInputTime 0.1"
+set CommandDoubleClick "gameUI ignoreInputTime 0.1"
+set CommandPress "if !menuloaded MailInbox runnow sym set MailInboxLoaded 0"
+set CommandPress "if !menuloaded MailMessage runnow sym set MailMessageLoaded 0"
+set CommandPress "if !menuloaded MailMessage runnow menucmd CloseMailPane"
+set CommandPress "if !menuloaded MailCompose runnow sym set MailComposeLoaded 0"
+set CommandPress "if !menuloaded MailReply runnow sym set MailReplyLoaded 0"
+set CommandPress "sym set MailOutbox 0"
+set CommandGetFocus "sym set LobbyV1FocusSlot 0"
+set CommandGetFocus "input set padFocusFallback MailInboxButton"
+set CommandFocusLeft "gameui focusnametry FriendsOpenButton"
+set CommandFocusRight "gameui focusnametry InventoryOpenButton"
+set CommandPress "if usingpad && sym GL_ChatMinimized != 0 runnow sym set UI_Mail_X 380"
+set CommandPress "if usingpad && sym GL_ChatMinimized == 0 runnow sym set UI_Mail_X 140"
+set CommandPress "if usingpad runnow sym set UI_Mail_Y 100"
+set CommandPress "if !menuloaded MailInbox loadmenu MailInbox /fadein 0.1"
+set CommandPress "if menuloaded MailInbox gameui promoteToTop MailInbox"
+set CommandPressAlt "if menuloaded MailInbox clearmenu MailInbox /fadeout 0.1"
+set CommandDoubleClick "if menuloaded MailInbox clearmenu MailInbox /fadeout 0.1"
+set FirstDrawnChildren 1
+set Child "MenuBarOpenButtonMail -1 -1"
+set Child "MailInboxNotify 0 0"
+set Child "MailNotifyUnreadFlash 39 -1"
+add MenuObject
+set Name MailInboxNotifyIcon
+set Texture menus/MenuBarButtons
+set Coords "1 108 60 52"
+set CoordsFocused "1 56 60 52"
+set MouseInteract 1
+set Focus -2
+set ToolTip TT_Mail
+set Child "MailInboxNotify 0 0"
+set Child "MailNotifyUnreadFlash 39 -1"
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailInboxButtonCompose
+set ToolTip TT_MailCompose
+set CommandPress "sym set MailSendFailed 0"
+set CommandPress "sym clear MailComposeTo"
+set CommandPress "sym clear MailComposeSubject"
+set CommandPress "sym clear MailComposeBody"
+set CommandPress "gameui promoteToTop MailCompose"
+set CommandPress "loadmenu MailCompose.txt /fadein 0.15"
+set CommandGetFocus "input set padFocusFallback MailInboxButtonCompose"
+set CommandPress "pcmd 0.1 gameui focusnametry MailComposeTo"
+set CommandFocusUp "gameUI focusNameTry MailInboxItem6 MailInboxItem5 MailInboxItem4 MailInboxItem3 MailInboxItem2 MailInboxItem1 MailInboxItem0"
+set	CommandFocusRight "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusUp "gameui focusnametry MailBoxButtonDeleteFill MailBoxButtonDelete MailMessageButtonDeleteFill MailMessageButtonDelete"
+set	CommandFocusDown "gameui focusnametry MailMessageButtonReply MailOutboxButton MailInboxReturn MailBoxButtonDeleteFill MailBoxButtonDelete MailMessageButtonDeleteFill MailMessageButtonDelete"
+set CommandCancel "menucmd ReqGameMailClose"
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailMessageButtonReply
+set ToolTip TT_MailReply
+set HiddenCheckBySymbolInv MailMessageLoaded
+set HiddenCheckBySymbol ViewMailSystem
+set Coords "396 346 72 72"
+set CoordsFocused "397 425 72 72"
+set CoordsPressed "395 423 72 72"
+set CommandPress "sym set MailComposeTo $ViewMailFrom"
+set CommandGetFocus "input set padFocusFallback MailMessageButtonReply"
+set CommandPress "sym set MailComposeSubject Re: $ViewMailSubject"
+set CommandPress "mail reCollapseSym MailComposeSubject"
+set CommandPress "sym clear MailComposeBody"
+set CommandPress "gameui promoteToTop MailReply"
+set CommandPress "loadmenu MailReply.txt /fadein 0.15"
+set CommandPress "pcmd 0.1 gameui focusnametry MailComposeBody"
+set	CommandFocusUp "gameui focusnametry MailInboxButtonCompose MailBoxButtonDeleteFill MailBoxButtonDelete MailMessageButtonDeleteFill MailMessageButtonDelete"
+set	CommandFocusRight "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusDown "gameui focusnametry MailOutboxButton MailInboxReturn MailBoxButtonDeleteFill MailBoxButtonDelete MailMessageButtonDeleteFill MailMessageButtonDelete"
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailMessageButtonReplyInset
+set HiddenCheckBySymbol ViewMailSystem
+set Coords "396 346 72 72"
+set CoordsFocused "397 425 72 72"
+set CoordsPressed "395 423 72 72"
+set ToolTip TT_MailReply
+set CommandPress "sym set MailComposeTo $ViewMailFrom"
+set CommandGetFocus "input set padFocusFallback MailMessageButtonReply"
+set CommandPress "sym set MailComposeSubject Re: $ViewMailSubject"
+set CommandPress "mail reCollapseSym MailComposeSubject"
+set CommandPress "sym clear MailComposeBody"
+set CommandPress "gameui promoteToTop MailReply"
+set CommandPress "loadmenu MailReply.txt /fadein 0.15"
+set CommandPress "pcmd 0.1 gameui focusnametry MailComposeBody"
+set	CommandFocusLeft "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailOutboxButton
+set Coords "473 346 72 72"
+set CoordsFocused "474 425 72 72"
+set CoordsPressed "472 423 72 72"
+set ToolTip TT_MailOutbox
+set HiddenCheckBySymbol MailOutbox
+set CommandGetFocus "input set padFocusFallback MailOutboxButton"
+set CommandPress "menucmd GameMailOutboxInitialize"
+set CommandPress "if usingpad gameui focusnametry MailInboxReturn"
+set	CommandFocusRight "gameui focusnametry #MailOutboxItem@MailOutboxSelected@ #MailInboxItem@MailInboxSelected@"
+set	CommandFocusUp "gameui focusnametry MailMessageButtonReply MailInboxButtonCompose MailBoxButtonDeleteFill MailBoxButtonDelete MailMessageButtonDeleteFill MailMessageButtonDelete"
+set CommandCancel "menucmd ReqGameMailClose"
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailInboxReturn
+set Coords "550 346 72 72"
+set CoordsFocused "551 425 72 72"
+set CoordsPressed "549 423 72 72"
+set ToolTip TT_MailInbox
+set HiddenCheckBySymbolInv MailOutbox
+set CommandGetFocus "input set padFocusFallback MailInboxReturn"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "menucmd GameMailInboxInitialize"
+set CommandPress "if usingpad gameui focusnametry MailOutboxButton"
+set CommandCancel "gameui ignoreInputTime 0.1"
+set CommandCancel "menucmd GameMailInboxInitialize"
+set CommandCancel "if usingpad gameui focusnametry MailOutboxButton"
+set	CommandFocusRight "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusUp "gameui focusnametry MailMessageButtonReply MailInboxButtonCompose MailBoxButtonDeleteFill MailBoxButtonDelete MailMessageButtonDeleteFill MailMessageButtonDelete"
+add MenuObject
+set Name MailboxButtonDeleteBg
+set Texture menus/Mail
+set Coords "88 346 72 72"
+set HiddenCheckBySymbolValue @_Arg1_@=
+add MenuObject
+set Name MailboxButtonDeleteGray
+set Texture menus/Mail
+set Coords "88 346 72 72"
+set DrawGreyScale 1
+set HiddenCheckBySymbol _InboxDeleteStop
+add MenuObject
+set Name MailboxButtonDeleteFill
+set Texture menus/Mail
+set MouseInteract 1
+set Focus -2
+set ToolTip TT_MailDelete
+set DrawWhenFocused FocusMailButtonPad
+set DrawWhenFocusedOffset "-27 -27"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set Coords "411 505 60 60"
+set BlendMode BlendColorAdd
+set CoordsInterpolatedDest "411 577 60 60"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult _InboxDelete
+set CommandGetFocus "floatsym set _InboxDelete 0"
+set CommandGetFocus "sym set _InboxDeleteStop 0"
+set CommandGetFocus "menucmd ButtonHover_InboxDelete"
+set CommandLoseFocus "sym set _InboxDeleteStop 1"
+set CommandLoseFocus "pcmd t2 floatsym set _InboxDelete 0"
+set	CommandFocusRight "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailInboxSelected@"
+set	CommandFocusDown "gameui focusnametry MailInboxButtonCompose #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailInboxSelected@"
+set SaveArgs 1
+set HiddenCheckBySymbolValue @_Arg1_@=
+set DisabledSymValue InboxSelectedIDs=
+add MenuObject
+set Name MailboxButtonDelete
+set Coords "88 425 72 72"
+set Texture menus/Mail
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set ToolTip TT_MailDelete
+set DrawWhenFocused FocusMailButtonPad
+set DrawWhenFocusedOffset "-27 -27"
+set	CommandPress ">mail deleteSet @_Arg1_@"
+set CommandLoseFocus "sym set _InboxDeleteEn"
+set HiddenCheckBySymbolInv _InboxDeleteEn
+set HiddenCheckBySymbolValue @_Arg1_@=
+set CommandGetFocus "input set padFocusFallback MailboxButtonDelete"
+set	CommandFocusRight "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusDown "gameui focusnametry MailInboxButtonCompose #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set CommandCancel "menucmd ReqGameMailClose"
+add MenuObject
+set Name MailMessageButtonDeleteBg
+set Texture menus/Mail
+set Coords "88 346 72 72"
+add MenuObject
+set Name MailMessageButtonDeleteGray
+set Texture menus/Mail
+set Coords "88 346 72 72"
+set DrawGreyScale 1
+set HiddenCheckBySymbol _MessageDeleteStop
+set ToolTip TT_MailDelete
+add MenuObject
+set Name MailMessageButtonDeleteDisable
+set Texture menus/Mail
+set Coords "88 346 72 72"
+set DrawGreyScale 1
+set MouseInteract 1
+set Focus -2
+set ToolTip TT_NoDeleteHasItem
+set HiddenCheckBySymbolInv ViewMailHasItem
+add MenuObject
+set Name MailMessageButtonDeleteFill
+set Texture menus/Mail
+set MouseInteract 1
+set Focus -2
+set ToolTip MM_MailDelete
+set DrawWhenFocused FocusMailButtonPad
+set DrawWhenFocusedOffset "-30 -33"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set Coords "411 505 60 60"
+set BlendMode BlendColorAdd
+set CoordsInterpolatedDest "411 577 60 60"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult _MessageDelete
+set CommandGetFocus "floatsym set _MessageDelete 0"
+set CommandGetFocus "sym set _MessageDeleteStop 0"
+set CommandGetFocus "menucmd ButtonHover_MessageDelete"
+set CommandLoseFocus "sym set _MessageDeleteStop 1"
+set CommandLoseFocus "pcmd t2 floatsym set _MessageDelete 0"
+set HiddenCheckBySymbol ViewMailHasItem
+set DisabledSymInv MailMessageDeleteFinished
+set DisabledAlpha 0.5
+set CommandHiddenWhenFocused "echo test"
+set CommandHiddenWhenFocused "if usingpad gameui focusnametry MailMessageButtonDelete"
+set	CommandFocusRight "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusDown "gameui focusnametry MailInboxButtonCompose #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusUp "gameui focusnametry MailInboxSelectAll"
+add MenuObject
+set Name MailMessageButtonDelete
+set Texture menus/Mail
+set Coords "88 425 72 72"
+set MouseInteract 1
+set Focus -2
+set ToolTip TT_MailDelete
+set DrawWhenFocused FocusMailButtonPad
+set DrawWhenFocusedOffset "-27 -27"
+set CommandPress "gameui ignoreInputTime 0.5"
+set HiddenCheckBySymbolInv _MessageDeleteEn
+set HiddenCheckBySymbolInv2 MailMessageDeleteFinished
+set CommandLoseFocus "sym set _MessageDeleteEn 0"
+set CommandGetFocus "input set padFocusFallback MailMessageButtonDelete"
+set	CommandPress "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusRight "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusDown "gameui focusnametry MailInboxButtonCompose #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandPress "gameui enable #MailInboxItemDelete@MailInboxSelected@"
+set	CommandPress "sym set MailMessageDeleteFinished 0"
+set	CommandPress "if !consolePlatform && sym InboxSelectedIDs isEmpty && sym OutboxSelectedIDs isEmpty runnow mail delete /inbox $ViewMailId /outbox $ViewSentMailId"
+set	CommandPress "if !consolePlatform && sym OutboxSelectedIDs !isEmpty runnow mail deleteSet OutboxSelectedIDs"
+set CommandPress "if consolePlatform && sym InboxSelectedIDs !isEmpty runnow mail deleteSet InboxSelectedIDs"
+set CommandCancel "menucmd ReqGameMailClose"
+set	CommandFocusRight "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusUp "gameui focusnametry MailInboxSelectAll"
+add MenuObject
+set Name MailSentMessageButtonDelete
+set Texture menus/Mail
+set Coords "88 425 72 72"
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused FocusMailButtonPad
+set DrawWhenFocusedOffset "-27 -27"
+set CommandPress "gameui ignoreInputTime 0.2"
+set HiddenCheckBySymbolInv _MessageDeleteEn
+set CommandGetFocus "input set padFocusFallback MailSentMessageButtonDelete"
+set	CommandFocusRight "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusDown "gameui focusnametry MailInboxButtonCompose #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set CommandLoseFocus "sym set _MessageDeleteEn"
+set	CommandPress "if sym OutboxSelectedIDs isEmpty mail delete /outbox $ViewSentMailId"
+set	CommandPress "if sym OutboxSelectedIDs !isEmpty mail deleteSet OutboxSelectedIDs"
+set	CommandPress "clearmenu MailMessageSent.txt /fadeout 0.15"
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailComposeButtonSend
+set Coords "319 346 72 72"
+set CoordsFocused "320 425 72 72"
+set CoordsPressed "318 423 72 72"
+set ToolTip TT_MailSend
+set SaveArgs 1
+set	CommandPress "gameui disable MailComposeButtonSend"
+set	CommandPress ">menuCmd @_Arg1_@"
+set CommandFocusUp "gameUI focusName MailComposeBody"
+set CommandFocusDown "gameUI focusName MailComposeTo"
+set CommandTabCycleRev "gameUI focusName MailComposeBody"
+set CommandTabCycle "gameUI focusName MailComposeTo"
+set DisabledAlpha 0.33
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailInboxButtonPrevious
+set DisabledSymInv InboxPagePrevOk
+set Coords "163 366 67 52"
+set CoordsFocused "165 444 72 52"
+set CoordsPressed "167 444 72 52"
+set ToolTip TT_MailPrevPage
+set ScaleX 0.8, ScaleY 0.8
+set CommandPress "menucmd GameMailInboxPagePrev"
+set DisabledAlpha 0.33
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailInboxButtonNext
+set DisabledSymInv InboxPageNextOk
+set Coords "246 366 67 52"
+set CoordsFocused "244 444 72 52"
+set CoordsPressed "242 444 72 52"
+set ToolTip TT_MailNextPage
+set ScaleX 0.8, ScaleY 0.8
+set CommandPress "menucmd GameMailInboxPageNext"
+set DisabledAlpha 0.33
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailOutboxButtonPrevious
+set DisabledSymInv OutboxPagePrevOk
+set Coords "163 366 67 52"
+set CoordsFocused "165 444 72 52"
+set CoordsPressed "167 444 72 52"
+set ScaleX 0.8, ScaleY 0.8
+set CommandPress "menucmd GameMailOutboxPagePrev"
+set DisabledAlpha 0.33
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailOutboxButtonNext
+set DisabledSymInv OutboxPageNextOk
+set Coords "246 366 67 52"
+set CoordsFocused "244 444 72 52"
+set CoordsPressed "242 444 72 52"
+set ScaleX 0.8, ScaleY 0.8
+set CommandPress "menucmd GameMailOutboxPageNext"
+set DisabledAlpha 0.33
+add MenuObject
+set Name InboxLowerButtons
+set ContainerOnly 1
+set HiddenCheckBySymbol MailOutbox
+set Child "MailInboxButtonCompose 0 0	/platform !consoleplatformHW"
+set Child "MailMessageButtonReply 0 80	/platform !consoleplatformHW"
+set Child "MailboxButtonDeleteBg 0 -80		InboxSelectedIDs"
+set Child "MailboxButtonDeleteGray 0 -80"
+set Child "MailboxButtonDeleteFill 6 -74		InboxSelectedIDs"
+set Child "MailboxButtonDelete 0 -80			InboxSelectedIDs"
+set Child "MailOutboxButton 0 160	/platform !consoleplatformHW"
+set Child "MailSpecialLabel 300 -177	GameMailInboxDisplayState	0.65	120		/platform !consolePlatform"
+set Child "MailSpecialLabel 470 -177	GameMailInboxDisplayState	0.65	120		/platform consolePlatform"
+set Child "MailInboxButtonPrevious 436 -186					/platform !consolePlatform"
+set Child "MailInboxButtonNext 490 -186						/platform !consolePlatform"
+add MenuObject
+set Name OutboxLowerButtons
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MailOutbox
+set Child "MailInboxButtonCompose 0 0	/platform !consoleplatformHW"
+set Child "MailboxButtonDeleteBg 0 -80		OutboxSelectedIDs"
+set Child "MailboxButtonDeleteGray 0 -80"
+set Child "MailboxButtonDeleteFill 6 -74		OutboxSelectedIDs"
+set Child "MailboxButtonDelete 0 -80			OutboxSelectedIDs"
+set Child "MailInboxReturn 0 160"
+set Child "MailSpecialLabel 300 -177	GameMailOutboxDisplayState	0.65	120"
+set Child "MailOutboxButtonPrevious 436 -186"
+set Child "MailOutboxButtonNext 490 -186"
+add MenuObject
+set Name MailButtonCloseVis
+set Coords "638 454 50 50"
+set CoordsFocused "637 397 50 50"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name MailButtonClose
+set Coords "0 0 33 33"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">clearmenu @_Arg1_@ /fadeout 0.15"
+set Child "MailButtonCloseVis 0 0"
+add MenuObject
+set Name MailInboxLine
+set Texture menus/Mail
+set Coords "3 330 505 4"
+add MenuObject
+set Name MailInboxSelectActive
+set Texture menus/Mail
+set Coords "4 513 29 29"
+set HiddenCheckBySymbolValue InboxSelectedIDs-InboxId@_Arg1_@
+set SaveArgs 1
+set BlendMode BlendAdd
+set Child "MailInboxItemDeleteMulti -16 -22"
+add MenuObject
+set Name MailInboxSelect
+set Texture menus/Mail
+set Coords "43 511 33 33"
+set CoordsFocused "88 511 33 33"
+set ToolTip TT_MailSelect
+set SaveArgs 1
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "-15 -19 15 16"
+set DrawWhenFocused MailOutboxItemHighlight
+set DrawWhenFocusedOffset "-15 -18"
+set CommandPress ">sym setToggle InboxSelectedIDs $InboxId@_Arg1_@"
+set Child "MailInboxSelectActive 2 2	@_Arg1_@"
+add MenuObject
+set Name MailOutboxSelectActive
+set Texture menus/Mail
+set Coords "4 513 29 29"
+set HiddenCheckBySymbolValue OutboxSelectedIDs-OutboxId@_Arg1_@
+set SaveArgs 1
+set BlendMode BlendAdd
+add MenuObject
+set Name MailOutboxSelect
+set Texture menus/Mail
+set Coords "43 511 33 33"
+set CoordsFocused "88 511 33 33"
+set SaveArgs 1
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "-15 -19 15 16"
+set DrawWhenFocused MailOutboxItemHighlight
+set DrawWhenFocusedOffset "-15 -18"
+set CommandPress ">sym setToggle OutboxSelectedIDs $OutboxId@_Arg1_@"
+set Child "MailOutboxSelectActive 2 2	@_Arg1_@"
+add MenuObject
+set Name MailInboxSelectAllActive
+set Texture menus/Mail
+set Coords "4 513 29 29"
+set HiddenCheckBySymbolInv _InboxSelectedAll
+set BlendMode BlendAdd
+add MenuObject
+set Name MailInboxSelectAll
+set HiddenCheckBySymbol MailOutbox
+set Texture menus/Mail
+set Coords "43 511 33 33"
+set CoordsFocused "88 511 33 33"
+set ToolTip TT_MailSelectAll
+set Focus -2
+set MouseInteract 1
+set NoAlphaMod 1
+set Alpha 0.5
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "if sym _InboxSelectedAll == 1 sym clear InboxSelectedIDs"
+set CommandPress "if sym _InboxSelectedAll == 0 sym setAdd InboxSelectedIDs $InboxId0 $InboxId1 $InboxId2 $InboxId3 $InboxId4 $InboxId5 $InboxId6 $InboxId7 $InboxId8 $InboxId9"
+set CommandPress "sym toggle _InboxSelectedAll"
+set CommandCancel "menucmd ReqGameMailClose"
+set	CommandFocusRight "gameui focusnametry #MailInboxItem@MailInboxSelected@ #MailOutboxItem@MailOutboxSelected@"
+set	CommandFocusDown "gameui focusnametry MailBoxButtonDeleteFill MailBoxButtonDelete MailMessageButtonDeleteFill MailMessageButtonDelete"
+set Child "MailInboxSelectAllActive 2 2"
+add MenuObject
+set Name MailOutboxSelectAllActive
+set Texture menus/Mail
+set Coords "4 513 29 29"
+set HiddenCheckBySymbolInv _OutboxSelectedAll
+set BlendMode BlendAdd
+add MenuObject
+set Name MailOutboxSelectAll
+set HiddenCheckBySymbolInv MailOutbox
+set Texture menus/Mail
+set Coords "43 511 33 33"
+set CoordsFocused "88 511 33 33"
+set ToolTip TT_MailSelectAll
+set Focus -2
+set MouseInteract 1
+set NoAlphaMod 1
+set Alpha 0.5
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "if sym _OutboxSelectedAll == 1 sym clear OutboxSelectedIDs"
+set CommandPress "if sym _OutboxSelectedAll == 0 sym setAdd OutboxSelectedIDs $OutboxId0 $OutboxId1 $OutboxId2 $OutboxId3 $OutboxId4 $OutboxId5 $OutboxId6 $OutboxId7 $OutboxId8 $OutboxId9"
+set CommandPress "sym toggle _OutboxSelectedAll"
+set Child "MailOutboxSelectAllActive 2 2"
+add MenuObject
+set Name MailInboxFrom
+set Coords "0 0 355 50"
+set RenderCB_DX 355
+set RenderCB_DY 50
+set RenderCB_FontScale 0.6
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x5ab5b4
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol InboxFrom@_Arg1_@
+set SaveArgs 1
+set RenderCB_Flags "/fitX"
+add MenuObject initFrom MailInboxFrom
+set Name MailOutboxTo
+set RenderCB _DrawUText
+set RenderCB_Text MailOutboxTo
+set RenderCB_ConsoleSymbol ""
+set RenderCB_ConsoleSymbol2 SP
+set RenderCB_ConsoleSymbol3 OutboxTo@_Arg1_@
+add MenuObject initFrom MailInboxFrom
+set Name MailInboxSubject
+set RenderCB_RGBColor 0xdff8f9
+set RenderCB_ConsoleSymbol InboxSubject@_Arg1_@
+set RenderCB _DrawText
+set RenderCB_Flags "/fitX"
+set HiddenCheckBySymbolValue InboxFromSystem@_Arg1_@=1
+add MenuObject initFrom MailInboxSubject
+set Name MailInboxSubject_System
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX /toU16"
+set HiddenCheckBySymbolValue InboxFromSystem@_Arg1_@=0
+add MenuObject initFrom MailInboxSubject
+set Name MailOutboxSubject
+set RenderCB_ConsoleSymbol OutboxSubject@_Arg1_@
+set HiddenCheckBySymbolValue ""
+add MenuObject initFrom MailInboxFrom
+set Name MailInboxExpires
+set RenderCB_RGBColor 0x767d7d
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX /toU16"
+set RenderCB_ConsoleSymbol InboxAge@_Arg1_@
+set RenderCB_TextJustify JustifyXRight
+add MenuObject initFrom MailInboxExpires
+set Name MailOutboxExpires
+set RenderCB_ConsoleSymbol OutboxAge@_Arg1_@
+add MenuObject
+set Name MailInboxStatusIcon
+set Texture menus/Mail
+set Coords "7 635 61 64"
+set CoordsAnimated "7 561 61 64"
+set CoordsAnimated "7 635 61 64"
+set ScaleX 0.8, ScaleY 0.8
+set SaveArgs 1
+set CoordsAnimationSymHash InboxRead@_Arg1_@
+set HiddenCheckBySymbol InboxHasItem@_Arg1_@
+add MenuObject
+set Name MailInboxStatusIconAttachment
+set Texture menus/Mail
+set Coords "77 565 75 68"
+set CoordsAnimated "77 565 75 68"
+set CoordsAnimated "78 636 75 68"
+set ScaleX 0.85, ScaleY 0.85
+set SaveArgs 1
+set CoordsAnimationSymHash InboxRead@_Arg1_@
+set HiddenCheckBySymbolInv InboxHasItem@_Arg1_@
+add MenuObject
+set Name MailOutboxStatusIcon
+set Texture menus/Mail
+set Coords "7 635 61 64"
+set ScaleX 0.8, ScaleY 0.8
+set SaveArgs 1
+set HiddenCheckBySymbol OutboxHasItem@_Arg1_@
+add MenuObject
+set Name MailOutboxStatusIconAttachment
+set Texture menus/Mail
+set Coords "78 636 75 68"
+set ScaleX 0.85, ScaleY 0.85
+set SaveArgs 1
+set HiddenCheckBySymbolInv OutboxHasItem@_Arg1_@
+add MenuObject
+set Name MailInboxItemHighlight
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0x33565a
+set BlendMode BlendAdd
+set PulseAlpha "4.3 -0.9 -0.7"
+set TileArea "525 66"
+set Child "FocusMailBoxMessagePad -22 -24"
+add MenuObject initFrom MailInboxItemHighlight
+set Name MailOutboxItemHighlight
+add MenuObject
+set Name MailInboxItemOpen
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0x12292b
+set BlendMode BlendAdd
+set TileArea "525 66"
+set HiddenCheckBySymbolValue InboxId@_Arg1_@-ViewMailId
+set HiddenCheckBySymbolInv MailMessageLoaded
+add MenuObject
+set Name MailInboxItemDeleteMulti
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0x551100
+set BlendMode BlendAdd
+set TileArea "525 70"
+add MenuObject
+set Name MailInboxItemDelete
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0xff0000
+set BlendMode BlendAdd
+set DisabledAlphaTimeIn 1.0
+set DisabledAlphaTimeOut 0.0
+set DisabledSym MailMessageDeleteFinished
+set TileArea "525 66"
+set HiddenCheckBySymbolValue InboxId@_Arg1_@-ViewMailId
+add MenuObject
+set Name MailOutboxItemOpen
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0x12292b
+set BlendMode BlendAdd
+set TileArea "525 66"
+set HiddenCheckBySymbolValue OutboxId@_Arg1_@-ViewSentMailId
+set HiddenCheckBySymbolInv MailMessageLoaded
+add MenuObject
+set Name MailInboxItem
+set Coords "0 0 512 67"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "0 -1 0 2"
+set SaveArgs 1
+set DrawWhenFocused MailInboxItemHighlight
+set DrawWhenFocusedOffset "-7 1"
+set CommandPressAlt "gameui ignoreInputTime 0.1"
+set CommandPressAlt ">gameui directPushNameIfEnabled MailInboxItem@_Arg1_@"
+set CommandPressAlt "if sym IsAnyVIP == 1 pcmd 0.1 gameui directPushNameIfEnabled MailBonus"
+set CommandPressAlt "if sym IsAnyVIP == 1 pcmd 0.1 menucmd RemoveItemFromMailInRC"
+set CommandPress ">sym set MailInboxSelected @_Arg1_@"
+set CommandGetFocus ">if usingpad sym set MailInboxSelected @_Arg1_@"
+set CommandGetFocus ">if usingpad pcmd_seq 444 1.0 sym set InboxRead@_Arg1_@ 1"
+set CommandGetFocus ">if usingpad pcmd_seq 444 1.0 mail opened $InboxId@_Arg1_@"
+set CommandLoseFocus ">if usingpad console flushAllPendingSeq 444"
+set CommandGetFocus ">if usingpad runnow mail writeToSymbols $InboxId@_Arg1_@ ViewMail"
+set CommandGetFocus "if usingpad runnow sym set MailInboxWidth 1.83"
+set CommandGetFocus "if usingpad gameui refreshFilterName MailResize"
+set CommandGetFocus "if usingpad runnow sym set MailMessageLoaded 1"
+set CommandGetFocus "if usingpad runnow sym set MailMessageSent 0"
+set CommandPress "if sym MailMessageDeleteFinished != 0 && consoleplatformHW && sym ViewMailFrom != <System> menucmd EventLogUsernameSymOp local ViewMailFrom"
+set CommandPress ">sym set InboxRead@_Arg1_@ 1"
+set CommandPress ">mail opened $InboxId@_Arg1_@"
+set CommandPress ">mail writeToSymbols $InboxId@_Arg1_@ ViewMail"
+set CommandPress "sym set MailInboxWidth 1.83"
+set CommandPress "pcmd t0 gameui refreshFilterName MailResize"
+set CommandPress "sym set MailMessageLoaded 1"
+set CommandPress "sym set MailMessageSent 0"
+set CommandPress "gameui promoteToTop MailInbox"
+set CommandPress ">if usingpad runnow sym setToggle InboxSelectedIDs $InboxId@_Arg1_@"
+set CommandCancel "menucmd ReqGameMailClose"
+set CommandFocusLeft "gameUI focusNameTry MailBoxButtonDeleteFill MailBoxButtonDelete MailMessageButtonDeleteFill MailMessageButtonDelete .DeleteFocusBounceAttachment"
+set CommandFocusRight "gameUI focusNameTry MessageAttachment0  MessageAttachment1 MessageAttachment2 MessageAttachment3 MailBonus"
+set CommandFocusUp "gameui ignoreInputTime 0.05"
+set CommandFocusUp ">gameUI focusNameTryList MailInboxItem @_Arg1_@ 10 -1 /tryOnFail .GameMailInboxPagePrev"
+set CommandFocusDown "gameui ignoreInputTime 0.05"
+set CommandFocusDown ">gameUI focusNameTryList MailInboxItem @_Arg1_@ 10 1 /tryOnFail .GameMailInboxPageNext"
+set CommandGetFocus ">input set padFocusFallback MailInboxItem@_Arg1_@"
+set HiddenCheckBySymbolInv InboxHasMsg@_Arg1_@
+set Child "MailInboxLine 4 67"
+set Child "MailInboxItemOpen -7 1		@_Arg1_@"
+set Child "MailInboxStatusIcon 64 5		@_Arg1_@"
+set Child "MailInboxStatusIconAttachment 56 5		@_Arg1_@"
+set Child "MailInboxSelect 8 19			@_Arg1_@"
+set Child "MailInboxFrom 150 10			@_Arg1_@"
+set Child "MailInboxExpires 150 10		@_Arg1_@"
+set Child "MailInboxSubject 		150 36		@_Arg1_@"
+set Child "MailInboxSubject_System 	150 36		@_Arg1_@"
+set Child "MailInboxItemDelete[MailInboxItemDelete@_Arg1_@] -7 1		@_Arg1_@"
+add MenuObject
+set Name MailOutboxItem
+set Coords "0 0 512 67"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "0 -1 0 2"
+set SaveArgs 1
+set DrawWhenFocused MailInboxItemHighlight
+set DrawWhenFocusedOffset "-7 1"
+set CommandPress "if usingpad menucmd EventLogUsernameSymOp local ViewSentMailTo"
+set CommandPress ">if usingpad runnow sym setToggle OutboxSelectedIDs $OutboxId@_Arg1_@"
+set CommandCancel "gameui ignoreInputTime 0.1"
+set CommandCancel "menucmd GameMailInboxInitialize"
+set CommandCancel "pcmd 0.1 gameui focusnametry #MailInboxItem@MailInboxSelected@"
+set CommandGetFocus "if usingpad runnow gameui promoteToTop MailMessageSent"
+set CommandGetFocus ">if usingpad runnow sym set MailOutboxSelected @_Arg1_@"
+set CommandGetFocus "if usingpad runnow sym set MailInboxWidth 1.83"
+set CommandGetFocus ">if usingpad runnow mail writeToSymbolsSent $OutboxId@_Arg1_@ ViewSentMail"
+set CommandGetFocus "if usingpad runnow sym setOne MailMessageSent MailMessageLoaded"
+set CommandGetFocus "if usingpad gameui refreshFilterName MailResize"
+set CommandPress "gameui promoteToTop MailMessageSent"
+set CommandPress ">sym set MailOutboxSelected @_Arg1_@"
+set CommandPress "sym set MailInboxWidth 1.83"
+set CommandPress ">mail writeToSymbolsSent $OutboxId@_Arg1_@ ViewSentMail"
+set CommandPress "sym setOne MailMessageSent MailMessageLoaded"
+set CommandPress "pcmd t0 gameui refreshFilterName MailResize"
+set CommandFocusUp ">gameUI focusNameTryList MailOutboxItem @_Arg1_@ 10 -1 /tryOnFail .GameMailOutboxPagePrev"
+set CommandFocusDown ">gameUI focusNameTryList MailOutboxItem @_Arg1_@ 10 1 /tryOnFail .GameMailOutboxPageNext"
+set CommandGetFocus ">input set padFocusFallback MailOutboxItem@_Arg1_@"
+set CommandGetFocus ">sym set MailOutboxSelected @_Arg1_@"
+set CommandFocusLeft "gameUI focusNameTry MailBoxButtonDeleteFill MailBoxButtonDelete MailMessageButtonDeleteFill MailMessageButtonDelete"
+set HiddenCheckBySymbolInv OutboxHasMsg@_Arg1_@
+set Child "MailInboxLine 4 67"
+set Child "MailOutboxItemOpen -7 1		@_Arg1_@"
+set Child "MailOutboxStatusIcon 64 5		@_Arg1_@"
+set Child "MailOutboxStatusIconAttachment 56 5		@_Arg1_@"
+set Child "MailOutboxSelect 8 19		@_Arg1_@"
+set Child "MailOutboxTo 150 10			@_Arg1_@"
+set Child "MailOutboxExpires 150 10		@_Arg1_@"
+set Child "MailOutboxSubject 150 36		@_Arg1_@"
+add MenuObject
+set Name MailInboxWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 512 700"
+set SaveArgs 2
+set CommandOnMouseDrag ">mail page $_Wheel 10 MailInboxFirstInd"
+add MenuObject
+set Name MainInboxItems
+set ContainerOnly 1
+set HiddenCheckBySymbol MailOutbox
+set Child "MailInboxWheelZone 0 0"
+set Child "MailInboxItem[MailInboxItem0] 0 0	0"
+set Child "MailInboxItem[MailInboxItem1] 0 70	1"
+set Child "MailInboxItem[MailInboxItem2] 0 140	2"
+set Child "MailInboxItem[MailInboxItem3] 0 210	3"
+set Child "MailInboxItem[MailInboxItem4] 0 280	4"
+set Child "MailInboxItem[MailInboxItem5] 0 350	5"
+set Child "MailInboxItem[MailInboxItem6] 0 420	6"
+set Child "MailInboxItem[MailInboxItem7] 0 490	7"
+set Child "MailInboxItem[MailInboxItem8] 0 560	8"
+set Child "MailInboxItem[MailInboxItem9] 0 630	9"
+add MenuObject
+set Name MailOutboxWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 512 490"
+set SaveArgs 2
+set CommandOnMouseDrag ">mail pageOutbox $_Wheel 10 MailOutboxFirstInd"
+add MenuObject
+set Name MainOutboxItems
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MailOutbox
+set Child "MailOutboxWheelZone 0 0"
+set Child "MailOutboxItem[MailOutboxItem0] 0 0		0"
+set Child "MailOutboxItem[MailOutboxItem1] 0 70		1"
+set Child "MailOutboxItem[MailOutboxItem2] 0 140	2"
+set Child "MailOutboxItem[MailOutboxItem3] 0 210	3"
+set Child "MailOutboxItem[MailOutboxItem4] 0 280	4"
+set Child "MailOutboxItem[MailOutboxItem5] 0 350	5"
+set Child "MailOutboxItem[MailOutboxItem6] 0 420	6"
+set Child "MailOutboxItem[MailOutboxItem7] 0 490	7"
+set Child "MailOutboxItem[MailOutboxItem8] 0 560	8"
+set Child "MailOutboxItem[MailOutboxItem9] 0 630	9"
+add MenuObject
+set Name MailTextLabel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_Text @_Arg1_@
+set SaveArgs 3
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Offset "40 0"
+add MenuObject
+set Name MailSpecialLabel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXRight
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x92ccd0
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 3
+add MenuObject initFrom MailTextLabel
+set Name MailTextLabelRight
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_Offset "0 0"
+add MenuObject initFrom MailTextLabel
+set Name MailTitleInbox
+set RenderCB_Text MailTitleInbox
+set HiddenCheckBySymbol GameMailUnread
+set HiddenCheckBySymbol2 MailOutbox
+add MenuObject initFrom MailTextLabel
+set Name MailTitleInboxNew
+set RenderCB_Text MailTitleInboxNew
+set HiddenCheckBySymbolInv GameMailUnread
+set HiddenCheckBySymbol MailOutbox
+add MenuObject initFrom MailTextLabel
+set Name MailTitleOutbox
+set RenderCB_Text MailTitleOutbox
+set HiddenCheckBySymbolInv MailOutbox
+add MenuObject
+set Name MailInboxBackground
+set Texture menus/Mail
+set CoordsStart "1 1 115 80"
+set CoordsMid "116 1 415 80"
+set CoordsEnd "531 1 65 80"
+set CoordsStartFocused "1 115 115 54"
+set CoordsMidFocused "116 115 415 54"
+set CoordsEndFocused "531 115 65 54"
+set CoordsStartDisabled "1 191 115 136"
+set CoordsMidDisabled "116 191 415 136"
+set CoordsEndDisabled "531 191 65 136"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 716
+set RenderCB_DY 770
+set Coords "0 0 716 770"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set CommandPress "gameui promoteToTop MailInbox"
+set Child "MailButtonClose 598 15	MailInbox"
+set DisabledSym MailMessageLoaded
+set DisabledAlphaTimeIn 0.0
+add MenuObject
+set Name MailInboxDivide
+set Texture menus/Mail
+set Coords "3 330 505 4"
+set DefaultRotation 90
+set ScaleX 1.405
+add MenuObject
+set Name MailMessageInset
+set RenderBlocked 1
+set HiddenCheckBySymbol MailMessageSent
+set Child "MailMessageTitleSubject 			44 10		MailTitleCompose	0.8	595"
+set Child "MailMessageTitleSubject_System 	44 10		MailTitleCompose	0.8	595"
+set Child "MailMessageFrom 20 60"
+set Child "MailMessageName 130 60				ViewMailFrom"
+set Child "MailMessageBody 			50 100		ViewMailMsg		ViewMailSystem"
+set Child "MailMessageBody_System 	50 100		ViewMailMsg		ViewMailSystem"
+set Child "MailMessageSlots 50 598"
+set Child "MailBonusSlots 50 598"
+set Child "MailMessageButtonReplyInset 450 610	/platform !consolePlatformHW"
+add MenuObject
+set Name MailMessageSentInset
+set RenderBlocked 1
+set HiddenCheckBySymbolInv MailMessageSent
+set Child "MailMessageSentTitleSubject 38 10	MailTitleCompose	0.8	595"
+set Child "MailMessageTo 20 60"
+set Child "MailMessageName 130 60			ViewSentMailTo"
+set Child "MailMessageBody_Out 46 100		ViewSentMailMsg"
+set Child "MailMessageSentSlots 50 598"
+add MenuObject initFrom MailButtonIconTemplate
+set Name MailInboxButtonMin
+set Coords "163 366 67 52"
+set CoordsFocused "165 444 72 52"
+set CoordsPressed "167 444 72 52"
+set ToolTip TT_MailMinimize
+set CommandPress "menucmd CloseMailPane"
+set NoAlphaMod 1
+set Alpha 0.7
+set ScaleX 0.8, ScaleY 0.8
+add MenuObject
+set Name MailInboxWide
+set RenderBlocked 1
+set Coords "0 0 1162 55"
+set MouseInteract 1
+set Focus -2
+set DragSource MailInbox
+add MenuObject
+set Name MailInboxBackgroundWide
+set Texture menus/Mail
+set CoordsStart "1 1 115 80"
+set CoordsMid "116 1 415 80"
+set CoordsEnd "531 1 65 80"
+set CoordsStartFocused "1 115 115 54"
+set CoordsMidFocused "116 115 415 54"
+set CoordsEndFocused "531 115 65 54"
+set CoordsStartDisabled "1 191 115 136"
+set CoordsMidDisabled "116 191 415 136"
+set CoordsEndDisabled "531 191 65 136"
+set RenderCB _Draw_G3x3
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set CommandPress "gameui promoteToTop MailInbox"
+set RenderCB_DX 1234
+set RenderCB_DY 770
+set Coords "0 0 1234 770"
+set HiddenCheckBySymbolInv MailMessageLoaded
+set Child "MailInboxDivide 275 434"
+set Child "MailMessageInset 600 85"
+set Child "MailMessageSentInset 600 85"
+set Child "MailInboxButtonMin 1093 73"
+set Child "MailButtonClose 1116 15	MailInbox"
+add MenuObject
+set Name MailMessageDelete
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MailMessageLoaded
+set Child "MailMessageButtonDeleteBg 0 0"
+set Child "MailMessageButtonDeleteGray 0 0"
+set Child "MailMessageButtonDeleteDisable 0 0"
+set Child "MailMessageButtonDeleteFill 4 6"
+set Child "MailMessageButtonDelete 0 0"
+add MenuObject
+set Name MailInbox
+set RenderBlocked 1
+set Coords "0 0 590 55"
+set MouseInteract 1
+set Focus -2
+set FilterName MailResize
+set ScaleX $MailInboxWidth
+set DragSource MailInbox
+set FirstDrawnChildren 2
+set Child "MailInboxBackground -15 -15"
+set Child "MailInboxBackgroundWide -15 -15"
+set Child "MailTitleOutbox -15 8	MailTitleOutbox	0.8	595"
+set Child "MailTitleInbox -15 8	MailTitleInbox	0.8	595"
+set Child "MailInboxSelectAll 30 65"
+set Child "MailOutboxSelectAll 30 65"
+set Child "MailTitleInboxNew -15 8	MailTitleInbox	0.8	595"
+set Child "MainInboxItems 95 70"
+set Child "MainOutboxItems 95 70"
+set Child "MailMessageDelete 8 110"
+set Child "DeleteFocusBounce -17 85"
+set Child "InboxLowerButtons 8 190"
+set Child "OutboxLowerButtons 8 190"
+set CommandPress "gameui promoteToTop MailInbox"
+add MenuObject
+set Name MailComposeHeader
+set Texture menus/Mail
+set Coords "23 713 526 138"
+add MenuObject
+set Name MailComposeSlotBg
+set Texture menus/Mail
+set Coords "177 560 78 78"
+set MouseInteract 1
+set Focus -2
+set DragTarget MailOutgoing@_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name MailTextboxTemplate
+set Coords "0 0 340 60"
+set Texture menus/Mail
+set RenderBlocked 1
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set DrawWhenFocused FocusLoginBoxCompose
+set DrawWhenFocusedOffset "-34 -16"
+set RenderCB_DX 340
+set RenderCB_DY 60
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/fitX /nmi"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.8 1.0 1.0"
+set TextEditableMaxLen 15
+#if arc
+set TextEditableProfanityFiltered 1
+#endif
+add MenuObject initFrom MailTextboxTemplate
+set Name MailComposeTo
+set RenderCB_Text MailComposeTo
+set CommandFocusUp "gameUI focusName MailComposeButtonSend"
+set CommandFocusDown "gameUI focusName MailComposeSubject"
+set CommandTabCycleRev "gameUI focusName MailComposeButtonSend"
+set CommandTabCycle "gameUI focusName MailComposeSubject"
+set CommandOnKeyboardEdit "menuCmd EditMailTo"
+add MenuObject initFrom MailTextboxTemplate
+set Name MailComposeSubject
+set RenderCB_Text MailComposeSubject
+set CommandFocusUp "gameUI focusName MailComposeTo"
+set CommandFocusDown "gameUI focusName MailComposeBody"
+set CommandTabCycleRev "gameUI focusName MailComposeTo"
+set CommandTabCycle "gameUI focusName MailComposeBody"
+set TextEditableMaxLen 36
+add MenuObject initFrom MailTextboxTemplate
+set Name MailComposeBodyBase
+set Coords "0 0 414 450"
+set RenderCB_DX 414
+set RenderCB_DY 450
+set RenderCB_Text MailComposeBody
+set CommandFocusUp "gameUI focusName MailComposeSubject"
+set CommandFocusDown "gameUI focusName MailComposeButtonSend"
+set CommandTabCycleRev "gameUI focusName MailComposeSubject"
+set CommandTabCycle "gameUI focusName MailComposeButtonSend"
+set DrawWhenFocused FocusLoginBoxComposeBody
+set DrawWhenFocusedOffset "-35 -28"
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 16
+set TextEditableMaxLen 600
+set RenderCB_Offset "10 10"
+add MenuObject initFrom MailComposeBodyBase
+set Name MailComposeBodyNoMarketBuy
+set HiddenCheckBySymbol MailCanAttach
+add MenuObject initFrom MailComposeBodyBase
+set Name MailComposeBody
+set HiddenCheckBySymbolInv MailCanAttach
+set DragTarget MailOutgoingAny
+add MenuObject
+set Name MailComposeSlots
+set ContainerOnly 1
+set HiddenCheckBySymbolInv MailCanAttach
+set Child "MailComposeSlotBg 0 0	0"
+set Child "MailComposeSlotBg 0 85	1"
+set Child "MailComposeSlotBg 0 170	2"
+set Child "MailComposeSlotBg 0 255	3"
+set Child "ComposeItem[ComposeAttachment0] 0 0			Mail0 MailOutgoing0"
+set Child "ComposeItem[ComposeAttachment1] 0 85		Mail1 MailOutgoing1"
+set Child "ComposeItem[ComposeAttachment2] 0 170		Mail2 MailOutgoing2"
+set Child "ComposeItem[ComposeAttachment3] 0 255		Mail3 MailOutgoing3"
+add MenuObject
+set Name MailComposeCostTemplate
+set Coords "0 0 180 30"
+set DisabledAlpha 0.5
+set RenderCB_DX 280
+set RenderCB_DY 25
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowColor2 /outlined8x"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xcccccc
+set MouseInteractZoneExpand "-50 0 0 0"
+add MenuObject initFrom MailComposeCostTemplate
+set Name MailComposeCostK
+set RenderCB_ConsoleSymbol MailComposeK
+set ToolTip TT_MailComposeK
+set MouseInteract 1
+set RenderCB_RGBColor "1.0 0.9 0.6"
+set RenderCB_TextJustify JustifyXLeft
+set Child "PStatusBarKudosIcon -34 -2"
+set MouseInteract 1
+set MouseInteractZoneExpand "0 0 0 -150"
+set HiddenCheckBySymbolInv MailComposeK
+add MenuObject initFrom MailComposeCostTemplate
+set Name MailComposeCostD
+set RenderCB_ConsoleSymbol MailComposeD
+set ToolTip TT_MailComposeD
+set MouseInteract 1
+set MouseInteractZoneExpand "0 0 0 -40"
+set RenderCB_RGBColor "0.9 1.0 1.0"
+set RenderCB_TextJustify JustifyXLeft
+set Child "PStatusBarDiamondsIcon -34 -1"
+set HiddenCheckBySymbolInv MailComposeD
+add MenuObject
+set Name MailFailMessage
+set Coords "0 0 476 459"
+set RenderCB_DX 460
+set RenderCB_DY 450
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Flags "/shadowColor2 /outlined8x"
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_ConsoleSymbol MailFailMessage
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "1.0"
+set DisabledSymInv MailSendFailed
+set DisabledAlphaTimeInPreWait 0.25
+add MenuObject
+set Name MailFailButton
+set Texture menus/LoginCommon
+set Coords "718 248 235 83"
+set CoordsFocused "476 248 235 83"
+set DrawWhenFocused LoginButtonHighlight
+set DrawWhenFocusedOffset "-10 -14"
+set RenderCB_DX 235
+set RenderCB_DY 70
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlphaTimeInPreWait 0.75
+set RenderCBExcludesDefaultRender 0
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "sym set MailSendFailed 0"
+set CommandPress "gameui focusnametry MailComposeButtonSend"
+set RenderCB_Text ButtonMailFail
+set DisabledSymInv MailSendFailed
+add MenuObject
+set Name MailFailBlocker
+set Texture effects/MarkerRed
+set Coords "0 0 16 16"
+set TileArea "540 601"
+set EnabledAlpha 0.6
+set DisabledAlphaTimeOut 0.0
+set Focus -2
+set MouseInteract 1
+set DisabledSymInv MailSendFailed
+set Child "MailFailMessage 50 210"
+set Child "MailFailButton 160 320"
+add MenuObject
+set Name MailCompose
+set Texture menus/Mail
+set CoordsStart "1 1 135 126"
+set CoordsMid "136 1 405 126"
+set CoordsEnd "531 1 65 126"
+set CoordsStartFocused "1 127 135 54"
+set CoordsMidFocused "136 127 405 54"
+set CoordsEndFocused "531 127 65 54"
+set CoordsStartDisabled "1 191 135 136"
+set CoordsMidDisabled "136 191 405 136"
+set CoordsEndDisabled "531 191 65 136"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 645
+set RenderCB_DY 670
+set Coords "0 0 595 670"
+set MouseInteract 1
+set Focus -2
+set DragSource MailInbox
+set Child "MailComposeHeader 23 72"
+set Child "MailTextLabel 0 22	MailTitleCompose	0.8	595"
+set Child "MailTextLabelRight -10 90		MailTo	0.7	175"
+set Child "MailTextLabelRight -10 142	MailSubject	0.7	175"
+set Child "MailComposeTo 190 73"
+set Child "MailComposeSubject 190 125"
+set Child "MailComposeBody 110 190"
+set Child "MailComposeBodyNoMarketBuy 110 190"
+set Child "MailComposeSlots 20 188"
+set Child "MailComposeCostD 60 535"
+set Child "MailComposeCostK 60 535"
+set Child "MailComposeButtonSend 24 578		GameMailDoSend"
+set Child "MailButtonClose 508 15	MailCompose"
+set Child "MailFailBlocker 16 62"
+set CommandPress "gameui promoteToTop MailCompose"
+add MenuObject
+set Name MailReplyHeader
+set Texture menus/Mail
+set Coords "33 888 516 128"
+add MenuObject
+set Name MailReply
+set Texture menus/Mail
+set CoordsStart "1 1 135 126"
+set CoordsMid "136 1 405 126"
+set CoordsEnd "531 1 65 126"
+set CoordsStartFocused "1 127 135 54"
+set CoordsMidFocused "136 127 405 54"
+set CoordsEndFocused "531 127 65 54"
+set CoordsStartDisabled "1 191 135 136"
+set CoordsMidDisabled "136 191 405 136"
+set CoordsEndDisabled "531 191 65 136"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 645
+set RenderCB_DY 670
+set Coords "0 0 645 670"
+set MouseInteract 1
+set Focus -2
+set DragSource MailInbox
+set Child "MailReplyHeader 33 70"
+set Child "MailTextLabel 10 28	MailTitleReply	0.7	504"
+set Child "MailReplyBody 46 70				ViewMailMsg"
+set Child "MailComposeBody 110 190"
+set Child "MailComposeBodyNoMarketBuy 110 190"
+set Child "MailComposeSlots 20 188"
+set Child "MailComposeCostD 60 535"
+set Child "MailComposeCostK 60 535"
+set Child "MailComposeButtonSend 24 578		GameMailDoSendReply"
+set Child "MailFailBlocker 16 72"
+set Child "MailButtonClose 505 15	MailReply"
+set CommandPress "gameui promoteToTop MailReply"
+add MenuObject
+set Name MailMessageTitleSubject
+set Coords "0 0 435 50"
+set RenderCB_DX 435
+set RenderCB_DY 50
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xdff8f9
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol ViewMailSubject
+set HiddenCheckBySymbolValue ViewMailSystem=1
+set SaveArgs 3
+set RenderCB_Flags "/nmi /fitX"
+add MenuObject initFrom MailMessageTitleSubject
+set Name MailMessageTitleSubject_System
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX /toU16"
+set HiddenCheckBySymbolValue ViewMailSystem=0
+add MenuObject initFrom MailMessageTitleSubject
+set Name MailMessageSentTitleSubject
+set RenderCB_ConsoleSymbol ViewSentMailSubject
+set HiddenCheckBySymbolValue ""
+add MenuObject
+set Name MailMessageName
+set Coords "0 0 355 40"
+set RenderCB_DX 355
+set RenderCB_DY 40
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x77f6e2
+set RenderCB_RGBColorFocused 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 1
+set RenderCB_Flags "/fitX"
+set MouseInteract 1
+set Focus -2
+set CommandPress ">menucmd EventLogUsernameSymOp local @_Arg1_@"
+add MenuObject initFrom MailInboxFrom
+set Name MailMessageFrom
+set RenderCB_RGBColor 0x767d7d
+set Coords "0 0 100 50"
+set RenderCB_DX 100
+set RenderCB_DY 50
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXRight
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set DisabledAlpha 1.0
+set RenderCB_Text MailFrom
+set SaveArgs 1
+set RenderCB_Flags "/fitX"
+add MenuObject initFrom MailMessageFrom
+set Name MailMessageTo
+set RenderCB_Text MailTo
+add MenuObject
+set Name MailMessageBody
+set Coords "0 0 494 350"
+set RenderCB_DX 494
+set RenderCB_DY 350
+set CommandFocusUp "gameUI focusName MailComposeSubject"
+set CommandFocusDown "gameUI focusName MailComposeButtonSend"
+set CommandTabCycleRev "gameUI focusName MailComposeSubject"
+set CommandTabCycle "gameUI focusName MailComposeButtonSend"
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 18
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB _DrawText
+set SaveArgs 2
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xccffff
+set HiddenCheckBySymbolValue ViewMailSystem=1
+add MenuObject initFrom MailMessageBody
+set Name MailMessageBody_Out
+set SaveArgs 1
+set HiddenCheckBySymbolValue ""
+add MenuObject initFrom MailMessageBody
+set Name MailMessageBody_System
+set RenderCB _DrawUText
+set RenderCB_Flags "/toU16"
+set HiddenCheckBySymbolValue ViewMailSystem=0
+add MenuObject initFrom MailMessageBody
+set Name MailReplyBody
+set RenderCB_RGBColor 0x559395
+set RenderCB_FontScale 0.55
+set RenderCB_IntArg 5
+set Coords "0 0 494 200"
+set RenderCB_DY 200
+add MenuObject
+set Name MailIconBonus
+set Texture misc/Boost@_Arg1_@
+set Coords "32 32 192 192"
+set ScaleX 0.34
+set ScaleY 0.34
+set SaveArgs 1
+set FilterName CollectionUI
+set BlendMode NoBlend
+add MenuObject
+set Name MailHighlightBonus
+set Texture menus/ItemFrame@_Arg1_@
+set Coords "710 158 98 98"
+set CoordsFocused "612 158 98 98"
+set FilterName CollectionUI
+set DisplayAsFocusedIfParentFocused 1
+set SaveArgs 1
+add MenuObject
+set Name MailBonusAmount
+set Coords "0 0 68 68"
+set DisabledAlpha 0.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.5
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 1
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set RenderCB_Font Numbers80px
+set RenderCB_RGBColor 0xffffff
+add MenuObject
+set Name MailBonusBase
+set Texture menus/ItemFrame@_Arg2_@
+set CommandOnCreate "echo $_Arg2_"
+set Coords "66 88 68 68"
+set SaveArgs 3
+set RenderOffsetX 5, RenderOffsetY 5
+set Child "MailIconBonus 2 1 	@_Arg1_@"
+set Child "MailHighlightBonus -14 -15	@_Arg2_@"
+set Child "MailBonusAmount 0 0	@_Arg3_@"
+set MouseInteract 1
+set Focus -2
+set FilterName CollectionUI
+set ToolTip &TR_Desc@_Arg1_@&
+set DrawForToolTip &TR_DFTT@_Arg1_@&
+set DrawForToolTipPositioning &TR_DFTTP@_Arg1_@&
+add MenuObject initFrom MailBonusBase
+set Name MailBonusInteractable
+set CommandPress ">menucmd RemoveAttachedAmountFromViewMail local @_Arg1_@ @_Arg3_@"
+add MenuObject initFrom MailBonusInteractable
+set Name MailBonus
+set SaveArgs 3
+set HiddenCheckBySymbolValue @_Arg3_@=0
+set Child "MailItemCallout[MailItemCallout@_Arg1_@] -78 10"
+set	CommandFocusLeft ">gameUI focusNameTry .FocusLastSelectedMessage"
+set	CommandFocusRight ">gameUI focusNameTry MessageAttachment"
+add MenuObject
+set Name MailBonusSlots
+set ContainerOnly 1
+set Child "MailBonus 170 0		Xp	1	ViewMailAtXp"
+set Child "MailBonus 85 0		K	5	ViewMailAtK"
+set Child "MailBonus 0 0		D	2	ViewMailAtD"
+add MenuObject
+set Name MailMessageSlots
+set ContainerOnly 1
+set Child "MailItem[MessageAttachment3] 255 0	MailIn3 NA	3"
+set Child "MailItem[MessageAttachment2] 170 0	MailIn2 NA	2"
+set Child "MailItem[MessageAttachment1] 85 0	MailIn1 NA	1"
+set Child "MailItem[MessageAttachment0] 0 0		MailIn0 NA	0"
+add MenuObject
+set Name MailMessage
+set Texture menus/Mail
+set CoordsStart "598 1 65 136"
+set CoordsMid "663 1 54 136"
+set CoordsEnd "717 1 65 136"
+set CoordsStartFocused "598 137 65 54"
+set CoordsMidFocused "663 137 54 54"
+set CoordsEndFocused "717 137 65 54"
+set CoordsStartDisabled "598 191 65 136"
+set CoordsMidDisabled "663 191 54 136"
+set CoordsEndDisabled "717 191 65 136"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 580
+set RenderCB_DY 650
+set Coords "0 0 580 650"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "10 10 -10 -10"
+set DragSource MailInbox
+set Child "MailMessageTitleSubject 			38 30	MailTitleCompose	0.8	595"
+set Child "MailMessageTitleSubject_System 	38 30	MailTitleCompose	0.8	595"
+set Child "MailMessageFrom 20 70"
+set Child "MailMessageName 130 70				ViewMailFrom"
+set Child "MailMessageBody 			46 140		ViewMailMsg		ViewMailSystem"
+set Child "MailMessageBody_System 	46 140		ViewMailMsg		ViewMailSystem"
+set Child "MailMessageSlots 217 448"
+set Child "MailMessageButtonDeleteBg 32 546"
+set Child "MailMessageButtonDeleteGray 32 546"
+set Child "MailMessageButtonDeleteDisable 32 546"
+set Child "MailMessageButtonDeleteFill 38 552"
+set Child "MailMessageButtonDelete 32 546"
+set Child "MailButtonClose 518 14	MailMessage"
+set CommandPress "gameui promoteToTop MailMessage"
+add MenuObject
+set Name MailSentSlotsCover
+set Texture menus/Mail
+set Coords "160 120 340 94"
+set NoAlphaMod 1
+set Alpha 0.75
+add MenuObject
+set Name MailMessageSentSlots
+set ContainerOnly 1
+set Child "MailItemSent[MessageAttachment0] 0 0		MailOut0 NA"
+set Child "MailItemSent[MessageAttachment1] 85 0		MailOut1 NA"
+set Child "MailItemSent[MessageAttachment2] 170 0		MailOut2 NA"
+set Child "MailItemSent[MessageAttachment3] 255 0			MailOut3 NA"
+set Child "MailSentSlotsCover 0 0"
+add MenuObject
+set Name MailMessageSent
+set Texture menus/Mail
+set CoordsStart "598 1 65 136"
+set CoordsMid "663 1 54 136"
+set CoordsEnd "717 1 65 136"
+set CoordsStartFocused "598 137 65 54"
+set CoordsMidFocused "663 137 54 54"
+set CoordsEndFocused "717 137 65 54"
+set CoordsStartDisabled "598 191 65 136"
+set CoordsMidDisabled "663 191 54 136"
+set CoordsEndDisabled "717 191 65 136"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 580
+set RenderCB_DY 650
+set Coords "0 0 580 650"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "10 10 -10 -10"
+set DragSource MailInbox
+set Child "MailMessageSentTitleSubject 38 30	MailTitleCompose	0.8	595"
+set Child "MailMessageTo 20 70"
+set Child "MailMessageName 130 70			ViewSentMailTo"
+set Child "MailMessageBody_Out 46 140		ViewSentMailMsg"
+set Child "MailMessageSentSlots 37 548"
+set Child "MailMessageButtonDeleteBg 32 546"
+set Child "MailMessageButtonDeleteGray 32 546"
+set Child "MailMessageButtonDeleteDisable 32 546"
+set Child "MailMessageButtonDeleteFill 38 552"
+set Child "MailSentMessageButtonDelete 32 546"
+set Child "MailButtonClose 510 21	MailMessageSent"
+set CommandPress "gameui promoteToTop MailMessageSent"

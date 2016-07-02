@@ -1,0 +1,152 @@
+echo Got Prices
+sym set _add_d_cmd_ adddiamonds
+if consolePlatformHW runnow sym set _add_d_cmd_ addpaiddiamonds
+prices queryBundleDisplayPrice PrimeBundle PrimeBundle_Price
+prices queryBundleDisplayPrice StarterPack StarterPack_Price
+prices queryBundleCmd StarterPack $$_add_d_cmd_ StarterPack_Diamonds /commaSep
+prices queryBundleCmd StarterPack addkudos StarterPack_Kudos /commaSep
+prices queryBundleCmd PrimeBundle $$_add_d_cmd_ PrimeBundle_Diamonds /commaSep
+prices queryBundleCmd PrimeBundle addkudos PrimeBundle_Kudos /commaSep
+prices queryBundleCmd BoosterPack $$_add_d_cmd_ BoosterPack_Diamonds /commaSep
+prices queryBundleCmd BoosterPackX4 $$_add_d_cmd_ BoosterPackX4_Diamonds /commaSep
+prices queryBundleDisplayPrice DPack5 DPack5_Price
+prices queryBundleBoost DPack5 DPack5_Bonus
+prices queryBundleCmd DPack5 $$_add_d_cmd_ DPack5_Diamonds /commaSep
+prices queryBundleCmd2 DPack5 additemc CapsuleRare DPack5_CapsuleRare
+prices queryBundleDisplayPrice DPack10 DPack10_Price
+prices queryBundleBoost DPack10 DPack10_Bonus
+prices queryBundleCmd DPack10 $$_add_d_cmd_ DPack10_Diamonds /commaSep
+prices queryBundleCmd DPack10 addgoldvip DPack10_GVIP
+prices queryBundleCmd2 DPack10 additemc CapsuleRare DPack10_CapsuleRare
+prices queryBundleDisplayPrice DPack20 DPack20_Price
+prices queryBundleBoost DPack20 DPack20_Bonus
+prices queryBundleCmd DPack20 $$_add_d_cmd_ DPack20_Diamonds /commaSep
+prices queryBundleCmd DPack20 addgoldvip DPack20_GVIP
+prices queryBundleCmd2 DPack20 additemc VIPShopTicket DPack20_VIPShopTicket
+prices queryBundleCmd2 DPack20 additemc CapsuleRare DPack20_CapsuleRare
+prices queryBundleDisplayPrice DPack35 DPack35_Price
+prices queryBundleBoost DPack35 DPack35_Bonus
+prices queryBundleCmd DPack35 $$_add_d_cmd_ DPack35_Diamonds /commaSep
+prices queryBundleCmd DPack35 addgoldvip DPack35_GVIP
+prices queryBundleCmd2 DPack35 additemc VIPShopTicket DPack35_VIPShopTicket
+prices queryBundleCmd2 DPack35 additemc CapsuleRare DPack35_CapsuleRare
+prices queryBundleDisplayPrice DPack50 DPack50_Price
+prices queryBundleBoost DPack50 DPack50_Bonus
+prices queryBundleCmd DPack50 $$_add_d_cmd_ DPack50_Diamonds /commaSep
+prices queryBundleCmd DPack50 addgoldvip DPack50_GVIP
+prices queryBundleCmd2 DPack50 additemc VIPShopTicket DPack50_VIPShopTicket
+prices queryBundleCmd2 DPack50 additemc CapsuleRare DPack50_CapsuleRare
+prices queryBundleDisplayPrice DPack100 DPack100_Price
+prices queryBundleBoost DPack100 DPack100_Bonus
+prices queryBundleCmd DPack100 $$_add_d_cmd_ DPack100_Diamonds /commaSep
+prices queryBundleCmd DPack100 addgoldvip DPack100_GVIP
+prices queryBundleCmd2 DPack100 additemc VIPShopTicket DPack100_VIPShopTicket
+prices queryBundleCmd2 DPack100 additemc CapsuleRare DPack100_CapsuleRare
+sym setZero D2Pack5_DiamondsBonus D2Pack10_DiamondsBonus D2Pack20_DiamondsBonus D2Pack50_DiamondsBonus D2Pack100_DiamondsBonus D2Pack200_DiamondsBonus
+sym setZero D2Pack5_DiamondsBoost D2Pack10_DiamondsBoost D2Pack20_DiamondsBoost D2Pack50_DiamondsBoost D2Pack100_DiamondsBoost D2Pack200_DiamondsBoost
+sym setZero AnyDiamondsBonus AnyDiamondsSale AnyDiamondsBonusOrSale
+prices queryBundleDisplayPrice D2Pack5 D2Pack5_Price
+prices queryBundleBoost D2Pack5 D2Pack5_Bonus
+prices queryBundleCmd D2Pack5 $$_add_d_cmd_ D2Pack5_Diamonds /commaSep /accumAll
+prices queryBundleCmd D2Pack5 $$_add_d_cmd_ D2Pack5_DiamondsBase /commaSep
+prices queryBundleCmd D2Pack5 $$_add_d_cmd_ D2Pack5_DiamondsBonus /commaSep /skipFirst
+prices queryBundleCmd D2Pack5 $$_add_d_cmd_ D2Pack5_DiamondsBoost /commaSep /skipFirst2
+sym setSumI D2Pack5_DiamondsBaseAndBonus D2Pack5_DiamondsBase D2Pack5_DiamondsBonus
+prices queryBundleDisplayPrice D2Pack10 D2Pack10_Price
+prices queryBundleBoost D2Pack10 D2Pack10_Bonus
+prices queryBundleCmd D2Pack10 $$_add_d_cmd_ D2Pack10_Diamonds /commaSep /accumAll
+prices queryBundleCmd D2Pack10 $$_add_d_cmd_ D2Pack10_DiamondsBase /commaSep
+prices queryBundleCmd D2Pack10 $$_add_d_cmd_ D2Pack10_DiamondsBonus /commaSep /skipFirst
+prices queryBundleCmd D2Pack10 $$_add_d_cmd_ D2Pack10_DiamondsBoost /commaSep /skipFirst2
+sym setSumI D2Pack10_DiamondsBaseAndBonus D2Pack10_DiamondsBase D2Pack10_DiamondsBonus
+sym append D2Pack10_DiamondsBase " +"
+sym append D2Pack10_DiamondsBonus " /MR_Bonus/"
+prices queryBundleDisplayPrice D2Pack20 D2Pack20_Price
+prices queryBundleBoost D2Pack20 D2Pack20_Bonus
+prices queryBundleCmd D2Pack20 $$_add_d_cmd_ D2Pack20_Diamonds /commaSep /accumAll
+prices queryBundleCmd D2Pack20 $$_add_d_cmd_ D2Pack20_DiamondsBase /commaSep
+prices queryBundleCmd D2Pack20 $$_add_d_cmd_ D2Pack20_DiamondsBonus /commaSep /skipFirst
+prices queryBundleCmd D2Pack20 $$_add_d_cmd_ D2Pack20_DiamondsBoost /commaSep /skipFirst2
+sym setSumI D2Pack20_DiamondsBaseAndBonus D2Pack20_DiamondsBase D2Pack20_DiamondsBonus
+sym append D2Pack20_DiamondsBase " +"
+sym append D2Pack20_DiamondsBonus " /MR_Bonus/"
+prices queryBundleDisplayPrice D2Pack50 D2Pack50_Price
+prices queryBundleBoost D2Pack50 D2Pack50_Bonus
+prices queryBundleCmd D2Pack50 $$_add_d_cmd_ D2Pack50_Diamonds /commaSep /accumAll
+prices queryBundleCmd D2Pack50 $$_add_d_cmd_ D2Pack50_DiamondsBase /commaSep
+prices queryBundleCmd D2Pack50 $$_add_d_cmd_ D2Pack50_DiamondsBonus /commaSep /skipFirst
+prices queryBundleCmd D2Pack50 $$_add_d_cmd_ D2Pack50_DiamondsBoost /commaSep /skipFirst2
+sym setSumI D2Pack50_DiamondsBaseAndBonus D2Pack50_DiamondsBase D2Pack50_DiamondsBonus
+sym append D2Pack50_DiamondsBase " +"
+sym append D2Pack50_DiamondsBonus " /MR_Bonus/"
+prices queryBundleDisplayPrice D2Pack100 D2Pack100_Price
+prices queryBundleBoost D2Pack100 D2Pack100_Bonus
+prices queryBundleCmd D2Pack100 $$_add_d_cmd_ D2Pack100_Diamonds /commaSep /accumAll
+prices queryBundleCmd D2Pack100 $$_add_d_cmd_ D2Pack100_DiamondsBase /commaSep
+prices queryBundleCmd D2Pack100 $$_add_d_cmd_ D2Pack100_DiamondsBonus /commaSep /skipFirst
+prices queryBundleCmd D2Pack100 $$_add_d_cmd_ D2Pack100_DiamondsBoost /commaSep /skipFirst2
+sym setSumI D2Pack100_DiamondsBaseAndBonus D2Pack100_DiamondsBase D2Pack100_DiamondsBonus
+sym append D2Pack100_DiamondsBase " +"
+sym append D2Pack100_DiamondsBonus " /MR_Bonus/"
+prices queryBundleDisplayPrice D2Pack200 D2Pack200_Price
+prices queryBundleBoost D2Pack200 D2Pack200_Bonus
+prices queryBundleCmd D2Pack200 $$_add_d_cmd_ D2Pack200_Diamonds /commaSep /accumAll
+prices queryBundleCmd D2Pack200 $$_add_d_cmd_ D2Pack200_DiamondsBase /commaSep
+prices queryBundleCmd D2Pack200 $$_add_d_cmd_ D2Pack200_DiamondsBonus /commaSep /skipFirst
+prices queryBundleCmd D2Pack200 $$_add_d_cmd_ D2Pack200_DiamondsBoost /commaSep /skipFirst2
+sym setSumI D2Pack200_DiamondsBaseAndBonus D2Pack200_DiamondsBase D2Pack200_DiamondsBonus
+sym append D2Pack200_DiamondsBase " +"
+sym append D2Pack200_DiamondsBonus " /MR_Bonus/"
+if sym D2Pack5_Bonus > 0 sym set AnyDiamondsBonus 1
+if sym D2Pack10_Bonus > 0 sym set AnyDiamondsBonus 1
+if sym D2Pack20_Bonus > 0 sym set AnyDiamondsBonus 1
+if sym D2Pack50_Bonus > 0 sym set AnyDiamondsBonus 1
+if sym D2Pack100_Bonus > 0 sym set AnyDiamondsBonus 1
+if sym D2Pack200_Bonus > 0 sym set AnyDiamondsBonus 1
+if sym D2Pack5_PriceSale > 0 sym set AnyDiamondsSale 1
+if sym D2Pack10_PriceSale > 0 sym set AnyDiamondsSale 1
+if sym D2Pack20_PriceSale > 0 sym set AnyDiamondsSale 1
+if sym D2Pack50_PriceSale > 0 sym set AnyDiamondsSale 1
+if sym D2Pack100_PriceSale > 0 sym set AnyDiamondsSale 1
+if sym D2Pack200_PriceSale > 0 sym set AnyDiamondsSale 1
+if sym AnyDiamondsSale > 0 || sym AnyDiamondsBonus > 0 sym set AnyDiamondsBonusOrSale 1
+prices extractBundleContent BetaBundle BetaBundleContentList
+prices extractBundleContent PrimeBundle PrimeBundleContentList /- Chopper_Prime /mark primeRewardFlag
+prices extractBundleContent NPB_01 NPB_01ContentList
+prices extractBundleContent NPB_02 NPB_02ContentList
+prices extractBundleContent NPB_03 NPB_03ContentList
+prices queryBundleCmd NPB_01 adddiamonds NPB_01Diamonds /commaSep
+prices queryBundleCmd NPB_02 adddiamonds NPB_02Diamonds /commaSep
+prices queryBundleCmd NPB_03 adddiamonds NPB_03Diamonds /commaSep
+prices queryBundleDisplayPrice NPB_01 NPB_01Price
+prices queryBundleDisplayPrice NPB_02 NPB_02Price
+prices queryBundleDisplayPrice NPB_03 NPB_03Price
+prices extractBundleContent DBundlePremiumPack01 DBundlePremiumPack01ContentList
+prices extractBundleContent DBundlePremiumPack02 DBundlePremiumPack02ContentList
+prices extractBundleContent DBundlePremiumPack03 DBundlePremiumPack03ContentList
+prices queryRandLockedDiamondsRange _DiamondBox DiamondBoxMin DiamondBoxMax
+prices queryRandKudosRange _KudosBall KudosBallMin KudosBallMax
+prices queryRandKudosRange _KudosBallSm KudosBallSmMin KudosBallSmMax
+prices queryRandXPRange _XPBall XPBallMin XPBallMax
+prices queryRandXPRange _XPBallSm XPBallSmMin XPBallSmMax
+prices queryRandLockedDiamondsRange _CapsuleLoyalty CapsuleLoyaltyMinD CapsuleLoyaltyMaxD
+prices queryRandKudosRange _CapsuleLoyalty CapsuleLoyaltyMinK CapsuleLoyaltyMaxK
+prices queryRandKudosRange _CapsuleLoyalty2 CapsuleLoyalty2MinK CapsuleLoyalty2MaxK
+rook promoSym PromoSpaceWeek PSym_SpaceWeek
+rook promoSym PromoOktoberfest PSym_Oktoberfest
+rook promoSym PromoGothWeek PSym_GothWeek
+rook promoSym PromoPirateWeek PSym_PirateWeek
+rook promoSym PromoMoonFestival PSym_MoonFestival
+rook promoSym PromoThanksgiving PSym_Thanksgiving
+rook promoSym PromoXmas PSym_Christmas
+rook promoSym PromoED PSym_EarthDay
+rook promoSym PromoCDM PSym_CincoDeMayo
+rook promoSym PromoOcean PSym_OceansWeek
+rook promoSym PromoMemorial PSym_MemorialDay
+rook promoSym PromoEaster PSym_Easter
+rook promoSym PromoStP PSym_StPatricksDay
+rook promoSym PromoCNY PSym_ChineseNewYear
+rook promoSym PromoHalloween PSym_Halloween
+rook promoSym PromoJuly4th PSym_July4th
+rook promoSym PromoTowelDay PSym_TowelDay
+gameui refreshFilterName OnGotPrices

@@ -1,0 +1,24 @@
+onloadrun {
+sym push DisableConShop 1
+]gameUI saveFocusID _savefocusid_buydiamonds_
+sym push CurrentMenu BuyDiamonds
+if ps4 ps4 showStoreState
+}
+MO BuyDiamondsMain {
+pos 500 120
+}
+onload {
+addUIAnim BuyDiamondsMain mas_DialogPop
+input set padFocusFallback D2Pack5
+gameUI focusNameTry D2Pack5
+gameui promoteToTop BuyDiamondsMain
+}
+onunloadrun {
+}
+onunload {
+input set padFocusFallback $_savefocusid_buydiamonds_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_buydiamonds_
+sym pop CurrentMenu DisableConShop
+if menuloaded UnlockDialog clearmenu UnlockDialog
+if ps4 ps4 hideStoreState
+}

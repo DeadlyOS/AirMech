@@ -1,0 +1,67 @@
+onloadrun {
+gameUI saveFocusID _savefocusid_
+customize clearClassFilter
+sym set _ActiveLobbySelectScript_ SelectItemDialog.txt
+sym clear _cmode
+sym setZero _FocusItemList_ _FocusItemLast_
+sym push _Bind_CycleLoadoutOnShoulders_ 0
+sym push _Bind_MatchingUIBack_ 0
+sym push _Bind_SoloLoadout_ 0
+sym push CurrentMenu SelectUnitsCon
+sym push _Bind_PrevNextOnShoulders_ 0
+sym push DisableConShop 1
+}
+MO DialogFriendBlack {
+pos 0 0
+layer 10
+}
+MO VignetteWin {
+pos 0 0
+layer 11
+}
+MO BlackCenterShadow {
+pos 0 0
+layer 12
+}
+MO CM_ItemSelectMaster {
+pos 0 0
+layer 13
+}
+onload {
+addUIAnim CM_ItemSelectMaster mas_DialogPop
+customize scrollCfgLobby $_CustomObject 35
+floatsym set customDrawerPosLobby 0
+if sym LoadoutAutosave == 0 menuCmd StoreLocalLoadout
+sym set SelectItemActive 1
+input set padFocusFallback ConSelectItem0
+gameui focusNameTry #ConLoadoutUnit@_ArmySelSlot@
+addUIAnim ConLoadoutUnitSelArrow #mas_UnitArrow@_ArmySelSlot@
+}
+onunloadrun {
+sym set _CustomObject units
+}
+onunloadrun_unforced {
+if sym LoadoutAutosave == 0 && sym UnsavedLoadout == 0 menuCmd UnsavedLoadoutTest
+if sym LoadoutAutosave == 1 loadout storePerAMLoadout
+if sym LoadoutAutosave == 1 rook savePreset $ActiveLoadout
+if sym LoadoutAutosave == 1 backend save
+customize clearClassFilter
+menucmd OnSelectItemDialogClosed
+}
+onunload {
+pcmd t2 sym set SelectItemActive 0
+sym pop _Bind_CycleLoadoutOnShoulders_
+sym pop _Bind_MatchingUIBack_
+sym pop _Bind_SoloLoadout_
+sym pop CurrentMenu
+sym pop _Bind_PrevNextOnShoulders_
+sym pop DisableConShop
+}
+onunload_unforced {
+input set padFocusFallback ConLobbyPlayerArmySlot0
+gameUI ignoreInputTime 0.1
+gameUI focusNameTry #ConLobbyPlayerArmySlot@_ArmySelSlot@0
+customize scrollCfgLobby
+menucmd ConMenuCopyUnitLoadoutIntoLocalSlots
+rook recustomizeLoadoutToServer
+}

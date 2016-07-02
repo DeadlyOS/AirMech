@@ -1,0 +1,28 @@
+stopParse
+onloadrun {
+clearmenu
+playerinputpause 1 local
+sym set MatchOverInSummary 1
+}
+MO EndgameMaster {
+cmd "sym set _PTagInd $_LocalInd"
+cmd "sym set _ETagInd $_OtherInd"
+pos 0 0
+}
+onload {
+camera offset 0 0 -2
+gameUI enable EndgameShadow
+addUIAnim MainMenuTopbar mas_EndgameMenuBarShow.txt 1.0
+if netGameOrNetGameReplay gameUI show EG_Chatbox
+if netGameOrNetGameReplay addUIAnim EG_PlayerStats mas_EndgamePlayerStatsShow.txt
+if !netGameOrNetGameReplay addUIAnim EG_PlayerStats mas_EndgamePlayerStatsShowOffline.txt
+if netGameOrNetGameReplay addUIAnim EG_InfoBox mas_EndgameInfoBoxShow.txt
+if !netGameOrNetGameReplay addUIAnim EG_InfoBox mas_EndgameInfoBoxShowOffline.txt
+if sym _FoundReward_ == 1 addUIAnim EG_Reward mas_PulseReward
+rook pushFetchedGameResults
+gameui focusName EndgameFinishButton
+}
+onunload {
+sym set MatchOverInSummary 0
+sym set DropLoaded 0
+}

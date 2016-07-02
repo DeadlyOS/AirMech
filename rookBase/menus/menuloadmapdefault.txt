@@ -1,0 +1,34 @@
+stopIfVR
+MO LoadingBackdrop {
+layer 27
+pos 0 0
+}
+MO LoadingLogo_M {
+layer 28
+pos 774 -500
+}
+MO LoadingLogo_A {
+layer 28
+pos 774 1500
+}
+MO LoadingFlash {
+layer 29
+pos 20 30
+}
+onload {
+]gameui ignoreInputTime 60.0
+]if !fastload runnow addUIAnim LoadingLogo_M mas_LoadingShowM
+]if !fastload runnow addUIAnim LoadingLogo_A mas_LoadingShowA
+]if !fastload runnow addUIAnim LoadingFlash mas_LoadingFlash /speed 1.0
+]if fastload runnow addUIAnim LoadingLogo_M mas_LoadingShowM /speed 3.0
+]if fastload runnow addUIAnim LoadingLogo_A mas_LoadingShowA /speed 3.0
+]if fastload runnow addUIAnim LoadingFlash mas_LoadingFlash /speed 3.0
+]if sym _tryoutLaunch_ == 0 runnow rookMenus previewClear
+]gameui loadingMenuState 1
+]sym push BtnHint_HideAll 1
+}
+onunload {
+]gameui ignoreInputTimeForce 0.15
+]gameui loadingMenuState -1
+]pcmd 0.1 sym pop BtnHint_HideAll
+}

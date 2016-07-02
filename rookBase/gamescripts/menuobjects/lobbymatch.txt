@@ -1,0 +1,3954 @@
+add MenuObject
+set Name SearchCircle1
+set Texture menus/WaitCircleBig
+set Coords "0 0 256 256"
+set RotationPeriod 1.0
+set ScaleX 0.63
+set ScaleY 0.63
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject initFrom SearchCircle1
+set Name SearchCircle2
+set RotationPeriod -3.3
+add MenuObject
+set Name SearchHourglass
+set Texture menus/WaitCircleBig
+set Coords "256 0 256 256"
+set RotationPeriod 3.0
+set ScaleX 0.4
+set ScaleY 0.4
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.75
+add MenuObject
+set Name SearchingWaiting
+set ContainerOnly 1
+set HiddenCheckBySymbol MM_CustomizeOk
+set Child "SearchCircle1 0 0"
+set Child "SearchCircle2 0 0"
+set Child "SearchHourglass 28 28"
+add MenuObject
+set Name LobbyCountdownTimer
+set Coords "0 0 165 165"
+set RenderCB_Font DroidSansBigNumbers
+set RenderCB_FontScale 1.0
+set RenderCB _DrawTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_ConsoleSymbol _PreGameTimer
+add MenuObject initFrom PanelEmbossed
+set Name LobbyTileTime
+set RenderCB_DX 165
+set RenderCB_DY 165
+set Child "LobbyCountdownTimer 0 0"
+set Child "SearchingWaiting 0 0"
+add MenuObject initFrom LobbyButtonTemplate
+set Name LobbyButtonGameMode
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /nmi"
+set RenderCB_ConsoleSymbol LobbyLabelMode
+add MenuObject initFrom PanelEmbossed
+set Name LobbyGameMode
+set RenderCB_DX 200
+set RenderCB_DY 165
+set Child "LobbyButtonGameMode 0 0"
+set Child "DebugLobbyState 10 10"
+add MenuObject initFrom LobbyButtonTemplate
+set Name LobbyButtonNumPlayers
+set RenderCB _DrawTextShadowedNMI
+set RenderCB_ConsoleSymbol LobbyLabelPlayers
+add MenuObject initFrom PanelEmbossed
+set Name LobbyNumPlayers
+set RenderCB_DX 200
+set RenderCB_DY 165
+set Child "LobbyButtonNumPlayers 0 0"
+add MenuObject
+set Name LobbyMapPreviewFade
+set Texture menus/DialogGeneral
+set Coords "125 450 119 28"
+set ScaleX 6
+set ScaleY 8.22
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name LobbyMapPreviewImage
+set Texture /data/levels/@MapName@/preview
+set Coords "10 90 994 322"
+set ScaleX 0.5
+set ScaleY 0.5
+set FilterName Customize
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.3
+add MenuObject initFrom LobbyButtonHighlight
+set Name LobbyButtonHighlightMap
+set TileArea "500 165"
+add MenuObject initFrom LobbyButtonTemplate
+set Name LobbyButtonMapName
+set RenderCB _DrawTextShadowedNMI
+set RenderCB_Text Random
+set DrawWhenFocused LobbyButtonHighlightMap
+set Coords "0 0 500 165"
+add MenuObject initFrom PanelEmbossed
+set Name LobbyMap
+set RenderCB_DX 500
+set RenderCB_DY 165
+set Child "LobbyMapPreviewImage 2 2"
+set Child "LobbyButtonMapName 0 0"
+add MenuObject initFrom LobbyButtonTemplate
+set Name LobbyButtonTeamColor
+set RenderCB_Text ""
+add MenuObject initFrom PanelEmbossedColor
+set Name LobbyTeamColor
+set Child "LobbyButtonTeamColor 0 0"
+set Child "LobbyUltimateDetect 50 36"
+set Color 0x888888
+add MenuObject initFrom PanelEmbossedReady
+set Name PlayerBackgroundReady
+set RenderCB_DX 1336
+set RenderCB_DY 299
+set HiddenCheckBySymbolInv LocalPlayerIsReady
+add MenuObject initFrom PanelEmbossedNotReady
+set Name PlayerBackgroundNotReady
+set RenderCB_DX 1336
+set RenderCB_DY 299
+set HiddenCheckBySymbol LocalPlayerIsReady
+add MenuObject initFrom PanelEmbossedReady
+set Name AllyBackgroundReady
+set RenderCB_DX 1336
+set RenderCB_DY 162
+set HiddenCheckBySymbolInv P_Rdy@_Arg1_@
+add MenuObject initFrom PanelEmbossedNotReady
+set Name AllyBackgroundNotReady
+set RenderCB_DX 1336
+set RenderCB_DY 162
+set HiddenCheckBySymbol P_Rdy@_Arg1_@
+add MenuObject
+set Name LobbySearchingDotsTp
+set Texture menus/DialogGeneral
+set CoordsAnimationFrameTimer 0.07
+add MenuObject initFrom LobbySearchingDotsTp
+set Name LobbySearchingDots0
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "633 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+add MenuObject initFrom LobbySearchingDotsTp
+set Name LobbySearchingDots1
+set Texture menus/DialogGeneral
+set CoordsAnimated "633 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "633 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+add MenuObject initFrom LobbySearchingDotsTp
+set Name LobbySearchingDots2
+set Texture menus/DialogGeneral
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "633 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "633 215 28 28"
+set CoordsAnimated "605 215 28 28"
+add MenuObject initFrom LobbySearchingDotsTp
+set Name LobbySearchingDots3
+set Texture menus/DialogGeneral
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "633 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "633 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+add MenuObject initFrom LobbySearchingDotsTp
+set Name LobbySearchingDots4
+set Texture menus/DialogGeneral
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "633 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "633 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+add MenuObject initFrom LobbySearchingDotsTp
+set Name LobbySearchingDots5
+set Texture menus/DialogGeneral
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "573 215 28 28"
+set CoordsAnimated "633 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+set CoordsAnimated "605 215 28 28"
+add MenuObject
+set Name LobbySearchingNotice
+set Coords "0 0 328 32"
+set DisabledAlpha 0.5
+set SaveArgs 1
+set RenderCB_DX 328
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_Text "Searching for a teammate..."
+set MouseInteract 1
+set ToolTip TT_Name
+add MenuObject
+set Name LobbySearchingDots
+set ContainerOnly 1
+set Child "LobbySearchingNotice 0 0"
+set Child "LobbySearchingDots0 0 50"
+set Child "LobbySearchingDots1 60 50"
+set Child "LobbySearchingDots2 120 50"
+set Child "LobbySearchingDots3 180 50"
+set Child "LobbySearchingDots4 240 50"
+set Child "LobbySearchingDots5 300 50"
+add MenuObject
+set Name GenericSearchingDots
+set ContainerOnly 1
+set Child "LobbySearchingDots0 0 0"
+set Child "LobbySearchingDots1 30 0"
+set Child "LobbySearchingDots2 60 0"
+set Child "LobbySearchingDots3 90 0"
+set Child "LobbySearchingDots4 120 0"
+set Child "LobbySearchingDots5 150 0"
+add MenuObject initFrom GenericSearchingDots
+set Name TeamSearchingDots
+set HiddenCheckBySymbolInv MM_Queue
+add MenuObject initFrom PanelEmbossedColor
+set Name EmptyPlayerBackground
+set RenderCB_DX 1336
+set RenderCB_DY 162
+set Color 0x555555
+set MouseInteract 1
+add MenuObject initFrom PanelEmbossedColor
+set Name LobbySlotFadeout
+set RenderCB_DX 1336
+set RenderCB_DY 162
+set Color 0x777777
+set DisabledAlphaTimeOut 0.15
+set DisabledAlphaTimeIn 0.0
+set Disabled 1
+set BlendMode BlendAdd
+add MenuObject initFrom PanelEmbossedColor
+set Name LobbySlotFadeoutRed
+set RenderCB_DX 1336
+set RenderCB_DY 162
+set Color 0xff0000
+set DisabledAlphaTimeOut 0.15
+set DisabledAlphaTimeIn 0.0
+set Disabled 1
+add MenuObject initFrom PanelEmbossedColor
+set Name EmptyPlayerInset
+set RenderCB_DX 1306
+set RenderCB_DY 132
+set Color 0x000000
+set ColorFocused 0x000000
+set NoAlphaMod 1
+set Alpha 0.33
+set MouseInteract 1
+set Focus -2
+add MenuObject initFrom PanelInset
+set Name PlayerArmySetup
+set RenderCB_DX 1300
+set RenderCB_DY 249
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyPlayerAirMech2
+set RenderCB_DX 216
+set RenderCB_DY 216
+add MenuObject initFrom PanelInset
+set Name AddPlayerButton
+set RenderCB_DX 380
+set RenderCB_DY 94
+set Child "LobbyCross 20 26"
+set MouseInteract 1
+set SaveArgs 1
+set CommandRedirect @_Arg1_@
+set Focus -2
+set DrawWhenFocused AddSelectHighlight
+set DrawWhenFocusedOffset "-15 -15 0"
+add MenuObject initFrom PanelInset
+set Name FindGameButton
+set RenderCB_DX 380
+set RenderCB_DY 94
+set Child "LobbyPlay 20 26"
+set MouseInteract 1
+set SaveArgs 1
+set CommandRedirect @_Arg1_@
+add MenuObject
+set Name LobbyPlay
+set Texture menus/DialogGeneral
+set Coords "630 252 31 42"
+set BlinkAlpha "0.7 1.2 1.0 0.15"
+add MenuObject initFrom PanelResizeFlat
+set Name LobbyCrossP1
+set TileArea "8 40"
+set Color 0xcccccc
+add MenuObject initFrom PanelResizeFlat
+set Name LobbyCrossP2
+set TileArea "40 8"
+set Color 0xcccccc
+add MenuObject
+set Name LobbyCross
+set ContainerOnly 1
+set Child "LobbyCrossP1 16 0"
+set Child "LobbyCrossP2 0 16"
+add MenuObject initFrom ItemSelectHighlight
+set Name AddSelectHighlight
+set TileArea "410 124"
+add MenuObject initFrom ItemSelectHighlight
+set Name LobbyCancelHighlight
+set TileArea "124 124"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name AddPlayerBox
+set RenderCB_DX 400
+set RenderCB_DY 114
+set SaveArgs 2
+set Child "AddPlayerButton 10 10	@_Arg2_@"
+set Child "@_Arg2_@ 85 40			@_Arg1_@"
+add MenuObject
+set Name LobbyButtonTextBase
+set Coords "0 0 230 32"
+set DisabledAlpha 0.5
+set SaveArgs 1
+set RenderCB_DX 230
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawTextShadowedNMI
+set RenderCB_Font RobotoBold
+add MenuObject initFrom LobbyButtonTextBase
+set Name LobbyAddPlayerTextBase
+set CommandPress ">sym set Ally@_Arg1_@Mode 1"
+set CommandPress "if sym Ally2Mode == 3 && sym Ally3Mode >= 3 sym set Ally2Mode 0"
+set CommandPress "if sym Ally2Mode < 3 && sym Ally3Mode == 3 sym set Ally3Mode 0"
+add MenuObject initFrom LobbyAddPlayerTextBase
+set Name LobbyAddPlayerText
+set RenderCB_Text "Random Player"
+add MenuObject initFrom LobbyAddPlayerText
+set Name LobbyAddBotText
+set RenderCB_Text "Add Bot"
+add MenuObject initFrom LobbyButtonTextBase
+set Name LobbyFindPvPText
+set RenderCB_Text "Find PvP Game"
+set CommandPress "menuCmd MatchPvPQuick"
+add MenuObject initFrom LobbyButtonTextBase
+set Name LobbyFindSurvivalText
+set RenderCB_Text "Find Survival Game"
+set CommandPress "menuCmd MatchSurvivalQuick"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name FindGameBox
+set RenderCB_DX 400
+set RenderCB_DY 114
+set Focus -2
+set MouseInteract 1
+set SaveArgs 2
+set DrawWhenFocused AddSelectHighlight
+set DrawWhenFocusedOffset "-5 -5 0"
+set Child "FindGameButton 10 10		@_Arg2_@"
+set Child "@_Arg2_@ 85 40			@_Arg1_@"
+add MenuObject
+set Name LobbyMatchPlayerName
+set Coords "0 0 230 32"
+set DisabledAlpha 0.5
+set SaveArgs 1
+set RenderCB_DX 230
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_DX 300
+set RenderCB _DrawTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_ConsoleSymbol P_Name@_Arg1_@
+set MouseInteract 1
+set ToolTip TT_Name
+add MenuObject
+set Name LobbyMatchPlayerRankIcon
+set Coords "433 254 26 38"
+set Texture menus/DialogGeneral
+set NoAlphaMod 1
+set Alpha 0.4
+set BlendMode BlendAdd
+add MenuObject initFrom LobbyMatchPlayerRankIcon
+set Name LobbyMatchPlayerLevelIcon
+set Coords "462 254 28 37"
+add MenuObject initFrom LobbyMatchPlayerRankIcon
+set Name LobbyMatchPlayerDisconnectsIcon
+set Coords "491 254 25 37"
+add MenuObject initFrom LobbyMatchPlayerRankIcon
+set Name LobbyMatchPlayerPingIcon
+set Coords "518 254 36 37"
+add MenuObject
+set Name LobbyMatchPlayerInfo
+set Coords "0 0 100 30"
+set SaveArgs 1
+set RenderCB_DX 100
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.85
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /noCommaSep"
+set RenderCB_Font RobotoBold
+set RenderCB_Text template
+set MouseInteract 1
+set ToolTip TT_Rank
+add MenuObject initFrom LobbyMatchPlayerInfo
+set Name LobbyMatchPlayerRank
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol P_RankScore@_Arg1_@
+set Child "LobbyMatchPlayerRankIcon -30 -2"
+set ToolTip TT_LobbyMatchPlayerRank
+add MenuObject initFrom LobbyMatchPlayerInfo
+set Name LobbyMatchPlayerLevel
+set RenderCB_ConsoleSymbol P_Level@_Arg1_@
+set Child "LobbyMatchPlayerLevelIcon -30 -2"
+add MenuObject initFrom LobbyMatchPlayerInfo
+set Name LobbyMatchPlayerDisconnects
+set RenderCB_Text 0.12
+set Child "LobbyMatchPlayerDisconnectsIcon -30 -2"
+add MenuObject initFrom LobbyMatchPlayerInfo
+set Name LobbyMatchPlayerPing
+set RenderCB_Text 180
+set Child "LobbyMatchPlayerPingIcon -38 -2"
+add MenuObject
+set Name LobbyPlayerReadyCheck
+set Texture menus/DialogGeneral
+set Coords "814 532 42 33"
+set HiddenCheckBySymbolInv LocalPlayerIsReady
+add MenuObject
+set Name LobbyPlayerReadyCheckbox
+set Texture menus/DialogGeneral
+set Coords "357 201 32 32"
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "40 2"
+set RenderCB_DX 400
+set RenderCB_DY 24
+set RenderCB _DrawUTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text MF_NetGameRoomReady
+set MouseInteract 1
+set HiddenCheckBySymbolInv MM_ReadyEnabled
+set MouseInteractClickToFocus 1
+set MouseInteractZoneExpand "-50 -10 20 20"
+set Focus -2
+set CommandPress "gameui ignoreInputTime 0.35"
+set CommandPress "if sym MM_ReadyEnabled == 1 runnow sym toggle LocalPlayerIsReady"
+set CommandPress "if sym MM_ReadyEnabled == 1 runnow matching notifyReady LocalPlayerIsReady"
+set CommandEnterKey "if sym MM_ReadyEnabled == 1 runnow sym toggle LocalPlayerIsReady"
+set CommandEnterKey "if sym MM_ReadyEnabled == 1 runnow matching notifyReady LocalPlayerIsReady"
+set CommandCancel "if usingPad if sym MatchingState == 1 sym set MenuLastFocus LobbyPlayerReadyCheckbox"
+set CommandCancel "if usingPad if sym MatchingState == 1 menuCmd ExitMatchmakingConfirm"
+set CommandCancel "if usingPad if sym MatchingState == 0 menuCmd ExitMatchmaking"
+set CommandFocusDown "gameUI focusname LobbyPlayerAirMechIcon"
+set Child "LobbyPlayerReadyCheck -2 -3"
+add MenuObject
+set Name ConLobbyPlayerReadyCheckbox
+set Texture menus/DialogGeneral
+set Coords "357 201 32 32"
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "40 2"
+set RenderCB_DX 400
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text MF_NetGameRoomReady
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractZoneExpand "-50 -10 20 20"
+set Focus -2
+set CommandPress "if sym MM_ReadyEnabled == 1 runnow sym toggle LocalPlayerIsReady"
+set CommandPress "if sym MM_ReadyEnabled == 1 runnow matching notifyReady LocalPlayerIsReady"
+set CommandEnterKey "if sym MM_ReadyEnabled == 1 runnow sym toggle LocalPlayerIsReady"
+set CommandEnterKey "if sym MM_ReadyEnabled == 1 runnow matching notifyReady LocalPlayerIsReady"
+set CommandCancel "if usingPad if sym MatchingState == 1 sym set MenuLastFocus LobbyPlayerReadyCheckbox"
+set CommandCancel "if usingPad if sym MatchingState == 1 menuCmd ExitMatchmakingConfirm"
+set CommandCancel "if usingPad if sym MatchingState == 0 menuCmd ExitMatchmaking"
+set CommandFocusDown "gameUI focusname LobbyPlayerAirMechIcon"
+set Child "LobbyPlayerReadyCheck -2 -3"
+add MenuObject
+set Name LobbyPlayerHeader
+set ContainerOnly 1
+set SaveArgs 1
+set Child "LobbyPlayerReadyCheckbox 0 2"
+set Child "LobbyMatchPlayerName 474 0		@_Arg1_@"
+set Child "LobbyMatchPlayerRank 760 0		@_Arg1_@"
+set Child "LobbyMatchPlayerLevel 880 0		@_Arg1_@"
+add MenuObject
+set Name ConLobbyPlayerHeader
+set ContainerOnly 1
+set SaveArgs 1
+set Child "ConLobbyPlayerReadyCheckbox 0 2"
+set Child "LobbyMatchPlayerName 474 0		@_Arg1_@"
+set Child "LobbyMatchPlayerLevel 880 0		@_Arg1_@"
+add MenuObject
+set Name LobbyAllyHeader
+set ContainerOnly 1
+set SaveArgs 1
+set Child "LobbyMatchPlayerName 474 0		@_Arg1_@"
+set Child "LobbyMatchPlayerLevel 880 0		@_Arg1_@"
+add MenuObject initFrom ItemSelectEdge
+set Name PilotSelectEdge
+set RenderCB_DX 196
+set RenderCB_DY 196
+add MenuObject initFrom ItemSelectHighlight
+set Name PilotSelectHighlight
+set TileArea "226 226"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyPlayerPilot
+set RenderCB_DX 216
+set RenderCB_DY 216
+set SaveArgs 1
+set Child "LobbyPlayerPilotIcon 10 10		@_Arg1_@"
+set Child "PilotSelectEdge 10 10"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyAllyPilot
+set RenderCB_DX 138
+set RenderCB_DY 138
+set SaveArgs 1
+set Child "LobbyAllyPilotIcon 0 0		@_Arg1_@"
+set Child "AirMechAllySelectEdge 0 0"
+add MenuObject
+set Name LobbyPlayerPilotIcon
+set Coords "30 10 196 196"
+set DisplayAsFocusedIfParentFocused 1
+set FilterName NetGameRoom
+set BlendMode NoBlend
+set DrawWhenFocused PilotSelectHighlight
+set DrawWhenFocusedOffset "-15 -15 0"
+set Texture pilots/&PilotCustom@_Arg1_@&Icon+lang
+set TextureAlt pilots/NoPilotIcon
+set Focus -2
+set SaveArgs 1
+set ToolTip MF_CustomDesc_Pilot&PilotCustom@_Arg1_@&
+set FilterName NetGameRoom
+set MouseInteract 1
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "sym set MenuLastFocus LobbyPlayerPilotIcon"
+set CommandPress "loadmenu DialogLoadout.txt /fadein 0.15"
+set CommandFocusLeft "gameui focusNameTry LobbyPlayerAirMechIcon"
+set CommandFocusRight "gameui focusNameTry LobbyPlayerItemSlot"
+set CommandCancel "gameUI focusNameTry LobbyGoButton"
+set DisabledSymInv MM_CustomizeOk
+set DisabledAlpha 1
+add MenuObject
+set Name ConLobbyPlayerPilotSlotFocus
+set Coords "5 0 246 256"
+set Texture menus/FocusUnitCard
+set BlendMode BlendAdd
+set PulseAlpha "1.2 -0.5 1.0"
+set HiddenCheckBySymbol _LoadoutTransition_
+add MenuObject
+set Name ConLobbyPlayerPilotIcon
+set Coords "36 36 184 184"
+set ScaleX 0.5, ScaleY 0.5
+set DisplayAsFocusedIfParentFocused 1
+set FilterName NetGameRoom
+set BlendMode NoBlend
+set CommandGetFocus "playSound $SubMenuFocus"
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+set DrawAsLastChildWhenFocused 1
+set Texture pilots/&PilotCustom@_Arg1_@&Icon+lang
+set TextureAlt pilots/NoPilotIcon
+set Focus -2
+set MouseInteractZoneExpandWhenFocused "0 0 0 20"
+set SaveArgs 2
+set ToolTip MF_CustomDesc_Pilot&PilotCustom@_Arg1_@&
+set FilterName NetGameRoom
+set MouseInteract 1
+set CommandLeftButton ">customize slotInspect pilots $$PilotCustom@_Arg1_@ /ignoreInputTime 0.15"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "sym set MenuLastFocus LobbyPlayerPilotIcon"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 runNow menucmd SelectPilotFromLobby"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby pilots PilotCustom@_Arg1_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby pilots PilotCustom@_Arg1_@"
+set CommandFocusRight ">if sym AirMechDisplayRobot != 1 gameui focusNameTry ConLobbyPlayerItemSlot@_Arg1_@"
+set CommandFocusLeft ">if sym AirMechDisplayRobot != 1 gameui focusNameTry ConLobbyPlayerInfoBg@_Arg1_@"
+set CommandFocusRight ">if sym AirMechDisplayRobot == 1 gameui focusNameTry ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandFocusLeft ">if sym AirMechDisplayRobot == 1 gameui focusNameTry LobbyPlayerPartSlot8@_Arg1_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg2_@@_Arg1_@"
+set CommandGetFocus ">addUIAnim ConLobbyPlayerPilotIconB@_Arg1_@ mas_LobbyItemUp"
+set CommandLoseFocus ">addUIAnim ConLobbyPlayerPilotIconB@_Arg1_@ mas_LobbyItemReset"
+set CommandGetFocus ">addUIAnim ConLobbyPlayerPilotIcon@_Arg1_@ mas_LobbyItemUp"
+set CommandLoseFocus ">addUIAnim ConLobbyPlayerPilotIcon@_Arg1_@ mas_LobbyItemReset"
+set CommandCancel ">gameui focusName ConLobbyPlayerAirMechIcon@_Arg1_@"
+set DisabledAlpha 1
+set Child "ConLobbySlotBorder 0 0"
+add MenuObject
+set Name LobbyV1PlayerPilotIcon
+set Coords "0 0 256 256"
+set ScaleX 0.8, ScaleY 0.8
+set DisplayAsFocusedIfParentFocused 1
+set FilterName NetGameRoom
+set BlendMode NoBlend
+set CommandGetFocus "playSound $SubMenuFocus"
+set DrawWhenFocusedOffset "3 3 0"
+set DrawWhenFocused FocusLobbyV1Pilot
+set Texture pilots/&PilotCustom@_Arg1_@&Icon+lang
+set TextureAlt pilots/NoPilotIcon
+set Texture2 menus/CircleAlpha
+set Material mat_AlternateAlpha
+set Focus -2
+set MouseInteractZoneExpand "10 40 -10 -30"
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set SaveArgs 2
+set ToolTip MF_CustomDesc_Pilot&PilotCustom@_Arg1_@&
+set MouseInteract 1
+set CommandLeftButton ">customize slotInspect pilots $$PilotCustom@_Arg1_@ /ignoreInputTime 0.15"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "sym set MenuLastFocus LobbyPlayerPilotIcon"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 runNow menucmd SelectPilotFromLobby"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby pilots PilotCustom@_Arg1_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby pilots PilotCustom@_Arg1_@"
+set CommandPress ">sym set ItemDialogTitle PilotDialogTitle"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryLeft local ConLobbyPlayerPilotIcon"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryRight local ConLobbyPlayerPilotIcon"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+set CommandFocusUp ">gameui focusNameTry ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandFocusLeft ">if sym AirMechDisplayRobot == 1 gameui focusNameTry LobbyPlayerPartSlot8@_Arg1_@"
+set CommandFocusDown ">gameui focusNameTry LobbyV1MapVote@_Arg1_@ ConLobbyPlayerItemSlot@_Arg1_@"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set CommandGetFocus ">addUIAnim ConLobbyPlayerPilotIcon@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim ConLobbyPlayerPilotIcon@_Arg1_@ mas_LobbyItemReset"
+set CommandCancel ">gameui focusName ConLobbyPlayerAirMechIcon@_Arg1_@"
+set DisabledAlpha 1
+set Child "LoadingPlayerPilotBorder 0 0	0.8"
+set CommandGetFocus "if sym LobbyV1MyDetailsHide == 0 sym set LobbyV1DisplayMode 0"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+add MenuObject
+set Name LobbyV1PlayerPilotBorder
+set Coords "0 0 256 170"
+set ScaleX @_Arg1_@, ScaleY @_Arg1_@
+set SaveArgs 1
+set Texture menus/CircleBorder
+add MenuObject
+set Name LobbyV1PlayerPilotIconInfo
+set Coords "0 0 256 170"
+set ScaleX 0.58, ScaleY 0.58
+set FilterName NetGameRoom
+set BlendMode NoBlend
+set HiddenCheckBySymbolValue LobbyV1DisplayMode=0
+set CommandGetFocus "playSound $SubMenuFocus"
+set Texture pilots/&PilotCustom@_Arg1_@&Icon+lang
+set TextureAlt pilots/NoPilotIcon
+set Texture2 menus/CircleAlpha
+set Material mat_AlternateAlpha
+set Focus -2
+set MouseInteractZoneExpandWhenFocused "0 0 0 20"
+set SaveArgs 2
+set Child "LobbyV1PlayerPilotBorder 0 0	0.58"
+set ToolTip MF_CustomDesc_Pilot&PilotCustom@_Arg1_@&
+add MenuObject initFrom LobbyV1PlayerPilotIconInfo
+set Name LobbyV1OtherPilotIconInfo
+set HiddenCheckBySymbolInv LobbyV1MyDetailsHide
+add MenuObject
+set Name LobbyAllyPilotIcon
+set Coords "30 10 196 196"
+set DisplayAsFocusedIfParentFocused 1
+set FilterName NetGameRoom
+set BlendMode NoBlend
+set DrawWhenFocused AirMechSelectAllyHighlight
+set DrawWhenFocusedOffset "-5 -5 0"
+set Texture pilots/&PilotCustom@_Arg1_@&Icon+lang
+set TextureAlt pilots/NoPilotIcon
+set Focus -2
+set ScaleX 0.7
+set ScaleY 0.7
+set SaveArgs 1
+set ToolTip MF_CustomDesc_Pilot&PilotCustom@_Arg1_@&
+set FilterName NetGameRoom
+set MouseInteract 1
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">menucmd InspectOrUnlockFromLobby pilots PilotCustom@_Arg1_@"
+add MenuObject initFrom ItemSelectEdge
+set Name AirMechSelectEdge
+set RenderCB_DX 196
+set RenderCB_DY 196
+add MenuObject initFrom ItemSelectEdge
+set Name AirMechAllySelectEdge
+set RenderCB_DX 138
+set RenderCB_DY 138
+add MenuObject initFrom ItemSelectHighlight
+set Name AirMechSelectHighlight
+set TileArea "226 226"
+add MenuObject initFrom ItemSelectHighlight
+set Name AirMechSelectAllyHighlight
+set TileArea "148 148"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyPlayerAirMech
+set RenderCB_DX 216
+set RenderCB_DY 216
+set SaveArgs 1
+set Child "LobbyPlayerAirMechIcon 10 10	@_Arg1_@"
+set Child "AirMechSelectEdge 10 10"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyAllyAirMech
+set RenderCB_DX 138
+set RenderCB_DY 138
+set SaveArgs 1
+set Child "LobbyAllyAirMechIcon 0 0	@_Arg1_@"
+set Child "AirMechAllySelectEdge 0 0"
+add MenuObject
+set Name LobbyPlayerAirMechIcon
+set Coords "30 30 196 196"
+set DisplayAsFocusedIfParentFocused 1
+set FilterName NetGameRoom
+set Texture rooks/&PlayerRook@_Arg1_@&/Icon&TC@_Arg1_@&
+set TextureAlt rooks/&PlayerRook@_Arg1_@&/IconUnique
+set SaveArgs 1
+set Focus -2
+set ScaleX 1.0
+set ScaleY 1.0
+set ToolTip MF_AirMech&PlayerRook@_Arg1_@&
+set DrawWhenFocused AirMechSelectHighlight
+set DrawWhenFocusedOffset "-15 -15 0"
+set MouseInteract 1
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "sym set MenuLastFocus LobbyPlayerAirMechIcon"
+set CommandPress "loadmenu DialogLoadout.txt /fadein 0.15"
+set CommandFocusRight "gameui focusNameTry LobbyPlayerPilotIcon"
+set CommandCancel "gameUI focusNameTry LobbyPlayerReadyCheckbox LobbyGoButton"
+set DisabledSymInv MM_CustomizeOk
+set DisabledAlpha 1
+add MenuObject
+set Name TransformHide
+set Texture effects/white
+set Coords "0 0 16 16"
+set NoAlphaMod 1
+set Alpha 0.5
+set TileArea "196 250"
+set NoAlphaMod 1
+set Alpha 0.15
+set BlendMode BlendAdd
+set PulseAlpha "2.0 0.5 -10.0"
+add MenuObject
+set Name ConLobbyPlayerPlayerSlotFocus
+set Coords "607 3 363 206"
+set Texture menus/ConLoadout
+set BlendMode BlendAdd
+set PulseAlpha "1.2 -0.5 1.0"
+set ScaleX 0.74
+add MenuObject
+set Name ConLobbyPlayerAirMechSlotFocusEmpty
+set Coords "607 3 363 206"
+set Texture menus/ConLoadout
+set BlendMode BlendAdd
+set ScaleX 1.76
+set PulseAlpha "1.2 -0.5 1.0"
+add MenuObject initFrom FocusWhiteTechTemplate
+set Name ConLobbyPlayerAirMechSlotFocusA
+set RenderCB_DX 363
+set RenderCB_DY 199
+set Child "FocusWhiteTechLeft 2 74"
+set Child "FocusWhiteTechRight 331 74"
+set Child "FocusWhiteTechTop 150 2"
+set Child "FocusWhiteTechBottom 150 165"
+set HiddenCheckBySymbolInv LobbyModeDetails
+add MenuObject initFrom FocusWhiteTechTemplate
+set Name ConLobbyPlayerAirMechSlotFocusB
+set RenderCB_DX 615
+set RenderCB_DY 199
+set Child "FocusWhiteTechLeft 2 74"
+set Child "FocusWhiteTechRight 583 74"
+set Child "FocusWhiteTechTop 250 2"
+set Child "FocusWhiteTechBottom 250 165"
+set HiddenCheckBySymbol LobbyModeDetails
+add MenuObject
+set Name ConLobbyPlayerAirMechSlotFocus
+set ContainerOnly 1
+set HiddenCheckBySymbol _LoadoutTransition_
+set Child "ConLobbyPlayerAirMechSlotFocusA 250 0"
+set Child "ConLobbyPlayerAirMechSlotFocusB 3 3"
+add MenuObject
+set Name ConLobbyPlayerAirMechEmptySlotFocus
+set ContainerOnly 1
+set HiddenCheckBySymbol _LoadoutTransition_
+set Child "ConLobbyPlayerAirMechSlotFocusEmpty -10 0"
+add MenuObject
+set Name ConLobbyMapFocus
+set Coords "607 3 363 206"
+set Texture menus/ConLoadout
+set BlendMode BlendAdd
+set PulseAlpha "1.2 -0.5 1.0"
+set IsTopPass 1
+set ScaleX 0.93
+add MenuObject
+set Name ConLobbyPlayerAirMechFrame
+set Coords "70 6 363 502"
+set ScaleX @_Arg1_@
+set ScaleY @_Arg1_@
+set SaveArgs 2
+set Texture menus/FrameAirMechCard&TC@_Arg2_@&
+set FilterName NetGameRoom
+add MenuObject
+set Name ConLobbyPlayerAirMechBg
+set Texture menus/LoadoutFrame
+set Coords "471 10 445 646"
+set ScaleX 0.505
+set ScaleY 0.50
+add MenuObject
+set Name ConLobbyAirMechGlow
+set Coords "70 6 363 502"
+set ScaleX 0.7
+set ScaleY 0.7
+set Texture menus/CoverAirMechCard
+set Color 0xbb8855
+set BlendMode BlendAdd
+set EnabledAlpha 0.5
+set DisabledSymInv _LoadoutTransition_
+set DisabledAlphaTimeOut 0.8
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name ConLobbyAirMechFade
+set Coords "70 6 363 502"
+set ScaleX 0.7
+set ScaleY 0.7
+set Texture menus/CoverAirMechCard
+set SaveArgs 2
+set DisabledSymInv _LoadoutTransition_
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeInPreWait 1.0
+add MenuObject
+set Name ConLobbyPlayerAirMechBackground
+set Texture menus/ConLoadout&@_Arg1_@&
+set FilterName Customize
+set Coords "281 10 350 186"
+set BlendMode NoBlend
+set SaveArgs 1
+add MenuObject
+set Name ConLobbyPlayerAirMechBorder
+set Texture menus/ConLoadout&@_Arg1_@&
+set FilterName Customize
+set Coords "273 2 367 203"
+set SaveArgs 1
+add MenuObject
+set Name ConLobbyPlayerAirMechIcon
+set Coords "5 32 350 186"
+set CoordsAnimated $ACC_1
+set CoordsAnimated $ACC_2
+set CoordsAnimationSymHash AirMechDisplayRobot
+set CommandOnCreate ">rook lookupCustomCoords @_Arg1_@ &PlayerRook@_Arg1_@& ACC_1 ACC_2"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set DisplayAsFocusedIfParentFocused 1
+set FilterName NetGameRoom
+set Texture rooks/&PlayerRook@_Arg1_@&/Hangar&TC@_Arg1_@&
+set TextureAlt rooks/&PlayerRook@_Arg1_@&/HangarUnique
+set SaveArgs 3
+set Focus -2
+set ToolTip MF_AirMech&PlayerRook@_Arg1_@&
+set DrawWhenFocused ConLobbyPlayerAirMechSlotFocus
+set DrawWhenFocusedOffset "-260 -10 0"
+set DrawAsLastChildWhenFocused 1
+set MouseInteractZoneExpand "0 0 0 0"
+set MouseInteractZoneExpandWhenFocused "0 0 15 0"
+set CommandGetFocus ">input set padFocusFallback ConLobbyPlayerAirMechIcon@_Arg1_@"
+set MouseInteract 1
+set CommandLeftButton ">if sym LobbyModeDetails == 1 runnow customize slotInspect rooks $$PlayerRook@_Arg1_@ /ignoreInputTime 0.15"
+set CommandLeftButton ">if sym LobbyModeDetails == 0 runnow menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandPress "gameui ignoreInputTime 0.2"
+set CommandPress "if sym LobbyModeDetails == 1 sym set MenuLastFocus LobbyPlayerAirMechIcon"
+set CommandPress ">if sym LobbyModeDetails == 1 && localId == @_Arg1_@ && sym MM_CustomizeOk == 1 loadmenu $ClickLobbyAirMech /fadein 0.15"
+set CommandPress ">if sym LobbyModeDetails == 1 && localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby rooks PlayerRook@_Arg1_@"
+set CommandPress ">if sym LobbyModeDetails == 1 && spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby rooks PlayerRook@_Arg1_@"
+set CommandPress ">if sym LobbyModeDetails == 0 && literal @_Arg3_@ == 1 menuCmd ConLobbyDetailsOpen"
+set CommandPress ">if sym LobbyModeDetails == 0 && literal @_Arg3_@ == 1 addUIAnim ConLobbyPlayerAirMechIcon1 mas_LobbyAirMechShift"
+set CommandPress ">if sym LobbyModeDetails == 0 && literal @_Arg3_@ == 1 addUIAnim ConLobbyPlayerAirMechIcon2 mas_LobbyAirMechShift"
+set CommandPress ">if sym LobbyModeDetails == 0 && literal @_Arg3_@ == 0 menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandFocusLeft ">if sym LobbyModeDetails == 1 && sym AirMechDisplayRobot != 1 gameui focusNameTry ConLobbyPlayerArmySlot7@_Arg1_@"
+set CommandFocusLeft ">if sym LobbyModeDetails == 1 && sym AirMechDisplayRobot == 1 gameui focusNameTry ConLobbyPlayerPilotIconB@_Arg1_@"
+set CommandFocusLeft ">gameui focusNameTry InviteButton@_Arg1_@"
+set CommandFocusRight ">if literal @_Arg1_@ < 3 && sym LobbyModeDetails == 0 runnow gameui focusNameTry ConLobbyMapSelected"
+set CommandFocusLeft ">if literal @_Arg1_@ >= 3 && sym LobbyModeDetails == 0 runnow gameui focusNameTry ConLobbyMapSelected"
+set CommandFocusUp ">if literal @_Arg1_@ < 3 runnow gameui focusNameTryNModPostFix ConLobbyPlayerAirMechIcon @_Arg1_@ -1 0 $ConLobbyPlayerSlots"
+set CommandFocusUp ">if literal @_Arg1_@ < 3 runnow gameui focusNameTryNModPostFix ConLobbyEmpty @_Arg1_@ -1 0 $ConLobbyPlayerSlots"
+set CommandFocusUp ">if literal @_Arg1_@ == 0 gameui focusNameTry ConLobbySpecSlot6"
+set CommandFocusUp ">if literal @_Arg1_@ == 3 gameui focusNameTry ConLobbySpecSlot1"
+set CommandFocusDown ">if literal @_Arg1_@ < 3 runnow gameui focusNameTryNModPostFix ConLobbyPlayerAirMechIcon @_Arg1_@ 1 0 $ConLobbyPlayerSlots"
+set CommandFocusDown ">if literal @_Arg1_@ < 3 runnow gameui focusNameTryNModPostFix ConLobbyEmpty @_Arg1_@ 1 0 $ConLobbyPlayerSlots"
+set CommandFocusUp ">if literal @_Arg1_@ >= 3 runnow gameui focusNameTryNModPostFix ConLobbyPlayerAirMechIcon @_Arg1_@ -1 0 6"
+set CommandFocusUp ">if literal @_Arg1_@ >= 3 runnow gameui focusNameTryNModPostFix ConLobbyEmpty @_Arg1_@ -1 0 6"
+set CommandFocusDown ">if literal @_Arg1_@ >= 3 runnow gameui focusNameTryNModPostFix ConLobbyPlayerAirMechIcon @_Arg1_@ 1 0 6"
+set CommandFocusDown ">if literal @_Arg1_@ >= 3 runnow gameui focusNameTryNModPostFix ConLobbyEmpty @_Arg1_@ 1 0 6"
+set CommandCancel "if sym LobbyModeDetails == 0 menuCmd ConMenuLobbyCancel"
+set CommandCancel "if sym LobbyModeDetails == 1 menuCmd ConLobbyDetailsClose"
+set DisabledAlpha 1
+set FirstDrawnChildren 1
+set Child "ConLobbyPlayerAirMechBackground 0 0	@_Arg2_@"
+set Child "ConLobbyPlayerAirMechBorder -8 -8	@_Arg2_@"
+set Child "ConLobbyAirMechVariant 0 125		@_Arg1_@"
+set Child "ConLobbyAirMechClass 0 145		@_Arg1_@"
+add MenuObject initFrom ConLobbyPlayerAirMechIcon
+set Name ConLobbyPlayerAirMechIconDet
+set HiddenCheckBySymbolValue LobbyModeDetails!1
+add MenuObject
+set Name LobbyV1PlayerAirMechBackground
+set Texture menus/ConLoadout&@_Arg1_@&
+set FilterName Customize
+set Coords "655 10 215 318"
+set BlendMode NoBlend
+set SaveArgs 1
+add MenuObject
+set Name LobbyV1PlayerAirMechBorder
+set Texture menus/ConLoadout&@_Arg1_@&
+set FilterName Customize
+set Coords "647 2 231 334"
+set SaveArgs 1
+add MenuObject
+set Name LobbyV1PlayerTalking
+set Texture menus/MainTiles+lang
+set FilterName Customize
+set Coords "773 156 65 65"
+set ScaleX 1.2
+set ScaleY 1.2
+set NoAlphaMod 1
+set Alpha 0.8
+set SaveArgs 1
+set HiddenCheckBySymbolInv P_HasVoice@_Arg1_@
+set Child "ConPausePlayerTalk 22 9	@_Arg1_@"
+add MenuObject
+set Name LobbyV1PlayerAirMechIcon
+set Coords "5 32 213 316"
+set CoordsAnimated "720 105 213 316"
+set CoordsAnimated "140 32 213 316"
+set CoordsAnimationSymHash AirMechDisplayRobot
+set CommandOnCreate ">rook lookupCustomCoords @_Arg1_@ &PlayerRook@_Arg1_@& ACC_1 ACC_2"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set DisplayAsFocusedIfParentFocused 1
+set FilterName NetGameRoom
+set Texture rooks/&PlayerRook@_Arg1_@&/Hangar&TC@_Arg1_@&
+set TextureAlt rooks/&PlayerRook@_Arg1_@&/HangarUnique
+set SaveArgs 3
+set Focus -2
+set ToolTip MF_AirMech&PlayerRook@_Arg1_@&
+set DrawWhenFocused FocusLobbyV1AirMech
+set DrawWhenFocusedOffset "-4 -4 0"
+set MouseInteractZoneExpand "0 0 0 0"
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set CommandGetFocus ">input set padFocusFallback ConLobbyPlayerAirMechIcon@_Arg1_@"
+set MouseInteract 1
+set CommandGetFocus "sym set CurrentMenu CLobby"
+set CommandOnCreate ">if sym ArcCustomized == 1 sym set LobbyV1DisplayMode 1"
+set CommandLeftButton ">menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set CommandGetFocus ">addUIAnim ConLobbyPlayerAirMechIcon@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim ConLobbyPlayerAirMechIcon@_Arg1_@ mas_LobbyItemReset"
+set CommandGetFocus "if ps4 runnow sym set BtnHint_Inspect_Dyn BtnHint_GamerCard_PS4"
+set CommandLoseFocus "if ps4 runnow sym set BtnHint_Inspect_Dyn BtnHint_Inspect"
+set CommandPress "gameui ignoreInputTime 0.2"
+set CommandPress "sym set MenuLastFocus LobbyPlayerAirMechIcon"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 && UsingPad loadmenu ConAirMechSelect /fadein 0.15"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 && UsingMouse sym set CustomizeFromLobby 1"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 && UsingMouse loadmenu TempLoadout /fadein 0.1"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby rooks PlayerRook@_Arg1_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby rooks PlayerRook@_Arg1_@"
+set CommandFocusLeft ">gameui focusNameTry InviteButton@_Arg1_@"
+set CommandPressAlt ">sym valueCycle LobbyV1DisplayMode 1 0 3"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryLeft local ConLobbyPlayerAirMechIcon"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryRight local ConLobbyPlayerAirMechIcon"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+set CommandFocusDown ">menucmd LobbyV1FocusSlotChange local @_Arg1_@"
+set CommandCancel ">gameUI focusNameTryList LobbyV1PlayerAirMechIcon @_Arg1_@ 5 -1 /tryOnFail .ConMenuLobbyCancel"
+set DisabledAlpha 1
+set FirstDrawnChildren 1
+set Child "LobbyV1PlayerAirMechBackground 0 0	@_Arg2_@"
+set Child "LobbyV1PlayerPilotIconInfo 30 217	@_Arg1_@	/ifImmediate @_Arg1_@ != 0"
+set Child "LobbyV1OtherPilotIconInfo 30 217		@_Arg1_@	/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyV1AirMechOptionRobot 1 275		/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyV1PlayerAirMechBorder -8 -8	@_Arg2_@"
+set Child "LobbyV1PlayerTalking[LobbyV1PlayerTalking@_Arg1_@] 67 170 @_Arg1_@"
+add MenuObject
+set Name LobbyAllyAirMechIcon
+set Coords "30 50 196 196"
+set DisplayAsFocusedIfParentFocused 1
+set FilterName NetGameRoom
+set Texture rooks/&PlayerRook@_Arg1_@&/Icons&TC@_Arg1_@&
+set TextureAlt rooks/&PlayerRook@_Arg1_@&/IconUnique
+set SaveArgs 1
+set Focus -2
+set ScaleX 0.7
+set ScaleY 0.7
+set ToolTip MF_AirMech&PlayerRook@_Arg1_@&
+set DrawWhenFocused AirMechSelectAllyHighlight
+set DrawWhenFocusedOffset "-5 -5 0"
+set FilterName NetGameRoom
+set MouseInteract 1
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">menucmd InspectOrUnlockFromLobby rooks PlayerRook@_Arg1_@"
+set CommandCancel "gameUI focusNameTry LobbyGoButton"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyPlayerItem
+set RenderCB_DX 117
+set RenderCB_DY 117
+add MenuObject
+set Name MF_MatchingIconTemplate
+set Coords "39 39 174 174"
+set DisplayAsFocusedIfParentFocused 1
+set Layer 3
+set FilterName NetGameRoom
+set ScaleX 0.65
+set ScaleY 0.65
+set ScaleXFocused 0.7
+set ScaleYFocused 0.7
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+add MenuObject
+set Name LobbyRoomIconTemplate
+set Coords "39 39 174 174"
+set DisplayAsFocusedIfParentFocused 1
+set FilterName NetGameRoom
+set ScaleX 0.65
+set ScaleY 0.65
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+add MenuObject
+set Name LobbyRoomIconBlocker
+set Coords "0 0 96 96"
+set FilterName NetGameRoom
+set MouseInteract 1
+set RenderBlocked 1
+add MenuObject
+set Name LobbyRoomUnitsSelect
+set Coords "0 0 822 108"
+set FilterName NetGameRoom
+set MouseInteract 1
+set Focus -2
+set RenderBlocked 1
+set DrawWhenFocused UnitsSelectHighlight
+set CommandPress ">sym set _ArmySelSlot @_Arg3_@"
+set CommandPress ">if localId == @_Arg1_@ runNow loadmenu DialogLoadout.txt /fadein 0.15"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby units AS@_Arg3_@P@_Arg1_@"
+set DisabledSymInv MM_CustomizeOk
+set DisabledAlpha 1
+set CommandFocusDown "gameui focusNameTry LobbyInviteButton"
+set CommandFocusLeft "gameui focusNameTry LobbyPlayerPilotIcon"
+set CommandFocusRight "gameui focusNameTry LobbyGoButton"
+set CommandFocusUp "gameui focusNameTry LobbyPlayerItemSlot"
+set CommandCancel "gameUI focusNameTry LobbyGoButton"
+add MenuObject initFrom ItemSelectHighlight
+set Name UnitsSelectHighlight
+set TileArea "826 112"
+add MenuObject initFrom ItemSelectEdge
+set Name ItemAllySelectEdge
+set RenderCB_DX 64
+set RenderCB_DY 64
+add MenuObject
+set Name ConLobbyPlayerFlairSlotFocus
+set Coords "5 0 246 256"
+set ScaleX 0.45
+set ScaleY 0.45
+set Texture menus/FocusUnitCard
+set BlendMode BlendAdd
+set PulseAlpha "1.2 -0.5 1.0"
+add MenuObject
+set Name LobbyPlayerFlairSlotTemplate
+set Texture flair/&Flair@_Arg2_@Custom@_Arg1_@&Icon
+set NoDrawOnMissingTexture 1
+set SaveArgs 6
+set Coords "36 36 184 184"
+set Coords "x256 36 36 184 184 x512 72 72 368 368"
+set ScaleRefToCoordsX 184
+set ScaleRefToCoordsY 184
+set BlendMode NoBlend
+set ToolTip &Flair@_Arg2_@Custom@_Arg1_@&Desc
+set FilterName NetGameRoom
+set FilterName2 Customize
+set MouseInteract 1
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+set DrawAsLastChildWhenFocused 1
+set CommandGetFocus ">addUIAnim LobbyPlayerFlairSlot@_Arg2_@@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim LobbyPlayerFlairSlot@_Arg2_@@_Arg1_@ mas_LobbyItemReset"
+set Focus -2
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set ScaleX 0.5
+set ScaleY 0.5
+set DisabledAlpha 1
+set Child "ConLobbySlotBorder 0 0"
+add MenuObject initFrom LobbyPlayerFlairSlotTemplate
+set Name LobbyPlayerFlairSlot
+set CommandPress ">sym set MenuLastFocus #LobbyPlayerFlairSlot@_Arg2_@"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">sym set _FlairSelSlot @_Arg2_@"
+set CommandPress ">if localId == @_Arg1_@ runNow loadmenu DialogLoadout.txt /fadein 0.15"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby flairs Flair@_Arg2_@Custom@_Arg1_@"
+set CommandCancel "gameUI focusNameTry LobbyGoButton"
+set DisabledSymInv MM_CustomizeOk
+set CommandFocusLeft ">gameUI focusNameTry @_Arg3_@@_Arg1_@"
+set CommandFocusRight ">gameUI focusNameTry @_Arg5_@@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg4_@@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg6_@@_Arg1_@"
+add MenuObject initFrom LobbyPlayerFlairSlotTemplate
+set Name ConLobbyPlayerFlairSlot
+set CommandGetFocus "playSound $SubMenuFocus"
+set CommandPress ">sym set MenuLastFocus #LobbyPlayerFlairSlot@_Arg2_@"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">sym set _FlairSelSlot @_Arg2_@"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 runNow menucmd SelectFlairFromLobby"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby flairs Flair@_Arg2_@Custom@_Arg1_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby flairs Flair@_Arg2_@Custom@_Arg1_@"
+set CommandPress ">sym set ItemDialogTitle FlairDialogTitle"
+set CommandPressAlt ">menucmd InspectOrUnlockFromLobby flairs Flair@_Arg2_@Custom@_Arg1_@"
+set CommandCancel ">gameui focusName ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandLeftButton ">customize slotInspect flairs $$Flair@_Arg2_@Custom@_Arg1_@ /ignoreInputTime 0.15"
+set CommandFocusLeft ">gameUI focusNameTry @_Arg3_@@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg4_@@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg6_@@_Arg1_@"
+set CommandGetFocus ">menucmd LobbyV1FocusMemoryRight local #LobbyPlayerPetSlot@_Arg2_@"
+set CommandGetFocus ">menucmd LobbyV1FocusMemoryLeft local #LobbyPlayerFlairSlot@_Arg2_@"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+add MenuObject initFrom ConLobbyPlayerFlairSlot
+set Name ConLobbyPlayerFlairSlot_Me1
+set ToolTip &Flair@_Arg2_@Custom@_Arg1_@&Desc_TS
+set Child "InventoryOnTrialFlair1Lobby -1 -1 15"
+add MenuObject initFrom ConLobbyPlayerFlairSlot
+set Name ConLobbyPlayerFlairSlot_Me2
+set ToolTip &Flair@_Arg2_@Custom@_Arg1_@&Desc_TS
+set Child "InventoryOnTrialFlair2Lobby -1 -1 15"
+add MenuObject initFrom ConLobbyPlayerFlairSlot
+set Name ConLobbyPlayerFlairSlot_Me3
+set ToolTip &Flair@_Arg2_@Custom@_Arg1_@&Desc_TS
+set Child "InventoryOnTrialFlair3Lobby -1 -1 15"
+add MenuObject
+set Name LobbyPlayerHeadSlotTemplate
+set Texture flair/&HeadCustom@_Arg1_@&Icon
+set NoDrawOnMissingTexture 1
+set SaveArgs 6
+set Coords "x256 36 36 184 184 x512 72 72 368 368"
+set ScaleRefToCoordsX 184
+set ScaleRefToCoordsY 184
+set BlendMode NoBlend
+set ToolTip &HeadCustom@_Arg1_@&Desc
+set FilterName NetGameRoom
+set FilterName2 Customize
+set MouseInteract 1
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+set DrawAsLastChildWhenFocused 1
+set CommandGetFocus ">addUIAnim LobbyPlayerHeadSlot@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim LobbyPlayerHeadSlot@_Arg1_@ mas_LobbyItemReset"
+set Focus -2
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set ScaleX 0.5
+set ScaleY 0.5
+set DisabledAlpha 1
+set Child "ConLobbySlotBorder 0 0"
+add MenuObject initFrom LobbyPlayerHeadSlotTemplate
+set Name ConLobbyPlayerHeadSlot
+set CommandGetFocus "playSound $SubMenuFocus"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 runNow menucmd SelectHeadFromLobby"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby heads HeadCustom@_Arg1_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby heads HeadCustom@_Arg1_@"
+set CommandPress ">sym set ItemDialogTitle HeadHatDialogTitle"
+set CommandPressAlt ">menucmd InspectOrUnlockFromLobby heads HeadCustom@_Arg1_@"
+set CommandCancel ">gameui focusName ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandLeftButton ">customize slotInspect heads $$HeadCustom@_Arg1_@ /ignoreInputTime 0.15"
+set CommandFocusRight ">gameUI focusNameTry @_Arg3_@@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg4_@@_Arg1_@ ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg5_@@_Arg1_@"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryLeft local LobbyPlayerColorSlot"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryRight local LobbyPlayerHeadSlot"
+add MenuObject initFrom ConLobbyPlayerHeadSlot
+set Name ConLobbyPlayerHeadSlot_Me
+set ToolTip &HeadCustom@_Arg1_@&Desc_TS
+set Child "InventoryOnTrialHeadLobby -1 -1 15"
+add MenuObject
+set Name LobbyPlayerPetSlotTemplate
+set Texture flair/&Pet@_Arg2_@Custom@_Arg1_@&Icon
+set NoDrawOnMissingTexture 1
+set SaveArgs 6
+set Coords "x256 36 36 184 184 x512 72 72 368 368"
+set ScaleRefToCoordsX 184
+set ScaleRefToCoordsY 184
+set BlendMode NoBlend
+set ToolTip &Pet@_Arg2_@Custom@_Arg1_@&Desc
+set FilterName NetGameRoom
+set FilterName2 Customize
+set MouseInteract 1
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+set DrawAsLastChildWhenFocused 1
+set CommandGetFocus ">addUIAnim LobbyPlayerPetSlot@_Arg2_@@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim LobbyPlayerPetSlot@_Arg2_@@_Arg1_@ mas_LobbyItemReset"
+set Focus -2
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set ScaleX 0.5
+set ScaleY 0.5
+set DisabledAlpha 1
+set Child "ConLobbySlotBorder 0 0"
+add MenuObject initFrom LobbyPlayerPetSlotTemplate
+set Name LobbyPlayerPetSlot
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">sym set _PetSelSlot @_Arg2_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby pets Pet@_Arg2_@Custom@_Arg1_@"
+set CommandCancel "gameUI focusNameTry LobbyGoButton"
+set DisabledSymInv MM_CustomizeOk
+set CommandFocusLeft ">gameUI focusNameTry @_Arg3_@@_Arg1_@"
+set CommandFocusRight ">gameUI focusNameTry @_Arg4_@@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg5_@@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg6_@@_Arg1_@"
+add MenuObject initFrom LobbyPlayerPetSlotTemplate
+set Name ConLobbyPlayerPetSlot
+set CommandGetFocus "playSound $SubMenuFocus"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">sym set _PetSelSlot @_Arg2_@"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 runNow menucmd SelectPetFromLobby"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby pets Pet@_Arg2_@Custom@_Arg1_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby pets Pet@_Arg2_@Custom@_Arg1_@"
+set CommandPress ">sym set ItemDialogTitle PetDialogTitle"
+set CommandPressAlt ">menucmd InspectOrUnlockFromLobby pets Pet@_Arg2_@Custom@_Arg1_@"
+set CommandCancel ">gameui focusName ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandLeftButton ">customize slotInspect pets $$Pet@_Arg2_@Custom@_Arg1_@ /ignoreInputTime 0.15"
+set CommandFocusRight ">gameUI focusNameTry @_Arg4_@@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg5_@@_Arg1_@ ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg6_@@_Arg1_@"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandGetFocus ">menucmd LobbyV1FocusMemoryLeft local #LobbyPlayerFlairSlot@_Arg2_@"
+set CommandGetFocus ">menucmd LobbyV1FocusMemoryRight local #LobbyPlayerPetSlot@_Arg2_@"
+add MenuObject initFrom ConLobbyPlayerPetSlot
+set Name ConLobbyPlayerPetSlot_Me1
+set ToolTip &Pet@_Arg2_@Custom@_Arg1_@&Desc_TS
+set Child "InventoryOnTrialPet1Lobby -1 -1 15"
+add MenuObject initFrom ConLobbyPlayerPetSlot
+set Name ConLobbyPlayerPetSlot_Me2
+set ToolTip &Pet@_Arg2_@Custom@_Arg1_@&Desc_TS
+set Child "InventoryOnTrialPet2Lobby -1 -1 15"
+add MenuObject initFrom ConLobbyPlayerPetSlot
+set Name ConLobbyPlayerPetSlot_Me3
+set ToolTip &Pet@_Arg2_@Custom@_Arg1_@&Desc_TS
+set Child "InventoryOnTrialPet3Lobby -1 -1 15"
+add MenuObject initFrom LobbyRoomIconTemplate
+set Name LobbyAllyFlairSlot
+set Texture flair/&Flair@_Arg2_@Custom@_Arg1_@&Icon
+set NoDrawOnMissingTexture 1
+set SaveArgs 2
+set Coords "24 24 208 208"
+set BlendMode NoBlend
+set ToolTip &Flair@_Arg2_@Custom@_Arg1_@&Desc
+set FilterName NetGameRoom
+set FilterName2 Customize
+set MouseInteract 1
+set DrawWhenFocused ItemSelectHighlightAlly
+set DrawWhenFocusedOffset "-5 -5 0"
+set Focus -2
+set ScaleX 0.3
+set ScaleY 0.3
+set Child "ItemAllySelectEdge 0 0"
+set CommandPress ">sym set _FlairSelSlot @_Arg2_@"
+set CommandPress ">menucmd InspectOrUnlockFromLobby flairs Flair@_Arg2_@Custom@_Arg1_@"
+add MenuObject
+set Name LobbyBoostDropSlot
+set Texture menus/MainTiles+lang
+set SaveArgs 1
+set Coords "8 434 55 55"
+set MouseInteract 1
+set ToolTip TT_BoostDropNA
+set DrawGreyScale 1
+set NoAlphaMod 1
+set Alpha 0.4
+set Child "LobbyBoostDropSlotActive 0 0 @_Arg1_@"
+add MenuObject
+set Name LobbyBoostDropSlotActive
+set Texture menus/MainTiles+lang
+set SaveArgs 1
+set Coords "8 434 55 55"
+set MouseInteract 1
+set ToolTip @_Arg2_@
+set HiddenCheckBySymbolInv P_BoostDrop@_Arg1_@
+add MenuObject
+set Name LobbyBoostXpSlot
+set Texture menus/MainTiles+lang
+set SaveArgs 1
+set Coords "261 434 55 55"
+set MouseInteract 1
+set ToolTip TT_BoostXPNA
+set DrawGreyScale 1
+set NoAlphaMod 1
+set Alpha 0.4
+set Child "LobbyBoostXpSlotActive 0 0 @_Arg1_@"
+add MenuObject
+set Name LobbyBoostXpSlotActive
+set Texture menus/MainTiles+lang
+set SaveArgs 1
+set Coords "261 434 55 55"
+set MouseInteract 1
+set ToolTip TT_BoostXpIngame
+set HiddenCheckBySymbolInv P_BoostXp@_Arg1_@
+add MenuObject
+set Name LobbyBoostKudosSlot
+set Texture menus/MainTiles+lang
+set Coords "324 434 55 55"
+set MouseInteract 1
+set ToolTip TT_BoostKudosNA
+set DrawGreyScale 1
+set NoAlphaMod 1
+set Alpha 0.4
+set Child "LobbyBoostKudosSlotActive 0 0 @_Arg1_@"
+add MenuObject
+set Name LobbyBoostKudosSlotActive
+set Texture menus/MainTiles+lang
+set SaveArgs 1
+set Coords "324 434 55 55"
+set MouseInteract 1
+set ToolTip TT_BoostKudosIngame
+set HiddenCheckBySymbolInv P_BoostKd@_Arg1_@
+add MenuObject initFrom ItemSelectHighlight
+set Name ItemSelectHighlightSm
+set TileArea "112 112"
+add MenuObject initFrom ItemSelectHighlight
+set Name ArmySelectHighlightAlly
+set TileArea "108 108"
+add MenuObject initFrom ItemSelectHighlight
+set Name ItemSelectHighlightAlly
+set TileArea "74 74"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyItemSlotBg
+set RenderCB_DX 102
+set RenderCB_DY 102
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyItemAllySlotBg
+set RenderCB_DX 90
+set RenderCB_DY 90
+add MenuObject
+set Name LobbyPlayerItemSlotTemplate
+set Texture items/&ItemCustom@_Arg1_@&Icon
+set NoDrawOnMissingTexture 1
+set SaveArgs 1
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set Coords "x256 5 0 246 256 x512 10 0 492 512"
+set Coords "x256 36 36 184 184 x512 72 72 368 368"
+set ScaleRefToCoordsX 184
+set ScaleRefToCoordsY 184
+set BlendMode NoBlend
+set ToolTip &ItemCustom@_Arg1_@&Desc
+set FilterName NetGameRoom
+set FilterName2 Customize
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set ScaleX 0.5
+set ScaleY 0.5
+set CommandPress "sym set MenuLastFocus LobbyPlayerItemSlot"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandLeftButton ">customize slotInspect items $$ItemCustom@_Arg1_@ /ignoreInputTime 0.15"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby items ItemCustom@_Arg1_@"
+set CommandFocusLeft "gameui focusNameTry LobbyPlayerPilotIcon ConLobbyPlayerPilotIcon"
+set CommandCancel "gameUI focusNameTry LobbyGoButton"
+set DisabledAlpha 1
+set Child "ConLobbySlotBorder 0 0"
+add MenuObject initFrom LobbyPlayerItemSlotTemplate
+set Name LobbyPlayerItemSlot
+set DrawWhenFocused ConLobbySlotFocus45
+set CommandFocusRight "gameui focusNameTry LobbyPlayerPetSlot1"
+set CommandFocusDown "gameui focusNameTry LobbyRoomUnitsSelect"
+set CommandPress ">if localId == @_Arg1_@ runNow loadmenu DialogLoadout.txt /fadein 0.15"
+set DisabledSymInv MM_CustomizeOk
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+add MenuObject initFrom LobbyPlayerItemSlotTemplate
+set Name ConLobbyPlayerItemSlot
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+set DrawAsLastChildWhenFocused 1
+set CommandGetFocus "playSound $SubMenuFocus"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set CommandFocusRight ">gameui focusNameTry ConAirMechGuardianSlot@_Arg1_@"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryLeft local ConAirMechGuardianSlot"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry LobbyV1MapVote@_Arg1_@ ConLobbyPlayerPilotIcon@_Arg1_@"
+set CommandGetFocus ">addUIAnim ConLobbyPlayerItemSlot@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim ConLobbyPlayerItemSlot@_Arg1_@ mas_LobbyItemReset"
+set CommandFocusDown ">gameui focusNameTry ConLobbyPlayerArmySlot0@_Arg1_@"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 runNow menucmd SelectItemFromLobby"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby items ItemCustom@_Arg1_@"
+set CommandCancel ">gameui focusName ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandGetFocus "if sym LobbyV1MyDetailsHide == 0 sym set LobbyV1DisplayMode 0"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set CommandPress ">sym set ItemDialogTitle ItemDialogTitle"
+add MenuObject
+set Name LobbyPlayerColorSlot
+set Texture menus/IconColor&P_SelColorWithLev@_Arg1_@&
+set CommandGetFocus "playSound $SubMenuFocus"
+set NoDrawOnMissingTexture 1
+set SaveArgs 6
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set Coords "5 0 246 256"
+set Coords "36 36 184 184"
+set BlendMode NoBlend
+set ToolTip DispColor&P_SelColorWithLev@_Arg1_@&
+set FilterName NetGameRoom
+set FilterName2 Customize
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+set DrawAsLastChildWhenFocused 1
+set CommandGetFocus ">addUIAnim LobbyPlayerColorSlot@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim LobbyPlayerColorSlot@_Arg1_@ mas_LobbyItemReset"
+set ScaleX 0.5
+set ScaleY 0.5
+set CommandPress "sym set MenuLastFocus LobbyPlayerItemSlot"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">sym set ItemDialogTitle ColorDialogTitle"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 && sym LocalPlayerIsReady == 0 runNow menucmd SelectColorFromLobby"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby colors P_SelColorWithLev@_Arg1_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby colors P_SelColorWithLev@_Arg1_@"
+set CommandLeftButton ">customize slotInspect colors $$P_SelColorWithLev@_Arg1_@ /ignoreInputTime 0.15"
+set CommandCancel ">gameui focusName ConLobbyPlayerAirMechIcon@_Arg1_@"
+set DisabledAlpha 1
+set Child "ConLobbySlotBorder 0 0"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+add MenuObject initFrom LobbyPlayerColorSlot
+set Name ConLobbyPlayerColorSlot
+set CommandFocusLeft ">gameUI focusNameTry @_Arg3_@@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg4_@@_Arg1_@ ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg5_@@_Arg1_@"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryLeft local LobbyPlayerColorSlot"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryRight local LobbyPlayerHeadSlot"
+add MenuObject
+set Name LobbyAllyItemSlot
+set Texture items/&ItemCustom@_Arg1_@&Icon
+set NoDrawOnMissingTexture 1
+set SaveArgs 1
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set Coords "x256 24 24 208 208 x512 48 48 416 416"
+set ScaleRefToCoords 208
+set BlendMode NoBlend
+set ToolTip &ItemCustom@_Arg1_@&Desc
+set FilterName NetGameRoom
+set FilterName2 Customize
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused ItemSelectHighlightAlly
+set DrawWhenFocusedOffset "-5 -5 0"
+set ScaleX 0.3
+set ScaleY 0.3
+set Child "ItemAllySelectEdge 0 0"
+set CommandPress ">menucmd InspectOrUnlockFromLobby items ItemCustom@_Arg1_@"
+add MenuObject
+set Name LobbyPlayerArmySlot
+set Coords "23 23 200 200"
+set Texture units/NoUnit/IconUnique
+set ScaleX @_Arg4_@
+set ScaleY @_Arg4_@
+set Texture units/&AS@_Arg3_@P@_Arg1_@&/Icons&TC@_Arg2_@&
+set TextureAlt units/&AS@_Arg3_@P@_Arg1_@&/IconUnique
+set NoDrawOnMissingTexture 1
+set SaveArgs 4
+set ToolTip MF_CustomTip_&AS@_Arg3_@P@_Arg1_@&
+set FilterName NetGameRoom
+set MouseInteract 1
+set FirstDrawnChildren 1
+set CommandPress ">sym set _ArmySelSlot @_Arg3_@"
+set CommandPress ">if localId == @_Arg1_@ runNow menucmd SelectSingleUnitFromLobby"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby units AS@_Arg3_@P@_Arg1_@"
+set DisabledSymInv MM_CustomizeOk
+set DisabledAlpha 1
+add MenuObject
+set Name ConLobbyPlayerArmySlotFrame
+set Coords "5 0 246 256"
+set ScaleX @_Arg1_@
+set ScaleY @_Arg1_@
+set Texture menus/FrameUnitCard
+add MenuObject
+set Name ConLobbyPlayerArmySlotFocus
+set Coords "491 3 112 112"
+set Texture menus/ConLoadout
+set BlendMode BlendAdd
+set PulseAlpha "1.2 -0.5 1.0"
+add MenuObject
+set Name ConLobbySlotFocus75
+set Coords "5 0 246 256"
+set ScaleX 0.75
+set ScaleY 0.75
+set Texture menus/FocusUnitCard
+set BlendMode BlendAdd
+set PulseAlpha "1.2 -0.5 1.0"
+set HiddenCheckBySymbol _LoadoutTransition_
+add MenuObject initFrom ConLobbySlotFocus75
+set Name ConLobbySlotFocus45
+set ScaleX 0.45
+set ScaleY 0.45
+add MenuObject
+set Name ConLobbySlotGlow
+set Coords "5 0 246 256"
+set ScaleX @_Arg1_@
+set ScaleY @_Arg1_@
+set Texture menus/AlphaUnitCard
+set Color 0xbb8855
+set BlendMode BlendAdd
+set EnabledAlpha 0.5
+set DisabledSymInv _LoadoutTransition_
+set DisabledAlphaTimeOut 0.8
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name ConLobbySlotFade
+set Coords "5 0 246 256"
+set ScaleX @_Arg1_@
+set ScaleY @_Arg1_@
+set Texture menus/AlphaUnitCard
+set SaveArgs 2
+set DisabledSymInv _LoadoutTransition_
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeInPreWait 1.0
+add MenuObject
+set Name ConLobbySlotBorder
+set Coords "378 0 92 92"
+set Texture ]menus/ConLoadout
+set NoAlphaMod 1
+set Alpha 0.67
+add MenuObject
+set Name ConLobbyPlayerArmySlotBase
+set Coords "36 36 184 184"
+set Texture units/NoUnit/IconUnique
+set ScaleX @_Arg4_@
+set ScaleY @_Arg4_@
+set Texture units/&AS@_Arg3_@P@_Arg1_@&/Icons&TC@_Arg1_@&
+set TextureAlt units/&AS@_Arg3_@P@_Arg1_@&/IconUnique
+set BlendMode NoBlend
+set CommandGetFocus "playSound $SubMenuFocus"
+set CommandGetFocus ">addUIAnim ConLobbyPlayerArmySlot@_Arg3_@@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim ConLobbyPlayerArmySlot@_Arg3_@@_Arg1_@ mas_LobbyItemReset"
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+set DrawAsLastChildWhenFocused 1
+set NoDrawOnMissingTexture 1
+set SaveArgs 9
+set ToolTip MF_CustomTip_&AS@_Arg3_@P@_Arg1_@&
+set FilterName NetGameRoom
+set MouseInteract 1
+set Focus -2
+set Child "ConLobbySlotBorder 0 0"
+set CommandPress "if usingPad gameui ignoreInputTime 0.1"
+set CommandPress ">sym set _ArmySelSlot @_Arg3_@"
+set CommandPress ">if console && localId == @_Arg1_@ && sym MM_CustomizeOk == 1 runNow menucmd SelectUnitLoadoutCon local $$AS@_Arg3_@P@_Arg1_@"
+set CommandPress ">if !console && localId == @_Arg1_@ && sym MM_CustomizeOk == 1 runNow loadmenu SelectUnits.txt /fadein 0.15"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby units AS@_Arg3_@P@_Arg1_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby units AS@_Arg3_@P@_Arg1_@"
+set CommandPressAlt ">menucmd InspectOrUnlockFromLobby units AS@_Arg3_@P@_Arg1_@"
+set CommandLeftButton ">customize slotInspect units $$AS@_Arg3_@P@_Arg1_@ /ignoreInputTime 0.15"
+set DisabledAlpha 1
+set CommandCancel ">gameui focusName ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+add MenuObject initFrom ConLobbyPlayerArmySlotBase
+set Name ConLobbyPlayerArmySlot
+set CommandFocusLeft ">gameUI focusNameTry @_Arg5_@@_Arg1_@"
+set CommandFocusRight ">gameUI focusNameTry @_Arg7_@@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg6_@@_Arg1_@ @_Arg9_@@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg8_@@_Arg1_@"
+add MenuObject initFrom ConLobbyPlayerArmySlotBase
+set Name LobbyV1ArmySlotLeft
+set CommandGetFocus ">sym set _tempMemory_ @_Arg3_@"
+set CommandGetFocus "sym inc _tempMemory_"
+set CommandGetFocus "menucmd LobbyV1FocusMemory2Left local ConLobbyPlayerArmySlot $$_tempMemory_"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryRight local #ConLobbyPlayerArmySlot@_Arg3_@"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg5_@@_Arg1_@"
+set CommandFocusRight ">gameUI focusNameTry @_Arg6_@@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg7_@@_Arg1_@"
+set SaveArgs 7
+add MenuObject initFrom ConLobbyPlayerArmySlotBase
+set Name LobbyV1ArmySlotRight
+set CommandGetFocus ">sym set _tempMemory_ @_Arg3_@"
+set CommandGetFocus "sym dec _tempMemory_"
+set CommandGetFocus "menucmd LobbyV1FocusMemory2Right local ConLobbyPlayerArmySlot $$_tempMemory_"
+set CommandGetFocus ">menucmd LobbyV1FocusMemoryLeft local #ConLobbyPlayerArmySlot@_Arg3_@"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg5_@@_Arg1_@"
+set CommandFocusLeft ">gameUI focusNameTry @_Arg6_@@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg7_@@_Arg1_@"
+set SaveArgs 7
+add MenuObject
+set Name ConLobbyAllyArmySlot
+set Coords "36 36 184 184"
+set Texture units/NoUnit/IconUnique
+set ScaleX 0.5
+set ScaleY 0.5
+set BlendMode NoBlend
+set Texture units/&AS@_Arg3_@P@_Arg1_@&/Icons&TC@_Arg2_@&
+set TextureAlt units/&AS@_Arg3_@P@_Arg1_@&/IconUnique
+set NoDrawOnMissingTexture 1
+set Focus -2
+set CommandGetFocus ">addUIAnim ConLobbyPlayerArmySlot@_Arg3_@ mas_LobbyItemDown"
+set CommandLoseFocus ">addUIAnim ConLobbyPlayerArmySlot@_Arg3_@ mas_LobbyItemReset"
+set MouseInteractZoneExpandWhenFocused "0 -20 0 0"
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+set DrawAsLastChildWhenFocused 1
+set Child "ConLobbySlotBorder 0 0"
+set SaveArgs 4
+set ToolTip MF_CustomTip_&AS@_Arg3_@P@_Arg1_@&
+set FilterName NetGameRoom
+set MouseInteract 1
+set CommandPress ">sym set _ArmySelSlot @_Arg3_@"
+set CommandPress ">menucmd InspectOrUnlockFromLobby units AS@_Arg3_@P@_Arg1_@"
+add MenuObject
+set Name LobbyAllyArmySlot
+set Coords "23 23 200 200"
+set Texture units/NoUnit/IconUnique
+set ScaleX 0.5
+set ScaleY 0.5
+set Texture units/&AS@_Arg3_@P@_Arg1_@&/Icons&TC@_Arg2_@&
+set TextureAlt units/&AS@_Arg3_@P@_Arg1_@&/IconUnique
+set NoDrawOnMissingTexture 1
+set DrawWhenFocused ArmySelectHighlightAlly
+set Focus -2
+set DrawWhenFocusedOffset "-3 -3 0"
+set SaveArgs 3
+set ToolTip MF_CustomTip_&AS@_Arg3_@P@_Arg1_@&
+set FilterName NetGameRoom
+set MouseInteract 1
+set FirstDrawnChildren 1
+set CommandPress ">sym set _ArmySelSlot @_Arg3_@"
+set CommandPress ">menucmd InspectOrUnlockFromLobby units AS@_Arg3_@P@_Arg1_@"
+add MenuObject
+set Name ConAirMechPartBg
+set Texture menus/LoadoutFrame
+set Coords "230 893 94 94"
+add MenuObject
+set Name ConAirMechPartSlotBase
+set Texture parts/&AMP@_Arg3_@P@_Arg1_@&
+set ToolTip &AMP@_Arg3_@P@_Arg1_@&Desc
+set NoDrawOnMissingTexture 1
+set Coords "36 36 184 184"
+set DisplayAsFocusedIfParentFocused 1
+set ScaleX 0.5
+set ScaleY 0.5
+set Focus -2
+set MouseInteract 1
+set CommandGetFocus "playSound $SubMenuFocus"
+set SaveArgs 8
+set FilterName Customize
+set FilterName2 NetGameRoom
+set FirstDrawnChildren 1
+set Child "ConAirMechPartBg 0 0"
+set CommandPress ">sym set _PartSelSlot @_Arg2_@"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 runNow menucmd SelectPartFromLobby local @_Arg4_@ @_Arg2_@"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby @_Arg4_@ AMP@_Arg3_@P@_Arg1_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby @_Arg4_@ AMP@_Arg3_@P@_Arg1_@"
+set CommandPressAlt ">menucmd InspectOrUnlockFromLobby @_Arg4_@ AMP@_Arg3_@P@_Arg1_@"
+set CommandLeftButton ">customize slotInspect @_Arg4_@ $$AMP@_Arg3_@P@_Arg1_@ /ignoreInputTime 0.15"
+set CommandGetFocus ">addUIAnim LobbyPlayerPartSlot@_Arg3_@@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim LobbyPlayerPartSlot@_Arg3_@@_Arg1_@ mas_LobbyItemReset"
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+set DrawAsLastChildWhenFocused 1
+set CommandCancel ">gameui focusName ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set CommandPress ">sym set ItemDialogTitle @_Arg8_@DialogTitle"
+set CommandPress ">echo $@_Arg8_@"
+add MenuObject initFrom ConAirMechPartSlotBase
+set Name ConAirMechPartSlot
+set CommandFocusLeft ">gameUI focusNameTry @_Arg5_@@_Arg1_@"
+set CommandFocusRight ">gameUI focusNameTry @_Arg7_@@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg6_@@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg8_@@_Arg1_@"
+add MenuObject initFrom ConAirMechPartSlotBase
+set Name LobbyV1PartSlotLeft
+set CommandGetFocus ">sym set _tempMemory_ @_Arg3_@"
+set CommandGetFocus "sym inc _tempMemory_"
+set CommandGetFocus "menucmd LobbyV1FocusMemory2Left local LobbyPlayerPartSlot $$_tempMemory_"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryRight local #LobbyPlayerPartSlot@_Arg3_@"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg5_@@_Arg1_@"
+set CommandFocusRight ">gameUI focusNameTry @_Arg6_@@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg7_@@_Arg1_@"
+set SaveArgs 7
+add MenuObject initFrom ConAirMechPartSlotBase
+set Name LobbyV1PartSlotRight
+set CommandGetFocus ">sym set _tempMemory_ @_Arg3_@"
+set CommandGetFocus "sym dec _tempMemory_"
+set CommandGetFocus "menucmd LobbyV1FocusMemory2Right local LobbyPlayerPartSlot $$_tempMemory_"
+set CommandGetFocus ">menucmd LobbyV1FocusMemoryLeft local #LobbyPlayerPartSlot@_Arg3_@"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg5_@@_Arg1_@"
+set CommandFocusLeft ">gameUI focusNameTry @_Arg6_@@_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg7_@@_Arg1_@"
+set SaveArgs 7
+add MenuObject
+set Name ConAirMechGuardianSlot
+set Texture units/&GuardCustom@_Arg1_@&/Icons@TeamColor@
+set TextureAlt units/&GuardCustom@_Arg1_@&/IconUnique
+set ToolTip MF_CustomTip_&GuardCustom@_Arg1_@&
+set NoDrawOnMissingTexture 1
+set Coords "36 36 184 184"
+set DisplayAsFocusedIfParentFocused 1
+set ScaleX 0.5
+set ScaleY 0.5
+set Focus -2
+set MouseInteract 1
+set BlendMode NoBlend
+set SaveArgs 8
+set FilterName NetGameRoom
+set Child "ConLobbySlotBorder 0 0"
+set CommandFocusLeft ">gameUI focusNameTry ConLobbyPlayerItemSlot@_Arg1_@"
+set CommandFocusUp ">gameUI focusNameTry LobbyV1MapVote@_Arg1_@ ConLobbyPlayerPilotIcon@_Arg1_@"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryRight local ConLobbyPlayerItemSlot"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg7_@@_Arg1_@"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk == 1 runNow menucmd SelectGuardianFromLobby"
+set CommandPress ">if localId == @_Arg1_@ && sym MM_CustomizeOk != 1 runNow menucmd InspectOrUnlockFromLobby units GuardCustom@_Arg1_@"
+set CommandPress ">if spectatorOrlocalId != @_Arg1_@ runNow menucmd InspectOrUnlockFromLobby units GuardCustom@_Arg1_@"
+set CommandLeftButton ">customize slotInspect units $$GuardCustom@_Arg1_@ /ignoreInputTime 0.15"
+set CommandCancel ">gameui focusName ConLobbyPlayerAirMechIcon@_Arg1_@"
+set CommandGetFocus ">addUIAnim ConAirMechGuardianSlot@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">addUIAnim ConAirMechGuardianSlot@_Arg1_@ mas_LobbyItemReset"
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set DrawWhenFocusedOffset "-10 -10 0"
+set DrawWhenFocused ConLobbyPlayerArmySlotFocus
+set DrawAsLastChildWhenFocused 1
+set CommandGetFocus "if sym LobbyV1MyDetailsHide == 0 sym set LobbyV1DisplayMode 0"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set CommandPress ">sym set ItemDialogTitle GuardianDialogTitle"
+add MenuObject
+set Name LobbyPlayerUnits
+set Texture menus/DialogGeneral
+set Coords "78 787 938 237"
+set ContainerOnly 1
+set SaveArgs 1
+set Child "LobbySlotEmptyUnit 116 129"
+set Child "LobbySlotEmptyUnit 218 129"
+set Child "LobbySlotEmptyUnit 320 129"
+set Child "LobbySlotEmptyUnit 422 129"
+set Child "LobbySlotEmptyUnit 524 129"
+set Child "LobbySlotEmptyUnit 626 129"
+set Child "LobbySlotEmptyUnit 728 129"
+set Child "LobbySlotEmptyUnit 830 129"
+set Child "LobbyPlayerArmySlot 116 129 	@_Arg1_@ 0 0	0.5"
+set Child "LobbyPlayerArmySlot 218 129 	@_Arg1_@ 0 1	0.5"
+set Child "LobbyPlayerArmySlot 320 129 	@_Arg1_@ 0 2	0.5"
+set Child "LobbyPlayerArmySlot 422 129 	@_Arg1_@ 0 3	0.5"
+set Child "LobbyPlayerArmySlot 524 129 	@_Arg1_@ 0 4	0.5"
+set Child "LobbyPlayerArmySlot 626 129 	@_Arg1_@ 0 5	0.5"
+set Child "LobbyPlayerArmySlot 728 129 	@_Arg1_@ 0 6	0.5"
+set Child "LobbyPlayerArmySlot 830 129 	@_Arg1_@ 0 7	0.5"
+add MenuObject
+set Name LobbyAllyUnits
+set Texture menus/DialogGeneral
+set Coords "78 787 938 237"
+set ContainerOnly 1
+set SaveArgs 1
+set Child "LobbySlotEmptyUnit 116 0"
+set Child "LobbySlotEmptyUnit 218 0"
+set Child "LobbySlotEmptyUnit 320 0"
+set Child "LobbySlotEmptyUnit 422 0"
+set Child "LobbySlotEmptyUnit 524 0"
+set Child "LobbySlotEmptyUnit 626 0"
+set Child "LobbySlotEmptyUnit 728 0"
+set Child "LobbySlotEmptyUnit 830 0"
+set Child "LobbyAllyArmySlot 116 0 	@_Arg1_@ 0 0"
+set Child "LobbyAllyArmySlot 218 0 	@_Arg1_@ 0 1"
+set Child "LobbyAllyArmySlot 320 0 	@_Arg1_@ 0 2"
+set Child "LobbyAllyArmySlot 422 0 	@_Arg1_@ 0 3"
+set Child "LobbyAllyArmySlot 524 0 	@_Arg1_@ 0 4"
+set Child "LobbyAllyArmySlot 626 0 	@_Arg1_@ 0 5"
+set Child "LobbyAllyArmySlot 728 0 	@_Arg1_@ 0 6"
+set Child "LobbyAllyArmySlot 830 0 	@_Arg1_@ 0 7"
+add MenuObject
+set Name LobbyCustomizeLocked
+set Coords "2 929 1022 95"
+set Texture menus/DialogGeneral
+set FilterName NetGameRoom
+set MouseInteract 1
+set Focus -2
+set ScaleX 1.282
+set HiddenCheckBySymbol MM_CustomizeOk
+add MenuObject
+set Name LobbyPlayerContainer
+set ContainerOnly 1
+set Child "PlayerBackgroundReady 0 0"
+set Child "PlayerBackgroundNotReady 0 0"
+set Child "PlayerArmySetup 36 50"
+set Child "LobbyPlayerHeader 36 8			@MyId@"
+set Child "LobbyPlayerUnits 386 52			@MyId@"
+set Child "LobbyPlayerPilot 276 68			@MyId@"
+set Child "LobbyPlayerAirMech 50 68			@MyId@"
+set Child "LobbyPlayerFlairSlot[LobbyPlayerFlairSlot1] 716 60		@MyId@ 1	LobbyPlayerItemSlot LobbyPlayerFlairSlot2 null LobbyRoomUnitsSelect"
+set Child "LobbyPlayerFlairSlot[LobbyPlayerFlairSlot2] 818 60		@MyId@ 2	LobbyPlayerFlairSlot1 LobbyPlayerFlairSlot3 null LobbyRoomUnitsSelect"
+set Child "LobbyPlayerFlairSlot[LobbyPlayerFlairSlot3] 920 60		@MyId@ 3	LobbyPlayerFlairSlot2 LobbyGoButton null LobbyRoomUnitsSelect"
+set Child "LobbyBoostXpSlot 1230 2			@MyId@"
+set Child "LobbyBoostKudosSlot 1286 2		@MyId@"
+set Child "LobbyPlayerItemSlot 512 60 		@MyId@	0.45"
+set Child "LobbyPlayerColorSlot 614 60 		@MyId@"
+set Child "LobbyRoomUnitsSelect 497 176 	@MyId@"
+set Child "LobbyCustomizeLocked 31 128"
+set Child "LoadoutQuickChangeList 1300 78"
+add MenuObject
+set Name ConLobbyPlayerBg
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "196 370"
+set Color 0x004466
+add MenuObject
+set Name ConLobbyButtonLaunchYellow
+set Texture menus/DialogGeneral
+set Coords "655 402 181 107"
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name InvitePlayerList
+set Texture menus/Messages
+set CoordsStart "471 4 34 63"
+set CoordsMid "547 4 32 63"
+set CoordsEnd "579 4 37 63"
+set CoordsStartFocused "471 67 34 49"
+set CoordsMidFocused "547 67 32 49"
+set CoordsEndFocused "579 67 37 49"
+set CoordsStartDisabled "471 116 34 35"
+set CoordsMidDisabled "547 116 32 35"
+set CoordsEndDisabled "579 116 37 35"
+set RenderCB _DrawUText_G3x3
+set RenderCB_Flags "/noScreenClamp"
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.85
+set RenderCB_BoolArg 1
+set RenderCB_DX 300
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text testFriendList
+set RenderCB_YClipConfig "0 0 -25 -5"
+set RenderCB_YClipConfigIsOffsets 1
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.5
+add MenuObject initFrom InvitePlayerList
+set Name InvitePlayerListFriends
+set Color 0x00ff00
+add MenuObject initFrom InvitePlayerList
+set Name InvitePlayerListRecent
+set RenderCB_Text testRecentList
+set Color 0x0000ff
+add MenuObject
+set Name InvitePlayerCancel
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.5
+set MouseInteract 1
+set Focus -2
+set CommandPress "clearmenu InviteList /fadeout 0.15"
+set SaveArgs 1
+add MenuObject
+set Name InvitePlayerListbox
+set ContainerOnly 1
+set Child "FriendInviteLobby[ConFrSelect0] 0 0			0	null	null			ConFrSelect11	ConFrSelect1"
+set Child "FriendInviteLobby[ConFrSelect1] 0 70			1	null	ConFrSelect0	ConFrSelect12	ConFrSelect2"
+set Child "FriendInviteLobby[ConFrSelect2] 0 140		2	null	ConFrSelect1	ConFrSelect13	ConFrSelect3"
+set Child "FriendInviteLobby[ConFrSelect3] 0 210		3	null	ConFrSelect2	ConFrSelect14	ConFrSelect4"
+set Child "FriendInviteLobby[ConFrSelect4] 0 280		4	null	ConFrSelect3	ConFrSelect15	ConFrSelect5"
+set Child "FriendInviteLobby[ConFrSelect5] 0 350		5	null	ConFrSelect4	ConFrSelect16	ConFrSelect6"
+set Child "FriendInviteLobby[ConFrSelect6] 0 420		6	null	ConFrSelect5	ConFrSelect17	ConFrSelect7"
+set Child "FriendInviteLobby[ConFrSelect7] 0 490		7	null	ConFrSelect6	ConFrSelect18	ConFrSelect8"
+set Child "FriendInviteLobby[ConFrSelect8] 0 560		8	null	ConFrSelect7	ConFrSelect19	ConFrSelect9"
+set Child "FriendInviteLobby[ConFrSelect9] 0 630		9	null	ConFrSelect8	ConFrSelect20	ConFrSelect10"
+set Child "FriendInviteLobby[ConFrSelect10] 0 700		10	null	ConFrSelect9	ConFrSelect21	null"
+set Child "FriendInviteLobby[ConFrSelect11] 330 0		11	ConFrSelect0	null			ConFrSelect22	ConFrSelect12"
+set Child "FriendInviteLobby[ConFrSelect12] 330 70		12	ConFrSelect1	ConFrSelect11	ConFrSelect23	ConFrSelect13"
+set Child "FriendInviteLobby[ConFrSelect13] 330 140		13	ConFrSelect2	ConFrSelect12	ConFrSelect24	ConFrSelect14"
+set Child "FriendInviteLobby[ConFrSelect14] 330 210		14	ConFrSelect3	ConFrSelect13	ConFrSelect25	ConFrSelect15"
+set Child "FriendInviteLobby[ConFrSelect15] 330 280		15	ConFrSelect4	ConFrSelect14	ConFrSelect26	ConFrSelect16"
+set Child "FriendInviteLobby[ConFrSelect16] 330 350		16	ConFrSelect5	ConFrSelect15	ConFrSelect27	ConFrSelect17"
+set Child "FriendInviteLobby[ConFrSelect17] 330 420		17	ConFrSelect6	ConFrSelect16	ConFrSelect28	ConFrSelect18"
+set Child "FriendInviteLobby[ConFrSelect18] 330 490		18	ConFrSelect7	ConFrSelect17	ConFrSelect29	ConFrSelect19"
+set Child "FriendInviteLobby[ConFrSelect19] 330 560		19	ConFrSelect8	ConFrSelect18	ConFrSelect30	ConFrSelect20"
+set Child "FriendInviteLobby[ConFrSelect20] 330 630		20	ConFrSelect9	ConFrSelect19	ConFrSelect31	ConFrSelect21"
+set Child "FriendInviteLobby[ConFrSelect21] 330 700		21	ConFrSelect10	ConFrSelect20	ConFrSelect32	null"
+set Child "FriendInviteLobby[ConFrSelect22] 660 0		22	ConFrSelect11	null	null	ConFrSelect23"
+set Child "FriendInviteLobby[ConFrSelect23] 660 70		23	ConFrSelect12	ConFrSelect22	null	ConFrSelect24"
+set Child "FriendInviteLobby[ConFrSelect24] 660 140		24	ConFrSelect13	ConFrSelect23	null	ConFrSelect25"
+set Child "FriendInviteLobby[ConFrSelect25] 660 210		25	ConFrSelect14	ConFrSelect24	null	ConFrSelect26"
+set Child "FriendInviteLobby[ConFrSelect26] 660 280		26	ConFrSelect15	ConFrSelect25	null	ConFrSelect27"
+set Child "FriendInviteLobby[ConFrSelect27] 660 350		27	ConFrSelect16	ConFrSelect26	null	ConFrSelect28"
+set Child "FriendInviteLobby[ConFrSelect28] 660 420		28	ConFrSelect17	ConFrSelect27	null	ConFrSelect29"
+set Child "FriendInviteLobby[ConFrSelect29] 660 490		29	ConFrSelect18	ConFrSelect28	null	ConFrSelect30"
+set Child "FriendInviteLobby[ConFrSelect30] 660 560		30	ConFrSelect19	ConFrSelect29	null	ConFrSelect31"
+set Child "FriendInviteLobby[ConFrSelect31] 660 630		31	ConFrSelect20	ConFrSelect30	null	ConFrSelect32"
+set Child "FriendInviteLobby[ConFrSelect32] 660 700		32	ConFrSelect21	ConFrSelect31	null	null"
+add MenuObject
+set Name InvitePlayerDecoration
+set ScaleX 1.3, ScaleY 1.3
+set Texture menus/ConLoadout
+set RenderBlocked 1
+set Coords "9 811 132 213"
+set CommandPress "clearmenu InviteList /fadeout 0.15"
+set CommandCancel "clearmenu InviteList /fadeout 0.15"
+set CommandPress "clearmenu Invite /fadeout 0.1"
+set CommandCancel "clearmenu Invite /fadeout 0.1"
+set Focus -2
+add MenuObject
+set Name InvitePlayerHeader
+set Coords "0 0 900 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Flags "/shadowed /allCaps /fitX"
+set RenderCB_FontScale 0.65
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Text InvitePlayerHeader
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+add MenuObject initFrom InvitePlayerHeader
+set Name InvitePlayerUsername
+set Coords "0 0 900 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Flags "/shadowed /allCaps /fitX"
+set RenderCB_FontScale 0.35
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeInPreWait 0.1
+set RenderCB_Text Username
+set DisabledAlpha 0.0
+set EnabledAlpha 0.5
+add MenuObject
+set Name InvitePlayerDialogCloseVis
+set Coords "295 511 49 49"
+set CoordsFocused "350 511 49 49"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name InvitePlayerDialogClose
+set Coords "0 0 49 49"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu InviteList.txt /fadeout 0.15"
+set Child "InvitePlayerDialogCloseVis 0 0"
+add MenuObject
+set Name InvitePlayerExactName
+set Coords "8 233 411 56"
+set CoordsFocused "8 298 411 56"
+set Texture menus/Faction
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 411
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "14 5"
+set MouseInteractZoneExpand "-20 -20 0 10"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set TextEditableMaxLen 16
+set TextEditableUsername 1
+set RenderCB_Text InviteExactName
+set CommandEnterKey "menucmd GoPartyInviteExactName"
+add MenuObject
+set Name InvitePlayerContainer
+set MouseInteract 1
+set Focus -2
+set Texture menus/Messages
+set CoordsStart "796 184 24 24"
+set CoordsMid "820 184 24 24"
+set CoordsEnd "844 184 24 24"
+set CoordsStartFocused "796 208 24 24"
+set CoordsMidFocused "820 208 24 24"
+set CoordsEndFocused "844 208 24 24"
+set CoordsStartDisabled "796 232 24 24"
+set CoordsMidDisabled "820 232 24 24"
+set CoordsEndDisabled "844 232 24 24"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 1050
+set RenderCB_DY 900
+set Coords "0 0 1200 930"
+set MouseInteractZoneExpand "30 30 -30 -30"
+set SaveArgs 1
+set FirstDrawnChildren 1
+set Child "InvitePlayerCancel 0 0	@_Arg1_@"
+set Child "InvitePlayerHeader 20 -40"
+set Child "InvitePlayerDecoration -90 -50"
+set Child "InvitePlayerListbox 40 40"
+set Child "InvitePlayerDialogClose 1020 -10"
+set Child "InvitePlayerUsername 40 825		/platform !consolePlatform"
+set Child "InvitePlayerExactName 220 820		/platform !consolePlatform"
+set Child "ConsoleButtonShouldersNav 830 896	0.8 Inv_PageState"
+add MenuObject
+set Name InvitePlayerMaster
+set ContainerOnly 1
+set Child "InvitePlayerContainer 310 80		/platform consolePlatform"
+set Child "InvitePlayerContainer 200 120		/platform !consolePlatform"
+add MenuObject initFrom PanelEmbossedColor
+set Name ConPlayerArmySetup
+set RenderCB_DX 1100
+set RenderCB_DY 200
+set Color 0xbbbbbb
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name ConLobbyPlayerContainerDetBg
+set Texture menus/ConLoadout
+set Coords "0 198 377 199"
+set ScaleX 3.5
+set HiddenCheckBySymbolInv LobbyModeDetails
+add MenuObject
+set Name ConLobbyPlayerContainerBg
+set Texture menus/ConLoadout
+set Coords "0 198 108 199"
+set ScaleX 3.5
+set MirrorOnX 1
+set HiddenCheckBySymbol LobbyModeDetails
+add MenuObject
+set Name ConLobbyPlayerDivider
+set Texture menus/ConLoadout
+set Coords "382 99 64 186"
+add MenuObject
+set Name ConLobbyPlayerUnits
+set ContainerOnly 1
+set SaveArgs 1
+set Child "ConLobbyPlayerArmySlot[ConLobbyPlayerArmySlot7@_Arg1_@] 752 0 	@_Arg1_@ 0 7	0.5	ConLobbyPlayerArmySlot6	LobbyPlayerColorSlot ConLobbyPlayerAirMechIcon null ConLobbyPlayerPilotIconB"
+set Child "ConLobbyPlayerArmySlot[ConLobbyPlayerArmySlot6@_Arg1_@] 658 0 	@_Arg1_@ 0 6	0.5	ConLobbyPlayerArmySlot5	LobbyPlayerFlairSlot3 ConLobbyPlayerArmySlot7 null LobbyPlayerPartSlot8"
+set Child "ConLobbyPlayerArmySlot[ConLobbyPlayerArmySlot5@_Arg1_@] 564 0 	@_Arg1_@ 0 5	0.5	ConLobbyPlayerArmySlot4	LobbyPlayerFlairSlot2 ConLobbyPlayerArmySlot6 null LobbyPlayerPartSlot7"
+set Child "ConLobbyPlayerArmySlot[ConLobbyPlayerArmySlot4@_Arg1_@] 470 0 	@_Arg1_@ 0 4	0.5	ConLobbyPlayerArmySlot3	LobbyPlayerFlairSlot1 ConLobbyPlayerArmySlot5 null LobbyPlayerPartSlot6"
+set Child "ConLobbyPlayerArmySlot[ConLobbyPlayerArmySlot3@_Arg1_@] 376 0 	@_Arg1_@ 0 3	0.5	ConLobbyPlayerArmySlot2	LobbyPlayerPetSlot3 ConLobbyPlayerArmySlot4 null LobbyPlayerPartSlot5"
+set Child "ConLobbyPlayerArmySlot[ConLobbyPlayerArmySlot2@_Arg1_@] 282 0 	@_Arg1_@ 0 2	0.5	ConLobbyPlayerArmySlot1	LobbyPlayerPetSlot2 ConLobbyPlayerArmySlot3 null LobbyPlayerPartSlot4"
+set Child "ConLobbyPlayerArmySlot[ConLobbyPlayerArmySlot1@_Arg1_@] 188 0 	@_Arg1_@ 0 1	0.5	ConLobbyPlayerArmySlot0	LobbyPlayerPetSlot1 ConLobbyPlayerArmySlot2 null LobbyPlayerPartSlot3"
+set Child "ConLobbyPlayerArmySlot[ConLobbyPlayerArmySlot0@_Arg1_@] 94 0 	@_Arg1_@ 0 0	0.5	ConAirMechGuardianSlot	ConLobbyPlayerItemSlot ConLobbyPlayerArmySlot1 null LobbyPlayerPartSlot2"
+set Child "ConAirMechGuardianSlot[ConAirMechGuardianSlot@_Arg1_@] 0 0 	@_Arg1_@ 0	0.5	ConLobbyPlayerInfoBg	ConLobbyPlayerPilotIcon ConLobbyPlayerArmySlot0 null LobbyPlayerPartSlot1"
+add MenuObject
+set Name LobbyV1PlayerUnits
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue LobbyV1DisplayMode!1
+set Child "LobbyV1ArmySlotRight[ConLobbyPlayerArmySlot7@_Arg1_@] 100 300 	@_Arg1_@ @_Arg2_@ 7	0.5	ConLobbyPlayerArmySlot5	ConLobbyPlayerArmySlot6 null"
+set Child "LobbyV1ArmySlotLeft[ConLobbyPlayerArmySlot6@_Arg1_@] 0 300 		@_Arg1_@ @_Arg2_@ 6	0.5	ConLobbyPlayerArmySlot4	ConLobbyPlayerArmySlot7 null"
+set Child "LobbyV1ArmySlotRight[ConLobbyPlayerArmySlot5@_Arg1_@] 100 200 	@_Arg1_@ @_Arg2_@ 5	0.5	ConLobbyPlayerArmySlot3	ConLobbyPlayerArmySlot4 ConLobbyPlayerArmySlot7"
+set Child "LobbyV1ArmySlotLeft[ConLobbyPlayerArmySlot4@_Arg1_@] 0 200 		@_Arg1_@ @_Arg2_@ 4	0.5	ConLobbyPlayerArmySlot2	ConLobbyPlayerArmySlot5 ConLobbyPlayerArmySlot6"
+set Child "LobbyV1ArmySlotRight[ConLobbyPlayerArmySlot3@_Arg1_@] 100 100 	@_Arg1_@ @_Arg2_@ 3	0.5	ConLobbyPlayerArmySlot1	ConLobbyPlayerArmySlot2 ConLobbyPlayerArmySlot5"
+set Child "LobbyV1ArmySlotLeft[ConLobbyPlayerArmySlot2@_Arg1_@] 0 100 		@_Arg1_@ @_Arg2_@ 2	0.5	ConLobbyPlayerArmySlot0	ConLobbyPlayerArmySlot3 ConLobbyPlayerArmySlot4"
+set Child "LobbyV1ArmySlotRight[ConLobbyPlayerArmySlot1@_Arg1_@] 100 0 		@_Arg1_@ @_Arg2_@ 1	0.5	ConLobbyPlayerAirMechIcon	ConLobbyPlayerArmySlot0 ConLobbyPlayerArmySlot3"
+set Child "LobbyV1ArmySlotLeft[ConLobbyPlayerArmySlot0@_Arg1_@] 0 0 		@_Arg1_@ @_Arg2_@ 0	0.5	ConLobbyPlayerAirMechIcon	ConLobbyPlayerArmySlot1 ConLobbyPlayerArmySlot2"
+add MenuObject
+set Name LobbyV1MyUnits
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbol LobbyV1MyDetailsHide
+set Child "LobbyV1ArmySlotRight[ConLobbyPlayerArmySlot7@_Arg1_@] 100 300 	@_Arg1_@ @_Arg2_@ 7	0.5	ConLobbyPlayerArmySlot5	ConLobbyPlayerArmySlot6 null"
+set Child "LobbyV1ArmySlotLeft[ConLobbyPlayerArmySlot6@_Arg1_@] 0 300 		@_Arg1_@ @_Arg2_@ 6	0.5	ConLobbyPlayerArmySlot4	ConLobbyPlayerArmySlot7 null"
+set Child "LobbyV1ArmySlotRight[ConLobbyPlayerArmySlot5@_Arg1_@] 100 200 	@_Arg1_@ @_Arg2_@ 5	0.5	ConLobbyPlayerArmySlot3	ConLobbyPlayerArmySlot4 ConLobbyPlayerArmySlot7"
+set Child "LobbyV1ArmySlotLeft[ConLobbyPlayerArmySlot4@_Arg1_@] 0 200 		@_Arg1_@ @_Arg2_@ 4	0.5	ConLobbyPlayerArmySlot2	ConLobbyPlayerArmySlot5 ConLobbyPlayerArmySlot6"
+set Child "LobbyV1ArmySlotRight[ConLobbyPlayerArmySlot3@_Arg1_@] 100 100 	@_Arg1_@ @_Arg2_@ 3	0.5	ConLobbyPlayerArmySlot1	ConLobbyPlayerArmySlot2 ConLobbyPlayerArmySlot5"
+set Child "LobbyV1ArmySlotLeft[ConLobbyPlayerArmySlot2@_Arg1_@] 0 100 		@_Arg1_@ @_Arg2_@ 2	0.5	ConLobbyPlayerArmySlot0	ConLobbyPlayerArmySlot3 ConLobbyPlayerArmySlot4"
+set Child "LobbyV1ArmySlotRight[ConLobbyPlayerArmySlot1@_Arg1_@] 100 0 		@_Arg1_@ @_Arg2_@ 1	0.5	LobbyPlayerPartSlot7	ConLobbyPlayerArmySlot0 ConLobbyPlayerArmySlot3"
+set Child "LobbyV1ArmySlotLeft[ConLobbyPlayerArmySlot0@_Arg1_@] 0 0 		@_Arg1_@ @_Arg2_@ 0	0.5	LobbyPlayerPartSlot6	ConLobbyPlayerArmySlot1 ConLobbyPlayerArmySlot2"
+add MenuObject
+set Name ConLobbyPlayerFlair
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbol AirMechDisplayRobot
+set Child "LobbyPlayerColorSlot[LobbyPlayerColorSlot@_Arg1_@] 752 0 		@_Arg1_@"
+set Child "ConLobbyPlayerFlairSlot[LobbyPlayerFlairSlot3@_Arg1_@] 658 0		@_Arg1_@ 3	LobbyPlayerFlairSlot2 null LobbyPlayerColorSlot ConLobbyPlayerArmySlot6"
+set Child "ConLobbyPlayerFlairSlot[LobbyPlayerFlairSlot2@_Arg1_@] 564 0		@_Arg1_@ 2	LobbyPlayerFlairSlot1 null LobbyPlayerFlairSlot3  ConLobbyPlayerArmySlot5"
+set Child "ConLobbyPlayerFlairSlot[LobbyPlayerFlairSlot1@_Arg1_@] 470 0		@_Arg1_@ 1	LobbyPlayerPetSlot3 null LobbyPlayerFlairSlot2  ConLobbyPlayerArmySlot4"
+set Child "ConLobbyPlayerPetSlot[LobbyPlayerPetSlot3@_Arg1_@] 376 0			@_Arg1_@ 3	LobbyPlayerPetSlot2 LobbyPlayerFlairSlot1 null ConLobbyPlayerArmySlot3"
+set Child "ConLobbyPlayerPetSlot[LobbyPlayerPetSlot2@_Arg1_@] 282 0			@_Arg1_@ 2	LobbyPlayerPetSlot1 LobbyPlayerPetSlot3 null ConLobbyPlayerArmySlot2"
+set Child "ConLobbyPlayerPetSlot[LobbyPlayerPetSlot1@_Arg1_@] 188 0			@_Arg1_@ 1	ConLobbyPlayerItemSlot LobbyPlayerPetSlot2 null ConLobbyPlayerArmySlot1"
+set Child "ConLobbyPlayerItemSlot[ConLobbyPlayerItemSlot@_Arg1_@] 94 0 		@_Arg1_@"
+set Child "ConLobbyPlayerPilotIcon[ConLobbyPlayerPilotIcon@_Arg1_@] 0 0		@_Arg1_@ ConAirMechGuardianSlot"
+add MenuObject
+set Name LobbyV1PlayerFlair
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue LobbyV1DisplayMode!3
+set Child "ConLobbyPlayerColorSlot[LobbyPlayerColorSlot@_Arg1_@] 100 0 		@_Arg1_@	LobbyPlayerHeadSlot LobbyPlayerHeadSlot ConLobbyPlayerAirMechIcon LobbyPlayerFlairSlot1"
+set Child "ConLobbyPlayerHeadSlot[LobbyPlayerHeadSlot@_Arg1_@] 0 0 			@_Arg1_@	LobbyPlayerHeadSlot LobbyPlayerColorSlot ConLobbyPlayerAirMechIcon LobbyPlayerPetSlot1"
+set Child "ConLobbyPlayerFlairSlot[LobbyPlayerFlairSlot3@_Arg1_@] 100 300	@_Arg1_@ 3	LobbyPlayerPetSlot3 LobbyPlayerFlairSlot2 null null"
+set Child "ConLobbyPlayerFlairSlot[LobbyPlayerFlairSlot2@_Arg1_@] 100 200	@_Arg1_@ 2	LobbyPlayerPetSlot2 LobbyPlayerFlairSlot1 null  LobbyPlayerFlairSlot3"
+set Child "ConLobbyPlayerFlairSlot[LobbyPlayerFlairSlot1@_Arg1_@] 100 100	@_Arg1_@ 1	LobbyPlayerPetSlot1 LobbyPlayerColorSlot null  LobbyPlayerFlairSlot2"
+set Child "ConLobbyPlayerPetSlot[LobbyPlayerPetSlot3@_Arg1_@] 0 300			@_Arg1_@ 3	null LobbyPlayerFlairSlot3 LobbyPlayerPetSlot2 null"
+set Child "ConLobbyPlayerPetSlot[LobbyPlayerPetSlot2@_Arg1_@] 0 200			@_Arg1_@ 2	null LobbyPlayerFlairSlot2 LobbyPlayerPetSlot1 LobbyPlayerPetSlot3"
+set Child "ConLobbyPlayerPetSlot[LobbyPlayerPetSlot1@_Arg1_@] 0 100			@_Arg1_@ 1	null LobbyPlayerFlairSlot1 LobbyPlayerHeadSlot LobbyPlayerPetSlot2"
+add MenuObject
+set Name LobbyV1MyFlair
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbol LobbyV1MyDetailsHide
+set Child "LobbyPlayerColorSlot[LobbyPlayerColorSlot@_Arg1_@] 0 0 			@_Arg1_@	LobbyPlayerHeadSlot LobbyPlayerFlairSlot1 ConLobbyPlayerAirMechIcon LobbyPlayerPetSlot2"
+set Child "ConLobbyPlayerHeadSlot_Me[LobbyPlayerHeadSlot@_Arg1_@] 0 100 	@_Arg1_@	LobbyPlayerHeadSlot LobbyPlayerFlairSlot1 ConLobbyPlayerAirMechIcon LobbyPlayerPetSlot2"
+set Child "ConLobbyPlayerFlairSlot_Me3[LobbyPlayerFlairSlot3@_Arg1_@] 0 700	@_Arg1_@ 3	LobbyPlayerPetSlot3 LobbyPlayerFlairSlot2 null null"
+set Child "ConLobbyPlayerFlairSlot_Me2[LobbyPlayerFlairSlot2@_Arg1_@] 0 600	@_Arg1_@ 2	LobbyPlayerPetSlot2 LobbyPlayerFlairSlot1 null  LobbyPlayerFlairSlot3"
+set Child "ConLobbyPlayerFlairSlot_Me1[LobbyPlayerFlairSlot1@_Arg1_@] 0 500	@_Arg1_@ 1	LobbyPlayerPetSlot1 LobbyPlayerColorSlot null  LobbyPlayerFlairSlot2"
+set Child "ConLobbyPlayerPetSlot_Me3[LobbyPlayerPetSlot3@_Arg1_@] 0 400		@_Arg1_@ 3	null LobbyPlayerFlairSlot3 LobbyPlayerPetSlot2 null"
+set Child "ConLobbyPlayerPetSlot_Me2[LobbyPlayerPetSlot2@_Arg1_@] 0 300		@_Arg1_@ 2	null LobbyPlayerFlairSlot2 LobbyPlayerPetSlot1 LobbyPlayerPetSlot3"
+set Child "ConLobbyPlayerPetSlot_Me1[LobbyPlayerPetSlot1@_Arg1_@] 0 200		@_Arg1_@ 1	null LobbyPlayerFlairSlot1 LobbyPlayerColorSlot LobbyPlayerPetSlot2"
+add MenuObject
+set Name ConLobbyPlayerParts
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolInv AirMechDisplayRobot
+set Child "ConLobbyPlayerPilotIcon[ConLobbyPlayerPilotIconB@_Arg1_@] 752 0			@_Arg1_@ ConLobbyPlayerArmySlot7"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot8@_Arg1_@] 658 0		@_Arg1_@ 8 7 partengine			LobbyPlayerPartSlot7 ConLobbyPlayerPilotIconB null ConLobbyPlayerArmySlot6 Engine"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot7@_Arg1_@] 564 0		@_Arg1_@ 7 6 partcore 			LobbyPlayerPartSlot6 LobbyPlayerPartSlot8 null ConLobbyPlayerArmySlot5 Core"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot6@_Arg1_@] 470 0		@_Arg1_@ 6 5 partspecial		LobbyPlayerPartSlot5 LobbyPlayerPartSlot7 null ConLobbyPlayerArmySlot4 Special"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot5@_Arg1_@] 376 0		@_Arg1_@ 5 4 partspecial		LobbyPlayerPartSlot4 LobbyPlayerPartSlot6 null ConLobbyPlayerArmySlot3 Special"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot4@_Arg1_@] 282 0		@_Arg1_@ 4 3 partstructural		LobbyPlayerPartSlot3 LobbyPlayerPartSlot5 null ConLobbyPlayerArmySlot2 Structural"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot3@_Arg1_@] 188 0		@_Arg1_@ 3 2 partstructural		LobbyPlayerPartSlot2 LobbyPlayerPartSlot4 null ConLobbyPlayerArmySlot1 Structural"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot2@_Arg1_@] 94 0		@_Arg1_@ 2 1 partprimary		LobbyPlayerPartSlot1 LobbyPlayerPartSlot3 null ConLobbyPlayerArmySlot0 Primary"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot1@_Arg1_@] 0 0 		@_Arg1_@ 1 0 partprimary		ConLobbyPlayerInfoBg LobbyPlayerPartSlot2 null ConAirMechGuardianSlot Primary"
+add MenuObject
+set Name LobbyV1PlayerParts
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue LobbyV1DisplayMode!2
+set Child "LobbyV1PartSlotRight[LobbyPlayerPartSlot7@_Arg1_@] 100 300		@_Arg1_@ 8 7 partengine			LobbyPlayerPartSlot5 LobbyPlayerPartSlot6 null Engine"
+set Child "LobbyV1PartSlotLeft[LobbyPlayerPartSlot6@_Arg1_@] 0 300		@_Arg1_@ 7 6 partcore 			LobbyPlayerPartSlot4 LobbyPlayerPartSlot7 null Core"
+set Child "LobbyV1PartSlotRight[LobbyPlayerPartSlot5@_Arg1_@] 100 200		@_Arg1_@ 6 5 partspecial		LobbyPlayerPartSlot3 LobbyPlayerPartSlot4 LobbyPlayerPartSlot7 Special"
+set Child "LobbyV1PartSlotLeft[LobbyPlayerPartSlot4@_Arg1_@] 0 200		@_Arg1_@ 5 4 partspecial		LobbyPlayerPartSlot2 LobbyPlayerPartSlot5 LobbyPlayerPartSlot6 Special"
+set Child "LobbyV1PartSlotRight[LobbyPlayerPartSlot3@_Arg1_@] 100 100		@_Arg1_@ 4 3 partstructural		LobbyPlayerPartSlot1 LobbyPlayerPartSlot2 LobbyPlayerPartSlot5 Structural"
+set Child "LobbyV1PartSlotLeft[LobbyPlayerPartSlot2@_Arg1_@] 0 100		@_Arg1_@ 3 2 partstructural		LobbyPlayerPartSlot0 LobbyPlayerPartSlot3 LobbyPlayerPartSlot4 Structural"
+set Child "LobbyV1PartSlotRight[LobbyPlayerPartSlot1@_Arg1_@] 100 0		@_Arg1_@ 2 1 partprimary		ConLobbyPlayerAirMechIcon LobbyPlayerPartSlot0 LobbyPlayerPartSlot3 Primary"
+set Child "LobbyV1PartSlotLeft[LobbyPlayerPartSlot0@_Arg1_@] 0 0 		@_Arg1_@ 1 0 partprimary		ConLobbyPlayerAirMechIcon LobbyPlayerPartSlot1 LobbyPlayerPartSlot2 Primary"
+add MenuObject
+set Name LobbyV1MyParts
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbol LobbyV1MyDetailsHide
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot7@_Arg1_@] 100 300		@_Arg1_@ 8 7 partengine			LobbyPlayerPartSlot5 LobbyPlayerPartSlot6 ConLobbyPlayerArmySlot1 Engine"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot6@_Arg1_@] 0 300		@_Arg1_@ 7 6 partcore 			LobbyPlayerPartSlot4 LobbyPlayerPartSlot7 ConLobbyPlayerArmySlot0 Core"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot5@_Arg1_@] 100 200		@_Arg1_@ 6 5 partspecial		LobbyPlayerPartSlot3 LobbyPlayerPartSlot4 LobbyPlayerPartSlot7 Special"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot4@_Arg1_@] 0 200		@_Arg1_@ 5 4 partspecial		LobbyPlayerPartSlot2 LobbyPlayerPartSlot5 LobbyPlayerPartSlot6 Special"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot3@_Arg1_@] 100 100		@_Arg1_@ 4 3 partstructural		LobbyPlayerPartSlot1 LobbyPlayerPartSlot2 LobbyPlayerPartSlot5 Structural"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot2@_Arg1_@] 0 100		@_Arg1_@ 3 2 partstructural		LobbyPlayerPartSlot0 LobbyPlayerPartSlot3 LobbyPlayerPartSlot4 Structural"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot1@_Arg1_@] 100 0		@_Arg1_@ 2 1 partprimary		ConLobbyPlayerAirMechIcon LobbyPlayerPartSlot0 LobbyPlayerPartSlot3 Primary"
+set Child "ConAirMechPartSlot[LobbyPlayerPartSlot0@_Arg1_@] 0 0 		@_Arg1_@ 1 0 partprimary		ConLobbyPlayerAirMechIcon LobbyPlayerPartSlot1 LobbyPlayerPartSlot2 Primary"
+add MenuObject
+set Name LobbyV1PlayerPilot
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue LobbyV1DisplayMode!0
+set Child "ConAirMechGuardianSlot[ConAirMechGuardianSlot@_Arg1_@] 100 300 	@_Arg1_@ 0	0.5	ConLobbyPlayerInfoBg	ConLobbyPlayerPilotIcon ConLobbyPlayerArmySlot0 null LobbyPlayerPartSlot1"
+set Child "ConLobbyPlayerItemSlot[ConLobbyPlayerItemSlot@_Arg1_@] 0 300 		@_Arg1_@"
+set Child "LobbyV1PlayerPilotIcon[ConLobbyPlayerPilotIcon@_Arg1_@] -6 -50		@_Arg1_@ ConAirMechGuardianSlot"
+set Child "LobbyV1MapSelected[LobbyV1MapVote@_Arg1_@] -10 137		@_Arg1_@	/ifImmediate @_Arg1_@ == 0 /ifSym MyId == 0"
+set Child "LobbyV1MapVoteOther[LobbyV1MapVote@_Arg1_@] -10 137		@_Arg1_@	/ifImmediate @_Arg1_@ == 0 /ifSym MyId != 0"
+set Child "LobbyV1MapVoteOther[LobbyV1MapVote@_Arg1_@] -10 137		@_Arg1_@	/ifImmediate @_Arg1_@ != 0 /ifSym MyId != 0"
+set Child "LobbyV1MapVoteOther[LobbyV1MapVote@_Arg1_@] -10 137		@_Arg1_@	/ifImmediate @_Arg1_@ != 0 /ifSym MyId == 0"
+set Child "LobbyBoostXpSlot -8 100				@_Arg1_@	/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyBoostXpSlotActive -8 100		@_Arg1_@	/ifImmediate @_Arg1_@ != 0"
+set Child "LobbyBoostKudosSlot 144 100			@_Arg1_@	/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyBoostKudosSlotActive 144 100	@_Arg1_@	/ifImmediate @_Arg1_@ != 0"
+set Child "LobbyBoostDropSlot 144 -50			@_Arg1_@	/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyBoostDropSlotActive 144 -50		@_Arg1_@	TT_BoostDropIngame		/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyBoostDropSlotActive 144 -50		@_Arg1_@	TT_BoostDropIngameOther		/ifImmediate @_Arg1_@ != 0"
+add MenuObject
+set Name LobbyV1MyPilot
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbol LobbyV1MyDetailsHide
+set HiddenCheckBySymbolValue LobbyV1DisplayMode!0
+set Child "ConAirMechGuardianSlot[ConAirMechGuardianSlot@_Arg1_@] 100 300 	@_Arg1_@ 0	0.5	ConLobbyPlayerInfoBg	ConLobbyPlayerPilotIcon ConLobbyPlayerArmySlot0 null LobbyPlayerPartSlot1"
+set Child "ConLobbyPlayerItemSlot[ConLobbyPlayerItemSlot@_Arg1_@] 0 300 		@_Arg1_@"
+set Child "LobbyV1PlayerPilotIcon[ConLobbyPlayerPilotIcon@_Arg1_@] -6 -50		@_Arg1_@ ConAirMechGuardianSlot"
+set Child "LobbyV1MapSelected[LobbyV1MapVote@_Arg1_@] -10 137		@_Arg1_@	/ifImmediate @_Arg1_@ == 0 /ifSym MyId == 0"
+set Child "LobbyV1MapVoteOther[LobbyV1MapVote@_Arg1_@] -10 137		@_Arg1_@	/ifImmediate @_Arg1_@ == 0 /ifSym MyId != 0"
+set Child "LobbyV1MapVoteOther[LobbyV1MapVote@_Arg1_@] -10 137		@_Arg1_@	/ifImmediate @_Arg1_@ != 0 /ifSym MyId != 0"
+set Child "LobbyV1MapVoteOther[LobbyV1MapVote@_Arg1_@] -10 137		@_Arg1_@	/ifImmediate @_Arg1_@ != 0 /ifSym MyId == 0"
+set Child "LobbyBoostXpSlot -8 100				@_Arg1_@	/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyBoostXpSlotActive -8 100		@_Arg1_@	/ifImmediate @_Arg1_@ != 0"
+set Child "LobbyBoostKudosSlot 144 100			@_Arg1_@	/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyBoostKudosSlotActive 144 100	@_Arg1_@	/ifImmediate @_Arg1_@ != 0"
+set Child "LobbyBoostDropSlot 144 -50			@_Arg1_@	/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyBoostDropSlotActive 144 -50		@_Arg1_@	TT_BoostDropIngame			/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyBoostDropSlotActive 144 -50		@_Arg1_@	TT_BoostDropIngameOther			/ifImmediate @_Arg1_@ != 0"
+add MenuObject
+set Name ConLobbyPlayerDetailShadow
+set Coords "101 196 200 200"
+set Texture menus/ConLoadout
+set ScaleX 4.25
+add MenuObject
+set Name ConLobbyPlayerDetailContainer
+set ContainerOnly 1
+set HiddenCheckBySymbolInv LobbyModeDetails
+set Child "ConLobbyPlayerDetailShadow -2 -8"
+set Child "ConLobbyPlayerUnits 0 94			@_Arg1_@"
+set Child "ConLobbyPlayerFlair 0 0			@_Arg1_@"
+set Child "ConLobbyPlayerParts 0 0			@_Arg1_@"
+set SaveArgs 1
+add MenuObject
+set Name LobbyV1MyStuffBg
+set Coords "944 230 450 450"
+set CoordsStart "944 230 12 12"
+set CoordsMid "956 230 47 12"
+set CoordsEnd "1003 230 12 12"
+set CoordsStartFocused "944 242 12 47"
+set CoordsMidFocused "956 242 47 47"
+set CoordsEndFocused "1003 242 12 47"
+set CoordsStartDisabled "944 289 12 12"
+set CoordsMidDisabled "956 289 47 12"
+set CoordsEndDisabled "1003 289 12 12"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 328
+set RenderCB_DY 835
+set Color 0x364247
+set NoAlphaMod 1
+set Alpha 0.85
+set HiddenCheckBySymbol LobbyV1MyDetailsHide
+add MenuObject
+set Name LobbyV1PlayerDetailContainer
+set ContainerOnly 1
+set Child "LobbyV1PlayerUnits 12 6			@_Arg1_@	@_Arg3_@"
+set Child "LobbyV1PlayerFlair 12 6			@_Arg1_@	@_Arg3_@"
+set Child "LobbyV1PlayerParts 12 6			@_Arg1_@	@_Arg3_@"
+set Child "LobbyV1PlayerPilot 12 6			@_Arg1_@	@_Arg3_@"
+set SaveArgs 2
+add MenuObject
+set Name LobbyV1MyDetailContainer
+set ContainerOnly 1
+set Child "LobbyV1PlayerUnits 12 6			@_Arg1_@	@_Arg3_@"
+set Child "LobbyV1PlayerFlair 12 6			@_Arg1_@	@_Arg3_@"
+set Child "LobbyV1PlayerParts 12 6			@_Arg1_@	@_Arg3_@"
+set Child "LobbyV1PlayerPilot 12 6			@_Arg1_@	@_Arg3_@"
+set SaveArgs 2
+add MenuObject
+set Name ConLobbyPlayerName
+set Coords "0 0 230 32"
+set DisabledAlpha 0.5
+set SaveArgs 1
+set RenderCB_DX 215
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font RobotoBold
+set RenderCB_ConsoleSymbol P_Name@_Arg1_@
+set MouseInteract 1
+set ToolTip TT_Name
+add MenuObject initFrom ConLobbyPlayerName
+set Name LobbyV1PlayerName
+set RenderCB_Font Roboto
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX"
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 205 32"
+set RenderCB_DX 204
+set MouseInteract 0
+set RenderCB_FontScale 0.8
+set RenderCB_RGBColor 0xffffff
+add MenuObject
+set Name LobbyV1PlayerLoadoutName
+set Coords "0 0 230 32"
+set DisabledAlpha 0.5
+set RenderCB_DX 204
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.4
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Gunner_Langfallback
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX"
+set RenderCB_ConsoleSymbol LDL@_Arg1_@
+set MouseInteract 0
+set ToolTip TT_Name
+set FilterName LoadoutName
+set SaveArgs 1
+set Child "LobbyV1PlayerDefaultLoadoutName 0 0 @_Arg1_@"
+add MenuObject
+set Name LobbyV1PlayerDefaultLoadoutName
+set Coords "0 0 230 32"
+set RenderCB_DX 204
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.4
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Gunner_Langfallback
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX"
+set RenderCB_Text BtnHint_Loadout
+set DisabledSymValue LDL@_Arg1_@!""
+set DisabledAlphaTimeIn 0.0
+set DisabledAlphaTimeOut 0.0
+set FilterName LoadoutName
+add MenuObject initFrom LobbyV1PlayerName
+set Name LobbyV1PlayerNameDyn
+set HiddenCheckBySymbolValue MyId=@_Arg1_@
+add MenuObject initFrom ConLobbyPlayerName
+set Name LobbyV1PlayerNameEmpty
+set RenderCB_Font Roboto
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX"
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 215 32"
+set MouseInteract 0
+set RenderCB_FontScale 0.8
+set RenderCB_RGBColor "0.8"
+set RenderCB_ConsoleSymbol ""
+set RenderCB _DrawUText
+set RenderCB_Text LobbyNameEmpty
+set HiddenCheckBySymbolValue P_Name@_Arg1_@!
+add MenuObject initFrom ConLobbyPlayerName
+set Name ConLobbyBotName
+set Coords "0 0 230 32"
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol ""
+set RenderCB_Text LobbyPlayerBot
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX"
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 215 32"
+set MouseInteract 0
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.8
+set RenderCB_RGBColor "0.8"
+set HiddenCheckBySymbol ConMenuSoloSurvival
+set HiddenCheckBySymbolValue ConMenuCoopSurvival=1
+add MenuObject initFrom ConLobbyPlayerName
+set Name ConLobbyHiddenBotName
+set Coords "0 0 230 32"
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol ""
+set RenderCB_Text LobbyPlayerBot
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX"
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 215 32"
+set MouseInteract 0
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.8
+set RenderCB_RGBColor "0.8"
+set HiddenCheckBySymbolValue Ally@_Arg1_@Mode=2
+add MenuObject
+set Name ConLobbyPlayerReady
+set Coords "457 277 142 142"
+set Texture menus/ConLoadout
+set CoordsAnimated "457 277 142 142"
+set CoordsAnimated "457 123 142 142"
+set CoordsAnimationSymHash P_Rdy@_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name ConLobbyNonPlayerBot
+set Coords "612 215 128 128"
+set Texture menus/ConLoadout
+set MirrorOnX 1
+set DrawGreyScale 1
+set ScaleX 1.3, ScaleY 1.3
+set HiddenCheckBySymbolInv MatchmakingBotsAllowed
+add MenuObject
+set Name ConLobbyNonPlayerUnknown
+set Coords "471 294 108 108"
+set Texture menus/ConLoadout
+set DrawGreyScale 1
+set ScaleX 1.3, ScaleY 1.3
+set HiddenCheckBySymbol MatchmakingBotsAllowed
+add MenuObject initFrom ConLobbyNonPlayerUnknown
+set Name ConLobbyNonPlayerUnknownPW
+set HiddenCheckBySymbol ""
+add MenuObject
+set Name ConLobbyNonPlayerIcons
+set ContainerOnly 1
+set Child "ConLobbyNonPlayerBot 0 0 /ifSym ArcCustomized == 0"
+set Child "ConLobbyNonPlayerUnknown 14 14 /ifSym ArcCustomized == 0"
+set Child "ConLobbyNonPlayerUnknownPW 14 14 /ifSym ArcCustomized == 1"
+add MenuObject
+set Name ConLobbyPlayerInfoBg
+set Texture menus/ConLoadout&@_Arg2_@&
+set FilterName Customize
+set Focus -2
+set MouseInteract 1
+set Coords "1 1 268 205"
+set Child "ConLobbyPlayerName 20 15			@_Arg1_@"
+set Child "LobbyBoostXpSlot 10 136			@_Arg1_@"
+set Child "LobbyBoostKudosSlot 65 136		@_Arg1_@"
+set Child "ConLobbyPlayerReady 130 50 		@_Arg1_@"
+set Child "ConLobbyNonPlayerIcons 135 55 		@_Arg1_@ /ifImmediate @_Arg1_@ != 0 /ifSym _soloLaunch_ == 1"
+set Child "ConLobbyLoadoutNum 0 60			/ifImmediate @_Arg1_@ == 0"
+set SaveArgs 2
+set CommandLeftButton ">menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandPress ">if literal @_Arg1_@ != 0 menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandPress ">if literal @_Arg1_@ == 0 menucmd ChangeLoadoutNext"
+set CommandPressAlt ">if literal @_Arg1_@ == 0 menucmd ChangeLoadoutPrev"
+set CommandFocusRight ">gameui focusNameTry ConLobbyPlayerPilotIcon@_Arg1_@ LobbyPlayerPartSlot1@_Arg1_@"
+set CommandCancel "menuCmd ConLobbyDetailsClose"
+set CommandCancel ">gameui focusNameTry ConLobbyPlayerAirMechIcon@_Arg1_@"
+set DrawWhenFocused ConLobbyPlayerPlayerSlotFocus
+set DrawWhenFocusedOffset "0 -2 0"
+add MenuObject
+set Name LobbyV1PlayerInfoLine
+set Texture menus/ConLoadout&@_Arg1_@&
+set FilterName Customize
+set Coords "647 2 231 9"
+set MirrorOnY 1
+set ScaleX 0.9
+set SaveArgs 1
+add MenuObject
+set Name LobbyV1UltimateHeadA
+set Texture ]menus/CloudsBlueDark
+set BlendMode BlendAdd
+set Coords "0 0 256 256"
+set CoordsInterpolatedDest "256 256 256 256"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 10"
+set TileArea "215 103"
+set SaveArgs 1
+set HiddenCheckBySymbolValue P_ULvl@_Arg1_@=0
+set TileAreaFullTexture 0
+add MenuObject
+set Name LobbyV1UltimateHeadB
+set Texture ]menus/CloudsBlueDark
+set BlendMode BlendAdd
+set HiddenCheckBySymbolValue P_ULvl@_Arg1_@=0
+set Coords "256 0 256 256"
+set CoordsInterpolatedDest "0 256 256 256"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 16"
+set TileArea "215 103"
+set SaveArgs 1
+set TileAreaFullTexture 0
+add MenuObject
+set Name LobbyV1UltimatePointsBg
+set Texture menus/ConLoadout
+set Coords "635 168 84 36"
+set Focus -2
+set MouseInteract 1
+set ToolTip GS_UltimateLevel
+add MenuObject
+set Name LobbyV1UltimateBorder
+set Texture menus/ConLoadout
+set PulseAlpha "2.5 -0.4 0.0"
+set Coords "625 9 228 155"
+set BlendMode BlendAdd
+set HiddenCheckBySymbolValue P_ULvl@_Arg1_@=0
+set SaveArgs 1
+set FirstDrawnChildren 1
+set Child "LobbyV1UltimatePointsBg 10 109"
+add MenuObject
+set Name LobbyV1UltimatePoints
+set Coords "0 0 60 42"
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 1.0
+set RenderCB _DrawSymNumMod
+set RenderCB_Flags "/outlined8x /shadowcolor2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol P_ULvl@_Arg1_@
+set RenderCB_IntArg 0
+set HiddenCheckBySymbolValue P_ULvl@_Arg1_@=0
+add MenuObject
+set Name LobbyV1PlayerMyNameSolid
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color @_Arg1_@
+set SaveArgs 1
+set TileArea "212 40"
+add MenuObject
+set Name LobbyV1LoadoutArrows
+set Texture abilities/AbilityParts
+set Coords "154 95 102 31"
+set ScaleX 1.8
+set PulseAlpha "1.0 0.0 -0.6"
+add MenuObject
+set Name LobbyV1PlayerMyLoadout
+set Texture menus/ConLoadoutYellow
+set Coords "647 2 231 50"
+set FirstDrawnChildren 1
+set SaveArgs 1
+set HiddenCheckBySymbolInv LobbyFocusSelf
+set HiddenCheckBySymbolValue MyId!@_Arg1_@
+set Child "LobbyV1PlayerMyNameSolid 10 10	0x294d56"
+set Child "LobbyV1LoadoutArrows 22 12"
+set Child "ConLobbyLoadoutNum 87 2"
+add MenuObject
+set Name LobbyV1PlayerMyNameBg
+set Texture menus/ConLoadoutYellow
+set Coords "647 2 231 50"
+set FirstDrawnChildren 1
+set SaveArgs 1
+set HiddenCheckBySymbol LobbyFocusSelf
+set HiddenCheckBySymbolValue MyId!@_Arg1_@
+set Child "LobbyV1PlayerMyNameSolid 10 10	0xffc924"
+set Child "LobbyV1PlayerName 13 12		@_Arg1_@"
+add MenuObject
+set Name LobbyV1PlayerLoadoutNameBg
+set Texture menus/ConLoadoutYellow
+set Coords "647 2 231 60"
+set FirstDrawnChildren 1
+set SaveArgs 2
+set MirrorOnY 1
+set HiddenCheckBySymbolInv LobbyFocusSelf
+set HiddenCheckBySymbolInv2 ArcCustomized
+set HiddenCheckBySymbolValue ActiveLoadout!@_Arg2_@
+set Child "LobbyV1PlayerMyNameSolid 10 10	0xffc924"
+set Child "LobbyV1PlayerLoadoutName 13 12	@_Arg1_@"
+add MenuObject
+set Name LobbyV1PlayerLoadoutNext
+set Focus -2
+set MouseInteract 1
+set RenderBlocked 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue MyId!@_Arg1_@
+set MouseInteractZoneExpand "107 0 0 0"
+set Coords "0 0 215 110"
+set CommandPress "menucmd ChangeLoadoutNext"
+set DrawWhenFocused LobbyV1DifficultyFocus
+set DrawWhenFocusedOffset "-23 -32"
+set CommandGetFocus "sym set LobbyFocusSelf 1"
+set CommandLoseFocus "sym set LobbyFocusSelf 0"
+add MenuObject
+set Name LobbyV1PlayerInfoBg
+set Texture menus/ConLoadout&@_Arg2_@&
+set FilterName Customize
+set Focus -2
+set MouseInteract 1
+set RenderBlocked 1
+set Coords "1 1 215 110"
+set Child "LobbyV1UltimateHeadA 0 0 		@_Arg1_@ 		/ifSym ArcCustomized == 0"
+set Child "LobbyV1PlayerInfoLine 3 62 		@_Arg2_@"
+set Child "ConLobbyNonPlayerIcons 135 99 	@_Arg1_@		/ifImmediate @_Arg1_@ != 0 /ifSym _soloLaunch_ == 1"
+set Child "LobbyV1PlayerMyNameBg -8 54		@_Arg1_@"
+set Child "LobbyV1PlayerMyLoadout -8 54		@_Arg1_@"
+set Child "LobbyV1PlayerNameDyn 5 66		@_Arg1_@"
+set Child "LobbyV1AirMechVariant 0 0		@_Arg1_@"
+set Child "LobbyV1AirMechClass 0 4			@_Arg1_@"
+set Child "LobbyV1UltimateHeadB 0 0 		@_Arg1_@ 		/ifSym ArcCustomized == 0"
+set Child "LobbyV1UltimateBorder -7 -8 		@_Arg1_@ 		/ifSym ArcCustomized == 0"
+set Child "LobbyV1UltimatePoints 0 96 						/ifSym ArcCustomized == 0"
+set Child "LobbyV1PlayerLoadoutNext 0 0		@_Arg1_@"
+set Child "LobbyV1PlayerLoadoutNameBg -8 90		2	1"
+set Child "LobbyV1PlayerLoadoutNameBg -8 90		3	2"
+set Child "LobbyV1PlayerLoadoutNameBg -8 90		4	3"
+set Child "LobbyV1PlayerLoadoutNameBg -8 90		5	4"
+set Child "LobbyV1PlayerLoadoutNameBg -8 90		6	5"
+set Child "LobbyV1PlayerLoadoutNameBg -8 90		7	6"
+set Child "LobbyV1PlayerLoadoutNameBg -8 90		8	7"
+set Child "LobbyV1PlayerLoadoutNameBg -8 90		9	8"
+set Child "LobbyV1PlayerLoadoutNameBg -8 90		10	9"
+set Child "LobbyV1PlayerLoadoutNameBg -8 90		1	0"
+set SaveArgs 2
+set CommandLeftButton ">menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandPress ">if literal @_Arg1_@ != 0 menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandPress ">if literal @_Arg1_@ == 0 && sym MyId < 6 menucmd ChangeLoadoutPrev"
+set CommandPress ">if literal @_Arg1_@ == 0 && sym MyId >= 6 menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandFocusRight ">gameui focusNameTry ConLobbyPlayerPilotIcon@_Arg1_@ LobbyPlayerPartSlot1@_Arg1_@"
+set CommandGetFocus "sym set LobbyFocusSelf 1"
+set CommandLoseFocus "sym set LobbyFocusSelf 0"
+set CommandCancel "menuCmd ConLobbyDetailsClose"
+set CommandCancel ">gameui focusNameTry ConLobbyPlayerAirMechIcon@_Arg1_@"
+set DrawWhenFocused LobbyV1DifficultyFocus
+set DrawWhenFocusedOffset "-23 -32"
+add MenuObject
+set Name LobbyV1SecretInfoBg
+set Texture menus/ConLoadout&@_Arg2_@&
+set FilterName Customize
+set Focus -2
+set MouseInteract 1
+set RenderBlocked 1
+set Coords "1 1 215 110"
+set Child "LobbyV1UltimateHeadA 0 0 		@_Arg1_@"
+set Child "LobbyV1PlayerInfoLine 3 62 		@_Arg2_@"
+set Child "LobbyV1PlayerMyNameBg -8 54		@_Arg1_@"
+set Child "LobbyV1PlayerName 0 66		@_Arg1_@"
+set Child "ConLobbyHiddenBotName 0 66		@_Arg1_@"
+set Child "LobbyV1Title 0 4		TitleHidden"
+set Child "LobbyV1UltimateHeadB 0 0 		@_Arg1_@"
+set Child "LobbyV1UltimateBorder -7 -8 	@_Arg1_@"
+set Child "LobbyV1UltimatePoints 0 96"
+set SaveArgs 2
+set CommandLeftButton ">menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandPress ">if sym Ally@_Arg1_@Mode == 2 menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandPress ">if literal @_Arg1_@ == 0 menucmd ChangeLoadoutNext"
+set CommandPressAlt ">if literal @_Arg1_@ == 0 menucmd ChangeLoadoutPrev"
+set CommandCancel "gameui focusNameTry ConLobbyPlayerAirMechIcon0 ConLobbyPlayerAirMechIcon1 ConLobbyPlayerAirMechIcon2 ConLobbyPlayerAirMechIcon3 ConLobbyPlayerAirMechIcon4 ConLobbyPlayerAirMechIcon5 .ConMenuLobbyCancel"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+set DrawWhenFocused LobbyV1DifficultyFocus
+set DrawWhenFocusedOffset "-23 -32"
+add MenuObject
+set Name ConLobbyPlayerInfoDetBg
+set Texture menus/ConLoadout
+set Coords "8 401 291 202"
+set Child "ConLobbyPlayerName 20 15			@_Arg1_@"
+set Child "LobbyBoostXpSlot 10 136			@_Arg1_@"
+set Child "LobbyBoostKudosSlot 65 136		@_Arg1_@"
+set Child "ConLobbyPlayerReady 180 30 		@_Arg1_@"
+set SaveArgs 1
+set HiddenCheckBySymbolInv LobbyModeDetails
+set Focus -2
+set MouseInteract 1
+set CommandPress ">menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandFocusRight ">gameui focusNameTry ConLobbyPlayerPilotIcon@_Arg1_@ ConLobbyPlayerPartSlot1@_Arg1_@"
+set CommandCancel "menuCmd ConLobbyDetailsClose"
+set CommandCancel ">gameui focusNameTry ConLobbyPlayerAirMechIcon@_Arg1_@"
+set DrawWhenFocused ConLobbyPlayerPlayerSlotFocus
+set DrawWhenFocusedOffset "0 -2 0"
+add MenuObject
+set Name ConLobbyPlayerContainer
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyPlayerDetailContainer[ConLobbyPlayerDetailContainer@_Arg1_@] 10 0	@_Arg1_@		/ifImmediate @_Arg3_@ == 1"
+set Child "ConLobbyPlayerAirMechIcon[ConLobbyPlayerAirMechIcon@_Arg1_@] 259 0			@_Arg1_@ @_Arg2_@ @_Arg3_@"
+set Child "ConLobbyPlayerInfoBg[ConLobbySpectatorSlot@_Arg1_@] 0 -9					@_Arg1_@	@_Arg2_@"
+add MenuObject
+set Name LobbyV1PlayerContainerBg
+set Texture menus/EscMenu
+set FilterName Customize
+set Coords "181 55 215 420"
+set Child "LobbyV1PlayerContainerColor 0 0	@_Arg1_@"
+add MenuObject
+set Name LobbyV1PlayerContainerColor
+set Texture menus/ConLoadout&@_Arg1_@&
+set FilterName Customize
+set Coords "14 14 215 176"
+set SaveArgs 1
+set ScaleY 2.37
+set NoAlphaMod 1
+set Alpha 0.3
+add MenuObject
+set Name LobbyV1PlayerContainerShadow
+set Texture menus/ConLoadout&@_Arg1_@&
+set FilterName Customize
+set Coords "655 9 215 318"
+set MirrorOnY 1
+set ScaleY 1.32
+set SaveArgs 1
+add MenuObject
+set Name LobbyV1ReadyText
+set Coords "0 0 227 64"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor "1.0"
+set RenderCB_Flags "/allCaps /outlined8x /fitX /shadowcolor2"
+set RenderCB_FontScale 0.6
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "0 -1"
+add MenuObject
+set Name LobbyV1PlayerReady
+set Coords "790 313 227 50"
+set Texture menus/ConLoadout
+set HiddenCheckBySymbolInv P_Rdy@_Arg1_@
+set Child "LobbyV1ReadyText 0 10 LobbyReady"
+set SaveArgs 1
+add MenuObject
+set Name LobbyV1BotReady
+set Coords "790 313 227 50"
+set Texture menus/ConLoadout
+set Child "LobbyV1ReadyText 0 10 LobbyBotReady"
+set HiddenCheckBySymbolInv MatchmakingBotsAllowed
+set HiddenCheckBySymbolInv2 ConMenuPlaySolo
+add MenuObject
+set Name LobbyV1PlayerNotReady
+set Coords "790 371 227 50"
+set Texture menus/ConLoadout
+set HiddenCheckBySymbol P_Rdy@_Arg1_@
+set Child "LobbyV1ReadyText 0 10 LobbyNotReady"
+set SaveArgs 1
+add MenuObject
+set Name LobbyV1WaitingText
+set Coords "0 0 200 364"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text LobbyWaitingRejoin
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/outlined8x /shadowcolor2"
+set RenderCB_FontScale 0.8
+set RenderCB_BoolArg 1
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "0 -1"
+add MenuObject
+set Name LobbyV1PlayerIsIngame
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0x253334
+set ColorFocused 0x253334
+set NoAlphaMod 1
+set Alpha 0.5
+set TileArea "215 730"
+set HiddenCheckBySymbolInv MM_InGame@_Arg1_@
+set HiddenCheckBySymbol P_Rdy@_Arg1_@
+set SaveArgs 1
+set Child "GenericSearchingDots 18 15"
+set Child "GenericSearchingDots 18 685"
+set Child "LobbyV1WaitingText 10 105"
+add MenuObject initFrom LoginExtraButton
+set Name LobbyV1OldHangarButton
+set CommandPress "loadmenu DialogLoadout.txt /fadein 0.15"
+set SaveArgs 1
+set RenderCB_Text MB_Hangar
+add MenuObject
+set Name LobbyV1PlayerContainer
+set ContainerOnly 1
+set SaveArgs 3
+set Child "LobbyV1PlayerReady	-6 728	@_Arg1_@"
+set Child "LobbyV1PlayerNotReady	-6 728	@_Arg1_@"
+set Child "LobbyV1MyStuffBg -318 -98								/ifImmediate @_Arg1_@ == 0"
+set Child "LoadoutAirMechPointsLobby -150 -120						/ifImmediate @_Arg1_@ == 0	/ifSym _PartsUsePP == 1"
+set Child "LobbyV1MyParts -200 -80			@_Arg1_@	@_Arg3_@	/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyV1MyUnits -200 326			@_Arg1_@	@_Arg3_@	/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyV1MyFlair -300 -80			@_Arg1_@	@_Arg3_@	/ifImmediate @_Arg1_@ == 0"
+set Child "LobbyV1PlayerContainerBg	0 310	@_Arg2_@"
+set Child "LobbyV1PlayerContainerShadow	0 310	@_Arg2_@"
+set Child "LobbyV1PlayerAirMechIcon[ConLobbyPlayerAirMechIcon@_Arg1_@] 0 0			@_Arg1_@ @_Arg2_@ @_Arg3_@"
+set Child "LobbyV1PlayerInfoBg[ConLobbySpectatorSlot@_Arg1_@] 0 -103				@_Arg1_@	@_Arg2_@"
+set Child "LobbyV1PlayerDetailContainer[ConLobbyPlayerDetailContainer@_Arg1_@] 0 320	@_Arg1_@	@_Arg2_@	@_Arg3_@ /ifImmediate @_Arg1_@ == 5"
+set Child "LobbyV1PlayerDetailContainer[ConLobbyPlayerDetailContainer@_Arg1_@] 0 320	@_Arg1_@	@_Arg2_@	@_Arg3_@ /ifImmediate @_Arg1_@ == 4"
+set Child "LobbyV1PlayerDetailContainer[ConLobbyPlayerDetailContainer@_Arg1_@] 0 320	@_Arg1_@	@_Arg2_@	@_Arg3_@ /ifImmediate @_Arg1_@ == 3"
+set Child "LobbyV1PlayerDetailContainer[ConLobbyPlayerDetailContainer@_Arg1_@] 0 320	@_Arg1_@	@_Arg2_@	@_Arg3_@ /ifImmediate @_Arg1_@ == 2"
+set Child "LobbyV1PlayerDetailContainer[ConLobbyPlayerDetailContainer@_Arg1_@] 0 320	@_Arg1_@	@_Arg2_@	@_Arg3_@ /ifImmediate @_Arg1_@ == 1"
+set Child "LobbyV1PlayerIsIngame 0 0	@_Arg1_@"
+set Child "LobbyV1MyDetailContainer[ConLobbyPlayerDetailContainer@_Arg1_@] 0 320	@_Arg1_@	@_Arg2_@	@_Arg3_@	 /ifImmediate @_Arg1_@ == 0"
+add MenuObject
+set Name LobbyV1SpectatorInfoLine
+set Texture menus/ConLoadout
+set FilterName Customize
+set Coords "5 6 230 9"
+set MirrorOnY 1
+set ScaleX 0.9
+add MenuObject
+set Name LobbyV1SpectatorNameBox
+set Coords "0 0 215 120"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set CommandPress ">if sym Ally@_Arg1_@Mode == 2 menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set DrawWhenFocused LobbyV1DifficultyFocus
+set DrawWhenFocusedOffset "-23 -32"
+set Child "LobbyV1SpectatorInfoLine 3 62 "
+set Child "LobbyV1PlayerMyNameBg -8 54		@_Arg1_@"
+set Child "LobbyV1BotLabel 0 0	LobbySpectator"
+set Child "LobbyV1PlayerName 4 66		@_Arg1_@"
+set Child "LobbyV1PlayerNameEmpty 0 64		@_Arg1_@"
+set Child "LobbyV1TopText 0 5	@_Arg2_@	@_Arg1_@"
+set SaveArgs 2
+add MenuObject
+set Name ConLobbySpectatorLight
+set Texture ]menus/CB_Twitch
+set Coords "1 133 19 19"
+set ScaleX 0.7, ScaleY 0.85
+set BlinkAlpha "0.1 0.4 1.0 0.6"
+set HiddenCheckBySymbolValue Ally@_Arg1_@Mode!2
+set SaveArgs 1
+add MenuObject
+set Name ConLobbySpectatorSwitch
+set Texture menus/ConLoadout
+set Focus -2
+set MouseInteract 1
+set Coords "5 6 210 80"
+set RenderBlocked 1
+set SaveArgs 1
+set CommandGetFocus ">sym set ConLobbyInviteSpectator@_Arg1_@ 0"
+set CommandLoseFocus ">sym set ConLobbyInviteSpectator@_Arg1_@ 1"
+set CommandPress ">if sym ConLobbyInviteSpectator@_Arg1_@ == 0 && sym MM_Lobby == 1 menucmd LobbyBecomeSpectator local @_Arg1_@"
+set CommandLoseFocus ">pcmd t0 addUIAnim ConLobbySpecSlot@_Arg1_@ mas_LobbyItemReset"
+set CommandGetFocus ">pcmd t0 addUIAnim ConLobbySpecSlot@_Arg1_@ mas_LobbyItemFocus"
+set DrawWhenFocused FocusLobbyV1Spectator
+set DrawWhenFocusedOffset "-8 -77 0"
+add MenuObject
+set Name ConLobbySpectatorSlot
+set Texture menus/ConLoadout
+set Focus -2
+set MouseInteract 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set Coords "5 6 230 200"
+set CoordsAnimated "5 6 230 200"
+set CoordsAnimated "5 6 230 200"
+set CoordsAnimated "5 6 230 200"
+set CoordsAnimated "5 208 230 200"
+set MouseInteractZoneExpandWhenFocused "0 0 0 5"
+set SaveArgs 2
+set CommandGetFocus ">if sym Ally@_Arg1_@Mode == 2 sym set ConLobbyInviteSpectator@_Arg1_@ 2"
+set CommandGetFocus ">if sym Ally@_Arg1_@Mode != 2 sym set ConLobbyInviteSpectator@_Arg1_@ 1"
+set CommandGetFocus ">pcmd t0 addUIAnim ConLobbySpecSlot@_Arg1_@ mas_LobbyItemFocus"
+set CommandLoseFocus ">pcmd t0 if sym ConLobbyInviteSpectator@_Arg1_@ == 1 addUIAnim ConLobbySpecSlot@_Arg1_@ mas_LobbyItemReset"
+set CommandPress ">if sym ConLobbyInviteSpectator@_Arg1_@ == 1 sym set _LastInviteButtonFocus ConLobbySpecSlot@_Arg1_@"
+set CommandPress ">if sym ConLobbyInviteSpectator@_Arg1_@ == 1 sym set _InviteSlot @_Arg1_@"
+set CommandPress ">if sym ConLobbyInviteSpectator@_Arg1_@ == 1 social scrollUpdate friends /inviteableOnly"
+set CommandPress ">if sym MM_QueueEnabled == 1 && sym ConLobbyInviteSpectator@_Arg1_@ == 1 if sym MM_InvOut@_Arg1_@ == 0 menucmd LoadFriendInvitesDialog"
+set CommandPress ">if sym MM_InvOut@_Arg1_@ == 1 && sym MM_InvFrom@_Arg1_@ ==sym P_Name menucmd CancelInviteOperation local @_Arg1_@"
+set CommandPress ">if sym ConLobbyInviteSpectator@_Arg1_@ == 0 && sym MM_Lobby == 1 menucmd LobbyBecomeSpectator local @_Arg1_@"
+set CommandPress ">if sym ConLobbyInviteSpectator@_Arg1_@ == 2 menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set CommandLeftButton ">menucmd EventLogUsernameSymOp local P_Name@_Arg1_@"
+set DrawWhenFocused FocusLobbyV1Spectator
+set DrawWhenFocusedOffset "2 3 0"
+set Child "ConLobbySpectatorSelectStatus 7 0 @_Arg1_@	@_Arg2_@"
+set Child "ConLobbySpectatorLight 140 123		@_Arg1_@"
+set CommandCancel "gameui focusNameTry ConLobbyPlayerAirMechIcon0 ConLobbyPlayerAirMechIcon1 ConLobbyPlayerAirMechIcon2 ConLobbyPlayerAirMechIcon3 ConLobbyPlayerAirMechIcon4 ConLobbyPlayerAirMechIcon5 .ConMenuLobbyCancel"
+set CommandFocusDown ">if sym ConLobbyInviteSpectator@_Arg1_@ != 2 if sym MM_InvOut@_Arg1_@ == 0 sym set ConLobbyInviteSpectator@_Arg1_@ 0"
+set CommandFocusUp ">if sym ConLobbyInviteSpectator@_Arg1_@ != 2 sym set ConLobbyInviteSpectator@_Arg1_@ 1"
+set CommandLoseFocus ">sym set ConLobbyInviteSpectator@_Arg1_@ 1"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set Child "ConLobbySpectatorSwitch[ConLobbySpectatorSwitch@_Arg1_@] 10 80	@_Arg1_@"
+set HiddenCheckBySymbolInv IsCustomRoom
+set Child "LobbyV1PlayerTalking[LobbyV1PlayerTalking@_Arg1_@] 77 130 @_Arg1_@"
+add MenuObject initFrom ConLobbySpectatorSlot
+set Name ConLobbySpecSlot6
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandFocusRight "gameui focusNameTry ConLobbySpecSlot7"
+set CoordsAnimationSymHash Ally6Mode
+set Child "LobbyV1SpectatorNameBox 5 -95		@_Arg1_@	LobbySpectator1"
+add MenuObject initFrom ConLobbySpectatorSlot
+set Name ConLobbySpecSlot7
+set CommandFocusLeft "gameui focusNameTry ConLobbySpecSlot6"
+set CoordsAnimationSymHash Ally7Mode
+set Child "LobbyV1SpectatorNameBox 5 -95		@_Arg1_@	LobbySpectator2"
+add MenuObject initFrom PanelEmbossedColor
+set Name ConAllyArmySetup
+set RenderCB_DX 700
+set RenderCB_DY 178
+set Color 0xbbbbbb
+add MenuObject
+set Name ConLobbyEmptyFrames
+set ContainerOnly 1
+set HiddenCheckBySymbolInv LobbyModeDetails
+set Child "ConLobbySlotBorder 752 0"
+set Child "ConLobbySlotBorder 658 0"
+set Child "ConLobbySlotBorder 564 0"
+set Child "ConLobbySlotBorder 470 0"
+set Child "ConLobbySlotBorder 376 0"
+set Child "ConLobbySlotBorder 282 0"
+set Child "ConLobbySlotBorder 188 0"
+set Child "ConLobbySlotBorder 94 0"
+set Child "ConLobbySlotBorder 0 0"
+add MenuObject
+set Name ConLobbyOtherName
+set Coords "0 0 230 32"
+set DisabledAlpha 0.5
+set SaveArgs 1
+set RenderCB_DX 230
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB _DrawTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_ConsoleSymbol P_Name@_Arg1_@
+set MouseInteract 1
+set ToolTip TT_Name
+add MenuObject
+set Name ConLobbyOtherInfoBg
+set Texture menus/ConLoadout
+set Coords "8 401 291 202"
+set Child "ConLobbyPlayerName 20 15			@_Arg1_@"
+set SaveArgs 1
+set HiddenCheckBySymbol LobbyModeDetails
+add MenuObject
+set Name ConLobbyOtherInfoDetBg
+set Texture menus/ConLoadout
+set Coords "8 401 291 202"
+set Child "ConLobbyPlayerName 20 15			@_Arg1_@"
+set SaveArgs 1
+set HiddenCheckBySymbolInv LobbyModeDetails
+add MenuObject
+set Name ConLobbyAllyContainerBase
+set ContainerOnly 1
+set SaveArgs 3
+set HiddenCheckBySymbolValue Ally@_Arg1_@Mode!2
+set Child "ConLobbyPlayerContainer 0 0			@_Arg1_@	@_Arg2_@	@_Arg3_@"
+add MenuObject
+set Name LobbyV1AllyContainerBase
+set ContainerOnly 1
+set SaveArgs 3
+set HiddenCheckBySymbolValue Ally@_Arg1_@Mode!2
+set Child "LobbyV1PlayerContainer 0 0			@_Arg1_@	@_Arg2_@	@_Arg3_@"
+add MenuObject
+set Name ConLobbyEmptyConBackL
+set Texture menus/ConLoadout
+set Coords "8 401 291 202"
+add MenuObject initFrom ConLobbyEmptyConBackL
+set Name ConLobbyEmptyConBackR
+add MenuObject initFrom PanelEmbossedColor
+set Name ConLobbyEmptyContainerBg
+set Focus -2
+set MouseInteract 1
+set RenderCB_DX 600
+set RenderCB_DY 180
+set Color &@_Arg1_@@_Arg2_@Color&
+set Color 0xa5523e
+set ColorFocused 0xa5523e
+set SaveArgs 2
+add MenuObject
+set Name LobbyPlayerMatchmaking
+set Texture menus/ConLoadout&@_Arg2_@&
+set FilterName Customize
+set SaveArgs 2
+set RenderCB_FontScale 0.9
+set RenderCB_Font Roboto
+set Coords "12 416 215 45"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 190, RenderCB_DY 40
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set RenderCB_Offset "14 3"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text LobbyPlayerMatchmaking
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FloatArg 2000.0
+set HiddenCheckBySymbolValue ConLobbyEmptyRandom@_Arg1_@=0
+set HiddenCheckBySymbol IsCustomRoom
+add MenuObject initFrom LobbyPlayerMatchmaking
+set Name LobbyPlayerMatchmakingDis
+set RenderCBExcludesDefaultRender 1
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbolValue ConLobbyEmptyRandom@_Arg1_@=1
+add MenuObject initFrom LobbyPlayerMatchmaking
+set Name LobbyPlayerBot
+set RenderCB_Text LobbyPlayerBot
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbolInv IsCustomRoom
+add MenuObject initFrom LobbyPlayerBot
+set Name LobbyPlayerBotDis
+set RenderCBExcludesDefaultRender 1
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbolValue ConLobbyEmptyRandom@_Arg1_@=1
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbolInv IsCustomRoom
+add MenuObject initFrom LobbyPlayerMatchmaking
+set Name LobbySpectatorBecome
+set Texture menus/ConLoadoutBlue
+set RenderCB_Text MM_PlayerMoveTo
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbolInv IsCustomRoom
+set HiddenCheckBySymbolValue ConLobbyInviteSpectator@_Arg1_@=1
+add MenuObject initFrom LobbySpectatorBecome
+set Name LobbySpectatorBecomeDis
+set RenderCBExcludesDefaultRender 1
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbolValue ConLobbyInviteSpectator@_Arg1_@=0
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbolInv IsCustomRoom
+add MenuObject initFrom LobbyPlayerMatchmaking
+set Name LobbySpectatorInvite_Base
+set Texture menus/ConLoadoutBlue
+set HiddenCheckBySymbolValue ConLobbyInviteSpectator@_Arg1_@=0
+set HiddenCheckBySymbol ""
+add MenuObject initFrom LobbySpectatorInvite_Base
+set Name LobbySpectatorInvite_Single
+set RenderCB_Text MM_FriendInviteButton
+set HiddenCheckBySymbol _InPlatformParty_
+add MenuObject initFrom LobbySpectatorInvite_Base
+set Name LobbySpectatorInvite_Party
+set RenderCB_Text Invite
+set HiddenCheckBySymbolInv _InPlatformParty_
+add MenuObject initFrom LobbySpectatorInvite_Base
+set Name LobbySpectatorInvite
+set ContainerOnly 1
+set Child "LobbySpectatorInvite_Single 0 0"
+set Child "LobbySpectatorInvite_Party 0 0"
+add MenuObject initFrom LobbySpectatorInvite_Base
+set Name LobbySpectatorInviteDis
+set RenderCBExcludesDefaultRender 1
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbolValue ConLobbyInviteSpectator@_Arg1_@=1
+set RenderCB_Text Invite
+add MenuObject initFrom LobbyPlayerMatchmaking
+set Name LobbyPlayerInvite_Base
+set HiddenCheckBySymbolValue ConLobbyEmptyRandom@_Arg1_@=1
+set HiddenCheckBySymbol ""
+add MenuObject initFrom LobbyPlayerInvite_Base
+set Name LobbyPlayerInvite_Single
+set RenderCB_Text MM_FriendInviteButton
+set HiddenCheckBySymbol _InPlatformParty_
+add MenuObject initFrom LobbyPlayerInvite_Base
+set Name LobbyPlayerInvite_Party
+set RenderCB_Text Invite
+set HiddenCheckBySymbolInv _InPlatformParty_
+add MenuObject initFrom LobbyPlayerInvite_Base
+set Name LobbyPlayerInvite
+set ContainerOnly 1
+set Child "LobbyPlayerInvite_Single 0 0"
+set Child "LobbyPlayerInvite_Party 0 0"
+add MenuObject initFrom LobbyPlayerInvite_Base
+set Name LobbyPlayerInviteDis
+set RenderCBExcludesDefaultRender 1
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbolValue ConLobbyEmptyRandom@_Arg1_@=0
+set HiddenCheckBySymbolInv MM_Lobby
+set RenderCB_Text Invite
+add MenuObject initFrom LobbyPlayerInvite_Base
+set Name LobbyPlayerCancelInvite
+set RenderCB_Text MM_FriendCancelButton
+add MenuObject initFrom LobbyPlayerInviteDis
+set Name LobbyPlayerCancelInviteDis
+set RenderCB_Text MM_FriendCancelButton
+add MenuObject initFrom LobbyPlayerInvite_Base
+set Name LobbyPlayerOthersInvite
+set RenderCB_Text MM_OthersInviteNote
+add MenuObject initFrom LobbyPlayerInviteDis
+set Name LobbyPlayerOthersInviteDis
+set RenderCB_Text MM_OthersInviteNote
+add MenuObject
+set Name LobbyPlayerInviteContainer
+set ContainerOnly 1
+set SaveArgs 2
+set HiddenCheckBySymbol MM_InvOut@_Arg1_@
+set Child "LobbyPlayerInvite 0 80					@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerInviteDis 0 80				@_Arg1_@	@_Arg2_@"
+add MenuObject
+set Name LobbySpectatorInviteContainer
+set ContainerOnly 1
+set SaveArgs 2
+set HiddenCheckBySymbol MM_InvOut@_Arg1_@
+set Child "LobbySpectatorInvite 0 30					@_Arg1_@	@_Arg2_@"
+set Child "LobbySpectatorInviteDis 0 30				@_Arg1_@	@_Arg2_@"
+add MenuObject
+set Name LobbyPlayerCancelInviteContainer
+set ContainerOnly 1
+set SaveArgs 2
+set HiddenCheckBySymbolInv MM_InvOut@_Arg1_@
+set HiddenCheckBySymbolValue MM_InvFrom@_Arg1_@!@P_Name@
+set Child "LobbyPlayerCancelInvite 0 80			@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerCancelInviteDis 0 80			@_Arg1_@	@_Arg2_@"
+add MenuObject
+set Name LobbyPlayerOthersInviteContainer
+set ContainerOnly 1
+set SaveArgs 2
+set HiddenCheckBySymbolInv MM_InvOut@_Arg1_@
+set HiddenCheckBySymbolValue MM_InvFrom@_Arg1_@=@P_Name@
+set Child "LobbyPlayerOthersInvite 0 80			@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerOthersInviteDis 0 80			@_Arg1_@	@_Arg2_@"
+add MenuObject
+set Name ConLobbyPlayerSelectStatus
+set ContainerOnly 1
+set SaveArgs 2
+set Child "LobbyPlayerMatchmaking 0 30			@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerMatchmakingDis 0 30		@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerBot 0 30					@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerBotDis 0 30				@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerInviteContainer 0 0		@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerCancelInviteContainer 0 0	@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerOthersInviteContainer 0 0	@_Arg1_@	@_Arg2_@"
+add MenuObject
+set Name ConLobbySpectatorSelectStatus
+set ContainerOnly 1
+set SaveArgs 2
+set HiddenCheckBySymbolValue Ally@_Arg1_@Mode!4
+set HiddenCheckBySymbolInv MM_Lobby
+set Child "LobbyPlayerMatchmaking 0 30			@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerMatchmakingDis 0 30		@_Arg1_@	@_Arg2_@"
+set Child "LobbySpectatorBecome 0 80					@_Arg1_@	@_Arg2_@"
+set Child "LobbySpectatorBecomeDis 0 80				@_Arg1_@	@_Arg2_@"
+set Child "LobbySpectatorInviteContainer 0 0		@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerCancelInviteContainer 0 -50	@_Arg1_@	@_Arg2_@"
+set Child "LobbyPlayerOthersInviteContainer 0 -50	@_Arg1_@	@_Arg2_@"
+add MenuObject
+set Name LobbyV1BotDifficultyNext
+set Focus -2
+set MouseInteract 1
+set RenderBlocked 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue MyId!@_Arg1_@
+set MouseInteractZoneExpand "107 0 0 0"
+set Coords "0 0 215 110"
+set CommandPress "menucmd ChangeLoadoutNext"
+set DrawWhenFocused LobbyV1DifficultyFocus
+set DrawWhenFocusedOffset "-23 -32"
+set CommandGetFocus "sym set LobbyFocusSelf 1"
+set CommandLoseFocus "sym set LobbyFocusSelf 0"
+add MenuObject
+set Name LobbyV1BotDifficultyBase
+set Coords "0 0 215 120"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set DrawWhenFocused LobbyV1DifficultyFocus
+set DrawWhenFocusedOffset "-23 -32"
+set Child "LobbyV1PlayerInfoLine 3 62 		@_Arg2_@"
+set Child "LobbyV1BotLabel 0 0	LobbyBotTypeLabel /ifSym ArcCustomized == 0"
+set Child "LobbyV1BotLabel 0 0	LobbyBotTypeLabelPW /ifSym ArcCustomized == 1"
+set Child "ConLobbyBotName 0 66"
+set Child "LobbyV1BotDifficulty 0 5	0x999999	0"
+set Child "LobbyV1BotDifficulty 0 5	0x73d771	1"
+set Child "LobbyV1BotDifficulty 0 5	0x58ddbf	2"
+set Child "LobbyV1BotDifficulty 0 5	0x7caaff	3"
+set Child "LobbyV1BotDifficulty 0 5	0xb366d6	4"
+set Child "LobbyV1BotDifficulty 0 5	0xe5813f	5"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set CommandPress "menucmd CycleBotDifficutly"
+set CommandPressAlt "menucmd CycleBotDifficutlyRev"
+set CommandPressAlt "playSound $MenuSoundClick"
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.0
+add MenuObject initFrom LobbyV1BotDifficultyBase
+set Name LobbyV1BotDifficultyBox
+set HiddenCheckBySymbolInv MatchmakingBotsAllowed
+set HiddenCheckBySymbolValue Ally@_Arg1_@Mode=2
+add MenuObject initFrom LobbyV1BotDifficultyBase
+set Name LobbyV1BotDifficultyMouse
+set HiddenCheckBySymbol InputPad
+set HiddenCheckBySymbolInv MM_Lobby
+set HiddenCheckBySymbolValue ConMenuPlayPvP=1
+set DisabledSym ArcCustomized
+add MenuObject initFrom LobbyV1BotDifficultyBase
+set Name LobbyV1BotDifficultySolo
+set HiddenCheckBySymbol InputPad
+set HiddenCheckBySymbolInv _soloLaunch_
+add MenuObject
+set Name LobbyV1SecretAirMechBackground
+set Texture menus/CoverAirMechCard
+set Coords "140 50 215 318"
+set SaveArgs 1
+add MenuObject
+set Name LobbyV1SecretAirMechBorder
+set Texture menus/ConLoadoutRed
+set DrawGreyScale 1
+set Coords "647 2 231 334"
+set SaveArgs 1
+add MenuObject
+set Name ConLobbyPlayerHidden
+set Coords "471 294 108 108"
+set Texture menus/ConLoadout
+set DrawGreyScale 1
+set ScaleX 1.3, ScaleY 1.3
+add MenuObject
+set Name LobbyV1SecretContainerShadow
+set Texture menus/ConLoadoutRed
+set Coords "655 9 215 318"
+set DrawGreyScale 1
+set MirrorOnY 1
+set ScaleY 1.32
+set SaveArgs 1
+add MenuObject
+set Name LobbyV1SecretContainerBg
+set Texture menus/EscMenu
+set Coords "789 1 215 420"
+add MenuObject
+set Name ConLobbySecretContainer
+set Texture menus/EscMenu
+set Coords "789 1 334 747"
+set HiddenCheckBySymbolInv ConLobbyHideEnemy
+set Child "LobbyV1SecretInfoBg[ConLobbyEmpty@_Arg1_@] 8 -95				@_Arg1_@	@_Arg2_@"
+add MenuObject
+set Name ConLobbyEmptyContainer
+set Texture menus/ConLoadout
+set Coords "515 685 215 318"
+set NoAlphaMod 1
+set Alpha 0.4
+set SaveArgs 6
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "0 0 0 440"
+set DrawWhenFocused FocusLobbyV1Empty
+set DrawWhenFocusedOffset "-4 -4 0"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set CommandGetFocus ">if sym MM_Lobby == 1 sym set ConLobbyEmptyRandom@_Arg1_@ 0"
+set CommandLoseFocus ">sym set ConLobbyEmptyRandom@_Arg1_@ 1"
+set CommandGetFocus ">gameUI getLastRenderPos ConLobbyEmpty@_Arg1_@ UI_Invite_X UI_Invite_Y"
+set CommandGetFocus ">input set padFocusFallback ConLobbyEmpty@_Arg1_@"
+set CommandLeftButton ">if sym MM_Lobby == 1 sym set _LastInviteButtonFocus ConLobbyEmpty@_Arg1_@"
+set CommandLeftButton ">if sym MM_Lobby == 1 sym set _InviteSlot @_Arg1_@"
+set CommandLeftButton "if sym MM_Lobby == 1 social scrollUpdate friends /inviteableOnly"
+set CommandLeftButton ">if sym MM_Lobby == 1 && sym MM_InvOut@_Arg1_@ == 0 menucmd LoadFriendInvitesDialog"
+set CommandLeftButton ">if sym MM_Lobby == 1 && sym MM_InvOut@_Arg1_@ == 1 && sym MM_InvFrom@_Arg1_@ ==sym P_Name menucmd CancelInviteOperation local @_Arg1_@"
+set CommandPress ">if sym MM_Lobby == 1 sym set _LastInviteButtonFocus ConLobbyEmpty@_Arg1_@"
+set CommandPress ">if sym MM_Lobby == 1 sym set _InviteSlot @_Arg1_@"
+set CommandPress "if sym MM_Lobby == 1 social scrollUpdate friends /inviteableOnly"
+set CommandPress ">if sym MM_Lobby == 1 && sym MM_InvOut@_Arg1_@ == 0 menucmd LoadFriendInvitesDialog"
+set CommandPress ">if sym MM_Lobby == 1 && sym MM_InvOut@_Arg1_@ == 1 && sym MM_InvFrom@_Arg1_@ ==sym P_Name menucmd CancelInviteOperation local @_Arg1_@"
+set CommandCancel "gameui focusNameTry ConLobbyPlayerAirMechIcon0 ConLobbyPlayerAirMechIcon1 ConLobbyPlayerAirMechIcon2 ConLobbyPlayerAirMechIcon3 ConLobbyPlayerAirMechIcon4 ConLobbyPlayerAirMechIcon5 .ConMenuLobbyCancel"
+set CommandHiddenWhenFocused ">addUIAnim ConLobbyEmptyContainer@_Arg1_@ mas_ConLobbyPlayerEnterLeft"
+set CommandHiddenWhenFocused ">gameui focusNameTry ConLobbyPlayerAirMechIcon@_Arg1_@ ConLobbyPlayerAirMechIcon0"
+set CommandFocusUp "menucmd CycleBotDifficutly"
+set CommandFocusDown "menucmd CycleBotDifficutlyRev"
+set CommandFocusDown "playSound $MenuSoundClick"
+set CommandFocusUp "playSound $MenuSoundClick"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+set HiddenCheckBySymbolValue Ally@_Arg1_@Mode=2
+set FirstDrawnChildren 4
+set Child "LobbyV1PlayerContainerBg	0 310	@_Arg2_@"
+set Child "LobbyV1PlayerContainerShadow	0 310	@_Arg2_@"
+set Child "LobbyV1PlayerAirMechBackground 0 0	@_Arg2_@"
+set Child "LobbyV1PlayerAirMechBorder -8 -8	@_Arg2_@"
+set Child "LobbyV1BotEye 118 39"
+set Child "LobbyV1BotEye 134 40"
+set Child "LobbyV1BotDifficultyBox 0 -103	@_Arg1_@"
+set Child "ConLobbyNonPlayerIcons 24 296 		@_Arg1_@"
+set Child "ConLobbyPlayerSelectStatus 0 500 @_Arg1_@	@_Arg2_@"
+add MenuObject
+set Name LobbyV1BotEye
+set Texture ]menus/CB_Twitch
+set Coords "1 133 19 19"
+set ScaleX 0.5, ScaleY 0.5
+set PulseAlpha "2.0 -0.1 -0.5"
+set HiddenCheckBySymbolInv MatchmakingBotsAllowed
+add MenuObject
+set Name ConLobbyBotContainer
+set Texture menus/ConLoadout
+set Coords "515 685 215 318"
+set NoAlphaMod 1
+set Alpha 0.4
+set Focus -2
+set MouseInteract 1
+set DrawWhenFocused FocusLobbyV1Empty
+set DrawWhenFocusedOffset "-4 -4 0"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandFocusDown "playSound $MenuSoundClick"
+set CommandFocusUp "playSound $MenuSoundClick"
+set CommandGetFocus ">sym set LobbyV1FocusSlot @_Arg1_@"
+set CommandPress "menucmd CycleBotDifficutly"
+set CommandFocusUp "menucmd CycleBotDifficutly"
+set CommandFocusDown "menucmd CycleBotDifficutlyRev"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryLeft local ConLobbyPlayerAirMechIcon"
+set CommandGetFocus "menucmd LobbyV1FocusMemoryRight local ConLobbyBot"
+set CommandFocusLeft ">menucmd LobbyV1FocusLeft local @_Arg1_@"
+set CommandFocusRight ">menucmd LobbyV1FocusRight local @_Arg1_@"
+set CommandFocusDown ">menucmd LobbyV1FocusSlotChange local @_Arg1_@"
+set CommandCancel "gameui focusNameTry ConLobbyPlayerAirMechIcon0 ConLobbyPlayerAirMechIcon1 ConLobbyPlayerAirMechIcon2 ConLobbyPlayerAirMechIcon3 ConLobbyPlayerAirMechIcon4 ConLobbyPlayerAirMechIcon5 .ConMenuLobbyCancel"
+set FirstDrawnChildren 4
+set Child "LobbyV1PlayerContainerBg	0 310	@_Arg2_@"
+set Child "LobbyV1PlayerContainerShadow	0 310	@_Arg2_@"
+set Child "LobbyV1PlayerAirMechBackground 0 0	@_Arg2_@"
+set Child "LobbyV1PlayerAirMechBorder -8 -8	@_Arg2_@"
+set Child "LobbyV1BotEye 118 39"
+set Child "LobbyV1BotEye 134 40"
+set Child "LobbyV1BotDifficultyBox 0 -103	@_Arg1_@	@_Arg2_@"
+set Child "ConLobbyNonPlayerIcons 24 296 		@_Arg1_@"
+add MenuObject
+set Name ConLobbyEmptyContainer0
+set HiddenCheckBySymbolValue ConLobbyPlayerSlots<1
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyEmptyContainer[ConLobbyEmpty0] 0 0 @_Arg1_@ @_Arg2_@	null	0	ConLobbyMapSelected	1	null 1	/ifSym _soloLaunch_ == 0"
+set Child "LobbyV1AllyContainerBase[ConLobbyPInfo0] 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@ /ifSym _soloLaunch_ == 0"
+set Child "ConLobbyBotContainer[ConLobbyBot0] 0 0 @_Arg1_@ @_Arg2_@ /ifSym _soloLaunch_ == 1"
+add MenuObject
+set Name ConLobbyEmptyContainer1
+set HiddenCheckBySymbolValue ConLobbyPlayerSlots<2
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyEmptyContainer[ConLobbyEmpty1] 0 0 @_Arg1_@ @_Arg2_@	null	0	ConLobbyMapSelected	2	0 2		/ifSym _soloLaunch_ == 0"
+set Child "LobbyV1AllyContainerBase[ConLobbyPInfo1] 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@ /ifSym _soloLaunch_ == 0"
+set Child "ConLobbyBotContainer[ConLobbyBot1] 0 0 @_Arg1_@ @_Arg2_@ /ifSym _soloLaunch_ == 1"
+add MenuObject
+set Name ConLobbyEmptyContainer2
+set HiddenCheckBySymbolValue ConLobbyPlayerSlots<3
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyEmptyContainer[ConLobbyEmpty2] 0 0 @_Arg1_@ @_Arg2_@	null	1	ConLobbyMapSelected	3	1 3		/ifSym _soloLaunch_ == 0"
+set Child "LobbyV1AllyContainerBase[ConLobbyPInfo2] 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@ /ifSym _soloLaunch_ == 0"
+set Child "ConLobbyBotContainer[ConLobbyBot2] 0 0 @_Arg1_@ @_Arg2_@ /ifSym _soloLaunch_ == 1"
+add MenuObject
+set Name ConLobbyEmptyContainer3
+set HiddenCheckBySymbolValue ConLobbyPlayerSlots<4
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyEmptyContainer[ConLobbyEmpty3] 0 0 @_Arg1_@ @_Arg2_@	null	2	ConLobbyMapSelected	null 2 null		/ifSym _soloLaunch_ == 0"
+set Child "LobbyV1AllyContainerBase[ConLobbyPInfo3] 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@ /ifSym _soloLaunch_ == 0"
+set Child "ConLobbyBotContainer[ConLobbyBot3] 0 0 @_Arg1_@ @_Arg2_@ /ifSym _soloLaunch_ == 1"
+add MenuObject
+set Name ConLobbyEmptyContainersE0
+set HiddenCheckBySymbol ConLobbyHideEnemy
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyEmptyContainer[ConLobbyEmpty3] 0 0 @_Arg1_@ @_Arg2_@	null	2	null	4"
+set Child "LobbyV1AllyContainerBase[ConLobbyPInfoE3] 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@"
+set Child "ConLobbySecretContainer[ConLobbySecretE3] -8 -8 @_Arg1_@ @_Arg2_@"
+add MenuObject
+set Name ConLobbyEmptyContainerE0
+set HiddenCheckBySymbolValue ConLobbyEnemySlots<1
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyEmptyContainersE0 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@"
+set Child "ConLobbySecretContainer[ConLobbySecretE3] -8 -8 @_Arg1_@ @_Arg2_@"
+add MenuObject
+set Name ConLobbyEmptyContainersE1
+set HiddenCheckBySymbol ConLobbyHideEnemy
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyEmptyContainer[ConLobbyEmpty4] 0 0 @_Arg1_@ @_Arg2_@	null	3	null	5"
+set Child "LobbyV1AllyContainerBase[ConLobbyPInfoE4] 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@"
+add MenuObject
+set Name ConLobbyEmptyContainerE1
+set HiddenCheckBySymbolValue ConLobbyEnemySlots<2
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyEmptyContainersE1 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@"
+set Child "ConLobbySecretContainer[ConLobbySecretE3] -8 -8 @_Arg1_@ @_Arg2_@"
+add MenuObject
+set Name ConLobbyEmptyContainersE2
+set HiddenCheckBySymbol ConLobbyHideEnemy
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyEmptyContainer[ConLobbyEmpty5] 0 0 @_Arg1_@ @_Arg2_@	ConLobbyMapSelected	4	null	null"
+set Child "LobbyV1AllyContainerBase[ConLobbyPInfoE5] 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@"
+add MenuObject
+set Name ConLobbyEmptyContainerE2
+set HiddenCheckBySymbolValue ConLobbyEnemySlots<3
+set ContainerOnly 1
+set SaveArgs 3
+set Child "ConLobbyEmptyContainersE2 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@"
+set Child "ConLobbySecretContainer[ConLobbySecretE3] -8 -8 @_Arg1_@ @_Arg2_@"
+add MenuObject
+set Name LobbyStatusMessage
+set RenderCB _DrawUText
+set Texture menus/Messages
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set Coords "0 0 420 300"
+set RenderCB_DX 420, RenderCB_DY 300
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitx"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol LobbyStatusMessage
+set RenderCB_RGBColor 0xffffff
+set RenderCB_BoolArg 1
+set PulseAlpha "2.0 -0.33 3.0"
+add MenuObject
+set Name ConLobbyInfoBg
+set Coords "944 230 450 450"
+set CoordsStart "944 230 12 12"
+set CoordsMid "956 230 47 12"
+set CoordsEnd "1003 230 12 12"
+set CoordsStartFocused "944 242 12 47"
+set CoordsMidFocused "956 242 47 47"
+set CoordsEndFocused "1003 242 12 47"
+set CoordsStartDisabled "944 289 12 12"
+set CoordsMidDisabled "956 289 47 12"
+set CoordsEndDisabled "1003 289 12 12"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 455
+set RenderCB_DY 345
+set Color 0x364247
+set NoAlphaMod 1
+set Alpha 0.85
+add MenuObject
+set Name LobbyHintMessage
+set RenderCB _DrawUText
+set RenderCB_FontScale 0.85
+set RenderCB_Font Roboto
+set Coords "0 0 400 300"
+set RenderCB_DX 400, RenderCB_DY 300
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_RGBColor 0xffffff
+set RenderCB_BoolArg 1
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+add MenuObject initFrom ConLobbyInfoBg
+set Name ConLobbyTip1Bg
+set RenderCB_DY 200
+set HiddenCheckBySymbol InputPad
+set HiddenCheckBySymbol2 IsCustomRoom
+set Child "LobbyHintMessage 25 35 LobbyHintUpper"
+add MenuObject initFrom ConLobbyInfoBg
+set Name ConLobbyTip2Bg
+set RenderCB_DY 200
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name ConLobbyInfoArea
+set ContainerOnly 1
+set Child "ConLobbyTip1Bg -6 -8"
+set Child "ConLobbySpecSlot6 -6 -8		6"
+set Child "ConLobbySpecSlot7 219 -8		7"
+set Child "ConLobbyInfoBg -6 188"
+set Child "PvPOptionsButton 32 220 /ifSym ArcCustomized == 0"
+set Child "PvPOptionsButton 355 220 /ifSym ArcCustomized == 0"
+set Child "CM_LobbyCountdownFrame 76 420"
+set Child "LobbyV1ReadyButtonsUpper 100 210"
+set Child "TeamSearchingDots 130 350"
+set Child "LobbyStatusMessage 10 300"
+set Child "LobbyV1BotDifficultySolo 120 420 @_Arg1_@ @_Arg2_@"
+set Child "LobbyV1BotDifficultyMouse 120 420 @_Arg1_@ @_Arg2_@"
+set Child "BasePvPOptionsListPW -20 475 /ifSym ArcCustomized == 1"
+add MenuObject
+set Name ConLobbyPlayerContainers
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "LobbyV1PlayerContainer[ConLobbyPlayerContainer0] 0 0			@MyId@	TC0 1		/ifSym _soloLaunch_ == 1"
+set Child "ConLobbyEmptyContainer0 Nx225 0		@Ally0Id@	TC0 1	/ifSym ConLobbyPlayerSlots >= 1		/ifSym _soloLaunch_ == 0"
+set Child "ConLobbyEmptyContainer1 Nx225 0		@Ally1Id@	TC0 1	/ifSym ConLobbyPlayerSlots >= 2"
+set Child "ConLobbyEmptyContainer2 Nx225 0		@Ally2Id@	TC0 1	/ifSym ConLobbyPlayerSlots >= 3"
+set Child "ConLobbyEmptyContainer3 Nx225 0		@Ally3Id@	TC0 1	/ifSym MatchmakingType == Survival"
+set Child "ConLobbyEmptyContainerE0[ConLobbyEmptyContainer3] Nx225 0     @Ally3Id@	TC3	0 	/ifSym MatchmakingType == Custom	/ifSym ConLobbyEnemySlots >= 1"
+set Child "ConLobbyEmptyContainerE1[ConLobbyEmptyContainer4] Nx225 0     @Ally4Id@	TC3	0 	/ifSym MatchmakingType == Custom	/ifSym ConLobbyEnemySlots >= 2"
+set Child "ConLobbyEmptyContainerE2[ConLobbyEmptyContainer5] Nx225 0    @Ally5Id@	TC3	0 	/ifSym MatchmakingType == Custom	/ifSym ConLobbyEnemySlots >= 3"
+set Child "ConLobbyInfoArea Nx225 0	TC0"
+set HiddenCheckBySymbol ConShopMenu
+add MenuObject
+set Name ConCountdownTimer
+set Coords "0 0 165 165"
+set RenderCB_Font Gunner
+set RenderCB_FontScale 3.0
+set RenderCB _DrawTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_ConsoleSymbol MM_Timer
+add MenuObject
+set Name TimerCircle1
+set Texture menus/WaitCircleBig
+set Coords "0 0 256 256"
+set RotationPeriod 1.0
+set ScaleX 1.63
+set ScaleY 1.63
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name ConCountdownFrame
+set Coords "0 626 398 398"
+set Texture menus/ConLoadout
+set Child "TimerCircle1 -10 -10"
+set Child "ConCountdownTimer 115 88"
+set Focus -2
+set MouseInteract 1
+set CommandPress "if sym P_AccessLevel != 0 clearmenu ConLobbyReady"
+add MenuObject
+set Name ConCountdownMessage
+set RenderCB_FontScale 0.8
+set RenderCB_Font Roboto
+set Coords "0 0 800 230"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text ConCountdownMessage
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor "0.8"
+set RenderCB_FloatArg 2000.0
+add MenuObject
+set Name ConCountdownTitle
+set RenderCB_FontScale 0.6
+set RenderCB_Font Gunner_LangFallback
+set Coords "0 0 920 230"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text ConCountdownTitle
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FloatArg 2000.0
+add MenuObject
+set Name ConCountdownMessageBox
+set Texture menus/ConLoadout
+set CoordsStart "302 401 42 36"
+set CoordsMid "344 401 16 36"
+set CoordsEnd "360 401 42 36"
+set CoordsStartFocused "302 437 42 156"
+set CoordsMidFocused "344 437 16 156"
+set CoordsEndFocused "360 437 42 156"
+set CoordsStartDisabled "302 593 42 33"
+set CoordsMidDisabled "344 593 16 33"
+set CoordsEndDisabled "360 593 42 33"
+set Focus -2
+set MouseInteract 1
+set RenderCB _Draw_G3x3
+set Coords "0 0 920 230"
+set RenderCB_DX 920
+set RenderCB_DY 230
+set Child "ConCountdownTitle 0 40"
+set Child "ConCountdownMessage 56 100"
+add MenuObject
+set Name ConCountdownBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set BlendMode BlendAdd
+set Color 0xcc6600
+set DisabledSymInv _MM_TimerTick
+set HiddenCheckBySymbol MM_Queue
+set DisabledAlphaTimeOut 0.8
+set DisabledAlphaTimeIn 0.15
+set DisabledAlpha 0.4
+set MouseInteract 1
+add MenuObject
+set Name ConCountdownReadyBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set BlendMode BlendAdd
+set Color 0x007733
+set PulseAlpha "3.0 -0.5 -0.8"
+set HiddenCheckBySymbolInv MM_Queue
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name ConLobbyReadyMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "ConCountdownBackground 0 0"
+set Child "ConCountdownReadyBackground 0 0"
+set Child "ConCountdownFrame 760 180"
+set Child "ConCountdownMessageBox 500 580"
+add MenuObject
+set Name CM_MasterPlaySolo2
+set ContainerOnly 1
+set Child "HeaderLabelTemplate[HeaderPlaySolo] 140 100 Solo	2.0	0x755635"
+set Child "HeaderLabelSymTemplate 140 194 MapName	1.4	0xd28846"
+set Child "HeaderLabelUTemplate 140 260 LblCustomizeLoadout	0.7	1.0"
+set Child "ConLobbyPlayerContainer 300 360		0"
+add MenuObject
+set Name SelectDescriptionMessage
+set RenderCB_FontScale 0.75
+set RenderCB_Font Roboto
+set Coords "0 0 950 500"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol SelectDescriptionMessage
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FloatArg 80.0
+set RenderCB_FloatSymbol _fs1
+add MenuObject
+set Name LobbyTeammateContainer
+set ContainerOnly 1
+set SaveArgs 1
+set Child "LobbyAllyContainer 0 0			@_Arg1_@"
+set Child "LobbySearchingContainer 0 0		@_Arg1_@"
+add MenuObject
+set Name LobbyAllyContainer
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue Ally@_Arg1_@Mode!2
+set Child "AllyBackgroundReady 0 0"
+set Child "AllyBackgroundNotReady 0 0"
+set Child "LobbyAllyHeader 36 8				&Ally@_Arg1_@Id&"
+set Child "LobbyAllyUnits 386 51			&Ally@_Arg1_@Id&"
+set Child "LobbyAllyPilot 286 12			&Ally@_Arg1_@Id&"
+set Child "LobbyAllyAirMech 60 12			&Ally@_Arg1_@Id&"
+set Child "LobbyAllyFlairSlot 210 86		&Ally@_Arg1_@Id& 1"
+set Child "LobbyAllyFlairSlot 433 12		&Ally@_Arg1_@Id& 2"
+set Child "LobbyAllyFlairSlot 433 86		&Ally@_Arg1_@Id& 3"
+set Child "LobbyBoostXpSlot 1230 2			&Ally@_Arg1_@Id&"
+set Child "LobbyBoostKudosSlot 1286 2		&Ally@_Arg1_@Id&"
+set Child "LobbyAllyItemSlot 210 12 		&Ally@_Arg1_@Id&"
+add MenuObject
+set Name LobbySearchingContainer
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue Ally@_Arg1_@Mode!1
+set Child "EmptyPlayerBackground 0 0"
+set Child "EmptyPlayerInset 15 15"
+set Child "LobbySearchingDots 500 40"
+add MenuObject
+set Name LobbySearchingContainerTemp
+set ContainerOnly 1
+set Hidden 1
+set Child "EmptyPlayerBackground 0 0"
+set Child "EmptyPlayerInset 15 15"
+set Child "LobbySearchingDots 500 40"
+add MenuObject
+set Name LobbyShop
+set Texture menus/Mail
+set Coords "692 490 92 92"
+set ScaleX 0.85, ScaleY 0.85
+set MouseInteract 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set Focus -2
+set ToolTip QuestTitle
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "sym set MainMenuShopSelect Game"
+set CommandPress "loadmenu ConShop /fadein 0.1"
+add MenuObject
+set Name LobbyMarket
+set Texture menus/Mail
+set Coords "787 490 92 92"
+set ScaleX 0.85, ScaleY 0.85
+set MouseInteract 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set Focus -2
+set ToolTip QuestTitle
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "sym set MainMenuShopSelect Market"
+set CommandPress "loadmenu ConShop /fadein 0.1"
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyButtonBorder
+set RenderCB_DX 400
+set RenderCB_DY 114
+add MenuObject
+set Name LobbyRandomIcon
+set Texture pilots/NoPilotIcon
+set Coords "0 0 256 206"
+set ScaleX 0.7
+set ScaleY 0.7
+add MenuObject
+set Name LobbyInviteButton
+set Texture menus/MatchButtons
+set Coords "2 2 380 94"
+set CoordsPressed "0 0 382 96"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUTextShadowedNMI
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0.8
+set RenderCB_RGBColorFocused 1.0
+set RenderCB_Text MM_FriendInviteButton
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 380
+set RenderCB_DY 94
+set RenderCB_Offset "85 -2"
+set RenderCB_OffsetPressed "86 0"
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused AddSelectHighlight
+set DrawWhenFocusedOffset "-15 -15 0"
+set HiddenCheckBySymbolInv IsSteam
+set FirstDrawnChildren 1
+set Child "LobbyButtonBorder -10 -10"
+set CommandPress "gameui ignoreInputTime 0.25"
+set CommandPress "menuCmd MatchFriendInvite"
+set CommandCancel "gameui focusNameTry LobbyGoButton"
+set CommandFocusUp "gameui focusNameTry LobbyRoomUnitsSelect"
+set CommandFocusRight "gameui focusNameTry LobbyGoButton"
+add MenuObject
+set Name LobbyGoButtonPulse
+set Texture menus/MatchGo
+set Coords "0 256 256 256"
+set BlendMode BlendAdd
+set PulseAlpha "1.2 -0.4 -0.8"
+add MenuObject
+set Name LobbyGoButtonPulse2
+set Texture menus/MatchGo
+set Coords "0 256 256 256"
+set BlendMode BlendAdd
+set ScaleX 1.2
+set ScaleY 1.2
+set PulseAlpha "0.2 -0.4 -0.8"
+add MenuObject
+set Name LobbyGoButtonGrey
+set Texture menus/MatchGo
+set Coords "0 0 256 256"
+set DrawGreyScale 1
+set NoAlphaMod 1
+set Alpha 0.3
+add MenuObject
+set Name LobbyGoButton
+set Texture menus/MatchGo
+set Coords "0 0 256 256"
+set CommandPress "menuCmd MatchPvPQuick"
+set CommandCancel "if sym MatchingState == 1 menuCmd ExitMatchmakingConfirm"
+set CommandCancel "if sym MatchingState == 0 menuCmd ExitMatchmaking"
+set MouseInteract 1
+set MouseInteractZoneExpand "50 50 -50 -50"
+set Focus -2
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set DrawWhenFocused LobbyGoButtonPulse2
+set DrawWhenFocusedOffset "-20 -20"
+set Child "LobbyGoButtonPulse 0 0"
+set CommandFocusLeft "gameui focusNameTry LobbyRoomUnitsSelect"
+add MenuObject
+set Name LobbyCancelInviteButton
+set Texture menus/MatchButtons
+set Coords "2 99 380 94"
+set CoordsPressed "0 97 382 96"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUTextShadowedNMI
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0.8
+set RenderCB_RGBColorFocused 1.0
+set RenderCB_Text MM_FriendCancelButton
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 380
+set RenderCB_DY 94
+set RenderCB_Offset "85 -2"
+set RenderCB_OffsetPressed "86 0"
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused AddSelectHighlight
+set DrawWhenFocusedOffset "-15 -15 0"
+set HiddenCheckBySymbolInv IsSteam
+set FirstDrawnChildren 1
+set Child "LobbyButtonBorder -10 -10"
+set CommandPress "gameui ignoreInputTime 0.5"
+set CommandPress "menuCmd MatchCancelInvite"
+add MenuObject
+set Name LobbyRandomLabel
+set Coords "0 0 380 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 1.0
+set RenderCB_Text MM_RandomPlayerLabel
+set Child "LobbyRandomDesc 0 40"
+add MenuObject
+set Name LobbyRandomWaitLabel
+set Coords "0 0 380 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 1.0
+set RenderCB_Text MM_RandomPlayerLabel
+set Child "GenericSearchingDots 0 50"
+add MenuObject
+set Name LobbyFriendWaitLabel
+set Coords "0 0 380 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 1.0
+set RenderCB_Text MM_FriendWaitLabel
+set Child "GenericSearchingDots 0 50"
+add MenuObject
+set Name LobbyRandomDesc
+set Coords "0 0 500 100"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0.7
+set RenderCB_Text MM_RandomPlayerDesc
+set RenderCB_BoolArg 1
+add MenuObject initFrom LobbySlotEmptyResize
+set Name LobbyGoDescBorder
+set RenderCB_DX 450
+set RenderCB_DY 400
+add MenuObject
+set Name LobbyGoDesc
+set Coords "0 0 400 500"
+set RenderCB_DX 400
+set RenderCB_DY 1000
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUTextShadowed
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0.7
+set RenderCB_Text MM_GoText
+set RenderCB_BoolArg 1
+set FirstDrawnChildren 1
+set Child "LobbyGoDescBorder -24 -24"
+add MenuObject
+set Name LobbyRandomContainer
+set ContainerOnly 1
+set Child "EmptyPlayerBackground 0 0"
+set Child "EmptyPlayerInset 15 15"
+set Child "LobbyInviteButton 890 34"
+set Child "LobbyRandomIcon 0 0"
+set Child "LobbyRandomLabel 170 35"
+add MenuObject
+set Name LobbyRandomWaitContainer
+set ContainerOnly 1
+set Child "EmptyPlayerBackground 0 0"
+set Child "EmptyPlayerInset 15 15"
+set Child "LobbyRandomIcon 0 0"
+set Child "LobbyRandomWaitLabel 170 35"
+add MenuObject
+set Name LobbyOpenSlotContainer
+set ContainerOnly 1
+set Child "LobbyRandomContainer 0 0"
+set Child "LobbyFriendWaitContainer 0 0"
+set Child "LobbyRandomWaitContainer 0 0"
+set Child "LobbySlotFadeout 0 0"
+set Child "LobbySlotFadeoutRed 0 0"
+add MenuObject
+set Name LobbyFriendWaitContainer
+set ContainerOnly 1
+set Hidden 1
+set Child "EmptyPlayerBackground 0 0"
+set Child "EmptyPlayerInset 15 15"
+set Child "LobbyCancelInviteButton 890 34"
+set Child "LobbyRandomIcon 0 0"
+set Child "LobbyFriendWaitLabel 170 35"
+add MenuObject
+set Name LobbyFillerPattern
+set Texture ]menus/PatternHoles
+set Coords "0 0 64 64"
+set TileArea "700 165"
+set BlendMode BlendDestColor
+add MenuObject initFrom PanelEmbossed
+set Name LobbyFillerPlate
+set RenderCB_DX 700
+set RenderCB_DY 165
+set Child "LobbyFillerPattern 0 0"
+add MenuObject
+set Name LobbyMatchTopBar
+set ContainerOnly 1
+set Child "LobbyTileTime 0 0"
+set Child "LobbyGameMode 165 0"
+set Child "LobbyNumPlayers 365 0"
+set Child "LobbyMap 565 0"
+set Child "LobbyTeamColor 1065 0"
+set Child "LobbyFillerPlate 1265 0"
+set Child "AIDifficultyTexboxDisplay 190 30"

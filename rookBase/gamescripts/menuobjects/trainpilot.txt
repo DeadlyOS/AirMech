@@ -1,0 +1,660 @@
+add MenuObject
+set Name TrainOvrMsgBase
+set RenderCB_RGBColor 0xc5dad8
+set RenderCB_FontScale 0.75
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set DisabledAlphaTimeIn 0.35
+set DisabledAlphaTimeOut 0.1
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set Coords "0 0 260 300"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set SaveArgs 1
+add MenuObject initFrom TrainOvrMsgBase
+set Name TrainOvrLoaded
+set RenderCB_Text TrainOvr@_Arg1_@Loaded
+set HiddenCheckBySymbolInv TrainerLoaded
+add MenuObject initFrom TrainOvrMsgBase
+set Name TrainOvrNotLoaded
+set RenderCB_Text TrainOvr@_Arg1_@NotLoaded
+set HiddenCheckBySymbol TrainerLoaded
+add MenuObject
+set Name TrainOverviewAndHelp
+set ContainerOnly 1
+set SaveArgs 1
+set Child "TrainOvrLoaded 0 0 @_Arg1_@"
+set Child "TrainOvrNotLoaded 0 0 @_Arg1_@"
+add MenuObject
+set Name FocusGoTrainButton
+set Texture effects/white
+set Coords "0 0 156 56"
+set Color 0x49c5bd
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledSymInv TrainerLoaded
+add MenuObject
+set Name GoTrainButtonOutline
+set Texture effects/white
+set Coords "0 0 154 54"
+set Color 0x1b1b1b
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set SaveArgs 1
+set DisabledSymInv ShowTrain@_Arg1_@
+add MenuObject
+set Name GoTrainButton
+set Texture effects/white
+set Coords "0 0 150 50"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusGoTrainButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text GoTrain@_Arg1_@
+set FilterName BaseLayout
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 3
+set DisabledSymInv TrainerLoaded
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set HiddenCheckBySymbolInv ShowTrain@_Arg1_@
+set FirstDrawnChildren 1
+set Child "GoTrainButtonOutline -2 -2	@_Arg1_@"
+set CommandPress "training commit"
+add MenuObject
+set Name TrainButtonTemplate
+set Texture menus/DialogGeneral
+set Coords "857 211 54 54"
+set MouseInteract 1
+set Focus -2
+set DisabledAlpha 0.3
+set ScaleX 0.75, ScaleY 0.75
+set ScaleXFocused 1.2, ScaleYFocused 1.2
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject initFrom TrainButtonTemplate
+set Name TrainButtonMinus
+set DisabledSymInv Train_LessOk@_Arg1_@
+set CommandPress ">training pointMod @_Arg1_@ -1"
+set SaveArgs 1
+add MenuObject initFrom TrainButtonTemplate
+set Name TrainButtonPlus
+set Coords "911 211 54 54"
+set DisabledSym Train_AtMaxPoints
+set DisabledSymInv Train_MoreOk@_Arg1_@
+set CommandPress ">training pointMod @_Arg1_@ 1"
+set SaveArgs 1
+add MenuObject
+set Name TrainPropertyDisp
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol Train_Disp@_Arg1_@
+set HiddenCheckBySymbol Train_Hide@_Arg1_@
+set RenderCB_FontScale 0.6
+set RenderCB_DX 400
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/shadowed /shadowColor2 /toU16"
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name TrainPropertyBuff
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol Train_Buff@_Arg1_@
+set HiddenCheckBySymbol Train_Hide@_Arg1_@
+set RenderCB_Flags "/shadowed"
+set RenderCB_FontScale 0.7
+set RenderCB_DX 400
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/shadowed /shadowColor2"
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name TrainPropertyCurrPnts
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol Train_CurrPnts@_Arg1_@
+set HiddenCheckBySymbol Train_Hide@_Arg1_@
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/shadowed /shadowColor2"
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXCenter
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name TrainProperty
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbol Train_Hide@_Arg1_@
+set Child "TrainPropertyDisp -140 0			@_Arg1_@"
+set Child "TrainPropertyBuff -140 38		@_Arg1_@"
+set Child "TrainButtonMinus -40 32			@_Arg1_@"
+set Child "TrainPropertyCurrPnts -80 35		@_Arg1_@"
+set Child "TrainButtonPlus 90 30			@_Arg1_@"
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name TrainingStateControls
+set ContainerOnly 1
+set Child "TrainProperty 0 0		0"
+set Child "TrainProperty 0 85		1"
+set Child "TrainProperty 0 170		2"
+set Child "TrainProperty 0 255		3"
+set Child "TrainProperty 0 340		4"
+set Child "TrainProperty 0 425		5"
+set Child "TrainProperty 0 510		6"
+set Child "TrainProperty 0 595		7"
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name TrainOverviewDisp
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Text TrainOvr@_Arg1_@
+set RenderCB_Flags "/shadowed /shadowColor2"
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_FontScale 0.8
+set RenderCB_DX 800
+set RenderCB_Font RobotoBold
+set Disabled 1
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name TrainOverviewPointsUsed
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol UsedTrainPnts@_Arg1_@
+set RenderCB_Flags "/shadowed /shadowColor2 /toU16"
+set RenderCB_FontScale 0.6
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_DX 800
+set RenderCB_Font RobotoBold
+set Disabled 1
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject initFrom TrainOverviewPointsUsed
+set Name TrainOverviewPointsRemaining
+set RenderCB_ConsoleSymbol RemainingTrainPnts@_Arg1_@
+set RenderCB_TextJustify JustifyXRight
+add MenuObject
+set Name TrainingOverview
+set ContainerOnly 1
+set SaveArgs 1
+set HiddenCheckBySymbolInv TrainerLoaded
+set Child "TrainOverviewDisp -450 0  @_Arg1_@"
+set Child "TrainOverviewPointsUsed 20 30  @_Arg1_@"
+set Child "TrainOverviewPointsRemaining -450 30  @_Arg1_@"
+set Disabled 1
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name BaseCampTrainPilot
+set RenderBlocked 1
+set Coords "0 0 868 48"
+set MouseInteract 1
+set Focus -2
+set FirstDrawnChildren 1
+set Child "BaseCampTrainInventoryBg 450 25"
+set Child "BaseCampTrainBg -15 -15"
+set Child "GenericMenuClose[ButtonEditorMapListClose] 814 -4	BaseCampTrainPilot"
+add MenuObject
+set Name BaseCampTrainEscape
+set Texture effects/white
+set StretchToFillScreen 1
+set Focus -2
+set MouseInteract 1
+set BlendMode BlendDestColor
+set Color 0x585858
+set ColorFocused 0x585858
+set CommandPress ">clearmenu BaseCampTrainPilot /fadeout 0.1"
+add MenuObject initFrom GenericBackgroundTabs
+set Name BaseCampTrainBg
+set RenderCB_DX 930
+set RenderCB_DY 700
+set Coords "0 0 600 500"
+set Child "BaseCampTrainTabTraining 18 15"
+set Child "GenericTabLabelTrain 18 15 MF_Training	_TrainOpenTraining_ _TrainOpenTraining_"
+set Child "BaseCampTrainTabBuyPoints 181 15"
+set Child "GenericTabLabelTrain 181 15 MF_GetPoints	_TrainOpenBuyPoints_ Train_PilotKudos"
+set Child "BaseCampTraining 0 0"
+set Child "BaseCampBuyPoints 0 0"
+add MenuObject
+set Name BaseCampTraining
+set ContainerOnly 1
+set Child "BaseCampToTrainDust 112 170"
+set Child "BaseCampToTrainDustPuff 220 350"
+set Child "BaseCampTrainName 50 45 1.05		/ifSym ArcCustomized == 0"
+set Child "BaseCampTrainName 50 45 0.8		/ifSym ArcCustomized == 1"
+set Child "BaseCampToTrainFlash 210 600"
+set Child "BaseCampPilotToTrainIcon 18 83"
+set Child "BaseCampToTrainDust2 18 313"
+set Child "BaseCampTrainingInfo 315 85"
+set Child "GoTrainButton 200 580				Pilot"
+set HiddenCheckBySymbolInv _TrainOpenTraining_
+add MenuObject
+set Name BaseCampBuyPoints
+set ContainerOnly 1
+set Child "BaseCampBuyPointsPilot 0 0"
+add MenuObject
+set Name BaseCampBuyPointsPilot
+set ContainerOnly 1
+set Child "BaseCampToTrainDust2[BaseCampBuyPointsDust2] 18 313"
+set Child "BaseCampBuyPointsTitle 50 45 GetPilotPointsDisp 1.05		/ifSym ArcCustomized == 0"
+set Child "BaseCampBuyPointsTitle 50 45 GetPilotPointsDisp 0.8		/ifSym ArcCustomized == 1"
+set Child "BaseCampBuyPointsDesc 50 140 GetPilotPointsDesc 1.05"
+set Child "TrainOverviewPointsRemaining 20 95  Pilot"
+set Child "BaseCampToTrainDustPuff[BaseCampBuyPointsDustPuff] 620 350"
+set Child "BaseCampBuyPointsPurchase 745 518"
+set Child "BaseCampBuyPointsLabel[BuyPoints1Label] 150 200 PilotPoints1Disp 250"
+set Child "BaseCampBuyPointsButton[BuyPoints1] 150 230 PilotPoints1Price 250 1"
+set Child "BaseCampBuyPointsLabel[BuyPoints5Label] 150 300 PilotPoints5Disp 1250"
+set Child "BaseCampBuyPointsButton[BuyPoints5] 150 330 PilotPoints5Price 1250 5"
+set Child "BaseCampBuyPointsLabel[BuyPoints10Label] 150 400 PilotPoints10Disp 2500"
+set Child "BaseCampBuyPointsButton[BuyPoints10] 150 430 PilotPoints10Price 2500 10"
+set Child "BaseCampBuyPointsLabel[BuyPoints20Label] 150 500 PilotPoints20Disp 5000"
+set Child "BaseCampBuyPointsButton[BuyPoints20] 150 530 PilotPoints20Price 5000 20"
+set Child "BaseCampToTrainDust[BaseCampBuyPointsDust] 112 170"
+set HiddenCheckBySymbolInv _TrainOpenBuyPoints_
+add MenuObject
+set Name BaseCampTrainingInfo
+set ContainerOnly 1
+set Child "TrainingOverview 205 -15				Pilot"
+set Child "TrainingStateControls 390 55"
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.1
+add MenuObject
+set Name BaseCampToTrainDust
+set Texture pilots/train/TrainDust
+set Coords "0 0 800 476"
+set NoDrawOnMissingTexture 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.2
+set DisabledSymInv ShowTrainPilot
+set HiddenCheckBySymbolInv TrainerLoaded
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.8
+add MenuObject initFrom BaseCampToTrainDust
+set Name BaseCampToTrainDust2
+set Texture pilots/train/TrainDust
+set MirrorOnX 1
+set ScaleX 0.6, ScaleY 0.7
+add MenuObject
+set Name BaseCampToTrainDustPuff
+set Texture effects/dust_puff_d
+set Coords "0 0 128 128"
+set Anchor Center
+set Disabled 1
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 0.8
+add MenuObject
+set Name BaseCampToTrainFlash
+set Texture hud/LevelUp
+set Coords "0 0 128 256"
+set BlendMode BlendAdd
+set Anchor Center
+set ScaleX 0.3
+set Disabled 1
+add MenuObject
+set Name BaseCampPilotToTrainIcon
+set Texture pilots/train/@_BaseCampToTrainPilot_@+lang
+set TextureAlt &TR_IconLgTrain&
+set NoDrawOnMissingTexture 1
+set Coords "x256 0 0 256 256 x512 0 0 512 512 x1024 0 0 1024 1024"
+set ScaleRefToCoordsX 512.0
+set ScaleRefToCoordsY 512.0
+set ScaleX 1.1, ScaleY 1.1
+set SaveArgs 1
+set Disabled 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.35
+set DisabledSymInv ShowTrainPilot
+set HiddenCheckBySymbolInv TrainerLoaded
+set FilterName TrainUI
+set FilterOnlyFlags Textures
+set FilterOnlyFlags Coords
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom GenericTabButtonTrain
+set Name BaseCampTrainTabTraining
+set RenderCB_Text MF_Training
+set CommandPress "sym set _TrainOpenTraining_ 1"
+set CommandPress "sym set _TrainOpenBuyPoints_ 0"
+add MenuObject initFrom GenericTabButtonTrain
+set Name BaseCampTrainTabBuyPoints
+set RenderCB_Text MF_GetPoints
+set CommandPress "sym set _TrainOpenTraining_ 0"
+set CommandPress "sym set _TrainOpenBuyPoints_ 1"
+set HiddenCheckBySymbolInv Train_PilotKudos
+add MenuObject initFrom GenericTabButtonTrain
+set Name BaseCampTrainTabPilots
+set RenderCB_Text Shop_Pilots
+set CommandPress "sym set _TrainOpenPilots_ 1"
+add MenuObject
+set Name BaseCampTrainName
+set Coords "0 0 450 100"
+set RenderCB_DX 450
+set RenderCB_DY 100
+set RenderCB_FontScale @_Arg1_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor "0.9"
+set RenderCB_Text DispPilot@_BaseCampToTrainPilot_@
+set FilterName TrainUI
+set RenderCB_BoolArg 0
+set RenderCB_Flags "/shadowed /shadowColor2 /fitX"
+set DisabledSymInv TrainerLoaded
+set Disabled 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.2
+add MenuObject initFrom GenericBackgroundTabs
+set Name BaseCampTrainInventoryBg
+set RenderCB_DX 410
+set RenderCB_DY 620
+set Coords "0 0 600 500"
+set Disabled 1
+set Child "BaseCampTrainTabPilots 18 16"
+set Child "GenericTabLabelTrain 18 16 Shop_Pilots	_TrainOpenPilots_ _TrainOpenPilots_"
+set Child "BaseCampSelectTrainInventoryContainer 35 70"
+set Child "BaseCampPilotNav 170 515 ItemSel"
+add MenuObject
+set Name BaseCampPilotNav
+set ContainerOnly 1
+set Child "BaseCampPilotButtonPrevious -75 0	@_Arg1_@"
+set Child "BaseCampPilotNavText -15 5			@_Arg1_@"
+set Child "BaseCampPilotButtonNext 75 0			@_Arg1_@"
+set SaveArgs 1
+add MenuObject
+set Name BaseCampPilotNavText
+set Coords "0 0 100 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB_FontScale 0.7
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@PagesCurr
+set RenderCB_BoolArg 0
+set RenderCB_RGBColor "0.9"
+set RenderCB_Flags "/shadowed /shadowColor2"
+set SaveArgs 1
+set DisabledSym _TrainOpenBuyPoints_
+set DisabledAlpha 0.35
+add MenuObject initFrom ItemSelectNavTemplate
+set Name BaseCampPilotButtonPrevious
+set ScaleX 0.5, ScaleY 0.5
+set DisabledSymInv @_Arg1_@PagePrevOk
+set CommandPress "customize scrollUpdateLobby 4 5 /paged -1"
+set CommandPress "pcmd 0.1 menucmd BaseCamp_TrainPilot_Reload $_BaseCampToTrainPilot_"
+add MenuObject initFrom ItemSelectNavTemplate
+set Name BaseCampPilotButtonNext
+set ScaleX 0.5, ScaleY 0.5
+set DisabledSym _TrainOpenBuyPoints_
+set DisabledSymInv @_Arg1_@PageNextOk
+set MirrorOnX 1
+set CommandPress "customize scrollUpdateLobby 4 5 /paged 1"
+set CommandPress "pcmd 0.1 menucmd BaseCamp_TrainPilot_Reload $_BaseCampToTrainPilot_"
+add MenuObject
+set Name BaseCampTrainPilotTrainPoints
+set Coords "0 0 100 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB_FontScale 0.6
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXRight
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol TrainSlot@_Arg1_@TotalPnts
+set RenderCB_BoolArg 0
+set RenderCB_Flags "/outlined8x /shadowed /shadowColor2 /toU16"
+set SaveArgs 1
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.0
+set DisabledSym _TrainOpenBuyPoints_
+set DisabledAlpha 0.35
+add MenuObject
+set Name BaseCampSelectTrainSlotTemplate
+set Texture menus/LoadoutGrid
+set RenderBlocked 1
+set Focus -2
+set Layer 2
+set DrawWhenFocused BaseCampSelectTrainItemFocus
+set DrawWhenFocusedOffset "-8 -8"
+set MouseInteract 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set Disabled $_CustomDisabled
+set DisabledAlpha 0.2
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.15
+set DisabledSym _TrainOpenBuyPoints_
+set DrawGreyScale $_CustomGreyed
+set Coords "0 0 120 100"
+set FilterName CustomDrawer
+set CommandGetFocus "floatsym setConcat2 MainMenuDescTimer $C_BINDING 0.0"
+set CommandGetFocus "playSound $CustomizeSoundFocus"
+set CommandPress "playSound $CustomizeSoundClick"
+set CommandOnCreate ">customize slotCheck $_CustomObject @_Arg1_@ _CustomResult _CustomPath _CustomDisabled _CustomGreyed _CustomHideCost _CustomCostKudos _CustomCostDiamonds /ownedOnly /txtFilterSym DialogContentSelectFilterText /ultToSym _IsUltimate@_Arg1_@"
+set CommandOnCreate ">customize slotExec $_CustomObject @_Arg1_@ _CustomSymbol2 _CustomValue2 /ownedOnly /txtFilterSym DialogContentSelectFilterText"
+set CommandOnCreate ">pcmd 0.1 menucmd BaseCamp_TrainPilotPointsSpent $_CustomValue2 @_Arg1_@"
+set CommandOnCreate ">if sym _CustomValue2 != 0 gameui show BaseCampTrainPilotTrainPoints@_Arg1_@"
+set CommandOnCreate ">if sym _CustomValue2 != 0 gameui show BaseCampSelectTrainPointsBackground@_Arg1_@"
+set CommandOnCreate ">if sym _CustomValue2 == 0 gameui hide BaseCampTrainPilotTrainPoints@_Arg1_@"
+set CommandOnCreate ">if sym _CustomValue2 == 0 gameui hide BaseCampSelectTrainPointsBackground@_Arg1_@"
+set CommandPressAlt ">customize slotInspect $_CustomObject @_Arg1_@ /ownedOnly /txtFilterSym DialogContentSelectFilterText"
+set CommandGetFocus ">customize slotExec $_CustomObject @_Arg1_@ _CustomSymbol _CustomValue /ownedOnly /txtFilterSym DialogContentSelectFilterText"
+set CommandPress ">customize slotExec $_CustomObject @_Arg1_@ _CustomSymbol _CustomValue /ownedOnly /txtFilterSym DialogContentSelectFilterText"
+set CommandFocusLeft ">gameUI focusNameTry @_Arg2_@"
+set CommandFocusRight ">gameUI focusNameTry @_Arg3_@"
+set CommandFocusUp ">gameUI focusNameTry @_Arg4_@ LobbySelectItemDialogClose"
+set CommandFocusDown ">gameUI focusNameTry @_Arg5_@"
+set CommandPress ">menucmd BaseCamp_TrainPilot_Load $_CustomValue"
+set Child "BaseCampSelectTrainItemEmpty -8 -8"
+set Child "BaseCampSelectTrainObject 0 0"
+set Child "BaseCampSelectTrainItemBorder -8 -8"
+set Child "BaseCampSelectTrainPointsBackground[BaseCampSelectTrainPointsBackground@_Arg1_@] 7 42"
+set Child "BaseCampTrainPilotTrainPoints[BaseCampTrainPilotTrainPoints@_Arg1_@] -30 49"
+set ToolTip &_CustomDrawerTip@_Arg1_@&
+set ToolTipDelayTime 0.2
+set SaveArgs 5
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name BaseCampSelectTrainPointsBackground
+set Texture menus/LoadoutFrame
+set Coords "144 945 76 37"
+set ScaleX 0.9, ScaleY 0.9
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.0
+add MenuObject
+set Name BaseCampSelectTrainItemEmpty
+set Texture menus/LoadoutFrame
+set Coords "227 890 99 99"
+set ScaleX 0.9, ScaleY 0.9
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name BaseCampSelectTrainItemBorder
+set Texture menus/LoadoutFrame
+set Coords "427 890 99 99"
+set ScaleX 0.9, ScaleY 0.9
+set DisabledSym _TrainOpenBuyPoints_
+set DisabledAlpha 0.35
+add MenuObject
+set Name BaseCampSelectTrainItemFocus
+set Texture menus/LoadoutFrame
+set Coords "526 890 99 99"
+set ScaleX 0.9, ScaleY 0.9
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name BaseCampSelectTrainObject
+set Coords "x256 32 32 192 192 x512 64 64 384 384 x1024 128 128 768 768"
+set ScaleX 0.4
+set ScaleY 0.4
+set ScaleRefToCoordsX 185.0
+set ScaleRefToCoordsY 180.0
+set DrawGreyScale $_CustomGreyed
+set DisplayAsFocusedIfParentFocused 1
+set Layer 6
+set DisabledSym _TrainOpenBuyPoints_
+set DisabledAlpha 0.35
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.15
+set Texture @_CustomPath@@_CustomResult@+lang
+set TextureAlt @_CustomPath@IconUnique
+set FilterName CustomDrawer
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+add MenuObject
+set Name BaseCampSelectTrainInventoryContainer
+set ContainerOnly 1
+set Coords "0 0 410 620"
+set FilterName CustomDrawer
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot0] 0 0			0 null ObjectSlot1 null ObjectSlot4"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot1] 90 0		1 ObjectSlot0 ObjectSlot2 null ObjectSlot5"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot2] 180 0		2 ObjectSlot1 ObjectSlot3 null ObjectSlot6"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot3] 270 0		3 ObjectSlot2 ObjectSlot4 null ObjectSlot7"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot4] 0 90		4 ObjectSlot3 ObjectSlot5 ObjectSlot0 ObjectSlot8"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot5] 90 90		5 ObjectSlot4 ObjectSlot6 ObjectSlot1 ObjectSlot9"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot6] 180 90		6 ObjectSlot5 ObjectSlot7 ObjectSlot2 ObjectSlot10"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot7] 270 90		7 ObjectSlot6 ObjectSlot8 ObjectSlot3 ObjectSlot11"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot8] 0 180		8 ObjectSlot7 ObjectSlot9 ObjectSlot4 ObjectSlot12"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot9] 90 180		9 ObjectSlot8 ObjectSlot10 ObjectSlot5 ObjectSlot13"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot10] 180 180	10 ObjectSlot9 ObjectSlot11 ObjectSlot6 ObjectSlot14"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot11] 270 180	11 ObjectSlot10 ObjectSlot12 ObjectSlot7 ObjectSlot15"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot12] 0 270		12 ObjectSlot11 ObjectSlot13 ObjectSlot8 ObjectSlot16"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot13] 90 270		13 ObjectSlot12 ObjectSlot14 ObjectSlot9 ObjectSlot17"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot14] 180 270	14 ObjectSlot13 ObjectSlot15 ObjectSlot10 ObjectSlot18"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot15] 270 270	15 ObjectSlot14 ObjectSlot16 ObjectSlot11 ObjectSlot19"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot16] 0 360		16 ObjectSlot15 ObjectSlot17 ObjectSlot12 ObjectSlot20"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot17] 90 360		17 ObjectSlot16 ObjectSlot18 ObjectSlot13 ObjectSlot21"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot18] 180 360	18 ObjectSlot17 ObjectSlot19 ObjectSlot14 ObjectSlot22"
+set Child "BaseCampSelectTrainSlotTemplate[ObjectSlot19] 270 360	19 ObjectSlot1 null ObjectSlot15 null"
+set Child "BaseCampSelectTrainInventoryWheelZone 0 0			4 5"
+add MenuObject
+set Name BaseCampSelectTrainInventoryWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 940 650"
+set SaveArgs 2
+set CommandOnMouseDrag ">customize scrollUpdateLobby @_Arg1_@ @_Arg2_@ /paged $_Wheel"
+set CommandOnMouseDrag "pcmd 0.1 menucmd BaseCamp_TrainPilot_Reload"
+add MenuObject
+set Name BaseCampBuyPointsTitle
+set Coords "0 0 800 100"
+set RenderCB_DX 800
+set RenderCB_DY 100
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor "0.9"
+set RenderCB_Text @_Arg1_@
+set FilterName TrainUI
+set RenderCB_BoolArg 0
+set RenderCB_Flags "/shadowed /shadowColor2 /fitX"
+set DisabledSymInv TrainerLoaded
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.2
+set SaveArgs 2
+add MenuObject
+set Name BaseCampBuyPointsPurchase
+set Texture pilots/train/Market
+set Coords "0 0 512 512"
+set Anchor LowerRight
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 0.5
+add MenuObject
+set Name BaseCampBuyPointsDesc
+set SaveArgs 1
+set Coords "0 0 600 100"
+set RenderCB_BoolArg 1
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set RenderCB_FontScale 0.6
+set RenderCB_RGBColor "0.9"
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/fitX /shadowed /shadowColor2"
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.0
+add MenuObject
+set Name BaseCampBuyPointsLabel
+set SaveArgs 1
+set Coords "0 0 150 25"
+set RenderCB_BoolArg 1
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set RenderCB_FontScale 0.6
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/fitX /shadowed /shadowColor2"
+set DisabledSymValue P_Kudos<@_Arg2_@
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.0
+add MenuObject
+set Name BaseCampBuyPointsButton
+set Texture effects/white
+set Coords "0 0 150 50"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusGoTrainButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set RenderCB_Flags "/nmi /fitX /shadowed /shadowColor2"
+set RenderCB_Font RobotoBold_NoFallback
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.8"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 3
+set Disabled 1
+set DisabledSymValue P_Kudos<@_Arg2_@
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.0
+set FirstDrawnChildren 1
+set Child "GoTrainButtonOutline -2 -2	Pilot"
+set CommandPress ">sym set _PilotPointAmt_ @_Arg3_@
+set CommandPress "menucmd BaseCamp_BuyPointsPilotTry"

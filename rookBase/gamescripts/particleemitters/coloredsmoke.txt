@@ -1,0 +1,24 @@
+add ParticleEmitter
+set Name "ColoredSmoke", MaxParticles 400, Material mat_particleSmokePuff
+set EmitPeriodBase 0.02, EmitPeriodVar 0.0, EmitVelocityBase 2.5, EmitVelocityVar 0.0, EmitVelocityWiggle 200
+set EmitPeriodBaseTimeModifier 0.01
+set EmitPosRandomXExtent 0.15, EmitPosRandomYExtent 0.15
+set DragCoefficient 0.0
+set ParticleLifespanBase 2.5, ParticleLifespanVar 1.3
+set ParticleSizeXBase 0.3, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.5, ParticleGrowthXVar 0.0
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 0.5
+set ParticleColor 0xb51191
+set GravityScalar 0.3
+add ParticleEmitter initFrom ColoredSmoke
+set Name ColoredSmokeBlue
+set ParticleColor 0xda862700
+add ParticleEmitter initFrom ColoredSmoke
+set Name ColoredSmokeRed
+set ParticleColor 0xff220000
+add ParticleEmitter initFrom ColoredSmoke
+set Name ColoredSmokeGreen
+set ParticleColor 0x2cdd4100

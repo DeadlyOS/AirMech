@@ -1,0 +1,25 @@
+onloadrun {
+]sym set NetFailTitleSym NetFailDialogTitle
+]sym set NetFailMsgSym NetFailDialogMessage
+]if consolePlatform runnow sym set NetFailMsgSym XLSPDisconnectX360
+]if arc runnow sym set NetFailTitleSym NetFailDialogTitle_Arc
+]if arc runnow sym set NetFailMsgSym NetFailDialogMessage_Arc
+]if sym AdminOnlyLogins == 1 runnow sym setPair NetFailTitleSym NetFailDialogTitle_AdminOnlyLogins NetFailMsgSym NetFailDialogMessage_AdminOnlyLogins
+]if sym TesterOnlyLogins == 1 runnow sym setPair NetFailTitleSym NetFailDialogTitle_AdminOnlyLogins NetFailMsgSym NetFailDialogMessage_AdminOnlyLogins
+}
+MO NetFailDialogMaster {
+pos 0 0
+}
+onload {
+]gameui promoteToTop NetFailDialogMaster
+]gameUI focusNameTry NetFailDialogButton
+]playerinputpause 1 local
+]timer clearAsyncWait
+]gameui addTickCmd gameUI focusNameTry NetFailDialogButton
+]if sym _EditorMode_ == 1 runnow sym set EditorSaveAsMapName recoverLast
+]if sym _EditorMode_ == 1 runnow editor set mapName EditorSaveAsMapName
+]if sym _EditorMode_ == 1 runnow editor savemapAs /hpk
+}
+onunload {
+]gameui removeTickCmd gameUI focusNameTry NetFailDialogButton
+}

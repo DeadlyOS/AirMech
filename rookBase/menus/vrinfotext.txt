@@ -1,0 +1,14 @@
+onloadrun {
+]menu3d remove TableInfo
+]menu3d addChild TableFrame TableInfo /model vr/TableInfo.amf	/material mat_InfoBannerVR_UnlitStdBlend /worldPose 0 0 0 /parentVisCheck /noVis
+]echo loaded Version Info
+}
+MO VrInfoText {
+pos 0 575
+layer 30
+}
+onload {
+]pcmd t1 menu3d updateORTSnapshot2 TableInfo 0 575 920 80
+]pcmd 0.1 clearmenu VrInfoText
+]pcmd t2 menu3d setVisible TableInfo
+}

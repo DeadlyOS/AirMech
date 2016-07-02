@@ -1,0 +1,785 @@
+exec persistentSymbols.txt
+exec registrySymbols.txt
+exec journalAndReplaySymbols.txt
+exec sounds.txt
+exec materials_basic.txt
+exec debugPane.txt
+inputBinding disable gameIsLive
+inputBinding disable orderNumberRow
+inputBinding disable cockpitOpen
+inputBinding disable cockpitClosed
+sym init FlyHeightOffsetOutpost 1.5
+sym init FlyHeightOffsetBase 2.0
+sym init EditorAlpha 0.95
+sym init EditorColorBase 0x202020
+sym init MainMenuSkin MainMenuGrad
+sym init InventoryDisplayMode 0
+sym init MyReferralLink Get!
+sym init PO_FlagsString
+sym init CustomMapSource TopMaps
+sym init LevelUnlockGroup 0
+sym init CustomizeFromLobby 0
+sym init _FriendStatusCode_ -1
+sym init MapPreviewChange 0
+sym init P_AccessLevel 0
+sym init P_Priv	0
+sym init IsSteam 0
+sym init BackgroundImage None
+sym init ShowPaxMenu 0
+sym init MotDLoaded 0
+sym init IntroStage null
+sym init MainBarButton MainBarButtonPlay
+sym init MailInboxWidth 1.0
+sym init InventoryLoaded 0
+sym init MailMessageDeleteFinished 1
+sym init NanoforgeLoaded 0
+sym init GL_ChatState 0
+sym init IngameChat 0
+sym init _ServerSelectedMap 0
+sym init _ChatAdType_ 0
+sym init PickAirMechVariant 0
+sym init BuyDiamondsSelection none
+sym init MainMenuShopSelect Game
+sym init GenericNoticeSym GenericNoticeText
+sym init IngameChatTeam 1
+sym init LowAndFree 0
+sym init LowAndFreeCmd ConMenuLobbySetup2v2
+sym init CheckLowAndFree 1
+sym init NatashaClick 0
+sym init TestMapsOk 0
+if sym P_AccessLevel == 1 sym set TestMapsOk 1
+sym init ShowGenericNotice 0
+sym init ShowPlayerStatusIcons 0
+sym init NatashaClickThresh 3
+sym init MapListMode Common
+sym init PlayerHasRolledGlobal 1
+sym init _tryoutLaunch_ 0
+sym init ConLobbyColumnsVis 1
+sym init DNDState 0
+sym init SG_Enabled 0
+sym init SG_Members 0
+sym init SG_IsOwner 0
+sym init SG_NeedInviteResponse 0
+sym init _CrossPosX 1600
+sym init _StrucureInspectPosX 300
+sym init _StrucureInspectPosY 300
+sym init EmailToAttach ""
+sym init CanaryWebLink https://www.carbongames.com/forums/viewtopic.php?f=36&t=12591
+sym init LinkMadOrc https://www.madorc.com/
+if sym P_AccessLevel == 1 sym set BasecampHidden 0
+sym init MySimpleStars 0
+sym init MyDuelStars 0
+sym init MyTharStars 0
+sym init MyValeStars 0
+sym init MyNesthornStars 0
+sym init MyTwinPeaksStars 0
+sym init MyChasmStars 0
+sym init MySaltStars 0
+sym init MyCraterStars 0
+sym init MySandrimStars 0
+sym init MyDecayStars 0
+sym init MySurvivalStars 0
+sym init MySpiralStars 0
+sym init MyLastStandStars 0
+sym init MyTwolnsurvStars 0
+sym init MyKeepStars 0
+sym init MyJunkStars 0
+sym init MyDenevStars 0
+sym init MySiamStars 0
+sym init MyWallStars 0
+sym init MyHighwayStars 0
+sym init UnitLastFocus null
+sym init MapBase 1
+sym init MapHQ 0
+sym init MapWorld 0
+sym init BaseCamp_Lvl 0
+sym init BaseStructureShow 0
+sym init BaseResourceShow 0
+sym initNSet 17 BaseLayoutSlot NULL
+sym initNSet 17 BaseLayoutSlotL None
+sym init BaseLayoutSlotP None
+sym init GameMailPageDir null
+sym init MailInboxSelected 0
+sym init MailOutboxSelected 0
+sym init BaseStructureNum 0
+sym init BuiltComs 0
+sym init InPlayMenus 0
+sym init MotDClosed 0
+sym init ShowMotDHome 0
+sym init AutoDeployDeactivate 0
+sym init AutoDeployActivateOk 0
+sym init AutoDeployActive 0
+sym init InLobbyVis 0
+sym init BaseStructureToBuild Blank
+sym init QuestsAdvancedLocked 1
+sym init QuestsPvPLocked 1
+sym init QuestsDailyLocked 1
+sym init QuestsCoopLocked 1
+sym init QuestsCoreLocked 1
+sym init ShowQuestItems 0
+sym init LobbyEventNotice 0
+sym init QuestsHeaderLabel QuestSec_Rookie
+sym init ConsoleForPC 0
+]if !consolePlatformHW if sym P_AccessLevel == 0 sym set ConsoleForPC 1
+sym init BuildRetail 0
+]if retail sym set BuildRetail 1
+sym init P_SelColorWithLev Blue0
+sym init TeamColor Blue
+sym init InTutorialMap 0
+sym init ReturnToLobby 0
+sym init VoiceListEmpty 1
+sym init LessonObject _NA_
+sym init ReportCardCount 0
+sym init SocialShowFriends 1
+sym init MainMenuPromoHide 0
+sym init SocialShowRecent 0
+sym init _InboxDeleteStop 1
+sym init _InboxDeleteEn 0
+sym init _MessageDeleteStop 1
+sym init _MessageDeleteEn 0
+sym init _InboxSelectedAll 0
+sym init _OutboxSelectedAll 0
+sym init MailOutbox 0
+sym init ManualStats 1
+sym init ManualPatchnotes 0
+sym init ManualVideos 0
+sym init ManualHelp 0
+sym init ManualFaq 0
+sym init ManualFaction 0
+sym init GenericNoticeLink http://airmech.com
+sym init SocialShowIgnored 0
+sym init Background3dLoaded 1
+if consolePlatform runnow sym set Background3dLoaded 0
+#if vr
+sym init TC0 Blue
+sym init TC1 Red
+sym init TC2 Blue
+sym init TC3 Red
+sym init TC4 Blue
+sym init TC5 Red
+#else
+sym init TC0 Blue
+sym init TC1 Red
+sym init TC2 Yellow
+sym init TC3 Green
+sym init TC4 Blue
+sym init TC5 Red
+#endif
+sym init FriendsLoaded 0
+sym init DropLoaded 0
+sym init CapsuleRareChoicesLoaded 0
+sym init MailInboxLoaded 0
+sym init MailComposeLoaded 0
+sym init LoadoutAutosave 1
+sym init CheatsAllowed 0
+sym init CheatsUsed 0
+sym init CheatIncome 0
+sym init CheatBuild 0
+sym init CheatArmor 0
+sym init CheatAttack 0
+sym init SpectateControlsFirstShown 0
+sym init SpectateTimeControls 1
+sym init SpectateUpkeep 1
+sym init SpectateFF 0
+sym init SandboxUsed 0
+sym init EditorUsageFull 0
+sym init UsedRuntimeEditor 0
+sym init LobbyV1MyDetailsHide 1
+sym init GetDiamondsPanelHidden 1
+sym init WishlistButtonsHide 0
+sym init CanAddToWishlist 1
+sym init UnitsBarActivate 0
+sym init UnsavedLoadout 0
+sym init LobbyLabelPlayers 2v2
+sym init LobbyLabelMode PvP
+sym init RookLast FighterA
+sym init PilotLast NoPilot
+sym init ItemLast NoPilot
+sym init GuardLast GuardBlaster
+sym init HeadLast NoHead
+sym init Flair1Last NoFlair
+sym init Flair2Last NoFlair
+sym init Flair3Last NoFlair
+sym init Pet1Last NoPet
+sym init Pet2Last NoPet
+sym init Pet3Last NoPet
+sym init LobbyQuickChangeListHidden 1
+sym init GL_ChatHidden 0
+sym init LobbyFocusSelf 0
+sym init TempChatVisible 1
+sym init SimpleMatchmaking 0
+sym init ConLobbyTotalSlots 0
+sym init BasicMatchmaking 1
+sym init MatchmakingDisabled 0
+sym init FocusedComplete 0
+sym init QuestFocusIndex 0
+sym init ShowInventoryFilters 0
+sym init EventMessageFocus 0
+if nacl runNow sym set SimpleMatchmaking 1
+sym init SlotFlashActive 0
+sym init LastQuestSection Rookie
+sym init ShowUltimateSamsonGlobal 0
+sym init ShowPrimeBanner 0
+sym init ShowPrimeBannerDismissed 0
+sym initNset 8 SlotBuildRest 0
+sym initNset 6 QuestFocus 0
+sym initNset 8 SaveSlotActive 0
+sym init _ChalK 0
+sym init _ChalXP 0
+sym init ChallengeExitList 0
+sym init PlayV1TopMenu 1
+sym init IsSpectator 0
+sym init ConMessageHasFocus 0
+sym init ChallengeNumber 1
+sym init InspectDialogState 1
+sym init DialogPageCount 1
+sym init DialogPageDisplay 1
+sym init DialogInfoHidden 0
+sym init AnyInspectDialogActive 0
+sym init ShopItemActive NA
+sym init HudAlpha 0.8
+sym init Pack5Diamonds 900
+sym init Pack10Diamonds 2000
+sym init Pack20Diamonds 4500
+sym init Pack35Diamonds 10000
+sym init Pack50Diamonds 16000
+sym init Pack100Diamonds 42000
+sym initNset 6 EscMenuButton null
+sym init RookLocal FighterA
+sym init RookLocal_Type Var_Classic
+sym init RookLocal_Class Striker
+sym init RookLocal_Level 1
+sym init RookLocal_Base FighterA
+sym init ItemLocal NoItem
+sym init HeadLocal NoHead
+sym init LobbyState 0
+sym initNset 6 PlayerRook FighterA
+sym initNset 11 LDL Loadout
+sym initNset 11 LL 0
+sym set LL1 1
+sym set LL2 1
+sym set max_players 6
+sym init net_players 0
+sym init MapNameMultiplayer simple.lvl
+sym init MapNameChallenge c_destroy01.lvl
+sym init LoadingMessage SplashLoading
+sym init _CWatch_ 0
+sym init _AMLogoGlow_ 0
+sym init MenuBack null
+sym init OnCancel null
+sym init MenuLevelActive 0
+sym init ConLobbyInviteSpectator6 1
+sym init ConLobbyInviteSpectator7 1
+sym init MenuLevel1 null
+sym init MenuLevel2 null
+sym init DiamondRollStyle 0
+sym init DiamondRollTextColor 0xcc4400
+sym init BannerColor LaunchGameBannerRed
+sym init MatchOver 0
+sym init MatchOverInSummary 0
+sym init NotifyMenu NotifyPregame
+sym init GameMessageSubtle 0
+sym init StoreXpMore 0
+sym init StoreKudosMore 0
+sym init ChallengePassed 0
+sym init ConItemSelectRow 0
+sym init SelectUnitsConInteractive 1
+sym init LblUnitsFilter LblUnitsFilterAll
+sym init _DynamicPosX 0
+sym init _DynamicPosY 0
+sym init _ChatPosX 0
+sym init _ChatPosY 0
+sym init PauseTipTitle DialogMessageExitAirMech
+sym init PauseTipText MF_CustomTip_ColorRed
+sym init QuickCockpitActive 0
+sym init CockpitIsOpen 0
+sym init QuickOrderTab 0
+sym init _CrossOrdersOpen_ 0
+sym init _GroupSel_ 0
+sym init ChoosingUnit 0
+sym init OpenCockpitButton 0
+sym init OpenCockpitHeld 0
+sym init SetOrderAndDrop 1
+sym initNset 6 HeldUnitOrderSlot 0
+sym initNset 6 HeldUnitName0 Infantry
+sym initNset 6 HeldUnitName1 Infantry
+sym initNset 6 HeldUnitName2 Infantry
+sym initNset 6 HeldUnitName3 Infantry
+sym initNset 6 HeldUnitOrder HoldPosition
+sym initNset 6 HeldUnitColor0 Blue
+sym initNset 6 HeldUnitColor1 Blue
+sym initNset 6 HeldUnitColor2 Blue
+sym initNset 6 HeldUnitColor3 Blue
+sym init LastUnitOrder HoldPosition
+sym init CockpitFocus null
+sym init FocusBeforeCockpit null
+sym init OrderPatrolName PatrolShort
+sym init OrderAttackName AttackShort
+sym init OrderHoldName HoldShort
+sym init OrderLinkName LinkShort
+sym init OrderCaptureName CaptureShort
+freecamera setmovespeed 35
+freecamera setrotspeed 1.5
+sym init UnitLastCenter test
+sym init fpsMenu loadmenu
+sym init TutorialText TutA1
+sym init RespawnFasterOk 1
+sym init LobbyOptionsHidden 1
+sym init LaunchMaplistHidden 1
+sym init LaunchMaplistHiddenCTF 1
+sym init LaunchMaplistSurvivalHidden 1
+sym init LaunchMaplistChallengeHidden 1
+sym init MainGearHidden 1
+sym init GameModeListHidden 1
+sym init LaunchNumPlayersHidden 1
+sym init LaunchNumPlayersCoopHidden 1
+sym init LaunchNumPlayersSoloHidden 1
+sym init LaunchNumPlayersSurvivalHidden 1
+sym init LaunchNumPlayersChallengeHidden 1
+sym init PaymentProviderListHidden 1
+sym init PaymentProviderGoogle 0
+sym init PaymentProviderAmazon 0
+sym init PaymentProviderPaypal 1
+sym init GChatTextEntryHidden 0
+sym init FChatTextEntryHidden 1
+sym init PChatTextEntryHidden 1
+sym init MChatTextEntryHidden 1
+sym init EChatTextEntryHidden 1
+sym init GameLogHidden 1
+sym init GChatScrollBarHidden 1
+sym init FChatScrollBarHidden 1
+sym init PChatScrollBarHidden 1
+sym init MChatScrollBarHidden 1
+sym init EChatScrollBarHidden 1
+sym init F1ChatScrollBarHidden 1
+sym init F2ChatScrollBarHidden 1
+sym init GameLogScrollBarHidden 1
+sym init PatchNotesScrollBarHidden 1
+sym init HideFriendsScrollBar 1
+sym init HideRecentlyMetScrollBar 1
+sym init HideIgnoredPlayersScrollBar 1
+sym init UseButton Inv_Use
+sym init BannerVolumeSliderHidden 1
+sym init MainMenuVolumePanelHidden 1
+sym init LoadoutConfigureUnits 0
+sym init ShowChatOnConsole 0
+sym init netGameOrNetGameReplay 0
+sym init BackgroundMenuBlur 0
+sym init MMBtnCurrent 0
+sym init MMFrameCurrent MainMenuHomeFrame
+sym init TopMenuHome 1
+sym init TopMenuShop 0
+sym init TopMenuCustomize 0
+sym init TopMenuPlay 0
+sym init TopMenuWatch 0
+sym init TopMenuLearn 0
+sym init TopMenuSocial 0
+sym init ConMenCancelCmd none
+sym init ConPromosRemaining 0
+sym init ConMenuPlayAirMech 1
+sym init ConMenuHelpOptions 0
+sym init ConMenuAchievements 0
+sym init ConMenuBoards 0
+sym init ConMenuPlay 1
+sym init ConMenuWatch 0
+sym init ConMenuMarket 0
+sym init ConMenuQuests 0
+sym init ConMenuStats 0
+sym init ConMenuMail 0
+sym init ConMenuExit 0
+sym init ConMenuUplay 0
+sym init ConMenuPlaySolo 1
+sym init ConMenuPlayCoop 0
+sym init ConMenuPlayPvP 0
+sym init ConMenuPlayCustom 0
+sym init ConMenuPlayMultiplayer 0
+sym init ConMenuPlayPractice 0
+sym init ConMenuSoloSkirmish 1
+sym init ConMenuSoloSurvival 0
+sym init ConMenuSoloChallenges 0
+sym init ConMenuSoloSkirmish1v1 1
+sym init ConMenuSoloSkirmish2v2 0
+sym init ConMenuSoloSkirmish3v3 0
+sym init ConMenuSoloSkirmish2v3 0
+sym init ConMenuSoloSkirmish1v2 0
+sym init ConMenuSoloSkirmish1v3 0
+sym init ConMenuMultiCoop 1
+sym init ConMenuMultiSkirmish 1
+sym init ConMenuCoopSkirmish 1
+sym init ConMenuCoopSurvival 0
+sym init ConMenuMultiSurvival 0
+sym init ConMenuMultiVersus 0
+sym init ConMenuPvPUnranked 1
+sym init ConMenuPvPRanked 0
+sym init ConMenuPvPCustom 0
+sym init ConMenuPvPUnranked 1
+sym init ConMenuPvPRanked 0
+sym init ConMenuPvPUltimate 0
+sym init ConMenuOptControls 1
+sym init ConMenuOptGameplay 0
+sym init ConMenuOptVideo 0
+sym init ConScreenInset 0
+sym init ConMenuOptAudio 0
+sym init ConMenuOptContact 0
+sym init ConMenuOptRedeemCode 0
+sym init ConMenuHelpTutorial 0
+sym init ConMenuHelpCredits 0
+sym init ConMenuHelpApp 0
+sym init ConVideoScreenInset 1
+sym init ConMenuMultiCoop2v2 1
+sym init ConMenuMultiCoop3v3 0
+sym init ConMenuMultiCoop2v3 0
+sym init ConMenuMultiSurvival2P 1
+sym init ConMenuMultiSurvival3P 0
+sym init ConMenuMultiSurvival4P 0
+sym init ConMenuPvPUnranked1v1 1
+sym init ConMenuPvPUnranked2v2 0
+sym init ConMenuPvPUnranked3v3 0
+sym init ConMenuPvPRanked1v1 1
+sym init ConMenuPvPRanked2v2 0
+sym init ConMenuPvPRanked3v3 0
+sym init ConMenuPvPUltimate1v1 1
+sym init ConMenuPvPUltimate2v2 0
+sym init ConMenuPvPUltimate3v3 0
+sym init ConMenuPvPCustom1v1 1
+sym init ConMenuPvPCustom2v2 0
+sym init ConMenuPvPCustom3v3 0
+sym init ConMenuPvPCustomAny 0
+sym init ConMenuPracticeChallenges 0
+sym init ConMenuPracticeTutorial 0
+sym init CSubMenu 0
+sym init ConLobbyPlayerSlots 1
+sym init _LastInviteButtonFocus ConLobbyEmpty1
+sym init PcMenuPracticeChallenges 1
+sym init PcMenuPracticeTutorial 0
+sym init LobbyV1DisplayMode 0
+sym init WaitMessage
+sym init LobbyLabelLevel1 ButtonCustom
+sym init LobbyLabelLevel2 ButtonUnranked
+sym init LobbyLabelLevel3 Button1v1
+sym init GiftwrapFee 5
+sym init SellTotalDiamonds 0
+sym init TempLoadoutLoaded 0
+sym init Friend2ScrollbarDismiss 1
+sym init EndgameDropHidden 0
+sym init InventorySelected -1
+sym init BuyDiamondsOld 1
+if sym P_AccessLevel == 1 sym set BuyDiamondsOld 0
+sym init Shop_Giftwrap 0
+sym init Shop_Featured 0
+sym init Shop_AirMechs 0
+sym init Shop_MyCollection 0
+sym init Shop_Units 0
+sym init Shop_Pilots 0
+sym init Shop_Parts 0
+sym init Shop_Items 0
+sym init ShowShopItems 0
+sym init Shop_ShowAll 0
+sym init Shop_Codes 0
+sym init Shop_Diamonds 0
+sym init _Shop_Last Shop_Featured
+sym init Shop_Sale 0
+sym init Shop_Premium 0
+sym init Shop_Purchases 0
+sym init Shop_Boosts 0
+sym init Shop_Other 0
+sym init Shop_Sets 0
+sym init Shop_Cosmetics 0
+sym init Shop_Inventory 0
+sym init Shop_Ultimates 0
+sym init Shop_Pets 0
+sym init Shop_Market 0
+sym init Shop_Sell 0
+sym init Shop_Game 1
+sym init Shop_Top 1
+sym init ShopSection ButtonShop
+sym init _GameShop_Last Shop_Units
+sym init GoToMarketAfterList 1
+menucmd ClearShopFilterStates
+menucmd ClearInv2FilterStates
+sym init MenuHomeNews 0
+sym init MenuHomeQuests 1
+sym init MenuHomeStats 0
+sym init MenuHomePatchnotes 0
+sym init MenuCustomizeStore 0
+sym init MenuCustomizeLoadout 1
+sym init MenuCustomizeLoadoutOld 1
+sym init MenuCustomizeCollection 0
+sym init MenuPlayMatchmaking 1
+sym init MenuPlayChallenge 0
+sym init MatchmakingInPartyNotLeader 0
+sym init MenuPlayCustom 0
+sym init MenuPlayBrowse 0
+sym init MenuPlayCampaign 0
+sym init MenuLearnPractice 1
+sym init MenuLearnHelp 0
+sym init MenuLearnFaq 0
+sym init MenuLearnConnect 0
+sym init _GotFAQ_ 0
+sym init MenuSocialFaction 1
+sym init MenuFactionCreate 1
+sym init HasFactionCharter 0
+sym init MenuSocialReferrals 0
+sym init MenuSocialConnect 0
+sym init MenuSettingsGeneral 1
+sym init MenuSettingsGeneral0 1
+sym init MenuSettingsGeneral1 0
+sym init MenuSettingsGeneral2 0
+sym init MenuSettingsGeneral3 0
+sym init MenuSettingsLanguage 0
+sym init MenuSettingsControls 0
+sym init MenuSettingsControls0 1
+sym init MenuSettingsControls1 0
+sym init MenuSettingsControls1A 0
+sym init MenuSettingsControls2 0
+sym init MenuSettingsControls3 0
+sym init MenuSettingsControls4 0
+sym init MenuSettingsVideo 0
+sym init MenuSettingsAudio 0
+if vr sym set MenuSettingsVideo 1
+if vr sym set MenuSettingsGeneral 0
+sym init MatchmakingTypeSolo 0
+sym init MatchmakingTypeCoop 1
+sym init MatchmakingTypeStandard 0
+sym init MatchmakingTypeRanked 0
+sym init MatchmakingType Coop
+sym init MatchmakingModeClassic 1
+sym init MatchmakingModeCtf 0
+sym init MatchmakingModeSurvival 0
+sym init MatchmakingMode Classic
+sym init MatchmakingPlayers 2v2
+sym init MatchmakingPlayers1v1 0
+sym init MatchmakingPlayers2v2 1
+if nacl sym set MatchmakingPlayers1v1 1
+if nacl sym set MatchmakingPlayers2v2 0
+sym init MatchmakingPlayers3v3 0
+sym init MatchmakingPlayers1P 1
+sym init MatchmakingPlayers2P 1
+sym init MatchmakingPlayers3P 0
+sym init MatchmakingPlayers4P 0
+sym init MatchmakingPlayersDuel 0
+sym init MatchmakingPlayersTeam 1
+sym init NumPlayers 1v1
+sym init NumPlayersCommon 2v2
+sym init NumPlayersCoop 2v2C
+sym init NumPlayersSolo 1v1C
+sym init NumPlayersSurvival 1P
+sym init NumPlayersChallenge 1P
+sym init PlayersChallenge 1v1
+sym init PlayersCoop 3v3
+sym init PlayersPvP 3v3
+sym init PlayersSolo 1v1
+sym init PlayersSurvival 1v1
+sym init MapName Simple
+sym init _Map_ Simple
+sym init _Map Simple
+sym init MapNameCommon Simple
+sym init MapNameCTF Simple
+sym init MapNameSurvival Survival
+sym init MapNameChallenge C_CaptureA
+sym init LaunchGameMode PvP
+sym init ActiveMaplist LaunchMaplistHidden
+sym init ActiveNumPlayers LaunchNumPlayersHidden
+sym init _RollGlobalBy
+sym init LoadoutOnlyAirMech 0
+sym init ClickLobbyAirMech ConAirMechSelect
+if !console sym set ClickLobbyAirMech SelectAirMech
+sym init P_Level 1
+sym init P_Level_Icon 0
+sym init P_Experience 0
+sym init P_Kudos 0
+sym init P_KudosDisp 0
+sym init P_Kudos_LT 0
+sym init P_Honor 0
+sym init P_HonorDisp 0
+sym init P_Honor_LT 0
+sym init MR_HonorTotal 0
+sym init P_Diamonds 0
+sym init P_DiamondsDisp 0
+sym init P_LockedDiamonds 0
+sym init P_LockedDiamondsDisp 0
+sym init P_Name Player
+sym init P_Pay paypal
+sym init P_Name0 Natasha
+sym init P_Name1 Kira
+sym init P_Name2 Petros
+sym init P_Name3 Raven
+sym init P_Name4 Samson
+sym init P_Name5 Hawk
+sym initNset 6 P_ULvl 0
+sym init P_FTag0
+sym init P_FTag1
+sym init P_FTag2
+sym init P_FTag3
+sym init P_FTag4
+sym init P_FTag5
+sym initNset 6 ConLobbyEmptyRandom 1
+sym initNset 6 Ping 100
+sym initNset 6 HideSlot 1
+sym initNset 6 HideAISlot 1
+sym init HasPetCanaryBird 0
+sym init LessonImage LessonShoot
+sym init ChallengeShowNext 0
+sym init ChallengeHideRestart 0
+sym init _CustomizeItemPath menus/IconColorBlue
+sym initNset 2 _StatPowerGround ""
+sym initNset 2 _StatPowerGroundColor ""
+sym initNset 2 _StatPowerGroundAlpha ""
+sym initNset 2 _StatPowerAir ""
+sym initNset 2 _StatPowerAirColor ""
+sym initNset 2 _StatPowerAirAlpha ""
+sym initNset 2 _StatBlastDmg ""
+sym initNset 2 _StatBlastDmgColor ""
+sym initNset 2 _StatBlastDmgAlpha ""
+sym initNset 2 _StatRange ""
+sym initNset 2 _StatRangeColor ""
+sym initNset 2 _StatRangeAlpha ""
+sym initNset 2 _StatRadarRange ""
+sym initNset 2 _StatRadarRangeColor ""
+sym initNset 2 _StatRadarRangeAlpha ""
+sym initNset 2 _StatPowerRepair ""
+sym initNset 2 _StatPowerRepairColor ""
+sym initNset 2 _StatPowerRepairAlpha ""
+sym initNset 2 _StatPowerGen ""
+sym initNset 2 _StatPowerGenColor ""
+sym initNset 2 _StatPowerGenAlpha ""
+sym initNset 2 _StatPowerBuildCost ""
+sym initNset 2 _StatPowerBuildCostColor ""
+sym initNset 2 _StatPowerBuildCostAlpha ""
+sym initNset 2 _StatHealth ""
+sym initNset 2 _StatHealthColor ""
+sym initNset 2 _StatHealthAlpha ""
+sym initNset 2 _StatCarry ""
+sym initNset 2 _StatCarryColor ""
+sym initNset 2 _StatCarryAlpha ""
+sym initNset 2 _StatSpeed ""
+sym initNset 2 _StatSpeedColor ""
+sym initNset 2 _StatSpeedAlpha ""
+sym initNset 2 _StatSpeedFiring ""
+sym initNset 2 _StatSpeedFiringColor ""
+sym initNset 2 _StatSpeedFiringAlpha ""
+sym initNset 2 _StatGndSpeed ""
+sym initNset 2 _StatGndSpeedColor ""
+sym initNset 2 _StatGndSpeedAlpha ""
+sym initNset 2 _StatGndSpeedFiring ""
+sym initNset 2 _StatGndSpeedFiringColor ""
+sym initNset 2 _StatGndSpeedFiringAlpha ""
+sym initNset 2 _StatBuildTime ""
+sym initNset 2 _StatBuildTimeColor ""
+sym initNset 2 _StatBuildTimeAlpha ""
+sym initNset 2 _StatCost ""
+sym initNset 2 _StatCostColor ""
+sym initNset 2 _StatCostAlpha ""
+sym initNset 2 _StatSalvage ""
+sym initNset 2 _StatSalvageColor ""
+sym initNset 2 _StatSalvageAlpha ""
+sym initNset 2 _StatUnlockLevel ""
+sym initNset 2 _StatUnlockLevelColor ""
+sym initNset 2 _StatUnlockLevelAlpha ""
+sym initNset 2 _StatUltimateLevel ""
+sym initNset 2 _StatUltimateLevelColor ""
+sym initNset 2 _StatUltimateLevelAlpha ""
+sym initNSet 2 _StatAirMechProficiency ""
+sym initNSet 2 _StatAirMechMaxParts ""
+sym initNset 3 MenuPlayCard 0
+sym init MenuPlayCardMove 1
+sym init FighterA_Loadout PvE0
+sym initNset 3 FighterA_LPvP 0
+sym initNset 3 FighterA_LPvE 0
+sym set FighterA_LPvE0 1
+sym init Chopper_Loadout PvE1
+sym initNset 3 Chopper_LPvP 0
+sym initNset 3 Chopper_LPvE 0
+sym set Chopper_LPvE1 1
+sym initNset 7 InboxSelected 0
+sym initNset 7 InboxRead 0
+sym initNset 6 PlayerRookDispMode 0
+sym initNset 6 LoadingPlayerCard 0
+sym init P_Player0IsAI 0
+sym init P_Player1IsAI 1
+sym init P_Player2IsAI 1
+sym init P_Player3IsAI 1
+sym init P_Player4IsAI 1
+sym init P_Player5IsAI 1
+sym initNset 60 UpkeepTeam0_ -1
+sym initNset 60 UpkeepTeam1_ -1
+sym init _UTInc_ 0
+sym init SoundVol 50
+sym init MenuVol 50
+sym init MusicVol 50
+sym init MusicVol_BGMSave 50
+sym init AnnouncerVol 50
+sym init MasterVol 50
+sym init MusicBGMActive 0
+sym init GfxDestructionDetail 100
+sym init NetMode PVP
+sym init ai_mask 0
+sym init ai_fullteam 0
+sym init u_game 0
+sym init u_gameDetect 0
+sym init noparts_game 0
+sym init notraining_game 0
+sym init h_game 0
+sym init zoba_game 0
+sym init hypo_game 0
+sym init ot_dmg 1
+sym init map_cfg
+sym init start_amlvl 1
+sym init start_ablvl 0
+sym init start_grdlvl 0
+#if vr
+sym init _amlvlstart 10
+#else
+sym init _amlvlstart 1
+#endif
+sym init HexBlue 0x099aff
+sym init HexRed 0xd6490d
+sym init HexGreen  0x4da33c
+sym init HexYellow 0x9e5200
+sym set ChatTextEntry
+sym set GChatTextEntry
+sym set InputMK 1
+sym set InputPad 0
+if consolePlatform runnow sym set InputMK 0
+if consolePlatform runnow sym set InputPad 1
+sym initNset 12 BoostIcon IconUnknown
+sym initNset 8 InvitePlayerSlotHidden 1
+sym initNset 9 TR_HiddenHCubeIn 1
+sym initNset 4 TR_HiddenTrade 1
+sym initNset 4 TR_HiddenTradeIn 1
+sym init ServerLocation usca
+sym init PlayingOnServerLocation usca
+sym init ServerFlagChar c
+sym init PlayingOnServerFlagChar c
+sym init MapMode 0
+patchnotes update
+dynSymbols update
+input set preferMouseKeyboard 1
+if !consolePlatform input set padFocusFallback MainBarButtonHome
+collection clearSuggestedContentList
+collection addToSuggestedContentList ArmoredCar TankLight InfantryLight SupplyTruck Stealth MissileTank RocketTruck GuardRepair
+collection addToSuggestedContentList TurretDual Engineer RepairBot TurretArtillery TurretChaingun BikeSidecar SupplyTank TankHeavy
+collection addToSuggestedContentList Warthog PriAdvBeltFeed TurretTesla TurretArtilleryV2 TankRebel WaistPouch GuardEnergy Saucer MineSlow
+collection addToSuggestedContentList StrAPlating InfantryHeavy Osprey Higgs BotSpawner APC InfantryDemo Creeper Mine Atlas GenXP
+collection addToSuggestedContentList Baloom EngHvyDuty TurretMissile Paladin GasTank Booster BaseRepair SpeChip InfantrySniper GuardBlade
+collection addToSuggestedContentList EleInRech InfantrySoldier Bertha HealPod TurretFlak StrServos InfantryButcher TankMonster SpeHand1
+collection addToSuggestedContentList Angel Hero TankHunter InfantryPyro InfantrySargent SpeHand2 Steamroller TankDrill Congee
+collection addToSuggestedContentList InfantryEngineer GenPower InfantrySpy RBracelet BearTrap Skyeye GuardRadar TurretAegis Canfood
+#if vr
+contentlist define heads
+contentlist clear heads
+contentlist addTo heads HatHMD PetPumpkin1 PetPumpkin2 HatWitch1 HatWitch2 HatWitch3 HatHeaddress HatSanta HatElf
+contentlist addTo heads HatDeer3 HeadStallion HeadHusky HeadBucky HatTB HatFootball HatStP HatCinco HatUS
+contentlist addTo heads PetSkull1 PetSkull2 HeadUnicorn HatCNY HatMemorial2 HeadHarlequin HatGerman HatHalo
+contentlist addTo heads HatCalicowboy HeadHockeyMask HeadRam HeadRamSkull2 HeadHonorBronze HeadEagle HatPirate2
+contentlist define pets
+contentlist clear pets
+contentlist addTo pets PetDicePink PetEasterBird BallSoccer BaldEagle PetIceCream4 PetCatWitch PetCatWitch2 JetpackHusky
+contentlist addTo pets PetBat1 PetGhost1 PetTurkey1 JetpackCat XmasSnowman XmasReindeer XmasAngel PetTwitterBird
+contentlist addTo pets PetCanaryBird PetCardinalBird PetParakeetBird MoonRabbit PetPinata Seagull PetAirshipCarbon PetAirshipWood
+contentlist addTo pets PetAirshipSteam PetAirshipShark PetShuttle PetFlyingTrain PetVoidEagle PetRaven PetParrot PetFish6
+#endif
+if sym HasAirMechPrime == 1 sym set PublishMapsOk 1
+sym init Lock_Quests 1
+menucmd InitAirMechLoadoutSlotSel
+sg writeSymbols

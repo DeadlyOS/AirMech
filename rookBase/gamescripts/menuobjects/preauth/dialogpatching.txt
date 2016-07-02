@@ -1,0 +1,123 @@
+add MenuObject
+set Name PatchingDialogTitle
+set Coords "0 0 512 50"
+set RenderCB_DX 512
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.33
+set Layer 15
+set RenderCB _DrawUText
+set RenderCB_Text PatchingDialogTitle
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor "0.1 0.1 0.1"
+add MenuObject
+set Name DownloadingUpdatesText
+set RenderCB_Offset "2 -40"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set DisabledAlpha 1.0
+set RenderCB_Text PatchingDialogTitle
+set RenderCB_ConsoleSymbol2 patchStatus
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 1.0
+set RenderCB_RGBColor "0.8 1 1"
+set Coords "0 0 1920 47"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set PulseAlpha "1.0 -0.4 0.0"
+set BlendMode BlendAdd
+add MenuObject
+set Name FullscreenTipText
+set RenderCB_Offset "2 -40"
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+set DisabledAlpha 1.0
+set RenderCB_Text "Toggle Fullscreen using Alt-Enter"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 1.0
+set RenderCB_RGBColor "1 0.9 0.8"
+set Coords "0 0 1024 47"
+set RenderCB_DX 1024
+set RenderCB_DY 47
+set Name PatchingExitButton
+set Texture menus/LoginBase
+set Coords "0 89 275 71"
+set CoordsFocused "0 169 275 71"
+set CoordsPressed "-2 167 277 71"
+set RenderCB_DX 261
+set RenderCB_DY 69
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB_Offset "6 0"
+set RenderCB_OffsetPressed "8 2"
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /nmi /fitX"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 0.8"
+set RenderCB_RGBColorDisabled "0.5 0.5 0.5"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Text DialogButtonExit
+set RenderCB_FontScale 0.75
+set CommandPress "exit"
+set Hidden 1
+add MenuObject
+set Name LoginDownloadProgressStart
+set Layer 15
+set Texture menus/ProgressBar
+set Coords "0 32 9 32"
+add MenuObject initFrom LoginDownloadProgressStart
+set Name LoginDownloadProgressMid
+set Coords "32 32 64 32"
+set ScaleX 16.0
+add MenuObject initFrom LoginDownloadProgressStart
+set Name LoginDownloadProgressEnd
+set Coords "119 32 9 32"
+add MenuObject
+set Name LoginDownloadBackbar
+set Texture menus/LoginCommon
+set Coords "500 852 20 112"
+set TileArea "1930 64"
+set TileAreaFullTexture 0
+add MenuObject
+set Name LoginDownloadProgress
+set Texture menus/LoginCommon
+set Coords "1022 714 1022 85"
+set CoordsInterpolatedDest "20 714 1022 85"
+set CoordsInterpolantCommand "downloadProgress"
+set CoordsInterpolantCommandResult "patchProgress"
+set BlendMode BlendAdd
+set ScaleX 1.92
+set FirstDrawnChildren 1
+set Child "LoginDownloadBackbar -2 11"
+set Child "DownloadingUpdatesText 0 140"
+add MenuObject
+set Name PatchingTextBox
+set Texture menus/LoginCommon
+set RenderCBExcludesDefaultRender 0
+set Coords "0 0 476 459"
+set Color 0xf59f7c
+set RenderCB_DX 400
+set RenderCB_DY 450
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "38 38"
+set Layer 15
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_ConsoleSymbol PatchMessage
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "1.0 1.0 0.8"
+add MenuObject
+set Name PatchingDialogMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "LoginPatchingUnderline 0 940"
+set Child "PatchingTextBox 318 390	/ifSym BackgroundIronHand == 0"
+set Child "PatchingTextBox 1318 390	/ifSym BackgroundIronHand == 1"
+set Child "LoginDownloadProgress 0 860"

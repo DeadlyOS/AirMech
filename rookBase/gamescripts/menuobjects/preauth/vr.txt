@@ -1,0 +1,3064 @@
+add MenuObject
+set Name SystemVrTitle
+set Coords "0 0 512 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.1
+set RenderCB _DrawUText
+set SaveArgs 1
+set RenderCB_Flags "/allCaps /shadowed /shadowColor2 /fitX"
+set RenderCB_Text @_Arg1_@
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor 0xffffff
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject
+set Name SystemVrMessage
+set Coords "0 0 420 300"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.55
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set SaveArgs 1
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject initFrom SystemVrTitle
+set Name SystemVrTitleK
+set RenderCB_FontScale 1.8
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject initFrom SystemVrMessage
+set Name SystemVrMessageK
+set RenderCB_FontScale 0.8
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject
+set Name MessageConfirmHmdRemounted
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Texture vr/MessageConfirm
+set Coords "0 0 512 512"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set SaveArgs 1
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/allCaps /fitX"
+set RenderCB_FontScale 1.3
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set Child "SystemVrTitle 0 70			VrTitleHMDResume"
+set Child "SystemVrMessage 45 210		VrMessageHMDResume"
+set Child "SystemVrTitleK 0 70			VrTitleHMDResume"
+set Child "SystemVrMessageK 45 210		VrMessageHMDResume"
+add MenuObject
+set Name InviteFromName
+set Coords "0 0 512 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.4
+set RenderCB _DrawText
+set SaveArgs 1
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+add MenuObject
+set Name InviteMessage
+set Coords "0 0 350 300"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.7
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Flags " /outlined8x /shadowColor2 /fitX"
+set SaveArgs 1
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text @_Arg1_@
+add MenuObject
+set Name InviteNotification
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Texture effects/white
+set Coords "0 0 512 256"
+set Color 0x06b2dd
+set NoAlphaMod 1
+set Alpha 0.8
+set Child "InviteFromName 0 0		P_Name"
+set Child "InviteMessage 80 53		InviteRoom"
+add MenuObject
+set Name OrderLabelVr
+set Coords "0 0 270 70"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB _DrawUText
+set SaveArgs 1
+set RenderCB_Flags "/allCaps /shadowed /shadowColor2 /fitX"
+set RenderCB_Text @_Arg1_@
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor 0xffffff
+add MenuObject
+set Name OrdersRTT
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Texture vr/OrdersBlue
+set NoAlphaMod 1
+set Alpha 0.9
+set Coords "0 0 900 256"
+set Child "OrderLabelVr 80 30 OrderRetreat"
+set Child "OrderLabelVr 80 150 OrderCapture"
+set Child "OrderLabelVr 535 5 OrderAttack"
+set Child "OrderLabelVr 535 135 OrderHold"
+add MenuObject
+set Name DialogTitleVr
+set Coords "0 0 700 50"
+set RenderCB_DX @_Arg2_@
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB _DrawUText
+set SaveArgs 2
+set RenderCB_Flags "/allCaps /shadowed /shadowColor2 /fitX"
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor 0xffffff
+add MenuObject
+set Name DialogMessageVr
+set Coords "0 0 500 200"
+set RenderCB_DX @_Arg2_@
+set RenderCB_DY 200
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.66
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set SaveArgs 2
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_ConsoleSymbol @_Arg1_@
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject initFrom DialogTitleVr
+set Name DialogTitleVrK
+set RenderCB_FontScale 1.9
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject initFrom DialogMessageVr
+set Name DialogMessageVrK
+set RenderCB_FontScale 1.0
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject
+set Name SystemDialogVr
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Coords "0 0 1024 512"
+set Texture vr/MenuDialog
+set Child "DialogTitleVr 20 20								DialogBoxTitle 800"
+set Child "DialogMessageVr 40 130							DialogBoxMessage	740"
+set Child "DialogTitleVrK 20 20								DialogBoxTitle 800"
+set Child "DialogMessageVrK 40 130							DialogBoxMessage	740"
+add MenuObject
+set Name VRScreenMaps
+set Coords "0 0 2048 1024"
+set Texture vr/screen/Screen
+add MenuObject
+set Name VRScreenMapName
+set Coords "0 0 100 50"
+set RenderCB_DX 480
+set RenderCB_DY 50
+set RenderCB_FontScale 2.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.3
+set SaveArgs 1
+set DisabledAlphaTimeOut 0.0
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/allCaps /outlined8x /shadowColor2"
+add MenuObject
+set Name VRScreenFlash
+set Coords "200 300 398 334"
+set Texture promos/BeppoIcon
+set ScaleX 1.23
+set BlinkAlpha "1.0 0.05 0.0 4.5"
+add MenuObject
+set Name VRScreenMap
+set Coords "200 0 670 512"
+set Texture /cache/&@_Arg1_@PreviewHash&
+set SaveArgs 1
+set FilterName MapHashes
+set FilterName2 MapSelection
+set FilterOnlyFlags Textures
+set ScaleX 0.7, ScaleY 0.7
+set Child "VRScreenMapName 0 200 @_Arg1_@"
+add MenuObject
+set Name VRScreenOverlay
+set Layer 4
+set Texture vr/OverlayWaveMenu
+set Coords "0 0 128 128"
+set CoordsInterpolatedDest "4096 128 128 128"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 3"
+set Texture effects/Static2
+set BlendMode BlendAdd
+set Color 0x43594f
+set Coords "256 0 256 512"
+set CoordsInterpolatedDest "0 10 256 512"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 0.5"
+set ScaleX 7.5
+set ScaleY 2.0
+add MenuObject
+set Name VRScreenRTT
+set ContainerOnly 1
+set Child "VRScreenMaps 0 0"
+set Child "VRScreenMap 0 0	crater"
+set Child "VRScreenFlash 0 0"
+set Child "VRScreenMap 1440 0	survival"
+set Child "VRScreenMap 480 0	simple"
+set Child "VRScreenMap 480 334	duel"
+set Child "VRScreenMap 960 0	twinpeaks"
+add MenuObject
+set Name VRMenuBar
+set Texture vr/@_Arg4_@
+set Coords "0 0 512 128"
+set Focus -2
+set BlendMode NoBlend
+set FilterName VRMenuBar
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandCancel "gameUI ignoreInputTime 0.1"
+set CommandCancel "menucmd VRMenuCancel"
+set CommandCancel "menucmd VRMenuCancel"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress ">menucmd $VRMenuCmd@_Arg1_@"
+set CommandFocusUp ">if sym VRMenuText@_Arg2_@ !isEmpty gameui focusNameTry VRMenuBar@_Arg2_@"
+set CommandFocusDown ">if sym VRMenuText@_Arg3_@ !isEmpty gameui focusNameTry VRMenuBar@_Arg3_@"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol VRMenuText@_Arg1_@
+set SaveArgs 5
+set RenderCB_RGBColor "0.8 0.8 0.8"
+set RenderCB_RGBColorFocused "1 1 1"
+set RenderCB_Flags "/nmi /allCaps /fitX"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "0 0"
+set RenderCB_OffsetPressed "0 3"
+set CommandGetFocus ">menu3d addAnimScript MenuBlock@_Arg1_@ as_MenuBlockFocusNew.txt"
+set CommandGetFocus ">menu3d addAnimScript MenuBlockLabel@_Arg1_@ as_MenuBlockLabelFocus.txt"
+set CommandGetFocus ">playsound VrButtonTouch"
+set CommandLoseFocus ">menu3d addAnimScript MenuBlock@_Arg1_@ as_MenuBlockUnfocus.txt"
+set CommandLoseFocus ">menu3d addAnimScript MenuBlockLabel@_Arg1_@ as_MenuBlockLabelUnfocus.txt"
+set CommandGetFocus ">menu3d addAnimScript MenuBlockFocus as_MenuBlock@_Arg1_@.txt"
+set CommandGetFocus ">input set padFocusFallback VRMenuBar@_Arg1_@"
+add MenuObject
+set Name VRMenuDisk
+set Texture vr/MenuDisk
+set Coords "0 0 374 374"
+set Focus -2
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set SaveArgs 4
+set Color 0x6b7b83
+set ColorFocused 0x4aff75
+set RenderCB_RGBColor "0.63 0.71 0.74"
+set RenderCB_RGBColorFocused "0.80 0.84 0.85"
+set RenderCB_Flags "/nmi /allCaps /fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 1.0
+set RenderCB_FontScaleFocused 1.1
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "0 0"
+set RenderCB_OffsetPressed "0 3"
+add MenuObject
+set Name VRMenusBlackBg
+set Texture effects/black
+set Coords "0 0 512 1080"
+add MenuObject
+set Name VRUnitIconRender
+set Coords "0 0 256 256"
+set DisabledAlpha 0.0
+set BlendMode NoBlend
+set FilterName BuildCube
+set SaveArgs 5
+set Texture units/&AS@_BuildCubeIndex_@P@net_local_player@&/Icons@TeamColor@
+set TextureAlt units/&AS@_BuildCubeIndex_@P@net_local_player@&/IconUnique
+set FocusChangeOnStick 0
+set Focus -2
+set CommandGetFocus ">menuCmd GetReadyArmySlot@_BuildCubeIndex_@ local"
+set CommandPress "menuCmd GetReadyArmySlot@_BuildCubeIndex_@ local"
+set CommandPress "menuCmd PlaceOrder local"
+set CommandPress "sym set _BuildSlot @_BuildCubeIndex_@"
+add MenuObject
+set Name BuildBlocksBg
+set Texture units/Icons@TC0@
+set Coords "0 0 840 332"
+add MenuObject
+set Name BuildBlockTextLabel
+set Coords "0 0 364 80"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol FinalUnitToBuildST
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /fitX /outlined8x"
+set RenderCB_FontScale 1.4
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set RenderCB_FloatSymbol F_BB
+set RenderCB_FloatArg 20.0
+set CommandOnCreate "floatsym set F_BB 0.0"
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject initFrom BuildBlockTextLabel
+set Name BuildBlockTextLabelK
+set RenderCB_FontScale 1.6
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject
+set Name BuildBlockCatLabel
+set Coords "0 0 364 80"
+set FilterName BuildCube
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text LabelCategory@CurrentCategory@
+set SaveArgs 1
+set RenderCB_RGBColor 0xffbe41
+set RenderCB_Flags "/allCaps /fitX"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set HiddenCheckBySymbolInv BuildCubeActiveLook
+add MenuObject
+set Name BuildBlockDescText
+set Coords "0 0 600 370"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.75
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 370
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set FilterName SelectAirMech
+set RenderCB_ConsoleSymbol TR_DescVRTemp
+set RenderCB_Flags "/jp_on_scej /outlined8x"
+add MenuObject
+set Name BuildBlockUnitCost
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set HiddenCheckBySymbol VRMainMenu
+set FilterName BuildCube
+set RenderCB_Flags "/shadowed"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 1.3
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol DispSlotCost
+add MenuObject initFrom BuildBlockUnitCost
+set Name BuildBlockUnitTime
+set RenderCB_ConsoleSymbol DispSlotTime
+add MenuObject initFrom BuildBlockUnitCost
+set Name BuildBlockUnitName
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol DispSlotName
+set RenderCB_FontScale 0.7
+set RenderCB_RGBColor 0x666666
+set RenderCB_Flags ""
+add MenuObject
+set Name MenuTextUp
+set HiddenCheckBySymbolInv VRMainMenu
+set HiddenCheckBySymbol VrTutorial
+set HiddenCheckBySymbol2 VrCustomizeArmy
+set Coords "0 0 500 140"
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol VrMenuText
+set SaveArgs 1
+set RenderCB_RGBColor 0xdbaa54
+set RenderCB_Flags "/allCaps /fitX"
+set RenderCB_FontScale 1.1
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_Offset "0 0"
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject
+set Name MenuTextLabelDesc
+set HiddenCheckBySymbol VrTutorial
+set HiddenCheckBySymbolInv VRMainMenu
+set HiddenCheckBySymbol2 VrCustomizeArmy
+set Coords "0 0 500 416"
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol VrMenuTextDesc
+set SaveArgs 1
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 0.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject initFrom MenuTextUp
+set Name MenuTextUpK
+set RenderCB_FontScale 1.8
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject initFrom MenuTextLabelDesc
+set Name MenuTextLabelDescK
+set RenderCB_FontScale 1.1
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject
+set Name VrLobbyAirMechBg
+set Texture rooks/&RookLocal_@_Arg1_@&/HangarUnique
+set TextureAlt rooks/&RookLocal_@_Arg1_@&/Hangar@TeamColor@
+set Coords "239 160 5.12 5.12"
+set ScaleX 150, ScaleY 150
+set SaveArgs 1
+set NoDrawChildrenOnMissingTexture 1
+set FilterName SelectAirMech
+add MenuObject
+set Name VrLoadoutAirMechVariant
+set Coords "0 0 408 64"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol @_Arg1_@_Type
+set RenderCB_RGBColor 0xcccccc
+set RenderCB_Flags "/allCaps /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.35
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set RenderCB_TextJustify JustifyXLeft
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "0 -1"
+set FilterName SelectAirMech
+add MenuObject
+set Name VrLobbyAirMechDisplay
+set Texture rooks/&RookLocal_@_Arg1_@&/HangarUnique
+set TextureAlt rooks/&RookLocal_@_Arg1_@&/Hangar@TeamColor@
+set Coords "0 0 512 512"
+set ScaleX 1.5, ScaleY 1.5
+set CoordsAnimated "512 0 512 512"
+set CoordsAnimated "0 0 512 512"
+set CoordsAnimationSymHash AirMechDisplayRobot
+set NoDrawOnMissingTexture 1
+set SaveArgs 1
+set NoDrawChildrenOnMissingTexture 1
+set FilterName SelectAirMech
+set HiddenCheckBySymbolValue VrDrawAirMech!@_Arg1_@
+set FirstDrawnChildren 1
+set Child "VrLobbyAirMechBg 0 0	@_Arg1_@"
+set Child "VrLoadoutAirMechVariant 10 40	@_Arg1_@"
+add MenuObject
+set Name VrLobbyAirMechQBg
+set Texture rooks/@RookLocal@/HangarUnique
+set TextureAlt rooks/@RookLocal@/Hangar@TeamColor@
+set Coords "239 160 5.12 5.12"
+set ScaleX 150, ScaleY 150
+set SaveArgs 1
+set NoDrawChildrenOnMissingTexture 1
+set FilterName SelectAirMech
+add MenuObject
+set Name VrLobbyAirMechQDisplay
+set Texture rooks/@RookLocal@/HangarUnique
+set TextureAlt rooks/@RookLocal@/Hangar@TeamColor@
+set Coords "0 0 512 512"
+set CoordsAnimated "512 0 512 512"
+set CoordsAnimated "0 0 512 512"
+set CoordsAnimationSymHash AirMechDisplayRobot
+set NoDrawOnMissingTexture 1
+set NoDrawChildrenOnMissingTexture 1
+set FilterName SelectAirMech
+set HiddenCheckBySymbolValue VrDrawAirMech!Quick
+set FirstDrawnChildren 1
+set Child "VrLobbyAirMechQBg 0 0"
+add MenuObject
+set Name VRLobbyAirMechsBg
+set Texture terrain/Danger0
+set Coords "0 0 512 512"
+set BlendMode NoBlend
+set Color 0x7ed1e9
+add MenuObject
+set Name VRLobbyAirMechs
+set ContainerOnly 1
+set HiddenCheckBySymbol VrTutorial
+set HiddenCheckBySymbol2 LoadNormalMapInVR
+set HiddenCheckBySymbolInv VrSelectModeAirMech
+set HiddenCheckBySymbolValue VrSelectMode=Maps
+set Child "VRLobbyAirMechsBg 0 0"
+set Child "VrLobbyAirMechQDisplay 0 0"
+set Child "VrLobbyAirMechDisplay 0 0	FighterA"
+set Child "VrLobbyAirMechDisplay 0 0	Chopper"
+set Child "VrLobbyAirMechDisplay 0 0	Warthog"
+set Child "VrLobbyAirMechDisplay 0 0	Angel"
+set Child "VrLobbyAirMechDisplay 0 0	Osprey"
+set Child "VrLobbyAirMechDisplay 0 0	Stealth"
+set Child "VrLobbyAirMechDisplay 0 0	Saucer"
+set Child "VrLobbyAirMechDisplay 0 0	Paladin"
+set Child "VrLobbyAirMechDisplay 0 0	FighterNeo"
+add MenuObject
+set Name VrLobbyMapDisplay
+set Texture /data/levels/@_Arg1_@/preview
+set Coords "0 0 1024 512"
+set NoDrawOnMissingTexture 1
+set SaveArgs 1
+set HiddenCheckBySymbolValue VrDrawMap!@_Arg1_@
+add MenuObject
+set Name MenuTextMapName
+set HiddenCheckBySymbolInv VRMainMenu
+set HiddenCheckBySymbol VrTutorial
+set HiddenCheckBySymbolInv2 HideGamepadText
+set HiddenCheckBySymbolValue InVrLobby=0
+set Coords "0 0 680 135"
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol MapName
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /fitX /shadowed"
+set RenderCB_FontScale 0.8
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_Offset "0 0"
+set Child "MenuTextMapType 5 145"
+set Child "MenuTextMapDesc 7 173"
+set DisabledSymValue LangIndex=7
+add MenuObject
+set Name MenuTextMapType
+set Coords "0 0 680 20"
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol MapType
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /fitX /shadowed"
+set RenderCB_FontScale 0.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+add MenuObject
+set Name MenuTextMapDesc
+set Coords "0 0 500 300"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.45
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX /shadowed"
+set RenderCB_BoolArg 1
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text MapLore@MapName@
+set FilterName VRMapSelect
+add MenuObject
+set Name MenuTextMapNameK
+set HiddenCheckBySymbolInv VRMainMenu
+set HiddenCheckBySymbol VrTutorial
+set HiddenCheckBySymbolInv2 HideGamepadText
+set HiddenCheckBySymbolValue InVrLobby=0
+set Coords "0 0 680 135"
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol MapName
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /fitX /shadowed"
+set RenderCB_FontScale 1.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_Offset "0 0"
+set Child "MenuTextMapTypeK 5 140"
+set Child "MenuTextMapDescK 7 168"
+set DisabledSymValue LangIndex!7
+add MenuObject initFrom MenuTextMapType
+set Name MenuTextMapTypeK
+set RenderCB_FontScale 0.8
+add MenuObject initFrom MenuTextMapDesc
+set Name MenuTextMapDescK
+set RenderCB_FontScale 0.8
+add MenuObject
+set Name MenuLobbyMapsOverlay
+set Texture vr/MapScreenGrid
+set Coords "0 0 1024 512"
+set BlendMode BlendDestColor
+set HiddenCheckBySymbol DrawingMapPreviews
+add MenuObject
+set Name VRLobbyMaps
+set ContainerOnly 1
+set HiddenCheckBySymbolInv DrawingMapPreviews
+set HiddenCheckBySymbolValue VrSelectMode!Maps
+set HiddenCheckBySymbol VRMenuLoaded
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrLobbyMapDisplay 0 0	simple_vr"
+set Child "VrLobbyMapDisplay 0 0	survival_vr"
+set Child "VrLobbyMapDisplay 0 0	sandrim_vr"
+set Child "VrLobbyMapDisplay 0 0	spiral_vr"
+set Child "VrLobbyMapDisplay 0 0	chasm_vr"
+set Child "VrLobbyMapDisplay 0 0	crater_vr"
+set Child "VrLobbyMapDisplay 0 0	duel_vr"
+set Child "VrLobbyMapDisplay 0 0	twinpeaks_vr"
+set Child "VrLobbyMapDisplay 0 0	salt_vr"
+set Child "VrLobbyMapDisplay 0 0	nesthorn_vr"
+set Child "VrLobbyMapDisplay 0 0	laststand_vr"
+set Child "VrLobbyMapDisplay 0 0	vale_vr"
+set Child "VrLobbyMapDisplay 0 0	thar_vr"
+add MenuObject
+set Name VrLobbyMap4Screen
+set Texture vr/screen/@_Arg1_@
+set Coords "0 0 2048 1024"
+set NoDrawOnMissingTexture 1
+set SaveArgs 1
+set ScaleX 0.9375
+set FilterName VRMapSelect
+set HiddenCheckBySymbolValue VrDrawMap!@_Arg1_@
+add MenuObject
+set Name VrLobbyMap4ScreenBg
+set Texture vr/screen/@_Arg1_@
+set Coords "0 0 2048 1024"
+set NoDrawOnMissingTexture 1
+set SaveArgs 1
+set ScaleX 0.9375
+add MenuObject
+set Name VRLobbyMapScreens
+set ContainerOnly 1
+set HiddenCheckBySymbolInv DrawingMapScreens
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrLobbyMap4ScreenBg 0 0	simple_vr"
+set Child "VrLobbyMap4Screen 0 0	simple_vr"
+set Child "VrLobbyMap4Screen 0 0	survival_vr"
+set Child "VrLobbyMap4Screen 0 0	sandrim_vr"
+set Child "VrLobbyMap4Screen 0 0	spiral_vr"
+set Child "VrLobbyMap4Screen 0 0	chasm_vr"
+set Child "VrLobbyMap4Screen 0 0	crater_vr"
+set Child "VrLobbyMap4Screen 0 0	duel_vr"
+set Child "VrLobbyMap4Screen 0 0	twinpeaks_vr"
+set Child "VrLobbyMap4Screen 0 0	salt_vr"
+set Child "VrLobbyMap4Screen 0 0	nesthorn_vr"
+set Child "VrLobbyMap4Screen 0 0	laststand_vr"
+set Child "VrLobbyMap4Screen 0 0	vale_vr"
+set Child "VrLobbyMap4Screen 0 0	thar_vr"
+add MenuObject
+set Name VrLanguageFlagDisplay
+set Texture vr/CountryFlags/Flag@_Arg1_@
+set Coords "55 0 200 128"
+set NoDrawOnMissingTexture 1
+set ScaleX 1.8, ScaleY 1.8
+set SaveArgs 1
+set HiddenCheckBySymbolValue VrDrawFlag!@_Arg1_@
+add MenuObject
+set Name VRLanguageFlags
+set ContainerOnly 1
+set HiddenCheckBySymbolInv DrawingLangFlags
+set Child "VrLanguageFlagDisplay 0 0	US"
+set Child "VrLanguageFlagDisplay 0 0	Canada"
+set Child "VrLanguageFlagDisplay 0 0	UK"
+set Child "VrLanguageFlagDisplay 0 0	Ireland"
+set Child "VrLanguageFlagDisplay 0 0	Australia"
+set Child "VrLanguageFlagDisplay 0 0	Germany"
+set Child "VrLanguageFlagDisplay 0 0	France"
+set Child "VrLanguageFlagDisplay 0 0	SouthKorea"
+set Child "VrLanguageFlagDisplay 0 0	Japan"
+set Child "VrLanguageFlagDisplay 0 0	Spain"
+add MenuObject
+set Name VrFlairTile
+set ContainerOnly 1
+set FilterName VRFlairTile
+set Child "VrFlairTileIcon 0 0"
+set HiddenCheckBySymbolInv DrawingFlairTiles
+add MenuObject
+set Name VrFlairTileIcon
+set Texture flair/@VrDrawPet@Icon
+set Coords "0 0 256 256"
+set NoDrawOnMissingTexture 1
+set FilterName VRFlairTile
+set DrawGreyScaleSym DrawingFlairTileGreyscale
+set HiddenCheckBySymbolInv DrawingFlairTiles
+add MenuObject
+set Name VRMenusBar
+set ContainerOnly 1
+set HiddenCheckBySymbolInv VRMenuLoaded
+set FilterName VRMenuBar
+set Child "VRMenuBar[VRMenuBar0] 0 60 	0	0 	1	Menu_Blank"
+set Child "VRMenuBar[VRMenuBar1] 0 188 	1	0 	2	Menu_Blank1"
+set Child "VRMenuBar[VRMenuBar2] 0 316 	2	1 	3	Menu_Blank"
+set Child "VRMenuBar[VRMenuBar3] 0 444 	3	2 	3	Menu_Blank1"
+add MenuObject
+set Name VRMenusUnits
+set ContainerOnly 1
+set HiddenCheckBySymbol VRMainMenu
+set Child "BuildBlocksBg 512 60"
+set Child "VRUnitIconRender 512 60"
+set Child "BuildBlockCatLabel 1362 0"
+set Child "BuildBlockTextLabel 1362 60"
+set Child "BuildBlockTextLabelK 1362 60"
+set Child "BuildBlockUnitCost 1362 140"
+set Child "BuildBlockUnitTime 1362 180"
+add MenuObject initFrom VRMenusUnits
+set Name VRMenusUnitsArmy
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbolInv VrCustomizeArmy
+add MenuObject
+set Name VRAbilityIconRender0Air
+set Coords "0 64 191 191"
+set Texture abilities/&Rook@RookIndex@AB@AbilityIndex0Air@&
+set ScaleRefToCoords 160.0
+set DrawGreyScaleSym Rook@RookIndex@AB@AbilityIndex0Air@CD
+set SaveArgs 1
+set DisabledAlpha 0.0
+set BlendMode NoBlend
+set FilterName AbilityCube
+add MenuObject initFrom VRAbilityIconRender0Air
+set Name VRAbilityIconRender0Gnd
+set Texture abilities/&Rook@RookIndex@AB@AbilityIndex0Gnd@&
+set DrawGreyScaleSym Rook@RookIndex@AB@AbilityIndex0Gnd@CD
+set HiddenCheckBySymbol LocalAM_AirMode
+add MenuObject initFrom	HudNumbersTemplate
+set Name VRAbilityIconCDTimer0Air
+set RenderCB_ConsoleSymbol Rook@RookIndex@AB@AbilityIndex0Air@CDT
+set RenderCB_Font RobotoBold
+set Coords "0 0 160 59"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 2.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_TextJustifyVertical JustifyYCenter
+set HiddenCheckBySymbolInv Rook@RookIndex@AB@AbilityIndex0Air@CD
+set HiddenCheckBySymbolInv2 LocalAM_AirMode
+set FilterName AbilityCube
+add MenuObject initFrom	VRAbilityIconCDTimer0Air
+set Name VRAbilityIconCDTimer0Gnd
+set RenderCB_ConsoleSymbol Rook@RookIndex@AB@AbilityIndex0Gnd@CDT
+set HiddenCheckBySymbolInv Rook@RookIndex@AB@AbilityIndex0Gnd@CD
+set HiddenCheckBySymbol LocalAM_AirMode
+set HiddenCheckBySymbolInv2 ""
+add MenuObject
+set Name VRAbilityIconRenderNeoAir
+set Coords "0 64 191 191"
+set Texture abilities/MissileEMP
+set ScaleRefToCoords 160.0
+set DrawGreyScaleSym Rook@RookIndex@AB@AbilityIndex0Air@CD
+set SaveArgs 1
+set DisabledAlpha 0.0
+set BlendMode NoBlend
+set FilterName AbilityCube
+set HiddenCheckBySymbolValue RookLocal_Base!=FighterNeo
+add MenuObject initFrom VRAbilityIconRender0Air
+set Name VRAbilityIconRenderPaladinAir
+set Coords "0 64 191 191"
+set Texture abilities/&Rook@RookIndex@AB@_PaladinAuraIndex@&
+set ScaleRefToCoords 160.0
+set DrawGreyScaleSym Rook@RookIndex@AB@_PaladinAuraIndex@CD
+set SaveArgs 1
+set DisabledAlpha 0.0
+set BlendMode NoBlend
+set FilterName AbilityCube
+set HiddenCheckBySymbolValue RookLocal_Base!=Paladin
+set FilterName AbilityCube
+add MenuObject initFrom VRAbilityIconRenderPaladinAir
+set Name VRAbilityIconRenderPaladinGnd
+set Texture abilities/&Rook@RookIndex@AB@_PaladinAuraIndex@&
+set DrawGreyScaleSym Rook@RookIndex@AB@_PaladinAuraIndex@CD
+set HiddenCheckBySymbol LocalAM_AirMode
+add MenuObject initFrom	HudNumbersTemplate
+set Name VRAbilityIconCDTimerPaladinAir
+set RenderCB_ConsoleSymbol Rook@RookIndex@AB@_PaladinAuraIndex@CDT
+set RenderCB_Font RobotoBold
+set Coords "0 0 140 59"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 2.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_TextJustifyVertical JustifyYCenter
+set HiddenCheckBySymbolInv Rook@RookIndex@AB@_PaladinAuraIndex@CD
+set HiddenCheckBySymbolInv2 LocalAM_AirMode
+set HiddenCheckBySymbolValue RookLocal_Base!=Paladin
+set FilterName AbilityCube
+add MenuObject initFrom	VRAbilityIconCDTimerPaladinAir
+set Name VRAbilityIconCDTimerPaladinGnd
+set RenderCB_ConsoleSymbol Rook@RookIndex@AB@_PaladinAuraIndex@CDT
+set HiddenCheckBySymbolInv Rook@RookIndex@AB@_PaladinAuraIndex@CD
+set HiddenCheckBySymbol LocalAM_AirMode
+set HiddenCheckBySymbolInv2 ""
+add MenuObject initFrom VRAbilityIconRender0Air
+set Name VRAbilityIconRender1Air
+set Texture abilities/&Rook@RookIndex@AB@AbilityIndex1Air@&
+set DrawGreyScaleSym Rook@RookIndex@AB@AbilityIndex1Air@CD
+add MenuObject initFrom VRAbilityIconRender0Air
+set Name VRAbilityIconRender1Gnd
+set Texture abilities/&Rook@RookIndex@AB@AbilityIndex1Gnd@&
+set DrawGreyScaleSym Rook@RookIndex@AB@AbilityIndex1Gnd@CD
+set HiddenCheckBySymbol LocalAM_AirMode
+add MenuObject initFrom	VRAbilityIconCDTimer0Air
+set Name VRAbilityIconCDTimer1Air
+set RenderCB_ConsoleSymbol Rook@RookIndex@AB@AbilityIndex1Air@CDT
+set HiddenCheckBySymbolInv Rook@RookIndex@AB@AbilityIndex1Air@CD
+set HiddenCheckBySymbolInv2 LocalAM_AirMode
+add MenuObject initFrom	VRAbilityIconCDTimer0Air
+set Name VRAbilityIconCDTimer1Gnd
+set RenderCB_ConsoleSymbol Rook@RookIndex@AB@AbilityIndex1Gnd@CDT
+set HiddenCheckBySymbolInv Rook@RookIndex@AB@AbilityIndex1Gnd@CD
+set HiddenCheckBySymbol LocalAM_AirMode
+set HiddenCheckBySymbolInv2 ""
+add MenuObject initFrom VRAbilityIconRender0Air
+set Name VRAbilityIconRender2Air
+set Texture abilities/&Rook@RookIndex@AB@AbilityIndex2AirAir@&
+set DrawGreyScaleSym Rook@RookIndex@AB@AbilityIndex2Air@CD
+add MenuObject initFrom VRAbilityIconRender0Air
+set Name VRAbilityIconRender2Gnd
+set Texture abilities/&Rook@RookIndex@AB@AbilityIndex2Gnd@&
+set DrawGreyScaleSym Rook@RookIndex@AB@AbilityIndex2Gnd@CD
+set HiddenCheckBySymbol LocalAM_AirMode
+add MenuObject initFrom	VRAbilityIconCDTimer0Air
+set Name VRAbilityIconCDTimer2Air
+set RenderCB_ConsoleSymbol Rook@RookIndex@AB@AbilityIndex2Air@CDT
+set HiddenCheckBySymbolInv Rook@RookIndex@AB@AbilityIndex2Air@CD
+set HiddenCheckBySymbolInv2 LocalAM_AirMode
+add MenuObject initFrom	VRAbilityIconCDTimer0Air
+set Name VRAbilityIconCDTimer2Gnd
+set RenderCB_ConsoleSymbol Rook@RookIndex@AB@AbilityIndex2Gnd@CDT
+set HiddenCheckBySymbolInv Rook@RookIndex@AB@AbilityIndex2Gnd@CD
+set HiddenCheckBySymbol LocalAM_AirMode
+set HiddenCheckBySymbolInv2 ""
+add MenuObject
+set Name VRMenusAbilities
+set ContainerOnly 1
+set HiddenCheckBySymbol VRMainMenu
+set Child "VRAbilityIconRender0Air 0 0"
+set Child "VRAbilityIconRenderNeoAir 0 0"
+set Child "VRAbilityIconRender0Gnd 0 0"
+set Child "VRAbilityIconCDTimer0Air 0 50"
+set Child "VRAbilityIconCDTimer0Gnd 0 50"
+set Child "VRAbilityIconRender1Air 160 0"
+set Child "VRAbilityIconRender1Gnd 160 0"
+set Child "VRAbilityIconCDTimer1Air 160 50"
+set Child "VRAbilityIconCDTimer1Gnd 160 50"
+set Child "VRAbilityIconRender2Air 320 0"
+set Child "VRAbilityIconRender2Gnd 320 0"
+set Child "VRAbilityIconCDTimer2Air 320 50"
+set Child "VRAbilityIconCDTimer2Gnd 320 50"
+set Child "VRAbilityIconRenderPaladinAir 0 0"
+set Child "VRAbilityIconRenderPaladinGnd 0 0"
+set Child "VRAbilityIconCDTimerPaladinAir 0 50"
+set Child "VRAbilityIconCDTimerPaladinGnd 0 50"
+add MenuObject
+set Name SGMemberVrBgNotReady
+set Texture effects/white
+set Coords "0 0 256 256"
+set Color 0xff0000
+set SaveArgs 1
+set FilterName SimpleGroup
+set HiddenCheckBySymbol @_Arg1_@
+add MenuObject
+set Name SGMemberVrBgReady
+set Texture effects/white
+set Coords "0 0 256 256"
+set Color 0x00ff00
+set SaveArgs 1
+set FilterName SimpleGroup
+set HiddenCheckBySymbolInv @_Arg1_@
+add MenuObject
+set Name SGMemberVrBgEmptyC
+set Texture effects/white
+set Coords "0 0 256 256"
+set Color 0x222222
+set ScaleX 0.75, ScaleY 0.75
+add MenuObject
+set Name SGMemberVrBgEmpty
+set Texture effects/white
+set Coords "0 0 256 256"
+set Color 0x444444
+set SaveArgs 1
+set FilterName SimpleGroup
+set HiddenCheckBySymbol @_Arg1_@
+set Child "SGMemberVrBgEmptyC 32 32"
+add MenuObject
+set Name SGMemberAirMech
+set Texture rooks/&@_Arg2_@&/IconUnique
+set TextureAlt rooks/&@_Arg2_@&/Icon@TeamColor@
+set LazyLoad 1
+set Coords "0 0 256 256"
+set ScaleX 0.75, ScaleY 0.75
+set BlendMode NoBlend
+set FilterName SimpleGroup
+set SaveArgs 3
+set HiddenCheckBySymbolInv @_Arg1_@
+add MenuObject
+set Name SGMemberOwnerVr
+set Texture vr/ButtonsXB1
+set Coords "428 448 87 64"
+set SaveArgs 1
+set FilterName SimpleGroup
+add MenuObject initFrom SGMemberOwnerVr
+set Name SGMemberOwnerVrSelf
+set SaveArgs 0
+set ScaleX 2.5, ScaleY 2.5
+add MenuObject
+set Name SGMemberTexture
+set ContainerOnly 1
+set SaveArgs 6
+set FilterName SimpleGroup
+set Child "SGMemberVrBgNotReady 0 0	@_Arg5_@"
+set Child "SGMemberVrBgReady 0 0	@_Arg5_@"
+set Child "SGMemberVrBgEmpty 0 0	@_Arg3_@"
+set Child "SGMemberAirMech 32 32	@_Arg3_@	@_Arg4_@ @_Arg5_@"
+add MenuObject
+set Name VrSimpleGroupIcons
+set ContainerOnly 1
+set HiddenCheckBySymbolInv VRMainMenu
+set Child "SGMemberTexture[SGMember1] 0 0	0	SG_Mem0_Name	SG_Mem0_Present		SG_Mem0_AirMech	SG_Mem0_Ready	1"
+set Child "SGMemberTexture[SGMember2] 256 0	1	SG_Mem1_Name	SG_Mem1_Present		SG_Mem1_AirMech	SG_Mem1_Ready	2"
+set Child "SGMemberTexture[SGMember3] 512 0	2	SG_Mem2_Name	SG_Mem2_Present		SG_Mem2_AirMech	SG_Mem2_Ready	3"
+set Child "SGMemberTexture[SGMember4] 768 0	3	SG_Mem3_Name	SG_Mem3_Present		SG_Mem3_AirMech	SG_Mem3_Ready	4"
+add MenuObject
+set Name VrLobbyStatusTitle
+set Coords "0 0 400 125"
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol VrLobbyStatusTitle
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /fitX"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set FilterName SimpleGroup
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_Offset "0 0"
+set HiddenCheckBySymbol VrCustomizeMode
+add MenuObject initFrom VrLobbyStatusTitle
+set Name VrLobbyStatusDesc
+set RenderCB_ConsoleSymbol VrLobbyStatusDesc
+set RenderCB_FontScale 0.4
+set RenderCB_RGBColor 0x666666
+set RenderCB_TextJustifyVertical JustifyYTop
+add MenuObject
+set Name MenuIconSpin1
+set Texture vr/ButtonsXB1
+set Coords "329 414 88 88"
+set RotationPeriod 5.0
+set HiddenCheckBySymbolValue SG_Members=1
+set BlendMode BlendAdd
+set Color 0x0fdaff
+add MenuObject initFrom MenuIconSpin1
+set Name MenuIconSpin2
+set RotationPeriod -2.0
+set MirrorOnX 1
+add MenuObject
+set Name VrLobbyStatus
+set ContainerOnly 1
+set HiddenCheckBySymbolInv VRMainMenu
+set Child "VrLobbyStatusTitle 0 -5"
+set Child "VrLobbyStatusDesc 0 130"
+set Child "MenuIconSpin1 468 332"
+set Child "MenuIconSpin2 468 332"
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject
+set Name VrLobbyStatusK
+set ContainerOnly 1
+set HiddenCheckBySymbolInv VRMainMenu
+set Child "VrLobbyStatusTitleK 0 0"
+set Child "VrLobbyStatusDescK 0 130"
+set Child "MenuIconSpin1 468 332"
+set Child "MenuIconSpin2 468 332"
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject initFrom VrLobbyStatusTitle
+set Name VrLobbyStatusTitleK
+set RenderCB_FontScale 2.0
+add MenuObject initFrom VrLobbyStatusDesc
+set Name VrLobbyStatusDescK
+set RenderCB_FontScale 0.8
+add MenuObject
+set Name ButtonHintText
+set Coords "0 0 280 50"
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /fitX"
+set RenderCB_FontScale 0.7
+set RenderCB_DX 0
+set RenderCB_DY 0
+set FilterName SimpleGroup
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYTop
+set RenderCB_Offset "0 0"
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject initFrom ButtonHintText
+set Name ButtonHintTextK
+set RenderCB_FontScale 1.0
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject
+set Name ButtonHintLeft
+set Texture vr/Buttons
+set Coords "9 11 57 57"
+set BlinkAlpha "0.7 0.1 1.0 1.0"
+add MenuObject initFrom ButtonHintLeft
+set Name ButtonHintRight
+set MirrorOnX 1
+add MenuObject initFrom ButtonHintLeft
+set Name ButtonHintUp
+set Coords "70 11 60 54"
+add MenuObject initFrom ButtonHintUp
+set Name ButtonHintDown
+set MirrorOnY 1
+add MenuObject
+set Name ButtonHintPanel
+set ContainerOnly 1
+set HiddenCheckBySymbolInv VRMainMenu
+set Child "ButtonHintText 5 100		ButtonHintText1"
+set Child "ButtonHintText 3 226		ButtonHintText2"
+set Child "ButtonHintTextK 5 100		ButtonHintText1"
+set Child "ButtonHintTextK 3 226		ButtonHintText2"
+set Child "ButtonHintLeft 35 50"
+set Child "ButtonHintRight 214 50"
+set Child "ButtonHintUp 120 166"
+set Child "ButtonHintDown 120 266"
+set HiddenCheckBySymbol VrCustomizeArmy
+add MenuObject
+set Name QuestCardOver
+set Texture vr/QuestCard
+set Coords "0 0 512 715"
+add MenuObject initFrom QuestCardOver
+set Name QuestCardBg
+set BlendMode NoBlend
+add MenuObject
+set Name QuestCardBanner
+set Texture effects/white
+set Coords "0 0 630 345"
+set Color @_Arg1_@
+set FilterName VrQuest
+set SaveArgs 2
+set HiddenCheckBySymbolValue VrQuestLevel!@_Arg2_@
+add MenuObject
+set Name QuestRewardCardBanner
+set Texture effects/white
+set Coords "0 0 630 600"
+set Color @_Arg1_@
+set FilterName VrQuest
+set SaveArgs 2
+set Alpha 0.2
+set NoAlphaMod 1sda
+add MenuObject
+set Name QuestCardTitle
+set Coords "0 0 450 150"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol QVRTitle
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/fitX /shadowed /shadowColor2"
+set RenderCB_FontScale 1.6
+set RenderCB_DX 0
+set RenderCB_DY 0
+set FilterName VrQuest
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_Offset "0 0"
+add MenuObject
+set Name QuestCardText
+set Coords "0 0 465 250"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol QVRText
+set SaveArgs 2
+set RenderCB_RGBColor @_Arg1_@
+set RenderCB_FontScale 0.9
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set FilterName VrQuest
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYTop
+set RenderCB_Offset "0 0"
+add MenuObject
+set Name QuestCardReward
+set Coords "0 0 600 150"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text QVRReward
+set RenderCB_ConsoleSymbol ""
+set RenderCB_ConsoleSymbol2 $QVRRewardDisp
+set SaveArgs 1
+set RenderCB_RGBColor 0xaaaaaa
+set RenderCB_Flags "/fitX /allowExplRefValue /shadowed /shadowColor2"
+set RenderCB_FontScale 1.1
+set RenderCB_DX 0
+set RenderCB_DY 0
+set FilterName VrQuest
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_Offset "0 0"
+add MenuObject
+set Name QuestCardRewardKudosIcon
+set Texture menus/MainTiles
+set Coords "838 310 48 48"
+set ScaleX 1.1, ScaleY 1.1
+set SaveArgs 1
+set FilterName VrQuest
+set HiddenCheckBySymbolInv QVRRewardKudos
+set Child "QuestCardRewardKudos 70 12 @_Arg1_@"
+add MenuObject
+set Name QuestCardRewardKudos
+set Coords "0 0 180 30"
+set DisabledAlpha 0.5
+set RenderCB_DX 280
+set RenderCB_DY 25
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale @_Arg1_@
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_ConsoleSymbol QVRRewardKudos
+set SaveArgs 1
+set FilterName VrQuest
+set RenderCB_RGBColor "1.0 0.9 0.6"
+add MenuObject
+set Name QuestCardDifficulty
+set Coords "0 0 200 50"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text QVRDifficultyTitle
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Flags "/fitX /shadowed /shadowColor2"
+set RenderCB_FontScale 1.1
+set RenderCB_DX 0
+set RenderCB_DY 0
+set FilterName VrQuest
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set Child "QuestCardDifficultyStars 205 10"
+set Child "QuestCardDifficultyStars2 323 10"
+add MenuObject
+set Name QuestCardDifficultyStars
+set Texture menus/LoadoutGrid
+set Coords "56 732 117 37"
+set CoordsAnimated "134 732 117 37"
+set CoordsAnimated "95 732 117 37"
+set CoordsAnimated "56 732 117 37"
+set CoordsAnimated "17 732 117 37"
+set CoordsAnimated "17 732 117 37"
+set CoordsAnimated "17 732 117 37"
+set CoordsAnimated "17 732 117 37"
+set CoordsAnimationSymHash QVRDifficulty
+set FilterName VrQuest
+add MenuObject
+set Name QuestCardDifficultyStars2
+set Texture menus/LoadoutGrid
+set Coords "56 732 117 37"
+set CoordsAnimated "134 732 117 37"
+set CoordsAnimated "134 732 117 37"
+set CoordsAnimated "134 732 117 37"
+set CoordsAnimated "134 732 117 37"
+set CoordsAnimated "95 732 117 37"
+set CoordsAnimated "56 732 117 37"
+set CoordsAnimated "17 732 117 37"
+set CoordsAnimated "1 732 1 1"
+set CoordsAnimationSymHash QVRDifficulty
+set FilterName VrQuest
+add MenuObject
+set Name QuestItemName
+set Coords "0 0 600 150"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol QVRRewardItemDisp
+set SaveArgs 1
+set RenderCB_Flags "/fitX /shadowed /shadowColor2"
+set RenderCB_FontScale 1.3
+set RenderCB_DX 0
+set RenderCB_DY 0
+set FilterName VrQuest
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_Offset "0 0"
+set HiddenCheckBySymbolValue QVRRewardItemType=rooks
+add MenuObject
+set Name QuestCardImage
+set Texture /data/levels/@QVRImage@/preview
+set Coords "300 150 512 200"
+set NoDrawOnMissingTexture 1
+set FilterName VrQuest
+add MenuObject
+set Name QuestCardRewardItemMaster
+set ContainerOnly 1
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "QuestCardRewardItemAirMechIcon 0 0 @_Arg1_@"
+set HiddenCheckBySymbolValue QVRRewardItem=
+set SaveArgs 1
+add MenuObject
+set Name QuestCardRewardItemTemp
+set Anchor Center
+set ScaleX @_Arg1_@, ScaleY @_Arg1_@
+set SaveArgs 1
+set FilterName VrQuest
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemUnitIcon
+set Texture units/@QVRRewardItem@/Icons@TeamColor@
+set TextureAlt units/@QVRRewardItem@/IconUnique
+set Coords img
+set NoDrawOnMissingTexture 1
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemPartIcon
+set Texture parts/@QVRRewardItem@
+set Coords img
+set RenderOffsetX -28
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 200.0
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemItemIcon
+set Texture items/@QVRRewardItem@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 170.0
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemMiscIcon
+set Texture misc/@QVRRewardItem@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 170.0
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemFrameIcon
+set Texture frames/test
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemPlanIcon
+set Texture recipes/@QVRRewardItem@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemBluePrintIcon
+set Texture blueprints/@QVRRewardItem@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemFlairIcon
+set Texture flair/@QVRRewardItem@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemPetIcon
+set Texture flair/@QVRRewardItem@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+set NoAlphaMod 0
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemPilotIcon
+set Texture pilots/@QVRRewardItem@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 180.0
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemAirMechIcon
+set Texture rooks/@QVRRewardItem@/Icons@TeamColor@
+set TextureAlt rooks/@QVRRewardItem@/IconUnique
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+set HiddenCheckBySymbolInv ShowQuestCard
+add MenuObject initFrom QuestCardRewardItemTemp
+set Name QuestCardRewardItemAirMechBanner
+set Texture promos/BGOther
+set Coords "50 300 1024 764"
+set NoDrawOnMissingTexture 1
+set ScaleX 0.8, ScaleY 0.7
+set HiddenCheckBySymbolInv ShowQuestRewardItemCard
+add MenuObject
+set Name QuestCard
+set ContainerOnly 1
+set IsTopPass 1
+set IsTopPassPropagated 1
+set HiddenCheckBySymbolInv ShowQuestCard
+set Child "QuestCardBg 0 0"
+set Child "QuestCardImage 0 0"
+set Child "QuestCardBanner 0 180	0x577b35	0"
+set Child "QuestCardBanner 0 180	0x31789d	1"
+set Child "QuestCardBanner 0 180	0x9a4d33	2"
+set Child "QuestCardBanner 0 180	0x577b35	3"
+set Child "QuestCardBanner 0 180	0x31789d	4"
+set Child "QuestCardTitle 30 90"
+set Child "QuestCardText 30 240			0xb3d98e"
+set Child "QuestCardTextK 30 240		0xb3d98e"
+set Child "QuestCardDifficulty 20 470"
+set Child "QuestCardReward 30 420"
+set Child "QuestCardRewardKudosIcon 40 590 1.4"
+set Child "QuestCardRewardItemMaster 30 570 0.8"
+set Child "QuestCardOver 0 0"
+add MenuObject
+set Name QuestRewardItemCard
+set ContainerOnly 1
+set IsTopPass 1
+set IsTopPassPropagated 1
+set HiddenCheckBySymbolInv ShowQuestRewardItemCard
+set Child "QuestCardBg 0 0"
+set Child "QuestRewardCardBanner 0 200	0xffffff"
+set Child "QuestCardTitle 25 -60"
+set Child "QuestCardText 25 100			0xffffff"
+set Child "QuestCardTextK 25 100		0xffffff"
+set Child "QuestItemName 30 120			0xffffff"
+set Child "QuestCardRewardKudosIcon 40 230 1.4"
+set Child "QuestCardRewardItemMaster 190 400 0.8"
+set Child "QuestCardOver 0 0"
+add MenuObject
+set Name VrVersionNumber
+set Coords "0 0 1920 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 1
+set PulseAlpha "1.0 -0.25 0.0"
+set RenderCB _DrawText
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor 0x888888
+set RenderCB_ConsoleSymbol SYS_Version
+set HiddenCheckBySymbolInv VRMainMenu
+set HiddenCheckBySymbol VRVideoRecordMode
+set RenderCB_Flags "/noCommaSep"
+add MenuObject initFrom VrVersionNumber
+set Name VrPlayerName
+set Coords "0 0 720 80"
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_RGBColor 0x46b3d7
+set RenderCB_ConsoleSymbol P_Name
+set HiddenCheckBySymbolInv ""
+add MenuObject initFrom VrVersionNumber
+set Name VrDevStatus
+set Coords "0 0 100 80"
+set RenderCB_RGBColor 0xff47f0
+set RenderCB_Text DEV
+set RenderCB_ConsoleSymbol ""
+set HiddenCheckBySymbolInv DevMode
+add MenuObject
+set Name VrInfoText
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ShowVrInfoText
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrDevStatus 730 0"
+set Child "VrPlayerName 0 0"
+set Child "VrVersionNumber 0 0"
+add MenuObject
+set Name AirMechLabelNameBase
+set Coords "0 0 400 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 1.8
+set RenderCB _DrawUText
+set RenderCB_Flags "/allCaps /fitX "
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text DispAirMech@AirMechActive@
+set FilterName AirMechClass
+add MenuObject initFrom AirMechLabelNameBase
+set Name AirMechLabelNameFocus
+set RenderCB_RGBColor 0x1d91c7
+set HiddenCheckBySymbolInv Has@AirMechActive@
+add MenuObject initFrom AirMechLabelNameBase
+set Name AirMechLabelName
+set RenderCB_RGBColor 0xffffff
+set HiddenCheckBySymbolInv Has@AirMechActive@
+add MenuObject initFrom AirMechLabelNameBase
+set Name AirMechLabelNameFocusL
+set RenderCB_RGBColor 0xff7430
+set HiddenCheckBySymbol Has@AirMechActive@
+add MenuObject initFrom AirMechLabelNameBase
+set Name AirMechLabelNameL
+set RenderCB_RGBColor 0xff783d
+set HiddenCheckBySymbol Has@AirMechActive@
+add MenuObject
+set Name AirMechLabelIconBase
+set Texture rooks/@AirMechActive@/IconClass
+set Coords "8 88 76 76"
+set FilterName AirMechClass
+set ScaleX 1.4, ScaleY 1.4
+add MenuObject initFrom AirMechLabelIconBase
+set Name AirMechLabelIcon
+set HiddenCheckBySymbolInv Has@AirMechActive@
+add MenuObject initFrom AirMechLabelIconBase
+set Name AirMechLabelIconL
+set HiddenCheckBySymbol Has@AirMechActive@
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject initFrom AirMechLabelIconBase
+set Name AirMechLabelIconFocus
+set Coords "8 8 76 76"
+set HiddenCheckBySymbolInv Has@AirMechActive@
+add MenuObject initFrom AirMechLabelIconBase
+set Name AirMechLabelIconFocusL
+set Coords "8 8 76 76"
+set HiddenCheckBySymbol Has@AirMechActive@
+set NoAlphaMod 1
+set Alpha 0.7
+add MenuObject
+set Name VRMenusAirMechLabelFocus
+set Texture effects/white
+set Coords "0 0 500 100"
+add MenuObject
+set Name VRMenusAirMechLabelUnowned
+set Texture effects/white
+set Coords "0 0 500 100"
+set Color 0x5a3d35
+set FilterName AirMechClass
+set HiddenCheckBySymbol Has@AirMechActive@
+add MenuObject initFrom VRMenusAirMechLabelUnowned
+set Name VRMenusAirMechLabelUnownedF
+set Color 0x8a3f39
+add MenuObject
+set Name VRMenusAirMechLabel
+set Texture effects/white
+set Coords "0 0 500 100"
+set Color 0x1d91c7
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VRMenusAirMechLabelUnowned 0 0"
+set Child "VRMenusAirMechLabelFocus 0 100"
+set Child "VRMenusAirMechLabelUnownedF 0 100"
+set Child "AirMechLabelName 120 13"
+set Child "AirMechLabelNameL 120 13"
+set Child "AirMechLabelNameFocus 120 113"
+set Child "AirMechLabelNameFocusL 120 113"
+set Child "AirMechLabelIcon 0 0"
+set Child "AirMechLabelIconL 0 0"
+set Child "AirMechLabelIconFocus 0 100"
+set Child "AirMechLabelIconFocusL 0 100"
+set DisabledSym VrCreditsLoaded
+add MenuObject
+set Name VrVriendLabelNameBase
+set Coords "0 0 460 90"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 1.65
+set RenderCB _DrawText
+set RenderCB_Flags "/fitX /shadowColor2 /outlined8x"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol OvrFriend@_Arg1_@
+set FilterName VrVriend
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+add MenuObject initFrom VrVriendLabelNameBase
+set Name VrVriendLabelNameFocus
+set RenderCB_RGBColor 0x11a5e9
+set RenderCB_Flags "/fitX"
+add MenuObject initFrom VrVriendLabelNameBase
+set Name VrVriendLabelName
+set RenderCB_RGBColor 0xffffff
+add MenuObject initFrom VrVriendLabelNameBase
+set Name VrVriendLabelNameFocusL
+set RenderCB_RGBColor 0xff7430
+add MenuObject initFrom VrVriendLabelNameBase
+set Name VrVriendLabelNameL
+set RenderCB_RGBColor 0xff783d
+add MenuObject
+set Name VrFriendLabelCenter
+set Texture effects/white
+set Coords "0 0 480 80"
+set Color 0x1d91c7
+add MenuObject
+set Name VrFriendLabelBgFocus
+set Texture effects/white
+set Coords "0 0 500 100"
+set Color 0xaceeff
+add MenuObject
+set Name VrFriendLabelCenterFocus
+set Texture effects/white
+set Coords "0 0 480 80"
+add MenuObject
+set Name VrFriendLabel
+set Texture effects/white
+set Coords "0 0 500 100"
+set Color 0x195f7f
+set Child "VrFriendLabelCenter 10 10"
+set Child "VrVriendLabelName 20 0		@_Arg1_@"
+set SaveArgs 1
+set Child "VrFriendLabelBgFocus 500 0"
+set Child "VrFriendLabelCenterFocus 510 10"
+set Child "VrVriendLabelNameFocus 520 0	@_Arg1_@"
+add MenuObject
+set Name VrFriendMaster
+set Texture effects/white
+set ContainerOnly 1
+set Coords "0 0 500 100"
+set Color 0x1d91c7
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrFriendLabel 0 Nx100		0"
+set Child "VrFriendLabel 0 Nx100		1"
+set Child "VrFriendLabel 0 Nx100		2"
+set Child "VrFriendLabel 0 Nx100		3"
+set Child "VrFriendLabel 0 Nx100		4"
+set Child "VrFriendLabel 0 Nx100		5"
+set Child "VrFriendLabel 0 Nx100		6"
+set Child "VrFriendLabel 0 Nx100		7"
+set Child "VrFriendLabel 0 Nx100		8"
+set Child "VrFriendLabel 0 Nx100		9"
+add MenuObject
+set Name VrBoxAirMechBg
+set Texture rooks/&RookLocal_@_Arg1_@&/HangarUnique
+set TextureAlt rooks/&RookLocal_@_Arg1_@&/Hangar@TeamColor@
+set Coords "239 160 5.12 5.12"
+set ScaleX 150, ScaleY 150
+set SaveArgs 1
+set NoDrawChildrenOnMissingTexture 1
+set FilterName SelectAirMech
+add MenuObject
+set Name VrBoxAirMechVariant
+set Coords "0 0 408 64"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol @_Arg1_@_Type
+set RenderCB_RGBColor 0xcccccc
+set RenderCB_Flags "/allCaps /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.35
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set RenderCB_TextJustify JustifyXLeft
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "0 -1"
+set FilterName SelectAirMech
+add MenuObject
+set Name VrBoxAirMechDisplay
+set Texture rooks/&RookLocal_@_Arg1_@&/HangarUnique
+set TextureAlt rooks/&RookLocal_@_Arg1_@&/Hangar@TeamColor@
+set Coords "0 0 512 512"
+set ScaleX 1.5, ScaleY 1.5
+set CoordsAnimated "512 0 512 512"
+set CoordsAnimated "0 0 512 512"
+set CoordsAnimationSymHash AirMechDisplayRobot
+set NoDrawOnMissingTexture 1
+set SaveArgs 1
+set NoDrawChildrenOnMissingTexture 1
+set FilterName SelectAirMech
+set HiddenCheckBySymbolValue VrDrawAirMech!@_Arg1_@
+set FirstDrawnChildren 1
+set Child "VrLobbyAirMechBg 0 0	@_Arg1_@"
+set Child "VrLoadoutAirMechVariant 10 40	@_Arg1_@"
+add MenuObject
+set Name VrBoxAirMechQBg
+set Texture promos/&RookLocal_@AirMechActive@&
+set Coords "239 460 20.5 10.3"
+set ScaleX 100, ScaleY 100
+set SaveArgs 1
+set FilterName SelectAirMech
+add MenuObject initFrom VrBoxAirMechQBg
+set Name VrBoxAirMechQBgReward
+set Texture promos/@QVRRewardItem@
+add MenuObject
+set Name VrBoxAirMechBigBack
+set Texture promos/&RookLocal_@AirMechActive@&
+set Coords "50 260 578 764"
+set ScaleX 1.66
+set ScaleY 1.35
+set SaveArgs 1
+set NoAlphaMod 1
+set Alpha 0.6
+set FilterName SelectAirMech
+add MenuObject initFrom VrBoxAirMechBigBack
+set Name VrBoxAirMechBigBackReward
+set Texture promos/@QVRRewardItem@
+add MenuObject initFrom VrBoxAirMechBigBack
+set Name VrBoxAirMechBigBackR
+set NoAlphaMod 0
+set BlendMode BlendAdd
+set Color 0x333333
+add MenuObject
+set Name VrBoxAirMechLogo
+set Texture menus/AirMechLogo3D
+set Coords "0 0 1024 400"
+set ScaleX 0.8, ScaleY 0.8
+add MenuObject
+set Name VrBoxAirMechLogoBack
+set Texture menus/AirMechLogo3D
+set Coords "0 0 1024 400"
+set ScaleX 0.7, ScaleY 0.7
+set NoAlphaMod 1
+set Alpha 0.9
+set DefaultRotation 90
+add MenuObject
+set Name VrBoxCarbonLogo
+set Texture menus/CarbonGamesLogo
+set Coords "0 0 512 150"
+set ScaleX 0.55, ScaleY 0.55
+set NoAlphaMod 1
+set Alpha 0.7
+add MenuObject
+set Name VrBoxAirMechRobot
+set Texture rooks/&RookLocal_@AirMechActive@&/HangarUnique
+set TextureAlt rooks/&RookLocal_@AirMechActive@&/Hangar@TeamColor@
+set Coords "0 0 510 512"
+set NoDrawOnMissingTexture 1
+set NoDrawChildrenOnMissingTexture 1
+set FilterName SelectAirMech
+set FirstDrawnChildren 1
+set ScaleX 1.8
+set ScaleY 1.8
+add MenuObject initFrom VrBoxAirMechRobot
+set Name VrBoxAirMechRobotReward
+set Texture rooks/@QVRRewardItem@/HangarUnique
+set TextureAlt rooks/@QVRRewardItem@/Hangar@TeamColor@
+add MenuObject initFrom VrBoxAirMechRobot
+set Name VrBoxAirMechAir
+set Coords "590 50 434 460"
+set ScaleX 1.3, ScaleY 1.3
+add MenuObject
+set Name VrBoxArtAirMechDark
+set Texture effects/white
+set Coords "0 0 960 960"
+set Color 0x111111
+set NoAlphaMod 1
+set Alpha 0.98
+add MenuObject
+set Name VrBoxNameText
+set Coords "0 0 700 120"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 1.25
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 2
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor 0xffffff
+set FilterName SelectAirMech
+set RenderCB_ConsoleSymbol TR_NameVRTemp
+set RenderCB_Flags "/jp_on_scej /outlined8x"
+set Texture effects/white
+set Color 0x222222
+set RenderCB_Offset "40 5"
+add MenuObject
+set Name VrBoxNameTextB
+set Coords "0 0 590 220"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 1.1
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 2
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor 0xffffff
+set FilterName SelectAirMech
+set RenderCB_ConsoleSymbol TR_NameVRTemp
+set RenderCB_Flags "/jp_on_scej /outlined8x"
+add MenuObject
+set Name VrBoxBackText
+set Coords "0 0 590 400"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 1.1
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 400
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set FilterName SelectAirMech
+set RenderCB_ConsoleSymbol TR_DescVRTemp
+set RenderCB_Options "/cache airmech_desc /autoScroll 50 /autoScrollWait 4"
+set RenderCB_YClipConfig "284 0 600 0"
+set RenderCB_Flags "/jp_on_scej /outlined8x"
+set CommandOnCreate "floatsym set Scrollable0Pos 0"
+set HiddenCheckBySymbolInv PreviewingAirMechBoxBack
+add MenuObject
+set Name VrBoxKudosPrice
+set RenderCB _DrawText
+set Coords "0 0 200 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_ConsoleSymbol TR_PriceKP2PVRTemp
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Font Numbers80px
+set RenderCB_FontScale 0.9
+set RenderCB_Flags "/fitX /outlined8x"
+set RenderCB_TextJustify JustifyXCenter
+set HiddenCheckBySymbolValue TR_PriceKP2PRawVRTemp=0
+add MenuObject
+set Name VrBoxRarityBadge
+set Texture menus/ItemFrame@TR_RarityVRTemp@
+set Coords "621 7 146 146"
+set FilterName SelectAirMech
+set ScaleX 1.4, ScaleY 1.4
+set Child "VrBoxKudosPrice 0 125"
+add MenuObject
+set Name VrBoxRarityBar
+set Texture menus/ItemFrame@TR_RarityVRTemp@
+set Coords "421 13 7 7"
+set FilterName SelectAirMech
+set ScaleX 20, ScaleY 150
+set NoAlphaMod 1
+set Alpha 0.25
+add MenuObject
+set Name VrBoxRarityStripe
+set Texture menus/ItemFrame@TR_RarityVRTemp@
+set Coords "421 13 7 7"
+set FilterName SelectAirMech
+set ScaleX 150, ScaleY 30
+set DefaultRotation 10
+set NoAlphaMod 1
+set Alpha 0.7
+add MenuObject initFrom VrBoxRarityStripe
+set Name VrBoxRarityStripe2
+set ScaleY 4
+set Alpha 0.6
+add MenuObject
+set Name VrBoxArtAirMech
+set Texture effects/white
+set Coords "0 0 1920 960"
+set Color 0x2a2d42
+set IsTopPass 1
+set IsTopPassPropagated 1
+set HiddenCheckBySymbolInv DrawAirMechBox
+set Child "VrBoxAirMechQBg 0 0"
+set Child "VrBoxArtAirMechDark 960 0"
+set Child "VrBoxAirMechBigBack 0 0"
+set Child "VrBoxAirMechBigBackR 960 0"
+set Child "VrBoxRarityBar 960 0"
+set Child "VrBoxRarityBar 1020 0"
+set Child "VrBoxRarityBar 1850 0"
+set Child "VrBoxRarityBar 1880 0"
+set Child "VrBoxAirMechAir 960 0"
+set Child "VrBoxAirMechLogoBack 760 440"
+set Child "VrBoxBackText 1200 400"
+set Child "VrBoxAirMechRobot -200 200"
+set Child "VrBoxRarityBadge 1520 -100"
+set Child "VrBoxRarityStripe -40 -100"
+set Child "VrBoxRarityStripe2 -40 50"
+set Child "VrBoxRarityStripe2 -40 130"
+set Child "VrBoxRarityBadge 160 -120"
+set Child "VrBoxNameText -2 730"
+set Child "VrBoxNameTextB 1200 230"
+set Child "VrBoxAirMechLogo 30 70"
+set Child "VrBoxCarbonLogo 1580 830"
+add MenuObject
+set Name VrBoxArtAirMechReward
+set Texture effects/white
+set Coords "0 0 1920 960"
+set Color 0x2a2d42
+set IsTopPass 1
+set IsTopPassPropagated 1
+set HiddenCheckBySymbolInv DrawAirMechRewardBox
+set Child "VrBoxAirMechQBgReward 0 0"
+set Child "VrBoxArtAirMechDark 960 0"
+set Child "VrBoxAirMechBigBackReward 0 0"
+set Child "VrBoxAirMechBigBackR 960 0"
+set Child "VrBoxRarityBar 960 0"
+set Child "VrBoxRarityBar 1020 0"
+set Child "VrBoxRarityBar 1850 0"
+set Child "VrBoxRarityBar 1880 0"
+set Child "VrBoxAirMechAir 960 0"
+set Child "VrBoxAirMechLogoBack 760 440"
+set Child "VrBoxBackText 1200 400"
+set Child "VrBoxAirMechRobotReward -200 200"
+set Child "VrBoxRarityBadge 1520 -100"
+set Child "VrBoxRarityStripe -40 -100"
+set Child "VrBoxRarityStripe2 -40 50"
+set Child "VrBoxRarityStripe2 -40 130"
+set Child "VrBoxRarityBadge 160 -120"
+set Child "VrBoxNameText -2 730"
+set Child "VrBoxNameTextB 1200 230"
+set Child "VrBoxAirMechLogo 30 70"
+set Child "VrBoxCarbonLogo 1580 830"
+add MenuObject
+set Name VrCreditsList
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Coords "0 0 1320 1080"
+set RenderCB_DX 1320
+set RenderCB_DY 1080
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 800
+set RenderCB_RGBColor 0xa0a0a0
+set RenderCB_Text CREDITS
+set Focus -2
+set MouseInteract 1
+set CommandCancel "menuCmd SelectCreditsCancel"
+set RenderCB_FloatArg 0.0
+set RenderCB_BoolArg 1
+set RenderCB_Options "/cache credits /autoscroll 60 /onEnd [menuCmd SelectCreditsCancel]"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_YClipConfig "400 0 700 0"
+set HiddenCheckBySymbolInv VrCreditsLoaded
+add MenuObject
+set Name VrStatusKudosIcon
+set Texture menus/MainTiles
+set Coords "838 310 48 48"
+set ScaleX 1.1, ScaleY 1.1
+set SaveArgs 1
+add MenuObject
+set Name VrStatusKudosBg
+set Texture effects/white
+set Coords "0 0 500 80"
+set Color 0x5b432b
+set NoAlphaMod 1
+set Alpha 0.7
+add MenuObject
+set Name VrStatusKudos
+set RenderCB _DrawText
+set Coords "0 0 500 60"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_ConsoleSymbol P_KudosDisp
+set RenderCB_RGBColor 0xffbe4d
+set RenderCB_Font Numbers80px
+set RenderCB_FontScale 0.9
+set RenderCB_Flags "/fitX /outlined8x "
+set RenderCB_TextJustify JustifyXLeft
+set HiddenCheckBySymbolInv VRMainMenu
+set RenderCB_Offset "65 5"
+set FirstDrawnChildren 1
+set Child "VrStatusKudosIcon 5 15"
+add MenuObject
+set Name VrStatusScore
+set RenderCB _DrawText
+set Coords "0 0 500 60"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_ConsoleSymbol R@RookIndex@_ScoreDisp
+set RenderCB_RGBColor 0xffbe4d
+set RenderCB_Font Numbers80px
+set RenderCB_FontScale 1.0
+set RenderCB_Flags "/fitX"
+set RenderCB_TextJustify JustifyXLeft
+set HiddenCheckBySymbol VRMainMenu
+set FilterName VrStatus
+add MenuObject initFrom VrStatusScore
+set Name VrStatusCredits
+set RenderCB_ConsoleSymbol CreditsDisp@RookIndex@
+add MenuObject initFrom VrStatusCredits
+set Name VrStatusIncome
+set RenderCB_ConsoleSymbol Income@RookIndex@
+set RenderCB_RGBColor "0.4 0.95 0.4"
+set RenderCB_Flags "/outlined8x /useTextWidthForMIZone"
+add MenuObject
+set Name VrUpkeepNum
+set RenderCB _DrawText
+set Coords "0 0 256 256"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_ConsoleSymbol PowerMaint@RookIndex@
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 4.5
+set RenderCB_Flags "/fitX /shadowed"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "3 -4"
+set HiddenCheckBySymbol VRMainMenu
+set FilterName VrStatus
+add MenuObject
+set Name VrUpkeepTotal
+set RenderCB _DrawUText
+set Coords "0 0 512 85"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text VrUpkeepTotal
+set RenderCB_ConsoleSymbol2 PowerMaint@RookIndex@
+set RenderCB_ConsoleSymbol3 PowerInT@RookIndex@
+set RenderCB_RGBColor 0xffbe4d
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 1.8
+set RenderCB_Flags "/fitX /shadowed"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 -4"
+set HiddenCheckBySymbol VRMainMenu
+set FilterName VrStatus
+add MenuObject
+set Name VrStatusUpkeepBorder
+set Texture cockpit/UnitSlot&TC@RookIndexAllied@&
+set Coords "4 4 10 10"
+set ScaleX 4, ScaleY 4
+set FilterName VrStatus
+add MenuObject
+set Name VrStatusUpkeep
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Texture units/Icons&TC@RookIndexAllied@&
+set Coords "0 0 256 256"
+set Child "VrStatusUpkeepBorder 0 0"
+set Child "VrUpkeepNum 0 0"
+set Child "VrUpkeepTotal -256 256"
+set FilterName VrStatus
+set HiddenCheckBySymbol VRMainMenu
+set HiddenCheckBySymbol2 VrEndgameLoaded
+add MenuObject
+set Name VrStatusText
+set Coords "0 0 300 100"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol StatusText
+set RenderCB_Flags "/fitX /shadowed /shadowColor2"
+set RenderCB_FontScale 1.1
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set FilterName VrStatus
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject initFrom VrStatusText
+set Name VrStatusTextK
+set RenderCB_FontScale 2.1
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject
+set Name VrStatusBg
+set Texture effects/white
+set Coords "0 0 1920 1080"
+set Alpha 0.7
+set NoAlphaMod 1
+add MenuObject
+set Name VrStatusInfo
+set ContainerOnly 1
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrStatusText 0 0"
+set Child "VrStatusTextK 0 0"
+set HiddenCheckBySymbolInv DrawingStatusText
+add MenuObject
+set Name VrUnlockNameText
+set Coords "0 0 290 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.5
+set RenderCB _DrawUText
+set RenderCB_IntArg 2
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor 0xffffff
+set FilterName SelectAirMech
+set RenderCB_ConsoleSymbol TR_NameVRTemp
+set RenderCB_Flags "/jp_on_scej /outlined8x /shadowColor2 /fitX /allCaps"
+set RenderCB_Flags "/outlined8x /fitX /allCaps /shadowColor2"
+set Texture effects/white
+set Color 0x222222
+add MenuObject
+set Name VrUnlockKudosPrice
+set RenderCB _DrawText
+set Coords "0 0 290 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_ConsoleSymbol TR_PriceKP2PVRTemp
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Font Numbers80px
+set RenderCB_FontScale 1.6
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2"
+set RenderCB_TextJustify JustifyXCenter
+set HiddenCheckBySymbolValue TR_PriceKP2PRawVRTemp=0
+add MenuObject initFrom VrUnlockKudosPrice
+set Name VrUnlockKudosOwn
+set RenderCB_ConsoleSymbol P_KudosDisp
+set RenderCB_FontScale 1.5
+set RenderCB_Font RobotoBold
+set HiddenCheckBySymbolInv TR_PriceKP2PEnoughVRTemp
+add MenuObject initFrom VrUnlockKudosPrice
+set Name VrUnlockKudosOwn2
+set RenderCB_RGBColor 0xf02f2f
+set RenderCB_ConsoleSymbol P_KudosDisp
+set RenderCB_FontScale 1.5
+set RenderCB_Font RobotoBold
+set HiddenCheckBySymbol TR_PriceKP2PEnoughVRTemp
+add MenuObject
+set Name VrMenuUnlockOk
+set Texture effects/white
+set Coords "0 0 302 100"
+set Color 0x458e39
+set HiddenCheckBySymbolInv TR_PriceKP2PEnoughVRTemp
+add MenuObject
+set Name VrMenuUnlockNotOk
+set Texture effects/white
+set Coords "0 0 302 100"
+set Color 0xf02f2f
+set HiddenCheckBySymbol TR_PriceKP2PEnoughVRTemp
+add MenuObject
+set Name VrMenuUnlockB
+set Texture vr/UnlockBg
+set Coords "0 0 345 512"
+add MenuObject
+set Name VrMenuUnlockEdge
+set Texture vr/UnlockBg
+set Coords "352 0 39 512"
+add MenuObject
+set Name VrMenuUnlockText
+set Coords "0 0 300 370"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.75
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 370
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set FilterName SelectAirMech
+set RenderCB_ConsoleSymbol TR_DescVRTemp
+set RenderCB_Options "/cache unit_desc /autoScroll 50 /autoScrollWait 3"
+set RenderCB_YClipConfig "284 0 600 0"
+set RenderCB_Flags "/jp_on_scej /outlined8x"
+set CommandOnCreate "floatsym set Scrollable0Pos 0"
+add MenuObject
+set Name VrMenuUnlock
+set Texture vr/UnlockBg
+set Coords "0 0 345 512"
+set HiddenCheckBySymbolInv VrCustomizeArmy
+set HiddenCheckBySymbolInv2 VRMainMenu
+set HiddenCheckBySymbol VrTutorial
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrMenuUnlockB 384 0"
+set Child "VrUnlockNameText[VrUnlockNameTextB] 400 25
+set Child "VrMenuUnlockOk[VrMenuUnlockOkB] 395 135"
+set Child "VrMenuUnlockNotOk[VrMenuUnlockNotOk] 395 135"
+set Child "VrUnlockKudosPrice[VrUnlockKudosPriceB] 400 120"
+set Child "VrUnlockKudosOwn[VrUnlockKudosOwnB] 400 240"
+set Child "VrMenuUnlockEdge 345 0"
+set Child "VrUnlockNameText 35 30"
+set Child "VrMenuUnlockOk 27 160"
+set Child "VrMenuUnlockNotOk 27 160"
+set Child "VrUnlockKudosPrice 35 145"
+set Child "VrUnlockKudosOwn 35 265"
+set Child "VrUnlockKudosOwn2 35 265"
+add MenuObject
+set Name VrArmyUnitDesc
+set Coords "0 0 750 420"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 1.4
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 420
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set FilterName SelectAirMech
+set RenderCB_ConsoleSymbol TR_DescVRTemp
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set RenderCB_Options "/cache unit_desc2 /autoScroll 50 /autoScrollWait 4"
+set RenderCB_YClipConfig "300 0 600 0"
+set RenderCB_Flags "/jp_on_scej /outlined8x"
+add MenuObject
+set Name VrArmyCLLabel
+set Coords "0 0 700 110"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set SaveArgs 2
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/fitX /shadowed"
+set RenderCB_FontScale 1.3
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+add MenuObject initFrom VrArmyCLLabel
+set Name VrArmyCLCatLabel
+set DisabledSymValue CurrentCategory!@_Arg2_@
+add MenuObject
+set Name VRArmyCL
+set ContainerOnly 1
+set Child "VrArmyCLLabel[VrArmyCLUnitsTotal] 0 0					ArmyCLUnitsTotalLabel"
+set Child "VrArmyCLCatLabel[VrArmyCLUnitsCombat] 0 50				ArmyCLUnitsCombatLabel		Combat"
+set Child "VrArmyCLCatLabel[VrArmyCLUnitsSupport] 0 50				ArmyCLUnitsSupportLabel		Support"
+set Child "VrArmyCLCatLabel[VrArmyCLUnitsSpecial] 0 50				ArmyCLUnitsSpecialLabel		Special"
+set Child "VrArmyCLCatLabel[VrArmyCLUnitsMine] 0 50					ArmyCLUnitsMineLabel		Mine"
+set Child "VrArmyCLCatLabel[VrArmyCLUnitsBomb] 0 50					ArmyCLUnitsBombLabel		Bomb"
+set Child "VrArmyCLCatLabel[VrArmyCLUnitsMunition] 0 50				ArmyCLUnitsMunitionLabel	Munition"
+set Child "VrArmyCLCatLabel[VrArmyCLUnitsFlier] 0 50				ArmyCLUnitsFlierLabel		Flier"
+set Child "VrArmyCLCatLabel[VrArmyCLUnitsInfantry] 0 50				ArmyCLUnitsInfantryLabel	Infantry"
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+add MenuObject
+set Name VrArmyCLTitle
+set Coords "0 0 700 110"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /fitX /shadowed"
+set RenderCB_FontScale 2.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+add MenuObject
+set Name VrArmyInfo
+set ContainerOnly 1
+set Coords "0 0 1920 512"
+set HiddenCheckBySymbolInv VrCustomizeArmy
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrArmyCLTitle 1200 10					CLTitle"
+set Child "VrArmyUnitDesc 10 10"
+set Child "VRArmyCL 1200 80"
+add MenuObject
+set Name VrFlairLabel
+set Coords "0 0 700 110"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /fitX /shadowed"
+set RenderCB_FontScale 3.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+add MenuObject
+set Name VrFlairKudosPrice
+set RenderCB _DrawText
+set Coords "0 0 400 80"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_RGBColor 0xffbe4d
+set RenderCB_Font Numbers80px
+set RenderCB_FontScale 1.5
+set RenderCB_Flags "/fitX /outlined8x"
+set RenderCB_TextJustify JustifyXLeft
+set HiddenCheckBySymbolValue @_Arg1_@=0
+set HiddenCheckBySymbol IsVrFlairUnlocked
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+add MenuObject
+set Name VrFlairCLTitle
+set Coords "0 0 700 110"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /fitX /shadowed"
+set RenderCB_FontScale 2.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+add MenuObject
+set Name VrFlairCLLabel
+set Coords "0 0 700 110"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set SaveArgs 2
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/fitX /shadowed"
+set RenderCB_FontScale 1.3
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set HiddenCheckBySymbolValue VrCustomizeType!@_Arg2_@
+add MenuObject
+set Name VrFlairPromo
+set Coords "0 300 900 600"
+set Texture promos/@FlairActive@Icon
+set NoDrawOnMissingTexture 1
+set ScaleX 1.23
+set FilterName VRFlairInfo
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+add MenuObject
+set Name VrFlairInfo
+set ContainerOnly 1
+set Coords "0 0 1920 512"
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrFlairPromo 0 0"
+set Child "VrFlairLabel[VrFlairName] 40 20			FlairActiveName"
+set Child "VrFlairKudosPrice 40 140					FlairActiveKudos"
+add MenuObject
+set Name VrFlairCL
+set ContainerOnly 1
+set Coords "0 0 1920 512"
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrFlairCLTitle 1200 20					CLTitle"
+set Child "VrFlairCLLabel 1200 100					FlairCLPetsTotalLabel		pets"
+set Child "VrFlairCLLabel 1200 100					FlairCLHeadsTotalLabel		heads"
+add MenuObject
+set Name VrFlairContainer
+set ContainerOnly 1
+set Coords "0 0 1920 512"
+set HiddenCheckBySymbolInv VRFlairSelectMode
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrFlairInfo 0 0"
+set Child "VrFlairCL 0 0"
+add MenuObject
+set Name GamepadKeyText
+set HiddenCheckBySymbol HideGamepadText
+set HiddenCheckBySymbol VrTutorial
+set Coords "0 0 930 110"
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set Texture effects/white
+set RenderCB_ConsoleSymbol GamepadText
+set SaveArgs 1
+set RenderCB_RGBColor 0x64e4ff
+set RenderCB_Flags "/allCaps /fitX"
+set RenderCB_FontScale 2.4
+set BlinkAlpha "0.9 0.1 1.0 1.0"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_Offset "0 0"
+set RenderCB_FloatSymbol F_GP
+set RenderCB_FloatArg 20.0
+set CommandOnCreate "floatsym set F_GP 0.0"
+add MenuObject
+set Name GamepadKeyTextR
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Coords "0 0 925 110"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set Texture effects/white
+set RenderCB_ConsoleSymbol GamepadText2
+set SaveArgs 1
+set RenderCB_RGBColor 0x64e4ff
+set RenderCB_Flags "/allCaps /fitX /shadowed /shadowColor2"
+set RenderCB_FontScale 1.4
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set HiddenCheckBySymbol HideGamepadText
+set HiddenCheckBySymbolValue GamepadTextAlign=0
+add MenuObject initFrom GamepadKeyTextR
+set Name GamepadKeyTextL
+set RenderCB_TextJustify JustifyXLeft
+set HiddenCheckBySymbolValue GamepadTextAlign=1
+add MenuObject
+set Name AMCL
+set ContainerOnly 1
+set Child "AMCLTitle 20 0			CLTitle"
+set Child "AMCLLabel[AMCLClassTotal] 20 60			AMCLClassLabel"
+set Child "AMCLLabel[AMCLSkinsTotal] 20 100			AMCLSkinsLabel"
+set Child "AMCLLabelK[AMCLClassTotalK] 20 60			AMCLClassLabel"
+set Child "AMCLLabelK[AMCLSkinsTotalK] 20 100		AMCLSkinsLabel"
+set Child "AMCLLine 120 190"
+set Child "AMCLSkins 20 170"
+set HiddenCheckBySymbolInv VRMainMenu
+set HiddenCheckBySymbolValue VrSelectMode!AirMech
+add MenuObject
+set Name AMCLSkins
+set ContainerOnly 1
+set Child "AMCLSkinLabel 0 0		AMCLSkinsFighterALabel		FighterA"
+set Child "AMCLSkinLabel 0 0		AMCLSkinsChopperLabel		Chopper"
+set Child "AMCLSkinLabel 0 0		AMCLSkinsStealthLabel		Stealth"
+set Child "AMCLSkinLabel 0 0		AMCLSkinsWarthogLabel		Warthog"
+set Child "AMCLSkinLabel 0 0		AMCLSkinsOspreyLabel		Osprey"
+set Child "AMCLSkinLabel 0 0		AMCLSkinsSaucerLabel		Saucer"
+set Child "AMCLSkinLabel 0 0		AMCLSkinsFighterNeoLabel	FighterNeo"
+set Child "AMCLSkinLabel 0 0		AMCLSkinsPaladinLabel		Paladin"
+set Child "AMCLSkinLabel 0 0		AMCLSkinsAngelLabel			Angel"
+set Child "AMCLSkinLabelK 0 0		AMCLSkinsFighterALabel		FighterA"
+set Child "AMCLSkinLabelK 0 0		AMCLSkinsChopperLabel		Chopper"
+set Child "AMCLSkinLabelK 0 0		AMCLSkinsStealthLabel		Stealth"
+set Child "AMCLSkinLabelK 0 0		AMCLSkinsWarthogLabel		Warthog"
+set Child "AMCLSkinLabelK 0 0		AMCLSkinsOspreyLabel		Osprey"
+set Child "AMCLSkinLabelK 0 0		AMCLSkinsSaucerLabel		Saucer"
+set Child "AMCLSkinLabelK 0 0		AMCLSkinsFighterNeoLabel	FighterNeo"
+set Child "AMCLSkinLabelK 0 0		AMCLSkinsPaladinLabel		Paladin"
+set Child "AMCLSkinLabelK 0 0		AMCLSkinsAngelLabel			Angel"
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set FilterName AMCL
+add MenuObject
+set Name AMCLBG
+set Texture effects/black
+set Coords "0 0 1920 1080"
+add MenuObject
+set Name AMCLLine
+set Texture effects/White
+set Coords "0 0 500 4"
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+add MenuObject
+set Name AMCLTitle
+set Coords "0 0 700 110"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/fitX /shadowed"
+set RenderCB_FontScale 0.8
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+add MenuObject
+set Name AMCLLabel
+set Coords "0 0 700 110"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set SaveArgs 2
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/fitX /shadowed"
+set RenderCB_FontScale 0.4
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set Disabled 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject initFrom AMCLLabel
+set Name AMCLLabelK
+set RenderCB_FontScale 0.5
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject initFrom AMCLLabel
+set Name AMCLSkinLabel
+set HiddenCheckBySymbolValue AirMechActive!@_Arg2_@
+set DisabledSymValue LangIndex=7
+set FilterName AMCL
+add MenuObject initFrom AMCLSkinLabel
+set Name AMCLSkinLabelK
+set DisabledSymValue LangIndex!7
+set RenderCB_FontScale 0.5
+add MenuObject
+set Name BackendEnumState
+set RenderCB _DrawText
+set Coords "0 0 40 40"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_ConsoleSymbol _BackendEnumState_
+set RenderCB_RGBColor 0xfa291e
+set RenderCB_Font Numbers80px
+set RenderCB_FontScale 0.5
+set Texture effects/white
+set Color 0xff0000
+set RenderCB_Flags "/fitX"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+add MenuObject
+set Name VrPlayerInfo
+set FilterName LoadMapStartup
+set Texture ]hud/HudFortressBar&TeamColor@RookIndex@&
+set Coords "850 240 172 14"
+set Child "VrFPlayerStatusEnergy 24 3"
+set HiddenCheckBySymbol VRMainMenu
+add MenuObject
+set Name VrFPlayerStatusEnergy
+set Texture hud/PlayerStatus
+set Coords "144 342 144 7"
+set CoordsInterpolatedDest "0 342 144 7"
+set CoordsInterpolantCommand "checkRook local fuel"
+set BlendMode BlendAdd
+set FilterName VrStatus
+add MenuObject
+set Name VrAsyncCircle1
+set Texture menus/WaitCircleBig
+set Coords "0 0 256 256"
+set RotationPeriod 1.0
+set ScaleX 0.83
+set ScaleY 0.83
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.9
+add MenuObject initFrom VrAsyncCircle1
+set Name VrAsyncCircle2
+set RotationPeriod -3.3
+add MenuObject
+set Name VrAsyncHourglass
+set Texture menus/WaitCircleBig
+set Coords "256 0 256 256"
+set RotationPeriod 3.0
+set ScaleX 0.6
+set ScaleY 0.6
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 1.0
+add MenuObject
+set Name VrAsync
+set ContainerOnly 1
+set HiddenCheckBySymbolInv AsyncNoticeDialogVrLoaded
+set Child "VrAsyncCircle1 0 0"
+set Child "VrAsyncCircle2 0 0"
+set Child "VrAsyncHourglass 28 28"
+add MenuObject
+set Name AvatarChestName_Base
+set Coords "0 0 450 40"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 1
+set RenderCB _DrawText
+set SaveArgs 1
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/noCommaSep /fitX /outlined8x"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+add MenuObject initFrom AvatarChestName_Base
+set Name AvatarChestNameLobby
+set RenderCB_ConsoleSymbol SG_Mem@_Arg1_@_NameDisp
+add MenuObject initFrom AvatarChestName_Base
+set Name AvatarChestNameInGame
+set RenderCB_ConsoleSymbol P_NameDisp@_Arg1_@
+add MenuObject
+set Name AvatarChestHealthL
+set Texture vr/AvatarChestHealth
+set Coords "165 1 160 53"
+set CoordsInterpolatedDest "0 1 160 53"
+set CoordsInterpolantCommand "checkRook @_Arg1_@ health"
+set SaveArgs 1
+add MenuObject initFrom AvatarChestHealthL
+set Name AvatarChestHealthR
+set MirrorOnX 1
+add MenuObject
+set Name AvatarChestHealthCover
+set Coords "96 169 319 53"
+set Texture vr/AvatarChest&@_Arg2_@&
+set SaveArgs 2
+set FilterName AvatarChests
+set FilterOnlyFlags Textures
+add MenuObject
+set Name AvatarChestHealth
+set Coords "0 0 512 162"
+set Texture vr/AvatarChest&@_Arg2_@&
+set BlendMode NoBlend
+set SaveArgs 2
+set Child "AvatarChestHealthL 250 94	@_Arg1_@"
+set Child "AvatarChestHealthR 90 94	@_Arg1_@"
+set FilterName AvatarChests
+set FilterOnlyFlags Textures
+add MenuObject
+set Name AvatarChestBaseLobby
+set Texture vr/AvatarChest&@_Arg2_@&
+set Coords "0 0 512 162"
+set SaveArgs 2
+set FirstDrawnChildren 1
+set Child "AvatarChestHealthCover 96 89 @_Arg1_@ @_Arg2_@"
+set Child "AvatarChestNameLobby 33 30	@_Arg1_@"
+set HiddenCheckBySymbol _inAnyGame_
+set FilterName AvatarChests
+set FilterOnlyFlags Textures
+add MenuObject
+set Name AvatarChestBaseInGame
+set Texture vr/AvatarChest&@_Arg2_@&
+set Coords "0 0 512 162"
+set SaveArgs 2
+set FirstDrawnChildren 1
+set Child "AvatarChestHealth 0 0 @_Arg1_@ @_Arg2_@"
+set Child "AvatarChestNameInGame 33 30	@_Arg1_@"
+set HiddenCheckBySymbolInv _inAnyGame_
+set FilterName AvatarChests
+set FilterOnlyFlags Textures
+add MenuObject
+set Name AvatarChests_Surv
+set ContainerOnly 1
+set Child "AvatarChestBaseInGame 0 0		0	TC0"
+set Child "AvatarChestBaseInGame 0 162		1	TC0"
+set Child "AvatarChestBaseInGame 512 0		2	TC0"
+set Child "AvatarChestBaseInGame 512 162	3	TC0"
+set HiddenCheckBySymbolInv _inSurvivalGame_
+add MenuObject
+set Name AvatarChests_NonSurv
+set ContainerOnly 1
+set Child "AvatarChestBaseInGame 0 0		0	TC0"
+set Child "AvatarChestBaseInGame 0 162		1	TC1"
+set Child "AvatarChestBaseInGame 512 0		2	TC2"
+set Child "AvatarChestBaseInGame 512 162	3	TC3"
+set Child "AvatarChestBaseInGame 0 322		4	TC4"
+set Child "AvatarChestBaseInGame 512 322	5	TC5"
+set HiddenCheckBySymbol _inSurvivalGame_
+add MenuObject
+set Name AvatarChests
+set ContainerOnly 1
+set Child "AvatarChestBaseLobby 0 0			0	SG_Mem0_TC"
+set Child "AvatarChestBaseLobby 0 162		1	SG_Mem1_TC"
+set Child "AvatarChestBaseLobby 512 0		2	SG_Mem2_TC"
+set Child "AvatarChestBaseLobby 512 162		3	SG_Mem3_TC"
+set Child "AvatarChestBaseLobby 0 322		4	SG_Mem4_TC"
+set Child "AvatarChestBaseLobby 512 322		5	SG_Mem5_TC"
+set Child "AvatarChests_Surv 	0 0"
+set Child "AvatarChests_NonSurv 0 0"
+set HiddenCheckBySymbol _MapTransition
+add MenuObject
+set Name FortPlayerXpBarFlash
+set PulseAlpha "0.3 -0.5 0.0"
+set Texture menus/MainWideBars
+set Coords "0 247 962 9"
+set ScaleX 0.2
+set BlendMode BlendAdd
+set DisabledAlpha 0.0
+set DisabledAlphaTimeOut 0.5
+set Disabled 1
+add MenuObject
+set Name FortPlayerXpBar
+set Texture menus/MainWideBars
+set Coords "960 247 962 9"
+set CoordsInterpolatedDest "0 247 962 9"
+set CoordsInterpolantCommand "rook persistenceLvlProgress"
+set ScaleX 0.2
+set MouseInteract 1
+set BlendMode BlendAdd
+set ToolTip TipMyXPBar
+add MenuObject
+set Name FortPlayerLevel
+set Coords "0 0 90 40"
+set DisabledAlpha 0.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1
+set RenderCB _DrawText
+set	RenderCB_Flags "/outlined /outlined8x /shadowColor2"
+set RenderCB_Font OpenSans
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_ConsoleSymbol P_Level
+add MenuObject
+set Name FortPlayerXpTop
+set Texture effects/white
+set Coords "0 78 1920 12"
+set ScaleX 0.2
+set Color 0xff6633
+set NoAlphaMod 1
+set Alpha 0.8
+set HiddenCheckBySymbolInv VRMainMenu
+set Child "FortPlayerXpBar 0 1"
+set Child "FortPlayerXpBarFlash 0 1"
+set Child "FortPlayerLevel 4 -58"
+add MenuObject
+set Name VRMenusRTT
+set ContainerOnly 1
+set NeverUnload 1
+set Child "VRMenusBar 0 0"
+set Child "VRMenusUnits 0 0"
+set Child "VRMenusUnitsArmy 0 0"
+set Child "VRMenusAbilities 1025 410"
+set Child "VrStatusKudos 75 -12"
+set Child "FortPlayerXpTop 0 60"
+set Child "VrStatusScore 20 -10"
+set Child "VrPlayerInfo 1110 15"
+set Child "VrStatusCredits 490 -10"
+set Child "VrStatusIncome 685 -10"
+set Child "VrStatusUpkeep 770 530"
+set Child "GamepadKeyText 0 512"
+set Child "GamepadKeyTextL 0 955"
+set Child "GamepadKeyTextR 0 955"
+set Child "BackendEnumState 1879 939"
+set Child "VRLanguageFlags 0 150"
+set Child "VrFlairTile 0 150"
+set Child "VrSimpleGroupIcons 0 662"
+set Child "AvatarChests 0 600"
+set Child "VrLobbyStatus 1364 662"
+set Child "VrLobbyStatusK 1364 662"
+set Child "ButtonHintPanel 1024 1"
+set Child "MenuTextMapName 1215 740"
+set Child "MenuTextMapNameK 1215 750"
+set Child "MenuTextUp 1368 0"
+set Child "MenuTextLabelDesc 1368 150"
+set Child "MenuTextUpK 1364 5"
+set Child "MenuTextLabelDescK 1364 150"
+set Child "VRLobbyAirMechs 400 0"
+set Child "VrInfoText 0 575"
+set Child "VRMenusAirMechLabel 0 0"
+set Child "VrBoxArtAirMech 0 0"
+set Child "VrBoxArtAirMechReward 0 0"
+set Child "VrMenuUnlock 0 0"
+set Child "VrArmyInfo 0 505"
+set Child "VrFlairContainer 0 505"
+set Child "QuestCard 0 105"
+set Child "QuestRewardItemCard 0 105"
+set Child "VRLobbyMaps 0 90"
+set Child "VRLobbyMapScreens 0 0"
+set Child "VrSpectateRoomTile 1190 410"
+set Child "VrSpecInfo 0 600"
+set Child "AMCL 1185 375"
+set Child "VrStatusInfo 0 300"
+set Child "VrObjectives 0 300"
+set Child "VrObjectivesMain 0 300"
+set Child "VrSurvivalWave 0 500"
+set Child "VrBotDifficulty 635 100"
+add MenuObject
+set Name VrBotDifficulty
+set ContainerOnly 1
+set Child "VrBotDifficultySolo 0 0"
+set HiddenCheckBySymbolInv VRMainMenu
+set HiddenCheckBySymbolInv2 InVrLobby
+set HiddenCheckBySymbolValue Gamemode!=Solo
+add MenuObject
+set Name VrLobbyV1PlayerInfoLine
+set Texture menus/ConLoadout&@_Arg1_@&
+set Coords "647 2 231 9"
+set MirrorOnY 1
+set ScaleX 0.9, ScaleY 3.0
+set SaveArgs 1
+set FilterName VrDifficulty
+add MenuObject
+set Name VrLobbyV1BotLabel
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.70
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set RenderCB_Flags "/allCaps /outlined8x /fitX /shadowcolor2"
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 215 64"
+set RenderCB_DX 0
+set RenderCB_DY 0
+add MenuObject
+set Name VrConLobbyBotName
+set RenderCB _DrawUText
+set RenderCB_Text LobbyPlayerBot
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX"
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 215 32"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set MouseInteract 0
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.8
+set FilterName VrDifficulty
+add MenuObject
+set Name VrLobbyV1BotDifficulty
+set RenderCB_Text AILevel@AIDifficulty@
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_ConsoleSymbol ""
+set RenderCB _DrawUText
+set RenderCB_FontScale 0.53
+set RenderCB_RGBColor @_Arg1_@
+set SaveArgs 2
+set HiddenCheckBySymbolValue AIDifficulty!@_Arg2_@
+set RenderCB_Flags "/allCaps /outlined8x /fitX /shadowcolor2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set Coords "0 0 215 64"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set FilterName VrDifficulty
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.1
+add MenuObject
+set Name VrLobbyV1BotDifficutlyContainer
+set ContainerOnly 1
+set Child "VrLobbyV1BotDifficulty 0 5	0x999999	0"
+set Child "VrLobbyV1BotDifficulty 0 5	0x73d771	1"
+set Child "VrLobbyV1BotDifficulty 0 5	0x58ddbf	2"
+set Child "VrLobbyV1BotDifficulty 0 5	0x7caaff	3"
+set Child "VrLobbyV1BotDifficulty 0 5	0xb366d6	4"
+set Child "VrLobbyV1BotDifficulty 0 5	0xe5813f	5"
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.1
+add MenuObject
+set Name VrBotDifficultySolo
+set ContainerOnly 1
+set Child "VrLobbyV1PlayerInfoLine 3 62 		TC0"
+set Child "VrLobbyV1BotLabel 0 0	LobbyBotTypeLabel"
+set Child "VrConLobbyBotName 0 66"
+set Child "VrLobbyV1BotDifficutlyContainer 0 0"
+add MenuObject
+set Name VrCurSurvivalWaveText
+set Coords "0 0 300 95"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_Text CurWaveLabel
+set SaveArgs 1
+set RenderCB_Flags "/fitX /allCaps /shadowed /shadowColor2"
+set RenderCB_FontScale 0.6
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "50 0"
+set HiddenCheckBySymbol VrSurvivalContinue
+set HiddenCheckBySymbol2 VrSurvivalFinished
+add MenuObject initFrom VrCurSurvivalWaveText
+set Name VrCompleteSurvivalWaveText
+set RenderCB_Text CompleteWaveLabel
+set HiddenCheckBySymbol ""
+set HiddenCheckBySymbolInv VrSurvivalContinue
+add MenuObject initFrom VrCurSurvivalWaveText
+set Name VrFinishedSurvivalWaveText
+set RenderCB_Text CompleteWaveLabel
+set HiddenCheckBySymbol VrSurvivalContinue
+set HiddenCheckBySymbol2 ""
+set HiddenCheckBySymbolInv ""
+set HiddenCheckBySymbolInv2 VrSurvivalFinished
+add MenuObject initFrom VrCompleteSurvivalWaveText
+set Name VrSurvivalWaveDesc
+set RenderCB_Text PrepareNextWaveLabel
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.7
+set HiddenCheckBySymbol IsSpectator
+set HiddenCheckBySymbol2 VrSurvivalFinished
+add MenuObject
+set Name VrSurvivalWave
+set ContainerOnly 1
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrCurSurvivalWaveText 0 0"
+set Child "VrCompleteSurvivalWaveText 0 0"
+set Child "VrFinishedSurvivalWaveText 0 0"
+set Child "VrSurvivalWaveDesc 0 30"
+set HiddenCheckBySymbolInv DrawingSurvivalLabel
+add MenuObject
+set Name VrObjectiveBg
+set Texture effects/white
+set Coords "0 0 600 95"
+set Alpha 0.7
+set NoAlphaMod 1
+add MenuObject
+set Name VrObjectiveCheckbox
+set Texture vr/Checkbox
+set Coords "0 0 64 64"
+set ScaleX 1.1, ScaleY 1.1
+add MenuObject
+set Name VrObjectiveText
+set Coords "0 0 490 95"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font OpenSans
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol ObjectiveText
+set SaveArgs 1
+set RenderCB_Flags "/fitX /shadowed /shadowColor2"
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+add MenuObject
+set Name VrObjectives
+set ContainerOnly 1
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrObjectiveBg 0 0"
+set Child "VrObjectiveCheckbox 10 15"
+set Child "VrObjectiveText 90 -8"
+set HiddenCheckBySymbolInv DrawingObjective
+add MenuObject
+set Name VrObjectiveMainText
+set Coords "0 0 610 60"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 2
+set RenderCB_Flags "/allCaps /fitX"
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+add MenuObject initFrom VrObjectiveMainText
+set Name VrObjectiveMainDesc
+set Coords "0 0 620 150"
+set RenderCB_Flags ""
+set RenderCB_BoolArg 1
+add MenuObject
+set Name VrObjectivesMain
+set ContainerOnly 1
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrObjectiveMainText 12 10			ObjectiveMainTitle		0.75"
+set Child "VrObjectiveMainDesc 5 72				ObjectiveMainDesc		0.4"
+set HiddenCheckBySymbolInv DrawingObjectiveMainText
+add MenuObject
+set Name VrTableCoverText
+set Coords "0 0 800 190"
+set SaveArgs 1
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/allCaps /shadowed /shadowColor2"
+set RenderCB_BoolArg 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.5
+set RenderCB_Text VR_Start
+set RenderCB_RGBColor 0xcbcbcf
+set Alpha 0.8
+set NoAlphaMod 1
+add MenuObject
+set Name VrTableCoverLabel
+set ContainerOnly 1
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrTableCoverText 0 0"
+add MenuObject
+set Name VrEndgameLabel
+set Coords "0 0 1000 220"
+set SaveArgs 1
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_Flags "/allCaps /fitX /shadowed /outlined8x"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.65
+set RenderCB_Text @_Arg1_@
+add MenuObject
+set Name VrEndgameDialog
+set ContainerOnly 1
+set IsTopPass 1
+set IsTopPassPropagated 1
+set Child "VrEndgameLabel 0 0 /ifSym EndgameWon == 1 /ifSym IsSpectator == 0			EG_Victory"
+set Child "VrEndgameLabel 0 0 /ifSym EndgameWon == 0 /ifSym IsSpectator == 0			EG_Defeat"
+set Child "VrEndgameLabel 0 0 /ifSym _EG_Mode_ == PvP /ifSym IsSpectator == 1			EG_PvPComplete"
+set Child "VrEndgameLabel 0 0 /ifSym _EG_Mode_ == Coop /ifSym IsSpectator == 1			EG_CoopComplete"
+set Child "VrEndgameLabel 0 0 /ifSym _EG_Mode_ == Solo /ifSym IsSpectator == 1			EG_SkirmishComplete"
+set Child "VrEndgameLabel 0 0 /ifSym _EG_Mode_ == PvE /ifSym IsSpectator == 1			EG_SurvivalVictory"
+set HiddenCheckBySymbolInv VrEndgameRender
+add MenuObject
+set Name VrSpectateMap
+set Texture /data/levels/@VrDrawSpecMap@/preview
+set Coords "300 0 300 300"
+set NoDrawOnMissingTexture 1
+set SaveArgs 1
+set ScaleX 0.5, ScaleY 0.5
+set FilterName VRSpecSelect
+add MenuObject
+set Name VrSpectateGraphic
+set Texture menus/QuestsFrame
+set SaveArgs 2
+set Coords "883 105 110 110"
+set CoordsAnimated "741 392 110 110"
+set CoordsAnimated "883 243 110 110"
+set CoordsAnimated "883 105 110 110"
+set CoordsAnimated "741 115 110 110"
+set CoordsAnimationSymHash Spec@_SpecIndex@TypeIndex
+set NoAlphaMod 1
+set Alpha 0.8
+set Color 0xffffff
+set ScaleX 0.8, ScaleY 0.8
+set FilterName VRSpecSelect
+add MenuObject initFrom VrSpectateGraphic
+set Name VrSpectateGraphicShadow
+set Color 0x000000
+set Alpha 0.3
+add MenuObject
+set Name VrSpectateName
+set RenderCB _DrawTextNoCommaSep
+set Coords "0 0 145 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font OpenSans
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.4
+set RenderCB_ConsoleSymbol Spec@_SpecIndex@DisplayName
+set RenderCB_RGBColor 0xffffff
+set FilterName VRSpecSelect
+add MenuObject
+set Name VrSpectateRoomTile
+set ContainerOnly 1
+set SaveArgs 1
+set Child "VrSpectateMap 0 10"
+set Child "VrSpectateGraphicShadow 63 80"
+set Child "VrSpectateGraphic 62 75"
+set Child "VrSpectateName 2 20"
+set HiddenCheckBySymbolInv DrawingSpecPreviews
+add MenuObject initFrom VrSpectateName
+set Name VrSpectateInfoName
+set Coords "0 0 1920 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB _DrawTextNoCommaSep
+set RenderCB_Font OpenSans
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_FontScale 1.0
+set RenderCB_ConsoleSymbol Spec@SpecIndex@DisplayName
+set RenderCB_RGBColor 0xffffff
+set FilterName VRSpecSelect
+set HiddenCheckBySymbol Spec@SpecIndex@Hidden
+add MenuObject initFrom VrSpectateInfoName
+set Name VrSpectateInfoDetails
+set RenderCB _DrawUText
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB_Flags "/toU16 /fitX /outlined8x /shadowColor2"
+set RenderCB_ConsoleSymbol Spec@SpecIndex@DetailsLoc
+set RenderCB_RGBColor 0xffbe4d
+set FilterName VRSpecSelect
+set HiddenCheckBySymbol Spec@SpecIndex@Hidden
+add MenuObject
+set Name VrSpectateNone
+set Coords "0 0 1920 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_Font OpenSans
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_FontScale 0.8
+set RenderCB_Text SpecNoneMessage
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xffbe4d
+set FilterName VRSpecSelect
+set HiddenCheckBySymbolInv Spec@SpecIndex@Hidden
+set HiddenCheckBySymbolValue LangIndex=7
+add MenuObject initFrom VrSpectateNone
+set Name VrSpectateNoneK
+set RenderCB_FontScale 1.8
+set HiddenCheckBySymbolValue LangIndex!7
+add MenuObject
+set Name VrSpecInfo
+set IsTopPass 1
+set IsTopPassPropagated 1
+set ContainerOnly 1
+set Coords "0 0 1920 300"
+set Child "VrSpectateInfoName 0 0"
+set Child "VrSpectateInfoDetails 0 60"
+set Child "VrSpectateNone 0 0"
+set Child "VrSpectateNoneK 0 8"
+set HiddenCheckBySymbolInv DrawingSpecPreviews
+add MenuObject
+set Name MenuSpectateVR
+set ContainerOnly 1
+set RenderCB_Flags "/noGSSConnectionOnly"
+set Child "VR_SpectateRoomTile 0	0	0"
+set Child "VR_SpectateRoomTile 420	0	1"
+set Child "VR_SpectateRoomTile 840	0	2"
+set Child "VR_SpectateRoomTile 0	140	3"
+set Child "VR_SpectateRoomTile 420	140	4"
+set Child "VR_SpectateRoomTile 840	140	5"
+set Child "VR_SpectateRoomTile 0	280	6"
+set Child "VR_SpectateRoomTile 420	280	7"
+set Child "VR_SpectateRoomTile 840	280	8"
+add MenuObject
+set Name VRTableSlot
+set Coords "0 0 80 80"
+set Texture effects/white
+set Color 0x000088
+set ColorFocused 0xffffff
+set Focus -2
+set SaveArgs 4
+set CommandLoseFocus "gameUI ignoreInputTime 0.1"
+set CommandFocusLeft ">gameui focusnametry VRTableSlot@_Arg2_@"
+set CommandFocusRight ">gameui focusnametry VRTableSlot@_Arg3_@"
+set CommandFocusLeft ">sym inc VRTableSpin 45"
+set CommandFocusRight ">sym dec VRTableSpin 45"
+set CommandPress "if sym VRMechAnim != 1 menu3d animate AirMech rooks/Striker/Striker_Taunt03.aaf playonce 0 1"
+set CommandPress "if sym VRMechAnim != 1 pcmd 3.6 menu3d animate AirMech rooks/Striker/Striker_Stand.aaf looping 0 0.85"
+set CommandPress "if sym VRMechAnim != 1 sym set VRMechAnim 1"
+set CommandPress "if sym VRMechAnim != 1 pcmd 3.6 sym set VRMechAnim 0"
+set CommandTopButton "if sym VRMechAnim != 1 menu3d animate AirMech rooks/Striker/Striker_Taunt02.aaf playonce 0 1"
+set CommandTopButton "if sym VRMechAnim != 1 pcmd 3.1 menu3d animate AirMech rooks/Striker/Striker_Stand.aaf looping 0 0.85"
+set CommandTopButton "if sym VRMechAnim != 1 sym set VRMechAnim 1"
+set CommandTopButton "if sym VRMechAnim != 1 pcmd 3.6 sym set VRMechAnim 0"
+set CommandLeftButton "if sym VRMechAnim != 1 menu3d animate AirMech rooks/Striker/Striker_Taunt01.aaf playonce 0 1"
+set CommandLeftButton "if sym VRMechAnim != 1 pcmd 3.1 menu3d animate AirMech rooks/Striker/Striker_Stand.aaf looping 0 0.85"
+set CommandLeftButton "if sym VRMechAnim != 1 sym set VRMechAnim 1"
+set CommandLeftButton "if sym VRMechAnim != 1 pcmd 3.6 sym set VRMechAnim 0"
+set CommandGetFocus "menu3d addAnimScript UnitWedgeRoot as_VRTableSpin.txt 1.0 0.0"
+set CommandGetFocus ">input set padFocusFallback VRTableSlot@_Arg1_@"

@@ -1,0 +1,14 @@
+relativeTimes
+Cmd 0.0 "if sym _TrainOpenTraining_ == 1 gameUI enable BasecampToTrainDustPuff"
+Cmd 0.0 "if sym _TrainOpenBuyPoints_ == 1 gameUI enable BaseCampBuyPointsDustPuff"
+kf time 0.0 {
+intMode square
+scale = 0 0 1
+alpha = 0.8
+}
+kf time 1.5 {
+scale = 13 13 1
+alpha = -0.2
+}
+Cmd 1.5 "if sym _TrainOpenTraining_ == 1 gameUI disable BaseCampToTrainDustPuff"
+Cmd 1.5 "if sym _TrainOpenBuyPoints_ == 1 gameUI disable BaseCampBuyPointsDustPuff"

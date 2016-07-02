@@ -1,0 +1,17 @@
+onloadrun {
+sym set ChartIngameLoaded 1
+charts auto_write 1
+}
+MO MasterChartWindow {
+pos 210 80
+layer 15
+}
+onload {
+addUIAnim MasterChartWindow mas_DialogPopFadein
+}
+onunloadrun {
+sym set ChartIngameLoaded 0
+charts auto_write 0
+}
+onunload {
+}

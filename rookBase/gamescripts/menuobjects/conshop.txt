@@ -1,0 +1,18 @@
+add MenuObject
+set Name CM_ConShopFrame
+set ContainerOnly 1
+set Child "MainMenuShopTop 0 0"
+set Child "MainMenuShopFrame 0 0"
+add MenuObject
+set Name ConShopCatchCancel
+set RenderBlocked 1
+set StretchToFillScreen 1
+set Focus -2
+set MouseInteract 1
+set CommandPress "gameUI ignoreInputTime 0.35"
+set CommandPress "clearmenu ConShop /fadeout $ConShopFadeoutTime"
+add MenuObject
+set Name CM_ConShopMaster
+set ContainerOnly 1
+set Child "ConShopCatchCancel 0 0"
+set Child "CM_ConShopFrame 150 -20"

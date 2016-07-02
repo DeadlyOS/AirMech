@@ -1,0 +1,125 @@
+add MenuObject initFrom DialogTitle
+set Name BackendDialogTitle
+set RenderCB_Text ""
+set RenderCB _DrawDText
+set RenderCB_DX 650
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_ConsoleSymbol BackendDialogCaption
+add MenuObject
+set Name BackendDialogMessage
+set Coords "0 0 500 200"
+set RenderCB_DX 600
+set RenderCB_DY 200
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set Layer 15
+set RenderCB _DrawDText
+set RenderCB_Flags "/shadowed /embeddedSymCheck"
+set RenderCB_BoolArg 1
+set RenderCB_ConsoleSymbol BackendDialogText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.8 0.8 0.8"
+add MenuObject initFrom DialogButton0
+set Name BackendDialogButton0
+set CommandPress "clearmenu BackendDialog.txt"
+set CommandCancel "clearmenu BackendDialog.txt"
+set CommandEnterKey "clearmenu BackendDialog.txt"
+set CommandPress $BackendDialogButton0Command
+set CommandCancel $BackendDialogButton0Command
+set CommandEnterKey $BackendDialogButton0Command
+set FocusDeathgrip 1
+add MenuObject initFrom BackendDialogButton0
+set Name BackendDialogButton0_Console
+set RenderCBExcludesDefaultRender 1
+set DrawWhenFocused ""
+set RenderCB _DrawUText
+set RenderCB_Text DialogBoxOkText
+add MenuObject
+set Name BackendDialogMasterItems
+set Texture menus/Messages
+set CoordsStart "617 1 52 115"
+set CoordsMid "669 1 28 115"
+set CoordsEnd "697 1 91 115"
+set CoordsStartFocused "617 116 52 34"
+set CoordsMidFocused "669 116 28 34"
+set CoordsEndFocused "697 116 91 34"
+set CoordsStartDisabled "617 215 52 90"
+set CoordsMidDisabled "669 215 28 90"
+set CoordsEndDisabled "697 215 91 90"
+set Focus -2
+set MouseInteract 1
+set RenderCB _Draw_G3x3
+set RenderCB_DX 760
+set RenderCB_DY 500
+set Coords "0 0 760 500"
+set Child "BackendDialogTitle 60 50"
+set Child "BackendDialogMessage 80 140"
+set Child "BackendDialogButton0 570 370	/platform !consolePlatform"
+set Child "BackendDialogButton0_Console[BackendDialogButton0] 555 376	/platform consolePlatform"
+add MenuObject
+set Name BackendDialogMasterItemsV2
+set Texture menus/DialogBox
+set CoordsStart "8 80 88 89"
+set CoordsMid "94 80 79 89"
+set CoordsEnd "174 80 93 89"
+set CoordsStartFocused "8 169 88 200"
+set CoordsMidFocused "94 169 79 200"
+set CoordsEndFocused "174 169 93 200"
+set CoordsStartDisabled "8 370 88 91"
+set CoordsMidDisabled "94 370 79 91"
+set CoordsEndDisabled "174 370 93 91"
+set Focus -2
+set MouseInteract 1
+set RenderCB _Draw_G3x3
+set Coords "0 0 700 400"
+set RenderCB_DX 700
+set RenderCB_DY 400
+set RenderCB_YClipConfigIsOffsets 1
+set Child "DialogTitleDV2 40 20								BackendDialogCaption 650"
+set Child "DialogMessageDV2 40 110							BackendDialogText 600"
+set Child "BackendDialogButton0_V2[BackendDialogButton0] 265 300	/platform !consolePlatform"
+set Child "BackendDialogButton0_Console[BackendDialogButton0] 265 300	/platform consolePlatform"
+add MenuObject initFrom DialogButton0
+set Name BackendDialogButton0_V2
+set Texture menus/DialogBox
+set Coords "21 16 184 55"
+set CoordsFocused "227 16 184 55"
+set CoordsPressed  "227 16 184 55"
+set CoordsDisabled  "227 16 184 55"
+set RenderCB_Flags "/nmi /shadowed /shadowColor2"
+set RenderCB_Offset "0 -5"
+set RenderCB_OffsetPressed "0 -4"
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.7
+set RenderCB _DrawDText
+set RenderCB_Text $BackendDialogButton0
+set DrawWhenFocused ""
+set CommandPress "clearmenu BackendDialog.txt"
+set CommandCancel "clearmenu BackendDialog.txt"
+set CommandEnterKey "clearmenu BackendDialog.txt"
+set CommandPress $BackendDialogButton0Command
+set CommandCancel $BackendDialogButton0Command
+set CommandEnterKey $BackendDialogButton0Command
+set FocusDeathgrip 1
+add MenuObject
+set Name BackendDialogMaster
+set ContainerOnly 1
+set RenderCB_DX 760
+set RenderCB_DY 500
+set Coords "0 0 760 500"
+set Anchor Center
+set Layer 20
+set Child "BlackDialog 0 0"
+set Child "BackendDialogMasterItems 0 0"
+add MenuObject
+set Name BackendDialogMasterV2
+set ContainerOnly 1
+set RenderCB_DX 760
+set RenderCB_DY 400
+set Coords "0 0 700 400"
+set Anchor Center
+set Layer 20
+set Child "BlackDialog60 0 0"
+set Child "BackendDialogMasterItemsV2 0 0"

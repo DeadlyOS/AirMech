@@ -1,0 +1,43 @@
+onloadrun {
+if !netGame pausegame 1
+sym set LessonUIOpen 1
+}
+MO VignetteWin {
+pos 0 0
+layer 11
+}
+MO BlackLesson {
+pos 0 0
+layer 12
+}
+MO LessonFrame {
+pos 0 0
+layer 17
+}
+MO ChallengeHintContinue {
+pos 0 300
+layer 24
+}
+MO ChallengeHintContinuePad {
+pos 50 50
+layer 24
+}
+onload {
+]addUIAnim VignetteColor mas_FadeInFast
+]gameUI show VignetteColor
+]gameUI show MB_ControlsHelp
+]if usingPad runnow gameUI focusNameTry ChallengeHintContinue ChallengeHintContinuePad
+]playerinputpause 1 local
+]gamemsg clearTR
+]if sym LessonObject == LessonBuild runnow menuCmd LessonBuild
+]if sym LessonObject == LessonSocket runnow menuCmd LessonSocket
+]if sym LessonObject == LessonCommand runnow menuCmd LessonCommand
+]if sym LessonObject == LessonAbilities runnow menuCmd LessonAbilities
+]playsound UI_BadgeEquip
+]lang flushDrawCaches
+}
+onunload {
+]sym set LessonUIOpen 0
+]pausegame 0
+]console flushAllPendingSeq 333
+}

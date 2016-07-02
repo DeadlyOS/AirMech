@@ -1,0 +1,1013 @@
+add MenuObject
+set Name ChallengeBannerText
+set Coords "0 0 1920 100"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /outlined8x"
+set RenderCB_FontScale 1.4
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 3
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledSymInv _MenuTransition_
+set RenderCB_Offset "0 0"
+set RenderCB_ConsoleSymbol2 ChallengeNumber
+set RenderCB_Text LabelChallenge
+set DisabledAlpha 0.0
+add MenuObject
+set Name ChallengeBannerNumber
+set Coords "0 0 100 100"
+set RenderCB_Font Gunner
+set RenderCB _DrawText
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/allCaps /outlined8x"
+set RenderCB_FontScale 1.9
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 3
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledSymInv _MenuTransition_
+set RenderCB_Offset "0 0"
+set RenderCB_ConsoleSymbol ChallengeNumber
+set DisabledAlpha 0.0
+add MenuObject
+set Name ChallengeBannerPre
+set Texture effects/black
+set Coords "0 0 16 16"
+set TileArea "1940 120"
+set NoAlphaMod 1
+set Alpha 0.6
+set FilterName LoadMapStartup
+set Child "BgLinesAnglePanA[ChallengeLinesA] 0 0	0x555555"
+set Child "BgLinesAnglePanB[ChallengeLinesB] 0 -20	0x224455"
+set Child "ChallengeBannerText 0 0 /ifSym ArcCustomized == 0"
+set Child "PlayTheTutorialBannerPW[ChallengeBannerText] 680 0  /ifSym ArcCustomized == 1"
+set Child "ChallengeBannerNumber 1150 -5  /ifSym ArcCustomized == 1"
+add MenuObject
+set Name ChallengeButtonTextTemplate
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set Coords "0 0 139 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text Restart
+set RenderCB_RGBColor "0.8"
+set RenderCB_RGBColorFocused "1.0"
+set NoAlphaMod 1
+set Alpha 0.7
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom ChallengeButtonTextTemplate
+set Name ChallengeButtonTextNext
+set RenderCB_Text ChalBtn_Next
+add MenuObject initFrom ChallengeButtonTextTemplate
+set Name ChallengeButtonTextComplete
+set RenderCB_Text ChalBtn_Complete
+add MenuObject
+set Name ChallengeStarTempalte
+set Texture hud/Challenge
+set Coords "404 9 175 166"
+set Hidden 1
+add MenuObject initFrom ChallengeStarTempalte
+set Name ChallengeStar11
+add MenuObject initFrom ChallengeStarTempalte
+set Name ChallengeStar12
+add MenuObject initFrom ChallengeStarTempalte
+set Name ChallengeStar13
+add MenuObject
+set Name ChallengeButtonIconTemplate
+set Texture menus/Pause
+set Coords "726 19 112 104"
+set DisplayAsFocusedIfParentFocused 1
+set Color 0xaaaaaa
+set ColorFocused 0xffffff
+set NoAlphaMod 1
+add MenuObject initFrom ChallengeButtonIconTemplate
+set Name ChallengeButtonIconNext
+set Color 0xffab4d
+set BlinkAlpha "0.2 0.2 0.7 5.0"
+add MenuObject initFrom ChallengeButtonIconTemplate
+set Name LessonContinueHint
+set Hidden 1
+set ScaleX 1.2, ScaleY 1.2
+set PulseAlpha "1.2 -0.5 0.0"
+add MenuObject
+set Name ContinueGamepadHint
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 0 64 64"
+set ScaleX 0.9
+set ScaleY 0.9
+set PulseAlpha "1.4 -0.6 4.0"
+set HiddenCheckBySymbolInv InputPad
+add MenuObject
+set Name ChallengeHintContinue
+set Texture menus/Pause
+set Coords "168 2 162 162"
+set MouseInteract 1
+set Focus -2
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set DisabledAlphaTimeOut 0.2
+set Anchor Center
+set PulseAlpha "1.4 -0.4 1.0"
+set HiddenCheckBySymbol InputPad
+set CommandPress "]playsound $MenuSoundClick"
+set CommandPress "]clearmenu Lesson /fadeout 0.5"
+set CommandPress "]menuCmd MP_ResumeGame local"
+set Child "LessonContinueHint -160 20"
+set Child "ContinueGamepadHint 42 50"
+set CommandHiddenWhenFocused "gameui focusnametry ChallengeHintContinuePad"
+add MenuObject
+set Name ChallengeHintContinuePad
+set RenderBlocked 1
+set Coords "0 0 30 30"
+set Focus -2
+set HiddenCheckBySymbolInv InputPad
+set CommandPress "]playsound $MenuSoundClick"
+set CommandPress "]clearmenu Lesson /fadeout 0.5"
+set CommandPress "]menuCmd MP_ResumeGame local"
+set CommandHiddenWhenFocused "gameui focusnametry ChallengeHintContinue"
+set CommandGetFocus "input set padFocusFallback ChallengeHintContinuePad"
+add MenuObject initFrom ChallengeButtonTemplate
+set Name ChallengeButtonNext
+set MouseInteract 1
+set Focus -2
+set CommandPress "playsound $MenuSoundClick"
+set HiddenCheckBySymbolInv ChallengeShowNext
+set CommandPress "gameUI directPushName $ChallengeUINext"
+set CommandFocusLeft "gameUI focusNameTry ChallengeEndButtonRestart PauseButtonList"
+set CommandFocusRight "gameUI focusNameTry AirMechQuestPopButton"
+set Child "ChallengeButtonIconNext 17 10"
+set Child "ChallengeButtonTextNext 0 140"
+set Child "MenuPlayChallengeFrame 0 3000"
+add MenuObject initFrom ChallengeButtonTemplate
+set Name ChallengeButtonCompletedAll
+set MouseInteract 1
+set Focus -2
+set CommandPress "playsound $MenuSoundClick"
+set HiddenCheckBySymbol ChallengeShowNext
+set CommandPress "menuCmd MP_LoadMainMenu local"
+set CommandFocusLeft "gameUI focusNameTry PauseButtonList ChallengeEndButtonRestart"
+set CommandFocusRight "gameUI focusNameTry AirMechQuestPopButton"
+set Child "ChallengeButtonIconNext 17 10"
+set Child "ChallengeButtonTextComplete 0 140"
+add MenuObject initFrom ChallengeButtonTemplate
+set Name ChallengeButtonRestart
+set HiddenCheckBySymbol ChallengePassed
+set CommandPress "loadmap reload"
+set Child "PauseButtonIconRestart 7 10"
+set Child "PauseButtonTextRestart 0 140"
+add MenuObject
+set Name ChallengeProgressText
+set Coords "0 0 384 32"
+set DisabledAlpha 0.75
+set RenderCB_DX 395
+set RenderCB_DY 30
+set RenderCB_FontScale 1.0
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText_G3x1
+set RenderCB_Flags "/noCommaSep"
+set Texture hud/Challenge
+set CoordsStart "5 180 36 65"
+set CoordsMid "39 180 20 65"
+set CoordsEnd "59 180 46 65"
+set RenderCB_Text $_CPrefix_
+set RenderCB_ConsoleSymbol2 _CStatus_
+set HiddenCheckBySymbol CockpitIsOpen
+add MenuObject
+set Name ChallengeNextStarAt
+set Coords "0 0 320 32"
+set DisabledAlpha 0.5
+set RenderCB_DX 550
+set RenderCB_DY 30
+set RenderCB_FontScale 0.8
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText_G3x1
+set RenderCB_Flags "/noCommaSep"
+set Texture hud/Challenge
+set CoordsStart "5 180 26 65"
+set CoordsMid "39 180 20 65"
+set CoordsEnd "59 180 26 65"
+set RenderCB_Text ChalNextStarMsg
+set HiddenCheckBySymbolInv _ShowNextStarTime_
+add MenuObject initFrom ChallengeNextStarAt
+set Name ChallengeNextStarAtMinutes
+set RenderCB_Text ChalNextStarMsg2
+add MenuObject
+set Name ChallengeRewardTitle
+set Coords "0 0 420 30"
+set DisabledAlpha 0.5
+set RenderCB_DX 420
+set RenderCB_DY 25
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.75
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_Text ChalNextStarReward
+add MenuObject
+set Name ChallengeRewardKudos
+set Coords "0 0 180 30"
+set DisabledAlpha 0.5
+set RenderCB_DX 280
+set RenderCB_DY 25
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.2
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font RobotoBold
+set RenderCB_ConsoleSymbol _ChalK
+set RenderCB_RGBColor "1.0 0.9 0.6"
+add MenuObject initFrom ChallengeRewardKudos
+set Name ChallengeRewardXP
+set RenderCB_RGBColor "0.8 1.0 0.2"
+set RenderCB_ConsoleSymbol _ChalXp
+add MenuObject
+set Name ChallengeRewardBox
+set Texture hud/Challenge
+set CoordsStart "5 180 26 32"
+set CoordsMid "39 180 20 32"
+set CoordsEnd "59 180 26 32"
+set CoordsStartFocused "5 212 26 1"
+set CoordsMidFocused "39 212 20 1"
+set CoordsEndFocused "59 212 26 1"
+set CoordsStartDisabled "5 213 26 32"
+set CoordsMidDisabled "39 213 20 32"
+set CoordsEndDisabled "59 213 26 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 420
+set RenderCB_DY 150
+set Coords "0 0 420 150"
+set Child "PStatusBarKudosIconScaled 48 68 1.5"
+set Child "PStatusBarXPIconScaled 198 67 1.5"
+set Child "ChallengeRewardKudos 98 78"
+set Child "ChallengeRewardXP 258 78"
+set Child "ChallengeRewardTitle 0 18"
+set HiddenCheckBySymbolInv _ChalRewards
+add MenuObject
+set Name ChallengeTime
+set Coords "2 3 384 81"
+set Texture hud/Challenge
+set FilterName LoadMapStartup
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 384
+set RenderCB_DY 68
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB _DrawText
+set RenderCB_Font Gunner
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 0.5
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol _CTime_
+set ToolTip LabelTimeCountdown
+set Child "ChallengeProgressText 50 90"
+set Child "ChallengeNextStarAt 390 15"
+set Child "ChallengeRewardBox 0 -500"
+add MenuObject
+set Name ChallengeWinHud
+set ContainerOnly 1
+set FilterName LoadMapStartup
+set Child "ChallengeNextStarAtMinutes 390 15"
+add MenuObject
+set Name ChallengeHelpShoot
+set Texture hud/ControlsHelp
+set FilterName LoadMapStartup
+set Coords "33 35 316 335"
+set NoAlphaMod 1
+set Alpha 0.8
+set ScaleX 0.7, ScaleY 0.7
+set ScaleXFocused 1.3
+set ScaleYFocused 1.3
+set FocusedTimeIn 0.5
+set FocusedTimeOut 0.3
+set ScaleXCenter 1.2
+set ScaleYCenter 1.2
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name LessonShootButton
+set Texture menus/help/LessonShoot
+set Coords "50 671 100 100"
+set BlinkAlpha "0.0 0.5 1.0 1.0"
+set BlendMode BlendAdd
+add MenuObject
+set Name LessonShootMouse
+set Texture menus/help/LessonShoot
+set Coords "19 848 190 173"
+set HiddenCheckBySymbol InputPad
+set Child "LessonShootButton 0 0"
+add MenuObject
+set Name LessonShootStick
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "0 325 155 155"
+set RotationPeriod 1.0
+set ScaleX @_Arg1_@, ScaleY @_Arg1_@
+add MenuObject
+set Name LessonShootPad
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "0 0 512 325"
+set HiddenCheckBySymbolInv InputPad
+set Child "LessonShootStick 230 100 /ifSym GamepadStyle == Xbox 1"
+set Child "LessonShootStick 238 108 /ifSym GamepadStyle == Xbone 0.85"
+set Child "LessonShootStick 250 150 /ifSym GamepadStyle == PS4 0.85"
+add MenuObject
+set Name LessonShootPic
+set Texture menus/help/LessonShoot
+set Coords "0 0 983 646"
+set Child "LessonShootMouse 679 420"
+set Child "LessonShootPad 220 460"
+add MenuObject
+set Name LessonTextPressStart
+set Coords "0 0 1920 138"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x"
+set RenderCB_Text TitlePressStart
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set PulseAlpha "2.0 -0.3 0.0"
+set HiddenCheckBySymbolInv InputPad
+set HiddenCheckBySymbol PauseUIOpen
+add MenuObject
+set Name LessonShoot
+set ContainerOnly 1
+set Child "LessonShootPic 478 120"
+set Child "LessonTextPressStart 0 840"
+add MenuObject
+set Name LessonMoveMouse
+set Texture menus/help/LessonMove
+set Coords "32 797 303 200"
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name LessonMovePad
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "0 0 512 325"
+set HiddenCheckBySymbolInv InputPad
+set Child "LessonShootStick 55 40 /ifSym GamepadStyle == Xbox 1"
+set Child "LessonShootStick 85 50 /ifSym GamepadStyle == Xbone 0.85"
+set Child "LessonShootStick 120 145 /ifSym GamepadStyle == PS4 0.85"
+add MenuObject
+set Name LessonMovePic
+set Texture menus/help/LessonMove
+set Coords "0 0 983 646"
+set Child "LessonMoveMouse 579 360"
+set Child "LessonMovePad 220 460"
+add MenuObject
+set Name LessonMove
+set ContainerOnly 1
+set Child "LessonMovePic 478 120"
+set Child "LessonTextPressStart 0 840"
+add MenuObject
+set Name LessonPickupAni
+set Texture menus/help/LessonPickup
+set CoordsAnimated "94 649 354 375"
+set CoordsAnimated "501 647 354 375"
+set CoordsAnimationFrameTimer 1.0
+add MenuObject
+set Name LessonPickupMouse
+set Texture menus/help/LessonMove
+set Coords "350 897 393 101"
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name LessonPickupButtonHi
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.2
+set Texture menus/help/LessonShoot
+set CoordsAnimated "188 694 52 52"
+set CoordsAnimated "0 694 2 2"
+set CoordsAnimationFrameTimer 0.5
+add MenuObject
+set Name LessonPickupPad
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "0 0 512 325"
+set HiddenCheckBySymbolInv InputPad
+set Child "LessonPickupButtonHi 349 119 	/ifSym GamepadStyle == Xbox"
+set Child "PadButtonBase 353 122  			/ifSym GamepadStyle == Xbox 0 0.7"
+set Child "LessonPickupButtonHi 349 119 	/ifSym GamepadStyle == Xbox"
+set Child "LessonPickupButtonHi 335 120 	/ifSym GamepadStyle == Xbone"
+set Child "PadButtonBase 338 124  			/ifSym GamepadStyle == Xbone 0 0.7"
+set Child "LessonPickupButtonHi 335 120 	/ifSym GamepadStyle == Xbone"
+set Child "LessonPickupButtonHi 353 163 	/ifSym GamepadStyle == PS4"
+set Child "PadButtonBase 360 170  			/ifSym GamepadStyle == PS4 0 0.6"
+set Child "LessonPickupButtonHi 353 163 	/ifSym GamepadStyle == PS4"
+add MenuObject
+set Name LessonPickupPic
+set Texture menus/help/LessonPickup
+set Coords "0 0 983 646"
+set Child "LessonPickupAni 300 80"
+set Child "LessonPickupMouse 284 460"
+set Child "LessonPickupPad 220 460"
+add MenuObject
+set Name LessonPickup
+set ContainerOnly 1
+set Child "LessonPickupPic 478 120"
+set Child "LessonTextPressStart 0 840"
+add MenuObject
+set Name LessonCaptureAnim
+set Texture menus/help/LessonCapture
+set Coords "512 874 512 143"
+set CoordsInterpolatedDest "0 874 512 143"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 2"
+add MenuObject
+set Name LessonCaptureAnimFade
+set Texture menus/help/LessonCapture
+set Coords "81 643 284 150"
+add MenuObject
+set Name LessonCapturePic
+set Texture menus/help/LessonCapture
+set Coords "0 0 983 635"
+set Child "LessonCaptureAnim 130 280"
+set Child "LessonCaptureAnimFade 81 279"
+add MenuObject
+set Name LessonCapture
+set ContainerOnly 1
+set Child "LessonCapturePic 478 120"
+set Child "LessonTextPressStart 0 750"
+add MenuObject
+set Name LessonTransformAni
+set Texture menus/help/LessonTransform
+set CoordsAnimated "66 639 324 385"
+set CoordsAnimated "407 639 324 385"
+set CoordsAnimationFrameTimer 1.0
+add MenuObject
+set Name LessonTransformMouse
+set Texture menus/help/LessonTransform
+set Coords "765 907 250 110"
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name LessonTransformButton
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "163 353 40 56"
+set CoordsAnimated "163 353 40 56"
+set CoordsAnimated "163 353 40 56"
+set CoordsAnimated "163 353 40 56"
+set CoordsAnimated "226 353 40 56"
+set CoordsAnimationFrameTimer 0.25
+add MenuObject
+set Name LessonTransformButtonPS4
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "157 353 56 56"
+set CoordsAnimated "157 353 56 56"
+set CoordsAnimated "157 353 56 56"
+set CoordsAnimated "157 353 56 56"
+set CoordsAnimated "220 353 56 56"
+set CoordsAnimationFrameTimer 0.25
+add MenuObject
+set Name LessonTransformShoulderArrow
+set Texture menus/help/LessonBuild
+set Coords "249 859 114 115"
+set CoordsAnimated "249 859 114 115"
+set CoordsAnimated "248 860 114 115"
+set CoordsAnimated "247 861 114 115"
+set CoordsAnimated "246 862 114 115"
+set CoordsAnimated "245 863 114 115"
+set CoordsAnimated "244 864 114 115"
+set CoordsAnimated "245 863 114 115"
+set CoordsAnimated "246 862 114 115"
+set CoordsAnimated "247 861 114 115"
+set CoordsAnimated "248 860 114 115"
+set CoordsAnimationFrameTimer 0.05
+set NoAlphaMod 1
+set Alpha 0.5
+set MirrorOnX 1
+set BlendMode BlendAdd
+add MenuObject
+set Name LessonTransformPad
+set Texture menus/help/Controller@GamepadStyle@
+set RenderOffsetY -10
+set Coords "0 0 512 325"
+set Child "LessonTransformButton 128 0 /ifSym GamepadStyle == Xbox"
+set Child "LessonTransformButton 132 -3 /ifSym GamepadStyle == Xbone"
+set Child "LessonTransformButtonPS4 108 32 /ifSym GamepadStyle == PS4"
+set Child "LessonTransformShoulderArrow 30 -120 /ifSym GamepadStyle == Xbox"
+set Child "LessonTransformShoulderArrow 30 -120 /ifSym GamepadStyle == Xbone"
+set Child "LessonTransformShoulderArrow 0 -70 /ifSym GamepadStyle == PS4"
+set HiddenCheckBySymbolInv InputPad
+add MenuObject
+set Name LessonTransformPic
+set Texture menus/help/LessonTransform
+set Coords "0 0 983 646"
+set Child "LessonTransformMouse 635 445"
+set Child "LessonTransformAni 335 80"
+set Child "LessonTransformPad 220 460"
+add MenuObject
+set Name LessonTransform
+set ContainerOnly 1
+set Child "LessonTransformPic 478 120"
+set Child "LessonTextPressStart 0 840"
+add MenuObject
+set Name LessonBuildCursor
+set Texture menus/help/LessonBuild
+set Coords "111 833 73 79"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set Disabled 1
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name LessonBuildScrollDown
+set Texture menus/help/LessonBuild
+set Coords "195 716 69 83"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set Disabled 1
+set ScaleX 1.3, ScaleY 1.3
+set BlendMode BlendAdd
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name LessonBuildScrollUp
+set Texture menus/help/LessonBuild
+set Coords "195 670 69 83"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set ScaleX 1.3, ScaleY 1.3
+set Disabled 1
+set BlendMode BlendAdd
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name LessonBuildMenu
+set Texture menus/help/LessonBuild
+set Coords "417 657 444 351"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set Disabled 1
+set Child "LessonBuildCursor 500 300"
+add MenuObject initFrom LessonBuildMenu
+set Name LessonSocketMenu
+set Texture menus/help/LessonSocket
+add MenuObject
+set Name LessonBuildClick
+set Texture menus/help/LessonBuild
+set Coords "417 657 150 120"
+set BlendMode BlendAdd
+set Hidden 1
+set NoAlphaMod 1
+set Alpha 0.5
+set ScaleX 1.2, ScaleY 1.2
+add MenuObject
+set Name LessonBuildButton
+set Texture menus/help/LessonShoot
+set Coords "50 671 100 100"
+set HiddenCheckBySymbol InputPad
+set Disabled 1
+set BlendMode BlendAdd
+add MenuObject
+set Name LessonBuildKey
+set Texture menus/help/LessonMove
+set Coords "752 898 100 100"
+set HiddenCheckBySymbol InputPad
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.5
+add MenuObject
+set Name LessonBuildMouse
+set Texture menus/help/LessonShoot
+set Coords "19 848 190 173"
+set HiddenCheckBySymbol InputPad
+set Child "LessonBuildButton 0 0"
+add MenuObject
+set Name LessonBuildShoulder
+set Texture menus/help/LessonBuild
+set Coords "33 944 104 74"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set Disabled 1
+set EnabledAlpha 0.2
+set BlendMode BlendAdd
+add MenuObject
+set Name LessonBuildShoulderArrow
+set Texture menus/help/LessonBuild
+set Coords "249 859 114 115"
+set CoordsAnimated "249 859 114 115"
+set CoordsAnimated "245 863 114 115"
+set CoordsAnimationFrameTimer 0.3
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set EnabledAlpha 0.4
+set Disabled 1
+set BlendMode BlendAdd
+add MenuObject
+set Name LessonBuildShoulderButton
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "287 351 104 74"
+set CoordsAnimated "287 351 104 74"
+set CoordsAnimated "290 347 104 74"
+set CoordsAnimationFrameTimer 0.3
+add MenuObject
+set Name LessonBuildShoulderButtonPS4
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "287 351 85 54"
+set CoordsAnimated "287 351 85 54"
+set CoordsAnimated "290 347 85 54"
+set CoordsAnimationFrameTimer 0.3
+add MenuObject
+set Name LessonBuildPad
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "0 0 512 325"
+set HiddenCheckBySymbolInv InputPad
+set Child "LessonBuildShoulderButton 320 17 /ifSym GamepadStyle == Xbox"
+set Child "LessonBuildShoulderButton 303 11 /ifSym GamepadStyle == Xbone"
+set Child "LessonBuildShoulderButtonPS4 328 45 /ifSym GamepadStyle == PS4"
+set Child "LessonBuildShoulderArrow 345 -100 /ifSym GamepadStyle == Xbox"
+set Child "LessonBuildShoulderArrow 345 -100 /ifSym GamepadStyle == Xbone"
+set Child "LessonBuildShoulderArrow 380 -60 /ifSym GamepadStyle == PS4"
+add MenuObject
+set Name LessonSocketAirMech
+set Texture menus/help/LessonMove
+set Coords "752 651 265 208"
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.5
+set Disabled 1
+set FirstDrawnChildren 1
+set Child "LessonSocketT99 30 75"
+add MenuObject
+set Name LessonSocketT99
+set Texture menus/help/LessonSocket
+set Coords "56 659 172 151"
+set Disabled 1
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.5
+add MenuObject
+set Name LessonSocketPad
+set Texture menus/help/LessonSocket
+set Coords "29 818 229 169"
+set Disabled 1
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.5
+add MenuObject
+set Name LessonBuildMain
+set Texture menus/help/LessonBuild
+set Coords "0 0 983 646"
+set Child "LessonBuildMenu 260 0"
+set Child "LessonBuildClick 394 90"
+set Child "LessonBuildPad 220 460"
+set Child "LessonBuildKey 130 460"
+set Child "LessonBuildScrollDown 135 270"
+add MenuObject
+set Name LessonSocketMain
+set Texture menus/help/LessonSocket
+set Coords "0 0 983 646"
+set Child "LessonSocketMenu 260 0"
+set Child "LessonBuildClick 394 320"
+set Child "LessonBuildPad 220 460"
+set Child "LessonBuildKey 130 460"
+set Child "LessonBuildScrollDown 135 270"
+add MenuObject
+set Name LessonSocketDrop
+set ContainerOnly 1
+set Child "LessonSocketPad 375 400"
+set Child "LessonSocketAirMech 375 100"
+add MenuObject
+set Name LessonBuild
+set ContainerOnly 1
+set Child "LessonBuildMain 478 120"
+set Child "LessonTextPressStart 0 840"
+add MenuObject
+set Name LessonSocket
+set ContainerOnly 1
+set Child "LessonSocketMain 478 120"
+set Child "LessonSocketDrop 478 120"
+set Child "LessonTextPressStart 0 840"
+add MenuObject
+set Name LessonCommandAirMech
+set Texture menus/help/LessonMove
+set Coords "752 651 265 208"
+set DisabledAlphaTimeIn 0.8
+set DisabledAlphaTimeOut 0.5
+set Disabled 1
+add MenuObject
+set Name LessonCommandJackal
+set Texture menus/help/LessonMove
+set Coords "375 684 152 129"
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.5
+add MenuObject
+set Name LessonCommandSelect
+set Texture menus/help/LessonMove
+set Coords "553 662 169 171"
+set BlendMode BlendAdd
+set Hidden 1
+set RenderOffsetX -10
+set RenderOffsetY -20
+add MenuObject
+set Name LessonCommandUnits
+set ContainerOnly 1
+set Child "LessonCommandJackal[LComU2] 0 0"
+set Child "LessonCommandSelect[LComS2] 0 0"
+set Child "LessonCommandJackal[LComU0] 132 55"
+set Child "LessonCommandSelect[LComS0] 132 55"
+set Child "LessonCommandJackal[LComU1] 280 55"
+set Child "LessonCommandSelect[LComS1] 280 55"
+set Child "LessonCommandJackal[LComU3] 400 0"
+set Child "LessonCommandSelect[LComS3] 400 0"
+add MenuObject
+set Name LessonCommandMouse
+set Texture menus/help/LessonMove
+set Coords "856 897 152 101"
+set HiddenCheckBySymbol InputPad
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+set Disabled 1
+set Child "LessonBuildScrollDown[LessonCPressCtrl] 30 -80"
+add MenuObject
+set Name LessonCommandCapture
+set Texture menus/help/LessonTransform
+set Coords "727 775 133 128"
+set HiddenCheckBySymbol InputPad
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+set Disabled 1
+set Child "LessonBuildScrollDown[LessonCPressCapture] 20 -70"
+add MenuObject
+set Name LessonCommandCapturePad
+set Texture menus/help/LessonTransform
+set Coords "860 741 162 166"
+set HiddenCheckBySymbolInv InputPad
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+set Disabled 1
+set Child "LessonPickupButtonHi 56 -10"
+set Child "LessonCommandButtonHi 56 -10"
+set Child "LessonPickupButtonHi 271 122"
+set Child "LessonCommandButtonHi 271 122"
+add MenuObject
+set Name LessonCommandCapturePadPS4
+set Texture menus/help/ControllerPS4
+set Coords "368 356 144 156"
+set HiddenCheckBySymbolInv InputPad
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+set Disabled 1
+set Child "LessonPickupButtonHi 45 -10"
+set Child "LessonCommandButtonHi 56 -10"
+set Child "LessonPickupButtonHi 207 100"
+set Child "LessonCommandButtonHi 271 122"
+add MenuObject
+set Name LessonCommandButtonHi
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.2
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "188 694 52 52"
+add MenuObject
+set Name LessonCommandButton
+set ContainerOnly 1
+set Hidden 1
+set Child "LessonCommandButtonHi 342 78"
+set Child "PadButtonBase 385 95 	/ifSym GamepadStyle == Xbox 1 0.7"
+set Child "PadButtonBase 365 95 	/ifSym GamepadStyle == Xbone 1 0.7"
+set Child "PadButtonBase 388 147 	/ifSym GamepadStyle == PS4 1 0.6"
+set Child "PadButtonBase 416 0 		1 1.3"
+set Child "LessonCommandButtonHi 342 78"
+add MenuObject
+set Name LessonCommandPad
+set Texture menus/help/Controller@GamepadStyle@
+set Coords "0 0 512 325"
+set HiddenCheckBySymbolInv InputPad
+set Child "LessonCommandButton 0 0"
+add MenuObject
+set Name LessonCommandPic
+set Texture menus/help/LessonPickup
+set Coords "0 0 983 646"
+set Child "LessonCommandUnits 200 280"
+set Child "LessonCommandAirMech 120 80"
+set Child "LessonCommandMouse 84 460 /ifSym ArcCustomized == 0"
+set Child "LessonCommandCapture 764 440"
+set Child "LessonCommandPad 220 460"
+set Child "LessonCommandCapturePad 118 455 /ifSym GamepadStyle != PS4"
+set Child "LessonCommandCapturePadPS4 118 455 /ifSym GamepadStyle == PS4"
+add MenuObject
+set Name LessonCommand
+set ContainerOnly 1
+set Child "LessonCommandPic 478 120"
+set Child "LessonTextPressStart 0 840"
+add MenuObject
+set Name LessonAbilitiesMouse
+set Texture menus/help/LessonShoot
+set Coords "19 848 190 173"
+set HiddenCheckBySymbol InputPad
+set Child "LessonAbilitiesMouseMiddleClick 78 55"
+set Child "LessonAbilitiesMouseRightHold 85 0"
+add MenuObject
+set Name LessonAbilitiesMouseMiddleClick
+set Texture menus/help/LessonShoot
+set Coords "280 686 26 63"
+set BlendMode BlendAdd
+set DisabledAlphaTimeOut 0.2
+set Disabled 1
+add MenuObject
+set Name LessonAbilitiesMouseRight
+set Texture menus/help/LessonShoot
+set Coords "19 848 190 173"
+set HiddenCheckBySymbol InputPad
+set Child "LessonAbilitiesMouseRightHold 85 0"
+add MenuObject
+set Name LessonAbilitiesMouseRightHold
+set Texture menus/help/LessonShoot
+set Coords "50 671 100 100"
+set BlendMode BlendAdd
+set MirrorOnX 1
+set DisabledAlphaTimeOut 0.2
+set Disabled 1
+add MenuObject
+set Name LessonAbilitiesCursor
+set Texture menus/help/LessonBuild
+set Coords "111 833 73 79"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set Disabled 1
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name LessonAbilitiesWarthog
+set Texture menus/help/LessonAbilities
+set Coords "17 700 392 267"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set Disabled 1
+set DefaultRotation -15.0
+set FirstDrawnChildren 1
+set Child "LessonAbilitiesWarthogShield 40 30"
+set Child "LessonAbilitiesWarthogShoot 230 290"
+add MenuObject
+set Name LessonAbilitiesWarthogShoot
+set Texture menus/help/LessonAbilities
+set Coords "470 677 305 158"
+set DefaultRotation -35.0
+set Disabled 1
+add MenuObject
+set Name LessonAbilitiesWarthogShield
+set Texture menus/help/LessonAbilities
+set Coords "469 841 348 161"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set Disabled 1
+set Anchor Center
+add MenuObject
+set Name LessonAbilitiesPic
+set Texture menus/help/LessonAbilities
+set Coords "0 0 983 646"
+set Child "LessonAbilitiesMouse 590 240"
+set Child "LessonAbilitiesCursor 680 315"
+set Child "LessonAbilitiesWarthog 130 180"
+add MenuObject
+set Name LessonAbilities
+set ContainerOnly 1
+set Child "LessonAbilitiesPic 550 150"
+set Child "LessonTextPressStart 0 840"
+add MenuObject
+set Name ChallengePilotRaven
+set Texture menus/ChallengeRaven
+set Coords "0 0 1024 1024"
+add MenuObject
+set Name ChallengePilotMako
+set Texture menus/ChallengeMako
+set Coords "0 0 1024 1024"
+add MenuObject
+set Name ChallengePilotHawk
+set Texture menus/ChallengeHawk
+set Coords "0 0 1024 1024"
+add MenuObject
+set Name ChallengePilotKira
+set Texture menus/ChallengeKira+lang
+set Coords "0 0 1024 1024"
+add MenuObject
+set Name ChallengePilotErik
+set Texture menus/ChallengeErik+lang
+set Coords "0 0 1024 1024"
+add MenuObject
+set Name ChallengePilotSamson
+set Texture menus/ChallengeSamson+lang
+set Coords "0 0 1024 1024"
+add MenuObject
+set Name LessonIntroduction
+set Texture menus/Messages
+set CoordsStart "464 4 32 70"
+set CoordsMid "547 4 32 70"
+set CoordsEnd "579 4 37 70"
+set CoordsStartFocused "464 77 32 29"
+set CoordsMidFocused "547 67 32 29"
+set CoordsEndFocused "579 87 37 29"
+set CoordsStartDisabled "464 116 32 35"
+set CoordsMidDisabled "547 116 32 35"
+set CoordsEndDisabled "579 116 37 35"
+set RenderCB _DrawUText_G3x3
+set RenderCB_Flags "/noScreenClamp"
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.85
+set RenderCB_BoolArg 1
+set RenderCB_DX 300
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol LessonIntro
+set RenderCB_YClipConfig "0 0 -20 0"
+set RenderCB_YClipConfigIsOffsets 1
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.5
+set FirstDrawnChildren 1
+set RenderCB_FloatSymbol S_Chal
+set RenderCB_FloatArg 60.0
+set CommandOnCreate "floatsym set S_Chal 0.0"
+set Child "ChallengePilotRaven -600 -100		/ifSym ChalPilotComm == Raven"
+set Child "ChallengePilotMako -570 -120			/ifSym ChalPilotComm == Mako"
+set Child "ChallengePilotHawk -600 -100			/ifSym ChalPilotComm == Hawk"
+set Child "ChallengePilotErik -600 -100			/ifSym ChalPilotComm == Erik"
+set Child "ChallengePilotKira -600 -100			/ifSym ChalPilotComm == Kira"
+set Child "ChallengePilotSamson -600 -100		/ifSym ChalPilotComm == Samson"
+add MenuObject initFrom LessonIntroduction
+set Name LessonOutroMessaging
+set RenderCB_ConsoleSymbol LessonOutroToUse
+set HiddenCheckBySymbolInv HasLessonOutro
+add MenuObject
+set Name LessonPaused
+set Texture menus/Messages
+set CoordsStart "464 4 32 70"
+set CoordsMid "547 4 32 70"
+set CoordsEnd "579 4 37 70"
+set CoordsStartFocused "464 77 32 29"
+set CoordsMidFocused "547 67 32 29"
+set CoordsEndFocused "579 87 37 29"
+set CoordsStartDisabled "464 116 32 35"
+set CoordsMidDisabled "547 116 32 35"
+set CoordsEndDisabled "579 116 37 35"
+set RenderCB _DrawUText_G3x3
+set RenderCB_Flags "/noScreenClamp"
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.85
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol LessonIntro
+set RenderCB_YClipConfig "0 0 -20 0"
+set RenderCB_YClipConfigIsOffsets 1
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.5
+set FirstDrawnChildren 1
+set RenderCB_FloatSymbol S_Chal
+set RenderCB_FloatArg 60.0
+set RenderCB_DX 850
+set Coords "0 0 850 100"
+add MenuObject
+set Name LessonEmpty
+set ContainerOnly 1
+set Child "LessonTextPressStart 0 840"
+add MenuObject
+set Name LessonFrame
+set ContainerOnly 1
+set Child "@LessonObject@ 0 0				/ifSym HasLessonIntro == 0"
+set Child "@LessonObject@ 250 0				/ifSym HasLessonIntro == 1"
+set Child "LessonIntroduction 400 180		/ifSym HasLessonIntro == 1"
+add MenuObject
+set Name ChallengeStarSlot
+set Texture hud/Challenge
+set Coords "577 9 175 166"
+add MenuObject
+set Name ChallengePassFrame
+set Texture hud/Challenge
+set CoordsStart "9 265 14 1"
+set CoordsMid "23 265 737 1"
+set CoordsEnd "760 265 14 1"
+set CoordsStartFocused "9 266 14 227"
+set CoordsMidFocused "23 266 737 227"
+set CoordsEndFocused "760 266 14 227"
+set CoordsStartDisabled "9 494 14 35"
+set CoordsMidDisabled "23 494 737 35"
+set CoordsEndDisabled "760 494 14 35"
+set RenderCB _Draw_G3x3I
+set SpecialPosX 0.5
+set SpecialPosY 0.1
+set RenderCB_DX 1920
+set RenderCB_DY 236
+set Coords "0 0 1920 236"
+set NoAlphaMod 1
+set Alpha 0.7
+set FirstDrawnChildren 1
+set Child "LessonOutroMessaging 400 -680"
+set Child "ChallengeButtonNext 1330 27"
+set Child "ChallengeButtonCompletedAll 1330 27"
+set Child "PauseButtonList 250 27"
+set Child "ChallengeEndButtonRestart 450 27"
+set Child "ChallengeStarSlot 680 30"
+set Child "ChallengeStarSlot 870 30"
+set Child "ChallengeStarSlot 1060 30"
+set Child "ChallengeStar11 680 30"
+set Child "ChallengeStar12 870 30"
+set Child "ChallengeStar13 1060 30"

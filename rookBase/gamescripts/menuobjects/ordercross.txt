@@ -1,0 +1,224 @@
+add MenuObject
+set Name TextOrdersTemplate
+set Coords "0 0 160 145"
+set Layer 3
+set Hidden 1
+set RenderCB _DrawUText
+set RenderCB_Font Gunner
+set RenderCB_FontScale 0.40
+set RenderCB_DX 160
+set RenderCB_DY 145
+set RenderCB_RGBColor "1 1 1"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+add MenuObject initFrom TextOrdersTemplate
+set Name OrderLinkText
+set RenderCB_Text LinkShort
+add MenuObject initFrom TextOrdersTemplate
+set Name OrderPatrolText
+set RenderCB_Text PatrolShort
+add MenuObject initFrom TextOrdersTemplate
+set Name OrderHoldText
+set RenderCB_Text HoldShort
+add MenuObject initFrom TextOrdersTemplate
+set Name OrderCaptureText
+set RenderCB_Text CaptureShort
+add MenuObject initFrom TextOrdersTemplate
+set Name OrderAttackText
+set RenderCB_Text AttackShort
+add MenuObject
+set Name CrossOrderHighlightInner
+set Texture hud/OrderCross@TeamColor@+lang
+set PulseAlpha "0.5 0.0 -0.3"
+set Coords "320 160 160 160"
+set BlendMode BlendAdd
+set RotationPeriod -1.3
+set ScaleX 0.95
+set ScaleY 0.95
+set Layer 2
+add MenuObject
+set Name CrossOrderHighlight
+set Texture hud/OrderCross@TeamColor@+lang
+set PulseAlpha "2.5 0.0 -0.3"
+set Coords "320 160 160 160"
+set RotationPeriod 2.0
+set Layer 2
+set Child "CrossOrderHighlightInner 0 0"
+add MenuObject initFrom PadButtonTemplate
+set Name ButtonAAttackEnemy
+add MenuObject initFrom PadButtonTemplate
+set Name ButtonACaptureOutpost
+add MenuObject initFrom PadButtonTemplate
+set Name ButtonALinkUnit
+add MenuObject initFrom PadButtonTemplate
+set Name ButtonAPatrolArea
+add MenuObject initFrom PadButtonTemplate
+set Name ButtonBHoldPosition
+set Coords "64 0 64 64"
+add MenuObject
+set Name ShortcutTemplate
+set Texture hud/OrderCross@TeamColor@+lang
+set Coords "0 0 64 64"
+set DisabledAlpha 0.0
+set EnabledAlpha 0.75
+set Disabled 1
+set Hidden 1
+set ScaleX 0.65
+set ScaleY 0.65
+set Layer 4
+set DisabledAlphaTimeIn 1.0
+set DisabledAlphaTimeInPreWait 0.5
+add MenuObject initFrom ShortcutTemplate
+set Name ShortcutAttackEnemy
+set Coords "160 320 80 80"
+add MenuObject initFrom ShortcutTemplate
+set Name ShortcutCaptureOutpost
+set Coords "240 320 80 80"
+add MenuObject initFrom ShortcutTemplate
+set Name ShortcutLinkUnit
+set Coords "240 400 80 80"
+add MenuObject initFrom ShortcutTemplate
+set Name ShortcutPatrolArea
+set Coords "160 400 80 80"
+add MenuObject initFrom ShortcutTemplate
+set Name ShortcutHoldPosition
+set Coords "320 320 80 80"
+add MenuObject
+set Name CrossOrderTemplate
+set Texture hud/OrderCross@TeamColor@+lang
+set Coords "0 0 160 160"
+set DisabledAlpha 0.0
+set Disabled 1
+set DisabledAlphaTimeIn 0.35
+set MouseInteract 1
+set ScaleYFocused 1.15
+set ScaleXFocused 1.15
+set ScaleX 0.7
+set ScaleY 0.7
+set FocusedTimeIn 0.2
+set FocusedTimeOut 0.2
+set Layer 3
+set Focus -2
+set FocusChangeOnStick 0
+set DrawWhenFocused CrossOrderHighlight
+set DrawWhenFocusedOffset "-20 -20 0"
+set CommandCancel "menuCmd OrderHold"
+set OkToThrowNullFocus 0
+set AllowButtonInversion 0
+add MenuObject initFrom CrossOrderTemplate
+set Name CrossOrderLinkUnit
+set Coords "160 160 160 160"
+set CommandFocusLeft "menuCmd OrderAttack"
+set CommandFocusUp "menuCmd OrderCapture"
+set CommandFocusRight "menuCmd OrderPatrol"
+set CommandFocusDown "player local do dropUnit /noOutpostLatch"
+set CommandDownHeld "player local do dropUnit /noOutpostLatch"
+set CommandGetFocus "sym set SetOrderAndDrop 1"
+set CommandPress "if usingMouse runnow menuCmd OrderLink"
+set CommandPressAlt "sym set SetOrderAndDrop 0"
+set CommandPressAlt "if usingMouse runnow menuCmd OrderLink"
+set HiddenCheckBySymbol _GroupSel_
+set ToolTip TT_Link
+set Child "OrderLinkText 0 10"
+set Child "ButtonALinkUnit 30 30"
+set Child "ShortcutLinkUnit 30 30"
+add MenuObject initFrom CrossOrderTemplate
+set Name CrossOrderPatrolArea
+set Coords "0 160 160 160"
+set CommandFocusLeft "menuCmd OrderAttack"
+set CommandFocusUp "menuCmd OrderCapture"
+set CommandFocusDown "menuCmd OrderLink"
+set CommandGetFocus "sym set SetOrderAndDrop 0"
+set CommandPress "if usingMouse runnow menuCmd OrderPatrol"
+set CommandPress "rook doLevelState PatrolOrderHelp"
+set CommandPressAlt "sym set SetOrderAndDrop 0"
+set CommandPressAlt "if usingMouse runnow menuCmd OrderPatrol"
+set HiddenCheckBySymbol _GroupSel_
+set ToolTip TT_Patrol
+set Child "OrderPatrolText 0 10"
+set Child "ButtonAPatrolArea 30 30"
+set Child "ShortcutPatrolArea 30 30"
+add MenuObject initFrom CrossOrderTemplate
+set Name CrossOrderCaptureOutpost
+set Coords "160 0 160 160"
+set CommandFocusLeft "menuCmd OrderAttack"
+set CommandFocusUp "menuCmd OrderCapture"
+set CommandUpHeld "player local do dropUnit /noOutpostLatch"
+set CommandFocusRight "menuCmd OrderPatrol"
+set CommandFocusDown "menuCmd OrderLink"
+set CommandGetFocus "sym set SetOrderAndDrop 1"
+set CommandPress "if usingMouse runnow menuCmd OrderCapture"
+set CommandPressAlt "sym set SetOrderAndDrop 0"
+set CommandPressAlt "if usingMouse runnow menuCmd OrderCapture"
+set ToolTip TT_Capture
+set Child "OrderCaptureText 0 10"
+set Child "ButtonACaptureOutpost 30 30"
+set Child "ShortcutCaptureOutpost 30 30"
+add MenuObject initFrom CrossOrderTemplate
+set Name CrossOrderAttackEnemy
+set CommandFocusLeft "menuCmd OrderAttack"
+set CommandLeftHeld "player local do dropUnit /noOutpostLatch"
+set CommandFocusUp "menuCmd OrderCapture"
+set CommandFocusRight "menuCmd OrderPatrol"
+set CommandFocusDown "menuCmd OrderLink"
+set CommandGetFocus "sym set SetOrderAndDrop 1"
+set CommandPress "if usingMouse runnow menuCmd OrderAttack"
+set CommandPressAlt "sym set SetOrderAndDrop 0"
+set CommandPressAlt "if usingMouse runnow menuCmd OrderAttack"
+set ToolTip TT_Attack
+set Child "OrderAttackText 0 10"
+set Child "ButtonAAttackEnemy 30 30"
+set Child "ShortcutAttackEnemy 30 30"
+add MenuObject initFrom CrossOrderTemplate
+set Name CrossOrderHoldPosition
+set Coords "0 320 160 160"
+set CommandFocusLeft "menuCmd OrderAttack"
+set CommandFocusUp "menuCmd OrderCapture"
+set CommandFocusRight "menuCmd OrderPatrol"
+set CommandFocusDown "menuCmd OrderLink"
+set CommandGetFocus "sym set SetOrderAndDrop 1"
+set CommandPress "if usingMouse runnow menuCmd OrderHold"
+set CommandPressAlt "sym set SetOrderAndDrop 0"
+set CommandPressAlt "if usingMouse runnow menuCmd OrderHold"
+set ToolTip TT_Hold
+set Child "OrderHoldText 0 10"
+set Child "ButtonBHoldPosition 30 30"
+set Child "ShortcutHoldPosition 30 30"
+add MenuObject
+set Name CrossRightClickMessage
+set Coords "0 0 320 200"
+set RenderCB_DX 320
+set RenderCB_DY 200
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set Layer 1
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeIn 1.0
+set DisabledAlphaTimeInPreWait 0.5
+set DisabledAlpha 0.0
+set Disabled 1
+set Hidden 1
+set Alpha 0.8
+set RenderCB_Text RightClickExplain
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 1"
+add MenuObject
+set Name CrossOrderContainer
+set Texture hud/OrderCross@TeamColor@+lang
+set Coords "320 0 160 160"
+set HiddenCheckBySymbol OrdersPro
+set DrawWhenFocused CrossOrderHighlight
+set DrawWhenFocusedOffset "-190 30 0"
+set Disabled 1
+set DisabledAlpha 0.0
+set DisabledAlphaTimeIn 0.7
+set FocusChangeOnStick 0
+set Focus -2
+set ContainerOnly 1
+set Child "CrossOrderLinkUnit 25 100"
+set Child "CrossOrderPatrolArea 100 25"
+set Child "CrossOrderCaptureOutpost 25 -50"
+set Child "CrossOrderAttackEnemy -50 25"
+set Child "CrossOrderHoldPosition -170 50"

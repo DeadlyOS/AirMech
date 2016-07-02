@@ -1,0 +1,31 @@
+add MenuObject
+set Name SurvivalTemplate
+set Coords "0 0 400 30"
+set DisabledAlpha 0.5
+set RenderCB_DX 350
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.70
+set Layer 2
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.9 0.9 0.9"
+set RenderCB_Flags "/outlined8x"
+add MenuObject initFrom SurvivalTemplate
+set Name SurvivalWave
+set RenderCB_Text SurvivalWave
+set RenderCB_ConsoleSymbol2 S_Wave
+add MenuObject initFrom SurvivalTemplate
+set Name SurvivalWaveProgress
+set RenderCB_Text SurvivalWaveProgress
+set RenderCB_ConsoleSymbol2 S_DCount
+set RenderCB_ConsoleSymbol3 S_Total
+add MenuObject
+set Name SurvivalMaster
+set FilterName LoadMapStartup
+set Layer 0
+set Anchor Top
+set ContainerOnly 1
+set Child "SurvivalWave 190 -2"
+set Child "SurvivalWaveProgress 310 -2"

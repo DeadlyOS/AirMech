@@ -1,0 +1,556 @@
+Script MenuBackgroundBomber {
+rcmd "if sym BackgroundIronHand != 1 runnow menucmd Menu3dSetupBomberClassic"
+rcmd "if sym BackgroundIronHand == 1 runnow menucmd Menu3dSetupBomberIronHand"
+}
+Script Menu3dSetupBomberClassic {
+cmd "echo Menu3dSetupBomberClassic"
+cmd "echo $Background3dLoaded
+cmd "menu3d add MainMenuBg /model menus/MenuFullframe.amf	/material mat_BgBomber
+cmd "menu3d setRootOffset MainMenuBg	0.0 1.1 0.0
+cmd "if !vr menu3d setRootScale MainMenuBg	28 28 28
+cmd "menu3d add MainMenuMech /model menus/BomberReza.amf /material mat_BomberReza /rootRot 10 0 -10
+cmd "menu3d setRootOffset MainMenuMech	0.4 20.0 -9.8
+cmd "if !vr menu3d setRootScale MainMenuMech	11.8 11.8 11.8
+cmd "menu3d animate MainMenuMech menus/BomberRezaIdle.aaf looping 0 0.2
+cmd "if vr menu3d setWorldPose MainMenuBg 0 0 0"
+cmd "if vr menu3d setWorldPose MainMenuMech 0 0 0"
+cmd "if vr menu3d setRootScale MainMenuBg	100 100 100"
+cmd "if vr menu3d setRootScale MainMenuMech	100 100 100"
+cmd "sym set Background3dLoaded 1"
+cmd "if !consolePlatformHW runnow pfx_menus worldspawn LoginMenuEmbers /tag LoginEmbers"
+}
+Script Menu3dSetupBomberIronHand {
+cmd "echo Menu3dSetupBomberIronHand"
+cmd "gfx set uniform fogcolor 130 60 60 255"
+cmd "gfx set uniform fogargs 100 100"
+cmd "echo $Background3dLoaded
+cmd "pfx stopImmediate LoginEmbers"
+cmd "menu3d add MainMenuBg /model menus/DarkSkyBg.amf /material mat_DarkSkyBg /rootRot 0 0 0  /rootScale 36.0  /noShadowCast
+cmd "menu3d setRootOffset MainMenuBg	0.0 34.6 0.0
+cmd "menu3d add MainMenuMech /model menus/BomberIronHand.amf /material mat_BomberIronHand2 /material mat_BomberIronHand /rootRot 0 0 0  /rootScale 13.0 /noShadowCast
+cmd "menu3d setRootOffset MainMenuMech	0.0 14.1 0.0
+cmd "menu3d animate MainMenuBg menus/DarkSkyBg.aaf looping 0 0.2
+cmd "menu3d animate MainMenuMech menus/BomberIronHand.aaf looping 0 0.17
+cmd "sym set Background3dLoaded 1"
+cmd "menu3d add AirMechLogoVR /model vr/LogoAirMech01.amf	/material mat_LogoAirMech01 /rootScale 2.7 /rootRot -10 2 -10"
+cmd "menu3d setRootOffset AirMechLogoVR	0.66 10.0 3.15
+cmd "menu3d animate AirMechLogoVR vr/LogoAirMechTransform.aaf playonce 0 1.0"
+cmd "pfx_menus worldspawn MenuSmokeBack /tag LoginEmbers"
+cmd "pfx_menus worldspawn MenuSmokeFront /tag LoginEmbers"
+cmd "pfx_menus worldspawn MenuEmbersMetal /tag LoginEmbers"
+cmd "pfx_menus worldspawn MenuEmbersMetalStream /tag LoginEmbers"
+cmd "pfx_menus worldspawn MenuSmokeDark /tag LoginEmbers"
+}
+Script FrontEndLoginCheck {
+cmd "if backend auth == pending pcmd_seq 404 0.2 menuCmd FrontEndLoginCheck"
+cmd "if backend auth != pending console flushAllPendingSeq 404"
+cmd "if backend auth != pending && !consolePlatformHW menuCmd LoginCheckPassed"
+cmd "if backend auth != pending && consolePlatformHW menuCmd LoginMenuInitialFocus"
+}
+Script LoginCheckPassed {
+cmd "clearmenu MenuFadeout"
+cmd "if backend auth == authorized menuCmd LoginCheckAuthorized"
+cmd "if backend auth == notauthorized menuCmd LoginCheckNotAuthorized"
+}
+Script LoginCheckAuthorized {
+cmd "sym set CreateRoomName $P_Name"
+}
+Script LoginCheckNotAuthorized {
+cmd "gameUI enableAll LoginMaster"
+cmd "gameUI enableAll LoginMasterCarbon"
+cmd "menucmd LoginMenuInitialFocus"
+}
+Script LoginMenuInitialFocus {
+cmd "if sym CarbonLogin isEmpty gameUI focusName LoginBoxEmail"
+cmd "if sym CarbonLogin !isEmpty gameUI focusName LoginBoxPassword"
+cmd "if steam && console && sym LoginMenuCount == 1 menucmd MF_SteamLogin"
+cmd "if steam && console && sym LoginMenuCount != 1 echo add login button"
+cmd "if x360 menucmd MF_X360Login"
+cmd "if ps4 menucmd MF_PS4Login"
+cmd "if xbone menucmd MF_XboneLogin"
+}
+Script LoginInfoValidate {
+cmd "rook loginInfoCheck LoginButton _CarbonLoginOK /usernameOrEmail CarbonLogin /passwordAny CarbonPassword"
+}
+Script CreateAccountValidate {
+cmd "if steam runnow rook createAccountInfoCheck CreateAccountCreateButton _CarbonCreateOK /username CarbonUsername /terms CarbonCreateAccountNeedAgree"
+cmd "if !steam runnow rook createAccountInfoCheck CreateAccountCreateButton _CarbonCreateOK /username CarbonUsername /terms CarbonCreateAccountNeedAgree /emailOptional CarbonLogin /password CarbonPassword"
+cmd "if literal $_MArg1_ == 1 runnow sym set _AvailableUsername_ 0"
+cmd "if literal $_MArg1_ == 1 runnow console flushAllPendingSeq 176"
+cmd "if literal $_MArg1_ == 1 runnow pcmd_seq 176 0.25 backend isUsernameAvailable CarbonUsername"
+}
+Script ResetAccountUsernameValidate {
+cmd "if steam runnow rook createAccountInfoCheck ResetAccountResetButton _CarbonCreateOK /username CarbonUsername /terms CarbonCreateAccountNeedAgree"
+cmd "if !steam runnow rook createAccountInfoCheck ResetAccountResetButton _CarbonCreateOK /username CarbonUsername /terms CarbonCreateAccountNeedAgree"
+cmd "if literal $_MArg1_ == 1 runnow sym set _AvailableUsername_ 0"
+cmd "if literal $_MArg1_ == 1 runnow console flushAllPendingSeq 176"
+cmd "if literal $_MArg1_ == 1 runnow pcmd_seq 176 0.25 backend isUsernameAvailable CarbonUsername"
+}
+Script CreateAccountGo {
+cmd "log MenuCmd: CreateAccountGo"
+cmd "sym set MenuLastFocus CreateAccountCreateButton"
+cmd "sym set DialogBoxTitle DialogTitleConfirmUsername"
+cmd "sym set DialogBoxMessage DialogMessageConfirmUsername"
+cmd "sym set DialogMenuCmdOnButton1 CreateAccountGoConfirmed"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script CreateAccountGoConfirmed {
+cmd "if !steam backend pccreate"
+cmd "if steam backend loginContinue"
+cmd "clearmenu MenuCreateAccount.txt"
+}
+Script ResetAccountUsernameGoConfirmed {
+cmd "backend loginContinue"
+cmd "clearmenu MenuResetUsername.txt"
+}
+Script TryToLogin {
+ignoreInputTime 0.3
+cmd "if sym _CarbonLoginOK == 1 runnow menuCmd DoLogin"
+}
+Script DoLogin {
+cmd "timer setAsyncWait 1"
+cmd "sym set _AsyncDlgMsg_ AsyncNoticeLoggingIn"
+cmd "loadmenu AsyncNoticeDialog.txt /fadeIn 0.1"
+cmd "pcmd 0.25 backend login CarbonLogin CarbonPassword"
+}
+Script DisableOldLogin {
+cmd "gameUI hideAll LoginMaster"
+}
+Script DoCarbonSignIn {
+cmd "sym set _SrvDisconnect_ 0"
+cmd "gameUI showAll LoginMaster"
+cmd "gameUI hideAll LoginBaseSignIn"
+}
+Script DoGoogleSignIn {
+cmd "sym set _SrvDisconnect_ 0"
+cmd "backend googleLogin"
+}
+Script OnGameUpdated {
+ignoreInputTime 0.25
+cmd "echo OnGameUpdated"
+cmd "timer clearAsyncWait"
+cmd "gameUI disableAll LoginMaster"
+cmd "gameUI disableAll LoginMasterCarbon"
+#if !vr
+rcmd "loadmenu MenuPostAuth.txt /fadeIn 0.3"
+#endif
+}
+Script LoginSuccess {
+}
+Script LoginFailure {
+cmd "timer clearAsyncWait"
+cmd "echo login failure..."
+cmd "sym set LoginStatusDialogMessage LoginFailure"
+cmd "loadmenu LoginStatus.txt"
+}
+Script OverCapacity {
+cmd "timer clearAsyncWait"
+cmd "echo server over capacity..."
+cmd "sym set LoginStatusDialogMessage OverCapacity"
+cmd "loadmenu LoginStatus.txt"
+}
+Script SteamFailure {
+cmd "timer clearAsyncWait"
+cmd "echo steam failure..."
+cmd "sym set LoginStatusDialogMessage SteamFailure"
+cmd "loadmenu LoginStatus.txt"
+}
+Script BackendDialog {
+pendingOnIgnoreInputTime
+pendingOnBoolSym _InLogoSplash_
+cmd "timer clearAsyncWait"
+cmd "echo Backend Dialog"
+#if !vr
+cmd "loadmenu BackendDialog.txt /fadeIn 0.1"
+#endif
+}
+Script LoginSuspended {
+cmd "timer clearAsyncWait"
+cmd "echo login failure..."
+cmd "sym set LoginStatusDialogMessage LoginSuspended"
+cmd "loadmenu LoginStatus.txt"
+}
+Script PatchRequired {
+cmd "timer clearAsyncWait"
+}
+Script CannotPatch {
+cmd "timer clearAsyncWait"
+cmd "sym set LoginStatusDialogMessage LoginVerInvalid"
+cmd "loadmenu LoginStatus.txt"
+}
+Script MF_Logout {
+frame_block MenuCommand
+cmd "]log MenuCmd: MF_Logout"
+cmd "]if backendEnabled ]menuCmd MF_DoLogout"
+}
+Script MF_DoLogout {
+ignoreInputTime 3.0
+cmd "]log MenuCmd: MF_DoLogout"
+cmd "]loadmenu MenuFadeout"
+cmd "]console flushAllPendingSeq ReAuth"
+cmd "]console flushAllPendingSeq PartyJoin"
+cmd "]party2 leave"
+cmd "]console flushAllPendingSeq StillInPartyCheck"
+cmd "]sym setZero MM_PartySize MM_QueueEnabled"
+cmd "]net disconnect"
+cmd "]backend signout"
+cmd "]rook clearPersistenceInit"
+cmd "]rookMenus previewClear"
+cmd "]pcmd 1 sym setZero MainMenuCountSession MainMenuCount"
+cmd "]sym clear P_Level P_Name"
+cmd "]sym clear FactionTag FactionTagActual FactionTagDisp"
+cmd "]sym clear QuestInfoEntry"
+cmd "]sym clear InvV2FilterText"
+cmd "]sym clear ShopFilterText"
+cmd "]sym clear FChatTextEntry GChatTextEntry LChatTextEntry MChatTextEntry PChatTextEntry"
+cmd "]sym setNSet 4 PartyHidden 1"
+cmd "]sym set _CltLogout_ 1"
+cmd "]sym setNSet 10 LB_Row"
+cmd "]sym setNSet 10 LB_Tag"
+cmd "]sym setNSet 10 LB_Scr"
+cmd "]gameUI enableAll LoginMaster"
+cmd "]gameUI enableAll LoginMasterCarbon"
+cmd "]gameUI focusName LoginButton"
+cmd "]gameUI forceClearTooltip"
+cmd "]sym setZero UPlayAct1 UPlayAct2 UPlayAct3 UPlayAct4 UPlayAct5 UPlayAct6"
+cmd "]sym setZero MatchOverInSummary EndgameContinue MatchOverReal MatchOver"
+cmd "]wallet resetLocalPrices"
+cmd "]wallet clearVIP"
+cmd "]wallet clear"
+cmd "]wallet clearInventory"
+cmd "]sym set DisableConShop 0"
+cmd "]sym set ActiveLoadout 0"
+cmd "]sym setZero _GotLoadout_ _GotSettings_ _GotPingData_ _GotFactionInfo_ _GotBaseCampCfg_ _GotTrainingCfg_"
+cmd "]sym set _LR_FighterA FighterA"
+cmd "]sym set _LR_Chopper Chopper"
+cmd "]sym set _LR_Stealth Stealth"
+cmd "]sym set _LR_FighterNeo FighterNeo"
+cmd "]sym set _LR_Saucer Saucer"
+cmd "]sym set _LR_Osprey Osprey"
+cmd "]sym set _LR_Warthog Warthog"
+cmd "]sym set _LR_Paladin Paladin"
+cmd "]sym set _LR_Angel Angel"
+cmd "]gamemsg clearChatAll"
+cmd "]loadout onLogout"
+cmd "]wallet notifyLogout"
+cmd "]sym setOne Shop_Featured"
+cmd "]sym set _ShopDescModeEn 0"
+cmd "]sym setZero Shop_AirMechs Shop_MyCollection Shop_Units Shop_Pilots Shop_Parts Shop_Items ShowShopItems Shop_Codes Shop_Diamonds Shop_Sale Shop_Purchases Shop_Boosts Shop_Other Shop_Sets Shop_Cosmetics Shop_Market"
+cmd "]sym set LastShopItemFocus NA
+cmd "]sym setZero ChallengeStars CSMov1 CSMov2 CSMov3 CSMov4 CSCap1 CSCap2 CSCap3 CSCap4 CSCap5 CSCap6 CSDes1 CSDes2 CSDes3 CSDes4 CSDes5 CSDes6"
+cmd "]sym set GameShowXPNumbers 1"
+cmd "]sym set GameShowMoneyNumbers 1"
+cmd "]sym set GameShowDmgNumbers 1"
+cmd "]sym set GameShowHealingNumbers 1"
+cmd "]sym set GameShowEnemyAirMech 0"
+cmd "]sym set GameShowUnitHPBar 1"
+cmd "]sym set GameShowUnitHPNum 0"
+cmd "]sym set ColorBlind 0"
+cmd "]sym set GameRangeMarkers 1"
+cmd "]sym set OptionShowTray 1"
+cmd "]sym set OptionAutoBuilder 1"
+cmd "]sym set OptionAutoBuilderA 1"
+cmd "]sym set P_Avatar NA"
+cmd "]menucmd InitAirMechLoadoutSlotSel"
+cmd "]sym setZero HangarPartHelpAck HangarUnitHelpAck HangarAnyHelpAck _EndGameSeqMsg_ _actMetaDataRcv_ CustomGameOptionsBrowse OvermapFade"
+cmd "]sym setZero CSWin1 CSWin2 CSWin3 CSWin4 CSBld1 CSBld2 CSBld3 CSBld4"
+cmd "]sym setZero MktToMe MktToFac GameMailCount GameMailUnread MarketBanned"
+cmd "]sym setZero IsCharteredMember MM_PendingDisconnects KudosUBoost KudosU5Boost KudosU10Boost XPUBoost XPU5Boost XPU10Boost OrdersPro"
+cmd "]sym setZero SysStat_PvPP SysStat_PvPW AIDifficulty"
+cmd "]sym setZero UPlayLinked"
+cmd "]sym setZero ShowPrimeBanner ShowPrimeBannerDismissed QuestsLoaded"
+cmd "]sym setOne BlockConShop"
+cmd "]sym set CUnlock 1"
+cmd "]sym set AILevelEarned 1"
+cmd "]sym clearStack _Bind_SoloLoadout_"
+cmd "]sym setZero ReturnToLobby _Bind_SoloLoadout_ _Bind_MatchingUIBack_ _MatchingUI_"
+cmd "]sym setZero P_LockedDiamonds P_LockedDiamondsDisp P_Diamonds P_DiamondsDisp P_Kudos P_KudosDisp"
+cmd "]sym set CurrentMenu LoggedOut"
+cmd "]console flushAllPendingSeq 301"
+cmd "]console flushAllPendingSeq 302"
+cmd "]console flushAllPendingSeq 303"
+cmd "]console flushAllPendingSeq 304"
+cmd "]console flushAllPendingSeq 305"
+cmd "]music stop"
+cmd "]clearmenu MenuPause"
+cmd "]clearmenu ConPause"
+cmd "]clearmenu MenuPlay"
+cmd "]clearmenu MenuShop"
+cmd "]clearmenu TempLoadout"
+cmd "]if sym ConScreenInset == 1 runnow menucmd ConScreenInsetCancel"
+cmd "]sym set ConShopMenu 0"
+cmd "]sym set TempLoadoutLoaded 0"
+cmd "]sym set PlayMenuLoaded 0"
+cmd "]sym set PlayV1TopMenu 1"
+cmd "]sym setZero ConMenuPlayCoop ConMenuPlayPvp"
+cmd "]sym set ConMenuPlaySolo 1"
+cmd "]sym clearStack CurrentMenu"
+cmd "]sym set CurrentMenu CRoot"
+cmd "]sym clear ConfirmedEmailSrv"
+cmd "]social onLogout"
+cmd "]eventState onLogout"
+cmd "]training onLogout"
+cmd "]pcmd 0.1 sym clearStack CurrentMenu"
+cmd "]pcmd 0.1 sym set CurrentMenu CRoot"
+cmd "]menucmd ClearShopFilterStates"
+cmd "]menucmd ClearInv2FilterStates"
+cmd "]if ps4 ps4 hideStoreState /forced"
+cmd "]sym setZero HasFactionJoinSug"
+cmd "]menucmd BaseCampHelpReset"
+cmd "]sym setZero BaseCamp_Ready BaseHangar_Ready"
+#if vr
+cmd "]sym setZero VrPlayerReady VrPlayerLogoDone"
+#endif
+}
+Script PatchFailed {
+cmd "gameUI show PatchingExitButton"
+cmd "gameui hide LoginDownloadProgress"
+cmd "timer clearAsyncWait"
+}
+Script MF_GoogleLoginPC {
+cmd "timer setAsyncWait 1"
+cmd "sym set BackendDialogCaption [Starting Google Login]"
+cmd "sym set BackendDialogText [Opening a browser page to login with Google.]"
+cmd "sym set BackendDialogButton0 DialogButtonCancel"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script MF_GoogleLoginPCDone {
+cmd "clearmenu BackendDialog.txt"
+}
+Script MF_X360Login {
+cmd "timer setAsyncWait 1"
+cmd "x360 login"
+}
+Script MF_PS4Login {
+cmd "timer setAsyncWait 1"
+cmd "ps4 login"
+}
+Script MF_XboneLogin {
+cmd "timer setAsyncWait 1"
+cmd "xbone login"
+}
+Script MF_X360BadAddress {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption [Unknown console]"
+cmd "sym set BackendDialogText [Console address @X360_Address@ is unknown. Contact boblan]"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script MF_X360UsernameConflict {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption [Bad gamertag]"
+cmd "sym set BackendDialogText [The gamertag associated with the XBL account is in use on this shard and cannot be reset.]"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script MF_SteamLogin {
+ignoreInputTime 0.25
+cmd "timer setAsyncWait 1"
+cmd "steam login"
+}
+Script MF_OculusLogin {
+ignoreInputTime 0.25
+cmd "timer setAsyncWait 1"
+cmd "oculus login"
+}
+Script MF_OculusIntegrationFail {
+cmd "echo Failed to establish connection to Oculus Platform"
+cmd "timer clearAsyncWait"
+}
+Script MF_ArcLogin {
+cmd "arc login"
+}
+Script MF_SteamIntegrationFail {
+cmd "echo Failed to establish connection to Steam"
+cmd "timer clearAsyncWait"
+}
+Script MF_OpenidCancelled {
+cmd "timer clearAsyncWait"
+cmd "clearmenu BackendDialog.txt"
+cmd "echo Openid authentication cancelled"
+}
+Script MF_Suspended {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption [Suspended]"
+cmd "sym set BackendDialogText [This user is suspended.]"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script MF_TempSuspended {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption [Suspended]"
+cmd "sym set BackendDialogText [This user is temporarily suspended. You may login in @SuspendedTime@.]"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script MF_InvalidUsername {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption [Invalid username]"
+cmd "sym set BackendDialogText [That username is invalid.]"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym setl BackendDialogButton0Command loadmenu MenuCreateAccount.txt"
+cmd "menucmd BackendDialog"
+}
+Script MF_TakenUsername {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption [Username not available]"
+cmd "sym set BackendDialogText [That username has already been taken.]"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym setl BackendDialogButton0Command loadmenu MenuCreateAccount.txt"
+cmd "menucmd BackendDialog"
+}
+Script MF_InvalidPassword {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption [Invalid password]"
+cmd "sym set BackendDialogText [That password is not valid.]"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym setl BackendDialogButton0Command loadmenu MenuCreateAccount.txt"
+cmd "menucmd BackendDialog"
+}
+Script MF_EmailTaken {
+cmd "timer clearAysncWait"
+cmd "sym set BackendDialogCaption [Email not available]"
+cmd "sym set BackendDialogText [That email is associated with an existing account.]"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym setl BackendDialogButton0Command loadmenu MenuCreateAccount.txt"
+cmd "menucmd BackendDialog"
+}
+Script MF_NeedUsername {
+cmd "timer clearAsyncWait"
+cmd "loadmenu MenuResetUsername.txt"
+}
+Script MF_NeedTerms {
+cmd "timer clearAsyncWait"
+cmd "loadmenu MenuCreateAccount.txt"
+}
+Script MF_NeedPassword {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption [Password Not Set]"
+cmd "sym setl BackendDialogText This account does not have a password set.  Please set one using: <.l>https://carbongames.com/forgot.html<.>"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script MF_NeedVerify {
+cmd "timer clearAsyncWait"
+cmd "sym set BackendDialogCaption [Email must be verified]"
+cmd "sym set BackendDialogText [This email address has not been verified. Please verify your email address by clicking on the link sent to you. To resend the verification email visit: <.l>https://carbongames.com/sendverify.html<.>]"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script MF_NewAccount {
+cmd "timer clearAsyncWait"
+cmd "loadmenu MenuNewAccount.txt /fadein 0.3"
+}
+Script MenuStateReset {
+ignoreInputTime 0.1
+cmd "echo menucmd: MenuStateReset"
+cmd "sym set MMBtnCurrent 0"
+cmd "sym set MMFrameCurrent MainMenuHomeFrame"
+cmd "sym set TopMenuHome 1"
+cmd "sym set TopMenuCustomize 0"
+cmd "sym set TopMenuPlay 0"
+cmd "sym set TopMenuWatch 0"
+cmd "sym set TopMenuLearn 0"
+cmd "sym set TopMenuSocial 0"
+cmd "sym set MenuHomeNews 1"
+cmd "sym set MenuHomeQuests 0"
+cmd "sym set MenuHomeStats 0"
+cmd "sym set MenuHomePatchnotes 0"
+cmd "sym set MenuCustomizeStore 0"
+cmd "sym set MenuCustomizeLoadout 1"
+cmd "sym set MenuCustomizeCollection 0"
+cmd "sym set MenuPlayMatchmaking 1"
+cmd "sym set MenuPlayCustom 0"
+cmd "sym set MenuPlayBrowse 0"
+cmd "sym set MenuLearnPractice 1"
+cmd "sym set MenuLearnHelp 0"
+cmd "sym set MenuLearnFaq 0"
+cmd "sym set _GotFAQ_ 0"
+cmd "sym set MenuSocialFaction 0"
+cmd "sym set MenuSocialReferrals 1"
+cmd "sym set MenuSocialConnect 0"
+cmd "sym set MenuSettingsGeneral 1"
+cmd "sym set MenuSettingsLanguage 0"
+cmd "sym set MenuSettingsControls 0"
+cmd "sym set MenuSettingsVideo 0"
+cmd "sym set MenuSettingsAudio 0"
+cmd "sym set MatchmakingTypeSolo 0"
+cmd "sym set MatchmakingTypeCoop 1"
+cmd "sym set MatchmakingTypeStandard 0"
+cmd "sym set MatchmakingTypeRanked 0"
+cmd "sym set MatchmakingType Coop"
+cmd "sym set MatchmakingModeClassic 1"
+cmd "sym set MatchmakingModeCtf 0"
+cmd "sym set MatchmakingModeSurvival 0"
+cmd "sym set MatchmakingMode Classic"
+cmd "sym set MatchmakingPlayers1v1 0"
+cmd "sym set MatchmakingPlayers2v2 1"
+cmd "sym set MatchmakingPlayers3v3 0"
+cmd "sym set MatchmakingPlayers1P 1"
+cmd "if sym BasicMatchmaking == 0 sym set MatchmakingPlayers2P 1"
+cmd "if sym BasicMatchmaking == 1 sym set MatchmakingPlayers2P 1"
+cmd "sym set MatchmakingPlayers3P 0"
+cmd "sym set MatchmakingPlayers4P 0"
+cmd "sym set MatchmakingPlayersDuel 0"
+cmd "sym set MatchmakingPlayersTeam 1"
+cmd "sym set NumPlayers 1v1"
+cmd "sym set NumPlayersCommon 2v2"
+cmd "sym set NumPlayersCoop 2v2C"
+cmd "sym set NumPlayersSolo 1v1C"
+cmd "sym set NumPlayersSurvival 1P"
+cmd "sym set NumPlayersChallenge 1P"
+cmd "sym set PlayersChallenge 1v1"
+cmd "sym set PlayersCoop 3v3"
+cmd "sym set PlayersPvP 3v3"
+cmd "sym set PlayersSolo 1v1"
+cmd "sym set PlayersSurvival 1v1"
+cmd "sym set MapName Simple"
+cmd "sym set MapNameCTF Simple"
+cmd "sym set MapNameCommon Simple"
+cmd "sym set MapNameSurvival Survival"
+cmd "sym set MapNameChallenge C_CaptureA"
+cmd "sym set LaunchGameMode PvP"
+cmd "sym set ActiveMaplist LaunchMaplistHidden"
+cmd "sym set ActiveNumPlayers LaunchNumPlayersHidden"
+cmd "menucmd MP_LoadMainMenu"
+}
+Script MenuStateNewPlayer {
+cmd "sym set MMBtnCurrent 4"
+cmd "sym set MMFrameCurrent MainMenuLearnFrame"
+cmd "sym set TopMenuHome 0"
+cmd "sym set TopMenuCustomize 0"
+cmd "sym set TopMenuPlay 0"
+cmd "sym set TopMenuWatch 0"
+cmd "sym set TopMenuLearn 1"
+cmd "sym set TopMenuSocial 0"
+cmd "sym set MenuHomeNews 0"
+cmd "sym set MenuHomeQuests 1"
+cmd "sym set MenuHomeStats 0"
+cmd "sym set MenuHomePatchnotes 0"
+cmd "sym set MenuCustomizeStore 1"
+cmd "sym set MenuCustomizeLoadout 0"
+cmd "sym set MenuCustomizeCollection 0"
+cmd "sym set MenuPlayMatchmaking 1"
+cmd "sym set MenuPlayCustom 0"
+cmd "sym set MenuPlayBrowse 0"
+cmd "sym set MenuLearnPractice 1"
+cmd "sym set MenuLearnHelp 0"
+cmd "sym set MenuLearnFaq 0"
+cmd "sym set _GotFAQ_ 0"
+cmd "sym set MenuSocialFaction 0"
+cmd "sym set MenuSocialReferrals 1"
+cmd "sym set MenuSocialConnect 0"
+}
+Script OnPersistentInit {
+cmd "if sym ContactSubscribe == 0 runnow sym setl ContactSubscribeChk <:a>"
+cmd "if sym ContactSubscribe == 1 runnow sym setl ContactSubscribeChk <:b>"
+}

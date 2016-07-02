@@ -1,0 +1,2512 @@
+add MenuObject
+set Name CheckMarkTempl
+set Texture menus/DialogGeneral
+set Coords "814 532 42 33"
+set HiddenCheckBySymbol @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name CheckboxTempl
+set Texture menus/DialogGeneral
+set Coords "357 201 32 32"
+set DrawWhenFocusedOrder BeforeChildren
+set DrawWhenFocused CheckboxInvTemplHighlight
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 4"
+set RenderCB_DX 400
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg2_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set SaveArgs 3
+set BlendMode BlendAdd
+set CommandPress ">sym toggle @_Arg1_@"
+set CommandPress ">menucmd @_Arg3_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey ">menucmd @_Arg3_@"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set Child "CheckMarkTempl 0 0 @_Arg1_@"
+add MenuObject initFrom CheckboxTempl
+set Name CheckboxTemplTT
+set ToolTip @_Arg4_@
+add MenuObject
+set Name CheckboxInvTemplHighlight
+set Coords "328 55 20 20"
+set Texture menus/LoginBase
+set PulseAlpha "2.5 -0.75 0.0"
+set ScaleX 1.9
+set ScaleY 1.9
+add MenuObject
+set Name CheckMarkInvTempl
+set Texture menus/DialogGeneral
+set Coords "814 532 42 33"
+set HiddenCheckBySymbolInv @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name CheckMarkInvTemplDis
+set Texture menus/DialogGeneral
+set Coords "814 532 42 33"
+set NoAlphaMod 1
+set Alpha 0.8
+set HiddenCheckBySymbolInv @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name CheckboxInvTempl
+set Texture menus/DialogGeneral
+set Coords "357 201 32 32"
+set BlendMode BlendAdd
+set DrawWhenFocusedOrder BeforeChildren
+set DrawWhenFocused CheckboxInvTemplHighlight
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 4"
+set RenderCB_DX 550
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg2_@
+set ToolTip @_Arg4_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set SaveArgs 4
+set CommandPress ">sym toggle @_Arg1_@"
+set CommandPress ">menucmd @_Arg3_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey ">menucmd @_Arg3_@"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set Child "CheckMarkInvTempl 0 0 @_Arg1_@"
+add MenuObject initFrom CheckboxInvTempl
+set Name CheckboxInvTemplNoTT
+set ToolTip ""
+set SaveArgs 3
+add MenuObject
+set Name CheckboxInvTemplDis
+set Texture menus/DialogGeneral
+set Coords "357 201 32 32"
+set BlendMode BlendAdd
+set DrawWhenFocusedOrder BeforeChildren
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 4"
+set RenderCB_DX 550
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.5"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg2_@
+set ToolTip @_Arg4_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set SaveArgs 4
+set Child "CheckMarkInvTemplDis 0 0 @_Arg1_@"
+add MenuObject initFrom CheckboxInvTempl
+set Name CheckboxInvTemplUpDownFocus
+set SaveArgs 5
+set CommandFocusUp ">gameui focusNameTry @_Arg4_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg5_@"
+add MenuObject initFrom CheckboxInvTempl
+set Name CheckboxGameFilter
+set RenderCB _DrawUText
+set RenderCB_DX 80
+set ToolTip ""
+set MouseInteractZoneExpand "-55 -10 0 10"
+set CommandCancel "if consoleplatform gameui focusnametry MF_NetGameBrowseRefreshList"
+add MenuObject
+set Name CommandBoxTempl
+set Texture menus/DialogGeneral
+set Texture menus/LoginCommon
+set Coords "963 288 40 40"
+set SaveArgs 4
+set BlendMode BlendAdd
+set DrawWhenFocusedOrder BeforeChildren
+set DrawWhenFocused CommandBoxTemplHighlight
+set DrawWhenFocusedOffset "-11.5 -13"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 4"
+set RenderCB_DX 550
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg1_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set CommandPress ">menucmd @_Arg2_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandEnterKey ">menucmd @_Arg2_@"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set CommandFocusUp ">gameui focusNameTry @_Arg3_@"
+set CommandFocusDown ">gameui focusNameTry @_Arg4_@"
+add MenuObject
+set Name CommandBoxTemplHighlight
+set Texture menus/LoginCommon
+set PulseAlpha "1.0 -0.2 0.0"
+set Coords "956 9 64 64"
+set BlendMode BlendAdd
+add MenuObject
+set Name XCloudsPan
+set Layer 0
+set Texture clouds
+set StretchToFillScreen 1
+set Coords "0 0 64 64"
+set CoordsInterpolatedDest "64 64 64 64"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 3"
+set TileArea "256 256"
+set TileAreaFullTexture 0
+add MenuObject
+set Name MF_MainTextBox
+set Layer 5
+set Texture menus/MenuTextBox
+set Coords "0 0 329 422"
+set Child "MF_DescriptionTextTest 30 30"
+add MenuObject
+set Name MF_TestAlign
+set Layer 1
+set Texture ControllerMap
+set Coords "0 60 512 480"
+set Anchor Top
+add MenuObject
+set Name MF_DescriptionTextTest
+set Coords "0 0 329 422"
+set RenderCB _DrawUText
+set RenderCB_DX 280
+set RenderCB_DY 380
+set RenderCB_Font OCR
+set RenderCB_FontScale 0.25
+set RenderCB_BoolArg 1
+set RenderCB_Text MF_TextTest
+set RenderCB_RGBColor "1.0 0.6 0.0"
+set RenderCB_FloatSymbol MainMenuDescTimer@C_BINDING@
+set RenderCB_FloatArg 400.0
+set Layer 6
+add MenuObject
+set Name MF_DescriptionTextBar
+set Coords "0 0 1900 35"
+set RenderCB _DrawUText
+set RenderCB_DX 1900
+set RenderCB_DY 35
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.6
+set RenderCB_BoolArg 1
+set RenderCB_ConsoleSymbol MenuTip0
+set RenderCB_RGBColor "0.7 0.65 0.5"
+set RenderCB_FloatSymbol MainMenuDescTimer@C_BINDING@
+set RenderCB_FloatArg 140.0
+set Layer 5
+add MenuObject
+set Name OrangeTab
+set Texture menus/TextBoxOrange
+set Coords "90 0 22 64"
+set Layer 2
+add MenuObject
+set Name MF_WaveOverlay1
+set Layer 7
+set Texture OverlayWaveRed
+set BlendMode BlendAdd
+set Coords "0 0 128 128"
+set CoordsInterpolatedDest "4096 128 128 128"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 8"
+set TileArea "1920 1080"
+set TileAreaFullTexture 0
+add MenuObject
+set Name MF_WaveOverlay2
+set Layer 7
+set Texture OverlayWaveRed
+set BlendMode BlendAdd
+set Coords "0 0 128 128"
+set CoordsInterpolatedDest "2048 -128 128 128"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 18"
+set TileArea "1920 1080"
+set TileAreaFullTexture 0
+add MenuObject
+set Name MF_ScanOverlay
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "MF_WaveOverlay1 0 0"
+set Child "MF_WaveOverlay2 0 0"
+add MenuObject
+set Name BlackMenuGrad
+set Texture menus/BlackMenuGrad
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Layer 0
+add MenuObject initFrom MF_Template
+set Name MF_CustomizeArmy
+set RenderCB_Text MF_CustomizeArmy
+set CommandFocusDown "gameUI focusName MF_Statistics"
+set CommandGetFocus "sym setConcat2 MenuLastFocus $C_BINDING {Name}"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "menuCmd MF_CustomArmyActivate local 0"
+set DefaultKeyboardControl 1
+add MenuObject initFrom MF_Template
+set Name MF_Statistics
+set RenderCB_Text MF_Statistics
+set CommandFocusUp "gameUI focusName MF_CustomizeArmy"
+set CommandGetFocus "sym setConcat2 MenuLastFocus $C_BINDING {Name}"
+set Disabled 1
+set DefaultKeyboardControl 1
+add MenuObject initFrom MF_Template
+set Name MF_Exit
+set RenderCB_Text MF_Exit
+set Texture menus/TextBoxBlue
+set RenderCB_RGBColor "0.7 0.9 1.0"
+set RenderCB_RGBColorFocused "1.0 1.0 1.0"
+set CommandGetFocus "sym setConcat2 MenuLastFocus $C_BINDING {Name}"
+set CommandPress "exit"
+set Hidden 1
+add MenuObject initFrom MF_Template
+set Name MF_Boosts
+set Texture menus/TextBoxBlue
+set RenderCB_Text MF_Boosts
+set RenderCB_RGBColor "0.7 0.9 1.0"
+set RenderCB_RGBColorFocused "1.0 1.0 1.0"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "menuCmd MF_BoostsActivate"
+set DefaultKeyboardControl 1
+set Hidden 1
+add MenuObject initFrom MF_Template
+set Name MF_PlayQuickDev
+set RenderCB_Text MF_PlaySimple
+set Texture menus/TextBoxBlue
+set RenderCB_RGBColor "0.7 0.9 1.0"
+set RenderCB_RGBColorFocused "1.0 1.0 1.0"
+set CommandGetFocus "sym setConcat2 MenuLastFocus $C_BINDING {Name}"
+set CommandPress "sym set MapName Simple"
+set CommandPress "menuCmd LoadMapMB_1v1"
+set DefaultKeyboardControl 1
+set Hidden 1
+add MenuObject initFrom MF_Template
+set Name MF_Logout
+set RenderCB_Text MF_Logout
+set CommandFocusUp "gameUI focusName MF_Exit"
+set CommandGetFocus "sym setConcat2 MenuLastFocus $C_BINDING {Name}"
+set CommandPress "menuCmd MF_Logout"
+set CommandCancel "gameUI focusName MF_PlayGame"
+set ToolTip MF_LogoutTip
+add MenuObject initFrom DialogMessage
+set Name BoostMsgBase
+set RenderCB_FontScale 0.8
+set RenderCB_DX 200
+set RenderCB _DrawTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol ""
+add MenuObject initFrom BoostMsgBase
+set Name BoostOfferName
+set RenderCB_FontScale 1.0
+set RenderCB_ConsoleSymbol BoostName@_Arg1_@
+add MenuObject initFrom BoostMsgBase
+set Name BoostDuration
+set RenderCB_ConsoleSymbol BoostDuration@_Arg1_@
+add MenuObject
+set Name BoostIcon
+set Texture menus/BoostIcons
+set Coords "0 0 256 256"
+set CoordsAnimated "0 256 256 256"
+set CoordsAnimated "0 0 256 256"
+set CoordsAnimationSymHash BoostIcon@_Arg1_@
+set SaveArgs 1
+set FilterName BoostUI
+set ScaleX 0.25
+set ScaleY 0.25
+add MenuObject initFrom PurchaseButtonTemplate
+set Name BoostUnlockButton
+set RenderCB_Text UnlockDialogKudosButtonText
+set CommandPress ">rook buyBoost @_Arg1_@"
+add MenuObject initFrom BoostMsgBase
+set Name BoostCost
+set RenderCB_ConsoleSymbol BoostCost@_Arg1_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_RGBColor "0.9 1.0 1.0"
+add MenuObject initFrom PanelResizeDark
+set Name BoostOffer
+set RenderCB_DX 900
+set RenderCB_DY 120
+set HiddenCheckBySymbol BoosterHidden@_Arg1_@
+set Child "BoostOfferName 20 40		@_Arg1_@"
+set Child "BoostDuration 200 44		@_Arg1_@"
+set Child "BoostIcon 400 24			@_Arg1_@"
+set Child "BoostUnlockButton 500 22	@_Arg1_@"
+set Child "PStatusBarDiamondsIcon 704 42"
+set Child "BoostCost 740 44			@_Arg1_@"
+add MenuObject
+set Name MF_BoostItems
+set ContainerOnly 1
+set Hidden 1
+set Coords "0 0 64 64"
+set Child "BoostOffer 0 0		0"
+set Child "BoostOffer 0 80		1"
+set Child "BoostOffer 0 160		2"
+set Child "BoostOffer 0 240		3"
+set Child "BoostOffer 0 320		4"
+set Child "BoostOffer 0 400		5"
+set Child "BoostOffer 0 480		6"
+set Child "BoostOffer 0 560		7"
+set Child "BoostOffer 0 640		8"
+set Child "BoostOffer 0 720		9"
+add MenuObject initFrom DialogMessage
+set Name QuestMsgBase
+set RenderCB_FontScale 0.8
+set RenderCB_DX 400
+set RenderCB _DrawUText
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol ""
+set RenderCB_BoolArg 0
+set RenderCB_Font Roboto
+add MenuObject
+set Name QuestIconBorder
+set Texture menus/MainTiles+lang
+set Coords "629 719 73 73"
+set ScaleX 1.2, ScaleY 1.2
+add MenuObject
+set Name QuestIcon
+set Texture QuestIcons/&@_Arg1_@Name@_Arg2_@&_UL_LG
+set TextureAlt QuestIcons/Default_UL_LG
+set ScaleX 0.6, ScaleY 0.6
+set Coords "0 0 128 128"
+set SaveArgs 2
+set FilterName @_Arg1_@UI
+set Child "QuestIconBorder -5 -5"
+add MenuObject initFrom QuestIcon
+set Name QuestIconEx
+set Texture QuestIcons/@_Arg2_@_UL_LG
+add MenuObject initFrom QuestMsgBase
+set Name QuestName
+set Coords "0 0 695 80"
+set RenderCB_FontScale 0.8
+set SaveArgs 2
+set RenderCB_Text &@_Arg1_@Name@_Arg2_@&
+set FilterName @_Arg1_@UI
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Flags "/fitX"
+set Focus -2
+add MenuObject initFrom QuestName
+set Name QuestName2
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.1
+set HiddenCheckBySymbol @_Arg1_@Focus@_Arg2_@
+add MenuObject initFrom QuestName
+set Coords "0 0 270 80"
+set RenderCB_DX 270
+set RenderCB_DY 80
+set Name QuestNameEx
+set RenderCB_Text @_Arg2_@
+add MenuObject initFrom QuestMsgBase
+set Name QuestDesc
+set RenderCB_FontScale 0.55
+set SaveArgs 2
+set RenderCB _DrawUText
+set RenderCB_Text &@_Arg1_@Desc@_Arg2_@&
+set FilterName @_Arg1_@UI
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Coords "0 0 690 80"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_BoolArg 1
+set RenderCB_Font Roboto
+set Focus -2
+add MenuObject initFrom QuestDesc
+set Name Quest2Desc
+set Coords "0 0 380 88"
+set RenderCB_FontScale 0.60
+set RenderCB_RGBColor 0xdddddd
+set HiddenCheckBySymbolInv @_Arg1_@Focus@_Arg2_@
+set HiddenCheckBySymbol @_Arg1_@Complete@_Arg2_@
+add MenuObject initFrom Quest2Desc
+set Name Quest2DescC
+set Coords "0 0 380 88"
+set HiddenCheckBySymbolInv2 @_Arg1_@Complete@_Arg2_@
+set HiddenCheckBySymbol ""
+add MenuObject
+set Name QuestRedeemButtonHighlight
+set Texture menus/LoginCommon
+set PulseAlpha "2.5 -0.4 0.0"
+set Coords "485 132 257 104"
+set BlendMode BlendAdd
+set ScaleX 0.8, ScaleY 1.13
+add MenuObject
+set Name QuestRedeemButtonBase
+set Texture menus/LoginCommon
+set Coords "718 248 235 83"
+set CoordsFocused "476 248 235 83"
+set DrawWhenFocused QuestRedeemButtonHighlight
+set DrawWhenFocusedOffset "-8 -13"
+set MouseInteractZoneExpand "-15 -10 14 0"
+set RenderCB_DX 190
+set RenderCB_DY 70
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.85
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set ScaleX 0.8, ScaleY 1.2
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font RobotoBold
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Text QuestRedeemButtonText
+set HiddenCheckBySymbolInv @_Arg1_@Complete@_Arg2_@
+set Disabled &@_Arg1_@RedeemDisabled@_Arg2_@&
+set SaveArgs 2
+set FilterName @_Arg1_@UI
+set CommandPress ">sym set @_Arg1_@ToRedeem $@_Arg1_@Name@_Arg2_@"
+set CommandPress ">menuCmd Try@_Arg1_@Redeem"
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+add MenuObject initFrom QuestRedeemButtonBase
+set Name QuestRedeemButton
+set CommandFocusUp ">gameUI focusNameTryList QuestRedeemButton @_Arg2_@ 8 -1 /tryOnFail SubBarLabelQuests"
+set CommandCancel "gameUI focusName SubBarLabelQuests"
+set CommandFocusDown ">gameUI focusNameTryList QuestRedeemButton @_Arg2_@ 8 1"
+add MenuObject initFrom QuestRedeemButtonBase
+set Name Quest2RedeemButton
+set Child "Quest2DescC -385 -3	@_Arg1_@ @_Arg2_@"
+set Child "Quest2KudosRewardC 70 15	@_Arg1_@ @_Arg2_@"
+set Child "Quest2XPRewardC 70 15	@_Arg1_@ @_Arg2_@"
+set Child "Quest2DiamondRewardC 70 15	@_Arg1_@ @_Arg2_@"
+set Child "Quest2VipDiamondRewardC 70 15	@_Arg1_@ @_Arg2_@"
+set MouseInteractZoneExpand "-15 -10 14 0"
+set RenderCB_DX 190
+set RenderCB_DY 113
+set RenderCB_RGBColor 0xffd67d
+set RenderCB_FontScale 0.65
+set CommandFocusUp ">if usingpad runnow gameUI focusNameTryList QuestRedeemButton @_Arg2_@ 6 -1 /tryOnFail .QuestRedeemFocusUpFail@_Arg2_@"
+set CommandCancel "sym set ShowQuestItems 0"
+set CommandCancel ">pcmd t0 gameui focusnametry #QuestSectionTile@LastQuestSection@"
+set CommandFocusDown ">if usingpad runnow gameUI focusNameTryList QuestRedeemButton @_Arg2_@ 6 1 /tryOnFail .QuestRedeemFocusDownFail@_Arg2_@"
+add MenuObject
+set Name QuestRedeemFrame
+set Texture menus/QuestsFrame
+set Coords "226 814 176 75"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor 0x6d6c75
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.85
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "0 15"
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font RobotoBold
+set RenderCB_Text QuestRewardText
+set RenderCB_FontScale 0.65
+set DisabledAlpha 0.3
+set HiddenCheckBySymbol @_Arg1_@Complete@_Arg2_@
+set DisabledSym @_Arg1_@Focus@_Arg2_@
+add MenuObject initFrom QuestRedeemButton
+set Name ConQuestRedeemButtonText
+set RenderCBExcludesDefaultRender 1
+set RenderCB_Text QuestRedeemButtonText
+set RenderCB_Flags "/allCaps"
+set NoAlphaMod 1
+set Alpha 0.6
+set Child "ConsoleButtonSimple 240 0 	 @DM_Select@ 1.2"
+add MenuObject initFrom QuestRedeemButton
+set Name ConQuestRedeemButton
+set RenderCBExcludesDefaultRender 1
+set RenderCB _DrawText
+set RenderCB_Text ""
+set DisplayAsFocusedIfParentFocused 1
+set DrawWhenFocused ConQuestRedeemButtonText
+set DrawWhenFocusedOffset "30 0"
+add MenuObject initFrom DialogButtonTemplate
+set Name QuestMoreInfoButton
+set RenderCB_Text $QuestMoreInfoButtonText_P
+set HiddenCheckBySymbolInv @_Arg1_@MoreInfo@_Arg2_@
+set ScaleX 1.0
+set SaveArgs 2
+set FilterName @_Arg1_@UI
+set CommandPress ">menuCmd $@_Arg1_@MoreInfoMenuCmd@_Arg2_@"
+add MenuObject
+set Name QuestInfoEntryBox
+set SaveArgs 2
+set HiddenCheckBySymbolInv @_Arg1_@InfoEntry@_Arg2_@
+set Coords "2 2 498 48"
+set ScaleX 0.5
+set Texture menus/LoginBase
+set DisabledAlpha 0.0
+set MouseInteractZoneExpand "-8 -8 -5 8"
+set RenderCBExcludesDefaultRender 0
+set DrawWhenFocused LoginBoxHighlightHalfSize
+set RenderCB_DX 249
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "8 7"
+set Focus -2
+set MouseInteract 1
+set RenderCB _DrawText
+set RenderCB_Flags "/fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set TextEditableMaxLen 15
+set TextEditableProfanityFiltered 1
+set TextEditableUsername 1
+set RenderCB_Text QuestInfoEntry
+set CommandEnterKey "menuCmd DoQuestInfoEntry"
+add MenuObject
+set Name QuestVIPIcon
+set Texture menus/MainTiles+lang
+set Coords "197 434 57 57"
+set MouseInteract 1
+set DrawGreyScale 1
+set ToolTip TT_VIP@_Arg1_@
+set SaveArgs 2
+set FilterName @_Arg1_@UI
+set HiddenCheckBySymbolInv @_Arg1_@VIP@_Arg2_@
+add MenuObject initFrom QuestMsgBase
+set Name QuestRewardText
+set RenderCB_FontScale 0.625
+set SaveArgs 2
+set RenderCB_Text QuestRewardText
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Coords "0 0 150 80"
+set FilterName @_Arg1_@UI
+set HiddenCheckBySymbolInv @_Arg1_@RewardItem@_Arg2_@
+set HiddenCheckBySymbolValue @_Arg1_@RewardItemShow@_Arg2_@=0
+add MenuObject initFrom QuestMsgBase
+set Name Quest2RewardText
+set RenderCB_FontScale 0.7
+set SaveArgs 2
+set RenderCB_ConsoleSymbol @_Arg1_@RewardItemDisp@_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font RobotoBold
+set Coords "0 0 160 80"
+set RenderCB_RGBColor 0xffffff
+set FilterName @_Arg1_@UI
+set RenderCB_Flags "/fitX"
+set HiddenCheckBySymbolValue @_Arg1_@RewardItemShow@_Arg2_@=0
+add MenuObject initFrom PStatusBarCurrencyTemplate
+set Name QuestDiamondRewardBase
+set SaveArgs 2
+set RenderCB_Text ""
+set RenderCB_Flags ""
+set HiddenCheckBySymbolInv @_Arg1_@RewardD@_Arg2_@
+set RenderCB_ConsoleSymbol @_Arg1_@RewardD@_Arg2_@
+set ToolTip ""
+set RenderCB_FontScale 0.9
+set RenderCB_RGBColor "0.9 1.0 1.0"
+set RenderCB_TextJustify JustifyXLeft
+set FilterName @_Arg1_@UI
+add MenuObject initFrom PStatusBarDiamondsIconScaled
+set Name QuestIconDiamonds
+set DisabledSym @_Arg2_@Focus@_Arg3_@
+set DisabledAlpha 0.3
+set SaveArgs 2
+add MenuObject initFrom PStatusBarDiamondsIconScaled
+set Name QuestIconDiamondsC
+set CoordsAnimated "16 167 32 32"
+set CoordsAnimated "16 167.5 32 32"
+set CoordsAnimated "16.5 168 32 32"
+set CoordsAnimated "17 168 32 32"
+set CoordsAnimated "17 167.5 32 32"
+set CoordsAnimated "16.5 167 32 32"
+set CoordsAnimationFrameTimer 0.05
+add MenuObject initFrom QuestDiamondRewardBase
+set Name QuestDiamondReward
+set Child "PStatusBarDiamondsIconScaled -34 -1 0.9"
+add MenuObject initFrom QuestDiamondRewardBase
+set Name QuestVipDiamondReward
+set HiddenCheckBySymbolInv @_Arg1_@RewardVipD@_Arg2_@
+set RenderCB_ConsoleSymbol @_Arg1_@RewardVipD@_Arg2_@
+add MenuObject initFrom QuestDiamondRewardBase
+set Name Quest2DiamondRewardBase
+set RenderCB_FontScale 0.45
+set RenderCB_Font Numbers80px
+add MenuObject initFrom Quest2DiamondRewardBase
+set Name Quest2DiamondReward
+set Child "QuestIconDiamonds -34 -2 1.0	@_Arg1_@ @_Arg2_@"
+set HiddenCheckBySymbolInv @_Arg1_@RewardD@_Arg2_@
+set RenderCB_ConsoleSymbol @_Arg1_@RewardD@_Arg2_@
+set HiddenCheckBySymbol @_Arg1_@Complete@_Arg2_@
+set DisabledSym @_Arg1_@Focus@_Arg2_@
+add MenuObject initFrom Quest2DiamondRewardBase
+set Name Quest2DiamondRewardC
+set Child "QuestIconDiamondsC -34 -2 1.0"
+set HiddenCheckBySymbolInv @_Arg1_@RewardD@_Arg2_@
+set RenderCB_ConsoleSymbol @_Arg1_@RewardD@_Arg2_@
+add MenuObject initFrom Quest2DiamondRewardBase
+set Name Quest2VipDiamondReward
+set Child "QuestIconDiamonds -34 -2 1.0		@_Arg1_@ @_Arg2_@"
+set HiddenCheckBySymbolInv @_Arg1_@RewardVipD@_Arg2_@
+set RenderCB_ConsoleSymbol @_Arg1_@RewardVipD@_Arg2_@
+set HiddenCheckBySymbol @_Arg1_@Complete@_Arg2_@
+set DisabledSym @_Arg1_@Focus@_Arg2_@
+add MenuObject initFrom Quest2DiamondRewardBase
+set Name Quest2VipDiamondRewardC
+set Child "QuestIconDiamondsC -34 -2 1.0"
+set HiddenCheckBySymbolInv @_Arg1_@RewardVipD@_Arg2_@
+set RenderCB_ConsoleSymbol @_Arg1_@RewardVipD@_Arg2_@
+add MenuObject initFrom PStatusBarCurrencyTemplate
+set Name QuestKudosRewardBase
+set SaveArgs 2
+set RenderCB_Text ""
+set RenderCB_Flags ""
+set HiddenCheckBySymbolInv @_Arg1_@RewardK@_Arg2_@
+set RenderCB_ConsoleSymbol @_Arg1_@RewardK@_Arg2_@
+set ToolTip ""
+set RenderCB_FontScale 0.9
+set RenderCB_RGBColor "1.0 0.9 0.6"
+set RenderCB_TextJustify JustifyXLeft
+set FilterName @_Arg1_@UI
+add MenuObject initFrom PStatusBarCurrencyTemplate
+set Name QuestXPRewardBase
+set SaveArgs 2
+set RenderCB_Text ""
+set RenderCB_Flags ""
+set HiddenCheckBySymbolInv @_Arg1_@RewardXP@_Arg2_@
+set RenderCB_ConsoleSymbol @_Arg1_@RewardXP@_Arg2_@
+set ToolTip ""
+set RenderCB_FontScale 0.9
+set RenderCB_RGBColor "1.0 0.9 0.6"
+set RenderCB_TextJustify JustifyXLeft
+set FilterName @_Arg1_@UI
+add MenuObject initFrom QuestKudosRewardBase
+set Name QuestKudosReward
+set Child "PStatusBarKudosIconScaled -34 -1 0.9"
+add MenuObject initFrom QuestXPRewardBase
+set Name QuestXPReward
+set Child "PStatusBarKudosIconScaled -34 -1 0.9"
+add MenuObject initFrom QuestKudosRewardBase
+set Name Quest2KudosRewardBase
+set RenderCB_FontScale 0.45
+set RenderCB_Font Numbers80px
+set DisabledSym @_Arg1_@Focus@_Arg2_@
+set DisabledAlpha 0.3
+add MenuObject initFrom QuestXPRewardBase
+set Name Quest2XPRewardBase
+set RenderCB_FontScale 0.45
+set RenderCB_Font Numbers80px
+set DisabledSym @_Arg1_@Focus@_Arg2_@
+set DisabledAlpha 0.3
+add MenuObject initFrom PStatusBarKudosIconScaled
+set Name QuestIconKudos
+set DisabledSym @_Arg2_@Focus@_Arg3_@
+set DisabledAlpha 0.3
+set SaveArgs 2
+add MenuObject initFrom PStatusBarXPIconScaled
+set Name QuestIconXP
+set DisabledSym @_Arg2_@Focus@_Arg3_@
+set DisabledAlpha 0.3
+set SaveArgs 2
+add MenuObject initFrom PStatusBarKudosIconScaled
+set Name QuestIconKudosC
+set CoordsAnimated "51 167 32 32"
+set CoordsAnimated "51 167.5 32 32"
+set CoordsAnimated "51.5 168 32 32"
+set CoordsAnimated "52 168 32 32"
+set CoordsAnimated "52 167.5 32 32"
+set CoordsAnimated "51.5 167 32 32"
+set CoordsAnimationFrameTimer 0.05
+add MenuObject initFrom PStatusBarKudosIconScaled
+set Name QuestIconXPC
+set CoordsAnimated "88 167 32 32"
+set CoordsAnimated "88 167.5 32 32"
+set CoordsAnimated "88.5 168 32 32"
+set CoordsAnimated "89 168 32 32"
+set CoordsAnimated "89 167.5 32 32"
+set CoordsAnimated "88.5 167 32 32"
+set CoordsAnimationFrameTimer 0.05
+add MenuObject initFrom Quest2KudosRewardBase
+set Name Quest2KudosReward
+set Child "QuestIconKudos -34 -2 1.0	@_Arg1_@	@_Arg2_@"
+set HiddenCheckBySymbol @_Arg1_@Complete@_Arg2_@
+add MenuObject initFrom Quest2XPRewardBase
+set Name Quest2XPReward
+set Child "QuestIconXP -34 -2 1.0	@_Arg1_@	@_Arg2_@"
+set HiddenCheckBySymbol @_Arg1_@Complete@_Arg2_@
+add MenuObject initFrom Quest2KudosRewardBase
+set Name Quest2KudosRewardC
+set RenderCB_RGBColor 0xffffff
+set Child "QuestIconKudosC -34 -2 1.0"
+set HiddenCheckBySymbolInv @_Arg1_@RewardK@_Arg2_@
+set DisabledAlpha 1.0
+add MenuObject initFrom Quest2XPRewardBase
+set Name Quest2XPRewardC
+set RenderCB_RGBColor 0xffffff
+set Child "QuestIconXPC -34 -2 1.0"
+set HiddenCheckBySymbolInv @_Arg1_@RewardXP@_Arg2_@
+set DisabledAlpha 1.0
+add MenuObject initFrom QuestMsgBase
+set Name QuestProgressText
+set RenderCB_FontScale 0.7
+set RenderCB_DX 600
+set RenderCB_DY 50
+set SaveArgs 2
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@Progress@_Arg2_@
+set HiddenCheckBySymbolInv @_Arg1_@ProgressShow@_Arg2_@
+set RenderCB _DrawText
+set RenderCB_TextJustify JustifyXRight
+set FilterName @_Arg1_@UI
+set RenderCB_RGBColor "0.8"
+add MenuObject initFrom QuestProgressText
+set Name Quest2ProgressText
+set RenderCB_DX 380
+set RenderCB_DY 70
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.65
+set RenderCB_RGBColor 0x888888
+add MenuObject
+set Name QuestProgressBar
+set Texture hud/PlayerStatus
+set CoordsStart 		"183 471 4 4"
+set CoordsMid 			"187 471 21 4"
+set CoordsEnd 			"208 471 4 4"
+set CoordsStartFocused 	"183 475 4 9"
+set CoordsMidFocused 	"187 475 21 9"
+set CoordsEndFocused 	"208 475 4 9"
+set CoordsStartDisabled "183 484 4 4"
+set CoordsMidDisabled 	"187 484 21 4"
+set CoordsEndDisabled 	"208 484 4 4"
+set RenderCB _Draw_G3x3
+set RenderCB_DX &@_Arg1_@ProgressBarDX@_Arg2_@&
+set RenderCB_DY 89
+set SaveArgs 2
+set FilterName @_Arg1_@UI
+set Color 0x666666
+add MenuObject initFrom QuestProgressBar
+set Name Quest2ProgressBar
+set Color 0x888888
+set RenderCB_DY 10
+set HiddenCheckBySymbol @_Arg1_@Focus@_Arg2_@
+add MenuObject initFrom PanelInset
+set Name QuestProgress
+set RenderCB_DX 672
+set RenderCB_DY 93
+set SaveArgs 2
+set NoAlphaMod 1
+set Alpha 0.5
+set Color 0x666666
+set FilterName @_Arg1_@UI
+set HiddenCheckBySymbolInv @_Arg1_@ProgressShow@_Arg2_@
+set Child "QuestProgressBar 2 2		@_Arg1_@ @_Arg2_@"
+add MenuObject
+set Name Quest2Progress
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "300 12"
+set SaveArgs 2
+set BlendMode BlendDestColor
+set Color 0xaaaaaa
+set HiddenCheckBySymbol @_Arg1_@Focus@_Arg2_@
+set FilterName @_Arg1_@UI
+set HiddenCheckBySymbolInv @_Arg1_@ProgressShow@_Arg2_@
+set Child "Quest2ProgressBar 1 1		@_Arg1_@ @_Arg2_@"
+set Child "Quest2ProgressText 0 14		@_Arg1_@ @_Arg2_@"
+add MenuObject initFrom PanelEmbossedColor
+set Name AirMechQuestCompleteBack
+set RenderCB_DX 1200
+set RenderCB_DY 93
+set HiddenCheckBySymbolInv @_Arg1_@Complete@_Arg2_@
+set Color 0x466f46
+set BlendMode BlendColorAdd
+add MenuObject initFrom AirMechQuestCompleteBack
+set Name AirMechQuest2CompleteBack
+set RenderCB_DX 700
+set RenderCB_DY 105
+add MenuObject
+set Name AirMechQuest2DoneCheck
+set Texture menus/Messages
+set Coords "524 164 82 73"
+set NoAlphaMod 1
+set Alpha 0.5
+set ScaleX 0.8, ScaleY 0.8
+add MenuObject initFrom PanelEmbossedColor
+set Name AirMechQuest2DoneBack
+set RenderCB_DX 700
+set RenderCB_DY 105
+set HiddenCheckBySymbolInv @_Arg1_@IsDone@_Arg2_@
+set Color 0x666666
+set Color 0x111111
+set NoAlphaMod 1
+set Alpha 0.7
+set Child "AirMechQuest2DoneCheck 570 26"
+add MenuObject
+set Name AirMechQuestCompleteCheckGlow
+set Texture menus/Messages
+set Coords "756 365 251 110"
+set BlendMode BlendAdd
+set PulseAlpha "2.0 -4.0 -0.9"
+add MenuObject
+set Name AirMechQuestCompleteCheck
+set Texture menus/Messages
+set Coords "756 365 251 110"
+set HiddenCheckBySymbolInv @_Arg1_@Complete@_Arg2_@
+set Child "AirMechQuestCompleteCheckGlow 0 0"
+add MenuObject initFrom PanelEmbossedColor
+set Name AirMechQuestCompleteDaily
+set RenderCB_DX 1200
+set RenderCB_DY 93
+set HiddenCheckBySymbolInv @_Arg1_@Recurring@_Arg2_@
+set Color 0x444499
+set BlendMode BlendColorAdd
+add MenuObject initFrom AirMechQuestCompleteDaily
+set Name AirMechQuest2CompleteDaily
+set RenderCB_DX 700
+set RenderCB_DY 105
+add MenuObject
+set Name QuestTimeRemaining
+set Texture menus/StoreTiles
+set Coords "572 961 184 56"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.75
+set RenderCBExcludesDefaultRender 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+set RenderCB_Offset "5 13"
+set RenderCB_RGBColor 0xffffff
+set HiddenCheckBySymbolInv @_Arg1_@IsDyn@_Arg2_@
+set RenderCB_ConsoleSymbol DDaily_&@_Arg1_@Name@_Arg2_@&_Time
+set SaveArgs 2
+set FilterName Quest2UI
+set DisabledAlphaTimeOut 0.0
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+set Child "ShopTimeRemainingSpin 10 10"
+set Child "ShopTimeRemainingSpin2 12 12"
+add MenuObject initFrom PanelInset
+set Name AirMechQuest
+set RenderCB_DX 700
+set RenderCB_DY 105
+set SaveArgs 1
+set Focus -2
+set MouseInteract 1
+set DrawAsLastChildWhenFocused 1
+set DrawWhenFocused FocusQuestLine
+set DrawWhenFocusedOffset "-9 -8"
+set MouseInteractZoneExpand "0 5 0 -5"
+set Color 0xc6f6ff
+set ColorFocused 0xe4fbff
+set HiddenCheckBySymbol Quest2Hidden@_Arg1_@
+set CommandGetFocus ">sym set Quest2Focus@_Arg1_@ 1"
+set CommandGetFocus ">input set padFocusFallback AirMechQuest2_@_Arg1_@"
+set CommandGetFocus ">if usingpad if sym Quest2Complete@_Arg1_@ == 1 pcmd 0.05 gameui focusnametry QuestRedeemButton@_Arg1_@"
+set CommandLoseFocus ">sym set Quest2Focus@_Arg1_@ 0"
+set CommandCancel "sym set ShowQuestItems 0"
+set CommandCancel ">pcmd t0 gameui focusnametry #QuestSectionTile@LastQuestSection@"
+set CommandFocusUp "gameUI ignoreInputTime 0.05"
+set CommandFocusUp ">gameUI focusNameTryList AirMechQuest2_ @_Arg1_@ 8 -1 /tryOnFail .QuestsPagePrevious"
+set CommandFocusDown "gameUI ignoreInputTime 0.05"
+set CommandFocusDown ">gameUI focusNameTryList AirMechQuest2_ @_Arg1_@ 8 1 /tryOnFail .QuestsPageNext"
+set Child "Quest2Progress 110 46				Quest2 @_Arg1_@"
+set Child "AirMechQuest2CompleteBack 0 0		Quest2 @_Arg1_@"
+set Child "QuestIcon 15 14						Quest2 @_Arg1_@"
+set Child "QuestMoreInfoButton 400 12			Quest2 @_Arg1_@"
+set Child "QuestRedeemFrame 503 16				Quest2 @_Arg1_@"
+set Child "Quest2RedeemButton[QuestRedeemButton@_Arg1_@] 497 10			Quest2 @_Arg1_@"
+set Child "QuestVIPIcon 820 30					Quest2 @_Arg1_@"
+set Child "Quest2RewardText 508 26				Quest2 @_Arg1_@"
+set Child "Quest2DiamondReward 570 27			Quest2 @_Arg1_@"
+set Child "Quest2VipDiamondReward 570 27		Quest2 @_Arg1_@"
+set Child "Quest2KudosReward 570 27				Quest2 @_Arg1_@"
+set Child "Quest2XPReward 570 27				Quest2 @_Arg1_@"
+set Child "Quest2Desc 112 8						Quest2 @_Arg1_@"
+set Child "QuestName2 112 8						Quest2 @_Arg1_@"
+set Child "QuestTimeRemaining 320 58			Quest2 @_Arg1_@"
+set Child "QuestInfoEntryBox[ReferralInput@_Arg1_@] 110 45		Quest2 @_Arg1_@"
+set Child "AirMechQuest2DoneBack 0 0			Quest2 @_Arg1_@"
+add MenuObject initFrom PanelEmbossedColor
+set Name AirMechQuestPopBack
+set Coords "0 0 380 99"
+set RenderCB_DX 380
+set RenderCB_DY 99
+set Color 0x236123
+set PulseAlpha "1.0 1.5 -0.5"
+set BlendMode BlendAdd
+add MenuObject
+set Name AirMechQuestPopCheck
+set Texture menus/Messages
+set Coords "524 159 81 80"
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name AirMechQuestPopButton
+set Texture menus/Messages
+set Coords "298 154 224 55"
+set CoordsFocused "298 208 224 55"
+set CoordsPressed "297 207 224 55"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Text QuestRedeemButtonText
+set MouseInteract 1
+set Focus -2
+set RenderCB _DrawUText
+set RenderCB_DX 224
+set RenderCB_DY 50
+set RenderCB_OffsetPressed "1 1"
+set RenderCB_Font Roboto
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/fitX /nmi"
+set MouseInteractZoneExpand "-95 -38 60 4"
+set CommandPress "if console && !menuLoaded ConQuests runnow loadmenu ConQuests"
+set CommandPress "if !console && !menuLoaded ConQuests runnow loadmenu ConQuests"
+set CommandFocusUp "gameUI focusNameTry EndGameFinishButton"
+set CommandFocusLeft "gameUI focusNameTry ChallengeButtonNext ChallengeEndButtonRestart PauseButtonList ChallengeButtonCompletedAll EndgameContinueButton"
+set CommandPress "clearmenu QuestCompletePopup /fadeout 0.2"
+set CommandPress "sym set _EgRewardCountOk_ 1"
+add MenuObject
+set Name UplayQuestPopButton
+set Texture menus/Messages
+set Coords "298 154 224 55"
+set CoordsFocused "298 208 224 55"
+set CoordsPressed "297 207 224 55"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Text QuestRedeemButtonText
+set MouseInteract 1
+set Focus -2
+set RenderCB _DrawUText
+set RenderCB_DX 224
+set RenderCB_DY 50
+set RenderCB_OffsetPressed "1 1"
+set RenderCB_Font Roboto
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/fitX /nmi"
+set MouseInteractZoneExpand "-95 -38 60 4"
+add MenuObject initFrom ConsoleButtonSimple
+set Name AirMechQuestPopPadbutton
+set HiddenCheckBySymbol InputMK
+add MenuObject initFrom PanelInset
+set Name AirMechQuestPop
+set RenderCB_DX 380
+set RenderCB_DY 99
+set SaveArgs 1
+set Color 0xcccccc
+set FilterName EndGame
+set DisabledSymValue PW_AA_State!0
+set Child "AirMechQuestPopBack 0 0"
+set Child "QuestIconEx 11 11				Quest @QuestNotifyEx@"
+set Child "QuestNameEx 100 4				Quest @QuestNotifyEx@"
+set Child "AirMechQuestPopButton 96 39"
+set Child "AirMechQuestPopCheck 310 10"
+set Child "AirMechQuestPopPadbutton 317 34 	 3 0.95"
+add MenuObject initFrom PanelInset
+set Name UplayQuestPop
+set RenderCB_DX 380
+set RenderCB_DY 99
+set SaveArgs 1
+set Color 0xcccccc
+set Child "AirMechQuestPopBack 0 0"
+set Child "QuestIconEx 11 11				Quest @QuestNotifyEx@"
+set Child "QuestNameEx 100 4				Quest @QuestNotifyEx@"
+set Child "UplayQuestPopButton 96 39"
+set Child "AirMechQuestPopCheck 310 10"
+set Child "AirMechQuestPopPadbutton 317 34 	 3 0.95"
+add MenuObject
+set Name UplayBannerText
+set RenderCB_DX 1220
+set RenderCB_DY 250
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale @_Arg2_@
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Text @_Arg1_@
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.9 0.9 0.9"
+set RenderCB_DX 500
+set RenderCB_DY 32
+add MenuObject initFrom UplayBannerText
+set Name UplayBannerQuest
+set RenderCB _DrawUText
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject initFrom UplayBannerText
+set Name UplayBannerPoints
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_DX 80
+add MenuObject
+set Name UplayBanner
+set Texture hud/UplayBanner
+set Coords "0 0 600 80"
+set Child "UplayBannerText[UplayBannerTitle] 25 13 UplayActionComplete 0.7"
+set Child "UplayBannerQuest[UplayBannerQuest] 25 38 _UplayBannerQuest_ 0.6"
+set Child "UplayBannerPoints[UplayBannerPoints] 480 10 _UplayBannerPoints_ 0.7"
+add MenuObject
+set Name UplayBannerOffline
+set Texture hud/UplayBanner
+set Coords "0 82 600 80"
+set Child "UplayBannerText[UplayBannerTitle] 75 25 UplayActionComplete 0.7"
+add MenuObject
+set Name ConAirMechQuestUnderlay
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1220 110"
+set Color 0x000000
+set NoAlphaMod 1
+set Alpha 0.4
+add MenuObject initFrom PanelInset
+set Name ConAirMechQuest
+set RenderCB_DX 1200
+set RenderCB_DY 93
+set SaveArgs 1
+set Focus -2
+set MouseInteract 1
+set CommandCancel "if sym ConQuestsMenu == 0 menuCmd ConMenuQuestsPressCancel"
+set CommandCancel "if sym ConQuestsMenu == 1 clearmenu ConQuests /fadeout 0.2"
+set CommandGetFocus ">input set padFocusFallback ConQuest@_Arg1_@"
+set CommandGetFocus ">if sym QuestComplete@_Arg1_@ == 1 sym set FocusedComplete 1"
+set CommandGetFocus ">if sym QuestComplete@_Arg1_@ == 0 sym set FocusedComplete 0"
+set CommandGetFocus ">sym set QuestFocusIndex @_Arg1_@"
+set CommandGetFocus ">addUIAnim QuestComplete@_Arg1_@ mas_QuestItemFocus"
+set CommandLoseFocus ">addUIAnim QuestComplete@_Arg1_@ mas_ShopItemDown"
+set DrawWhenFocused FocusConQuest
+set DrawWhenFocusedOffset "-5 -4 0"
+set Color 0xcccccc
+set HiddenCheckBySymbol QuestHidden@_Arg1_@
+set CommandFocusUp ">gameUI focusNameTryList ConQuest @_Arg1_@ 8 -1 /tryOnFail .ConQuestsPagePrevious"
+set CommandFocusDown ">gameUI focusNameTryList ConQuest @_Arg1_@ 8 1 /tryOnFail .ConQuestsPageNext"
+set CommandFocusRight "gameUI focusNameTry .FocusGameEventCache"
+set FirstDrawnChildren 1
+set Child "ConAirMechQuestUnderlay -10 -10"
+set Child "QuestProgress 92 0				Quest @_Arg1_@"
+set Child "AirMechQuestCompleteBack 0 0		Quest @_Arg1_@"
+set Child "AirMechQuestCompleteDaily 0 0	Quest @_Arg1_@"
+set Child "AirMechQuestCompleteCheck[QuestComplete@_Arg1_@] 1016 -20	Quest @_Arg1_@"
+set Child "QuestIcon 8 8					Quest @_Arg1_@"
+set Child "QuestName 100 4					Quest @_Arg1_@"
+set Child "QuestProgressText 154 4			Quest @_Arg1_@"
+set Child "QuestDesc 100 34					Quest @_Arg1_@"
+set Child "QuestMoreInfoButton[QuestMoreInfoButton@_Arg1_@] 1000 12		Quest @_Arg1_@"
+set Child "ConQuestRedeemButton[QuestRedeemButton@_Arg1_@] 1000 12		Quest @_Arg1_@"
+set Child "QuestVIPIcon 820 30				Quest @_Arg1_@"
+set Child "QuestRewardText 730 12			Quest @_Arg1_@"
+set Child "QuestDiamondReward 925 46		Quest @_Arg1_@"
+set Child "QuestKudosReward 925 12			Quest @_Arg1_@"
+set CommandPress ">gameui directPushNameIfEnabled QuestMoreInfoButton@_Arg1_@ QuestRedeemButton@_Arg1_@"
+add MenuObject initFrom QuestMsgBase
+set Name QuestsInfoBarText
+set RenderCB_FontScale 0.4
+set SaveArgs 1
+set Coords "0 0 610 40"
+set RenderCB_ConsoleSymbol StatQuestsCompleted
+set RenderCB _DrawText
+set FilterName QuestUI
+set RenderCB_RGBColor 0xcdd0e9
+set RenderCB_Font Numbers80px
+set NoAlphaMod 1
+set Alpha 0.5
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject initFrom QuestsInfoBarText
+set Name QuestsDetailBarText
+set RenderCB_ConsoleSymbol QuestDisplayState
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.7
+add MenuObject initFrom QuestsInfoBarText
+set Name QuestsInfoBarText2
+set RenderCB_Text QuestsRedeemStatus
+set HiddenCheckBySymbolInv VipStatusShown
+add MenuObject initFrom QuestsInfoBarText
+set Name QuestsInfoBarText2NoVIP
+set RenderCB_Text QuestsRedeemStatusNoVIP
+set HiddenCheckBySymbol VipStatusShown
+set MouseInteract 1
+set ToolTip TT_NoVIPQuestTip
+set RenderCB_DX 280
+set RenderCB_DY 40
+add MenuObject
+set Name AirMechQuestsInfo
+set RenderCB_DX 1200
+set RenderCB_DY 41
+set ContainerOnly 1
+set SaveArgs 1
+set Child "QuestsInfoBarText 0 0"
+add MenuObject
+set Name ActiveQuestsBg
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "625 635"
+set Color 0x909090
+set BlendMode BlendDestColor
+add MenuObject
+set Name Quests2WheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 700 710"
+set SaveArgs 2
+set CommandOnMouseDrag ">quests scrollUpdate Quest /paged $_Wheel"
+add MenuObject
+set Name MF_ActiveQuests
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ShowQuestItems
+set Child "AirMechQuest[AirMechQuest2_0] 0 Nx105	0"
+set Child "AirMechQuest[AirMechQuest2_1] 0 Nx105	1"
+set Child "AirMechQuest[AirMechQuest2_2] 0 Nx105	2"
+set Child "AirMechQuest[AirMechQuest2_3] 0 Nx105	3"
+set Child "AirMechQuest[AirMechQuest2_4] 0 Nx105	4"
+set Child "AirMechQuest[AirMechQuest2_5] 0 Nx105	5"
+set Child "Quests2WheelZone 0 -30"
+set Child "QuestsDetailBarText 0 635"
+set Child "ConQuestNext 480 640		Quest2"
+set Child "ConQuestPrevious 480 -50	Quest2"
+add MenuObject
+set Name QuestsScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1240 900"
+set CommandOnMouseDrag "floatsym scaledMod QuestPos 0.025 $_Wheel 0 1"
+set CommandOnMouseDrag "quests scrollUpdate Quest"
+add MenuObject
+set Name QuestsScrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "QuestsScrollbarPos 0 0"
+set ScaleY 1.474
+set ScaleX 3.0
+set Color 0x777777
+set NoAlphaMod 1
+set Alpha 0.3
+set HiddenCheckBySymbol HideQuestScrollBar
+add MenuObject
+set Name QuestsScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult QuestPos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set Color 0x666666
+set ColorFocused 0xcccccc
+set Focus -2
+set CommandOnMouseDrag "floatsym set QuestPos $_MouseRelY"
+set CommandOnMouseDrag "quests scrollUpdate Quest"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.479
+set ScaleX 3.0
+add MenuObject
+set Name MF_QuestItems
+set ContainerOnly 1
+set Hidden 1
+set Coords "0 0 64 64"
+set Child "MF_ActiveQuests 0 0"
+add MenuObject initFrom QuestMsgBase
+set Name ReferralsInfoBarText
+set RenderCB_FontScale 0.8
+set SaveArgs 1
+set RenderCB_Text ReferralsStatus
+set FilterName ReferralUI
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject initFrom ReferralsInfoBarText
+set Name ReferralsInfoBarText2
+set RenderCB_Text ReferralsLvlStatus
+set RenderCB_FontScale 0.65
+add MenuObject initFrom ReferralsInfoBarText
+set Name ReferralsInfoBarText3
+set RenderCB_Text ReferralsRedeemStatus
+add MenuObject
+set Name ReferralLinkButton
+set Texture menus/Social
+set Coords "458 205 440 63"
+set CoordsPressed "8 203 440 63"
+set RenderCB _DrawUText
+set ScaleX 0.6, ScaleY 0.7
+set DrawWhenFocused FocusCopyButton
+set DrawWhenFocusedOffset "-3 -3 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.6
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Focus -2
+set MouseInteract 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Flags "/nmi /fitX"
+set DisabledAlpha 0.2
+set RenderCB_Text ReferralCopyLink
+set CommandPress "menucmd GetReferralLink"
+add MenuObject initFrom PanelResizeDark
+set Name AirMechReferralsInfo
+set SaveArgs 1
+set ContainerOnly 1
+set Child "ReferralsInfoBarText 0 0"
+set Child "ReferralsInfoBarText2 350 5"
+set Child "ReferralsInfoBarText3 650 0"
+set Child "ReferralLinkButton 960 -10"
+add MenuObject
+set Name ReferralsScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1140 900"
+set CommandOnMouseDrag "floatsym scaledMod ReferralPos 0.025 $_Wheel 0 1"
+set CommandOnMouseDrag "quests scrollUpdate Referral"
+add MenuObject
+set Name ReferralsScrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "ReferralsScrollbarPos -2 0"
+set ScaleY 1.479
+set ScaleX 3.0
+set Color 0x777777
+set NoAlphaMod 1
+set Alpha 0.3
+set HiddenCheckBySymbol HideReferralScrollBar
+add MenuObject
+set Name ReferralsScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult ReferralPos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set Color 0x666666
+set ColorFocused 0xcccccc
+set Focus -2
+set CommandOnMouseDrag "floatsym set ReferralPos $_MouseRelY"
+set CommandOnMouseDrag "quests scrollUpdate Referral"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.479
+set ScaleX 3.0
+add MenuObject initFrom PanelInset
+set Name AirMechReferral
+set RenderCB_DX 1200
+set RenderCB_DY 93
+set SaveArgs 1
+set HiddenCheckBySymbol ReferralHidden@_Arg1_@
+set Child "AirMechQuestCompleteBack 0 0				Referral @_Arg1_@"
+set Child "QuestIcon 8 8				Referral @_Arg1_@"
+set Child "QuestName 100 4				Referral @_Arg1_@"
+set Child "QuestDesc 100 34				Referral @_Arg1_@"
+set Child "QuestMoreInfoButton 875 50	Referral @_Arg1_@"
+set Child "QuestInfoEntryBox 515 25		Referral @_Arg1_@"
+set Child "QuestRedeemButton 1000 12	Referral @_Arg1_@"
+set Child "QuestVIPIcon 820 56			Referral @_Arg1_@"
+set Child "QuestRewardText 730 12		Referral @_Arg1_@"
+set Child "QuestDiamondReward 925 46	Referral @_Arg1_@"
+set Child "QuestKudosReward 925 12		Referral @_Arg1_@"
+set Child "QuestProgress 88 88			Referral @_Arg1_@"
+add MenuObject
+set Name MF_ActiveReferrals
+set ContainerOnly 1
+set Child "AirMechReferralsInfo 0 0"
+set Child "AirMechReferral 0 40	0"
+set Child "AirMechReferral 0 150	1"
+set Child "AirMechReferral 0 260	2"
+set Child "AirMechReferral 0 370	3"
+set Child "AirMechReferral 0 480	4"
+set Child "AirMechReferral 0 590	5"
+set Child "AirMechReferral 0 700	6"
+set Child "AirMechReferral 0 810	7"
+set Child "ReferralsScrollbar 1100 50"
+set Child "ReferralsScrollWheelZone 0 0"
+add MenuObject
+set Name MF_ReferralItems
+set ContainerOnly 1
+set Hidden 1
+set Coords "0 0 64 64"
+set Child "MF_ActiveReferrals 0 -20"
+add MenuObject initFrom QuestMsgBase
+set Name SocialInfoBarText
+set RenderCB_FontScale 0.8
+set SaveArgs 1
+set RenderCB_Text SocialStatus
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject initFrom PanelEmbossedColor
+set Name AirMechSocialInfo
+set RenderCB_DX 1100
+set RenderCB_DY 41
+set SaveArgs 1
+set ContainerOnly 1
+set Child "SocialInfoBarText 10 0"
+add MenuObject
+set Name SocialScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1140 900"
+set CommandOnMouseDrag "floatsym scaledMod SocialPos 0.025 $_Wheel 0 1"
+set CommandOnMouseDrag "quests scrollUpdate Social"
+add MenuObject
+set Name SocialScrollbar
+set Texture "menus/Scrollbar"
+set Coords "32 0 32 512"
+set Child "SocialScrollbarPos -2 0"
+set ScaleY 1.72
+set HiddenCheckBySymbol HideSocialScrollBar
+add MenuObject
+set Name SocialScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "0 409 32 512"
+set CoordsInterpolatedDest "0 0 32 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult SocialPos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set CommandOnMouseDrag "floatsym set SocialPos $_MouseRelY"
+set CommandOnMouseDrag "quests scrollUpdate Social"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.72
+add MenuObject initFrom PanelInset
+set Name AirMechSocial
+set RenderCB_DX 1100
+set RenderCB_DY 93
+set SaveArgs 1
+set HiddenCheckBySymbol SocialHidden@_Arg1_@
+set Child "QuestIcon 8 8				Social @_Arg1_@"
+set Child "QuestName 100 4				Social @_Arg1_@"
+set Child "QuestDesc 100 34				Social @_Arg1_@"
+set Child "QuestMoreInfoButton 875 16	Social @_Arg1_@"
+set Child "QuestRedeemButton 875 16		Social @_Arg1_@"
+set Child "QuestRewardText 730 8		Social @_Arg1_@"
+set Child "QuestDiamondReward 1025 6	Social @_Arg1_@"
+set Child "QuestKudosReward 925 6		Social @_Arg1_@"
+set Child "QuestXPReward 925 6			Social @_Arg1_@"
+set Child "QuestProgress 88 83			Social @_Arg1_@"
+add MenuObject
+set Name MF_ActiveSocial
+set ContainerOnly 1
+set Child "AirMechSocialInfo 0 0"
+set Child "AirMechSocial 0 40	0"
+set Child "AirMechSocial 0 150	1"
+set Child "AirMechSocial 0 260	2"
+set Child "AirMechSocial 0 370	3"
+set Child "AirMechSocial 0 480	4"
+set Child "AirMechSocial 0 590	5"
+set Child "AirMechSocial 0 700	6"
+set Child "AirMechSocial 0 810	7"
+set Child "SocialScrollbar 1100 50"
+set Child "SocialScrollWheelZone 0 0"
+add MenuObject initFrom PurchaseButtonTemplate
+set Name SetFactionButton
+set RenderCB_Text CodeSubmitButtonText
+set CommandPress "rook buyFactionTag"
+set HiddenCheckBySymbolValue FactionTag=@FactionTagActual@
+set Hidden 1
+add MenuObject initFrom PurchaseButtonTemplate
+set Name SetFactionButtonGrey
+set RenderCB_Text CodeSubmitButtonText
+set DrawGreyScale 1
+set NoAlphaMod 1
+set Alpha 0.3
+set MouseInteract 0
+add MenuObject
+set Name ClanTagEntryBox
+set Coords "208 940 204 67"
+set Texture menus/MainTiles+lang
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set DrawWhenFocused PrivateRoomPinEntryBoxHighlight
+set RenderCB_DX 204
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.2
+set RenderCB_Offset "28 16"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 1"
+set TextEditableMaxLen 6
+set TextEditablePin 0
+set RenderCB_Text FactionTag
+set CommandOnKeyboardEdit "rookMenus editFactionTag"
+add MenuObject initFrom DialogMessage
+set Name FactionStatusDesc
+set RenderCB_FontScale 0.65
+set RenderCB_DX 530
+set RenderCB _DrawUTextShadowed
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol ""
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor "0.85"
+set RenderCB_Text FactionStatusDesc
+add MenuObject initFrom PanelInset
+set Name AirMechClanTag
+set RenderCB_DX 1100
+set RenderCB_DY 111
+set Child "PStatusBarDiamondsIcon 444 42"
+set Child "BoostCost 480 44			1"
+set Child "SetFactionButtonGrey 240 22	1"
+set Child "SetFactionButton 240 22	1"
+set Child "ClanTagEntryBox 20 23"
+set Child "FactionStatusDesc 550 23"
+add MenuObject initFrom QuestMsgBase
+set Name AirMechFactionHeaderText
+set RenderCB_FontScale 0.8
+set RenderCB_Text FactionStatus
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_DX 800
+add MenuObject initFrom PanelEmbossedColor
+set Name AirMechFactionHeader
+set RenderCB_DX 1100
+set RenderCB_DY 41
+set Color 0xff9955
+set Child "AirMechFactionHeaderText 25 5"
+add MenuObject
+set Name MF_AirMechFaction
+set ContainerOnly 1
+set Child "AirMechFactionHeader 0 0"
+set Child "AirMechClanTag 0 40	0"
+add MenuObject
+set Name PartyStatus
+set Coords "0 0 300 53"
+set RenderCB_DX 300
+set RenderCB_DY 53
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.55
+set RenderCB_Offset "-7 0"
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol PartyStatus@_Arg1_@
+set RenderCB_RGBColor 0xFFFFFF
+set Alpha 0.5
+set NoAlphaMod 1
+set BlendMode BlendAdd
+add MenuObject
+set Name PartyInfFriend
+set Texture menus/Social
+set Coords "314 5 301 59"
+set CoordsFocused "6 5 301 59"
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolValue PartyColorCode@_Arg1_@!1
+add MenuObject
+set Name PartyInfNotFriend
+set Texture menus/Social
+set Coords "314 277 301 59"
+set CoordsFocused "6 277 301 59"
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolValue PartyColorCode@_Arg1_@!0
+add MenuObject
+set Name PartyInfSelf
+set Texture menus/Social
+set Coords "314 137 301 59"
+set CoordsFocused "6 137 301 59"
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolValue PartyColorCode@_Arg1_@!2
+add MenuObject
+set Name PartyInfBg
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "301 59"
+set Color 0x141414
+set NoAlphaMod 1
+set Alpha 0.75
+add MenuObject
+set Name PartyLeaveBg
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "58 67"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name PartyLeave
+set Texture menus/Social
+set Coords "672 282 38 47"
+set CoordsFocused "626 282 38 47"
+set CoordsPressed "625 281 40 49"
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolValue PartyColorCode@_Arg1_@!2
+set CommandPress "party leave"
+set FirstDrawnChildren 1
+set Child "PartyLeaveBg -10 -10"
+add MenuObject
+set Name PartyInf
+set Texture menus/Social
+set Coords "314 5 301 59"
+set CoordsFocused "6 5 301 59"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set CommandPress ">sym setFrom _FriendName_ PartyName@_Arg1_@"
+set CommandPress ">sym set _FriendState_ $PartyState@_Arg1_@"
+set CommandPress ">sym set _FriendStatusCode_ $PartyStatusCode@_Arg1_@"
+set CommandPress "sym set _FriendFromParty_ 1"
+set CommandPress ">if sym _FriendStatusCode_ == -1 && sym PartyMe@_Arg1_@ == 0 loadmenu DialogNotFriend /fadein 0.15"
+set CommandPress ">if sym _FriendStatusCode_ != -1 && sym PartyMe@_Arg1_@ == 0 loadmenu DialogFriend /fadein 0.15"
+set RenderCB_DX 480
+set RenderCB_DY 54
+set SaveArgs 1
+set HiddenCheckBySymbol PartyHidden@_Arg1_@
+set Child "PartyLeave 314 6		@_Arg1_@"
+set Child "PartyInfBg 0 0"
+set Child "PartyInfFriend 0 0		@_Arg1_@"
+set Child "PartyInfNotFriend 0 0	@_Arg1_@"
+set Child "PartyInfSelf 0 0			@_Arg1_@"
+set Child "PartyLeaderPromote 239 17		@_Arg1_@"
+set Child "PartyName 0 0			@_Arg1_@"
+set DisabledAlphaTimeIn 0.4
+set DisabledAlphaTimeOut 0.4
+add MenuObject
+set Name PartyName
+set Coords "0 0 300 53"
+set RenderCB_DX 300
+set RenderCB_DY 53
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_BoolArg 1
+set RenderCB_Font RobotoBold
+set RenderCB_Offset "15 16"
+set RenderCB_ConsoleSymbol DialogBoxMessage
+set RenderCB_FontScale 0.8
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol PartyName@_Arg1_@
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject
+set Name PartyLeaderIcon
+set Texture menus/Social
+set Coords "831 147 66 38"
+set ScaleX 0.66, ScaleY 0.66
+set MouseInteract 1
+set HiddenCheckBySymbol PartyHidden0
+add MenuObject
+set Name PartyLeaderPromote
+set Texture menus/Social
+set Coords "831 276 66 38"
+set CoordsFocused "831 147 66 38"
+set ScaleX 0.66, ScaleY 0.66
+set DrawGreyScale 1
+set NoAlphaMod 1
+set Alpha 0.7
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolInv _PartyLeader_
+set CommandPress ">party promoteSym PartyName@_Arg1_@"
+add MenuObject
+set Name MF_SocialItems
+set ContainerOnly 1
+set Hidden 1
+set Coords "0 0 64 64"
+set Child "MF_ActiveSocial 0 0"
+set Child "MF_AirMechFaction 0 480"
+add MenuObject initFrom QuestMsgBase
+set Name CollectionBadge
+set RenderCB_FontScale 1.0
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Font Badges
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text ""
+set RenderCB_DY 80
+set RenderCB_DX 190
+set RenderCB_ConsoleSymbol TR_Badge@_Arg1_@
+set HiddenCheckBySymbolInv TR_IsBadge@_Arg1_@
+add MenuObject initFrom PanelResizeDark
+set Name AirMechStats
+set RenderCB_DX 800
+set RenderCB_DY 900
+set SaveArgs 1
+set Child "AM_Stat	40	20
+add MenuObject
+set Name AirMechStatTemplate
+set Coords "0 0 400 22"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_ConsoleSymbol DialogBoxMessage
+set RenderCB_Flags "/fitX"
+add MenuObject initFrom AirMechStatTemplate
+set Name AirMechStatValueNew
+set RenderCB _DrawStatValue
+set RenderCB_TextJustify JustifyXRight
+set SaveArgs 1
+set FilterName StatsUI
+set RenderCB_Text @_Arg1_@
+set RenderCB_ConsoleSymbol ""
+set RenderCB_RGBColor 1.0
+add MenuObject initFrom DialogMessage
+set Name AirMechStatValue
+set RenderCB_FontScale 0.7
+set RenderCB_DX 400
+set RenderCB _DrawStatValue
+set RenderCB_TextJustify JustifyXLeft
+set SaveArgs 1
+set FilterName StatsUI
+set RenderCB_Text @_Arg1_@
+set RenderCB_ConsoleSymbol ""
+set RenderCB_RGBColor 1.0
+add MenuObject initFrom AirMechStatTemplate
+set Name AirMechStatNew
+set RenderCB _DrawStatName
+set RenderCB_Offset "20 0"
+set RenderCB_TextJustify JustifyXLeft
+set SaveArgs 1
+set FilterName StatsUI
+set RenderCB_Text @_Arg1_@
+set RenderCB_ConsoleSymbol ""
+set RenderCB_ConsoleSymbol2 _colon
+set RenderCB_RGBColor 0xbbbbbb
+set Child "AirMechStatValueNew 100	0 @_Arg1_@"
+add MenuObject initFrom DialogMessage
+set Name AirMechStat
+set RenderCB_FontScale 0.6
+set RenderCB_DX 420
+set RenderCB_DY 20
+set RenderCB _DrawStatName
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_BoolArg 0
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set SaveArgs 1
+set FilterName StatsUI
+set RenderCB_Text @_Arg1_@
+set RenderCB_ConsoleSymbol ""
+set RenderCB_ConsoleSymbol2 _colon
+set RenderCB_RGBColor 0xB3B3B3
+set Child "AirMechStatValue 435	-2 @_Arg1_@"
+add MenuObject initFrom PanelResizeDark
+set Name AirMechStatBG
+set RenderCB_DX 850
+set RenderCB_DY 890
+add MenuObject
+set Name StatsWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 1120 900"
+set CommandOnMouseDrag "floatsym scaledMod statsPos 0.08 $_Wheel 0 1"
+set CommandOnMouseDrag "rook statsScrollUpdate statsPos $_NumDispStats"
+add MenuObject
+set Name StatsScrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "StatsScrollbarPos 0 0"
+set ScaleY 1.55
+set ScaleX 3.0
+set Color 0x777777
+set NoAlphaMod 1
+set Alpha 0.3
+add MenuObject
+set Name StatsScrollbarPos
+set Texture "menus/Scrollbar"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult statsPos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set CommandOnMouseDrag "floatsym set statsPos $_MouseRelY"
+set CommandOnMouseDrag "rook statsScrollUpdate statsPos $_NumDispStats"
+set StickScrollByMenuCallback ConStatsScroller
+set MouseZoneInsetsForRel "0 0 40 40"
+set ScaleY 1.55
+set ScaleX 3.0
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set Color 0x666666
+set ColorFocused 0xcccccc
+set Focus -2
+add MenuObject initFrom DialogMessage
+set Name CodeEntryMsg
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set RenderCB_DX 600
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set SaveArgs 1
+set RenderCB_Text @_Arg1_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol ""
+add MenuObject initFrom DialogMessage
+set Name CodeEntryTitle
+set RenderCB_FontScale 1.2
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_DX 1334
+set RenderCB_DY 60
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Text @_Arg1_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol ""
+add MenuObject
+set Name CodeEntryBoxTemplate
+set Coords "2 2 498 48"
+set Texture menus/LoginBase
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set DrawWhenFocused LoginBoxHighlight
+set RenderCB_DX 470
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB_Offset "8 7"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font DroidSansMono
+set RenderCB_RGBColor "1 1 0.8"
+set TextEditableMaxLen 19
+set TextEditableCode 1
+add MenuObject initFrom CodeEntryBoxTemplate
+set Name CodeEntryBox
+set RenderCB_Text RedeemCode
+set CommandOnKeyboardEdit "rook codeCheck RedeemCode CodeSubmitButton"
+set DrawGreyScale 1
+set ScaleX 1.0, ScaleY 1.0
+set RenderCB_FontScale 1.2
+set RenderCB_Offset "22 7"
+set RenderCB_RGBColor 0xffffff
+set MouseInteractZoneExpand "-55 -55 55 55"
+set CommandFocusLeft "gameui focusName $_Shop_Last"
+set CommandCancel "gameui focusName $_Shop_Last"
+set CommandPress "platform keyboard /symbol RedeemCode /initialSym RedeemCode /menuCmd ConCodeCheck"
+set CommandFocusRight "gameui focusNameTry CodeSubmitButton"
+set CommandFocusDown "gameui focusNameTry CodeSubmitButton"
+add MenuObject initFrom DialogButtonTemplate
+set Name CodeSubmitButton
+set RenderCB_Text CodeSubmitButtonText
+set ScaleX 1.0
+set Disabled 1
+set DisabledAlpha 0.5
+set CommandPress "menuCmd TryRedeemCode"
+set CommandFocusUp "gameui focusNameTry CodeEntryBox"
+set CommandFocusLeft "gameui focusNameTry CodeEntryBox"
+add MenuObject initFrom DialogMessage
+set Name ReferralCodeMsg
+set RenderCB_FontScale 1.0
+set RenderCB_DX 600
+set RenderCB _DrawUTextShadowed
+set RenderCB_Text MB_ReferralCodeMsg
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol ""
+add MenuObject initFrom CodeEntryBoxTemplate
+set Name ReferralCodeBox
+set RenderCB_Text P_ReferralCode
+set MouseInteract 0
+set MouseInteractClickToFocus 0
+set TextEditableCode 0
+set ScaleX 0.75
+add MenuObject initFrom DialogButtonTemplate
+set Name ReferralCodeCopyButton
+set RenderCB_Text MB_Copy
+set ScaleX 1.0
+set CommandPress "sym copyToClipBoard P_ReferralCode"
+add MenuObject
+set Name ReferredByMaster
+set ContainerOnly 1
+set Child "ReferredByMsg 40 355"
+set Child "ReferredByBox 40 400"
+set HiddenCheckBySymbol _ReferralOk_
+add MenuObject initFrom DialogMessage
+set Name ReferredByMsg
+set RenderCB_FontScale 1.0
+set RenderCB_DX 600
+set RenderCB _DrawUTextShadowed
+set RenderCB_Text MB_ReferredBy
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol ""
+add MenuObject initFrom CodeEntryBoxTemplate
+set Name ReferredByBox
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol P_ReferredBy
+set DrawWhenFocused ""
+set MouseInteract 0
+set MouseInteractClickToFocus 0
+set TextEditableMaxLen 0
+set TextEditableCode 0
+set ScaleX 0.75
+add MenuObject
+set Name ReferredByEnterMaster
+set ContainerOnly 1
+set Child "ReferredByMsgEnter 40 355"
+set Child "ReferredByBoxEnter 40 400"
+set Child "ReferredByGoButton 412 389"
+set HiddenCheckBySymbolInv _ReferralOk_
+add MenuObject initFrom DialogMessage
+set Name ReferredByMsgEnter
+set RenderCB_FontScale 1.0
+set RenderCB_DX 600
+set RenderCB _DrawUTextShadowed
+set RenderCB_Text MB_ReferredByEnter
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol ""
+add MenuObject initFrom CodeEntryBoxTemplate
+set Name ReferredByBoxEnter
+set RenderCB_Text P_ReferredBy
+set DrawWhenFocused LoginBoxHighlightSm
+set CommandEnterKey "menuCmd TrySetReferredBy"
+set CommandOnKeyboardEdit "rook referredByCheck P_ReferredBy ReferredByGoButton"
+set TextEditableMaxLen 15
+set TextEditableProfanityFiltered 1
+set TextEditableUsernameLegacy 1
+set TextEditableCode 0
+set ScaleX 0.75
+add MenuObject initFrom DialogButtonTemplate
+set Name ReferredByGoButton
+set RenderCB_Text MB_ReferredByGoButton
+set ScaleX 1.0
+set Disabled 1
+set CommandPress "menuCmd TrySetReferredBy"
+add MenuObject initFrom LabelMenuTextTemplate
+set Name SliderGfxDestructionDetail
+set RenderCB_Text MF_OptionsGfxDestructionDetail
+add MenuObject
+set Name MF_OptionsGfxDestructionDetailSlider
+set Texture menus/SliderVolume
+set Focus -2
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocused SliderVolumeHighlight
+set DrawWhenFocusedOffset "-8 12"
+set DefaultKeyboardControl 1
+set MouseInteract 1
+set IsSliderControl 1
+set Coords "454 14 497 58"
+set CoordsInterpolatedDest "15 14 497 58"
+set CoordsInterpolantCommand "sound uiGen GfxDestructionDetail"
+set Child "SliderGfxDestructionDetail 0 15"
+set MouseZoneInsetsForRel "26 26 0 0"
+set CommandOnMouseDrag "sym multToInt GfxDestructionDetail 100.0 $_MouseRelX 0 100"
+set CommandOnMouseDrag "gfx updateGfxDestructionDetail GfxDestructionDetail"
+set CommandFocusLeft "sym modInt GfxDestructionDetail -10 0 100"
+set CommandFocusRight "sym modInt GfxDestructionDetail 10 0 100"
+set CommandPress "menuCmd GfxDestructionDetailUpdate"
+set CommandFocusLeft "menuCmd GfxDestructionDetailUpdate"
+set CommandFocusRight "menuCmd GfxDestructionDetailUpdate"
+add MenuObject initFrom SimpleMenuTextTemplate
+set Name SliderVolumeLabelMaster
+set RenderCB_Text MF_OptionsVolumeMaster
+add MenuObject initFrom SimpleMenuTextTemplate
+set Name SliderVolumeLabelMenu
+set RenderCB_Text MF_OptionsVolumeMenu
+add MenuObject initFrom SimpleMenuTextTemplate
+set Name SliderVolumeLabelMusic
+set RenderCB_Text MF_OptionsVolumeMusic
+add MenuObject initFrom SimpleMenuTextTemplate
+set Name SliderVolumeLabelAnnouncer
+set RenderCB_Text MF_OptionsVolumeAnnouncer
+add MenuObject
+set Name SliderVolumeBack
+set Texture menus/SliderVolume
+set Coords "0 80 512 48"
+add MenuObject
+set Name SliderVolumeHighlightOld
+set Texture menus/SliderVolume
+set PulseAlpha "1.5 0.0 -0.5"
+set Coords "512 80 512 48"
+add MenuObject
+set Name SliderVolumeHighlight
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "515 34"
+set Color 0x0cacff
+set PulseAlpha "3.5 -0.85 -0.8"
+set BlendMode BlendAdd
+add MenuObject
+set Name BigVolumeSliderSfx
+set Texture menus/SliderVolume
+set Focus -2
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocused SliderVolumeHighlight
+set DrawWhenFocusedOffset "-8 12"
+set DefaultKeyboardControl 1
+set MouseInteract 1
+set IsSliderControl 1
+set Coords "456 14 497 58"
+set CoordsInterpolatedDest "13 14 497 58"
+set CoordsInterpolantCommand "sound uiGen SoundVol"
+set MouseZoneInsetsForRel "26 26 0 0"
+set CommandOnMouseDrag "sym multToInt SoundVol 100.0 $_MouseRelX 0 100"
+set CommandOnMouseDrag "menuCmd SoundVolUpdate"
+set CommandFocusUp "gameui focusNameTry VolumePanelIconSoundOff VolumePanelIconSoundOn"
+set CommandFocusDown "gameui focusNameTry BigVolumeSliderMenu"
+set CommandCancel "clearmenu MainMenuVolumePanel /fadeout 0.1"
+set CommandFocusLeft "sym modInt SoundVol -10 0 100"
+set CommandFocusRight "sym modInt SoundVol 10 0 100"
+set CommandPress "menuCmd SoundVolUpdate"
+set CommandFocusLeft "menuCmd SoundVolUpdate"
+set CommandFocusRight "menuCmd SoundVolUpdate"
+set ToolTip MF_OptionsVolumeMaster
+add MenuObject initFrom BigVolumeSliderSfx
+set Name MF_OptionsVolumeSlider
+set Child "SliderVolumeLabelMaster -15 -35"
+set CommandFocusDown "gameui focusNameTry MF_OptionsVolumeSliderAnnouncer"
+add MenuObject
+set Name BigVolumeSliderMenu
+set Texture menus/SliderVolume
+set Focus -2
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocused SliderVolumeHighlight
+set DrawWhenFocusedOffset "-8 12"
+set DefaultKeyboardControl 1
+set MouseInteract 1
+set IsSliderControl 1
+set Coords "456 14 497 58"
+set CoordsInterpolatedDest "13 14 497 58"
+set CoordsInterpolantCommand "sound uiGen MenuVol"
+set MouseZoneInsetsForRel "26 26 0 0"
+set CommandOnMouseDrag "sym multToInt MenuVol 100.0 $_MouseRelX 0 100"
+set CommandOnMouseDrag "menuCmd MenuVolUpdate"
+set CommandFocusUp "gameui focusNameTry BigVolumeSliderSfx"
+set CommandFocusDown "gameui focusNameTry BigVolumeSliderMusic"
+set CommandCancel "clearmenu MainMenuVolumePanel /fadeout 0.1"
+set CommandFocusLeft "sym modInt MenuVol -10 0 100"
+set CommandFocusRight "sym modInt MenuVol 10 0 100"
+set CommandPress "menuCmd MenuVolUpdate"
+set CommandFocusLeft "menuCmd MenuVolUpdate"
+set CommandFocusRight "menuCmd MenuVolUpdate"
+set ToolTip MF_OptionsVolumeMenu
+add MenuObject initFrom BigVolumeSliderMenu
+set Name MF_OptionsVolumeSliderMenu
+set Child "SliderVolumeLabelMenu -15 -35"
+set CommandFocusUp "gameui focusNameTry MF_OptionsVolumeSliderAnnouncer"
+set CommandFocusDown "gameui focusNameTry MF_OptionsVolumeSliderMusic"
+add MenuObject
+set Name BigVolumeSliderMusic
+set Texture menus/SliderVolume
+set Focus -2
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocused SliderVolumeHighlight
+set DrawWhenFocusedOffset "-8 12"
+set DefaultKeyboardControl 1
+set MouseInteract 1
+set IsSliderControl 1
+set Coords "456 14 497 58"
+set CoordsInterpolatedDest "13 14 497 58"
+set CoordsInterpolantCommand "sound uiGen MusicVol"
+set MouseZoneInsetsForRel "26 26 0 0"
+set CommandOnMouseDrag "sym multToInt MusicVol 100.0 $_MouseRelX 0 100"
+set CommandOnMouseDrag "menuCmd MusicVolUpdate"
+set CommandFocusUp "gameui focusNameTry BigVolumeSliderMenu"
+set CommandFocusDown "gameui focusNameTry BigVolumeSliderAnnouncer"
+set CommandCancel "clearmenu MainMenuVolumePanel /fadeout 0.1"
+set CommandFocusLeft "sym modInt MusicVol -10 0 100"
+set CommandFocusRight "sym modInt MusicVol 10 0 100"
+set CommandPress "menuCmd MusicVolUpdate"
+set CommandFocusLeft "menuCmd MusicVolUpdate"
+set CommandFocusRight "menuCmd MusicVolUpdate"
+set ToolTip MF_OptionsVolumeMusic
+add MenuObject initFrom BigVolumeSliderMusic
+set Name MF_OptionsVolumeSliderMusic
+set Child "SliderVolumeLabelMusic -15 -35"
+set CommandFocusUp "gameui focusNameTry MF_OptionsVolumeSliderMenu"
+add MenuObject
+set Name BigVolumeSliderAnnouncer
+set Texture menus/SliderVolume
+set Focus -2
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocused SliderVolumeHighlight
+set DrawWhenFocusedOffset "-8 12"
+set DefaultKeyboardControl 1
+set MouseInteract 1
+set IsSliderControl 1
+set Coords "456 14 497 58"
+set CoordsInterpolatedDest "13 14 497 58"
+set CoordsInterpolantCommand "sound uiGen AnnouncerVol"
+set MouseZoneInsetsForRel "26 26 0 0"
+set CommandOnMouseDrag "sym multToInt AnnouncerVol 100.0 $_MouseRelX 0 100"
+set CommandOnMouseDrag "menuCmd AnnouncerVolUpdate"
+set CommandFocusUp "gameui focusNameTry BigVolumeSliderMusic"
+set CommandCancel "clearmenu MainMenuVolumePanel /fadeout 0.1"
+set CommandFocusLeft "sym modInt AnnouncerVol -10 0 100"
+set CommandFocusRight "sym modInt AnnouncerVol 10 0 100"
+set CommandPress "menuCmd AnnouncerVolUpdate"
+set CommandFocusLeft "menuCmd AnnouncerVolUpdate"
+set CommandFocusRight "menuCmd AnnouncerVolUpdate"
+set ToolTip MF_OptionsVolumeAnnouncer
+add MenuObject initFrom BigVolumeSliderAnnouncer
+set Name MF_OptionsVolumeSliderAnnouncer
+set Child "SliderVolumeLabelAnnouncer -15 -35"
+set CommandFocusUp "gameui focusNameTry MF_OptionsVolumeSlider"
+set CommandFocusDown "gameui focusNameTry MF_OptionsVolumeSliderMenu"
+add MenuObject initFrom PanelResizeDark
+set Name MB_LanguageMaster
+set RenderCB_DX 800
+set RenderCB_DY 400
+set Hidden 1
+set Child "LoginLanguageDropdown 80 90		300 -300"
+set Child "CheckboxInvTemplNoTT 80 350  BadLangFilter MF_LanguageFilter BadLangFilterUpdate"
+add MenuObject initFrom PanelResizeFlat
+set Name _GfxResolution_Highlight
+set Coords "0 0 492 42"
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.2
+add MenuObject initFrom LaunchButtonTextTemplate
+set Name _GfxResolution_SelectCustom
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed /nmi"
+set RenderCB_ConsoleSymbol CustomResolution
+set RenderCB_FontScale 0.9
+set RenderCB_RGBColor "1.0 0.95 0.8"
+set RenderCB_RGBColorFocused "1.0 0.95 0.8"
+set HiddenCheckBySymbolValue CustomResolution=0
+set Coords "0 0 492 50"
+set RenderCB_DX 492
+set RenderCB_DY 50
+set RenderCB_Offset "12 6"
+set DrawWhenFocused ""
+set DrawWhenFocusedOffset "-1 -1 0"
+add MenuObject initFrom _GfxResolution_SelectCustom
+set Name _GfxResolution_Select
+set RenderCB _DrawDText
+set RenderCB_ConsoleSymbol Resolution
+set RenderCB_FontScale 0.9
+set RenderCB_RGBColor "1.0 0.95 0.8"
+set RenderCB_RGBColorFocused 0xffffff
+set HiddenCheckBySymbolValue CustomResolution!0
+set DrawWhenFocused LoginBoxHighlight
+set MouseInteractClickToFocus 1
+set DrawWhenFocusedOffset "-1 -1 0"
+set CommandPress "sym toggle _GfxResolution_ListHidden"
+add MenuObject
+set Name _GfxResolution_ComboArrow
+set Coords "456 56 40 40"
+set Texture menus/LoginBase
+set Anchor Right
+add MenuObject initFrom LabelMenuTextTemplate
+set Name _GfxResolution_Title
+set RenderCB_Text MF_ResolutionLabelMenu
+add MenuObject
+set Name _GfxResolution_Dropdown
+set Coords "2 2 498 48"
+set Texture menus/LoginBase
+set Child "_GfxResolution_Title 0 0"
+set Child "_GfxResolution_Select 0 0"
+set Child "_GfxResolution_SelectCustom 0 0"
+set Child "_GfxResolution_List 0 50"
+set Child "_GfxResolution_ComboArrow -5 0"
+add MenuObject initFrom PanelResizeFlat
+set Name _GfxResolution_Template
+set Color 0x37383e
+set ColorFocused 0xae5d27
+set TileArea "492 37"
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set RenderCB _DrawTextShadowedNMI
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 492
+set RenderCB_DY 38
+set RenderCB_RGBColor "0.75 0.77 0.8"
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Text @_Arg1_@
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "sym toggle _GfxResolution_ListHidden"
+set CommandPress ">sym set Resolution @_Arg1_@"
+set CommandPress "menucmd GfxSettingApplySettingChanged"
+add MenuObject initFrom _GfxResolution_Template
+set Name _GfxResolution_TemplateU
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /nmi"
+add MenuObject initFrom PanelResizeClear
+set Name _GfxResolution_ListBuffer
+set TileArea "550 894"
+set MouseInteract 1
+set CommandPress "sym toggle _GfxResolution_ListHidden"
+add MenuObject initFrom PanelResizeClear
+set Name _GfxResolution_ListCancel
+set CommandGetFocus "sym toggle _GfxResolution_ListHidden"
+set Child "_GfxResolution_ListBuffer 50 50"
+set StretchToFillScreen 1
+add MenuObject initFrom PanelResizeFlat
+set Name _GfxResolution_List
+set Color 0x1e1e21
+set TileArea "500 602"
+set HiddenCheckBySymbol _GfxResolution_ListHidden
+set Child "_GfxResolution_ListCancel -100 -100"
+set Child "_GfxResolution_Template 4 0		640x360"
+set Child "_GfxResolution_Template 4 40		1280x720"
+set Child "_GfxResolution_Template 4 80		1280x768"
+set Child "_GfxResolution_Template 4 120	1280x800"
+set Child "_GfxResolution_Template 4 160	1360x768"
+set Child "_GfxResolution_Template 4 200	1366x768"
+set Child "_GfxResolution_Template 4 240	1440x900"
+set Child "_GfxResolution_Template 4 280	1600x900"
+set Child "_GfxResolution_Template 4 320	1680x1050"
+set Child "_GfxResolution_Template 4 360	1920x1080"
+set Child "_GfxResolution_Template 4 400	1920x1200"
+set Child "_GfxResolution_Template 4 440	2048x1152"
+set Child "_GfxResolution_Template 4 480	2560x1440"
+set Child "_GfxResolution_Template 4 520	2560x1600"
+set Child "_GfxResolution_TemplateU 4 560	WindowSize"
+add MenuObject initFrom PanelResizeFlat
+set Name _GfxMSAA_Highlight
+set Coords "0 0 492 42"
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.2
+add MenuObject initFrom LaunchButtonTextTemplate
+set Name _GfxMSAA_Select
+set RenderCB _DrawDText
+set RenderCB_Flags "/shadowed /nmi"
+set RenderCB_ConsoleSymbol MSAA
+set RenderCB_FontScale 0.9
+set RenderCB_RGBColor "1.0 0.95 0.8"
+set RenderCB_RGBColorFocused 0xffffff
+set Coords "0 0 492 50"
+set RenderCB_DX 492
+set RenderCB_DY 50
+set RenderCB_Offset "12 6"
+set DrawWhenFocused LoginBoxHighlight
+set MouseInteractClickToFocus 1
+set DrawWhenFocusedOffset "-1 -1 0"
+set CommandPress "sym toggle _GfxMSAA_ListHidden"
+add MenuObject
+set Name _GfxMSAA_ComboArrow
+set Coords "456 56 40 40"
+set Texture menus/LoginBase
+set Anchor Right
+add MenuObject initFrom LabelMenuTextTemplate
+set Name _GfxMSAA_Title
+set RenderCB_Text MF_MSAALabelMenu
+add MenuObject
+set Name _GfxMSAA_Dropdown
+set Coords "2 2 498 48"
+set Texture menus/LoginBase
+set Child "_GfxMSAA_Title 0 0"
+set Child "_GfxMSAA_Select 0 0"
+set Child "_GfxMSAA_List 0 50"
+set Child "_GfxMSAA_ComboArrow -5 0"
+add MenuObject initFrom PanelResizeFlat
+set Name _GfxMSAA_Template
+set Color 0x37383e
+set ColorFocused 0xae5d27
+set TileArea "492 50"
+set Focus -2
+set SaveArgs 1
+set MouseInteract 1
+set RenderCB _DrawTextShadowedNMI
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.9
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 492
+set RenderCB_DY 50
+set RenderCB_RGBColor "0.75 0.77 0.8"
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Text @_Arg1_@
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "sym toggle _GfxMSAA_ListHidden"
+set CommandPress ">sym set MSAA @_Arg1_@"
+set CommandPress "menucmd GfxSettingApplySettingChanged"
+add MenuObject initFrom _GfxMSAA_Template
+set Name _GfxMSAA_TemplateU
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /nmi"
+add MenuObject initFrom PanelResizeClear
+set Name _GfxMSAA_ListBuffer
+set TileArea "550 414"
+set MouseInteract 1
+set CommandPress "sym toggle _GfxMSAA_ListHidden"
+add MenuObject initFrom PanelResizeClear
+set Name _GfxMSAA_ListCancel
+set CommandGetFocus "sym toggle _GfxMSAA_ListHidden"
+set Child "_GfxMSAA_ListBuffer 50 50"
+set StretchToFillScreen 1
+add MenuObject initFrom PanelResizeFlat
+set Name _GfxMSAA_List
+set Color 0x1e1e21
+set TileArea "500 274"
+set HiddenCheckBySymbol _GfxMSAA_ListHidden
+set Child "_GfxMSAA_ListCancel -100 -100"
+set Child "_GfxMSAA_TemplateU 4 4	None"
+set Child "_GfxMSAA_Template 4 58	x2"
+set Child "_GfxMSAA_Template 4 112	x4"
+set Child "_GfxMSAA_Template 4 166	x8"
+set Child "_GfxMSAA_Template 4 220	x16"
+add MenuObject initFrom PanelResizeFlat
+set Name _GfxDetails_Highlight
+set Coords "0 0 492 42"
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.2
+add MenuObject initFrom LaunchButtonTextTemplate
+set Name _GfxDetails_Select
+set RenderCB_ConsoleSymbol GfxDetailName
+set RenderCB_FontScale 0.9
+set RenderCB_RGBColor "1.0 0.95 0.8"
+set RenderCB_RGBColorFocused "1.0 1.0 1.0"
+set Coords "0 0 492 50"
+set RenderCB_DX 492
+set RenderCB_DY 50
+set RenderCB_Offset "12 6"
+set DrawWhenFocused LoginBoxHighlight
+set MouseInteractClickToFocus 1
+set DrawWhenFocusedOffset "-1 -1 0"
+set CommandPress "if !netGame sym toggle _GfxDetails_ListHidden"
+set CommandPress "if netGame && spectator sym toggle _GfxDetails_ListHidden"
+add MenuObject
+set Name _GfxDetails_ComboArrow
+set Coords "456 56 40 40"
+set Texture menus/LoginBase
+set Anchor Right
+set HiddenCheckBySymbol IsInNetGameAsPlayer
+add MenuObject initFrom LabelMenuTextTemplate
+set Name _GfxDetails_Title
+set RenderCB_Text MF_GfxDetailLabelMenu
+add MenuObject
+set Name _GfxDetails_Dropdown
+set Coords "2 2 498 48"
+set Texture menus/LoginBase
+set Child "_GfxDetails_Title 0 0"
+set Child "_GfxDetails_Select 0 0"
+set Child "_GfxDetails_List 0 50"
+set Child "_GfxDetails_ComboArrow -5 0"
+add MenuObject initFrom PanelResizeFlat
+set Name _GfxDetails_Template
+set Color 0x37383e
+set ColorFocused 0xae5d27
+set TileArea "492 50"
+set Focus -2
+set MouseInteract 1
+set RenderCB _DrawUTextShadowedNMI
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.9
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 492
+set RenderCB_DY 50
+set RenderCB_RGBColor "0.75 0.77 0.8"
+set RenderCB_RGBColorFocused 0xFFFFFF
+set RenderCB_Text @_Arg2_@
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "sym toggle _GfxDetails_ListHidden"
+set CommandPress ">sym set GfxDetail @_Arg1_@"
+set CommandPress ">sym set GfxDetailName @_Arg2_@"
+set CommandPress "menucmd GfxSettingApplySettingChanged"
+add MenuObject initFrom PanelResizeClear
+set Name _GfxDetails_ListBuffer
+set TileArea "550 360"
+set MouseInteract 1
+set CommandPress "sym toggle _GfxDetails_ListHidden"
+add MenuObject initFrom PanelResizeClear
+set Name _GfxDetails_ListCancel
+set CommandGetFocus "sym toggle _GfxDetails_ListHidden"
+set Child "_GfxDetails_ListBuffer 50 50"
+set StretchToFillScreen 1
+add MenuObject initFrom PanelResizeFlat
+set Name _GfxDetails_List
+set Color 0x1e1e21
+set TileArea "500 220"
+set HiddenCheckBySymbol _GfxDetails_ListHidden
+set Child "_GfxDetails_ListCancel -100 -100"
+set Child "_GfxDetails_Template 4 4		0	GfxDetail0"
+set Child "_GfxDetails_Template 4 58	1	GfxDetail1"
+set Child "_GfxDetails_Template 4 112	2	GfxDetail2"
+set Child "_GfxDetails_Template 4 166	3	GfxDetail3"
+add MenuObject initFrom PurchaseButtonTemplate
+set Name MF_ApplyGfxSettings
+set RenderCB_Text MF_Apply
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 1.0
+set CommandPress "menucmd GfxSettingApplyInitiate"
+set HiddenCheckBySymbolInv GfxSettingsApplyOk
+add MenuObject initFrom PanelResizeDark
+set Name MB_AudioMaster
+set RenderCB_DX 800
+set RenderCB_DY 600
+set Hidden 1
+set Child "MF_OptionsVolumeSlider 80 130"
+set Child "MF_OptionsVolumeSliderMenu 80 240"
+set Child "MF_OptionsVolumeSliderMusic 80 350"
+add MenuObject
+set Name MF_BindingName
+set RenderCB _DrawBindingName
+set RenderCB_DX 370
+set RenderCB_DY 45
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.75
+set RenderCB_RGBColor 0xe6e6e6
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text @_Arg1_@
+set RenderCB_Flags "/fitX"
+set ToolTip &_Binding_TT_@_Arg1_@&
+set ToolTipDelayTime 0.1
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+add MenuObject
+set Name MF_BindingsResetToDefault
+set RenderCB_DX 500
+set RenderCB_DY 30
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Text MF_BindingsResetToDefault
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.70
+set RenderCB_RGBColor 0x999999
+set RenderCB_RGBColorFocused 0xffffff
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-25 -10 25 10"
+set RenderCB_TextJustify JustifyXRight
+set CommandPress "menucmd MF_ResetBindings"
+add MenuObject
+set Name MF_BindingTemplate
+set RenderCB_DX 320
+set RenderCB_DY 30
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.75
+set RenderCB_RGBColor 0x999999
+set RenderCB_RGBColorFocused 0xffffff
+set MouseInteract 1
+set Focus -2
+set ToolTip &_Binding_TT_@_Arg1_@&
+set ToolTipDelayTime 0.1
+set MouseInteractZoneExpand "-25 -2 25 2"
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject initFrom PanelResizeDark
+set Name MF_BindingInputHighlight
+set RenderCB_DX 190
+set RenderCB_DY 65
+set HiddenCheckBySymbol RBK@_Arg1_@_I@_Arg2_@
+add MenuObject initfrom MF_BindingTemplate
+set Name MF_BindingValue
+set RenderCB _DrawBindingValue
+set RenderCB_Text @_Arg1_@
+set CommandOnCreate ">sym set RBK@_Arg1_@_I0 1"
+set CommandPress ">sym set _RebindBinding @_Arg1_@"
+set CommandPress "sym set _RebindIndex 0"
+set CommandPress "input requestNextKey MF_InputRebind"
+set CommandPress ">sym set RBK@_Arg1_@_I0 0"
+set CommandLoseFocus "input clearNextKeyRequest"
+set CommandLoseFocus ">sym set RBK@_Arg1_@_I0 1"
+set FirstDrawnChildren 1
+set Child "MF_BindingInputHighlight 65 -17		@_Arg1_@ 0"
+add MenuObject initfrom MF_BindingTemplate
+set Name MF_BindingValue2
+set RenderCB _DrawBindingValue2
+set RenderCB_Text @_Arg1_@
+set CommandOnCreate ">sym set RBK@_Arg1_@_I1 1"
+set CommandPress ">sym set _RebindBinding @_Arg1_@"
+set CommandPress "sym set _RebindIndex 1"
+set CommandPress "input requestNextKey MF_InputRebind"
+set CommandPress ">sym set RBK@_Arg1_@_I1 0"
+set CommandLoseFocus "input clearNextKeyRequest"
+set CommandLoseFocus ">sym set RBK@_Arg1_@_I1 1"
+set FirstDrawnChildren 1
+set Child "MF_BindingInputHighlight 65 -17		@_Arg1_@ 1"
+add MenuObject
+set Name BindingsResetOutline
+set Texture effects/white
+set Coords "0 0 104 34"
+set Color 0x1b1b1b
+add MenuObject
+set Name FocusBindingsResetButton
+set Texture effects/white
+set Coords "0 0 106 36"
+set Color 0x49c5bd
+add MenuObject
+set Name BindingsResetButton
+set Texture effects/white
+set Coords "0 0 100 30"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusBindingsResetButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.6
+set RenderCB_Offset "0 -2"
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg2_@
+set FilterName BaseLayout
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB_RGBColorFocused 0xffffff
+set MouseInteract 1
+set Focus -2
+set SaveArgs 2
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set FirstDrawnChildren 1
+set Child "BindingsResetOutline -2 -2"
+set CommandPress ">input restoreDefaultBindingSingle @_Arg1_@"
+add MenuObject initFrom PanelResizeDark
+set Name MF_Rebind
+set RenderCB_DX 780
+set RenderCB_DY 60
+set ContainerOnly 1
+set Child "MF_BindingName 25 16			@_Arg1_@"
+set Child "MF_BindingValue 320 16		@_Arg1_@"
+set Child "MF_BindingValue2 520 16		@_Arg1_@"
+set Child "BindingsResetButton 840 16	@_Arg1_@	MF_Reset"

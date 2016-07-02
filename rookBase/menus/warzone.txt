@@ -1,0 +1,38 @@
+blockLoadOnConsoleSym WarzoneLoaded
+onloadrun {
+]sym setOne WarzoneLoaded HideDailyQuest
+]sym set GL_ChatMinimized 1
+]menucmd GlobalChatReposition
+]sym set _WarzoneEra Rise
+]sym set _WarzoneEraCallToAction1 WarzoneRiseCallToAction1
+]sym set _WarzoneEraCallToAction2 WarzoneRiseCallToAction2
+]sym set _WarzoneEraCallToAction3 WarzoneRiseCallToAction3
+]gameui refreshFilterName Warzone
+]menucmd WriteWarzoneStats
+]gameui saveFocusID _WarzoneRestoreFocus_
+]sym set DNA_Match NA
+}
+MO WarzoneBase {
+pos 0 0
+}
+onload {
+]gameui ignoreInputTime 1.5
+]pfx worldspawn MainMenuEmbers /tag MainMenuEmbers
+]gameui enable WarzoneBlack
+]gameui enable WarzoneBg
+]addUIAnim WarzoneTimeline mas_WarzoneTimelineReveal"
+]addUIAnim WarzoneTimelineCurrent mas_WarzoneTimelineReveal"
+]addUIAnim WarzoneTimelineCurrentOuter mas_WarzoneTimelineCurrentPulse"
+]addUIAnim WarzoneTimelineCurrentInner mas_WarzoneTimelineCurrentPulse"
+]pcmd 0.0 gameui enable WarzoneTopTitleType
+]pcmd 0.25 gameui enable WarzoneTopCallToAction1Type
+]pcmd 0.25 gameui enable WarzoneTopCallToAction2Type
+]pcmd 0.25 gameui enable WarzoneTopCallToAction3Type
+]pcmd 0.25 gameui getLastRenderPos WarzoneTimelineCurrent _TimelineMoveFromX_ _TimelineMoveFromY_
+}
+onunload {
+]pfx stop MainMenuEmbers
+]sym setZero WarzoneLoaded HideDailyQuest
+]sym clear _WarzoneMapSelectedPrev _WarzoneMapSelected
+]gameui restoreFocusID _WarzoneRestoreFocus_
+}

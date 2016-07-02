@@ -1,0 +1,31 @@
+#if !vr
+bindcmd escape {
+]if ingame && !tryout ]menuCmd HandleEscapeKey local
+]if ingame && tryout ]menuCmd FinishTryout
+]if !ingame && sym MainMenuLoaded == 1 && !MenuLoaded EscMenu ]menucmd LoadEscMenu_MKHome
+]if !ingame && sym MainMenuLoaded == 1 && MenuLoaded EscMenu ]clearmenu EscMenu /fadeout 0.15
+}
+bindcmd shift-escape {
+]if ingame && !tryout ]menuCmd HandleEscapeKey local
+]if ingame && tryout ]menuCmd FinishTryout
+]if !ingame && sym MainMenuLoaded == 1 && !MenuLoaded EscMenu ]menucmd LoadEscMenu_MKHome
+]if !ingame && sym MainMenuLoaded == 1 && MenuLoaded EscMenu ]clearmenu EscMenu /fadeout 0.15
+}
+#endif
+bindcmd control-F2 {
+if sym HasPetCanaryBird == 1 if !netGame if !spectator menuCmd freezeFreecamToggle local
+}
+bindcmd control-f {
+$fpsMenu fps.txt
+}
+bindcmd PadX  {
+if inputBinding cockpitOpen runnow build local cancel
+if inputBinding cockpitOpen runnow playSoundForPlayer local UIBadSelection.wav
+}
+bindcmd shift-control-h {
+if !netgame if sym P_AccessLevel > 0 menuCmd EnterEditorModeConfirm
+}
+bindcmd F2 {
+if spectator menucmd freecamToggle local
+if replay menucmd freecamToggle local
+}

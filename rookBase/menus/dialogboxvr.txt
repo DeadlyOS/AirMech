@@ -1,0 +1,40 @@
+blockLoadOnConsoleSym DialogBoxLoaded
+onloadrun {
+]sym set DialogBoxLoaded 1
+]if menu3dExists MessageConfirm ]menucmd OVR_HmdRemountedWithFocus_Confirmed
+]if menu3dExists MessageConfirm ]menu3d remove MessageConfirm
+]if sym VrCreditsLoaded == 1 ]menu3d setInvisible MenuCredits"
+]if sym VRQuestSelected == 1 ]menucmd QuestCardUnSelect"
+]if sym VrShowingRewardDialog == 1 pcmd 0.1 ]menu3d addAnimScript QuestRewardItem as_VRQuestCardPush.txt
+]if sym VrShowingRewardDialog == 1 pcmd 0.1 ]menu3d clearLogicFncs QuestRewardItem0
+]if sym VrShowingRewardDialog == 1 pcmd 0.1 ]menu3d releaseBoneDirectControl QuestRewardItem0 bone_twist
+}
+MO SystemDialogVr {
+pos 0 0
+layer 30
+}
+onload {
+]menu3d add DialogBox /model vr/MenuDialog.amf	/material mat_RenderToTextureSmoothVR /rootScale 3.0 /rootRot 0 0 180 /requireExplicitClear /noVis
+]pcmd t9 ]menu3d UpdateORTSnapshot2 DialogBox 0 0 1024 512"
+]menu3d logicFnc DialogBox trackOnHMD /offset 0 0 -40 /mag 100 /radiusOuter 30 /timeout 0.5
+]menu3d setWorldPose DialogBox	0.0 80.0 -80.0 /camrel
+]menu3d addChild DialogBox ButtonA /model vr/ButtonA.amf	/material mat_MenuButtonsGamepad /noShadowCast /rootScale 0.6 /rootRot 60 0 0 /noVis /hiddenCheckBySymbolInv SystemMessageDismissOnA
+]menu3d setWorldPose ButtonA	0.0 -5.0 2.0
+]pcmd 0.6 ]menu3d addAnimScript ButtonA as_VRMenuIn.txt
+]pcmd 0.1 ]menu3d animate DialogBox vr/MenuDialogIn.aaf playonce 0 1.0
+]pcmd 0.15 ]menu3d setVisible DialogBox
+]if usingPad ]gameUI focusNameTry DialogButton1
+]sym push DisableInvites 1
+]pcmd 0.12 ]clearmenu DialogBoxVr.txt
+]pcmd 0.1 if sym VrCreditsLoaded == 1 ]menu3d setVisible MenuCredits"
+}
+onunload {
+]sym set DialogBoxLoaded 0
+]sym set DialogBoxButton0 DialogButtonOk
+]sym set DialogBoxButton1 DialogButtonCancel
+]sym pop DisableInvites
+]sym clear DialogBoxTitle DialogBoxMessage _DialogBoxItemTitle_ _DialogBoxItemLink_ _DialogBoxItemDisp_ DialogBoxItemName
+}
+onunloadrun {
+rookMenus previewShow
+}

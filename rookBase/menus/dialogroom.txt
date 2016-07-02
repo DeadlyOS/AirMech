@@ -1,0 +1,26 @@
+onloadrun {
+if sym PO_Pin isempty runNow sym set PO_Pin 0
+gameUI saveFocusID _dialogRoomRestoreFocus_
+}
+MO DialogRoomBlack {
+pos 0 0
+layer 19
+}
+MO DialogRoomJoinMaster {
+pos -300 14
+posConsole 0 14
+layer 20
+}
+onload {
+addUIAnim DialogRoomJoinMaster mas_DialogPop
+pcmd 0.2 addUIAnim GameOptionsWarning mas_DialogNudgeLeft
+pcmd 0.2 gameUI enableAll GameOptionsWarning
+]if usingPad ]gameui focusNameTry SpecJoinButton RoomButtonClose
+]sym push CurrentMenu RoomDialog
+]sym push DisableConShop 1
+]sym push DisableInvites 1
+}
+onunload {
+]gameUI restoreFocusID _dialogRoomRestoreFocus_
+]sym pop CurrentMenu DisableConShop DisableInvites
+}

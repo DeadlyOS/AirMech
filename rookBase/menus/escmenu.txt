@@ -1,0 +1,19 @@
+onloadrun {
+gameui ignoreInputTime 0.15
+]gameUI saveFocusID _savefocusid_escmenu_
+}
+MO EscMenuMaster {
+pos 0 0
+layer 23
+}
+onload {
+]addUIAnim EscMenuMaster mas_DialogPop
+]gameui promoteToTop EscMenuMaster
+input set padFocusFallback EscMenuButton0
+if usingPad gameui focusnametry EscMenuButton0 EscMenuButton1 EscMenuButton2 EscMenuButton3 EscMenuButton4 EscMenuButton5
+}
+onunload {
+sym setNset 6 EscMenuButton null
+input set padFocusFallback $_savefocusid_escmenu_
+]pcmd 0.05 ]if usingPad ]gameUI restoreFocusID _savefocusid_escmenu_
+}

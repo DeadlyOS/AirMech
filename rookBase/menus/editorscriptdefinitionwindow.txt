@@ -1,0 +1,15 @@
+blockLoadOnConsoleSym EditorScriptDefinitionWindowLoaded
+onloadrun {
+sym set EditorScriptDefinitionWindowLoaded 1
+}
+MO EditorScriptDefinitionWindow {
+pos 900 300
+layer 10
+}
+onload {
+addUIAnim EditorScriptDefinitionWindow mas_DialogPopFadein
+gameui promoteToTop EditorCommandWindow
+}
+onunloadrun {
+sym set EditorScriptDefinitionWindowLoaded 0
+}

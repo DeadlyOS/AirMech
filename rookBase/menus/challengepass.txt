@@ -1,0 +1,30 @@
+onloadrun {
+}
+MO ChallengePassFrame {
+pos 0 1065
+layer 1
+}
+MO VignetteWin {
+pos 0 0
+layer 0
+}
+MO ConMenuCurrency {
+pos 1420 35
+layer 30
+}
+onload {
+addUIAnim ChallengeTime mas_ClockLower
+addUIAnim ChallengePassFrame mas_IngameBotbarEnter
+if sym ChallengeStars == 1 menuCmd ShowStar1
+if sym ChallengeStars == 2 menuCmd ShowStar2
+if sym ChallengeStars == 3 menuCmd ShowStar3
+if sym ChallengeStars == 0 sym set ChallengeShowNext 0
+if usingPad gameUI focusNameTry ChallengeButtonNext ChallengeEndButtonRestart ChallengeButtonCompletedAll
+gameui ignoreInputTime 2.5
+pcmd 2.5 if usingPad gameUI focusNameTry ChallengeButtonNext ChallengeEndButtonRestart ChallengeButtonCompletedAll
+rook pushFetchedGameResults
+}
+onunload {
+inputBinding enable cockpitClosed
+sym set PauseUIOpen 0
+}

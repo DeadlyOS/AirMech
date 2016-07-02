@@ -1,0 +1,860 @@
+add MenuObject
+set Name AB_AbilityBackground
+set Coords "2 61 75 65"
+set Texture abilities/AbilityParts
+set SaveArgs 1
+set ScaleX @_Arg1_@
+set ScaleY @_Arg1_@
+add MenuObject initFrom AB_AbilityBackground
+set Name AB_GuardianBackground
+set Coords "2 61 64 65"
+add MenuObject
+set Name AB_AbilityPoints0
+set ContainerOnly 1
+add MenuObject
+set Name AB_AbilityPoints1
+set Texture abilities/AbilityParts
+set Coords "1 1 8 57"
+set CoordsAnimated "1 1 8 57"
+set CoordsAnimated "11 1 8 57"
+set CoordsAnimationSymHash Rook@_Arg3_@ABLvl@_Arg1_@
+set SaveArgs 3
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+add MenuObject
+set Name AB_AbilityPoints2
+set Texture abilities/AbilityParts
+set Coords "21 1 8 57"
+set CoordsAnimated "21 1 8 57"
+set CoordsAnimated "31 1 8 57"
+set CoordsAnimated "41 1 8 57"
+set CoordsAnimationSymHash Rook@_Arg3_@ABLvl@_Arg1_@
+set SaveArgs 3
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+add MenuObject
+set Name AB_AbilityPoints3
+set Texture abilities/AbilityParts
+set Coords "51 1 8 57"
+set CoordsAnimated "51 1 8 57"
+set CoordsAnimated "61 1 8 57"
+set CoordsAnimated "71 1 8 57"
+set CoordsAnimated "81 1 8 57"
+set CoordsAnimationSymHash Rook@_Arg3_@ABLvl@_Arg1_@
+set SaveArgs 3
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+add MenuObject
+set Name AB_AbilityPadHighlight
+set Texture abilities/AbilityParts
+set Coords "157 61 98 65"
+set PulseAlpha "0.4 -0.5 0.0"
+set HiddenCheckBySymbol InputMK
+add MenuObject initFrom	HudNumbersTemplate
+set Name AB_Cooldown
+set RenderCB_ConsoleSymbol Rook@_Arg1_@AB@_Arg2_@CDT
+set Coords "0 0 59 59"
+set RenderCB_DX 59
+set RenderCB_DY 59
+set RenderCB_FontScale @_Arg3_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set SaveArgs 3
+set HiddenCheckBySymbolInv Rook@_Arg1_@AB@_Arg2_@CD
+add MenuObject
+set Name AbilityPointsInvested
+set HiddenCheckBySymbolValue @_Arg1_@=0
+set SaveArgs 2
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set Texture hud/HudFortressBar@TC_LocalPlayer@
+set Coords "156 491 57 6"
+set CoordsAnimated "156 491 57 6"
+set CoordsAnimated "156 499 57 6"
+set CoordsAnimated "224 499 57 6"
+set CoordsAnimated "289 499 57 6"
+set CoordsAnimationSymHash @_Arg1_@
+add MenuObject
+set Name AbilityCratePending
+set Coords "0 367 76 82"
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set HiddenCheckBySymbolInv @_Arg1_@
+set HiddenCheckBySymbol IsSpectator
+set PulseAlpha "0.8 -0.5 0.3"
+add MenuObject initFrom AbilityPointsInvested
+set Name AbilityPointsPending
+set HiddenCheckBySymbolInv @_Arg3_@
+set PulseAlpha "1.0 -2.0 1.3"
+set RenderCB_RGBColor 0xff2020
+add MenuObject
+set Name AbilityIconEdge
+set Texture hud/BuildTray
+set Coords "564 87 59 59"
+set ScaleX @_Arg1_@
+set ScaleY @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name AB_AbilityTemplate
+set Coords "3 2 59 59"
+set CoordsDisabled "131 2 59 59"
+set CoordsAnimated "131 2 59 59"
+set CoordsAnimated "3 2 59 59"
+set CoordsAnimated "3 2 59 59"
+set CoordsAnimated "3 2 59 59"
+set CoordsAnimationSymHash Rook@_Arg5_@ABLvl@_Arg1_@
+set DisabledAlpha 1.0
+set SaveArgs 6
+set ScaleX @_Arg3_@
+set ScaleY @_Arg3_@
+set Child "AbilityIconEdge 0 0	@_Arg3_@"
+set Child "AbilityCratePending -8 -80  	Rook@_Arg5_@ABLvlPnd@_Arg1_@"
+set Child "AB_AbilityLvlUp[AbilityLvlUp@_Arg1_@]  -2 -2		@_Arg1_@ @_Arg2_@ @_Arg3_@ /copyTT				/ifSym ArcCustomized == 0"
+set Child "AB_AbilityLvlUp_Inv[AbilityLvlUp@_Arg1_@]  3 -48		@_Arg1_@ @_Arg2_@ @_Arg3_@ /copyTT			/ifSym ArcCustomized == 0"
+#if arc
+set Child "AB_AbilityLvlUpPW[AbilityLvlUp@_Arg1_@]  -2 -2		@_Arg1_@ @_Arg2_@ @_Arg3_@ /copyTT			/ifSym ArcCustomized == 1 /ifImmediate @_Arg6_@ == 0"
+set Child "AB_AbilityLvlUp_InvPW[AbilityLvlUp@_Arg1_@]  3 -48		@_Arg1_@ @_Arg2_@ @_Arg3_@ /copyTT		/ifSym ArcCustomized == 1 /ifImmediate @_Arg6_@ == 0"
+set Child "AB_AbilityLvlUp[AbilityLvlUp@_Arg1_@]  -2 -2		@_Arg1_@ @_Arg2_@ @_Arg3_@ /copyTT				/ifSym ArcCustomized == 1 /ifImmediate @_Arg6_@ == 1"
+set Child "AB_AbilityLvlUp_Inv[AbilityLvlUp@_Arg1_@]  3 -48		@_Arg1_@ @_Arg2_@ @_Arg3_@ /copyTT			/ifSym ArcCustomized == 1 /ifImmediate @_Arg6_@ == 1"
+#endif
+set Child "AB_Cooldown 0 0  	@_Arg5_@ @_Arg1_@ @_Arg3_@"
+set Child "AbilityPointsInvested  0 -7		Rook@_Arg5_@ABLvl@_Arg1_@	@_Arg3_@"
+set MouseInteract 1
+set CommandGetFocus "sym set AbilityFocused 1"
+set CommandLoseFocus "sym set AbilityFocused 0"
+add MenuObject
+set Name CB_AbilityTemplate
+set Coords "0 64 192 192"
+set DisabledAlpha 1.0
+set SaveArgs 5
+set ScaleX @_Arg3_@
+set ScaleY @_Arg3_@
+set Child "AB_AbilityPoints&Rook@_Arg5_@ABMaxLvl@_Arg1_@& @_Arg4_@ 1 		@_Arg1_@ @_Arg3_@ @_Arg5_@"
+set Child "AB_AbilityLvlUp[AbilityLvlUp@_Arg1_@]  -2 -2		@_Arg1_@ @_Arg2_@ @_Arg3_@ /copyTT				/ifSym ArcCustomized == 0"
+set Child "AB_AbilityLvlUpPW[AbilityLvlUp@_Arg1_@]  -2 -2		@_Arg1_@ @_Arg2_@ @_Arg3_@ /copyTT			/ifSym ArcCustomized == 1"
+set Child "AB_AbilityLvlUp_Inv[AbilityLvlUp@_Arg1_@]  3 -48		@_Arg1_@ @_Arg2_@ @_Arg3_@ /copyTT			/ifSym ArcCustomized == 0"
+set Child "AB_AbilityLvlUp_InvPW[AbilityLvlUp@_Arg1_@]  3 -48		@_Arg1_@ @_Arg2_@ @_Arg3_@ /copyTT		/ifSym ArcCustomized == 1"
+set Child "AB_Cooldown 0 0  	@_Arg5_@ @_Arg1_@ @_Arg3_@"
+set MouseInteract 1
+add MenuObject
+set Name AB_AbilityLvlUp
+set Coords "489 200 23 23"
+set BlinkAlpha "1.0 1.4 0.5 0.2"
+set Texture hud/PlayerStatus
+set MouseInteract 1
+set NotActionableForPurposeOfGameInput 1
+set MouseInteractZoneExpand "0 0 36 36"
+set Focus -2
+set CommandPress ">if usingMouse player local do lvlAbility @_Arg1_@"
+set CommandPress "if usingMouse playsound $UIAbilityUpgrade"
+set CommandFocusUp ">if usingPad player local do lvlAbility @_Arg1_@"
+set CommandFocusUp "if usingPad playsound $UIAbilityUpgrade"
+set CommandFocusLeft "rookMenus abilityFocus -1"
+set CommandFocusRight "rookMenus abilityFocus 1"
+set FocusChangeOnStick 0
+set DisplayAsFocusedIfParentFocused 1
+set SaveArgs 3
+set MouseInteractClickToFocus 1
+set DrawWhenFocused UnitIconTrayHighlight
+set DrawWhenFocusedOffset "-1 -1 0"
+set HiddenCheckBySymbol Rook@_CWatch_@ABUpg@_Arg1_@
+set HiddenCheckBySymbolInv Tut@_Arg1_@AbilityOk
+set HiddenCheckBySymbol2 IsSpectator
+add MenuObject
+set Name AB_AbilityLvlUp_Inv
+set Coords "965 11 2 2"
+set CoordsFocused "965 0 2 2"
+set Texture hud/BuildTray
+set PulseAlpha "6.0 -0.8 50.0"
+set MouseInteract 1
+set NotActionableForPurposeOfGameInput 1
+set MouseInteractZoneExpand "-5 5 5 65"
+set Focus -2
+set CommandFocusLeft "rookMenus abilityFocus -1"
+set CommandFocusRight "rookMenus abilityFocus 1"
+set FocusChangeOnStick 0
+set DisplayAsFocusedIfParentFocused 1
+set SaveArgs 3
+set MouseInteractClickToFocus 1
+set DrawWhenFocused UnitIconTrayHighlight_Inactive
+set DrawWhenFocusedOffset "-8 45 0"
+set HiddenCheckBySymbolInv Rook@_CWatch_@ABUpg@_Arg1_@
+set HiddenCheckBySymbol2 IsSpectator
+set RenderCBExcludesDefaultRender 1
+add MenuObject initFrom AB_AbilityLvlUp
+set Name AB_AbilityLvlUpPW
+set DrawWhenFocused UnitIconTrayHighlightPW
+add MenuObject initFrom AB_AbilityLvlUp_Inv
+set Name AB_AbilityLvlUp_InvPW
+set DrawWhenFocused UnitIconTrayHighlight_InactivePW
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilitySword
+set Texture abilities/Sword
+set ToolTip MF_Tip_ABSword
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityGlide
+set Texture abilities/Glide
+set ToolTip MF_Tip_ABGlide
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityWhirlwind
+set Texture abilities/Whirlwind
+set ToolTip MF_Tip_ABWhirlwind
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityEnergyDrain
+set Texture abilities/EnergyDrain
+set ToolTip MF_Tip_ABEnergyDrain
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityHealNova
+set Texture abilities/HealNova
+set ToolTip MF_Tip_ABHealNova
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityInfantry
+set Texture abilities/Infantry
+set ToolTip MF_Tip_ABInfantry
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityRockets
+set Texture abilities/Rockets
+set ToolTip MF_Tip_ABRockets
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityHealArea
+set Texture abilities/HealArea
+set ToolTip MF_Tip_ABHealArea
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityHealBeam
+set Texture abilities/HealBeam
+set ToolTip MF_Tip_ABHealBeam
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityHealing
+set Texture abilities/HealBeam
+set ToolTip MF_Tip_ABHealing
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityMissiles
+set Texture abilities/Missiles
+set ToolTip MF_Tip_ABMissiles
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityHammerThrow
+set Texture abilities/HammerThrow
+set ToolTip MF_Tip_ABHammerThrow
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityAuras
+set Texture abilities/Auras
+set ToolTip MF_Tip_ABAuras
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityAuraOffense
+set Texture abilities/AurasPwr
+set ToolTip MF_Tip_ABAuraOffense
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityAuraDefense
+set Texture abilities/AuraDefense
+set ToolTip MF_Tip_ABAuraDefense
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilitySniper
+set Texture abilities/Sniper
+set ToolTip MF_Tip_ABSniper
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityAfterburner
+set Texture abilities/Afterburner
+set ToolTip MF_Tip_ABAfterburner
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityLoop
+set Texture abilities/Loop
+set ToolTip MF_Tip_ABLoop
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityQuickshot
+set Texture abilities/Quickshot
+set ToolTip MF_Tip_ABQuickshot
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityHyperRail
+set Texture abilities/HyperRail
+set ToolTip MF_Tip_ABHyperRail
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityAuraSpeed
+set Texture abilities/AuraSpeed
+set ToolTip MF_Tip_ABAuraSpeed
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityMR
+set Texture abilities/Missiles
+set ToolTip MF_Tip_ABMR
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityAirToAir
+set Texture abilities/AirToAir
+set ToolTip MF_Tip_ABAirToAir
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityShield
+set Texture abilities/Shield
+set ToolTip MF_Tip_ABShield
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityDeathray
+set Texture abilities/Deathray
+set ToolTip MF_Tip_ABDeathray
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityBombs
+set Texture abilities/Bombs
+set ToolTip MF_Tip_ABBombs
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityCloak
+set Texture abilities/Cloak
+set ToolTip MF_Tip_ABCloak
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityGunSpray
+set Texture abilities/GunSpray
+set ToolTip MF_Tip_ABGunSpray
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityAbduct
+set Texture abilities/Abduct
+set ToolTip MF_Tip_ABAbduct
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityBlink
+set Texture abilities/Blink
+set ToolTip MF_Tip_ABBlink
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityLifter
+set Texture abilities/Lifter
+set ToolTip MF_Tip_ABLifter
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityPhalanx
+set Texture abilities/Phalanx
+set ToolTip MF_Tip_ABPhalanx
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityArmor
+set Texture abilities/Armor
+set ToolTip MF_Tip_ABArmor
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityBuilder
+set Texture abilities/Builder
+set ToolTip MF_Tip_ABBuilder
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityRestore
+set Texture abilities/Restore
+set ToolTip MF_Tip_ABRestore
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityMissileBurst
+set Texture abilities/MissileBurst
+set ToolTip MF_Tip_ABMissileBurst
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityRadarDisrupt
+set Texture abilities/RadarDisrupt
+set ToolTip MF_Tip_ABRadarDisrupt
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityMissileEMP
+set Texture abilities/MissileEMP
+set ToolTip MF_Tip_ABMissileEMP
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityUnitTP
+set Texture abilities/UnitTP
+set ToolTip MF_Tip_ABUnitTP
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityPwrShield
+set Texture abilities/PwrShield
+set ToolTip MF_Tip_ABPwrShield
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilitySpinUp
+set Texture abilities/SpinUp
+set ToolTip MF_Tip_ABSpinUp
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityGuns
+set Texture abilities/Guns
+set ToolTip MF_Tip_ABGuns
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityAmmo
+set Texture abilities/Ammo
+set ToolTip MF_Tip_ABAmmo
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityChargeShot
+set Texture abilities/ChargeShot
+set ToolTip MF_Tip_ABChargeShot
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityEMP
+set Texture abilities/EMP
+set ToolTip MF_Tip_ABEMP
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityDebufOffense
+set Texture abilities/DebufOffense
+set ToolTip MF_Tip_ABDebufOffense
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityGndSpeed
+set Texture abilities/GndSpeed
+set ToolTip MF_Tip_ABGndSpeed
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityLevelUp
+set Texture abilities/LevelUp
+set ToolTip MF_Tip_ABLevelUp
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityGuardian
+set Texture abilities/Guardian
+set ToolTip MF_Tip_ABGuardian
+add MenuObject initFrom AB_AbilityTemplate
+set Name AB_AbilityNone
+set Texture abilities/Guardian
+set Hidden 1
+set ToolTip MF_Tip_ABGuardian
+add MenuObject
+set Name AbilityTray
+set Texture hud/BuildTray
+set Coords "0 0 539 77"
+add MenuObject
+set Name AbilityTrayPW
+set Texture hud/BuildTray
+set Coords "0 513 649 100"
+add MenuObject
+set Name AB_AbilityRow
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ShowAbilities
+set Coords "0 0 600 150"
+set Child "AbilityTray 0 0							/ifSym ArcCustomized == 0"
+set Child "AbilityTrayPW -100 -25					/ifSym ArcCustomized == 1"
+set Child "HotkeyHintAbilities 17   -22 				@_bnd_AB1_@	0	/ifSym ArcCustomized == 0"
+set Child "HotkeyHintAbilities 83  -22					@_bnd_AB2_@	1	/ifSym ArcCustomized == 0"
+set Child "HotkeyHintAbilities 149 -22					@_bnd_AB3_@	2	/ifSym ArcCustomized == 0"
+set Child "HotkeyHintAbilities 215 -22					@_bnd_AB4_@	3	/ifSym ArcCustomized == 0"
+set Child "HotkeyHintAbilities 280 -22					@_bnd_AB5_@	4	/ifSym ArcCustomized == 0"
+set Child "HotkeyHintAbilities 347 -22					@_bnd_AB6_@	5	/ifSym ArcCustomized == 0"
+set Child "HotkeyHintAbilities 413 -22					@_bnd_AB7_@	6	/ifSym ArcCustomized == 0"
+set Child "HotkeyHintAbilities 479 -22					@_bnd_AB8_@	7	/ifSym ArcCustomized == 0"
+set Child "AB_Ability&Rook@_CWatch_@AB0& 9   9 		0 &Rook@_CWatch_@AB0&			1.0 61 @_CWatch_@		/ifSym ArcCustomized == 0"
+set Child "AB_Ability&Rook@_CWatch_@AB1& 75  9		1 &Rook@_CWatch_@AB1&			1.0 61 @_CWatch_@		/ifSym ArcCustomized == 0"
+set Child "AB_Ability&Rook@_CWatch_@AB2& 141 9		2 &Rook@_CWatch_@AB2&			1.0 61 @_CWatch_@		/ifSym ArcCustomized == 0"
+set Child "AB_Ability&Rook@_CWatch_@AB3& 207 9		3 &Rook@_CWatch_@AB3&			1.0 61 @_CWatch_@		/ifSym ArcCustomized == 0"
+set Child "AB_Ability&Rook@_CWatch_@AB4& 273 9		4 &Rook@_CWatch_@AB4&			1.0 61 @_CWatch_@		/ifSym ArcCustomized == 0"
+set Child "AB_Ability&Rook@_CWatch_@AB5& 339 9		5 &Rook@_CWatch_@AB5&			1.0 61 @_CWatch_@		/ifSym ArcCustomized == 0"
+set Child "AB_Ability&Rook@_CWatch_@AB6& 405 9		6 &Rook@_CWatch_@AB6&			1.0 61 @_CWatch_@		/ifSym ArcCustomized == 0"
+set Child "AB_Ability&Rook@_CWatch_@AB7& 471 9		7 &Rook@_CWatch_@AB7&			1.0 61 @_CWatch_@		/ifSym ArcCustomized == 0"
+set Child "AB_Ability&Rook@_CWatch_@AB0& -88 -13 	0 &Rook@_CWatch_@AB0&			1.3 61 @_CWatch_@	0	/ifSym ArcCustomized == 1"
+set Child "AB_Ability&Rook@_CWatch_@AB1& -1  -13	1 &Rook@_CWatch_@AB1&			1.3 61 @_CWatch_@	0	/ifSym ArcCustomized == 1"
+set Child "AB_Ability&Rook@_CWatch_@AB2& 87 -13		2 &Rook@_CWatch_@AB2&			1.3 61 @_CWatch_@	0	/ifSym ArcCustomized == 1"
+set Child "AB_Ability&Rook@_CWatch_@AB3& 174 -13	3 &Rook@_CWatch_@AB3&			1.3 61 @_CWatch_@	0	/ifSym ArcCustomized == 1"
+set Child "AB_Ability&Rook@_CWatch_@AB4& 262 -13	4 &Rook@_CWatch_@AB4&			1.3 61 @_CWatch_@	0	/ifSym ArcCustomized == 1"
+set Child "AB_Ability&Rook@_CWatch_@AB5& 350 9		5 &Rook@_CWatch_@AB5&			1.0 61 @_CWatch_@	1	/ifSym ArcCustomized == 1"
+set Child "AB_Ability&Rook@_CWatch_@AB6& 415 9		6 &Rook@_CWatch_@AB6&			1.0 61 @_CWatch_@	1	/ifSym ArcCustomized == 1"
+set Child "AB_Ability&Rook@_CWatch_@AB7& 480 9		7 &Rook@_CWatch_@AB7&			1.0 61 @_CWatch_@	1	/ifSym ArcCustomized == 1"
+add MenuObject
+set Name IconTrayUpArrow
+set Texture menus/Buttons
+set Coords "949 139 66 34"
+set MirrorOnY 1
+set BlendMode BlendAdd
+set ScaleX 0.7, ScaleY 0.7
+set Color 0x999999
+set HiddenCheckBySymbolInv InputPad
+add MenuObject
+set Name IconTrayBuyText
+set DisabledAlpha 0.5
+set Coords "0 0 67 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.35
+set RenderCB _DrawUText
+set RenderCB_Text DialogButtonBuy
+set RenderCB_Flags "/allCaps /fitX /outlined8x"
+set RenderCB_Font Gunner
+set BlendMode BlendAdd
+set RenderCB_RGBColor 0xffffff
+set HiddenCheckBySymbolInv InputPad
+add MenuObject
+set Name UnitBuildTrayHighlightSm
+set Texture hud/BuildTray
+set Coords "489 83 67 67"
+set BlendMode BlendAdd
+set Child "IconTrayUpArrow 10 -50"
+set Child "IconTrayBuyText 0 -32"
+set HiddenCheckBySymbol UnitsBarActivate
+add MenuObject
+set Name UnitBuildTrayHighlightLg
+set Texture hud/BuildTray
+set Coords "489 83 67 67"
+set BlendMode BlendAdd
+set ScaleX 1.5, ScaleY 1.5
+set HiddenCheckBySymbolInv UnitsBarActivate
+add MenuObject
+set Name UnitBuildTrayHighlight
+set ContainerOnly 1
+set Child "UnitBuildTrayHighlightSm 0 0"
+set Child "UnitBuildTrayHighlightLg -2 -3"
+add MenuObject
+set Name UnitIconTrayHighlight_Inactive
+set Texture hud/BuildTray
+set Coords "489 83 67 67"
+set BlendMode BlendAdd
+add MenuObject initFrom UnitIconTrayHighlight_Inactive
+set Name UnitIconTrayHighlight
+set Child "IconTrayUpArrow 10 -50"
+set Child "IconTrayBuyText 0 -32"
+add MenuObject initFrom UnitIconTrayHighlight_Inactive
+set Name UnitIconTrayHighlight_InactivePW
+set ScaleX 1.3, ScaleY 1.3
+add MenuObject initFrom UnitIconTrayHighlight_InactivePW
+set Name UnitIconTrayHighlightPW
+set Child "IconTrayUpArrow 10 -50"
+set Child "IconTrayBuyText 0 -32"
+add MenuObject
+set Name UnitIconTrayPop
+set Texture hud/HudFortressBar@TC_LocalPlayer@
+set Coords "2 495 74 14"
+set CoordsAnimated "2 495 4 4"
+set CoordsAnimated "2 495 74 14"
+set CoordsAnimated "13 495 74 14"
+set CoordsAnimated "26 495 74 14"
+set CoordsAnimated "37 495 74 14"
+set CoordsAnimated "50 495 74 14"
+set CoordsAnimated "63 495 74 14"
+set CoordsAnimationSymHash DispUnitPop@_Arg1_@
+set SaveArgs 1
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name UnitIconTray
+set Coords "50 50 156 156"
+set DisabledAlpha 0.0
+set BlendMode NoBlend
+set ScaleX 0.375
+set ScaleY 0.375
+set DrawWhenFocused UnitBuildTrayHighlight
+set DrawWhenFocusedOffset "-4 -4 0"
+set Texture units/&AS@_Arg1_@P@net_local_player@&/Icons@TeamColor@
+set TextureAlt units/&AS@_Arg1_@P@net_local_player@&/IconUnique
+set ScaleYCenter 0.25
+set DynGreyScale canBuild@_Arg1_@
+set SaveArgs 1
+set Child "AbilityIconEdge[AbilityIconEdge@_Arg1_@] 0 0 1.0"
+set Child "UnitIconTrayPop[UnitIconTrayPop@_Arg1_@] -15 46 @_Arg1_@"
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set NotActionableForPurposeOfGameInput 1
+set FocusChangeOnStick 0
+set Focus -2
+set CommandGetFocus ">menuCmd GetReadyArmySlot@_Arg1_@ local"
+set CommandPress "if usingMouse menuCmd PlaceOrder local"
+set CommandPress ">sym set _BuildSlot @_Arg1_@"
+set CommandFocusUp ">menuCmd GetReadyArmySlot@_Arg1_@ local"
+set CommandFocusUp ">sym set _BuildSlot @_Arg1_@"
+set CommandFocusUp "if usingPad menuCmd PlaceOrder local"
+set CommandFocusLeft "rookMenus abilityFocus -1"
+set CommandFocusRight "rookMenus abilityFocus 1"
+set CommandOnCreate ">customize slotDisplayGen @_Arg1_@ DispSlotName DispSlotCost DispSlotTime"
+add MenuObject
+set Name UnitIconBuiltEdge
+set Texture hud/BuildTray
+set Coords "564 87 59 59"
+set ScaleX 1.01
+set ScaleY 1.01
+set RenderOffsetX -1
+set RenderOffsetY -1
+add MenuObject
+set Name UnitIconBuilt
+set Coords "50 50 156 156"
+set DisabledAlpha 0.0
+set BlendMode NoBlend
+set ScaleX 0.375
+set ScaleY 0.375
+set Texture units/@FinalUnitToBuild@/Icons@TeamColor@
+set TextureAlt units/@FinalUnitToBuild@/IconUnique
+add MenuObject
+set Name UnitsTray
+set Texture hud/BuildTray
+set Coords "0 245 579 77"
+set DisabledSym UnitsBarActivate
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+add MenuObject
+set Name UnitsTrayConsole
+set Texture hud/BuildTray
+set Coords "0 2 539 77"
+set DisabledSym UnitsBarActivate
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+add MenuObject
+set Name UnitsTrayBox
+set Texture hud/BuildTray
+set Coords "655 0 300 301"
+set DisabledSymInv UnitsBarActivate
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.1
+add MenuObject
+set Name HotkeyHint
+set RenderCB_DX 41
+set RenderCB_DY 30
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.7
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set ToolTip &_Binding_TT_@_Arg1_@&
+set ToolTipDelayTime 0.1
+set RenderCB_Offset "0 0"
+set RenderCBExcludesDefaultRender 0
+set Texture hud/BuildTray
+set Coords "566 4 41 31"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawBindingValue
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolInv ShowIngameHotkeys
+set HiddenCheckBySymbol InputPad
+set RenderCB_RGBColorDisabled 0x888888
+set DisabledAlpha 1.0
+add MenuObject initFrom HotkeyHint
+set Name HotkeyHintDeploy
+set RenderCBExcludesDefaultRender 1
+set DisabledAlpha 0.2
+set RenderCB_DX 35
+set RenderCB_DY 30
+add MenuObject initFrom HotkeyHint
+set Name HotkeyHintUnits
+set DisabledSymInv canBuild@_Arg2_@
+add MenuObject initFrom HotkeyHint
+set Name HotkeyHintAbilities
+set DisabledSym Rook@_CWatch_@ABUpg@_Arg2_@
+add MenuObject
+set Name AutoDeployHudAnim
+set Coords "590 470 31 41"
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set CoordsAnimated "590 470 31 41"
+set CoordsAnimated "621 470 31 41"
+set CoordsAnimated "652 470 31 41"
+set CoordsAnimated "683 470 31 41"
+set CoordsAnimated "714 470 31 41"
+set CoordsAnimated "745 470 31 41"
+set CoordsAnimated "776 470 31 41"
+set CoordsAnimated "807 470 31 41"
+set CoordsAnimated "838 470 31 41"
+set CoordsAnimated "869 470 31 41"
+set CoordsAnimated "900 470 31 41"
+set CoordsAnimated "931 470 31 41"
+set CoordsAnimated "962 470 31 41"
+set CoordsAnimated "993 470 31 41"
+set CoordsAnimationFrameTimer 0.02
+set HiddenCheckByGameEngineHook ActiveAutoDeployPath
+set DisabledSym ArcCustomized
+set BlendMode BlendAdd
+add MenuObject
+set Name AutoDepolyFocusUp
+set Texture menus/Leaderboards
+set Coords "473 162 29 25"
+set ScaleY 0.8, ScaleX 0.8
+set BlendMode BlendAdd
+set HiddenCheckBySymbolValue ActiveAutoDeployPath=0
+add MenuObject initFrom AutoDepolyFocusUp
+set Name AutoDepolyFocusDown
+set MirrorOnY 1
+set HiddenCheckBySymbolValue ActiveAutoDeployPath=1
+add MenuObject
+set Name AutoDepolyFocus
+set ContainerOnly 1
+set Child "AutoDepolyFocusDown 6 6"
+set Child "AutoDepolyFocusUp 6 37"
+add MenuObject
+set Name AutoDeployHudSwitch
+set Coords "4 325 36 65"
+set CoordsAnimated "204 325 36 65"
+set CoordsAnimated "164 325 36 65"
+set CoordsAnimated "124 325 36 65"
+set CoordsAnimated "84 325 36 65"
+set CoordsAnimated "44 325 36 65"
+set CoordsAnimated "4 325 36 65"
+set ToolTip KBAutoDeployLatch
+set DrawWhenFocused AutoDepolyFocus
+set CoordsAnimationFrameTimer 0.01
+set CoordsAnimationSymMode ActiveAutoDeployPathPlayMode
+set CommandPress "if sym AutoDeployActivateOk == 1 player local doAutoDeployLatchToggle"
+set CommandPress "if sym AutoDeployActivateOk == 1 playSound UIPlaceOrder.wav"
+set CommandPress "sym toggle AutoDeployActivateOk"
+set Texture hud/BuildTray
+set MouseInteract 1
+set Focus -2
+set CommandPress "player local clearAutoDeploy"
+set NotActionableForPurposeOfGameInput 1
+add MenuObject
+set Name AB_UnitsRow
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ShowUnitsBar
+set Coords "0 0 400 65"
+set Child "UnitsTrayBox 120 -223"
+set Child "UnitsTrayConsole 0 0			/platform consolePlatformHW"
+set Child "UnitsTrayConsole 0 0			/platform !consolePlatformHW /ifSym ArcCustomized == 1"
+set Child "UnitsTray -40 0				/platform !consolePlatformHW /ifSym ArcCustomized == 0"
+set Child "AutoDeployHudAnim -31 -41	/platform !consolePlatformHW"
+set Child "AutoDeployHudSwitch -35 5	/platform !consolePlatformHW /ifSym ArcCustomized == 0"
+set Child "UnitIconTray[UnitIconTray0] 9   9 	0"
+set Child "UnitIconTray[UnitIconTray1] 75  9	1"
+set Child "UnitIconTray[UnitIconTray2] 141 9	2"
+set Child "UnitIconTray[UnitIconTray3] 207 9	3"
+set Child "UnitIconTray[UnitIconTray4] 273 9	4"
+set Child "UnitIconTray[UnitIconTray5] 339 9	5"
+set Child "UnitIconTray[UnitIconTray6] 405 9	6"
+set Child "UnitIconTray[UnitIconTray7] 471 9	7"
+set Child "HotkeyHintDeploy -34  37	 				@_bnd_AutoDeployLatch_@		0 /ifSym ArcCustomized == 0"
+set Child "HotkeyHintUnits 17  -22	 				@_bnd_Unit1_@	0"
+set Child "HotkeyHintUnits 83  -22					@_bnd_Unit2_@	1"
+set Child "HotkeyHintUnits 149 -22					@_bnd_Unit3_@	2"
+set Child "HotkeyHintUnits 215 -22					@_bnd_Unit4_@	3"
+set Child "HotkeyHintUnits 280 -22					@_bnd_Unit5_@	4"
+set Child "HotkeyHintUnits 347 -22					@_bnd_Unit6_@	5"
+set Child "HotkeyHintUnits 413 -22					@_bnd_Unit7_@	6"
+set Child "HotkeyHintUnits 479 -22					@_bnd_Unit8_@	7"
+add MenuObject
+set Name AB_AbilityContainer
+set Coords "0 0 640 170"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set FilterName LoadMapStartup
+set DragSourceSym _AdjustUISource_
+set HiddenCheckBySymbolInv OptionShowTray
+set HiddenCheckBySymbol PauseUIOpen
+set Child "AB_AbilityRowDragBG 50	 0"
+set Child "AB_AbilityRow 60 -27	/platform consolePlatformHW"
+set Child "AB_AbilityRow 80 52	/platform !consolePlatformHW"
+set CommandGetFocus "if sym AdjustUIMode == 0 runnow sym clear _AdjustUISource_"
+set CommandGetFocus "if sym AdjustUIMode == 1 runnow sym set _AdjustUISource_ AB_AbilityContainer"
+set CommandLoseFocus "sym clear _AdjustUISource_"
+set CommandOnMouseDrag "if sym AdjustUIMode == 1 runnow sym set _AdjustUISource_ AB_AbilityContainer"
+add MenuObject
+set Name AB_AbilityRowDragBG
+set Texture menus/DialogBox
+set CoordsStart "267 80 23 23"
+set CoordsMid "290 80 199 23"
+set CoordsEnd "489 80 23 23"
+set CoordsStartFocused "267 103 23 44"
+set CoordsMidFocused "290 103 199 44"
+set CoordsEndFocused "489 103 23 44"
+set CoordsStartDisabled "267 147 23 27"
+set CoordsMidDisabled "290 147 199 27"
+set CoordsEndDisabled "489 147 23 27"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 600, RenderCB_DY 170
+set DisabledSymInv AdjustUIMode
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.1
+add MenuObject
+set Name AB_UnitContainer
+set Coords "0 0 640 170"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set FilterName LoadMapStartup
+set DragSourceSym _AdjustUISource_
+set FilterName LoadMapStartup
+set HiddenCheckBySymbolInv OptionShowTray
+set HiddenCheckBySymbol PauseUIOpen
+set Child "AB_UnitRowDragBG 10 0"
+set Child "AB_UnitsRow 1250 -112		/platform consolePlatformHW"
+set Child "AB_UnitsRow 80 52	/platform !consolePlatformHW"
+set CommandGetFocus "if sym AdjustUIMode == 0 runnow sym clear _AdjustUISource_"
+set CommandGetFocus "if sym AdjustUIMode == 1 runnow sym set _AdjustUISource_ AB_UnitContainer"
+set CommandLoseFocus "sym clear _AdjustUISource_"
+set CommandOnMouseDrag "if sym AdjustUIMode == 1 runnow sym set _AdjustUISource_ AB_UnitContainer"
+add MenuObject
+set Name AB_UnitRowDragBG
+set Texture menus/DialogBox
+set CoordsStart "267 80 23 23"
+set CoordsMid "290 80 199 23"
+set CoordsEnd "489 80 23 23"
+set CoordsStartFocused "267 103 23 44"
+set CoordsMidFocused "290 103 199 44"
+set CoordsEndFocused "489 103 23 44"
+set CoordsStartDisabled "267 147 23 27"
+set CoordsMidDisabled "290 147 199 27"
+set CoordsEndDisabled "489 147 23 27"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 640, RenderCB_DY 170
+set DisabledSymInv AdjustUIMode
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.1
+add MenuObject
+set Name UpgradeAirMechBungie
+set ContainerOnly 1
+set Coords "0 0 128 128"
+set Focus -2
+set FocusBungieArcStart -22.5
+set FocusBungieArcSizes 45
+set FocusSticky 1
+set FocusBungieTargetIDs "Ability@Rook0AB0@ Ability@Rook0AB0@ Ability@Rook0AB0@ Ability@Rook0AB1@ Ability@Rook0AB2@ Ability@Rook0AB3@ Ability@Rook0AB4@ Ability@Rook0AB4@"
+set CommandPress "echo Press-UpgradeAirMechBungie"
+add MenuObject
+set Name CockpitUpgradeAirMech
+set ContainerOnly 1
+set HiddenCheckBySymbolInv _RulesV2_
+set Coords "0 0 976 688"
+set Anchor Center
+set Child "UpgradeAirMechBungie 0 0"
+set Child "AB_Ability@Rook0AB0@[Ability@Rook0AB0@] 656 	 232 	0 @Rook0AB0@		2.5 152 0"
+set Child "AB_Ability@Rook0AB1@[Ability@Rook0AB1@] 328  464	1 @Rook0AB1@		2.5 152 0"
+set Child "AB_Ability@Rook0AB2@[Ability@Rook0AB2@] 0 232	2 @Rook0AB2@		2.5 152 0"
+set Child "AB_Ability@Rook0AB3@[Ability@Rook0AB3@] 656 464	3 @Rook0AB3@		2.5 152 0"
+set Child "AB_Ability@Rook0AB4@[Ability@Rook0AB4@] 0 464	4 @Rook0AB4@		2.5 152 0"
+add MenuObject
+set Name HudSpectatePlayerStatTemplate
+set Texture ]hud/HudFortressBar@_Arg2_@
+set Coords "966 257 23 24"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set RenderCB_ConsoleSymbol R@_Arg1_@_C_LostRook
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale @_Arg4_@
+set RenderCB_DX 60
+set RenderCB_DY 30
+set RenderCB_Flags "/outlined8x /useTextWidthForMIZone /noCommaSep"
+set SaveArgs 5
+set RenderCB_Offset "@_Arg5_@ 0"
+set ScaleX @_Arg3_@, ScaleY @_Arg3_@
+add MenuObject initFrom HudSpectatePlayerStatTemplate
+set Name HudSpectatePlayerStatDeaths
+set ToolTip "TT_EG_Deaths"
+add MenuObject initFrom HudSpectatePlayerStatTemplate
+set Name HudSpectatePlayerStatBuilt
+set Coords "990 257 23 24"
+set RenderCB_ConsoleSymbol R@_Arg1_@_C_BuiltAnyUnit
+set ToolTip "TT_EG_Built"
+add MenuObject initFrom HudSpectatePlayerStatTemplate
+set Name HudSpectatePlayerStatKills
+set Coords "939 257 26 24"
+set RenderCB_ConsoleSymbol R@_Arg1_@_CC_Kills
+set ToolTip "TT_EG_Destroyed"
+add MenuObject
+set Name StatsSpecIngame
+set Coords "0 0 300 42"
+set ContainerOnly 1
+set Child "HudSpectatePlayerStatBuilt 135 0	@_Arg1_@ 	@_Arg2_@	1.0	0.65	25"
+set Child "HudSpectatePlayerStatDeaths 85 0	@_Arg1_@ 	@_Arg2_@	1.0	0.65	28"
+set Child "HudSpectatePlayerStatKills 0 0	@_Arg1_@ 	@_Arg2_@	1.0	0.65	28"
+set SaveArgs 2
+add MenuObject
+set Name StatsSpecEndgame
+set Coords "0 0 300 42"
+set ContainerOnly 1
+set Child "HudSpectatePlayerStatBuilt 235 0	@_Arg1_@ 	@_Arg2_@		1.3	0.8	38"
+set Child "HudSpectatePlayerStatDeaths 155 0	@_Arg1_@ 	@_Arg2_@	1.3	0.8	33"
+set Child "HudSpectatePlayerStatKills 0 0	@_Arg1_@ 	@_Arg2_@		1.3	0.8	35"
+set SaveArgs 2
+add MenuObject
+set Name AbilitiesSpecLeft
+set ContainerOnly 1
+set HiddenCheckBySymbol SpectateEconomy
+set FilterName LoadMapStartup
+set Coords "0 0 400 65"
+set Child "AB_Ability&Rook@_PTagInd@AB0& 0 	 0 	0 &Rook@_PTagInd@AB0&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB1& 42  0	1 &Rook@_PTagInd@AB1&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB2& 84 0	2 &Rook@_PTagInd@AB2&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB3& 126 0	3 &Rook@_PTagInd@AB3&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB4& 168 0	4 &Rook@_PTagInd@AB4&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB5& 210 0	5 &Rook@_PTagInd@AB5&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB6& 252 0	6 &Rook@_PTagInd@AB6&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB7& 294 0	7 &Rook@_PTagInd@AB7&		0.7 43 @_PTagInd@"
+set Child "StatsSpecIngame	340 9 @_PTagInd@	@TC_LocalPlayer@"
+add MenuObject
+set Name AbilitiesSpecRight
+set ContainerOnly 1
+set HiddenCheckBySymbol SpectateEconomy
+set FilterName LoadMapStartup
+set Coords "0 0 400 65"
+set Child "AB_Ability&Rook@_PTagInd@AB0& 0  0 	0 &Rook@_PTagInd@AB0&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB1& 42  0	1 &Rook@_PTagInd@AB1&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB2& 84 0	2 &Rook@_PTagInd@AB2&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB3& 126 0	3 &Rook@_PTagInd@AB3&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB4& 168 0	4 &Rook@_PTagInd@AB4&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB5& 210 0	5 &Rook@_PTagInd@AB5&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB6& 252 0	6 &Rook@_PTagInd@AB6&		0.7 43 @_PTagInd@"
+set Child "AB_Ability&Rook@_PTagInd@AB7& 294 0	7 &Rook@_PTagInd@AB7&		0.7 43 @_PTagInd@"
+set Child "StatsSpecIngame	-200 9 @_PTagInd@	@TC_LocalPlayersEnemy@"

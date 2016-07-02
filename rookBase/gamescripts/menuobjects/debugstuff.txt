@@ -1,0 +1,40 @@
+add MenuObject
+set Name FPSCounter
+set Coords "0 0 110 20"
+set RenderCB _FramesPerSecond
+set RenderCB_Flags "/outlined8x"
+set RenderCB_DX 110
+set RenderCB_DY 20
+set RenderCB_Font DroidSansMono
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXRight
+set Anchor LowerRight
+set Layer 1
+add MenuObject
+set Name DevToggleSymbolTemplate
+set Coords "0 0 200 24"
+set RenderCB_DX 200
+set RenderCB_DY 24
+set RenderCB_FontScale 1.0
+set RenderCB _DrawText
+set Focus -2
+set MouseInteract 1
+set RenderCB_Font Roboto66
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_RGBColor "0.8 0.6 0.2"
+set RenderCB_RGBColorFocused "1.0 0.8 0.2"
+set RenderCB_Flags /nmi
+set RenderCBExcludesDefaultRender 0
+set RenderBlocked 1
+add MenuObject initFrom DevToggleSymbolTemplate
+set Name DevToggleSymbolVIP
+set RenderCB_Text "toggle VipStatusShown"
+set CommandPress "sym toggle VipStatusShown"
+add MenuObject initFrom DevToggleSymbolTemplate
+set Name DevToggleUpdateAvailable
+set RenderCB_Text "toggle UpdateAvailable"
+set CommandPress "sym toggle UpdateAvailable"
+add MenuObject initFrom DevToggleSymbolTemplate
+set Name DevToggleMenuFactionCreate
+set RenderCB_Text "toggle MenuFactionCreate"
+set CommandPress "sym toggle MenuFactionCreate"

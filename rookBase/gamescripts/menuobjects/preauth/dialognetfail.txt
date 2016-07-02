@@ -1,0 +1,52 @@
+add MenuObject initFrom DialogTitle
+set Name NetFailDialogTitle
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol NetFailTitleSym
+add MenuObject
+set Name NetFailDialogMessage
+set Coords "0 0 500 200"
+set RenderCB_DX 600
+set RenderCB_DY 200
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set Layer 25
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_BoolArg 1
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.8 0.8 0.8"
+set RenderCB_ConsoleSymbol NetFailMsgSym
+add MenuObject initFrom DialogButton0
+set Name NetFailDialogButton
+set CommandPress "]gameui ignoreInputTime 0.5"
+set CommandPress "]clearmenu netfaildialog.txt"
+set CommandPress "]if !consolePlatformHW && sym MainMenuCount > 0 runnow menucmd MP_LoadLogin"
+set CommandPress "]if !consolePlatformHW runnow menucmd MF_DoLogout"
+set CommandPress "]if consolePlatformHW runnow platform authRestart"
+set FocusDeathgrip 1
+add MenuObject
+set Name NetFailDialogMaster
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogGeneral
+set CoordsStart "342 6 36 85"
+set CoordsMid "378 6 12 85"
+set CoordsEnd "390 6 36 85"
+set CoordsStartFocused "342 91 36 87"
+set CoordsMidFocused "378 91 12 87"
+set CoordsEndFocused "390 91 36 87"
+set CoordsStartDisabled "342 178 36 24"
+set CoordsMidDisabled "378 178 12 24"
+set CoordsEndDisabled "390 178 36 24"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 760
+set RenderCB_DY 500
+set Coords "0 0 760 500"
+set Anchor Center
+set Layer 24
+set FirstDrawnChildren 1
+set Child "BlackDialog 0 0"
+set Child "NetFailDialogTitle 0 26"
+set Child "NetFailDialogMessage 80 100"
+set Child "NetFailDialogButton 555 352"

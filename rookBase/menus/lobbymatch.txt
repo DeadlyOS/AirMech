@@ -1,0 +1,60 @@
+stopIfInGame
+stopParse
+onloadrun {
+sym set _MatchingUI_ 1
+sym set MatchingState 0
+sym set Ally0Id 0
+sym set Ally1Id 1
+sym set Ally2Id 2
+sym set Ally3Id 3
+sym set Ally4Id 3
+sym set Ally5Id 3
+rook inMenu LobbyMatch2
+rook recustomizeLoadoutToServer
+sym set _PreGameTimer
+party focusChat
+sym set MM_CustomizeOk 1
+if sym _GotPrices_ == 0 wallet updatePrices
+}
+MO LobbyMatchTopBar {
+pos 0 -160
+layer 4
+}
+MO LobbyPlayerContainer {
+pos 6 -300
+layer 3
+}
+MO LobbyOpenSlotContainer {
+pos 6 6
+layer 1
+}
+MO LobbyTeammateContainer /arg 1 {
+pos 6 6
+layer 1
+rename LobbyTeammateContainer1
+}
+MO LobbyTeammateContainer /arg 2 {
+pos 6 176
+layer 1
+rename LobbyTeammateContainer2
+}
+MO LobbyTeammateContainer /arg 3 {
+pos 6 346
+layer 1
+rename LobbyTeammateContainer3
+}
+onload {
+echo LOAD LOBBY MATCH MENU
+gameUI show EG_Chatbox
+gameUI show #LoadoutQuickChangeLabel@ActiveLoadout@
+addUIAnim LobbyMatchTopBar mas_LobbyEnterFromTop
+addUIAnim LobbyPlayerContainer mas_LobbyEnterPlayerContainer
+addUIAnim LobbyOpenSlotContainer mas_LobbyEnterPlayerContainer
+addUIAnim LobbyTeammateContainer1 mas_LobbyEnterPlayerContainer
+addUIAnim LobbyTeammateContainer2 mas_LobbyEnterPlayerContainer
+addUIAnim LobbyTeammateContainer3 mas_LobbyEnterPlayerContainer
+addUIAnim EG_Chatbox mas_LobbyEnterChatbox
+}
+onunloadrun {
+sym set _MatchingUI_ 0
+}

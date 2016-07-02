@@ -1,0 +1,36 @@
+stopIfSymbol BackendDialogLoaded == 1
+stopIfSymbol GoSpectate == 1
+onloadrun {
+]gameui ignoreInputTime 0.55
+]rookMenus previewHide
+]gameUI saveFocusID _dialogBackendRestoreFocus_
+]sym set BackendDialogLoaded 1
+}
+MO BackendDialogMasterV2 {
+pos 0 0
+}
+onload {
+]gameui promoteToTop BackendDialogMasterV2
+]if usingPad ]gameUI focusName BackendDialogButton0
+]if usingPad ]pcmd t0 gameUI focusName BackendDialogButton0
+]if usingPad ]pcmd t1 gameUI focusName BackendDialogButton0
+]if usingPad ]pcmd t2 gameUI focusName BackendDialogButton0
+]if usingPad ]pcmd t3 gameUI focusName BackendDialogButton0
+]if usingPad ]pcmd 0.5 gameUI focusName BackendDialogButton0
+]playerinputpause 1
+]sym push CurrentMenu StdDialog
+]sym push DisableConShop 1
+]sym push DisableInvites 1
+}
+onunload {
+]playerinputpause 0
+]gameUI restoreFocusID _dialogBackendRestoreFocus_
+]if sym MotDLoaded == 1 gameUI focusnametry MotDFocus
+]sym set BackendDialogLoaded 0
+]sym pop DisableConShop DisableInvites
+}
+onunloadrun {
+]sym pop CurrentMenu
+]gameui ignoreInputTime 0.1
+]rookMenus previewShow
+}

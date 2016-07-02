@@ -1,0 +1,20 @@
+blockLoadOnConsoleSym EditorMapSaveAsWindowLoaded
+onloadrun {
+sym set EditorMapSaveAsWindowLoaded 1
+sym set EditorMapListPage 0
+}
+MO EditorMapSaveAsWindow {
+draggableUIElement
+pos $UI_OpenDialog_X $UI_OpenDialog_Y /screenClamp 200 300
+layer 13
+preDeleteRunCmd gameUI getLastRenderPos EditorMapSaveAsWindow UI_OpenDialog_X UI_OpenDialog_Y
+}
+onload {
+addUIAnim EditorMapSaveAsWindow mas_DialogPopFadein
+gameui promoteToTop EditorMapSaveAsWindow
+}
+onunloadrun {
+sym set EditorMapSaveAsWindowLoaded 0
+}
+onunload {
+}

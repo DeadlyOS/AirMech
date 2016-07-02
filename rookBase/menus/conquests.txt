@@ -1,0 +1,74 @@
+stopIfSymbol CurrentMenu == CQuests
+stopIfSymbol DialogBoxLoaded == 1
+stopIfSymbol BackendDialogLoaded == 1
+stopIfSymbol ConQuestsMenu == 1
+onloadrun {
+if sym CurrentMenu == CHome menuCmd ConMenuBlur
+if sym CurrentMenu == CRoot menuCmd ConMenuBlur
+sym set MenuToClear ConQuests
+]gameUI saveFocusID _savefocusid_quests_
+customize clearClassFilter
+sym set _ActiveLobbySelectScript_ SelectItemDialog.txt
+sym clear _cmode
+sym setZero _FocusItemList_ _FocusItemLast_
+sym push _Bind_CycleLoadoutOnShoulders_ 0
+sym push _Bind_MatchingUIBack_ 0
+sym push _Bind_SoloLoadout_ 0
+sym push CurrentMenu CQuests
+sym push QuestsPerPage 7
+sym set ConQuestsMenu 1
+sym push _Bind_PrevNextOnShoulders_ 0
+sym push _EgRewardCountOk_ 1
+sym set ConPromosRemaining 4
+sym set RedeemCode
+sym set ConMessageHasFocus 0
+}
+MO BlackCenterShadow {
+pos 0 0
+layer 11
+layerInGame 17
+}
+MO PopDialogBack {
+pos 0 0
+layer 12
+layerInGame 18
+}
+MO CM_MasterQuests {
+pos 0 0
+layer 13
+layerInGame 19
+}
+MO CM_ButtonHints_ConQuests_Popup {
+pos 0 0
+layer 13
+layerInGame 19
+}
+onload {
+addUIAnim CM_MasterQuests mas_DialogPop
+input set padFocusFallback ConSelectItem0
+gameUI focusNameTry ConQuest0
+playerinputpause 1 local
+gameui ignoreInputTime 0.5
+pcmd 0.4 playerinputpause 1 local
+}
+onunloadrun {
+}
+onunload {
+input set padFocusFallback $_savefocusid_quests_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_quests_
+]pcmd 0.05 ]gameUI focusNameTry ChallengeButtonCompletedAll ChallengeButtonNext ChallengeEndButtonRestart PauseButtonList EndgameContinueButton
+gameUI ignoreInputTime 0.1
+console flushAllPendingSeq 320
+sym set MenuToClear
+sym pop _Bind_CycleLoadoutOnShoulders_
+sym pop _Bind_MatchingUIBack_
+sym pop _Bind_SoloLoadout_
+sym pop CurrentMenu
+sym set ConQuestsMenu 0
+sym pop _Bind_PrevNextOnShoulders_
+sym pop _EgRewardCountOk_
+sym pop QuestsPerPage
+if sym CurrentMenu == CHome menuCmd ConMenuSharp
+if sym CurrentMenu == CRoot menuCmd ConMenuSharp
+if !challengeMap playerinputpause 0 local
+}

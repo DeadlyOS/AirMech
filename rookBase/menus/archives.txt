@@ -1,0 +1,42 @@
+blockLoadOnConsoleSym ArchivesLoaded
+onloadrun {
+]sym setOne ArchivesLoaded HideDailyQuest
+]sym set GL_ChatMinimized 1
+]menucmd GlobalChatReposition
+]sym set _ArchivesYear Archives_DecayYear0
+]sym set _ArchivesEra era_name_decay
+]sym set _ArchivesYearRange Archives_DecayYearRange
+]gameui refreshFilterName Archives
+]gameui saveFocusID _ArchivesRestoreFocus_
+}
+MO ArchivesBase {
+pos 0 0
+layer 1
+}
+onload {
+]gameui enable ArchivesBlack
+]gameui enable ArchivesDecayBg
+]gameui enableAll ArchivesBottomHint
+]if sym HasArch01 == 1 gameui directPushName ArchivesTimelineDecayOrb0"
+]if sym HasArch01 == 1 addUIAnim ArchivesTimelineHint mas_ArchivesTimelineHintReveal"
+]addUIAnim ArchivesTimeline mas_ArchivesTimelineShow"
+]addUIAnim ArchivesTimelineCurrent mas_ArchivesScrollShow"
+]addUIAnim ArchivesScroll mas_ArchivesScrollShow"
+]pcmd 0.25 gameui getLastRenderPos ArchivesTimelineCurrent _TimelineMoveFromX_ _TimelineMoveFromY_
+]pcmd 0.25 gameui enable ArchivesTopSectionType
+]pcmd 0.5 gameui enable ArchivesTopYearRangeType
+]if usingPad ]gameui focusName ArchivesTimelineDecayOrb0
+]if usingPad ]pcmd t0 gameui focusName ArchivesTimelineDecayOrb0
+]if usingPad ]pcmd t1 gameui focusName ArchivesTimelineDecayOrb0
+]if usingPad ]pcmd t2 gameui focusName ArchivesTimelineDecayOrb0
+]if usingPad ]pcmd t3 gameui focusName ArchivesTimelineDecayOrb0
+]if usingPad ]pcmd 0.5 gameUI focusName ArchivesTimelineDecayOrb0
+]pcmd 0.5 gameui enable ArchivesTopCount1
+}
+onunload {
+]sym set _ArchivesCurrent Decay
+]sym setZero ArchivesLoaded HideDailyQuest
+]sym setOne ArchivesTimelineHintHidden
+]sym clear _ArchivesTimelineTitle _ArchivesTimelineStory"
+]gameui restoreFocusID _ArchivesRestoreFocus_
+}

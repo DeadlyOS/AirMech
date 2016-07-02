@@ -1,0 +1,29 @@
+gameUI ignoreInputTime 0.3
+menu3d remove MessageConfirm
+playerinputpause 1 local
+if sym VRQuestSelected == 1 menucmd QuestCardCancel
+gameui refreshfiltername VRMenuBar
+menu3d remove StartMenuVR
+menu3d add StartMenuVR /rootScale 1.4 /rootRot 0 0 180 /worldPose 0 30 100
+menu3d logicFnc StartMenuVR trackOnHMD /offset 0 0 0 /mag 150 /radiusOuter 50 /timeout 0.2
+menu3d addChild StartMenuVR MenuBlock0 /model vr/MenuBlockNew.amf	/material mat_MenuBlock /noVis /worldPose 0 0 0 /rootScale 1 0.2 1 /hiddenCheckBySymbol DialogBoxLoaded
+menu3d addChild MenuBlock0 MenuBlockLabel0 /model vr/MenuBlockLabel0.amf	/material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose 0 0 0 /rootScale 1 /attachToParentBone bone_label /hiddenCheckBySymbol DialogBoxLoaded
+menu3d addChild StartMenuVR MenuBlock1 /model vr/MenuBlockNew.amf	/material mat_MenuBlock /noVis /worldPose 0 0 -15 /rootScale 1 0.2 1 /hiddenCheckBySymbol DialogBoxLoaded
+menu3d addChild MenuBlock1 MenuBlockLabel1 /model vr/MenuBlockLabel1.amf	/material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose 0 0 0 /rootScale 1 /attachToParentBone bone_label /hiddenCheckBySymbol DialogBoxLoaded
+menu3d addChild StartMenuVR MenuBlock2 /model vr/MenuBlockNew.amf	/material mat_MenuBlock /noVis /worldPose 0 0 -30 /rootScale 1 0.2 1 /hiddenCheckBySymbol DialogBoxLoaded
+menu3d addChild MenuBlock2 MenuBlockLabel2 /model vr/MenuBlockLabel2.amf	/material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose 0 0 0 /rootScale 1 /attachToParentBone bone_label /hiddenCheckBySymbol DialogBoxLoaded
+menu3d addChild StartMenuVR MenuBlock3 /model vr/MenuBlockNew.amf	/material mat_MenuBlock /noVis /worldPose 0 0 -30 /rootScale 1 0.2 1 /hiddenCheckBySymbol DialogBoxLoaded
+menu3d addChild MenuBlock3 MenuBlockLabel3 /model vr/MenuBlockLabel3.amf	/material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose 0 0 0 /rootScale 1 /attachToParentBone bone_label /hiddenCheckBySymbol DialogBoxLoaded
+menu3d addChild StartMenuVR MenuBlockFocus /model vr/MenuBlockFocus.amf	/material mat_MenuBlockFocus /noVis /worldPose 0 0 0 /rootScale 1 1 1 /hiddenCheckBySymbol DialogBoxLoaded
+if sym VRMenuText0 !isEmpty pcmd 0 menu3d addAnimScript MenuBlock0 as_MenuBlockEnter.txt
+if sym VRMenuText0 !isEmpty pcmd 0 menu3d addAnimScript MenuBlockLabel0 as_VRMenuIn.txt
+if sym VRMenuText1 !isEmpty pcmd 0.1 menu3d addAnimScript MenuBlock1 as_MenuBlockEnter.txt
+if sym VRMenuText1 !isEmpty pcmd 0.1 menu3d addAnimScript MenuBlockLabel1 as_VRMenuIn.txt
+if sym VRMenuText2 !isEmpty pcmd 0.2 menu3d addAnimScript MenuBlock2 as_MenuBlockEnter.txt
+if sym VRMenuText2 !isEmpty pcmd 0.2 menu3d addAnimScript MenuBlockLabel2 as_VRMenuIn.txt
+if sym VRMenuText3 !isEmpty pcmd 0.3 menu3d addAnimScript MenuBlock3 as_MenuBlockEnter.txt
+if sym VRMenuText3 !isEmpty pcmd 0.3 menu3d addAnimScript MenuBlockLabel3 as_VRMenuIn.txt
+pcmd 0.3 menu3d setRootScale MenuBlockFocus 1.05 0.66 1.1
+pcmd 0.3 menu3d setVisible MenuBlockFocus
+input set padFocusFallback VRMenuBar0
+pcmd 0.3 gameui focusNameTry VRMenuBar0

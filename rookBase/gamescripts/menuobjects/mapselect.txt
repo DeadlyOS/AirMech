@@ -1,0 +1,110 @@
+add MenuObject
+set Name MapSelectPreview
+set Texture /data/levels/@MapName@/preview
+set NoDrawOnMissingTexture 1
+set Coords "50 0 800 512"
+set NoDisplayClipping 1
+set SaveArgs 1
+set ScaleX 1.0
+set ScaleY 1.0
+set FilterName MapSelection
+set Texture2 maps/ConMapPreviewMask
+set Material mat_AlternateAlpha
+add MenuObject
+set Name MapSelectButtonTop
+set Texture menus/HomeBar
+set Coords "4 4 262 66"
+set CoordsFocused "291 4 262 66"
+set CoordsPressed "291 1 262 66"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-5 -5 5 5"
+set DrawWhenFocused MainBarButtonUnderline
+set DrawWhenFocusedOffset "3 48"
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_Font RobotoBold
+set RenderCB _DrawUText
+set RenderCB_Text Template
+set MouseInteract 1
+set RenderCB_RGBColor "0.63 0.71 0.74"
+set RenderCB_RGBColorFocused "0.80 0.84 0.85"
+set RenderCB_Flags "/nmi /allCaps /fitX"
+set RenderCB_FontScale 0.7
+set RenderCB_DX 215
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "0 0"
+set RenderCB_OffsetPressed "0 3"
+set ScaleX 0.8, ScaleY 0.8
+set CommandPress "gameUI ignoreInputTime 0.1"
+add MenuObject initFrom MapSelectButtonTop
+set Name MapSelectOfficial
+set RenderCB_Text Btn_OfficialMaps
+set CommandPress "echo do magic for official maps"
+add MenuObject initFrom MapSelectButtonTop
+set Name MapSelectLocal
+set RenderCB_Text Btn_LocalMaps
+set CommandPress "echo do magic for local maps"
+add MenuObject initFrom MapSelectButtonTop
+set Name MapSelectublic
+set RenderCB_Text Btn_PublicMaps
+set CommandPress "echo do magic for public maps"
+add MenuObject
+set Name MapSelectWindow
+set Texture menus/Windows
+set CoordsStart "0 0 120 120"
+set CoordsMid "120 0 86 120"
+set CoordsEnd "206 0 120 120"
+set CoordsStartFocused "0 120 120 86"
+set CoordsMidFocused "120 120 86 86"
+set CoordsEndFocused "206 120 120 86"
+set CoordsStartDisabled "0 206 120 120"
+set CoordsMidDisabled "120 206 86 120"
+set CoordsEndDisabled "206 206 120 120"
+set RenderCB _Draw_G3x3
+set FirstDrawnChildren 1
+set RenderCB_DX 828
+set RenderCB_DY 528
+set Coords "0 0 400 400"
+set MouseInteract 1
+set Focus -2
+set Color 0x50656c
+set ColorFocused 0x50656c
+set MouseInteractZoneExpand "15 15 -15 -15"
+set FirstDrawnChildren 1
+set Child "GenericBackgroundEscape 0 0		MapSelect"
+set Child "MapSelectPreview 14 14"
+set Child "MapSelectOfficial 20 20"
+set Child "MapSelectLocal 230 20"
+set Child "MapSelectublic 440 20"
+set Child "GenericListboxBase[ListboxCustomMaps] 23 80 MapName CustomMaps	0x333333 0x654736 0x333333 0xe27433"
+set Child "ButtonGenericClose[ButtonStructureInspectClose] 754 10	MapSelect"
+add MenuObject
+set Name MapDescTemplate
+set Texture menus/Messages
+set CoordsStart "16 474 148 148"
+set CoordsMid "164 474 320 148"
+set CoordsEnd "466 474 148 148"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 1000
+set Child "MapDescText 24 24 956 106"
+add MenuObject
+set Name MapDescText
+set Coords "0 0 1250 106"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text MapLore@MapName@
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/outlined8x /fitX /shadowColor2"
+set RenderCB_FontScale 0.7
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set FilterName MapSelection

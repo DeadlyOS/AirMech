@@ -1,0 +1,24 @@
+MO MouseCursorMaster +gameValidation !nacl +gamevalidation !android +gamevalidation !consoleHW {
+pos 0 0
+layer $MouseCursor_Layer
+}
+MO MouseCursorMasterNacl +gameValidation nacl +gamevalidation !console {
+rename MouseCursorMaster
+pos 0 0
+layer $MouseCursor_Layer
+}
+MO MouseCursorMasterConsole +gamevalidation consoleHW {
+rename MouseCursorMaster
+pos 0 0
+layer $MouseCursor_Layer
+}
+MO ServerDowntimeNotifier {
+pos 0 -70
+layer $DowntimeNotifier_Layer
+}
+onload {
+input set cursor 0
+}
+onunload {
+input set cursor 1
+}

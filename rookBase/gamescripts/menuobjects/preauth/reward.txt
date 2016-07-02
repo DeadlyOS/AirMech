@@ -1,0 +1,27 @@
+add MenuObject
+set Name RewardCapsule
+set Texture menus/LoginReward
+set Coords "0 431 323 431"
+set CoordsAnimated "0 431 323 431"
+set CoordsAnimated "0 0 323 431"
+set CoordsAnimated "323 0 323 431"
+set CoordsAnimationPreset @_Arg1_@
+set SaveArgs 2
+set ScaleX @_Arg2_@
+set ScaleY @_Arg2_@
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name RewardCapsuleRow
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "RewardCapsule 0 0	2	0.5"
+set Child "RewardCapsule 200 0	2	0.6"
+set Child "RewardCapsule 400 0	1	0.7"
+set Child "RewardCapsule 600 0	0	0.8"
+set Child "RewardCapsule 800 0	0	0.9"
+add MenuObject
+set Name RewardMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "RewardCapsuleRow 100 500"

@@ -1,0 +1,111 @@
+add MenuObject
+set Name PromoObjectSlotHighlight
+set Texture menus/LoadoutGrid
+set PulseAlpha "1.5 -0.5 0.0"
+set Coords "372 0 186 186"
+set ScaleX 1.22
+set ScaleY 0.85
+add MenuObject
+set Name PromoObjectSlotTemplate
+set Texture menus/LoadoutGrid
+set Coords "0 0 186 186"
+set DrawWhenFocusedOffset "-10 -8 0"
+set Focus -2
+set Layer 2
+set MouseInteract 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set Texture menus/DialogGeneral
+set Coords "759 267 262 127"
+set FirstDrawnChildren 2
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set DisabledAlpha 0.2
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.15
+set CommandGetFocus "floatsym setConcat2 MainMenuDescTimer $C_BINDING 0.0"
+set CommandGetFocus "playSound $CustomizeSoundFocus"
+set CommandPress "playSound $CustomizeSoundClick"
+set Child "PromoObjectBackground 5 3"
+add MenuObject initFrom SimpleMenuTextTemplate
+set Name HoverInfoBoxDebug
+set Texture effects/white
+set NoAlphaMod 1
+set Alpha 0.3
+set RenderCB_Text @_Arg3_@
+set RenderCB_BoolArg 1
+set RenderCB_FontScale 0.5
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 0
+set RenderCB_DY 0
+add MenuObject
+set Name HoverInfoBox
+set RenderBlocked 1
+set Coords "0 0 @_Arg1_@ @_Arg2_@"
+set MouseInteract 1
+set ToolTip @_Arg3_@
+set CommandPress ">customize slotInspect @_Arg4_@ @_Arg5_@"
+add MenuObject
+set Name Bundle_StarterBundle1
+set ContainerOnly 1
+set Coords "974 367 24 60"
+set Child "HoverInfoBox 154 179 	207 209 MF_CustomTip_TurretFlak			units TurretFlak"
+set Child "HoverInfoBox 407 182 	234 186 MF_CustomTip_TurretArtillery	units TurretArtillery"
+set Child "HoverInfoBox 163 405 	132 126 MF_CustomTip_Probe				units Probe"
+set Child "HoverInfoBox 356 369 	328 163 MF_AirMechChopper_Commando		rooks Chopper_Commando"
+set Child "HoverInfoBox 85 540 		253 193 MF_CustomTip_TankLight			units TankLight"
+set Child "HoverInfoBox 383 535 	300 220 MF_AirMechFighterA_Tomcat		rooks FighterA_Tomcat"
+set Child "HoverInfoBox 718 495 	109 98 TT_BoostXpIngame					units null"
+set Child "HoverInfoBox 731 593 	122 112 TT_BoostKudosIngame				units null"
+add MenuObject
+set Name Bundle_ChallengerBundle1
+set ContainerOnly 1
+set Coords "974 367 24 60"
+set Child "HoverInfoBox 200 201 	106 110 MF_CustomTip_BankMedium			units BankMedium"
+set Child "HoverInfoBox 337 188 	154 154 MF_CustomTip_TurretFlak			units TurretFlak"
+set Child "HoverInfoBox 527 215 	93 108 MF_CustomTip_Engineer			units Engineer"
+set Child "HoverInfoBox 682 228 	87 68 MF_CustomTip_Mine					units Mine"
+set Child "HoverInfoBox 156 321 	157 145 MF_CustomTip_TurretChaingun		units TurretChaingun"
+set Child "HoverInfoBox 338 351 	285 158 MF_AirMechChopper_Shark			rooks Chopper_Shark"
+set Child "HoverInfoBox 638 307 	184 228 MF_AirMechStealth_Phantom		rooks Stealth_Phantom"
+set Child "HoverInfoBox 145 472 	167 116 MF_CustomTip_TankLight			units TankLight"
+set Child "HoverInfoBox 96 595	 	210 153 MF_CustomTip_ScorpionTank		units ScorpionTank"
+set Child "HoverInfoBox 360 527 	234 218 MF_AirMechSaucer_BlackOps		rooks Saucer_BlackOps"
+set Child "HoverInfoBox 632 557 	180 90 TT_BoostXpIngame					units null"
+set Child "HoverInfoBox 630 653 	202 94 TT_BoostKudosIngame				units null"
+add MenuObject
+set Name Bundle_PremiumBundle1
+set ContainerOnly 1
+set Coords "974 367 24 60"
+set Child "HoverInfoBox 144 194 	85 74 MF_CustomTip_TurretArtilleryV2	units TurretArtilleryV2"
+set Child "HoverInfoBox 247 151 	68 72 MF_CustomTip_BaseRepair			units BaseRepair"
+set Child "HoverInfoBox 356 207 	108 71 MF_AirMechSaucer					rooks Saucer"
+set Child "HoverInfoBox 485 170 	76 108 MF_AirMechStealth_BlackOps		rooks Stealth_BlackOps"
+set Child "HoverInfoBox 577 171 	78 53 TT_BoostKudosIngame				units null"
+set Child "HoverInfoBox 673 172 	88 57 TT_BoostXpIngame					units null"
+set Child "HoverInfoBox 559 246 	62 59 MF_CustomTip_MoneyMaker			units MoneyMaker"
+set Child "HoverInfoBox 651 238 	103 105 MF_AirMechStealth				rooks Stealth"
+set Child "HoverInfoBox 118 281 	95 80 MF_CustomTip_TurretChaingun		units TurretChaingun"
+set Child "HoverInfoBox 239 236 	104 79 MF_CustomTip_Bertha				units Bertha"
+set Child "HoverInfoBox 265 329 	79 77 MF_CustomTip_BankMedium			units BankMedium"
+set Child "HoverInfoBox 376 286 	94 93 MF_CustomTip_TurretFlak			units TurretFlak"
+set Child "HoverInfoBox 485 310 	162 70 MF_AirMechFighterNeo_Shark		rooks FighterNeo_Shark"
+set Child "HoverInfoBox 721 345 	104 72 MF_CustomTip_RocketTruckU		units RocketTruckU"
+set Child "HoverInfoBox 124 369 	106 87 MF_CustomTip_BotSpawner			units BotSpawner"
+set Child "HoverInfoBox 232 425 	165 106 MF_CustomTip_TankHeavy			units TankHeavy"
+set Child "HoverInfoBox 443 386 	92 75 MF_CustomTip_SupplyTank			units SupplyTank"
+set Child "HoverInfoBox 562 394 	183 78 MF_AirMechChopper				rooks Chopper"
+set Child "HoverInfoBox 409 467 	133 86 MF_CustomTip_RocketTruck			units RocketTruck"
+set Child "HoverInfoBox 558 474 	171 130 MF_AirMechFighterA_BlackOps		rooks FighterA_BlackOps"
+set Child "HoverInfoBox 100 474 	48 41 AtlasDesc							items Atlas"
+set Child "HoverInfoBox 159 479 	42 38 CloverDesc						items Clover"
+set Child "HoverInfoBox 117 527 	65 72 MF_CustomDesc_PilotSamsonU		pilots SamsonU"
+set Child "HoverInfoBox 221 523 	133 86 MF_CustomTip_TankLight			units TankLight"
+set Child "HoverInfoBox 373 562 	89 72 MF_CustomTip_Booster				units Booster"
+set Child "HoverInfoBox 711 535 	143 128 MF_AirMechSaucer_Alien			rooks Saucer_Alien"
+set Child "HoverInfoBox 68 610	 	103 106 MF_CustomTip_InfantryRocket		units InfantryRocket"
+set Child "HoverInfoBox 186 625	 	163 119 MF_CustomTip_ScorpionTank		units ScorpionTank"
+set Child "HoverInfoBox 473 563 	79 85 MF_AirMechOsprey					rooks Osprey"
+set Child "HoverInfoBox 370 624 	204 165 MF_AirMechOsprey				rooks Osprey"
+set Child "HoverInfoBox 583 630 	126 166 MF_AirMechFighterNeo			rooks FighterNeo"
+set Child "HoverInfoBox 699 686 	104 69 MF_AirMechFighterNeo				rooks FighterNeo"

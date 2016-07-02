@@ -1,0 +1,74 @@
+onloadrun {
+gameui ignoreInputTime 0.2
+if sym CurrentMenu == CHome && console menuCmd ConMenuBlur
+if sym CurrentMenu == CRoot && console menuCmd ConMenuBlur
+sym push AnyInspectDialogActive 1
+sym set UnlockDialogActive 1
+sym set UnlockDialogCanceled 0
+sym set UnlockOnBuyConfirmUI 0
+sym set InspectDialogState 1
+if sym DialogPageDisplay == 0 sym set DialogPageDisplay 1
+sym push GL_ChatMinimized 1
+sym push _Bind_CycleLoadoutOnShoulders_ 0
+sym set DialogPageCount 1
+sym set VipTicketCheckbox 0
+if sym VipTicketUnderstand == 0 && sym UnlockWillCostVIPShopTicket == 1 rookMenus previewHide
+sym set VipTicketUnderstandCtx $VipTicketUnderstand
+if sym UnlockWillCostVIPShopTicket == 0 runnow sym set VipTicketUnderstandCtx 1
+if sym _ShowUnitBG_ == 1 runnow sym set DialogPageCount 2
+if sym _ShowUnitBG_ == 1 && sym CurrentMenu == SelectUnitsCon && sym SelectUnitsConUnowned == 1 customize expUnitStatConfig $_UnlockObjectName 1 /noPreviewMod /unownedOnly /customFilter $_ConUnitsFilterType_
+if sym _ShowUnitBG_ == 1 && sym CurrentMenu == SelectUnitsCon && sym SelectUnitsConUnowned == 0 customize expUnitStatConfig $_UnlockObjectName 1 /noPreviewMod /ownedOnly /customFilter $_ConUnitsFilterType_
+if sym _ShowUnitBG_ == 1 && sym CurrentMenu != SelectUnitsCon && sym _CustomObject == guardians customize expGuardianStatConfig $_UnlockObjectName 1 /noPreviewMod
+if sym _ShowUnitBG_ == 1 && sym CurrentMenu != SelectUnitsCon && sym _CustomObject != guardians customize expUnitStatConfig $_UnlockObjectName 1 /noPreviewMod /ownedOnlyIfIntIndex
+if sym _ShowRookBG_ == 1 runnow sym set DialogPageCount 3
+if sym _ShowRookBG_ == 1 runnow customize expRookStatConfig $_UnlockObjectName 1
+if sym _ShowRookBG_ == 0 && sym _ShowUnitBG_ == 0 sym set DialogPageDisplay 1
+if sym DialogPageCount < $DialogPageDisplay sym set DialogPageDisplay 1
+sym setZero PaymentProviderAmazon PaymentProviderGoogle
+sym set PaymentProviderPaypal 1
+sym set PaymentProviderPaypal 1
+sym set P_Pay paypal
+gameui clearScrollableDrawHashes
+clearmenu DialogBoxOk.txt
+if ps4 if sym UnlockDialogSpendCashHidden == 0 console flushAllPendingSeq Ps4StoreStatePending
+}
+MO UnlockDialogMaster {
+pos 0 0
+layer 15
+}
+onloadrun {
+gameUI saveFocusID MenuPreUnlockFocus
+}
+onload {
+gameui promoteToTop UnlockDialogMaster
+addUIAnim UnlockDialogMaster mas_DialogPop
+if sym UnlockDialogSpendKudosHidden == 1 && sym UnlockDialogSpendDiamondsHidden == 1 menuCmd UnlockCashOnlyOption
+if sym UnlockDialogSpendCashHidden == 1 menuCmd UnlockCashHide
+if carbonPayment gameUI show UnlockCashChooseEasy
+sym push CurrentMenu UnlockDialog
+sym push DisableConShop 1
+sym push UnlockOwnedCount
+if usingPad pcmd 0.1 gameUI focusNameTry VipTicketBlockerButton UnlockWithKudosFrame UnlockWithDiamondsFrame UnlockWithCashFrame DialogTryoutButtonEveryone UnlockDialogCancel InspectDialogCancel
+input set padFocusFallback InspectDialogCancel
+if ps4 && usingPad pcmd 0.06 console flushAllPendingSeq Ps4StoreStatePending
+if ps4 && sym UnlockDialogSpendCashHidden == 0 pcmd 0.06 ps4 showStoreState
+}
+onunloadrun {
+sym set UnlockDialogActive 0
+sym set UnlockTrialHidden 1
+sym set GetDiamondsPanelHidden 1
+sym pop _ShowFrameFG_
+rookMenus previewClear
+gameUI restoreFocusID MenuPreUnlockFocus
+}
+onunload {
+sym setZero CanShowPartIcons _CustomPartType _CustomAirMechType
+if sym _CustomObjectRestore != NA runnow sym set _CustomObject $_CustomObjectRestore
+sym set _CustomObjectRestore NA
+sym pop GL_ChatMinimized _Bind_CycleLoadoutOnShoulders_
+sym pop CurrentMenu DisableConShop UnlockOwnedCount AnyInspectDialogActive
+if sym CurrentMenu == CHome && console menuCmd ConMenuSharp
+if sym CurrentMenu == CRoot && console menuCmd ConMenuSharp
+if consolePlatform resources flushPromoCycle 10
+if ps4 ps4 hideStoreState
+}

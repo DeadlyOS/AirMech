@@ -1,0 +1,252 @@
+valuemap Alignment = None, Top, UpperRight, Right, LowerRight, Bottom, LowerLeft, Left, UpperLeft, Center
+valueMap FontJustify = JustifyXLeft, JustifyXCenter, JustifyXRight
+valueMap FontJustifyVertical = JustifyYNone, JustifyYCenter, JustifyYCenterMultiLine, JustifyYTop, JustifyYBottom
+valueMap RookPlayerCheck = None, ModeAsyncWait, CarryingUnit, NotCarryingUnit, ReadyToPickupUnit, ReadyToDropUnit, ModeDefault, ModeUnitBuilding, ModeUnitReady, ToolTipVisible, BadPing, LobbyReady, ModeActiveRegion, NetFallingBehind, ModeOnExternalLink, ModeOnShovelState
+valueMap MenuObjBlendMode = NoBlend, BlendStd, BlendStdAlphaTest, BlendAdd, BlendColorAdd, BlendDestColor, BlendNoneAlphaTest
+valueMap Layers = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, MouseBottom, MouseTop, MouseToolTip
+valueMap RookFonts = Numbers80px, Numbers300px, CenturyGothicNumbers, SpecialChars, Badges, ConsoleChars, AbilityChars, RoomIcons, DroidSans, DroidSansMono, DroidSansBold, DroidSansBigNumbers, Gunner, OCR, Roboto, Roboto66, RobotoBold, SimSun, SimSun_J, Dotum_K, SimSun_T, Gunner_LangFallback, Roboto_NoFallback, RobotoBold_NoFallback, OpenSans, Stencil64, Campaign1
+valueMap DrawWhenFocusedT = BeforeSelf, BeforeChildren, Last
+valueMap HiddenCheckByGameEngineHook = None, ActiveAutoDeployPath, EventDoubleXPOkForMe
+valueMap FilterOnlyFlags = Textures, Coords
+template MenuObject
+property Name flag keyfield
+property FilterName
+property FilterName2
+property FilterOnlyFlags type bitmask, valuemap FilterOnlyFlags
+property SaveArgs type int, default 0
+property CommandOnCreate
+property CommandOnDestroy
+property NeverUnload type bool, default false
+property ContainerOnly type bool, default false
+property WheelZone type bool, default false
+property DragSource
+property DragTarget
+property DragSourceSym
+property LineSrcMenuObj
+property LineDestMenuObj
+property LineOffsets type vector4, default "0 0 0 0"
+property IsCursor type bool, default false
+property IsCursorDynAlpha type bool, default false
+property IsTopPass type int, default 0
+property IsTopPassPropagated type bool, default false
+property IsOnPlayer type string
+property IsSliderControl type bool, default false
+property PosQuery
+property CoordsClipZone type vector4
+property PlayerHiddenStateCheck type enum, valuemap RookPlayerCheck, default None
+property HiddenCheckBySymbol
+property HiddenCheckBySymbol2
+property HiddenCheckBySymbolInv
+property HiddenCheckBySymbolInv2
+property HiddenCheckBySymbolValue
+property HiddenCheckByLocalPlayerIndex
+property HiddenCheckByLocalPlayerIndexInv
+property HiddenCheckByGameEngineHook type enum, valuemap HiddenCheckByGameEngineHook, default None
+property StretchToFillScreen type bool, default false
+property Hidden type string, default 0
+property Disabled type string, default 0
+property DisabledSymInv type string
+property DisabledSym type string
+property DisabledSymValue
+property DrawGreyScale type string
+property DrawGreyScaleSym type string
+property DynGreyScale
+property MouseInteract type bool, default false
+property MouseInteractAreaInscribedQuad type bool, default false
+property NotActionableForPurposeOfGameInput type bool, default false
+property MouseInteractClickToFocus type bool, default false
+property MouseInteractClickAwayToUnfocus type bool, default false
+property MouseInteractZoneExpand type vector4
+property MouseInteractZoneExpandWhenFocused type vector4
+property MouseZone type vector4
+property MouseZoneInsetsForRel type vector4
+property ScrollbarPos
+property DisplayAsFocusedIfParentFocused type bool, default 0
+property DisplayAsPressedIfParentPressed type bool, default 0
+property HideUnlessParentFocused type bool, default 0
+property NoDisplayClipping type bool, default 0
+property ToolTip
+property ToolTipPad
+property RenderCB
+property RenderCB_Options type string
+property RenderCB_Flags type string
+property RenderCBExcludesDefaultRender type bool, default 1
+property RenderBlocked type bool, default 0
+property RenderCB_DX type string, default 256
+property RenderCB_DX_Dynamic type string
+property RenderCB_DY_Dynamic type string
+property RenderCB_DY type string, default 256
+property RenderCB_Font type enum, valuemap RookFonts, default Gunner
+property RenderCB_FontScale type string, default "1.0"
+property RenderCB_FontScaleFocused type string, default ""
+property RenderCB_BoolArg type bool, default 0
+property RenderCB_FloatArg type float, default 1.0
+property RenderCB_IntArg type string, default 0
+property RenderCB_Text type string
+property TextEditableMaxLen type int, default 0
+property TextEditableMasked type bool, default 0
+property TextEditableCode type bool, default 0
+property TextEditableProfanityFiltered type bool, default 0
+property TextEditableAlphaNumeric type bool, default 0
+property TextEditableUsername type bool, default 0
+property TextEditableUsernameLegacy type bool, default 0
+property TextEditablePin type bool, default 0
+property TextEditableDecimal type bool, default 0
+property TextEditableFilename type bool, default 0
+property IsExternalLinkAction type bool, default 0
+property OkToThrowNullFocus type bool, default 1
+property AllowButtonInversion type bool, default 1
+property RenderCB_TextJustify type enum, valuemap FontJustify, default JustifyXLeft
+property RenderCB_TextJustifyVertical type enum, valuemap FontJustifyVertical, default JustifyYNone
+property RenderCB_ConsoleSymbol type string
+property RenderCB_ConsoleSymbol2 type string
+property RenderCB_ConsoleSymbol3 type string
+property RenderCB_ConsoleSymbolGen type string
+property RenderCB_FloatSymbol type string
+property RenderCB_RGBColor type string, default "0xffffff"
+property RenderCB_RGBColorFocused type string
+property RenderCB_RGBColorDisabled type string
+property RenderCB_AlphaOverride type float default -1
+property RenderCB_Offset type string, default "0 0"
+property RenderCB_OffsetFocused type string
+property RenderCB_OffsetPressed type string
+property RenderCB_OffsetDisabled type string
+property RenderCB_YClipConfig type vector4, default "0 0 0 0"
+property RenderCB_YClipConfigIsOffsets type bool, default 0
+property AlphaPassThrough type bool, default 0
+property ScaleX type string, default 1.0
+property ScaleY type string, default 1.0
+property ScaleRefToCoords type float, default 0.0
+property ScaleRefToCoordsX type float, default 0.0
+property ScaleRefToCoordsY type float, default 0.0
+property SymCondRenderOffsetX type string
+property SymCondRenderOffsetY type string
+property RenderOffsetX type string
+property RenderOffsetY type string
+property RenderOffsetSym type string
+property FirstDrawnChildren type int, default 0
+property Child
+property Anchor type enum, valuemap Alignment, default None
+property MirrorOnX type string, default 0
+property MirrorOnY type string, default 0
+property DefaultRotation type float, default 0.0
+property RotationPeriod type float, default 0.0
+property NoDrawOnMissingTexture type bool, default 0
+property NoDrawChildrenOnMissingTexture type bool, default 0
+property LazyLoad type bool, default 0
+property Texture default "effects/MissingTexture"
+property TextureAlt
+property Texture2
+property AutoSizing
+property BlendMode type enum, valuemap MenuObjBlendMode, default BlendStd
+property Material
+property MatAlphaTestRefSymbol
+property Color type string, default "0xffffff"
+property ColorFocused type string, default "0xffffff"
+property Alpha type string, default "1"
+property NoAlphaMod type bool, default 0
+property Coords type string
+property CoordsAnimated
+property CoordsAnimationFrameTimer type float, default 0.0
+property CoordsAnimationSymHash
+property CoordsAnimationSymMode
+property CoordsAnimationPreset
+property CoordsInterpolatedDest type vector4, default "0 0 0 0"
+property CoordsInterpolantCommand
+property CoordsInterpolantCommandResult default "_menufloat"
+property CoordsFocused type vector4, default "0 0 0 0"
+property CoordsPressed type vector4, default "0 0 0 0"
+property CoordsDisabled type vector4, default "0 0 0 0"
+property CoordsStart type vector4, default "0 0 0 0"
+property CoordsMid type vector4, default "0 0 0 0"
+property CoordsEnd type vector4, default "0 0 0 0"
+property CoordsStartFocused type vector4, default "0 0 0 0"
+property CoordsMidFocused type vector4, default "0 0 0 0"
+property CoordsEndFocused type vector4, default "0 0 0 0"
+property CoordsStartDisabled type vector4, default "0 0 0 0"
+property CoordsMidDisabled type vector4, default "0 0 0 0"
+property CoordsEndDisabled type vector4, default "0 0 0 0"
+property FocusedTimeIn type float, default 0.0
+property FocusedTimeOut type float, default 0.0
+property ScaleXFocused type float, default 1.0
+property ScaleYFocused type float, default 1.0
+property ScaleXCenter type float, default 0.5
+property ScaleYCenter type float, default 0.5
+property EnabledAlpha type float, default 1.0
+property DisabledAlpha type string, default "0.0"
+property DisabledAlphaTimeOut type float, default 0.35
+property DisabledAlphaTimeOutPreWait type float, default 0.0
+property DisabledAlphaTimeIn type float, default 0.1
+property DisabledAlphaTimeInPreWait type string
+property PulseAlpha type vector3, default "0 0 0"
+property BlinkAlpha type vector4, default "0 0 0 0"
+property Layer type enum, valuemap Layers, default 0
+property Focus type int, default -1
+property CommandActivate_InputSource, default "A"
+property CommandCancel_InputSource, default "B"
+property CommandActivate
+property CommandEnterKey
+property CommandRedirect
+property CommandPress
+property CommandPressDown
+property CommandDoubleClick
+property CommandPressAlt
+property CommandCancel
+property CommandTopButton
+property CommandLeftButton
+property CommandGetFocus
+property CommandActivateToolTip
+property CommandTextEditableInvalid, default "playsound $MenuCancelFocus"
+property DoCommandGetFocusOnParentFocus type bool, default 0
+property CommandLoseFocus
+property CommandTabCycle
+property CommandTabCycleRev
+property CommandOnKeyboardEdit
+property CommandOnMouseDrag
+property CommandOnMouseDragRun type bool, default false
+property CommandHiddenWhenFocused
+property DefaultKeyboardControl type bool, default false
+property PadGetFocusAsCommandPress type bool, default false
+property FocusSticky type bool, default false
+property FocusChangeOnStick type bool, default 1
+property FocusChangeOnDPad type bool, default 1
+property FocusDeathgrip type bool, default 0
+property CommandFocusUp type string
+property CommandFocusDown type string
+property CommandFocusLeft type string
+property CommandFocusRight type string
+property CommandUpHeld type string
+property CommandDownHeld type string
+property CommandLeftHeld type string
+property CommandRightHeld type string
+property CommandFocusSpecial type string
+property FocusBungieArcStart type float, default 0
+property FocusBungieArcSizes
+property FocusBungieTargetIDs
+property FocusBungieStepsOnDisabled type int, default 4
+property TileArea
+property TileAreaYSym
+property TileAreaFullTexture type bool, default 1
+property DrawWhenFocusedOrder type enum, valueMap DrawWhenFocusedT, default Last
+property DrawWhenFocused
+property DrawWhenFocusedOffset type vector3, default "0 0 0"
+property DrawWhenFocusedPad
+property DrawWhenFocusedOffsetPad type vector3, default "0 0 0"
+property DrawAsLastChildWhenFocused type bool, default 0
+property DrawForToolTip
+property DrawForToolTipPositioning
+property DrawForToolTipPad
+property DrawForToolTipPositioningPad
+property ToolTipDelayTime type float, default 0.6
+property ToolTipPadDelayTime type float, default 0.0
+property ChildrenOffsetWhenFocused type vector3, default "0 0 0"
+property DrawOnConditional default "[NA]"
+property DrawOnConditionalCond
+property StickScrollByMenuCallback
+property SpecialPosX type float, default 0.5
+property SpecialPosY type float, default 0.5
+property SubsequentDrawCall type bool, default 0
+property Stub
+exec _templatesMenuObjects.txt
+exec _consoleMenuObjects.txt
+includeFolder data/gameScripts/MenuObjects/preAuth

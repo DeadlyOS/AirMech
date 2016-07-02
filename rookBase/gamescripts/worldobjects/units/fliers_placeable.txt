@@ -1,0 +1,261 @@
+add WorldObject
+set Name FlierBase
+set NavmeshObstacle 0
+set SpecialType Unit
+set ParticlesOnRookDrop ""
+set ParticlesOnRookPickup ""
+set CollisionZRel 1
+set Collision "Sphere 1.0"
+set DestructionEffects_1  "1 0.2 0   0.5 0  0 0  ExpBlastRing ExpDestroy BrightFlare /vcb:75 /reqVis"
+set DestructionEffects_2  "1 0.5 0   0.5 3  0 0  GlassSpin@TC@ /vcb:40 /reqVis"
+add WorldObject initFrom FlierBase
+set Name DroneBomber
+set StateController RocketTruck
+set Model units/DroneBomber/DroneBomber.amf
+set Material "mat_AirMechStealth"
+set RenderScale "1.5"
+set RangeArc 360
+set FireArcForNoZTurret 360
+set FireArcForNoZTurretWhileMoving 360
+set MissileFireSounds FiringRocket.wav
+set MissileProjEffects Rocket
+set MissileParticles FireTrail2
+set MissileParticles MissileTrailSmoke
+set FortDamageScalar 0.6
+set MissileDamage 65
+set AimTurnRate 300
+set FireDelay 1.5
+set FireAltDelay 0.75
+set ShotSpeed 15
+set MissileSpeed 20
+set MissileWiggle 220
+set MissileIsHoming 0
+set MissileLifespan 1.5
+set CanHitAir 1
+set CanHitGround 1
+set HitPoints 375
+set VisionRange 26
+set RadarRange 24
+set Range 18
+set HasRegularShot 0
+set HasMissiles 1
+set MissileModel effects/RocketMini.amf
+set RotationWanderMaxArc 0.0
+set ZSpinDefs "bone_r_fan 420.0"
+set IdleAnimation units/DroneBomber/Idle.aaf
+set MoveAnimation units/DroneBomber/Idle.aaf
+set MoveAnimationSpeed 0.5
+set MoveSpeed 3
+set UnitTurnRate 90.0
+set MustMoveInFacingDirection 1
+set ThreePointTurn 0.7
+set Acceleration 8.0
+set Deceleration 10.0
+set SteerWheelAngConv 0.8
+set Mass 150.0
+set LinearDamp 0.2
+set AngularDamp 30.0
+set AttackPrepareAnim units/RocketTruck/DoorsOpen.aaf
+set AttackRelaxAnim units/RocketTruck/DoorsClose.aaf
+set FireAnimation "units/RocketTruck/FireForward.aaf units/RocketTruck/FireLeft.aaf units/RocketTruck/FireRight.aaf units/RocketTruck/FireBack.aaf"
+set FireAnimationAlt "units/RocketTruck/FireForward.aaf units/RocketTruck/FireLeft.aaf units/RocketTruck/FireRight.aaf units/RocketTruck/FireBack.aaf"
+set DestructionEffects_3  "2 1.35 0  5 2  5 2  /mdl:units/DroneBomber/DroneBomberDxWing.amf /mtl:mat_AirMechStealth /bne:bone_root /emt:H /grp:DebrisM /col [Group DebrisM Box 0.25] /skt:5 /canReclaimNR"
+set DestructionEffects_4  "1 1.35 0  5 2  5 2  /mdl:units/DroneBomber/DroneBomberDxFan.amf /mtl:mat_AirMechStealth /bne:bone_root /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+set DestructionEffects_5  "1 1.35 0  5 2  5 2  /mdl:units/DroneBomber/DroneBomberDxTail.amf /mtl:mat_AirMechStealth /bne:bone_root /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+add WorldObject initFrom DroneBomber
+set Name DroneBomberVR
+set Range 10
+add WorldObject initFrom FlierBase
+set Name DroneAbduct
+set Model units/DroneAbduct/DroneAbduct.amf
+set Material "mat_Probe"
+set IdleAnimation units/DroneAbduct/Idle.aaf
+set MoveAnimation units/DroneAbduct/Idle.aaf
+set MoveAnimationSpeed 0.5
+set IdleAnimationSpeed 0.7
+set ZSpinDefs "bone_SpinA 180.0"
+set HitPoints 1200
+set DestructionEffects_3  "1 1.8 0  5 2  5 2 /mdl:units/Probe/ProbeDx.amf /mtl:mat_ProbeDx /bne:bone_dx1 /emt:Z /grp:DebrisM /col [Group DebrisM Box 0.25] /skt:5 /canReclaimNR"
+set DestructionEffects_4  "1 1.8 0  5 2  5 2 /mdl:units/Probe/ProbeDx.amf /mtl:mat_ProbeDx /bne:bone_dx2 /emt:Z /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+set DestructionEffects_5  "1 1.8 0  5 2  5 2 /mdl:units/Probe/ProbeDx.amf /mtl:mat_ProbeDx /bne:bone_dx3 /emt:Z /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+add WorldObject initFrom FlierBase
+set Name Baloom
+set StateController Baloom
+set Model units/Baloom/Baloom.amf
+set Material mat_Baloom
+set RangeArc 360
+set FireArcForNoZTurret 360
+set FireArcForNoZTurretWhileMoving 360
+set AimTurnRate 300
+set CanHitAir 0
+set CanHitGround 0
+set HasRegularShot 0
+set HasMissiles 0
+set HitPoints 850
+set HPModTransportWeight 350
+set VisionRange 26
+set RadarRange 10
+set RotationWanderMaxArc 0.0
+set IdleAnimation units/Baloom/Shake.aaf
+set MoveAnimation units/Baloom/Shake.aaf
+set DeployAnim units/Baloom/Deploy.aaf
+set IdleAnimationSpeed 0.5
+set MoveAnimationSpeed 1.0
+set MoveSpeed 13.0
+set UnitTurnRate 90.0
+set Acceleration 5.0
+set Deceleration 20.0
+set ShotAimLeadingEffectiveness 0.8
+set Mass 150.0
+set LinearDamp 0.2
+set AngularDamp 30.0
+set RangeBlast 8
+set RangeFalloff 0.6
+set Range 1.5
+set WeaponType 100.0
+set ShotDamage 650
+set ZSpinDefs "bone_spin -80.0"
+set ZSpinDefs "geo_canister1 100.0"
+set ZSpinDefs "geo_canister2 100.0"
+set ZSpinDefs "geo_canister3 100.0"
+set ZSpinDefs "geo_canister4 100.0"
+set ZSpinDefs "geo_canister5 100.0"
+set DestructionEffects_3  "4 1 0  5 2  5 2  /mdl:units/Baloom/BaloomDxSide.amf /mtl:mat_BaloomDx /bne:bone_root /trq:-50 /emt:H /grp:DebrisM /col [Group DebrisM Box 0.25] /skt:5 /canReclaimNR"
+set DestructionEffects_4  "1 1 0  5 2  5 2  /mdl:units/Baloom/BaloomDxTop.amf /mtl:mat_BaloomDx /bne:bone_root /trq:-50 /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+set DestructionEffects_5  "1 1 0  5 2  5 2  /mdl:units/Baloom/BaloomDxTube.amf /mtl:mat_BaloomDx /bne:bone_root /trq:-50 /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+set DestructionEffects_6  "1 0.5 0  0.5 0		0 0 Grenade_Ring /vcb:100 /reqVis"
+set DestructionEffects_7  "1 0.2 0  0.5 0		0 0 Grenade_Flash /vcb:100 /reqVis"
+set DestructionEffects_8  "1 0.2 0  0.5 0		0 0 Grenade_Debris /vcb:100 /reqVis"
+add WorldObject initFrom FlierBase
+set Name Hero
+set StateController Hero
+set Model units/Hero/Hero.amf
+set Material mat_Hero
+set RenderScale 1.3
+set AimTurnRate 300
+set CanHitAir 0
+set CanHitGround 0
+set CanHitAirMechAnyForm 1
+set HasRegularShot 0
+set HasMissiles 0
+set HitPoints 550
+set VisionRange 23
+set RadarRange 10
+set IdleAnimation units/Hero/Idle.aaf
+set MoveAnimation units/Hero/Move.aaf
+set MoveAnimationSpeed 0.8
+set IdleAnimationSpeed 0.4
+set MoveSpeed 15.0
+set UnitTurnRate 90.0
+set Acceleration 8.0
+set Deceleration 20.0
+set Mass 150.0
+set LinearDamp 0.2
+set AngularDamp 30.0
+set Range 10
+set SupplyRepairRate 22
+set SupplyRepairRateAM 100
+set AlignToTerrainNormal 0
+set DestructionEffects_3  "1 1 0  5 2  5 2  /mdl:units/Hero/HeroDxBody.amf /mtl:mat_HeroDx /bne:bone_root /trq:-80 /emt:H /grp:DebrisM /col [Group DebrisM Box 0.5] /skt:5 /canReclaimNR"
+set DestructionEffects_4  "1 1 0  5 2  5 2  /mdl:units/Hero/HeroDxArm.amf /mtl:mat_HeroDx /bne:bone_root /trq:-80 /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+set DestructionEffects_5  "1 1 0  5 2  5 2  /mdl:units/Hero/HeroDxBottom.amf /mtl:mat_HeroDx /bne:bone_root /trq:-80 /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+add WorldObject initFrom FlierBase
+set Name Skyeye
+set StateController Skyeye
+set Model units/Skyeye/Skyeye.amf
+set Material mat_Skyeye
+set RenderScale 1
+set PowerGen -1
+set RangeArc 360
+set FireArcForNoZTurret 360
+set FireArcForNoZTurretWhileMoving 360
+set FortDamageScalar 0.6
+set AimTurnRate 300
+set CanHitAir 0
+set CanHitGround 0
+set HasRegularShot 0
+set HasMissiles 0
+set HitPoints 650
+set VisionRange 32
+set RadarRange 35
+set RotationWanderMaxArc 0.0
+set IdleAnimation units/Skyeye/Idle.aaf
+set MoveAnimation units/Skyeye/Idle.aaf
+set MoveAnimationSpeed 1.0
+set MoveSpeed 3.0
+set UnitTurnRate 90.0
+set MustMoveInFacingDirection 0
+set ThreePointTurn 0.7
+set Acceleration 8.0
+set Deceleration 10.0
+set Mass 150.0
+set LinearDamp 0.2
+set AngularDamp 30.0
+set RangeBlast 7
+set RangeFalloff 0.4
+set Range 9
+set ZSpinDefs "geo_propeller4 1500.0"
+set ZSpinDefs "geo_propeller4 1500.0"
+set ZSpinDefs "bone_rotate -100.0"
+set ZSpinDefs "geo_propeller1 1500.0"
+set ZSpinDefs "geo_propeller2 1500.0"
+set ZSpinDefs "geo_propeller3 1500.0"
+set ZSpinDefs "geo_propeller4 1500.0"
+set ZSpinDefs "geo_middle -200.0"
+set ZSpinDefs "geo_bottom 200.0"
+set DestructionEffects_3  "1 1 0  5 2  5 2  /mdl:units/Skyeye/SkyeyeDxBody.amf /mtl:mat_SkyeyeDx /bne:bone_root /trq:-100 /emt:H /grp:DebrisM /col [Group DebrisM Sphere 1] /skt:5 /canReclaimNR"
+set DestructionEffects_4  "2 1 0  5 2  5 2  /mdl:units/Skyeye/SkyeyeDxBottom.amf /mtl:mat_SkyeyeDx /bne:bone_root /trq:-80 /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+set DestructionEffects_5  "3 1 0  5 2  5 2  /mdl:units/Skyeye/SkyeyeDxPropeller.amf /mtl:mat_SkyeyeDx /bne:bone_root /trq:-80 /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+add WorldObject initFrom FlierBase
+set Name VulcanDrone
+set Model units/Vulcan/Vulcan.amf
+set Material "mat_TurretChaingun mat_Booster"
+set RenderScale 2.0
+set RangeArc 360
+set BoneAimVertical bone_vert
+set BoneFirePoint mesh_barrel
+set ShotFireSounds FiringVulcan
+set ShotProjEffects VulcanShell
+set ShotMuzzleFlash MuzzleFlash
+set ShotFFParticles VulcanTrail
+set AimTurnRate 300
+set CanHitAir 1
+set HasMissiles 0
+set HitPoints 550
+set VisionRange 16
+set RadarRange 10
+set IdleAnimation units/Vulcan/Hover.aaf
+set MoveAnimation units/Vulcan/Hover.aaf
+set MoveAnimationSpeed 1.0
+set MoveAnimationSpeedRand 0.2
+set IdleAnimationSpeed 0.3
+set IdleAnimationSpeedRand 0.1
+set MoveSpeed 3.0
+set FireArcForNoZTurret 180
+set FireArcForNoZTurretWhileMoving 360
+set MoveSpeedMultWhenFiring 0.5
+set ShotDamage 5
+set ShotSpeed 50
+set FireDelay 0.10
+set SustainFireTime 3.0
+set ReloadTime 2.0
+set UnitTurnRate 300.0
+set Acceleration 8.0
+set Deceleration 20.0
+set Mass 150.0
+set LinearDamp 0.2
+set AngularDamp 30.0
+set Range 12
+set ZSpinDefs "bone_turbine_r -800.0"
+set ZSpinDefs "bone_turbine_l 800.0"
+set BoundingSphereMod 4.0
+set DestructionEffects_3  "1 1 0  5 2  5 2  /mdl:units/Hero/HeroDxBody.amf /mtl:mat_HeroDx /bne:bone_root /trq:-80 /emt:H /grp:DebrisM /col [Group DebrisM Box 0.5] /skt:5 /canReclaimNR"
+set DestructionEffects_4  "1 1 0  5 2  5 2  /mdl:units/Hero/HeroDxArm.amf /mtl:mat_HeroDx /bne:bone_root /trq:-80 /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+set DestructionEffects_5  "1 1 0  5 2  5 2  /mdl:units/Hero/HeroDxBottom.amf /mtl:mat_HeroDx /bne:bone_root /trq:-80 /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+add WorldObject initFrom VulcanDrone
+set Name VulcanVoid
+set Material "mat_AirMechUBlack<"
+set VariantOf Vulcan
+set DestructionEffects_3  "1 1 0  5 2  5 2  /mdl:units/Hero/HeroDxBody.amf /mtl:mat_AirMechUBlack< /bne:bone_root /trq:-80 /emt:H /grp:DebrisM /col [Group DebrisM Box 0.5] /skt:5 /canReclaimNR"
+set DestructionEffects_4  "1 1 0  5 2  5 2  /mdl:units/Hero/HeroDxArm.amf /mtl:mat_AirMechUBlack< /bne:bone_root /trq:-80 /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"
+set DestructionEffects_5  "1 1 0  5 2  5 2  /mdl:units/Hero/HeroDxBottom.amf /mtl:mat_AirMechUBlack< /bne:bone_root /trq:-80 /emt:H /grp:Debris /col [Group Debris Box 0.25] /skt:5 /vcb:40"

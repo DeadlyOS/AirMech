@@ -1,0 +1,123 @@
+menu3d addChild MenusVR MenusVRLobby  /noVis
+menu3d setWorldPose MenusVRLobby	0.0 0.0 0.0
+menu3d addChild MenusVR MenusVRLobbyL  /noVis
+menu3d setWorldPose MenusVRLobbyL	0.0 0.0 0.0
+sym set _PosMap "0 70"
+menu3d addChild MenusVRLobby MenuDiskMap /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.45 0.45 1.0  /worldPose $$_PosMap 0.0
+menu3d logicFnc MenuDiskMap amFocusCapsule /radiusInner 25.0 /height 30.0 /skinDepth 7.0 /cmdfocus [menucmd TouchLobby Map] /cmdunfocus [menucmd UnTouchLobby Map]
+menu3d addChild MenusVRLobby MenuRingMap /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.5 /worldPose $$_PosMap 0.0
+menu3d addChild MenusVR NewMapScreen /model vr/MapScreen.amf /material mat_InfoBannerVR_UnlitStdBlend /noVis /rootScale 5 /rootRot 0 0 0 /worldPose 0 300 -60
+menu3d addChild NewMapScreen NewMapScreenName /model vr/MenuMapName.amf  /material mat_RenderToTextureVR_UnlitStdBlend  /rootScale 5 /rootRot -10 0 10 /noVis  /worldPose -21.0 40.0 3.0
+menu3d addChild MenusVRLobby ExtraMapScreens /worldPose 0 50 100
+pcmd 0.5 menu3d addChild NewMapScreen NewMapScreenGlow /model vr/MapScreen.amf /material mat_ScreenGlow /noVis /worldPose 0 -2 0
+menu3d addChild ExtraMapScreens MapScreen1Base  /rootRot 0 0 55 /worldPose 0 0 70
+menu3d addChild MapScreen1Base MapScreen1 /model vr/MapScreenExtra.amf /material mat_InfoBannerVR_UnlitStdBlend /noVis /rootScale 2.5 /worldPose 0 400 0
+pcmd 1.1 menu3d addChild MapScreen1 MapScreen1Glow /model vr/MapScreenExtra.amf /material mat_ScreenGlow /noVis /worldPose 0 -2 0
+menu3d addChild ExtraMapScreens MapScreen2Base  /rootRot 0 0 -60 /worldPose 0 0 10
+menu3d addChild MapScreen2Base MapScreen2 /model vr/MapScreenExtra.amf /material mat_InfoBannerVR_UnlitStdBlend /noVis /rootScale 3 /worldPose 0 430 0
+pcmd 1.0 menu3d addChild MapScreen2 MapScreen2Glow /model vr/MapScreenExtra.amf /material mat_ScreenGlow /noVis /worldPose 0 -2 0
+menu3d addChild ExtraMapScreens MapScreen3Base  /rootRot 0 0 -40 /worldPose 0 0 100
+menu3d addChild MapScreen3Base MapScreen3 /model vr/MapScreenExtra.amf /material mat_InfoBannerVR_UnlitStdBlend /noVis /rootScale 2 /worldPose 0 400 0
+pcmd 0.8 menu3d addChild MapScreen3 MapScreen3Glow /model vr/MapScreenExtra.amf /material mat_ScreenGlow /noVis /worldPose 0 -2 0
+menu3d addChild ExtraMapScreens MapScreen4Base  /rootRot 0 0 70 /worldPose 0 0 -30
+menu3d addChild MapScreen4Base MapScreen4 /model vr/MapScreenExtra.amf /material mat_InfoBannerVR_UnlitStdBlend /noVis /rootScale 1.8 /worldPose 0 340 0
+pcmd 1.2 menu3d addChild MapScreen4 MapScreen4Glow /model vr/MapScreenExtra.amf /material mat_ScreenGlow /noVis /worldPose 0 -2 0
+pcmd 0.1 sym set VrSelectMode Maps
+pcmd 0.2 menu3d updateORTSnapshot MenuDecoMap 0 90 1024 512
+pcmd 0.15 sym set DrawingMapPreviews 1
+pcmd 0.15 pcmd 0 menu3d updateORTSnapshot2 NewMapScreen 0 90 1024 512
+pcmd 0.15 pcmd t1 sym set DrawingMapPreviews 0
+pcmd 0.15 pcmd t2 sym set DrawingMapScreens 1
+pcmd 0.15 pcmd t3 menu3d updateORTSnapshot2 MapScreen1 1 1 958 510
+pcmd 0.15 pcmd t3 menu3d updateORTSnapshot2 MapScreen2 961 1 958 510
+pcmd 0.15 pcmd t3 menu3d updateORTSnapshot2 MapScreen3 1 513 958 510
+pcmd 0.15 pcmd t3 menu3d updateORTSnapshot2 MapScreen4 961 513 958 510
+pcmd 0.15 pcmd t4 sym set DrawingMapScreens 0
+menu3d addChild MenusVRLobby MenuLabelMap /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /rootScale 3.4 /rootRot 5 0 190 /worldPose $$_PosMap 0.0
+menu3d addChild NewMapScreen MenuDpadHintMap /model vr/Dpad1.amf /material mat_Gamepad  /material mat_RenderToTextureVR_UnlitStdBlend  /rootScale 7.5 /rootRot 80 0 -13 /noVis /worldPose 43.0 40.0 6.0
+menu3d logicFnc MenuDpadHintMap trackDPad /bone bone_root /mag 13
+pcmd 1.0 menu3d addAnimScript MenuDecoMap as_VRMenuDecoMapTouch.txt
+pcmd 1.5 menu3d addAnimScript MenuDpadHintMap as_VRMenuIn.txt
+sym set VRMapSelectMode 1
+pcmd 0.5 menu3d addAnimScript NewMapScreen as_VRMapScreenIn.txt 0.7
+pcmd 0.6 menu3d addAnimScript NewMapScreenName as_VRMapScreenOn.txt 0.7
+pcmd 0.6 menu3d addAnimScript NewMapScreenGlow as_VRMapScreenGlow.txt 0.5
+pcmd 1.1 menu3d addAnimScript MapScreen1 as_VRMapScreenIn.txt
+pcmd 1.1 menu3d addAnimScript MapScreen1Glow as_VRMapScreenGlow.txt
+pcmd 1.0 menu3d addAnimScript MapScreen2 as_VRMapScreenIn.txt
+pcmd 1.0 menu3d addAnimScript MapScreen2Glow as_VRMapScreenGlow.txt
+pcmd 0.8 menu3d addAnimScript MapScreen3 as_VRMapScreenIn.txt
+pcmd 0.8 menu3d addAnimScript MapScreen3Glow as_VRMapScreenGlow.txt
+pcmd 1.2 menu3d addAnimScript MapScreen4 as_VRMapScreenIn.txt
+pcmd 1.2 menu3d addAnimScript MapScreen4Glow as_VRMapScreenGlow.txt
+if sym Gamemode isEmpty runnow sym set Gamemode Solo
+if sym Gamemode == Solo runnow menu3d addChild MenusVRLobbyL MenuDiskLaunch /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.7 0.7 1.0 /worldPose 0 0 0.0
+if sym Gamemode != Solo runnow menu3d addChild MenusVRLobbyL MenuDiskLaunch /model vr/MenuDisk.amf /material mat_MenuDiskNotReady /noVis /rootScale 0.7 0.7 1.0 /worldPose 0 0 0.0
+menu3d logicFnc MenuDiskLaunch amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 5.0 /cmdfocus [menucmd TouchLobby Launch] /cmdunfocus [menucmd UnTouchLobby Launch]
+menu3d addChild MenusVRLobbyL MenuRingLaunch /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.75 /worldPose 0 0 0.0
+menu3d addChild MenusVRLobbyL MenuInfoLaunch /model vr/MenuLaunchSlice.amf /material mat_MenuLaunchSlice /noVis /rootScale 1.0 /rootRot 0 0 0 /worldPose 0 0 0.0
+menu3d addChild MenuInfoLaunch MenuLobbyText /model vr/MenuTextLobby.amf /material mat_RenderToTextureVR_UnlitStdBlend /rootScale 1.0 /rootRot 0 0 0 /noVis /worldPose 0 -10 1.0
+pcmd 0.5 menu3d addAnimScript MenuLobbyText as_VRMenuAppear.txt
+if sym _VrArg_ != Solo runnow menu3d addChild  MenusVRLobby GroupOwnerSelf /model vr/AvatarStateOwner.amf  /material mat_AvatarReady /rootScale 6 /worldPose 0 -50 10 /rootRot -20 0 0 /parentVisCheck /hiddenCheckBySymbolInv SG_IsOwner /hiddenCheckBySymbolValue SG_Members=0
+if sym _VrArg_ != Solo runnow menu3d addZSpin GroupOwnerSelf AvatarStateOwner -40
+menu3d addChild  MenuInfoLaunch MenuLaunchModeIcon /model vr/Swords${Gamemode}.amf /material mat_IconsSwords /noVis /rootScale 1.5 0.2 1.5 /rootRot -90 0 0  /worldPose -38 -78 2
+menu3d addChild MenusVRLobbyL MenuLabelLaunch /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /rootScale 3.4 /rootRot 5 0 180
+menu3d setWorldPose MenuLabelLaunch	20.0 0.0 -40
+sym set _RotCustom 60
+menu3d addChild MenusVRLobby MenuRootCustomize /worldPose 0 0 0 /rootRot 0 0 $$_RotCustom
+menu3d addChild MenuRootCustomize MenuDiskCustomize /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.45 0.45 1.0 /worldPose 0 $VrMenuButtonOffset 0
+menu3d logicFnc MenuDiskCustomize amFocusCapsule /radiusInner 28.0 /height 30.0 /skinDepth 5.0 /cmdfocus [menucmd TouchLobby Customize] /cmdunfocus [menucmd UnTouchLobby Customize]
+menu3d addChild MenuRootCustomize MenuRingCustomize /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.5  /worldPose 0 $VrMenuButtonOffset 0
+menu3d addChild MenuRootCustomize MenuDecoCustomize /rootRot 10 0 220 /rootScale 2.0 /worldPose 0 $VrMenuButtonOffset 0
+pcmd t2 menu3d animate MenuDecoCustomize vr/MenuPictureFrameIn.aaf playonce 0 0.7
+menu3d addChild MenuRootCustomize MenuLabelCustomize /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /rootScale 3.4 /rootRot 5 0 170 /worldPose 0 $VrMenuButtonOffset 0
+pcmd 0.5 if sym Gamemode != Solo menu3d addChild MenuDiskLaunch MenuIconSpin /model vr/MenuIconSpin.amf /material mat_RenderToTextureVR_UnlitStdBlend /rootScale 29.0 31 1 /rootRot 0 0 0
+pcmd 0.5 if sym Gamemode != Solo menu3d setWorldPose MenuIconSpin 0.0 0.0 2
+sym set _PosSandbox "55 32"
+if sym FriendInvite == 0 menu3d addChild MenusVRLobby MenuDiskSandbox /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.45 0.45 1.0 /worldPose $$_PosSandbox 0.0
+if sym FriendInvite == 0 menu3d logicFnc MenuDiskSandbox amFocusCapsule /radiusInner 28.0 /height 30.0 /skinDepth 5.0 /cmdfocus [menucmd TouchLobby Sandbox] /cmdunfocus [menucmd UnTouchLobby Sandbox]
+if sym FriendInvite == 0 menu3d addChild MenusVRLobby MenuRingSandbox /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.5 /worldPose $$_PosSandbox 0.0
+if sym FriendInvite == 0 menu3d addChild MenusVRLobby MenuDecoSandbox /model vr/MenuArcade.amf /material mat_MenuArcade /rootRot 0 0 0 /rootScale 2.5 /noVis /worldPose $$_PosSandbox 0.0 /rootRot 0 0 -30
+if sym FriendInvite == 0 menu3d logicFnc MenuDecoSandbox trackStickL /bone bone_stick /mag 23
+if sym FriendInvite == 0 menu3d logicFnc MenuDecoSandbox trackDPad /bone bone_pad /mag 13
+if sym FriendInvite == 0 menu3d logicFnc MenuDecoSandbox trackButton /bone bone_button1 /button A /offset 0 0 -0.1 /transitionTime 0.05
+if sym FriendInvite == 0 menu3d logicFnc MenuDecoSandbox trackButton /bone bone_button2 /button B /offset 0 0 -0.1 /transitionTime 0.05
+if sym FriendInvite == 0 menu3d addChild MenusVRLobby MenuLabelSandbox /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /rootScale 3.4 /rootRot 5 0 170 /worldPose $$_PosSandbox -10
+sym set _PosLobbyFriends "55 32"
+if sym FriendInvite == 1 menu3d addChild MenusVRLobby MenuDiskLobbyFriends /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.45 0.45 1.0 /worldPose $$_PosLobbyFriends 0.0
+if sym FriendInvite == 1 menu3d logicFnc MenuDiskLobbyFriends amFocusCapsule /radiusInner 28.0 /height 30.0 /skinDepth 5.0 /cmdfocus [menucmd TouchFriendList Lobby] /cmdunfocus [menucmd UnTouchFriendList Lobby]
+if sym FriendInvite == 1 menu3d addChild MenusVRLobby MenuRingLobbyFriends /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.5 /worldPose $$_PosSandbox 0.0
+if sym FriendInvite == 1 menu3d remove OvrFriendList
+if sym FriendInvite == 1 menu3d addChild MenusVRLobby OvrFriendList /rootRot -20 0 -40 /worldPose 65 40 15   /rootScale 1 /noVis
+if sym FriendInvite == 1 pcmd 0.3 menucmd DrawFriendsList
+menu3d addChild MenusVRLobby MenuBotDifficulty /model vr/MenuDifficultyLabel.amf /material mat_RenderToTextureVR_UnlitStdBlend /worldPose 0 580 260 /rootRot 0 0 0 /rootScale 8 /noVis /hiddenCheckBySymbolInv InVrLobby /hiddenCheckBySymbolValue Gamemode!=Solo /hiddenCheckBySymbolInv DevMode
+menu3d addChild MenuBotDifficulty MenuDpadHintBotDifficulty /model vr/Dpad2.amf /material mat_Gamepad /material mat_RenderToTextureVR_UnlitStdBlend /worldPose 0 5 12 /rootScale 6 /rootRot 100 0 0 /noVis /parentVisCheck /hiddenCheckBySymbolInv MenuBotDifficultyActiveLook /hiddenCheckBySymbol VrCustomizeInLobbyMode /hiddenCheckBySymbolInv VRMapSelectMode /hiddenCheckBySymbol VRMapSelectButton
+menu3d logicFnc MenuDpadHintBotDifficulty trackDPad /bone bone_root /mag 13
+menu3d logicFnc MenuBotDifficulty lookAtToSymSet /symbol MenuBotDifficultyActiveLook /arc 14"
+sym set ButtonHintText2 Hint_DifficultySelect
+pcmd 0.4 menu3d addAnimScript MenuBotDifficulty as_VRMenuIn.txt
+pcmd 0.4 menu3d addAnimScript MenuDpadHintBotDifficulty as_VRMenuIn.txt
+if sym FriendInvite == 0 pcmd 0.45 menu3d writeWorldPos MenuDiskSandbox _WorldPosSandbox /xy
+if sym FriendInvite == 1 pcmd 0.45 menu3d writeWorldPos MenuDiskLobbyFriends _WorldPosLobbyFriends /xy
+pcmd 0.45 menu3d writeWorldPos MenuDiskCustomize _WorldPosCustomize /xy
+pcmd 0.45 menu3d writeWorldPos MenuDiskMap _WorldPosMap /xy
+pcmd 0.45 menu3d writeWorldPos MenuDiskLaunch _WorldPosLaunch /xy
+if sym FriendInvite == 0 pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosSandbox -3.4 /label MenuColSandbox
+if sym FriendInvite == 1 pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosLobbyFriends -3.4 /label MenuColLobbyFriends
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosCustomize -3.4 /label MenuColCustomize
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosMap -3.4 /label MenuColMap
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosLaunch -3.4 /label MenuColLaunch
+if sym FromVrMenu != Map pcmd 0.3 menucmd ShowVrMenuSet Map
+if sym FromVrMenu == Map pcmd 0 menucmd ShowVrMenuSetLobbyFromMap Map
+if sym FromVrMenu != Launch pcmd 0.2 menucmd ShowVrMenuSet Launch
+if sym FromVrMenu != Launch pcmd 0.6 menu3d addAnimScript MenuLaunchModeIcon as_VRMenuAppear.txt
+if sym FromVrMenu != Launch pcmd 0.2 menu3d addAnimScript MenuInfoLaunch as_VRMenuAppear.txt
+if sym FromVrMenu != Customize pcmd 0.1 menucmd ShowVrMenuSet Customize
+if sym FriendInvite == 1 pcmd 0.3 menucmd ShowVrMenuSet LobbyFriends
+if sym FriendInvite == 0 if sym FromVrMenu != Sandbox pcmd 0.1 menucmd ShowVrMenuSet Sandbox
+sym set PrevVrMenu Lobby
+pcmd 0.5 menu3d setVisible MenusVRLobby MenusVRLobbyL
+if sym Gamemode == Solo sym set VrLobbyStatusTitle VrMenu_Launch
+if sym Gamemode == Solo sym set VrLobbyStatusDesc VrMenu_LaunchDesc
+if sym Gamemode != Solo sym set VrLobbyStatusTitle VrMenu_Searching
+if sym Gamemode != Solo sym set VrLobbyStatusDesc VrMenu_SearchingDesc

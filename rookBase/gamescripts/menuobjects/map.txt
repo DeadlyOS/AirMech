@@ -1,0 +1,2021 @@
+add MenuObject
+set Name MapOpenButton
+set Texture menus/TradeB
+set Coords "23 952 79 57"
+set CoordsAnimated  "23 952 79 57"
+set CoordsAnimated  "103 952 79 57"
+set CoordsAnimationSymHash MapLoaded
+set ScaleX 0.95, ScaleY 0.95
+set MouseInteract 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set Focus -2
+set ToolTip TT_Inventory
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "if sym CurrentMenu != MKHome menuCmd MainMenuBackButton"
+set CommandPress "loadmenu MenuBlackout"
+set CommandPress "if sym CurrentMenu == MKHome sym set MapBase 1"
+set CommandPress "if sym MapBase == 1 sym set MapBase 0"
+set CommandPress "if sym CurrentMenu != MKHome sym set MapBase 0"
+set CommandPress "pcmd 0.1 gameui promoteToTop MapMain"
+set HiddenCheckBySymbolValue P_AccessLevel=0
+add MenuObject
+set Name MapLabelTemplate
+set Texture menus/LoadoutGrid
+set Coords "12 821 184 39"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX"
+set MouseInteract 1
+set Focus -2
+set RenderCB_RGBColor "0.8"
+set RenderCB_FontScale 0.6
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set MirrorOnY 0
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolInv @_Arg2_@
+set SaveArgs 2
+add MenuObject initFrom MapLabelTemplate
+set Name MapButtonTemplate
+set Coords "380 821 184 43"
+set CoordsFocused "196 821 184 43"
+set CoordsPressed "196 820 184 43"
+set RenderCB_RGBColor "0.38 0.41 0.44"
+set RenderCB_RGBColorFocused "0.80 0.84 0.85"
+set RenderCB_OffsetFocused "0 -1"
+set RenderCB_OffsetPressed "0 1"
+set Focus -2
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolInv ""
+set HiddenCheckBySymbol @_Arg1_@
+set SaveArgs 2
+add MenuObject initFrom MapButtonTemplate
+set Name MapButtonBase
+set RenderCB_Text Label_Base
+set CommandPress "sym setZero MapHQ MapWorld"
+set CommandPress "sym setOne MapBase"
+add MenuObject initFrom MapButtonTemplate
+set Name MapButtonHQ
+set RenderCB_Text Label_HQ
+set CommandPress "sym setZero MapWorld MapBase"
+set CommandPress "sym setOne MapHQ"
+add MenuObject initFrom MapButtonTemplate
+set Name MapButtonWorld
+set RenderCB_Text Label_World
+set CommandPress "sym setZero MapBase MapHQ"
+set CommandPress "sym setOne MapWorld"
+add MenuObject
+set Name MapTabBar
+set ContainerOnly 1
+set Child "MapButtonBase 0 0	MapBase"
+set Child "MapLabelTemplate 0 0	Label_Base	MapBase"
+set Child "MapButtonHQ 180 0	MapHQ"
+set Child "MapLabelTemplate 180 0	Label_HQ	MapHQ"
+set Child "MapButtonWorld 360 0	MapWorld"
+set Child "MapLabelTemplate 360 0	Label_World	MapWorld"
+add MenuObject
+set Name MapBackground
+set Texture menus/Windows
+set CoordsStart "0 0 120 120"
+set CoordsMid "120 0 86 120"
+set CoordsEnd "206 0 120 120"
+set CoordsStartFocused "0 120 120 86"
+set CoordsMidFocused "120 120 86 86"
+set CoordsEndFocused "206 120 120 86"
+set CoordsStartDisabled "0 206 120 120"
+set CoordsMidDisabled "120 206 86 120"
+set CoordsEndDisabled "206 206 120 120"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 1300
+set RenderCB_DY 815
+set Coords "0 0 770 815"
+set MouseInteract 1
+set Focus -2
+set Color 0x879297
+set ColorFocused 0x879297
+set MouseInteractZoneExpand "15 15 -15 -15"
+set CommandPress "gameui promoteToTop MapMain"
+add MenuObject
+set Name MapCloseVis
+set Coords "295 511 49 49"
+set CoordsFocused "350 511 49 49"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name MapClose
+set Coords "0 0 49 49"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu Map /fadeout 0.1"
+set Child "MapCloseVis 0 0"
+add MenuObject
+set Name MapTextLabel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_Text @_Arg1_@
+set DisabledSymInv @_Arg4_@
+set DisabledAlpha 0.3
+set SaveArgs 3
+set DisabledAlphaTimeOut 0.0
+add MenuObject
+set Name BaseStructureLabel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor @_Arg4_@
+set RenderCB_ConsoleSymbol @_Arg1_@
+set DisabledSymValue BaseLayoutSlotP!&@_Arg1_@&
+set SaveArgs 3
+set DisabledAlphaTimeOut 0.2
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x /allCaps"
+add MenuObject
+set Name BaseStructureLabelSpecial
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor @_Arg4_@
+set RenderCB_Text @_Arg1_@
+set DisabledSymValue BaseLayoutSlotP!@_Arg1_@
+set SaveArgs 3
+set DisabledAlphaTimeOut 0.2
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x /allCaps"
+add MenuObject
+set Name BaseStructureLabelFixed
+set Coords "0 0 250 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 0
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor @_Arg4_@
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 3
+set DisabledAlphaTimeOut 0.2
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+add MenuObject
+set Name BaseStructureLabelLevel
+set Coords "560 477 48 48"
+set Texture menus/social
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Color 0x425053
+set ColorFocused 0x526468
+set RenderCBExcludesDefaultRender 0
+set RenderCB_FontScale 0.55
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Font Numbers80px
+set RenderCB_RGBColor 0xc8d3d6
+set RenderCB_RGBColorFocused 0xffffff
+set Focus -2
+set ToolTip TipBase_Level
+set MouseInteract 1
+set RenderCB_ConsoleSymbol &@_Arg1_@&_Lvl
+set SaveArgs 3
+set DisabledAlphaTimeOut 0.2
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+set HiddenCheckBySymbolValue _GenCanUpgrade=NA
+add MenuObject
+set Name BaseStructureLabelDesc
+set Coords "0 0 300 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 100
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor @_Arg4_@
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text &@_Arg1_@&Desc
+set SaveArgs 4
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.2
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX"
+add MenuObject initFrom BaseStructureLabelDesc
+set Name BaseStructureLabelDesc2
+add MenuObject
+set Name BaseStructureLevel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Font Numbers80px
+set RenderCB_RGBColor @_Arg4_@
+set RenderCB_ConsoleSymbol &@_Arg1_@&_Lvl
+set SaveArgs 3
+set DisabledAlphaTimeOut 0.2
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x /allCaps"
+add MenuObject
+set Name BaseStructureView
+set Coords "0 0 256 256"
+set CoordsFocused "256 0 256 256"
+set Texture basecamp/@_Arg2_@@_Arg3_@
+set TextureAlt basecamp/BaseHangar2
+set Color @_Arg4_@
+set ColorFocused @_Arg4_@
+set SaveArgs 4
+set FilterName BaseLayout
+add MenuObject
+set Name BaseStructureAnim
+set Texture basecamp/&BaseLayoutSlotL@_Arg1_@&Anim
+set NoDrawOnMissingTexture 1
+set Coords "0 0 128 128"
+set CoordsAnimated "0 0 128 128"
+set CoordsAnimated "128 0 128 128"
+set CoordsAnimated "256 0 128 128"
+set CoordsAnimated "384 0 128 128"
+set CoordsAnimated "0 128 128 128"
+set CoordsAnimated "128 128 128 128"
+set CoordsAnimated "256 128 128 128"
+set CoordsAnimated "384 128 128 128"
+set CoordsAnimated "0 256 128 128"
+set CoordsAnimated "128 256 128 128"
+set CoordsAnimated "256 256 128 128"
+set CoordsAnimated "384 256 128 128"
+set CoordsAnimated "0 384 128 128"
+set CoordsAnimated "128 384 128 128"
+set CoordsAnimated "256 384 128 128"
+set CoordsAnimated "384 384 128 128"
+set CoordsAnimationFrameTimer 0.04
+set FilterName BaseLayout
+set SaveArgs 1
+add MenuObject
+set Name BaseStructureTemplate
+set Coords "0 0 256 256"
+set CoordsFocused "256 0 256 256"
+set TextureAlt basecamp/BaseHangar2
+set Texture basecamp/&BaseLayoutSlotL@_Arg1_@&
+set HiddenCheckBySymbolValue BaseLayoutSlot@_Arg1_@=NULL
+set DisplayAsFocusedIfParentFocused 1
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set Color @_Arg2_@
+set ColorFocused @_Arg2_@
+set SaveArgs 2
+set FilterName BaseLayout
+set Child "BaseStructureAnim 64 96 @_Arg1_@"
+set Child "BaseStructureLabel 0 48 @_Arg1_@ 0.7 248	0xffffff"
+add MenuObject
+set Name BaseStructureBuildProgressBg
+set Texture effects/black
+set Coords "0 0 16 16"
+set TileArea "132 9"
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name BaseStructureTimeRemaining
+set Coords "0 0 248 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor @_Arg3_@
+set RenderCB_ConsoleSymbol &BaseLayoutSlot@_Arg1_@&_Time
+set SaveArgs 3
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.0
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+add MenuObject
+set Name BaseStructureBuildingLabel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor @_Arg4_@
+set RenderCB_ConsoleSymbol BaseLayoutSlot@_Arg1_@
+set HiddenCheckBySymbolValue BaseLayoutSlotP!&BaseLayoutSlot@_Arg1_@&
+set SaveArgs 4
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.1
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x /allCaps"
+add MenuObject
+set Name BaseStructureSpecialLabel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor @_Arg4_@
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolValue BaseLayoutSlotP!@_Arg1_@
+set SaveArgs 4
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.1
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x /allCaps"
+add MenuObject
+set Name BaseStructureBuildProgress
+set Texture effects/ProgressbarStructure
+set Coords "256 0 256 16"
+set CoordsInterpolatedDest "0 0 256 16"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult &BaseLayoutSlot@_Arg1_@&_Progress
+set ScaleX 0.5, ScaleY 0.3
+set SaveArgs 1
+set MouseInteract 1
+set FirstDrawnChildren 1
+set FilterName BaseLayout
+set HiddenCheckBySymbol HideProgressBars
+set Child "BaseStructureBuildProgressBg -2 -2"
+set Child "BaseStructureTimeRemaining -60 8	@_Arg1_@ 0.55 0xffffff"
+add MenuObject
+set Name BaseStructureBuilding
+set Coords "851 0 173 138"
+set RenderBlocked 1
+set Texture menus/TradeB
+set SaveArgs 1
+set ScaleX 1.2, ScaleY 1.2
+set FilterName BaseLayout
+set Child "BaseStructureBuildProgress 60 -20	@_Arg1_@"
+set RenderOffsetY 20
+set HiddenCheckBySymbol &BaseLayoutSlot@_Arg1_@&_Ready
+set HiddenCheckBySymbolValue BaseLayoutSlot@_Arg1_@=NULL
+add MenuObject
+set Name BaseStructureNone
+set RenderBlocked 1
+add MenuObject
+set Name MapTilePatch
+set Texture basecamp/BasePatchCanyon2
+set Coords "0 0 256 256"
+set CoordsFocused "256 0 256 256"
+set Focus -2
+set DisplayAsFocusedIfParentFocused 1
+set HiddenCheckBySymbolValue BaseLayoutSlot@_Arg1_@!NULL
+set SaveArgs 1
+add MenuObject
+set Name BasecampTilePoof
+set Texture basecamp/TilePoof
+set Coords "0 0 256 256"
+set CoordsAnimated "0 0 256 256"
+set CoordsAnimated "256 0 256 256"
+set CoordsAnimated "512 0 256 256"
+set CoordsAnimated "768 0 256 256"
+set CoordsAnimated "0 256 256 256"
+set CoordsAnimated "256 256 256 256"
+set CoordsAnimated "512 256 256 256"
+set CoordsAnimated "768 256 256 256"
+set CoordsAnimated "0 512 256 256"
+set CoordsAnimated "256 512 256 256"
+set CoordsAnimated "512 512 256 256"
+set CoordsAnimated "768 512 256 256"
+set CoordsAnimated "0 768 256 256"
+set CoordsAnimated "256 768 256 256"
+set CoordsAnimated "512 768 256 256"
+set CoordsAnimated "768 768 256 256"
+set CoordsAnimationFrameTimer 0.04
+set CoordsAnimationSymMode TilePoof
+add MenuObject
+set Name BaseCampSlotLocked
+set Texture basecamp/BasePatchCanyon1
+set Coords "0 0 256 256"
+set CoordsFocused "256 0 256 256"
+set Focus -2
+set MouseInteract 1
+set MouseInteractAreaInscribedQuad 1
+set MouseInteractZoneExpand "25 120 -5 -5"
+set DisplayAsFocusedIfParentFocused 1
+set CommandPress ">sym set _CustomExecSlot misc"
+set CommandPress ">sym set _CustomObject misc"
+set CommandPress ">sym set _CustomExecContentName Shovel"
+set CommandPress ">menucmd BasecampCellClear_NoConfirm local @_Arg1_@"
+set HiddenCheckBySymbol BaseCampSlotUnlocked@_Arg1_@
+set HiddenCheckBySymbolValue P_Level<@_Arg2_@
+set CommandGetFocus "sym setFrom MC_Shovel HasShovel"
+set CommandLoseFocus "sym setZero MC_Shovel"
+set SaveArgs 2
+add MenuObject
+set Name ProcAnimTemplate
+set Texture basecamp/CollectKudos
+set Coords "0 0 64 64"
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimated "128 0 64 64"
+set CoordsAnimated "192 0 64 64"
+set CoordsAnimated "0 64 64 64"
+set CoordsAnimated "64 64 64 64"
+set CoordsAnimated "128 64 64 64"
+set CoordsAnimated "192 64 64 64"
+set CoordsAnimated "0 128 64 64"
+set CoordsAnimated "64 128 64 64"
+set CoordsAnimated "128 128 64 64"
+set CoordsAnimated "192 128 64 64"
+set CoordsAnimated "0 192 64 64"
+set CoordsAnimated "64 192 64 64"
+set CoordsAnimated "128 192 64 64"
+set CoordsAnimated "192 192 64 64"
+set CoordsAnimationFrameTimer 0.04
+add MenuObject initFrom ProcAnimTemplate
+set Name ProcReadyQuestE
+set Texture basecamp/QuestE
+set ScaleX 0.9, ScaleY 0.9
+set SaveArgs 1
+set HiddenCheckBySymbolValue @_Arg1_@!2
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set Focus -2
+set DisplayAsFocusedIfParentFocused 1
+set FilterName BaseLayout
+add MenuObject initFrom ProcAnimTemplate
+set Name QuestReadyCollect
+set Texture basecamp/QuestE
+set ScaleX 1.1, ScaleY 1.1
+set HiddenCheckBySymbol QuestsGroupCompleteReady
+set DisabledSymInv _GotQuestsData_
+set DisabledSymValue CurrentMenu!MKHome
+set HiddenCheckBySymbol ArcCustomized
+add MenuObject initFrom QuestReadyCollect
+set Name QuestReadyCollectPW
+set HiddenCheckBySymbol QuestsGroupCompleteReady
+set DisabledSymValue CurrentMenu!MKHome
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject initFrom ProcAnimTemplate
+set Name ProcReadyKudos
+set Texture basecamp/CollectKudos
+set ScaleX 0.8, ScaleY 0.8
+set SaveArgs 1
+set HiddenCheckBySymbolValue &@_Arg1_@&_Proc!MakeK
+set HiddenCheckBySymbolInv &@_Arg1_@&_Ready
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set Focus -2
+set DisplayAsFocusedIfParentFocused 1
+set FilterName BaseLayout
+add MenuObject initFrom ProcReadyKudos
+set Name ProcReadyDiamonds
+set Texture basecamp/CollectDiamonds
+set HiddenCheckBySymbolValue &@_Arg1_@&_Proc!MakeD
+add MenuObject initFrom ProcReadyKudos
+set Name ProcReadyChest
+set ScaleX 0.9, ScaleY 0.9
+set Texture basecamp/CollectChest
+set HiddenCheckBySymbolValue &@_Arg1_@&_Proc!SpawnChest
+add MenuObject
+set Name BaseCampSlotTemplate
+set Coords "0 0 256 256"
+set RenderBlocked 1
+set Texture basecamp/BasePatchCanyon2
+set MouseInteract 1
+set MouseInteractAreaInscribedQuad 1
+set MouseInteractZoneExpand "5 120 -5 -5"
+set Focus -2
+set SaveArgs 4
+set DisabledAlpha 0.5
+set FilterName BaseLayout
+set HiddenCheckBySymbolInv BaseCampSlotUnlocked@_Arg2_@
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandGetFocus ">sym set BaseLayoutSlotSel @_Arg2_@"
+set CommandGetFocus ">sym set BaseLayoutSlotP $BaseLayoutSlot@_Arg2_@"
+set CommandPress "if !menuloaded StructureInspect sym set StructureInspectLoaded 0"
+set CommandPress ">if sym BaseLayoutSlot@_Arg2_@ == NULL menucmd BasecampBuild"
+set CommandPress ">if sym BaseLayoutSlot@_Arg2_@ != NULL && sym ${BaseLayoutSlot@_Arg2_@}_Proc != Complete && sym ${BaseLayoutSlot@_Arg2_@}_Ready == 0 menucmd BasecampInspect"
+set CommandPress ">if sym BaseLayoutSlot@_Arg2_@ != NULL && sym ${BaseLayoutSlot@_Arg2_@}_Proc == Complete && sym ${BaseLayoutSlot@_Arg2_@}_Ready == 1 menucmd BasecampInspect"
+set CommandPress ">if sym BaseLayoutSlot@_Arg2_@ != NULL && sym ${BaseLayoutSlot@_Arg2_@}_Proc == Build && sym ${BaseLayoutSlot@_Arg2_@}_Ready == 1 menucmd BasecampInspect"
+set CommandPress ">if sym ${BaseLayoutSlot@_Arg2_@}_Proc != Complete && sym ${BaseLayoutSlot@_Arg2_@}_Ready == 1 wallet procItem $BaseLayoutSlot@_Arg2_@ Complete"
+set CommandPress ">if sym ${BaseLayoutSlot@_Arg2_@}_Proc != Complete && sym ${BaseLayoutSlot@_Arg2_@}_Ready == 1 sym set CurrencyDepositSource #MapTile@_Arg2_@"
+set Child "MapTilePatch 0 0	@_Arg2_@"
+set Child "BaseStructureTemplate 0 0	@_Arg2_@ 0xffffff"
+set Child "BaseStructureBuilding 0 88	@_Arg2_@"
+set Child "BaseStructureBuildingLabel 0 60 @_Arg2_@ 0.55 248	0xfed44d"
+set Child "ProcReadyKudos 100 100	BaseLayoutSlot@_Arg2_@"
+set Child "ProcReadyDiamonds 100 100	BaseLayoutSlot@_Arg2_@"
+set Child "ProcReadyChest 100 100	BaseLayoutSlot@_Arg2_@"
+set DragTarget BaseCamp@_Arg2_@
+add MenuObject
+set Name BaseStructureSpecial
+set Coords "0 0 256 256"
+set CoordsFocused "256 0 256 256"
+set TextureAlt basecamp/BaseHangar2
+set Texture basecamp/@_Arg1_@
+set HiddenCheckBySymbolValue @_Arg1_@=0
+set DisplayAsFocusedIfParentFocused 1
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set SaveArgs 1
+set FilterName BaseLayout
+set Child "BaseStructureAnim 64 96 @_Arg1_@"
+set Child "ProcReadyQuestE 100 30	@_Arg1_@"
+add MenuObject
+set Name BaseStructureArchives
+set Coords "0 0 256 256"
+set CoordsFocused "256 0 256 256"
+set TextureAlt basecamp/BaseHangar2
+set Texture basecamp/BaseArchives
+set HiddenCheckBySymbolValue @_Arg1_@=0
+set DisplayAsFocusedIfParentFocused 1
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set SaveArgs 1
+set FilterName BaseLayout
+add MenuObject initFrom BaseStructureArchives
+set Name BaseStructureArchivesLocked
+set Texture basecamp/BaseArchivesLocked
+set HiddenCheckBySymbolValue @_Arg1_@=1
+add MenuObject initFrom BaseStructureArchives
+set Name BaseStructureWarzoneTac
+set Texture basecamp/BaseWarzoneTac
+add MenuObject
+set Name BaseCampSlotSpecial
+set Coords "0 0 256 256"
+set RenderBlocked 1
+set Texture basecamp/BasePatchCanyon2
+set MouseInteract 1
+set MouseInteractAreaInscribedQuad 1
+set MouseInteractZoneExpand "5 120 -5 -5"
+set Focus -2
+set SaveArgs 4
+set DisabledAlpha 0.5
+set FilterName BaseLayout
+set HiddenCheckBySymbolValue @_Arg1_@=0
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandGetFocus ">sym set BaseLayoutSlotSel @_Arg1_@"
+set CommandGetFocus ">sym set BaseLayoutSlotP @_Arg1_@"
+set CommandPress "if !menuloaded StructureInspect sym set StructureInspectLoaded 0"
+set CommandPress ">menucmd BasecampSpecial local @_Arg1_@"
+set Child "BaseStructureSpecial 0 0	@_Arg1_@"
+set Child "BaseStructureSpecialLabel 0 60 @_Arg1_@ 0.55 248	0xfed44d"
+set DragTarget @_Arg1_@
+set HiddenCheckBySymbol ArcCustomized
+add MenuObject
+set Name BaseCampSlotArchives
+set Coords "0 0 256 256"
+set RenderBlocked 1
+set Texture basecamp/BasePatchCanyon2
+set MouseInteract 1
+set MouseInteractAreaInscribedQuad 1
+set MouseInteractZoneExpand "5 120 -5 -5"
+set Focus -2
+set SaveArgs 4
+set DisabledAlpha 0.5
+set FilterName BaseLayout
+set HiddenCheckBySymbolValue BaseArchives=0
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandGetFocus ">sym set BaseLayoutSlotSel @_Arg1_@"
+set CommandGetFocus ">sym set BaseLayoutSlotP @_Arg1_@"
+set CommandPress "if !menuloaded StructureInspect sym set StructureInspectLoaded 0"
+set CommandPress "loadmenu Archives"
+set Child "BaseStructureArchives 0 0	@_Arg1_@"
+set Child "BaseStructureSpecialLabel 0 60 @_Arg1_@ 0.55 248	0xfed44d"
+set DragTarget @_Arg1_@
+set HiddenCheckBySymbol ArcCustomized
+add MenuObject
+set Name BaseCampSlotArchivesLocked
+set Coords "0 0 256 256"
+set RenderBlocked 1
+set Texture basecamp/BasePatchCanyon2
+set MouseInteract 1
+set MouseInteractAreaInscribedQuad 1
+set MouseInteractZoneExpand "5 120 -5 -5"
+set Focus -2
+set SaveArgs 4
+set DisabledAlpha 0.5
+set FilterName BaseLayout
+set HiddenCheckBySymbolValue BaseArchives=1
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandGetFocus ">sym set BaseLayoutSlotSel @_Arg1_@"
+set CommandGetFocus ">sym set BaseLayoutSlotP @_Arg1_@"
+set CommandPress "if !menuloaded StructureInspect sym set StructureInspectLoaded 0"
+set CommandPress ">menucmd BasecampSpecial local @_Arg1_@"
+set Child "BaseStructureArchivesLocked 0 0	@_Arg1_@"
+set Child "BaseStructureSpecialLabel 0 60 @_Arg1_@ 0.55 248	0xfed44d"
+set DragTarget @_Arg1_@
+set HiddenCheckBySymbol ArcCustomized
+add MenuObject
+set Name BaseCampSlotWarzoneTac
+set Coords "0 0 256 256"
+set RenderBlocked 1
+set Texture basecamp/BasePatchCanyon2
+set MouseInteract 1
+set MouseInteractAreaInscribedQuad 1
+set MouseInteractZoneExpand "5 120 -5 -5"
+set Focus -2
+set SaveArgs 4
+set DisabledAlpha 0.5
+set FilterName BaseLayout
+set HiddenCheckBySymbolValue BaseWarzoneTac=0
+set Child "BaseStructureWarzoneTac 0 0	@_Arg1_@"
+set Child "BaseWarzoneTacLight 148.5 62"
+set Child "BaseWarzoneTacLightSmall 14.5 173"
+set Child "BaseWarzoneTacScreenGlow 73 80"
+set Child "BaseStructureSpecialLabel 45 25 @_Arg1_@ 0.55 248	0xfed44d"
+set DragTarget @_Arg1_@
+set HiddenCheckBySymbol ArcCustomized
+set HiddenCheckBySymbolInv ShowWarzoneMaps
+set CommandOnCreate "menucmd CheckWarzoneMaps"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandGetFocus ">sym set BaseLayoutSlotSel @_Arg1_@"
+set CommandGetFocus ">sym set BaseLayoutSlotP @_Arg1_@"
+set CommandPress "if !menuloaded StructureInspect sym set StructureInspectLoaded 0"
+set CommandPress "loadmenu warzone"
+add MenuObject
+set Name BaseWarzoneTacScreenGlow
+set Texture basecamp/WarzoneTacScreenGlow
+set Coords "0 0 128 128"
+set PulseAlpha "3.0 -0.7 -0.2"
+add MenuObject
+set Name BaseWarzoneTacLight
+set Texture basecamp/WarzoneTacRedLight
+set Coords "0 0 32 32"
+set CoordsAnimated "0 0 32 32"
+set CoordsAnimated "32 0 32 32"
+set CoordsAnimated "64 0 32 32"
+set CoordsAnimated "96 0 32 32"
+set CoordsAnimated "128 0 32 32"
+set CoordsAnimated "160 0 32 32"
+set CoordsAnimated "192 0 32 32"
+set CoordsAnimationFrameTimer 0.1
+set ScaleX 1.1
+set ScaleY 1.1
+set HiddenCheckBySymbolInv _WarzoneMapAvail
+add MenuObject initFrom BaseWarzoneTacLight
+set Name BaseWarzoneTacLightSmall
+set ScaleX 0.5
+set ScaleY 0.5
+add MenuObject
+set Name BaseStructurePreview
+set Coords "0 0 256 256"
+set CoordsFocused "256 0 256 256"
+set TextureAlt basecamp/BaseHangar2
+set Texture basecamp/@BaseLayoutSlotP@0
+set HiddenCheckBySymbolValue BaseLayoutSlot@_Arg1_@=NULL
+set DisplayAsFocusedIfParentFocused 1
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set Color @_Arg4_@
+set ColorFocused @_Arg4_@
+set SaveArgs 4
+set FilterName BaseLayout
+set Child "BaseStructureLabelFixed 0 -20 BaseLayoutSlotP 0.7 248	0xfed44d"
+set Child "BaseStructureLabelDesc2 0 20 BaseLayoutSlotP 0.55 250	0x9cacb0"
+add MenuObject
+set Name MapTileTemplatePreview
+set ContainerOnly 1
+set MouseInteract 0
+set MouseInteractAreaInscribedQuad 0
+set Focus 0
+set NoAlphaMod 1
+set Alpha 0.5
+set Child "BaseStructurePreview 0 0	@_Arg3_@ &BaseLayoutSlot@_Arg3_@&	&BaseLayoutSlot@_Arg3_@&_Lvl 0xffffff"
+set CommandOnCreate ">echo &BaseLayoutSlot@_Arg3_@&"
+add MenuObject
+set Name MapTileEmpty
+set Coords "26 757 280 167"
+set Texture menus/TradeB
+set SaveArgs 1
+set HiddenCheckBySymbolValue BaseCamp_Lvl=>@_Arg1_@
+add MenuObject
+set Name MapTileLevel
+set Coords "0 0 190 147"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawText
+set RenderCB_Font Numbers80px
+set RenderCB_OffsetFocused "0 -8"
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 1
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+add MenuObject
+set Name MapTileBase
+set Coords "0 0 256 256"
+set CoordsFocused "256 0 256 256"
+set Texture basecamp/BaseCamp
+set MouseInteract 1
+set MouseInteractAreaInscribedQuad 1
+set Focus -2
+set SaveArgs 2
+set CommandPress "gameUI ignoreInputTime 0.1"
+set Child "MapTileLevel 0 0	BaseCamp_Lvl"
+set Child "BaseStructureText 60 20 Base 0.8 186	0xffffff"
+add MenuObject
+set Name BaseUpgradeEscape
+set RenderBlocked 1
+set StretchToFillScreen 1
+set Focus -2
+set MouseInteract 1
+set CommandGetFocus "sym set BaseStructureShow 0"
+set CommandGetFocus "sym set BaseLayoutSlotP None"
+set CommandGetFocus "pcmd t0 sym set BaseStructureToBuild Blank"
+set CommandGetFocus "pcmd t0 gameui refreshfiltername BaseLayout"
+add MenuObject
+set Name BaseStructureItemBg
+set Texture menus/ItemFrame@_Arg2_@
+set Coords "0 0 204 256"
+set SaveArgs 2
+add MenuObject
+set Name BaseStructureIcon
+set Texture misc/BlueprintDefault
+set Coords "50 50 367 418"
+set ScaleX 0.5, ScaleY 0.5
+set NoAlphaMod 1
+set Alpha @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name BaseStructureItemHighlight
+set Texture menus/ItemFrame@_Arg1_@
+set Coords "204 0 204 256"
+set CoordsFocused "408 0 204 256"
+set SaveArgs 1
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name BaseStructureText
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor @_Arg4_@
+set DisabledAlpha 1.0
+set RenderCB_Text &BuildList@_Arg1_@&
+set DisabledAlpha 0.3
+set SaveArgs 4
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.0
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+add MenuObject
+set Name BaseStructureBg
+set Texture menus/HomeBar
+set Coords "4 4 262 66"
+set CoordsFocused "291 4 262 66"
+set CoordsPressed "291 1 262 66"
+set DisplayAsFocusedIfParentFocused 1
+set DisplayAsPressedIfParentPressed 1
+set ScaleX 1.2, ScaleY 1.0
+set NoAlphaMod 1
+set Alpha @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name BaseStructureSelected
+set Texture menus/HomeBar
+set Coords "291 4 262 66"
+set ScaleX 1.2, ScaleY 1.0
+set NoAlphaMod 1
+set Alpha 0.5
+set FilterName BaseLayout
+set BlendMode BlendAdd
+set HiddenCheckBySymbolValue BaseStructureToBuild!&BuildList@_Arg1_@&
+set SaveArgs 1
+add MenuObject
+set Name BaseStructureItem
+set Texture menus/HomeBar
+set Coords "4 4 262 66"
+set CoordsFocused "291 4 262 66"
+set CoordsPressed "291 1 262 66"
+set ScaleX 1.2, ScaleY 1.0
+set SaveArgs 3
+set Focus -2
+set MouseInteract 1
+set FilterName BaseLayout
+set DisabledSymInv BuildListOk@_Arg1_@
+set DisabledAlpha 0.53
+set CommandPress ">sym set BaseStructureToBuild $BuildList@_Arg1_@"
+set CommandPress "pcmd t0 gameui refreshfiltername BaseLayout"
+set CommandPress "sym set BaseLayoutSlotP $$BaseStructureToBuild"
+set CommandPress "basecamp genCoreActionCost $$BaseStructureToBuild build _GenCostBuild"
+set Child "BaseStructureSelected 0 0	@_Arg1_@"
+set RenderCB_DX 250
+set RenderCB_DY 50
+set RenderCB_FontScale 0.8
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_Text &BuildList@_Arg1_@&
+set DisabledAlpha 0.3
+set SaveArgs 4
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.0
+set RenderCB_Offset "15 15"
+set RenderCB_OffsetPressed "15 17"
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+set RenderCBExcludesDefaultRender 0
+add MenuObject
+set Name BaseProcText
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor @_Arg4_@
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol @_Arg1_@
+set DisabledAlpha 0.3
+set SaveArgs 4
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.0
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+add MenuObject
+set Name BaseProcItem
+set Texture menus/ButtonsBasecamp
+set SaveArgs 3
+set Focus -2
+set Coords "114 4 178 55"
+set CoordsPressed "113 2 178 55"
+set MouseInteract 1
+set FilterName BaseLayout
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xc8d3d6
+set RenderCB_RGBColorFocused 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol _GenProcList@_Arg1_@
+set DisabledAlpha 0.3
+set Color 0xbcc2c5
+set ColorFocused 0xffffff
+set SaveArgs 4
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.0
+set RenderCB_OffsetPressed "1 2"
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+set RenderCB_Flags "/nmi /fitX"
+set CommandPress ">sym set BaseStructureToBuild $BuildList@_Arg1_@"
+set CommandPress "pcmd t0 gameui refreshfiltername BaseLayout"
+set CommandPress ">wallet procItem $BaseLayoutSlotP $_GenProcList@_Arg1_@"
+set CommandPress "clearmenu StructureInspect"
+add MenuObject
+set Name SpecialDoItem
+set Texture menus/ButtonsBasecamp
+set SaveArgs 3
+set Focus -2
+set Coords "114 4 178 55"
+set CoordsPressed "113 2 178 55"
+set MouseInteract 1
+set FilterName BaseLayout
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 140
+set RenderCB_DY 55
+set RenderCB_Offset "18 0"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xc8d3d6
+set RenderCB_RGBColorFocused 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol _SpecialDoList@_Arg1_@
+set DisabledAlpha 0.3
+set Color 0xbcc2c5
+set ColorFocused 0xffffff
+set SaveArgs 4
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.0
+set RenderCB_OffsetPressed "19 1"
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX"
+set CommandPress ">menucmd BCS_&_SpecialDoList@_Arg1_@&"
+set CommandPress "clearmenu StructureSpecial"
+add MenuObject
+set Name BaseStructureMissing
+set RenderBlocked 1
+set SaveArgs 2
+set Focus -2
+set Coords "0 0 320 50"
+set MouseInteract 1
+set FilterName BaseLayout
+set CommandPressAlt ">sym set #HasBp@_Arg1_@ 1"
+set CommandPress ">sym set BaseStructureToBuild @_Arg1_@"
+set CommandPressAlt "pcmd t0 gameui refreshfiltername BaseLayout"
+set CommandPress "pcmd t0 gameui refreshfiltername BaseLayout"
+set CommandPress "sym set BaseLayoutSlotP $$BaseStructureToBuild"
+set Child "BaseStructureBg 0 0	0.2"
+set Child "BaseStructureText 20 14 @_Arg1_@ 0.8 200	0x777777"
+set HiddenCheckBySymbol HasBp@_Arg1_@
+add MenuObject
+set Name BaseStructureCompleteCheck
+set Texture menus/Messages
+set Coords "524 164 82 73"
+set NoAlphaMod 1
+set Alpha 0.6
+set ScaleX 1.0, ScaleY 1.0
+add MenuObject
+set Name BaseStructureComplete
+set RenderBlocked 1
+set Coords "0 0 320 50"
+set MouseInteract 1
+set Focus -2
+set CommandPress ">sym set BaseLayoutSlotP @_Arg1_@"
+set CommandPress ">sym setConcat2 HasBp @_Arg1_@ 0"
+set CommandPress "pcmd t0 gameui refreshfiltername BaseLayout"
+set Child "BaseStructureBg 0 0	0.8"
+set HiddenCheckBySymbolInv Built@_Arg1_@
+set Hidden 1
+set Child "BaseStructureCompleteCheck 230 -15"
+add MenuObject
+set Name BaseStructureBuildButton
+set Texture menus/ButtonsBasecamp
+set Coords "114 4 178 55"
+set CoordsFocused "115 5 178 55"
+set CoordsPressed "113 2 178 55"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set FilterName BaseLayout
+set RenderCB_Flags "/nmi /fitX /allCaps"
+set RenderCB_Font Roboto
+set RenderCB_OffsetFocused "-1 -1 0"
+set RenderCB_OffsetPressed "1 2 0"
+set RenderCB_RGBColor 0xbbc9cd
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_RGBColorDisabled 0xffffff
+set MouseInteract 1
+set Focus -2
+set Color 0xbcc2c5
+set ColorFocused 0xffffff
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Text BtnHint_Build
+set CommandPress "wallet procItem $BaseStructureToBuild Build /slot $BaseLayoutSlotSel"
+set CommandPress "clearmenu StructureBuild /fadeout 0.1"
+set CommandPress "sym set HideProgressBars 0"
+set CommandPress "if menuLoaded BaseCampHelp && sym BaseStructureToBuild != Blank menucmd BaseCampHelpContinue"
+add MenuObject
+set Name BaseStructureBuild
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName BaseLayout
+set HiddenCheckBySymbolValue BuildList@_Arg1_@=
+set Child "BaseStructureItem[BaseStructure@_Arg1_@] 0 0		@_Arg1_@"
+set Child "BaseStructureComplete 50 20						@_Arg1_@"
+add MenuObject
+set Name BaseStructureBuildList
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName BaseLayout
+set Child "BaseStructureBuild[BaseStructureBuild0] 0 0 		0"
+set Child "BaseStructureBuild 0 Nx60 	1"
+set Child "BaseStructureBuild 0 Nx60 	2"
+set Child "BaseStructureBuild 0 Nx60 	3"
+set Child "BaseStructureBuild 0 Nx60 	4"
+set Child "BaseStructureBuild 0 Nx60 	5"
+set Child "BaseStructureBuild 0 Nx60 	6"
+set Child "BaseStructureBuild 0 Nx60 	7"
+set Child "BaseStructureBuild 0 Nx60 	8"
+set Child "BaseStructureBuild 0 Nx60 	9"
+add MenuObject
+set Name BaseProcList
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName BaseLayout
+set Child "BaseProcItem[BaseStructureBuild0] 0 Nx60		0		/ifSym _GenProcList0 is !empty"
+set Child "BaseProcItem[BaseStructureBuild1] 0 Nx60 	1		/ifSym _GenProcList1 is !empty"
+set Child "BaseProcItem[BaseStructureBuild2] 0 Nx60 	2		/ifSym _GenProcList2 is !empty"
+set Child "BaseProcItem[BaseStructureBuild3] 0 Nx60 	3		/ifSym _GenProcList3 is !empty"
+add MenuObject
+set Name StructureSpecialList
+set ContainerOnly 1
+set SaveArgs 1
+set FilterName BaseLayout
+set Child "SpecialDoItem[SpecialDoItem0] 0 Nx60 	0	/ifSym _SpecialDoList0 is !empty"
+set Child "SpecialDoItem[SpecialDoItem1] 0 Nx60 	1	/ifSym _SpecialDoList1 is !empty"
+set Child "SpecialDoItem[SpecialDoItem2] 0 Nx60 	2	/ifSym _SpecialDoList2 is !empty"
+set Child "SpecialDoItem[SpecialDoItem3] 0 Nx60 	3	/ifSym _SpecialDoList3 is !empty"
+add MenuObject
+set Name StructureBuildPreviewFrame
+set Texture menus/Inspect+lang
+set Coords "0 0 10 10"
+set CoordsStart "0 0 80 80"
+set CoordsMid "80 0 80 80"
+set CoordsEnd "159 0 80 80"
+set CoordsStartFocused "0 80 80 80"
+set CoordsMidFocused "80 80 80 80"
+set CoordsEndFocused "159 80 80 80"
+set CoordsStartDisabled "0 160 80 80"
+set CoordsMidDisabled "80 160 80 80"
+set CoordsEndDisabled "159 160 80 80"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 660
+set RenderCB_DY 450
+add MenuObject
+set Name StructureBuildUnderText
+set Texture effects/white
+set TileArea "307 375"
+set Focus -2
+set MouseInteract 1
+set Color 0x1b2325
+set ColorFocused 0x1b2325
+add MenuObject
+set Name StructureBuildUnderPreview
+set NoAlphaMod 1
+set Texture effects/white
+set TileArea "285 374"
+set Alpha 0.8
+set Color 0x1b2325
+set ColorFocused 0x1b2325
+add MenuObject
+set Name StructureBuildWindow
+set ContainerOnly 1
+set SaveArgs 3
+set Child "StrucureInspectEscape 0 0		StructureBuild"
+set Child "StructureBuildUnderPreview -12 -12"
+set Child "MapTileTemplatePreview 10 10	0xcccccc	0	P"
+set Child "StructureBuildUnderText -312 -12"
+set Child "StructureBuildPreviewFrame -350 -50"
+set Child "BaseStructureBuildList -317 -15"
+set Child "BaseStructureBuildButton 42 286"
+set Child "BaseStructureCost 0 256	_GenCostBuild_Fmt"
+set Child "ButtonGenericClose[ButtonStructureBuildClose] 225 -13	StructureBuild"
+add MenuObject
+set Name MapFrameBase
+set ContainerOnly 1
+set HiddenCheckBySymbolValue MapZoomLevel!0
+set HiddenCheckBySymbolInv ShowBasecampMap
+set Child "MapFrameBackground -2 10"
+set Child "BasecampTiles 350 220"
+set Child "HomeExtraButtons 50 120 0"
+set Child "MapFrameBlock 0 0"
+add MenuObject
+set Name MapFrameBackground
+set Texture menus/LandscapeCanyon
+set Coords "0 0 1940 1024"
+set Focus -2
+set MouseInteract 1
+set CommandGetFocus "sym set BaseLayoutSlotP None"
+set CommandPress "clearmenu StructureInspect /fadeout 0.1"
+set CommandPressAlt "sym toggle HideProgressBars"
+add MenuObject
+set Name BasecampTiles
+set ContainerOnly 1
+set Child "BaseCampSlotSpecial[MapTileBaseWantedPoster] 90 -120 			BaseWantedPoster"
+set Child "BaseCampSlotSpecial[MapTileBaseRatters] 1150 40 					BaseRatters"
+set Child "BaseCampSlotArchivesLocked[MapTileBaseArchivesLocked] 700 -200	BaseArchivesLocked"
+set Child "BaseCampSlotArchives 700 -200 									BaseArchives"
+set Child "BaseCampSlotWarzoneTac 925 -120 									BaseWarzoneTac"
+set Child "BaseCampSlotLocked[MapTileLocked16]				0 0 		16	100"
+set Child "BaseCampSlotTemplate[MapTile16] 	0 0				0xcb946b	16"
+set Child "BaseCampSlotLocked[MapTileLocked5]				290 0 		5	8"
+set Child "BaseCampSlotTemplate[MapTile5] 	290 0 			0xcb946b	5"
+set Child "BaseCampSlotLocked[MapTileLocked9]				580 0 		9	20"
+set Child "BaseCampSlotTemplate[MapTile9] 	580 0 			0xcb946b	9"
+set Child "BaseCampSlotLocked[MapTileLocked15]				-145 80 	15	75"
+set Child "BaseCampSlotTemplate[MapTile15] -145 80 			0xcb946b	15"
+set Child "BaseCampSlotLocked[MapTileLocked4]				145 80 		4	6"
+set Child "BaseCampSlotTemplate[MapTile4] 	145 80 			0xcb946b	4"
+set Child "BaseCampSlotLocked[MapTileLocked1]				435 80 		1	0"
+set Child "BaseCampSlotTemplate[MapTile1] 	435 80 			0xcb946b	1"
+set Child "BaseCampSlotLocked[MapTileLocked10]				725 80 		10	24"
+set Child "BaseCampSlotTemplate[MapTile10] 	725 80 			0xcb946b	10"
+set Child "BaseCampSlotLocked[MapTileLocked8]				0 160 		8	16"
+set Child "BaseCampSlotTemplate[MapTile8] 	0 160 			0xcb946b	8"
+set Child "BaseCampSlotLocked[MapTileLocked0]				290 160 	0	0"
+set Child "BaseCampSlotTemplate[MapTile0] 	290 160 		0xcb946b	0"
+set Child "BaseCampSlotLocked[MapTileLocked6]				580 160 	6	10"
+set Child "BaseCampSlotTemplate[MapTile6] 	580 160 		0xcb946b	6"
+set Child "BaseCampSlotLocked[MapTileLocked14]				-145 240 	14	50"
+set Child "BaseCampSlotTemplate[MapTile14] 	-145 240 		0xcb946b	14"
+set Child "BaseCampSlotLocked[MapTileLocked3]				145 240 	3	4"
+set Child "BaseCampSlotTemplate[MapTile3] 	145 240 		0xffeab7	3"
+set Child "BaseCampSlotLocked[MapTileLocked2]				435 240 	2	0"
+set Child "BaseCampSlotTemplate[MapTile2] 	435 240 		0xffeab7	2"
+set Child "BaseCampSlotLocked[MapTileLocked11]				725 240 	11	30"
+set Child "BaseCampSlotTemplate[MapTile11] 	725 240 		0xcb946b	11"
+set Child "BaseCampSlotLocked[MapTileLocked13]				0 320  		13	42"
+set Child "BaseCampSlotTemplate[MapTile13] 	0 320 			0xcb946b	13"
+set Child "BaseCampSlotLocked[MapTileLocked7]				290 320 	7	12"
+set Child "BaseCampSlotTemplate[MapTile7] 	290 320 		0xffeab7	7"
+set Child "BaseCampSlotLocked[MapTileLocked12]				580 320 	12	36"
+set Child "BaseCampSlotTemplate[MapTile12] 	580 320 		0xcb946b	12"
+add MenuObject
+set Name MapFrameBlock
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set Focus -2
+set MouseInteract 1
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbolInv ShowMotDHome
+set HiddenCheckBySymbol ArcCustomized
+set CommandPress "sym set ShowMotDHome 0"
+set CommandPress "sym set VignetteFade 0"
+set CommandPress "if menuloaded Promos clearmenu Promos /fadeout 0.1"
+set CommandPress "if menuloaded SplashPromo clearmenu SplashPromo /fadeout 0.1"
+add MenuObject
+set Name BasecampScrapper
+set Texture menus/Scrapper
+set Coords "0 0 1024 256"
+set CoordsAnimated "0 0 1024 256"
+set CoordsAnimated "0 256 1024 256"
+set CoordsAnimated "0 512 1024 256"
+set CoordsAnimated "0 768 1024 256"
+set CoordsAnimated "0 1024 1024 256"
+set CoordsAnimated "0 1280 1024 256"
+set CoordsAnimated "0 1536 1024 256"
+set CoordsAnimated "0 1792 1024 256"
+set CoordsAnimationFrameTimer 0.04
+set DisabledSymInv ShowScrapper
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set FirstDrawnChildren 1
+set Child "ScrapperFlow 340 -1080"
+set Child "BasecampScrapperRingTop 310 -350"
+set Child "ItemToScrapIcon 350 -400"
+set Child "BasecampScrapperExplode2 330 -80"
+set Child "BasecampScrapperExplode3 370 -80"
+set Child "BasecampScrapperExplode 350 -80"
+set Child "BasecampScrapperExplode4 150 -180"
+set Child "BasecampScrapperExplode4 150 -180"
+set Child "BasecampScrapperExplode4 150 -180"
+set Child "BasecampScrapperExplode4 150 -180"
+set Child "BasecampScrapperRingBottom 310 -241"
+set Child "ScrapperDragTarget 310 -350"
+set Child "ScrapperButtons 410 -580"
+set Child "ScrapperRewards 100 -500"
+add MenuObject
+set Name BasecampScrapperRingBottom
+set Texture basecamp/ScrapperRing
+set Coords "0 109 335 156"
+set DisabledSymInv ShowScrapper
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set Child "BasecampScrapperRingBottomHighlight 0 0"
+add MenuObject
+set Name BasecampScrapperRingBottomHighlight
+set Texture basecamp/ScrapperRing
+set Coords "0 109 335 156"
+set BlendMode BlendAdd
+set Color 0xffffff
+set PulseAlpha "1.0 -0.5 -0.8"
+set HiddenCheckBySymbolInv ShowScrapperRingHighlight
+add MenuObject
+set Name BasecampScrapperRingTop
+set Texture basecamp/ScrapperRing
+set Coords "0 0 335 110"
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledSymInv ShowScrapper
+set Child "BasecampScrapperRingTopHighlight 0 0"
+add MenuObject
+set Name BasecampScrapperRingTopHighlight
+set Texture basecamp/ScrapperRing
+set Coords "0 0 335 110"
+set BlendMode BlendAdd
+set Color 0xffffff
+set PulseAlpha "1.0 -0.5 -0.8"
+set HiddenCheckBySymbolInv ShowScrapperRingHighlight
+add MenuObject
+set Name ScrapperFlow
+set Texture ]menus/SelectWideVert
+set Coords "0 0 256 512"
+set CoordsInterpolatedDest "0 512 256 512"
+set CoordsInterpolantCommand "genMenuFloat loop 0 -1 2"
+set BlendMode BlendAdd
+set MouseInteract 1
+set Focus -2
+set ScaleX 1.12, ScaleY 4.0
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledSymInv ShowScrapper
+add MenuObject
+set Name ItemToScrapIcon
+set Texture &TR_IconLgScrap&
+set TextureAlt &TR_IconLgAScrap&
+set NoDrawOnMissingTexture 1
+set Coords "x256 0 0 256 256 x512 0 0 512 512 x1024 0 0 1024 1024"
+set ScaleRefToCoordsX 256.0
+set ScaleRefToCoordsY 256.0
+set SaveArgs 1
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledSymInv ShowScrapper
+set HiddenCheckBySymbolInv ScrapperLoaded
+set FilterName InvV2UI
+set FilterOnlyFlags Textures
+set FilterOnlyFlags Coords
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name ScrapperButtons
+set ContainerOnly 1
+set Child "ScrapperButtonTemplate 0 60	ScrapyardGo 1	ScrapperLoaded"
+set Child "ScrapperClearButton -300 500"
+add MenuObject
+set Name ScrapperClearButton
+set Texture effects/white
+set Coords "0 0 150 50"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusScrapperButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text ScrapperClear
+set FilterName BaseLayout
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 3
+set DisabledSymInv ScrapperLoaded
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set HiddenCheckBySymbolInv ShowScrapper
+set FirstDrawnChildren 1
+set Child "ScrapperButtonOutline -2 -2"
+set Child "ActiveScrapperButton 0 0		1"
+set CommandPress ">sym setZero ScrapperLoaded ScrapperActivated"
+set CommandPress ">sym clear TR_IconLgScrap TR_IconLgAScrap"
+set CommandPress "gameui refreshFilterName InvV2UI"
+add MenuObject
+set Name ScrapperButtonTemplate
+set Texture effects/white
+set Coords "0 0 150 50"
+set Color 0x3a4e4d
+set ColorFocused 0x307773
+set DrawWhenFocused FocusScrapperButton
+set DrawWhenFocusedOrder BeforeSelf
+set DrawWhenFocusedOffset "-3 -3"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set FilterName BaseLayout
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 3
+set DisabledSymInv @_Arg3_@
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set RenderCBExcludesDefaultRender 0
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set HiddenCheckBySymbolInv ShowScrapper
+set FirstDrawnChildren 1
+set Child "ScrapperButtonOutline -2 -2"
+set Child "ActiveScrapperButton 0 0	@_Arg2_@"
+set CommandPress ">sym set ScrapperActivated @_Arg2_@"
+set CommandPress "if sym ScrapperActivated != 0 menucmd ScrapperConsume"
+set CommandPress "if sym ScrapperActivated == 0 addUIAnim ItemToScrapIcon mas_ScrapperDown"
+set CommandPress ">if sym ScrapperActivated == 1 runnow if sym ScrapperActivated == @_Arg2_@ addUIAnim ItemToScrapIcon mas_ScrapperDown"
+add MenuObject
+set Name ScrapperButtonOutline
+set Texture effects/white
+set Coords "0 0 154 54"
+set Color 0x1b1b1b
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledSymInv ShowScrapper
+add MenuObject
+set Name FocusScrapperButton
+set Texture effects/white
+set Coords "0 0 156 56"
+set Color 0x49c5bd
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledSymInv ShowScrapper
+add MenuObject
+set Name ActiveScrapperButton
+set Texture effects/white
+set Coords "0 0 150 50"
+set Color 0x660000
+set BlendMode BlendAdd
+set SaveArgs 1
+set HiddenCheckBySymbolValue ScrapperActivated!@_Arg1_@
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledSymInv ShowScrapper
+add MenuObject
+set Name ScrapperRewards
+set ContainerOnly 1
+set Child "ScrapperReward 0 0 SY_Scrap3 Scrap3"
+set Child "ScrapperReward 0 100 SY_Scrap2 Scrap2"
+set Child "ScrapperReward 0 200 SY_Scrap Scrap"
+add MenuObject
+set Name ScrapperReward
+set ContainerOnly 1
+set SaveArgs 2
+set Child "ScrapperRewardIcon 0 0 @_Arg1_@ @_Arg2_@"
+set Child "ScrapperRewardCount 150 50 @_Arg1_@"
+add MenuObject
+set Name ScrapperRewardIcon
+set Texture misc/@_Arg2_@
+set Coords img
+set SaveArgs 2
+set ScaleX 0.25, ScaleY 0.25
+set MouseInteract 1
+set ToolTip @_Arg2_@Desc
+set ToolTipDelayTime 0.1
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledSymInv ShowScrapper
+add MenuObject
+set Name ScrapperRewardCount
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Flags "/shadowed"
+set RenderCB_FontScale 1.25
+set RenderCB_Font Roboto
+set DisabledAlphaTimeOut 0.5
+set DisabledAlphaTimeIn 0.5
+set DisabledSymInv ShowScrapper
+add MenuObject
+set Name ScrapperDragTarget
+set Texture basecamp/ScrapperRing
+set Coords "0 0 335 256"
+set HiddenCheckBySymbolInv ShowScrapper
+set Focus -2
+set MouseInteract 1
+set DragTarget BaseCampScrapyard
+set RenderBlocked 1
+set CommandGetFocus "sym set ShowScrapperRingHighlight 1"
+set CommandLoseFocus "sym set ShowScrapperRingHighlight 0"
+add MenuObject
+set Name BasecampScrapperExplode
+set Texture effects/ArtyFireSequence1
+set DefaultRotation 45
+set ScaleX 1.8, ScaleY 1.8
+set Coords "0 0 128 128"
+set CoordsAnimated "0 0 128 128"
+set CoordsAnimated "128 0 128 128"
+set CoordsAnimated "256 0 128 128"
+set CoordsAnimated "384 0 128 128"
+set CoordsAnimated "0 128 128 128"
+set CoordsAnimated "128 128 128 128"
+set CoordsAnimated "256 128 128 128"
+set CoordsAnimated "384 128 128 128"
+set CoordsAnimated "0 256 128 128"
+set CoordsAnimated "128 256 128 128"
+set CoordsAnimated "256 256 128 128"
+set CoordsAnimated "384 256 128 128"
+set CoordsAnimated "0 384 128 128"
+set CoordsAnimated "128 384 128 128"
+set CoordsAnimated "256 384 128 128"
+set CoordsAnimated "384 384 128 128"
+set CoordsAnimationFrameTimer 0.015
+set DisabledSymInv ScrapperEffect
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.05
+add MenuObject initFrom BasecampScrapperExplode
+set Name BasecampScrapperExplode2
+set DefaultRotation 90
+set MirrorOnX 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.15
+set CoordsAnimationFrameTimer 0.018
+add MenuObject initFrom BasecampScrapperExplode
+set Name BasecampScrapperExplode3
+set DefaultRotation 0
+set MirrorOnX 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.1
+set CoordsAnimationFrameTimer 0.02
+add MenuObject initFrom BasecampScrapperExplode
+set Name BasecampScrapperExplode4
+set Texture effects/ExplosionSequence2
+set DefaultRotation 0
+set ScaleX 5.0, ScaleY 5.0
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.0
+set BlendMode BlendAdd
+set CoordsAnimationFrameTimer 0.03
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+set CoordsAnimated "384 384 1 1"
+add MenuObject
+set Name MapBorderOk
+set Texture menus/MapBorders
+set BlendMode BlendStdAlphaTest
+set Color 0xcea84d
+set SaveArgs 5
+set Coords "@_Arg2_@ @_Arg3_@ @_Arg4_@ @_Arg5_@"
+set HiddenCheckBySymbolInv @_Arg1_@
+add MenuObject
+set Name MapBorderNext
+set Texture menus/MapBorders
+set BlendMode BlendStdAlphaTest
+set Color 0x6ece4d
+set Coords "24 24 355 294"
+add MenuObject
+set Name MapBorderBlockedFill
+set Texture menus/MapBorders
+set Color 0xa74126
+set SaveArgs 5
+set HiddenCheckBySymbol @_Arg1_@
+set Coords "@_Arg2_@ @_Arg3_@ @_Arg4_@ @_Arg5_@"
+add MenuObject
+set Name MapBorderBlocked
+set Texture menus/MapBorders
+set BlendMode BlendStdAlphaTest
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused MapBorderBlockedFill
+set Color 0xa74126
+set Coords "24 24 355 294"
+set FirstDrawnChildren 1
+set SaveArgs 5
+set HiddenCheckBySymbol @_Arg1_@
+set Coords "@_Arg2_@ @_Arg3_@ @_Arg4_@ @_Arg5_@"
+add MenuObject
+set Name MapLocationRegion
+set ContainerOnly 1
+set SaveArgs 5
+set Child "MapBorderOk 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@ @_Arg4_@ @_Arg5_@"
+set Child "MapBorderBlocked 0 0 @_Arg1_@ @_Arg2_@ @_Arg3_@ @_Arg4_@ @_Arg5_@"
+add MenuObject initFrom MapFrameBackground
+set Name MapFrameBackgroundRegion
+set Texture menus/BackgroundMidwest
+set Child "MapLocationRegion 500 400 RegionHomestead	14 14 355 294"
+add MenuObject
+set Name MapLocRegionBlocked
+set Texture menus/Buttons
+set Coords "466 300 70 66"
+set CoordsFocused "466 234 70 66"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set HiddenCheckBySymbolValue @_Arg1_@1Stars=
+set HiddenCheckBySymbol @_Arg1_@1Stars
+set ToolTip @_Arg1_@
+add MenuObject
+set Name MapLocRegionDefault
+set Texture menus/Buttons
+set Coords "486 580 70 66"
+set CoordsFocused "486 513 70 66"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set ToolTip @_Arg1_@
+add MenuObject
+set Name MapLocRegionMove
+set Texture menus/Buttons
+set Coords "396 300 70 66"
+set CoordsFocused "396 234 70 66"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set ToolTip @_Arg1_@
+set PulseAlpha "2.5 -0.5 30.0"
+set CommandPress ">menucmd PlayerRegionMove @_Arg1_@"
+add MenuObject
+set Name MapLocRegion
+set ContainerOnly 1
+set SaveArgs 1
+set Child "MapLocRegionDefault 0 0 @_Arg1_@"
+set Child "MapLocRegionMove[MapLocRegionMove@_Arg1_@] 0 0 @_Arg1_@"
+set Child "MapLocRegionBlocked 0 0 @_Arg1_@"
+add MenuObject
+set Name PlayerRegionPicture
+set Texture pilots/@P_Avatar@Icon+lang
+set Coords "72 32 124 126"
+set ScaleX 0.63, ScaleY 0.63
+set FilterName Customize
+set FilterName2 Avatar
+set Texture2 menus/PilotFaceAlpha
+set Material mat_AlternateAlpha
+add MenuObject
+set Name PlayerRegionPictureFrame
+set Texture menus/Buttons
+set Coords "385 392 86 86"
+set FirstDrawnChildren 1
+set Child "PlayerRegionPicture 4 4"
+add MenuObject
+set Name MapFrameRegion
+set ContainerOnly 1
+set HiddenCheckBySymbolValue MapZoomLevel!1
+set Child "MapFrameBackgroundRegion -2 10"
+set Child "MapFrameBlock 0 0"
+set Child "MapLocRegion[MapLocRegionSimple] 680 550	Simple"
+set Child "MapLocRegion[MapLocRegionChasm] 880 380	Chasm"
+set Child "MapLocRegion[MapLocRegionCrater] 1000 500	Crater"
+set Child "MapLocRegion[MapLocRegionNesthorn] 1200 400	Nesthorn"
+set Child "PlayerRegionPictureFrame 600 400"
+add MenuObject initFrom MapFrameBackground
+set Name MapFrameBackgroundCountry
+set Texture menus/BackgroundUsa
+add MenuObject
+set Name MapFrameCountry
+set ContainerOnly 1
+set HiddenCheckBySymbolValue MapZoomLevel!2
+set Child "MapFrameBackgroundCountry -2 10"
+set Child "MapFrameBlock 0 0"
+add MenuObject
+set Name MapZoomChange
+set Texture effects/Static
+set Coords "256 0 256 512"
+set CoordsInterpolatedDest "0 0 256 512"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 0.1"
+set ScaleX 7.5
+set ScaleY 2.1
+set DisabledAlphaTimeOut 0.5
+set DisabledSymInv MapZoomChange
+add MenuObject
+set Name BaseStructureUpgradeNeedSkill
+set Coords "0 0 55 55"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set ToolTip BtnHint_NeedSkill
+set HiddenCheckBySymbolValue _GenCanUpgrade!NEEDSKILL
+add MenuObject
+set Name BaseStructureUpgradeButton
+set Texture menus/ButtonsBasecamp
+set Coords "4 4 55 55"
+set CoordsPressed "3 2 55 55"
+set Color 0xbcc2c5
+set ColorFocused 0xffffff
+set FilterName BaseLayout
+set MouseInteract 1
+set Focus -2
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 0.0
+set ToolTip BtnHint_Upgrade
+set HiddenCheckBySymbolValue _GenCanUpgrade=ATMAX
+set DisabledSymValue _GenCanUpgrade=NEEDSKILL
+set DisabledSymInv @BaseLayoutSlotP@_Ready
+set CommandPress "wallet procItem $StructureToUpgrade Upgrade"
+set CommandPress "clearmenu StructureInspect /fadeout 0.1"
+set Child "BaseStructureUpgradeNeedSkill 0 0"
+add MenuObject
+set Name BaseStructureUpgradeBox
+set ContainerOnly 1
+set HiddenCheckBySymbolValue _GenCanUpgrade=NA
+set Child "BaseStructureUpgradeButton 0 0"
+set Child "BaseStructureCost -106 -28	_GenCostUpgrade_Fmt		/ifSym _GenCanUpgrade == OK"
+add MenuObject
+set Name BaseStructureDestroyButton
+set Texture menus/ButtonsBasecamp
+set Coords "59 4 55 55"
+set CoordsPressed "58 2 55 55"
+set Color 0xbcc2c5
+set ColorFocused 0xffffff
+set FilterName BaseLayout
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set DisabledAlphaTimeOut 0.0
+set ToolTip TitleDestroyStructure
+set CommandPress "menucmd DestroyStructureConfirm"
+add MenuObject
+set Name StrucureInspectEscape
+set Texture effects/white
+set StretchToFillScreen 1
+set Focus -2
+set MouseInteract 1
+set BlendMode BlendDestColor
+set Color 0x8c8c8c
+set ColorFocused 0x8c8c8c
+set CommandPress ">clearmenu @_Arg1_@ /fadeout 0.1"
+add MenuObject
+set Name StrucureInspectBgDarken
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "326 326"
+set Color 0x1a2326
+add MenuObject
+set Name BaseStructureBonusText
+set Coords "0 0 300 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set HiddenCheckBySymbolValue @_Arg4_@=0
+set RenderCB_Text @_Arg1_@
+set SaveArgs 5
+set RenderOffsetY &@_Arg5_@&
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.2
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX"
+add MenuObject
+set Name BaseStructureCost
+set Coords "0 0 265 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.4
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Font Numbers80px
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol @_Arg1_@
+set SaveArgs 4
+set FilterName BaseLayout
+set DisabledAlphaTimeOut 0.2
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_Flags "/nmi /fitX /outlined8x /shadowColor2"
+add MenuObject
+set Name StrucureInspectWindow
+set Texture menus/Windows
+set CoordsStart "0 0 120 120"
+set CoordsMid "120 0 86 120"
+set CoordsEnd "206 0 120 120"
+set CoordsStartFocused "0 120 120 86"
+set CoordsMidFocused "120 120 86 86"
+set CoordsEndFocused "206 120 120 86"
+set CoordsStartDisabled "0 206 120 120"
+set CoordsMidDisabled "120 206 86 120"
+set CoordsEndDisabled "206 206 120 120"
+set RenderCB _Draw_G3x3
+set FirstDrawnChildren 1
+set FilterName BaseLayout
+set RenderCB_DX 400
+set RenderCB_DY 400
+set MouseInteract 1
+set Focus -2
+set Color 0x50656c
+set ColorFocused 0x50656c
+set MouseInteractZoneExpand "15 15 -15 -15"
+set FirstDrawnChildren 1
+set Child "StrucureInspectEscape 0 0		StructureInspect"
+set Child "ButtonGenericClose[ButtonStructureInspectClose] 340 10	StructureInspect"
+set Child "BaseStructureView 70 50	1	@BaseLayoutSlotP@	&@BaseLayoutSlotP@_Lvl&		0xffffff"
+set Child "BaseStructureBonusText 50 334 CampBonusKudos 0.6 248	_GenBonusState_Kudos _GenBonusState_Kudos_YOffset"
+set Child "BaseStructureBonusText 50 334 CampBonusXP 0.6 248	_GenBonusState_XP _GenBonusState_Kudos_YOffset"
+set Child "BaseStructureLabelDesc 54 78 BaseLayoutSlotP 0.55 300	0xd6e1e4"
+set Child "BaseStructureLabelFixed 75 38 BaseLayoutSlotP 0.7 248	0xfed44d"
+set Child "BaseStructureLabelLevel 24 23"
+set Child "BaseStructureUpgradeBox 24 325"
+set Child "BaseStructureDestroyButton 320 325"
+set Child "BaseProcList 110 325"
+add MenuObject
+set Name StructureSpecialWindow
+set Texture menus/Windows
+set CoordsStart "0 0 120 120"
+set CoordsMid "120 0 86 120"
+set CoordsEnd "206 0 120 120"
+set CoordsStartFocused "0 120 120 86"
+set CoordsMidFocused "120 120 86 86"
+set CoordsEndFocused "206 120 120 86"
+set CoordsStartDisabled "0 206 120 120"
+set CoordsMidDisabled "120 206 86 120"
+set CoordsEndDisabled "206 206 120 120"
+set RenderCB _Draw_G3x3
+set FirstDrawnChildren 1
+set FilterName BaseLayout
+set RenderCB_DX 450
+set RenderCB_DY 550
+set MouseInteract 1
+set Focus -2
+set Color 0x50656c
+set ColorFocused 0x50656c
+set MouseInteractZoneExpand "15 15 -15 -15"
+set FirstDrawnChildren 1
+set Child "StrucureInspectEscape 0 0		StructureSpecial"
+set Child "ButtonGenericClose[ButtonStructureInspectClose] 390 10	StructureSpecial"
+set Child "BaseStructureLabelDesc 35 78 BaseLayoutSlotP 0.55 385	0xd6e1e4"
+set Child "BaseStructureLabelFixed 75 38 BaseLayoutSlotP 0.7 300	0xfed44d"
+set Child "StructureSpecialList 140 475"
+add MenuObject
+set Name BaseCampHelpContainer
+set ContainerOnly 1
+set Child "BaseCampHelpEscapeBackground 0 0"
+set Child "TutorialHelpEscapeBackground 0 0"
+set Child "BaseCampHelpFocusCircleBackground 0 0"
+set Child "BaseCampHelpPilotPortraitLeft -200 200"
+set Child "BaseCampHelpPilotPortraitRight 1200 200"
+set Child "BaseCampHelpStructure 0 0"
+set Child "BaseCampHelpLeft 0 520"
+set Child "BaseCampHelpRight 1200 520"
+add MenuObject
+set Name BaseCampHelpEscapeBackground
+set Texture effects/FocusBlack
+set StretchToFillScreen 1
+set Focus -2
+set MouseInteract 1
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+set CommandPress "menucmd BaseCampHelpContinue"
+add MenuObject
+set Name TutorialHelpEscapeBackground
+set Texture effects/FocusBlack
+set StretchToFillScreen 1
+set Focus -2
+set MouseInteract 1
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+set CommandPress "menucmd ClearTutorialHelp"
+add MenuObject
+set Name BaseCampHelpFocusEscapeBackground
+set Texture effects/FocusBlack
+set Coords "0 0 256 256"
+set Texture2 effects/FocusHighlightCircle
+set Material mat_AlternateAlpha
+set Focus -2
+set MouseInteract 1
+set HiddenCheckBySymbolValue _BaseCampHelpClick_!1
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+set Child "BaseCampHelpFocusBackgroundTopEscape 0 -256"
+set Child "BaseCampHelpFocusBackgroundSideRightEscape 256 -1280"
+set Child "BaseCampHelpFocusBackgroundBottomEscape 0 256"
+set Child "BaseCampHelpFocusBackgroundSideLeftEscape -256 -1280"
+set CommandPress "menucmd BaseCampHelpContinue"
+add MenuObject
+set Name BaseCampHelpFocusWaitBackground
+set Texture effects/FocusBlack
+set Coords "0 0 256 256"
+set Texture2 effects/FocusHighlightCircle
+set Material mat_AlternateAlpha
+set Focus -2
+set MouseInteract 1
+set HiddenCheckBySymbolValue _BaseCampHelpClick_!2
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+set Child "BaseCampHelpFocusBackgroundTop 0 -256"
+set Child "BaseCampHelpFocusBackgroundSideRight 256 -1280"
+set Child "BaseCampHelpFocusBackgroundBottom 0 256"
+set Child "BaseCampHelpFocusBackgroundSideLeft -256 -1280"
+set Child "BaseCampHelpFocusBlockTop 0 -180"
+set Child "BaseCampHelpFocusBlockSideRight 180 -1280"
+set Child "BaseCampHelpFocusBlockBottom 0 180"
+set Child "BaseCampHelpFocusBlockSideLeft -180 -1280"
+add MenuObject
+set Name BaseCampHelpFocusBackground
+set Texture effects/FocusBlack
+set Coords "0 0 256 256"
+set Texture2 effects/FocusHighlightCircle
+set Material mat_AlternateAlpha
+set MouseInteract 0
+set HiddenCheckBySymbolValue _BaseCampHelpClick_!0
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+set CommandPress "menucmd BaseCampHelpContinue"
+set Child "BaseCampHelpFocusBackgroundTop 0 -256"
+set Child "BaseCampHelpFocusBackgroundSideRight 256 -1280"
+set Child "BaseCampHelpFocusBackgroundBottom 0 256"
+set Child "BaseCampHelpFocusBackgroundSideLeft -256 -1280"
+set Child "BaseCampHelpFocusBlockTop 0 -180"
+set Child "BaseCampHelpFocusBlockSideRight 180 -1280"
+set Child "BaseCampHelpFocusBlockBottom 0 180"
+set Child "BaseCampHelpFocusBlockSideLeft -180 -1280"
+add MenuObject
+set Name BaseCampHelpFocusBlockBottom
+set Coords "0 0 256 256""
+set ScaleY 10
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+add MenuObject initFrom BaseCampHelpFocusBlockBottom
+set Name BaseCampHelpFocusBlockTop
+set Anchor LowerLeft
+add MenuObject
+set Name BaseCampHelpFocusBlockSideRight
+set Coords "0 0 256 256"
+set ScaleX 10, ScaleY 10
+set RenderBlocked 1
+set ScaleY 10
+set Focus -2
+set MouseInteract 1
+add MenuObject initFrom BaseCampHelpFocusBlockSideRight
+set Name BaseCampHelpFocusBlockSideLeft
+set Anchor UpperRight
+add MenuObject
+set Name BaseCampHelpFocusBackgroundBottom
+set Texture effects/FocusBlack
+set Coords "0 0 256 256"
+set ScaleY 10
+set Focus -2
+set MouseInteract 1
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject initFrom BaseCampHelpFocusBackgroundBottom
+set Name BaseCampHelpFocusBackgroundTop
+set Anchor LowerLeft
+add MenuObject
+set Name BaseCampHelpFocusBackgroundBottomEscape
+set Texture effects/FocusBlack
+set Coords "0 0 256 256"
+set ScaleY 10
+set MouseInteract 1
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+set CommandPress "menucmd BaseCampHelpContinue"
+add MenuObject initFrom BaseCampHelpFocusBackgroundBottomEscape
+set Name BaseCampHelpFocusBackgroundTopEscape
+set Anchor LowerLeft
+add MenuObject
+set Name BaseCampHelpFocusBackgroundSideRight
+set Texture effects/FocusBlack
+set Coords "0 0 256 256"
+set ScaleX 10, ScaleY 10
+set Focus -2
+set MouseInteract 1
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject initFrom BaseCampHelpFocusBackgroundSideRight
+set Name BaseCampHelpFocusBackgroundSideLeft
+set Anchor UpperRight
+add MenuObject
+set Name BaseCampHelpFocusBackgroundSideRightEscape
+set Texture effects/FocusBlack
+set Coords "0 0 256 256"
+set ScaleX 10, ScaleY 10
+set MouseInteract 1
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+set CommandPress "menucmd BaseCampHelpContinue"
+add MenuObject initFrom BaseCampHelpFocusBackgroundSideRightEscape
+set Name BaseCampHelpFocusBackgroundSideLeftEscape
+set Anchor UpperRight
+add MenuObject
+set Name BaseCampHelpStructure
+set Texture menus/BaseCampHelp
+set Coords "0 187 650 205"
+set Disabled 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.35
+set Child "BaseCampHelpDialogText -5 75 555"
+add MenuObject
+set Name BaseCampHelpFocusCircleBackground
+set ContainerOnly 1
+set Child "BaseCampHelpFocusBackground 0 0"
+set Child "BaseCampHelpFocusEscapeBackground[BaseCampHelpFocusBackground] 0 0"
+set Child "BaseCampHelpFocusWaitBackground[BaseCampHelpFocusBackground] 0 0"
+add MenuObject
+set Name BaseCampHelpLeft
+set ContainerOnly 1
+set Disabled 1
+set Child "BaseCampHelpDialogBoxLeft 300 -150"
+add MenuObject
+set Name BaseCampHelpRight
+set ContainerOnly 1
+set Disabled 1
+set Child "BaseCampHelpDialogBoxRight -300 -150"
+add MenuObject
+set Name BaseCampHelpPilotIcon
+set Texture pilots/@ChalPilotComm@Icon+lang
+set Coords "54 32 154 154"
+set BlendMode NoBlend
+set ScaleX 0.75, ScaleY 0.75
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.35
+set Child "BaseCampHelpPilotIconBackground -8 -8"
+add MenuObject
+set Name BaseCampHelpPilotIconBackground
+set Texture menus/MainTiles+lang
+set Coords "799 15 132 132"
+set ScaleY 1.01
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.35
+add MenuObject
+set Name BaseCampHelpPilotPortraitRight
+set Texture menus/Challenge@ChalPilotComm@+lang
+set NoDrawOnMissingTexture 1
+set Coords "0 0 1024 1024"
+set ScaleX 0.9, ScaleY 0.9
+set MirrorOnX 1
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.35
+add MenuObject
+set Name BaseCampHelpPilotPortraitLeft
+set Texture menus/Challenge@ChalPilotComm@+lang
+set NoDrawOnMissingTexture 1
+set Coords "0 0 1024 1024"
+set ScaleX 0.9, ScaleY 0.9
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.35
+add MenuObject
+set Name BaseCampHelpDialogBoxLeft
+set Texture menus/BaseCampHelp
+set Coords "0 0 689 190"
+set Disabled 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.35
+set Child "BaseCampHelpDialogText 10 90	560"
+add MenuObject
+set Name BaseCampHelpDialogBoxRight
+set Texture menus/BaseCampHelp
+set Coords "0 0 689 190"
+set MirrorOnX 1;
+set Disabled 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.35
+set Child "BaseCampHelpDialogText 10 90	560"
+add MenuObject
+set Name BaseCampHelpDialogText
+set Coords "0 0 @_Arg1_@ 300"
+set Anchor Center
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.6
+set RenderCB_BoolArg 1
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB_Flags "/shadowed /shadowColor2 /fitX"
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol _BaseCampHelpDialog_
+set Disabled 1
+set DisabledAlphaTimeIn 0.25
+set DisabledAlphaTimeOut 0.25

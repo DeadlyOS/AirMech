@@ -1,0 +1,920 @@
+add MenuObject
+set Name PlayTopButtonName
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 1.5
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/allCaps /outlined8x /shadowColor2 /fitX"
+set Texture menus/ShopTiles
+set Coords "0 0 360 42"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject initFrom PlayTopButtonName
+set Name PlayTopButtonNamePW
+set RenderCB_FontScale 0.75
+add MenuObject
+set Name PlayTopButtonNameBg
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "400 100"
+set NoAlphaMod 1
+set Alpha 0.7
+set Color 0x000000
+set ColorFocused 0xffffff
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom PlayTopButtonName
+set Name PlayTopButtonNameActive
+set RenderCB_RGBColor 0x222222
+set FirstDrawnChildren 1
+set Child "PlayTopButtonNameBg 0 0"
+add MenuObject
+set Name PlayTopButtonDesc
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_FontScale 0.75
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB _DrawUText
+set Coords "0 0 360 200"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject initFrom PlayTopButtonDesc
+set Name PlayTopButtonDescPW
+set Coords "0 0 258 200"
+set RenderCB_FontScale 0.6
+add MenuObject
+set Name PlayTopLockText
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_RGBColor 0x444333
+set RenderCB_RGBColorFocused 0xd43f26
+set RenderCB_FontScale 0.625
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "60 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX"
+set Coords "0 0 350 200"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject initFrom PlayTopLockText
+set Name PlayTopLockTextPW
+set RenderCB_DX 200
+add MenuObject
+set Name PlayPanelFocusBlock
+set Coords "464 7 455 675"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set HiddenCheckBySymbolInv PlayPanelFocusBlock
+set CommandPress "if sym CurrentMenu == CPvP menuCmd ConMenuPlayPvPCancel"
+set CommandPress "if sym CurrentMenu == CCoop menuCmd ConMenuPlayCoopCancel"
+set CommandPress "if sym CurrentMenu == CSolo menuCmd ConMenuPlaySoloPressCancel"
+add MenuObject
+set Name PlayV1Solo
+set Coords "464 7 455 675"
+set Texture menus/ShopTilesTopB
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set CommandGetFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayV1Solo mas_MenuPlayUp"
+set CommandGetFocus "if sym MatchmakingStep == 0 addUIAnim PlayActiveMove mas_PlayActiveSolo"
+set CommandGetFocus "sym setZero ConMenuPlayCoop ConMenuPlayPvP"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandGetFocus "input set padFocusFallback PlayV1Solo"
+set CommandGetFocus "sym setOne MenuPlayCard0 ConMenuPlaySolo MenuPlayCardMove"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "sym set PlayModeLocked 0"
+set CommandLoseFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayV1Solo mas_MenuPlayDown"
+set CommandLoseFocus "sym setZero MenuPlayCard0 MenuPlayCardMove"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "sym set MatchmakingType Solo"
+set CommandPress "sym set PlaySoloTip none"
+set DrawWhenFocused FocusConPlayPanels
+set DrawWhenFocusedOffset "4 2 0"
+set MouseInteractZoneExpandWhenFocused "0 0 5 5"
+set Focus -2
+set MouseInteract 1
+set SaveArgs 6
+set ScaleX 0.9, ScaleY 0.9
+set CommandPress "gameUI ignoreInputTime 0.4"
+set CommandPress "if sym LegacyMatchmaking == 1 runnow menuCmd LegacyMatchSolo"
+set CommandPress "if sym LegacyMatchmaking != 1 runnow menuCmd ConMenuPlaySoloPress"
+set CommandGetFocus "input set padFocusFallback PlayV1Solo"
+set CommandFocusRight "if sym GSS_Ok_Locs != 0 gameUI focusNameTry PlayV1CoopLocked PlayV1Coop"
+set CommandFocusUp "gameUI focusNameTry MainBarButtonShop"
+set CommandFocusRight "gameUI focusNameTry Shop_Units StoreTilePrimeBundle StoreTileBooster4x DiamondBundle5 ShopItem0"
+set CommandFocusDown "gameUI focusNameTry ShopTopPromoPrime ShopTopPromoBoosts"
+set Child "PlayTopButtonName 25 500 Solo"
+set Child "PlayTopButtonDesc 25 612 Desc_Solo"
+set DisabledAlphaTimeIn 1.0
+set DisabledAlphaTimeOut 1.0
+set Child "PlayPanelFocusBlock -20 -20"
+add MenuObject
+set Name PlayV1SoloPW
+set Coords "464 7 455 675"
+set Texture menus/ShopTilesTopB
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set CommandGetFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayV1Solo mas_MenuPlayUp"
+set CommandGetFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayActiveMove mas_PlayActiveSoloPW"
+set CommandGetFocus "sym setZero ConMenuPlayCoop ConMenuPlayPvP"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandGetFocus "input set padFocusFallback PlayV1Solo"
+set CommandGetFocus "sym setOne MenuPlayCard0 ConMenuPlaySolo MenuPlayCardMove"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "sym set PlayModeLocked 0"
+set CommandLoseFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayV1Solo mas_MenuPlayDown"
+set CommandLoseFocus "sym setZero MenuPlayCard0 MenuPlayCardMove"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "sym set MatchmakingType Solo"
+set DrawWhenFocused FocusConPlayPanelsPW
+set DrawWhenFocusedOffset "4 2 0"
+set MouseInteractZoneExpandWhenFocused "0 0 5 5"
+set Focus -2
+set MouseInteract 1
+set SaveArgs 6
+set ScaleX 0.6, ScaleY 0.6
+set DisabledAlphaTimeIn 1.0
+set DisabledAlphaTimeOut 1.0
+set CommandPress "gameUI ignoreInputTime 0.4"
+set CommandPress "if sym LegacyMatchmaking == 1 runnow menuCmd LegacyMatchSolo"
+set CommandPress "if sym LegacyMatchmaking != 1 runnow menuCmd ConMenuPlaySoloPress"
+set CommandGetFocus "input set padFocusFallback PlayV1Solo"
+set CommandFocusRight "if sym GSS_Ok_Locs != 0 gameUI focusNameTry PlayV1CoopLocked PlayV1Coop"
+set CommandFocusUp "gameUI focusNameTry MainBarButtonShop"
+set CommandFocusRight "gameUI focusNameTry Shop_Units StoreTilePrimeBundle StoreTileBooster4x DiamondBundle5 ShopItem0"
+set CommandFocusDown "gameUI focusNameTry ShopTopPromoPrime ShopTopPromoBoosts"
+set Child "PlayTopButtonNamePW -45 320 Solo"
+set Child "PlayTopButtonDescPW 10 410 Desc_Solo"
+set Child "PlayPanelFocusBlock -20 -20"
+add MenuObject
+set Name PlayV1OverlayLocked
+set Texture effects/white
+set Color 0x001122
+set Coords "0 0 16 16"
+set TileArea "390 591"
+set NoAlphaMod 1
+set Alpha 0.667
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject initFrom PlayV1OverlayLocked
+set Name PlayV1OverlayLockedPW
+set TileArea "261 395"
+add MenuObject
+set Name PlayV1CoopLocked
+set Coords "600 20 416 522"
+set Texture menus/TradeA
+set MouseInteract 1
+set Focus -2
+set CommandGetFocus "addUIAnim PlayV1Coop mas_MenuPlayUp"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "sym set PlayModeLocked 1"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandLoseFocus "addUIAnim PlayV1Coop mas_MenuPlayDown"
+set CommandFocusRight "gameUI focusNameTry PlayV1PvPLocked PlayV1PvP"
+set CommandFocusLeft "gameUI focusNameTry PlayV1Solo"
+set CommandCancel "gameUI focusNameTry PlayV1Solo"
+set DrawWhenFocused PlayV1OverlayLockedFocus
+set DrawWhenFocusedOffset "2 -26"
+set MouseInteractZoneExpand "0 -35 0 60"
+set HiddenCheckBySymbolValue StatOfflineWins>=${UnlockCoop_OfflineWins}
+set FirstDrawnChildren 1
+set Child "PlayV1OverlayLocked 12 -18"
+set Child "PlayTopLockText -25 300	Lock_Coop"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name PlayV1CoopLockedPW
+set Coords "600 20 416 522"
+set Texture menus/TradeA
+set MouseInteract 1
+set Focus -2
+set ScaleX 0.67, ScaleY 0.67
+set CommandGetFocus "addUIAnim PlayV1Coop mas_MenuPlayUp"
+set CommandGetFocus "if sym ArcCustomized == 1 runnow addUIAnim PlayActiveMove mas_PlayActiveCoopPW"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "sym set PlayModeLocked 1"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandLoseFocus "addUIAnim PlayV1Coop mas_MenuPlayDown"
+set CommandFocusRight "gameUI focusNameTry PlayV1PvPLocked PlayV1PvP"
+set CommandFocusLeft "gameUI focusNameTry PlayV1Solo"
+set CommandCancel "gameUI focusNameTry PlayV1Solo"
+set DrawWhenFocused PlayV1OverlayLockedFocusPW
+set DrawWhenFocusedOffset "2 -26"
+set MouseInteractZoneExpand "0 -35 0 60"
+set FirstDrawnChildren 1
+set Child "PlayV1OverlayLockedPW 8 -20"
+set Child "PlayTopLockTextPW -25 200	Lock_Coop"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name PlayOverlayLock
+set Coords "359 361 87 116"
+set Texture menus/Locks
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name NoGSSMessage
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FontScale 0.90
+set BlendMode BlendAdd
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set Coords "0 0 600 400"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name PlayV1NoGSS
+set Coords "944 230 450 450"
+set CoordsStart "944 230 12 12"
+set CoordsMid "956 230 47 12"
+set CoordsEnd "1003 230 12 12"
+set CoordsStartFocused "944 242 12 47"
+set CoordsMidFocused "956 242 47 47"
+set CoordsEndFocused "1003 242 12 47"
+set CoordsStartDisabled "944 289 12 12"
+set CoordsMidDisabled "956 289 47 12"
+set CoordsEndDisabled "1003 289 12 12"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 897
+set RenderCB_DY 770
+set Color 0x4c0c0c
+set ColorFocused 0x3c0505
+set MouseInteract 1
+set NoAlphaMod 1
+set Alpha 0.9
+set HiddenCheckBySymbol GSS_Ok_Locs
+set Child "NoGSSMessage 140 180		NoGSSMessage 			/platform !consolePlatform"
+set Child "NoGSSMessage 140 180		NoGSSMessage_Console 	/platform consolePlatform"
+set Child "MF_NetGameBrowseWorldMap 340 570					/platform !consolePlatform /platform !arc"
+set Child "LatencyWaitLogoSpin 380 530"
+add MenuObject
+set Name PlayV1Coop
+set Coords "7 7 455 675"
+set Texture menus/ShopTilesTopC
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set CommandGetFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayV1Coop mas_MenuPlayUp"
+set CommandGetFocus "if sym MatchmakingStep == 0 if sym ArcCustomized == 0 runnow addUIAnim PlayActiveMove mas_PlayActiveCoop"
+set CommandGetFocus "if sym MatchmakingStep == 0 if sym ArcCustomized == 1 runnow addUIAnim PlayActiveMove mas_PlayActivePvP"
+set CommandGetFocus "sym setZero ConMenuPlaySolo ConMenuPlayPvP"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandGetFocus "input set padFocusFallback PlayV1Coop"
+set CommandGetFocus "sym setOne MenuPlayCard1 ConMenuPlayCoop MenuPlayCardMove"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "sym set PlayModeLocked 0"
+set CommandLoseFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayV1Coop mas_MenuPlayDown"
+set CommandLoseFocus "sym setZero MenuPlayCard1 MenuPlayCardMove"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "sym set MatchmakingType Coop"
+set CommandPress "sym set PlaySoloTip none"
+set CommandFocusRight "gameUI focusNameTry PlayV1PvPLocked PlayV1PvP"
+set CommandFocusLeft "gameUI focusNameTry PlayV1Solo"
+set DrawWhenFocused FocusConPlayPanels
+set DrawWhenFocusedOffset "4 2 0"
+set MouseInteractZoneExpandWhenFocused "0 0 5 5"
+set Focus -2
+set MouseInteract 1
+set ScaleX 0.9, ScaleY 0.9
+set CommandPress "gameUI ignoreInputTime 0.4"
+set CommandPress "if sym StatOfflineWins >= $UnlockCoop_OfflineWins runnow menuCmd ConMenuPlayCoopPress"
+set Child "PlayTopButtonName 25 500 Coop"
+set Child "PlayTopButtonDesc 25 612 Desc_Coop"
+set Child "PlayV1CoopLocked -3 25"
+set DisabledAlphaTimeIn 1.0
+set DisabledAlphaTimeOut 1.0
+set Child "PlayPanelFocusBlock -20 -20"
+add MenuObject
+set Name PlayV1CoopPW
+set Coords "7 7 455 675"
+set Texture menus/ShopTilesTopC
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set CommandGetFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayV1Coop mas_MenuPlayUp"
+set CommandGetFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayActiveMove mas_PlayActiveCoopPW"
+set CommandGetFocus "sym setZero ConMenuPlaySolo ConMenuPlayPvP"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandGetFocus "input set padFocusFallback PlayV1Coop"
+set CommandGetFocus "sym setOne MenuPlayCard1 ConMenuPlayCoop MenuPlayCardMove"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "sym set PlayModeLocked 0"
+set CommandLoseFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayV1Coop mas_MenuPlayDown"
+set CommandLoseFocus "sym setZero MenuPlayCard1 MenuPlayCardMove"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "sym set MatchmakingType Coop"
+set CommandFocusRight "gameUI focusNameTry PlayV1PvPLocked PlayV1PvP"
+set CommandFocusLeft "gameUI focusNameTry PlayV1Solo"
+set DrawWhenFocused FocusConPlayPanelsPW
+set DrawWhenFocusedOffset "4 2 0"
+set MouseInteractZoneExpandWhenFocused "0 0 5 5"
+set Focus -2
+set MouseInteract 1
+set ScaleX 0.6, ScaleY 0.6
+set CommandPress "gameUI ignoreInputTime 0.4"
+set CommandPress "if sym StatOfflineWins >= $UnlockCoop_OfflineWins runnow menuCmd ConMenuPlayCoopPress"
+set DisabledAlphaTimeIn 1.0
+set DisabledAlphaTimeOut 1.0
+set Child "PlayTopButtonNamePW -45 320 Coop"
+set Child "PlayTopButtonDescPW 5 410 Desc_Coop"
+set Child "PlayV1CoopLocked -3 25 /ifSym ArcCustomized == 0"
+set Child "PlayV1CoopLockedPW -3 25 /ifSym ArcCustomized == 1"
+set Child "PlayPanelFocusBlock -20 -20"
+add MenuObject
+set Name PlayV1PvPLocked
+set Coords "600 20 416 522"
+set Texture menus/TradeA
+set MouseInteract 1
+set Focus -2
+set CommandGetFocus "addUIAnim PlayV1PvP mas_MenuPlayUp"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "sym set PlayModeLocked 1"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandLoseFocus "addUIAnim PlayV1PvP mas_MenuPlayDown"
+set DrawWhenFocused PlayV1OverlayLockedFocus
+set DrawWhenFocusedOffset "2 -26"
+set CommandFocusLeft "gameUI focusNameTry PlayV1CoopLocked PlayV1Coop"
+set CommandCancel "gameUI focusNameTry PlayV1CoopLocked PlayV1Coop"
+set MouseInteractZoneExpand "0 -35 0 60"
+set HiddenCheckBySymbolValue StatMMWon>=${UnlockPvP_MMWon}
+set FirstDrawnChildren 1
+set Child "PlayV1OverlayLocked 12 -18"
+set Child "PlayTopLockText -25 300	Lock_PvP"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name PlayV1PvP
+set Coords "464 7 455 675"
+set Texture menus/ShopTilesTopC
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set CommandGetFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayV1PvP mas_MenuPlayUp"
+set CommandGetFocus "if sym MatchmakingStep == 0 && sym ArcCustomized == 0 runnow addUIAnim PlayActiveMove mas_PlayActivePvP"
+set CommandGetFocus "if sym MatchmakingStep == 0 && sym ArcCustomized == 1 runnow addUIAnim PlayActiveMove mas_PlayActiveCoop"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandGetFocus "input set padFocusFallback PlayV1PvP"
+set CommandGetFocus "sym setZero ConMenuPlaySolo ConMenuPlayCoop"
+set CommandGetFocus "sym setOne MenuPlayCard2 ConMenuPlayPvP MenuPlayCardMove"
+set CommandGetFocus "sym set PlayModeLocked 0"
+set CommandGetFocus "if sym StatMMWon < $UnlockPvP_MMWon gameui focusnametry PlayV1PvPLocked"
+set CommandLoseFocus "if sym MatchmakingStep == 0 runnow addUIAnim PlayV1PvP mas_MenuPlayDown"
+set CommandPress "playSound $MenuSoundClick"
+set CommandLoseFocus "sym setZero MenuPlayCard2 MenuPlayCardMove"
+set CommandFocusLeft "gameUI focusNameTry PlayV1CoopLocked PlayV1Coop"
+set DrawWhenFocused FocusConPlayPanels
+set DrawWhenFocusedOffset "4 2 0"
+set MouseInteractZoneExpandWhenFocused "0 0 5 5"
+set Focus -2
+set MouseInteract 1
+set ScaleX 0.9, ScaleY 0.9
+set CommandPress "gameUI ignoreInputTime 0.4"
+set CommandPress "if sym CustomTagline == CustomTagline1 sym setRand CustomTagline CustomTagline2 CustomTagline3 CustomTagline4 CustomTagline5"
+set CommandPress "if sym CustomTagline == CustomTagline2 sym setRand CustomTagline CustomTagline1 CustomTagline3 CustomTagline4 CustomTagline5"
+set CommandPress "if sym CustomTagline == CustomTagline3 sym setRand CustomTagline CustomTagline2 CustomTagline1 CustomTagline4 CustomTagline5"
+set CommandPress "if sym CustomTagline == CustomTagline4 sym setRand CustomTagline CustomTagline2 CustomTagline1 CustomTagline3 CustomTagline5"
+set CommandPress "if sym CustomTagline == CustomTagline5 sym setRand CustomTagline CustomTagline2 CustomTagline1 CustomTagline4 CustomTagline3"
+set CommandPress "sym set PlayPvPTip none"
+set CommandPress "sym set MatchmakingType PvP"
+set CommandPress "sym set CustomGameOptionsBrowse 0"
+set CommandPress "sym set CustomGameOptionsCreate 0"
+set CommandPress "if sym LowAndFree == 0 runnow menuCmd ConMenuPlayPvPPress"
+set CommandPress "if sym LowAndFree == 1 runnow menuCmd $LowAndFreeCmd"
+set Child "PlayTopButtonName 25 500 PvP"
+set Child "PlayTopButtonDesc 25 612 Desc_PvP"
+set Child "PlayV1PvPLocked -3 25"
+set DisabledAlphaTimeIn 1.0
+set DisabledAlphaTimeOut 1.0
+set Child "PlayPanelFocusBlock -20 -20"
+add MenuObject
+set Name PlayV1TopLevel
+set ContainerOnly 1
+set HiddenCheckBySymbolInv PlayV1TopMenu
+set Child "PlayV1Solo 0 0"
+set Child "PlayV1Coop 420 0"
+set Child "PlayV1PvP 840 0"
+add MenuObject
+set Name Start3v3Button
+set Texture menus/ButtonsBasecamp
+set SaveArgs 3
+set Focus -2
+set Coords "114 4 178 55"
+set CoordsPressed "113 2 178 55"
+set ScaleX 1.45, ScaleY 1.55
+set RenderCB_DX 235
+set RenderCB_DY 70
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text ButtonStart3v3PvP
+set RenderCB_Flags "/nmi /fitX /shadowed /shadowColor2"
+set RenderCB_Font Roboto
+set RenderCB_Offset "12 8 0"
+set RenderCB_OffsetPressed "14 10 0"
+set Color 0xbcc2c5
+set ColorFocused 0xffffff
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set HiddenCheckBySymbolValue CurrentMenu!=CPlay
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+set CommandPress "sym setZero ConMenuPlaySolo ConMenuPlayCoop ConMenuPvPUnranked ConMenuPvPCustom ConMenuPvPUltimate ConMenuPvPRanked1v1 ConMenuPvPRanked2v2"
+set CommandPress "sym setOne ConMenuPlayPvP ConMenuPvPRanked ConMenuPvPRanked3v3"
+set CommandPress "pcmd 0 menuCmd ConMenuLobbySetup"
+add MenuObject
+set Name Start3v3ButtonHighlight
+set Texture menus/LoginCommon
+set PulseAlpha "2.5 -0.4 0.0"
+set Coords "485 132 257 104"
+set BlendMode BlendAdd
+set ScaleX 1.09, ScaleY 1.2
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuPlaySolo
+set RenderCB_Text ButtonSolo
+set CommandFocusDown "gameUI focusNameTry PcMenuPlayMultiplayer"
+set CommandGetFocus "sym setZero PcMenuPlayMultiplayer PcMenuPlayPractice"
+set CommandGetFocus "sym set PcMenuPlaySolo 1"
+set CommandGetFocus "input set padFocusFallback PcMenuPlaySolo"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandPress "menuCmd PcMenuPlaySoloPress"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuPlayMultiplayer
+set RenderCB_Text ButtonMultiplayer
+set CommandFocusDown "gameUI focusNameTry PcMenuPlayPractice"
+set CommandFocusUp "gameUI focusNameTry PcMenuPlaySolo"
+set CommandGetFocus "sym setZero PcMenuPlaySolo PcMenuPlayPractice"
+set CommandGetFocus "sym set PcMenuPlayMultiplayer 1"
+set CommandGetFocus "input set padFocusFallback PcMenuPlayMultiplayer"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandPress "menuCmd PcMenuPlayMultiplayerPress"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuPlayPractice
+set RenderCB_Text ButtonPractice
+set CommandFocusUp "gameUI focusNameTry PcMenuPlayMultiplayer"
+set CommandGetFocus "sym setZero PcMenuPlaySolo PcMenuPlayMultiplayer"
+set CommandGetFocus "sym set PcMenuPlayPractice 1"
+set CommandGetFocus "input set padFocusFallback PcMenuPlayPractice"
+set CommandGetFocus "sym set CurrentMenu CPlay"
+set CommandPress "menuCmd PcMenuPlayPracticePress"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuSoloSkirmish
+set RenderCB_Text ButtonSkirmish
+set CommandFocusDown "gameUI focusNameTry PcMenuSoloSurvival"
+set CommandGetFocus "if sym InputPad == 1 sym setZero PcMenuSoloSurvival"
+set CommandGetFocus "if sym InputPad == 1 sym set PcMenuSoloSkirmish 1"
+set CommandGetFocus "if sym InputPad == 1 input set padFocusFallback PcMenuSoloSkirmish"
+set CommandPress "if sym InputPad == 0 sym setZero PcMenuSoloSurvival"
+set CommandPress "if sym InputPad == 0 sym set PcMenuSoloSkirmish 1"
+set CommandPress "if sym InputPad == 0 input set padFocusFallback PcMenuSoloSkirmish"
+set CommandGetFocus "sym set CurrentMenu CSolo"
+set CommandPress "if sym PcMenuSoloSkirmish1v1 == 0 && sym PcMenuSoloSkirmish2v2 == 0 && sym PcMenuSoloSkirmish3v3 == 0 && sym PcMenuSoloSkirmish2v3 == 0 && sym PcMenuSoloSkirmish1v2 == 0 && sym PcMenuSoloSkirmish1v3 == 0 runnow sym set PcMenuSoloSkirmish1v1 1"
+set CommandCancel "gameUI ignoreInputTime 0.4"
+set CommandCancel "menucmd SelectMatchReset"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuSoloSurvival
+set RenderCB_Text ButtonSurvival
+set CommandFocusUp "gameUI focusNameTry PcMenuSoloSkirmish"
+set CommandGetFocus "if sym InputPad == 1 sym setZero PcMenuSoloSkirmish"
+set CommandGetFocus "if sym InputPad == 1 sym set PcMenuSoloSurvival 1"
+set CommandGetFocus "if sym InputPad == 1 input set padFocusFallback PcMenuSoloSurvival"
+set CommandGetFocus "sym set CurrentMenu CSolo"
+set CommandPress "if sym InputPad == 0 sym setZero PcMenuSoloSkirmish"
+set CommandPress "if sym InputPad == 0 sym set PcMenuSoloSurvival 1"
+set CommandPress "if sym InputPad == 0 input set padFocusFallback PcMenuSoloSurvival"
+set CommandCancel "gameUI ignoreInputTime 0.4"
+set CommandCancel "menucmd SelectMatchReset"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuCoopSkirmish
+set RenderCB_Text ButtonSkirmish
+set CommandFocusDown "gameUI focusNameTry PcMenuCoopSurvival"
+set CommandGetFocus "if sym InputPad == 1 sym setZero PcMenuCoopSurvival"
+set CommandGetFocus "if sym InputPad == 1 sym set PcMenuCoopSkirmish 1"
+set CommandPress "if sym InputPad == 0 sym setZero PcMenuCoopSurvival"
+set CommandPress "if sym InputPad == 0 sym set PcMenuCoopSkirmish 1"
+set CommandGetFocus "input set padFocusFallback PcMenuCoopSkirmish"
+set CommandCancel "gameUI ignoreInputTime 0.4"
+set CommandCancel "menucmd SelectMatchReset"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuCoopSurvival
+set RenderCB_Text ButtonSurvival
+set CommandFocusUp "gameUI focusNameTry PcMenuCoopSkirmish"
+set CommandGetFocus "if sym InputPad == 1 sym setZero PcMenuCoopSkirmish"
+set CommandGetFocus "if sym InputPad == 1 sym set PcMenuCoopSurvival 1"
+set CommandPress "if sym InputPad == 0 sym setZero PcMenuCoopSkirmish"
+set CommandPress "if sym InputPad == 0 sym set PcMenuCoopSurvival 1"
+set CommandGetFocus "input set padFocusFallback PcMenuCoopSurvival"
+set CommandCancel "gameUI ignoreInputTime 0.4"
+set CommandCancel "menucmd SelectMatchReset"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuMultiCoop2v2
+set RenderCB_Text Button2v2
+set CommandFocusDown "gameUI focusNameTry PcMenuMultiCoop3v3"
+set CommandGetFocus "sym setZero PcMenuMultiCoop3v3 PcMenuMultiCoop2v3"
+set CommandGetFocus "sym set PcMenuMultiCoop2v2 1"
+set CommandGetFocus "input set padFocusFallback PcMenuMultiCoop2v2"
+set CommandGetFocus "sym set CurrentMenu CMultiSub"
+set CommandCancel "menuCmd PcMenuMultiSkirmishPressCancel"
+set CommandPress "sym set DNA_GameSize 2v2"
+set CommandPress "menuCmd PcMenuLobbySetup"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuMultiCoop3v3
+set RenderCB_Text Button3v3
+set CommandFocusUp "gameUI focusNameTry PcMenuMultiCoop2v2"
+set CommandFocusDown "gameUI focusNameTry PcMenuMultiCoop2v3"
+set CommandGetFocus "sym setZero PcMenuMultiCoop2v3 PcMenuMultiCoop2v2"
+set CommandGetFocus "sym set PcMenuMultiCoop3v3 1"
+set CommandGetFocus "input set padFocusFallback PcMenuMultiCoop3v3"
+set CommandGetFocus "sym set CurrentMenu CMultiSub"
+set CommandCancel "menuCmd PcMenuMultiSkirmishPressCancel"
+set CommandPress "sym set DNA_GameSize 3v3"
+set CommandPress "menuCmd PcMenuLobbySetup"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuMultiCoop2v3
+set RenderCB_Text Button2v3
+set CommandFocusUp "gameUI focusNameTry PcMenuMultiCoop3v3"
+set CommandGetFocus "sym setZero PcMenuMultiCoop3v3 PcMenuMultiCoop2v2"
+set CommandGetFocus "sym set PcMenuMultiCoop2v3 1"
+set CommandGetFocus "input set padFocusFallback PcMenuMultiCoop2v3"
+set CommandGetFocus "sym set CurrentMenu CMultiSub"
+set CommandCancel "menuCmd PcMenuMultiSkirmishPressCancel"
+set CommandPress "sym set DNA_GameSize 2v3"
+set CommandPress "menuCmd PcMenuLobbySetup"
+add MenuObject
+set Name PcMenuMultiCancel
+set CommandPress ">menuCmd @_Arg1_@"
+set RenderBlocked 1
+set SaveArgs 1
+add MenuObject
+set Name PcMenuMultiSafeZone
+set Coords "0 0 480 300"
+set MouseInteract 1
+set RenderBlocked 1
+add MenuObject
+set Name PcMenuMultiSkirmishPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "PcMenuMultiCancel 0 0 	PcMenuMultiSkirmishPressCancel"
+set Child "PcMenuMultiSafeZone -20 -20"
+set Child "PcMenuMultiCoop3v3 0 0"
+set Child "PcMenuMultiCoop2v2 0 0"
+set Child "PcMenuMultiCoop2v3 0 0"
+set Child "MultiPurposeLabelTemplate[LabelCoop3v3] 0 0 Button3v3	PcMenuMultiCoop3v3"
+set Child "MultiPurposeLabelTemplate[LabelCoop2v2] 0 0 Button2v2	PcMenuMultiCoop2v2"
+set Child "MultiPurposeLabelTemplate[LabelCoop2v3] 0 0 Button2v3	PcMenuMultiCoop2v3"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuMultiSurvival2P
+set RenderCB_Text Button2P
+set CommandFocusDown "gameUI focusNameTry PcMenuMultiSurvival3P"
+set CommandGetFocus "sym setZero PcMenuMultiSurvival3P PcMenuMultiSurvival4P"
+set CommandGetFocus "sym set PcMenuMultiSurvival2P 1"
+set CommandGetFocus "input set padFocusFallback PcMenuMultiSurvival2P"
+set CommandGetFocus "sym set CurrentMenu CMultiSub"
+set CommandCancel "menuCmd PcMenuMultiSurvivalPressCancel"
+set CommandPress "sym set DNA_GameSize 2P"
+set CommandPress "menuCmd PcMenuLobbySetup"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuMultiSurvival3P
+set RenderCB_Text Button3P
+set CommandFocusUp "gameUI focusNameTry PcMenuMultiSurvival2P"
+set CommandFocusDown "gameUI focusNameTry PcMenuMultiSurvival4P"
+set CommandGetFocus "sym setZero PcMenuMultiSurvival4P PcMenuMultiSurvival2P"
+set CommandGetFocus "sym set PcMenuMultiSurvival3P 1"
+set CommandGetFocus "input set padFocusFallback PcMenuMultiSurvival3P"
+set CommandGetFocus "sym set CurrentMenu CMultiSub"
+set CommandCancel "menuCmd PcMenuMultiSurvivalPressCancel"
+set CommandPress "sym set DNA_GameSize 3P"
+set CommandPress "menuCmd PcMenuLobbySetup"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuMultiSurvival4P
+set RenderCB_Text Button4P
+set CommandFocusUp "gameUI focusNameTry PcMenuMultiSurvival3P"
+set CommandGetFocus "sym setZero PcMenuMultiSurvival3P PcMenuMultiSurvival2P"
+set CommandGetFocus "sym set PcMenuMultiSurvival4P 1"
+set CommandGetFocus "input set padFocusFallback PcMenuMultiSurvival4P"
+set CommandGetFocus "sym set CurrentMenu CMultiSub"
+set CommandCancel "menuCmd PcMenuMultiSurvivalPressCancel"
+set CommandPress "sym set DNA_GameSize 4P"
+set CommandPress "menuCmd PcMenuLobbySetup"
+add MenuObject
+set Name PcMenuMultiSurvivalPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "PcMenuMultiCancel 0 0 	PcMenuMultiSurvivalPressCancel"
+set Child "PcMenuMultiSafeZone -20 -20"
+set Child "PcMenuMultiSurvival2P 0 0"
+set Child "PcMenuMultiSurvival3P 0 0"
+set Child "PcMenuMultiSurvival4P 0 0"
+set Child "MultiPurposeLabelTemplate[LabelSurvival2P] 0 0 Button2P	PcMenuMultiSurvival2P"
+set Child "MultiPurposeLabelTemplate[LabelSurvival3P] 0 0 Button3P	PcMenuMultiSurvival3P"
+set Child "MultiPurposeLabelTemplate[LabelSurvival4P] 0 0 Button4P	PcMenuMultiSurvival4P"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuMultiVersus
+set RenderCB_Text ButtonVersus
+set CommandFocusDown "gameUI focusNameTry PcMenuPvPCustom"
+set CommandFocusUp "gameUI focusNameTry PcMenuMultiCoop"
+set CommandGetFocus "sym setZero PcMenuMultiCoop PcMenuPvPCustom"
+set CommandGetFocus "sym set PcMenuMultiVersus 1"
+set CommandGetFocus "input set padFocusFallback PcMenuMultiVersus"
+set CommandGetFocus "if sym CurrentMenu != _SetupTransition_ runnow sym set CurrentMenu CMulti"
+set CommandPress "menuCmd PcMenuMultiVersusPress"
+set Child "SubsectionLabelTemplate[LabelSubVersus] 0 0 ButtonVersus"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuPvPUnranked
+set RenderCB_Text ButtonUnranked
+set CommandFocusDown "gameUI focusNameTry PcMenuPvPRanked"
+set CommandGetFocus "if sym InputPad == 1 sym setZero PcMenuPvPRanked"
+set CommandGetFocus "if sym InputPad == 1 sym set PcMenuPvPUnranked 1"
+set CommandPress "if sym InputPad == 0 sym setZero PcMenuPvPRanked"
+set CommandPress "if sym InputPad == 0 sym set PcMenuPvPUnranked 1"
+set CommandGetFocus "input set padFocusFallback PcMenuPvPUnranked"
+set CommandCancel "gameUI ignoreInputTime 0.4"
+set CommandCancel "menucmd SelectMatchReset"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuPlayersButtonTemplate
+set RenderCB_Text @_Arg7_@
+set CommandFocusUp ">gameUI focusNameTry @_Arg3_@"
+set CommandFocusDown ">gameUI focusNameTry @_Arg4_@"
+set CommandGetFocus ">sym setZero @_Arg8_@ @_Arg9_@ @_Arg10_@ @_Arg11_@ @_Arg12_@"
+set CommandGetFocus ">sym set @_Arg2_@ 1"
+set CommandGetFocus ">input set padFocusFallback @_Arg2_@"
+set CommandGetFocus ">sym set CurrentMenu @_Arg5_@"
+set CommandCancel ">menuCmd @_Arg6_@"
+set CommandPress ">sym set DNA_GameSize @_Arg1_@"
+set CommandPress "menuCmd PcMenuLobbySetup"
+set SaveArgs 12
+add MenuObject
+set Name PcMenuMultiUnrankedPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "PcMenuMultiCancel 0 0 	PcMenuMultiUnrankedPressCancel"
+set Child "PcMenuMultiSafeZone -20 -20"
+set Child "PcMenuPlayersButtonTemplate[PcMenuMultiUnranked1v1] 0 0	1v1 PcMenuMultiUnranked1v1	null PcMenuMultiUnranked2v2	CMultiSub	PcMenuMultiUnrankedPressCancel Button1v1 PcMenuMultiUnranked2v2 PcMenuMultiUnranked3v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuMultiUnranked2v2] 0 0	2v2 PcMenuMultiUnranked2v2	PcMenuMultiUnranked1v1 PcMenuMultiUnranked3v3	CMultiSub	PcMenuMultiUnrankedPressCancel Button2v2 PcMenuMultiUnranked1v1 PcMenuMultiUnranked3v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuMultiUnranked3v3] 0 0	3v3 PcMenuMultiUnranked3v3	PcMenuMultiUnranked2v2 null	CMultiSub	PcMenuMultiUnrankedPressCancel Button3v3 PcMenuMultiUnranked2v2 PcMenuMultiUnranked1v1"
+set Child "MultiPurposeLabelTemplate[LabelUnranked1v1] 0 0 Button1v1	PcMenuMultiUnranked1v1"
+set Child "MultiPurposeLabelTemplate[LabelUnranked2v2] 0 0 Button2v2	PcMenuMultiUnranked2v2"
+set Child "MultiPurposeLabelTemplate[LabelUnranked3v3] 0 0 Button3v3	PcMenuMultiUnranked3v3"
+add MenuObject
+set Name PcMenuPvPCustomPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "PcMenuMultiCancel[MultiCustomCancelCatch] 0 0 	PcMenuPvPCustomPressCancel"
+set Child "PcMenuMultiSafeZone -20 -20"
+set Child "PcMenuPlayersButtonTemplate[PcMenuPvPCustom1v1] 0 0	1v1 PcMenuPvPCustom1v1	null PcMenuPvPCustom2v2	CMultiSub	PcMenuPvPCustomPressCancel Button1v1 PcMenuPvPCustom2v2 PcMenuPvPCustom3v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuPvPCustom2v2] 0 0	2v2 PcMenuPvPCustom2v2	PcMenuPvPCustom1v1 PcMenuPvPCustom3v3	CMultiSub	PcMenuPvPCustomPressCancel Button2v2 PcMenuPvPCustom1v1 PcMenuPvPCustom3v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuPvPCustom3v3] 0 0	3v3 PcMenuPvPCustom3v3	PcMenuPvPCustom2v2 PcMenuPvPCustom2v3	CMultiSub	PcMenuPvPCustomPressCancel Button3v3 PcMenuPvPCustom2v2 PcMenuPvPCustom1v1"
+set Child "MultiPurposeLabelTemplate[LabelMultiCustom1v1] 0 0 Button1v1	PcMenuPvPCustom1v1"
+set Child "MultiPurposeLabelTemplate[LabelMultiCustom2v2] 0 0 Button2v2	PcMenuPvPCustom2v2"
+set Child "MultiPurposeLabelTemplate[LabelMultiCustom3v3] 0 0 Button3v3	PcMenuPvPCustom3v3"
+add MenuObject
+set Name PcMenuSoloSkirmishPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "PcMenuMultiCancel[SoloCancelCatch] 0 0 	PcMenuSoloSkirmishPressCancel"
+set Child "PcMenuMultiSafeZone -20 -20"
+set Child "PcMenuPlayersButtonTemplate[PcMenuSoloSkirmish1v1] 0 0	1v1 PcMenuSoloSkirmish1v1	null PcMenuSoloSkirmish2v2	CSoloSub	PcMenuSoloSkirmishPressCancel Button1v1 PcMenuSoloSkirmish2v2 PcMenuSoloSkirmish3v3 PcMenuSoloSkirmish1v3 PcMenuSoloSkirmish1v2 PcMenuSoloSkirmish2v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuSoloSkirmish2v2] 0 0	2v2 PcMenuSoloSkirmish2v2	PcMenuSoloSkirmish1v1 PcMenuSoloSkirmish3v3	CSoloSub	PcMenuSoloSkirmishPressCancel Button2v2 PcMenuSoloSkirmish1v1 PcMenuSoloSkirmish1v3 PcMenuSoloSkirmish3v3 PcMenuSoloSkirmish1v2 PcMenuSoloSkirmish2v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuSoloSkirmish3v3] 0 0	3v3 PcMenuSoloSkirmish3v3	PcMenuSoloSkirmish2v2 PcMenuSoloSkirmish2v3	CSoloSub	PcMenuSoloSkirmishPressCancel Button3v3 PcMenuSoloSkirmish2v2 PcMenuSoloSkirmish1v1 PcMenuSoloSkirmish1v3 PcMenuSoloSkirmish1v2 PcMenuSoloSkirmish2v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuSoloSkirmish2v3] 0 0	2v3 PcMenuSoloSkirmish2v3	PcMenuSoloSkirmish3v3 PcMenuSoloSkirmish1v2	CSoloSub	PcMenuSoloSkirmishPressCancel Button2v3 PcMenuSoloSkirmish2v2 PcMenuSoloSkirmish1v1 PcMenuSoloSkirmish3v3 PcMenuSoloSkirmish1v2 PcMenuSoloSkirmish1v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuSoloSkirmish1v2] 0 0	1v2 PcMenuSoloSkirmish1v2	PcMenuSoloSkirmish2v3 PcMenuSoloSkirmish1v3	CSoloSub	PcMenuSoloSkirmishPressCancel Button1v2 PcMenuSoloSkirmish2v2 PcMenuSoloSkirmish1v3 PcMenuSoloSkirmish3v3 PcMenuSoloSkirmish1v1 PcMenuSoloSkirmish2v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuSoloSkirmish1v3] 0 0	1v3 PcMenuSoloSkirmish1v3	PcMenuSoloSkirmish1v2 null	CSoloSub	PcMenuSoloSkirmishPressCancel Button1v3 PcMenuSoloSkirmish2v2 PcMenuSoloSkirmish1v3 PcMenuSoloSkirmish3v3 PcMenuSoloSkirmish1v2 PcMenuSoloSkirmish2v3"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish1v1] 0 0 Button1v1	PcMenuSoloSkirmish1v1"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish2v2] 0 0 Button2v2	PcMenuSoloSkirmish2v2"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish3v3] 0 0 Button3v3	PcMenuSoloSkirmish3v3"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish2v3] 0 0 Button2v3	PcMenuSoloSkirmish2v3"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish1v2] 0 0 Button1v2	PcMenuSoloSkirmish1v2"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish1v3] 0 0 Button1v3	PcMenuSoloSkirmish1v3"
+add MenuObject
+set Name PcMenuPvPRankedBlock
+set Texture effects/white
+set Coords "0 0 16 16"
+set MouseInteractZoneExpand "-10 -10 10 10"
+set TileArea "430 66"
+set Color 0xff5500
+set ColorFocused 0xff5500
+set NoAlphaMod 1
+set Alpha 0.3
+set Focus -2
+set MouseInteract 1
+set Child "ContentLock[LockRankedPvP] 10 -14 10 0.8 1"
+set HiddenCheckBySymbolValue P_Level>9
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuPvPRanked
+set RenderCB_Text ButtonRanked
+set CommandFocusUp "gameUI focusNameTry PcMenuPvPUnranked"
+set CommandGetFocus "if sym InputPad == 1 sym setZero PcMenuPvPUnranked"
+set CommandGetFocus "if sym InputPad == 1 sym set PcMenuPvPRanked 1"
+set CommandPress "if sym InputPad == 0 sym setZero PcMenuPvPUnranked"
+set CommandPress "if sym InputPad == 0 sym set PcMenuPvPRanked 1"
+set CommandGetFocus "input set padFocusFallback PcMenuPvPRanked"
+set CommandCancel "gameUI ignoreInputTime 0.4"
+set CommandCancel "menucmd SelectMatchReset"
+set Child "PcMenuPvPRankedBlock 8 8"
+add MenuObject
+set Name PcMenuMultiRankedPlayers
+set ContainerOnly 1
+set Hidden 1
+set Child "PcMenuMultiCancel 0 0 	PcMenuMultiRankedPressCancel"
+set Child "PcMenuMultiSafeZone -20 -20"
+set Child "PcMenuPlayersButtonTemplate[PcMenuMultiRanked1v1] 0 0	1v1 PcMenuMultiRanked1v1	null PcMenuMultiRanked2v2	CMultiSub	PcMenuMultiRankedPressCancel Button1v1 PcMenuMultiRanked2v2 PcMenuMultiRanked3v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuMultiRanked2v2] 0 0	2v2 PcMenuMultiRanked2v2	PcMenuMultiRanked1v1 PcMenuMultiRanked3v3	CMultiSub	PcMenuMultiRankedPressCancel Button2v2 PcMenuMultiRanked1v1 PcMenuMultiRanked3v3"
+set Child "PcMenuPlayersButtonTemplate[PcMenuMultiRanked3v3] 0 0	3v3 PcMenuMultiRanked3v3	PcMenuMultiRanked2v2 null	CMultiSub	PcMenuMultiRankedPressCancel Button3v3 PcMenuMultiRanked2v2 PcMenuMultiRanked1v1"
+set Child "MultiPurposeLabelTemplate[LabelRanked1v1] 0 0 Button1v1	PcMenuMultiRanked1v1"
+set Child "MultiPurposeLabelTemplate[LabelRanked2v2] 0 0 Button2v2	PcMenuMultiRanked2v2"
+set Child "MultiPurposeLabelTemplate[LabelRanked3v3] 0 0 Button3v3	PcMenuMultiRanked3v3"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuPvPCustom
+set RenderCB_Text ButtonCustom
+set CommandFocusUp "gameUI focusNameTry PcMenuMultiVersus"
+set CommandGetFocus "sym setZero PcMenuMultiVersus PcMenuMultiCoop"
+set CommandGetFocus "sym set PcMenuPvPCustom 1"
+set CommandGetFocus "input set padFocusFallback PcMenuPvPCustom"
+set CommandGetFocus "if sym CurrentMenu != _SetupTransition_ runnow sym set CurrentMenu CMulti"
+set CommandPress "menuCmd PcMenuPvPCustomPress"
+set Child "SubsectionLabelTemplate[LabelSubCustom] 0 0 ButtonCustom"
+set Child "PcMenuPvPCustomPlayers 0 0"
+add MenuObject
+set Name PcMenuLobbyStart
+set Texture menus/DialogFrames
+set Coords "0 258 512 73"
+set CoordsFocused "0 331 512 73"
+set CoordsPressed "-2 329 514 75"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 1.0
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set Focus -2
+set RenderCB_Flags "/nmi /shadowed"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB_Text PcMenuLobbyStart
+set CommandGetFocus "sym set PcMenuLobbyStart 1"
+set CommandGetFocus "input set padFocusFallback ConLobbyPlayerAirMechIcon0"
+set CommandGetFocus "sym set CurrentMenu CLobby"
+set CommandPress "gameui ignoreInputTime 0.3"
+set CommandPress "if sym MM_QueueEnabled == 1 && sym MM_PartyMembers > 1 menuCmd PcMenuLobbyQueue"
+set CommandPress "if sym MM_QueueEnabled == 1 && sym MM_PartyMembers == 1 menuCmd PcMenuLobbyQueueConfirmed"
+set CommandPress "if sym MM_ReadyEnabled == 1 runnow party2 lockin"
+set CommandPress "if sym _Bind_SoloLoadout_ == 1 menuCmd PcMenuPlaySoloPressStart"
+set CommandCancel "gameui focusnametry ConLobbyPlayerAirMechIcon0"
+set HiddenCheckBySymbol InputPad
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuPracticeChallenges
+set RenderCB_Text ButtonChallenges
+set CommandFocusDown "gameUI focusNameTry PcMenuPracticeTutorial"
+set CommandGetFocus "sym setZero PcMenuPracticeTutorial"
+set CommandGetFocus "sym set PcMenuPracticeChallenges 1"
+set CommandGetFocus "input set padFocusFallback PcMenuPracticeChallenges"
+set CommandGetFocus "sym set CurrentMenu CPractice"
+set CommandPress "menuCmd PcMenuPlayTrainingPress"
+add MenuObject initFrom PcMatchButtonTemplate
+set Name PcMenuPracticeTutorial
+set RenderCB_Text ButtonTutorial
+set CommandFocusUp "gameUI focusNameTry PcMenuPracticeChallenges"
+set CommandGetFocus "sym setZero PcMenuPracticeChallenges"
+set CommandGetFocus "sym set PcMenuPracticeTutorial 1"
+set CommandGetFocus "input set padFocusFallback PcMenuPracticeTutorial"
+set CommandGetFocus "sym set CurrentMenu CPractice"
+set CommandPress "menuCmd MF_TutorialStart"
+add MenuObject
+set Name PC_SoloButtonsMaster
+set ContainerOnly 1
+set HiddenCheckBySymbolInv PcMenuPlaySolo
+set Child "PcMenuSoloSkirmish 0 0"
+set Child "MultiPurposeLabelTemplate[LabelSoloSkirmish] 0 0 ButtonSkirmish	PcMenuSoloSkirmish"
+set Child "PcMenuSoloSurvival 0 90"
+set Child "MultiPurposeLabelTemplate[LabelSoloSurvival] 0 90 ButtonSurvival	PcMenuSoloSurvival"
+add MenuObject
+set Name PC_MultiButtonsMaster
+set ContainerOnly 1
+set Child "PcMenuMultiCoop 0 0"
+set Child "SubsectionLabelTemplate[LabelSubCoop] 0 0 ButtonCoop"
+set Child "MultiPurposeLabelTemplate[LabelCoop] 0 0 ButtonCoop	PcMenuMultiCoop"
+set Child "PcMenuMultiVersus 0 90"
+set Child "SubsectionLabelTemplate[LabelSubVersus] 0 0 ButtonVersus"
+set Child "MultiPurposeLabelTemplate[LabelVersus] 0 90 ButtonVersus	PcMenuMultiVersus"
+set Child "PcMenuPvPCustom 0 180"
+set Child "SubsectionLabelTemplate[LabelSubCustom] 0 0 ButtonCustom"
+set Child "MultiPurposeLabelTemplate[LabelCustom] 0 180 ButtonCustom	PcMenuPvPCustom"
+add MenuObject
+set Name PC_CoopButtonsMaster
+set ContainerOnly 1
+set HiddenCheckBySymbolInv PcMenuPlayCoop
+set Child "PcMenuMultiCancel 0 0 	PcMenuMultiCoopPressCancel"
+set Child "PcMenuMultiSafeZone -20 -20"
+set Child "PcMenuCoopSurvival 0 90"
+set Child "PcMenuCoopSkirmish 0 0"
+set Child "MultiPurposeLabelTemplate[LabelCoopSurvival] 0 90 ButtonSurvival	PcMenuCoopSurvival"
+set Child "MultiPurposeLabelTemplate[LabelCoopSkirmish] 0 0 ButtonSkirmish	PcMenuCoopSkirmish"
+add MenuObject
+set Name PC_PvPButtonsMaster
+set ContainerOnly 1
+set HiddenCheckBySymbolInv PcMenuPlayPvP
+set Child "PcMenuMultiCancel 0 0 	PcMenuMultiVersusPressCancel"
+set Child "PcMenuMultiSafeZone -20 -20"
+set Child "PcMenuPvPUnranked 0 0"
+set Child "PcMenuPvPRanked 0 90"
+set Child "MultiPurposeLabelTemplate[LabelPvPUnranked] 0 0 ButtonUnranked	PcMenuPvPUnranked"
+set Child "MultiPurposeLabelTemplate[LabelPvPRanked] 0 90 ButtonRanked	PcMenuPvPRanked"
+add MenuObject
+set Name PC_PracticeButtonsMaster
+set ContainerOnly 1
+set Child "PcMenuPracticeChallenges 0 0"
+set Child "MultiPurposeLabelTemplate 0 0 ButtonChallenges	PcMenuPracticeChallenges"
+set Child "PcMenuPracticeTutorial 0 90"
+set Child "MultiPurposeLabelTemplate 0 90 ButtonTutorial	PcMenuPracticeTutorial"
+add MenuObject
+set Name PlayBackButton
+set Texture menus/BackIcon
+set BlendMode BlendAdd
+set HiddenCheckBySymbol InputPad
+set Focus -2
+set MouseInteract 1
+set Coords "0 0 127 128"
+set CoordsFocused "0 128 128 128"
+set CommandPress "gameUI ignoreInputTime 0.4"
+set CommandPress "menucmd SelectMatchReset"
+set HiddenCheckBySymbolValue MatchmakingStep=0
+add MenuObject
+set Name PlayV1Launch
+set Texture menus/LoginCommon
+set Coords "718 248 235 83"
+set CoordsFocused "476 248 235 83"
+set DrawWhenFocused LoginButtonHighlight
+set DrawWhenFocusedOffset "-10 -14"
+set RenderCB_DX 235
+set RenderCB_DY 70
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Text MF_NetGameBrowseCreateGame
+set HiddenCheckBySymbolValue MatchmakingStep=0
+set CommandPress "menuCmd ConMenuLobbySetup"
+add MenuObject
+set Name PlayV1ButtonsBg
+set CoordsStart "796 184 24 24"
+set CoordsMid "820 184 24 24"
+set CoordsEnd "844 184 24 24"
+set CoordsStartFocused "796 208 24 24"
+set CoordsMidFocused "820 208 24 24"
+set CoordsEndFocused "844 208 24 24"
+set CoordsStartDisabled "796 232 24 24"
+set CoordsMidDisabled "820 232 24 24"
+set CoordsEndDisabled "844 232 24 24"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 460
+set RenderCB_DY 615
+set Disabled 1
+add MenuObject
+set Name PlayV1Buttons
+set ContainerOnly 1
+set Child "PlayV1ButtonsBg 142 -19"
+set Child "PlayBackButton -440 30"
+set Child "PC_SoloButtonsMaster 150 100"
+set Child "PC_CoopButtonsMaster 150 100"
+set Child "PC_PvPButtonsMaster 150 100"
+set Child "PlayV1Launch 250 400"

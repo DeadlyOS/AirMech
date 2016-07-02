@@ -1,0 +1,31 @@
+onloadrun {
+sym set DialogBoxLoaded 1
+rookMenus previewHide
+gameUI saveFocusID _dialogRestoreFocus_
+menuCmd ClearOtherMenus
+}
+MO BlackDialog {
+pos 0 0
+layer 22
+}
+MO DialogMaster {
+pos 0 14
+layer 22
+}
+onload {
+]addUIAnim DialogMaster mas_DialogPop
+]if usingPad ]gameUI focusNameTry DialogButton1
+]sym push CurrentMenu StdDialog
+]sym push DisableConShop 1
+]sym push DisableInvites 1
+}
+onunload {
+]sym set DialogBoxLoaded 0
+]gameUI restoreFocusID _dialogRestoreFocus_
+]sym set DialogBoxButton0 DialogButtonOk
+]sym set DialogBoxButton1 DialogButtonCancel
+]sym pop CurrentMenu DisableConShop DisableInvites
+}
+onunloadrun {
+rookMenus previewShow
+}

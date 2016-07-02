@@ -1,0 +1,272 @@
+add MenuObject
+set Name MinimapScreen
+set RenderCB _HudMiniMapSM
+set Coords "0 0 256 256"
+set RenderCB_DX 256
+set RenderCB_DY 256
+set MouseInteract 1
+set NotActionableForPurposeOfGameInput 1
+set CommandPress "camera mmLeftClick $_MouseRelX $_MouseRelY"
+add MenuObject
+set Name MinimapBorderCritical
+set Texture ]hud/HudFortressBarRed
+set Coords "0 0 42 42"
+set Layer 0
+set ScaleX 6.1
+set ScaleY 6.1
+set PulseAlpha "1.0 -0.6 -0.9"
+set HiddenCheckBySymbolInv _OverrunEd
+set ToolTip OverrunTimer
+set MouseInteract 1
+add MenuObject
+set Name AutoDeployWrench
+set Texture hud/BuildTray
+set Coords "694 313 51 42"
+set CoordsAnimated "694 313 51 42"
+set CoordsAnimated "694 313 51 42"
+set CoordsAnimated "694 313 51 42"
+set CoordsAnimated "762 313 51 42"
+set CoordsAnimated "825 313 51 42"
+set CoordsAnimated "888 313 51 42"
+set CoordsAnimated "888 313 51 42"
+set CoordsAnimated "888 313 51 42"
+set CoordsAnimated "888 313 51 42"
+set CoordsAnimated "825 313 51 42"
+set CoordsAnimated "762 313 51 42"
+set CoordsAnimationFrameTimer 0.07
+add MenuObject
+set Name AutoDeployBg
+set Texture hud/BuildTray
+set Coords "514 160 75 75"
+set NoAlphaMod 1
+set Alpha 0.67
+add MenuObject
+set Name AutoDeployCancel2
+set Texture menus/Mail
+set Coords "295 511 1 1"
+set CoordsFocused "350 511 49 49"
+set ScaleX 0.6, ScaleY 0.6
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name AutoDeployCancel
+set Coords "295 511 1 1"
+set CoordsFocused "350 511 49 49"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set MouseInteract 1
+set Focus -2
+set NoAlphaMod 1
+set Alpha 0.5
+set CommandPress "gameui hide AutoDeployCancel2"
+set CommandPress "pcmd 0.5 gameui show AutoDeployCancel2"
+set CommandDoubleClick "player local clearAutoDeploy"
+set Child "AutoDeployCancel2 0 0"
+add MenuObject
+set Name AutoDeployAnimated
+set Texture ]hud/HudFortressBar@TC_LocalPlayer@
+set Coords "704 345 158 26"
+set CoordsAnimated "704 345 158 26"
+set CoordsAnimated "704 373 158 26"
+set CoordsAnimated "704 401 158 26"
+set CoordsAnimated "704 429 158 26"
+set CoordsAnimated "704 457 158 26"
+set CoordsAnimated "704 485 158 26"
+set CoordsAnimated "865 345 158 26"
+set CoordsAnimated "865 373 158 26"
+set CoordsAnimated "865 401 158 26"
+set CoordsAnimated "865 429 158 26"
+set CoordsAnimated "865 457 158 26"
+set CoordsAnimated "865 485 158 26"
+set CoordsAnimationFrameTimer 0.07
+add MenuObject
+set Name AutoDeployStatusActive
+set Coords "388 454 183 52"
+set Texture hud/BuildTray
+set HiddenCheckByGameEngineHook ActiveAutoDeployPath
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom AutoDeployStatusActive
+set Name AutoDeployStatusActiveNew
+set Coords "388 454 183 52"
+set CommandPress "player local doAutoDeployLatch"
+set CommandPress "playSoundForPlayer local UIPlaceOrder.wav"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "0 0 -91 0"
+add MenuObject initFrom AutoDeployStatusActive
+set Name AutoDeployStatusActiveCancel
+set CommandPress "gameui hide AutoDeployCancel2"
+set CommandPress "pcmd 0.5 gameui show AutoDeployCancel2"
+set CommandDoubleClick "player local clearAutoDeploy"
+set CommandDoubleClick "gameui disable AutoDeployStatus"
+set CommandDoubleClick "sym set AutoDeployDeactivate 1"
+set CommandDoubleClick "pcmd 1.0 sym set AutoDeployDeactivate 0"
+set CommandDoubleClick "pcmd 1.0 gameui enable AutoDeployStatus"
+set CommandDoubleClick "playSound UIBadSelection.wav"
+set MouseInteract 1
+set Focus -2
+set Child "AutoDeployStatusActiveNew 0 0"
+set Child "AutoDeployCancel2 105 -2"
+set Child "AutoDeployAnimated 12 -1"
+add MenuObject
+set Name AutoDeployStatus
+set Coords "10 454 183 52"
+set CoordsAnimated "196 485 183 52"
+set CoordsAnimated "196 476 183 52"
+set CoordsAnimated "196 468 183 52"
+set CoordsAnimated "196 462 183 52"
+set CoordsAnimated "196 459 183 52"
+set CoordsAnimated "196 456 183 52"
+set CoordsAnimated "196 454 183 52"
+set CoordsAnimated "196 453.5 183 52"
+set CoordsAnimated "196 453 183 52"
+set CoordsAnimated "196 453 183 52"
+set CoordsAnimated "196 453.5 183 52"
+set CoordsAnimated "196 454 183 52"
+set CoordsAnimationFrameTimer 0.01
+set CoordsAnimationSymMode ActiveAutoDeployPathPlayMode
+set Texture hud/BuildTray
+set CommandGetFocus "pcmd_seq 770 0.5 sym set AutoDeployActivateOk 1"
+set CommandLoseFocus "console flushAllPendingSeq 770"
+set CommandLoseFocus "sym set AutoDeployActivateOk 0"
+set CommandPress "sym set AutoDeployActive 1"
+set CommandPress "if sym AutoDeployActivateOk == 1 player local doAutoDeployLatch"
+set CommandPress "if sym AutoDeployActivateOk == 1 playSound UIPlaceOrder.wav"
+set Child "AutoDeployStatusActiveCancel 0 0"
+set NoAlphaMod 1
+set Alpha 0.85
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name MinimapObject
+set FilterName LoadMapStartup
+set RenderCB _HudMiniMapMeshFOW
+set Material mat_minimapUI
+set Texture "maps/Minimap@_MiniMapTx_@"
+set TextureAlt /map/minimap
+set Texture2 "maps/minimap"
+set FilterName MapMountPoint
+set FilterOnlyFlags Textures
+set NoDrawOnMissingTexture 1
+set HiddenCheckBySymbolInv ShowMinimap
+set Coords "0 0 256 256"
+set DisabledAlpha 0.0
+set NoAlphaMod 1
+set Alpha 0.5
+set Layer 0
+set Child "HudCountdownTimeOther 0 -80"
+set Child "HudOverrunStateOther 0 -130"
+set Child "MinimapViewboxSm 0 0"
+set Child "MinimapClick 0 0		0"
+set Child "MinimapClick 0 0		1"
+set Child "MinimapClick 0 0		2"
+set Child "MinimapClick 0 0		3"
+set Child "MinimapClick 0 0		4"
+set Child "MinimapClick 0 0		5"
+set Child "MinimapBorderCritical 0 0"
+set Child "MinimapScreen 0 0"
+set Child "MapControlBase 0 -13						local localE"
+set Child "HudTimeTotal -97 -27						/!basicChallenge"
+set Child "HudPlayerScore -97 -70					/!basicChallenge"
+set Child "PW_AA -10 -70		/platform arc"
+add MenuObject
+set Name MinimapMaster
+set Coords "0 0 350 350"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set FilterName LoadMapStartup
+set DragSourceSym _AdjustUISource_
+set HiddenCheckBySymbol PauseUIOpen
+set Child "MinimapDragBG -10 -2"
+set Child "MinimapObject 35 52	/platform !consolePlatformHW"
+set Child "MinimapObject 55 72	/platform consolePlatformHW"
+set CommandGetFocus "if sym AdjustUIMode == 0 runnow sym clear _AdjustUISource_"
+set CommandGetFocus "if sym AdjustUIMode == 1 runnow sym set _AdjustUISource_ MinimapMaster"
+set CommandLoseFocus "sym clear _AdjustUISource_"
+set CommandOnMouseDrag "if sym AdjustUIMode == 1 runnow sym set _AdjustUISource_ MinimapMaster"
+add MenuObject
+set Name MinimapDragBG
+set Texture menus/DialogBox
+set CoordsStart "267 80 23 23"
+set CoordsMid "290 80 199 23"
+set CoordsEnd "489 80 23 23"
+set CoordsStartFocused "267 103 23 44"
+set CoordsMidFocused "290 103 199 44"
+set CoordsEndFocused "489 103 23 44"
+set CoordsStartDisabled "267 147 23 27"
+set CoordsMidDisabled "290 147 199 27"
+set CoordsEndDisabled "489 147 23 27"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 350, RenderCB_DY 355
+set DisabledSymInv AdjustUIMode
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.1
+add MenuObject
+set Name MinimapViewboxSm
+set Texture "]hud/HudFortressBar@TeamColor@"
+set Coords "887 4 108 62"
+set BlendMode BlendAdd
+set RenderOffsetX -36
+set RenderOffsetY -22
+set PosQuery mm:256
+set CoordsClipZone "0 0 256 256"
+set MirrorOnY 1
+set ScaleX 0.666
+set ScaleY 0.666
+add MenuObject
+set Name MinimapSpectateScreen
+set RenderCB _HudMiniMapSM
+set Coords "0 0 384 384"
+set RenderCB_DX 384
+set RenderCB_DY 384
+set MouseInteract 1
+set CommandOnMouseDrag "camera specPos $_MouseRelX $_MouseRelY"
+set CommandOnMouseDragRun 1
+add MenuObject
+set Name MinimapViewbox
+set Texture "]hud/HudFortressBar@TeamColor@"
+set Coords "887 4 108 62"
+set BlendMode BlendAdd
+set RenderOffsetX -54
+set RenderOffsetY -34
+set PosQuery mm:384
+set CoordsClipZone "0 0 384 384"
+set MirrorOnY 1
+add MenuObject
+set Name MinimapSpectateMaster
+set FilterName LoadMapStartup
+set RenderCB _HudMiniMapMeshFOWSpec
+set Material mat_minimapUI
+set Texture "/map/minimap"
+set Texture2 "maps/minimap"
+set FilterName2 MapMountPoint
+set Coords "0 0 256 256"
+set ScaleX 1.5
+set ScaleY 1.5
+set DisabledAlpha 0.0
+set NoAlphaMod 1
+set Alpha 0.5
+set Layer 0
+set Child "MinimapViewbox 0 0"
+set Child "MinimapSpectateScreen 0 0"
+set Child "MapControlBaseSpec 0 -19		local localE"
+set Child "PW_AA -10 -70		/platform arc"
+add MenuObject
+set Name MinimapClick
+set Texture hud/MinimapClick
+set Coords "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimated "128 0 64 64"
+set CoordsAnimated "192 0 64 64"
+set CoordsAnimated "0 64 64 64"
+set CoordsAnimated "64 64 64 64"
+set CoordsAnimated "128 64 64 64"
+set CoordsAnimated "192 64 64 64"
+set CoordsAnimated "0 128 64 64"
+set CoordsAnimated "64 128 64 64"
+set CoordsAnimated "64 128 64 64"
+set CoordsAnimated "64 128 64 64"
+set CoordsAnimationFrameTimer 0.05
+set SaveArgs 1
+set PosQuery mp@_Arg1_@:256
+set CoordsClipZone "0 0 256 256"

@@ -1,0 +1,2339 @@
+add MenuObject
+set Name ConMessageTitle
+set RenderCB _DrawDText
+set Coords "0 0 290 30"
+set RenderCB_DX 270
+set RenderCB_DY 30
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/noCommaSep /fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_ConsoleSymbol _gec_title_@_Arg1_@
+set RenderCB_RGBColor "1.0 1.0 1.0"
+set SaveArgs 2
+add MenuObject
+set Name ConMessageText
+set RenderCB _DrawDText
+set Coords "0 0 290 50"
+set RenderCB_DX 290
+set RenderCB_DY 50
+set RenderCB_Font Roboto
+set RenderCB_Flags "/noCommaSep /fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_ConsoleSymbol _gec_disp_@_Arg1_@
+set RenderCB_RGBColor "1.0 1.0 1.0"
+set SaveArgs 2
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 2
+add MenuObject initFrom ConMessageText
+set Name ConMessageETF
+set HiddenCheckBySymbolInv _gec_hasetf_@_Arg1_@
+set RenderCB_ConsoleSymbol _gec_etf_@_Arg1_@
+add MenuObject
+set Name ConMessageBackground
+set Texture menus/EventScrollTabs
+set Coords "0 498 390 10"
+set TileArea "390 1100"
+set TileAreaFullTexture 0
+set ScaleX 1.2
+set RenderOffsetSym _gec_goffset
+add MenuObject
+set Name ConMessageContainer
+set Focus -2
+set MouseInteract 1
+set PosQuery cmsg@_Arg1_@
+set Texture menus/EventScrollTabs
+set ScaleX 1.2, ScaleY 1.4
+set MouseInteractZoneExpandWhenFocused "-5 -5 10 5"
+set Coords "0 0 326 81"
+set CoordsAnimated "0 243 326 81"
+set CoordsAnimated "0 405 326 81"
+set CoordsAnimated "0 324 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 405 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "326 0 326 81"
+set CoordsAnimated "0 0 326 81"
+set CoordsAnimated "0 81 326 81"
+set CoordsAnimationSymHash _gec_type_@_Arg1_@
+set SaveArgs 1
+set DrawWhenFocused FocusConMessage
+set DrawWhenFocusedOffset "-1 0 0"
+set HiddenCheckBySymbolInv _gec_vis_@_Arg1_@
+set Child "ConMessageTitle 10 8	@_Arg1_@ 0.75"
+set Child "ConMessageText 10 36	@_Arg1_@ 0.75"
+set Child "ConMessageETF 10 64 @_Arg1_@ 0.75"
+set CommandFocusUp ">gm evt_focusCard @_Arg1_@ -1"
+set CommandFocusDown ">gm evt_focusCard @_Arg1_@ 1"
+set CommandFocusLeft "gameui focusNameTry .FocusGameEventCacheBack"
+set CommandPress "gameui ignoreInputTime 0.35"
+set CommandPress ">menucmd $$_gec_action_@_Arg1_@"
+set CommandPress ">echo $$_gec_action_@_Arg1_@"
+set CommandCancel "if usingPad runnow gameui focusNameTry .FocusGameEventCacheBack"
+set CommandGetFocus "gm evt_scroll 0"
+set CommandGetFocus ">gm evt_focus @_Arg1_@ 1"
+set CommandGetFocus "sym set EventMessageFocus 1"
+set CommandLoseFocus "gm evt_scroll 1"
+set CommandLoseFocus ">gm evt_focus @_Arg1_@ 0"
+add MenuObject
+set Name CM_ConMessagesMaster
+set ContainerOnly 1
+set Coords "0 0 1920 100"
+set Child "ConMessageBackground 1560 -20"
+set Child "ConMessageContainer[ConMessage0] 0 0		0"
+set Child "ConMessageContainer[ConMessage1] 0 0		1"
+set Child "ConMessageContainer[ConMessage2] 0 0		2"
+set Child "ConMessageContainer[ConMessage3] 0 0		3"
+set Child "ConMessageContainer[ConMessage4] 0 0		4"
+set Child "ConMessageContainer[ConMessage5] 0 0		5"
+set Child "ConMessageContainer[ConMessage6] 0 0		6"
+set Child "ConMessageContainer[ConMessage7] 0 0		7"
+set Child "ConMessageContainer[ConMessage8] 0 0		8"
+set Child "ConMessageContainer[ConMessage9] 0 0		9"
+set Child "ConMessageContainer[ConMessage10] 0 0	10"
+set Child "ConMessageContainer[ConMessage11] 0 0	11"
+set Child "ConMessageContainer[ConMessage12] 0 0	12"
+set Child "ConMessageContainer[ConMessage13] 0 0	13"
+set Child "ConMessageContainer[ConMessage14] 0 0	14"
+set Child "ConMessageContainer[ConMessage15] 0 0	15"
+add MenuObject
+set Name EventMessagesMaster
+set ContainerOnly 1
+set Coords "0 0 1920 100"
+set Child "ConMessageContainer[ConMessage0] 0 0		0"
+set Child "ConMessageContainer[ConMessage1] 0 0		1"
+set Child "ConMessageContainer[ConMessage2] 0 0		2"
+set Child "ConMessageContainer[ConMessage3] 0 0		3"
+set Child "ConMessageContainer[ConMessage4] 0 0		4"
+set Child "ConMessageContainer[ConMessage5] 0 0		5"
+set Child "ConMessageContainer[ConMessage6] 0 0		6"
+set Child "ConMessageContainer[ConMessage7] 0 0		7"
+set Child "ConMessageContainer[ConMessage8] 0 0		8"
+set Child "ConMessageContainer[ConMessage9] 0 0		9"
+set Child "ConMessageContainer[ConMessage10] 0 0	10"
+set Child "ConMessageContainer[ConMessage11] 0 0	11"
+set Child "ConMessageContainer[ConMessage12] 0 0	12"
+set Child "ConMessageContainer[ConMessage13] 0 0	13"
+set Child "ConMessageContainer[ConMessage14] 0 0	14"
+set Child "ConMessageContainer[ConMessage15] 0 0	15"
+add MenuObject
+set Name CM_ConMessagesStrip
+set ContainerOnly 1
+set Coords "0 0 1920 100"
+set Child "CM_ConMessagesMaster 0 0"
+add MenuObject
+set Name MessageBackground
+set Texture menus/MessageLog
+set Coords "1 90 510 12"
+set TileArea "510 1080"
+set TileAreaFullTexture 0
+add MenuObject
+set Name GL_ChatBackgroundCommon
+set CoordsStart "796 184 24 24"
+set CoordsMid "820 184 24 24"
+set CoordsEnd "844 184 24 24"
+set CoordsStartFocused "796 208 24 24"
+set CoordsMidFocused "820 208 24 24"
+set CoordsEndFocused "844 208 24 24"
+set CoordsStartDisabled "796 232 24 24"
+set CoordsMidDisabled "820 232 24 24"
+set CoordsEndDisabled "844 232 24 24"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 577
+set RenderCB_DY 904
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "10 6 -21 -6"
+set Coords "0 0 680 700"
+set DragTarget Party
+set CommandPress "gameui promoteToTop MessageChatContainer"
+add MenuObject
+set Name InGameChatClickout
+set Focus -2
+set MouseInteract 1
+set FilterName LoadMapStartup
+set RenderBlocked 1
+set StretchToFillScreen 1
+set MouseInteractClickToFocus 1
+set HiddenCheckBySymbol GL_ChatMinimized
+set HiddenCheckBySymbol2 TryoutLoaded
+set CommandPress "if sym PauseUIOpen == 0 runnow sym set GL_ChatMinimized 1"
+set CommandPress "if sym PauseUIOpen == 0 runnow menucmd GlobalChatReposition"
+add MenuObject
+set Name GL_ChatBanCover
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "780 4"
+set Color 0x703b07
+set HiddenCheckBySymbol P_ChatBan
+add MenuObject initFrom GL_ChatBackgroundCommon
+set Name GL_ChatBackground
+set MouseInteractClickToFocus 1
+set NotActionableForPurposeOfGameInput 1
+set HiddenCheckBySymbol GL_ChatMinimized
+add MenuObject initFrom GL_ChatBackgroundCommon
+set Name GL_ChatBackgroundMin
+set HiddenCheckBySymbolInv GL_ChatMinimized
+set NotActionableForPurposeOfGameInput 1
+set MouseInteractClickToFocus 1
+set MouseInteractZoneExpand "10 6 -21 -52"
+set NoAlphaMod 1
+set Alpha 0.7
+set Focus -2
+set CommandPress "if sym GL_ChatMinimized == 1 if sym LobbyModeDetails == 1 menuCmd ConLobbyDetailsClose"
+set CommandPress "sym set GL_ChatMinimized 0"
+set CommandPress "menucmd GlobalChatReposition"
+set CommandPress "menucmd SendFocusToChat"
+set CommandPress "if sym CurrentMenu == CLobby menucmd LobbyContainerReposition"
+set CommandPress "if sym CurrentMenu == SplashPromo menucmd SplashChatReposition"
+set CommandPress "if sym CurrentMenu == BaseLeaderboards menucmd LeaderboardsChatReposition"
+set CommandPress "if sym CurrentMenu == ConShop menucmd ShopReposition"
+set RenderCB_DX 577
+set RenderCB_DY 164
+set MouseInteract 1
+set Coords "0 0 680 164"
+set Child "CB_DoubleXPMin 480 -27"
+set Child "CB_DoubleDropsMin 480 -26"
+set Child "CB_FriendsBoostMin 480 -27"
+set Child "CB_DoubleDropUpgradesVIPMin 480 -27"
+set Child "SpinningDiceMin 486 15"
+set Child "ChatHideButton 506 15"
+add MenuObject
+set Name TitleMessageHeader
+set Coords "0 0 500 62"
+set RenderCB_DX 500
+set RenderCB_DY 62
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.6
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xd2d2d2
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbol P_ChatBan
+add MenuObject
+set Name MessageHeader
+set Texture menus/MessageLog
+set Coords "6 1 400 6"
+set TileArea "547 35"
+set TileAreaFullTexture 0
+set HiddenCheckBySymbol GL_ChatMinimized
+set Child "TitleMessageHeader 16 6	ML_ChatTitle"
+set Child "CB_DoubleXP -5 -6"
+set Child "CB_FriendsBoost -5 -6"
+set Child "CB_DoubleDropUpgradesVIP -5 -6"
+set Child "CB_DoubleDrops -4 -4"
+set Child "CB_CanaryTest -25 -15"
+set Child "CB_CanaryBonus -25 -15"
+set Child "ChatHideButton 500 -2"
+set Child "ChatMinButton 440 2"
+add MenuObject
+set Name MainMessageLog
+set Coords "0 0 470 800"
+set RenderCB_DX 470
+set RenderCB_DY 800
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 0.66
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 28
+set RenderCB_RGBColor 0x808080
+set RenderCB_Text ML_ActivityLogTest
+set RenderCB_Offset "10 10"
+add MenuObject initFrom MainMessageLog
+set Name GL_ChatLog
+set Coords "0 0 510 780"
+set RenderCB_DX 510
+set RenderCB_DY 780
+set RenderCB @_Arg2_@
+set RenderCB_Text @_Arg1_@
+set RenderCB_IntArg @_Arg3_@
+set SaveArgs 3
+set HiddenCheckBySymbol GL_ChatMinimized
+add MenuObject initFrom MainMessageLog
+set Name GL_ChatLogSmall
+set Coords "0 0 510 100"
+set RenderCB_DX 510
+set RenderCB_DY 100
+set RenderCB @_Arg2_@
+set RenderCB_Text @_Arg1_@
+set RenderCB_IntArg @_Arg3_@
+set SaveArgs 3
+set HiddenCheckBySymbolInv GL_ChatMinimized
+add MenuObject initFrom MainMessageLog
+set Name GL_ChatLogNanoforge
+set Coords "0 0 510 200"
+set RenderCB_DX 510
+set RenderCB_DY 200
+set RenderCB @_Arg2_@
+set RenderCB_FontScale 0.535
+set RenderCB_Text @_Arg1_@
+set RenderCB_IntArg @_Arg3_@
+set SaveArgs 3
+add MenuObject
+set Name ButtonLogGlobal
+set Coords "0 0 163 55"
+set RenderCB_DX 163
+set RenderCB_DY 55
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xa7a7a7
+set RenderCB_Text ML_LogGlobal
+set RenderCB_Offset "0 0"
+set Anchor LowerLeft
+add MenuObject
+set Name ButtonVisLogGlobal
+set Coords "6 191 163 55"
+set Texture menus/MessageLog
+set Anchor LowerLeft
+add MenuObject
+set Name ChatTargetBackground
+set Coords "6 27 500 59"
+set Texture menus/MessageLog
+set Anchor LowerLeft
+add MenuObject
+set Name GL_TextEntryHighlight
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "120 100"
+set Color 0xffffff
+set NoAlphaMod 1
+set Alpha 0.07
+set BlendMode BlendAdd
+set PulseAlpha "2.3 -0.06 0.0"
+set TileArea "548 74"
+add MenuObject
+set Name GL_TextEntryBase
+set Coords "0 0 548 64"
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderBlocked 1
+set DrawWhenFocused GL_TextEntryHighlight
+set DrawWhenFocusedOrder BeforeChildren
+set RenderCB_DX 498
+set RenderCB_DY 79
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.63
+set RenderCB_Offset "12 7"
+set MouseInteractZoneExpand "-5 -15 5 10"
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set NotActionableForPurposeOfGameInput 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set TextEditableMaxLen 99
+set RenderCB_Text @_Arg1_@
+set RenderCB_BoolArg 1
+set CommandEnterKey ">net @_Arg2_@Sym @_Arg1_@"
+set CommandEnterKey ">sym set @_Arg1_@"
+set CommandEnterKey ">floatsym set @_Arg3_@ 1.0"
+set CommandEnterKey "if sym HasEbola == 1 gameUI ignoreInputTime $EbolaDelayTime"
+set SaveArgs 3
+set FirstDrawnChildren 1
+set Child "GL_ChatEntryBg 5 5"
+#if arc
+set TextEditableProfanityFiltered 1
+#endif
+add MenuObject initFrom GL_TextEntryBase
+set Name GL_TextEntry
+set HiddenCheckBySymbol GL_ChatMinimized
+add MenuObject initFrom GL_TextEntryBase
+set Name GL_TextEntryOnline
+add MenuObject initFrom GL_TextEntry
+set Name GL_TextEntryMarket
+set HiddenCheckBySymbolInv MarketCanBuy
+add MenuObject
+set Name GL_ChatEntryBg
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "537 50"
+set Color 0x1d2225
+add MenuObject
+set Name GL_ChatBgTemplate
+set Texture menus/ChatBackgrounds
+set Disabled 1
+set HiddenCheckBySymbol GL_ChatMinimized
+set DisabledAlpha 0.3
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.0
+add MenuObject initFrom GL_ChatBgTemplate
+set Name GL_ChatBgGlobal
+set Coords "0 0 512 340"
+add MenuObject initFrom GL_ChatBgTemplate
+set Name GL_ChatBgFaction
+set Coords "0 340 512 340"
+add MenuObject initFrom GL_ChatBgTemplate
+set Name GL_ChatBgParty
+set Coords "0 680 512 340"
+add MenuObject initFrom GL_ChatBgTemplate
+set Name GL_ChatBgMarket
+set Coords "512 380 512 340"
+add MenuObject initFrom GL_ChatBgTemplate
+set Name GL_ChatBgInfo
+set Coords "512 0 512 340"
+add MenuObject initFrom GL_ChatBgTemplate
+set Name GL_ChatBgEvents
+set Coords "512 0 512 340"
+add MenuObject
+set Name GL_ChatBox
+set ContainerOnly 1
+set Coords "0 0 546 129"
+set SaveArgs 3
+add MenuObject
+set Name GL_LogBox
+set ContainerOnly 1
+set Coords "0 0 546 129"
+set SaveArgs 3
+add MenuObject
+set Name CB_DoubleXP
+set Texture menus/LoadoutGrid
+set Coords "454 975 552 45"
+set RenderCB_DX 500
+set RenderCB_DY 45
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "84 9"
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX /nmi"
+set RenderCB_Font Roboto
+set NoAlphaMod 1
+set DisabledAlpha 1.0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text EventTitleDoubleXP
+set HiddenCheckBySymbolInv EventDoubleXP
+set HiddenCheckByGameEngineHook EventDoubleXPOkForMe
+set ToolTip EventMessageDoubleXP
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name CB_DoubleXPMin
+set Texture menus/LoadoutGrid
+set Coords "454 975 82 45"
+set HiddenCheckBySymbolInv EventDoubleXP
+set HiddenCheckByGameEngineHook EventDoubleXPOkForMe
+set NoAlphaMod 1
+set Alpha 0.6
+add MenuObject
+set Name CB_FriendsBoost
+set Texture menus/StoreTiles
+set Coords "3 725 552 45"
+set RenderCB_DX 500
+set RenderCB_DY 45
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "90 11"
+set RenderCB_FontScale 0.625
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX /nmi"
+set RenderCB_Font RobotoBold
+set NoAlphaMod 1
+set DisabledAlpha 1.0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text EventTitleFriendsBoost
+set HiddenCheckBySymbolInv EventFriendsBoost
+set ToolTip EventMessageFriendsBoost
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name CB_FriendsBoostMin
+set Texture menus/StoreTiles
+set Coords "3 725 82 45"
+set HiddenCheckBySymbolInv EventFriendsBoost
+set NoAlphaMod 1
+set Alpha 0.6
+add MenuObject
+set Name CB_DoubleDropUpgradesVIP
+set Texture menus/StoreTiles
+set Coords "3 672 552 45"
+set RenderCB_DX 500
+set RenderCB_DY 45
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "60 9"
+set RenderCB_FontScale 0.625
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX /nmi"
+set RenderCB_Font RobotoBold
+set NoAlphaMod 1
+set DisabledAlpha 1.0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text EventTitleDoubleDropUpgradesVIP
+set HiddenCheckBySymbolInv EventDoubleDropUpgradesVIP
+set ToolTip EventTitleDoubleDropUpgradesVIP
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name CB_DoubleDropUpgradesVIPMin
+set Texture menus/StoreTiles
+set Coords "3 672 82 45"
+set HiddenCheckBySymbolInv EventDoubleDropUpgradesVIP
+set NoAlphaMod 1
+set Alpha 0.6
+add MenuObject
+set Name CB_DoubleDrops
+set Texture menus/StoreTiles
+set Coords "3 917 553 45"
+set RenderCB_DX 500
+set RenderCB_DY 45
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "85 9"
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowColor2 /outlined8x /fitX /nmi"
+set RenderCB_Font Roboto
+set NoAlphaMod 1
+set DisabledAlpha 1.0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text EventTitleDoubleDrops
+set HiddenCheckBySymbolInv EventDoubleDrops
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name CB_DoubleDropsMin
+set Texture menus/StoreTiles
+set Coords "3 917 82 45"
+set HiddenCheckBySymbolInv EventDoubleDrops
+set NoAlphaMod 1
+set Alpha 0.6
+add MenuObject
+set Name CB_CanaryTest
+set Texture menus/StoreTiles
+set Coords "3 852 573 54"
+set RenderCB_DX 500
+set RenderCB_DY 45
+set DrawWhenFocused FocusCanaryTest
+set DrawWhenFocusedOffset "16 5"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "70 19"
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX /nmi"
+set RenderCB_Font Roboto
+set NoAlphaMod 1
+set IsExternalLinkAction 1
+set DisabledAlpha 1.0
+set CommandPress "net openlink $CanaryWebLink"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text EventTitleCanaryTest
+set HiddenCheckBySymbol NoCanaryNotify
+set HiddenCheckBySymbolInv EventCanaryTest
+set HiddenCheckBySymbolValue Env_Canary=1
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name CB_CanaryMin
+set Texture menus/MainTiles+lang
+set Coords "920 498 99 82"
+set CoordsFocused "920 580 99 82"
+set HiddenCheckBySymbolInv EventCanaryTest
+set DisabledSymInv ShowMotDHome
+set MouseInteract 1
+set Focus -2
+set ScaleX 0.7, ScaleY 0.7
+set IsExternalLinkAction 1
+set CommandPress "net openlink $CanaryWebLink"
+add MenuObject
+set Name CB_CanaryBonus
+set Texture menus/StoreTiles
+set Coords "3 852 573 54"
+set RenderCB_DX 500
+set RenderCB_DY 45
+set DrawWhenFocused FocusCanaryTest
+set DrawWhenFocusedOffset "16 5"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "70 19"
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX /nmi"
+set RenderCB_Font Roboto
+set NoAlphaMod 1
+set DisabledAlpha 1.0
+set IsExternalLinkAction 1
+set CommandPress "net openlink https://www.carbongames.com/forums/viewtopic.php?f=36&t=12591"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text EventTitleCanaryBonus
+set HiddenCheckBySymbolInv EventCanaryTest
+set HiddenCheckBySymbolValue Env_Canary=0
+set ToolTip EventMessageDoubleDrops
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name TwitchAdBg
+set Texture ]menus/CB_Twitch
+set Coords "0 18 512 73"
+set CoordsInterpolatedDest "512 18 512 73"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 4"
+set TileAreaFullTexture 0
+set ScaleX 1.067, ScaleY 1.067
+set Focus -2
+set MouseInteract 1
+set CommandPress "net openlink http://airme.ch/WXAwzU"
+set CommandPress "backend stat twitchtv:chatadclick"
+set CommandPress "sym set ShowAdTwitch 0"
+add MenuObject
+set Name TwitchAdBgBot
+set Texture ]menus/CB_Twitch
+set Coords "0 128 512 3"
+set ScaleX 1.067, ScaleY 1.067
+add MenuObject
+set Name TwitchAdLive
+set Texture ]menus/CB_Twitch
+set Coords "1 133 64 19"
+set PulseAlpha "0.8 -0.8 -0.2"
+add MenuObject
+set Name TwitchAdText
+set Texture ]menus/CB_Twitch
+set Coords "246 150 255 96"
+set Focus -2
+set CommandPress "net openlink http://airme.ch/WXAwzU"
+set CommandPress "backend stat twitchtv:chatadclick"
+set MouseInteract 1
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.1
+add MenuObject
+set Name TwitchAdAirMech
+set Texture ]menus/CB_Twitch
+set Coords "26 154 215 86"
+add MenuObject
+set Name TwitchAdClose
+set Texture menus/DialogGeneral
+set Coords "698 13 52 52"
+set CoordsFocused "699 152 52 52"
+set CoordsPressed "697 150 52 52"
+set MouseInteract 1
+set ScaleX 0.33
+set ScaleY 0.33
+set Focus -2
+set NoAlphaMod 1
+set Alpha 0.5
+set CommandPress "sym set ShowAdTwitch 0"
+set HiddenCheckBySymbolInv AnyVipStatusShown
+set MouseInteractZoneExpand "-5 -5 5 5"
+add MenuObject
+set Name AirMechPrimeSteamSaleText
+set Texture menus/SteamSale
+set Coords "325 313 187 79"
+add MenuObject
+set Name AirMechPrimeSteamSaleBanner
+set Texture menus/SteamSale
+set Coords "0 313 325 79"
+set ScaleX 1.11
+set HiddenCheckBySymbolInv SteamSale
+set Child "AirMechPrimeSteamSaleText 360 0"
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "0 0 186 0"
+set CommandPress "menuCmd StorePromoUnlockOrInspectPrimeBundleTry"
+add MenuObject
+set Name TournamentWinterBannerGlow
+set Texture promos/StrikeDownPromo
+set PulseAlpha "2.4 -0.5 0.0"
+set Coords "0 0 557 70"
+add MenuObject
+set Name TournamentAdLive
+set Texture ]menus/CB_Twitch
+set Coords "1 133 64 19"
+set PulseAlpha "2.4 -0.8 9.2"
+set ScaleX 1.5
+set ScaleY 1.5
+add MenuObject
+set Name WinterTBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "546 89"
+set Color 0x11357c
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name TournamentWinterBannerText
+set Coords "0 0 260 24"
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_Text "Click here to watch now!"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.62
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Flags "/shadowed /allCaps"
+set RenderCB_RGBColor 0xabdeff
+set RenderCB_Offset "0 3"
+set PulseAlpha "2.4 -0.8 9.2"
+add MenuObject initFrom TournamentWinterBannerText
+set Name TournamentWinterBannerTextS
+set RenderCB_RGBColor 0x7f1e00
+add MenuObject
+set Name TournamentBanner
+set Texture promos/StrikeDownPromo
+set Coords "0 0 557 70"
+set Focus -2
+set MouseInteract 1
+set IsExternalLinkAction 1
+set HiddenCheckBySymbolInv TournamentLive
+set HiddenCheckBySymbol GL_ChatMinimized
+set MouseInteractZoneExpand "0 0 0 20"
+set CommandPress "net openlink $LinkTournamentLive"
+set CommandPress "backend stat twitchtv:tournamentclick"
+set Child "WinterTBackground 0 0"
+set Child "TournamentWinterBannerGlow 0 0"
+set Child "TournamentWinterBannerText 20 64"
+set Child "TournamentAdLive 410 66"
+add MenuObject
+set Name CB_TwitchAd
+set ContainerOnly 1
+set Child "TwitchAdBg 0 0"
+set Child "TwitchAdLive 4 4"
+set Child "TwitchAdBgBot 0 78"
+set Child "TwitchAdText 286 0"
+set Child "TwitchAdAirMech 10 0"
+add MenuObject
+set Name SummonUltimateSamson
+set Texture effects/DiceAnim
+set Coords "0 0 128 128"
+set CoordsFocused "0 384 128 128"
+set CoordsPressed "128 128 128 128"
+set ScaleX 0.4, ScaleY 0.4
+set MouseInteract 1
+set Focus -2
+set CommandPress "roll gchat start"
+set HiddenCheckBySymbolValue P_AccessLevel=0
+add MenuObject
+set Name SpinningDice
+set Texture effects/DiceAnim
+set Coords "0 0 128 128"
+set CoordsAnimated "0 0 128 128"
+set CoordsAnimated "128 0 128 128"
+set CoordsAnimated "256 0 128 128"
+set CoordsAnimated "384 0 128 128"
+set CoordsAnimated "0 128 128 128"
+set CoordsAnimated "128 128 128 128"
+set CoordsAnimated "256 128 128 128"
+set CoordsAnimated "384 128 128 128"
+set CoordsAnimated "0 256 128 128"
+set CoordsAnimated "128 256 128 128"
+set CoordsAnimated "256 256 128 128"
+set CoordsAnimated "384 256 128 128"
+set CoordsAnimated "0 384 128 128"
+set CoordsAnimated "128 384 128 128"
+set CoordsAnimated "256 384 128 128"
+set CoordsAnimated "384 384 128 128"
+set CoordsAnimationFrameTimer 0.06
+set ScaleX 0.8, ScaleY 0.8
+set SaveArgs 1
+set MouseInteract 1
+set Focus -2
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set CommandPress "menucmd ChatFocusGlobal"
+set CommandPress ">menuCmd RollUltimateSamson@_Arg1_@"
+set HiddenCheckBySymbol PlayerHasRolled@_Arg1_@
+add MenuObject
+set Name SpinningDiceMin
+set Texture effects/DiceAnim
+set Coords "0 0 128 128"
+set CoordsAnimated "0 0 128 128"
+set CoordsAnimated "128 0 128 128"
+set CoordsAnimated "256 0 128 128"
+set CoordsAnimated "384 0 128 128"
+set CoordsAnimated "0 128 128 128"
+set CoordsAnimated "128 128 128 128"
+set CoordsAnimated "256 128 128 128"
+set CoordsAnimated "384 128 128 128"
+set CoordsAnimated "0 256 128 128"
+set CoordsAnimated "128 256 128 128"
+set CoordsAnimated "256 256 128 128"
+set CoordsAnimated "384 256 128 128"
+set CoordsAnimated "0 384 128 128"
+set CoordsAnimated "128 384 128 128"
+set CoordsAnimated "256 384 128 128"
+set CoordsAnimated "384 384 128 128"
+set CoordsAnimationFrameTimer 0.06
+set ScaleX 0.8, ScaleY 0.8
+set ScaleX 0.7, ScaleY 0.7
+set MouseInteract 0
+set NoAlphaMod 1
+set Alpha 0.6
+set Focus -2
+set HiddenCheckBySymbol PlayerHasRolledGlobal
+add MenuObject
+set Name UltimateSamsonRollResult
+set Coords "0 0 30 32"
+set DisabledAlpha 0.5
+set HiddenCheckBySymbolInv PlayerHasRolled@_Arg1_@
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB _DrawText
+set RenderCB_Font Numbers80px
+set RenderCB_ConsoleSymbol _Roll@_Arg1_@Mine
+set RenderCB_RGBColor $DiamondRollTextColor
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set FilterName DiamondRollEvent
+add MenuObject
+set Name UltimateSamsonRollLow
+set Texture menus/DiamondRoll
+set Coords "350 824 48 41"
+set CoordsAnimated "558 1 48 41"
+set CoordsAnimated "558 130 48 41"
+set CoordsAnimated "558 260 48 41"
+set CoordsAnimated "558 390 48 41"
+set CoordsAnimated "558 520 48 41"
+set CoordsAnimationSymHash DiamondRollStyle
+set RenderCB_FontScale 0.8
+set RenderCB_DX 50
+set RenderCB_DY 0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "0 4"
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Flags "/fitX"
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol _Roll@_Arg1_@Low
+set RenderCB_RGBColor $DiamondRollTextColor
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set FilterName DiamondRollEvent
+add MenuObject
+set Name UltimateSamsonRollCount
+set Texture menus/Social
+set Coords "0 0 48 41"
+set RenderCB_FontScale 0.7
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawText
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol _Roll@_Arg1_@Count
+set RenderCB_RGBColor $DiamondRollTextColor
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set FilterName DiamondRollEvent
+set HiddenCheckBySymbolInv PlayerHasRolled@_Arg1_@
+add MenuObject initFrom UltimateSamsonRollLow
+set Name UltimateSamsonRollHigh
+set MirrorOnY 1
+set RenderCB_Offset "0 10"
+set RenderCB_ConsoleSymbol _Roll@_Arg1_@High
+add MenuObject
+set Name DiamondRollPosReport
+set Texture menus/DialogFrames
+set Coords "592 328 61 72"
+set CoordsAnimated "592 328 61 72"
+set CoordsAnimated "592 327 61 72"
+set CoordsAnimated "592 326 61 72"
+set CoordsAnimated "592 325.5 61 72"
+set CoordsAnimated "592 325 61 72"
+set CoordsAnimated "592 325 61 72"
+set CoordsAnimated "592 325 61 72"
+set CoordsAnimated "592 325 61 72"
+set CoordsAnimated "592 325 61 72"
+set CoordsAnimated "592 325 61 72"
+set CoordsAnimated "592 325.5 61 72"
+set CoordsAnimated "592 326 61 72"
+set CoordsAnimated "592 326.5 61 72"
+set CoordsAnimated "592 327 61 72"
+set CoordsAnimated "592 327.5 61 72"
+set CoordsAnimated "592 328 61 72"
+set CoordsAnimated "592 328.5 61 72"
+set CoordsAnimated "592 329 61 72"
+set CoordsAnimated "592 329 61 72"
+set CoordsAnimated "592 329 61 72"
+set CoordsAnimated "592 329 61 72"
+set CoordsAnimated "592 329 61 72"
+set CoordsAnimated "592 328.5 61 72"
+set CoordsAnimationFrameTimer 0.02
+set Focus -2
+set MouseInteract 1
+set ScaleX 0.67, ScaleY 0.67
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.1
+set HiddenCheckBySymbolValue _RollGlobalBy=
+set CommandPress "if sym _RollGlobalBy !isempty menucmd TryIssueReportDRoll"
+set SaveArgs 1
+add MenuObject
+set Name UltimateSamsonBg
+set Texture menus/DiamondRoll
+set Coords "7 477 547 120"
+set CoordsAnimated "6 0 547 120"
+set CoordsAnimated "6 130 547 120"
+set CoordsAnimated "6 260 547 120"
+set CoordsAnimated "6 390 547 120"
+set CoordsAnimated "6 520 547 120"
+set CoordsAnimationSymHash DiamondRollStyle
+set MouseInteract 1
+set SaveArgs 1
+set Focus -2
+set BlendMode NoBlend
+set CommandPress ">if sym _Roll@_Arg1_@CanDismiss == 1 runnow menuCmd DismissUltimateSamson@_Arg1_@"
+set Child "DiamondRollPosReport 300 70"
+add MenuObject
+set Name UltimateSamsonFg
+set Texture menus/DiamondRoll
+set Coords "7 477 547 128"
+set CoordsAnimated "6 0 547 128"
+set CoordsAnimated "6 130 547 128"
+set CoordsAnimated "6 260 547 128"
+set CoordsAnimated "6 390 547 128"
+set CoordsAnimated "6 520 547 128"
+set CoordsAnimationSymHash DiamondRollStyle
+add MenuObject
+set Name UltimateRollArrow
+set Texture menus/Social
+set Coords "558 532 63 54"
+set HiddenCheckBySymbol PlayerHasRolled@_Arg1_@
+add MenuObject
+set Name UltimateSamsonFire
+set Texture ]menus/CloudsGrayDark
+set BlendMode BlendAdd
+set Coords "256 0 1024 256"
+set CoordsInterpolatedDest "0 512 1024 256"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 2"
+set TileArea "545 120"
+set NoAlphaMod 1
+set Alpha 0.5
+set TileAreaFullTexture 0
+add MenuObject initFrom UltimateSamsonFire
+set Name UltimateSamsonFireAlt
+set CoordsInterpolatedDest "0 -256 1024 256"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 5"
+add MenuObject
+set Name UltimateSamsonLog
+set Coords "0 0 540 120"
+set RenderCB_DX 540
+set RenderCB_DY 120
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_FontScale 0.55
+set RenderCB _DrawDText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor $DiamondRollTextColor
+set RenderCB_ConsoleSymbol _Roll@_Arg1_@@_Arg2_@
+set RenderCB_Flags "/noCommaSep /toU16"
+set FilterName DiamondRollEvent
+set SaveArgs 2
+add MenuObject
+set Name UltimateSamsonRollHide
+set Texture menus/Social
+set Coords "564 480 41 41"
+set BlendMode BlendAdd
+set ScaleX 2.0, ScaleY 2.0
+set Disabled 1
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.5
+add MenuObject
+set Name UltimateSamsonTimer
+set Texture menus/Social
+set Coords "11 617 78 78"
+set MatAlphaTestRefSymbol _Roll@_Arg1_@Timer
+set BlendMode BlendNoneAlphaTest
+set NoAlphaMod 1
+set Alpha 0.5
+set ScaleX 0.5
+set ScaleY 0.5
+add MenuObject
+set Name UltimateSamsonTimerFlash
+set Texture menus/Social
+set Coords "425 820 45 45"
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set BlinkAlpha "1.0 0.25 0.0 0.25"
+set ScaleX 0.92
+set ScaleY 0.92
+add MenuObject
+set Name UltimateSamsonFrame
+set ContainerOnly 1
+set Hidden 1
+set SaveArgs 1
+set Child "UltimateSamsonBg 0 0		@_Arg1_@"
+set Child "UltimateSamsonFire 0 0"
+set Child "UltimateSamsonLog 0 0	@_Arg1_@ 0"
+set Child "UltimateSamsonLog 0 16	@_Arg1_@ 1"
+set Child "UltimateSamsonLog 0 32	@_Arg1_@ 2"
+set Child "UltimateSamsonLog 0 48	@_Arg1_@ 3"
+set Child "UltimateSamsonLog 0 64	@_Arg1_@ 4"
+set Child "UltimateSamsonLog 0 80	@_Arg1_@ 5"
+set Child "UltimateSamsonLog 0 96	@_Arg1_@ 6"
+set Child "UltimateSamsonFireAlt 0 0"
+set Child "UltimateSamsonFg 0 0"
+set Child "UltimateSamsonRollResult 183 42	@_Arg1_@"
+set Child "UltimateSamsonRollHide 158 18"
+set Child "UltimateSamsonRollHigh 225 5		@_Arg1_@"
+set Child "UltimateSamsonRollLow 225 72		@_Arg1_@"
+set Child "UltimateSamsonRollCount 50 88	@_Arg1_@"
+set Child "UltimateSamsonTimerFlash 12 72"
+set Child "UltimateSamsonTimer 14 74	@_Arg1_@"
+set Child "SpinningDice 150 5		@_Arg1_@"
+set Child "UltimateRollArrow 110 62	@_Arg1_@"
+add MenuObject
+set Name UltimateSamsonWhite
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "547 120"
+set BlendMode BlendAdd
+set Disabled 1
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.4
+add MenuObject
+set Name CB_UltimateSamson
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ShowUltimateSamson@_Arg1_@
+set SaveArgs 1
+set HiddenCheckBySymbol GL_ChatMinimized
+set Child "UltimateSamsonFrame 0 0	@_Arg1_@"
+set Child "UltimateSamsonWhite 0 0"
+add MenuObject
+set Name PrimeBannerBg
+set Texture menus/Social
+set Coords "7 701 547 78"
+set MouseInteract 1
+set Focus -2
+set BlendMode NoBlend
+set CommandPress "menuCmd OfferPrimeBundleTry"
+set CommandPress "sym set ShowPrimeBanner 0"
+set CommandPress "sym set ShowPrimeBannerDismissed 1"
+set MouseInteractZoneExpand "0 0 0 20"
+set CommandGetFocus "addUIAnim PrimeBannerTab mas_PrimeTabDown"
+set CommandLoseFocus "addUIAnim PrimeBannerTab mas_PrimeTabUp"
+add MenuObject
+set Name PrimeBannerCancel
+set Texture menus/Social
+set Coords "0 0 547 78"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-20 -20 20 40"
+add MenuObject
+set Name PrimeBannerFg
+set Texture menus/Social
+set Coords "7 701 547 78"
+add MenuObject
+set Name PrimeBannerText
+set Texture menus/Social
+set Coords "353 791 197 23"
+set PulseAlpha "3.0 -0.5 -0.2"
+set BlendMode BlendAdd
+add MenuObject
+set Name PrimeBannerShine
+set Texture menus/Social
+set BlendMode BlendAdd
+set Coords "720 642 300 38"
+set CoordsInterpolatedDest "100 622 300 38"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 7"
+set ScaleX 1.826, ScaleY 2.0
+set NoAlphaMod 1
+set Alpha 0.2
+add MenuObject
+set Name PrimeBannerShineAlt
+set Texture menus/Social
+set BlendMode BlendAdd
+set Coords "760 642 200 38"
+set CoordsInterpolatedDest "160 622 200 38"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 7"
+set ScaleX 2.739, ScaleY 2.0
+set NoAlphaMod 1
+set Alpha 0.3
+add MenuObject
+set Name PrimeBannerTab
+set Texture menus/Social
+set Coords "13 783 322 76"
+add MenuObject
+set Name CB_PrimeBanner
+set ContainerOnly 1
+set HiddenCheckBySymbolValue AnyDiamondsBonus=1
+set HiddenCheckBySymbolInv ShowPrimeBanner
+set HiddenCheckBySymbol GL_ChatMinimized
+set Child "PrimeBannerCancel 0 0"
+set Child "PrimeBannerBg 0 0"
+set Child "PrimeBannerTab 6 1"
+set Child "PrimeBannerFg 0 0"
+set Child "PrimeBannerText 350 52"
+set Child "PrimeBannerShine 0 0"
+set Child "PrimeBannerShineAlt 0 0"
+add MenuObject
+set Name CB_BonusDiamondsBanner
+set Texture menus/StoreTiles
+set Coords "27 781 549 60"
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolValue AnyDiamondsBonus=0
+set HiddenCheckBySymbol GL_ChatMinimized
+set HiddenCheckBySymbol2 BonusDiamondBannerClicked
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "if sym BuyDiamondsOld != 1 menuCmd OpenNewDiamondBuyDialog"
+set CommandPress "sym set BonusDiamondBannerClicked 1"
+add MenuObject
+set Name GlobalChatBigAdFocus
+set Texture effects/white
+set MouseInteract 1
+set Focus -2
+set Color 0x453918
+set BlendMode BlendAdd
+set Coords "0 0 16 16"
+set TileArea "547 100"
+add MenuObject
+set Name GlobalChatBigAd
+set Texture menus/SplashUpsellD2
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused GlobalChatBigAdFocus
+set DrawWhenFocusedOffset "0 230"
+set ScaleX 0.81
+set ScaleY 0.81
+set Coords "284 1 674 990"
+set CoordsAnimated "284 1 674 990"
+set CoordsAnimated "959 1 674 990"
+set CoordsAnimationSymHash _ChatAdType_
+set CommandPress "if sym _ChatAdType_ == 1 menucmd StorePromoUnlockOrInspectPrimeBundleTry"
+set CommandPress "if sym _ChatAdType_ == 0 menucmd StorePromoUnlockOrInspectBundleTry StarterPack"
+add MenuObject
+set Name GlobalChatOverlayHide
+set Texture effects/white
+set MouseInteract 1
+set Focus -2
+set Color 0x373d3c
+set ColorFocused 0x373d3c
+set Coords "0 0 16 16"
+set TileArea "547 820"
+set HiddenCheckBySymbolInv P_ChatBan
+set HiddenCheckBySymbol GL_ChatMinimized
+set Child "GlobalChatBigAd 0 20"
+add MenuObject
+set Name GlobalChatOverlayHideSmall
+set Texture effects/white
+set MouseInteract 1
+set Focus -2
+set Color 0x373d3c
+set ColorFocused 0x373d3c
+set Coords "0 0 16 16"
+set TileArea "547 95"
+set HiddenCheckBySymbolInv P_ChatBan
+set HiddenCheckBySymbolInv2 GL_ChatMinimized
+set CommandPress "sym set GL_ChatMinimized 0"
+set CommandPress "menucmd GlobalChatReposition"
+set CommandPress "if sym CurrentMenu == CLobby menucmd LobbyContainerReposition"
+set CommandPress "if sym CurrentMenu == SplashPromo menucmd SplashChatReposition"
+set CommandPress "if sym CurrentMenu == BaseLeaderboards menucmd LeaderboardsChatReposition"
+set CommandPress "if sym CurrentMenu == ConShop menucmd ShopReposition"
+set Child "ShopTopPromoPrime 50 -18"
+set Child "ShopTopPromoStarter 50 -18"
+add MenuObject initFrom GL_ChatBox
+set Name GL_GChatBox
+set Child "GL_ChatBgGlobal 20 200"
+set Child "GL_ChatLog 0 20		_gchat_			_DrawTextListGlobalChat	28"
+set Child "GL_ChatLogSmall 0 722		_gchat_			_DrawTextListGlobalChat	3"
+set Child "GL_TextEntry[GChatTextEntry] 0 760	GChatTextEntry	gchat	GChatPos"
+set Child "GL_ChatScrollbar 534 20	GChatPos	GChatScrollBarHidden"
+set Child "GL_ChatScrollWheelZone 0 20		GChatPos"
+set Child "GlobalChatOverlayHide 0 0"
+set Child "GlobalChatOverlayHideSmall 0 726"
+set HiddenCheckBySymbol GChatTextEntryHidden
+add MenuObject initFrom GL_ChatBox
+set Name GChatBox
+set Child "GL_ChatBgGlobal 20 200"
+set Child "GL_ChatLog 0 20		_gchat_			_DrawTextListGlobalChat	28"
+set Child "GL_ChatLogSmall 0 722		_gchat_			_DrawTextListGlobalChat	1"
+set Child "GL_TextEntry[GChatTextEntry] 0 760	GChatTextEntry	gchat	GChatPos"
+set Child "GL_ChatScrollbar 534 20	GChatPos	GChatScrollBarHidden"
+set Child "GL_ChatScrollWheelZone 0 20		GChatPos"
+set Child "GlobalChatOverlayHide 0 0"
+set Child "GlobalChatOverlayHideSmall 0 726"
+set HiddenCheckBySymbol GChatTextEntryHidden
+add MenuObject initFrom GL_ChatBox
+set Name GL_FChatBox
+set Child "GL_ChatBgFaction 20 200"
+set Child "GL_ChatLog 0 20		_fchat_			_DrawTextListFactionChat	28"
+set Child "GL_ChatLogSmall 0 722		_fchat_			_DrawTextListFactionChat	3"
+set Child "GL_TextEntry[FChatTextEntry] 0 760	FChatTextEntry	fchat	FChatPos"
+set Child "GL_ChatScrollbar 534 20	FChatPos	FChatScrollBarHidden"
+set Child "GL_ChatScrollWheelZone 0 20		FChatPos"
+set HiddenCheckBySymbol FChatTextEntryHidden
+add MenuObject initFrom GL_ChatBox
+set Name GL_PChatBox
+set Child "GL_ChatBgParty 20 200"
+set Child "GL_ChatLog 0 20		_chat_			_DrawTextListChat	28"
+set Child "GL_ChatLogSmall 0 722		_chat_			_DrawTextListChat	3"
+set Child "GL_TextEntry[PChatTextEntry] 0 760	PChatTextEntry	pchat	PChatPos"
+set Child "GL_ChatScrollbar 534 20	PChatPos	PChatScrollBarHidden"
+set Child "GL_ChatScrollWheelZone 0 20		PChatPos"
+set HiddenCheckBySymbol PChatTextEntryHidden
+add MenuObject
+set Name MarketChatOverlayLocked
+set Texture effects/white
+set MouseInteract 1
+set Focus -2
+set Color 0x111111
+set ColorFocused 0x111111
+set Coords "0 0 16 16"
+set TileArea "535 790"
+set NoAlphaMod 1
+set Alpha 0.5
+set MouseInteractZoneExpand "0 0 0 10"
+set Child "PlayTopLockText 50 730	Lock_MarketUse"
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeInPreWait 0.1
+set HiddenCheckBySymbol	MarketCanList
+set HiddenCheckBySymbol2 GL_ChatMinimized
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "menuCmd StorePromoUnlockOrInspectBundleTry StarterPack"
+add MenuObject
+set Name ChatMarketBanner
+set Coords "17 230 432 70"
+set Texture menus/ShopTilesTopB
+set ScaleX 1.235, ScaleY 1.235
+set MouseInteract 1
+set Focus -2
+add MenuObject initFrom GL_LogBox
+set Name GL_MChatBox
+set Child "GL_ChatBgMarket 20 200"
+set Child "GL_ChatLog 0 20		_mchat_			_DrawTextListMarketChat	28"
+set Child "GL_ChatLogSmall 0 722		_mchat_			_DrawTextListMarketChat	3"
+set Child "GL_TextEntryMarket[MChatTextEntry] 0 760	MChatTextEntry	mchat	MChatPos"
+set Child "GL_ChatScrollbar 534 20	MChatPos	MChatScrollBarHidden"
+set Child "GL_ChatScrollWheelZone 0 20		MChatPos"
+set Child "MarketChatOverlayLocked 0 20			/!ingame"
+set Child "GlobalChatOverlayHide 0 0"
+set Child "GlobalChatOverlayHideSmall 0 726"
+set HiddenCheckBySymbol MChatTextEntryHidden
+add MenuObject initFrom GL_LogBox
+set Name GL_EChatBox
+set Child "GL_ChatBgMarket 20 200"
+set Child "GL_ChatLog 0 20		_echat_			_DrawTextListEvents	28"
+set Child "GL_ChatLogSmall 0 722		_echat_			_DrawTextListEvents	3"
+set Child "GL_ChatScrollbar 534 20	EChatPos	EChatScrollBarHidden"
+set Child "GL_ChatScrollWheelZone 0 20		EChatPos"
+set HiddenCheckBySymbol EChatTextEntryHidden
+add MenuObject initFrom GL_LogBox
+set Name GL_GameLogBox
+set Child "GL_ChatBgInfo 20 200"
+set Child "GL_ChatLog 0 20		_lchat_			_DrawTextListGameLog	28"
+set Child "GL_ChatLogSmall 0 722		_lchat_			_DrawTextListGameLog	3"
+set Child "GL_TextEntry[LChatTextEntry] 0 760	LChatTextEntry	lchat	LChatPos"
+set Child "GL_ChatScrollbar 534 20	LChatPos	GameLogScrollBarHidden"
+set Child "GL_ChatScrollWheelZone 0 20		LChatPos"
+set HiddenCheckBySymbol GameLogHidden
+add MenuObject initFrom GL_LogBox
+set Name GL_NanoforgeBox
+set Child "GL_ChatLogNanoforge 0 15					_nfchat_		_DrawTextListNanoforge	5"
+set Child "GL_ChatScrollbarNanoforge 405 20			NFChatPos		GameNanoforgeScrollBarHidden"
+set Child "GL_ChatScrollWheelZoneNanoforge 0 20		NFChatPos"
+add MenuObject
+set Name GL_ChatScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 550 760"
+set CommandOnMouseDrag ">floatsym scaledMod @_Arg1_@ 0.025 $_Wheel 0 1"
+set SaveArgs 1
+set HiddenCheckBySymbol GL_ChatMinimized
+add MenuObject
+set Name GL_ChatScrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "GL_ChatScrollbarPos 0 0		@_Arg1_@"
+set ScaleY 1.42
+set ScaleX 1.52
+set Color 0x777777
+set NoAlphaMod 1
+set Alpha 0.18
+set HiddenCheckBySymbol @_Arg2_@
+set HiddenCheckBySymbol2 GL_ChatMinimized
+set SaveArgs 2
+add MenuObject initFrom GL_ChatScrollWheelZone
+set Name GL_ChatScrollWheelZoneNanoforge
+set Coords "0 0 430 200"
+add MenuObject
+set Name GL_ChatScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult @_Arg1_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set Color 0x666666
+set ColorFocused 0xcccccc
+set Focus -2
+set CommandOnMouseDrag ">floatsym set @_Arg1_@ $_MouseRelY"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.425
+set ScaleX 1.52
+set SaveArgs 1
+add MenuObject
+set Name GL_ChatScrollbarNanoforge
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "GL_ChatScrollbarPosNanoforge 0 0		@_Arg1_@"
+set ScaleY 0.22
+set ScaleX 1.52
+set Color 0x777777
+set NoAlphaMod 1
+set Alpha 0.18
+set HiddenCheckBySymbol @_Arg2_@
+set SaveArgs 2
+add MenuObject
+set Name GL_ChatScrollbarPosNanoforge
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult @_Arg1_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set Color 0x666666
+set ColorFocused 0xcccccc
+set Focus -2
+set CommandOnMouseDrag ">floatsym set @_Arg1_@ $_MouseRelY"
+set ScaleY 0.225
+set ScaleX 1.52
+set SaveArgs 1
+add MenuObject
+set Name ChatroomLabelTemplate
+set Texture menus/LoadoutGrid
+set Coords "12 821 184 43"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX"
+set MouseInteract 1
+set Focus -2
+set RenderCB_RGBColor "0.8"
+set RenderCB_FontScale 0.6
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set ScaleX 0.6
+add MenuObject
+set Name ChatroomPartyActive
+set Texture menus/LoadoutGrid
+set Coords "12 821 184 43"
+set BlendMode BlendAdd
+set Color 0x00ffff
+set PulseAlpha "1.2 -0.2 0.5"
+set HiddenCheckBySymbolInv _InParty_
+add MenuObject
+set Name ChatroomPartyLeader
+set Texture menus/Social
+set Coords "831 147 66 38"
+set ScaleX 0.75, ScaleY 0.75
+set HiddenCheckBySymbolInv _PartyLeader_
+add MenuObject initFrom ChatroomPartyLeader
+set Name ChatroomPartyLeaderSm
+set ScaleX 0.35, ScaleY 0.35
+add MenuObject initFrom ChatroomLabelTemplate
+set Name ChatroomButtonTemplate
+set Coords "380 821 184 43"
+set CoordsFocused "196 821 184 43"
+set CoordsPressed "196 820 184 43"
+set RenderCB_RGBColor "0.38 0.41 0.44"
+set RenderCB_RGBColorFocused "0.80 0.84 0.85"
+set RenderCB_OffsetFocused "0 -1"
+set RenderCB_OffsetPressed "0 1"
+set Focus -2
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set RenderCB_Text QUESTS
+add MenuObject
+set Name ChatroomNewMessageTemplate
+set Coords "0 0 110 43"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX"
+set RenderCB_OffsetFocused "0 -1"
+set RenderCB_OffsetPressed "0 1"
+set DisplayAsFocusedIfParentFocused 1
+set DisplayAsPressedIfParentPressed 1
+set RenderCB_RGBColor "0.8 0.35 0.15"
+set RenderCB_FontScale 0.6
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set BlinkAlpha "0.0 0.5 1.0 0.5"
+set HiddenCheckBySymbol P_ChatBan
+add MenuObject initFrom ChatroomButtonTemplate
+set Name ChatroomButtonGlobal
+set RenderCB_Text ML_LogGlobal
+set CommandPress "menucmd ChatFocusGlobal"
+set CommandPress "menucmd GlobalChatScrollAllToBottom"
+set Child "ChatroomNewMessageGlobal 0 0"
+add MenuObject initFrom ChatroomNewMessageTemplate
+set Name ChatroomNewMessageGlobal
+set RenderCB_Text ML_LogGlobal
+set HiddenCheckBySymbolInv _gchat_d_
+add MenuObject initFrom ChatroomLabelTemplate
+set Name ChatroomLabelGlobal
+set RenderCB_Text ML_LogGlobal
+set HiddenCheckBySymbol GChatTextEntryHidden
+add MenuObject initFrom ChatroomButtonTemplate
+set Name ChatroomButtonFaction
+set RenderCB_Text ML_LogFaction
+set CommandPress "sym setOne GChatTextEntryHidden PChatTextEntryHidden GameLogHidden MChatTextEntryHidden"
+set CommandPress "sym set FChatTextEntryHidden 0"
+set CommandPress "gameUI enable GL_ChatBgFaction"
+set CommandPress "menucmd GlobalChatScrollAllToBottom"
+set CommandPress "pcmd 0 gameUI disable GL_ChatBgFaction"
+set Child "ChatroomNewMessageFaction 0 0"
+add MenuObject initFrom ChatroomNewMessageTemplate
+set Name ChatroomNewMessageFaction
+set RenderCB_Text ML_LogFaction
+set HiddenCheckBySymbolInv _fchat_d_
+add MenuObject initFrom ChatroomLabelTemplate
+set Name ChatroomLabelFaction
+set RenderCB_Text ML_LogFaction
+set HiddenCheckBySymbol FChatTextEntryHidden
+add MenuObject initFrom ChatroomButtonTemplate
+set Name ChatroomButtonParty
+set RenderCB_Text ML_LogParty
+set CommandPress "menucmd GlobalChatScrollAllToBottom"
+set CommandPress "menucmd ChatFocusParty"
+set Child "ChatroomNewMessageParty 0 0"
+set DragTarget Party
+add MenuObject initFrom ChatroomNewMessageTemplate
+set Name ChatroomNewMessageParty
+set RenderCB_Text ML_LogParty
+set HiddenCheckBySymbolInv _pchat_d_
+set DragTarget Party
+add MenuObject initFrom ChatroomLabelTemplate
+set Name ChatroomLabelParty
+set RenderCB_Text ML_LogParty
+set HiddenCheckBySymbol PChatTextEntryHidden
+set DragTarget Party
+add MenuObject initFrom ChatroomButtonTemplate
+set Name ChatroomButtonMarket
+set RenderCB_Text ML_LogMarket
+set HiddenCheckBySymbol MarketBanned
+set CommandPress "sym setOne GChatTextEntryHidden PChatTextEntryHidden FChatTextEntryHidden GameLogHidden"
+set CommandPress "sym set MChatTextEntryHidden 0"
+set CommandPress "gameUI enable GL_ChatBgMarket"
+set CommandPress "menucmd GlobalChatScrollAllToBottom"
+set CommandPress "pcmd 0 gameUI disable GL_ChatBgMarket"
+set Child "ChatroomNewMessageMarket 0 0"
+set HiddenCheckBySymbol MarketDisabled
+set HiddenCheckBySymbolInv HasBaseComms
+add MenuObject initFrom ChatroomNewMessageTemplate
+set Name ChatroomNewMessageMarket
+set RenderCB_Text ML_LogMarket
+set HiddenCheckBySymbolInv _mchat_d_
+add MenuObject initFrom ChatroomLabelTemplate
+set Name ChatroomLabelMarket
+set RenderCB_Text ML_LogMarket
+set HiddenCheckBySymbol MChatTextEntryHidden
+add MenuObject initFrom ChatroomButtonTemplate
+set Name ChatroomButtonEvent
+set RenderCB_Text ML_LogEvent
+set CommandPress "menucmd GlobalChatScrollAllToBottom"
+set CommandPress "menucmd ChatFocusEvents"
+set Child "ChatroomNewMessageMarket 0 0"
+add MenuObject initFrom ChatroomNewMessageTemplate
+set Name ChatroomNewMessageEvent
+set RenderCB_Text ML_LogEvent
+set HiddenCheckBySymbolInv _echat_d_
+add MenuObject initFrom ChatroomButtonTemplate
+set Name ChatroomButtonGameLog
+set RenderCB_Text ML_LogInfo
+set CommandPress "sym setOne GChatTextEntryHidden PChatTextEntryHidden FChatTextEntryHidden MChatTextEntryHidden"
+set CommandPress "sym set GameLogHidden 0"
+set CommandPress "gameUI enable GL_ChatBgInfo"
+set CommandPress "menucmd GlobalChatScrollAllToBottom"
+set CommandPress "pcmd 0 gameUI disable GL_ChatBgInfo"
+set Child "ChatroomNewMessageGameLog 0 0"
+add MenuObject initFrom ChatroomNewMessageTemplate
+set Name ChatroomNewMessageGameLog
+set RenderCB_Text ML_LogInfo
+set HiddenCheckBySymbolInv _lchat_d_
+add MenuObject initFrom ChatroomLabelTemplate
+set Name ChatroomLabelGameLog
+set RenderCB_Text ML_LogInfo
+set HiddenCheckBySymbol GameLogHidden
+add MenuObject
+set Name GlobalChatButtonHideText
+set Coords "0 0 105 43"
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX"
+set RenderCB_OffsetFocused "0 -1"
+set RenderCB_OffsetPressed "0 1"
+set DisplayAsFocusedIfParentFocused 1
+set DisplayAsPressedIfParentPressed 1
+set RenderCB_RGBColor 0xbbbbbb
+set RenderCB_FontScale 0.6
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text Btn_Welcome
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+add MenuObject
+set Name GlobalChatButtonHide
+set Texture effects/white
+set Color 0x373d3c
+set ColorFocused 0x373d3c
+set Coords "0 0 16 16"
+set TileArea "106 39"
+set HiddenCheckBySymbolInv P_ChatBan
+set Child "GlobalChatButtonHideText 0 0"
+add MenuObject initFrom GlobalChatButtonHideText
+set Name EbolaChatButtonHideText
+set Coords "0 0 548 40"
+set RenderCB_Text "You have Ebola! Quarantine activated."
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+add MenuObject
+set Name EbolaChatButtonsHide
+set Texture effects/white
+set Color 0x8f2b2b
+set ColorFocused 0x8f2b2b
+set Coords "0 0 16 16"
+set TileArea "548 39"
+set MouseInteract 1
+set HiddenCheckBySymbolInv HasEbola
+set HiddenCheckBySymbolValue QuarantineEnabled=0
+set Child "EbolaChatButtonHideText 0 0"
+add MenuObject
+set Name ChatroomButtons
+set Texture menus/LoadoutGrid
+set Coords "12 816 552 5"
+set ContainerOnly 1
+set Child "ChatroomButtonGlobal 0 5"
+set Child "ChatroomLabelGlobal 0 5"
+set Child "GlobalChatButtonHide 2 4"
+set Child "ChatroomButtonFaction 110 5"
+set Child "ChatroomLabelFaction 110 5"
+set Child "ChatroomButtonParty 220 5"
+set Child "ChatroomLabelParty 220 5"
+set Child "ChatroomPartyActive 220 5"
+set Child "ChatroomPartyLeaderSm 223 12"
+set Child "ChatroomButtonMarket 330 5"
+set Child "ChatroomLabelMarket 330 5"
+set Child "ChatroomButtonGameLog 440 5"
+set Child "ChatroomLabelGameLog 440 5"
+set Child "EbolaChatButtonsHide 2 5"
+add MenuObject initFrom ChatroomButtons
+set Name ChatroomButtonsOnline
+set HiddenCheckBySymbol GL_ChatMinimized
+add MenuObject
+set Name ButtonLogBackground
+set Coords "6 109 500 70"
+set Texture menus/MessageLog
+set Anchor LowerLeft
+add MenuObject
+set Name ChatShowButton
+set Texture menus/MainTiles+lang
+set Coords "172 133 73 155"
+set CoordsFocused "269 133 73 155"
+set MouseInteract 1
+set Focus -2
+set MouseInteractClickToFocus 1
+set NotActionableForPurposeOfGameInput 1
+set HiddenCheckBySymbolValue GL_ChatMinimized=1
+set CommandPress "gameUI ignoreInputTime 0.15"
+set CommandPress "if sym CurrentMenu == CLobby menucmd LobbyContainerReposition"
+set CommandPress "if sym CurrentMenu == BaseLeaderboards menucmd LeaderboardsChatReposition"
+set CommandPress "if sym CurrentMenu == SplashPromo menucmd SplashChatReposition"
+set CommandPress "if sym CurrentMenu == ConShop menucmd ShopReposition"
+set CommandPress "sym set GL_ChatMinimized 0"
+set CommandPress "menucmd GlobalChatReposition"
+add MenuObject
+set Name ChatMinButton
+set Texture menus/Social
+set Coords "746 309 43 36"
+set CoordsFocused "746 272 43 36"
+set MouseInteract 1
+set Focus -2
+set DefaultRotation -90
+set HiddenCheckBySymbol GL_ChatMinimized
+set CommandPress "sym set GL_ChatMinimized 1"
+set CommandPress "if ingame menucmd GlobalChatReposition"
+set CommandPress "if sym CurrentMenu == CLobby menucmd LobbyContainerReposition"
+set CommandPress "if sym CurrentMenu == BaseLeaderboards menucmd LeaderboardsChatReposition"
+set CommandPress "if sym CurrentMenu == SplashPromo menucmd SplashChatReposition"
+set CommandPress "if sym CurrentMenu == ConShop menucmd ShopReposition"
+set CommandPress "menucmd GlobalChatScrollAllToBottom"
+add MenuObject
+set Name ChatHideButtonBg
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "63 56"
+set RenderBlocked 1
+set MouseInteract 1
+set Focus -2
+add MenuObject
+set Name ChatHideButton
+set Texture menus/Social
+set Coords "736 309 43 36"
+set CoordsFocused "736 272 43 36"
+set MouseInteract 1
+set Focus -2
+set DisabledAlpha 1.0
+set CommandPress "gameUI ignoreInputTime 0.15"
+set CommandPress "if ingame menucmd GlobalChatReposition"
+set CommandPress "sym set GL_ChatMinimized 2"
+set CommandPress "menucmd GlobalChatReposition"
+set CommandPress "if sym CurrentMenu == SplashPromo menucmd SplashChatReposition"
+set CommandPress "if sym CurrentMenu == ConShop menucmd ShopReposition"
+set CommandPress "if sym CurrentMenu == BaseLeaderboards menucmd LeaderboardsChatReposition"
+set FirstDrawnChildren 1
+set Child "ChatHideButtonBg -10 -10"
+add MenuObject
+set Name TradeDiamondsInput
+set Coords "436 233 167 56"
+set CoordsFocused "436 298 167 56"
+set Texture menus/Faction
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 137
+set RenderCB_DY 42
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.85
+set RenderCB_Offset "10 0"
+set MouseInteractZoneExpand "-20 -20 0 10"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set ScaleX 0.7, ScaleY 0.7
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set TextEditableMaxLen 6
+set TextEditablePin 1
+set RenderCB_Text TradeDiamondsSelf
+set CommandOnKeyboardEdit "menucmd ListMarketPriceEdited"
+add MenuObject initFrom TradeDiamondsInput
+set Name TradeDiamondsSelf
+set MouseInteract 0
+set RenderCBExcludesDefaultRender 1
+set RenderCB_FontScale 1.0
+add MenuObject initFrom TradeDiamondsSelf
+set Name TradeDiamondsOther
+set RenderCB_Text TradeDiamondsOther
+add MenuObject
+set Name HCubeDragTarget
+set SaveArgs 1
+set DragTarget HCubeIn@_Arg1_@
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "101 134"
+set BlendMode BlendAdd
+set Focus -2
+set MouseInteract 1
+set Color 0x000000
+set ColorFocused 0x183c19
+add MenuObject
+set Name MessageTradeDragTarget
+set SaveArgs 1
+set DragTarget TradeOutgoing@_Arg1_@
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "101 134"
+set BlendMode BlendAdd
+set Focus -2
+set MouseInteract 1
+set Color 0x000000
+set ColorFocused 0x183c19
+add MenuObject
+set Name MessageTradeBgSelf
+set Texture menus/TradeA
+set Coords "4 4 546 269"
+set Child "MessageTradeDragTarget 30 57		0"
+set Child "MessageTradeDragTarget 159 57	1"
+set Child "MessageTradeDragTarget 286 57	2"
+set Child "MessageTradeDragTarget 415 57	3"
+set Child "TradeDiamondsInput 350 213"
+add MenuObject
+set Name MessageTradeBgSelfRdy
+set Texture menus/TradeA
+set Coords "4 278 546 269"
+set MouseInteract 1
+set HiddenCheckBySymbolInv	TradeReadySelf
+set Child "TradeDiamondsSelf 340 213"
+add MenuObject
+set Name MessageTradeBgOther
+set Texture menus/TradeB
+set Coords "4 4 546 280"
+add MenuObject
+set Name MessageTradeBgBothRdyOver
+set Texture menus/TradeA
+set Coords "4 562 546 82"
+set BlendMode BlendAdd
+set PulseAlpha "0.5 -1.0 -0.8"
+add MenuObject
+set Name MessageTradeBgBothRdy
+set Texture menus/TradeA
+set Coords "4 562 546 82"
+set HiddenCheckBySymbolInv	TradeReadySelf
+set Child "MessageTradeBgBothRdyOver 0 0"
+add MenuObject
+set Name TradeButtonTrade
+set Texture menus/TradeA
+set Coords "6 674 218 57"
+set CoordsFocused "6 733 218 57"
+set CoordsPressed "6 796 218 57"
+set RenderCB _DrawUText
+set DrawWhenFocusedOffset "-1 -1 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.65
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Focus -2
+set MouseInteract 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeInPreWait 0.5
+set RenderCB_Flags "/shadowed /fitX /nmi"
+set DisabledAlpha 0.0
+set HiddenCheckBySymbolInv TradeReadySelf
+set RenderCB_Text TradeButtonTrade
+add MenuObject
+set Name MessageTradeBgOtherRdy
+set Texture menus/TradeB
+set Coords "4 286 546 275"
+set HiddenCheckBySymbolInv	TradeReadyOther
+set Child "MessageTradeBgBothRdy 0 -42"
+set Child "TradeButtonReadyWaiting 20 205"
+set Child "TradeButtonTrade 20 205"
+add MenuObject
+set Name TradeReadySelf
+set Texture menus/HomeBar
+set Coords "623 428 42 42"
+set CoordsFocused "723 428 42 42"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 8"
+set RenderCB_DX 220
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.8"
+set RenderCB_FontScale 0.6
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text TradeReadyCheckbox
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 -50 10"
+set Focus -2
+set SaveArgs 3
+set CommandPress "sym toggle TradeReadySelf"
+set CommandEnterKey "sym toggle TradeReadySelf"
+set Child "CheckMarkShop 0 0 TradeReadySelf"
+add MenuObject
+set Name TradeButtonNotReady
+set Texture menus/TradeA
+set Coords "6 674 218 57"
+set CoordsPressed "8 203 440 63"
+set RenderCB _DrawUText
+set DrawWhenFocusedOffset "-1 -1 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.65
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set NoAlphaMod 1
+set Alpha 0.3
+set DrawGreyScale 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Flags "/shadowed /fitX /nmi"
+set DisabledAlpha 0.2
+set RenderCB_Text TradeButtonNotReady
+add MenuObject initFrom TradeButtonNotReady
+set Name TradeButtonReadyWaiting
+set RenderCB_Text TradeReadyCheckbox
+add MenuObject
+set Name TradeTitleSelf
+set Texture menus/Social
+set Coords "0 0 798 40"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_RGBColor "0.95"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text TradeTitleSelf
+add MenuObject
+set Name TradeTitleOther
+set Texture menus/Social
+set Coords "0 0 798 40"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_RGBColor "0.95"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text TradeTitleOther
+add MenuObject
+set Name ToggleTradeReadyOther
+set Texture ]menus/CB_Twitch
+set Coords "1 133 19 19"
+set CoordsPressed "0 132 19 19"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-5 -5 5 5"
+set ScaleXFocused 1.4
+set ScaleYFocused 1.4
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.1
+set CommandPress "sym toggle TradeReadyOther"
+set HiddenCheckBySymbolValue P_AccessLevel=0
+add MenuObject
+set Name TradeFrameClose
+set Texture menus/Social
+set Coords "825 2 70 70"
+set CoordsFocused "825 72 70 70"
+set MouseInteract 1
+set Focus -2
+set ScaleX 0.7
+set ScaleY 0.7
+set CommandPress "gameUI ignoreInputTime 0.05"
+set CommandPress "sym set TradeFrameHidden 1"
+add MenuObject
+set Name MessageTradeFrame
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "546 549"
+set Color 0x141414
+set ColorFocused 0x141414
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbol	TradeFrameHidden
+set HiddenCheckBySymbol2	PChatTextEntryHidden
+set Child "MessageTradeBgSelf 0 0"
+set Child "MessageTradeBgOther 0 274"
+set Child "TradeButtonNotReady 20 479"
+set Child "ToggleTradeReadyOther -20 474"
+set Child "MessageTradeBgSelfRdy 0 0"
+set Child "MessageTradeBgOtherRdy 0 274"
+set Child "TradeItem[TradeItem0] 22 50		Trade0 TradeOutgoing0"
+set Child "TradeItem[TradeItem1] 151 50		Trade1 TradeOutgoing1"
+set Child "TradeItem[TradeItem2] 280 50		Trade2 TradeOutgoing2"
+set Child "TradeItem[TradeItem3] 409 50		Trade3 TradeOutgoing3"
+set Child "TradeItem[TradeItem4] 22 324		TradeIn0 NA"
+set Child "TradeItem[TradeItem5] 151 324	TradeIn1 NA"
+set Child "TradeItem[TradeItem6] 280 324	TradeIn2 NA"
+set Child "TradeItem[TradeItem7] 409 324	TradeIn3 NA"
+set Child "PStatusBarDiamondsIcon 308 217"
+set Child "PStatusBarDiamondsIcon 308 492"
+set Child "TradeDiamondsOther 340 488"
+set Child "TradeTitleSelf 30 10"
+set Child "TradeFrameClose 497 0"
+set Child "TradeTitleOther 30 282"
+set Child "TradeReadySelf 30 214"
+add MenuObject
+set Name HCubeFrameClose
+set Texture menus/Social
+set Coords "825 2 70 70"
+set CoordsFocused "825 72 70 70"
+set MouseInteract 1
+set Focus -2
+set ScaleX 0.7
+set ScaleY 0.7
+set CommandPress "gameUI ignoreInputTime 0.05"
+set CommandPress "sym set HCubeFrameHidden 1"
+set CommandPress "menucmd HCubeClose"
+add MenuObject
+set Name HCubeButtonGoButtonTemplate
+set Texture menus/Nanoforge
+set Coords "729 789 245 105"
+set CoordsFocused "729 898 245 105"
+set CoordsPressed "729 898 245 105"
+set RenderCB _DrawUText
+set DrawWhenFocusedOffset "-1 -1 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.8
+set RenderCB_OffsetPressed "0 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 240
+set RenderCB_DY 100
+set Focus -2
+set MouseInteract 1
+set RenderCB_Flags "/outlined8x /shadowed /shadowColor2 /fitX /nmi"
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set DisabledAlpha 0.5
+set DisabledSym HCubeSlotsEmpty
+add MenuObject initFrom HCubeButtonGoButtonTemplate
+set Name HCubeButtonTry
+set RenderCB_Text Btn_NanoforgeForge
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "menuCmd HCubeRecipeGo"
+add MenuObject initFrom HCubeButtonGoButtonTemplate
+set Name HCubeButtonTest
+set RenderCB_Text Btn_NanoforgeTest
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "menuCmd HCubeRecipeTest"
+add MenuObject
+set Name HCubeButtonClear
+set Texture menus/Nanoforge
+set Coords "694 677 147 94"
+set CoordsFocused "862 677 147 94"
+set CoordsPressed "862 677 147 94"
+set Focus -2
+set MouseInteract 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set DisabledAlpha 0.5
+set DisabledSym HCubeSlotsEmpty
+set ToolTip TT_NanoforgeClear
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "menucmd HCubeReset"
+add MenuObject
+set Name HCubePulse
+set Texture menus/MatchGo
+set Coords "0 256 256 256"
+set BlendMode BlendAdd
+set ScaleX 2.0
+set ScaleY 2.5
+set PulseAlpha "6.0 -0.94 -0.95"
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 0.2
+set DisabledSym HCubeSlotsEmpty
+add MenuObject
+set Name MessageHCubeDragTarget
+set SaveArgs 1
+set DragTarget HCubeIn@_Arg1_@
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "101 134"
+set BlendMode BlendAdd
+set Focus -2
+set MouseInteract 1
+set Color 0x000000
+set ColorFocused 0x441104
+add MenuObject
+set Name MessageHCubeBgSelf
+set ContainerOnly 1
+set Child "MessageHCubeDragTarget 161 117			0"
+set Child "MessageHCubeDragTarget 290 117			1"
+set Child "MessageHCubeDragTarget 416 117			2"
+set Child "MessageHCubeDragTarget 161 277			3"
+set Child "MessageHCubeDragTarget 290 277			4"
+set Child "MessageHCubeDragTarget 416 277			5"
+set Child "MessageHCubeDragTarget 161 439			6"
+set Child "MessageHCubeDragTarget 290 439			7"
+set Child "MessageHCubeDragTarget 416 439			8"
+add MenuObject
+set Name HCubeFrame
+set Texture menus/HCube
+set Coords "4 4 546 634"
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbol	HCubeFrameHidden
+set HiddenCheckBySymbol2 GameLogHidden
+set Child "MessageHCubeBgSelf 8 8"
+set Child "HCubeItem[HCubeItem0] 84 53		HCube0 HCubeIn0 0"
+set Child "HCubeItem[HCubeItem1] 213 53		HCube1 HCubeIn1 1"
+set Child "HCubeItem[HCubeItem2] 340 53		HCube2 HCubeIn2 2"
+set Child "HCubeItem[HCubeItem3] 84 213	HCube3 HCubeIn3 3"
+set Child "HCubeItem[HCubeItem4] 213 213	HCube4 HCubeIn4 4"
+set Child "HCubeItem[HCubeItem5] 340 213	HCube5 HCubeIn5 5"
+set Child "HCubeItem[HCubeItem6] 84 374	HCube6 HCubeIn6 6"
+set Child "HCubeItem[HCubeItem7] 213 374	HCube7 HCubeIn7 7"
+set Child "HCubeItem[HCubeItem8] 340 374	HCube8 HCubeIn8 8"
+set Child "HCubeButtonTest 20 545"
+set Child "HCubeButtonTry 330 545"
+set Child "HCubeFrameClose 487 10"
+set Child "HCubePulse 0 0"
+add MenuObject
+set Name NanoforgeCloseVis
+set Coords "734 551 100 100"
+set CoordsFocused "842 551 100 100"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Nanoforge
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name NanoforgeClose
+set Coords "0 0 100 100"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 0.3"
+set CommandPress "playsound UICockpitDismiss.wav""
+set CommandPress "addUIAnim NanoforgeResults mas_NanoforgeResultsHide"
+set CommandPress "pcmd 0.1 gameui disableAll NanoforgeMain"
+set CommandPress "pcmd 0.2 clearmenu Nanoforge /fadeout 0.1"
+set Child "NanoforgeCloseVis 0 0"
+add MenuObject
+set Name NanoforgeMain
+set RenderBlocked 1
+set Coords "0 0 690 758"
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameui promoteToTop NanoforgeMain"
+set DragSource NanoforgeMain
+set FirstDrawnChildren 1
+set Child "NanoforgeBackground 0 0"
+set Child "NanoforgeSlots 2 -30"
+set Child "HCubeButtonTest 50 600"
+set Child "HCubeButtonClear 274 620"
+set Child "HCubeButtonTry 396 600"
+set Child "NanoforgeClose 580 0"
+set Child "NanoforgeScan -10 -280"
+set Child "NanoforgeScan[NanoforgeScan2] -10 220"
+add MenuObject
+set Name NanoforgeScan
+set Texture menus/Nanoforge
+set Coords "1034 693 599 55"
+set Anchor Center
+set Disabled 1
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+add MenuObject
+set Name NanoforgeBackground
+set Texture menus/Nanoforge
+set Coords "0 0 690 758"
+set MouseInteract 1
+set MouseInteractZoneExpand "50 0 -50 0"
+set Focus -2
+set FirstDrawnChildren 1
+set Child "NanoforgeResults 80 550"
+set Child "NanoforgeCircuits 8 -5"
+set CommandPress "gameui promoteToTop NanoforgeMain"
+add MenuObject
+set Name NanoforgeCircuits
+set Texture menus/Nanoforge
+set Coords "1468 0 582 645"
+set Anchor Center
+set Disabled 1
+set DisabledAlpha 0.3
+set DisabledAlphaTimeIn 0.4
+set Child "NanoforgeCircuitsPulse 0 0"
+set Child "NanoforgeCircuitsFailed 0 0"
+set Child "NanoforgeCircuitsSuccess 0 0"
+add MenuObject
+set Name NanoforgeCircuitsPulse
+set Texture menus/Nanoforge
+set Coords "1468 0 582 645"
+set Disabled 1
+set DisabledAlphaTimeOut 0.4
+set DisabledAlphaTimeIn 0.4
+set PulseAlpha "4.3 -0.2 0"
+add MenuObject
+set Name NanoforgeCircuitsFailed
+set Texture menus/NanoforgeIndicator
+set Coords "30 3 582 645"
+set BlendMode BlendAdd
+set Disabled 1
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+set Color 0xff0000
+add MenuObject initFrom NanoforgeCircuitsFailed
+set Name NanoforgeCircuitsSuccess
+set Color 0x4add10
+add MenuObject
+set Name NanoforgeSlots
+set Texture menus/Nanoforge
+set Coords "1019 23 433 551"
+set Anchor Center
+set Disabled 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set Child "MessageHCubeBgSelf -122 -66"
+set Child "HCubeItem[HCubeItem0] 29 38		HCube0 HCubeIn0 0"
+set Child "HCubeItem[HCubeItem1] 158 38		HCube1 HCubeIn1 1"
+set Child "HCubeItem[HCubeItem2] 287 38		HCube2 HCubeIn2 2"
+set Child "HCubeItem[HCubeItem3] 29 198		HCube3 HCubeIn3 3"
+set Child "HCubeItem[HCubeItem4] 158 198	HCube4 HCubeIn4 4"
+set Child "HCubeItem[HCubeItem5] 287 198	HCube5 HCubeIn5 5"
+set Child "HCubeItem[HCubeItem6] 29 358		HCube6 HCubeIn6 6"
+set Child "HCubeItem[HCubeItem7] 158 358	HCube7 HCubeIn7 7"
+set Child "HCubeItem[HCubeItem8] 287 358	HCube8 HCubeIn8 8"
+add MenuObject
+set Name NanoforgeResults
+set Texture menus/Nanoforge
+set Coords "84 768 521 233"
+set DisabledAlphaTimeOut 0.05
+set DisabledAlphaTimeIn 0.05
+set Child "GL_NanoforgeBox 50 25"
+add MenuObject
+set Name ToggleHCubeFrame
+set Texture ]menus/CB_Twitch
+set Coords "1 133 19 19"
+set CoordsPressed "0 132 19 19"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-5 -5 5 5"
+set ScaleXFocused 1.4
+set ScaleYFocused 1.4
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.1
+set CommandPress "sym setZero HCubeFrameHidden"
+set CommandPress "menucmd HCubeInitialize"
+set CommandPress "menucmd ChatFocusInfo"
+set HiddenCheckBySymbolValue P_AccessLevel=0
+add MenuObject
+set Name MessageChatContainer
+set SaveArgs 1
+set ContainerOnly 1
+set DragSource MessageChatContainer
+set HiddenCheckBySymbol ChatHidden
+set CommandPress "gameui promoteToTop MessageChatContainer"
+set Coords "0 0 552 840"
+set Child "ChatShowButton 20 350"
+set Child "GL_ChatBackground 0 0"
+set Child "GL_ChatBackgroundMin 0 740"
+set Child "GL_GChatBox 15 29"
+set Child "GL_FChatBox 15 29"
+set Child "GL_PChatBox 15 29"
+set Child "GL_MChatBox 15 29"
+set Child "GL_GameLogBox 15 29"
+set Child "TournamentBanner 17 50"
+set Child "CB_BonusDiamondsBanner 15 50"
+set Child "CB_PrimeBanner 15 50"
+set Child "ChatroomButtons 13 845"
+set Child "MessageHeader 15 15"
+set Child "CB_NYPBanner 15 50"
+set Child "CB_UltimateSamson 17 48		Global"
+set Child "MessageTradeFrame 17 27"
+add MenuObject
+set Name IngameMessageLog
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 0.60
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_BoolArg 1
+set Coords "0 0 485 780"
+set RenderCB_DX 485
+set RenderCB_DY 780
+set RenderCB @_Arg2_@
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set RenderCB_Text @_Arg1_@
+set RenderCB_IntArg @_Arg3_@
+set SaveArgs 4
+set DisabledAlpha 0.7
+set HiddenCheckBySymbolValue IngameChat=@_Arg4_@
+add MenuObject initFrom IngameMessageLog
+set Name IngameMessageLogLight
+set RenderCB_Flags " "
+set NoAlphaMod 1
+set Alpha 0.7
+add MenuObject
+set Name IngameMessageTarget
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYBottom
+set RenderCB_FontScale 0.60
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set Coords "0 0 485 38"
+set RenderCB_DX 480
+set RenderCB_DY 38
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set RenderCB_Text test
+set DisabledAlphaTimeOut 0.05
+set DisabledAlphaTimeIn 0.05
+set DisabledSymInv IngameChat
+add MenuObject initFrom IngameMessageTarget
+set Name IngameMessageTeam
+set HiddenCheckBySymbolInv IngameChatTeam
+set RenderCB_Text (team)
+set RenderCB_RGBColor 0x52e860
+add MenuObject initFrom IngameMessageTarget
+set Name IngameMessageAll
+set HiddenCheckBySymbol IngameChatTeam
+set RenderCB_Text (all)
+set RenderCB_RGBColor 0xeb4444
+add MenuObject
+set Name IngameMessageAllWarn
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "420 39"
+set Color 0xff0000
+set NoAlphaMod 1
+set Alpha 0.2
+set BlendMode BlendAdd
+set HiddenCheckBySymbol IngameChatTeam
+add MenuObject
+set Name IngameChatEnterBox
+set Texture hud/BuildTray
+set Coords "3 164 502 54"
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 400
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "17 3"
+set ScaleX 0.88
+set MouseInteractZoneExpand "-5 -15 5 10"
+set Focus -2
+set MouseInteract 1
+set HiddenCheckBySymbolInv IngameChat
+set HiddenCheckBySymbolValue P_PlayerHumans=1
+set MouseInteractClickToFocus 1
+set NotActionableForPurposeOfGameInput 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set TextEditableMaxLen 84
+set RenderCB_Text @_Arg1_@
+set CommandEnterKey ">if sym IngameChatTeam == 1 runnow net chatSymTeam @_Arg1_@"
+set CommandEnterKey ">if sym IngameChatTeam == 0 runnow net chatSymAll @_Arg1_@"
+set CommandEnterKey ">sym set @_Arg1_@"
+set CommandEnterKey ">floatsym set @_Arg3_@ 1.0"
+set CommandEnterKey "menucmd IngameChatToggle"
+set CommandTabCycle "sym toggle IngameChatTeam"
+set SaveArgs 3
+set DisabledAlphaTimeOut 0.05
+set DisabledAlphaTimeIn 0.05
+set Child "IngameMessageAllWarn 10 9"
+set Child "IngameMessageTeam -55 0"
+set Child "IngameMessageAll -55 0"
+add MenuObject
+set Name IngameChatHintText
+set Texture hud/BuildTray
+set Coords "3 164 502 54"
+set RenderCB_DX 470
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "17 16"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor @_Arg2_@
+set RenderCB_Text @_Arg1_@
+set SaveArgs 2
+add MenuObject
+set Name IngameChatHintBox
+set Texture hud/BuildTray
+set Coords "3 164 502 54"
+set ScaleX 0.88
+set HiddenCheckBySymbol IngameChat
+set HiddenCheckBySymbolValue P_PlayerHumans=1
+set NoAlphaMod 1
+set Alpha 0.3
+set Child "IngameChatHintText 0 0	ChatBoxHint	0xaa9977"
+add MenuObject
+set Name IngameChatHintBoxSolo
+set Texture hud/BuildTray
+set Coords "3 164 502 54"
+set HiddenCheckBySymbol IngameChat
+set HiddenCheckBySymbolValue P_PlayerHumans!1
+set NoAlphaMod 1
+set Alpha 0.3
+set Child "IngameChatHintText 0 0	ChatBoxHintSolo 0xaa9977"
+add MenuObject
+set Name IngameChatStubBox
+set Texture hud/BuildTray
+set Coords "3 164 502 54"
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbolInv IngameChat
+set HiddenCheckBySymbolValue P_PlayerHumans!1
+set Child "IngameChatHintText 0 0	ChatBoxHintSolo 0xffffff"
+add MenuObject
+set Name IngameChatContainer
+set ContainerOnly 1
+set FilterName LoadMapStartup
+set HiddenCheckBySymbolValue P_PlayerHumans==1
+set Child "IngameChatEnterBox -10 692	PChatTextEntry	pchat	PChatPos"
+set Child "IngameChatStubBox -10 692"
+set Child "IngameChatHintBox -10 692"
+set Child "IngameChatHintBoxSolo -10 692"
+set Child "IngameMessageLog 0 -84 	_chat_	_DrawTextListChat	33	0"
+set Child "IngameMessageLogLight[IngameMessageLogSm2] 0 600.5 	_chat_	_DrawTextListChat	4	1"
+set Child "IngameMessageLog[IngameMessageLogSm] 0 624 	_chat_	_DrawTextListChat	3	1"
+add MenuObject
+set Name CB_NYPBanner
+set ContainerOnly 1
+set HiddenCheckBySymbolValue ActiveNYPBundle=
+set HiddenCheckBySymbol GL_ChatMinimized
+set Child "NYPFreedomBanner 0 0"
+set Child "NYPUltimateDarknessBanner 0 0"
+set Child "NYPHalloweenBanner 0 -20"
+add MenuObject
+set Name NYPBannerTemplate
+set Texture menus/ChatBanners
+set Coords "1 2 547 88"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 1
+set MouseInteractZoneExpand "0 0 0 10"
+set DrawWhenFocused FocusNYPBanner
+set DrawWhenFocusedOffset "-8 -5 0"
+set CommandPress "menuCmd StorePromoUnlockOrInspectNYPBundleWithPrices $ActiveNYPBundle"
+add MenuObject initFrom NYPBannerTemplate
+set Name NYPFreedomBanner
+set Coords "1 2 547 88"
+set HiddenCheckBySymbolValue ActiveNYPBundle!=D2Pack20_H1
+add MenuObject initFrom NYPBannerTemplate
+set Name NYPUltimateDarknessBanner
+set Coords "1 96 547 100"
+set HiddenCheckBySymbolValue ActiveNYPBundle!=GothWeek_H1
+add MenuObject initFrom NYPBannerTemplate
+set Name NYPHalloweenBanner
+set Coords "1 202 547 114"
+set DrawWhenFocusedOffset "-8 10 0"
+set HiddenCheckBySymbolValue ActiveNYPBundle!=HalloweenBundle_H1

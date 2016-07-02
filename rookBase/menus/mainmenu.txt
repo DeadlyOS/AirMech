@@ -1,0 +1,219 @@
+blockLoadOnConsoleSym MainMenuLoaded
+onloadrun {
+menuCmd OnExitMap local
+cbinding disable gameIsLive
+sym init MainMenuCount 0
+sym setZero PauseUIOpen InPlayMenus MapBase LoadoutSetupAirMech
+sym init MainMenuCountSession 0
+sym init PlayerHasRolledGlobal 1
+sym set MenuBack null
+if sym GL_ChatMinimized == 2 sym set GL_ChatMinimized 1
+sym set P_Pay paypal
+sym set MainMenuLoaded 1
+sym set PlayV1TopMenu 1
+sym set HideProgressBars 0
+sym toggle _ChatAdType_
+sym set ShopListBox 1
+sym set EditingOfficialMap 0
+tool getusermaps P_Name MyMaps 10
+if sym ArcCustomized == 1 && !maploaded menuCmd MenuBackgroundBomber
+if sym ArcGACustomized == 1 && !maploaded menuCmd MenuBackgroundBomber
+if sym HasAirMechPrime == 1 sym set _ChatAdType_ 0
+if sym HasStarterPack == 1 sym set _ChatAdType_ 1
+if sym GSS_Ok_Locs == 0 runnow sym set ReturnToLobby 0
+if sym GSS_Ok_Locs == 0 runnow party2 leave
+if sym GSS_Ok_Locs == 0 sym setZero ConMenuPlayCoop ConMenuPlayPvP
+if sym GSS_Ok_Locs == 0 sym set ConMenuPlaySolo 1
+if sym AIDifficulty == 0 runnow sym set AIColor 0.7
+if sym AIDifficulty != 0 runnow sym set AIColor 1.0
+if sym PilotLocal == NoPilot && walletUnlocked Raven runnow sym set PilotLocal Raven
+if sym PilotLocal == NoPilot && walletUnlocked Mako runnow sym set PilotLocal Mako
+if sym PilotLocal == NoPilot && walletUnlocked Hawk runnow sym set PilotLocal Hawk
+if sym PilotLocal == NoPilot && walletUnlocked Kira runnow sym set PilotLocal Kira
+if sym PilotLocal == NoPilot && walletUnlocked Erik runnow sym set PilotLocal Erik
+if sym PilotLocal == NoPilot && walletUnlocked Samson runnow sym set PilotLocal Samson
+gfx set uniform interlace 0.0
+rook initBoostInfo
+sym set _FontTestY 50
+if !vr menucmd GfxResetFogState
+rook inMenu MainMenu
+if sym P_AccessLevel > 0 sym set IsSteam 1
+if sym P_AccessLevel > 0 sym set ConsolePlatformAccess 1
+rookMenus setPromoZone 0.154 0.809 0.235 0.94
+loadout partPointsUpdate
+if sym P_Level > 5 sym set FocusedPlayMenu 1
+if sym GoSpectate == 1 sym set MainMenuCount 0
+sym set _DiamondsSrcX_ 0
+sym set _DiamondsSrcY_ 0
+sym setZero IsSpectator GSS_Lockin
+sym set InStorySeq 0
+if sym CompletedTutorial == 0 if doneQuest DoTutorial sym set CompletedTutorial 1
+sym set LowAndFree 0
+if sym CheckLowAndFree == 1 if sym P_Level < 10 if sym IsAnyVIP == 0 sym set LowAndFree 1
+sym setZero SaveSlotActive0 SaveSlotActive1 SaveSlotActive2 SaveSlotActive3 SaveSlotActive4 SaveSlotActive5 SaveSlotActive6 SaveSlotActive7
+sym set #SaveSlotActive@ActiveLoadout@ 1
+menuCmd ConMenuBlur
+leaderboards setMaxDisplayRows 10
+sym set BackgroundImage MapBase
+if sym Background3dLoaded == 1 runnow menucmd RemoveBackground3D
+pfx stop LoginEmbers
+pfx stop MainMenuEmbers
+if sym ArcCustomized == 1 pcmd 0.2 sym set BackgroundMenuBlur 0
+if sym ArcGACustomized == 1 pcmd 0.2 sym set BackgroundMenuBlur 0
+}
+MO BackgroundBomber {
+pos 0 0
+layer -3
+}
+MO Backgrounds {
+pos 0 0
+layer -2
+}
+MO VignetteFade {
+pos 0 0
+layer -2
+}
+MO PcMotDMaster {
+pos 0 370
+layer -2
+}
+MO CM_MasterPlay {
+pos 1920 0
+}
+MO CM_MasterSolo {
+pos 1920 0
+}
+MO CM_MasterTrainPW {
+pos 1920 0
+}
+MO CM_MasterCoop {
+pos 1920 0
+}
+MO CM_MasterPvP {
+pos 1920 0
+}
+MO CustomRoomFadeout {
+pos -10 557
+}
+MO CM_MasterWait {
+layer 1
+pos 1920 0
+}
+MO CM_MasterLobby {
+pos 1920 0
+layer -1
+}
+MO CM_MasterPractice {
+pos 1920 0
+}
+MO CM_MasterTraining {
+pos 1920 0
+}
+MO CM_MasterMapSelectStandard {
+pos 1920 0
+layer 2
+}
+MO QuestsMain {
+pos -800 40
+layer 0
+}
+MO QuestsMainPW {
+pos -800 40
+layer 0
+}
+MO MainMenuFrameNew {
+pos 0 0
+}
+MO MessageChatContainer {
+pos 1340 180
+layer 20
+}
+MO DummyFocus {
+pos 0 0
+}
+MO EventMessagesMaster {
+pos 0 0
+layer -2
+}
+MO ItemUseCancel {
+pos 0 0
+layer 11
+}
+MO CM_ButtonHints {
+pos 0 0
+layer 30
+}
+MO InfectedBorder {
+pos 0 0
+layer 30
+}
+MO MainMenuBar {
+pos -1 950
+layer 10
+}
+MO SplashMenuPromosCover {
+pos 0 0
+layer 31
+}
+onload {
+pcmd 0.12 addUIAnim Black mas_FadeOutFast
+gm evt_scroll 1
+sym set CurrentMenu MKHome
+sound updateVolumes
+basecamp req
+if sym P_Name == AirMechTV pcmd 1.0 menucmd StartupSpectateMode
+sym set IsInNetGame 0
+sym set LobbyState 0
+sym cTrim RookLocal _ RookLocal_Base /chopLast U
+if naclOld gameUI show ChromeUpdateAvailable
+if !vr pfx worldspawn MainMenuEmbers /tag MainMenuEmbers
+gameUI disable MainMenuPlayerInfo
+if sym P_AccessLevel > 0 inputBinding enable frontEnd
+if sym P_AccessLevel > 0 cbinding enable frontEnd
+menuCmd CheckIfOnlineMode
+if sym P_AccessLevel == 0 menucmd MatchmakingReduceOptions
+music start $AlbumTrackCurrent
+menucmd CycleMainMenuTrack
+if nacl nacl enterMenu
+addUIAnim PromoMoonRabbitFloat mas_Bounce
+addUIAnim SilverVIP_Pulse mas_PulseVIP
+addUIAnim VIPDiamondBoxLock mas_ShakeLock
+addUIAnim VIPDiamondBoxUnlock mas_ShakeUnlock
+addUIAnim TwitchAdAirMech mas_TwitchAirMech
+quests scrollUpdate Social
+if sym MM_PartySize >= 1 && sym ReturnToLobby == 1 menucmd MainMenuInParty
+if sym MM_PartySize >= 1 && sym ReturnToLobby == 0 menucmd LeavePartyNow
+if sym MM_PartySize >= 1 && sym ReturnToLobby == 0 menucmd MainMenuNoParty
+if sym MM_PartySize == 0 && sym MainMenuCount == 0 menucmd RequestSplashPromoLoad
+]if sym MainMenuCount == 0 gameui enable SplashCover
+]if sym MainMenuCount != 0 gameui disable SplashCover
+if sym MM_PartySize == 0 && sym MainMenuCount != 0 if sym DNA_Match != Challenge && sym SG_InGroup == 0 runnow sym set ReturnToLobby 1
+if sym MM_PartySize == 0 && sym MainMenuCount != 0 if sym DNA_Match != Challenge && sym SG_InGroup == 0 && sym ReturnToLobby == 1 menucmd MainMenuInParty
+if sym MM_PartySize == 0 && sym MainMenuCount != 0 if sym DNA_Match != Challenge && sym SG_InGroup == 1 menucmd MainMenuNoParty
+if sym MM_PartySize == 0 && sym MainMenuCount != 0 if sym DNA_Match == Challenge menucmd PC_ChallengeRestore
+if sym MM_PartySize == 0 runnow party2 closeChallenge
+if consolePlatform input set padFocusFallback ConMenuPlayAirMech
+sym inc MainMenuCount
+sym inc MainMenuCountSession
+sym set ReturnToLobby 0
+sym set HideCursor 0
+if sym ArcCustomized == 0 pfx stop embers
+if sym _InParty_ == 0 if sym PChatTextEntryHidden == 0 menuCmd ChatFocusGlobal
+pcmd 0.2 if sym MainMenuCount == 0 menucmd CheckIfShowMotD
+gameui disableImmediateAll CM_ButtonHints
+pcmd 0.1 gameui enableAll CM_ButtonHints
+pcmd 0.2 gameui show CM_ButtonHints
+pcmd 0.2 sym set BlockConShop 0
+}
+onunload {
+inputBinding disable frontEnd
+cbinding disable frontEnd
+inputBinding enable cockpitClosed
+cbinding enable cockpitClosed
+inputBinding disable cockpitOpen
+cbinding disable cockpitOpen
+}
+onunloadrun {
+sym set MainMenuLoaded 0
+if sym Background3dLoaded == 1 runnow menucmd RemoveBackground3D
+}

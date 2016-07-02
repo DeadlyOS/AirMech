@@ -1,0 +1,50 @@
+onloadrun {
+sym setOne _MatchingUI_ _ConMatchingMenu_ LobbyState MM_CustomizeOk InPlayMenus InLobbyVis
+sym setOne ConLobbyInviteSpectator6 ConLobbyInviteSpectator7
+sym setZero LobbyEventNotice ShowMotDHome
+pcmd 0.2 sym set LobbyEventNotice 0
+sym push _Bind_CycleLoadoutOnShoulders_ 1
+sym push _Bind_MatchingUIBack_ 1
+sym set LoadoutDelay 3.0
+sym set ConLobbyColumnsVis $ConLobbyTotalSlots
+if sym IsCustomRoom == 1 sym inc ConLobbyColumnsVis 2
+if sym IsCustomRoom == 1 && sym PO_IsOwner == 1 menucmd PushMyCustomGameOptions
+if consolePlatformHW sym set GL_ChatMinimized 1
+sym set _PreGameTimer
+sym set MatchingState 0
+menucmd ConMenuLobbySetupSymbols
+sym set Ally0Id 0
+sym set Ally1Id 1
+sym set Ally2Id 2
+sym set Ally3Id 3
+sym set Ally4Id 4
+sym set Ally5Id 5
+rook inMenu LobbyMatch2
+rook recustomizeLoadoutToServer
+if sym MM_PartyMembers > 1 party focusChat
+menucmd MM_ConLobbyMessageUpdate
+menucmd LobbyPreInitMapSelect
+gameui ignoreInputTime 0.3
+pcmd 0.25 menuCmd LobbyInitMapSelect
+if sym _GotPrices_ == 0 wallet updatePrices
+}
+stopIfVR
+MO MainBarButtonInLobby {
+pos 410 -3
+layer 11
+}
+MO ConLobbyPlayerContainers {
+pos 1930 190
+}
+onload {
+sym set VignetteFade 1
+sym set OvermapFade 0
+gameui hide LobbyV1ReadyButtonGo
+menucmd LobbyContainerReposition
+}
+onunloadrun {
+sym setZero _MatchingUI_ _ConMatchingMenu_ LobbyState
+sym pop _Bind_CycleLoadoutOnShoulders_
+sym pop _Bind_MatchingUIBack_
+echo unloaded_LobbyMatchCon
+}

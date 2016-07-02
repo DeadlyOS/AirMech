@@ -1,0 +1,28 @@
+blockLoadOnConsoleSym ManualLoaded
+onloadrun {
+]gameUI saveFocusID _savefocusid_manual_
+sym set ManualLoaded 1
+clearmenu UnlockDialog.txt /fadeout 0.25
+if sym PatchnotesRead != $PN_Version runnow lang flushDrawCaches
+}
+MO ManualMain {
+pos 100 120
+draggableUIElement
+pos $UI_Manual_X $UI_Manual_Y /screenClamp 200 300
+preDeleteRunCmd gameUI getLastRenderPos ManualMain UI_Manual_X UI_Manual_Y
+}
+onload {
+addUIAnim FriendsMain mas_DialogPop
+input set padFocusFallback ConLeaderItem0
+gameUI focusNameTry ConLeaderItem0
+gameui promoteToTop ManualMain
+}
+onunloadrun {
+backend save
+}
+onunload {
+input set padFocusFallback $_savefocusid_manual_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_manual_
+sym set ManualLoaded 0
+if sym PatchnotesRead != $PN_Version runnow lang flushDrawCaches
+}

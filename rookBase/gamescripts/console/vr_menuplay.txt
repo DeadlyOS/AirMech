@@ -1,0 +1,59 @@
+menu3d addChild MenusVR MenusVRPlay  /noVis
+menu3d setWorldPose MenusVRPlay	0.0 0.0 0.0
+sym set _PosSolo "-55 -50"
+menu3d addChild MenusVRPlay MenuDiskSolo /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosSolo 0 /rootScale 0.45 0.45 0.6
+menu3d logicFnc MenuDiskSolo amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchPlay Solo] /cmdunfocus [menucmd UnTouchPlay Solo]
+menu3d addChild MenusVRPlay MenuRingSolo /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /worldPose $$_PosSolo 0 /rootScale 0.5
+menu3d addChild MenusVRPlay MenuDecoSolo /model vr/SwordsSolo.amf /material mat_IconsSwords /noVis /worldPose $$_PosSolo 10 /rootScale 1.5 /rootRot -20 0 0
+menu3d addChild MenusVRPlay MenuLabelSolo /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosSolo -30 /rootScale 3.4 /rootRot 5 0 240
+menu3d addZSpin MenuDecoSolo SwordsSolo 40
+sym set _PosCoop "-60 10"
+menu3d addChild MenusVRPlay MenuDiskCoop /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosCoop 0 /rootScale 0.45 0.45 0.6
+if !backendIsOfflineOk && sym GSS_Ok_Locs != 0 runnow menu3d logicFnc MenuDiskCoop amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchPlay Coop] /cmdunfocus [menucmd UnTouchPlay Coop]
+menu3d addChild MenusVRPlay MenuRingCoop /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /noVis /worldPose $$_PosCoop 0 /rootScale 0.5
+if !backendIsOfflineOk && sym GSS_Ok_Locs != 0 runnow menu3d addChild MenusVRPlay MenuDecoCoop /model vr/SwordsCoop.amf /material mat_IconsSwords /noVis /worldPose $$_PosCoop 10 /rootScale 1.5 /rootRot -20 0 0
+if !backendIsOfflineOk && sym GSS_Ok_Locs == 0 runnow menu3d addChild MenusVRPlay MenuDecoCoop /model vr/SwordsCoop.amf /material mat_IconsSwordsDis /noVis /worldPose $$_PosCoop 0 /rootScale 1.5 /rootRot -80 0 0
+if backendIsOfflineOk runnow menu3d addChild MenusVRPlay MenuDecoCoop /model vr/SwordsCoop.amf /material mat_IconsSwordsDis /noVis /worldPose $$_PosCoop 0 /rootScale 1.4 /rootRot -20 5 0 /worldPose $$_PosCoop 5
+menu3d addChild MenusVRPlay MenuLabelCoop /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosCoop -30 /rootScale 3.4 /rootRot 5 0 220
+if !backendIsOfflineOk && sym GSS_Ok_Locs != 0 menu3d addZSpin MenuDecoCoop SwordsCoop 50
+sym set _PosPvP "-20 50"
+menu3d addChild MenusVRPlay MenuDiskPvP /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosPvP 0 /rootScale 0.45 0.45 0.6
+if !backendIsOfflineOk && sym GSS_Ok_Locs != 0 runnow menu3d logicFnc MenuDiskPvP amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchPlay PvP]/cmdunfocus [menucmd UnTouchPlay PvP]
+menu3d addChild MenusVRPlay MenuRingPvP /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /worldPose $$_PosPvP 0 /rootScale 0.5
+if !backendIsOfflineOk && sym GSS_Ok_Locs != 0 runnow menu3d addChild  MenusVRPlay MenuDecoPvP /model vr/SwordsPvP.amf /material mat_IconsSwords /noVis /worldPose $$_PosPvP 5 /rootScale 1.5 /rootRot -20 0 0
+if !backendIsOfflineOk && sym GSS_Ok_Locs == 0 runnow menu3d addChild  MenusVRPlay MenuDecoPvP /model vr/SwordsPvP.amf /material mat_IconsSwordsDis /noVis /worldPose $$_PosPvP 0
+if backendIsOfflineOk runnow menu3d addChild  MenusVRPlay MenuDecoPvP /model vr/SwordsPvP.amf /material mat_IconsSwordsDis /noVis /worldPose $$_PosPvP 0
+menu3d setRootScale MenuDecoPvP	1.5
+menu3d setRootRot MenuDecoPvP -20 0 0
+menu3d addChild MenusVRPlay MenuLabelPvP /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosPvP -30 /rootScale 3.4 /rootRot 5 0 200
+if !backendIsOfflineOk && sym GSS_Ok_Locs != 0 menu3d addZSpin MenuDecoPvP SwordsPvP 60
+sym set _PosSpectate "55 45"
+menu3d addChild	MenusVRPlay MenuDiskSpectate /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosSpectate 0 /rootScale 0.45 0.45 0.6
+if !backendIsOfflineOk && sym GSS_Ok_Locs != 0 runnow menu3d logicFnc MenuDiskSpectate amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchPlay Spectate] /cmdunfocus [menucmd UnTouchPlay Spectate]
+menu3d addChild MenusVRPlay MenuRingSpectate /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /worldPose $$_PosSpectate 0 /rootScale 0.5
+menu3d addChild MenusVRPlay MenuDecoSpectate /model flair/MovieCamera/MovieCamera.amf /material mat_MovieCamera /noVis /worldPose $$_PosSpectate 20 /rootScale 20 /rootRot 0 0 120
+menu3d animate MenuDecoSpectate flair/MovieCamera/Idle.aaf looping 0 0.5
+menu3d addChild MenusVRPlay MenuLabelSpectate /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosSpectate -30 /rootScale 3.4 /rootRot 5 0 150
+sym set _PosPlayFriends "18 -70"
+menu3d addChild MenusVRPlay MenuDiskPlayFriends /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosPlayFriends 0 /rootScale 0.3 0.3 0.6
+menu3d logicFnc MenuDiskPlayFriends amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchPlay PlayFriends] /cmdunfocus [menucmd TouchPlay PlayFriends]
+menu3d addChild MenusVRPlay MenuRingPlayFriends /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /worldPose $$_PosPlayFriends 0 /rootScale 0.35
+menu3d addChild MenusVRPlay MenuDecoPlayFriends /model rooks/Mechy/Mechy_Ref.amf /material mat_MechyBlue /material mat_MechyThrust  /noVis /worldPose 18 -75 0 /rootScale 12 /rootRot -12 0 0
+menu3d animate MenuDecoPlayFriends rooks/Mechy/Mechy_Hover_1.aaf looping 0 1.0
+pcmd 0.45 menu3d writeWorldPos MenuDiskCoop _WorldPosCoop /xy
+pcmd 0.45 menu3d writeWorldPos MenuDiskSolo _WorldPosSolo /xy
+pcmd 0.45 menu3d writeWorldPos MenuDiskPvP _WorldPosPvP /xy
+pcmd 0.45 menu3d writeWorldPos MenuDiskSpectate _WorldPosSpectate /xy
+if sym DevMode == 1 runnow pcmd 0.45 menu3d writeWorldPos MenuDiskPlayFriends _WorldPosPlayFriends /xy
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosCoop -3.4 /label MenuColCoop
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosSolo -3.4 /label MenuColSolo
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosPvP -3.4 /label MenuColPvP
+pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosSpectate -3.4 /label MenuColSpectate
+if sym DevMode == 1 runnow pcmd 0.5 spawn VRMenuSphereCol3 /pos $_WorldPosPlayFriends -3.4 /label MenuColPlayFriends
+pcmd 0.0 menucmd ShowVrMenuSet Solo
+pcmd 0.2 menucmd ShowVrMenuSet Coop
+pcmd 0.4 menucmd ShowVrMenuSet PvP
+pcmd 0.4 menucmd ShowVrMenuSet Spectate
+if sym DevMode == 1 runnow pcmd 0.8 menucmd ShowVrMenuSet PlayFriends
+sym set PrevVrMenu Play
+sym set LastVrMenu Play

@@ -1,0 +1,24 @@
+onloadrun {
+if sym CurrentMenu == CHome && console menuCmd ConMenuBlur
+if sym CurrentMenu == CRoot && console menuCmd ConMenuBlur
+gameui clearScrollableDrawHashes
+sym clear RedeemCode
+}
+MO RedeemCodeDialogMaster {
+pos 0 0
+layer 15
+}
+onload {
+addUIAnim ShopFrameEnterCodes mas_DialogPop
+gameui promoteToTop RedeemCodeDialogMaster
+sym push CurrentMenu DialogRedeemCode
+sym push DisableConShop 1
+sym set DialogRedeemCode 1
+}
+onunloadrun {
+rookMenus previewClear
+sym pop CurrentMenu DisableConShop
+sym set DialogRedeemCode 0
+if sym CurrentMenu == CHome && console menuCmd ConMenuSharp
+if sym CurrentMenu == CRoot && console menuCmd ConMenuSharp
+}

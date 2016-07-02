@@ -1,0 +1,20 @@
+onloadrun {
+loadmenu MenuBlackout /requireExplicitClear
+gameUI ignoreInputTime 0.5
+}
+MO UpsellMaster {
+pos 0 0
+}
+onload {
+}
+onload {
+gameUI ignoreInputTime 0.5
+gameui focusnametry ButtonUpsellStarter
+backend statOnceClear
+backend statOnce upsell2:open
+input set padFocusFallback ButtonUpsellStarter
+}
+onunload {
+backend statOnce upsell2:close
+backend statOnceClear
+}

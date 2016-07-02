@@ -1,0 +1,39 @@
+stopIfSymbol MatchOverInSummary == 1
+stopIfSymbol BlockAllUI == 1
+MO DummyFocus {
+pos 0 0
+}
+MO TryOutPromoMaster {
+pos 0 0
+}
+onloadrun {
+sym set _EnemyHudY 80
+sym set _AllyHudY 80
+sym set TryoutLoaded 1
+]sym set IsSpectator 0
+}
+MO MouseCursorMasterTemp +gameValidation !nacl +gamevalidation !android +gamevalidation !consoleHW {
+pos 0 0
+layer $MouseCursor_Layer
+}
+MO MouseCursorMasterNaclTemp +gameValidation nacl +gamevalidation !console {
+pos 0 0
+layer $MouseCursor_Layer
+}
+MO MouseCursorMasterConsoleTemp +gamevalidation consoleHW {
+pos 0 0
+layer $MouseCursor_Layer
+}
+MO ServerDowntimeNotifier {
+pos 0 -70
+layer $DowntimeNotifier_Layer
+}
+onload {
+if sym CockpitIsOpen == 0 runnow rookMenus abilityFocus 0
+sym set UnitsBarActivate 0
+if sym P_AccessLevel > 0 gameUI show CanaryReport
+if !netgame && !replay && !spectator runnow sym set P_Name0 $P_Name
+}
+onunload {
+sym set TryoutLoaded 0
+}

@@ -1,0 +1,2121 @@
+add MenuObject
+set Name InspectDialogFrame
+set Texture menus/Inspect+lang
+set Coords "0 0 10 10"
+set CoordsStart "0 0 80 80"
+set CoordsMid "80 0 80 80"
+set CoordsEnd "159 0 80 80"
+set CoordsStartFocused "0 80 80 80"
+set CoordsMidFocused "80 80 80 80"
+set CoordsEndFocused "159 80 80 80"
+set CoordsStartDisabled "0 160 80 80"
+set CoordsMidDisabled "80 160 80 80"
+set CoordsEndDisabled "159 160 80 80"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 650
+set RenderCB_DY 840
+add MenuObject initFrom InspectDialogFrame
+set Name InspectDialogFrameWide
+set RenderCB_DX 1334
+add MenuObject initFrom InspectDialogFrame
+set Name SelectAirMechDialogFrame
+set RenderCB_DX 973
+set RenderCB_DY 786
+add MenuObject
+set Name SplashPromoTab
+set Coords "772 795 117 229"
+set CoordsFocused "902 795 117 229"
+set Texture menus/ShopParts+lang
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledAlphaTimeIn 0.0
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.2
+set Focus -2
+set MouseInteract 1
+set CommandGetFocus "sym set PromoCycleSuspend 1"
+set CommandLoseFocus "sym set PromoCycleSuspend 0"
+add MenuObject initFrom SplashPromoTab
+set Name SplashPromoTabLeft
+set CommandPress "rook prevPromo"
+set MirrorOnX 1
+add MenuObject initFrom SplashPromoTab
+set Name SplashPromoTabRight
+set CommandPress "rook nextPromo"
+add MenuObject initFrom InspectDialogFrame
+set Name SplashPromoFrame
+set RenderCB_DX 1334
+set RenderCB_DY 841
+set Child "PromoButtonClose 1248 38 SplashPromo"
+set Child "SplashPromoTabRight 1310 338"
+set Child "SplashPromoTabLeft -93 338"
+add MenuObject initFrom InspectDialogFrame
+set Name MainPromoFrame
+set RenderCB_DX 1100
+set RenderCB_DY 697
+add MenuObject initFrom InspectDialogFrame
+set Name ConMotDFrame
+set RenderCB_DX 2050
+set RenderCB_DY 555
+add MenuObject initFrom InspectDialogFrame
+set Name PcMotDFrame
+set RenderCB_DX 2050
+set RenderCB_DY 535
+add MenuObject initFrom InspectDialogFrame
+set Name ShopFrame
+set RenderCB_DX 1390
+set RenderCB_DY 960
+add MenuObject
+set Name InspectDialogHideInfo
+set Texture menus/Inspect+lang
+set Coords "232 161 70 67"
+set CoordsFocused "248 161 70 67"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set MirrorOnX 1
+set Focus -2
+set MouseInteract 1
+set CommandPress "sym set DialogPageDisplay 0"
+set CommandPress "floatsym set Scrollable0Pos 0"
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name InspectDialogTextShadow
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "523 764"
+set Color @_Arg1_@
+set SaveArgs 1
+set NoAlphaMod 1
+set Alpha 0.9
+set Child "InspectDialogHideInfo 0 0"
+add MenuObject
+set Name InspectDialogTextShadowMap
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "523 764"
+set Color @_Arg1_@
+set SaveArgs 1
+set NoAlphaMod 1
+set Alpha 0.9
+add MenuObject
+set Name InspectDialogShowInfo
+set Texture menus/Inspect+lang
+set Coords "232 92 70 141"
+set CoordsFocused "248 92 70 141"
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "-10 -10 10 10"
+set HiddenCheckBySymbol DialogPageDisplay
+set CommandPress "sym set DialogPageDisplay 1"
+set CommandPress "sym set UnlockOnBuyConfirmUI 0"
+set CommandPress "gameui disable UnlockCashArrow"
+set CommandPress "gameUI hideGroup UnlockDiamondsConfirm UnlockKudosConfirm UnlockCashConfirm NYPWindow"
+set HiddenCheckBySymbolInv InputMK
+add MenuObject
+set Name DialogPageActive
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "30 30"
+set NoAlphaMod 1
+set SaveArgs 1
+set Alpha 0.85
+set HiddenCheckBySymbolValue DialogPageDisplay!@_Arg1_@
+add MenuObject
+set Name DialogPageBox
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "30 30"
+set Color 0x000000
+set ColorFocused 0x446677
+set NoAlphaMod 1
+set SaveArgs 1
+set MouseInteractZoneExpand "-10 -10 10 10"
+set Alpha 0.5
+set Focus -2
+set MouseInteract 1
+set CommandPress ">sym set DialogPageDisplay @_Arg1_@"
+set HiddenCheckBySymbolValue DialogPageCount<@_Arg1_@
+set Child "DialogPageActive 0 0	 	@_Arg1_@"
+add MenuObject
+set Name DialogPageActiveNew
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "160 30"
+set Color 0x446677
+set NoAlphaMod 1
+set SaveArgs 1
+set Alpha 0.85
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg2_@
+set RenderCB_DX 150
+set RenderCB_DY 16
+set RenderCB_Offset "5 7"
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/nmi /shadowed /fitX"
+set RenderCBExcludesDefaultRender 0
+set HiddenCheckBySymbolValue DialogPageDisplay!@_Arg1_@
+add MenuObject
+set Name DialogPageBoxNew
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "160 30"
+set Color 0x000000
+set ColorFocused 0x446677
+set NoAlphaMod 1
+set SaveArgs 1
+set MouseInteractZoneExpand "-10 -10 10 10"
+set Alpha 0.5
+set Focus -2
+set MouseInteract 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg2_@
+set RenderCB_DX 150
+set RenderCB_DY 16
+set RenderCB_Offset "5 7"
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/nmi /shadowed /fitX"
+set RenderCBExcludesDefaultRender 0
+set CommandPress ">sym set DialogPageDisplay @_Arg1_@"
+set HiddenCheckBySymbolValue DialogPageCount<@_Arg1_@
+set Child "DialogPageActiveNew 0 0 	@_Arg1_@ @_Arg2_@"
+add MenuObject
+set Name DialogPageContainer
+set ContainerOnly 1
+set Child "DialogPageBoxNew[DialogPageBox1] -120 0		1 ButtonDesc"
+set Child "DialogPageBoxNew[DialogPageBox2] 50 0		2 ButtonStats"
+set Child "DialogPageBox[DialogPageBox3] 220 0			3"
+set Child "DialogPageBox[DialogPageBox4] 150 0			4"
+set Child "DialogPageBox[DialogPageBox5] 200 0			5"
+add MenuObject
+set Name InfoDialogStats
+set ContainerOnly 1
+set HiddenCheckBySymbolValue DialogPageDisplay!2
+set Child "MS_StatNameUnitB 5 14"
+set Child "HoverInfoUnit 0 64		B	/ifSym _ShowUnitBG_ == 1"
+set Child "LoadoutInfoAirMech 0 64	B	/ifSym _ShowRookBG_ == 1"
+add MenuObject
+set Name UnlockSalePercent
+set Texture menus/MainTiles+lang
+set Coords "555 381 105 37"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Offset "6 0"
+set MirrorOnY 1
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.5 0.2 0.1"
+set RenderCBExcludesDefaultRender 0
+add MenuObject
+set Name UnlockSaleStrikeout
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "110 3"
+set DefaultRotation 4.0
+add MenuObject
+set Name UnlockSaleOldPriceCash
+set Texture menus/MainTiles+lang
+set Coords "200 73 114 30"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB _DrawText
+set RenderCB_Flags "/shadowed"
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Offset "0 -1"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "0.85"
+set RenderCBExcludesDefaultRender 0
+set Child "UnlockSaleStrikeout 1 14"
+add MenuObject initFrom UnlockSaleOldPriceCash
+set Name UnlockSaleOldPriceDiamonds
+set RenderCB_ConsoleSymbol UnlockDialogDisplayCostDiamondsOld
+add MenuObject initFrom UnlockSaleOldPriceCash
+set Name UnlockSaleOldPriceKudos
+set RenderCB_ConsoleSymbol UnlockDialogDisplayCostKudosOld
+add MenuObject
+set Name UnlockOnSaleCash
+set ContainerOnly 1
+set SaveArgs 3
+set Coords "0 0 384 99"
+set HiddenCheckBySymbolInv @_Arg1_@
+set Child "UnlockSalePercent 136 -20			@_Arg3_@"
+set Child "UnlockSaleOldPriceCash 18 -15		@_Arg2_@"
+add MenuObject
+set Name UnlockOnSaleCashDiscountOnly
+set ContainerOnly 1
+set SaveArgs 2
+set Coords "0 0 384 99"
+set HiddenCheckBySymbolInv @_Arg1_@
+set Child "UnlockSalePercent 136 -20			@_Arg2_@"
+add MenuObject
+set Name UnlockOnSaleDiamonds
+set ContainerOnly 1
+set Coords "0 0 384 99"
+set HiddenCheckBySymbolInv UnlockOnSaleDiamonds
+set Child "UnlockSalePercent 136 -20			UnlockOnSaleCashDiscount"
+set Child "UnlockSaleOldPriceDiamonds 18 -15"
+add MenuObject
+set Name UnlockOnSaleKudos
+set ContainerOnly 1
+set Coords "0 0 384 99"
+set HiddenCheckBySymbolInv UnlockOnSaleKudos
+set Child "UnlockSalePercent 136 -20			UnlockOnSaleCashDiscount"
+set Child "UnlockSaleOldPriceKudos 18 -15"
+add MenuObject
+set Name UnlockConfirmPulse
+set Coords "401 506 277 99"
+set Texture menus/MainTiles+lang
+set BlendMode BlendAdd
+set PulseAlpha "0.4 -0.6 -0.5"
+add MenuObject
+set Name UnlockConfirmButtonTemplate
+set Texture menus/MainTiles+lang
+set Coords "401 506 277 99"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.2
+set MouseInteract 1
+set Focus -2
+set RenderCB _DrawUTextShadowedNMI
+set RenderCB_DX 277
+set RenderCB_DY 99
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCBExcludesDefaultRender 0
+set DrawWhenFocused UnlockCardHighlightMd
+set Child "UnlockConfirmPulse 0 0"
+add MenuObject
+set Name UnlockDialogButtonHighlight
+set Texture menus/LoginTempHighlight
+set PulseAlpha "2.5 -0.75 0.0"
+set Coords "7 1 242 34"
+add MenuObject
+set Name UnlockDialogIcon
+set Texture @UnlockIconPath@@UnlockIconBase@+lang
+set Coords $UnlockIconCoords
+set RenderOffsetY $UIconOffsetY
+set NoDrawOnMissingTexture 1
+set HiddenCheckBySymbolInv _ShowSmIcon_
+set ScaleX 1.0
+set ScaleY 1.0
+set BlendMode NoBlend
+set ScaleRefToCoords 512.0
+add MenuObject
+set Name PartDisplayIcon
+set Texture @UnlockIconPath@@UnlockIconBase@
+set Coords $UnlockIconCoords
+set RenderOffsetY $UIconOffsetY
+set NoDrawOnMissingTexture 1
+set HiddenCheckBySymbolInv _ShowPartIcon_
+set ScaleX 1.2
+set ScaleY 1.2
+set ScaleRefToCoords 256.0
+add MenuObject
+set Name FrameDisplayIcon
+set Texture @UnlockIconPath@@UnlockIconBase@
+set Coords $UnlockIconCoords
+set RenderOffsetY $UIconOffsetY
+set NoDrawOnMissingTexture 1
+set HiddenCheckBySymbolInv _ShowFrameIcon_
+set ScaleX 1.5
+set ScaleY 1.5
+set ScaleRefToCoords 512.0
+add MenuObject
+set Name CardDisplayIcon
+set Texture @UnlockIconPath@@UnlockIconBase@
+set Coords "54 0 408 512"
+set NoDrawOnMissingTexture 1
+set DefaultRotation 5
+set HiddenCheckBySymbolInv _ShowCardIcon_
+add MenuObject
+set Name InspectMapDialogIcon
+set Texture /data/levels/@_InspectMap_@/preview
+set Coords "0 0 1024 512"
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoordsX 1258, ScaleRefToCoordsY 762
+add MenuObject
+set Name InfoPartsBackground
+set Texture promos/BGParts
+set Coords "0 260 1024 764"
+set ScaleX 1.23
+set HiddenCheckBySymbolInv _ShowPartBG_
+add MenuObject
+set Name InfoFramesBackground
+set Texture promos/BGFrames
+set Coords "0 260 1024 764"
+set ScaleX 1.23
+set HiddenCheckBySymbolInv _ShowFrameBG_
+add MenuObject
+set Name InfoUnitsBackground
+set Texture promos/BGUnit
+set Coords "0 260 1024 764"
+set ScaleX 1.23
+set HiddenCheckBySymbolInv _ShowUnitBG_
+add MenuObject
+set Name InfoCardsBackground
+set Texture promos/BGCard
+set Coords "0 260 1024 764"
+set ScaleX 1.23
+set HiddenCheckBySymbolInv _ShowCardBG_
+add MenuObject
+set Name InfoOtherBackground
+set Texture promos/BGOther
+set Coords "0 260 1024 764"
+set ScaleX 1.23
+set HiddenCheckBySymbolInv _ShowOtherBG_
+add MenuObject
+set Name InfoFrameForeground
+set Texture promos/ItemFrame
+set Coords "0 260 1024 764"
+set ScaleX 1.23
+set HiddenCheckBySymbolInv _ShowFrameFG_
+add MenuObject
+set Name InfoDialogBackground
+set NoDrawOnMissingTexture 1
+set Texture promos/@UnlockIconBase@+lang
+set TextureAlt promos/@PromoIcon@+lang
+set Coords "0 260 1024 764"
+set CoordsAnimated "120 260 470 764"
+set CoordsAnimated "0 260 1024 764"
+set CoordsAnimationSymHash InspectDialogState
+set ScaleX 1.23
+add MenuObject initFrom DialogTitle
+set Name InfoDialogTitleText
+set RenderCB_Text $_UnlockDlgTitle
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.1
+set RenderCB_RGBColor "0.8 0.8 0.8"
+set RenderCB_ConsoleSymbol ""
+set RenderCB_ConsoleSymbol2 $UnlockObjectNameRef
+set RenderCB_ConsoleSymbol3 $UnlockObjectNameRef2
+set RenderCB_Flags "/shadowed /allowExplRefValue"
+set RenderCB_DX 1300
+add MenuObject
+set Name ComesWithPrimeText
+set RenderCB _DrawUText
+set Coords "0 0 800 50"
+set RenderCB_Text ComesWithPrimeText
+set RenderCB_Font RobotoBold
+set RenderCB_DX 0
+set RenderCB_DY 0
+set DisplayAsFocusedIfParentFocused 1
+set RenderCB_RGBColor 0x45dde3
+set RenderCB_RGBColorFocused 0x7dfaff
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.75
+set RenderCB_Flags "/outlined8x /shadowColor2 /nmi"
+add MenuObject
+set Name InfoDialogComesWithPrime
+set Texture fonts/SpecialChars
+set Coords "268 202 60 60"
+set HiddenCheckBySymbolInv UnlockGetWithPrime
+set Child "ComesWithPrimeText 60 12"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "0 0 600 0"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "clearmenu UnlockDialog.txt"
+set CommandPress "menuCmd StorePromoUnlockOrInspectPrimeBundleTry"
+add MenuObject
+set Name InfoCardTitleText
+set RenderCB _DrawUText_G3x1
+set Coords "0 0 1200 10"
+set Texture menus/Inspect+lang
+set CoordsStart "146 915 30 96"
+set CoordsMid "175 915 20 96"
+set CoordsEnd "220 915 136 96"
+set RenderCB_Text $DialogBoxTitle
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text $_UnlockDlgTitle
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB_ConsoleSymbol ""
+set RenderCB_ConsoleSymbol2 $UnlockObjectNameRef
+set RenderCB_ConsoleSymbol3 $UnlockObjectNameRef2
+set RenderCB_Flags "/shadowed /fitX /allowExplRefValue"
+set RenderCB_DX 700
+set RenderCB_DY 10
+add MenuObject initFrom InfoCardTitleText
+set Name TryoutCardTitleText
+set RenderCB_DX 450
+add MenuObject
+set Name InfoDialogCurrentCount
+set Texture menus/HomeBar
+set Coords "868 227 152 162"
+set RenderCB _DrawText
+set RenderCB_Font DroidSansBigNumbers
+set RenderCBExcludesDefaultRender 0
+set RenderCB_TextJustify JustifyXCenter
+set ScaleX 0.6, ScaleY 0.6
+set RenderCB_DX 100
+set RenderCB_DY 120
+set MirrorOnX 1
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.6
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_ConsoleSymbol UnlockOwnedCount
+set HiddenCheckBySymbolValue "UnlockOwnedCount= 0"
+set RenderCB_Flags "/shadowed /allowExplRefValue"
+add MenuObject
+set Name UnlockDialogTitle
+set Texture menus/MainTiles+lang
+set Coords "974 367 24 60"
+set TileArea "1260 60"
+set TileAreaFullTexture 0
+set Child "InfoDialogTitleText 20 5"
+set Child "InfoDialogCurrentCount 450 -83"
+set Child "UnlockDialogCancel 0 0"
+add MenuObject
+set Name InspectDialogTitle
+set Texture menus/MainTiles+lang
+set Coords "974 367 24 60"
+set TileArea "1260 60"
+set TileAreaFullTexture 0
+set Child "InfoDialogTitleText 20 5"
+add MenuObject
+set Name InfoDialogMessage
+set Coords "0 0 430 500"
+set RenderCB_DX 430
+set RenderCB_DY 500
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 0.7
+set RenderCB _DrawUTextScrollable0
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 21
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9 0.9 0.9"
+set RenderCB_Text $UnlockObjectDescRef
+set RenderCB_ConsoleSymbol @UnlockObjectDescRef2@
+set RenderCB_Flags "/jp_on_scej"
+set CommandOnCreate "floatsym set Scrollable0Pos 0"
+set HiddenCheckBySymbolValue DialogPageDisplay!1
+add MenuObject
+set Name InfoDialogMessageScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 450 500"
+set CommandOnMouseDrag "floatsym scaledMod Scrollable0Pos 0.05 $_Wheel 0 1"
+add MenuObject
+set Name InfoDialogMessageScrollWheelZone_H
+set ContainerOnly 1
+set Child "InfoDialogMessageScrollWheelZone 0 0"
+add MenuObject
+set Name InfoDialogMessageScrollbar_Base
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set ScaleY 0.88
+set ScaleX 2.5
+set Color 0x000000
+set NoAlphaMod 1
+set Alpha 0.3
+set HiddenCheckBySymbol Scrollable0ScrollBarHidden
+add MenuObject initFrom InfoDialogMessageScrollbar_Base
+set Name InfoDialogMessageScrollbar
+set ScaleY 1.1
+set Child "InfoDialogMessageScrollbarPos 0 0"
+set HiddenCheckBySymbolValue DialogPageDisplay!1
+add MenuObject
+set Name InfoDialogMessageScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult Scrollable0Pos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set Color 0x888888
+set ColorFocused 0xcccccc
+set Focus -2
+set CommandOnMouseDrag "floatsym set Scrollable0Pos $_MouseRelY"
+set StickScrollByMenuCallback InfoDialogScroller
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.1
+set ScaleX 2.5
+add MenuObject initFrom InfoDialogMessage
+set Name InfoDialogMessage_Inspect
+set Coords "0 0 455 800"
+set RenderCB_DX 455
+set RenderCB_DY 800
+set RenderCB_Flags ""
+set RenderCB_Font Roboto
+set RenderCB_IntArg 22
+set HiddenCheckBySymbolValue DialogPageDisplay!1
+add MenuObject initFrom InfoDialogMessageScrollWheelZone
+set Name InfoDialogMessageScrollWheelZone_Inspect
+set Coords "0 0 450 640"
+add MenuObject
+set Name InfoDialogMessageScrollWheelZone_Inspect_H
+set ContainerOnly 1
+set Child "InfoDialogMessageScrollWheelZone_Inspect 0 0"
+add MenuObject initFrom InfoDialogMessageScrollbar_Base
+set Name InfoDialogMessageScrollbar_Inspect
+set ScaleY 1.15
+set Child "InfoDialogMessageScrollbarPos_Inspect 0 0"
+set HiddenCheckBySymbolValue DialogPageDisplay!1
+add MenuObject initFrom InfoDialogMessageScrollbarPos
+set Name InfoDialogMessageScrollbarPos_Inspect
+set ScaleY 1.15
+add MenuObject initFrom DialogMessage
+set Name UnlockDialogExclMessage
+set RenderCB_Text $_CustomUnlockTEDesc
+set RenderCB_ConsoleSymbol ""
+set HiddenCheckBySymbolInv _CustomUnlockTimedExclusive
+set RenderCB_RGBColor "0.427 0.88 0.88"
+set RenderCB_DX 400
+set RenderCB_FontScale 1.05
+add MenuObject
+set Name UnlockDialogCancelHighlight
+set Coords "200 6 174 57"
+set Texture menus/MainTiles+lang
+set NoAlphaMod 1
+set BlendMode BlendAdd
+set Alpha 0.4
+add MenuObject initFrom UnlockDialogCancelBase
+set Name UnlockDialogCancel
+set Coords "200 6 174 57"
+set Texture menus/MainTiles+lang
+set DrawWhenFocused UnlockDialogCancelHighlight
+set Focus -2
+set MouseInteract 1
+set CommandPress "sym set UnlockDialogCanceled 1"
+set CommandPress "clearmenu UnlockDialog.txt"
+set CommandCancel "sym set UnlockDialogCanceled 1"
+set CommandCancel "clearmenu UnlockDialog.txt"
+set CommandFocusDown "gameUI focusNameTry UnlockWithKudosFrame UnlockWithDiamondsFrame UnlockWithCashFrame"
+add MenuObject
+set Name InspectDialogCancelVis
+set Coords "449 4 58 58"
+set CoordsFocused "386 4 58 58"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/MainTiles+lang
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name InspectDialogCancel
+set Coords "0 0 58 58"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 0.2"
+set CommandPress "sym clear _CustomExecSlot"
+set CommandPress "sym setZero _CustomPartType _CustomAirMechType"
+set CommandPress "clearmenu UnlockDialog.txt"
+set CommandPress "clearmenu InspectDialog.txt"
+set CommandPress "clearmenu InspectMapDialog.txt"
+set CommandCancel "gameui ignoreInputTime 0.2"
+set CommandCancel "clearmenu UnlockDialog.txt"
+set CommandCancel "clearmenu InspectDialog.txt"
+set CommandCancel "clearmenu InspectMapDialog.txt"
+set CommandFocusDown "gameUI focusNameTry InspectOptionFrame SellPriceDiamondsBox"
+set Child "InspectDialogCancelVis 0 0"
+add MenuObject initFrom InspectDialogCancel
+set Name InspectDialogCancelSell
+set CommandPress "clearmenu DialogMarketList.txt"
+set CommandCancel "clearmenu DialogMarketList.txt"
+add MenuObject
+set Name InspectPromoDialogCancel
+set Coords "449 4 58 58"
+set CoordsFocused "386 4 58 58"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set Texture menus/MainTiles+lang
+set Focus -2
+set MouseInteract 1
+set CommandPress "]gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu InspectPromoDialog.txt"
+set CommandCancel "clearmenu InspectPromoDialog.txt"
+set CommandFocusDown "gameUI focusNameTry InspectOptionFrame"
+add MenuObject initFrom DialogMessage
+set Name UnlockMsgBase
+set RenderCB_FontScale 0.8
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol ""
+add MenuObject
+set Name CostIconTemplate
+set Texture menus/MainTiles+lang
+set RenderCB_RGBColor 0xffffff
+set Coords "768 310 54 49"
+set RenderCB_DX 240
+set RenderCB_DY 52
+set RenderCB_Offset "70 0 0"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.2
+set ScaleX 0.8
+set ScaleY 0.8
+set RenderCB_Font RobotoBold_NoFallback
+set RenderCBExcludesDefaultRender 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x"
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockWithKudosMsg
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol _UnlockWithKudosMsg
+set RenderCB_FontScale 0.8
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockWithKudosCurrentMsg
+set RenderCB_Text UnlockWithKudosCurrentMsg
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockCurrentMsg
+set RenderCB_Text UnlockCurrentMsg
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockWithCostMsg
+set RenderCB_Text UnlockWithCostMsg
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockWithSep
+set RenderCB_Text UnlockWithSep
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockWithBalance
+set RenderCB_Text UnlockWithBalance
+add MenuObject initFrom CostIconTemplate
+set Name UnlockDialogCostCashBig
+set Coords "888 245 42 49"
+set RenderCBExcludesDefaultRender 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text BuyPricePrefix@P_Currency@
+set RenderCB_ConsoleSymbol2 UnlockDialogDisplayCostCash
+set RenderCB_ConsoleSymbol3 BuyPricePostfix@P_Currency@
+set RenderCB_Offset "4 -4 0"
+set HiddenCheckBySymbol UnlockDialogUseUSPPrice
+add MenuObject initFrom CostIconTemplate
+set Name UnlockDialogCostCashBigUSP
+set Coords "888 245 42 49"
+set RenderCBExcludesDefaultRender 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_ConsoleSymbol UnlockDialogDisplayCostCashUSP
+set RenderCB_Offset "4 -4 0"
+set HiddenCheckBySymbolInv UnlockDialogUseUSPPrice
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockDialogCostKudos
+set RenderCB_Text UnlockCostPrefix
+set RenderCB_ConsoleSymbol2 UnlockDialogDisplayCostKudos
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_DX 180
+add MenuObject initFrom CostIconTemplate
+set Name UnlockDialogCostKudosBig
+set Coords "838 310 49 49"
+set ScaleX 1.15, ScaleY 1.15
+set RenderCB_Text UnlockCostPrefix
+set RenderCB_ConsoleSymbol2 UnlockDialogDisplayCostKudos
+add MenuObject initFrom PStatusBarKudos
+set Name UnlockDialogCurrentKudos
+set RenderCB_DX 96
+set RenderCB_TextJustify JustifyXRight
+add MenuObject initFrom UnlockDialogCostKudos
+set Name UnlockDialogBalanceKudos
+set RenderCB_Text UnlockCostPrefix
+set RenderCB_ConsoleSymbol2 UnlockBalanceKudos
+add MenuObject
+set Name UnlockWithKudosButton
+set Texture menus/Inspect+lang
+set Coords "488 169 245 79"
+set DrawWhenFocused FocusUnlockButton
+set DrawWhenFocusedOffset "-4 -4"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set MouseInteract 1
+set Focus -2
+set RenderCB _DrawUTextShadowedNMI
+set RenderCB_DX 0
+set RenderCB_DY 0
+set DisabledAlpha 0.5
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Text DialogButtonConfirm
+set CommandPress "menucmd TryUnlockKudos"
+set CommandPress "gameui disable UnlockWithKudosButton"
+set CommandPress "sym set UnlockOnBuyConfirmUI 0"
+set CommandCancel "sym set DialogPageDisplay 1"
+set CommandCancel "if usingPad gameui focusnametry UnlockWithKudosFrame"
+set CommandCancel "gameUI hideGroup UnlockDiamondsConfirm UnlockKudosConfirm"
+set CommandCancel "sym set UnlockOnBuyConfirmUI 0"
+set CommandFocusLeft "gameUI focusNameTry UnlockWithKudosFrame"
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockDialogCostDiamonds
+set RenderCB_Text UnlockCostPrefix
+set RenderCB_ConsoleSymbol2 UnlockDialogDisplayCostDiamonds
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_DX 180
+add MenuObject initFrom CostIconTemplate
+set Name UnlockDialogCostDiamondsBig
+set ScaleX 1.15, ScaleY 1.15
+set RenderCB_Text UnlockCostPrefix
+set RenderCB_ConsoleSymbol2 UnlockDialogDisplayCostDiamonds
+set RenderCB_Offset "0 0 0"
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockWithDiamondsMsg
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol _UnlockWithDiamondsMsg
+set RenderCB_FontScale 0.8
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX /shadowed"
+set Coords "0 0 250 80"
+set RenderCB_DX 250
+set RenderCB_DY 80
+set RenderCB_BoolArg 0
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockWithDiamondsCurrentMsg
+set RenderCB_Text UnlockWithDiamondsCurrentMsg
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockMoreOptionsText
+set RenderCB_Text UnlockMoreOptionsText
+set RenderCB_FontScale 0.7
+set RenderCB_RGBColor "0.9"
+add MenuObject initFrom UnlockDialogCostDiamonds
+set Name UnlockDialogCurrentDiamondsBig
+set RenderCB_ConsoleSymbol2 P_Diamonds
+add MenuObject initFrom PStatusBarDiamonds
+set Name UnlockDialogCurrentDiamonds
+set RenderCB_DX 96
+set RenderCB_TextJustify JustifyXRight
+add MenuObject initFrom UnlockDialogCostDiamonds
+set Name UnlockDialogBalanceDiamonds
+set RenderCB_ConsoleSymbol2 UnlockBalanceDiamonds
+add MenuObject initFrom DialogButtonTemplate
+set Name ItemTrialButton
+set RenderCB_Text ItemTrialButtonText
+set RenderCB_FontScale 0.8
+set CommandPress "menucmd TryItemTrial"
+add MenuObject initFrom CostIconTemplate
+set Name ItemTrialMessage
+set RenderCB_Offset "20 -8 0"
+set RenderCBExcludesDefaultRender 1
+set RenderCB_Text ItemTrialButtonText
+set RenderCB_Font RobotoBold
+add MenuObject initFrom UnlockMsgBase
+set Name ItemTrialDesc
+set RenderCB_Text ItemTrialDesc
+set RenderCB_FontScale 0.8
+add MenuObject
+set Name UnlockCardHighlight
+set Texture menus/MainTiles+lang
+set PulseAlpha "0.667 -0.4 -0.2"
+set Coords "8 813 384 99"
+set BlendMode BlendAdd
+add MenuObject initFrom UnlockCardHighlight
+set Name UnlockMoreCardHighlight
+set Texture menus/LoadoutGrid
+set Coords "8 886 384 56"
+add MenuObject initFrom UnlockCardHighlight
+set Name UnlockCardHighlightSm
+set ScaleX 0.56
+add MenuObject initFrom UnlockCardHighlight
+set Name UnlockCardHighlightMd
+set ScaleX 0.72
+add MenuObject
+set Name UnlockCardTemplate
+set Texture menus/MainTiles+lang
+set Coords "8 506 384 99"
+set Focus -2
+set MouseInteract 1
+set DrawWhenFocused UnlockCardHighlight
+set CommandPress "playsound $MenuSoundClick"
+add MenuObject
+set Name UnlockMoreOptions
+set Texture menus/LoadoutGrid
+set Coords "8 952 384 56"
+set Focus -2
+set MouseInteract 1
+set HiddenCheckBySymbol UnlockDialogSpendCashHidden
+set DrawWhenFocused UnlockMoreCardHighlight
+set CommandPress "playsound $MenuSoundClick"
+set Child "UnlockMoreOptionsText 80 18"
+set CommandPress "gameUI ignoreInputTime 0.15"
+set CommandPress "gameUI disable UnlockMoreOptions"
+set CommandPress "addUIAnim UnlockOptions mas_CashShow"
+add MenuObject initFrom UnlockCardTemplate
+set Name ItemTrialFrame
+set HiddenCheckBySymbol UnlockTrialHidden
+set RenderOffsetY $UTrialOffset
+set CommandPress "menucmd TryItemTrial"
+set Child "ItemTrialMessage 120 14"
+set Child "ItemTrialDesc 30 60"
+add MenuObject initFrom UnlockCardHighlight
+set Name UnlockWithPaypalHighlight
+set HiddenCheckBySymbolInv PaymentProviderPaypal
+set ScaleX 0.7
+add MenuObject
+set Name UnlockWithTemplate
+set DrawWhenFocused FocusPaymentButton
+set DrawWhenFocusedOffset "-15 -14 0"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 1.0"
+add MenuObject initFrom UnlockWithTemplate
+set Name UnlockWithPaypal
+set Coords "438 949 252 53"
+set Texture menus/MainTiles+lang
+set Focus -2
+set MouseInteract 1
+set CommandGetFocus "sym set P_Pay paypal"
+set CommandGetFocus "sym set PaymentProviderPaypal 1"
+set CommandPress "menucmd TryUnlockCash"
+add MenuObject initFrom PanelResizeClear
+set Name UnlockCashBuffer
+set TileArea "298 500"
+add MenuObject
+set Name UnlockCashChooseEasy
+set Coords "944 230 450 450"
+set CoordsStart "944 230 12 12"
+set CoordsMid "956 230 47 12"
+set CoordsEnd "1003 230 12 12"
+set CoordsStartFocused "944 242 12 47"
+set CoordsMidFocused "956 242 47 47"
+set CoordsEndFocused "1003 242 12 47"
+set CoordsStartDisabled "944 289 12 12"
+set CoordsMidDisabled "956 289 47 12"
+set CoordsEndDisabled "1003 289 12 12"
+set RenderCB _Draw_G3x3
+set Texture menus/Messages
+set RenderCB_DX 624
+set RenderCB_DY 100
+set Color 0x33514d
+set ColorFocused 0x33514d
+set NoAlphaMod 1
+set Alpha 0.85
+set Focus -2
+set Hidden 1
+set MouseInteract 1
+set HiddenCheckBySymbol UnlockDialogSpendCashHidden
+set Child "UnlockWithPaypal 30 24"
+set Child "FocusPaymentFrame 3 3"
+add MenuObject initFrom UnlockCardTemplate
+set Name UnlockWithCashFrame
+set Texture menus/Inspect+lang
+set Coords "488 4 245 79"
+set DrawWhenFocused UnlockNewButtonHighlight
+set DrawWhenFocusedOffset "-4 -11"
+set DrawWhenFocusedOrder BeforeChildren
+set Disabled 1
+set CommandGetFocus "input set padFocusFallback UnlockWithCashFrame"
+set CommandPress "if sym DialogPageDisplay != 0 && !carbonPayment runnow menucmd TryUnlockCash"
+set CommandPress "if sym DialogPageDisplay != 0 && carbonPayment runnow menucmd ShowCarbonPayment"
+set CommandPress "if sym DialogPageDisplay != 0 sym set UnlockOnBuyConfirmUI 1"
+set CommandFocusUp "gameUI focusNameTry UnlockWithDiamondsFrame UnlockWithKudosFrame UnlockDialogCancel"
+set CommandFocusLeft "gameUI focusNameTry ConWishlistButtonRemove ConWishlistButtonAdd"
+set CommandCancel "sym set UnlockDialogCanceled 1"
+set CommandCancel "clearmenu UnlockDialog.txt"
+set Child "UnlockDialogCostCashBig 0 14"
+set Child "UnlockDialogCostCashBigUSP 0 14"
+set Child "UnlockOnSaleCash 0 0		UnlockOnSaleCash UnlockDialogDisplayCostCashOld UnlockOnSaleCashDiscount		/ifSym UnlockDialogUseUSPPrice == 0"
+set Child "UnlockOnSaleCashDiscountOnly 0 0		UnlockOnSaleCash UnlockOnSaleCashDiscount		/ifSym UnlockDialogUseUSPPrice == 1"
+add MenuObject
+set Name UnlockWithCashMsg
+set RenderCB_RGBColor 0xe5e4e3
+set RenderCB_FontScale 0.65
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set RenderCB_Text UnlockPaypalMsg
+set SaveArgs 1
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set Coords "0 0 300 350"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+add MenuObject
+set Name UnlockCashPaypalFocus
+set Texture menus/purchase
+set Coords "378 827 278 135"
+set BlendMode BlendAdd
+set Color 0x333333
+add MenuObject
+set Name UnlockCashPaypal
+set Texture menus/purchase
+set Coords "378 757 278 205"
+set Focus -2
+set MouseInteract 1
+set DrawWhenFocused FocusPaypalDiamonds
+set DrawWhenFocusedOffset "-15 64 0"
+set MouseInteractZoneExpand "0 70 0 0"
+set CommandPress "menucmd TryUnlockCash"
+set Child "UnlockWithCashMsg 0 -200"
+set Child "BuyDiamondsPaymentBigArrowL[UnlockCashArrow] -180 00"
+add MenuObject
+set Name UnlockCashConfirm
+set Texture menus/purchase
+set Coords "19 507 340 500"
+set Color 0x91ff96
+set Hidden 1
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.0
+set Child "UnlockGeneralBuffer 0 0"
+set Child "UnlockConfirmFrame -38 -38"
+set Child "UnlockCashPaypal 35 250"
+set Child "DiamondPackPriceTemplate 80 234 	UnlockDialogDisplayCostCash				/ifSym UnlockDialogUseUSPPrice == 0"
+set Child "DiamondPackPriceUSPTemplate 80 234 UnlockDialogDisplayCostCash				/ifSym UnlockDialogUseUSPPrice == 1"
+add MenuObject initFrom UnlockCardTemplate
+set Name UnlockWithKudosTemplate
+set Coords "8 607 384 99"
+set HiddenCheckBySymbol UnlockDialogSpendKudosHidden
+set RenderOffsetY $UKudosOffset
+set CommandPress "if sym GetDiamondsPanelHidden != 1 runnow addUIAnim QuickBuyDiamondsItems mas_BuyDiamondsPanelHide"
+set CommandPress "if sym GetDiamondsPanelHidden != 1 runnow addUIAnim UnlockDialogMaster mas_UnlockDialogRight"
+set CommandPress "gameUI show UnlockKudosConfirm"
+set CommandPress "gameUI hide UnlockDiamondsConfirm"
+set CommandPress "gameUI hide UnlockCashChoose"
+set CommandPress "if sym UnlockWillCostVIPShopTicket == 1 menucmd WillUseVIPShopTicketNotice"
+set CommandPress "gameUI saveFocusID _vipTicketNoticeRestoreFocus_"
+set CommandPress "if usingPad runNow gameUI focusNameTry UnlockWithKudosButton"
+set CommandCancel "sym set UnlockDialogCanceled 1"
+set CommandCancel "clearmenu UnlockDialog.txt"
+set CommandFocusDown "gameUI focusNameTry UnlockWithDiamondsFrame UnlockWithCashFrame"
+set CommandFocusUp "gameUI focusNameTry UnlockDialogCancel"
+set CommandFocusRight "gameUI focusNameTry UnlockWithKudosButton"
+add MenuObject
+set Name UnlockNewButtonHighlight
+set Texture menus/Inspect+lang
+set Coords "744 3 254 102"
+set BlendMode BlendAdd
+set PulseAlpha "1.6 -0.6 -0.3"
+add MenuObject
+set Name UnlockWithKudosFrame
+set Texture menus/Inspect+lang
+set Coords "488 169 245 79"
+set DrawWhenFocused FocusUnlockButton
+set DrawWhenFocusedOffset "-4 -4"
+set DrawWhenFocusedOrder BeforeChildren
+set Focus -2
+set MouseInteract 1
+set HiddenCheckBySymbol UnlockDialogSpendKudosHidden
+set CommandGetFocus "input set padFocusFallback UnlockWithKudosFrame"
+set CommandPress "if sym GetDiamondsPanelHidden != 1 runnow addUIAnim QuickBuyDiamondsItems mas_BuyDiamondsPanelHide"
+set CommandPress "if sym GetDiamondsPanelHidden != 1 runnow addUIAnim UnlockDialogMaster mas_UnlockDialogRight"
+set CommandPress "if sym DialogPageDisplay != 0 runNow gameUI show UnlockKudosConfirm"
+set CommandPress "gameUI hide UnlockDiamondsConfirm"
+set CommandPress "gameUI hide UnlockCashChoose"
+set CommandPress "if sym DialogPageDisplay != 0 sym set UnlockOnBuyConfirmUI 1"
+set CommandPress "sym set DialogPageDisplay 0"
+set CommandPress "floatsym set Scrollable0Pos 0"
+set CommandPress "if usingPad runNow gameUI ignoreInputTime 0.7"
+set CommandPress "if usingPad runNow gameUI disable UnlockWithKudosButton"
+set CommandPress "if usingPad runNow pcmd 0.5 gameUI enable UnlockWithKudosButton"
+set CommandPress "if usingPad runNow pcmd 0.5 gameUI focusNameTry UnlockWithKudosButton"
+set CommandPress "gameUI saveFocusID _vipTicketNoticeRestoreFocus_"
+set CommandPress "if usingPad runNow gameUI focusNameTry UnlockWithKudosButton"
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandCancel "sym set UnlockDialogCanceled 1"
+set CommandCancel "clearmenu UnlockDialog.txt"
+set CommandFocusLeft "gameUI focusNameTry UnlockWithDiamondsFrame UnlockWithCashFrame ConWishlistButtonRemove ConWishlistButtonAdd"
+set CommandFocusUp "gameUI focusNameTry UnlockDialogCancel"
+set CommandFocusRight "gameUI focusNameTry UnlockWithKudosButton"
+set Child "UnlockDialogCostKudosBig 20 12"
+set Child "UnlockOnSaleKudos 0 0"
+add MenuObject initFrom UnlockWithKudosTemplate
+set Name UnlockWithKudosFrame2
+set Child "UnlockWithKudosMsg 30 60"
+set Child "UnlockDialogCostKudosBig 150 14"
+set Child "VipTicketNotify -226 -22"
+add MenuObject
+set Name UnlockWithKudosButtonSmFocus
+set Texture menus/MainTiles+lang
+set Coords "8 607 384 99"
+set ScaleX 0.6, ScaleY 0.6
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.3
+add MenuObject initFrom UnlockWithKudosTemplate
+set Name UnlockWithKudosButtonSm
+set DrawWhenFocused UnlockWithKudosButtonSmFocus
+set ScaleX 0.6, ScaleY 0.6
+set Child "UnlockDialogCostKudosBig 20 12"
+add MenuObject
+set Name UnlockConfirmArrowKudos
+set Texture menus/MainTiles+lang
+set Coords "860 363 91 63"
+set PulseAlpha "0.4 -0.5 0.0"
+add MenuObject initFrom UnlockConfirmArrowKudos
+set Name UnlockConfirmArrowDiamonds
+set Coords "767 363 91 63"
+add MenuObject initFrom PanelResizeClear
+set Name UnlockGeneralBuffer
+set TileArea "298 343"
+add MenuObject
+set Name VipTicketConfirm
+set Coords "4 290 220 141"
+set MouseInteract 1
+set Focus -2
+set ScaleX 0.7, ScaleY 0.7
+set Texture menus/StoreTiles2
+set HiddenCheckBySymbolInv UnlockWillCostVIPShopTicket
+add MenuObject
+set Name NYPDesc
+set RenderCB_RGBColor 0xe5e4e3
+set RenderCB_FontScale 0.65
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text NYP_Desc
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2"
+set RenderCB_DX 310
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+add MenuObject
+set Name NYPText
+set RenderCB _DrawUText
+set Coords "0 0 1200 10"
+set Texture menus/Inspect+lang
+set CoordsStart "146 915 30 96"
+set CoordsMid "175 915 20 96"
+set CoordsEnd "220 915 136 96"
+set RenderCB_FontScale 0.7
+set RenderCB_Text @_Arg1_@
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/shadowed /fitX /allowExplRefValue"
+set RenderCB_DX 500
+set RenderCB_DY 10
+add MenuObject initFrom NYPText
+set Name NYPLabel
+set RenderCB_Font Roboto
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor 0xe5e4e3
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2"
+add MenuObject initFrom NYPLabel
+set Name NYPLabelBold
+set RenderCB_Font RobotoBold
+add MenuObject initFrom NYPLabel
+set Name NYPAmt
+set RenderCB_Font Roboto
+set RenderCB_Text BuyPricePrefix@P_Currency@
+set RenderCB_ConsoleSymbol2 @_Arg1_@
+set RenderCB_RGBColor 0xe5e4e3
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Flags "/outlined8x /shadowColor2"
+add MenuObject
+set Name NYPTextFieldBG
+set Texture menus/purchase
+set Coords "378 757 278 75"
+set Child "NYPTextField 62 2"
+add MenuObject
+set Name NYPTextField
+set Texture menus/purchase
+set Coords "0 0 0 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 150
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.1
+set RenderCB_Offset "14 8"
+set DisabledAlphaTimeOut 0
+set MouseInteractZoneExpand "-20 -20 0 10"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractClickAwayToUnfocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/outlined8x /shadowColor2 /fitX"
+set RenderCB_Font RobotoBold
+set TextEditableMaxLen 5
+set TextEditableDecimal 1
+set RenderCB_Text NYP_Edit
+set Child "NYPTextFieldHighlight 0 0"
+add MenuObject
+set Name NYPTextFieldHighlight
+set Texture menus/MainTiles+lang
+set PulseAlpha "2.5 -0.75 0.0"
+set BlendMode BlendAdd
+set Coords "208 940 204 67"
+set ScaleX 0.7
+add MenuObject
+set Name NYPWindow
+set Texture menus/purchase
+set Coords "19 507 340 500"
+set Color 0x91ff96
+set Hidden 1
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.0
+set Child "UnlockGeneralBuffer 0 0"
+set Child "UnlockConfirmFrame -38 -38"
+Set Child "NYPWindowClose 310 -15"
+set Child "NYPDesc 15 50"
+set Child "NYPLabel 40 335 NYP_Min 0.65"
+set Child "NYPAmt 200 335 MinPrice2"
+set Child "NYPLabel 40 365 NYP_Avg 0.65"
+set Child "NYPAmt 200 365 UnlockDialogCurrentNYPAvg"
+set Child "NYPLabelBold 90 230 NYP_EnterPrice 0.75"
+set Child "NYPTextFieldBG 35 250"
+set Child "NYPAcceptButton 65 400"
+add MenuObject
+set Name NYPAcceptButton
+set Texture menus/LoginCommon
+set Coords "718 248 235 83"
+set CoordsFocused "476 248 235 83"
+set DrawWhenFocused NYPAcceptButtonHighlight
+set DrawWhenFocusedOffset "-10 -14"
+set RenderCB_DX 235
+set RenderCB_DY 70
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.75
+set RenderCB_Offset "-10 -5"
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /nmi /fitX /allCaps"
+set RenderCB_Font RobotoBold
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set RenderCB_Text EULAAccept
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set ScaleX 0.9, ScaleY 0.9
+set RenderCBExcludesDefaultRender 0
+set CommandPress "menucmd ValidateNYP"
+add MenuObject
+set Name NYPAcceptButtonHighlight
+set Texture menus/LoginCommon
+set PulseAlpha "2.5 -0.4 0.0"
+set ScaleX 0.91, ScaleY 0.92
+set Coords "485 132 257 104"
+set BlendMode BlendAdd
+add MenuObject
+set Name NYPWindowClose
+set Coords "295 511 49 49"
+set CoordsFocused "350 511 49 49"
+set Texture menus/Mail
+set MouseInteract 1
+set Focus -2
+set CommandPress "if carbonpayment runnow gameui show UnlockCashConfirm"
+set CommandPress "gameui hide NYPWindow"
+add MenuObject
+set Name UnlockKudosConfirmItems
+set ContainerOnly 1
+set Child "UnlockWithKudosMsg 10 10"
+set Child "UnlockCurrentMsg 10 50"
+set Child "UnlockWithCostMsg 10 90"
+set Child "UnlockDialogCostKudos 96 90"
+set Child "UnlockWithSep 26 110"
+set Child "UnlockWithBalance 10 150"
+set Child "UnlockDialogCurrentKudos 180 50"
+set Child "UnlockDialogBalanceKudos 96 150"
+set Child "UnlockWithKudosButton 26 230"
+set Child "VipTicketConfirm 60 330"
+add MenuObject
+set Name UnlockKudosConfirm
+set Texture menus/purchase
+set Coords "19 507 340 500"
+set Color 0xff9f38
+set Hidden 1
+set Child "UnlockGeneralBuffer 0 0"
+set Child "UnlockConfirmFrame -38 -38"
+set Child "UnlockKudosConfirmItems 20 40	/ifSym UnlockWillCostVIPShopTicket == 1"
+set Child "UnlockKudosConfirmItems 20 90	/ifSym UnlockWillCostVIPShopTicket == 0"
+add MenuObject initFrom UnlockMsgBase
+set Name BuyDiamondsText
+set Coords "0 0 215 99"
+set RenderCB_Text BuyDiamondsButtonText
+set RenderCB_FontScale 1.0
+set RenderCB_DX 215
+set RenderCB_DY 99
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+add MenuObject
+set Name VipTicketNotifyHover
+set Coords "4 290 1 1"
+set CoordsFocused "4 290 220 141"
+set DisplayAsFocusedIfParentFocused 1
+set Focus -2
+set ScaleX 0.7, ScaleY 0.7
+set Texture menus/StoreTiles2
+add MenuObject
+set Name VipTicketNotify
+set Coords "4 290 220 141"
+set MouseInteract 1
+set Focus -2
+set ScaleX 0.7, ScaleY 0.7
+set NoAlphaMod 1
+set Alpha 0.7
+set Texture menus/StoreTiles2
+set Child "VipTicketNotifyHover 0 0"
+set HiddenCheckBySymbolInv UnlockWillCostVIPShopTicket
+add MenuObject initFrom UnlockCardTemplate
+set Name BuyDiamondsButton
+set RenderCB_FontScale 0.8
+set Coords "401 709 215 99"
+set CommandPress "if bundleUnlocked StarterPack if sym GetDiamondsPanelHidden == 1 runnow addUIAnim QuickBuyDiamondsItems mas_BuyDiamondsPanelShow"
+set CommandPress "if bundleUnlocked StarterPack if sym GetDiamondsPanelHidden == 1 runnow addUIAnim UnlockDialogMaster mas_UnlockDialogLeft"
+set CommandPress "if bundleUnlocked StarterPack if sym GetDiamondsPanelHidden != 1 runnow addUIAnim QuickBuyDiamondsItems mas_BuyDiamondsPanelHide"
+set CommandPress "if bundleUnlocked StarterPack if sym GetDiamondsPanelHidden != 1 runnow addUIAnim UnlockDialogMaster mas_UnlockDialogRight"
+set CommandPress "if bundleLocked StarterPack runnow menuCmd MF_DiamondsActivateToStarterPack"
+set DrawWhenFocused UnlockCardHighlightSm
+set CommandPress "gameUI hide UnlockKudosConfirm"
+set CommandPress "gameUI hide UnlockDiamondsConfirm"
+set CommandPress "gameUI hide UnlockCashChoose"
+set CommandFocusRight "gameUI focusNameTry UnlockWithDiamondsFrame"
+set Child "BuyDiamondsText 10 15"
+add MenuObject
+set Name UnlockWithDiamondsButton
+set Texture menus/Inspect+lang
+set Coords "488 86 245 79"
+set DrawWhenFocused FocusUnlockButton
+set DrawWhenFocusedOffset "-4 -4"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set MouseInteract 1
+set Focus -2
+set RenderCB _DrawUTextShadowedNMI
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Text DialogButtonConfirm
+set DisabledAlpha 0.5
+set CommandPress "menucmd TryUnlockDiamonds"
+set CommandPress "gameui disable UnlockWithKudosButton"
+set CommandPress "sym set UnlockOnBuyConfirmUI 0"
+set CommandCancel "sym set DialogPageDisplay 1"
+set CommandCancel "sym set UnlockOnBuyConfirmUI 0"
+set CommandCancel "if usingPad gameui focusnametry UnlockWithDiamondsFrame"
+set CommandCancel "gameUI hideGroup UnlockDiamondsConfirm UnlockKudosConfirm"
+set HiddenCheckBySymbol UnlockDialogSpendDiamondsHidden
+add MenuObject initFrom InspectDialogFrame
+set Name UnlockConfirmFrame
+set RenderCB_DX 416
+set RenderCB_DY 576
+add MenuObject
+set Name UnlockDiamondsConfirmItems
+set ContainerOnly 1
+set Child "UnlockWithDiamondsMsg 10 10"
+set Child "UnlockCurrentMsg 10 50"
+set Child "UnlockWithCostMsg 10 90"
+set Child "UnlockDialogCostDiamonds 96 90"
+set Child "UnlockWithSep 26 110"
+set Child "UnlockWithBalance 10 150"
+set Child "UnlockDialogCurrentDiamonds 180 50"
+set Child "UnlockDialogBalanceDiamonds 96 150"
+set Child "UnlockWithDiamondsButton 26 230"
+set Child "VipTicketConfirm 60 330"
+add MenuObject
+set Name UnlockDiamondsConfirm
+set Texture menus/purchase
+set Coords "19 507 340 500"
+set Color 0x6ed6ff
+set Hidden 1
+set Child "UnlockGeneralBuffer 0 0"
+set Child "UnlockConfirmFrame -38 -38"
+set Child "UnlockDiamondsConfirmItems 20 40	/ifSym UnlockWillCostVIPShopTicket == 1"
+set Child "UnlockDiamondsConfirmItems 20 90	/ifSym UnlockWillCostVIPShopTicket == 0"
+add MenuObject
+set Name UnlockWithDiamondsFrame
+set Texture menus/Inspect+lang
+set Coords "488 86 245 79"
+set DrawWhenFocused FocusUnlockButton
+set DrawWhenFocusedOffset "-4 -4"
+set DrawWhenFocusedOrder BeforeChildren
+set Focus -2
+set MouseInteract 1
+set HiddenCheckBySymbol UnlockDialogSpendDiamondsHidden
+set CommandPress "if sym GetDiamondsPanelHidden != 1 runnow addUIAnim QuickBuyDiamondsItems mas_BuyDiamondsPanelHide"
+set CommandPress "if sym GetDiamondsPanelHidden != 1 runnow addUIAnim UnlockDialogMasterItems mas_UnlockDialogRight"
+set CommandPress "gameUI hide UnlockKudosConfirm"
+set CommandPress "if sym DialogPageDisplay != 0 runNow gameUI show UnlockDiamondsConfirm"
+set CommandPress "gameUI hide UnlockCashChoose"
+set CommandPress "if sym DialogPageDisplay != 0 sym set UnlockOnBuyConfirmUI 1"
+set CommandPress "sym set DialogPageDisplay 0"
+set CommandPress "floatsym set Scrollable0Pos 0"
+set CommandGetFocus "input set padFocusFallback UnlockWithDiamondsFrame"
+set CommandPress "gameUI saveFocusID _vipTicketNoticeRestoreFocus_"
+set CommandPress "if usingPad runNow gameUI ignoreInputTime 0.7"
+set CommandPress "if usingPad runNow gameUI disable UnlockWithDiamondsButton"
+set CommandPress "if usingPad runNow pcmd 0.5 gameUI enable UnlockWithDiamondsButton"
+set CommandPress "if usingPad runNow pcmd 0.5 gameUI focusNameTry UnlockWithDiamondsButton"
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandCancel "sym set UnlockDialogCanceled 1"
+set CommandCancel "clearmenu UnlockDialog.txt"
+set CommandFocusRight "gameUI focusNameTry UnlockWithKudosFrame UnlockDialogCancel"
+set CommandFocusLeft "gameUI focusNameTry ConWishlistButtonRemove ConWishlistButtonAdd"
+set Child "UnlockDialogCostDiamondsBig 20 12"
+set Child "UnlockOnSaleDiamonds 0 0"
+add MenuObject initFrom UnlockMsgBase
+set Name UnlockOptionMsg
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol _UnlockOptionMsg
+set RenderCB_FontScale 0.8
+add MenuObject initFrom UnlockMsgBase
+set Name InspectOptionMsg
+set RenderCB_Text ""
+set Coords "0 0 245 79"
+set RenderCB_ConsoleSymbol _InspectOptionMsg
+set RenderCB_FontScale 0.8
+set RenderCB_DX 230
+set RenderCB_DY 50
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 1.0
+set RenderCB_Font RobotoBold
+set RenderCB_Flags "/outlined8x /fitX_n20 /fitX_n10"
+set RenderCB_BoolArg 0
+set RenderCB _DrawUText
+add MenuObject initFrom UnlockCardTemplate
+set Name UnlockOptionFrame
+set Coords "8 709 384 99"
+set DrawGreyScale 1
+set HiddenCheckBySymbol UnlockDialogOptionHidden
+set Child "UnlockOptionMsg 30 60"
+set CommandPress "menucmd $_UnlockOptionCmd"
+add MenuObject initFrom UnlockCardTemplate
+set Name InspectOptionFrame
+set Texture menus/Inspect+lang
+set Coords "748 170 245 79"
+set DrawWhenFocused UnlockNewButtonHighlight
+set DrawWhenFocusedOffset "-4 -11"
+set HiddenCheckBySymbol InspectDialogOptionHidden
+set Child "InspectOptionMsg 0 14"
+set CommandPress "gameui ignoreInputTime 0.2"
+set CommandPress "menucmd $_InspectOptionCmd local $_InspectOptionCmdArg1"
+set CommandPress "if sym DialogBoxLoaded == 1 clearmenu InspectDialog.txt"
+set CommandCancel "gameui ignoreInputTime 0.2"
+set CommandCancel "clearmenu InspectDialog.txt"
+set CommandFocusRight "gameUI focusNameTry ConWishlistButtonRemove ConWishlistButtonAdd"
+add MenuObject
+set Name UnlockBlackDialogBase
+set Texture effects/black
+set Coords "0 0 16 16"
+set NoAlphaMod 1
+set Alpha 0.8
+set MouseInteract 1
+set Focus -2
+set StretchToFillScreen 1
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandCancel "gameui ignoreInputTime 0.1"
+add MenuObject initFrom UnlockBlackDialogBase
+set Name UnlockBlackDialog
+set CommandPress "sym set UnlockDialogCanceled 1"
+set CommandPress "clearmenu UnlockDialog.txt"
+add MenuObject
+set Name InspectBlackDialog
+set Texture effects/white
+set Coords "0 0 16 16"
+set NoAlphaMod 1
+set Alpha 0.8
+set Color 0x0b1516
+set ColorFocused 0x0b1516
+set MouseInteract 1
+set Focus -2
+set StretchToFillScreen 1
+set CommandPress "sym clear _CustomExecSlot"
+set CommandPress "clearmenu InspectDialog.txt"
+set CommandPress "clearmenu UnlockDialog.txt"
+set CommandPress "clearmenu InspectPromoDialog.txt"
+set CommandPress "clearmenu InspectMapDialog.txt"
+set CommandPress "clearmenu DialogLoadout.txt"
+set CommandPress "clearmenu DialogRedeemCode.txt"
+set CommandCancel "clearmenu InspectDialog.txt"
+set CommandCancel "clearmenu UnlockDialog.txt"
+set CommandCancel "clearmenu InspectPromoDialog.txt"
+set CommandCancel "clearmenu InspectMapDialog.txt"
+set CommandCancel "clearmenu DialogRedeemCode.txt"
+add MenuObject
+set Name DialogShopBackground
+set Texture effects/white
+set Coords "0 0 16 16"
+set NoAlphaMod 1
+set Alpha 0.8
+set Color 0x0b1516
+set ColorFocused 0x0b1516
+set MouseInteract 1
+set Focus -2
+set StretchToFillScreen 1
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandCancel "gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu DialogShop.txt"
+set CommandCancel "clearmenu DialogShop.txt"
+add MenuObject initFrom UnlockBlackDialogBase
+set Name InspectMapBlackDialog
+set CommandPress "clearmenu InspectMapDialog.txt"
+add MenuObject initFrom UnlockBlackDialogBase
+set Name InspectPromoBlackDialog
+set CommandPress "clearmenu InspectPromoDialog.txt"
+set CommandCancel "clearmenu InspectPromoDialog.txt"
+add MenuObject
+set Name UnlockDialogBackground
+set RenderCB_DX 1334
+set RenderCB_DY 840
+set Coords "0 0 1354 860"
+set RenderBlocked 1
+set CommandPress "gameUI hide UnlockKudosConfirm"
+set CommandPress "gameUI hide UnlockDiamondsConfirm"
+set CommandPress "gameUI hide UnlockCashChoose"
+add MenuObject
+set Name UnlockDialogBackgroundSmall
+set RenderCB_DX 840
+add MenuObject
+set Name VipTicketBlockerTitle
+set Texture menus/Social
+set Coords "0 0 798 60"
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/shadowed /fitX /allCaps"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text VipTicketBlockerTitle
+add MenuObject
+set Name VipTicketBlockerHeader
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "798 60"
+set Color 0x7e4eb8
+set Child "VipTicketBlockerTitle 0 0"
+add MenuObject
+set Name VipTicketBlockerCheckbox
+set Texture menus/HomeBar
+set Coords "623 428 42 42"
+set CoordsFocused "723 428 42 42"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 8"
+set RenderCB_DX 580
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text VipTicketBlockerCheckbox
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set SaveArgs 3
+set CommandPress "sym toggle VipTicketCheckbox"
+set CommandEnterKey "sym toggle VipTicketCheckbox"
+set Child "CheckMarkShop 0 0 VipTicketCheckbox"
+set CommandPress "gameui focusNameTry VipTicketBlockerButton"
+set CommandFocusDown "gameui focusNameTry VipTicketBlockerButton"
+set CommandCancel "clearmenu UnlockDialog /fadeout 0.15"
+set HiddenCheckBySymbol VipTicketUnderstand
+add MenuObject
+set Name VipTicketBlockerButton
+set Texture menus/Social
+set Coords "458 205 440 63"
+set CoordsPressed "8 203 440 63"
+set RenderCB _DrawUText
+set DrawWhenFocused FocusFriendButtons
+set DrawWhenFocusedOffset "-1 -1 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Focus -2
+set MouseInteract 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Flags /nmi
+set DisabledAlpha 0.2
+set HiddenCheckBySymbol VipTicketUnderstand
+set RenderCB_Text VipTicketBlockerButton
+set CommandPress "if sym VipTicketCheckbox == 1 sym set VipTicketUnderstand 1"
+set CommandPress "if sym VipTicketCheckbox == 1 backend save"
+set CommandPress "if sym VipTicketCheckbox == 0 gameui hide VipTicketBlocker"
+set CommandPress "sym set VipTicketUnderstandCtx 1"
+set CommandPress "rookMenus previewShow"
+set CommandPress "gameUI focusNameTry UnlockWithKudosFrame UnlockWithDiamondsFrame UnlockWithCashFrame UnlockDialogCancel InspectDialogCancel"
+set CommandFocusUp "gameui focusNameTry VipTicketBlockerCheckbox"
+set CommandCancel "clearmenu UnlockDialog /fadeout 0.15"
+add MenuObject
+set Name VipTicketBlockerText
+set Coords "0 0 758 600"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYTop
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_IntArg 17
+set RenderCB_RGBColor 0xdddddd
+set RenderCB_Text VipTicketBlockerText
+add MenuObject
+set Name VipTicketBlockerFrame
+set Texture menus/Social
+set CoordsStart "641 11 43 43"
+set CoordsMid "684 11 96 43"
+set CoordsEnd "780 11 43 43"
+set CoordsStartFocused "641 54 43 96"
+set CoordsMidFocused "684 54 96 96"
+set CoordsEndFocused "780 54 43 96"
+set CoordsStartDisabled "641 150 43 43"
+set CoordsMidDisabled "684 150 96 43"
+set CoordsEndDisabled "780 150 43 43"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 880
+set RenderCB_DY 570
+set Coords "0 0 880 750"
+set Child "VipTicketBlockerHeader 41 41"
+set Child "VipTicketConfirm 370 300"
+set Child "VipTicketBlockerText 81 124"
+set Child "VipTicketBlockerCheckbox 210 390"
+set Child "VipTicketBlockerButton 235 445"
+add MenuObject
+set Name VipTicketBlocker
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "1260 765"
+set Color 0x7e4eb8
+set ColorFocused 0x7e4eb8
+set MouseInteract 1
+set Focus -2
+set NoAlphaMod 1
+set Alpha 0.5
+set HiddenCheckBySymbol VipTicketUnderstand
+set HiddenCheckBySymbolInv UnlockWillCostVIPShopTicket
+set Child "VipTicketBlockerFrame 190 80"
+add MenuObject
+set Name UnlockOptions
+set ContainerOnly 1
+set Child "UnlockWithKudosFrame 256 0	/ifSym UnlockDialogSpendDiamondsHidden == 0"
+set Child "UnlockWithKudosFrame 128 0	/ifSym UnlockDialogSpendDiamondsHidden == 1"
+set Child "UnlockWithDiamondsFrame 0 0	/ifSym UnlockDialogSpendKudosHidden == 0"
+set Child "UnlockWithDiamondsFrame 128 0	/ifSym UnlockDialogSpendKudosHidden == 1"
+set Child "UnlockWithCashFrame 128 0"
+add MenuObject
+set Name InspectOptions
+set ContainerOnly 1
+set Child "InspectOptionFrame -500 -70"
+add MenuObject
+set Name QuickBuyDiamondsCanvas
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "404 664"
+set Color 0x0b0400
+add MenuObject initFrom PanelResizeWhiteBorder
+set Name QuickBuyDiamondsItems
+set RenderCB_DX 500
+set RenderCB_DY 760
+set Child "QuickBuyDiamondsCanvas 48 48"
+set Child "StoreTileBoosterX1 127 50"
+set Child "StoreTileBoosterX4 127 314"
+set Child "StoreTileJump 127 589"
+add MenuObject initFrom LoginExtraButton
+set Name DialogTryoutButtonEveryone
+set CommandPress "if sym InspectDialogState != 0 && sym DialogPageDisplay != 0 runnow menucmd DoTryoutLoad"
+set SaveArgs 1
+set RenderCB_Text Inspect_TryOut
+set HiddenCheckBySymbolInv TryoutGlobal
+set CommandFocusRight "gameui focusNameTry ConWishlistButtonRemove ConWishlistButtonAdd"
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandCancel "sym set UnlockDialogCanceled 1"
+set CommandCancel "clearmenu UnlockDialog.txt"
+set CommandCancel "clearmenu InspectDialog.txt"
+add MenuObject
+set Name DialogTryoutButton
+set ContainerOnly 1
+set Child "DialogTryoutButtonEveryone 0 0"
+add MenuObject
+set Name InspectDialogAirMechPreview
+set ContainerOnly 1
+set Child "LoadoutAirMechAir 10 40"
+set Child "LoadoutAirMechRobot 10 40"
+add MenuObject
+set Name InspectAirMechRobot
+set Texture rooks/@_CustomExecContentName@/HangarUnique
+set TextureAlt rooks/@_CustomExecContentName@/Hangar@TeamColor@
+set Coords "35 0 442 512"
+set NoDrawOnMissingTexture 1
+set NoDrawChildrenOnMissingTexture 1
+set ScaleX 1.18, ScaleY 1.18
+set FilterName Customize
+set FilterName2 SelectAirMech
+set FirstDrawnChildren 1
+set HiddenCheckBySymbolValue DialogPageDisplay!3
+add MenuObject
+set Name UnlockDialogMasterItems
+set Coords "0 0 1354 860"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set Child "InspectDialogTextShadow 775 38	0x26423e"
+set Child "DialogPageContainer 920 48		/ifSym DialogPageCount == 5"
+set Child "DialogPageContainer 945 48		/ifSym DialogPageCount == 4"
+set Child "DialogPageContainer 970 48		/ifSym DialogPageCount == 3"
+set Child "DialogPageContainer 995 48		/ifSym DialogPageCount == 2"
+set Child "DialogTryoutButton 400 730		/ifSym _CustomObject != misc	/canTryout _CustomExecContentName /ifSym _CustomObject != units	/ifSym _CustomObject != bundle	/!ingame /!inlobby"
+set Child "InfoDialogStats 810 85"
+set Child "InfoDialogMessage 810 100"
+set Child "InspectAirMechRobot 776 100		/ifSym _CustomObject == rooks"
+set Child "InfoDialogMessageScrollWheelZone_H 845 130"
+set Child "InfoDialogMessageScrollbar 1278 110"
+set Child "UnlockOptions 784 710 /ifSym CapsuleRareChoicesLoaded == 0"
+set Child "InfoDialogComesWithPrime 65 90"
+set Child "VipTicketNotify 200 707 /ifSym CapsuleRareChoicesLoaded == 0"
+set CommandOnCreate ">sym setZero CanShowPartIcons"
+set CommandOnCreate ">if sym _CustomObject == PartPrimary || sym _CustomObject == PartSpecial || sym _CustomObject == PartStructural || sym _CustomObject == PartEngine || sym _CustomObject == PartCore runnow sym set CanShowPartIcons 1"
+set CommandOnCreate ">if sym _CustomObject == partPrimary || sym _CustomObject == partSpecial || sym _CustomObject == partStructural || sym _CustomObject == partEngine || sym _CustomObject == partCore runnow sym set CanShowPartIcons 2"
+set CommandOnCreate ">if sym _CustomObject == partprimary || sym _CustomObject == partspecial || sym _CustomObject == partstructural || sym _CustomObject == partengine || sym _CustomObject == partcore runnow sym set CanShowPartIcons 2"
+set CommandOnCreate ">if sym _CustomPartType != 0 || sym _CustomAirMechType != 0 runnow sym set CanShowPartIcons 2"
+set Child "PartTypeInspectIcon 588 698 /ifSym TR_AirMechType@ShopItemInspect@ != 0"
+set Child "PartTypeInspectIcon 675 698 /ifSym TR_AirMechType@ShopItemInspect@ == 0"
+set Child "AirMechTypeInspectIcon 675 698"
+set Child "PartTypeInspectIcon2 588 698 /ifSym _CustomAirMechType != 0"
+set Child "PartTypeInspectIcon2 675 698 /ifSym _CustomAirMechType == 0"
+set Child "AirMechTypeInspectIcon2 675 698"
+set HiddenCheckBySymbolValue InspectDialogState=0
+set HiddenCheckBySymbolInv DialogPageDisplay
+add MenuObject
+set Name DialogUnderItemCover
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "512 512"
+set Color 0x1a2226
+add MenuObject
+set Name NYPLeaderboardTemplate
+set Coords "0 96 340 32"
+set Texture effects/ColorAlpha
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "5 -1"
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.0
+set SaveArgs 1
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject initFrom NYPLeaderboardTemplate
+set Name NYPLeaderboardPriceTemplate
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_Offset "-5 -1"
+add MenuObject initFrom NYPLeaderboardTemplate
+set Name NYPLeaderboardRankTemplate
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Offset "0 -1"
+set Coords "0 0 40 32"
+set RenderCB_Font RobotoBold
+add MenuObject initFrom NYPLeaderboardTemplate
+set Name NYPLeaderboardLine
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "40 -1"
+set Focus -2
+set MouseInteract 1
+set CommandPress "if sym UnlockOnBuyConfirmUI != 1 sym toggle DialogPageDisplay"
+set RenderCB_Flags "/noCommaSep /toU16"
+set RenderCB_ConsoleSymbol HLB_N@_Arg1_@
+set RenderCB _DrawUText
+set Child "NYPLeaderboardRankTemplate 0 0 HLB_R@_Arg1_@"
+set Child "NYPLeaderboardPriceTemplate 0 0 HLB_S@_Arg1_@"
+add MenuObject
+set Name NYPLeaderboards
+set ContainerOnly 1
+set HiddenCheckBySymbolValue DialogPageDisplay=0
+set Child "NYPLeaderboardLine 0 Nx30	0"
+set Child "NYPLeaderboardLine 0 Nx30	1"
+set Child "NYPLeaderboardLine 0 Nx30	2"
+set Child "NYPLeaderboardLine 0 Nx30	3"
+set Child "NYPLeaderboardLine 0 Nx30	4"
+set Child "NYPLeaderboardLine 0 Nx30	5"
+set Child "NYPLeaderboardLine 0 Nx30	6"
+set Child "NYPLeaderboardLine 0 Nx30	7"
+set Child "NYPLeaderboardLine 0 Nx30	8"
+set Child "NYPLeaderboardLine 0 Nx30	9"
+add MenuObject
+set Name NYPLeaderboardsBig
+set ContainerOnly 1
+set HiddenCheckBySymbolValue DialogPageDisplay=1
+set SymCondRenderOffsetX "UnlockOnBuyConfirmUI -380 0"
+set Child "NYPLeaderboardLine 0 Nx30	0"
+set Child "NYPLeaderboardLine 0 Nx30	1"
+set Child "NYPLeaderboardLine 0 Nx30	2"
+set Child "NYPLeaderboardLine 0 Nx30	3"
+set Child "NYPLeaderboardLine 0 Nx30	4"
+set Child "NYPLeaderboardLine 0 Nx30	5"
+set Child "NYPLeaderboardLine 0 Nx30	6"
+set Child "NYPLeaderboardLine 0 Nx30	7"
+set Child "NYPLeaderboardLine 0 Nx30	8"
+set Child "NYPLeaderboardLine 0 Nx30	9"
+set Child "NYPLeaderboardLine 0 Nx30	10"
+set Child "NYPLeaderboardLine 0 Nx30	11"
+set Child "NYPLeaderboardLine 0 Nx30	12"
+set Child "NYPLeaderboardLine 0 Nx30	13"
+set Child "NYPLeaderboardLine 0 Nx30	14"
+set Child "NYPLeaderboardLine 0 Nx30	15"
+set Child "NYPLeaderboardLine 0 Nx30	16"
+set Child "NYPLeaderboardLine 0 Nx30	17"
+set Child "NYPLeaderboardLine 0 Nx30	18"
+set Child "NYPLeaderboardLine 0 Nx30	19"
+set Child "NYPLeaderboardLine 0 Nx30	20"
+set Child "NYPLeaderboardLine 0 Nx30	21"
+set Child "NYPLeaderboardLine 0 Nx30	22"
+set Child "NYPLeaderboardLine 0 Nx30	23"
+set Child "NYPLeaderboardLine 0 Nx30	24"
+add MenuObject
+set Name PromoEagleHead
+set Focus -2
+set MouseInteract 1
+set RenderBlocked 1
+set CommandPress "menucmd PromoUnlockTry pets HeadEagle"
+set TileArea "210 210"
+add MenuObject
+set Name PromoPetRaven
+set Focus -2
+set MouseInteract 1
+set RenderBlocked 1
+set CommandPress "menucmd PromoUnlockTry pets PetRaven"
+set TileArea "210 210"
+add MenuObject
+set Name PromoPetGhostGigi
+set Focus -2
+set MouseInteract 1
+set RenderBlocked 1
+set CommandPress "menucmd PromoUnlockTry pets PetCatWitch2"
+set TileArea "210 210"
+add MenuObject
+set Name Bundle_D2Pack20_H1
+set ContainerOnly 1
+set CommandOnCreate "clearmenu BaseLeaderboards"
+set CommandOnCreate "leaderboards setMaxDisplayRows 25"
+set CommandOnCreate "leaderboards get NYPBuy"
+set Child "PromoEagleHead 70 540"
+set Child "NYPLeaderboards 434 500"
+set Child "NYPLeaderboardsBig 840 44"
+add MenuObject
+set Name Bundle_GothWeek_H1
+set ContainerOnly 1
+set CommandOnCreate "clearmenu BaseLeaderboards"
+set CommandOnCreate "leaderboards setMaxDisplayRows 25"
+set CommandOnCreate "leaderboards get NYPBuy2"
+set Child "PromoPetRaven 150 420"
+set Child "NYPLeaderboards 434 500"
+set Child "NYPLeaderboardsBig 840 44"
+add MenuObject
+set Name Bundle_HalloweenBundle_H1
+set ContainerOnly 1
+set CommandOnCreate "clearmenu BaseLeaderboards"
+set CommandOnCreate "leaderboards setMaxDisplayRows 25"
+set CommandOnCreate "leaderboards get NYPBuy3"
+set Child "PromoPetGhostGigi 150 420"
+set Child "NYPLeaderboards 434 500"
+set Child "NYPLeaderboardsBig 840 44"
+add MenuObject
+set Name UnlockDialogMasterWide
+set RenderBlocked 1
+set Coords "0 0 1334 840"
+set Focus -2
+set MouseInteract 1
+set CommandPress "sym set InspectDialogState 1"
+set FirstDrawnChildren 3
+set Child "InspectBlackDialog 0 0"
+set Child "VignetteInspect 0 0"
+set Child "QuickBuyDiamondsItems 830 50"
+set Child "UnlockDialogBackground 0 0"
+set Child "DialogUnderItemCover 142 162"
+set Child "InfoFramesBackground 38 38"
+set Child "InfoPartsBackground 38 38"
+set Child "InfoUnitsBackground 38 38"
+set Child "InfoCardsBackground 38 38"
+set Child "InfoOtherBackground 38 38"
+set Child "InfoDialogBackground 38 38"
+set Child "UnlockDialogIcon 145 165 /ifSym _UITexOk_ == 0	/ifSym _ShowCardIcon_ == 0"
+set Child "PartDisplayIcon 260 240"
+set Child "FrameDisplayIcon 50 52"
+set Child "CardDisplayIcon 205 152"
+set Child "InfoFrameForeground 38 38"
+set Child "InspectForegroundCancel 0 0"
+set Child "InfoCardTitleText 38 38"
+set Child "InspectDialogFrameWide 0 0"
+set Child "UnlockDialogMasterItems 0 0"
+set Child "@_DynMenuObj_@ 0 0"
+set Child "UnlockDiamondsConfirm 840 230"
+set Child "UnlockKudosConfirm 840 230"
+set Child "UnlockCashConfirm 840 230"
+set Child "NYPWindow 840 230"
+set Child "InspectDialogShowInfo 1226 318"
+set Child "VipTicketBlocker 038 38 /ifSym CapsuleRareChoicesLoaded == 0"
+set Child "InspectDialogCancel 1240 38"
+set Child "CM_ButtonHints_UnlockDialog 0 0			UnlockDialog"
+set Child "InfoDialogCurrentCount 1206 705"
+set Child "WishlistButtons 49 716"
+set HiddenCheckBySymbolValue InspectDialogState=0
+add MenuObject
+set Name UnlockDialogMaster
+set ContainerOnly 1
+set RenderCB_DX 1920
+set RenderCB_DY 1080
+set Child "UnlockDialogMasterWide 283 120"
+add MenuObject
+set Name InspectForegroundCancel
+set RenderCB_DX 1354
+set RenderCB_DY 860
+set Coords "0 0 1354 860"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "40 40 -40 -40"
+set RenderBlocked 1
+add MenuObject
+set Name TryoutPanelTextShadow
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "523 1100"
+set Color @_Arg1_@
+set SaveArgs 1
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name TryoutBuyCancel
+set RenderBlocked 1
+set StretchToFillScreen 1
+set HiddenCheckBySymbol DialogPageDisplay
+set Focus -2
+set MouseInteract 1
+set CommandPress "sym set DialogPageDisplay 1"
+set CommandPress "gameUI hideGroup UnlockDiamondsConfirm UnlockKudosConfirm"
+add MenuObject
+set Name InspectTryoutPanel
+set RenderBlocked 1
+set Coords "0 0 1334 840"
+set Focus -2
+set MouseInteract 1
+set Child "TryoutPanelTextShadow 775 -60	0x222c2f"
+set Child "DialogPageContainer 920 68		/ifSym DialogPageCount == 5"
+set Child "DialogPageContainer 945 68		/ifSym DialogPageCount == 4"
+set Child "DialogPageContainer 970 68		/ifSym DialogPageCount == 3"
+set Child "DialogPageContainer 995 68		/ifSym DialogPageCount == 2"
+set Child "InfoDialogStats 810 130"
+set Child "InfoDialogMessage_Inspect 810 130"
+set Child "InspectAirMechRobot 776 100		/ifSym _CustomObject == rooks"
+set Child "InfoDialogMessageScrollWheelZone_Inspect_H 845 150	/platform !consolePlatform"
+set Child "InfoDialogMessageScrollbar_Inspect 1278 130			/platform !consolePlatform"
+set HiddenCheckBySymbolValue InspectDialogState=0
+set HiddenCheckBySymbolInv DialogPageDisplay
+set Child "TryoutCardTitleText 775 -10"
+set Child "VipTicketNotify 1050 800"
+set Child "WishlistButtons 880 810"
+add MenuObject
+set Name InspectDialogMasterItems
+set RenderBlocked 1
+set Coords "0 0 1334 840"
+set Focus -2
+set MouseInteract 1
+set Child "InspectDialogTextShadow 775 38	0x222c2f"
+set Child "DialogPageContainer 920 48		/ifSym DialogPageCount == 5"
+set Child "DialogPageContainer 945 48		/ifSym DialogPageCount == 4"
+set Child "DialogPageContainer 970 48		/ifSym DialogPageCount == 3"
+set Child "DialogPageContainer 995 48		/ifSym DialogPageCount == 2"
+set Child "DialogTryoutButton 400 730		/ifSym _CustomObject != misc	/canTryout _CustomExecContentName /ifSym _CustomObject != units	/ifSym _CustomObject != bundle	/!ingame /!inlobby"
+set Child "InfoDialogStats 810 100"
+set Child "InspectAirMechRobot 776 100		/ifSym _CustomObject == rooks"
+set Child "InfoDialogMessage_Inspect 810 100"
+set Child "InfoDialogMessageScrollWheelZone_Inspect_H 845 130"
+set Child "InfoDialogMessageScrollbar_Inspect 1278 110"
+set Child "InspectOptions 784 710"
+set Child "InfoDialogComesWithPrime 65 90"
+set CommandOnCreate ">sym setZero CanShowPartIcons"
+set CommandOnCreate ">if sym _CustomObject == PartPrimary || sym _CustomObject == PartSpecial || sym _CustomObject == PartStructural || sym _CustomObject == PartEngine || sym _CustomObject == PartCore runnow sym set CanShowPartIcons 1"
+set CommandOnCreate ">if sym _CustomObject == partPrimary || sym _CustomObject == partSpecial || sym _CustomObject == partStructural || sym _CustomObject == partEngine || sym _CustomObject == partCore runnow sym set CanShowPartIcons 2"
+set CommandOnCreate ">if sym _CustomObject == partprimary || sym _CustomObject == partspecial || sym _CustomObject == partstructural || sym _CustomObject == partengine || sym _CustomObject == partcore runnow sym set CanShowPartIcons 2"
+set CommandOnCreate ">if sym _CustomPartType != 0 || sym _CustomAirMechType != 0 runnow sym set CanShowPartIcons 2"
+set Child "PartTypeInspectIcon 588 698 /ifSym TR_AirMechType@ShopItemInspect@ != 0"
+set Child "PartTypeInspectIcon 675 698 /ifSym TR_AirMechType@ShopItemInspect@ == 0"
+set Child "AirMechTypeInspectIcon 675 698"
+set Child "PartTypeInspectIcon2 588 698 /ifSym _CustomAirMechType != 0"
+set Child "PartTypeInspectIcon2 675 698 /ifSym _CustomAirMechType == 0"
+set Child "AirMechTypeInspectIcon2 675 698"
+set Child "MarketListButton 794 710		/ifSym _UnlockMode != bundle	/!inGame	/ifSym MarketDisabled == 0"
+set HiddenCheckBySymbolValue InspectDialogState=0
+set HiddenCheckBySymbolInv DialogPageDisplay
+add MenuObject
+set Name InspectDialogMasterStandard
+set RenderBlocked 1
+set Coords "0 0 640 840"
+set Focus -2
+set MouseInteract 1
+set FirstDrawnChildren 2
+set Child "InspectBlackDialog 0 0"
+set Child "VignetteInspect 0 0"
+set Child "UnlockDialogBackground 0 0"
+set Child "DialogUnderItemCover 142 162"
+set Child "InfoFramesBackground 38 38"
+set Child "InfoPartsBackground 38 38"
+set Child "InfoUnitsBackground 38 38"
+set Child "InfoCardsBackground 38 38"
+set Child "InfoOtherBackground 38 38"
+set Child "InfoDialogBackground 38 38"
+set Child "UnlockDialogIcon 145 165 /ifSym _UITexOk_ == 0	/ifSym _ShowCardIcon_ == 0"
+set Child "PartDisplayIcon 260 240"
+set Child "FrameDisplayIcon 50 52"
+set Child "CardDisplayIcon 205 152"
+set Child "InfoFrameForeground 38 38"
+set Child "InspectForegroundCancel 0 0"
+set Child "InfoCardTitleText 38 38"
+set Child "InspectDialogFrame 0 0"
+set Child "InspectDialogCancel 554 38"
+set Child "CM_ButtonHints_InspectDialog 0 0			InspectDialog"
+set Child "InfoDialogCurrentCount 534 705"
+set HiddenCheckBySymbolValue InspectDialogState!0
+add MenuObject
+set Name InspectDialogMasterWide
+set RenderBlocked 1
+set Coords "0 0 1334 840"
+set Focus -2
+set MouseInteract 1
+set FirstDrawnChildren 2
+set Child "InspectBlackDialog 0 0"
+set Child "VignetteInspect 0 0"
+set Child "UnlockDialogBackground 0 0"
+set Child "DialogUnderItemCover 142 162"
+set Child "InfoPartsBackground 38 38"
+set Child "InfoFramesBackground 38 38"
+set Child "InfoUnitsBackground 38 38"
+set Child "InfoCardsBackground 38 38"
+set Child "InfoOtherBackground 38 38"
+set Child "InfoDialogBackground 38 38"
+set Child "UnlockDialogIcon 145 165 /ifSym _UITexOk_ == 0	/ifSym _ShowCardIcon_ == 0"
+set Child "PartDisplayIcon 260 240"
+set Child "FrameDisplayIcon 50 52"
+set Child "CardDisplayIcon 205 152"
+set Child "InfoFrameForeground 38 38"
+set Child "InspectForegroundCancel 0 0"
+set Child "InfoCardTitleText 38 38"
+set Child "InspectDialogFrameWide 0 0"
+set Child "InspectDialogMasterItems 0 0"
+set Child "@_DynMenuObj_@ 0 0"
+set Child "InspectDialogCancel 1240 38"
+set Child "InspectDialogShowInfo 1226 318"
+set Child "CM_ButtonHints_InspectDialog 0 0			InspectDialog"
+set Child "InfoDialogCurrentCount 1206 705"
+set Child "WishlistButtons 49 716"
+set HiddenCheckBySymbolValue InspectDialogState=0
+add MenuObject
+set Name InspectDialogMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "InspectDialogMasterStandard 583 120"
+set Child "InspectDialogMasterWide 283 120"
+add MenuObject initFrom LaunchButtonTextTemplate
+set Name PaymentProviderLabel
+set RenderCB_ConsoleSymbol ServerLocation
+set RenderCB_FontScale 1.0
+set RenderCB_RGBColor "0.72 0.72 0.72"
+set RenderCB_RGBColorFocused "1.0 1.0 1.0"
+set Coords "0 0 296 70"
+set RenderCB_DX 296
+set RenderCB_DY 70
+set DrawWhenFocused ButtonGameModeHighlightSm
+set CommandPress "sym toggle PaymentProviderListHidden"
+add MenuObject initFrom PanelResizeFlat
+set Name PaymentProviderTemplate
+set Color 0x333333
+set ColorFocused 0x555555
+set TileArea "422 70"
+set Focus -2
+set MouseInteract 1
+set RenderCB _DrawUTextShadowedNMI
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 1.2
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 422
+set RenderCB_DY 70
+set RenderCB_RGBColor "0.72 0.72 0.72"
+set RenderCB_RGBColorFocused "1.0 1.0 1.0"
+set RenderCB_Text @_Arg1_@
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandPress "sym set PaymentProvider @_Arg1_@"
+add MenuObject initFrom PanelResizeClear
+set Name PaymentProviderBuffer
+set TileArea "530 352"
+add MenuObject initFrom PanelResizeClear
+set Name PaymentProviderCancel
+set CommandGetFocus "sym toggle PaymentProviderListHidden"
+set Child "PaymentProviderBuffer 50 50"
+set StretchToFillScreen 1
+add MenuObject initFrom PanelResizeFlat
+set Name PaymentProviderBackground
+set Color 0x222222
+set TileArea "430 152"
+add MenuObject
+set Name PaymentProviderList
+set ContainerOnly 1
+set HiddenCheckBySymbol PaymentProviderListHidden
+set Child "PaymentProviderBackground -4 -4"
+set Child "PaymentProviderCancel -100 -100"
+add MenuObject
+set Name InspectMapDialogMasterItems
+set RenderBlocked 1
+set Coords "0 0 1334 840"
+set Focus -2
+set MouseInteract 1
+set FirstDrawnChildren 2
+set Child "InspectBlackDialog 0 0"
+set Child "VignetteInspect 0 0"
+set Child "InspectMapDialogIcon 38 38"
+set Child "InspectDialogTextShadowMap 775 38	0x222c2f"
+set Child "InfoCardTitleText 38 38"
+set Child "InfoDialogStats 810 100"
+set Child "InfoDialogMessage_Inspect 810 100"
+set Child "InfoDialogMessageScrollWheelZone_Inspect_H 845 130"
+set Child "InfoDialogMessageScrollbar_Inspect 1278 110"
+set Child "InspectDialogCancel 1240 38"
+add MenuObject initFrom PanelResizeWhiteBorder
+set Name InspectMapDialogMaster
+set ContainerOnly 1
+set RenderCB_DX 1354
+set RenderCB_DY 860
+set Coords "0 0 1354 860"
+set Anchor Center
+set Child "InspectMapDialogMasterItems 0 0"
+set Child "InspectDialogFrameWide 0 0"
+add MenuObject initFrom PanelResizeWhiteBorder
+set Name InspectPromoDialogMasterItems
+set RenderCB_DX 1354
+set RenderCB_DY 860
+set Coords "0 0 1354 860"
+set Child "@_InspectPromo_@[InspectingPromoUIRoot] 10 10"
+set Child "InspectPromoDialogCancel 1264 32		/platform !consolePlatform"
+add MenuObject initFrom PanelResizeWhiteBorder
+set Name InspectPromoDialogMaster
+set ContainerOnly 1
+set RenderCB_DX 1354
+set RenderCB_DY 860
+set Coords "0 0 1354 860"
+set Anchor Center
+set Child "InspectPromoDialogMasterItems 0 0"

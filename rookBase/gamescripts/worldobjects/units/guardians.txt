@@ -1,0 +1,103 @@
+add WorldObject
+set Name GuardTemplate
+set Collision "Sphere 0.5"
+set SpecialType Unit
+set RenderScale 1.2
+set RangeArc 360
+set ArmorType 25.0
+set WeaponType 60.0
+set AimTurnRate 500
+set FireDelay 0.10
+set ShotMuzzleFlash MuzzleFlash
+set ShotLifespan 1
+set ShotSpeed 50
+set ShotAimLeadingEffectiveness 1.0
+set ShotFFParticles TracerGuardianDefault
+set HitPoints 200
+set VisionRange 16
+set RadarRange 16
+set Range 14
+set TreadMarkDecalDef1 ""
+set TreadMarkDecalDef2 ""
+set UnitSpecial Guardian
+set DmgPassThroughChance 25
+set MoveSpeed 50.0
+set DestructionEffects_1  "1 0.2 0  0.5 0  0 0  ExpBlastRingSmall  /vcb:75 /reqVis"
+set DestructionEffects_2  "1 2 0  0.5 3  0 0  GlassSpinSmall@TC@  /vcb:40 /reqVis"
+set DestructionEffects_3  "1 1 0  5 2  5 2  /mdl:units/Probe/ProbeDx.amf /mtl:mat_ProbeDx /bne:bone_dx1 /emt:Z /grp:Debris /col [Group Debris Box 0.25]  /skt:3 /vcb:100 /reqVis"
+set DestructionEffects_4  "1 1 0  5 2  5 2  /mdl:units/Probe/ProbeDx.amf /mtl:mat_ProbeDx /bne:bone_dx2 /emt:Z /grp:Debris /col [Group Debris Box 0.25]  /skt:3 /vcb:100 /reqVis"
+set DestructionEffects_5  "1 1 0  5 2  5 2  /mdl:units/Probe/ProbeDx.amf /mtl:mat_ProbeDx /bne:bone_dx3 /emt:Z /grp:Debris /col [Group Debris Box 0.25]  /skt:3 /vcb:100 /reqVis"
+set CameraShakeOnDestroyed "0 0 0"
+add WorldObject initFrom GuardTemplate
+set Name GuardBlaster
+set Model units/GuardBlaster/GuardBlaster.amf
+set Material "mat_Guardian"
+set FireAnimation units/GuardBlaster/Fire.aaf
+set BoneFirePoint  "bone_firepoint"
+set ZSpinDefs "bone_spin 120.0"
+set GuardianPower Blaster
+set GuardianEnergyDrain 0.5
+set ShotDamage 4
+set CanHitAir 1
+add WorldObject initFrom GuardBlaster
+set Name GuardBlasterGoth
+set Model units/GuardBlasterGoth/GuardBlasterGoth.amf
+set Material "mat_GuardianGoth<"
+set IdleAnimation units/GuardBlasterGoth/Idle.aaf
+set FireAnimation units/GuardBlasterGoth/Fire.aaf
+set BoneFirePoint  "bone_firepoint"
+set ZSpinDefs "bone_spin 160.0"
+set ZSpinDefs "bone_spin2 -100.0"
+set MoveSpeed 20.0
+set GuardianOrbitalPeriod 3.0
+set ShotFFParticles TracerGuardianPurple
+set DestructionEffects_2  ""
+set DestructionEffects_3  "1 1 0  5 2  5 2  /mdl:units/Probe/ProbeDx.amf /mtl:mat_AngelGothDx< /bne:bone_dx1 /emt:Z /grp:Debris /col [Group Debris Box 0.25]  /skt:3 /vcb:100 /reqVis"
+set DestructionEffects_4  "1 1 0  5 2  5 2  /mdl:units/Probe/ProbeDx.amf /mtl:mat_AngelGothDx< /bne:bone_dx2 /emt:Z /grp:Debris /col [Group Debris Box 0.25]  /skt:3 /vcb:100 /reqVis"
+set DestructionEffects_5  "1 1 0  5 2  5 2  /mdl:units/Probe/ProbeDx.amf /mtl:mat_AngelGothDx< /bne:bone_dx3 /emt:Z /grp:Debris /col [Group Debris Box 0.25]  /skt:3 /vcb:100 /reqVis"
+add WorldObject initFrom GuardTemplate
+set Name GuardRepair
+set Model units/GuardRepair/GuardRepair.amf
+set Material "mat_GuardianRepair"
+set GuardianPower Repair
+set GuardianEnergyDrain 0.5
+set ZSpinDefs "bone_spin 120.0"
+set SupplyRepairRate 22
+set ShotDamage 0
+set HitPoints 400
+add WorldObject initFrom GuardTemplate
+set Name GuardRadar
+set Model units/GuardRadar/GuardRadar.amf
+set Material "mat_Guardian"
+set GuardianPower Radar
+set GuardianEnergyDrain 0.05
+set ZSpinDefs "bone_spinA 120.0"
+set ZSpinDefs "bone_spinB 90.0"
+set ZSpinDefs "bone_root 40.0"
+set ShotDamage 0
+set HitPoints 600
+add WorldObject initFrom GuardTemplate
+set Name GuardEnergy
+set Model units/GuardEnergy/GuardEnergy.amf
+set Material "mat_GuardianEnergy"
+set RenderScale 1.0
+set GuardianPower Energy
+set GuardianEnergyDrain 0.0
+set ZSpinDefs "bone_spinA 120.0"
+set ZSpinDefs "bone_spinB 90.0"
+set ZSpinDefs "bone_root 40.0"
+set ShotDamage 0
+set HitPoints 600
+add WorldObject initFrom GuardTemplate
+set Name GuardBlade
+set Model units/GuardBlade/GuardBlade.amf
+set Material "mat_GuardianBlade"
+set GuardianPower Blades
+set RenderScale 1.0
+set GuardianOrbitalPeriod 1.0
+set ZSpinDefs "bone_spin 950.0"
+set ShotDamage 80
+set FireDelay 1.0
+set HitPoints 400
+set DmgPassThroughChance 2
+set WeaponType 30.0

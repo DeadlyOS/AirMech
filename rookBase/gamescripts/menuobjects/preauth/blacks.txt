@@ -1,0 +1,142 @@
+add MenuObject
+set Name Black
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 1.0
+add MenuObject initFrom Black
+set Name BlackFadeIn75
+set NeverUnload 1
+add MenuObject initFrom Black
+set Name BlackFadeOut75
+set NeverUnload 1
+Set Alpha 0.0
+add MenuObject
+set Name BlackCenterShadow
+set Texture menus/BlackCenterShadow
+set Coords "0 0 512 256"
+set StretchToFillScreen 1
+set BlendMode BlendDestColor
+add MenuObject
+set Name RowShadow
+set Texture menus/RowShadow
+set Coords "0 0 512 256"
+set ScaleY 3.0
+set ScaleX 1.5
+set BlendMode BlendDestColor
+add MenuObject initFrom Black
+set Name BlackPax
+add MenuObject
+set Name BlackStandby
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.7
+set MouseInteract 1
+add MenuObject
+set Name BlackLesson
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "addUIAnim ChallengeHintContinue mas_ShakeContinue"
+set Alpha 0.5
+add MenuObject initFrom Black
+set Name BlackFadeOut
+set Alpha 0.0
+add MenuObject
+set Name BlackTop
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set Layer 5
+set NoAlphaMod 1
+add MenuObject
+set Name VignetteBase
+set Texture effects/vignette
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Hidden 1
+set Layer 0
+add MenuObject
+set Name PauseOverlayOffline
+set Texture effects/VignettePauseOnline
+set Coords "0 0 515 256"
+set StretchToFillScreen 1
+set DisabledSymInv PauseBackgroundEnable
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+set FilterName LoadMapStartup
+set MouseInteract 1
+set Focus -2
+set CommandPress "]if sym PauseUIOpen == 1 ]menuCmd MP_ResumeGame local"
+set CommandPress "]if sym GL_ChatMinimized == 0 sym set GL_ChatMinimized 1"
+set CommandPress "]if sym GL_ChatMinimized == 0 menucmd GlobalChatReposition"
+add MenuObject initFrom PauseOverlayOffline
+set Name PauseOverlayOnline
+set Texture effects/VignettePauseOnline
+add MenuObject initFrom VignetteBase
+set Name Vignette
+set Texture effects/VignettePixel
+set Layer 5
+set MouseInteract 1
+set Focus -2
+add MenuObject initFrom VignetteBase
+set Name VignetteWin
+set Texture effects/VignetteColor
+set Coords "0 0 515 512"
+set MouseInteract 1
+set Hidden 0
+set Focus -2
+add MenuObject
+set Name VignetteInspect
+set Texture effects/VignetteColor
+set Coords "0 0 515 512"
+set StretchToFillScreen 1
+add MenuObject
+set Name VignetteFade
+set Texture effects/VignetteColor
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set HiddenCheckBySymbol ArcCustomized
+set DisabledSymInv VignetteFade
+set DisabledAlpha 0.2
+set DisabledAlphaTimeOut 0.9
+set DisabledAlphaTimeIn 0.9
+add MenuObject initFrom VignetteBase
+set Name VignetteConMen
+set Texture effects/VignetteColor
+set NoAlphaMod 1
+set Alpha 0.33
+set Hidden 0
+add MenuObject initFrom VignetteBase
+set Name VignetteStory
+set Texture effects/VignetteColor
+set NoAlphaMod 0
+set Disabled 1
+set Hidden 0
+set DisabledAlphaTimeOut 1.5
+set DisabledAlphaTimeIn 1.5
+add MenuObject
+set Name BlackGradientMask
+set Texture menus/BlackGradientMask
+set Coords "0 1 128 255"
+set ScaleX 10.0
+set ScaleY 1.3
+set Hidden 1
+set NoAlphaMod 1
+set Layer 3
+add MenuObject
+set Name PopDialogBack
+set Texture effects/VignetteColor
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "clearmenu $MenuToClear /fadeout 0.2"

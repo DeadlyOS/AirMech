@@ -1,0 +1,16 @@
+menu3d addAnimScript QuestRewardItem0 as_VRQuestCard0.txt
+menucmd DrawVrQuestRewardItem
+menu3d remove BoxRewardAirMech
+menu3d remove QuestRewardKudosCoin
+menu3d remove QuestRewardCrate
+menu3d remove QuestRewardCrateItem
+if sym LocalAM_AirMode == 1 runnow player 0 do transform /forceReq
+pcmd 0.2 menucmd ShowQuestCrate
+pcmd 1.4 if sym QVRRewardItemType == rooks menucmd UpdateRewardAirMech
+pcmd 1.4 if sym QVRRewardItemType == kudos menucmd ShowKudosCoin
+pcmd 0.1 menu3d addAnimScript QuestRewardItem0 as_VRQuestRewardShow.txt 1.5
+menu3d animate QuestRewardItem0 vr/QuestCardSelect.aaf playonce 0 1.0
+menu3d addChild QuestRewardItem0 QuestCardButtonPrompt /model vr/ButtonA.amf /material mat_MenuButtonsGamepad /attachToParentBone bone_twist /rootScale 0.45 /rootRot 0 0 0 /noVis /worldPose 8.5 -4.0 0.5
+pcmd 0.8 menu3d addAnimScript QuestCardButtonPrompt as_VRMenuIn.txt 0.8
+menu3d logicFnc QuestRewardItem0 trackStickL /bone bone_twist /mag 10
+playsound VrCardFlipOut

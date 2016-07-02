@@ -1,0 +1,35 @@
+onloadrun {
+if sym CurrencyDepositSource != none runnow menucmd DepositKudosSetup
+}
+onunload {
+}
+MO DepositKudosA {
+pos $_KudosSrcX_ $_KudosSrcY_
+layer 20
+}
+MO DepositKudosB {
+relposx $_KudosSrcX_ -10
+relposy $_KudosSrcY_ 8
+layer 20
+}
+MO DepositKudosC {
+relposx $_KudosSrcX_ -5
+relposy $_KudosSrcY_ 13
+layer 20
+}
+onload {
+if sym CurrencyDepositSource != none gameUI show DepositKudosA
+if sym CurrencyDepositSource != none pcmd 0.1 gameUI show DepositKudosB
+if sym CurrencyDepositSource != none pcmd 0.2 gameUI show DepositKudosC
+if sym CurrencyDepositSource != none pcmd 0 addUIAnim DepositKudosA mas_DepositKudos /speed 0.95
+if sym CurrencyDepositSource != none pcmd 0.1 addUIAnim DepositKudosB mas_DepositKudos /speed 0.97
+if sym CurrencyDepositSource != none pcmd 0.2 addUIAnim DepositKudosC mas_DepositKudos
+pcmd 0.2 playSound UIOption01.wav
+if sym CurrencyDepositSource != none pcmd 0.85 gameUI disable DepositKudosA
+if sym CurrencyDepositSource != none pcmd 0.9 gameUI disable DepositKudosB
+if sym CurrencyDepositSource != none pcmd 0.95 gameUI disable DepositKudosC
+pcmd 1.5 clearmenu DepositKudos
+sym set CurrencyDepositSource none
+}
+onunload {
+}

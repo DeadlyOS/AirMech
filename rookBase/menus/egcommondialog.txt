@@ -1,0 +1,56 @@
+stopIfSymbol GoSpectate == 1
+blockLoadOnConsoleSym EGCommonDialogLoaded
+onloadrun {
+]gameui ignoreInputTime 0.35
+]gameUI saveFocusID _savefocusid_egcommondialog_
+sym set EGCommonDialogLoaded 1
+}
+MO EGCommonDialog {
+pos 0 -25
+layer 14
+layerInGame 21
+}
+MO EGCommonDialogEscape {
+pos 0 0
+layer 13
+layerInGame 20
+}
+onload {
+playsound VictorySting
+]pcmd 0.1 ]gameUI enable EGCommonDialog
+]pcmd 0.1 ]gameUI enable EGCommonDialogBg
+]if sym _EGType_ == amlvlup ]pcmd 0.125 ]addUIAnim EGCommonDialogAMLvlUpMech mas_EGCommonDialogPictureIn
+]if sym _EGType_ == lvlup ]pcmd 0.125 ]addUIAnim EGCommonDialogLvlUpPilot mas_EGCommonDialogPictureIn
+]if sym _EGType_ == leaderboard ]pcmd 0.125 ]addUIAnim EGCommonDialogLvlUpPilot mas_EGCommonDialogPictureIn
+]if sym _EGType_ == victory pcmd 0.125 ]addUIAnim EGCommonDialogMedal mas_EGCommonDialogMedalIn
+]pcmd 0.2 ]gameUI enable EGCommonDialogIcon
+]pcmd 0.2 ]addUIAnim EGCommonDialogTitle mas_EGCommonDialogTitleIn
+]if sym _EGType_ == lvlup ]pcmd 0.25 ]addUIAnim EGCommonDialogLvlUpNumBg mas_EGCommonDialogLvlIn
+]if sym _EGType_ == lvlup ]pcmd 0.25 ]addUIAnim EGCommonDialogLvlDesc mas_EGCommonDialogLvlDescIn
+]if sym _EGType_ == lvlup ]pcmd 0.25 ]addUIAnim EGCommonDialogPilotPoints mas_EGCommonDialogLvlDescIn
+]if sym _EGType_ == amlvlup ]pcmd 0.25 ]addUIAnim EGCommonDialogAMLvlInfo mas_EGCommonDialogLvlIn
+]if sym _EGType_ == amlvlup ]pcmd 0.25 ]addUIAnim EGCommonDialogAMLvlDesc mas_EGCommonDialogLvlDescIn
+]if sym _EGType_ == leaderboard ]pcmd 0.25 ]gameui enable EGCommonDialogLeaderboardName
+]if sym _EGType_ == leaderboard ]pcmd 0.3 ]gameui enable EGCommonDialogLeaderboardNewRank
+]if sym _EGType_ == leaderboard ]pcmd 0.35 ]gameui enable EGCommonDialogLeaderboardOldRank
+]if sym _EGType_ == leaderboard ]pcmd 0.4 ]gameui enable EGCommonDialogLeaderboardScore
+]pcmd 0.3 ]gameUI enable ButtonEGCommonDialogClose
+addUIAnim QuestRedeemDialogDust mas_QuestDialogDustPuff
+input set padFocusFallback EGCommonDialog
+]if usingPad ]gameUI focusName EGCommonDialog
+]if usingPad ]pcmd t0 gameUI focusName EGCommonDialog
+]if usingPad ]pcmd t1 gameUI focusName EGCommonDialog
+]if usingPad ]pcmd t2 gameUI focusName EGCommonDialog
+]if usingPad ]pcmd t3 gameUI focusName EGCommonDialog
+]if usingPad ]pcmd 0.5 gameUI focusName EGCommonDialog
+gameui promoteToTop EGCommonDialogEscape
+gameui promoteToTop EGCommonDialog
+}
+onunload {
+input set padFocusFallback $_savefocusid_egcommondialog_
+]pcmd 0.05 ]gameUI restoreFocusID _savefocusid_egcommondialog_
+sym set EGCommonDialogLoaded 0
+sym set _EndGameSeqMsg_ 0
+gameui enable EG_RewardRubble
+if !MenuLoaded BaseCampHelp && sym _BaseCampHelpStage_ > -1 menucmd BaseCampHelpContinue"
+}

@@ -1,0 +1,17 @@
+stopIfSymbol BlockAllUI == 1
+stopIfVR
+MO NotifyLevelUpNP {
+pos 899 313
+layer 15
+}
+MO LevelUpFlash {
+pos 0 0
+layer 15
+}
+onload {
+addUIAnim LevelUpFlash mas_LevelUpStreak.txt /speed 1.0
+addUIAnim NotifyLevelUpNP mas_LevelUp.txt /speed 1.0
+gameui enableAll NotifyLevelUpNP
+pcmd_seq 201 4.0 gameui disableAll NotifyLevelUpNP
+pcmd_seq 201 5.0 clearmenu NotifyLevelUpNP.txt
+}

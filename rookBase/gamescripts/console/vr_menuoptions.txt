@@ -1,0 +1,87 @@
+menu3d addChild MenusVR MenusVROptions  /noVis
+menu3d setWorldPose MenusVROptions	0.0 0.0 0.1
+sym set _PosLang "35 60"
+menu3d addChild MenusVROptions MenuDiskLang /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosLang 0 /rootScale 0.3 0.3 0.6
+menu3d logicFnc MenuDiskLang amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchOptions Lang] /cmdunfocus [menucmd UnTouchOptions Lang]
+menu3d addChild MenusVROptions MenuRingLang /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /worldPose $$_PosLang 0 /rootScale 0.35
+menu3d addChild MenusVROptions MenuDecoLang /model vr/Earth.amf /material mat_GlobeSolid /noVis /worldPose $$_PosLang 30 /rootScale 80 /rootRot 0 20 0
+menu3d addZSpin MenuDecoLang bone_spin 20
+menu3d addChild MenusVROptions MenuLabelLang /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosLang -20 /rootScale 3.4 /rootRot 5 0 180
+menu3d addChild MenuDecoLang CurrentLangTile /model vr/FlairBlock0.amf /material mat_VrPictureAirMech /rootScale 0.02 /noVis /rootRot 5 -20 170 /worldPose -0.15 0 0.35
+pcmd t1 sym set DrawingLangFlags 1
+pcmd t1 sym op VrLangList copyNth $LangIndex LangActive
+pcmd t1 sym setPair VrDrawFlag $LangActive"
+pcmd 0.1 menu3d updateORTSnapshot CurrentLangTile 10 130 300 300
+pcmd 0.2 sym set DrawingLangFlags 0
+sym set _PosAudio "60 0"
+menu3d addChild MenusVROptions MenuDiskAudio /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosAudio 0 /rootScale 0.3 0.3 0.6
+menu3d logicFnc MenuDiskAudio amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchOptions Audio] /cmdunfocus [menucmd UnTouchOptions Audio]
+menu3d addChild MenusVROptions MenuRingAudio /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /worldPose $$_PosAudio 0 /rootScale 0.35
+menu3d addChild MenusVROptions MenuLabelAudio /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosAudio -30 /rootScale 3.4 /rootRot 5 0 170
+sym set _PosGamepad "-35 60"
+menu3d addChild MenusVROptions MenuDiskGamepad /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosGamepad 0 /rootScale 0.3 0.3 0.6
+menu3d logicFnc MenuDiskGamepad amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchOptions Gamepad] /cmdunfocus [menucmd UnTouchOptions Gamepad]
+menu3d addChild MenusVROptions MenuRingGamepad /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /worldPose $$_PosGamepad 0 /rootScale 0.35
+menu3d addChild MenusVROptions MenuDecoGamepad /model vr/Gamepad.amf /material mat_Gamepad /noVis /worldPose $$_PosGamepad 30 /rootScale 150.0 /rootRot 75 0 25
+menu3d addChild MenusVROptions MenuLabelGamepad /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosGamepad -30 /rootScale 3.4 /rootRot 5 0 190
+sym set _PosCredits "0 -70"
+menu3d addChild MenusVROptions MenuDiskCredits /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosCredits 0 /rootScale 0.3 0.3 0.6
+menu3d logicFnc MenuDiskCredits amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchOptions Credits] /cmdunfocus [menucmd UnTouchOptions Credits]
+menu3d addChild MenusVROptions MenuRingCredits /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /worldPose $$_PosCredits 0 /rootScale 0.35
+menu3d addChild MenusVROptions MenuDecoCredits /model vr/LogoAirMech01.amf /material mat_LogoAirMech01 /noVis /worldPose 0 -60 30 /rootScale 25.0 /rootRot -15 0 0
+menu3d addChild MenuDecoCredits MenuDecoCreditsCommand /model vr/CommandLogo.amf /material mat_CommandLogoTexture /attachToParentBone bone_AirMechRoot /attachOffset 0.05 0.02 -0.31 /rootRot 0 0 90 /rootScale 1.0 /noVis"
+menu3d animate MenuDecoCredits vr/LogoAirMechIdle.aaf looping"
+menu3d animate MenuDecoCreditsCommand vr/CommandLogoIdle.aaf looping
+pcmd 0.15 menu3d addAnimScript MenuDecoCreditsCommand as_VRMenuIn.txt
+menu3d addChild MenusVROptions MenuLabelCredits /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosCredits -30 /rootScale 3.4 /rootRot 5 0 180
+sym set _PosTutorial "-60 -45"
+menu3d addChild MenusVROptions MenuDiskTutorial /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosTutorial 0 /rootScale 0.3 0.3 0.6
+menu3d logicFnc MenuDiskTutorial amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchOptions Tutorial] /cmdunfocus [menucmd UnTouchOptions Tutorial]
+menu3d addChild MenusVROptions MenuRingTutorial /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /worldPose $$_PosTutorial 0 /rootScale 0.35
+menu3d addChild MenusVROptions MenuDecoTutorial /model rooks/Mechy/Mechy_Ref.amf /material mat_MechyBlue /material mat_MechyThrust  /noVis /worldPose -57 -52 0 /rootScale 12 /rootRot -12 0 35
+menu3d addChild MenusVROptions MenuLabelTutorial /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosTutorial -30 /rootScale 3.4 /rootRot 5 0 190
+menu3d animate MenuDecoTutorial rooks/Mechy/Mechy_Hover_1.aaf looping 0 1.0
+sym set _PosTutorial2 "-73 15"
+menu3d addChild MenusVROptions MenuDiskTutorial2 /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosTutorial2 0 /rootScale 0.3 0.3 0.6
+menu3d logicFnc MenuDiskTutorial2 amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchOptions Tutorial2] /cmdunfocus [menucmd UnTouchOptions Tutorial2]
+menu3d addChild MenusVROptions MenuRingTutorial2 /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /worldPose $$_PosTutorial2 0 /rootScale 0.35
+menu3d addChild MenusVROptions MenuDecoTutorial2 /model rooks/Mechy/Mecho_Ref.amf /material mat_MechyRed /material mat_MechyThrust /noVis /worldPose -70 8 0 /rootScale 12 /rootRot -16 0 40
+menu3d addChild MenusVROptions MenuLabelTutorial2 /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosTutorial2 -30 /rootScale 3.4 /rootRot 5 0 190
+menu3d animate MenuDecoTutorial2 rooks/Mechy/Mechy_Hover_1.aaf looping 0 1.1
+menu3d addChild MenusVROptions MenuLabelTutorial2 /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosTutorial2 -30 /rootScale 3.4 /rootRot 5 0 170
+sym set _PosTutorial3 "60 -60"
+menu3d addChild MenusVROptions MenuDiskTutorial3 /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosTutorial3 0 /rootScale 0.3 0.3 0.6
+menu3d logicFnc MenuDiskTutorial3 amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchOptions Tutorial3] /cmdunfocus [menucmd UnTouchOptions Tutorial3]
+menu3d addChild MenusVROptions MenuRingTutorial3 /model vr/MenuRing2.amf /material mat_MenuRingDev /noVis /worldPose $$_PosTutorial3 0 /rootScale 0.35
+menu3d addChild MenusVROptions MenuDecoTutorial3 /model vr/SwordsCoop.amf /material mat_IconsSwords /noVis /worldPose $$_PosTutorial3 0 /rootScale 1.5 /rootRot -20 0 0
+menu3d addChild MenusVROptions MenuLabelTutorial3 /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose $$_PosTutorial3 -30 /rootScale 3.4 /rootRot 5 0 190
+sym set _PosKudos "-60 -60"
+menu3d addChild MenusVROptions MenuDiskKudos /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /worldPose $$_PosKudos 0 /rootScale 0.3 0.3 0.6
+menu3d logicFnc MenuDiskKudos amFocusCapsule /radiusInner 20.0 /height 30.0 /skinDepth 10.0 /cmdfocus [menucmd TouchOptions Kudos] /cmdunfocus [menucmd UnTouchOptions Kudos]
+menu3d addChild MenusVROptions MenuRingKudos /model vr/MenuRing2.amf /material mat_MenuRingDev /noVis /worldPose $$_PosKudos 0 /rootScale 0.35
+menu3d addChild MenusVROptions MenuDecoKudos /model vr/KudosCoin.amf /material mat_VRKudosCoin /noVis /worldPose $$_PosKudos 18 /rootScale 2 /rootRot -30 0 0
+menu3d addZSpin MenuDecoKudos bone_spin 220
+pcmd 0.0 menucmd ShowVrMenuSet Lang
+pcmd 0.55 menu3d addAnimScript CurrentLangTile as_VRMenuIn.txt"
+pcmd 0.0 menucmd ShowVrMenuSet Audio
+pcmd 0.0 menucmd ShowVrMenuSet Gamepad
+pcmd 0.0 menucmd ShowVrMenuSet Credits
+pcmd 0.0 menucmd ShowVrMenuSet Tutorial
+pcmd 0.0 menucmd ShowVrMenuSet Tutorial2
+if sym DevMode == 1 runnow pcmd 0.3 menucmd ShowVrMenuSet Tutorial3
+pcmd 0.45 menu3d writeWorldPos MenuDiskLang _WorldPosLang
+pcmd 0.45 menu3d writeWorldPos MenuDiskGamepad _WorldPosGamepad
+pcmd 0.45 menu3d writeWorldPos MenuDiskCredits _WorldPosCredits
+pcmd 0.45 menu3d writeWorldPos MenuDiskAudio _WorldPosAudio
+menu3d writeWorldPos MenuDiskTutorial _WorldPosTutorial
+menu3d writeWorldPos MenuDiskTutorial2 _WorldPosTutorial2
+menu3d writeWorldPos MenuDiskTutorial3 _WorldPosTutorial3
+if sym DevMode == 1 runnow pcmd 0.45 menu3d writeWorldPos MenuDiskKudos _WorldPosKudos
+pcmd 0.5 spawn VRMenuSphereCol2Vis /pos $$_PosAudio -3.4 /label MenuColLang
+pcmd 0.5 spawn VRMenuSphereCol2Vis /pos $$_PosAudio -3.4 /label MenuColAudio
+pcmd 0.5 spawn VRMenuSphereCol2Vis /pos $$_PosGamepad -3.4 /label MenuColGamepad
+pcmd 0.5 spawn VRMenuSphereCol2Vis /pos $$_PosTutorial -3.4 /label MenuColTutorial
+pcmd 0.5 spawn VRMenuSphereCol2Vis /pos $$_PosTutorial2 -3.4 /label MenuColTutorial2
+if sym DevMode == 1 runnow pcmd 0.5 spawn VRMenuSphereCol2Vis /pos $$_PosTutorial3 -3.4 /label MenuColTutorial3
+if sym DevMode == 1 runnow pcmd 0.5 spawn VRMenuSphereCol2Vis /pos $$_PosKudos -3.4 /label MenuColKudos
+sym set PrevVrMenu Root

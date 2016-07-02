@@ -1,0 +1,32 @@
+onloadrun {
+sym set _InLogoSplash_ 1
+sym set _TitleScreenStart_ 0
+sym set _TitleScreenLoaded_ 1
+sym set _TitleScreenReached_ 1
+}
+MO BootTitleScreenBG {
+pos 0 0
+}
+MO BootTitleLogo {
+pos 0 0
+}
+MO BootTitleScreenPressStart {
+pos 350 530
+}
+MO TitleLegalLine {
+pos 350 960
+}
+MO BootTitleScreenInputCatch {
+pos 0 0
+}
+onload {
+]gameUI ignoreInputTime 1.5
+]gameUI focusName BootTitleScreenInputCatch
+]pcmd 0.1 ]gameui enableGroup TitleLegalLine
+]if fastload ]pcmd_seq 315 t10 menucmd BootTitleScreenStart
+}
+onunload {
+]console flushAllPendingSeq 315
+]sym set _InLogoSplash_ 0
+]sym set _TitleScreenLoaded_ 0
+}

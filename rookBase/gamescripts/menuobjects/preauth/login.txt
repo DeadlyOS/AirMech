@@ -1,0 +1,1447 @@
+add MenuObject
+set Name LoginMenuTitleTemplate
+set Coords "0 0 500 47"
+set RenderCB_DX 500
+set RenderCB_DY 47
+set RenderCB_FontScale 1.0
+set RenderCB_Offset "2 0"
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 1"
+set Layer 3
+set DisabledAlpha 1.0
+add MenuObject initFrom LoginMenuTitleTemplate
+set Name ML_CreateTitle
+set RenderCB_Text CreateTitle
+set RenderCB_FontScale 0.75
+add MenuObject initFrom LoginMenuTitleTemplate
+set Name ML_ForgotPasswordTitle
+set RenderCB_Text ForgotPasswordTitle
+set RenderCB_FontScale 0.75
+add MenuObject initFrom LoginMenuTitleTemplate
+set Name ML_LoginTitle
+set RenderCB_Text LoginTitle
+add MenuObject
+set Name LoginVersionNumber
+set Coords "0 0 271 47"
+set RenderCB_DX 271
+set RenderCB_DY 47
+set RenderCB_FontScale 0.7
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1.0 0.4 0.2"
+set Anchor LowerLeft
+set Alpha 0.55
+set NoAlphaMod 1
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol SYS_VersionNumber
+add MenuObject initFrom LoginVersionNumber
+set Name LoginVersionNumberTitle
+set RenderCB_FontScale 1.5
+set Coords "0 0 1150 47"
+set RenderCB_DX 1150
+set RenderCB_TextJustify JustifyXRight
+set Anchor Top
+set NoAlphaMod 0
+set RenderCB _DrawTextShadowed
+set RenderCB_ConsoleSymbol SYS_VersionNumberShort
+add MenuObject initFrom LoginVersionNumber
+set Name IngameVersionNumber
+set Anchor UpperRight
+set RenderCB_Offset "0 35"
+set Alpha 0.7
+set RenderCB_RGBColor 0xffffff
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_FontScale 0.8
+set Alpha 0.33
+add MenuObject initFrom LoginVersionNumber
+set Name SplashLoadingMessage
+set Anchor Center
+set RenderCB_RGBColor "0.6 0.6 0.6"
+set RenderCB_TextJustify JustifyXCenter
+set Coords "0 0 1920 40"
+set RenderCB_DX 1920
+set RenderCB_DY 40
+set Layer 9
+set RenderCB_FontScale 1.0
+set NoAlphaMod 0
+set RenderCB _DrawUText
+set DisabledAlpha 0.0
+set RenderCB_ConsoleSymbol LoadingMessage
+add MenuObject initFrom LoginMenuTextTemplate
+set Name ML_Username
+set RenderCB_Text Username
+add MenuObject initFrom LoginMenuTextTemplate
+set Name ML_UsernameOrEmail
+set RenderCB_Text Email
+add MenuObject initFrom LabelMenuTextTemplate
+set Name ML_Language
+set RenderCB_Text MF_LanguageLabelMenu
+add MenuObject initFrom LabelMenuTextTemplate
+set Name ML_LanguageEnglish
+set RenderCB _DrawText
+set RenderCB_Text (Language)
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject initFrom LabelMenuTextTemplate
+set Name ML_LanguageNote
+set RenderCB_Text LanguageNote
+set Coords "0 0 500 200"
+set RenderCB_DX 500
+set RenderCB_DY 200
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor "0.75 0.77 0.8"
+add MenuObject initFrom LoginMenuTextTemplate
+set Name ML_Email
+set RenderCB_Text Email
+add MenuObject initFrom LoginMenuTextTemplate
+set Name ML_Password
+set RenderCB_Text Password
+add MenuObject initFrom LoginMenuTextTemplate
+set Name ML_PasswordConfirm
+set RenderCB_Text PasswordConfirm
+add MenuObject
+set Name LoginBeamR
+set Texture menus/MainWideBars
+set BlendMode BlendAdd
+set Coords "1920 184 960 17"
+set CoordsInterpolatedDest "0 186 960 17"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 8"
+set ScaleX 2.4
+set ScaleY 1.0
+add MenuObject
+set Name LoginBeamL
+set Texture ]menus/MainWideBars
+set BlendMode BlendAdd
+set Coords "960 184 960 17"
+set CoordsInterpolatedDest "-960 186 960 17"
+set CoordsInterpolantCommand "genMenuFloat loop 0 1 8"
+set ScaleX 2.4
+set ScaleY 1.0
+set MirrorOnX 1
+add MenuObject
+set Name LoginBoxOutlineDark
+set Texture menus/LoginCommon
+set Coords "477 1 477 120"
+set BlendMode BlendDestColor
+add MenuObject
+set Name LoginBoxHighlightNew
+set Texture menus/LoginCommon
+set PulseAlpha "2.5 -0.4 0.0"
+set Coords "477 1 477 120"
+set BlendMode BlendAdd
+add MenuObject
+set Name LoginBoxHighlight
+set Texture menus/LoginBase
+set PulseAlpha "2.5 -0.75 0.0"
+set Coords "276 104 235 48"
+set ScaleX 2.12
+set ScaleY 1.0
+add MenuObject initFrom LoginBoxHighlight
+set Name LoginButtonHighlightOld
+set ScaleX 1.15
+add MenuObject initFrom LoginBoxHighlight
+set Name LoginBoxHighlightSm
+set ScaleX 1.6
+add MenuObject initFrom LoginBoxHighlight
+set Name LoginBoxHighlightHalfSize
+set ScaleX 1.06
+add MenuObject initFrom LoginBoxHighlight
+set Name LoginCheckboxHighlight
+set Coords "328 55 20 20"
+set ScaleX 1.22
+set ScaleY 1.22
+add MenuObject
+set Name LoginTextboxTemplate
+set Coords "0 0 400 60"
+set Texture menus/LoginCommon
+set RenderBlocked 1
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set DrawWhenFocused LoginBoxHighlightNew
+set DrawWhenFocusedOffset "-39 -29"
+set RenderCB_DX 400
+set RenderCB_DY 60
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "0 0"
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/fitX /nmi"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.8 1.0 1.0"
+set TextEditableMaxLen 64
+add MenuObject initFrom LoginTextboxTemplate
+set Name LoginBoxEmail
+set RenderCB_Text CarbonLogin
+set CommandFocusUp "gameUI focusName ForgotPasswordButton"
+set CommandFocusDown "gameUI focusName LoginBoxPassword"
+set CommandTabCycleRev "gameUI focusName LoginExitButton"
+set CommandTabCycle "gameUI focusName LoginBoxPassword"
+set CommandOnKeyboardEdit "menuCmd LoginInfoValidate"
+set CommandGetFocus "menuCmd LoginInfoValidate"
+add MenuObject initFrom LoginTextboxTemplate
+set Name LoginBoxPassword
+set RenderCB_Text CarbonPassword
+set TextEditableMaxLen 32
+set TextEditableMasked 1
+set CommandFocusUp "gameUI focusName LoginBoxEmail"
+set CommandFocusDown "gameUI focusNameTry LoginButton LoginRememberCheckbox LoginSignInGoogle LoginExitButton"
+set CommandTabCycleRev "gameUI focusName LoginBoxEmail"
+set CommandTabCycle "gameUI focusNameTry LoginButton LoginRememberCheckbox LoginSignInGoogle LoginExitButton"
+set CommandOnKeyboardEdit "menuCmd LoginInfoValidate"
+set CommandGetFocus "menuCmd LoginInfoValidate"
+set CommandEnterKey "gameUI focusName DummyFocus"
+set CommandEnterKey "menuCmd TryToLogin $C_BINDING"
+add MenuObject initFrom LoginTextboxTemplate
+set Name CreateAccountUsername
+set RenderCB_Text CarbonUsername
+set TextEditableMaxLen 15
+set TextEditableProfanityFiltered 1
+set TextEditableUsername 1
+set CommandOnKeyboardEdit "menuCmd CreateAccountValidate local 1"
+set CommandGetFocus "menuCmd CreateAccountValidate local 0"
+set CommandTabCycleRev "gameUI focusNameTry CreateAccountCreateButton AgreeTermsCheckButton"
+set CommandTabCycle "gameUI focusNameTry CreateAccountEmail"
+set CommandGetFocus ">sym set CreatePoint1 3"
+set CommandLoseFocus ">sym set CreatePoint1 4"
+set MouseInteractClickAwayToUnfocus 1
+set Child "AvailableUsernameCheck 410 -3"
+set Child "CreateAccountUsernameInvalid 0 0"
+add MenuObject initFrom LoginTextboxTemplate
+set Name ResetAccountUsername
+set RenderCB_Text CarbonUsername
+set TextEditableMaxLen 15
+set TextEditableProfanityFiltered 1
+set TextEditableUsername 1
+set CommandOnKeyboardEdit "menuCmd ResetAccountUsernameValidate local 1"
+set CommandGetFocus "menuCmd ResetAccountUsernameValidate local 0"
+set CommandTabCycleRev "gameUI focusNameTry ResetAccountResetButton AgreeTermsCheckButton"
+set CommandTabCycle "gameUI focusNameTry AgreeTermsCheckButton"
+set CommandGetFocus ">sym set CreatePoint1 3"
+set CommandLoseFocus ">sym set CreatePoint1 4"
+set MouseInteractClickAwayToUnfocus 1
+set Child "AvailableUsernameCheck 410 -3"
+set Child "CreateAccountUsernameInvalid 0 0"
+add MenuObject initFrom LoginTextboxTemplate
+set Name CreateAccountUsernameInvalid
+set RenderCB_Text CarbonUsername
+set RenderCB_RGBColor 0xf46134
+set MouseInteract 0
+set Focus 0
+set HiddenCheckBySymbol _AvailableUsername_
+set RenderCB_Flags "/fitX /nmi /outlined8x /shadowColor2"
+add MenuObject initFrom LoginTextboxTemplate
+set Name CreateAccountEmail
+set RenderCB_Text CarbonLogin
+set TextEditableMaxLen 64
+set CommandOnKeyboardEdit "menuCmd CreateAccountValidate local 0"
+set CommandGetFocus "menuCmd CreateAccountValidate local 0"
+set CommandGetFocus ">sym set CreatePoint2 3"
+set CommandLoseFocus ">sym set CreatePoint2 4"
+set MouseInteractClickAwayToUnfocus 1
+set CommandTabCycleRev "gameUI focusNameTry CreateAccountUsername"
+set CommandTabCycle "gameUI focusNameTry CreateAccountReferrer"
+add MenuObject initFrom LoginTextboxTemplate
+set Name CreateAccountReferrer
+set RenderCB_Text CreateAccountReferrer
+set TextEditableMaxLen 25
+set TextEditableUsername 1
+set CommandOnKeyboardEdit "menuCmd CreateAccountValidate local 0"
+set CommandGetFocus "menuCmd CreateAccountValidate local 0"
+set CommandGetFocus ">sym set CreatePoint3 3"
+set CommandLoseFocus ">sym set CreatePoint3 4"
+set MouseInteractClickAwayToUnfocus 1
+set CommandTabCycleRev "gameUI focusNameTry CreateAccountEmail"
+set CommandTabCycle "gameUI focusNameTry LoginAgreeTermsCheckbox CreateAccountCreateButton"
+add MenuObject initFrom LoginTextboxTemplate
+set Name CreateAccountPassword
+set RenderCB_Text CarbonPassword
+set TextEditableMaxLen 32
+set TextEditableMasked 1
+set CommandOnKeyboardEdit "menuCmd CreateAccountValidate local 0"
+set CommandGetFocus "menuCmd CreateAccountValidate local 0"
+set CommandGetFocus ">sym set CreatePoint3 3"
+set CommandLoseFocus ">sym set CreatePoint3 4"
+set MouseInteractClickAwayToUnfocus 1
+set CommandTabCycleRev "gameUI focusNameTry CreateAccountEmail"
+set CommandTabCycle "gameUI focusNameTry LoginAgreeTermsCheckbox CreateAccountCreateButton"
+add MenuObject
+set Name LoginButtonHighlight
+set Texture menus/LoginCommon
+set PulseAlpha "2.5 -0.4 0.0"
+set Coords "485 132 257 104"
+set BlendMode BlendAdd
+add MenuObject
+set Name LoginButtonTemplate
+set Texture menus/LoginCommon
+set Coords "718 248 235 83"
+set CoordsFocused "476 248 235 83"
+set DrawWhenFocused LoginButtonHighlight
+set DrawWhenFocusedOffset "-10 -14"
+set RenderCB_DX 235
+set RenderCB_DY 70
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+add MenuObject initFrom LoginButtonTemplate
+set Name LoginButton
+set RenderCB_Text Login
+set OkToThrowNullFocus 0
+set CommandFocusUp "gameUI focusName LoginBoxPassword"
+set CommandFocusDown "gameUI focusName LoginRememberCheckbox"
+set CommandTabCycleRev "gameUI focusName LoginBoxPassword"
+set CommandTabCycle "gameUI focusName LoginRememberCheckbox"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "menuCmd TryToLogin $C_BINDING"
+set CommandEnterKey "gameUI focusName DummyFocus"
+set CommandEnterKey "menuCmd TryToLogin $C_BINDING"
+add MenuObject initFrom LoginButtonTemplate
+set Name LoginButtonLink
+set RenderCB_Text Login
+set CommandPress "backend login CarbonLogin CarbonPassword"
+set CommandEnterKey "backend login CarbonLogin CarbonPassword"
+set CommandFocusUp "gameUI focusNameTry LoginBoxPassword"
+set CommandFocusDown "gameUI focusNameTry LoginRememberCheckbox"
+set CommandTabCycleRev "gameUI focusNameTry LoginBoxPassword"
+set CommandTabCycle "gameUI focusNameTry LoginRememberCheckbox"
+add MenuObject initFrom LoginButtonTemplate
+set Name LoginSteamButton
+set RenderCB_Text Login
+set CommandPress "menuCmd MF_SteamLogin"
+set CommandEnterKey "menuCmd MF_SteamLogin"
+add MenuObject initFrom LoginButtonTemplate
+set Name LoginArcButton
+set RenderCB_Text Login
+set CommandPress "menuCmd MF_ArcLogin"
+set CommandEnterKey "menuCmd MF_ArcLogin"
+add MenuObject initFrom LoginButtonTemplate
+set Name CreateAccountCreateButton
+set RenderCB_Text CreateAccount
+set Disabled 1
+set DisabledSymInv _AvailableUsername_
+set CommandPress "menucmd CreateAccountGoConfirmed"
+set CommandTabCycle "gameUI focusNameTry CreateAccountUsername"
+set CommandTabCycleRev "gameUI focusNameTry LoginAgreeTermsCheckbox"
+add MenuObject initFrom LoginButtonTemplate
+set Name ResetAccountResetButton
+set RenderCB_Text ResetAccount
+set Disabled 1
+set DisabledSymInv _AvailableUsername_
+set CommandPress "menucmd ResetAccountUsernameGoConfirmed"
+set CommandTabCycle "gameUI focusNameTry ResetAccountUsername"
+set CommandTabCycleRev "gameUI focusNameTry LoginAgreeTermsCheckbox"
+add MenuObject initFrom LoginButtonTemplate
+set Name CreateAccountViewTermsButton
+set RenderCB_Text TermsOfUse
+set CommandPress "backend viewterms"
+add MenuObject
+set Name LoginSignInFocus
+set Texture menus/CarbonGamesLogo
+set Coords "3 159 389 98"
+set NoAlphaMod 1
+set Alpha 0.2
+set BlendMode BlendAdd
+add MenuObject initFrom LoginSignInFocus
+set Name LoginSignInFocusC
+set Coords "3 266 389 98"
+add MenuObject
+set Name LoginSignInTemplate
+set Texture menus/CarbonGamesLogo
+set Coords "2 158 389 98"
+set CoordsFocused "3 159 389 98"
+set CoordsPressed "0 156 389 98"
+set RenderCB_DX 389
+set RenderCB_DY 94
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set MouseInteract 1
+set Focus -2
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+set RenderCB _DrawUTextShadowedNMI
+set RenderCB_Font RobotoBold
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_OffsetFocused "-1 -1 0"
+set DrawWhenFocused LoginSignInFocus
+add MenuObject
+set Name LoginSignInGoogleFocus
+set Texture menus/LoginCommon
+set Coords "490 397 200 54"
+set PulseAlpha "2.5 -0.3 0.0"
+set BlendMode BlendAdd
+add MenuObject
+set Name LoginSignInGoogle
+set Texture menus/LoginCommon
+set Coords "748 475 187 42"
+set DrawWhenFocused LoginSignInGoogleFocus
+set DrawWhenFocusedOffset "-6 -6"
+set MouseInteract 1
+set OkToThrowNullFocus 0
+set MouseInteractZoneExpand "-25 -25 25 25"
+set Focus -2
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "menuCmd DoGoogleSignIn"
+set CommandEnterKey "gameUI focusName DummyFocus"
+set CommandEnterKey "menuCmd DoGoogleSignIn"
+set CommandGetFocus "addUIAnim LoginMainStar mas_LoginStarGoogle"
+set CommandLoseFocus "addUIAnim LoginMainStar mas_LoginStarReset"
+set CommandFocusUp "gameUI focusNameTry LoginRememberCheckbox LoginButton LoginBoxPassword"
+set CommandFocusLeft "gameUI focusNameTry LoginExitButton"
+set CommandTabCycleRev "gameUI focusNameTry LoginRememberCheckbox LoginButton LoginBoxPassword"
+set CommandTabCycle "gameUI focusName LoginExitButton"
+set HiddenCheckBySymbol MenuCreateAccountLoaded
+add MenuObject initFrom LoginSignInTemplate
+set Name LoginSignInCarbon
+set RenderCB_Text SignInWithCarbon
+set Coords "2 265 389 98"
+set CoordsFocused "3 266 389 98"
+set CoordsPressed "0 263 389 98"
+set DrawWhenFocused LoginSignInFocusC
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "menuCmd DoCarbonSignIn"
+set CommandEnterKey "gameUI focusName DummyFocus"
+set CommandEnterKey "menuCmd DoCarbonSignIn"
+add MenuObject initFrom LoginButtonTemplate
+set Name CreateButton
+set RenderCB_Text CreateAccount
+set RenderCB_FontScale 0.75
+set CommandFocusUp "gameUI focusName LoginButton"
+set CommandFocusDown "gameUI focusName ForgotPasswordButton"
+set CommandTabCycleRev "gameUI focusName LoginButton"
+set CommandTabCycle "gameUI focusName ForgotPasswordButton"
+set CommandPress "backend signup"
+set CommandEnterKey "backend signup"
+add MenuObject initFrom LoginButtonTemplate
+set Name ForgotPasswordButton
+set RenderCB_Text ResetPassword
+set RenderCB_FontScale 0.75
+set CommandFocusUp "gameUI focusName CreateButton"
+set CommandFocusDown "gameUI focusName LoginBoxEmail"
+set CommandTabCycleRev "gameUI focusName CreateButton"
+set CommandTabCycle "gameUI focusName LoginBoxEmail"
+set CommandPress "backend forgot"
+set CommandEnterKey "backend forgot"
+add MenuObject
+set Name RememberCheckLogin
+set Texture menus/LoginCommon
+set Coords "955 70 65 62"
+set BlendMode BlendAdd
+set HiddenCheckBySymbol CarbonLoginForget
+add MenuObject initFrom RememberCheckLogin
+set Name AgreeTermsCheckLogin
+set HiddenCheckBySymbol CarbonCreateAccountNeedAgree
+add MenuObject
+set Name AvailableUsernameCheck
+set Texture menus/LoginSteam
+set Coords "797 15 62 57"
+set CoordsAnimated "871 15 62 57"
+set CoordsAnimated "797 15 62 57"
+set CoordsAnimationSymHash _AvailableUsername_
+add MenuObject
+set Name RememberCheckboxTemplate
+set Texture menus/LoginCommon
+set Coords "965 254 32 31"
+set RenderCB_Flags "/fitX"
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "50 0"
+set RenderCB_DX 360
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 0.8 0.6"
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text RememberMe
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractZoneExpand "-50 -10 0 10"
+set Focus -2
+add MenuObject initFrom RememberCheckboxTemplate
+set Name LoginRememberCheckbox
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set OkToThrowNullFocus 0
+set DisabledSymInv _CarbonLoginOK
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.7 0.85 0.85"
+set RenderCB_FontScale 0.65
+set CommandPress "sym toggle CarbonLoginForget"
+set CommandPress "backend setforget $$CarbonLoginForget"
+set CommandEnterKey "sym toggle CarbonLoginForget"
+set CommandEnterKey "backend setforget $$CarbonLoginForget"
+set CommandFocusUp "gameUI focusName LoginButton"
+set CommandFocusDown "gameUI focusName LoginExitButton"
+set CommandTabCycleRev "gameUI focusName LoginButton"
+set CommandTabCycle "gameUI focusName LoginExitButton"
+set Child "RememberCheckLogin -17 -18"
+add MenuObject
+set Name LoginAgreeTermsCheckbox
+set Texture menus/LoginCommon
+set Coords "965 254 32 31"
+set RenderCB_Flags "/fitX"
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "-372 2"
+set RenderCB_DX 360
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 0.8 0.6"
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text RememberMe
+set MouseInteract 1
+set MouseInteractZoneExpand "0 -10 50 10"
+set Focus -2
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.3
+set RenderCB_Text AgreeTerms
+set SaveArgs 1
+set OkToThrowNullFocus 0
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.7 0.85 0.85"
+set RenderCB_FontScale 0.65
+set CommandPress "gameUI showToggle CreateAccountAgreeCheck"
+set CommandPress "sym toggle CarbonCreateAccountNeedAgree"
+set CommandPress ">if literal @_Arg1_@ == Create runnow menucmd CreateAccountValidate"
+set CommandPress ">if literal @_Arg1_@ == Reset runnow menucmd ResetAccountUsernameValidate"
+set CommandEnterKey "sym toggle CarbonCreateAccountNeedAgree"
+set CommandPress ">if literal @_Arg1_@ == Create runnow menucmd CreateAccountValidate"
+set CommandPress ">if literal @_Arg1_@ == Reset runnow menucmd ResetAccountUsernameValidate"
+set CommandFocusUp "gameUI focusName LoginButton"
+set CommandFocusDown "gameUI focusName LoginExitButton"
+set CommandTabCycleRev "gameUI focusNameTry CreateAccountReferrer"
+set CommandTabCycle "gameUI focusNameTry CreateAccountCreateButton .CreateAgreeTab"
+set Child "AgreeTermsCheckLogin -18 -18"
+set CommandGetFocus "sym set CreatePoint4 3"
+set CommandLoseFocus "sym set CreatePoint4 4"
+add MenuObject
+set Name LoginDivider
+set Texture menus/LoginBase
+set Coords "507 1 2 100"
+set ScaleY 4.0
+set Layer 4
+add MenuObject
+set Name LoginLabelOr
+set Coords "0 0 50 20"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_FontScale 0.9
+set RenderCB_Font RobotoBold
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Flags "/fitX"
+set RenderCB_Text or
+add MenuObject
+set Name LoginBaseUserPass
+set ContainerOnly 1
+set Coords "0 0 500 500"
+set CommandOnCreate "rook autoLogin"
+set Child "LoginBoxEmail 0 100"
+set Child "LoginBoxPassword 0 200"
+set Child "LoginRememberCheckbox 0 270"
+set Child "LoginButton 0 330"
+set Child "LoginLanguageDropdown 0 450		-150 150"
+set Child "LoginLabelOr 533 150"
+set Child "LoginSignInGoogle 580 120"
+add MenuObject
+set Name LoginBaseSignIn
+set ContainerOnly 1
+set Coords "0 0 389 170"
+set Child "LoginSignInGoogle 0 0"
+set Child "LoginSignInCarbon 0 114"
+set Child "LoginLanguageDropdown -50 320	-150 150"
+set Anchor Center
+add MenuObject
+set Name LoginBaseCreate
+set ContainerOnly 1
+set Coords "0 0 500 500"
+set Child "ML_CreateTitle 0 60"
+set Child "CreateButton 0 100"
+set Child "ML_ForgotPasswordTitle 0 200"
+set Child "ForgotPasswordButton 0 240"
+add MenuObject initFrom PanelResizeFlat
+set Name LoginLanguageHighlight
+set Coords "0 0 492 42"
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.2
+add MenuObject initFrom LaunchButtonTextTemplate
+set Name LoginLanguageSelect
+set RenderCB_ConsoleSymbol LanguageName
+set RenderCB_FontScale 0.8
+set RenderCB_RGBColor "1.0 0.95 0.8"
+set RenderCB_RGBColorFocused 0xffffff
+set Coords "0 0 492 50"
+set RenderCB_DX 492
+set RenderCB_DY 50
+set RenderCB_Offset "12 6"
+set DrawWhenFocused LoginBoxHighlight
+set MouseInteractClickToFocus 1
+set DrawWhenFocusedOffset "-1 -1 0"
+set CommandPress "sym set LastLanguage $Language"
+set CommandPress "sym toggle LoginLanguageListHidden"
+set CommandPress "gameUI disableGroup LoginSignInGoogle LoginSignInCarbon"
+add MenuObject
+set Name LoginLanguageComboArrow
+set Coords "456 56 40 40"
+set Texture menus/LoginBase
+add MenuObject
+set Name LoginLanguageDropdown
+set Coords "2 2 498 48"
+set Texture menus/LoginBase
+set SaveArgs 2
+set Child "ML_Language 0 0"
+set Child "ML_LanguageEnglish 370 0"
+set Child "LoginLanguageSelect 0 0"
+#if arc
+set Child "LoginLanguageList -500 -304 @_Arg1_@ @_Arg2_@"
+#else
+set Child "LoginLanguageList -500 -500 @_Arg1_@ @_Arg2_@"
+#endif
+set Child "LoginLanguageComboArrow 453 4"
+add MenuObject initFrom PanelResizeFlat
+set Name LoginLanguageTemplate
+set Color 0x37383e
+set ColorFocused 0xae5d27
+set TileArea "492 46"
+set Focus -2
+set MouseInteract 1
+set RenderCB _DrawUTextShadowedNMI
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB_FontScale 0.9
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_DX 492
+set RenderCB_DY 46
+set RenderCB_RGBColor "0.75 0.77 0.8"
+set RenderCB_RGBColorFocused 0xffffff
+set SaveArgs 3
+set RenderCB_Text @_Arg2_@
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+set CommandGetFocus ">lang set @_Arg1_@"
+set CommandPress "console regSave Language"
+set CommandPress "sym toggle LoginLanguageListHidden"
+set CommandPress "gameUI enableGroup LoginSignInGoogle LoginSignInCarbon"
+add MenuObject initFrom PanelResizeClear
+set Name LoginLanguageListBuffer
+#if arc
+set TileArea "1100 200"
+#else
+set TileArea "1100 1000"
+#endif
+set MouseInteract 1
+set CommandPress "sym toggle LoginLanguageListHidden"
+set CommandPress "lang set $LastLanguage"
+set CommandPress "gameUI enableGroup LoginSignInGoogle LoginSignInCarbon"
+add MenuObject initFrom PanelResizeClear
+set Name LoginLanguageListCancel
+set CommandGetFocus "sym toggle LoginLanguageListHidden"
+set CommandGetFocus "lang set $LastLanguage"
+set CommandGetFocus "gameUI enableGroup LoginSignInGoogle LoginSignInCarbon"
+set Child "LoginLanguageListBuffer 50 50"
+set StretchToFillScreen 1
+add MenuObject
+set Name LanguageSelectInfoContainer
+set ContainerOnly 1
+set SaveArgs 1
+set RenderOffsetY @_Arg1_@
+#if arc
+set Child "LoginBoxHighlight 500 304"
+#else
+set Child "ML_LanguageNote 515 600"
+set Child "LoginBoxHighlight 500 500"
+#endif
+#if arc
+add MenuObject initFrom PanelResizeFlat
+set Name LoginLanguageList
+set Color 0x1e1e21
+set SaveArgs 2
+set RenderOffsetY @_Arg1_@
+set TileArea "500 104"
+set HiddenCheckBySymbol LoginLanguageListHidden
+set Child "LoginLanguageListCancel -100 -100"
+set Child "LoginLanguageTemplate[lang01] 4 4	0	Language13	LanguageEng13"
+set Child "LanguageSelectInfoContainer 0 0 @_Arg2_@"
+#else
+add MenuObject initFrom PanelResizeFlat
+set Name LoginLanguageList
+set Color 0x1e1e21
+set SaveArgs 2
+set RenderOffsetY @_Arg1_@
+set TileArea "500 954"
+set HiddenCheckBySymbol LoginLanguageListHidden
+set Child "LoginLanguageListCancel -100 -100"
+set Child "LoginLanguageTemplate[lang01] 4 4	0	Language0	LanguageEng0"
+set Child "LoginLanguageTemplate[lang02] 4 54	1	Language1	LanguageEng1"
+set Child "LoginLanguageTemplate[lang03] 4 104	2	Language2	LanguageEng2"
+set Child "LoginLanguageTemplate[lang04] 4 154	3	Language3	LanguageEng3"
+set Child "LoginLanguageTemplate[lang05] 4 204	4	Language4	LanguageEng4"
+set Child "LoginLanguageTemplate[lang06] 4 254	5	Language5	LanguageEng5"
+set Child "LoginLanguageTemplate[lang07] 4 304	6	Language6	LanguageEng6"
+set Child "LoginLanguageTemplate[lang08] 4 354	7	Language7	LanguageEng7"
+set Child "LoginLanguageTemplate[lang09] 4 404	8	Language8	LanguageEng8"
+set Child "LoginLanguageTemplate[lang10] 4 454	9	Language9	LanguageEng9"
+set Child "LoginLanguageTemplate[lang11] 4 504	10	Language10	LanguageEng10"
+set Child "LoginLanguageTemplate[lang12] 4 554	11	Language11	LanguageEng11"
+set Child "LoginLanguageTemplate[lang13] 4 604	12	Language12	LanguageEng12"
+set Child "LoginLanguageTemplate[lang14] 4 654	13	Language13	LanguageEng13"
+set Child "LoginLanguageTemplate[lang15] 4 704	14	Language14	LanguageEng14"
+set Child "LoginLanguageTemplate[lang16] 4 754	15	Language15	LanguageEng15"
+set Child "LoginLanguageTemplate[lang16] 4 804	16	Language16	LanguageEng16"
+set Child "LoginLanguageTemplate[lang17] 4 854	17	Language17	LanguageEng17"
+set Child "LoginLanguageTemplate[lang18] 4 904	18	Language18	LanguageEng18"
+set Child "LanguageSelectInfoContainer 0 0 @_Arg2_@"
+#endif
+add MenuObject initFrom BackButtonTemplate
+set Name BackButtonLogin
+set CommandPress "menucmd MP_LoadLogin"
+set CommandCancel "menucmd MP_LoadLogin"
+add MenuObject initFrom CloseButtonTemplate
+set Name CloseButtonLogin
+set CommandPress "exit"
+set CommandCancel "exit"
+set Anchor UpperRight
+add MenuObject initFrom MouseToolTip
+set Name ResetToLoginTip
+set RenderCB_Text ResetToLogin
+set RenderCB_ConsoleSymbol ""
+set Hidden 0
+set PlayerHiddenStateCheck None
+set Anchor LowerLeft
+set HiddenCheckBySymbolInv _SrvDisconnect_
+set RenderCB_DX 600
+set RenderCB _DrawUText_G3x3
+add MenuObject
+set Name LoginMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Disabled 1
+set Layer 2
+set Child "LoginBaseUserPass 730 340"
+set Child "LoginBaseCreate 1400 560"
+set Child "LoginDivider 1289 580"
+set Child "BackButtonLogin 20 20"
+add MenuObject
+set Name LoginTextLabel
+set Coords "0 0 476 47"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.72
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "1"
+set DisabledAlpha 1.0
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+add MenuObject initFrom LoginTextLabel
+set Name LoginTextLabelLeft
+set RenderCB_TextJustify JustifyXLeft
+add MenuObject initFrom LoginTextLabel
+set Name LoginTextLabelRight
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_RGBColor @_Arg2_@
+set SaveArgs 2
+set RenderCB_Flags "/nmi /fitX"
+add MenuObject
+set Name LoginMainTextboxVis
+set Texture menus/LoginCommon
+set Coords "12 465 418 59"
+add MenuObject
+set Name LoginMainBox
+set Texture menus/LoginCommon
+set Coords "0 0 475 459"
+set CommandOnCreate "rook autoLogin"
+set Child "LoginTextLabelLeft 40 37		UsernameOrEmail"
+set Child "LoginTextLabelLeft 40 167		Label_CarbonPassword"
+set Child "LoginMainTextboxVis 28 74"
+set Child "LoginMainTextboxVis 28 206"
+set Child "LoginBoxEmail 40 74"
+set Child "LoginBoxPassword 40 206"
+set Child "LoginButton 120 290"
+set Child "LoginRememberCheckbox 131 385"
+add MenuObject
+set Name LoginMainBoxHeader
+set Texture menus/LoginCommon
+set Color @_Arg1_@
+set SaveArgs 1
+set Coords "13 11 451 71"
+add MenuObject
+set Name LoginMainBoxHeaderText
+set Texture menus/LoginSteam
+set Coords "0 0 476 50"
+set DrawWhenFocusedOffset "-3 -1"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_Text @_Arg1_@
+set SaveArgs 1
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "8 10"
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX /allCaps"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "1"
+add MenuObject
+set Name LoginMainBoxLink
+set Texture menus/LoginCommon
+set Coords "0 0 476 459"
+set Child "LoginMainBoxHeader 14 12	0xff8661"
+set Child "LoginMainBoxHeaderText 0 24		Steam_ExistingHeader"
+set Child "LoginTextLabelLeft 40 97		UsernameOrEmail"
+set Child "LoginTextLabelLeft 40 221		Label_CarbonPassword"
+set Child "LoginMainTextboxVis 28 134"
+set Child "LoginMainTextboxVis 28 260"
+set Child "LoginBoxEmail 40 134"
+set Child "LoginBoxPassword 40 260"
+set Child "LoginButtonLink 120 340"
+add MenuObject
+set Name LoginExitHighlight
+set Texture menus/LoginCommon
+set PulseAlpha "2.5 -0.4 0.0"
+set Coords "761 143 201 81"
+set BlendMode BlendAdd
+add MenuObject
+set Name LoginExtraButton
+set Texture menus/LoginCommon
+set Coords "686 336 177 56"
+set CoordsFocused "484 336 177 56"
+set DrawWhenFocused LoginExitHighlight
+set DrawWhenFocusedOffset "-12 -12"
+set RenderCB_DX 177
+set RenderCB_DY 53
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text DialogButtonExit
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set OkToThrowNullFocus 0
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+add MenuObject
+set Name LoginFakeButton
+set Texture menus/LoginCommon
+set Coords "484 336 177 56"
+set RenderCB_DX 177
+set RenderCB_DY 53
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text DialogButtonContinue
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set Disabled 1
+set RenderCBExcludesDefaultRender 0
+set DisabledAlphaTimeIn 0.15
+set DisabledAlphaTimeOut 0.25
+set Child "LoginExitHighlight -12 -12"
+add MenuObject initFrom LoginExtraButton
+set Name LoginExitButton
+set CommandPress "if retail exit"
+set CommandPress "if !retail runnow menu3d remove *"
+set CommandPress "if !retail runnow tool menuCmdsReload"
+set CommandPress "if !retail runnow reloadDefs"
+set CommandPress "if !retail menucmd MenuBackgroundBomber"
+set CommandEnterKey "exit"
+set CommandGetFocus "addUIAnim LoginMainStar mas_LoginStarExit"
+set CommandLoseFocus "addUIAnim LoginMainStar mas_LoginStarReset"
+set CommandFocusUp "gameUI focusNameTry LoginRememberCheckbox LoginButton LoginBoxPassword"
+set CommandFocusRight "gameUI focusNameTry LoginSignInGoogle"
+set CommandTabCycleRev "gameUI focusNameTry LoginSignInGoogle LoginRememberCheckbox LoginButton LoginBoxPassword"
+set CommandTabCycle "gameUI focusName LoginBoxEmail"
+add MenuObject initFrom LoginExtraButton
+set Name LoginBackButton
+set RenderCB_Text DialogButtonBack
+set CommandPress "menucmd MP_LoadLogin"
+set CommandCancel "menucmd MP_LoadLogin"
+set CommandGetFocus "addUIAnim LoginMainStar mas_LoginStarExit"
+set CommandLoseFocus "addUIAnim LoginMainStar mas_LoginStarReset"
+set CommandFocusUp "gameUI focusNameTry LoginRememberCheckbox LoginButton LoginBoxPassword"
+set CommandFocusRight "gameUI focusNameTry LoginSignInGoogle"
+set CommandTabCycleRev "gameUI focusNameTry LoginSignInGoogle LoginRememberCheckbox LoginButton LoginBoxPassword"
+set CommandTabCycle "gameUI focusName LoginBoxEmail"
+add MenuObject
+set Name LoginTextLinkBase
+set Coords "0 0 600 30"
+set RenderCB_DX 600
+set RenderCB_DY 30
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9 0.6 0.3"
+set RenderCB_RGBColorFocused "1 0.8 0.4"
+set RenderCB_OffsetFocused "-1 -1"
+set RenderCB_OffsetPressed "1 1"
+set RenderCB_Text @_Arg1_@
+set MouseInteract 1
+set Focus -2
+set RenderCB_Flags "/useTextWidthForMIZone /outlined8x /shadowColor2"
+add MenuObject initFrom LoginTextLinkBase
+set Name LoginTextLink
+set CommandPress ">net openlink @_Arg2_@"
+add MenuObject initFrom LoginTextLinkBase
+set Name LoginTextLinkHideOnCreate
+set CommandPress ">net openlink @_Arg2_@"
+set HiddenCheckBySymbol MenuCreateAccountLoaded
+add MenuObject initFrom LoginTextLinkBase
+set Name LoginTextCreateNew
+set CommandPress "loadmenu MenuCreateAccount.txt"
+set SaveArgs 1
+set HiddenCheckBySymbol MenuCreateAccountLoaded
+add MenuObject
+set Name LoginSocialTemplate
+set Texture menus/LoginCommon
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set MouseInteract 1
+set Focus -2
+set Color 0x588d9b
+set ColorFocused 0xffffff
+add MenuObject initFrom LoginSocialTemplate
+set Name LoginSocialTwitter
+set Texture menus/LoginCommon
+set Coords "465 472 56 46"
+set ToolTip Label_Twitter
+set CommandPress "net openlink http://twitter.com/airmech"
+add MenuObject initFrom LoginSocialTemplate
+set Name LoginSocialFacebook
+set Coords "532 472 56 46"
+set ToolTip Label_Facebook
+set CommandPress "net openlink http://www.facebook.com/AirMechGame"
+add MenuObject initFrom LoginSocialTemplate
+set Name LoginSocialYoutube
+set Coords "600 472 56 46"
+set ToolTip Label_YouTube
+set CommandPress "net openlink http://www.youtube.com/airmech"
+add MenuObject initFrom LoginSocialTemplate
+set Name LoginSocialGPlus
+set Coords "667 472 56 46"
+set ToolTip Label_GPlus
+set CommandPress "net openlink https://plus.google.com/u/1/104246068515082200053/posts"
+add MenuObject
+set Name LoginLogoCarbon
+set Texture menus/LoginCommon
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "-125 -25 125 10"
+set Coords "810 397 210 57"
+set Child "LoginTextCreateNew -192 65	Link_CreateNewAccount															/platform !steam /platform !arc"
+set Child "LoginTextLinkHideOnCreate -192 95	Link_ResetPassword	https://www.carbongames.com/airmech/forgot.html		/platform !steam /platform !arc"
+add MenuObject
+set Name LoginLogoCarbonFocus
+set Texture menus/LoginCommon
+set Coords "810 397 210 57"
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.3
+set ScaleX 1.01
+set ScaleY 1.03
+add MenuObject
+set Name LoginSocialLinks
+set ContainerOnly 1
+set Child "LoginSocialTwitter 0 0"
+set Child "LoginSocialFacebook 70 0"
+set Child "LoginSocialYoutube 140 0"
+set Child "LoginSocialGPlus 210 0"
+add MenuObject
+set Name LoginLogoCarbonForSteam
+set Texture menus/LoginCommon
+set Coords "810 397 210 57"
+set DrawWhenFocused LoginLogoCarbonFocus
+set DrawWhenFocusedOffset "-2 -1"
+set ToolTip Link_AirMechSite
+set CommandGetFocus "addUIAnim LoginMainStar mas_LoginStarGoogle"
+set CommandLoseFocus "addUIAnim LoginMainStar mas_LoginStarReset"
+set MouseInteract 1
+set Focus -2
+set CommandPress "net openlink https://www.carbongames.com/airmech/home.html"
+set Child "LoginTextLink -192 65	Link_AirMechSite	https://www.carbongames.com/airmech/home.html"
+add MenuObject
+set Name LoginLogoSteam
+set Texture menus/LoginCommon
+set Coords "4 527 335 99"
+set MouseInteract 1
+set ToolTip Label_AirMechSteam
+set Color 0xabcedc
+set ColorFocused 0xffffff
+set Focus -2
+set CommandPress "net openlink http://store.steampowered.com/app/206500/"
+add MenuObject
+set Name LoginSteamTextBox
+set Texture menus/LoginCommon
+set RenderCBExcludesDefaultRender 0
+set Coords "0 0 476 459"
+set RenderCB_DX 400
+set RenderCB_DY 450
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "38 38"
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Text Text_SteamLogin
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9 1.0 1.0"
+set Child "LoginSteamButton 120 340"
+add MenuObject
+set Name CreateAnimatedLine
+set Texture menus/BgBomberBlur
+set Coords "0 262 0 100"
+set CoordsAnimated "0 562 0 100"
+set CoordsAnimated "0 562 50 100"
+set CoordsAnimated "0 562 130 100"
+set CoordsAnimated "0 562 131 100"
+set CoordsAnimated "0 562 134 100"
+set CoordsAnimated "0 562 138 100"
+set CoordsAnimated "0 562 140 100"
+set CoordsAnimated "0 562 145 100"
+set CoordsAnimated "0 562 155 100"
+set CoordsAnimated "0 562 200 100"
+set CoordsAnimated "0 562 300 100"
+set CoordsAnimated "0 562 400 100"
+set CoordsAnimated "0 562 550 100"
+set CoordsAnimated "0 562 575 100"
+set CoordsAnimated "0 562 585 100"
+set CoordsAnimated "0 562 595 100"
+set CoordsAnimated "0 562 596 100"
+set CoordsAnimated "0 562 597 100"
+set CoordsAnimated "0 562 598 100"
+set CoordsAnimated "0 562 599 100"
+set CoordsAnimated "0 562 600 100"
+set ScaleX 1.216
+set ScaleY 1.1
+set CoordsAnimationFrameTimer 0.01
+set CoordsAnimationSymMode @_Arg1_@
+set BlendMode BlendAdd
+set DisabledSymValue @_Arg1_@!3
+set SaveArgs 1
+add MenuObject initFrom CreateAnimatedLine
+set Name CreateAnimatedLineSm
+set ScaleY 0.75
+set PulseAlpha "1.0 -0.5 -0.1"
+add MenuObject
+set Name CreateFocusLine
+set Focus -2
+set RenderBlocked 1
+set MouseInteract 1
+set SaveArgs 1
+set Coords "0 0 550 110"
+set Child "CreateAnimatedLine 0 -5 	@_Arg1_@"
+set CommandGetFocus ">sym set @_Arg1_@ 3"
+set CommandLoseFocus ">sym set @_Arg1_@ 4"
+add MenuObject
+set Name CreateFocusLineSm
+set Focus -2
+set RenderBlocked 1
+set MouseInteract 1
+set SaveArgs 1
+set Coords "0 0 500 100"
+set Child "CreateAnimatedLineSm 0 -5 	@_Arg1_@"
+set CommandGetFocus ">sym set @_Arg1_@ 3"
+set CommandLoseFocus ">sym set @_Arg1_@ 4"
+add MenuObject
+set Name CreateTipTextDesc
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_FontScale 1.1
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_Text @_Arg1_@
+set RenderCB_RGBColor 0xffffff
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledAlphaTimeIn 0.5
+set DisabledAlphaTimeOut 0.2
+set RenderCB_Text ReferDesc
+set RenderCB_FontScale @_Arg2_@
+set SaveArgs 2
+set Coords "0 0 550 600"
+set RenderCB_DX 0
+set RenderCB_DY 0
+add MenuObject initFrom CreateTipTextDesc
+set Name CreateTipTextBox
+set RenderCB_Text @_Arg1_@
+set Coords "0 0 330 250"
+set SaveArgs 2
+set DisabledAlphaTimeInPreWait 0.3
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+set DisabledSymValue @_Arg3_@!3
+add MenuObject
+set Name CreateTipFocusUsername
+set Texture menus/ReferralBits
+set Coords "1 4 426 319"
+set DisabledAlphaTimeInPreWait 0.3
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+set DisabledSymValue CreatePoint1!3
+set Child "CreateTipTextBox 50 40		Username_Desc_Temp  0.65 CreatePoint1"
+set CommandGetFocus ">sym set CreatePoint1 3"
+set CommandLoseFocus ">sym set CreatePoint1 4"
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name CreateTipFocusEmail
+set Texture menus/ReferralBits
+set Coords "1 4 426 319"
+set DisabledAlphaTimeInPreWait 0.3
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+set DisabledSymValue CreatePoint2!3
+set Child "CreateTipTextBox 50 40		SteamEmail_Desc  0.65 CreatePoint2"
+set CommandGetFocus ">sym set CreatePoint2 3"
+set CommandLoseFocus ">sym set CreatePoint2 4"
+set Focus -2
+set MouseInteract 1
+add MenuObject
+set Name CreateTipFocusRefer
+set Texture menus/ReferralBits
+set Coords "1 4 426 319"
+set DisabledAlphaTimeInPreWait 0.3
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+set DisabledSymValue CreatePoint3!3
+set Child "CreateTipTextBox 50 40		SteamRefer_Desc  0.65 CreatePoint3"
+add MenuObject
+set Name CreateTipFocusPassword
+set Texture menus/ReferralBits
+set Coords "1 4 426 319"
+set DisabledAlphaTimeInPreWait 0.3
+set DisabledAlphaTimeIn 0.2
+set DisabledAlphaTimeOut 0.2
+set DisabledSymValue CreatePoint3!3
+set Child "CreateTipTextBox 50 40		CarbonPassword_Desc  0.65 CreatePoint3"
+add MenuObject
+set Name LoginUsernameTextBox
+set Texture menus/LoginSteam
+set RenderCBExcludesDefaultRender 0
+set Coords "4 563 759 460"
+set RenderCB_DX 690
+set RenderCB_DY 450
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "48 54"
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9 1.0 1.0"
+set Child "CreateFocusLine 14 30		CreatePoint1"
+set Child "CreateFocusLine 14 140		CreatePoint2"
+set Child "CreateFocusLine 14 250		CreatePoint3"
+set Child "CreateFocusLineSm 14 360		CreatePoint4"
+set Child "LoginMainTextboxVis 48 70"
+set Child "LoginMainTextboxVis 48 180"
+set Child "LoginMainTextboxVis 48 290"
+set Child "LoginTextLabelLeft 54 32		Label_Username"
+set Child "LoginTextLabelRight -10 32		Label_Required	0x76aab5"
+set Child "LoginTextLabelLeft 54 147		Label_CarbonLogin"
+set Child "LoginTextLabelRight -10 147		Label_Optional	0x76aab5"
+set Child "LoginTextLabelLeft 54 252		SetReferralTitle		/platform steam"
+set Child "LoginTextLabelRight -10 252		Label_Optional	0x76aab5		/platform steam"
+set Child "LoginTextLabelLeft 54 252		Label_CarbonPassword	/platform !steam"
+set Child "LoginTextLabelRight -10 252		Label_Required	0x76aab5	/platform !steam"
+set Child "CreateAccountUsername 60 70"
+set Child "CreateAccountEmail 60 180"
+set Child "CreateAccountReferrer 60 290			/platform steam"
+set Child "CreateAccountPassword[CreateAccountReferrer] 60 290			/platform !steam"
+set Child "LoginAgreeTermsCheckbox 433 357	Create"
+set Child "CreateAccountCreateButton 490 354"
+set Child "LoginTextLink -50 390	Link_TermsOfUse	https://www.carbongames.com/terms/		/platform !arc"
+set Child "CreateTipFocusUsername 520 -60	"
+set Child "CreateTipFocusEmail 470 50	"
+set Child "CreateTipFocusRefer 470 160		/platform steam"
+set Child "CreateTipFocusPassword 470 160	/platform !steam"
+add MenuObject
+set Name ResetUsernameTextBox
+set Texture menus/LoginSteam
+set RenderCBExcludesDefaultRender 0
+set Coords "4 563 759 460"
+set RenderCB_DX 690
+set RenderCB_DY 450
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.65
+set RenderCB_Offset "48 54"
+set RenderCB _DrawUText
+set RenderCB_BoolArg 1
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9 1.0 1.0"
+set Child "CreateFocusLine 14 30		CreatePoint1"
+set Child "LoginMainTextboxVis 48 70"
+set Child "LoginTextLabelLeft 54 32		Label_Username"
+set Child "LoginTextLabelRight -10 32		Label_Required	0x76aab5"
+set Child "ResetAccountUsername 60 70"
+set Child "LoginAgreeTermsCheckbox 433 357	Reset"
+set Child "ResetAccountResetButton 490 354"
+set Child "LoginTextLink -50 390	Link_TermsOfUse	https://www.carbongames.com/terms/		/platform !arc"
+set Child "CreateTipFocusUsername 520 -60	"
+add MenuObject
+set Name LoginTextVersionNumber
+set Coords "0 0 1890 47"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 1.0
+set RenderCB_TextJustify JustifyXRight
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.5 0.7 0.7"
+set NoAlphaMod 1
+set Alpha 0.33
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol SYS_VersionNumber
+set SaveArgs 1
+add MenuObject
+set Name LoginMainUnderline
+set Texture menus/LoginCommon
+set Coords "0 812 1022 212"
+set ScaleX 1.5
+set Child "LoginTextVersionNumber 0 155"
+set Child "LoginExitButton 40 45"
+set Child "LoginSocialLinks 1630 44			/platform !arc"
+set Child "LoginSignInGoogle 880 49			/platform !steam /platform !arc"
+set Child "LoginLogoCarbonForSteam 880 45	/platform steam"
+set Child "LoginLogoCarbon 450 45			/platform !steam"
+set Child "LoginLogoSteam 400 40			/platform steam"
+set Child "LoginMainStar 514 -15"
+add MenuObject
+set Name LoginMainUnderlineMirror
+set Texture menus/LoginCommon
+set MirrorOnX 1
+set Coords "0 812 1022 212"
+set ScaleX 1.5
+set Child "LoginTextVersionNumber -1500 165"
+set Child "LoginExitButton 940 -850"
+set Child "LoginSocialLinks 850 134			/platform !arc"
+set Child "LoginSignInGoogle 880 49			/platform !steam /platform !arc"
+set Child "LoginLogoCarbonForSteam 880 45	/platform steam"
+set Child "LoginLogoCarbon 450 45			/platform !steam"
+set Child "LoginLogoSteam 400 40			/platform steam"
+set Child "LoginMainStar 517 -15"
+add MenuObject
+set Name LoginCreateUnderline
+set Texture menus/LoginCommon
+set Coords "0 812 1022 212"
+set ScaleX 1.5
+set Child "LoginTextVersionNumber 0 155"
+set Child "LoginBackButton 40 45"
+set Child "LoginSocialLinks 1630 44			/platform !arc"
+set Child "LoginSignInGoogle 880 49			/platform !steam /platform !arc"
+set Child "LoginLogoCarbonForSteam 880 45	/platform steam"
+set Child "LoginLogoCarbon 450 45			/platform !steam"
+set Child "LoginLogoSteam 400 40			/platform steam"
+set Child "LoginMainStar 514 -15"
+add MenuObject
+set Name LoginResetUsernameUnderline
+set Texture menus/LoginCommon
+set Coords "0 812 1022 212"
+set ScaleX 1.5
+set Child "LoginTextVersionNumber 0 155"
+set Child "LoginSocialLinks 1630 44			/platform !arc"
+set Child "LoginSignInGoogle 902 49			/platform !steam /platform !arc"
+set Child "LoginLogoCarbonForSteam 880 45	/platform steam"
+set Child "LoginLogoCarbon 450 45			/platform !steam"
+set Child "LoginLogoSteam 400 40			/platform steam"
+set Child "LoginMainStar 514 -15"
+add MenuObject
+set Name LoginMainUnderlineLink
+set Texture menus/LoginCommon
+set Coords "0 812 1022 212"
+set ScaleX 1.5
+set Child "LoginTextVersionNumber 0 155"
+set Child "LoginSocialLinks 1630 44			/platform !arc"
+set Child "LoginBackButton 40 45"
+set Child "LoginSignInGoogle 902 49			/platform !arc"
+set Child "LoginLogoCarbon 450 45"
+set Child "LoginMainStar 514 -15"
+add MenuObject
+set Name LoginPatchingUnderline
+set Texture menus/LoginCommon
+set Coords "565 812 522 112"
+set ScaleX 1.5
+set Child "LoginTextVersionNumber 0 80"
+set Child "LoginExitButton 40 45"
+add MenuObject
+set Name LoginMainStar
+set Texture menus/LoginCommon
+set PulseAlpha "1.0 -0.2 0.0"
+set Coords "949 3 75 75"
+set BlendMode BlendAdd
+add MenuObject
+set Name LoginMasterCarbon
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Disabled 1
+set HiddenCheckBySymbol IsVR
+set CommandOnCreate "menuCmd DisableOldLogin"
+set Child "LoginMainUnderline 0 865				/ifSym BackgroundIronHand == 0"
+set Child "LoginMainUnderlineMirror 786 869		/ifSym BackgroundIronHand == 1"
+set Child "LoginSteamTextBox 318 390	/platform steam /platform !consolePlatform /ifSym BackgroundIronHand == 0
+set Child "LoginSteamTextBox 1300 390	/platform steam /platform !consolePlatform /ifSym BackgroundIronHand == 1
+set Child "LoginMainBox 318 390			/platform carbonPay		/ifSym BackgroundIronHand == 0"
+set Child "LoginMainBox 1300 390		/platform carbonPay		/ifSym BackgroundIronHand == 1"
+add MenuObject
+set Name LoginMasterLinkCarbon
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "LoginMainUnderlineLink 0 865"
+set Child "LoginMainBoxLink 318 390"
+add MenuObject
+set Name LoginBackdrop
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "LoginBackground 0 0"
+set Child "LoginBackgroundPanR 0 0"
+set Child "LoginBackgroundPanL 0 0"
+set Child "LoginBackgroundDark 0 0"
+set Child "LoginBeamR -40 492"
+set Child "LoginBeamL -40 492"
+set Child "AirMechLogo3D 2 60"
+set Child "LoginVersionNumberTitle 0 320"
+add MenuObject
+set Name LoginVignetteBomber
+set Texture effects/VignetteColor
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name LoginVignetteIronHand
+set Texture effects/VignetteIronHand
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Alpha 0.5
+add MenuObject
+set Name LoginBackgroundBomberBlur
+set Texture menus/BgBomberBlur
+set Coords "0 0 1024 1024"
+set StretchToFillScreen 1
+set DisabledSymInv BackgroundMenuBlur
+set DisabledAlpha 0.02
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 0.25
+add MenuObject
+set Name LoginBackgroundBomber
+set ContainerOnly 1
+set Child "LoginBackgroundBomberBlur 0 0  /ifSym BackgroundIronHand == 0"
+set Child "LoginVignetteBomber 0 0  /ifSym BackgroundIronHand == 0"
+set Child "LoginVignetteIronHand 0 0 /ifSym BackgroundIronHand == 1"
+add MenuObject
+set Name LoginVignetteFade
+set Texture effects/VignetteColor
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set Disabled 1
+set DisabledAlpha 0.6
+set DisabledAlphaTimeOut 0.9
+set DisabledAlphaTimeIn 0.9
+add MenuObject
+set Name LoginVignette
+set Coords "0 0 256 128"
+set StretchToFillScreen 1
+set NoAlphaMod 1
+set Texture effects/VignetteColor
+set NoAlphaMod 1
+set Alpha 0.33
+set Hidden 0
+add MenuObject
+set Name LoginColorOverlay
+set ContainerOnly 1
+set Child "LoginVignetteFade 0 0	/ifSym BackgroundIronHand == 0"
+set Child "LoginVignette 0 0	/ifSym BackgroundIronHand == 0"
+set Child "LoginVignetteIronHand 0 0 /ifSym BackgroundIronHand == 1"
+add MenuObject
+set Name AirMechLogoLoginFocus
+set Texture ]menus/@LogoOutline@
+set Coords "0 0 824 298"
+set ScaleX 1.105
+set ScaleY 1.11
+set BlendMode BlendAdd
+set NoAlphaMod 1
+set Alpha 0.25
+add MenuObject
+set Name SimpleLoginButton
+set Texture menus/LoginCommon
+set Coords "718 248 235 83"
+set CoordsFocused "476 248 235 83"
+set DrawWhenFocused LoginButtonHighlight
+set DrawWhenFocusedOffset "-10 -14"
+set RenderCB_DX 235
+set RenderCB_DY 70
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX"
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Text Login
+set HiddenCheckBySymbolValue LoginMenuCount<2
+set CommandPress "sym set LoginMenuCount 1"
+set CommandPress "menucmd LoginMenuInitialFocus"
+add MenuObject
+set Name AirMechLogoLogin
+set Texture ]menus/@LogoOutline@
+set Coords "0 0 824 298"
+set ScaleX 1.1
+set ScaleY 1.1
+set MouseInteract 1
+set Focus -2
+set CommandPress "if !arc net openlink https://www.carbongames.com/airmech/home.html"
+set ToolTip Link_AirMechSite
+set DrawWhenFocused AirMechLogoLoginFocus
+set DrawWhenFocusedOffset "-3 -2"
+set MouseInteractZoneExpand "65 50 -75 -80"
+add MenuObject
+set Name AirMechLogoGlowLogin
+set Texture menus/LoginCommon
+set Coords "516 533 505 144"
+set ScaleX 2.0
+set ScaleY 2.0
+set PulseAlpha "6.4 -0.9 -0.5"
+set BlendMode BlendAdd
+add MenuObject
+set Name Login_MasterLogo
+set ContainerOnly 1
+set Child "AirMechLogoLogin 100 90		/ifSym BackgroundIronHand == 0"
+set Child "AirMechLogoGlowLogin 90 90	/ifSym BackgroundIronHand == 0"

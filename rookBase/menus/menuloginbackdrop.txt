@@ -1,0 +1,28 @@
+stopIfSymbol PLATFORM == XBOX360
+stopIfSymbol PLATFORM == XBONE
+stopIfSymbol PLATFORM == PS4
+stopIfVR
+onloadrun {
+pfx stop LoginEmbers
+if !consolePlatform && !maploaded && sym Background3dLoaded != 1 runnow menuCmd MenuBackgroundBomber
+gfx set uniform interlace 0.0
+rook initBoostInfo
+menucmd GfxResetFogState
+gameUI ignoreInputTime 1.2
+sym set BackgroundMenuBlur 0
+}
+MO DummyFocus {
+pos 0 0
+}
+MO LoginBackgroundBomber {
+pos 0 0
+}
+MO LoginColorOverlay {
+pos 0 0
+}
+MO Login_MasterLogo {
+pos 0 0
+}
+onload {
+input set padFocusFallback BootTitleScreenInputCatch
+}

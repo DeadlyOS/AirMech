@@ -1,0 +1,506 @@
+add MenuObject
+set Name InvitationText
+set Coords "0 0 350 200"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Font Roboto
+set RenderCB_Text @_Arg1_@
+set RenderCB_FontScale @_Arg2_@
+set SaveArgs 3
+set RenderCB_BoolArg 1
+set RenderCB _DrawUText
+set RenderCB_RGBColor @_Arg3_@
+add MenuObject
+set Name SGInvitationButton
+set Texture menus/DialogFrames
+set Coords "24 527 181 52"
+set CoordsFocused "205 528 181 52"
+set MouseInteract 1
+set Focus -2
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 181
+set RenderCB_DY 52
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font Roboto
+set RenderCB_OffsetFocused "0 -1"
+set RenderCB_Text @_Arg1_@
+set RenderCB_FontScale 0.65
+set SaveArgs 2
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi"
+set RenderCB_RGBColor 0xaee1e6
+set RenderCB_RGBColorFocused 0xffffff
+set CommandPress ">menucmd @_Arg2_@"
+add MenuObject
+set Name SGInvitationFlash
+set Texture effects/white
+set Coords "0 0 372 197"
+set BlendMode BlendAdd
+set DisabledAlphaTimeOut 0.25
+add MenuObject
+set Name SGInvitationMain
+set Texture menus/DialogFrames
+set Coords "0 579 414 250"
+set MouseInteract 1
+set Focus -2
+set Child "InvitationText 30 28 SGInvitationTitle 0.75 0xffffff"
+set Child "InvitationText 30 75 SGInvitationMessage 0.6 0xc3c3c3"
+set Child "SGInvitationButton 25 155 DialogButtonYes	SGInvitationAccept"
+set Child "SGInvitationButton 205 155 DialogButtonNo	SGInvitationDecline"
+set Child "SGInvitationFlash 20 20"
+add MenuObject
+set Name InvitePlayerNameBase
+set Coords "0 0 209 36"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYNone
+set RenderCB_Font Roboto
+set RenderCB_Offset "0 5"
+set RenderCB_ConsoleSymbol DialogBoxMessage
+set RenderCB_FontScale 0.7
+set SaveArgs 1
+set RenderCB _DrawText
+set RenderCB_Flags " /noCommaSep /fitX_n20 /fitX_n10"
+set RenderCB_Text ""
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject initFrom InvitePlayerNameBase
+set Name InvitePlayerName
+set RenderCB_ConsoleSymbol INV_Name@_Arg1_@
+set HiddenCheckBySymbolValue INV_StatusCode@_Arg1_@=0
+add MenuObject initFrom InvitePlayerName
+set Name GroupInvitePlayerName
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_FontScale 0.65
+set RenderCB_RGBColor 0xc3c3c3
+add MenuObject
+set Name InviteScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 210 900"
+set CommandOnMouseDrag "floatsym scaledMod InvitePlayersPos 0.05 $_Wheel 0 1"
+set CommandOnMouseDrag "social scrollUpdate friends"
+set DisabledSym Friend2ScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject initFrom InviteScrollWheelZone
+set Name GroupInviteScrollWheelZone
+set ContainerOnly 1
+set WheelZone 1
+set MouseInteract 1
+set Coords "0 0 450 400"
+add MenuObject
+set Name InviteScrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "GroupInviteScrollbarPos 0 0"
+set ScaleY 1.31
+set ScaleX 1.2
+set Color 0x111111
+set BlendMode BlendAdd
+set HiddenCheckBySymbol HideInviteScrollBar
+set DisabledSym InviteScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name GroupInviteScrollbar
+set Texture "menus/Scrollbar"
+set Coords "80 0 8 512"
+set Child "GroupInviteScrollbarPos 0 0"
+set ScaleY 0.45
+set ScaleX 1.2
+set Color 0x111111
+set BlendMode BlendAdd
+set HiddenCheckBySymbol HideInviteScrollBar
+set DisabledSym InviteScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name InviteScrollbarPos
+set Texture "menus/Scrollbar"
+set Coords "66 416 8 512"
+set CoordsInterpolatedDest "66 0 8 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult InvitePlayersPos
+set MouseInteract 1
+set MouseInteractZoneExpand "-20 0 20 0"
+set DefaultKeyboardControl 1
+set IsSliderControl 1
+set CommandOnMouseDrag "floatsym set InvitePlayersPos $_MouseRelY"
+set CommandOnMouseDrag "social scrollUpdate friends"
+set MouseZoneInsetsForRel "0 0 64 64"
+set ScaleY 1.31
+set ScaleX 1.2
+set Color 0x657e84
+set ColorFocused 0xc2f3ff
+set Focus -2
+set CommandGetFocus "sym set InviteScrollbarDismiss 0"
+set CommandLoseFocus "sym set InviteScrollbarDismiss 1"
+set DisabledSym InviteScrollbarDismiss
+set DisabledAlphaTimeOut 0.3
+set DisabledAlphaTimeIn 0.3
+add MenuObject initFrom InviteScrollbarPos
+set Name GroupInviteScrollbarPos
+set ScaleY 0.45
+add MenuObject
+set Name InvitePlayerHighlight
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0x33565a
+set BlendMode BlendAdd
+set PulseAlpha "4.3 -0.8 -0.5"
+set TileArea "215 36"
+add MenuObject
+set Name GroupInvitePlayerHighlight
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0x33565a
+set BlendMode BlendAdd
+set PulseAlpha "4.3 -0.8 -0.5"
+set TileArea "450 36"
+add MenuObject
+set Name InvitePlayerItem
+set Texture menus/Social
+set Coords "314 5 211 36"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set DrawWhenFocused InvitePlayerHighlight
+set DrawWhenFocusedOffset "-2 0"
+set CommandPress ">party2 invite $_InviteSlot $INV_Name@_Arg1_@"
+set CommandPress "clearmenu InviteList /fadeout 0.15"
+set CommandPress "clearmenu Invite /fadeout 0.1"
+set CommandCancel "clearmenu Invite /fadeout 0.1"
+set CommandGetFocus ">sym setl _INV_NameFocused $INV_Name@_Arg1_@"
+set CommandGetFocus ">input set padFocusFallback ConFrSelect@_Arg1_@"
+set CommandGetFocus ">sym set InvFrCurInd @_Arg1_@"
+set RenderCB_DX 480
+set RenderCB_DY 54
+set SaveArgs 1
+set HiddenCheckBySymbol INV_Hidden@_Arg1_@
+set Child "InvitePlayerName 0 0	@_Arg1_@"
+set DisabledAlphaTimeIn 0.4
+set DisabledAlphaTimeOut 0.4
+set CommandFocusUp ">gameUI focusNameTryList InvitePlayerItem @_Arg1_@ 20 -1 /tryOnFail .ConQuestsPagePrevious"
+set CommandFocusDown ">gameUI focusNameTryList InvitePlayerItem @_Arg1_@ 20 1 /tryOnFail .ConQuestsPageNext"
+add MenuObject
+set Name GroupInvitePlayerItem
+set Texture menus/Social
+set Coords "314 5 450 36"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set DrawWhenFocused GroupInvitePlayerHighlight
+set DrawWhenFocusedOffset "-2 0"
+set CommandPress ">sg inviteSym INV_Name@_Arg1_@"
+set CommandPress "clearmenu InviteToGroup /fadeout 0.1"
+set CommandCancel "clearmenu Invite /fadeout 0.1"
+set CommandGetFocus ">sym setl _INV_NameFocused $INV_Name@_Arg1_@"
+set CommandGetFocus ">input set padFocusFallback ConFrSelect@_Arg1_@"
+set CommandGetFocus ">sym set InvFrCurInd @_Arg1_@"
+set RenderCB_DX 480
+set RenderCB_DY 54
+set SaveArgs 1
+set HiddenCheckBySymbol INV_Hidden@_Arg1_@
+set Child "GroupInvitePlayerName 10 0	@_Arg1_@"
+set DisabledAlphaTimeIn 0.4
+set DisabledAlphaTimeOut 0.4
+set CommandFocusUp ">gameUI focusNameTryList InvitePlayerItem @_Arg1_@ 20 -1 /tryOnFail .ConQuestsPagePrevious"
+set CommandFocusDown ">gameUI focusNameTryList InvitePlayerItem @_Arg1_@ 20 1 /tryOnFail .ConQuestsPageNext"
+add MenuObject
+set Name InvitePlayersList
+set ContainerOnly 1
+set Child "InvitePlayerItem[InvitePlayerItem0] 0 0		0"
+set Child "InvitePlayerItem[InvitePlayerItem1] 0 Nx34	1"
+set Child "InvitePlayerItem[InvitePlayerItem2] 0 Nx34	2"
+set Child "InvitePlayerItem[InvitePlayerItem3] 0 Nx34	3"
+set Child "InvitePlayerItem[InvitePlayerItem4] 0 Nx34	4"
+set Child "InvitePlayerItem[InvitePlayerItem5] 0 Nx34	5"
+set Child "InvitePlayerItem[InvitePlayerItem6] 0 Nx34	6"
+set Child "InvitePlayerItem[InvitePlayerItem7] 0 Nx34	7"
+set Child "InvitePlayerItem[InvitePlayerItem8] 0 Nx34	8"
+set Child "InvitePlayerItem[InvitePlayerItem9] 0 Nx34	9"
+set Child "InvitePlayerItem[InvitePlayerItem10] 0 Nx34	10"
+set Child "InvitePlayerItem[InvitePlayerItem11] 0 Nx34	11"
+set Child "InvitePlayerItem[InvitePlayerItem12] 0 Nx34	12"
+set Child "InvitePlayerItem[InvitePlayerItem13] 0 Nx34	13"
+set Child "InvitePlayerItem[InvitePlayerItem14] 0 Nx34	14"
+set Child "InvitePlayerItem[InvitePlayerItem15] 0 Nx34	15"
+set Child "InvitePlayerItem[InvitePlayerItem16] 0 Nx34	16"
+set Child "InvitePlayerItem[InvitePlayerItem17] 0 Nx34	17"
+set Child "InvitePlayerItem[InvitePlayerItem18] 0 Nx34	18"
+set Child "InvitePlayerItem[InvitePlayerItem19] 0 Nx34	19"
+set Child "InviteScrollbar 193 8"
+set Child "InviteScrollWheelZone 0 0"
+add MenuObject
+set Name GroupInvitePlayersList
+set ContainerOnly 1
+set HiddenCheckBySymbolInv INV_EnumCount
+set Child "GroupInvitePlayerItem[InvitePlayerItem0] 3 0		0"
+set Child "GroupInvitePlayerItem[InvitePlayerItem2] 3 Nx34	1"
+set Child "GroupInvitePlayerItem[InvitePlayerItem2] 3 Nx34	2"
+set Child "GroupInvitePlayerItem[InvitePlayerItem3] 3 Nx34	3"
+set Child "GroupInvitePlayerItem[InvitePlayerItem4] 3 Nx34	4"
+set Child "GroupInvitePlayerItem[InvitePlayerItem5] 3 Nx34	5"
+set Child "GroupInvitePlayerItem[InvitePlayerItem6] 3 Nx34	6"
+set Child "GroupInviteScrollbar 440 10"
+set Child "GroupInviteScrollWheelZone 0 0"
+add MenuObject
+set Name InviteBackground
+set Texture menus/Mail
+set CoordsStart "670 720 180 260"
+set CoordsMid "850 720 50 260"
+set CoordsEnd "900 720 117 260"
+set CoordsStartFocused "670 980 180 10"
+set CoordsMidFocused "850 980 50 10"
+set CoordsEndFocused "900 980 117 10"
+set CoordsStartDisabled "670 990 180 26"
+set CoordsMidDisabled "850 990 50 26"
+set CoordsEndDisabled "900 990 117 26"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 410
+set RenderCB_DY 1133
+set Coords "0 0 350 900"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set CommandPress "gameui promoteToTop FriendsMain"
+add MenuObject
+set Name InvitePlayersCloseVis
+set Coords "295 511 49 49"
+set CoordsFocused "350 511 49 49"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name InvitePlayersClose
+set Coords "0 0 49 49"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu Invite /fadeout 0.1"
+set CommandPress "clearmenu InviteToGroup /fadeout 0.1"
+set Child "InvitePlayersCloseVis 0 0"
+add MenuObject
+set Name InvitePlayersFilterText
+set Coords "8 233 411 56"
+set CoordsFocused "8 298 411 56"
+set Texture menus/Faction
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 270
+set RenderCB_DY 48
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB_Offset "12 -1"
+set MouseInteractZoneExpand "-20 -20 0 -4"
+set Layer 3
+set Focus -2
+set ScaleX 0.72, ScaleY 0.8
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Flags "/fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set TextEditableMaxLen 20
+set RenderCB_Text FriendsFilterText
+set CommandOnKeyboardEdit "menucmd FriendsFilterTextChanged"
+add MenuObject
+set Name InvitePlayersVignette
+set Texture effects/VignetteUnder
+set Coords "0 0 515 256"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus -2
+set NoAlphaMod 1
+set Alpha 0.75
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "clearmenu Invite /fadeout 0.1"
+add MenuObject
+set Name InvitePlayerShadowRed
+set Texture effects/white
+set Coords "0 0 16 16"
+set Color 0xb63e2b
+set TileArea "211 725"
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject initFrom InvitePlayerShadowRed
+set Name InvitePlayerShadowBlue
+set Color 0x2b70b6
+add MenuObject initFrom InvitePlayerShadowRed
+set Name InvitePlayerShadowGreen
+set Color 0x508e3a
+add MenuObject initFrom InvitePlayerShadowRed
+set Name InvitePlayerShadowYellow
+set Color 0x424140
+add MenuObject
+set Name InviteMain
+set RenderBlocked 1
+set Coords "0 0 318 55"
+set MouseInteract 1
+set Focus -2
+set DragSource InviteMain
+set FirstDrawnChildren 2
+set Child "InvitePlayersVignette 0 0"
+set Child "InvitePlayerShadow@TC0@ 2 2"
+set Child "InvitePlayerDecoration 0 0"
+set Child "InvitePlayersList 2 2"
+set Child "InvitePlayersClose 80 704"
+set CommandPress "gameui promoteToTop InviteMain"
+add MenuObject
+set Name InviteToGroupCancel
+set Coords "0 0 49 49"
+set RenderBlocked 1
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus -2
+set CommandGetFocus "gameui ignoreInputTime 0.1"
+set CommandGetFocus "clearmenu InviteToGroup /fadeout 0.1"
+add MenuObject
+set Name InviteToGroupBackground
+set Texture menus/Mail
+set CoordsStart "670 720 100 260"
+set CoordsMid "850 720 50 260"
+set CoordsEnd "900 720 117 260"
+set CoordsStartFocused "670 980 100 10"
+set CoordsMidFocused "850 980 50 10"
+set CoordsEndFocused "900 980 117 10"
+set CoordsStartDisabled "670 990 100 26"
+set CoordsMidDisabled "850 990 50 26"
+set CoordsEndDisabled "900 990 117 26"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 240
+set RenderCB_DY 955
+set Coords "0 0 211 725"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+add MenuObject
+set Name InviteToGroupBackgroundV2
+set Texture menus/SGDialogBox
+set Coords "0 86 512 386"
+set RenderCB_DX 500
+set RenderCB_DY 350
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+add MenuObject
+set Name SGLabel
+set Coords "0 0 @_Arg2_@ 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set RenderCB_FontScale 0.75
+set SaveArgs 1
+set RenderCB_BoolArg 1
+set RenderCB_Flags " /noCommaSep /fitX /shadowed /shadowColor2"
+add MenuObject
+set Name SGText
+set Coords "0 0 @_Arg3_@ 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text @_Arg1_@
+set RenderCB_FontScale @_Arg2_@
+set SaveArgs 3
+set RenderCB_BoolArg 1
+set RenderCB_Flags " /noCommaSep /fitX /shadowed /shadowColor2"
+add MenuObject initFrom SGText
+set Name SGVoteLabel
+set RenderCB_TextJustify JustifyXRight
+add MenuObject initFrom SGText
+set Name SGConText
+set RenderCB _DrawText
+set RenderCB_Font RobotoBold
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject initFrom SGText
+set Name SGVoteText
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@
+add MenuObject initFrom SGText
+set Name SGVoteTextEmpty
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_Text -
+set DisabledSymValue @_Arg1_@!
+add MenuObject
+set Name InviteToGroup
+set RenderBlocked 1
+set Coords "0 0 450 390"
+set MouseInteract 1
+set Focus -2
+set Anchor Left
+set FirstDrawnChildren 1
+set Child "InviteToGroupCancel 0 0"
+set Child "InviteToGroupBackgroundV2 -62 -20"
+set Child "SGLabel 0 7 Lbl_SGInviteToGroup 300"
+set Child "GroupInvitePlayersList -30 55"
+set Child "InviteToGroupEmptyLabel -10 60"
+set CommandPress "gameui promoteToTop InviteMain"
+add MenuObject
+set Name InviteToGroupEmptyLabel
+set Coords "0 0 450 36"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.65
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /shadowColor2"
+set RenderCB_Text Lbl_SGInviteEmpty
+set RenderCB_RGBColor 0xFFFFFF
+set HiddenCheckBySymbol INV_EnumCount
+add MenuObject
+set Name SGMemberQuickInfo
+set Texture menus/SGDialogBox
+set Coords "508 78 508 296"
+set Anchor LowerLeft
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.0
+set DisabledSymInv SGMemberFocus@_Arg1_@
+set HiddenCheckBySymbol SG_Mem@_Arg1_@_NConf
+set SaveArgs 1
+set FilterName SGMemberInfo@_Arg1_@
+set Child "SGLabel 40 35 Lbl_SGPartyMember 300"
+set Child "SGMemberAirMechIcon 185 53 @_Arg1_@"
+set Child "SGConText[SGMemName] 45 90 SG_Mem@_Arg1_@_Name 0.8 300"
+set Child "SGVoteLabel[SGMemLvlLabel] -215 120 LabelLevel 0.8 300"
+set Child "SGConText[SGMemLevel] 90 120 SG_Mem@_Arg1_@_Lvl 0.8 300"
+set Child "SGVoteLabel[SGMemMapVoteLabel] -150 170 Lbl_SGMapVote 0.6 300"
+set Child "SGVoteText[SGMemMapVote] 155 170 SG_Mem@_Arg1_@_MapVote 0.6 300"
+set Child "SGVoteTextEmpty[SGMemMapVote] 155 170 SG_Mem@_Arg1_@_MapVote 0.6 300"
+set Child "SGVoteLabel[SGMemModeVoteLabel] -150 200 Lbl_SGModeVote 0.6 300"
+set Child "SGVoteText[SGMemMapVote] 155 200 SG_Mem@_Arg1_@_ModeVote 0.6 300"
+set Child "SGVoteTextEmpty[SGMemMapVote] 155 200 SG_Mem@_Arg1_@_ModeVote 0.6 300"
+add MenuObject
+set Name SGMemberAirMechIcon
+set Texture rooks/&SG_Mem@_Arg1_@_AirMech&/HangarBlue
+set TextureAlt rooks/&SG_Mem@_Arg1_@_AirMech&/HangarUnique
+set NoDrawOnMissingTexture 1
+set ScaleX 0.75
+set ScaleY 0.75
+set Coords "0 0 512 256"
+set FilterName SGMemberInfo@_Arg1_@
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.1

@@ -1,0 +1,18 @@
+blockLoadOnConsoleSym VrCreditsLoaded
+onloadrun {
+]sym set VrCreditsLoaded 1
+}
+MO VrCreditsList {
+pos 700 100
+layer 1
+}
+onload {
+]menu3d add MenuCredits /model vr/MenuCredits.amf	/material mat_RenderToTextureVR2_UnlitStdBlend /rootScale 3.0 /worldPose 0 200 100 /rootRot 0 0 0 /requireExplicitClear
+]pcmd 1.0 gameui focusname VrCreditsList
+]input set padFocusFallback VrCreditsList
+}
+onunload {
+]menu3d addAnimScript MenuCredits as_VRMenuCreditsOut.txt"
+]pcmd 0.5 menu3d remove MenuCredits
+]sym set VrCreditsLoaded 0
+}

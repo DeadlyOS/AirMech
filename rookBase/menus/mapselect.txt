@@ -1,0 +1,16 @@
+blockLoadOnConsoleSym MapSelectLoaded
+onloadrun {
+sym set MapSelectLoaded 1
+}
+MO MapSelectWindow {
+pos 400 250
+layer 10
+}
+onload {
+addUIAnim MapSelectWindow mas_DialogPopFadein
+}
+onunloadrun {
+sym set MapSelectLoaded 0
+}
+onunload {
+}

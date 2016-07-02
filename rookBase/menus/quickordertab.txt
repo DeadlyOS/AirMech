@@ -1,0 +1,14 @@
+onloadrun {
+sym set QuickOrderTab 1
+}
+MO QuickOrderMaster {
+pos 0 0
+}
+onload {
+gameUI disableImmediateAll QuickOrderMaster
+gameUI enable QuickOrderMaster
+gameUI enable #@ArmySlotLastSelection@Quick
+}
+onunload {
+sym set QuickOrderTab 0
+}

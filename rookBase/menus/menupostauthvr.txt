@@ -1,0 +1,19 @@
+onloadrun {
+sym set SplashVR 1
+}
+onload {
+pcmd 0.1 gfx set VR_Settings /shadowFocusDistance 200.0 /shadowRange 1500.0
+sym set VRMainMenu 1
+pcmd 0.5 sym set PostAuth 1
+sym set GameRangeMarkers 0
+rook toggleGameRangeMarkers 0
+menu3d addChild FortInside SkyboxTemp /model effects/sky/SkySphere.amf	/material mat_SkyHazeBlue /worldPose 0 0 0 /rootScale 20.0 /parentVisCheckInv
+menu3d logicFnc SkyboxTemp useOffsetHMD /mag 0.5
+menu3d addChild NetworkStateDis BackendEnumState /model vr/BackendEnumState.amf /material mat_RenderToTextureVR_UnlitStdBlend /rootRot 5 0 -15 /worldPose -3 -5 -15 /rootScale 20 /hiddenCheckBySymbolInv _BackendOfflineOk_
+pfx menu3dspawn FortressDust /menu3d FortInside /bone bone_root /tag Fortress
+#if vr
+rook setParts PriNone PriNone StrNone StrNone SpeNone SpeNone CorNone EngNone
+pcmd 2 rook setParts PriNone PriNone StrNone StrNone SpeNone SpeNone CorNone EngNone
+menucmd CreateVRDebugPane
+#endif
+}

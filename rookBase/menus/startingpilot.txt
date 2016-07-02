@@ -1,0 +1,26 @@
+onloadrun {
+}
+MO PilotSelectMaster {
+pos 0 0
+}
+onload {
+gameui enable VignetteStory
+addUIAnim SelectPilotPrompt mas_ChoosePilotRise
+input set mousePos 960 600
+gameUI ignoreInputTime 7.0
+pcmd_seq 302 1.0 gameui disable PilotSelectCover
+gameui enable SelectPilotPrompt
+sym set HidePilotBtnHelp 0
+pcmd_seq 302 5.0 gameui disable SelectPilotPrompt
+pcmd_seq 302 3.0 gameui focusName SelectPilotLeft
+pcmd_seq 302 4.5 gameui focusName SelectPilotRight
+pcmd_seq 302 6.0 gameui focusName SelectPilotCenter
+pcmd_seq 302 7.0 sym set HideCursor 0
+pcmd_seq 302 8.0 gameui enable CM_ButtonHints_PilotSelect
+sym push CurrentMenu PilotSelect
+}
+onunloadrun {
+sym pop CurrentMenu
+sym set PilotSelectCancelScript null
+console flushAllPendingSeq 302
+}

@@ -1,0 +1,37 @@
+menucmd ClearArmyText
+menu3d add MenusVR
+menu3d logicFnc Skylight lookAtToSymInc /symbol _LookAtSkylight /arc 20
+menu3d setWorldPose MenusVR	0.0 0.0 0.1
+menu3d setRootRot MenusVR	0 0 0
+menucmd DrawKudosVr
+menu3d add MenusVRAvatars /worldPose 0 0 0
+menu3d addChild MenusVRAvatars LobbyAvatarBase0 /rootRot 0 0 0 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars LobbyAvatarBase1 /rootRot 0 0 0 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars LobbyAvatarBase2 /rootRot 0 0 0 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars LobbyAvatarBase3 /rootRot 0 0 0 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars LobbyAvatarBase4 /rootRot 0 0 0 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars LobbyAvatarBase5 /rootRot 0 0 0 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars GameAvatarBase0 /rootRot 0 0 110 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars GameAvatarBase1 /rootRot 0 0 -110 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars GameAvatarBase2 /rootRot 0 0 150 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars GameAvatarBase3 /rootRot 0 0 -150 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars GameAvatarBase4 /rootRot 0 0 80 /worldPose 0 0 -30
+menu3d addChild MenusVRAvatars GameAvatarBase5 /rootRot 0 0 -80 /worldPose 0 0 -30
+menucmd RotateAvatars Default
+pcmd 0 sym set _AvatarIndex 0
+pcmd 0 menucmd SetupAvatarsVr Lobby
+pcmd 0.5 sym set _AvatarIndex 0
+pcmd 0.5 menucmd SetupAvatarsVr Game
+pcmd 0.1 menu3d addChild MenusVR MenuSpeakerL /model vr/MenuSpeaker.amf /material mat_MenuSpeaker /noVis /worldPose 57 10 1 /rootScale 1.2 /rootRot -10 0 -35
+pcmd 0.1 menu3d addChild MenusVR MenuSpeakerR /model vr/MenuSpeaker.amf /material mat_MenuSpeaker /noVis /worldPose 71 -8 1 /rootScale 1.2 /rootRot -10 0 -70
+pcmd 0.1 menu3d logicFnc MenuSpeakerL soundBoneControl /bone bone_cone /offset 0 0 15 /index 0
+pcmd 0.1 menu3d logicFnc MenuSpeakerR soundBoneControl /bone bone_cone /offset 0 0 15 /index 1
+menu3d addChild MenusVR MenuBox /rootRot 0 0 0 /worldPose 0 200 180 /rootScale 1.0
+menu3d addChild MenuBox BoxAirMech /model vr/BoxAirMech.amf /material mat_FlairBlock0 /rootRot -7 0 20 /rootScale 2.0 /worldPose 30.0 20.0 -80.0 /noVis /hiddenCheckBySymbol VrReturnToLobby
+menu3d addChild BoxAirMech MenuAirMechLocked /model vr/Lock.amf  /material mat_VrLock  /rootScale 0.5  /attachToParentBone bone_lock /hiddenCheckBySymbol PreviewAirMechOwned /hiddenCheckBySymbolInv VrCustomizeMode /noVis
+menu3d addZSpin BoxAirMech bone_lock 170
+pcmd 0.1 menucmd CreateAirMechBox
+menu3d addChild MenusVR QuestRewardItem /rootScale 5.5 /rootRot 0 0 8
+menu3d setWorldPose QuestRewardItem	5 100 100
+menu3d addChild QuestRewardItem QuestRewardItem0 /model vr/QuestCard.amf /material mat_MenuPictureFrame /material mat_QuestCardBack /noVis /worldPose 0 0 0
+echo Finished loading CORE

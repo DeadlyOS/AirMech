@@ -1,0 +1,17 @@
+onloadrun {
+clearmenu
+sym set SandboxUsed 1
+}
+MO EditorMaster {
+pos 0 0
+}
+onload {
+editor toggle editmode /runtime
+clearmenu hudMain.txt
+editor set runTimeMode create
+details push
+}
+onunload {
+editor toggle editmode
+details rip
+}

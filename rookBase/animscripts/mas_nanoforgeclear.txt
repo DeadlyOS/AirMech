@@ -1,0 +1,20 @@
+relativeTimes
+-replace
+kf time 0.0 {
+intMode linear
+offset = .cOffsetX 0 0
+}
+kf time 0.1 {
+offset = .cOffsetX 50 0
+}
+kf time 0.4 {
+intMode square
+offset = .cOffsetX 100 0
+}
+kf time 0.5 {
+offset = .cOffsetX 0 0
+}
+Cmd Start "gameUI disableAll NanoforgeSlots"
+Cmd 0.3 "sym setNSet 9 TR_HiddenHCube 1"
+cmd 0.4 "menucmd HCubeCheckSlots"
+Cmd 0.5 "gameUI enableAll NanoforgeSlots"

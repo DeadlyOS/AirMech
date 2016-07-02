@@ -1,0 +1,802 @@
+add MenuObject initFrom GenericBackground
+set Name PvPOptionsBackground
+set NoAlphaMod 1
+set Alpha 0.92
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameui promoteToTop BasePvPOptionsList"
+set RenderCB_DX 350
+set RenderCB_DY 750
+add MenuObject
+set Name PvPOptionsButton
+set Texture menus/Buttons
+set Coords "827 71 47 47"
+set CoordsFocused "827 16 47 47"
+set Focus -2
+set CommandPress "if !menuloaded BasePvPOptions menucmd LoadPvPOptions"
+set CommandPress "if menuloaded BasePvPOptions menucmd ClearPvPOptions"
+set MouseInteract 1
+set PulseAlpha "2.5 -0.5 4.0"
+set Color 0x87c9ce
+set HiddenCheckBySymbolValue CurrentMenu!CLobby
+set HiddenCheckBySymbolInv IsCustomRoom
+set HiddenCheckBySymbolInv2 LobbyState
+set RotationPeriod 7.0
+add MenuObject
+set Name PvPOptionsVignette
+set Texture effects/VignetteUnder
+set Coords "0 0 515 256"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "menuCmd ClearPvPOptions"
+add MenuObject
+set Name PvPOptionsBackButton
+set Texture menus/BackIcon
+set BlendMode BlendAdd
+set HiddenCheckBySymbol InputPad
+set Focus -2
+set MouseInteract 1
+set Coords "0 0 127 128"
+set CoordsFocused "0 128 128 128"
+set ScaleX 0.8, ScaleY 0.8
+set CommandPress "menuCmd ClearPvPOptions"
+add MenuObject
+set Name HeaderPvPOptions
+set Coords "0 0 1700 42"
+set RenderCB_Font Gunner_LangFallback
+set RenderCB _DrawUText
+set RenderCB_RGBColor 0xffffff
+set NoAlphaMod 1
+set Alpha 0.5
+set BlendMode BlendAdd
+set RenderCB_Flags "/allCaps"
+set RenderCB_FontScale 1.0
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 3
+set RenderCB_TextJustify JustifyXLeft
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeInPreWait 0.1
+set DisabledSymInv _MenuTransition_
+set RenderCB_Offset "0 0"
+set RenderCB_Text @_Arg1_@
+set DisabledAlpha 0.0
+set EnabledAlpha 0.1
+add MenuObject
+set Name OptionBoxPvPPicked
+set Texture menus/DialogFrames
+set Coords "251 5 24 24"
+set HiddenCheckBySymbolInv @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name OptionBoxPvP
+set Texture menus/DialogFrames
+set Coords "246 36 34 34"
+set DrawWhenFocusedOrder BeforeChildren
+set DrawWhenFocused CheckboxInvTemplHighlight
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 4"
+set RenderCB_DX 220
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg2_@
+set ToolTip @_Arg4_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 -150 10"
+set Focus -2
+set SaveArgs 4
+add MenuObject initFrom OptionBoxPvP
+set Name OptionBoxPvPPlayers1v1
+set CommandPress "sym setZero ConMenuPvPCustom2v2 ConMenuPvPCustom3v3 ConMenuPvPCustomAny"
+set CommandPress "sym setOne ConMenuPvPCustom1v1"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandEnterKey "sym setZero ConMenuPvPCustom2v2 ConMenuPvPCustom3v3 ConMenuPvPCustomAny"
+set CommandEnterKey "sym setOne ConMenuPvPCustom1v1"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set Child "OptionBoxPvPPicked 5 5 ConMenuPvPCustom1v1"
+add MenuObject initFrom OptionBoxPvP
+set Name OptionBoxPvPPlayers2v2
+set CommandPress "sym setZero ConMenuPvPCustom1v1 ConMenuPvPCustom3v3 ConMenuPvPCustomAny"
+set CommandPress "sym setOne ConMenuPvPCustom2v2"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandEnterKey "sym setZero ConMenuPvPCustom2v2 ConMenuPvPCustom3v3 ConMenuPvPCustomAny"
+set CommandEnterKey "sym setOne ConMenuPvPCustom2v2"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set Child "OptionBoxPvPPicked 5 5 ConMenuPvPCustom2v2"
+add MenuObject initFrom OptionBoxPvP
+set Name OptionBoxPvPPlayers3v3
+set CommandPress "sym setZero ConMenuPvPCustom1v1 ConMenuPvPCustom2v2 ConMenuPvPCustomAny"
+set CommandPress "sym setOne ConMenuPvPCustom3v3"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandEnterKey "sym setZero ConMenuPvPCustom1v1 ConMenuPvPCustom2v2 ConMenuPvPCustomAny"
+set CommandEnterKey "sym setOne ConMenuPvPCustom3v3"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set Child "OptionBoxPvPPicked 5 5 ConMenuPvPCustom3v3"
+add MenuObject initFrom OptionBoxPvP
+set Name OptionBoxPvPPlayersAny
+set CommandPress "sym setZero ConMenuPvPCustom1v1 ConMenuPvPCustom2v2 ConMenuPvPCustom3v3"
+set CommandPress "sym setOne ConMenuPvPCustomAny"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandEnterKey "sym setZero ConMenuPvPCustom1v1 ConMenuPvPCustom2v2 ConMenuPvPCustom3v3"
+set CommandEnterKey "sym setOne ConMenuPvPCustomAny"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set Child "OptionBoxPvPPicked 5 5 ConMenuPvPCustomAny"
+set HiddenCheckBySymbol CustomGameOptionsCreate
+add MenuObject
+set Name CheckboxInvPvP
+set Texture menus/DialogFrames
+set Coords "249 82 30 30"
+set DrawWhenFocusedOrder BeforeChildren
+set DrawWhenFocused CheckboxInvTemplHighlight
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 4"
+set RenderCB_DX 450
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.9"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg2_@
+set ToolTip @_Arg4_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 -280 10"
+set Focus -2
+set SaveArgs 5
+set CommandPress ">sym toggle @_Arg1_@"
+set CommandPress ">menucmd @_Arg3_@"
+set CommandPress "playsound UI_CheckBoxChange"
+set CommandEnterKey ">sym toggle @_Arg1_@"
+set CommandEnterKey ">menucmd @_Arg3_@"
+set CommandEnterKey "playsound UI_CheckBoxChange"
+set Child "CheckMarkInvTempl 0 0 @_Arg1_@"
+add MenuObject initFrom CheckboxInvPvP
+set Name CheckboxInvPvPCreate
+set DisabledSymInv @_Arg5_@
+set DisabledAlphaTimeOut 0.1
+add MenuObject initFrom CheckboxInvPvP
+set Name CheckboxInvPvPPW
+set CommandPress "if sym ArcCustomized == 1 menucmd setPvPOptions"
+add MenuObject
+set Name CheckboxInvPvPDis
+set Texture menus/DialogGeneral
+set Coords "357 201 32 32"
+set BlendMode BlendAdd
+set DrawWhenFocusedOrder BeforeChildren
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "48 4"
+set RenderCB_DX 450
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /fitX"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "0.5"
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text @_Arg2_@
+set ToolTip @_Arg4_@
+set MouseInteract 1
+set MouseInteractZoneExpand "-55 -10 0 10"
+set Focus -2
+set SaveArgs 4
+set Child "CheckMarkInvTemplDis 0 0 @_Arg1_@"
+add MenuObject
+set Name BasePvPOptionsList
+set RenderBlocked 1
+set Coords "0 0 318 55"
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameui promoteToTop BasePvPOptionsList"
+set DragSource BasePvPOptionsList
+set FirstDrawnChildren 1
+set Child "PvPOptionsBackground -10 -10"
+set Child "GenericMenuClose[OptionsClose] 238 1	BasePvPOptions"
+set Child "CheckboxInvPvP[PrivateRoom] 35 50				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate  == 0 PrivateRoom MF_PrivateRoom SetPrivateRoom TT_PrivateRoomDesc"
+set Child "CheckboxInvPvPDis[PrivateRoom] 35 50				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate  == 1 PrivateRoom MF_PrivateRoom SetPrivateRoom TT_PrivateRoomDesc"
+set Child "CheckboxInvPvPDis[PrivateRoomDis] 35 50			/ifSym PO_IsOwner == 0 PrivateRoom MF_PrivateRoom SetPrivateRoom TT_PrivateRoomDesc"
+set Child "CreatePrivateRoomConfig 35 50	PO_Pin"
+set Child "CheckboxInvPvP[HyperMode] 35 105 				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_Hyper MF_HyperRoom OptionsHyperModeToggle LobbyHyperMessage"
+set Child "CheckboxInvPvPDis[HyperMode] 35 105 				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_Hyper MF_HyperRoom OptionsNOP LobbyHyperMessage"
+set Child "CheckboxInvPvPDis[HyperModeDis] 35 105			/ifSym PO_IsOwner == 0 PO_Hyper MF_HyperRoom OptionsNOP LobbyHyperMessage"
+set Child "CheckboxInvPvP[HypoMode] 35 160					/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_Hypo MF_HypoRoom OptionsHypoModeToggle LobbyHypoMessage"
+set Child "CheckboxInvPvPDis[HypoMode] 35 160				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_Hypo MF_HypoRoom OptionsNOP LobbyHypoMessage"
+set Child "CheckboxInvPvPDis[HypoModeDis] 35 160			/ifSym PO_IsOwner == 0 PO_Hypo MF_HypoRoom OptionsNOP LobbyHypoMessage"
+set Child "CheckboxInvPvP[CTFMode] 35 215					/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_CTF CTF OptionsCTFToggle TT_CTF"
+set Child "CheckboxInvPvPDis[CTFMode] 35 215				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_CTF CTF OptionsNOP TT_CTF"
+set Child "CheckboxInvPvPDis[CTFModeDis] 35 215				/ifSym PO_IsOwner == 0 PO_CTF CTF OptionsNOP TT_CTF"
+set Child "CheckboxInvPvP[UltimatesAllowed] 35 270			/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_UltimatesAllowed MF_UltimatesAllowed OptionsUltimatesAllowedToggle TT_UltimatesAllowed"
+set Child "CheckboxInvPvPDis[UltimatesAllowed] 35 270		/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_UltimatesAllowed MF_UltimatesAllowed OptionsNOP TT_UltimatesAllowed"
+set Child "CheckboxInvPvPDis[UltimatesAllowedDis] 35 270	/ifSym PO_IsOwner == 0 PO_UltimatesAllowed MF_UltimatesAllowed OptionsNOP TT_UltimatesAllowed"
+set Child "CheckboxInvPvP[ZobaMode] 35 325					/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_ZobaMech MF_ZobaMech OptionsZobaToggle TT_ZobaMech"
+set Child "CheckboxInvPvPDis[ZobaMode] 35 325				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_ZobaMech MF_ZobaMech OptionsNOP TT_ZobaMech"
+set Child "CheckboxInvPvPDis[ZobaModeDis] 35 325			/ifSym PO_IsOwner == 0 PO_ZobaMech MF_ZobaMech OptionsNOP TT_ZobaMech"
+set Child "CheckboxInvPvP[LagFestOption] 35 380				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_LagFest MF_LagFest OptionsLagFestToggle TT_LagFest"
+set Child "CheckboxInvPvPDis[LagFestOption] 35 380			/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_LagFest MF_LagFest OptionsNOP TT_LagFest"
+set Child "CheckboxInvPvPDis[LagFestOptionDis] 35 380		/ifSym PO_IsOwner == 0 PO_LagFest MF_LagFest OptionsNOP TT_LagFest"
+set Child "CheckboxInvPvP[NoPartsOption] 35 435				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_NoParts MF_NoParts OptionsNoPartsToggle TT_NoParts"
+set Child "CheckboxInvPvPDis[NoPartsOption] 35 435			/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_NoParts MF_NoParts OptionsNOP TT_NoParts"
+set Child "CheckboxInvPvPDis[NoPartsOptionDis] 35 435		/ifSym PO_IsOwner == 0 PO_NoParts MF_NoParts OptionsNOP TT_NoParts"
+set Child "CheckboxInvPvP[NoTrainingOption] 35 490				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_NoTraining MF_NoTraining OptionsNoTrainingToggle TT_NoTraining"
+set Child "CheckboxInvPvPDis[NoTrainingOption] 35 490			/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_NoTraining MF_NoTraining OptionsNOP TT_NoTraining"
+set Child "CheckboxInvPvPDis[NoTrainingOptionDis] 35 490		/ifSym PO_IsOwner == 0 PO_NoTraining MF_NoTraining OptionsNOP TT_NoTraining"
+set Child "CheckboxInvPvP[CustomMapOption] 35 545			/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_CustomMap MF_CustomMap OptionsCustomMapToggle TT_CustomMap"
+set Child "CheckboxInvPvPDis[CustomMapOption] 35 545		/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_CustomMap MF_CustomMap OptionsNOP TT_CustomMap"
+set Child "CheckboxInvPvPDis[CustomMapOptionDis] 35 545		/ifSym PO_IsOwner == 0 PO_CustomMap MF_CustomMap OptionsNOP TT_CustomMap"
+set Child "CustomMapNamePreviewSm 9 530"
+add MenuObject
+set Name BasePvPOptionsListPW
+set ContainerOnly 1
+set Child "CheckboxInvPvP[PrivateRoom] 35 -85				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate  == 0 PrivateRoom MF_PrivateRoom SetPrivateRoom TT_PrivateRoomDesc"
+set Child "CheckboxInvPvPDis[PrivateRoom] 35 -85			/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate  == 1 PrivateRoom MF_PrivateRoom SetPrivateRoom TT_PrivateRoomDesc"
+set Child "CheckboxInvPvPDis[PrivateRoomDis] 35 -85		/ifSym PO_IsOwner == 0 PrivateRoom MF_PrivateRoom SetPrivateRoom TT_PrivateRoomDesc"
+set Child "CreatePrivateRoomConfig 35 -85	PO_Pin"
+set Child "CheckboxInvPvPPW[CTFMode] 225 -85					/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_CTF CTF OptionsCTFToggle TT_CTF"
+set Child "CheckboxInvPvPDis[CTFMode] 225 -85					/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_CTF CTF OptionsNOP TT_CTF"
+set Child "CheckboxInvPvPDis[CTFModeDis] 225 -85				/ifSym PO_IsOwner == 0 PO_CTF CTF OptionsNOP TT_CTF"
+set Child "CheckboxInvPvPPW[HypoMode] 35 -35					/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_Hypo MF_HypoRoom OptionsHypoModeToggle LobbyHypoMessage"
+set Child "CheckboxInvPvPDis[HypoMode] 35 -35				/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_Hypo MF_HypoRoom OptionsNOP LobbyHypoMessage"
+set Child "CheckboxInvPvPDis[HypoModeDis] 35 -35				/ifSym PO_IsOwner == 0 PO_Hypo MF_HypoRoom OptionsNOP LobbyHypoMessage"
+set Child "CheckboxInvPvP[UltimatesAllowed] 225 -35			/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 0 PO_UltimatesAllowed MF_UltimatesAllowed OptionsUltimatesAllowedToggle TT_UltimatesAllowed"
+set Child "CheckboxInvPvPDis[UltimatesAllowed] 225 -35		/ifSym PO_IsOwner == 1 /ifSym MM_Coordinate == 1 PO_UltimatesAllowed MF_UltimatesAllowed OptionsNOP TT_UltimatesAllowed"
+set Child "CheckboxInvPvPDis[UltimatesAllowedDis] 225 -35	/ifSym PO_IsOwner == 0 PO_UltimatesAllowed MF_UltimatesAllowed OptionsNOP TT_UltimatesAllowed"
+set HiddenCheckBySymbolValue CurrentMenu!CLobby
+set HiddenCheckBySymbolInv IsCustomRoom
+set HiddenCheckBySymbolInv2 LobbyState
+add MenuObject initFrom GenericBackground
+set Name CustomGameOptionsBrowseBg
+set RenderCB_DX 910
+set RenderCB_DY 370
+set Coords "0 0 910 340"
+set NoAlphaMod 1
+set Alpha 0.86
+set Child "CustomMapTopMapsList 16 408"
+set Child "CustomMapLeaderboardList 16 408"
+set Child "CustomMapMyMapsList 16 408"
+set Child "CustomMapPlayerMapsList 16 408"
+set Child "CustomMapSourceButtons 16 371"
+set Child "CustomMapLeaderboardListCover 16 370"
+set Child "CustomMapNamePreview 40 280"
+add MenuObject
+set Name CustomGamesButton
+set Texture menus/DialogFrames
+set Coords "24 527 181 52"
+set CoordsFocused "205 528 181 52"
+set CoordsPressed "205 526 181 52"
+set MouseInteract 1
+set Focus -2
+set CommandPress "playsound UI_CheckBoxChange"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_DX 181
+set RenderCB_DY 52
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Font Roboto
+set RenderCB_OffsetFocused "0 -1"
+set RenderCB_OffsetPressed "0 1"
+set RenderCB_Text @_Arg1_@
+set RenderCB_FontScale 0.65
+set SaveArgs 3
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi"
+set RenderCB_RGBColor 0xaee1e6
+set RenderCB_RGBColorFocused 0xffffff
+set CommandPress ">menucmd @_Arg2_@"
+set DisabledSymInv @_Arg3_@
+set DisabledAlphaTimeOut 0.1
+add MenuObject
+set Name CustomMapNamePreview
+set RenderCB_DX 0
+set RenderCB_DY 0
+set Texture effects/white
+set Coords "0 0 450 50"
+set Color 0x855d33
+set SaveArgs 2
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 	0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Offset "0 -2"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Flags "/nmi /fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.8
+set RenderCB_Font Roboto
+set RenderCB _DrawText
+set RenderCB_ConsoleSymbol CF_CustomMapName
+set HiddenCheckBySymbolInv CF_CustomMap
+add MenuObject initFrom CustomMapNamePreview
+set Name CustomMapNamePreviewSm
+set Coords "0 0 311 50"
+set RenderCB_FontScale 0.65
+set RenderCB_ConsoleSymbol PO_CustomMapName
+set HiddenCheckBySymbolInv PO_CustomMap
+set MouseInteract 1
+set Focus -2
+set CommandPress "loadmenu LobbyMapListWindow /fadein 0.1"
+set ColorFocused 0xae7437
+add MenuObject
+set Name CustomGameOptionsBrowse
+set ContainerOnly 1
+set HiddenCheckBySymbolInv CustomGameOptionsBrowse
+set Child "CustomGameOptionsBrowseBg 0 -130"
+set Child "OptionBoxPvPPlayers1v1 40 60				Players1v1 Button1v1 SetPrivateRoom TT_PrivateRoomDesc"
+set Child "OptionBoxPvPPlayers2v2 190 60			Players2v2 Button2v2 SetPrivateRoom TT_PrivateRoomDesc"
+set Child "OptionBoxPvPPlayers3v3 340 60			Players2v2 Button3v3 SetPrivateRoom TT_PrivateRoomDesc"
+set Child "OptionBoxPvPPlayersAny 490 60			Players2v2 ButtonAny SetPrivateRoom TT_PrivateRoomDesc"
+set Child "CheckboxInvPvPCreate[ZobaModeCreate] 40 115					CF_ZobaMech MF_ZobaMech OptionsZobaToggle_CF TT_ZobaMech	CustomGameOptionsBrowse"
+set Child "CheckboxInvPvPCreate[CTFModeCreate] 340 115					CF_CTF CTF OptionsCTFToggle_CF TT_CTF	CustomGameOptionsBrowse"
+set Child "CheckboxInvPvPCreate[HyperModeCreate] 640 115 				CF_Hyper MF_HyperRoom OptionsHyperModeToggle_CF LobbyHyperMessage	CustomGameOptionsBrowse"
+set Child "CheckboxInvPvPCreate[UltimatesAllowedCreate] 40 170			CF_UltimatesAllowed MF_UltimatesAllowed OptionsNOP TT_UltimatesAllowed	CustomGameOptionsBrowse"
+set Child "CheckboxInvPvPCreate[NoPartsOptionCreate] 340 170			CF_NoParts MF_NoParts OptionsNOP TT_NoParts	CustomGameOptionsBrowse"
+set Child "CheckboxInvPvPCreate[HypoModeCreate] 640 170					CF_Hypo MF_HypoRoom OptionsHypoModeToggle_CF LobbyHypoMessage	CustomGameOptionsBrowse"
+set Child "CheckboxInvPvPCreate[PrivateRoomCreate] 640 225				PrivateRoom MF_PrivateRoom SetPrivateRoom TT_PrivateRoomDesc	CustomGameOptionsCreate"
+set Child "CreatePrivateRoomConfig 640 225	CF_Pin"
+set Child "CheckboxInvPvPCreate[LagFestOptionCreate] 340 225			CF_LagFest MF_LagFest OptionsNOP TT_LagFest	CustomGameOptionsCreate"
+set Child "CheckboxInvPvPCreate[CustomMapOptionCreate] 40 225			CF_CustomMap MF_CustomMap OptionsCustomMapToggle_CF TT_CustomMap	CustomGameOptionsCreate"
+set Child "CustomGameRefreshList 640 49"
+set Child "CustomGamesButton 700 48		MF_Reset	PvPOptionsCustomReset	CustomGameOptionsBrowse"
+set Child "CustomGamesButton 700 285	MF_NetGameBrowseCreateGame PvPCustomGameSetupGo	CustomGameOptionsCreate"
+set Child "CustomGamesButton[CustomGamesButtonSetup3] 700 285	ButtonCreateSetup PvPCustomGameSetup	CustomGameListMore"
+add MenuObject
+set Name CustomMapTextListTemplate
+set Coords "0 0 80 30"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.7
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set SaveArgs 2
+add MenuObject initFrom CustomMapTextListTemplate
+set Name CustomMapLeaderboardName
+set Coords "0 0 280 30"
+set RenderCB_TextJustify JustifyXLeft
+set SaveArgs 1
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_Flags "/noCommaSep /toU16"
+set RenderCB _DrawUText
+add MenuObject initFrom CustomMapTextListTemplate
+set Name CustomMapLeaderboardMyName
+set Coords "0 0 280 30"
+set RenderCB_TextJustify JustifyXLeft
+set SaveArgs 2
+set RenderCB_ConsoleSymbol @_Arg1_@
+set HiddenCheckBySymbolValue @_Arg2_@=
+set RenderCB_Flags "/noCommaSep"
+add MenuObject initFrom CustomMapTextListTemplate
+set Name CustomMapLeaderboardRank
+set RenderCB_ConsoleSymbol @_Arg1_@
+set Coords "0 0 100 30"
+set RenderCB_DX 100
+set RenderCB_DY 30
+set RenderCB_Flags "/fitX"
+set RenderCB_TextJustify JustifyXCenter
+set DisabledAlphaTimeInPreWait @_Arg2_@
+set DisabledSymInv _MenuTransition_
+add MenuObject
+set Name CustomMapLeaderboardRankFixed
+set Coords "0 0 100 30"
+set RenderCB_DX 100
+set RenderCB_DY 30
+set RenderCB_Flags "/fitX"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_FontScale 0.7
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xFFFFFF
+set SaveArgs 2
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolValue @_Arg2_@=
+add MenuObject
+set Name CustomMapLeaderboardListCover
+set Texture effects/white
+set Coords "0 0 880 500"
+set Color 0x696140
+set ColorFocused 0x696140
+set MouseInteract 1
+set Focus -2
+set NoAlphaMod 1
+set MouseInteractZoneExpand "-10 -10 10 10"
+set Alpha 0.5
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set HiddenCheckBySymbol CF_CustomMap
+set CommandPress "sym set CF_CustomMap 1"
+set CommandPress "menucmd PvPButtonCustomListMore"
+add MenuObject
+set Name CustomMapLeaderboardItemPicked
+set Texture effects/white
+set Coords "0 0 878 42"
+set Color 0x855d33
+set FilterName HLB
+set SaveArgs 2
+set HiddenCheckBySymbolInv @_Arg2_@
+set HiddenCheckBySymbolValue @_Arg2_@!&@_Arg1_@&
+add MenuObject
+set Name CustomMapNameAuthor
+set RenderCB_DX 0
+set RenderCB_DY 0
+set SaveArgs 1
+set Coords "0 0 300 44"
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_RGBColor 0x79837e
+set BlendMode BlendAdd
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+set RenderCB _DrawUText
+set RenderCB_Text MapAuthor
+set HiddenCheckBySymbolValue @_Arg1_@=---
+add MenuObject initFrom CustomMapNameAuthor
+set Name CustomMapNameAuthorMe
+set HiddenCheckBySymbolValue @_Arg1_@=
+add MenuObject
+set Name CustomGameRoomLineBg
+set Texture menus/Mail
+set CoordsStart "736 359 2 2"
+set CoordsMid "738 359 93 2"
+set CoordsEnd "832 359 2 2"
+set CoordsStartFocused "736 361 2 93"
+set CoordsMidFocused "738 361 93 93"
+set CoordsEndFocused "832 361 2 93"
+set CoordsStartDisabled "736 454 2 3"
+set CoordsMidDisabled "738 454 93 3"
+set CoordsEndDisabled "832 454 2 3"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 1280
+set RenderCB_DY 43
+set Coords "0 0 500 500"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set NoAlphaMod 1
+set Alpha 0.92
+set Color 0xb7b7b7
+add MenuObject initFrom CustomGameRoomLineBg
+set Name CustomMapLineBg
+set RenderCB_DX 880
+add MenuObject
+set Name CustomRoomLineTint
+set Texture effects/white
+set BlendMode BlendAdd
+set Coords "0 0 1278 43"
+set Color 0x0b0b0b
+set SaveArgs 2
+set Hidden @_Arg1_@
+add MenuObject initFrom CustomRoomLineTint
+set Name CustomMapLineTint
+set Coords "0 0 878 42"
+add MenuObject
+set Name CustomMapLeaderboardItem
+set Texture effects/white
+set Coords "0 0 880 44"
+set SaveArgs 2
+set Focus -2
+set MouseInteract 1
+set FilterName HLB
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandCancel "menuCmd ConMenuBoardsCancel"
+set CommandCancel "addUIAnim CM_ButtonHints_ConLeaderboards mas_ConButtonsDown"
+set CommandCancel "clearmenu ConLeaderboards /fadeout 0.2"
+set CommandGetFocus ">input set padFocusFallback ConLeaderItem@_Arg1_@"
+set CommandPress ">if sym HLB_Meta@_Arg1_@ !isEmpty playsound UI_CheckBoxChange"
+set CommandDoubleClick ">if sym HLB_Meta@_Arg1_@ !isEmpty && sym CustomGameListMore == 1 && sym LobbyState == 0 menucmd PvPCustomGameSetup"
+set CommandDoubleClick ">if sym HLB_Meta@_Arg1_@ !isEmpty && sym CustomGameListMore == 1 && sym LobbyState == 1 clearmenu LobbyMapListWindow"
+set CommandPress "if sym CustomGameListMore == 0 menucmd PvPButtonCustomListMore"
+set CommandPress ">if sym HLB_Meta@_Arg1_@ !isEmpty && sym LobbyState == 0 sym set CF_CustomMap 1"
+set CommandPress ">if sym HLB_Meta@_Arg1_@ !isEmpty && sym LobbyState == 1  sym set PO_CustomMap 1"
+set CommandPress ">if sym HLB_Meta@_Arg1_@ !isEmpty && sym LobbyState == 0  sym setFrom CF_CustomMapName HLB_Meta@_Arg1_@"
+set CommandPress ">if sym HLB_Meta@_Arg1_@ !isEmpty && sym LobbyState == 1  sym setFrom PO_CustomMapName HLB_Meta@_Arg1_@"
+set CommandPressAlt ">if sym HLB_Meta@_Arg1_@ !isEmpty && sym LobbyState == 0 sym setFrom CF_CustomMapName HLB_Meta@_Arg1_@"
+set CommandPressAlt ">if sym HLB_Meta@_Arg1_@ !isEmpty && sym LobbyState == 1 sym setFrom PO_CustomMapName HLB_Meta@_Arg1_@"
+set CommandPressAlt ">menucmd CustomMapSourcePlayer local HLB_N@_Arg1_@"
+set CommandPressAlt "if sym CustomGameListMore == 0 menucmd PvPButtonCustomListMore"
+set Color 0x000000
+set ColorFocused 0x12293a
+set BlendMode BlendAdd
+set CommandFocusUp "gameUI focusNameTry #ConLeaderItem@_FocusItemListLeft_@"
+set CommandFocusDown "gameUI focusNameTry #ConLeaderItem@_FocusItemListRight_@"
+set CommandFocusUp ">if literal @_Arg1_@ == 0 platform leaderboards pageup"
+set CommandFocusDown ">if literal @_Arg1_@ == 9 platform leaderboards pagedown"
+set FirstDrawnChildren 2
+set Child "CustomMapUnderline 1 43"
+set Child "CustomMapLineBg 0 0"
+set Child "CustomMapLineTint 0 0	@_Arg2_@"
+set Child "CustomMapLeaderboardItemPicked 1 1		HLB_Meta@_Arg1_@ PO_CustomMapName	/ifSym LobbyState == 1"
+set Child "CustomMapLeaderboardItemPicked 1 1		HLB_Meta@_Arg1_@ CF_CustomMapName	/ifSym LobbyState == 0"
+set Child "CustomMapLeaderboardRank 5 8		HLB_R@_Arg1_@	0"
+set Child "CustomMapLeaderboardName 120 8		HLB_S@_Arg1_@	0"
+set Child "CustomMapNameAuthor 340 11		HLB_R@_Arg1_@	0"
+set Child "CustomMapLeaderboardName 652 8		HLB_N@_Arg1_@	0"
+add MenuObject
+set Name CustomMapMyMapItem
+set Texture effects/white
+set Coords "0 0 880 44"
+set SaveArgs 2
+set Focus -2
+set MouseInteract 1
+set FilterName HLB
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandCancel "menuCmd ConMenuBoardsCancel"
+set CommandCancel "addUIAnim CM_ButtonHints_ConLeaderboards mas_ConButtonsDown"
+set CommandCancel "clearmenu ConLeaderboards /fadeout 0.2"
+set CommandGetFocus ">input set padFocusFallback ConLeaderItem@_Arg1_@"
+set CommandPress ">if sym MyMaps_RName@_Arg1_@ !isEmpty playsound UI_CheckBoxChange"
+set CommandDoubleClick ">if sym MyMaps_RName@_Arg1_@ !isEmpty && sym CustomGameListMore == 1 && sym LobbyState == 0 menucmd PvPCustomGameSetup"
+set CommandDoubleClick ">if sym MyMaps_RName@_Arg1_@ !isEmpty && sym CustomGameListMore == 1 && sym LobbyState == 1 clearmenu LobbyMapListWindow"
+set CommandPress ">if sym MyMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 1  sym set PO_CustomMap 1"
+set CommandPress ">if sym MyMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 0  sym set CF_CustomMap 1"
+set CommandPress ">if sym MyMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 1  sym setFrom PO_CustomMapName MyMaps_RName@_Arg1_@"
+set CommandPress ">if sym MyMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 0  sym setFrom CF_CustomMapName MyMaps_RName@_Arg1_@"
+set CommandPress "if sym CustomGameListMore == 0 menucmd PvPButtonCustomListMore"
+set CommandPressAlt "if sym CustomGameListMore == 0 menucmd PvPButtonCustomListMore"
+set Color 0x000000
+set ColorFocused 0x12293a
+set BlendMode BlendAdd
+set CommandFocusUp "gameUI focusNameTry #ConLeaderItem@_FocusItemListLeft_@"
+set CommandFocusDown "gameUI focusNameTry #ConLeaderItem@_FocusItemListRight_@"
+set CommandFocusUp ">if literal @_Arg1_@ == 0 platform leaderboards pageup"
+set CommandFocusDown ">if literal @_Arg1_@ == 9 platform leaderboards pagedown"
+set FirstDrawnChildren 2
+set Child "CustomMapUnderline 1 43"
+set Child "CustomMapLineBg 0 0"
+set Child "CustomMapLineTint 0 0	@_Arg2_@"
+set Child "CustomMapLeaderboardItemPicked 1 1		MyMaps_RName@_Arg1_@ PO_CustomMapName	/ifSym LobbyState == 1"
+set Child "CustomMapLeaderboardItemPicked 1 1		MyMaps_RName@_Arg1_@ CF_CustomMapName	/ifSym LobbyState == 0"
+set Child "CustomMapLeaderboardName 120 8		MyMaps_Name@_Arg1_@	0"
+set Child "CustomMapNameAuthorMe 340 11		MyMaps_Name@_Arg1_@	0"
+set Child "CustomMapLeaderboardMyName 652 8		P_Name	MyMaps_Name@_Arg1_@"
+add MenuObject
+set Name CustomMapPlayerMapItem
+set Texture effects/white
+set Coords "0 0 880 44"
+set SaveArgs 3
+set Focus -2
+set MouseInteract 1
+set FilterName HLB
+set CommandCancel "gameUI ignoreInputTime 0.2"
+set CommandCancel "menuCmd ConMenuBoardsCancel"
+set CommandCancel "addUIAnim CM_ButtonHints_ConLeaderboards mas_ConButtonsDown"
+set CommandCancel "clearmenu ConLeaderboards /fadeout 0.2"
+set CommandGetFocus ">input set padFocusFallback ConLeaderItem@_Arg1_@"
+set CommandPress ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty playsound UI_CheckBoxChange"
+set CommandDoubleClick ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty && sym CustomGameListMore == 1 && sym LobbyState == 0 menucmd PvPCustomGameSetup"
+set CommandDoubleClick ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty && sym CustomGameListMore == 1 && sym LobbyState == 1 clearmenu LobbyMapListWindow"
+set CommandPress ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 0 sym set CF_CustomMap 1"
+set CommandPress ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 1  sym set PO_CustomMap 1"
+set CommandPress ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 0  sym setFrom CF_CustomMapName PlayerMaps_RName@_Arg1_@"
+set CommandPress ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 1  sym setFrom PO_CustomMapName PlayerMaps_RName@_Arg1_@"
+set CommandPressAlt ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 0 sym setFrom CF_CustomMapName PlayerMaps_RName@_Arg1_@"
+set CommandPressAlt ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 1 sym setFrom PO_CustomMapName PlayerMaps_RName@_Arg1_@"
+set CommandPress ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty sym set CF_CustomMap 1"
+set CommandPress ">if sym PlayerMaps_RName@_Arg1_@ !isEmpty sym setFrom CF_CustomMapName PlayerMaps_RName@_Arg1_@"
+set CommandPress "if sym CustomGameListMore == 0 menucmd PvPButtonCustomListMore"
+set CommandPressAlt "if sym CustomGameListMore == 0 menucmd PvPButtonCustomListMore"
+set Color 0x000000
+set ColorFocused 0x12293a
+set BlendMode BlendAdd
+set CommandFocusUp ">if literal @_Arg1_@ == 0 platform leaderboards pageup"
+set CommandFocusDown ">if literal @_Arg1_@ == 9 platform leaderboards pagedown"
+set FirstDrawnChildren 2
+set Child "CustomMapUnderline 1 43"
+set Child "CustomMapLineBg 0 0"
+set Child "CustomMapLineTint 0 0	@_Arg2_@"
+set Child "CustomMapLeaderboardItemPicked 1 1		PlayerMaps_RName@_Arg1_@ PO_CustomMapName	/ifSym LobbyState == 1"
+set Child "CustomMapLeaderboardItemPicked 1 1		PlayerMaps_RName@_Arg1_@ CF_CustomMapName	/ifSym LobbyState == 0"
+set Child "CustomMapLeaderboardRankFixed 5 8		@_Arg3_@ PlayerMaps_RName@_Arg1_@"
+set Child "CustomMapLeaderboardName 120 8		PlayerMaps_Name@_Arg1_@	0"
+set Child "CustomMapNameAuthorMe 340 11		PlayerMaps_Name@_Arg1_@	0"
+set Child "CustomMapLeaderboardMyName 652 8		PlayerMapAuthor	PlayerMaps_Name@_Arg1_@"
+add MenuObject
+set Name CustomMapTopMapItem
+set Texture effects/white
+set Coords "0 0 880 44"
+set SaveArgs 3
+set Focus -2
+set MouseInteract 1
+set FilterName HLB
+set CommandGetFocus ">input set padFocusFallback ConLeaderItem@_Arg1_@"
+set CommandPress ">if sym TopMaps_RName@_Arg1_@ !isEmpty playsound UI_CheckBoxChange"
+set CommandDoubleClick ">if sym TopMaps_RName@_Arg1_@ !isEmpty && sym CustomGameListMore == 1 && sym LobbyState == 0 menucmd PvPCustomGameSetup"
+set CommandDoubleClick ">if sym TopMaps_RName@_Arg1_@ !isEmpty && sym CustomGameListMore == 1 && sym LobbyState == 1 clearmenu LobbyMapListWindow"
+set CommandPress ">if sym TopMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 0 sym set CF_CustomMap 1"
+set CommandPress ">if sym TopMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 1  sym set PO_CustomMap 1"
+set CommandPress ">if sym TopMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 0  sym setFrom CF_CustomMapName TopMaps_RName@_Arg1_@"
+set CommandPress ">if sym TopMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 1  sym setFrom PO_CustomMapName TopMaps_RName@_Arg1_@"
+set CommandPressAlt ">if sym TopMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 0 sym setFrom CF_CustomMapName TopMaps_RName@_Arg1_@"
+set CommandPressAlt ">if sym TopMaps_RName@_Arg1_@ !isEmpty && sym LobbyState == 1 sym setFrom PO_CustomMapName TopMaps_RName@_Arg1_@"
+set CommandPress "if sym CustomGameListMore == 0 menucmd PvPButtonCustomListMore"
+set Color 0x000000
+set ColorFocused 0x12293a
+set BlendMode BlendAdd
+set CommandFocusUp "gameUI focusNameTry #ConLeaderItem@_FocusItemListLeft_@"
+set CommandFocusDown "gameUI focusNameTry #ConLeaderItem@_FocusItemListRight_@"
+set CommandFocusUp ">if literal @_Arg1_@ == 0 platform leaderboards pageup"
+set CommandFocusDown ">if literal @_Arg1_@ == 9 platform leaderboards pagedown"
+set FirstDrawnChildren 2
+set Child "CustomMapUnderline 1 43"
+set Child "CustomMapLineBg 0 0"
+set Child "CustomMapLineTint 0 0	@_Arg2_@"
+set Child "CustomMapLeaderboardItemPicked 1 1		TopMaps_RName@_Arg1_@ PO_CustomMapName	/ifSym LobbyState == 1"
+set Child "CustomMapLeaderboardItemPicked 1 1		TopMaps_RName@_Arg1_@ CF_CustomMapName	/ifSym LobbyState == 0"
+set Child "CustomMapLeaderboardRankFixed 5 8		@_Arg3_@	TopMaps_Name@_Arg1_@"
+set Child "CustomMapLeaderboardName 120 8		TopMaps_Name@_Arg1_@	0"
+set Child "CustomMapNameAuthor 340 11		TopMaps_Author@_Arg1_@	0"
+set Child "CustomMapLeaderboardName 652 8		TopMaps_Author@_Arg1_@	0"
+add MenuObject
+set Name CustomMapSourceActive
+set Texture effects/white
+set BlendMode BlendAdd
+set Coords "0 0 281 45"
+set SaveArgs 1
+set Focus -2
+set MouseInteract 1
+set HiddenCheckBySymbolValue CustomMapSource!@_Arg1_@
+add MenuObject
+set Name CustomMapTabButton
+set Texture menus/DialogFrames
+set Coords "664 519 163 36"
+set CoordsFocused "664 521 163 36"
+set DrawWhenFocused GenericTabButtonFocus
+set DrawWhenFocusedOffset "0 0"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_FontScale 0.65
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_Offset "0 0"
+set RenderCB_OffsetFocused "0 -2"
+set RenderCB_RGBColor 0x99a9aa
+set DisabledAlpha 1.0
+set RenderCB_Text Test
+set MouseInteract 1
+set RenderCB_Flags "/nmi"
+set Focus -2
+set SaveArgs 2
+set RenderCB_Text @_Arg1_@
+set DisabledSymValue CustomMapSource=@_Arg2_@
+set Child "CustomMapTabLabel 0 -1	@_Arg1_@ @_Arg2_@"
+set CommandPress "if sym CustomGameListMore == 0 menucmd PvPButtonCustomListMore"
+set CommandPress ">menucmd CustomMapSource@_Arg2_@"
+add MenuObject
+set Name CustomMapTabLabel
+set Texture menus/DialogFrames
+set Coords "664 569 163 38"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_Offset "0 -1"
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_Text @_Arg1_@
+set SaveArgs 2
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolValue CustomMapSource!@_Arg2_@
+add MenuObject initFrom CustomMapTabLabel
+set Name CustomMapTabLabelSym
+set RenderCB_Text ""
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB _DrawText
+add MenuObject
+set Name CustomMapSourceButtons
+set ContainerOnly 1
+set SaveArgs 2
+set Child "CustomMapTabButton Nx164 1 Btn_TopMaps	TopMaps"
+set Child "CustomMapTabButton Nx164 1 Btn_PublicMaps	Public"
+#if !arc
+set Child "CustomMapTabButton Nx164 1 Btn_LocalMaps	MyMaps	/ifSym HasAirMechPrime == 1"
+#else
+set Child "CustomMapTabButton Nx164 1 Btn_LocalMaps	MyMaps"
+#endif
+set Child "CustomMapTabLabelSym Nx164 1 PlayerMapAuthor	Player"
+add MenuObject
+set Name CustomMapTopMapsList
+set ContainerOnly 1
+set HiddenCheckBySymbolValue CustomMapSource!TopMaps
+set Child "CustomMapTopMapItem[CustomMapTopMapItem0] 0 Nx45	0	1	1"
+set Child "CustomMapTopMapItem[CustomMapTopMapItem1] 0 Nx45	1	0	2"
+set Child "CustomMapTopMapItem[CustomMapTopMapItem2] 0 Nx45	2	1	3"
+set Child "CustomMapTopMapItem[CustomMapTopMapItem3] 0 Nx45	3	0	4"
+set Child "CustomMapTopMapItem[CustomMapTopMapItem4] 0 Nx45	4	1	5"
+set Child "CustomMapTopMapItem[CustomMapTopMapItem5] 0 Nx45	5	0	6"
+set Child "CustomMapTopMapItem[CustomMapTopMapItem6] 0 Nx45	6	1	7"
+set Child "CustomMapTopMapItem[CustomMapTopMapItem7] 0 Nx45	7	0	8"
+set Child "CustomMapTopMapItem[CustomMapTopMapItem8] 0 Nx45	8	1	9"
+set Child "CustomMapTopMapItem[CustomMapTopMapItem9] 0 Nx45	9	0	10"
+add MenuObject
+set Name CustomMapLeaderboardList
+set ContainerOnly 1
+set HiddenCheckBySymbolValue CustomMapSource!Public
+set Child "CustomMapLeaderboardItem[CustomMapLeaderItem0] 0 Nx45	0	1"
+set Child "CustomMapLeaderboardItem[CustomMapLeaderItem1] 0 Nx45	1	0"
+set Child "CustomMapLeaderboardItem[CustomMapLeaderItem2] 0 Nx45	2	1"
+set Child "CustomMapLeaderboardItem[CustomMapLeaderItem3] 0 Nx45	3	0"
+set Child "CustomMapLeaderboardItem[CustomMapLeaderItem4] 0 Nx45	4	1"
+set Child "CustomMapLeaderboardItem[CustomMapLeaderItem5] 0 Nx45	5	0"
+set Child "CustomMapLeaderboardItem[CustomMapLeaderItem6] 0 Nx45	6	1"
+set Child "CustomMapLeaderboardItem[CustomMapLeaderItem7] 0 Nx45	7	0"
+set Child "CustomMapLeaderboardItem[CustomMapLeaderItem8] 0 Nx45	8	1"
+set Child "CustomMapLeaderboardItem[CustomMapLeaderItem9] 0 Nx45	9	0 "
+set Child "LeaderboardWheelZone -10 -155"
+add MenuObject
+set Name CustomMapMyMapsList
+set ContainerOnly 1
+set HiddenCheckBySymbolValue CustomMapSource!MyMaps
+set Child "CustomMapMyMapItem[CustomMapMyMapItem0] 0 Nx45	0	1"
+set Child "CustomMapMyMapItem[CustomMapMyMapItem1] 0 Nx45	1	0"
+set Child "CustomMapMyMapItem[CustomMapMyMapItem2] 0 Nx45	2	1"
+set Child "CustomMapMyMapItem[CustomMapMyMapItem3] 0 Nx45	3	0"
+set Child "CustomMapMyMapItem[CustomMapMyMapItem4] 0 Nx45	4	1"
+set Child "CustomMapMyMapItem[CustomMapMyMapItem5] 0 Nx45	5	0"
+set Child "CustomMapMyMapItem[CustomMapMyMapItem6] 0 Nx45	6	1"
+set Child "CustomMapMyMapItem[CustomMapMyMapItem7] 0 Nx45	7	0"
+set Child "CustomMapMyMapItem[CustomMapMyMapItem8] 0 Nx45	8	1"
+set Child "CustomMapMyMapItem[CustomMapMyMapItem9] 0 Nx45	9	0 "
+add MenuObject
+set Name CustomMapPlayerMapsList
+set ContainerOnly 1
+set HiddenCheckBySymbolValue CustomMapSource!Player
+set Child "CustomMapPlayerMapItem[CustomMapPlayerMapItem0] 0 Nx45	0	1	1"
+set Child "CustomMapPlayerMapItem[CustomMapPlayerMapItem1] 0 Nx45	1	0	2"
+set Child "CustomMapPlayerMapItem[CustomMapPlayerMapItem2] 0 Nx45	2	1	3"
+set Child "CustomMapPlayerMapItem[CustomMapPlayerMapItem3] 0 Nx45	3	0	4"
+set Child "CustomMapPlayerMapItem[CustomMapPlayerMapItem4] 0 Nx45	4	1	5"
+set Child "CustomMapPlayerMapItem[CustomMapPlayerMapItem5] 0 Nx45	5	0	6"
+set Child "CustomMapPlayerMapItem[CustomMapPlayerMapItem6] 0 Nx45	6	1	7"
+set Child "CustomMapPlayerMapItem[CustomMapPlayerMapItem7] 0 Nx45	7	0	8"
+set Child "CustomMapPlayerMapItem[CustomMapPlayerMapItem8] 0 Nx45	8	1	9"
+set Child "CustomMapPlayerMapItem[CustomMapPlayerMapItem9] 0 Nx45	9	0 	10"
+add MenuObject initFrom GenericBackgroundTabs
+set Name LobbyMapListBg
+set RenderCB_DX 930
+set RenderCB_DY 600
+set Coords "0 0 600 500"
+add MenuObject
+set Name LobbyMapListWindow
+set RenderBlocked 1
+set Coords "0 0 868 48"
+set MouseInteract 1
+set Focus -2
+set DragSource EditorMapListWindow
+set FirstDrawnChildren 3
+set SaveArgs 3
+set CommandPress "gameui promoteToTop EditorMapListWindow"
+set Child "GenericWindowClickout 0 0		EditorMapListWindowClickout"
+set Child "LobbyMapListBg -15 -15"
+set Child "CustomMapTopMapsList 10 48"
+set Child "CustomMapLeaderboardList 10 48"
+set Child "CustomMapMyMapsList 10 48"
+set Child "CustomMapPlayerMapsList 10 48"
+set Child "CustomMapSourceButtons 3 1"
+set Child "GenericMenuClose[ButtonEditorMapListClose] 814 -4	LobbyMapListWindow"
+set Child "LobbyMapListWindowFlash -10 -10"
+add MenuObject
+set Name MasterPvPOptions
+set ContainerOnly 1
+set Child "PvPOptionsVignette 0 0"
+set Child "PvPOptionsBackButton 55 55"
+set Child "BasePvPOptionsList 110 320"
+set Child "HeaderPvPOptions 170 65 ButtonPvPOption

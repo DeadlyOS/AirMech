@@ -1,0 +1,158 @@
+add WorldObject
+set Name OutpostV2
+set Model structures/OutpostV2/OutpostBaseV2.amf
+set Material "mat_FortressBase"
+set Collision "Group ObjectSupportGroupCol Material Concrete Model structures/OutpostV2/OutpostBaseV2_1.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Model structures/OutpostV2/OutpostBaseV2_2.col 1.0"
+set Collision "Group FireTgtOnly Box 2.0"
+set SpecialType Outpost
+set StateController OutpostV2
+set SampleHeightOffset -1.0
+set PointSize 4.0
+set ShieldHP 450.0
+set CreditsEarned 20
+set PowerGen 10
+set FuelTankCapacity 125000
+set SupplyRepairRate 10
+set ChargeOrbModel structures/OutpostV2/OutpostBaseV2Fuel.amf
+set ChargeOrbModelStateAnim structures/OutpostV2/OutpostFuelCharge.aaf
+set FullChargeTime 1.0
+add WorldObject
+set Name Outpost
+set Model structures/outpost/OutpostBase.amf
+set Material "mat_FortressBase"
+set Collision "Group ObjectSupportGroupCol Material Concrete Model structures/outpost/OutpostBase_1.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Model structures/outpost/OutpostBase_2.col 1.0"
+set Collision "Group FireTgtOnly Box 2.0"
+set SpecialType Outpost
+set StateController OutpostSTD
+set SampleHeightOffset -1.0
+set PointSize 4.0
+set ShieldHP 450.0
+set CreditsEarned 20
+set PowerGen 10
+set FuelTankCapacity 125000
+set BulbHP 1200.0
+set BulbRegen 30.0
+set ChargeOrbModel structures/Outpost/OutpostBaseFuel.amf
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "-.05 -3.04 3.3"
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation ".05 2.76 3.3"
+add WorldObject initFrom OutpostV2
+set Name OutpostSurvival
+set CreditsEarned 20
+set PowerGen 10
+add WorldObject
+set Name PowerStation
+set Model structures/PowerStation/PowerStation.amf
+set Material "mat_PowerStation"
+set Collision "Group ObjectSupportGroupCol Material Concrete Model structures/powerstation/PowerStation_1.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Model structures/powerstation/PowerStation_2.col 1.0"
+set Collision "Group FireTgtOnly Box 2.0"
+set SpecialType Outpost
+set StateController OutpostPowerStation
+set SampleHeightOffset -1.0
+set PointSize 4.0
+set ShieldHP 450.0
+set CreditsEarned 22
+set PowerGen 10
+set FuelTankCapacity 125000
+set BulbHP 1200.0
+set BulbRegen 30.0
+set ChargeOrbModel structures/PowerStation/PowerStationFuel.amf
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "-1.1 1.8 3.2"
+add WorldObject
+set Name PowerStationV2
+set Model structures/PowerStation/PowerStationV2.amf
+set Material "mat_PowerStation"
+set Collision "Group ObjectSupportGroupCol Material Concrete Model structures/PowerStation/PowerStation_1.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Model structures/PowerStation/PowerStation_2.col 1.0"
+set Collision "Group FireTgtOnly Box 2.0"
+set SpecialType Outpost
+set StateController OutpostPowerStationV2
+set SampleHeightOffset -1.0
+set PointSize 4.0
+set ShieldHP 450.0
+set ChargeOrbModel structures/PowerStation/PowerStationFuel.amf
+set ChargeOrbModelStateAnim structures/PowerStation/PowerStationCharge.aaf
+set CreditsEarned 20
+set PowerGen 10
+set FuelTankCapacity 125000
+set SupplyRepairRate 10
+add WorldObject
+set Name Factory_Base
+set Model structures/Factory/Factory.amf
+set Material "mat_Factory"
+set SpecialType Outpost
+set StateController OutpostFactory
+set SampleHeightOffset -1.0
+set PointSize 4.0
+set ShieldHP 450.0
+set CreditsEarned 18
+set PowerGen 10
+set FuelTankCapacity 125000
+set BulbHP 1200.0
+set BulbRegen 30.0
+set SubModel structures/fortress/FortressCharger.amf
+set SubMaterial "mat_FortressCharger"
+set SubRotation "0 0 0"
+set SubTranslation "0.0 1.525 2.8"
+set ChargeOrbModel structures/Factory/FactoryFuel.amf
+add WorldObject initFrom Factory_Base
+set Name Factory
+set Collision "Group ObjectSupportGroupCol Material Concrete Model structures/Factory/Factory_1.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Model structures/Factory/Factory_2.col 1.0"
+set Collision "Group FireTgtOnly Box 4.0 4.0 2.0"
+add WorldObject initFrom Factory_Base
+set Name FactoryNoCap
+set Collision "NavMeshOnly Model structures/Factory/Factory_3.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Model structures/Factory/Factory_2.col 1.0"
+set Collision "Group FireTgtOnly Box 4.0 4.0 2.0"
+add WorldObject
+set Name FactoryV2
+set Model structures/Factory/FactoryV2.amf
+set Material "mat_Factory"
+set Collision "Group ObjectSupportGroupCol Material Concrete Model structures/Factory/Factory_1.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Model structures/Factory/Factory_2.col 1.0"
+set Collision "Group FireTgtOnly Box 4.0 4.0 2.0"
+set SpecialType Outpost
+set StateController OutpostFactoryV2
+set SampleHeightOffset -1.0
+set PointSize 4.0
+set ShieldHP 450.0
+set CreditsEarned 20
+set PowerGen 10
+set FuelTankCapacity 125000
+set SupplyRepairRate 10
+set ChargeOrbModel structures/Factory/FactoryFuel.amf
+set ChargeOrbModelStateAnim structures/Factory/FactoryCharge.aaf
+add WorldObject initFrom Outpost
+set Name OutpostBank
+set StateController OutpostBank
+add WorldObject
+set Name OutpostBridge
+set Model structures/OutpostBridge/OutpostBridge.amf
+set Material "mat_FortressBase"
+set Collision "Group ObjectSupportGroupCol Material Concrete Model structures/OutpostBridge/OutpostBridge_1.col 1.0"
+set Collision "NoNavMesh Group ObjectSupportGroupCol Material Concrete Model structures/OutpostBridge/OutpostBridge_2.col 1.0"
+set Collision "Group FireTgtOnly Box 2.0"
+set SpecialType Outpost
+set StateController OutpostV2
+set SampleHeightOffset -1.0
+set PointSize 4.0
+set ShieldHP 450.0
+set CreditsEarned 20
+set PowerGen 10
+set FuelTankCapacity 125000
+set SupplyRepairRate 10
+set ChargeOrbModel structures/OutpostV2/OutpostBaseV2Fuel.amf
+set ChargeOrbModelStateAnim structures/OutpostV2/OutpostFuelCharge.aaf
+set FullChargeTime 2.0

@@ -1,0 +1,31 @@
+blockLoadOnConsoleSym DialogBoxLoaded
+onloadrun {
+sym set DialogBoxLoaded 1
+rookMenus previewHide
+gameUI saveFocusID _dialogRestoreFocus_
+menuCmd ClearOtherMenus
+}
+MO DialogMasterV2 {
+pos 70 14
+layer $DialogBox_Layer
+}
+onload {
+]gameui promoteToTop DialogMasterV2
+]addUIAnim DialogMasterV2 mas_DialogPop
+]if usingPad ]gameUI focusNameTry DialogButton1
+]sym push DisableConShop 1
+]sym push DisableInvites 1
+]sym push _Bind_CycleLoadoutOnShoulders_ 0
+}
+onunload {
+]sym set DialogBoxLoaded 0
+]gameUI restoreFocusID _dialogRestoreFocus_
+]sym set DialogBoxButton0 DialogButtonOk
+]sym set DialogBoxButton1 DialogButtonCancel
+]sym pop DisableConShop DisableInvites _Bind_CycleLoadoutOnShoulders_
+]sym clear _DialogBoxItemTitle_ _DialogBoxItemLink_ _DialogBoxItemDisp_ DialogBoxItemName
+]sym clear _DialogBoxContentName_
+}
+onunloadrun {
+rookMenus previewShow
+}

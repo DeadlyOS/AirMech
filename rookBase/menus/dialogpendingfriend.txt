@@ -1,0 +1,15 @@
+blockLoadOnConsoleSym AnyFriendDialogOpen
+onloadrun {
+friends reqinfosym _FriendName_
+sym set AnyFriendDialogOpen 1
+}
+MO FriendOpen {
+pos 200 140
+draggableUIElement
+}
+onload {
+addUIAnim FriendOpen mas_DialogPopFadein
+gameui promoteToTop FriendOpen
+if usingPad gameui focusNameTry FriendButtonClose
+]sym set AnyFriendDialogOpen 0
+}

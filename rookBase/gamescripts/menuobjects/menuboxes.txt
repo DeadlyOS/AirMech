@@ -1,0 +1,400 @@
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_QuickPlayEx
+set RenderCB_Text MB_QuickPlayEx
+add MenuObject initFrom MainBoxTemplate
+set Name MB_QuickPlay
+set RenderCB_Text MB_QuickPlay
+set Hidden 1
+set CommandFocusUp "gameUI focusName MB_Myself"
+set CommandFocusDown "gameUI focusName MB_Play"
+set CommandPress "if sym MenuLevel1 != null menuCmd $MenuLevel1"
+set CommandPress "if sym MenuLevel2 != null menuCmd $MenuLevel2"
+set CommandPress "gameUI ignoreInputTime 0.15"
+set CommandPress "if usingPad pcmd 0.1 gameUI focusName MB_QuickPlay0"
+set CommandPress "sym set PreviousButton MB_QuickPlay"
+set CommandPress "pcmd t1 menuCmd MainMenuQuickPlay"
+set CommandGetFocus "gameUI enable MB_QuickPlayEx"
+set CommandLoseFocus "gameUI disable MB_QuickPlayEx"
+set Child "MB_QuickPlayEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_ResumeGameEx
+set RenderCB_Text MB_ResumeGameEx
+add MenuObject initFrom MainBoxTemplate
+set Name MB_ResumeGame
+set RenderCB_Text MB_ResumeGame
+set CommandFocusRight "gameUI focusName MB_LeaveGame"
+set CommandFocusLeft "gameUI focusName MB_Help"
+set CommandPress "]playsound $MenuSoundClick"
+set CommandPress "]menuCmd MP_ResumeGame local"
+set CommandCancel "]menuCmd MP_ResumeGame local"
+set CommandPress "if sym MenuLevel1 != null menuCmd $MenuLevel1"
+set CommandPress "if sym MenuLevel2 != null menuCmd $MenuLevel2"
+set CommandGetFocus "]gameUI enable MB_ResumeGameEx"
+set CommandLoseFocus "]gameUI disable MB_ResumeGameEx"
+set Child "MB_ResumeGameEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_LeaveGameEx
+set RenderCB_Text MB_LeaveGameEx
+add MenuObject initFrom MainBoxTemplate
+set Name MB_LeaveGame
+set RenderCB_Text MB_LeaveGame
+set CommandFocusLeft "gameUI focusName MB_ResumeGame"
+set CommandPress "]if !gameover ]menuCmd MP_LoadMainMenuReqConfirm local"
+set CommandPress "]if gameover ]menuCmd MP_LoadMainMenu local"
+set CommandPress "]if gameover ]sym set _EgFinishOk_ 0"
+set CommandPress "]if gameover ]sym set _EgRewardCountOk_ 0"
+set CommandCancel "]menuCmd MP_ResumeGame local"
+set CommandGetFocus "]gameUI enable MB_LeaveGameEx"
+set CommandLoseFocus "]gameUI disable MB_LeaveGameEx"
+set Child "MB_LeaveGameEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_PlayEx
+set RenderCB_Text MB_PlayEx
+add MenuObject initFrom MainBoxTemplate
+set Name MB_Play
+set RenderCB_Text MB_Play
+set CommandFocusDown "gameUI focusName MB_Army"
+set CommandPress "if sym MenuLevel1 != null menuCmd $MenuLevel1"
+set CommandPress "if sym MenuLevel2 != null menuCmd $MenuLevel2"
+set CommandPress "gameUI ignoreInputTime 0.15"
+set CommandPress "pcmd t1 menuCmd MainMenuPlay"
+set CommandPress "sym set PreviousButton MB_Play"
+set CommandGetFocus "gameUI enable MB_PlayEx"
+set CommandLoseFocus "gameUI disable MB_PlayEx"
+set Child "MB_PlayEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_PlayBrowseEx
+set RenderCB_Text MB_PlayBrowseEx
+add MenuObject initFrom SecondBoxRedTemplate
+set Name MB_PlayBrowse
+set RenderCB_Text MB_PlayBrowse
+set CommandFocusDown "gameUI focusName MB_PlayCreate"
+set CommandPress "if sym OnCancel != MainMenuPlayCancel menuCmd $OnCancel"
+set CommandPress "pcmd t1 menuCmd MainMenuGamesBrowse"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_PlayBrowseEx"
+set CommandLoseFocus "gameUI disable MB_PlayBrowseEx"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_PlayBrowseEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_PlayCreateEx
+set RenderCB_Text MB_PlayCreateEx
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_MyQuestsEx
+set RenderCB_Text MB_MyQuestsEx
+add MenuObject initFrom SecondBoxBlueTemplate
+set Name MB_MyQuests
+set RenderCB_Text MB_MyQuests
+set CommandFocusDown "gameUI focusName MB_MyStats"
+set CommandPress "if sym OnCancel != MainMenuMyselfCancel menuCmd $OnCancel"
+set CommandPress "pcmd t1 menuCmd MainMenuQuests"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_MyQuestsEx"
+set CommandLoseFocus "gameUI disable MB_MyQuestsEx"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_MyQuestsEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_MyStatsEx
+set RenderCB_Text MB_MyStatsEx
+add MenuObject initFrom SecondBoxBlueTemplate
+set Name MB_MyStats
+set RenderCB_Text MB_MyStats
+set CommandFocusUp "gameUI focusName MB_MyQuests"
+set CommandFocusDown "gameUI focusName MB_MyReferrals"
+set CommandPress "if sym OnCancel != MainMenuMyselfCancel menuCmd $OnCancel"
+set CommandPress "pcmd t1 menuCmd MainMenuStats"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_MyStatsEx"
+set CommandLoseFocus "gameUI disable MB_MyStatsEx"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_MyStatsEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_MyReferralsEx
+set RenderCB_Text MB_MyReferralsEx
+add MenuObject initFrom SecondBoxBlueTemplate
+set Name MB_MyReferrals
+set RenderCB_Text MB_MyReferrals
+set CommandFocusUp "gameUI focusName MB_MyStats"
+set CommandFocusDown "gameUI focusName MB_MySocial"
+set CommandPress "if sym OnCancel != MainMenuMyselfCancel menuCmd $OnCancel"
+set CommandPress "pcmd t1 menuCmd MainMenuReferrals"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_MyReferralsEx"
+set CommandLoseFocus "gameUI disable MB_MyReferralsEx"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_MyReferralsEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_MySocialEx
+set RenderCB_Text MB_MySocialEx
+add MenuObject initFrom SecondBoxBlueTemplate
+set Name MB_MySocial
+set RenderCB_Text MB_MySocial
+set CommandFocusUp "gameUI focusName MB_MyReferrals"
+set CommandFocusDown "gameUI focusName MB_MyTreasure"
+set CommandPress "if sym OnCancel != MainMenuMyselfCancel menuCmd $OnCancel"
+set CommandPress "pcmd t1 menuCmd MainMenuSocial"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_MySocialEx"
+set CommandLoseFocus "gameUI disable MB_MySocialEx"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_MySocialEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_MyTreasureEx
+set RenderCB_Text MB_MyTreasureEx
+add MenuObject initFrom SecondBoxBlueTemplate
+set Name MB_MyTreasure
+set RenderCB_Text MB_MyTreasure
+set CommandFocusUp "gameUI focusName MB_MySocial"
+set CommandPress "if sym OnCancel != MainMenuMyselfCancel menuCmd $OnCancel"
+set CommandPress "pcmd t1 menuCmd MainMenuTreasure"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_MyTreasureEx"
+set CommandLoseFocus "gameUI disable MB_MyTreasureEx"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_MyTreasureEx 0 0"
+add MenuObject
+set Name MB_MenuMyself
+set ContainerOnly 1
+set Coords "0 0 64 64"
+set Child "MB_MyQuests 0 0"
+set Child "MB_ActiveBox[MB_MyQuestsActive] 0 0			MB_MyQuests"
+set Child "MB_MyStats 0 120"
+set Child "MB_ActiveBox[MB_MyStatsActive] 0 120			MB_MyStats"
+set Child "MB_MyReferrals 0 240"
+set Child "MB_ActiveBox[MB_MyReferralsActive] 0 240		MB_MyReferrals"
+set Child "MB_MySocial 0 360"
+set Child "MB_ActiveBox[MB_MySocialActive] 0 360		MB_MySocial"
+set Child "MB_MyTreasure 0 480"
+set Child "MB_ActiveBox[MB_MyTreasureActive] 0 480		MB_MyTreasure"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_ArmyEx
+set RenderCB_Text MB_ArmyEx
+add MenuObject initFrom MainBoxTemplate
+set Name MB_Army
+set RenderCB_Text MB_Army
+set CommandFocusUp "gameUI focusName MB_Play"
+set CommandFocusDown "gameUI focusName MB_Store"
+set CommandPress "if sym MenuLevel2 != null menuCmd $MenuLevel2"
+set CommandPress "if sym MenuLevel1 != null menuCmd $MenuLevel1"
+set CommandPress "gameUI ignoreInputTime 0.15"
+set CommandPress "pcmd t1 menuCmd MF_CustomArmyActivate local 0"
+set CommandPress "sym set PreviousButton MB_Army"
+set CommandGetFocus "gameUI enable MB_ArmyEx"
+set CommandLoseFocus "gameUI disable MB_ArmyEx"
+set Child "MB_ArmyEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_SettingsEx
+set RenderCB_Text MB_SettingsEx
+add MenuObject initFrom MainBoxTemplate
+set Name MB_Settings
+set RenderCB_Text MB_Settings
+set CommandFocusUp "gameUI focusName MB_Help"
+set CommandFocusDown "gameUI focusNameTry MB_LeaveGame"
+set CommandGetFocus "sym setConcat2 MenuLastFocus $C_BINDING {Name}"
+set CommandPress "if sym MenuLevel1 != null menuCmd $MenuLevel1"
+set CommandPress "if sym MenuLevel2 != null menuCmd $MenuLevel2"
+set CommandPress "gameUI ignoreInputTime 0.15"
+set CommandPress "if usingPad pcmd 0.1 gameUI focusName MB_Graphics"
+set CommandPress "pcmd t1 menuCmd MainMenuSettings"
+set CommandPress "sym set PreviousButton MB_Settings"
+set CommandGetFocus "gameUI enable MB_SettingsEx"
+set CommandLoseFocus "gameUI disable MB_SettingsEx"
+set Child "MB_SettingsEx 0 0"
+add MenuObject
+set Name PauseGameBackground
+set Texture menus/MainWideBars
+set Coords "0 0 1920 54"
+set ScaleY 3.0
+set MirrorOnY 1
+add MenuObject
+set Name MB_IngameServerInfo
+set ContainerOnly 1
+set HiddenCheckBySymbolInv _inNetGame_
+set Child "ServerFlagDisplay 0 0"
+add MenuObject
+set Name MB_IngameMaster
+set ContainerOnly 1
+set Coords "0 0 1920 140"
+set Layer 10
+set Anchor Bottom
+set Child "Vignette 0 0"
+set Child "PauseGameBackground 0 0"
+set Child "MB_ResumeGame 800 10"
+set Child "MB_Help 10 10"
+set Child "MB_ActiveBox[MB_HelpActive] 0 0	MB_Help"
+set Child "MB_ActiveBox[MB_SettingsActive] 0 240	MB_Settings"
+set Child "MB_LeaveGame 1580 10"
+set Child "MB_IngameServerInfo 400 50"
+set Child "MB_MenuHelp 130 -600"
+add MenuObject initFrom SecondBoxOrangeTemplate
+set Name MB_Boosts
+set RenderCB_Text MB_Boosts
+set CommandFocusUp "gameUI focusName MB_Bundles"
+set CommandFocusDown "gameUI focusName MB_Diamonds"
+set CommandPress "if sym OnCancel != MainMenuStoreCancel menuCmd $OnCancel"
+set CommandPress "pcmd t1 menuCmd MainMenuBoosts"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_BoostsEx"
+set CommandLoseFocus "gameUI disable MB_BoostsEx"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_BoostsEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_DiamondsEx
+set RenderCB_Text MB_DiamondsEx
+add MenuObject initFrom SecondBoxOrangeTemplate
+set Name MB_Diamonds
+set RenderCB_Text MB_Diamonds
+set CommandFocusUp "gameUI focusName MB_Boosts"
+set CommandFocusDown "gameUI focusName MB_Codes"
+set CommandPress "if sym OnCancel != MainMenuStoreCancel menuCmd $OnCancel"
+set CommandPress "pcmd t1 menuCmd MF_DiamondsActivate"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_DiamondsEx"
+set CommandLoseFocus "gameUI disable MB_DiamondsEx"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_DiamondsEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_CodesEx
+set RenderCB_Text MB_CodesEx
+add MenuObject initFrom SecondBoxOrangeTemplate
+set Name MB_Codes
+set RenderCB_Text MB_Codes
+set CommandFocusUp "gameUI focusName MB_Diamonds"
+set CommandPress "if sym OnCancel != MainMenuStoreCancel menuCmd $OnCancel"
+set CommandPress "pcmd t1 menuCmd MainMenuCodes"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_CodesEx"
+set CommandLoseFocus "gameUI disable MB_CodesEx"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_CodesEx 0 0"
+add MenuObject
+set Name MB_MenuStore
+set ContainerOnly 1
+set Coords "0 0 64 64"
+set Child "MB_Boosts 0 0"
+set Child "MB_ActiveBox[MB_BoostsActive] 0 0		MB_Boosts"
+set Child "MB_Diamonds 0 120"
+set Child "MB_Codes 0 240"
+set Child "MB_ActiveBox[MB_CodesActive] 0 240		MB_Codes"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_TutorialEx
+set RenderCB_Text MB_TutorialEx
+add MenuObject initFrom SecondBoxBlueTemplate
+set Name MB_Tutorial
+set RenderCB_Text MB_Tutorial
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "pcmd t1 menuCmd MF_TutorialStart"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_TutorialEx"
+set CommandLoseFocus "gameUI disable MB_TutorialEx"
+set CommandFocusDown "gameUI focusName MB_FirstGame"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_TutorialEx 0 0"
+add MenuObject initFrom MainBoxExTemplate
+set Name MB_FirstGameEx
+set RenderCB_Text MB_FirstGameEx
+add MenuObject initFrom SecondBoxBlueTemplate
+set Name MB_FirstGame
+set RenderCB_Text MB_FirstGame
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "pcmd t1 menuCmd MF_FirstGameStart"
+set DefaultKeyboardControl 1
+set CommandGetFocus "gameUI enable MB_FirstGameEx"
+set CommandLoseFocus "gameUI disable MB_FirstGameEx"
+set CommandFocusUp "gameUI focusName MB_Tutorial"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+set Child "MB_FirstGameEx 0 0"
+add MenuObject
+set Name MB_MenuHelp
+set ContainerOnly 1
+set Coords "0 0 64 64"
+set Child "MB_ControlsHelp -30 -250"
+add MenuObject
+set Name MB_ControlsHelp
+set Texture hud/ControlsHelp
+set Coords "0 0 1024 750"
+set Layer 9
+set ScaleX 1.2
+set ScaleY 1.2
+set DisabledAlphaTimeIn 0.1
+set DisabledAlphaTimeOut 0.1
+set MouseInteract 1
+set Focus -2
+set CommandPress "menuCmd $OnCancel"
+set Disabled 1
+set Hidden 1
+add MenuObject initFrom SecondBoxGreenTemplate
+set Name MB_Gameplay
+set RenderCB_Text MB_Gameplay
+set CommandFocusDown "gameUI focusName MB_Language"
+set CommandPress "if sym OnCancel != MainMenuSettingsCancel menuCmd $OnCancel"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "pcmd t1 menuCmd MainMenuGameplay"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+add MenuObject initFrom SecondBoxGreenTemplate
+set Name MB_Language
+set RenderCB_Text MB_Language
+set CommandFocusUp "gameUI focusName MB_Gameplay"
+set CommandFocusDown "gameUI focusName MB_Controls"
+set CommandPress "if sym OnCancel != MainMenuSettingsCancel menuCmd $OnCancel"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "pcmd t1 menuCmd MainMenuLanguage"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+add MenuObject initFrom SecondBoxGreenTemplate
+set Name MB_Controls
+set RenderCB_Text MB_Controls
+set CommandFocusUp "gameUI focusName MB_Language"
+set CommandFocusDown "gameUI focusName MB_Graphics"
+set CommandPress "if sym OnCancel != MainMenuSettingsCancel menuCmd $OnCancel"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "pcmd t1 menuCmd MainMenuControls"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+add MenuObject initFrom SecondBoxGreenTemplate
+set Name MB_Graphics
+set RenderCB_Text MB_Graphics
+set CommandFocusUp "gameUI focusName MB_Controls"
+set CommandFocusDown "gameUI focusName MB_Audio"
+set CommandPress "if sym OnCancel != MainMenuSettingsCancel menuCmd $OnCancel"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "pcmd t1 menuCmd MainMenuGraphics"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"
+add MenuObject initFrom SecondBoxGreenTemplate
+set Name MB_Audio
+set RenderCB_Text MB_Audio
+set CommandFocusUp "gameUI focusName MB_Graphics"
+set CommandPress "if sym OnCancel != MainMenuSettingsCancel menuCmd $OnCancel"
+set CommandPress "gameUI focusName DummyFocus"
+set CommandPress "pcmd t1 menuCmd MainMenuAudio"
+set CommandCancel "gameUI ignoreInputTime 0.15"
+set CommandCancel "menuCmd $OnCancel"
+set CommandCancel "if usingPad pcmd 0.1 gameUI focusName $PreviousButton"

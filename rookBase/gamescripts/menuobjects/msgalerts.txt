@@ -1,0 +1,362 @@
+add MenuObject
+set Name NotifyMessageDismiss
+set Texture menus/Mail
+set Coords "638 454 50 50"
+set CoordsFocused "637 397 50 50"
+set Focus -2
+set MouseInteract 1
+set CommandPress "clearmenu NotifyGametime"
+set DisabledAlphaTimeOut 1.0
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name NotifyMessageTemplate
+set Texture hud/EndgamePlayer@TeamColor@
+set Coords "2 2 634 220"
+set DisabledAlphaTimeOut 1.0
+set ScaleX 0.8
+set ScaleY 0.8
+set Child "NotifyMessageDismiss 440 -10"
+add MenuObject
+set Name NotifyMessageSubtleTemplate
+set Texture hud/EndgamePlayer@TeamColor@
+set Coords "92 2 446 50"
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+set Disabled 1
+set EnabledAlpha 0.5
+set ScaleX 0.8
+set ScaleY 0.8
+add MenuObject
+set Name NotifyTitleTemplate
+set RenderCB_FontScale 0.9
+set RenderCB_Font RobotoBold
+set Coords "0 0 507 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text GameMsgHalftime
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlphaTimeOut 1.0
+add MenuObject
+set Name NotifyItemTemplate
+set RenderCB_FontScale 0.7
+set RenderCB_Font RobotoBold
+set Coords "0 0 507 30"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUTextShadowed
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text GameMsgFortRepair
+set RenderCB_RGBColor 0xFFFFFF
+set DisabledAlphaTimeOut 1.0
+add MenuObject initFrom MsgAlertTemplate
+set Name MsgAlertLowPowerBlink
+set RenderCB_Text NewKudosBoostTip
+set BlinkAlpha "0 0.5 0.5 0.5"
+set BlendMode BlendAdd
+add MenuObject initFrom MsgAlertTemplate
+set Name MsgAlertLowPower
+set RenderCB_Text "LOW POWER"
+set RenderCB_Text SP
+set RenderCB_ConsoleSymbol2 P_Name@_PTagInd@
+set Child "MsgAlertLowPowerBlink 0 0"
+set Hidden 1
+add MenuObject
+set Name NotifyFlash
+set Texture hud/NotifyMessageFlash
+set Coords "0 0 512 128"
+set BlendMode BlendAdd
+set Anchor Center
+set ScaleX 1.0
+set DisabledAlphaTimeOut 2.5
+set HiddenCheckBySymbol GameMessageSubtle
+set HiddenCheckBySymbol2 MatchOverReal
+add MenuObject
+set Name MsgAlertGoldReward
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "245 45"
+set Color 0x3f575e
+set Anchor Center
+add MenuObject initFrom NotifyTitleTemplate
+set Name NotifyTitlePregame
+set RenderCB_Text GameMsgPregame
+add MenuObject initFrom NotifyTitleTemplate
+set Name NotifyTitleStart
+set RenderCB_Text GameMsgStart
+add MenuObject initFrom NotifyTitleTemplate
+set Name NotifyTitleQ2
+set RenderCB_Text GameMsgQ2
+add MenuObject initFrom NotifyTitleTemplate
+set Name NotifyTitleHalftime
+set RenderCB_Text GameMsgHalftime
+add MenuObject initFrom NotifyTitleTemplate
+set Name NotifyTitleQ4
+set RenderCB_Text GameMsgQ4
+add MenuObject initFrom NotifyTitleTemplate
+set Name NotifyTitleOT1
+set RenderCB_Text GameMsgOT1
+add MenuObject initFrom NotifyTitleTemplate
+set Name NotifyTitleOT2
+set RenderCB_Text GameMsgOT2
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemFortRepair
+set RenderCB_Text GameMsgFortRepair
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemBonusCredits
+set RenderCB_Text GameMsgBonusCredits
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemCreeps2
+set RenderCB_Text GameMsgCreeps2
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemCreeps3
+set RenderCB_Text GameMsgCreeps3
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemCreeps4
+set RenderCB_Text GameMsgCreeps4
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemPowerIncreased
+set RenderCB_Text GameMsgPowerIncreased
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemAirMechUpgrade
+set RenderCB_Text GameMsgAirMechUpgrade
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemMapControl
+set RenderCB_Text GameMsgMapControl
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemGetReady
+set RenderCB_Text GameMsgGetReady
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemCoordinate
+set RenderCB_Text GameMsgCoordinate
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemReadyDefense
+set RenderCB_Text GameMsgReadyDefense
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemReadyOffense
+set RenderCB_Text GameMsgReadyOffense
+add MenuObject initFrom NotifyItemTemplate
+set Name NotifyItemGo
+set RenderCB_Text GameMsgGo
+set RenderCB_FontScale 1.6
+add MenuObject initFrom NotifyMessageTemplate
+set Name NotifyPregame
+set HiddenCheckBySymbolValue NotifyMenu!NotifyPregame
+set Child "NotifyTitlePregame 0 7"
+set Child "NotifyItemGetReady 0 48"
+set Child "NotifyItemCoordinate 0 75		/platform !consolePlatform"
+set Child "NotifyItemReadyDefense 0 102"
+set Child "NotifyItemReadyOffense 0 129"
+add MenuObject initFrom NotifyMessageSubtleTemplate
+set Name NotifySubtlePregame
+set HiddenCheckBySymbolValue NotifyMenu!NotifyPregame
+set Child "NotifyTitlePregame -72 7"
+add MenuObject initFrom NotifyMessageTemplate
+set Name NotifyStart
+set HiddenCheckBySymbolValue NotifyMenu!NotifyStart
+set HiddenCheckBySymbol MatchOverReal
+set Child "NotifyTitleStart 0 7"
+set Child "NotifyItemGo 0 72"
+add MenuObject initFrom NotifyMessageSubtleTemplate
+set Name NotifySubtleStart
+set HiddenCheckBySymbolValue NotifyMenu!NotifyStart
+set Child "NotifyTitleStart -72 7"
+add MenuObject initFrom NotifyMessageTemplate
+set Name NotifyQ2
+set HiddenCheckBySymbolValue NotifyMenu!NotifyQ2
+set Child "NotifyTitleQ2 0 7"
+set Child "NotifyItemPowerIncreased 0 75"
+set Child "NotifyItemCreeps2 0 102"
+add MenuObject initFrom NotifyMessageTemplate
+set Name NotifySubtleQ2
+set HiddenCheckBySymbolValue NotifyMenu!NotifyQ2
+set Child "NotifyTitleQ2 -72 7"
+add MenuObject initFrom NotifyMessageTemplate
+set Name NotifyHalftime
+set HiddenCheckBySymbolValue NotifyMenu!NotifyHalftime
+set Child "NotifyTitleHalftime 0 7"
+set Child "NotifyItemFortRepair 0 48"
+set Child "NotifyItemBonusCredits 0 75"
+set Child "NotifyItemPowerIncreased 0 102"
+set Child "NotifyItemCreeps3 0 129"
+add MenuObject initFrom NotifyMessageSubtleTemplate
+set Name NotifySubtleHalftime
+set HiddenCheckBySymbolValue NotifyMenu!NotifyHalftime
+set Child "NotifyTitleHalftime -72 7"
+add MenuObject initFrom NotifyMessageTemplate
+set Name NotifyQ4
+set HiddenCheckBySymbolValue NotifyMenu!NotifyQ4
+set Child "NotifyTitleQ4 0 7"
+set Child "NotifyItemPowerIncreased 0 75"
+set Child "NotifyItemCreeps4 0 102"
+add MenuObject initFrom NotifyMessageSubtleTemplate
+set Name NotifySubtleQ4
+set HiddenCheckBySymbolValue NotifyMenu!NotifyQ4
+set Child "NotifyTitleQ4 -72 7"
+add MenuObject initFrom NotifyMessageTemplate
+set Name NotifyOT1
+set HiddenCheckBySymbolValue NotifyMenu!NotifyOT1
+set Child "NotifyTitleOT1 0 7"
+set Child "NotifyItemAirMechUpgrade 0 75"
+set Child "NotifyItemPowerIncreased 0 102"
+add MenuObject initFrom NotifyMessageSubtleTemplate
+set Name NotifySubtleOT1
+set HiddenCheckBySymbolValue NotifyMenu!NotifyOT1
+set Child "NotifyTitleOT1 -72 7"
+add MenuObject initFrom NotifyMessageTemplate
+set Name NotifyOT2
+set HiddenCheckBySymbolValue NotifyMenu!NotifyOT2
+set Child "NotifyTitleOT2 0 7"
+set Child "NotifyItemMapControl 0 75"
+set Child "NotifyItemPowerIncreased 0 102"
+add MenuObject initFrom NotifyMessageSubtleTemplate
+set Name NotifySubtleOT2
+set HiddenCheckBySymbolValue NotifyMenu!NotifyOT2
+set Child "NotifyTitleOT2 -72 7"
+add MenuObject
+set Name NotifyMaster
+set ContainerOnly 1
+set HiddenCheckBySymbol GameMessageSubtle
+set Anchor Center
+set Coords "0 0 507 176"
+set Child "NotifyPregame 0 0"
+set Child "NotifyStart 0 0"
+set Child "NotifyQ2 0 0"
+set Child "NotifyHalftime 0 0"
+set Child "NotifyQ4 0 0"
+set Child "NotifyOT1 0 0"
+set Child "NotifyOT2 0 0"
+add MenuObject
+set Name NotifySubtleMaster
+set ContainerOnly 1
+set HiddenCheckBySymbolInv GameMessageSubtle
+set Anchor Center
+set Coords "0 0 357 176"
+set Child "NotifySubtlePregame 0 0"
+set Child "NotifySubtleStart 0 0"
+set Child "NotifySubtleQ2 0 0"
+set Child "NotifySubtleHalftime 0 0"
+set Child "NotifySubtleQ4 0 0"
+set Child "NotifySubtleOT1 0 0"
+set Child "NotifySubtleOT2 0 0"
+add MenuObject
+set Name IconReadyUnit
+set Coords "20 @_Arg2_@ 216 @_Arg3_@"
+set DisabledAlpha 0.0
+set ScaleX 0.815
+set ScaleY 0.815
+set SaveArgs 3
+set DrawWhenFocused UnitBuildTrayHighlight
+set DrawWhenFocusedOffset "-4 -4 0"
+set Texture units/&AS@_Arg1_@P@net_local_player@&/Icons@TeamColor@
+set TextureAlt units/&AS@_Arg1_@P@net_local_player@&/IconUnique
+add MenuObject initFrom IconReadyUnit
+set Name IconReadyUnitGray
+set DrawGreyScale 1
+set BlinkAlpha "1.0 0.2 0.0 0.3"
+add MenuObject
+set Name NameReadyUnit
+set Coords "0 0 170 32"
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_FontScale 0.35
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Flags "/fitX"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_Text @_Arg1_@
+add MenuObject
+set Name NotifyReadyUnitFlash
+set Coords "13 3 180 20"
+set Texture cockpit/UnitSlot@TeamColor@
+set BlinkAlpha "0.2 0.2 0.7 0.3"
+set BlendMode BlendAdd
+set ScaleY @_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name NotifyReadyUpArrow
+set Coords "210 418 44 57"
+set Texture fonts/SpecialChars+lang
+set ScaleX @_Arg1_@, ScaleY @_Arg1_@
+set SaveArgs 1
+set NoAlphaMod 1
+set Alpha 0.8
+set CoordsAnimated "210 418 44 57"
+set CoordsAnimated "210 419 44 57"
+set CoordsAnimated "210 420 44 57"
+set CoordsAnimated "210 419 44 57"
+set CoordsAnimated "210 418 44 57"
+set CoordsAnimated "210 417 44 57"
+set CoordsAnimated "210 416 44 57"
+set CoordsAnimated "210 417 44 57"
+set CoordsAnimationFrameTimer 0.05
+add MenuObject
+set Name NotifyReadyUnit
+set Texture cockpit/UnitSlot@TeamColor@
+set CoordsStart "1 1 10 68"
+set CoordsMid "11 1 300 68"
+set CoordsEnd "311 1 10 68"
+set CoordsStartFocused "1 67 10 117"
+set CoordsMidFocused "11 67 300 117"
+set CoordsEndFocused "311 67 10 117"
+set CoordsStartDisabled "1 185 10 39"
+set CoordsMidDisabled "11 185 300 39"
+set CoordsEndDisabled "311 185 10 39"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 180
+set RenderCB_DY 240
+set NoAlphaMod 1
+set Alpha 0.8
+set Coords "0 0 180 240"
+set SaveArgs 2
+set Child "IconReadyUnit 2 30	@_Arg1_@		0	220"
+set Child "IconReadyUnitGray 2 30	@_Arg1_@	0	220"
+set Child "NameReadyUnit 5 5		@_Arg2_@"
+set Child "NotifyReadyUnitFlash 0 0		10.5"
+set Child "NotifyReadyUpArrow 70 160	1.3"
+add MenuObject
+set Name NotifyReadyUnitSmall
+set Texture cockpit/UnitSlot@TeamColor@
+set CoordsStart "1 1 10 18"
+set CoordsMid "11 1 300 18"
+set CoordsEnd "311 1 10 18"
+set CoordsStartFocused "1 67 10 117"
+set CoordsMidFocused "11 67 300 117"
+set CoordsEndFocused "311 67 10 117"
+set CoordsStartDisabled "1 185 10 39"
+set CoordsMidDisabled "11 185 300 39"
+set CoordsEndDisabled "311 185 10 39"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 180
+set RenderCB_DY 60
+set NoAlphaMod 1
+set Alpha 0.8
+set Coords "0 0 180 60"
+set SaveArgs 1
+set Child "IconReadyUnit 2 2	@_Arg1_@		80	96"
+set Child "IconReadyUnitGray 2 2	@_Arg1_@	80	96"
+set Child "NotifyReadyUnitFlash 0 0	4"
+set Child "NotifyReadyUpArrow 70 10	1.2"
+add MenuObject
+set Name NotifyReadyUnitMaster
+set ContainerOnly 1
+set Child "NotifyReadyUnit 870 720			@UnitNotifyS0@ @UnitNotifyN0@		/ifSym GameMessageSubtle == 0	/ifSym UnitNotifyC == 1"
+set Child "NotifyReadyUnitSmall 870 850		@UnitNotifyS0@						/ifSym GameMessageSubtle == 1	/ifSym UnitNotifyC == 1"
+set Child "NotifyReadyUnit 770 720			@UnitNotifyS0@ @UnitNotifyN0@		/ifSym GameMessageSubtle == 0	/ifSym UnitNotifyC == 2"
+set Child "NotifyReadyUnitSmall 770 850		@UnitNotifyS0@						/ifSym GameMessageSubtle == 1	/ifSym UnitNotifyC == 2"
+set Child "NotifyReadyUnit 970 720			@UnitNotifyS1@ @UnitNotifyN1@		/ifSym GameMessageSubtle == 0	/ifSym UnitNotifyC == 2"
+set Child "NotifyReadyUnitSmall 970 850		@UnitNotifyS1@						/ifSym GameMessageSubtle == 1	/ifSym UnitNotifyC == 2"
+set Child "NotifyReadyUnit 670 720			@UnitNotifyS0@ @UnitNotifyN0@		/ifSym GameMessageSubtle == 0	/ifSym UnitNotifyC == 3"
+set Child "NotifyReadyUnitSmall 670 850		@UnitNotifyS0@						/ifSym GameMessageSubtle == 1	/ifSym UnitNotifyC == 3"
+set Child "NotifyReadyUnit 870 720			@UnitNotifyS1@ @UnitNotifyN1@		/ifSym GameMessageSubtle == 0	/ifSym UnitNotifyC == 3"
+set Child "NotifyReadyUnitSmall 870 850		@UnitNotifyS1@						/ifSym GameMessageSubtle == 1	/ifSym UnitNotifyC == 3"
+set Child "NotifyReadyUnit 1070 720			@UnitNotifyS2@ @UnitNotifyN2@		/ifSym GameMessageSubtle == 0	/ifSym UnitNotifyC == 3"
+set Child "NotifyReadyUnitSmall 1070 850	@UnitNotifyS2@						/ifSym GameMessageSubtle == 1	/ifSym UnitNotifyC == 3"
+set Child "NotifyReadyUnit 570 720			@UnitNotifyS0@ @UnitNotifyN0@		/ifSym GameMessageSubtle == 0	/ifSym UnitNotifyC == 4"
+set Child "NotifyReadyUnitSmall 570 850		@UnitNotifyS0@						/ifSym GameMessageSubtle == 1	/ifSym UnitNotifyC == 4"
+set Child "NotifyReadyUnit 770 720			@UnitNotifyS1@ @UnitNotifyN1@		/ifSym GameMessageSubtle == 0	/ifSym UnitNotifyC == 4"
+set Child "NotifyReadyUnitSmall 770 850		@UnitNotifyS1@						/ifSym GameMessageSubtle == 1	/ifSym UnitNotifyC == 4"
+set Child "NotifyReadyUnit 970 720			@UnitNotifyS2@ @UnitNotifyN2@		/ifSym GameMessageSubtle == 0	/ifSym UnitNotifyC == 4"
+set Child "NotifyReadyUnitSmall 970 850		@UnitNotifyS2@						/ifSym GameMessageSubtle == 1	/ifSym UnitNotifyC == 4"
+set Child "NotifyReadyUnit 1170 720			@UnitNotifyS3@ @UnitNotifyN3@		/ifSym GameMessageSubtle == 0	/ifSym UnitNotifyC == 4"
+set Child "NotifyReadyUnitSmall 1170 850	@UnitNotifyS3@						/ifSym GameMessageSubtle == 1	/ifSym UnitNotifyC == 4"

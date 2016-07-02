@@ -1,0 +1,72 @@
+stopIfSymbol BlockAllUI == 1
+MO ChallengeTime {
+cmd "rook genLocalTeams _localAT _localET"
+pos 768 20
+layer 18
+}
+MO AB_AbilityContainer +gameValidation !tutorial {
+pos 720 958
+safezone xS
+}
+MO AB_UnitContainer +gameValidation !tutorial {
+pos 1305 958
+safezone xS
+}
+MO IngameVersionNumber +gameValidation !consoleHW {
+pos -140 10
+safezone xA
+}
+onloadrun {
+sym set _EnemyHudY 80
+sym set _AllyHudY 80
+}
+MO MinimapMaster +gameValidation !tutorial +gameValidation !android {
+pos -35 775
+safezone AS
+}
+MO PingMaster +gameValidation netgame +gameValidation !replay +gameValidation !tutorial {
+pos 310 -30
+safezone AS
+}
+MO HudIngameXpTop +gameValidation watch_p0 {
+cmd "sym set _PTagInd 0"
+pos 0 -4
+safezone xA
+}
+MO HudIngameXpTop +gameValidation watch_p1 {
+cmd "sym set _PTagInd 1"
+pos 0 -4
+safezone xA
+}
+MO HudIngameXpTop +gameValidation watch_p2 {
+cmd "sym set _PTagInd 2"
+pos 0 -4
+safezone xA
+}
+MO HudIngameXpTop +gameValidation watch_p3 {
+cmd "sym set _PTagInd 3"
+pos 0 -4
+safezone xA
+}
+MO HudIngameXpTop +gameValidation watch_p4 {
+cmd "sym set _PTagInd 4"
+pos 0 -4
+safezone xA
+}
+MO HudIngameXpTop +gameValidation watch_p5 {
+cmd "sym set _PTagInd 5"
+pos 0 -4
+safezone xA
+}
+MO PlayerStatusFloat +gameValidation watch_p0 {
+rename PlayerStatusFloat__0
+pos -80 -120
+cmd "sym set _PTagInd 0"
+}
+MO OutpostStatusFloat +gameValidation !tutorial +gameValidation rulesV2 {
+pos 0 0
+}
+onload {
+rookMenus abilityFocus 0
+if !netgame && !replay && !spectator runnow sym set P_Name0 $P_Name
+}

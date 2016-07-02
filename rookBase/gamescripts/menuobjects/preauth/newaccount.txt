@@ -1,0 +1,186 @@
+add MenuObject
+set Name NewAccountTextTemplate
+set Coords "0 0 271 47"
+set RenderCB_DX 1000
+set RenderCB_DY 47
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "2 -40"
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 0.8 0.6"
+set RenderCB_BoolArg 1
+set DisabledAlpha 1.0
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject initFrom NewAccountTextTemplate
+set Name NewAct_Prompt
+set RenderCB_Text NewAccountPrompt
+add MenuObject
+set Name NewAccountButtonTemplate
+set Texture menus/LoginSteam
+set Coords "4 7 382 488"
+set DrawWhenFocusedOffset "-3 -1"
+set RenderCB_DX 320
+set RenderCB_DY 77
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.75
+set RenderCB_Offset "26 38"
+set RenderCB_OffsetPressed "8 10"
+set RenderCB _DrawUText
+set RenderCB_Flags "/nmi /fitX /allCaps"
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "1"
+set RenderCB_RGBColorDisabled "0.5 0.5 0.5"
+set MouseInteract 1
+set Focus -2
+set RenderCB_BoolArg 1
+set DisabledAlpha 1.0
+set RenderCBExcludesDefaultRender 0
+set MouseInteractZoneExpandWhenFocused "0 0 0 20"
+add MenuObject
+set Name FocusLoginTemplate
+set Texture menus/LoginSteam
+set CoordsStart "947 7 24 24"
+set CoordsMid "971 7 24 24"
+set CoordsEnd "996 7 24 24"
+set CoordsStartFocused "947 28 24 24"
+set CoordsMidFocused "971 28 24 24"
+set CoordsEndFocused "996 28 24 24"
+set CoordsStartDisabled "947 55 24 24"
+set CoordsMidDisabled "971 55 24 24"
+set CoordsEndDisabled "996 55 24 24"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 385
+set RenderCB_DY 486
+set BlendMode BlendAdd
+set Color 0xff0000
+set PulseAlpha "2.0 -0.6 -0.2"
+add MenuObject initFrom FocusLoginTemplate
+set Name FocusSteamChoiceExisting
+set Color 0xff5b22
+add MenuObject initFrom FocusLoginTemplate
+set Name FocusSteamChoiceCreate
+set Color 0x49f4ff
+add MenuObject initFrom FocusLoginTemplate
+set Name PlayV1OverlayLockedFocus
+set RenderCB_DX 410
+set RenderCB_DY 609
+set Color 0xff3311
+add MenuObject initFrom FocusLoginTemplate
+set Name PlayV1OverlayLockedFocusPW
+set RenderCB_DX 274
+set RenderCB_DY 406
+set Color 0xff3311
+add MenuObject initFrom FocusLoginTemplate
+set Name FriendOpenIgnoreBorder
+set RenderCB_DX 404
+set RenderCB_DY 524
+set Color 0xff3311
+add MenuObject initFrom FocusLoginTemplate
+set Name VoiceMuteErrorDisplay
+set RenderCB_DX 370
+set RenderCB_DY 85
+set Color 0xff3311
+set Hidden 1
+add MenuObject initFrom PlayV1OverlayLockedFocus
+set Name PlayOverlayLockedFocus
+set RenderCB_DX 310
+set RenderCB_DY 170
+add MenuObject
+set Name CoverQuestTilesLocked
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "182 181"
+set Color 0xef2d00
+set NoAlphaMod 1
+set Alpha 0.2
+add MenuObject initFrom PlayV1OverlayLockedFocus
+set Name FocusQuestTilesLocked
+set RenderCB_DX 201
+set RenderCB_DY 201
+add MenuObject initFrom PlayV1OverlayLockedFocus
+set Name FocusQuestTiles
+set RenderCB_DX 201
+set RenderCB_DY 201
+set Color 0xffffff
+add MenuObject initFrom PlayV1OverlayLockedFocus
+set Name FocusQuestObjects
+set RenderCB_DX 638
+set RenderCB_DY 122
+set Color 0xffffff
+add MenuObject initFrom FocusLoginTemplate
+set Name MarketOverlayLockedFocus
+set RenderCB_DX 450
+set RenderCB_DY 673
+set Color 0xff3311
+add MenuObject
+set Name NewAccountButtonText
+set RenderCB_DX 300
+set RenderCB_DY 100
+set Texture menus/LoginSteam
+set Coords "803 105 180 391"
+set ScaleX 2.0
+set RenderCBExcludesDefaultRender 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.70
+set RenderCB_Offset "26 120"
+set Disabled 1
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor "1"
+set RenderCB_BoolArg 1
+set RenderCB_Text @_Arg1_@
+set Color @_Arg2_@
+set SaveArgs 2
+set DisabledAlphaTimeIn 0.15
+set DisabledAlphaTimeOut 0.25
+set RenderCB_Flags "/nmi /fitX /shadowColor2 /outlined8x"
+set Child "LoginFakeButton 90 280"
+add MenuObject initFrom NewAccountButtonTemplate
+set Name NewAccountExistingButton
+set RenderCB_Text Steam_Choice_Login
+set DrawWhenFocused FocusSteamChoiceExisting
+set CommandPress "clearmenu MenuNewAccount.txt /fadeout 0.15"
+set CommandPress "loadmenu MenuLinkAccount.txt /fadein 0.15"
+set CommandGetFocus "addUIAnim NewAccountExistingButton mas_LoginChoiceUp"
+set CommandGetFocus "gameui enableAll Steam_Detail_Login"
+set CommandLoseFocus "addUIAnim NewAccountExistingButton mas_LoginChoiceReset"
+set CommandLoseFocus "gameui disableAll Steam_Detail_Login"
+set Child "NewAccountButtonText[Steam_Detail_Login]	11 100	Steam_Detail_Login 0x361708"
+add MenuObject initFrom NewAccountButtonTemplate
+set Name NewAccountCreateButton
+set Coords "393 7 382 488"
+set RenderCB_Text Steam_Choice_Create
+set DrawWhenFocused FocusSteamChoiceCreate
+set CommandPress "clearmenu MenuNewAccount.txt /fadeout 0.15"
+set CommandPress "loadmenu MenuCreateAccount.txt /fadein 0.15"
+set CommandPress "sym set _AvailableUsername_ 0"
+set CommandGetFocus "addUIAnim NewAccountCreateButton mas_LoginChoiceUp"
+set CommandLoseFocus "addUIAnim NewAccountCreateButton mas_LoginChoiceReset"
+set CommandGetFocus "gameui enableAll Steam_Detail_Create"
+set CommandLoseFocus "gameui disableAll Steam_Detail_Create"
+set Child "NewAccountButtonText[Steam_Detail_Create]	11 100	Steam_Detail_Create	0x01232d"
+add MenuObject
+set Name NewAccountUnderline
+set Texture menus/LoginCommon
+set Coords "0 812 1022 212"
+set ScaleX 1.5
+set Child "LoginTextVersionNumber 0 155"
+set Child "LoginSocialLinks 1630 44			/platform !arc"
+set Child "LoginExitButton 40 45"
+set Child "LoginLogoCarbonForSteam 880 45"
+set Child "LoginLogoSteam 400 40"
+set Child "LoginMainStar 514 -15"
+add MenuObject
+Set Name NewAccountContainer
+set Coords "0 0 500 500"
+set ContainerOnly 1
+set Child "NewAccountUnderline 0 865"
+set Child "NewAccountExistingButton 554 357"
+set Child "NewAccountCreateButton 163 357"
+add MenuObject
+set Name NewAccountMaster
+set ContainerOnly 1
+set Child "NewAccountContainer 0 0"

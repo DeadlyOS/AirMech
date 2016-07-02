@@ -1,0 +1,220 @@
+add MenuObject
+set Name WorldMapImage
+set Texture menus/WorldMap
+set Coords "0 0 2048 1024"
+set ScaleX 0.85
+set ScaleY 0.85
+set MouseInteract 1
+set Focus -2
+set Child "ServerLocPoint 225 345 	usca_ok	usca"
+set Child "ServerLocPoint 328 374 	ustx_ok	ustx"
+set Child "ServerLocPoint 396 376 	usga_ok	usga"
+set Child "ServerLocPoint 450 330 	usnj_ok	usnj"
+set Child "ServerLocPoint 575 648 	br_ok	br"
+set Child "ServerLocPoint 785 255 	uk_ok	uk"
+set Child "ServerLocPoint 840 258 	desa_ok	desa"
+set Child "ServerLocPoint 826 268 	defr_ok	defr"
+set Child "ServerLocPoint 978 228 	rumo_ok	rumo"
+set Child "ServerLocPoint 1278 532 	sg_ok	sg"
+set Child "ServerLocPoint 1429 358 	jp_ok	jp"
+set Child "ServerLocPoint 1492 706 	ausy_ok	ausy"
+set Child "ServerLocPoint 1146 415	in_ok	in"
+add MenuObject initFrom DialogButtonTemplate
+set Name WorldMapClose
+set Coords "443 4 187 69"
+set CoordsFocused "443 142 187 69"
+set CoordsPressed "442 141 187 69"
+set CoordsDisabled "443 73 187 69"
+set CommandPress "clearmenu WorldMapDialog.txt"
+add MenuObject
+set Name WorldMapShadow
+set Texture effects/black
+set Coords "0 0 512 256"
+set StretchToFillScreen 1
+set Layer 11
+set NoAlphaMod 1
+set Alpha 0.5
+set MouseInteract 1
+set	CommandPress "clearmenu WorldMapDialog.txt"
+add MenuObject
+set Name ServerLocPinAnim
+set Texture menus/MapPing
+set Coords "3 0 16 64"
+set CoordsAnimated "3 0 16 64"
+set CoordsAnimated "19 0 16 64"
+set CoordsAnimated "35 0 16 64"
+set CoordsAnimated "51 0 16 64"
+set CoordsAnimated "67 0 16 64"
+set CoordsAnimated "83 0 16 64"
+set CoordsAnimated "99 0 16 64"
+set CoordsAnimated "115 0 16 64"
+set CoordsAnimated "131 0 16 64"
+set CoordsAnimated "147 0 16 64"
+set CoordsAnimated "163 0 16 64"
+set CoordsAnimated "179 0 16 64"
+set CoordsAnimated "195 0 16 64"
+set CoordsAnimated "211 0 16 64"
+set CoordsAnimated "227 0 16 64"
+set CoordsAnimationFrameTimer 0.03
+set ScaleX 0.7
+set ScaleY 0.7
+add MenuObject
+set Name ServerLocCheck
+set Texture menus/DialogGeneral
+set Coords "312 250 52 48"
+set ScaleX 0.6
+set ScaleY 0.6
+set HiddenCheckBySymbolInv @_Arg1_@
+set HiddenCheckBySymbol @_Arg2_@_offline
+set SaveArgs 2
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name ServerLocOffline
+set Texture menus/DialogGeneral
+set Coords "915 848 42 43"
+set ScaleX 0.7
+set ScaleY 0.7
+set HiddenCheckBySymbolInv @_Arg1_@_offline
+set SaveArgs 1
+set MouseInteract 1
+set ToolTip ServerLocationIsOffline
+set ToolTipDelayTime 0.1
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name ServerLocPing
+set Texture menus/DialogGeneral
+set Coords "871 848 42 43"
+set ScaleX 0.6
+set ScaleY 0.6
+set HiddenCheckBySymbolInv _@_Arg1_@_pAct_
+set SaveArgs 1
+set Child "ServerLocPinAnim 7 -26"
+set Child "ServerLocPingSpin 1 1"
+add MenuObject
+set Name ServerLocPingSpin
+set Texture menus/DialogGeneral
+set Coords "873 898 38 38"
+set RotationPeriod 1.0
+set ScaleX 0.6
+set ScaleY 0.6
+add MenuObject
+set Name ServerLocPoint
+set Texture menus/DialogGeneral
+set Coords "268 250 44 48"
+set Focus -2
+set ScaleX 0.6
+set ScaleY 0.6
+set RenderOffsetX 8
+set RenderOffsetY 8
+set ScaleXFocused 1.2
+set ScaleYFocused 1.2
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set MouseInteract 1
+set ToolTip @_Arg2_@_ping
+set ToolTipDelayTime 0.1
+set Child "ServerLocCheck 0 0 @_Arg1_@ @_Arg2_@"
+set Child "ServerLocOffline -1 0	@_Arg2_@"
+set Child "ServerLocPing 1 2 @_Arg2_@"
+set SaveArgs 2
+add MenuObject
+set Name WorldMapButtonClose
+set Texture menus/Social
+set Coords "825 2 70 70"
+set CoordsFocused "825 72 70 70"
+set MouseInteract 1
+set Focus -2
+set	CommandPress "clearmenu WorldMapDialog.txt"
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuBackClick"
+add MenuObject initFrom WorldMapButtonClose
+set Name WorldMapBack
+set Texture menus/LoadoutFrame
+set Coords "111 674 104 60"
+set CoordsFocused "111 744 104 60"
+add MenuObject
+set Name RecheckLatencyButton
+set Texture menus/HomeBar
+set Coords "4 4 262 66"
+set CoordsFocused "291 4 262 66"
+set CoordsPressed "291 1 262 66"
+set ScaleX 1.5, ScaleY 1.1
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Text RecheckLatency
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set RenderCB_Flags "/nmi /shadowed"
+set RenderCB_DX 0, RenderCB_DY 0
+set Focus -2
+set CommandPress "menuCmd CheckPingStuff"
+set HiddenCheckBySymbol _LatencyCheckAct_
+add MenuObject
+set Name CheckingLatencyMessage
+set Texture menus/Social
+set Coords "0 0 440 63"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Text RecheckLatencyInProgress
+set RenderCB_BoolArg 1
+set RenderCB_Flags "/shadowed"
+set RenderCB_DX 0, RenderCB_DY 0
+set HiddenCheckBySymbolInv _LatencyCheckAct_
+add MenuObject
+set Name WaitToCheckLatencyMessage
+set Texture menus/Social
+set Coords "0 0 440 63"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCB_Text RecheckLatencyInProgress
+set RenderCB_BoolArg 1
+set RenderCB_Flags "/shadowed"
+set RenderCB_DX 0, RenderCB_DY 0
+set HiddenCheckBySymbolInv _LatencyCheckAct_
+add MenuObject
+set Name WorldMapMaster
+set Texture menus/Social
+set CoordsStart "641 11 43 43"
+set CoordsMid "684 11 96 43"
+set CoordsEnd "780 11 43 43"
+set CoordsStartFocused "641 54 43 96"
+set CoordsMidFocused "684 54 96 96"
+set CoordsEndFocused "780 54 43 96"
+set CoordsStartDisabled "641 150 43 43"
+set CoordsMidDisabled "684 150 96 43"
+set CoordsEndDisabled "780 150 43 43"
+set RenderCB _Draw_G3x3
+set Coords "0 0 1808 940"
+set RenderCB_DX 1823
+set RenderCB_DY 953
+set MouseInteract 1
+set MouseInteractZoneExpand "30 30 -30 -30"
+set FirstDrawnChildren 1
+set Child "WorldMapShadow 64 64"
+set Child "WorldMapImage 41 41"
+set Child "CheckingLatencyMessage 700 830"
+set Child "RecheckLatencyButton 700 830"
+set Child "WaitToCheckLatencyMessage 700 830"
+set Child "WorldMapButtonClose 1710 43"
+set Child "WorldMapBack 48 48"

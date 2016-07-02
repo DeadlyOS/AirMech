@@ -1,0 +1,121 @@
+add MenuObject
+set Name CreateAccountTextTemplate
+set Coords "0 0 271 47"
+set RenderCB_DX 1100
+set RenderCB_DY 47
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "2 -40"
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 0.8 0.6"
+set RenderCB_BoolArg 1
+set Layer 3
+set DisabledAlpha 1.0
+set RenderCB_TextJustify JustifyXCenter
+add MenuObject
+set Name CreateAccountTextboxTemplate
+set Coords "2 2 498 48"
+set Texture menus/LoginBase
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set DrawWhenFocused LoginBoxHighlight
+set RenderCB_DX 800
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB_Offset "8 7"
+set Layer 3
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Font DroidSansMono
+set RenderCB_RGBColor "1 1 0.8"
+set TextEditableMaxLen 64
+add MenuObject initFrom CreateAccountTextTemplate
+set Name NewAct_Prompt1
+set RenderCB_Text CreateAccountPrompt1
+add MenuObject initFrom CreateAccountTextTemplate
+set Name NewAct_Prompt2
+set RenderCB_Text CreateAccountPrompt2
+add MenuObject initFrom CreateAccountTextTemplate
+set Name NewAct_Prompt3
+set RenderCB_Text CreateAccountPrompt3
+add MenuObject
+set Name CreateAccountAgreeCheck
+set Texture menus/LoginBase
+set Coords "306 57 18 18"
+set Hidden $CarbonCreateAccountNeedAgree
+set ScaleX 2.0
+set ScaleY 2.0
+add MenuObject
+set Name AgreeCheckboxTemplate
+set Texture menus/LoginBase
+set Coords "281 55 20 20"
+set DrawWhenFocusedOffset "-2 -2 0"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Offset "50 5"
+set RenderCB_DX 500
+set RenderCB_DY 24
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 0.8 0.6"
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Text AgreeTerms
+set RenderCB_Flags "/fitX /shadowed"
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set MouseInteractZoneExpand "-50 -10 0 10"
+set Focus -2
+set ScaleX 2.0
+set ScaleY 2.0
+add MenuObject initFrom AgreeCheckboxTemplate
+set Name CreateAccountAgreeCheckbox
+set CommandPress "gameUI showToggle CreateAccountAgreeCheck"
+set CommandPress "sym toggle CarbonCreateAccountNeedAgree"
+set CommandPress "menucmd CreateAccountValidate"
+set Child "CreateAccountAgreeCheck 4 4"
+add MenuObject
+set Name CreateAccountButtonTemplate
+set Texture menus/LoginBase
+set Coords "0 89 275 71"
+set CoordsFocused "0 169 275 71"
+set CoordsPressed "-2 167 277 71"
+set RenderCB_DX 261
+set RenderCB_DY 69
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB_Offset "6 0"
+set RenderCB_OffsetPressed "8 2"
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /nmi /fitX"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 0.8"
+set RenderCB_RGBColorDisabled "0.5 0.5 0.5"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+add MenuObject
+Set Name CreateAccountContainer
+set Coords "0 0 500 500"
+set ContainerOnly 1
+set Child "LoginUsernameTextBox 200 390"
+add MenuObject
+set Name CreateAccountMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "LoginCreateUnderline 0 865"
+set Child "CreateAccountContainer 0 0"
+add MenuObject
+set Name ResetUsernameMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "LoginResetUsernameUnderline 0 865"
+set Child "ResetUsernameTextBox 200 390"

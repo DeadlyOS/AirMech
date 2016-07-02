@@ -1,0 +1,138 @@
+add MenuObject
+set Name PW_AAState
+set Texture menus/PWAAIcons
+set Coords "0 0 64 64"
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "0 64 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimationPreset @_Arg1_@
+set HiddenCheckBySymbolValue PW_AA_State!@_Arg1_@
+set SaveArgs 2
+set ToolTip @_Arg2_@
+set ToolTipDelayTime 0.1
+set MouseInteract 1
+add MenuObject
+set Name PW_AA
+set ContainerOnly 1
+set HiddenCheckBySymbolValue PW_AA_IsIndulge=2
+set HiddenCheckBySymbol PW_AA_Disabled
+set Child "PW_AAState 0 0	0 PWAA_Lvl1"
+set Child "PW_AAState 0 0	1 PWAA_Lvl2"
+set Child "PW_AAState 0 0	2 PWAA_Lvl3"
+add MenuObject
+set Name PWAATitle
+set RenderCB _DrawUText
+set Coords "0 0 1200 10"
+set Texture menus/Inspect+lang
+set CoordsStart "146 915 30 96"
+set CoordsMid "175 915 20 96"
+set CoordsEnd "220 915 136 96"
+set RenderCB_FontScale 1.2
+set RenderCB_Text $DialogBoxTitle
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2"
+set RenderCB_DX 800
+set RenderCB_DY 10
+add MenuObject
+set Name PWAAMessage
+set RenderCB_RGBColor 0xe5e4e3
+set RenderCB_FontScale 0.85
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Offset "0 0"
+set RenderCB_Text $DialogBoxMessage
+set RenderCB _DrawUText
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2"
+set RenderCB_DX 675
+set RenderCB_DY 400
+set RenderCB_BoolArg 1
+add MenuObject
+set Name PWAAOkButton
+set Texture menus/LoginCommon
+set Coords "718 248 235 83"
+set CoordsFocused "476 248 235 83"
+set DrawWhenFocused LoginButtonHighlight
+set DrawWhenFocusedOffset "-10 -14"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+set Child "PWAAOkayText 16 0"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">clearmenu PWAADialogWindow /fadeout 0.1"
+add MenuObject
+set Name PWAALinkButton
+set Texture menus/LoginCommon
+set Coords "718 248 235 83"
+set CoordsFocused "476 248 235 83"
+set DrawWhenFocused LoginButtonHighlight
+set DrawWhenFocusedOffset "-10 -14"
+set MouseInteract 1
+set Focus -2
+set Layer 3
+set DisabledAlpha 0.5
+set RenderCBExcludesDefaultRender 0
+set Child "PWAAIDText 16 0"
+set CommandPress ">net openlink http://passport.wanmei.com/jsp/indulge/index.jsp?type=register "
+add MenuObject
+set Name PWAAIDText
+set SaveArgs 1
+set RenderCB_DX 200
+set RenderCB_DY 70
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_Flags "/fitX /outlined8x /shadowColor2"
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Text $DialogBoxButton0
+set RenderCB_Font Roboto
+set RenderCB_OffsetPressed "2 2 0"
+set RenderCB_RGBColorDisabled "0.9 0.6 0.2"
+add MenuObject initFrom PWAAIDText
+set Name PWAAOkayText
+set RenderCB_Text $DialogBoxButton1
+add MenuObject
+set Name PWAADialogWindowClose
+set Coords "295 511 49 49"
+set CoordsFocused "350 511 49 49"
+set Texture menus/Mail
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress ">clearmenu PWAADialogWindow /fadeout 0.1"
+add MenuObject
+set Name PWAADialogWindow
+set Texture menus/Windows
+set Coords "0 0 400 400"
+set CoordsStart "0 0 120 120"
+set CoordsMid "120 0 86 120"
+set CoordsEnd "206 0 120 120"
+set CoordsStartFocused "0 120 120 86"
+set CoordsMidFocused "120 120 86 86"
+set CoordsEndFocused "206 120 120 86"
+set CoordsStartDisabled "0 206 120 120"
+set CoordsMidDisabled "120 206 86 120"
+set CoordsEndDisabled "206 206 120 120"
+set RenderCB _Draw_G3x3
+set FirstDrawnChildren 1
+set FilterName BaseLayout
+set RenderCB_DX 800
+set RenderCB_DY 500
+set MouseInteract 1
+set Focus -2
+set Color 0x50656c
+set ColorFocused 0x50656c
+set MouseInteractZoneExpand "15 15 -15 -15"
+set FirstDrawnChildren 1
+set Child "StrucureInspectEscape 0 0"
+set Child "PWAADialogWindowClose 730 20"
+set Child "PWAATitle 0 60"
+set Child "PWAAMessage 75 120"
+set Child "PWAALinkButton[PWAADialogButton0] 120 375"
+set Child "PWAAOkButton[PWAADialogButton1] 450 375"

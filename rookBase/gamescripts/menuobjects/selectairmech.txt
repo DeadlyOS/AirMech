@@ -1,0 +1,82 @@
+add MenuObject
+set Name ResetAirMechBackdrop
+set CommandPress "echo click_on_background"
+set Coords "0 0 1920 432"
+set Focus -2
+set MouseInteract 1
+set RenderBlocked 1
+add MenuObject
+set Name SelectAirMechContainer
+set ContainerOnly 1
+set Coords "0 0 1000 800"
+set FilterName CustomDrawer
+set Child "SelectAirMechClassTemplate[AirMechClass0] 0 0		0 null AirMechClass1 null AirMechSkin0"
+set Child "SelectAirMechClassTemplate[AirMechClass1] 150 0		1 AirMechClass0 AirMechClass2 null AirMechSkin0"
+set Child "SelectAirMechClassTemplate[AirMechClass2] 300 0		2 AirMechClass1 AirMechClass3 null AirMechSkin0"
+set Child "SelectAirMechClassTemplate[AirMechClass3] 450 0		3 AirMechClass2 AirMechClass4 null AirMechSkin0"
+set Child "SelectAirMechClassTemplate[AirMechClass4] 600 0		4 AirMechClass3 AirMechClass5 null AirMechSkin0"
+set Child "SelectAirMechClassTemplate[AirMechClass5] 750 0		5 AirMechClass4 AirMechClass6 null AirMechSkin0"
+set Child "SelectAirMechClassTemplate[AirMechClass6] 900 0		6 AirMechClass5 AirMechClass7 null AirMechSkin0"
+set Child "SelectAirMechSkinTemplate[AirMechSkin0] 0 150		0 null AirMechSkin1 AirMechClass0 null"
+set Child "SelectAirMechSkinTemplate[AirMechSkin1] 150 150		1 AirMechSkin0 AirMechSkin2 AirMechClass1 null"
+set Child "SelectAirMechSkinTemplate[AirMechSkin2] 300 150		2 AirMechSkin1 AirMechSkin3 AirMechClass2 null"
+set Child "SelectAirMechSkinTemplate[AirMechSkin3] 450 150		3 AirMechSkin2 AirMechSkin4 AirMechClass3 null"
+set Child "SelectAirMechSkinTemplate[AirMechSkin4] 600 150		4 AirMechSkin3 AirMechSkin5 AirMechClass4 null"
+set Child "SelectAirMechSkinTemplate[AirMechSkin5] 750 150		5 AirMechSkin4 AirMechSkin6 AirMechClass5 null"
+set Child "SelectAirMechSkinTemplate[AirMechSkin6] 900 150		6 AirMechSkin5 AirMechSkin7 AirMechClass6 null"
+add MenuObject
+set Name SelectAirMechPreviewFade
+set Texture menus/DialogGeneral
+set Coords "125 450 119 28"
+set ScaleX 7
+set ScaleY 13.6
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.3
+add MenuObject
+set Name SelectAirMechIconImage
+set Texture @_CustomPath@IconUnique
+set TextureAlt @_CustomPath@@_CustomResult@
+set NoDrawOnMissingTexture 1
+set SaveArgs 2
+set ScaleX 1.48
+set ScaleY 1.48
+set Coords "0 0 256 256"
+set FilterName SelectAirMech
+add MenuObject
+set Name SelectAirMechPromoImage
+set SaveArgs 2
+set Coords "0 381 1024 543"
+set ScaleX 0.861
+set ScaleY 0.7
+set NoDrawOnMissingTexture 1
+set Texture promos/@_SlotCheckUnlockName_@
+set FilterName SelectAirMech
+add MenuObject initFrom PanelResizeClear
+set Name SelectAirMechBackgroundCancel
+set CommandPress "clearmenu SelectAirMech.txt /fadeout 0.1"
+set Coords "0 0 1920 2080"
+add MenuObject
+set Name SelectAirMechMaster_old
+set MouseInteract 1
+set Focus -2
+set Texture menus/DialogGeneral
+set CoordsStart "32 416 32 32"
+set CoordsMid "32 416 32 32"
+set CoordsEnd "32 416 32 32"
+set CoordsStartFocused "32 448 32 32"
+set CoordsMidFocused "32 448 32 32"
+set CoordsEndFocused "32 448 32 32"
+set CoordsStartDisabled "32 480 32 32"
+set CoordsMidDisabled "32 480 32 32"
+set CoordsEndDisabled "32 480 32 32"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 1920
+set RenderCB_DY 432
+set FirstDrawnChildren 2
+set Child "LobbySelectItemDialogShadow 0 0"
+set Child "SelectAirMechBackgroundCancel 0 -1000"
+set Child "SelectAirMechIconImage 100 26"
+set Child "SelectAirMechPromoImage 0 26"
+set Child "SelectAirMechPreviewFade 100 26"
+set Child "ResetAirMechBackdrop 0 0"
+set Child "SelectAirMechContainer 750 68"

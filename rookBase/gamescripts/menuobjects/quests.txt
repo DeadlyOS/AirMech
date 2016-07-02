@@ -1,0 +1,875 @@
+add MenuObject
+set Name QuestsOpenButton
+set Texture menus/QuestsFrame
+set Coords "933 12 74 79"
+set CoordsAnimated "933 12 74 79"
+set CoordsAnimated "749 12 74 79"
+set CoordsAnimationSymHash QuestsLoaded
+set ScaleX 0.8, ScaleY 0.8
+set MouseInteract 1
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set Focus -2
+set ToolTip QuestTitle
+set HiddenCheckBySymbolValue CurrentMenu!=MKHome
+set Child "QuestsButtonGlow 1 4"
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "if sym QuestsLoaded == 1 && sym ArcCustomized == 0 addUIAnim QuestsMain mas_QuestsOut"
+set CommandPress "if sym QuestsLoaded != 1 && sym ArcCustomized == 0 addUIAnim QuestsMain mas_QuestsIn"
+set CommandPress "if sym QuestsLoaded == 1 && sym ArcCustomized == 1 addUIAnim QuestsMainPW mas_QuestsOut"
+set CommandPress "if sym QuestsLoaded == 1 && sym ArcCustomized == 1 addUIAnim QuestsListBackgroundPW mas_QuestsOutListPW"
+set CommandPress "if sym QuestsLoaded != 1 && sym ArcCustomized == 1 addUIAnim QuestsMainPW mas_QuestsIn"
+set CommandPress "if sym QuestsLoaded != 1 && sym ArcCustomized == 1 addUIAnim QuestsListBackgroundPW mas_QuestsInListPW"
+add MenuObject initFrom QuestsOpenButton
+set Name QuestsOpenButtonPW_AADisabled
+set HiddenCheckBySymbolInv PW_AA_Disabled
+add MenuObject initFrom QuestsOpenButton
+set Name QuestsOpenButtonPW
+set HiddenCheckBySymbolValue PW_AA_IsIndulge!=2
+set HiddenCheckBySymbol PW_AA_Disabled
+add MenuObject initFrom QuestsOpenButton
+set Name QuestsOpenButtonPW2
+set HiddenCheckBySymbolValue PW_AA_IsIndulge!=1
+set DisabledSymValue PW_AA_State!0
+set HiddenCheckBySymbol PW_AA_Disabled
+add MenuObject
+set Name QuestsButtonGlow
+set Texture menus/QuestsFrame
+set Coords "882 690 122 122"
+set PulseAlpha "1.0 -0.9 0.0"
+set Anchor Center
+set ScaleX 0.8, ScaleY 0.8
+set ScaleXFocused 1.1
+set ScaleYFocused 1.1
+set DisplayAsFocusedIfParentFocused 1
+set FirstDrawnChildren 1
+set HiddenCheckBySymbol QuestsGroupCompleteReady
+add MenuObject
+set Name QuestsBackground
+set Texture menus/Mail
+set CoordsStart "719 342 19 19"
+set CoordsMid "738 342 93 19"
+set CoordsEnd "832 342 19 19"
+set CoordsStartFocused "719 361 19 93"
+set CoordsMidFocused "738 361 93 93"
+set CoordsEndFocused "832 361 19 93"
+set CoordsStartDisabled "719 455 19 19"
+set CoordsMidDisabled "738 455 93 32"
+set CoordsEndDisabled "832 455 19 19"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 770
+set RenderCB_DY 1100
+set Coords "0 0 770 840"
+set Color 0xa2a2a2
+set ColorFocused 0xa2a2a2
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+add MenuObject
+set Name QuestsCloseVis
+set Coords "638 454 50 50"
+set CoordsFocused "637 397 50 50"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name QuestsClose
+set Coords "0 0 50 50"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "addUIAnim QuestsMain mas_QuestsOut"
+set Child "QuestsCloseVis 0 0"
+add MenuObject
+set Name QuestsTextLabel
+set Coords "0 0 380 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x9fb6c6
+set DisabledAlpha 1.0
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbol @_Arg3_@
+set RenderCB_Flags "/nmi /allCaps /fitX"
+set SaveArgs 3
+add MenuObject
+set Name QuestsCountTotal
+set Coords "0 0 297 52"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.7
+set RenderCB_TextJustify JustifyXRight
+set RenderCB _DrawText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x37585a
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol FRC_Total
+add MenuObject
+set Name QuestsTileTitle
+set Coords "0 0 160 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.9
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_Text QuestSec_@_Arg1_@
+set RenderCB_Flags "/fitX"
+set SaveArgs 1
+add MenuObject
+set Name QuestsTileDescBase
+set Coords "0 0 170 100"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.52
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor @_Arg2_@
+set NoAlphaMod 1
+set Alpha 0.5
+set BlendMode BlendAdd
+set RenderCB_Text @_Arg1_@
+set SaveArgs 3
+set RenderCB_BoolArg 1
+add MenuObject initFrom QuestsTileDescBase
+set Name QuestsTileDesc
+add MenuObject
+set Name QuestsTileCount
+set Coords "0 0 300 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.75
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawText
+set RenderCB_Font Numbers80px
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_ConsoleSymbol QuestsCountState@_Arg1_@
+set SaveArgs 1
+add MenuObject
+set Name QuestSectionGraphicTemplate
+set Texture menus/QuestsFrame
+set Coords "883 105 110 110"
+set CoordsFocused "883 115 110 110"
+set NoAlphaMod 1
+set Alpha 0.3
+add MenuObject initFrom QuestSectionGraphicTemplate
+set Name QuestSectionGraphicArrow
+add MenuObject initFrom QuestSectionGraphicTemplate
+set Name QuestSectionGraphicPvP
+set Coords "741 105 110 110"
+set CoordsFocused "741 115 110 110"
+add MenuObject initFrom QuestSectionGraphicTemplate
+set Name QuestSectionGraphicCoop
+set Coords "741 382 110 110"
+set CoordsFocused "741 392 110 110"
+add MenuObject initFrom QuestSectionGraphicTemplate
+set Name QuestSectionGraphicCheck
+set Coords "883 382 110 110"
+set CoordsFocused "883 392 110 110"
+add MenuObject initFrom QuestSectionGraphicTemplate
+set Name QuestSectionGraphicBang
+set Coords "883 243 110 110"
+set CoordsFocused "883 253 110 110"
+add MenuObject
+set Name QuestSectionTile
+set Texture menus/QuestsFrame
+set Coords "11 809 201 201"
+set FilterName QuestSections
+set SaveArgs 7
+set Color @_Arg3_@
+set ColorFocused @_Arg3_@
+set MouseInteract 1
+set DrawWhenFocused FocusQuestTiles
+set Focus -2
+set Child "QuestSectionGraphic@_Arg2_@ 80 80"
+set Child "QuestsTileDesc 20 100 QuestDesc_@_Arg1_@	@_Arg3_@"
+set Child "QuestsTileDesc 20 100 QuestDesc_@_Arg1_@	0xffffff"
+set Child "QuestsTileTitle 20 20 @_Arg1_@"
+set Child "QuestsTileCount 20 46 @_Arg1_@"
+set HiddenCheckBySymbol Quests@_Arg1_@Locked
+set CommandPress ">sym set QuestsHeaderLabel QuestSec_@_Arg1_@"
+set CommandPress ">sym set LastQuestSection @_Arg1_@"
+set CommandPressAlt ">if sym P_AccessLevel > 0 sym set Quests@_Arg1_@Locked 1"
+set CommandPress ">quests setV2Filter @_Arg1_@"
+set CommandPress "quests scrollupdate Quest /totop"
+set CommandPress "pcmd t1 sym set ShowQuestItems 1"
+set CommandPress "gameui ignoreinputtime 0.06"
+set CommandPress "if usingpad pcmd 0.05 gameui focusnametry AirMechQuest2_0"
+set CommandGetFocus ">input set padFocusFallback QuestSectionTile@_Arg1_@"
+set CommandFocusLeft ">gameUI focusNameTry @_Arg4_@ @_Arg4_@Locked"
+set CommandFocusUp ">gameUI focusNameTry @_Arg5_@ @_Arg5_@Locked"
+set CommandFocusRight ">gameUI focusNameTry @_Arg6_@ @_Arg6_@Locked"
+set CommandFocusDown ">gameUI focusNameTry @_Arg7_@ @_Arg7_@Locked"
+add MenuObject
+set Name QuestSectionTileLockIcon
+set Texture menus/QuestsFrame
+set Coords "841 15 28 38"
+add MenuObject
+set Name QuestSectionTileLockedBg
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "183 183"
+set Color 0x343434
+set NoAlphaMod 1
+set Alpha 0.4
+add MenuObject
+set Name QuestSectionTileLocked
+set HiddenCheckBySymbolInv Quests@_Arg1_@Locked
+set Texture menus/QuestsFrame
+set Coords "11 809 201 201"
+set SaveArgs 7
+set Color @_Arg3_@
+set ColorFocused @_Arg3_@
+set MouseInteract 1
+set NoAlphaMod 1
+set Alpha 0.5
+set DrawWhenFocused FocusQuestTilesLocked
+set Focus -2
+set Child "QuestSectionGraphic@_Arg2_@ 80 80"
+set Child "QuestSectionTileLockedBg 8 8"
+set Child "QuestsTileTitle 20 20 @_Arg1_@"
+set Child "QuestSectionTileLockedBg 8 8"
+set Child "QuestsTileDesc 20 100 QuestLocked_@_Arg1_@	@_Arg3_@"
+set Child "QuestsTileDesc 20 100 QuestLocked_@_Arg1_@	0xffffff"
+set Child "QuestSectionTileLockIcon 20 58"
+set Child "QuestsTileCount 52 46 Locked@_Arg1_@"
+set CommandPress "gameui refreshFilterName QuestSections"
+set CommandGetFocus ">input set padFocusFallback QuestSectionTile@_Arg1_@Locked"
+set CommandFocusLeft ">gameUI focusNameTry @_Arg4_@ @_Arg4_@Locked"
+set CommandFocusUp ">gameUI focusNameTry @_Arg5_@ @_Arg5_@Locked"
+set CommandFocusRight ">gameUI focusNameTry @_Arg6_@ @_Arg6_@Locked"
+set CommandFocusDown ">gameUI focusNameTry @_Arg7_@ @_Arg7_@Locked"
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTileRookie
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTileAdvanced
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTileCore
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTilePvP
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTileCoop
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTileDaily
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTileAirMechs
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTileSocial
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTileDone
+set CommandGetFocus "if usingpad if sym QuestsGroupCompleteReady == 0 gameui focusnametry QuestSectionTileReady"
+set CommandPressAlt "if sym P_AccessLevel > 0 runnow sym set QuestsGroupCompleteReady 0"
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTileReady
+set Child "QuestsReadyPulse 8 8"
+set HiddenCheckBySymbol QuestsGroupCompleteReady
+set CommandPressAlt "gameui hide QuestSectionTileReady"
+add MenuObject initFrom QuestSectionTile
+set Name QuestSectionTileHome
+set Child "QuestsReadyPulse2 8 8"
+set HiddenCheckBySymbol QuestsGroupCompleteReady
+set HiddenCheckBySymbol2 QuestsLoaded
+set HiddenCheckBySymbolValue PatchnotesRead!@PN_Version@
+set HiddenCheckBySymbolInv _GotQuestsData_
+set DisabledSymInv ShowMotDHome
+set DisabledSymValue ArcGACustomized=1
+set CommandPressAlt "if sym P_AccessLevel > 0 runnow sym set QuestsGroupCompleteReady 1"
+set CommandPress "loadmenu Quests /fadein 0.1"
+add MenuObject
+set Name QuestsReadyPulse
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "182 181"
+set Color 0x351d00
+set PulseAlpha "2.0 8.8 -0.95"
+set BlendMode BlendAdd
+add MenuObject initFrom QuestsReadyPulse
+set Name QuestsReadyPulse2
+set PulseAlpha "4.0 2.8 -0.5"
+add MenuObject
+set Name QuestsHeaderLabel
+set Coords "0 0 400 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 1.2
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0x9fb6c6
+set DisabledAlpha 1.0
+set RenderCB_Flags "/nmi /allCaps /fitX"
+set RenderCB_ConsoleSymbol QuestsHeaderLabel
+set HiddenCheckBySymbolInv ShowQuestItems
+set SaveArgs 3
+add MenuObject
+set Name QuestSections
+set ContainerOnly 1
+set HiddenCheckBySymbol ShowQuestItems
+set Child "QuestSectionTileRookie 0 0		Rookie		Arrow		0x7de8ff	null	MainBarButtonPlay	QuestSectionTileCore	QuestSectionTileDaily"
+set Child "QuestSectionTileLocked[QuestSectionTileRookieLocked] 0 0		Rookie		Arrow		0x7de8ff	null	MainBarButtonPlay	QuestSectionTileCore	QuestSectionTileDaily"
+set Child "QuestSectionTileCore 204 0		Core		Arrow		0x5fa3ff	QuestSectionTileRookie	MainBarButtonWatch	QuestSectionTileAirMechs	QuestSectionTileCoop"
+set Child "QuestSectionTileLocked[QuestSectionTileCoreLocked] 204 0		Core		Arrow		0x5fa3ff	QuestSectionTileRookie	MainBarButtonWatch	QuestSectionTileAirMechs	QuestSectionTileCoop"
+set Child "QuestSectionTileAdvanced 204 408	Advanced	Arrow		0x6a79c6	QuestSectionTileSocial	QuestSectionTileCoop	QuestSectionTileDone	null"
+set Child "QuestSectionTileLocked[QuestSectionTileAdvancedLocked] 204 408	Advanced	Arrow		0x6a79c6	QuestSectionTileSocial	QuestSectionTileCoop	QuestSectionTileDone	null"
+set Child "QuestSectionTileDaily 0 204		Daily		Bang		0x7de8ff	null	QuestSectionTileRookie	QuestSectionTileCoop	QuestSectionTileSocial"
+set Child "QuestSectionTileLocked[QuestSectionTileDailyLocked] 0 204		Daily		Bang		0x7de8ff	null	QuestSectionTileRookie	QuestSectionTileCoop	QuestSectionTileSocial"
+set Child "QuestSectionTilePvP 408 204		PvP			PvP			0xff784e	QuestSectionTileCoop	QuestSectionTileAirMechs	null	QuestSectionTileDone"
+set Child "QuestSectionTileLocked[QuestSectionTilePvPLocked] 408 204	PvP			PvP			0xff784e	QuestSectionTileCoop	QuestSectionTileAirMechs	null	QuestSectionTileDone"
+set Child "QuestSectionTileCoop 204 204		Coop		Coop		0x87dc78	QuestSectionTileDaily	QuestSectionTileCore	QuestSectionTilePvP	QuestSectionTileAdvanced"
+set Child "QuestSectionTileLocked[QuestSectionTileCoopLocked] 204 204	Coop		Coop		0x87dc78	QuestSectionTileDaily	QuestSectionTileCore	QuestSectionTilePvP	QuestSectionTileAdvanced"
+set Child "QuestSectionTileAirMechs 408 0	AirMechs	Arrow		0x5fa3ff	QuestSectionTileCore	MainBarButtonCustomize	null	QuestSectionTilePvP"
+set Child "QuestSectionTileLocked[QuestSectionTileAirMechsLocked] 408 0		AirMechs	Arrow		0x5fa3ff	QuestSectionTileCore	MainBarButtonCustomize	null	QuestSectionTilePvP"
+set Child "QuestSectionTileSocial 0 408		Social		Bang		0x5fa3ff	null	QuestSectionTileDaily	QuestSectionTileAdvanced	null"
+set Child "QuestSectionTileLocked[QuestSectionTileSocialLocked] 0 408		Social		Bang		0x5fa3ff	null	QuestSectionTileDaily	QuestSectionTileAdvanced	null"
+set Child "QuestSectionTileDone 408 408		Done		Check		0x706976	QuestSectionTileAdvanced	QuestSectionTilePvP	null	null"
+set Child "QuestSectionTileLocked[QuestSectionTileDoneLocked] 408 408	Done		Check		0x706976	QuestSectionTileAdvanced	QuestSectionTilePvP	null	null"
+set Child "QuestSectionTileReady 408 408	Ready		Check		0xffc45d	QuestSectionTileAdvanced	QuestSectionTilePvP	null	null"
+set Child "QuestsInfoBarText 0 610"
+add MenuObject
+set Name QuestsBackButton
+set Texture menus/BackIcon
+set BlendMode BlendAdd
+set HiddenCheckBySymbol InputPad
+set Focus -2
+set ScaleX 0.7, ScaleY 0.7
+set MouseInteract 1
+set HiddenCheckBySymbolInv ShowQuestItems
+set Coords "0 0 127 128"
+set CoordsFocused "0 128 128 128"
+set CommandPress "if sym ArcCustomized == 0 sym set ShowQuestItems 0"
+set CommandPress "if sym ArcCustomized == 1 addUIAnim QuestsMainPW mas_QuestsOut"
+set CommandPress "if sym ArcCustomized == 1 addUIAnim QuestsListBackgroundPW mas_QuestsOutListPW"
+add MenuObject
+set Name QuestsSlideButton
+set Texture menus/BackIcon
+set BlendMode BlendAdd
+set HiddenCheckBySymbol InputPad
+set Focus -2
+set ScaleX 0.7, ScaleY 0.7
+set MouseInteract 1
+set HiddenCheckBySymbol ShowQuestItems
+set Coords "0 0 127 128"
+set CoordsFocused "0 128 128 128"
+set CommandPress "if sym ArcCustomized == 0 addUIAnim QuestsMain mas_QuestsOut"
+set CommandPress "if sym ArcCustomized == 1 addUIAnim QuestsMainPW mas_QuestsOut"
+set CommandPress "if sym ArcCustomized == 1 addUIAnim QuestsListBackgroundPW mas_QuestsOutListPW"
+add MenuObject
+set Name QuestsMain
+set RenderBlocked 1
+set Coords "0 0 688 55"
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbol ArcCustomized
+set FirstDrawnChildren 1
+set Child "QuestsBackground -15 -15"
+set Child "QuestsBackButton 36 15"
+set Child "QuestsSlideButton 36 15"
+set Child "QuestSections 40 160"
+set Child "QuestsHeaderLabel 48 100"
+set Child "MF_ActiveQuests 20 166"
+set Child "QuestsTextLabel 48 100	QuestTitle	1.2	ShowQuestItems"
+add MenuObject
+set Name QuestsMainPW
+set RenderBlocked 1
+set Coords "0 0 688 55"
+set MouseInteract 1
+set Focus -2
+set HiddenCheckBySymbolInv ArcCustomized
+set FirstDrawnChildren 1
+set Child "QuestsListBackgroundPW -150 -15"
+set Child "QuestsBackgroundPW -15 -15"
+set Child "QuestsBackButton 36 15"
+set Child "QuestsSlideButton 36 15"
+set Child "QuestSectionsPW 35 110"
+set Child "QuestsTextLabel 140 40	QuestTitle	1.2		NA"
+add MenuObject initFrom QuestsBackground
+set Name QuestsBackgroundPW
+set RenderCB_DX 600
+set RenderCB_DY 1100
+add MenuObject initFrom QuestsBackground
+set Name QuestsListBackgroundPW
+set RenderCB_DX 950
+set RenderCB_DY 1100
+set Child "QuestsHeaderLabel 200 60"
+set Child "MF_ActiveQuestsPW 200 166"
+add MenuObject initFrom PanelInset
+set Name QuestCategoryPW
+set RenderCB_DX 500
+set RenderCB_DY 85
+set SaveArgs 1
+set Focus -2
+set MouseInteract 1
+set DrawWhenFocusedOffset "-9 -8"
+set MouseInteractZoneExpand "0 5 0 -5"
+set Color 0xc6f6ff
+set ColorFocused 0xe4fbff
+set Child "QuestCategorySelectedPW 0 0 QuestSec_@_Arg1_@_PW"
+set Child "QuestsTileTitlePW 20 30 @_Arg1_@"
+set Child "QuestsTileCountPW 180 20 @_Arg1_@"
+set CommandPress ">sym set QuestsHeaderLabel QuestSec_@_Arg1_@_PW"
+set CommandPress ">sym set LastQuestSection @_Arg1_@_PW"
+set CommandPress ">quests setV2Filter @_Arg1_@"
+set CommandPress "quests scrollupdate Quest /totop"
+set CommandPress "pcmd t1 sym set ShowQuestItems 1"
+set CommandPress "gameui ignoreinputtime 0.06"
+set CommandPress "if usingpad pcmd 0.05 gameui focusnametry AirMechQuest2_0"
+set CommandGetFocus ">input set padFocusFallback QuestSectionTile@_Arg1_@"
+add MenuObject initFrom PanelInset
+set Name QuestCategorySelectedPW
+set RenderCB_DX 500
+set RenderCB_DY 85
+set ColorFocused 0xc6f6ff
+set HiddenCheckBySymbolValue QuestsHeaderLabel!@_Arg1_@
+add MenuObject initFrom QuestsTileCount
+set Name QuestsTileCountPW
+set RenderCB_FontScale 0.55
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_TextJustifyVertical JustifyYCenter
+add MenuObject initFrom QuestsTileTitle
+set Name QuestsTileTitlePW
+set RenderCB_FontScale 0.75
+set RenderCB_DX 500
+set RenderCB_Text QuestSec_@_Arg1_@_PW
+add MenuObject
+set Name QuestSectionsPW
+set ContainerOnly 1
+set Child "QuestCategoryPW[QuestCategoryDailyQuests] 0 0				Daily"
+set Child "QuestCategoryPW[QuestCategoryCoreQuests] 0 85				Core"
+set Child "QuestCategoryPW[QuestCategoryAchievements] 0 170				Achievement"
+set Child "QuestCategoryReadyPW[QuestCategoryAchievements] 0 255		Ready"
+set Child "QuestsInfoBarTextPW -60 400"
+add MenuObject initFrom QuestCategoryPW
+set Name QuestCategoryReadyPW
+set Child "QuestReadyCollect -35 5"
+set HiddenCheckBySymbol QuestsGroupCompleteReady
+add MenuObject initFrom QuestsInfoBarText
+set Name QuestsInfoBarTextPW
+set RenderCB_FontScale 0.7
+set RenderCB_Font Roboto
+add MenuObject
+set Name MF_ActiveQuestsPW
+set ContainerOnly 1
+set HiddenCheckBySymbolInv ShowQuestItems
+set Child "AirMechQuestPW[AirMechQuest2_0] 0 Nx105	0"
+set Child "AirMechQuestPW[AirMechQuest2_1] 0 Nx105	1"
+set Child "AirMechQuestPW[AirMechQuest2_2] 0 Nx105	2"
+set Child "AirMechQuestPW[AirMechQuest2_3] 0 Nx105	3"
+set Child "AirMechQuestPW[AirMechQuest2_4] 0 Nx105	4"
+set Child "AirMechQuestPW[AirMechQuest2_5] 0 Nx105	5"
+set Child "Quests2WheelZone 0 -30"
+set Child "QuestsDetailBarText 50 700"
+set Child "ConQuestNext 325 640		Quest2"
+set Child "ConQuestPrevious 325 -50	Quest2"
+add MenuObject initFrom PanelInset
+set Name AirMechQuestPW
+set RenderCB_DX 700
+set RenderCB_DY 105
+set SaveArgs 1
+set Focus -2
+set MouseInteract 1
+set DrawAsLastChildWhenFocused 1
+set DrawWhenFocused FocusQuestLine
+set DrawWhenFocusedOffset "-9 -8"
+set MouseInteractZoneExpand "0 5 0 -5"
+set Color 0xc6f6ff
+set ColorFocused 0xe4fbff
+set HiddenCheckBySymbol Quest2Hidden@_Arg1_@
+set CommandGetFocus ">sym set Quest2Focus@_Arg1_@ 1"
+set CommandGetFocus ">input set padFocusFallback AirMechQuest2_@_Arg1_@"
+set CommandGetFocus ">if usingpad if sym Quest2Complete@_Arg1_@ == 1 pcmd 0.05 gameui focusnametry QuestRedeemButton@_Arg1_@"
+set CommandLoseFocus ">sym set Quest2Focus@_Arg1_@ 0"
+set CommandCancel "sym set ShowQuestItems 0"
+set CommandCancel ">pcmd t0 gameui focusnametry #QuestSectionTile@LastQuestSection@"
+set CommandFocusUp "gameUI ignoreInputTime 0.05"
+set CommandFocusUp ">gameUI focusNameTryList AirMechQuest2_ @_Arg1_@ 8 -1 /tryOnFail .QuestsPagePrevious"
+set CommandFocusDown "gameUI ignoreInputTime 0.05"
+set CommandFocusDown ">gameUI focusNameTryList AirMechQuest2_ @_Arg1_@ 8 1 /tryOnFail .QuestsPageNext"
+set Child "Quest2ProgressPW 110 46				Quest2 @_Arg1_@"
+set Child "AirMechQuest2CompleteBack 0 0		Quest2 @_Arg1_@"
+set Child "QuestIcon 15 14						Quest2 @_Arg1_@"
+set Child "QuestMoreInfoButton 400 12			Quest2 @_Arg1_@"
+set Child "QuestRedeemFramePW 513 16			Quest2 @_Arg1_@"
+set Child "Quest2RedeemButtonPW[QuestRedeemButton@_Arg1_@] 510 10			Quest2 @_Arg1_@"
+set Child "QuestVIPIcon 820 30					Quest2 @_Arg1_@"
+set Child "Quest2RewardTextPW 120 60			Quest2 @_Arg1_@"
+set Child "Quest2DiamondRewardPW 280 65			Quest2 @_Arg1_@"
+set Child "Quest2VipDiamondRewardPW 280 65		Quest2 @_Arg1_@"
+set Child "Quest2KudosRewardPW 150 65			Quest2 @_Arg1_@"
+set Child "Quest2XPRewardPW 280 65				Quest2 @_Arg1_@"
+set Child "Quest2Desc 112 8						Quest2 @_Arg1_@"
+set Child "QuestName2 112 8						Quest2 @_Arg1_@"
+set Child "QuestTimeRemaining 320 58			Quest2 @_Arg1_@"
+set Child "QuestInfoEntryBox[ReferralInput@_Arg1_@] 110 45		Quest2 @_Arg1_@"
+set Child "AirMechQuest2DoneBackPW 0 0			Quest2 @_Arg1_@"
+add MenuObject initFrom QuestRedeemFrame
+set Name QuestRedeemFramePW
+set RenderCB_Offset "0 0"
+add MenuObject initFrom Quest2RewardText
+set Name Quest2RewardTextPW
+set HiddenCheckBySymbol @_Arg1_@Focus@_Arg2_@
+add MenuObject initFrom Quest2DiamondReward
+set Name Quest2DiamondRewardPW
+set Child "QuestIconDiamonds -34 -2 1.0	@_Arg1_@ @_Arg2_@"
+set HiddenCheckBySymbol @_Arg1_@Focus@_Arg2_@
+add MenuObject initFrom Quest2VipDiamondReward
+set Name Quest2VipDiamondRewardPW
+set HiddenCheckBySymbol @_Arg1_@Focus@_Arg2_@
+add MenuObject initFrom Quest2KudosReward
+set Name Quest2KudosRewardPW
+set HiddenCheckBySymbol @_Arg1_@Focus@_Arg2_@
+add MenuObject initFrom Quest2XPReward
+set Name Quest2XPRewardPW
+set HiddenCheckBySymbol @_Arg1_@Focus@_Arg2_@
+add MenuObject
+set Name Quest2ProgressPW
+set Texture effects/white
+set Coords "0 0 16 16"
+set TileArea "200 12"
+set SaveArgs 2
+set BlendMode BlendDestColor
+set Color 0xaaaaaa
+set HiddenCheckBySymbol @_Arg1_@Focus@_Arg2_@
+set FilterName @_Arg1_@UI
+set HiddenCheckBySymbolInv @_Arg1_@ProgressShow@_Arg2_@
+set Child "Quest2ProgressBarPW 1 1		@_Arg1_@ @_Arg2_@"
+set Child "Quest2ProgressTextPW 205 -8		@_Arg1_@ @_Arg2_@"
+add MenuObject initFrom Quest2ProgressBar
+set Name Quest2ProgressBarPW
+set RenderCB_DX 200
+add MenuObject initFrom Quest2ProgressText
+set Name Quest2ProgressTextPW
+set RenderCB_DX 190
+set RenderCB_DY 70
+set RenderCB_Flags "/fitX"
+add MenuObject initFrom QuestRedeemButtonBase
+set Name Quest2RedeemButtonPW
+set Child "Quest2DescC -385 -3	@_Arg1_@ @_Arg2_@"
+set MouseInteractZoneExpand "-50 -20 0 0"
+set RenderCB_DX 190
+set RenderCB_DY 85
+set RenderCB_RGBColor 0xffd67d
+set RenderCB_FontScale 0.75
+set RenderCB_Flags "/shadowed /shadowColor2"
+set CommandFocusUp ">if usingpad runnow gameUI focusNameTryList QuestRedeemButton @_Arg2_@ 6 -1 /tryOnFail .QuestRedeemFocusUpFail@_Arg2_@"
+set CommandCancel "sym set ShowQuestItems 0"
+set CommandCancel ">pcmd t0 gameui focusnametry #QuestSectionTile@LastQuestSection@"
+set CommandFocusDown ">if usingpad runnow gameUI focusNameTryList QuestRedeemButton @_Arg2_@ 6 1 /tryOnFail .QuestRedeemFocusDownFail@_Arg2_@"
+set CommandPress "pcmd 0.3 menucmd SetupQuestSectionsPW"
+add MenuObject initFrom PanelEmbossedColor
+set Name AirMechQuest2DoneBackPW
+set RenderCB_DX 700
+set RenderCB_DY 105
+set HiddenCheckBySymbolInv @_Arg1_@IsDone@_Arg2_@
+set Color 0x666666
+set Color 0x111111
+set NoAlphaMod 1
+set Alpha 0.7
+set Child "AirMechQuest2DoneCheck 570 26"
+add MenuObject
+set Name QuestRedeemDialog
+set Texture menus/Windows
+set Coords "340 0 631 492"
+set Anchor Center
+set FirstDrawnChildren 1
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set Disabled 1
+set FirstDrawnChildren 1
+set Child "QuestRedeemDialogDust -100 0"
+set Child "ButtonQuestRedeemDialogClose 568 13							QuestRedeemDialog"
+set Child "QuestRedeemIcon 497 372"
+set Child "QuestDialogInfo 0 40"
+set Child "QuestDialogRewards 0 155"
+set Child "QuestDialogRewardsItems 0 250"
+set Child "ContentGamepadBack[QuestRedeemDialogButton0] 35 420"
+set CommandPress ">clearmenu QuestRedeemDialog /fadeout 0.1"
+set CommandCancel ">clearmenu QuestRedeemDialog /fadeout 0.1"
+add MenuObject
+set Name QuestRedeemIcon
+set Texture menus/Windows
+set Coords "0 367 120 103"
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject initFrom ButtonGenericClose
+set Name ButtonQuestRedeemDialogClose
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject
+set Name QuestRedeemDialogEscape
+set Texture effects/white
+set StretchToFillScreen 1
+set Focus -2
+set MouseInteract 1
+set BlendMode BlendDestColor
+set Color 0x585858
+set ColorFocused 0x585858
+set CommandPress ">clearmenu QuestRedeemDialog /fadeout 0.1"
+add MenuObject
+set Name QuestDialogInfo
+set ContainerOnly 1
+set Child "QuestDialogIcon 42 0										_QuestDialogName_"
+set Child "QuestDialogName 130 -6									_QuestDialogName_ 0.8"
+set Child "QuestDialogDesc 130 27									_QuestDialogDesc_ 0.6"
+add MenuObject
+set Name QuestDialogRewards
+set ContainerOnly 1
+set Child "QuestDialogTitle 42 0									_QuestDialogRewardTitle_ 0.8"
+set Child "QuestDialogKudos 110 50									_QuestRedeemKudos_ 1.6"
+set Child "QuestDialogDiamonds 95 40								_QuestRedeemDiamonds_ 0.8 /ifSym _QuestRedeemKudos_ == 0"
+set Child "QuestDialogDiamonds 275 50								_QuestRedeemDiamonds_ 0.8 /ifSym _QuestRedeemKudos_ != 0"
+set Child "QuestDialogXP 95 40										_QuestRedeemXP_ 0.8 /ifSym _QuestRedeemKudos_ == 0 /ifSym _QuestRedeemDiamonds_ == 0"
+set Child "QuestDialogXP 250 40										_QuestRedeemXP_ 0.8 /ifSym _QuestRedeemKudos_ != 0 /ifSym _QuestRedeemDiamonds_ == 0"
+set Child "QuestDialogXP 250 40										_QuestRedeemXP_ 0.8 /ifSym _QuestRedeemKudos_ == 0 /ifSym _QuestRedeemDiamonds_ != 0"
+set Child "QuestDialogXP 405 40										_QuestRedeemXP_ 0.8 /ifSym _QuestRedeemKudos_ != 0 /ifSym _QuestRedeemDiamonds_ != 0"
+add MenuObject
+set Name QuestDialogRewardsItems
+set ContainerOnly 1
+set Child "QuestDialogItemMaster[QuestDialogItem1] 42 0		_QuestRedeemItem1_ _QuestRedeemItem1Link_ _QuestRedeemItem1Type_ _QuestRedeemItem1Disp_ 1"
+set Child "QuestDialogItemMaster[QuestDialogItem2] 212 0	_QuestRedeemItem2_ _QuestRedeemItem2Link_ _QuestRedeemItem2Type_ _QuestRedeemItem2Disp_ 2"
+set Child "QuestDialogItemMaster[QuestDialogItem3] 385 0	_QuestRedeemItem3_ _QuestRedeemItem3Link_ _QuestRedeemItem3Type_ _QuestRedeemItem3Disp_ 3"
+add MenuObject
+set Name QuestRedeemDialogDust
+set Texture effects/dust_puff_d
+set Coords "0 0 128 128"
+set Anchor Center
+add MenuObject
+set Name QuestDialogIcon
+set Texture QuestIcons/&_QuestDialogName_&_UL_LG
+set TextureAlt QuestIcons/Default_UL_LG
+set ScaleX 0.6, ScaleY 0.6
+set Coords "0 0 128 128"
+set SaveArgs 1
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject
+set Name QuestDialogName
+set Coords "0 0 300 50"
+set RenderCB_DX 400
+set RenderCB_DY 100
+set RenderCB_FontScale @_Arg2_@
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xfed44d
+set RenderCB_Text &@_Arg1_@&
+set SaveArgs 2
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+set RenderCB_Flags "/nmi /fitX"
+add MenuObject
+set Name QuestDialogDesc
+set Coords "0 0 300 50"
+set RenderCB_DX 400
+set RenderCB_DY 300
+set RenderCB_FontScale @_Arg2_@
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0xffffff
+set RenderCB_Text &@_Arg1_@&
+set SaveArgs 2
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+set RenderCB_Flags "/nmi"
+add MenuObject
+set Name QuestDialogTitle
+set Coords "0 0 300 50"
+set RenderCB_DX 400
+set RenderCB_DY 100
+set RenderCB_FontScale @_Arg2_@
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xfed44d
+set RenderCB_Text @_Arg1_@
+set SaveArgs 3
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+set RenderCB_Flags "/nmi /fitX"
+add MenuObject
+set Name QuestDialogText
+set Coords "0 0 300 50"
+set RenderCB_DX 400
+set RenderCB_DY 100
+set RenderCB_FontScale @_Arg2_@
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xfed44d
+set RenderCB_Text @_Arg1_@
+set SaveArgs 3
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.5
+set RenderCB_Flags "/nmi /fitX"
+add MenuObject
+set Name QuestDialogRewardsTemp
+set Coords "0 0 300 30"
+set RenderCB_DX 280
+set RenderCB_DY 25
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale @_Arg2_@
+set RenderCB _DrawText
+set RenderCB_Flags ""
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+set HiddenCheckBySymbolInv @_Arg1_@
+set RenderCB_ConsoleSymbol @_Arg1_@
+set MouseInteractZoneExpand "-50 0 0 0"
+add MenuObject initFrom QuestDialogRewardsTemp
+set Name QuestDialogKudos
+set Child "QuestDialogIconKudosC -60 -8 1.5"
+add MenuObject initFrom QuestDialogRewardsTemp
+set Name QuestDialogDiamonds
+set Child "QuestDialogIconDiamondsC -40 -2 1.0"
+add MenuObject initFrom QuestDialogRewardsTemp
+set Name QuestDialogXP
+set Child "QuestDialogIconXPC -40 -2 1.0"
+add MenuObject initFrom QuestIconKudosC
+set Name QuestDialogIconKudosC
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject initFrom QuestIconDiamondsC
+set Name QuestDialogIconDiamondsC
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject initFrom QuestIconXPC
+set Name QuestDialogIconXPC
+set Disabled 1
+set DisabledAlphaTimeOut 1.0
+set DisabledAlphaTimeIn 1.0
+add MenuObject initFrom PanelResizeClear
+set Name QuestDialogItemMaster
+set TileArea "140 140"
+set MouseInteract 1
+set Focus -2
+set SaveArgs 3
+set Child "QuestItemUnitIcon[QuestDialogItemIcon@_Arg5_@] 0 0		/ifSym @_Arg3_@ == units			&@_Arg1_@&
+set Child "QuestItemPartIcon[QuestDialogItemIcon@_Arg5_@] 0 0		/ifSym @_Arg3_@ hasPrefix part		&@_Arg1_@&
+set Child "QuestItemItemIcon[QuestDialogItemIcon@_Arg5_@] 0 0		/ifSym @_Arg3_@ == items			&@_Arg1_@&
+set Child "QuestItemMiscIcon[QuestDialogItemIcon@_Arg5_@] 0 0		/ifSym @_Arg3_@ == misc				&@_Arg1_@&
+set Child "QuestItemFrameIcon[QuestDialogItemIcon@_Arg5_@] 0 0		/ifSym @_Arg3_@ == frame			&@_Arg1_@&
+set Child "QuestItemPlanIcon[QuestDialogItemIcon@_Arg5_@] 0 0		/ifSym @_Arg3_@ == recipe 			&@_Arg1_@&
+set Child "QuestItemBluePrintIcon[QuestDialogItemIcon@_Arg5_@] 0 0	/ifSym @_Arg3_@ == baseBP			&@_Arg1_@&
+set Child "QuestItemFlairIcon[QuestDialogItemIcon@_Arg5_@] 0 0		/ifSym @_Arg3_@ == flairs			&@_Arg1_@&
+set Child "QuestItemPetIcon[QuestDialogItemIcon@_Arg5_@] 0 0		/ifSym @_Arg3_@ == pets				&@_Arg1_@&
+set Child "QuestItemPetIcon[QuestDialogItemIcon@_Arg5_@] 0 0		/ifSym @_Arg3_@ == heads			&@_Arg1_@&
+set Child "QuestItemPilotIcon[QuestDialogItemIcon@_Arg5_@] 0 0		/ifSym @_Arg3_@ == pilots			&@_Arg1_@&
+set Child "QuestItemAirMechIcon[QuestDialogItemIcon@_Arg5_@] 0 0	/ifSym @_Arg3_@ == rooks			&@_Arg1_@&
+set CommandOnCreate ">sym clear ContentDFTT@_Arg5_@"
+set CommandOnCreate ">if sym @_Arg3_@ == units runnow sym set ContentDFTT@_Arg5_@ UnitStatsToolTip"
+set CommandOnCreate ">if sym @_Arg3_@ == rooks runnow sym set ContentDFTT@_Arg5_@ AirMechStatsToolTip2"
+set CommandOnCreate ">if sym @_Arg3_@ == pilots runnow sym set ContentTT@_Arg5_@ MF_CustomDesc_Pilot&@_Arg1_@&"
+set CommandOnCreate ">if sym @_Arg3_@ != pilots runnow sym set ContentTT@_Arg5_@ &@_Arg1_@&Desc"
+set CommandGetFocus "playSound $MenuShopItemFocus"
+set CommandPress ">menucmd PromoUnlockTry &@_Arg3_@& &@_Arg1_@&"
+set CommandPressAlt ">menucmd PromoUnlockTry &@_Arg3_@& &@_Arg1_@&"
+set CommandTopButton ">menucmd PromoUnlockTry &@_Arg3_@& &@_Arg1_@&"
+set CommandCancel ">clearmenu QuestRedeemDialog /fadeout 0.1"
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.2
+set HiddenCheckBySymbolValue _QuestRedeemItem@_Arg5_@_=NA
+set Child "QuestDialogItemBackground 2 0"
+add MenuObject initFrom ChoiceBackground
+set Name QuestDialogItemBackground
+set Anchor Center
+add MenuObject
+set Name QuestDialogItemIconTemp
+set Anchor Center
+set ScaleX 0.8, ScaleY 0.8
+set ScaleXFocused 1.1, ScaleYFocused 1.1
+set DisplayAsFocusedIfParentFocused 1
+set Disabled 1
+set DisabledAlphaTimeOut 0.2
+set DisabledAlphaTimeIn 0.2
+set FocusedTimeIn 0.1
+set FocusedTimeOut 0.1
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemUnitIcon
+set Texture units/@_Arg1_@/Icons@TeamColor@
+set TextureAlt units/@_Arg1_@/IconUnique
+set Coords img
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemPartIcon
+set Texture parts/@_Arg1_@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 200.0
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemItemIcon
+set Texture items/@_Arg1_@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 170.0
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemMiscIcon
+set Texture misc/@_Arg1_@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 170.0
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemFrameIcon
+set Texture frames/@_Arg1_@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemPlanIcon
+set Texture recipes/@_Arg1_@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemBluePrintIcon
+set Texture blueprints/@_Arg1_@
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemFlairIcon
+set Texture flair/@_Arg1_@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemPetIcon
+set Texture flair/@_Arg1_@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0
+set NoAlphaMod 0
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemPilotIcon
+set Texture pilots/@_Arg1_@Icon
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 180.0
+add MenuObject initFrom QuestDialogItemIconTemp
+set Name QuestItemAirMechIcon
+set Texture rooks/@_Arg1_@/Icons@TeamColor@
+set TextureAlt rooks/@_Arg1_@/IconUnique
+set Coords img
+set NoDrawOnMissingTexture 1
+set ScaleRefToCoords 140.0

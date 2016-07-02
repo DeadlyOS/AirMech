@@ -1,0 +1,346 @@
+stopIfSymbol MatchOverInSummary == 1
+stopIfSymbol BlockAllUI == 1
+MO DummyFocus {
+pos 0 0
+}
+MO EditorSandboxPause {
+pos 10 15
+}
+MO GameStatusMaster +gameValidation !tutorial +gameValidation !survival {
+cmd "rook genLocalTeams _localAT _localET"
+pos 0 12
+safezone nA
+}
+MO GameTimeMasterSurvival +gameValidation !tutorial +gameValidation survival +gameValidation localfort {
+cmd "rook genLocalTeams _localAT _localET"
+pos 0 10
+safezone nA
+}
+MO GameTimeMasterSurvivalNoFort +gameValidation !tutorial +gameValidation survival +gameValidation !localfort {
+cmd "rook genLocalTeams _localAT _localET"
+pos 0 10
+safezone nA
+}
+MO CTFStatusMaster +gameValidation !tutorial +gameValidation ctf {
+cmd "rook genLocalTeams _localAT _localET"
+pos 0 100
+safezone nA
+}
+MO SurvivalMaster +gameValidation survival {
+pos 0 12
+safezone nA
+}
+MO CheatIcon +gameValidation !netgame {
+pos 1830 20
+layer 25
+}
+MO ChallengeWinHud +gameValidation challengeMap {
+rename ChallengeTime
+pos 768 20
+layer 18
+}
+MO TouchMaster +gameValidation android {
+pos 0 0
+}
+MO AB_AbilityContainer +gameValidation !tutorial {
+pos 720 958
+safezone xS
+draggableUIElement
+preDeleteRunCmd gameUI getLastRenderPos AB_AbilityContainer UI_Abilities_X UI_Abilities_Y
+}
+MO AB_UnitContainer +gameValidation !tutorial {
+pos 1305 958
+safezone xS
+draggableUIElement
+preDeleteRunCmd gameUI getLastRenderPos AB_UnitContainer UI_Units_X UI_Units_Y
+}
+MO IngameVersionNumber +gameValidation !consoleHW {
+pos -140 10
+safezone xA
+}
+onloadrun {
+sym set _EnemyHudY 80
+sym set _AllyHudY 80
+]sym set IsSpectator 0
+}
+MO MinimapMaster +gameValidation !tutorial +gameValidation !android {
+pos -35 775
+safezone AS
+draggableUIElement
+preDeleteRunCmd gameUI getLastRenderPos MinimapMaster UI_Minimap_X UI_Minimap_Y
+}
+MO PowerUpMaster +gameVailidation !tutorial +gameValidation !android {
+pos 845 70
+safezone AS
+draggableUIElement
+preDeleteRunCmd gameUI getLastRenderPos PowerUpMaster UI_PowerUp_X UI_PowerUp_Y
+}
+MO PingMaster +gameValidation netgame +gameValidation !replay +gameValidation !tutorial {
+pos 1310 870
+safezone AS
+}
+MO HudIngameXpTop +gameValidation watch_p0 {
+cmd "sym set _PTagInd 0"
+pos 0 -4
+safezone xA
+}
+MO HudIngameXpTop +gameValidation watch_p1 {
+cmd "sym set _PTagInd 1"
+pos 0 -4
+safezone xA
+}
+MO HudIngameXpTop +gameValidation watch_p2 {
+cmd "sym set _PTagInd 2"
+pos 0 -4
+safezone xA
+}
+MO HudIngameXpTop +gameValidation watch_p3 {
+cmd "sym set _PTagInd 3"
+pos 0 -4
+safezone xA
+}
+MO HudIngameXpTop +gameValidation watch_p4 {
+cmd "sym set _PTagInd 4"
+pos 0 -4
+safezone xA
+}
+MO HudIngameXpTop +gameValidation watch_p5 {
+cmd "sym set _PTagInd 5"
+pos 0 -4
+safezone xA
+}
+MO HudInfoMasterLeft +gameValidation watch_friend_p0 +gameValidation !tutorial {
+cmd "sym set _PTagInd 0"
+rename HudInfoMasterLeft0
+pos 0 $_AllyHudY
+safezone AA
+cmd "sym inc _AllyHudY 42"
+}
+MO HudInfoMasterLeft +gameValidation watch_friend_p1 +gameValidation !tutorial {
+cmd "sym set _PTagInd 1"
+rename HudInfoMasterLeft1
+pos 0 $_AllyHudY
+safezone AA
+cmd "sym inc _AllyHudY 42"
+}
+MO HudInfoMasterLeft +gameValidation watch_friend_p2 {
+cmd "sym set _PTagInd 2"
+rename HudInfoMasterLeft2
+pos 0 $_AllyHudY
+safezone AA
+cmd "sym inc _AllyHudY 42"
+}
+MO HudInfoMasterLeft +gameValidation watch_friend_p3 {
+cmd "sym set _PTagInd 3"
+rename HudInfoMasterLeft3
+pos 0 $_AllyHudY
+safezone AA
+cmd "sym inc _AllyHudY 42"
+}
+MO HudInfoMasterLeft +gameValidation watch_friend_p4 {
+cmd "sym set _PTagInd 4"
+rename HudInfoMasterLeft4
+pos 0 $_AllyHudY
+safezone AA
+cmd "sym inc _AllyHudY 42"
+}
+MO HudInfoMasterLeft +gameValidation watch_friend_p5 {
+cmd "sym set _PTagInd 5"
+rename HudInfoMasterLeft5
+pos 0 $_AllyHudY
+safezone AA
+cmd "sym inc _AllyHudY 42"
+}
+MO HudInfoMasterRight +gameValidation watch_enemy_p0 +gameValidation !tutorial {
+cmd "sym set _PTagInd 0"
+rename HudInfoMasterRight0
+pos 0 $_EnemyHudY
+safezone SA
+cmd "sym inc _EnemyHudY 42"
+}
+MO HudInfoMasterRight +gameValidation watch_enemy_p1 +gameValidation !tutorial {
+cmd "sym set _PTagInd 1"
+rename HudInfoMasterRight1
+pos 0 $_EnemyHudY
+safezone SA
+cmd "sym inc _EnemyHudY 42"
+}
+MO HudInfoMasterRight +gameValidation watch_enemy_p2 {
+cmd "sym set _PTagInd 2"
+rename HudInfoMasterRight2
+pos 0 $_EnemyHudY
+safezone SA
+cmd "sym inc _EnemyHudY 42"
+}
+MO HudInfoMasterRight +gameValidation watch_enemy_p3 {
+cmd "sym set _PTagInd 3"
+rename HudInfoMasterRight3
+pos 0 $_EnemyHudY
+safezone SA
+cmd "sym inc _EnemyHudY 42"
+}
+MO HudInfoMasterRight +gameValidation watch_enemy_p4 {
+cmd "sym set _PTagInd 4"
+rename HudInfoMasterRight4
+pos 0 $_EnemyHudY
+safezone SA
+cmd "sym inc _EnemyHudY 42"
+}
+MO HudInfoMasterRight +gameValidation watch_enemy_p5 {
+cmd "sym set _PTagInd 5"
+rename HudInfoMasterRight5
+pos 0 $_EnemyHudY
+safezone SA
+cmd "sym inc _EnemyHudY 42"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p0_ex {
+rename PlayerStatusFloat__0
+pos -80 -120
+cmd "sym set _PTagInd 0"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p1_ex {
+rename PlayerStatusFloat__1
+pos -80 -120
+cmd "sym set _PTagInd 1"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p2_ex {
+rename PlayerStatusFloat__2
+pos -80 -120
+cmd "sym set _PTagInd 2"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p3_ex {
+rename PlayerStatusFloat__3
+pos -80 -120
+cmd "sym set _PTagInd 3"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p4_ex {
+rename PlayerStatusFloat__4
+pos -80 -120
+cmd "sym set _PTagInd 4"
+}
+MO TeamStatusFloat +gameValidation watch_friend_p5_ex {
+rename PlayerStatusFloat__5
+pos -80 -120
+cmd "sym set _PTagInd 5"
+}
+MO PlayerStatusFloat +gameValidation watch_p0 {
+rename PlayerStatusFloat__0
+pos -80 -120
+cmd "sym set _PTagInd 0"
+}
+MO PlayerStatusFloat +gameValidation watch_p1 {
+rename PlayerStatusFloat__1
+pos -80 -120
+cmd "sym set _PTagInd 1"
+}
+MO PlayerStatusFloat +gameValidation watch_p2 {
+rename PlayerStatusFloat__2
+pos -80 -120
+cmd "sym set _PTagInd 2"
+}
+MO PlayerStatusFloat +gameValidation watch_p3 {
+rename PlayerStatusFloat__3
+pos -80 -120
+cmd "sym set _PTagInd 3"
+}
+MO PlayerStatusFloat +gameValidation watch_p4 {
+rename PlayerStatusFloat__4
+pos -80 -120
+cmd "sym set _PTagInd 4"
+}
+MO PlayerStatusFloat +gameValidation watch_p5 {
+rename PlayerStatusFloat__5
+pos -80 -120
+cmd "sym set _PTagInd 5"
+}
+MO OutpostStatusFloat +gameValidation !tutorial +gameValidation rulesV2 {
+pos 0 0
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p0 {
+pos -80 -120
+cmd "sym set _PTagInd 0"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p1 {
+pos -80 -120
+cmd "sym set _PTagInd 1"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p2 {
+pos -80 -120
+cmd "sym set _PTagInd 2"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p3 {
+pos -80 -120
+cmd "sym set _PTagInd 3"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p4 {
+pos -80 -120
+cmd "sym set _PTagInd 4"
+}
+MO EnemyStatusFloat +gameValidation watch_enemy_p5 {
+pos -80 -120
+cmd "sym set _PTagInd 5"
+}
+MO FPlayerLoc +gameValidation friend_p0 {
+pos 0 0
+cmd "sym set _PTagInd 0"
+}
+MO FPlayerLoc +gameValidation friend_p1 {
+pos 0 0
+cmd "sym set _PTagInd 1"
+}
+MO FPlayerLoc +gameValidation friend_p2 {
+pos 0 0
+cmd "sym set _PTagInd 2"
+}
+MO FPlayerLoc +gameValidation friend_p3 {
+pos 0 0
+cmd "sym set _PTagInd 3"
+}
+MO FPlayerLoc +gameValidation friend_p4 {
+pos 0 0
+cmd "sym set _PTagInd 4"
+}
+MO FPlayerLoc +gameValidation friend_p5 {
+pos 0 0
+cmd "sym set _PTagInd 5"
+}
+MO FPlayerLocPinScr +gameValidation friend_p0 +gameValidation !local_p0 {
+pos 0 0
+cmd "sym set _PTagInd 0"
+}
+MO FPlayerLocPinScr +gameValidation friend_p1 +gameValidation !local_p1 {
+pos 0 0
+cmd "sym set _PTagInd 1"
+}
+MO FPlayerLocPinScr +gameValidation friend_p2 +gameValidation !local_p2 {
+pos 0 0
+cmd "sym set _PTagInd 2"
+}
+MO FPlayerLocPinScr +gameValidation friend_p3 +gameValidation !local_p3 {
+pos 0 0
+cmd "sym set _PTagInd 3"
+}
+MO FPlayerLocPinScr +gameValidation friend_p4 +gameValidation !local_p4 {
+pos 0 0
+cmd "sym set _PTagInd 4"
+}
+MO FPlayerLocPinScr +gameValidation friend_p5 +gameValidation !local_p5 {
+pos 0 0
+cmd "sym set _PTagInd 5"
+}
+MO IngameChatContainer +gameValidation !consoleHW {
+pos 290 320
+layer 20
+}
+onload {
+if sym CockpitIsOpen == 0 runnow rookMenus abilityFocus 0
+sym set UnitsBarActivate 0
+menucmd AutoDeployStateChanged
+menucmd SetHUD
+]addUIAnim PowerUpCountedIcon mas_PowerUpIconPulse"
+]addUIAnim PowerUpTimedIcon mas_PowerUpIconPulse"
+]addUIAnim PowerUpCountedAbilityIcon mas_PowerUpIconPulse"
+]addUIAnim PowerUpTimedAbilityIcon mas_PowerUpIconPulse"
+if sym P_AccessLevel > 0 gameUI show CanaryReport
+if !netgame && !replay && !spectator runnow sym set P_Name0 $P_Name
+}

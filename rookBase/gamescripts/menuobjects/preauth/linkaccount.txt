@@ -1,0 +1,137 @@
+add MenuObject
+set Name LinkAccountTextTemplate
+set Coords "0 0 271 47"
+set RenderCB_DX 271
+set RenderCB_DY 47
+set RenderCB_FontScale 0.8
+set RenderCB_Offset "2 -40"
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 0.8 0.6"
+set DisabledAlpha 1.0
+add MenuObject initFrom LinkAccountTextTemplate
+set Name LinkAct_Prompt
+set RenderCB_BoolArg 1
+set RenderCB_Text LinkAccountPrompt
+set RenderCB_DX 800
+add MenuObject initFrom LinkAccountTextTemplate
+set Name LinkAct_Email
+set RenderCB_Text Email
+add MenuObject initFrom LinkAccountTextTemplate
+set Name LinkAct_Password
+set RenderCB_Text Password
+add MenuObject
+set Name LinkAccountDivider
+set Texture menus/LoginBase
+set Coords "507 1 2 100"
+set ScaleY 4.0
+add MenuObject
+set Name LinkAccountTextboxTemplate
+set Coords "2 2 498 48"
+set Texture menus/LoginBase
+set DisabledAlpha 0.0
+set RenderCBExcludesDefaultRender 0
+set DrawWhenFocused LoginBoxHighlight
+set RenderCB_DX 498
+set RenderCB_DY 30
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB_Offset "8 7"
+set Focus -2
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set RenderCB _DrawText
+set RenderCB_Font DroidSansMono
+set RenderCB_RGBColor "1 1 0.8"
+set TextEditableMaxLen 64
+add MenuObject initFrom LinkAccountTextboxTemplate
+set Name LinkAccountBoxEmail
+set RenderCB_Text CarbonLogin
+set Child "LinkAct_Email 0 0"
+set CommandTabCycleRev "gameUI focusName LinkAccountLoginButton"
+set CommandTabCycle "gameUI focusName LinkAccountBoxPassword"
+add MenuObject initFrom LinkAccountTextboxTemplate
+set Name LinkAccountBoxPassword
+set RenderCB_Text CarbonPassword
+set TextEditableMaxLen 32
+set TextEditableMasked 1
+set Child "LinkAct_Password 0 0"
+set CommandTabCycleRev "gameUI focusName LinkAccountBoxEmail"
+set CommandTabCycle "gameUI focusName LinkAccountLoginButton"
+add MenuObject
+set Name LinkAccountButtonTemplate
+set Texture menus/LoginBase
+set Coords "0 89 275 71"
+set CoordsFocused "0 169 275 71"
+set CoordsPressed "-2 167 277 71"
+set RenderCB_DX 261
+set RenderCB_DY 47
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB_Offset "6 6"
+set RenderCB_OffsetPressed "8 8"
+set RenderCB _DrawUText
+set RenderCB_Flags "/shadowed /nmi /fitX"
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 0.8"
+set RenderCB_RGBColorDisabled "0.5 0.5 0.5"
+set DrawWhenFocusedOffset "-1 -1 0"
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set Focus -2
+set DisabledAlpha 1.0
+set RenderCBExcludesDefaultRender 0
+add MenuObject initFrom LinkAccountButtonTemplate
+set Name LinkAccountLoginButton
+set RenderCB_Text Login
+set CommandPress "clearmenu MenuLinkAccount.txt"
+set CommandPress "backend login CarbonLogin CarbonPassword"
+set CommandEnterKey "clearmenu MenuLinkAccount.txt"
+set CommandEnterKey "backend login CarbonLogin CarbonPassword"
+set CommandTabCycleRev "gameUI focusName LinkAccountBoxPassword"
+set CommandTabCycle "gameUI focusName LinkAccountBoxEmail"
+add MenuObject
+set Name LinkAccountGoogleButton
+set Texture menus/CarbonGamesLogo
+set Coords "2 158 389 98"
+set CoordsPressed "0 156 389 98"
+set MouseInteract 1
+set MouseInteractClickToFocus 1
+set Focus -2
+set DisabledAlpha 0.5
+set RenderCB_Text SignInWithGoogle
+set RenderCB_DX 389
+set RenderCB_DY 94
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCBExcludesDefaultRender 0
+set RenderCB _DrawUTextShadowedNMI
+set RenderCB_Font RobotoBold
+set RenderCB_OffsetPressed "2 2 0"
+set CommandPress "clearmenu MenuLinkAccount.txt"
+set CommandPress "backend googleLogin"
+add MenuObject
+set Name LinkAccountUserPass
+set ContainerOnly 1
+set Coords "0 0 500 500"
+set Child "LinkAccountBoxEmail 0 100"
+set Child "LinkAccountBoxPassword 0 200"
+set Child "LinkAccountLoginButton 217 275"
+add MenuObject
+set Name LinkAccountGoogle
+set ContainerOnly 1
+set Coords "0 0 500 500"
+set Child "LinkAccountGoogleButton 50 125"
+add MenuObject
+set Name LinkAccountMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Layer 2
+set Child "LinkAct_Prompt 500 490"
+set Child "LinkAccountUserPass 400 540"
+set Child "LinkAccountDivider 920 540"
+set Child "LinkAccountGoogle 940 540"
+set Child "BackButtonLogin 20 20"
+set Child "CloseButtonLogin -20 20"

@@ -1,0 +1,206 @@
+add MenuObject
+set Name UpsellMainImage
+set Texture menus/SplashUpsellD2
+set Coords "0 0 1920 1024"
+set MouseInteract 1
+set Focus -2
+set CommandPress "backend statOnce upsell2:backgroundClick"
+add MenuObject
+set Name UpsellBackground
+set Texture menus/SplashUpsellD2
+set Coords "465 966 970 57"
+set MouseInteract 1
+set Focus -2
+set CommandPress "backend statOnce upsell2:backgroundClick"
+add MenuObject
+set Name ButtonUpsell_Base
+set Texture menus/DialogFrames
+set Coords "0 258 512 73"
+set CoordsFocused "0 331 512 73"
+set CoordsPressed "-2 329 514 75"
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.75
+set RenderCB_OffsetPressed "2 2"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_RGBColor 0xFFFFFF
+set RenderCBExcludesDefaultRender 0
+set MouseInteract 1
+set RenderCB_Flags "/nmi /shadowed"
+set RenderCB_DX 0, RenderCB_DY 0
+set Focus -2
+set CommandPress "clearmenu Upsell"
+set CommandFocusUp "gameui focusnametry ButtonUpsellPrime"
+add MenuObject initFrom ButtonUpsell_Base
+set Name ButtonUpsellFree
+set RenderCB_Text ButtonUpsellFree
+set CommandPress "menucmd DeclineAmazingOffer"
+set CommandPress "backend statOnce upsell2:exitFree"
+set HiddenCheckBySymbol AnyVipStatusShown
+set CommandGetFocus "input set padFocusFallback ButtonUpsellFree"
+add MenuObject initFrom ButtonUpsell_Base
+set Name ButtonUpsellNowVIP
+set RenderCB_Text ButtonUpsellNowVIP
+set CommandPress "menucmd AcceptedAmazingOffer"
+set CommandPress "backend statOnce upsell2:exitVIP"
+set HiddenCheckBySymbolInv AnyVipStatusShown
+set CommandGetFocus "input set padFocusFallback ButtonUpsellNowVIP"
+add MenuObject
+set Name ButtonUpsellFocusedX
+set Texture menus/DialogFrames
+set Coords "603 407 53 91"
+set CoordsAnimated "603 407 53 91"
+set CoordsAnimated "603 408 53 91"
+set CoordsAnimated "603 409 53 91"
+set CoordsAnimated "603 410 53 91"
+set CoordsAnimated "603 411 53 91"
+set CoordsAnimated "603 410 53 91"
+set CoordsAnimated "603 409 53 91"
+set CoordsAnimated "603 408 53 91"
+set CoordsAnimationFrameTimer 0.07
+set BlendMode BlendAdd
+set PulseAlpha "2.0 -0.3 0.0"
+add MenuObject
+set Name ButtonUpsellStarterFocused
+set Texture menus/DialogFrames
+set Coords "671 332 343 79"
+set BlendMode BlendAdd
+set PulseAlpha "2.0 -0.3 0.0"
+set Child "ButtonUpsellFocusedX 140 50"
+add MenuObject initFrom ButtonUpsellStarterFocused
+set Name ButtonUpsellPrimeFocused
+set Coords "671 423 343 79"
+add MenuObject
+set Name ButtonPremiumStarterFocused
+set Texture menus/DialogFrames
+set Coords "671 332 343 79"
+set BlendMode BlendAdd
+set PulseAlpha "2.0 -0.3 0.0"
+set Child "ButtonUpsellFocusedX 120 25"
+set ScaleX 0.836, ScaleY 0.836
+add MenuObject initFrom ButtonPremiumStarterFocused
+set Name ButtonPremiumPrimeFocused
+set Coords "671 423 343 79"
+add MenuObject
+set Name ButtonUpsellTemplate
+set MouseInteractZoneExpand "-15 -15 15 15"
+set RenderBlocked 1
+set Coords "0 0 343 79"
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused ButtonUpsellStarterFocused
+add MenuObject
+set Name ButtonPremiumTemplate
+set RenderBlocked 1
+set Coords "0 0 343 79"
+set MouseInteract 1
+set Focus -2
+set DrawWhenFocused ButtonPremiumStarterFocused
+add MenuObject initFrom ButtonUpsellTemplate
+set Name ButtonUpsellStarter
+set MouseInteractZoneExpand "-415 -215 35 535"
+set CommandPress "menucmd StorePromoUnlockOrInspectBundleTry StarterPack"
+set CommandPress "backend statOnce upsell2:starterPackClick"
+set CommandFocusDown "gameui focusnametry ButtonUpsellFree ButtonUpsellNowVIP"
+set CommandFocusRight "gameui focusnametry ButtonUpsellPrime"
+set CommandGetFocus "input set padFocusFallback ButtonUpsellStarter"
+add MenuObject initFrom ButtonPremiumTemplate
+set Name ButtonPremiumStarter
+set MouseInteractZoneExpand "-215 -215 50 415"
+set CommandPress "menucmd StorePromoUnlockOrInspectBundleTry StarterPack"
+set CommandPress "backend statOnce getpremium:starterPackClick"
+set CommandFocusRight "gameui focusnametry ButtonPremiumPrime"
+set CommandFocusLeft "gameui focusnametry Shop_Premium Shop_Featured"
+set CommandGetFocus "input set padFocusFallback ButtonUpsellStarter"
+add MenuObject initFrom ButtonUpsellTemplate
+set Name ButtonUpsellPrime
+set MouseInteractZoneExpand "-35 -215 415 535"
+set CommandPress "menucmd StorePromoUnlockOrInspectPrimeBundleTry"
+set CommandPress "backend statOnce upsell2:primeClick"
+set DrawWhenFocused ButtonUpsellPrimeFocused
+set CommandFocusUp "gameui focusnametry ButtonUpsellStarter"
+set CommandFocusLeft "gameui focusnametry ButtonUpsellStarter ButtonPremiumStarter"
+set CommandFocusDown "gameui focusnametry ButtonUpsellFree ButtonUpsellNowVIP"
+set CommandGetFocus "input set padFocusFallback ButtonUpsellPrime"
+add MenuObject initFrom ButtonPremiumTemplate
+set Name ButtonPremiumPrime
+set MouseInteractZoneExpand "-115 -215 150 415"
+set CommandPress "menucmd StorePromoUnlockOrInspectPrimeBundleTry"
+set CommandPress "backend statOnce getpremium:primeClick"
+set DrawWhenFocused ButtonPremiumPrimeFocused
+set CommandFocusLeft "gameui focusnametry ButtonPremiumStarter"
+set CommandGetFocus "input set padFocusFallback ButtonUpsellPrime"
+add MenuObject
+set Name UpsellTitle
+set Texture menus/UpsellVIP
+set Coords "0 0 1024 122"
+add MenuObject
+set Name UpsellHeart
+set Texture menus/UpsellVIP
+set Coords "716 571 118 110"
+set Hidden 1
+add MenuObject
+set Name UpsellContinue
+set Texture menus/UpsellVIP
+set Coords "695 429 329 141"
+set Focus -2
+set CommandPress "loadmenu $MainMenu"
+set CommandPress "clearmenu Upsell"
+set MouseInteract 1
+set Disabled 1
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.1
+set DisabledAlphaTimeIn	1.0
+set PulseAlpha "2.4 -0.5 0.0"
+add MenuObject
+set Name UpsellMessage
+set RenderCB_FontScale 0.9
+set RenderCB_Font Roboto
+set Coords "0 0 500 1000"
+set RenderCB_DX 0, RenderCB_DY 0
+set RenderCB _DrawUTextShadowed
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Text UpsellLong
+set RenderCB_BoolArg 1
+set RenderCB_RGBColor 0xFFFFFF
+add MenuObject
+set Name UpsellTileTemplate
+set Texture menus/UpsellVIP
+set Coords "8 728 333 285"
+set ScaleX 0.72, ScaleY 0.72
+set Focus -2
+set MouseInteract 1
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.1
+add MenuObject initFrom UpsellTileTemplate
+set Name UpsellTileSilverVip
+set CommandPress "menucmd PromoUnlockBundleTry _SilverVIP"
+set CommandPress "backend statOnce upsell1:silvervip"
+add MenuObject initFrom UpsellTileTemplate
+set Name UpsellTileStarterPack
+set Coords "8 429 687 285"
+set CommandPress "menuCmd StorePromoUnlockOrInspectBundleTry StarterPack"
+set CommandPress "backend statOnce upsell1:starterpack"
+add MenuObject initFrom UpsellTileTemplate
+set Name UpsellTileBetaBundle
+set Coords "8 138 1008 285"
+set CommandPress "menuCmd StorePromoUnlockOrInspectBetaBundleTry"
+set CommandPress "backend statOnce upsell1:betabundle"
+add MenuObject
+set Name UpsellMaster
+set ContainerOnly 1
+set Child "UpsellBackground 0 0"
+set Child "UpsellBackground 950 0"
+set Child "UpsellBackground 0 1022"
+set Child "UpsellBackground 950 1022"
+set Child "UpsellMainImage 0 20"
+set Child "ButtonUpsellFree 700 980"
+set Child "ButtonUpsellNowVIP 700 980"
+set Child "ButtonUpsellStarter 577 328"
+set Child "ButtonUpsellPrime 1005 328"
+set Child "GetPremiumVipPerks 130 486"

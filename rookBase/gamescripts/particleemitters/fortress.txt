@@ -1,0 +1,210 @@
+add ParticleEmitter
+set Name FortPadLatch, MaxParticles 96
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0
+set EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleLifespanBase 0.2, ParticleLifespanVar 0.9
+set StopAfterParticleCount 96
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 0.5
+set ParticleSizeXBase 0.3, ParticleSizeYBase 2.0, ParticleSizeYVar 1.0, ParticleGrowthYBase 4.0, ParticleGrowthYVar 14.0
+set GravityScalar 0.0
+set EmitPosOnXYCylinder 1.30
+set FlagNonSquareAspect 1
+set EmitPosConstantZOffset -0.2
+set FlagZRotFacingParticles 1
+add ParticleEmitter
+set Name OutpostPadLatch , MaxParticles 48
+set EmitPeriodBase 0.005, EmitPeriodVar 0.0,  EmitVelocityWiggle 800
+set EmitVelocityBase 0.0, EmitVelocityVar 2.5, EmitVelocityWiggle 0
+set ParticleLifespanBase 0.2, ParticleLifespanVar 0.9
+set StopAfterParticleCount 48
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 0.5
+set ParticleSizeXBase 0.25, ParticleSizeYBase 2.5, ParticleSizeYVar 0.0, ParticleGrowthYBase 4.0, ParticleGrowthYVar 14.0
+set GravityScalar 3.0
+set EmitPosOnXYCylinder 0.6
+set FlagNonSquareAspect 1
+set FlagOrientWithParticleTrajectory 1
+set GravityDirection "0 0 -1"
+add ParticleEmitter
+set Name FortressShield, MaxParticles 32, Material mat_ShieldSquare
+set EmitPeriodBase 0.4, EmitPeriodVar 0.00, EmitVelocityBase 1, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleLifespanBase 5.0, ParticleLifespanVar 0
+set ParticleSizeXBase 9.8, ParticleSizeXVar 0.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.2
+set GravityScalar 0.0
+set EmitPosConstantZOffset 0.0
+set FlagFlatFacingParticles 1
+set VisibilitySphereSize 7.0
+set FlagNoWorldRenderMatrixBasisRotation 1
+add ParticleEmitter initFrom FortressShield
+set Name FortressShieldBlue
+add ParticleEmitter initFrom FortressShield
+set Name FortressShieldRed
+set Material mat_ShieldSquareRed
+add ParticleEmitter initFrom FortressShield
+set Name FortressShieldGreen
+set Material mat_ShieldSquareGreen
+add ParticleEmitter initFrom FortressShield
+set Name FortressShieldYellow
+set Material mat_ShieldSquareYellow
+add ParticleEmitter initFrom FortressShield
+set Name UnitShield
+set ParticleSizeXBase 1.5
+set ParticleLifespanBase 3.0
+set Material mat_ShieldRingYellow
+add ParticleEmitter initFrom UnitShield
+set Name UnitShieldBlue
+set Material mat_ShieldRingBlue
+add ParticleEmitter initFrom UnitShield
+set Name UnitShieldRed
+set Material mat_ShieldRingRed
+add ParticleEmitter initFrom UnitShield
+set Name UnitShieldGreen
+set Material mat_ShieldRingGreen
+add ParticleEmitter initFrom UnitShield
+set Name UnitShieldYellow
+set Material mat_ShieldRingYellow
+add ParticleEmitter
+set Name TableGlowRing, MaxParticles 32, Material mat_TableGlowRing
+set EmitPeriodBase 0.33, EmitPeriodVar 0.00, EmitVelocityBase 3.2, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleLifespanBase 7.0, ParticleLifespanVar 0
+set ParticleSizeXBase 60.2, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 1.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.2
+set GravityScalar 0.0
+set EmitPosConstantZOffset -2.0
+set FlagFlatFacingParticles 1
+set VisibilitySphereSize 60.0
+set FlagNoWorldRenderMatrixTransform 1
+add ParticleEmitter initFrom FortressShield
+set Name FortressRecharge
+set MaxParticles 8
+set EmitPeriodBase 0.05
+set EmitVelocityBase 12.0
+set ParticleGrowthXBase -12.0
+set ParticleLifespanBase 0.9
+set StopAfterParticleCount 8
+add ParticleEmitter initFrom FortressRecharge
+set Name FortressRechargeBlue
+add ParticleEmitter initFrom FortressRecharge
+set Name FortressRechargeRed
+set Material mat_ShieldSquareRed
+add ParticleEmitter initFrom FortressRecharge
+set Name FortressRechargeGreen
+set Material mat_ShieldSquareGreen
+add ParticleEmitter initFrom FortressRecharge
+set Name FortressRechargeYellow
+set Material mat_ShieldSquareYellow
+add ParticleEmitter initFrom FortressShield
+set Name OutpostShield
+set ParticleSizeXBase 5.5, ParticleSizeXVar 0.0
+set VisibilitySphereSize 4.0
+set ParticleLifespanBase 4.0
+set ParticleGrowthXBase 0.0
+add ParticleEmitter initFrom OutpostShield
+set Name OutpostShieldBlue
+add ParticleEmitter initFrom OutpostShield
+set Name OutpostShieldRed
+set Material mat_ShieldSquareRed
+add ParticleEmitter initFrom OutpostShield
+set Name OutpostShieldGreen
+set Material mat_ShieldSquareGreen
+add ParticleEmitter initFrom OutpostShield
+set Name OutpostShieldYellow
+set Material mat_ShieldSquareYellow
+add ParticleEmitter
+set Name OrbBreakBlue, MaxParticles 1, Material mat_OrbBreakBlue
+set EmitPeriodBase 0.01, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 50
+set ParticleSizeXBase 1.5, ParticleSizeXVar 0.5
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.2, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_One
+set EmitPosConstantZOffset 0.1
+set ParticleColor 0xffffffff
+set InitialRotationMax 360.0
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 0.2
+set GravityScalar 0.0
+add ParticleEmitter initFrom OrbBreakBlue
+set Name OrbReformBlue
+set Material mat_OrbReformBlue
+set ParticleTexturePagePlayTime 0.4
+set ParticleLifespanBase 0.4
+set ParticleTexturePageDX 3
+set ParticleTexturePageDY 3
+set ParticleSizeXBase 0.5
+set CameraRelativeForward 20.0
+add ParticleEmitter initFrom OrbBreakBlue
+set Name OrbBreakRed
+set Material mat_OrbBreakRed
+add ParticleEmitter initFrom OrbReformBlue
+set Name OrbReformRed
+set Material mat_OrbReformRed
+add ParticleEmitter initFrom OrbBreakBlue
+set Name OrbBreakGreen
+set Material mat_OrbBreakGreen
+add ParticleEmitter initFrom OrbReformBlue
+set Name OrbReformGreen
+set Material mat_OrbReformGreen
+add ParticleEmitter initFrom OrbBreakBlue
+set Name OrbBreakYellow
+set Material mat_OrbBreakYellow
+add ParticleEmitter initFrom OrbReformBlue
+set Name OrbReformYellow
+set Material mat_OrbReformYellow
+add ParticleEmitter
+set Name OutpostDust, MaxParticles 48, Material mat_particleDirtPuff
+set StopAfterParticleCount 48
+set EmitPeriodBase 0.001, EmitPeriodVar 0.00, EmitVelocityBase 10, EmitVelocityVar 5.5
+set EmitVelocityComponentScalar "1 1 0.4"
+set DragCoefficient 6.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 1.0
+set ParticleSizeXBase 4.0, ParticleSizeXVar 3.0
+set ParticleGrowthXBase 2.0, ParticleGrowthXVar 2.0
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set EmitPosConstantZOffset 0.5
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.1
+set GravityScalar 0.3
+set VisibilitySphereSize 8.0
+set FlagSphericalEmissionVelocity 1
+add ParticleEmitter
+set Name VREndEmbers, MaxParticles 512, Material mat_MetalEmbers
+set EmitPeriodBase 0.002, EmitPeriodVar 0.00, EmitVelocityBase 5.0, EmitVelocityVar 130.0, EmitVelocityWiggle 800
+set DragCoefficient 1.2
+set EmitPeriodBaseTimeModifier 0.02
+set ParticleLifespanBase 2.0, ParticleLifespanVar 5.0
+set ParticleSizeXBase 1.3, ParticleSizeXVar 1.9
+set ParticleSizeYBase 0.6, ParticleSizeYVar 0.4
+set ParticleGrowthXBase -0.1, ParticleGrowthXVar 0.0
+set InitialRotationMin 0.0, InitialRotationMax 360.0
+set ParticleSpinBase -100.0, ParticleSpinVar 300.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set ParticleColor 0xffffffff
+set ParticleColorSecondary 0x00000000
+set EmitPosConstantZOffset -5
+set EmitPosRandomXExtent 50.0
+set EmitPosRandomYExtent 50.2
+set EmitPosRandomZExtent 10.0
+set GravityScalar 10
+set GravityDirection "4 1 -12"
+set VisibilitySphereSize 1200.0
+set ParticleTexturePagePlayTime 120.0
+set ParticleTexturePageDX 3
+set ParticleTexturePageDY 3
+set FlagParticleTexturePageRandom 1
+set ParticleSizeXBase 0.8, ParticleSizeXVar 1.5
+set ParticleGrowthXBase -1.0, ParticleGrowthXVar 0.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.9
+set GravityScalar 5.0
+set InitialRotationMax 360
+set ParticleGrowthXBase -0.15, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 1.8, ParticleLifespanVar 0.0

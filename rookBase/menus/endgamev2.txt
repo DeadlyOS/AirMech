@@ -1,0 +1,60 @@
+stopIfVR
+onloadrun {
+sym set _KudosSrcX_ 320
+sym set _KudosSrcY_ 210
+clearmenu
+sym set MatchOverInSummary 0
+sym set EndgameFocusPage EndgameV2Rewards
+sym set EndgameDropHidden 1
+sym set EndgameContinue 1
+sym set MatchOverReal 1
+if sym GoSpectate == 1 pcmd_seq 743 20.0 menucmd EndgameFinish
+if !spectator && !replay runnow collection generateSuggestedContent ReqCnt 4 /noPriceCheck
+}
+MO DummyFocus {
+pos 0 0
+}
+MO IngameChatContainer +gameValidation !consoleHW {
+pos 1400 140
+layer 1
+}
+MO EndgameV2Master {
+pos 0 0
+layer 1
+}
+MO EndgameV2Bottom {
+pos 0 0
+layer 1
+safezone ns
+}
+MO ConMenuCurrency {
+pos 1420 35
+layer 30
+}
+onload {
+pfx worldspawn CTFScoreRed /pos 40.0 50.0 0 /tag score
+pcmd 0.5 gameui enable EndgameOverlay
+gameui enable EndgameLinesA
+gameui enable EndgameLinesB
+input set padFocusFallback EndgameContinueButton
+if usingpad runnow addUIAnim EndgameContinueButton mas_EndgameButtonHideCon.txt
+if usingpad runnow addUIAnim EndgameContinueButtonA mas_EndgameButtonHideCon.txt
+addUIAnim EndgameProgressXP mas_EndgameXPHide.txt
+if usingmouse runnow addUIAnim EndgameContinueButton mas_EndgameButtonHide.txt
+if usingmouse runnow addUIAnim EndgameContinueButtonA mas_EndgameButtonHide.txt
+addUIAnim PlayerPortaitEndgame mas_EndgamePortraitHide.txt
+addUIAnim EndgameTitle mas_EndgameHeaderHide.txt
+addUIAnim BlackBarTop mas_BlackBarTopHide.txt
+addUIAnim BlackBarBottom mas_BlackBarBottomHide.txt
+if sym EndgameWon == 0 && !spectator && !replay menucmd DoEndGameSequenceMessage reqcnt
+gameui focusNameTry EndgameContinueButton
+pcmd t0 gameui focusNameTry EndgameContinueButton
+pcmd t1 gameui focusNameTry EndgameContinueButton
+pcmd t2 gameui focusNameTry EndgameContinueButton
+}
+onunload {
+sym set MatchOverInSummary 0
+sym set EndgameDropHidden 1
+sym set EndgameContinue 0
+sym set MatchOverReal 0
+}

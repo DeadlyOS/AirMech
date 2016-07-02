@@ -1,0 +1,121 @@
+add ParticleEmitter
+set Name UnitPlacedFromRook, MaxParticles 48, Material mat_particleDirtPuff
+set EmitPeriodBase 0.001, EmitPeriodVar 0.00, EmitVelocityBase 10, EmitVelocityVar 2.5
+set FlagSphericalEmissionVelocity 1
+set EmitVelocityComponentScalar "1 1 0.4"
+set DragCoefficient 6.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 1.0
+set ParticleSizeXBase 0.70, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.1, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.1
+set GravityScalar 0.3
+set StopAfterParticleCount 48
+set VisibilitySphereSize 5.0
+add ParticleEmitter initFrom UnitPlacedFromRook
+set Name AirMechTransformDown, MaxParticles 64
+set StopAfterParticleCount 64
+set ParticleLifespanBase 0.4, ParticleLifespanVar 1.0
+set ParticleSizeXBase 0.5, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.8, ParticleGrowthXVar 0.1
+add ParticleEmitter initFrom UnitPlacedFromRook
+set Name UnitPickupFromRook, Material mat_particleDirtPuff2
+set ParticleLifespanBase 0.5, ParticleLifespanVar 1.0
+set ParticleSizeXBase 0.85, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 1.0, ParticleGrowthXVar 0.25
+set AlphaModeParam 0.4
+set GravityScalar 3.0
+set GravityDirection "0 0 1"
+add ParticleEmitter initFrom UnitPickupFromRook
+set Name SaucerTeleportDust
+set EmitPosConstantZOffset -1.2
+add ParticleEmitter initFrom UnitPlacedFromRook
+set Name AirMechTransformUp, Material mat_particleDirtPuff2
+set ParticleLifespanBase 0.5, ParticleLifespanVar 1.0
+set ParticleSizeXBase 1.0, ParticleSizeXVar 0.1
+set ParticleGrowthXBase -0.5, ParticleGrowthXVar -0.1
+set AlphaModeParam 0.4
+set GravityScalar 3.0
+set GravityDirection "0 0 1"
+add ParticleEmitter
+set Name "SaucerConvert", MaxParticles 16, Material mat_AbductRings
+set EmitPeriodBase 0.4, EmitPeriodVar 0.00, EmitVelocityBase 9, EmitVelocityVar 0.0
+set EmitVelocityWiggle 0
+set EmitVelocityComponentScalar "0 0 1"
+set ParticleEmissionDir "0 0 1"
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set ParticleSizeXBase 2.0, ParticleSizeXVar 0.0
+set ParticleGrowthXBase -2.5, ParticleGrowthXVar -0.1
+set GravityScalar 0.0
+set VisibilitySphereSize 5.0
+set FlagFlatFacingParticles 1
+set DragCoefficient 1.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.4
+set EmitPosConstantZOffset -0.4
+add ParticleEmitter
+set Name "HealAreaPfx", MaxParticles 16, Material mat_AbductRings
+set EmitPeriodBase 0.5, EmitPeriodVar 0.00, EmitVelocityBase 3, EmitVelocityVar 0.0
+set EmitVelocityWiggle 0
+set EmitVelocityComponentScalar "0 0 1"
+set ParticleEmissionDir "0 0 -1"
+set ParticleLifespanBase 0.8, ParticleLifespanVar 0.0
+set ParticleSizeXBase 1.30, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 0.2, ParticleGrowthXVar 0.0
+set ParticleColor 0xffa811ff
+set GravityScalar 0.0
+set VisibilitySphereSize 5.0
+set FlagFlatFacingParticles 1
+set DragCoefficient 0.0
+set AlphaMode eAlphaMode_One
+add ParticleEmitter
+set Name RookHoverDust, MaxParticles 128, Material mat_particleDirtSpecs
+set EmitPeriodBase 0.01, EmitPeriodVar 0.01, EmitVelocityBase 10, EmitVelocityVar 2.5
+set FlagSphericalEmissionVelocity 1
+set EmitVelocityComponentScalar "1 1 0.3"
+set DragCoefficient 5.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.6
+set ParticleSizeXBase 0.90, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.1, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.1
+set GravityScalar 0.3
+set VisibilitySphereSize 5.0
+add ParticleEmitter initFrom RookHoverDust
+set Name UnitHoverDust
+set EmitPeriodBase 0.02, EmitPeriodVar 0.01, EmitVelocityBase 6, EmitVelocityVar 2.5
+set ParticleSizeXBase 0.60, ParticleSizeXVar 0.1
+set ParticleSpinBase 0.0, ParticleSpinVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.3
+add ParticleEmitter initFrom RookHoverDust
+set Name RookHoverGrass, Material mat_ParticleFootstepGrass
+set EmitPeriodBase 0.05
+add ParticleEmitter initFrom RookHoverDust
+set Name RookHoverIce, Material mat_ParticleFootstepIce
+add ParticleEmitter initFrom RookHoverDust
+set Name RookHoverTundra, Material mat_ParticleFootstepTundra
+add ParticleEmitter
+set Name RookHoverConcrete, MaxParticles 128, Material mat_ParticleFootstepConcrete
+set EmitPeriodBase 0.02, EmitPeriodVar 0.02, EmitVelocityBase 15, EmitVelocityVar 2.5
+set FlagSphericalEmissionVelocity 1
+set EmitVelocityComponentScalar "1 1 0.3"
+set DragCoefficient 5.0
+set ParticleLifespanBase 0.4, ParticleLifespanVar 0.3
+set ParticleSizeXBase 0.90, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.1, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.1
+set GravityScalar 0.3
+set VisibilitySphereSize 5.0
+add ParticleEmitter initFrom RookHoverConcrete
+set Name UnitHoverConcrete
+set EmitPeriodBase 0.02, EmitPeriodVar 0.02, EmitVelocityBase 10, EmitVelocityVar 2.5
+set ParticleSizeXBase 0.60, ParticleSizeXVar 0.1
+set ParticleSpinBase 0.0, ParticleSpinVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.3

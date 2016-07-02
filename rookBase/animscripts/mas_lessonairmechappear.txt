@@ -1,0 +1,137 @@
+absoluteTimes
+kf time 0.0 {
+offset = 0 0 0
+}
+kf time 0.1 {
+offset = 0 0 0
+rotation = 0
+}
+kf time 0.6 {
+offset = 210 30 0
+rotation = 0
+}
+kf time 1.0 {
+intMode sqrt
+offset = 230 40 0
+rotation = 0
+}
+kf time 1.3 {
+intMode sqrt
+offset = 230 45 0
+rotation = 5
+}
+kf time 2.0 {
+intMode sqrt
+offset = 230 30 0
+rotation = 3
+}
+kf time 2.3 {
+intMode sqrt
+offset = 230 25 0
+rotation = 0
+}
+kf time 3.0 {
+intMode sqrt
+offset = 230 38 0
+rotation = 0
+}
+kf time 3.3 {
+intMode sqrt
+offset = 230 42 0
+rotation = 5
+}
+kf time 4.0 {
+intMode sqrt
+offset = 230 32 0
+rotation = 3
+}
+kf time 4.3 {
+intMode sqrt
+offset = 230 28 0
+rotation = 0
+}
+kf time 5.0 {
+intMode sqrt
+offset = 230 40 0
+rotation = 0
+}
+kf time 5.3 {
+intMode sqrt
+offset = 230 42 0
+rotation = 4
+}
+kf time 6.0 {
+intMode sqrt
+offset = 230 30 0
+rotation = 2
+}
+kf time 6.3 {
+intMode sqrt
+offset = 230 28 0
+rotation = 0
+}
+kf time 7.0 {
+intMode sqrt
+offset = 230 40 0
+rotation = 0
+}
+kf time 7.3 {
+intMode sqrt
+offset = 230 42 0
+rotation = 3
+}
+kf time 8.0 {
+intMode sqrt
+offset = 230 30 0
+rotation = 2
+}
+kf time 8.3 {
+intMode sqrt
+offset = 230 28 0
+rotation = 0
+}
+kf time 9.0 {
+intMode sqrt
+offset = 230 40 0
+rotation = 0
+}
+kf time 9.3 {
+intMode sqrt
+offset = 230 42 0
+rotation = 3
+}
+kf time 10.0 {
+offset = 210 35 0
+rotation = 1
+}
+kf time 11.0 {
+offset = 700 0 0
+rotation = 15
+}
+loop
+Cmd 0.1 "gameUI enableGroup LComU0 LComU1 LComU2 LComU3"
+Cmd 0.1 "gameUI enable LessonCommandAirMech"
+Cmd 1.0 "gameUI enable LessonCommandMouse"
+Cmd 1.2 "gameUI enable LessonCPressCtrl"
+Cmd 1.2 "gameUI show LessonCommandButton"
+Cmd 2.0 "gameUI show LComS1"
+Cmd 2.2 "gameUI show LComS0"
+Cmd 2.6 "gameUI show LComS3"
+Cmd 3.0 "gameUI show LComS2"
+Cmd 3.2 "gameUI disable LessonCPressCtrl"
+Cmd 3.2 "gameUI hide LessonCommandButton"
+Cmd 3.2 "gameUI disable LessonCommandMouse"
+Cmd 3.5 "gameUI enable LessonCommandCapture"
+Cmd 3.5 "if sym GamepadStyle != PS4 runnow gameUI enable LessonCommandCapturePad"
+Cmd 3.5 "if sym GamepadStyle == PS4 runnow gameUI enable LessonCommandCapturePadPS4"
+Cmd 4.8 "gameUI enable LessonCPressCapture"
+Cmd 5.2 "gameUI disable LessonCPressCapture"
+Cmd 5.8 "gameUI disable LessonCommandCapture"
+Cmd 5.8 "if sym GamepadStyle != PS4 runnow gameUI disable LessonCommandCapturePad"
+Cmd 5.8 "if sym GamepadStyle == PS4 runnow gameUI disable LessonCommandCapturePadPS4"
+Cmd 6.0 "gameUI hideGroup LComS2 LComS0 LComS1 LComS3"
+Cmd 7.0 "gameUI disable LComU3"
+Cmd 8.0 "gameUI disable LComU1"
+Cmd 9.0 "gameUI disable LComU0"
+Cmd 9.5 "gameUI disable LComU2"
+Cmd 10.0 "gameUI disable LessonCommandAirMech"

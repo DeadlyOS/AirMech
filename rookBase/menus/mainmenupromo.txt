@@ -1,0 +1,19 @@
+onloadrun {
+sym set SplashPromoLoaded 1
+}
+MO MainMenuPromo {
+pos -1063 146
+}
+onload {
+addUIAnim MainMenuPromo mas_PromoHide
+}
+onunloadrun {
+sym pop MenuHomeNews
+}
+onunload {
+sym pop DisableConShop
+sym set CurrentMenu CPlay
+sym set SplashPromoLoaded 0
+if sym CurrentMenu == CHome menuCmd MainMenuBackgroundSharp
+if sym CurrentMenu == CRoot menuCmd MainMenuBackgroundSharp
+}

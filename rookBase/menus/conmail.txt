@@ -1,0 +1,29 @@
+blockLoadOnConsoleSym MailInboxLoaded
+onloadrun {
+sym clear InboxSelectedIDs
+sym clear OutboxSelectedIDs
+sym setZero MailInboxFirstInd _InboxSelectedAll
+sym setZero MailOutboxFirstInd _OutboxSelectedAll
+mail writeInbox 0 10 Inbox
+mail writeOutbox 0 10 Outbox
+sym set MailInboxLoaded 1
+sym set MailMessageLoaded 0
+sym set _InboxDeleteEn 0
+if consoleplatform sym set CurrentMenu CMail
+}
+MO MailInbox {
+pos 2160 135
+layer 1
+}
+onload {
+addUIAnim MailInbox mas_MenuCenter
+pcmd t0 gameui refreshFilterName MailResize
+if usingPad gameui focusnametry MailInboxItem0 MailInboxSelectAll MailInboxButtonCompose"
+}
+onunloadrun {
+sym set MailInboxLoaded 0
+sym set _InboxDeleteEn 0
+if consoleplatform if usingpad gameui focusnametry MailInboxButton
+}
+onunload {
+}

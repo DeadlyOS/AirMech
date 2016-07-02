@@ -1,0 +1,21 @@
+blockLoadOnConsoleSym MailMessageLoaded
+onloadrun {
+if menuloaded MailMessage.txt clearmenu MailMessage.txt
+sym set MailMessageSent 1
+sym set MailMessageLoaded 1
+sym set _MessageDeleteEn 0
+}
+MO MailMessageSent {
+pos 470 140
+layer 14
+draggableUIElement
+}
+onload {
+gameui promoteToTop MailMessageSent
+}
+onunloadrun {
+sym set MailMessageLoaded 0
+sym set _MessageDeleteEn 0
+}
+onunload {
+}

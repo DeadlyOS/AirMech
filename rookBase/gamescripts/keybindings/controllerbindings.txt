@@ -1,0 +1,261 @@
+START PRESSED !@gamePause -paused +invSymCheck ConScreenInset {
+]if sym PauseUIOpen == 1 runnow menuCmd UnPauseGameWithControllerStart
+]if sym PauseUIOpen == 0 && !tryout && sym EGCommonDialogLoaded == 0 ]menuCmd PauseGameWithControllerStart
+]if sym PauseUIOpen == 0 && tryout ]menuCmd FinishTryout
+]echo start_pause
+}
+START PRESSED +paused {
+]if sym LessonUIOpen == 0 ]menuCmd UnPauseGameWithControllerStart
+]if sym LessonUIOpen == 1 && sym DialogBoxLoaded == 0 ]clearmenu Lesson /fadeout 0.5
+]if sym LessonUIOpen == 1 && sym DialogBoxLoaded == 0 ]menuCmd MP_ResumeGame local
+]echo start_unpause
+}
+START PRESSED +symCheck MainMenuLoaded +invSymCheck SplashPromoLoaded {
+gameui ignoreInputTime 0.15
+if !MenuLoaded EscMenu menuCmd #LoadEscMenu_@CurrentMenu@
+if MenuLoaded EscMenu clearmenu EscMenu /fadeout 0.15
+}
+PAD_SELECT PRESSED +symCheck MotDLoaded +invSymCheck DialogBoxLoaded +invSymCheck DropLoaded ignoreInputTime 0.6 {
+if sym DialogBoxLoaded == 0 runnow clearmenu MotD /fadeout 0.15
+if sym DialogBoxLoaded == 0 runnow clearmenu MessageOfTheDay /fadeout 0.1
+}
+PAD_CANCEL PRESSED {
+if sym DropLoaded == 1 && sym CurrentMenu != InspectDialog runnow clearmenu Drop /fadeout 0.15
+if sym DialogBoxLoaded == 1 runnow clearmenu DialogBox /fadeout 0.15
+if sym DialogBoxLoaded == 1 runnow clearmenu DialogBoxOk /fadeout 0.15
+}
+START PRESSED +symCheck SplashPromoLoaded {
+gameui ignoreInputTime 0.25
+clearmenu SplashPromo /fadeout 0.15
+}
+PAD_SELECT PRESSED +symCheck SplashPromoLoaded {
+gameui ignoreInputTime 0.1
+rook nextPromo
+}
+PAD_CANCEL PRESSED +symCheck SplashPromoLoaded {
+gameui ignoreInputTime 0.1
+rook nextPromo
+}
+X PRESSED +symCheck SplashPromoLoaded {
+gameui ignoreInputTime 0.2
+sym toggle GL_ChatMinimized
+menucmd SplashChatReposition
+}
+START PRESSED +symCheck _Bind_SoloLoadout_ {
+if sym CurrentMenu != MapSelect && sym CurrentMenu != _SetupTransition_ && sym DialogBoxLoaded == 0 runnow menuCmd ConMenuPlaySoloPressStart
+}
+START PRESSED +symCheck _Bind_MatchingUIBack_ +invSymCheck DialogBoxLoaded +invSymCheck DialogInviteListLoaded +invSymCheck MM_InGame0 +invSymCheck MM_InGame1 +invSymCheck MM_InGame2 +invSymCheck MM_InGame3 +invSymCheck MM_InGame4 +invSymCheck MM_InGame5 +invSymCheck MM_InGame6 +invSymCheck MM_InGame7 {
+gameui ignoreInputTime 0.3
+if sym MM_QueueEnabled == 1 && sym MM_PartyMembers > 1 menuCmd ConMenuLobbyQueue
+if sym MM_QueueEnabled == 1 && sym MM_PartyMembers == 1 menuCmd ConMenuLobbyQueueConfirmed
+if sym MM_ReadyEnabled == 1 runnow party2 lockin
+}
+LShoulder PRESSED +symCheck _Bind_CycleLoadoutOnShoulders_ +invSymCheck P_Rdy0 +invSymCheck _LoadoutTransition_ +invSymCheck MyId {
+sym set _LoadoutTransition_ 1
+timer setAsyncWait 1
+sym valueCycle ActiveLoadout -1 0 $OwnedLoadoutsMaxIndex
+echo cycle loadout: $$ActiveLoadout
+rook loadPreset $$ActiveLoadout
+loadout customizeInit
+pcmd_seq 667 $LoadoutDelay sym set _LoadoutTransition_ 0
+pcmd_seq 667 $LoadoutDelay timer clearAsyncWait
+playsound $MenuSoundLoadoutChanged
+}
+RShoulder PRESSED +symCheck _Bind_CycleLoadoutOnShoulders_ +invSymCheck P_Rdy0 +invSymCheck _LoadoutTransition_ +invSymCheck MyId {
+sym set _LoadoutTransition_ 1
+timer setAsyncWait 1
+sym valueCycle ActiveLoadout 1 0 $OwnedLoadoutsMaxIndex
+echo cycle loadout: $$ActiveLoadout
+rook loadPreset $$ActiveLoadout
+loadout customizeInit
+pcmd_seq 667 $LoadoutDelay sym set _LoadoutTransition_ 0
+pcmd_seq 667 $LoadoutDelay timer clearAsyncWait
+playsound $MenuSoundLoadoutChanged
+}
+LShoulder PRESSED +symCheck _Bind_PrevNextOnShoulders_ {
+if sym CurrentMenu != InspectDialog runnow customize scrollUpdateLobby 7 5 /paged -1
+if sym CurrentMenu != InspectDialog runnow gameui focusnametry ObjectSlot0
+}
+RShoulder PRESSED +symCheck _Bind_PrevNextOnShoulders_ {
+if sym CurrentMenu != InspectDialog customize scrollUpdateLobby 7 5 /paged 1
+if sym CurrentMenu != InspectDialog gameui focusnametry ObjectSlot0
+}
+PAD_CANCEL PRESSED +symCheck DialogMarketList {
+gameui ignoreInputTime 0.2
+if sym CurrentMenu == MarketListDialog clearmenu DialogMarketList /fadeout 0.15
+}
+X PRESSED +symCheck ConScreenInset {
+gameui ignoreInputTime 0.1
+menucmd ConScreenInsetReset
+}
+PAD_CANCEL PRESSED +symCheck MainMenuLoaded {
+gameui ignoreInputTime 0.2
+if sym CurrentMenu == CPlay menuCmd MainMenuExitPlay
+if sym CurrentMenu == CPvP menuCmd ConMenuPlayPvPCancel
+if sym CurrentMenu == CCoop menuCmd ConMenuPlayCoopCancel
+if sym CurrentMenu == CSolo menuCmd ConMenuPlaySoloPressCancel
+if sym CurrentMenu == CAirMechSelect runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == SelectItemDialog clearmenu SelectItemDialog
+if sym CurrentMenu == SelectUnitsCon runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == UnlockDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == InspectDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == InspectPromoDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == StdDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == EnhDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == RoomDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CQuests runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == ConLeaderboards runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == ConShop runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == ConShop && sym Shop_Sell == 1 menuCmd MyCollectionSellCancel
+if sym CurrentMenu == ConShop && sym Shop_Sell == 0 gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CHome runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CCoopSub runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CPvPSub runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CCustomSub runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CSoloSub runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CLobby runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == ConInviteList runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CWatch runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == COptions runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CStats runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CMail runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CCredits runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == MapSelect runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == MenuShop runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == MKHome runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == BuyDiamonds runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == Watch runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == TempLoadout runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CTraining runnow gameui ignoreInputTimeForce 0
+}
+PAD_CANCEL PRESSED +symCheck MainMenuConsoleLoaded -inGame +invSymCheck ConScreenInset +invSymCheck _AsyncWait_ ignoreInputTime 0.2 {
+if sym CurrentMenu == CPlay menuCmd ConMenuPlayCancel
+if sym CurrentMenu == CMulti menuCmd ConMenuPlayMultiplayerCancel
+if sym CurrentMenu == CPvP menuCmd ConMenuPlayPvPCancel
+if sym CurrentMenu == CCoop menuCmd ConMenuPlayCoopCancel
+if sym CurrentMenu == CSolo menuCmd ConMenuPlaySoloPressCancel
+if sym CurrentMenu == CPractice menuCmd ConMenuPlayPracticePressCancel
+if sym CurrentMenu == CSoloLevel menuCmd ConMenuPlaySoloPressCancel
+if sym CurrentMenu == CSoloLoadout menuCmd ConMenuPlaySoloLoadoutCancel
+if sym CurrentMenu == CVersusLoadout menuCmd ConMenuPlayMultiplayerCancel
+if sym CurrentMenu == CCoopLoadout menuCmd ConMenuPlayCoopCancel_old
+if sym CurrentMenu == CTraining menuCmd ConMenuPlayTrainingCancel
+if sym CurrentMenu == COptControls menuCmd ConMenuOptControlsCancel
+if sym CurrentMenu == COptGameplay menuCmd ConMenuOptGameplayCancel
+if sym CurrentMenu == COptVideo menuCmd ConMenuOptVideoCancel
+if sym CurrentMenu == COptScreenInset && sym ConScreenInset == 1 menuCmd ConScreenInsetExit
+if sym CurrentMenu == COptAudio menuCmd ConMenuOptAudioCancel
+if sym CurrentMenu == COptContact menuCmd ConMenuOptContactCancel
+if sym CurrentMenu == CAirMechSelect runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == SelectItemDialog clearmenu SelectItemDialog
+if sym CurrentMenu == SelectUnitsCon runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == UnlockDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == InspectDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == InspectPromoDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == StdDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == EnhDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == RoomDialog runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CQuests runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == ConLeaderboards runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == ConShop runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == ConShop && sym Shop_Sell == 1 menuCmd MyCollectionSellCancel
+if sym CurrentMenu == ConShop && sym Shop_Sell == 0 gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CHome runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CCoopSub runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CPvPSub runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CCustomSub runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CSoloSub runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CLobby runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == ConInviteList runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CWatch runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == COptions runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CStats runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CMail runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == CCredits runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == MapSelect runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == BuyDiamonds runnow gameui ignoreInputTimeForce 0
+if sym CurrentMenu == ConLeaderboards sym set DisableConShop 0
+}
+PAD_SELECT PRESSED +symCheck MainMenuConsoleLoaded {
+if sym CurrentMenu == ConLeaderboards runnow menucmd ConMenuBoardsFriendsFilterToggle
+}
+BACK PRESSED -inGame ignoreInputTime 0.2 +invSymCheck DisableConShop +invSymCheck BlockConShop +invSymCheck _AsyncWait_ +invSymCheck CapsuleRareChoicesLoaded {
+if menuloaded ConShop clearmenu ConShop /fadeout $ConShopFadeoutTime
+if menuloaded ConShop clearmenu UnlockDialog /fadeout 0.15
+if menuloaded ConShop clearmenu InspectDialog /fadeout 0.15
+if !menuloaded ConShop loadmenu ConShop /fadein 0.15
+}
+BACK PRESSED {
+if sym CurrentMenu == UnlockDialog clearmenu UnlockDialog /fadeout 0.15
+if sym CurrentMenu == InspectDialog clearmenu InspectDialog /fadeout 0.15
+}
+Y PRESSED  {
+if menuLoaded QuestCompletePopup && sym DropLoaded == 0 runnow menuCmd OnYQuestCompletePopup
+if menuloaded UplayQuestCompletePopup && sym DropLoaded == 0 runnow menucmd OnYUplayQuestCompletePopup
+if sym CurrentMenu == InspectDialog runnow sym inc DialogPageDisplay 1
+if sym CurrentMenu == InspectDialog && sym DialogPageDisplay > $DialogPageCount sym set DialogPageDisplay 0
+if sym CurrentMenu == InspectDialog && sym DialogPageDisplay >= $DialogPageCount floatsym set Scrollable0Pos 0
+if sym CurrentMenu == UnlockDialog runnow menucmd UnlockDialogYPageSwitch
+if sym CurrentMenu == EnhDialog runnow menucmd $EnhDialogActionY
+if !menuLoaded QuestCompletePopup && sym CurrentMenu == CLobby && sym #Ally@LobbyV1FocusSlot@Mode == 2 sym valueCycle LobbyV1DisplayMode 1 0 3
+if !menuLoaded QuestCompletePopup && sym CurrentMenu == CLobby && sym #Ally@LobbyV1FocusSlot@Mode == 2 && sym LobbyV1FocusSlot >= 0 menuCmd LobbyV1FocusSlotChange local $LobbyV1FocusSlot
+if !menuLoaded QuestCompletePopup && sym CurrentMenu == CLobby && sym #Ally@LobbyV1FocusSlot@Mode == 1 && sym MatchmakingBotsAllowed == 1 menucmd CycleBotDifficutly
+if !menuLoaded QuestCompletePopup && sym CurrentMenu == CLobby && sym #Ally@LobbyV1FocusSlot@Mode == 1 && sym MatchmakingBotsAllowed == 0 sym valueCycle LobbyV1DisplayMode 1 0 3
+if !menuLoaded QuestCompletePopup && sym CurrentMenu == CLobby && sym #Ally@LobbyV1FocusSlot@Mode == 1 && sym MatchmakingBotsAllowed == 0 if sym LobbyV1FocusSlot >= 0 menuCmd LobbyV1FocusSlotChange local $LobbyV1FocusSlot
+if !menuLoaded QuestCompletePopup && sym CurrentMenu == CLobby && sym #Ally@LobbyV1FocusSlot@Mode == 4 menucmd CycleBotDifficutly
+if sym _tryoutLaunch_ == 1 runnow menucmd UnlockDialogYPageSwitch"
+}
+Y PRESSED +symCheck MainMenuConsoleLoaded {
+if sym CurrentMenu != ConLeaderboards && sym CurrentMenu != CLobby && sym CurrentMenu != InspectDialog && sym DialogBoxLoaded == 0 runnow sym toggle AirMechDisplayRobot
+if sym CurrentMenu == ConLeaderboards runnow menucmd ConMenuBoardsToBottom
+if sym CurrentMenu == ConInviteList runnow platform reqGamerCardForUser $_INV_NameFocused
+if sym CurrentMenu == CRoot && sym PLATFORM == XBONE && !menuloaded UplayQuestCompletePopup runnow xbone switchuser
+}
+Y PRESSED +invSymCheck MainMenuConsoleLoaded {
+if sym CurrentMenu == PilotSelect && sym PLATFORM == XBONE runnow xbone switchuser
+}
+X PRESSED +symCheck MainMenuConsoleLoaded {
+if sym CurrentMenu == ConLeaderboards runnow menucmd ConMenuBoardsToTop
+if sym CurrentMenu == EnhDialog runnow menucmd $EnhDialogActionX
+if sym CurrentMenu == InspectDialog && sym BtnHint_MktList == 1 menuCmd SellFromInspect
+}
+X PRESSED +invSymCheck MainMenuConsoleLoaded {
+if usingpad runnow player local payFastRespawn RespawnFasterOk
+if sym CurrentMenu == EnhDialog runnow menucmd $EnhDialogActionX
+if sym CurrentMenu == InspectDialog && sym BtnHint_MktList == 1 && sym CapsuleRareChoicesLoaded == 0 menuCmd SellFromInspect
+if sym CurrentMenu != InspectDialog runnow gameui ignoreInputTimeForce 0
+}
+LShoulder PRESSED +symCheck MainMenuConsoleLoaded +invSymCheck CapsuleRareChoicesLoaded {
+if sym CurrentMenu == SelectUnitsCon menuCmd PrevUnitLoadoutCon
+if sym CurrentMenu == ConLeaderboards runnow menucmd ConMenuBoardsCycleLeft
+if sym CurrentMenu == ConShop && sym ShowShopItems == 1 runnow menucmd ConShopCyclePage local -1
+if sym CurrentMenu == CQuests runnow menucmd ConQuestsPagePrevious
+if sym CurrentMenu == CWatch runnow menucmd ConWatchPagePrevious
+if sym CurrentMenu == ConInviteList runnow social scrollUpdate friends /inviteableOnlyPageDown
+}
+RShoulder PRESSED +symCheck MainMenuConsoleLoaded +invSymCheck CapsuleRareChoicesLoaded {
+if sym CurrentMenu == SelectUnitsCon menuCmd NextUnitLoadoutCon
+if sym CurrentMenu == ConLeaderboards runnow menucmd ConMenuBoardsCycleRight
+if sym CurrentMenu == ConShop && sym ShowShopItems == 1 runnow menucmd ConShopCyclePage local 1
+if sym CurrentMenu == CQuests runnow menucmd ConQuestsPageNext
+if sym CurrentMenu == CWatch runnow menucmd ConWatchPageNext
+if sym CurrentMenu == ConInviteList runnow social scrollUpdate friends /inviteableOnlyPageUp
+}
+LShoulder PRESSED +symCheck MatchOverInSummary +invSymCheck ConQuestsMenu {
+if sym EndgameFocusPage == EndgameV2Rewards addUIAnim EndgameV2Rewards mas_MenuRight.txt
+if sym EndgameFocusPage == EndgameV2Rewards addUIAnim EndgameV2Stats mas_MenuCenterFromLeft.txt
+if sym EndgameFocusPage == EndgameV2Rewards sym set EndgameFocusPage EndgameV2Stats
+if sym EndgameFocusPage == EndgameV2Stats addUIAnim EndgameV2Stats mas_MenuRight.txt
+if sym EndgameFocusPage == EndgameV2Stats addUIAnim EndgameV2Rewards mas_MenuCenterFromLeft.txt
+if sym EndgameFocusPage == EndgameV2Stats sym set EndgameFocusPage EndgameV2Rewards
+gameui focusnametry EndgameContinueButton
+}
+RShoulder PRESSED +symCheck MatchOverInSummary +invSymCheck ConQuestsMenu {
+if sym EndgameFocusPage == EndgameV2Rewards addUIAnim EndgameV2Rewards mas_MenuLeft.txt
+if sym EndgameFocusPage == EndgameV2Rewards addUIAnim EndgameV2Stats mas_MenuCenterFromRight.txt
+if sym EndgameFocusPage == EndgameV2Rewards sym set EndgameFocusPage EndgameV2Stats
+if sym EndgameFocusPage == EndgameV2Stats addUIAnim EndgameV2Stats mas_MenuLeft.txt
+if sym EndgameFocusPage == EndgameV2Stats addUIAnim EndgameV2Rewards mas_MenuCenterFromRight.txt
+if sym EndgameFocusPage == EndgameV2Stats sym set EndgameFocusPage EndgameV2Rewards
+gameui focusnametry EndgameContinueButton
+}

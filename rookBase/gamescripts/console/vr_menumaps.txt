@@ -1,0 +1,102 @@
+sym set VrMapModelMat "/model vr/FlairBlock0.amf /material mat_VrPictureAirMech /rootScale 4.0"
+sym set VrMapRot 225
+sym set VrMapRotDelta -10
+sym set DrawingMapPreviews 1
+menu3d addChild MenusVR MenusVRMaps /noVis /rootRot -11 0 0
+menu3d setWorldPose MenusVRMaps	0.0 -50.0 60.0
+menu3d addChild MenusVRMaps Map0 /rootRot 0 0 $$VrMapRot
+menu3d setWorldPose Map0 0 0 0
+menu3d addChild Map0 Mapsimple_vr $$VrMapModelMat /noVis /rootRot 0 0 0
+menu3d setWorldPose Mapsimple_vr	0.0 -275.0 0.0
+menu3d logicFnc Mapsimple_vr amFocusCapsule /radiusInner 15.0 /height 50.0 /skinDepth 10.0 /offset 0 0 -15 /cmdfocus [menucmd TouchMap simple_vr] /cmdunfocus [menucmd UnTouchMap simple_vr]
+sym setPair VrDrawMap simple_vr VrSelectMode Maps
+pcmd t2 menu3d updateORTSnapshot Mapsimple_vr 0 120 500 500
+sym inc VrMapRot $$VrMapRotDelta
+menu3d addChild MenusVRMaps Map2 /rootRot 0 0 $$VrMapRot
+menu3d addChild Map2 Mapspiral_vr $$VrMapModelMat /noVis  /rootRot 0 0 0
+menu3d setWorldPose Map2 0 0 0
+menu3d setWorldPose Mapspiral_vr	0 -275 0.0
+menu3d logicFnc Mapspiral_vr amFocusCapsule /radiusInner 15.0 /height 50.0 /skinDepth 10.0 /offset 0 0 -15 /cmdfocus [menucmd TouchMap spiral_vr] /cmdunfocus [menucmd UnTouchMap spiral_vr]
+pcmd t6 sym setPair VrDrawMap spiral_vr VrSelectMode Maps
+pcmd t8 menu3d updateORTSnapshot Mapspiral_vr 0 120 500 500
+sym inc VrMapRot $$VrMapRotDelta
+menu3d addChild MenusVRMaps Map3 /rootRot 0 0 $$VrMapRot
+menu3d addChild Map3 Mapsandrim_vr $$VrMapModelMat /noVis /rootRot 0 0 0
+menu3d setWorldPose Map3 0 0 0
+menu3d setWorldPose Mapsandrim_vr	0 -275 0.0
+menu3d logicFnc Mapsandrim_vr amFocusCapsule /radiusInner 15.0 /height 50.0 /skinDepth 10.0 /offset 0 0 -15 /cmdfocus [menucmd TouchMap sandrim_vr] /cmdunfocus [menucmd UnTouchMap sandrim_vr]
+pcmd t9 sym setPair VrDrawMap sandrim_vr VrSelectMode Maps
+pcmd t11 menu3d updateORTSnapshot Mapsandrim_vr 0 120 500 500
+sym inc VrMapRot $$VrMapRotDelta
+menu3d addChild MenusVRMaps Map1 /rootRot 0 0 $$VrMapRot
+menu3d addChild Map1 Mapsurvival_vr $$VrMapModelMat /noVis  /rootRot 0 0 0
+menu3d setWorldPose Map1 0 0 0
+menu3d setWorldPose Mapsurvival_vr	0 -275 0.0
+menu3d logicFnc Mapsurvival_vr amFocusCapsule /radiusInner 15.0 /height 50.0 /skinDepth 10.0 /offset 0 0 -15 /cmdfocus [menucmd TouchMap survival_vr] /cmdunfocus [menucmd UnTouchMap survival_vr]
+pcmd t3 sym setPair VrDrawMap survival_vr VrSelectMode Maps
+pcmd t5 menu3d updateORTSnapshot Mapsurvival_vr 0 120 500 500
+sym inc VrMapRot $$VrMapRotDelta
+menu3d addChild MenusVRMaps Map4 /rootRot 0 0 $$VrMapRot
+menu3d addChild Map4 Mapchasm_vr $$VrMapModelMat /noVis /rootRot 0 0 0
+menu3d setWorldPose Map4 0 0 0
+menu3d setWorldPose Mapchasm_vr	0 -275 0.0
+menu3d logicFnc Mapchasm_vr amFocusCapsule /radiusInner 15.0 /height 50.0 /skinDepth 10.0 /offset 0 0 -15 /cmdfocus [menucmd TouchMap chasm_vr] /cmdunfocus [menucmd UnTouchMap chasm_vr]
+pcmd t12 sym setPair VrDrawMap chasm_vr VrSelectMode Maps
+pcmd t14 menu3d updateORTSnapshot Mapchasm_vr 0 120 500 500
+sym inc VrMapRot $$VrMapRotDelta
+menu3d addChild MenusVRMaps Map5 /rootRot 0 0 $$VrMapRot
+menu3d addChild Map5 Mapcrater_vr $$VrMapModelMat /noVis /rootRot 0 0 0
+menu3d setWorldPose Map5 0 0 0
+menu3d setWorldPose Mapcrater_vr	0 -275 0.0
+menu3d logicFnc Mapcrater_vr amFocusCapsule /radiusInner 15.0 /height 50.0 /skinDepth 10.0 /offset 0 0 -15 /cmdfocus [menucmd TouchMap crater_vr] /cmdunfocus [menucmd UnTouchMap crater_vr]
+pcmd t15 sym setPair VrDrawMap crater_vr VrSelectMode Maps
+pcmd t17 menu3d updateORTSnapshot Mapcrater_vr 0 120 500 500
+sym inc VrMapRot $$VrMapRotDelta
+menu3d addChild MenusVRMaps Map6 /rootRot 0 0 $$VrMapRot
+menu3d addChild Map6 Mapduel_vr $$VrMapModelMat /noVis /rootRot 0 0 0
+menu3d setWorldPose Map6 0 0 0
+menu3d setWorldPose Mapduel_vr	0 -275 0.0
+menu3d logicFnc Mapduel_vr amFocusCapsule /radiusInner 15.0 /height 50.0 /skinDepth 10.0 /offset 0 0 -15 /cmdfocus [menucmd TouchMap duel_vr] /cmdunfocus [menucmd UnTouchMap duel_vr]
+pcmd t18 sym setPair VrDrawMap duel_vr VrSelectMode Maps
+pcmd t20 menu3d updateORTSnapshot Mapduel_vr 0 120 500 500
+sym inc VrMapRot $$VrMapRotDelta
+menu3d addChild MenusVRMaps Map7 /rootRot 0 0 $$VrMapRot
+menu3d addChild Map7 Maptwinpeaks_vr $$VrMapModelMat /noVis /rootRot 0 0 0
+menu3d setWorldPose Map7 0 0 0
+menu3d setWorldPose Maptwinpeaks_vr	0 -275 0.0
+menu3d logicFnc Maptwinpeaks_vr amFocusCapsule /radiusInner 15.0 /height 50.0 /skinDepth 10.0 /offset 0 0 -15 /cmdfocus [menucmd TouchMap twinpeaks_vr] /cmdunfocus [menucmd UnTouchMap twinpeaks_vr]
+pcmd t21 sym setPair VrDrawMap twinpeaks_vr VrSelectMode Maps
+pcmd t23 menu3d updateORTSnapshot Maptwinpeaks_vr 0 120 500 500
+sym inc VrMapRot $$VrMapRotDelta
+menu3d addChild MenusVRMaps Map8 /rootRot 0 0 $$VrMapRot
+menu3d addChild Map8 Mapsalt_vr $$VrMapModelMat /noVis /rootRot 0 0 0
+menu3d setWorldPose Map8 0 0 0
+menu3d setWorldPose Mapsalt_vr	0 -275 0.0
+menu3d logicFnc Mapsalt_vr amFocusCapsule /radiusInner 15.0 /height 50.0 /skinDepth 10.0 /offset 0 0 -15 /cmdfocus [menucmd TouchMap salt_vr] /cmdunfocus [menucmd UnTouchMap salt_vr]
+pcmd t24 sym setPair VrDrawMap salt_vr VrSelectMode Maps
+pcmd t26 menu3d updateORTSnapshot Mapsalt_vr 0 120 500 500
+sym inc VrMapRot $$VrMapRotDelta
+menu3d addChild MenusVRMaps Map9 /rootRot 0 0 $$VrMapRot
+menu3d addChild Map9 Mapnesthorn_vr $$VrMapModelMat /noVis /rootRot 0 0 0
+menu3d setWorldPose Map9 0 0 0
+menu3d setWorldPose Mapnesthorn_vr	0 -275 0.0
+menu3d logicFnc Mapnesthorn_vr amFocusCapsule /radiusInner 15.0 /height 50.0 /skinDepth 10.0 /offset 0 0 -15 /cmdfocus [menucmd TouchMap nesthorn_vr] /cmdunfocus [menucmd UnTouchMap nesthorn_vr]
+pcmd t27 sym setPair VrDrawMap nesthorn_vr VrSelectMode Maps
+pcmd t29 menu3d updateORTSnapshot Mapnesthorn_vr 0 120 500 500
+sym inc VrMapRot $$VrMapRotDelta
+pcmd t29 sym set DrawingMapPreviews 0
+pcmd 0.1 menu3d addChild MenusVRMaps MapSelectBase /rootRot 0 0 225 /worldPose 0 0 0
+pcmd 0.1 menu3d addChild MapSelectBase MapSelect /model vr/FlairBlockOutline.amf /material mat_BlockSelectGlowBlue /rootScale 4.5 /rootRot 0 0 0 /worldPose 0 -275 0 /noVis
+pcmd 0.4 menu3d addAnimScript MapSelect as_VRMenuTileIn.txt
+pcmd 0 menu3d addAnimScript Mapsimple_vr as_VRMenuMapAppear.txt
+pcmd 0.2 menu3d addAnimScript Mapsurvival_vr as_VRMenuMapAppear.txt
+pcmd 0.25 menu3d addAnimScript Mapspiral_vr as_VRMenuMapAppear.txt
+pcmd 0.3 menu3d addAnimScript Mapsandrim_vr as_VRMenuMapAppear.txt
+pcmd 0.35 menu3d addAnimScript Mapchasm_vr as_VRMenuMapAppear.txt
+pcmd 0.4 menu3d addAnimScript Mapcrater_vr as_VRMenuMapAppear.txt
+pcmd 0.45 menu3d addAnimScript Mapduel_vr as_VRMenuMapAppear.txt
+pcmd 0.5 menu3d addAnimScript Maptwinpeaks_vr as_VRMenuMapAppear.txt
+pcmd 0.55 menu3d addAnimScript Mapsalt_vr as_VRMenuMapAppear.txt
+pcmd 0.6 menu3d addAnimScript Mapnesthorn_vr as_VRMenuMapAppear.txt
+pcmd 0.6 menu3d setVisible MenusVRMaps
+pcmd 0.6 sym set MenuTouchCancelCmd SelectMapCancel

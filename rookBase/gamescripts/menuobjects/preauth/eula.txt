@@ -1,0 +1,92 @@
+add MenuObject
+set Name EULAScrollbar
+set Texture "menus/Scrollbar"
+set Layer 27
+set Coords "32 0 32 512"
+set Child "EULAScrollbarPosition -2 0"
+add MenuObject
+set Name EULAScrollbarPosition
+set Texture "menus/Scrollbar"
+set Layer 27
+set Coords "0 409 32 512"
+set CoordsInterpolatedDest "0 0 32 512"
+set CoordsInterpolantCommand "NOP"
+set CoordsInterpolantCommandResult symEULAPos
+set ScrollbarPos symEULAPos
+set MouseInteract 1
+set RenderCB_YClipConfig "400 0 700 0"
+add MenuObject
+set Name EULABackground
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Layer 16
+set Focus 0
+set NoAlphaMod 0
+set DisabledAlpha 0.85
+set FocusedTimeIn 0.0
+set FocusedTimeOut 0.0
+add MenuObject
+set Name EULAText
+set Coords "0 0 920 480"
+set Layer 26
+set RenderCB _DrawUText
+set RenderCBExcludesDefaultRender 1
+set RenderCB_DX 1200
+set RenderCB_DY 500
+set RenderCB_Font DroidSans
+set RenderCB_RGBColor "1.00 0.89 0.46"
+set RenderCB_FontScale 1.0
+set RenderCB_Text EULA
+set RenderCB_FloatArg 2000.0
+set RenderCB_BoolArg 1
+set RenderCB_Options "/cache eula /posFS symEULAPos"
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_YClipConfig "400 0 700 0"
+add MenuObject
+set Name EulaButtonTemplate
+set Texture menus/LoginBase
+set Coords "2 54 271 47"
+set CoordsDisabled "2 205 271 47"
+set CoordsFocused "2 104 271 47"
+set CoordsPressed "2 154 271 47"
+set RenderCB_DX 271
+set RenderCB_DY 47
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB_FontScale 0.9
+set RenderCB_Offset "0 0"
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor "1 1 0.8"
+set RenderCB_RGBColorDisabled "0.5 0.5 0.5"
+set DrawWhenFocused LoginButtonHighlight
+set MouseInteract 1
+set Focus -2
+set Layer 27
+set DisabledAlpha 1.0
+set RenderCBExcludesDefaultRender 0
+add MenuObject initFrom EulaButtonTemplate
+set Name EULAAccept
+set RenderCB_Text EULAAccept
+set CommandPress "log Press_EULAAccept"
+set CommandPress "playSound MenuChoose"
+set CommandPress "sym set EULAAcceptedUnsaved 1"
+set CommandPress "clearmenu eula.txt"
+add MenuObject initFrom EulaButtonTemplate
+set Name EULADecline
+set RenderCB_Text EULADecline
+set CommandPress "log Press_EULADecline"
+set CommandPress "exit"
+add MenuObject
+set Name EULAMaster
+set Coords "0 0 720 720"
+set ContainerOnly 1
+set Anchor Center
+set Child "EULABackground 0 0"
+set Child "EULAText -200 90"
+set Child "EULAAccept 81 700"
+set Child "EULADecline 385 700"
+set Child "EULAScrollbar 1000 90"

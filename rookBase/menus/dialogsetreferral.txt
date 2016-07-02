@@ -1,0 +1,23 @@
+onloadrun {
+if sym CurrentMenu == CHome && console menuCmd ConMenuBlur
+if sym CurrentMenu == CRoot && console menuCmd ConMenuBlur
+gameui clearScrollableDrawHashes
+sym clear RedeemCode
+}
+MO SetReferralDialogMaster {
+pos 0 0
+layer 15
+}
+onload {
+gameui promoteToTop SetReferralDialogMaster
+sym push CurrentMenu DialogSetReferral
+sym push DisableConShop 1
+sym set DialogSetReferral 1
+}
+onunloadrun {
+rookMenus previewClear
+sym pop CurrentMenu DisableConShop
+sym set DialogSetReferral 0
+if sym CurrentMenu == CHome && console menuCmd ConMenuSharp
+if sym CurrentMenu == CRoot && console menuCmd ConMenuSharp
+}

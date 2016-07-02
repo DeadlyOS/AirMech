@@ -1,0 +1,20 @@
+onloadrun {
+sym set DialogBoxLoaded 1
+rookMenus previewHide
+}
+MO DialogMasterVK {
+pos 0 445
+}
+onload {
+]if usingPad ]gameUI focusName DialogButton1
+}
+onunload {
+]sym set DialogBoxLoaded 0
+]gameUI focusName $MenuLastFocus
+]sym set MenuLastFocus null
+]sym set DialogBoxButton0 DialogButtonOk
+]sym set DialogBoxButton1 DialogButtonCancel
+}
+onunloadrun {
+rookMenus previewShow
+}

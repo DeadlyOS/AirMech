@@ -1,0 +1,395 @@
+add MenuObject
+set Name WarzoneBase
+set ContainerOnly 1
+set Child "WarzoneBlack 0 0"
+set Child "WarzoneBg 0 0"
+set Child "ArchivesLinesAnglePanA 0 340"
+set Child "ArchivesLinesAnglePanB 0 400"
+set Child "WarzoneTimelineCurrent 160 200"
+set Child "WarzoneTimeline 210 330"
+set Child "WarzoneTopBar 0 0"
+add MenuObject
+set Name WarzoneBlack
+set Texture effects/black
+set Coords "0 0 16 16"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus -2
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject
+set Name WarzoneBg
+set Texture menus/WarzoneBg1
+set Coords "0 0 1920 1080"
+set Disabled 1
+set DisabledAlphaTimeOut 0.25
+set DisabledAlphaTimeIn 0.25
+add MenuObject
+set Name WarzoneTopBarOverlay
+set Texture menus/OverlayDistress
+set Coords "0 0 1930 160"
+set BlendMode BlendDestColor
+add MenuObject
+set Name WarzoneTopBar
+set Texture menus/Warzone
+set Coords "0 0 1920 175"
+set Child "WarzoneTopBarClose 1830 10"
+set Child "WarzoneTopTitleType 165 0					Lbl_WarzoneTitle	1.0"
+set Child "WarzoneTopCallToAction1 165 95				null				0.6"
+set Child "WarzoneTopCallToAction1Type 165 95			null				0.6"
+set Child "WarzoneTopCallToAction2 165 115				null				0.6"
+set Child "WarzoneTopCallToAction2Type 165 115			null				0.6"
+set Child "WarzoneTopCallToAction3 165 135				null				0.6"
+set Child "WarzoneTopCallToAction3Type 165 135			null				0.6"
+set Child "WarzoneTopBarOverlay -5 3"
+add MenuObject
+set Name WarzoneTopBarClose
+set Texture menus/Warzone
+set Coords "1951 22 82 82"
+set CoordsFocused "1951 125 82 82"
+set Focus -2
+set MouseInteract 1
+set ScaleXFocused 1.1, ScaleYFocused 1.1
+set CommandPress "clearmenu Warzone /fadeout 0.1"
+add MenuObject
+set Name WarzoneTopTitle
+set Coords "0 0 1400 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor 0x5d2020
+set RenderCB_Text @_Arg1_@
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_Flags "/nmi /fitX"
+add MenuObject initFrom WarzoneTopTitle
+set Name WarzoneTopTitleType
+set RenderCB_RGBColor 0x9b1b1b
+set RenderCB_FloatSymbol S_WarTitle
+set RenderCB_FloatArg 30.0
+set Disabled 1
+set CommandOnCreate "floatsym set S_WarTitle 0.0"
+add MenuObject initFrom WarzoneTopTitle
+set Name WarzoneTopCallToAction1
+set Coords "0 0 1400 50"
+set RenderCB_ConsoleSymbol _WarzoneEraCallToAction1
+set RenderCB_RGBColor 0x5d2020
+set RenderCB_Font RobotoBold
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set FilterName Warzone
+add MenuObject initFrom WarzoneTopCallToAction1
+set Name WarzoneTopCallToAction1Type
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FloatSymbol S_WarCall1
+set RenderCB_FloatArg 60.0
+set Disabled 1
+set CommandOnCreate "floatsym set S_WarCall1 0.0"
+add MenuObject initFrom WarzoneTopCallToAction1
+set Name WarzoneTopCallToAction2
+set RenderCB_ConsoleSymbol _WarzoneEraCallToAction2
+set RenderCB_RGBColor 0x5d2020
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set FilterName Warzone
+add MenuObject initFrom WarzoneTopCallToAction2
+set Name WarzoneTopCallToAction2Type
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FloatSymbol S_WarCall2
+set RenderCB_FloatArg 60.0
+set Disabled 1
+set CommandOnCreate "floatsym set S_WarCall2 0.0"
+add MenuObject initFrom WarzoneTopCallToAction1
+set Name WarzoneTopCallToAction3
+set RenderCB_ConsoleSymbol _WarzoneEraCallToAction3
+set RenderCB_RGBColor 0x5d2020
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.1
+set FilterName Warzone
+add MenuObject initFrom WarzoneTopCallToAction3
+set Name WarzoneTopCallToAction3Type
+set RenderCB_RGBColor 0xffffff
+set RenderCB_FloatSymbol S_WarCall3
+set RenderCB_FloatArg 60.0
+set Disabled 1
+set CommandOnCreate "floatsym set S_WarCall3 0.0"
+add MenuObject
+set Name WarzoneTimelineDesc
+set Coords "0 0 1320 300"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xffffff
+set RenderCB_ConsoleSymbol @_Arg1_@
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_Flags "/nmi /shadowed"
+set RenderCB_BoolArg 1
+set DisabledAlphaTimeOut 0.0
+set DisabledAlphaTimeIn 0.25
+set DisabledAlphaTimeInPreWait 0.1
+add MenuObject
+set Name WarzoneTimeline
+set ContainerOnly 1
+set Child "WarzoneRiseMaps 0 0"
+add MenuObject
+set Name WarzoneMap
+set Texture menus/Warzone
+set Coords "41 420 192 493"
+set Focus -2
+set MouseInteract 1
+set PulseAlpha "2.0 -0.1 0.3"
+set SaveArgs 3
+set FirstDrawnChildren 1
+set Child "WarzoneMapHover 4 -45"
+set Child "WarzoneMap@_Arg1_@ -5 22"
+set Child "WarzoneMapName 10 470				@_Arg1_@			0.5"
+set Child "WarzoneMapNameSelected 10 470		@_Arg1_@			0.5"
+set Child "WarzoneMapCheckLocked 50 -10			@_Arg1_@"
+set Child "WarzoneMapCheck 50 -10				@_Arg1_@"
+set Child "WarzoneMapCardLocked 27 287"
+set Child "WarzoneMapCard 24 300				@_Arg1_@			@_Arg2_@	0.28"
+set Child "WarzoneMapPlaying 8 -40				WarzoneNowPlaying	0.35"
+set Child "WarzoneMapGoButton 45 190			@_Arg1_@			@_Arg2_@"
+set Child "WarzoneMapGoButton2 45 190			@_Arg1_@			@_Arg2_@"
+set CommandOnCreate ">rook disabledMapCheck @_Arg1_@ _MapDisabled_ /nocontent"
+set CommandOnCreate ">if sym _MapDisabled_ == 0 pcmd 1.0 menucmd WarzoneTimelineMove local @_Arg1_@"
+set CommandFocusLeft ">gameUI focusName @_Arg6_@"
+set CommandFocusRight ">gameUI focusName @_Arg7_@"
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+set CommandPress ">menucmd WarzoneTimelineMove local @_Arg1_@"
+set CommandPress "playSound $MenuSoundClick"
+add MenuObject
+set Name WarzoneMapGoButton
+set Texture menus/MatchGo
+set Coords "0 0 256 256"
+set MouseInteract 1
+set MouseInteractZoneExpand "20 20 -20 -20"
+set Focus -2
+set ScaleX 0.4, ScaleY 0.4
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set DrawWhenFocused WarzoneMapGoButtonPulse2
+set DrawWhenFocusedOffset "-20 -20"
+set Child "WarzoneMapGoButtonPulse 0 0
+set HiddenCheckBySymbolValue _WarzoneMapSelected!=@_Arg1_@
+set HiddenCheckBySymbolInv Has@_Arg2_@
+set CommandPress ">if sym Has@_Arg2_@ == 1 menucmd WarzoneRunMap @_Arg1_@"
+add MenuObject
+set Name WarzoneMapGoButton2
+set Texture menus/MatchGo
+set Coords "0 0 256 256"
+set MouseInteract 1
+set MouseInteractZoneExpand "20 20 -20 -20"
+set Focus -2
+set ScaleX 0.4, ScaleY 0.4
+set ScaleXFocused 1.05
+set ScaleYFocused 1.05
+set FocusedTimeIn 0.05
+set FocusedTimeOut 0.15
+set DrawWhenFocused WarzoneMapGoButtonPulse2
+set DrawWhenFocusedOffset "-20 -20"
+set Child "WarzoneMapGoButtonPulse 0 0
+set Hidden $_MapDisabled_
+set HiddenCheckBySymbolValue _WarzoneMapSelected!=@_Arg1_@
+set CommandPress ">rook disabledMapCheck @_Arg1_@ _MapDisabled_ /nocontent"
+set CommandPress ">if sym _MapDisabled_ == 0 menucmd BSC_RunMap @_Arg1_@ pve NA"
+add MenuObject
+set Name WarzoneMapGoButtonPulse
+set Texture menus/MatchGo
+set Coords "0 256 256 256"
+set BlendMode BlendAdd
+set PulseAlpha "1.2 -0.4 -0.8"
+set ScaleX 0.4, ScaleY 0.4
+add MenuObject
+set Name WarzoneMapGoButtonPulse2
+set Texture menus/MatchGo
+set Coords "0 256 256 256"
+set BlendMode BlendAdd
+set ScaleX 1.2
+set ScaleY 1.2
+set PulseAlpha "0.2 -0.4 -0.8"
+set ScaleX 0.4, ScaleY 0.4
+add MenuObject
+set Name WarzoneMapTwolnsurv
+set Texture menus/Warzone
+set Coords "0 1005 200 475"
+add MenuObject initFrom WarzoneMapTwolnsurv
+set Name WarzoneMapDenev
+set Coords "200 1005 200 475"
+add MenuObject initFrom WarzoneMapTwolnsurv
+set Name WarzoneMapKeep
+set Coords "400 1005 200 475"
+add MenuObject initFrom WarzoneMapTwolnsurv
+set Name WarzoneMapJunk
+set Coords "600 1005 200 475"
+add MenuObject initFrom WarzoneMapTwolnsurv
+set Name WarzoneMapHighway
+set Coords "800 1005 200 475"
+add MenuObject initFrom WarzoneMapTwolnsurv
+set Name WarzoneMapWall
+set Coords "1000 1005 200 475"
+add MenuObject initFrom WarzoneMapTwolnsurv
+set Name WarzoneMapSiam
+set Coords "1200 1005 200 475"
+add MenuObject
+set Name WarzoneMapName
+set Coords "0 0 185 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor 0x5a5a5a
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_Text @_Arg1_@
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_BoolArg 1
+set RenderCB_Flags "/allCaps /nmi /shadowed"
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject initFrom WarzoneMapName
+set Name WarzoneMapNameSelected
+set RenderCB_RGBColor 0xffffff
+set RenderCB_RGBColorFocused 0xffffff
+set HiddenCheckBySymbolValue _WarzoneMapSelected!=@_Arg1_@
+add MenuObject
+set Name WarzoneMapPlaying
+set Coords "0 0 175 50"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set RenderCB _DrawUText
+set RenderCB_Font Gunner_LangFallback
+set RenderCB_RGBColor 0xf7e8c3
+set RenderCB_Text @_Arg1_@
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_Flags "/nmi /fitX /shadowed"
+set Hidden $_MapDisabled_
+add MenuObject
+set Name WarzoneMapCheck
+set Texture menus/Warzone
+set Coords "170 207 84 84"
+set HiddenCheckBySymbolValue MWin_@_Arg1_@=0
+add MenuObject
+set Name WarzoneMapCheckLocked
+set Texture menus/Warzone
+set Coords "170 207 84 84"
+set DrawGreyScale 1
+set NoAlphaMod 1
+set Alpha 0.8
+add MenuObject
+set Name WarzoneMapCardLocked
+set Texture menus/Warzone
+set Coords "24 204 127 174"
+set NoAlphaMod 1
+set Alpha 0.75
+add MenuObject
+set Name WarzoneMapCard
+set Texture misc/@_Arg2_@
+set Coords "0 0 512 512"
+set SaveArgs 1
+set ScaleX @_Arg3_@, ScaleY @_Arg3_@
+set HiddenCheckBySymbolInv Has@_Arg2_@
+add MenuObject
+set Name WarzoneMapBorder
+set Texture menus/Warzone
+set Coords "382 296 180 586"
+set CoordsFocused "382 296 1 586"
+set ScaleX 0.95
+set Color 0x999999
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name WarzoneMapHover
+set Texture menus/Warzone
+set Coords "382 296 1 586"
+set CoordsFocused "382 296 180 586"
+set DisplayAsFocusedIfParentFocused 1
+add MenuObject
+set Name WarzoneTimelineCurrent
+set ContainerOnly 1
+set Child "WarzoneTimelineCurrentOuter 80 300"
+set Child "WarzoneTimelineCurrentInner 80 300"
+add MenuObject
+set Name WarzoneTimelineCurrentOuter
+set Texture menus/Warzone
+set Coords "634 174 293 819"
+set Anchor Center
+add MenuObject
+set Name WarzoneTimelineCurrentInner
+set Texture menus/Warzone
+set Coords "942 174 293 819"
+set Anchor Center
+add MenuObject
+set Name WarzoneScroll
+set ContainerOnly 1
+set Child "WarzoneScrollBg 0 70"
+set Child "WarzoneScrollArrowL 5 0"
+set Child "WarzoneScrollArrowR 1800 0"
+add MenuObject
+set Name WarzoneScrollBg
+set Texture menus/Warzone
+set Coords "17 542 1912 37"
+add MenuObject
+set Name WarzoneArrowAnimL
+set Texture menus/ArrowSlideAnim
+set BlendMode BlendAdd
+set Color 0x933f0e
+set Coords "0 0 64 100"
+set CoordsAnimated "0 0 64 100"
+set CoordsAnimated "0 100 64 100"
+set CoordsAnimated "0 200 64 100"
+set CoordsAnimated "0 300 64 100"
+set CoordsAnimated "0 400 64 100"
+set CoordsAnimated "0 500 64 100"
+set CoordsAnimated "0 600 64 100"
+set CoordsAnimated "0 700 64 100"
+set CoordsAnimated "0 800 64 100"
+set CoordsAnimated "0 900 64 100"
+set CoordsAnimationFrameTimer 0.05
+set ScaleX 2.0
+set ScaleY 1.2
+add MenuObject initFrom WarzoneArrowAnimL
+set Name WarzoneArrowAnimR
+set MirrorOnX 1
+add MenuObject
+set Name WarzoneScrollArrowL
+set Texture menus/Warzone
+set Coords "289 591 110 181"
+set Focus -2
+set MouseInteract 1
+set ScaleXFocused 1.2, ScaleYFocused 1.2
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.25
+set Child "WarzoneArrowAnimL 30 33"
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+add MenuObject
+set Name WarzoneScrollArrowR
+set Texture menus/Warzone
+set Coords "289 591 110 181"
+set Focus -2
+set MouseInteract 1
+set ScaleXFocused 1.2, ScaleYFocused 1.2
+set MirrorOnX 1
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.25
+set Child "WarzoneArrowAnimR -40 33"
+set CommandGetFocus "if usingMouse playSound $MenuSoundFocus"
+set CommandPress "playSound $MenuSoundClick"
+add MenuObject
+set Name WarzoneRiseMaps
+set ContainerOnly 1
+set Child "WarzoneMap[WarzoneRiseHighway] Nx217 0		Highway			CardIHHell"
+set Child "WarzoneMap[WarzoneRiseWall] Nx217 0			Wall			CardIHWall"
+set Child "WarzoneMap[WarzoneRiseSiam] Nx217 0			Siam			CardIHSiam"
+set Child "WarzoneMap[WarzoneRiseJunk] Nx217 0			Junk			CardIHWar"
+set Child "WarzoneMap[WarzoneRiseTwolnsurv] Nx217 0		Twolnsurv		CardIHVorgo"
+set Child "WarzoneMap[WarzoneRiseDenev] Nx217 0			Denev			CardIHDenev"
+set Child "WarzoneMap[WarzoneRiseKeep] Nx217 0			Keep			CardIHKeep"

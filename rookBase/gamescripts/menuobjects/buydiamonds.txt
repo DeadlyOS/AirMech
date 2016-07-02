@@ -1,0 +1,346 @@
+add MenuObject
+set Name BuyDiamondsVignette
+set Texture effects/VignetteUnder
+set Coords "0 0 515 256"
+set StretchToFillScreen 1
+set MouseInteract 1
+set Focus -2
+set CommandPress "gameUI ignoreInputTime 0.1"
+set CommandPress "menucmd TryBackoutBuyDiamonds"
+add MenuObject
+set Name BuyDiamondsBackground
+set Texture menus/Mail
+set CoordsStart "1 1 65 70"
+set CoordsMid "66 1 465 70"
+set CoordsEnd "531 1 65 70"
+set CoordsStartFocused "1 68 65 2"
+set CoordsMidFocused "66 68 465 2"
+set CoordsEndFocused "531 68 65 2"
+set CoordsStartDisabled "1 296 65 26"
+set CoordsMidDisabled "66 296 465 26"
+set CoordsEndDisabled "531 296 65 26"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 770
+set RenderCB_DY 840
+set Coords "0 0 770 840"
+set MouseInteract 1
+set Focus -2
+set MouseInteractZoneExpand "15 15 -15 -15"
+set CommandPress "gameui promoteToTop BuyDiamondsMain"
+set CommandGetFocus "if usingpad clearmenu BuyDiamonds /fadeout 0.1"
+add MenuObject
+set Name BuyDiamondsCloseVis
+set Coords "295 511 49 49"
+set CoordsFocused "350 511 49 49"
+set DisplayAsFocusedIfParentFocused 1
+set Texture menus/Mail
+set Focus -2
+set HiddenCheckBySymbol InputPad
+add MenuObject
+set Name BuyDiamondsClose
+set Coords "0 0 49 49"
+set RenderBlocked 1
+set Focus -2
+set MouseInteract 1
+set SaveArgs 1
+set CommandGetFocus "playSound $MenuSoundFocus"
+set MouseInteractZoneExpand "-5 -5 5 5"
+set CommandPress "gameui ignoreInputTime 0.1"
+set CommandPress "if sym BuyDiamondsSelection == none clearmenu BuyDiamonds /fadeout 0.1"
+set CommandPress "if sym BuyDiamondsSelection != none menuCmd SelectPaymentBackProvider"
+set Child "BuyDiamondsCloseVis 0 0"
+add MenuObject
+set Name DiamondVIPHint
+set Texture menus/ShopParts+lang
+set Coords "590 906 155 109"
+set HiddenCheckBySymbol IsAnyVIP
+set DisabledSymValue BuyDiamondsSelection!none
+add MenuObject
+set Name LockedDiamondsHint
+set Texture menus/ShopParts+lang
+set Coords "315 747 360 92"
+set HiddenCheckBySymbol IsAnyVIP
+add MenuObject
+set Name BuyDiamondPacksSm
+set ContainerOnly 1
+set Child "DiamondPackSmTemplate[D2Pack5] 0 0		D2Pack5		null	D2Pack10		0x557076	0x657f86"
+set Child "DiamondPackSmTemplate[D2Pack10] 0 Nx115	D2Pack10	D2Pack5	D2Pack20		0x39794d	0x4a8f60			/ifSym HasStarterPack == 1"
+set Child "StarterPackSmTemplate[D2Pack10] 0 Nx115	D2Pack10	D2Pack5	D2Pack20		0x39794d	0x4a8f60			/ifSym HasStarterPack == 0"
+set Child "DiamondPackSmTemplate[D2Pack20] 0 Nx115	D2Pack20	D2Pack10	D2Pack50		0x18817e	0x219694"
+set Child "DiamondPackSmTemplate[D2Pack50] 0 Nx115	D2Pack50	D2Pack20	D2Pack100		0x10669f	0x2182c6"
+set Child "DiamondPackSmTemplate[D2Pack100] 0 Nx115	D2Pack100	D2Pack50	D2Pack200	0x7640b8	0xad5de4"
+set Child "DiamondPackSmTemplate[D2Pack200] 0 Nx115	D2Pack200	D2Pack100	null	0xb25108	0xff7c18			/ifSym D2Pack200_Exclude == 0"
+set Child "DiamondVIPHint 700 588	/platform !consolePlatformHW"
+set Child "DiamondVIPHint 700 473	/platform !consolePlatformHW"
+set Child "LockedDiamondsHint 330 -142	/platform !consolePlatformHW /platform !arc"
+add MenuObject
+set Name BuyDiamondPacksBracket
+set Texture menus/TradeA
+set Coords "88 918 184 72"
+set BlendMode BlendAdd
+set RenderOffsetX 40
+set RenderOffsetY 30
+set SaveArgs 1
+set HiddenCheckBySymbolValue @_Arg1_@=0
+add MenuObject
+set Name BuyDiamondsPaymentTemplate
+set Coords "1 108 250 110"
+set CoordsFocused "1 1 250 110"
+set Texture menus/Purchase
+set Focus -2
+set MouseInteract 1
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.2
+set CommandPress "gameui ignoreInputTime 0.2"
+set CommandPress "menucmd TryUnlockCash_STD"
+set CommandCancel "gameUI ignoreInputTime 0.1"
+set CommandCancel "menucmd TryBackoutBuyDiamonds"
+set IsExternalLinkAction 1
+set Disabled 1
+set DrawWhenFocused FocusDiamondPacksPayment
+set DrawWhenFocusedOffset "4 4 0"
+set MouseInteractZoneExpand "8 8 -8 -8"
+add MenuObject initFrom BuyDiamondsPaymentTemplate
+set Name BuyDiamondsPaymentPaypal_old
+set Coords "503 108 250 110"
+set CoordsFocused "503 1 250 110"
+set CommandGetFocus "sym set P_Pay paypal"
+set CommandGetFocus "sym set PaymentProviderPaypal 1"
+set Child "BuyDiamondsPaymentArrow[PArrow1] 90 100"
+add MenuObject
+set Name BuyDiamondsPaymentArrow
+set Texture menus/Buttons
+set Coords "949 139 66 34"
+set BlendMode BlendAdd
+set PulseAlpha "2.0 -0.5 7.0"
+set Color 0x41605d
+set MirrorOnY 1
+set Disabled 1
+add MenuObject
+set Name BuyDiamondsPaymentBigArrowL
+set Texture menus/purchase
+set Coords "392 525 143 106"
+set Disabled 1
+set BlendMode BlendAdd
+set DisabledAlphaTimeIn 1.0
+set PulseAlpha "1.0 -0.5 -0.2"
+add MenuObject initFrom BuyDiamondsPaymentBigArrowL
+set Name BuyDiamondsPaymentBigArrowR
+set MirrorOnX 1
+add MenuObject
+set Name BuyDiamondsPaymentPaypal
+set Texture menus/purchase
+set Coords "378 757 278 205"
+set Focus -2
+set MouseInteract 1
+set Disabled 1
+set DrawWhenFocused FocusPaypalDiamonds
+set DrawWhenFocusedOffset "-15 64 0"
+set MouseInteractZoneExpand "8 8 -8 -8"
+set MouseInteractZoneExpand "0 70 0 0"
+set CommandPress "menucmd TryUnlockCash_STD"
+set Child "BuyDiamondsPaymentBigArrowL -220 30"
+set Child "BuyDiamondsPaymentBigArrowL[BuyDiamondsPaymentBigArrowR] 342 30"
+add MenuObject
+set Name BuyDiamondsPaymentOptions
+set ContainerOnly 1
+set Child "BuyDiamondsPaymentPaypal 240 -60"
+add MenuObject
+set Name BuyDiamondsBackButton
+set Texture menus/BackIcon
+set BlendMode BlendAdd
+set HiddenCheckBySymbol InputPad
+set Focus -2
+set DisabledAlphaTimeIn 0.3
+set DisabledAlphaTimeOut 0.2
+set MouseInteract 1
+set Coords "0 0 127 128"
+set CoordsFocused "0 128 128 128"
+set Disabled 1
+set CommandPress "menuCmd SelectPaymentBackProvider"
+add MenuObject
+set Name BuyDiamondsNote
+set RenderCB_RGBColor 0xc5dad8
+set RenderCB_FontScale 0.65
+set RenderCB_Font Roboto
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_Offset "0 0"
+set RenderCB_Text BuyDiamondsNote
+set DisabledAlphaTimeIn 0.35
+set DisabledAlphaTimeOut 0.1
+set SaveArgs 1
+set RenderCB _DrawUText
+set Coords "0 0 560 300"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_BoolArg 1
+set Disabled 1
+add MenuObject
+set Name BuyDiamondsCharacters
+set Texture menus/Purchase2
+set Coords "7 720 628 304"
+set DisabledAlphaTimeIn 1.5
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeInPreWait 0.15
+set Disabled 1
+add MenuObject
+set Name BuyDiamondsTextLabel
+set Coords "0 0 100 50"
+set RenderCB_DX @_Arg3_@
+set RenderCB_DY 50
+set RenderCB_FontScale @_Arg2_@
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB _DrawUText
+set RenderCB_Font Roboto
+set RenderCB_RGBColor 0xffffff
+set DisabledAlpha 1.0
+set RenderCB_Text @_Arg1_@
+set SaveArgs 3
+add MenuObject
+set Name DiamondGamepadText
+set RenderCBExcludesDefaultRender 1
+set DrawWhenFocused ""
+set RenderCB _DrawUText
+set RenderCB_Font RobotoBold
+set RenderCB_RGBColor 0xCDCDCD
+set RenderCB_FontScale 0.75
+set RenderCB_Flags "/shadowed /embeddedSymCheck /allCaps"
+set RenderCB_Text @_Arg1_@
+set HiddenCheckBySymbolInv InputPad
+add MenuObject
+set Name DiamondGamepadBuy
+set Texture hud/Buttons@GamepadStyle@
+set Coords "0 0 64 64"
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimationPreset @DM_Select@
+set ScaleX 0.6
+set ScaleY 0.6
+set HiddenCheckBySymbolInv InputPad
+set Child "DiamondGamepadText 45 6 DialogButtonBuy"
+add MenuObject
+set Name DiamondGamepadBack
+set Texture hud/Buttons@GamepadStyle@
+set Coords "64 0 64 64"
+set CoordsAnimated "0 0 64 64"
+set CoordsAnimated "64 0 64 64"
+set CoordsAnimationPreset @DM_Cancel@
+set ScaleX 0.6
+set ScaleY 0.6
+set HiddenCheckBySymbolInv InputPad
+set Child "DiamondGamepadText 45 6 BtnHint_Back"
+add MenuObject
+set Name BuyDiamondsMain
+set RenderBlocked 1
+set Coords "0 0 737 55"
+set MouseInteract 1
+set Focus -2
+set FirstDrawnChildren 2
+set Child "BuyDiamondsVignette 0 0"
+set Child "BuyDiamondsBackground -15 -15"
+set Child "BuyDiamondsTextLabel 25 9	Shop_Diamonds	0.8	770"
+set Child "BuyDiamondsBarDiamonds 338 11"
+set Child "BuyDiamondsCharacters 90 0"
+set Child "BuyDiamondsBackButton 20 70"
+set Child "BuyDiamondsNote 90 550"
+set Child "BuyDiamondsPaymentOptions 2 64"
+set Child "BuyDiamondPacksSm 2 64"
+set Child "BuyDiamondsClose 689 0"
+set Child "DiamondGamepadBuy 140 780"
+set Child "DiamondGamepadBack 0 780"
+set CommandPress "gameui promoteToTop BuyDiamondsMain"
+#if !retail
+set Child "CurrencyTestOpen 626 796		/ifSym P_AccessLevel == 1"
+set Child "CurrencyTestClose 626 796	/ifSym P_AccessLevel == 1"
+set Child "DevCurrencyTest 760 3		/ifSym P_AccessLevel == 1"
+#endif
+#if !retail
+add MenuObject
+set Name CurrencyTestTemplate
+set Texture menus/LoadoutGrid
+set Coords "12 821 184 43"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_Flags "/nmi /shadowed /fitX"
+set MouseInteract 1
+set Focus -2
+set RenderCB_RGBColor 0xaaaaaa
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_FontScale 0.7
+set RenderCB_DX 120
+set RenderCB_DY 40
+set RenderCB_Text @_Arg1_@
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set ScaleX 0.6
+set CommandGetFocus ">menuCmd TestCurrency @_Arg1_@"
+set CommandPress "gameui hideGroup DevCurrencyTest CurrencyTestClose"
+set CommandPress "gameui show CurrencyTestOpen"
+add MenuObject
+set Name CurrencyTestButton
+set Texture menus/LoadoutGrid
+set Coords "12 821 184 43"
+set RenderCBExcludesDefaultRender 0
+set RenderCB_Font RobotoBold
+set RenderCB _DrawText
+set RenderCB_Flags "/nmi /shadowed /fitX"
+set MouseInteract 1
+set Focus -2
+set RenderCB_RGBColor 0xaaaaaa
+set RenderCB_RGBColorFocused 0xffffff
+set RenderCB_FontScale 0.7
+set RenderCB_DX 120
+set RenderCB_DY 40
+set RenderCB_Text "Debug"
+set RenderCB_TextJustify JustifyXCenter
+set RenderCB_TextJustifyVertical JustifyYCenter
+set DisabledAlphaTimeOut 0.1
+set DisabledAlphaTimeIn 0.0
+set RenderCB_Offset "0 0"
+set ScaleX 0.6
+set HiddenCheckBySymbolValue P_AccessLevel=0
+add MenuObject initFrom CurrencyTestButton
+set Name CurrencyTestOpen
+set CommandPress "gameui showGroup DevCurrencyTest CurrencyTestClose"
+set CommandPress "gameui hide CurrencyTestOpen"
+add MenuObject initFrom CurrencyTestButton
+set Name CurrencyTestClose
+set Hidden 1
+set RenderCB_Text "Reset"
+set CommandPress "gameui hideGroup DevCurrencyTest CurrencyTestClose"
+set CommandPress "gameui show CurrencyTestOpen"
+set CommandPress "menuCmd TestCurrency USD"
+add MenuObject
+set Name DevCurrencyTest
+set ContainerOnly 1
+set Hidden 1
+set Child "CurrencyTestTemplate 0 2Nx45		USD"
+set Child "CurrencyTestTemplate 120 2Nx45	GBP"
+set Child "CurrencyTestTemplate 0 2Nx45		EUR"
+set Child "CurrencyTestTemplate 120 2Nx45	RUB"
+set Child "CurrencyTestTemplate 0 2Nx45		BRL"
+set Child "CurrencyTestTemplate 120 2Nx45	JPY"
+set Child "CurrencyTestTemplate 0 2Nx45		IDR"
+set Child "CurrencyTestTemplate 120 2Nx45	MYR"
+set Child "CurrencyTestTemplate 0 2Nx45		PHP"
+set Child "CurrencyTestTemplate 120 2Nx45	SGD"
+set Child "CurrencyTestTemplate 0 2Nx45		THB"
+set Child "CurrencyTestTemplate 120 2Nx45	KRW"
+set Child "CurrencyTestTemplate 0 2Nx45		TRY"
+set Child "CurrencyTestTemplate 120 2Nx45	UAH"
+set Child "CurrencyTestTemplate 0 2Nx45		MXN"
+set Child "CurrencyTestTemplate 120 2Nx45	CAD"
+set Child "CurrencyTestTemplate 0 2Nx45		AUD"
+set Child "CurrencyTestTemplate 120 2Nx45	NZD"
+set Child "CurrencyTestTemplate 0 2Nx45		NOK"
+set Child "CurrencyTestTemplate 120 2Nx45	CIS"
+set Child "CurrencyTestTemplate 0 2Nx45		TWD"
+set Child "CurrencyTestTemplate 120 2Nx45	CNY"
+set Child "CurrencyTestTemplate 0 2Nx45		INR"
+set Child "CurrencyTestTemplate 120 2Nx45	HKD"
+set Child "CurrencyTestTemplate 0 2Nx45		RMB"
+#endif

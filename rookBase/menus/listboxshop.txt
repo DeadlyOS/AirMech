@@ -1,0 +1,20 @@
+onloadrun {
+gameUI getLastRenderPos ListBoxStub _ListBoxShopPosX _ListBoxShopPosY
+sym set _ShoplistEntries 0
+sym set _ShoplistHeight 0
+}
+MO ShopListBox {
+pos 100 120
+pos $_ListBoxShopPosX $_ListBoxShopPosY
+layer 10
+}
+onload {
+gameui promoteToTop ShopListBox
+if sym _ShoplistEntries <= 10 runnow sym set ListboxExpand 0
+if sym _ShoplistEntries > 10 runnow sym set ListboxExpand 1
+}
+onunloadrun {
+sym set _ShoplistHeight 0
+}
+onunload {
+}

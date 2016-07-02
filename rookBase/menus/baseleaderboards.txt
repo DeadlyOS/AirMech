@@ -1,0 +1,36 @@
+blockLoadOnConsoleSym CustomGameOptionsBrowse
+onloadrun {
+sym set BaseLeaderboardsLoaded 1
+gameUI saveFocusID _savefocusid_
+sym setZero _FocusItemList_ _FocusItemLast_
+sym push _Bind_CycleLoadoutOnShoulders_ 0
+sym push _Bind_MatchingUIBack_ 0
+sym push _Bind_SoloLoadout_ 0
+sym push _Bind_PrevNextOnShoulders_ 0
+leaderboards setMaxDisplayRows 10
+leaderboards get $$HLB_LeaderboardTitle0
+}
+MO MasterLeaderboards {
+pos 100 120
+draggableUIElement
+pos $UI_Leaderboards_X $UI_Leaderboards_Y /screenClamp 200 300
+preDeleteRunCmd gameUI getLastRenderPos MasterLeaderboards UI_Leaderboards_X UI_Leaderboards_Y
+}
+onload {
+addUIAnim MasterLeaderboards mas_DialogPopNoSrcMod
+addUIAnim CM_ButtonHints_ConLeaderboards mas_ConButtonsUp
+input set padFocusFallback ConLeaderItem0
+gameUI focusNameTry ConLeaderItem0
+gameui promoteToTop MasterLeaderboards
+}
+onunloadrun {
+}
+onunload {
+input set padFocusFallback ConMenuBoards
+pcmd 0.1 gameUI focusNameTry ConMenuBoards
+sym set BaseLeaderboardsLoaded 0
+sym pop _Bind_CycleLoadoutOnShoulders_
+sym pop _Bind_MatchingUIBack_
+sym pop _Bind_SoloLoadout_
+sym pop _Bind_PrevNextOnShoulders_
+}

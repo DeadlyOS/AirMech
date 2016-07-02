@@ -1,0 +1,22 @@
+menu3d remove *
+menu3d add AirMechLogoVR /model vr/AirMechLogo3D.amf	/material mat_AirMechLogoTexture
+menu3d setWorldPose AirMechLogoVR 0.0 320.0 -20.0
+menu3d setRootScale AirMechLogoVR 170
+menu3d add VRGround /model vr/VRGround.amf	/material mat_VRGround
+menu3d setWorldPose VRGround	0.0 0.0 0.0
+menu3d setRootRot VRGround 0 0 0
+menu3d setRootScale VRGround 1.8
+menu3d add VRTable /model vr/TableB.amf	/material mat_TableB
+menu3d setWorldPose VRTable	0.0 0.0 0.0
+menu3d setRootScale VRTable 		1.5
+menu3d add TextTest1 /model vr/SimpleTextPoly.amf	/material mat_SimpleText
+menu3d setWorldPose TextTest1	0.0 300.0 -30.0
+menu3d setRootScale TextTest1 		20
+gfx hmd setPosition 0 -60 90
+gfx hmd setMoveScale 110
+pcmd 0 gfx set uniform fogargs 5000 1
+pcmd 0 gfx set uniform dfogargs $VrRoomFogArgs
+pcmd 0 gfx set clearColor 66 90 130 0
+pcmd 0 dirlight set /dir 0.416209 0.424957 0.803854
+pcmd 0 dirlight set /diffuse 0.6 0.6 0.6
+pcmd 0 dirlight set /ambient 0.6 0.6 0.6

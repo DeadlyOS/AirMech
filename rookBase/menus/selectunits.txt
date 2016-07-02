@@ -1,0 +1,43 @@
+onloadrun {
+sym set DialogBoxLoaded 1
+sym set LoadoutConfigureUnits 1
+sym set LoadoutOnlyUnits 1
+rookMenus previewHide
+gameUI savefocusid _dialogRestoreFocus_
+}
+MO SelectUnitsMaster {
+pos 0 80
+layer 10
+}
+onloadrun {
+sym set _CustomObject units
+customize clearClassFilter
+}
+onload {
+addUIAnim SelectUnitsMaster mas_DialogPop
+loadout customizeInit
+sym set SlotFlashActive 0
+sym set SelectItemActive 0
+if sym LoadoutAutosave == 0 menuCmd StoreLocalLoadout
+sym set _ActiveLobbySelectScript_ NA
+sym clear _cmode
+customize scrollCfgLobby $_CustomObject 25
+floatsym set customDrawerPosLobby 0
+}
+onunload {
+sym set DialogBoxLoaded 0
+sym set LoadoutConfigureUnits 0
+sym set LoadoutOnlyUnits 0
+gameUI focusID $_dialogRestoreFocus_
+menuCmd StoreLoadout
+}
+onunloadrun {
+rookMenus previewShow
+if sym LoadoutAutosave == 0 if sym UnsavedLoadout == 0 menuCmd UnsavedLoadoutTest
+if sym LoadoutAutosave == 1 rook savePreset $ActiveLoadout
+if sym LoadoutAutosave == 1 backend save
+rook recustomizeLoadoutToServer
+sym set LoadoutSetupAirMech 0
+sym set LoadoutConfigureUnits 0
+sym set SlotFlashActive 0
+}

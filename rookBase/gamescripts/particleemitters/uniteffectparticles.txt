@@ -1,0 +1,590 @@
+add ParticleEmitter
+set Name MineArm, MaxParticles 2, Material mat_MineBlinkBlue
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set StopAfterParticleCount 2
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.0
+set ParticleSizeYBase 10.0, ParticleSizeXVar 0.0
+set ParticleGrowthXBase -0.2, ParticleGrowthXVar 0.0
+set ParticleGrowthYBase 5.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set EmitPosConstantZOffset 3.15
+set GravityScalar 0.0
+set FlagNonSquareAspect 1
+set FlagZRotFacingParticles 1
+add ParticleEmitter initFrom MineArm
+set Name MineArmRed, Material mat_MineBlinkRed
+add ParticleEmitter initFrom MineArm
+set Name MineArmBlue, Material mat_MineBlinkBlue
+add ParticleEmitter initFrom MineArm
+set Name MineArmGreen, Material mat_MineBlinkGreen
+add ParticleEmitter initFrom MineArm
+set Name MineArmYellow, Material mat_MineBlinkYellow
+add ParticleEmitter
+set Name MineBlink, MaxParticles 2, Material mat_MineBlink
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set StopAfterParticleCount 2
+set ParticleSizeXBase 0.3, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.75, ParticleLifespanVar 0.0
+set EmitPosConstantZOffset 0.15
+set GravityScalar 0.0
+add ParticleEmitter initFrom MineBlink
+set Name MineBlinkRed, Material mat_MineBlinkRed
+add ParticleEmitter initFrom MineBlink
+set Name MineBlinkBlue, Material mat_MineBlinkBlue
+add ParticleEmitter initFrom MineBlink
+set Name MineBlinkGreen, Material mat_MineBlinkGreen
+add ParticleEmitter initFrom MineBlink
+set Name MineBlinkYellow, Material mat_MineBlinkYellow
+add ParticleEmitter
+set Name MineTriggered, MaxParticles 5, Material mat_MineBlinkRed
+set EmitPeriodBase 0.2, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set StopAfterParticleCount 5
+set ParticleSizeXBase 1.3, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.1, ParticleLifespanVar 0.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.9
+set EmitPosConstantZOffset 0.25
+set GravityScalar 0.0
+add ParticleEmitter
+set Name ReclaimDots, MaxParticles 5, Material mat_ShotEnergy
+set EmitPeriodBase 0.1, EmitPeriodVar 0.0, EmitVelocityBase 2.0, EmitVelocityVar 0.5, EmitVelocityWiggle 2000
+set ParticleSizeXBase 0.07, ParticleSizeXVar 0.03
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 1.2, ParticleLifespanVar 1.1
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.3
+set DragCoefficient 2.0
+set StopAfterParticleCount 5
+set FlagSphericalEmissionVelocity 1
+set GravityDirection "0 0 1"
+set GravityScalar 3.0
+add ParticleEmitter initFrom ReclaimDots
+set Name RezDots
+add ParticleEmitter initFrom ReclaimDots
+set Name RezComplete
+set MaxParticles 20
+set EmitPeriodBase 0.02
+set ParticleSizeXBase 0.3
+add ParticleEmitter
+set Name "SupplyRecharge", MaxParticles 16, Material mat_particleFlare
+set EmitPeriodBase 0.02, EmitPeriodVar 0.01, EmitVelocityBase 4.0, EmitVelocityVar 0.5, FlagSphericalEmissionVelocity 1
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.2
+set ParticleGrowthXBase -0.8, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.09, ParticleLifespanVar 0.05
+set StopAfterParticleCount 16
+set VisibilitySphereSize 2.0
+add ParticleEmitter
+set Name ShellCasings, MaxParticles 32, Material mat_particleShellCasing
+set EmitPeriodBase 0.04, EmitPeriodVar 0.0, EmitVelocityBase 1.0, EmitVelocityVar 0.5, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 1.5, ParticleLifespanVar 0.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.9
+set EmitPosConstantZOffset -0.25
+set ParticleColor 0xffffffff
+set FlagSphericalEmissionVelocity 1
+set FlagReqZPlaneBounce 1
+set GravityDirection "0 0 -1"
+set GravityScalar 15.0
+set InitialRotationMax 360
+set ParticleSpinBase -360
+set ParticleSpinVar 720
+set FlagRenderPfxShadows 1
+add ParticleEmitter initFrom ShellCasings
+set Name ShellCasingsGoth
+set ParticleColor 0x333333ff
+add ParticleEmitter initFrom ShellCasings
+set Name ShellCasingsSmall
+set EmitPeriodBase 0.12
+set ParticleSizeXBase 0.12
+add ParticleEmitter initFrom ShellCasings
+set Name ShellCasingSniper
+set MaxParticles 1
+set StopAfterParticleCount 1
+add ParticleEmitter
+set Name BloodDrops, MaxParticles 32, Material mat_BloodDrops
+set EmitPeriodBase 0.1, EmitPeriodVar 0.3, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.15
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 1.0, ParticleLifespanVar 0.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 50.0
+set FlagParticleTexturePageRandom 1
+set FlagSphericalEmissionVelocity 1
+set GravityDirection "0 0 -1"
+set GravityScalar 15.0
+set EmitPosRandomXExtent 0.5
+add ParticleEmitter initFrom BloodDrops
+set Name BloodDrop
+set EmitPeriodBase 10.0, EmitPeriodVar 30.0
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.1
+set EmitPosOnXYCircle 0.3
+set EmitPosConstantZOffset -0.1
+set EmitPosRandomZExtent 0.0
+set EmitPosRandomXExtent 0.0
+set EmitPosRandomYExtent 0.0
+set FlagEmitPosExtentsOnly 1
+add ParticleEmitter
+set Name PoofMerch, MaxParticles 28, Material mat_PoofMerch
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 3.0, EmitVelocityVar 5.0, EmitVelocityWiggle 800
+set ParticleSizeXBase 0.4, ParticleSizeXVar 0.15
+set ParticleGrowthXBase -0.333, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 1.0, ParticleLifespanVar 4.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set DragCoefficient 4.0
+set StopAfterParticleCount 28
+set EmitPosConstantZOffset 0.45
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 50.0
+set FlagParticleTexturePageRandom 1
+set FlagSphericalEmissionVelocity 1
+set GravityDirection "0 0 -1"
+set GravityScalar 15.0
+set InitialRotationMax 360
+set ParticleSpinBase -360
+set ParticleSpinVar 720
+add ParticleEmitter initFrom PoofMerch
+set Name PoofReaper, Material mat_PoofReaper
+add ParticleEmitter
+set Name DamageSparks, MaxParticles 64, Material mat_particleTracer
+set EmitPeriodBase 0.02, EmitPeriodVar 0.0, EmitVelocityBase 8.0, EmitVelocityVar 2.0, EmitVelocityWiggle 2000
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.1
+set ParticleSizeYBase 0.3, ParticleSizeYVar 0.2
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.2, ParticleLifespanVar 0.1
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set DragCoefficient 3.0
+set StopAfterParticleCount 64
+set GravityDirection "0 0 -1"
+set GravityScalar 35.0
+set FlagOrientWithParticleTrajectory 1
+set FlagNonSquareAspect 1
+add ParticleEmitter initFrom DamageSparks
+set Name SniperImpact
+set MaxParticles 8, EmitVelocityVar 5.0
+set StopAfterParticleCount 8
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.2
+set ParticleSizeYBase 0.3, ParticleSizeYVar 0.3
+set ParticleLifespanBase 0.2, ParticleLifespanVar 0.3
+set EmitPeriodBase 0.001
+add ParticleEmitter initFrom DamageSparks
+set Name FuseSparks
+set MaxParticles 20, EmitVelocityBase 0.5, EmitVelocityVar 0.5
+set StopAfterParticleCount 0
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.0
+set ParticleSizeYBase 0.1, ParticleSizeYVar 0.0
+set ParticleLifespanBase 0.1, ParticleLifespanVar 0.1
+set EmitPeriodBase 0.01
+set GravityScalar 3.0
+add ParticleEmitter
+set Name SmokeDrill, MaxParticles 32, Material mat_particleDustPuff
+set EmitPeriodBase 0.05, EmitPeriodVar 0.005, EmitVelocityBase 0.7, EmitVelocityVar 0.8, EmitVelocityWiggle 100
+set DragCoefficient 1.0
+set ParticleLifespanBase 0.4, ParticleLifespanVar 0.3
+set ParticleSizeXBase 0.16, ParticleSizeXVar 0.18
+set ParticleGrowthXBase 0.2, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.4
+set ParticleColorSecondary 0xff992200
+set GravityScalar 2.0
+set ParticleColor 0xFFFFFF00
+set ColorMode eColorMode_RGBFadeToSecondary
+add ParticleEmitter
+set Name FlashDrill, MaxParticles 32, Material mat_ParticleBrightFlare
+set EmitPeriodBase 0.04, EmitPeriodVar 0.02, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set ParticleSizeXBase 1.0, ParticleSizeXVar 3.0
+set ParticleGrowthXBase 5.0, ParticleGrowthXVar 1.0
+set ParticleLifespanBase 0.1, ParticleLifespanVar 0.08
+set StopAfterParticleCount 32
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 0.4
+add ParticleEmitter initFrom DamageSparks
+set Name ShellImpact, MaxParticles 10, EmitVelocityWiggle 1000
+set EmitPeriodBase 0.01
+set StopAfterParticleCount 10
+set DragCoefficient 1.0
+set ParticleLifespanBase 0.2, ParticleLifespanVar 0.05
+set ParticleSizeXBase 0.25, ParticleSizeXVar 0.15
+set ParticleSizeYBase 0.35, ParticleSizeYVar 0.25
+set SourceWorldVelocityPerParticle 0.125
+add ParticleEmitter initFrom ShellImpact
+set Name ShellImpact2
+set MaxParticles 8
+set StopAfterParticleCount 8
+set ParticleLifespanBase 0.25, ParticleLifespanVar 0.05
+set SourceWorldVelocityPerParticle 0.25
+add ParticleEmitter initFrom ShellImpact
+set Name ShellImpact3
+set MaxParticles 5
+set StopAfterParticleCount 5
+set ParticleLifespanBase 0.2, ParticleLifespanVar 0.05
+set SourceWorldVelocityPerParticle 0.18
+add ParticleEmitter initFrom ShellImpact
+set Name ShellImpactAirMech, MaxParticles 3
+set StopAfterParticleCount 3
+set ParticleLifespanBase 0.225, ParticleLifespanVar 0.05
+set GravityScalar 20.0
+add ParticleEmitter initFrom ShellImpactAirMech
+set Name ShellImpactAirMechBlue, Material mat_particleTracerBlue
+set StopAfterParticleCount 2
+add ParticleEmitter initFrom ShellImpactAirMechBlue
+set Name ShellImpactAirMechGreen, Material mat_particleTracerLaser
+add ParticleEmitter initFrom ShellImpactAirMechBlue
+set Name ShellImpactAirMechMagenta, Material mat_particleTracerNeo
+add ParticleEmitter initFrom ShellImpactAirMechBlue
+set Name ShellImpactAirMechCyan, Material mat_particleTracerEaster
+add ParticleEmitter initFrom ShellImpactAirMechBlue
+set Name ShellImpactAirMechRed, Material mat_particleTracerRedWave
+add ParticleEmitter initFrom ShellImpactAirMechBlue
+set Name ShellImpactAirMechOrange, Material mat_particleTracerOrange
+add ParticleEmitter initFrom ShellImpactAirMechBlue
+set Name ShellImpactAirMechPink, Material mat_particleTracerPink
+add ParticleEmitter initFrom ShellImpactAirMechBlue
+set Name ShellImpactAirMechLightning, Material mat_particleTracerElectric
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set FlagParticleTexturePageRandom 1
+set ParticleTexturePagePlayTime 0.5
+add ParticleEmitter initFrom ShellImpactAirMech
+set Name ShellImpactWarthog, MaxParticles 1
+set StopAfterParticleCount 1
+set ParticleLifespanBase 0.225, ParticleLifespanVar 0.05
+set GravityScalar 20.0
+add ParticleEmitter
+set Name NecroRezBath, MaxParticles 24, Material mat_FX_WeldingDot
+set EmitPeriodBase 0.02, EmitPeriodVar 0.0, EmitVelocityBase 2.0, EmitVelocityVar 0.40, EmitVelocityWiggle 1500
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.08
+set ParticleGrowthXBase -0.80, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.667, ParticleLifespanVar 0.0
+set ParticleColor 0xffffff00
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set DragCoefficient 2.0
+set FlagSphericalEmissionVelocity 0
+set GravityDirection "0 0 1"
+set GravityScalar 0.0
+set EmitPosRandomXExtent 0.12
+set EmitPosRandomYExtent 0.12
+add ParticleEmitter
+set Name PyroFire, MaxParticles 12, Material mat_FX_InfantryPyro_Fireball
+set EmitPeriodBase 0.2, EmitPeriodVar 0.0, EmitVelocityBase 10.5, EmitVelocityVar 0.2, EmitVelocityWiggle 350
+set ParticleSizeXBase 0.32, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 1.2, ParticleGrowthXVar 0.6
+set ParticleLifespanBase 1.0, ParticleLifespanVar 0.20
+set ParticleColor 0xffffff00
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.6
+set DragCoefficient 1.0
+set FlagSphericalEmissionVelocity 0
+set GravityDirection "0 0 1"
+set GravityScalar 0.0
+set EmitPosRandomXExtent 0.0
+set EmitPosRandomYExtent 0.0
+set InitialRotationMax 360
+set ParticleSpinBase -360
+set ParticleSpinVar 720
+add ParticleEmitter
+set Name PumpkinIre, MaxParticles 4, Material mat_particleFlare
+set EmitPeriodBase 0.50, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.01, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 0.60, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.60, ParticleLifespanVar 0.0
+set ParticleColor 0xffffccff
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.60
+set FlagSphericalEmissionVelocity 0
+set GravityDirection "0 0 1"
+set GravityScalar 0.0
+set FlagAllParticlesToBoneLatch 1
+set StopAfterParticleCount 4
+add ParticleEmitter
+set Name PumpkinRing, MaxParticles 1, Material mat_FX_Grenade_Ring
+set EmitPeriodBase 1.6, EmitPeriodVar 0.0, EmitVelocityBase 1.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.20, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 6.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.30, ParticleLifespanVar 0.0
+set StopAfterParticleCount 1
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.20
+set ParticleColor 0xff9900ff
+set FlagAllParticlesToBoneLatch 1
+set FlagFlatFacingParticles 1
+add ParticleEmitter
+set Name PaintFleckAbduct, MaxParticles 10, Material mat_PaintFleck
+set EmitPeriodBase 0.1, EmitPeriodVar 0.0, EmitVelocityBase 3.0, EmitVelocityVar 2.5, EmitVelocityWiggle 300
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.15
+set ParticleGrowthXBase -0.1, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.6, ParticleLifespanVar 0.5
+set ParticleColor 0x878787ff
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.9
+set EmitPosRandomXExtent 1.0
+set EmitPosRandomYExtent 1.0
+set GravityDirection "0 0 1"
+set GravityScalar 3.0
+set InitialRotationMax 360
+set FlagRenderPfxShadows 1
+add ParticleEmitter initFrom PaintFleckAbduct
+set Name PaintFleckAbductBlue
+set ParticleColor 0x25589aff
+add ParticleEmitter initFrom PaintFleckAbduct
+set Name PaintFleckAbductRed
+set ParticleColor 0xbb3627ff
+add ParticleEmitter initFrom PaintFleckAbduct
+set Name PaintFleckAbductGreen
+set ParticleColor 0x4b7149ff
+add ParticleEmitter initFrom PaintFleckAbduct
+set Name PaintFleckAbductYellow
+set ParticleColor 0x333333ff
+add ParticleEmitter
+set Name PaintFleckAbductExplode, MaxParticles 10, Material mat_PaintFleck
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 3.0, EmitVelocityVar 3.5, EmitVelocityWiggle 800
+set StopAfterParticleCount 10
+set ParticleSizeXBase 0.15, ParticleSizeXVar 0.15
+set ParticleGrowthXBase -0.1, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.75, ParticleLifespanVar 0.5
+set ParticleColor 0xa7a7a7ff
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.9
+set EmitPosConstantZOffset 0.4
+set EmitPosRandomXExtent 1.0
+set EmitPosRandomYExtent 1.0
+set GravityDirection "0 0 -1"
+set GravityScalar 15.0
+set InitialRotationMax 360
+set FlagRenderPfxShadows 1
+add ParticleEmitter initFrom PaintFleckAbductExplode
+set Name PaintFleckAbductExplodeBlue
+set ParticleColor 0x25589aff
+add ParticleEmitter initFrom PaintFleckAbductExplode
+set Name PaintFleckAbductExplodeRed
+set ParticleColor 0xbb3627ff
+add ParticleEmitter initFrom PaintFleckAbductExplode
+set Name PaintFleckAbductExplodeGreen
+set ParticleColor 0x4b7149ff
+add ParticleEmitter initFrom PaintFleckAbductExplode
+set Name PaintFleckAbductExplodeYellow
+set ParticleColor 0x333333ff
+add ParticleEmitter
+set Name ElectricSparkTeslaBolts, MaxParticles 10, Material mat_ElectricSpark
+set EmitPeriodBase 0.5, EmitPeriodVar 0.0, EmitVelocityBase 4.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set EmitVelocityComponentScalar "0 0 1"
+set ParticleEmissionDir "0 0 -1"
+set ParticleSizeXBase 1.0, ParticleSizeXVar 0.3
+set ParticleGrowthXBase -2.0, ParticleGrowthXVar 0.0
+set ParticleGrowthYBase -4.0, ParticleGrowthYVar 0.0
+set ParticleLifespanBase 1.0, ParticleLifespanVar 0.2
+set AlphaMode eAlphaMode_One
+set ParticleColor 0xffffffff
+set FlagSphericalEmissionVelocity 1
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set FlagParticleTexturePageRandom 1
+set ParticleTexturePagePlayTime 0.5
+set EmitPosRandomXExtent 0.25
+set EmitPosRandomYExtent 0.25
+add ParticleEmitter initFrom ElectricSparkTeslaBolts
+set Name ElectricSparkTeslaBoltsBlue
+add ParticleEmitter initFrom ElectricSparkTeslaBoltsBlue
+set Name ElectricSparkTeslaBoltsRed, Material mat_ElectricSparkRed
+add ParticleEmitter initFrom ElectricSparkTeslaBoltsBlue
+set Name ElectricSparkTeslaBoltsGreen, Material mat_ElectricSparkGreen
+add ParticleEmitter initFrom ElectricSparkTeslaBoltsBlue
+set Name ElectricSparkTeslaBoltsYellow, Material mat_ElectricSparkYellow
+add ParticleEmitter
+set Name ElectricSparkTeslaCoil, MaxParticles 10, Material mat_ElectricSpark
+set EmitPeriodBase 0.08, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.4, ParticleSizeXVar 0.3
+set ParticleGrowthXBase 0.0, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.1, ParticleLifespanVar 0.2
+set AlphaMode eAlphaMode_One
+set ParticleColor 0xffffffff
+set FlagSphericalEmissionVelocity 1
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set FlagParticleTexturePageRandom 1
+set ParticleTexturePagePlayTime 0.5
+set EmitPosRandomXExtent 0.25
+set EmitPosRandomYExtent 0.25
+set EmitPosRandomZExtent 0.4
+add ParticleEmitter initFrom ElectricSparkTeslaCoil
+set Name ElectricSparkTeslaCoilBlue
+add ParticleEmitter initFrom ElectricSparkTeslaCoil
+set Name ElectricSparkTeslaCoilRed, Material mat_ElectricSparkRed
+add ParticleEmitter initFrom ElectricSparkTeslaCoil
+set Name ElectricSparkTeslaCoilGreen, Material mat_ElectricSparkGreen
+add ParticleEmitter initFrom ElectricSparkTeslaCoil
+set Name ElectricSparkTeslaCoilYellow, Material mat_ElectricSparkYellow
+add ParticleEmitter
+set Name ElectricSparkTeslaCharge, MaxParticles 10, Material mat_ElectricSpark
+set EmitPeriodBase 0.15, EmitPeriodVar 0.0, EmitVelocityBase 2.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set EmitVelocityComponentScalar "0 0 1"
+set ParticleEmissionDir "0 0 1"
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.8, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 0.15, ParticleLifespanVar 0.2
+set AlphaMode eAlphaMode_One
+set ParticleColor 0xffffffff
+set FlagSphericalEmissionVelocity 1
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set FlagParticleTexturePageRandom 1
+set ParticleTexturePagePlayTime 0.5
+add ParticleEmitter initFrom ElectricSparkTeslaCharge
+set Name ElectricSparkTeslaChargeBlue
+add ParticleEmitter initFrom ElectricSparkTeslaCharge
+set Name ElectricSparkTeslaChargeRed, Material mat_ElectricSparkRed
+add ParticleEmitter initFrom ElectricSparkTeslaCharge
+set Name ElectricSparkTeslaChargeGreen, Material mat_ElectricSparkGreen
+add ParticleEmitter initFrom ElectricSparkTeslaCharge
+set Name ElectricSparkTeslaChargeYellow, Material mat_ElectricSparkYellow
+add ParticleEmitter
+set Name ElectricSparkTeslaRing, MaxParticles 2, Material mat_ElectricRing
+set EmitPeriodBase 0.9, EmitPeriodVar 0.0, EmitVelocityBase 0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleLifespanBase 1.0, ParticleLifespanVar 0.0
+set ParticleSizeXBase 0.1, ParticleSizeXVar 0.0
+set ParticleGrowthXBase 0.95, ParticleGrowthXVar -0.1
+set GravityScalar 0.0
+set VisibilitySphereSize 10.0
+set FlagFlatFacingParticles 1
+set DragCoefficient 1.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+add ParticleEmitter initFrom ElectricSparkTeslaRing
+set Name ElectricSparkTeslaRingBlue
+add ParticleEmitter initFrom ElectricSparkTeslaRing
+set Name ElectricSparkTeslaRingRed, Material mat_ElectricRingRed
+add ParticleEmitter initFrom ElectricSparkTeslaRing
+set Name ElectricSparkTeslaRingGreen, Material mat_ElectricRingGreen
+add ParticleEmitter initFrom ElectricSparkTeslaRing
+set Name ElectricSparkTeslaRingYellow, Material mat_ElectricRingYellow
+add ParticleEmitter
+set Name GothAuraUnit, MaxParticles 128, Material mat_particleFirePurple
+set EmitPeriodBase 0.035, EmitPeriodVar 0.0, EmitVelocityBase 0.2, EmitVelocityVar 0.0, EmitVelocityWiggle 100
+set DragCoefficient 0.25
+set ParticleLifespanBase 1.2, ParticleLifespanVar 0.3
+set ParticleSizeXBase 0.6, ParticleSizeXVar 0.4
+set ParticleGrowthXBase -0.05, ParticleGrowthXVar -0.0
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.5
+set ParticleColor 0xffffff00
+set ParticleColorSecondary 0x00000000
+set ColorMode eColorMode_RGBFadeToSecondary
+set GravityScalar 0.8
+set GravityDirection "0 0 1"
+set EmitPosConstantZOffset -0.4
+set EmitPosRandomXExtent 0.6
+set EmitPosRandomYExtent 0.6
+set EmitPosRandomZExtent 0.6
+add ParticleEmitter
+set Name ElectricSparkSwordShield, MaxParticles 1, Material mat_ElectricSpark
+set EmitPeriodBase 0.5, EmitPeriodVar 0.0, EmitVelocityBase 4.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set StopAfterParticleCount 1
+set EmitVelocityComponentScalar "0 0 1"
+set ParticleEmissionDir "0 0 -1"
+set ParticleSizeXBase 1.0, ParticleSizeXVar 0.1
+set ParticleGrowthXBase -2.0, ParticleGrowthXVar 0.0
+set ParticleGrowthYBase -4.0, ParticleGrowthYVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set AlphaMode eAlphaMode_One
+set ParticleColor 0xffffffff
+set FlagSphericalEmissionVelocity 1
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set FlagParticleTexturePageRandom 1
+set ParticleTexturePagePlayTime 0.5
+set EmitPosRandomXExtent 0.25
+set EmitPosRandomYExtent 0.25
+set FlagAllParticlesToBoneLatch 1
+add ParticleEmitter initFrom ElectricSparkSwordShield
+set Name ElectricSparkSwordShieldBlue
+add ParticleEmitter initFrom ElectricSparkSwordShield
+set Name ElectricSparkSwordShieldBlackOpsBlue
+add ParticleEmitter initFrom ElectricSparkSwordShield
+set Name ElectricSparkSwordShieldRed, Material mat_ElectricSparkRed
+add ParticleEmitter initFrom ElectricSparkSwordShieldRed
+set Name ElectricSparkSwordShieldBlackOpsRed
+add ParticleEmitter initFrom ElectricSparkSwordShieldRed
+set Name ElectricSparkSwordShieldGoth
+add ParticleEmitter initFrom ElectricSparkSwordShield
+set Name ElectricSparkSwordShieldGreen, Material mat_ElectricSparkGreen
+add ParticleEmitter initFrom ElectricSparkSwordShieldGreen
+set Name ElectricSparkSwordShieldBlackOpsGreen
+add ParticleEmitter initFrom ElectricSparkSwordShieldGreen
+set Name ElectricSparkSwordShieldAlpha
+add ParticleEmitter initFrom ElectricSparkSwordShield
+set Name ElectricSparkSwordShieldYellow, Material mat_ElectricSparkYellow
+add ParticleEmitter initFrom ElectricSparkSwordShieldYellow
+set Name ElectricSparkSwordShieldBlackOpsYellow
+add ParticleEmitter initFrom ElectricSparkSwordShieldYellow
+set Name ElectricSparkSwordShieldTomcat
+add ParticleEmitter initFrom ElectricSparkSwordShieldYellow
+set Name ElectricSparkSwordShieldFighterSteam
+add ParticleEmitter initFrom ElectricSparkSwordShieldYellow
+set Name ElectricSparkSwordShieldFighterGF
+add ParticleEmitter initFrom ElectricSparkSwordShieldYellow
+set Name ElectricSparkSwordShieldFighterPolice
+add ParticleEmitter
+set Name ElectricSparkSwordShieldUber, MaxParticles 2, Material mat_ElectricSpark
+set EmitPeriodBase 0.1, EmitPeriodVar 0.0, EmitVelocityBase 8.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set StopAfterParticleCount 2
+set EmitVelocityComponentScalar "0 0 1"
+set ParticleEmissionDir "0 0 -1"
+set ParticleSizeXBase 2, ParticleSizeXVar 0.1
+set ParticleGrowthXBase -2.0, ParticleGrowthXVar 0.0
+set ParticleGrowthYBase -4.0, ParticleGrowthYVar 0.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.0
+set AlphaMode eAlphaMode_One
+set ParticleColor 0xffffffff
+set FlagSphericalEmissionVelocity 1
+set ParticleTexturePageDX 4
+set ParticleTexturePageDY 4
+set FlagParticleTexturePageRandom 1
+set ParticleTexturePagePlayTime 0.5
+set EmitPosRandomXExtent 0.25
+set EmitPosRandomYExtent 0.25
+set FlagAllParticlesToBoneLatch 1
+add ParticleEmitter initFrom ElectricSparkSwordShieldUber
+set Name ElectricSparkSwordShieldUberBlue
+add ParticleEmitter initFrom ElectricSparkSwordShieldUber
+set Name ElectricSparkSwordShieldUberBlackOpsBlue
+add ParticleEmitter initFrom ElectricSparkSwordShieldUber
+set Name ElectricSparkSwordShieldUberRed, Material mat_ElectricSparkRed
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberRed
+set Name ElectricSparkSwordShieldUberBlackOpsRed
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberRed
+set Name ElectricSparkSwordShieldUberGoth
+add ParticleEmitter initFrom ElectricSparkSwordShieldUber
+set Name ElectricSparkSwordShieldUberGreen, Material mat_ElectricSparkGreen
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberGreen
+set Name ElectricSparkSwordShieldUberBlackOpsGreen
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberGreen
+set Name ElectricSparkSwordShieldAlphaUber
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberGreen
+set Name ElectricSparkSwordShieldBetaUber
+add ParticleEmitter initFrom ElectricSparkSwordShieldUber
+set Name ElectricSparkSwordShieldUberYellow, Material mat_ElectricSparkYellow
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberYellow
+set Name ElectricSparkSwordShieldUberBlackOpsYellow
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberYellow
+set Name ElectricSparkSwordShieldUberTomcat
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberYellow
+set Name ElectricSparkSwordShieldUberAlpha
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberYellow
+set Name ElectricSparkSwordShieldUberFighterSteam
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberYellow
+set Name ElectricSparkSwordShieldUberFighterGF
+add ParticleEmitter initFrom ElectricSparkSwordShieldUberYellow
+set Name ElectricSparkSwordShieldUberFighterPolice

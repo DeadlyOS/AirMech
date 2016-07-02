@@ -1,0 +1,39 @@
+blockLoadOnConsoleSym ListboxLoaded
+onloadrun {
+gameUI getLastRenderPos #Listbox@ListboxParent@ _ListboxPosX _ListboxPosY
+if sym ListboxType == Friends runnow sym dec _ListboxPosX 252
+if sym ListboxType == Friends runnow sym inc _ListboxPosY 47
+if sym ListboxType == Default runnow sym inc _ListboxPosY 38
+sym set ListboxLoaded 1
+sym set _ListboxEntries 0
+sym set _ListboxHeight 0
+if sym #@_ListboxName_@0  !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@1  !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@2  !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@3  !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@4  !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@5  !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@6  !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@7  !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@8  !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@9  !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@10 !isEmpty runnow sym inc _ListboxHeight 38
+if sym #@_ListboxName_@11 !isEmpty runnow sym inc _ListboxHeight 38
+}
+MO GenericDropListBox {
+pos 100 120
+pos $_ListboxPosX $_ListboxPosY /screenClamp 300 $_ListboxHeight
+layer 10
+}
+onload {
+gameui promoteToTop GenericDropListBox
+}
+onunloadrun {
+sym set ListboxLoaded 0
+sym set _ListboxEntries 0
+sym set _ListboxHeight 0
+sym set ListboxType Default
+pcmd 0.54 gameui refreshfiltername Listbox
+}
+onunload {
+}

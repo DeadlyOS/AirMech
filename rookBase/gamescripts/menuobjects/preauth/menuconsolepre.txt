@@ -1,0 +1,55 @@
+add MenuObject
+set Name ConsoleVersionNumber
+set Coords "0 0 200 47"
+set RenderCB_DX 0
+set RenderCB_DY 0
+set RenderCB_FontScale 0.7
+set RenderCB _DrawText
+set RenderCB_Flags "/noCommaSep"
+set RenderCB_Font RobotoBold
+set Anchor Top
+set NoAlphaMod 1
+set Alpha 0.15
+set BlendMode BlendAdd
+set DisabledAlpha 1.0
+set RenderCB_TextJustify JustifyXRight
+set RenderCB_ConsoleSymbol SYS_VersionNumberShort
+set RenderCB_RGBColor "0.6 0.9 1.0"
+add MenuObject initFrom ConsoleVersionNumber
+set Name ConsoleVersionName
+set RenderCB_TextJustify JustifyXLeft
+set RenderCB_ConsoleSymbol P_Name
+set RenderCB_FontScale 1.0
+add MenuObject
+set Name AirMechLogoOutlineGlow
+set Texture promos/PromoAirMechPrime
+set Coords "0 0 630 202"
+set BlendMode BlendAdd
+set ScaleX 4
+set ScaleY 4
+set PulseAlpha "6.4 -0.7 -0.9"
+add MenuObject
+set Name AirMechLogoOutlineGlowHome
+set Texture menus/@LogoOutline@
+set Coords "0 318 425 197"
+set DisabledSymInv ShowMotDHome
+set ScaleX 3
+set ScaleY 3
+set BlendMode BlendAdd
+set PulseAlpha "6.4 -0.6 -0.9"
+add MenuObject
+set Name AirMechArenaLogoOutlineGlow
+set Texture menus/AirMechLogoOutline_Arena
+set Coords "5 303 402 210"
+set BlendMode BlendAdd
+set ScaleX 2.6
+set ScaleY 2.6
+set PulseAlpha "6.4 -0.6 -0.9"
+add MenuObject
+set Name BootTitleLogo
+set ContainerOnly 1
+set Child "AirMechLogoOutline 420 200	1.3"
+set Child "AirMechLogoOutlineGlow 348 50		/platform !consolePlatformHW"
+set Child "AirMechArenaLogoOutlineGlow 430 130	/platform consolePlatformHW"
+set Child "ConsoleVersionNumber 0 1018"
+set Child "ConsoleVersionName 220 1010"

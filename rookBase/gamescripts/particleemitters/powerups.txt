@@ -1,0 +1,50 @@
+add ParticleEmitter
+set Name PowerUpTrailTemplate, MaxParticles 128, Material mat_particlePolyTrailLight, FlagPolyTrailSystem 1
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.4, ParticleSizeXVar 0.0
+set ParticleColor 0xdfCCAA99
+set ParticleLifespanBase 1.8, ParticleLifespanVar 0.0
+set GravityScalar 0
+set VisibilitySphereSize 30.0
+set FlagActiveProcessingBeforeEmission 1
+add ParticleEmitter initFrom PowerUpTrailTemplate
+set Name PowerUpTrailBlue
+set ParticleColor 0x0c65c1ff
+add ParticleEmitter initFrom PowerUpTrailTemplate
+set Name PowerUpTrailGreen
+set ParticleColor 0x8bd033ff
+add ParticleEmitter initFrom PowerUpTrailTemplate
+set Name PowerUpTrailYellow
+set ParticleColor 0xf1ae09ff
+add ParticleEmitter
+set Name PowerUpOrbs, Material mat_GlowDotOrange
+set EmitPeriodBase 0.2, EmitPeriodVar 0.3, EmitVelocityBase 4, EmitVelocityVar 0.2, EmitVelocityWiggle 800
+set DragCoefficient 4.0
+set ParticleSizeXBase 0.075, ParticleSizeXVar 0.1
+set ParticleGrowthXBase -0.01, ParticleGrowthXVar 0.0
+set ParticleLifespanBase 1.0, ParticleLifespanVar 0.5
+set InitialRotationMin -80.0, InitialRotationMax 160.0
+set ParticleSpinBase -400.0, ParticleSpinVar 800.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.6
+set EmitPosConstantZOffset 0.4
+set EmitPosRandomXExtent 0.6
+set EmitPosRandomYExtent 0.6
+set EmitPosRandomZExtent 0.0
+add ParticleEmitter
+set Name PowerUpAuraBlue, MaxParticles 4, Material mat_MineBlinkBlue
+set EmitPeriodBase 0.01, EmitPeriodVar 0.0, EmitVelocityBase 6, EmitVelocityVar 2.5
+set FlagSphericalEmissionVelocity 1
+set EmitVelocityComponentScalar "1 1 0.4"
+set DragCoefficient 6.0
+set ParticleLifespanBase 0.5, ParticleLifespanVar 0.3
+set ParticleSizeXBase 0.4, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.5, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.1
+set GravityScalar 0.3
+set VisibilitySphereSize 4.0
+set SourceWorldVelocityPerParticle 0.25
+set EmitPosConstantZOffset -0.25

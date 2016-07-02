@@ -1,0 +1,84 @@
+add MenuObject initFrom DialogTitle
+set Name LoginStatusDialogTitle
+set RenderCB_Text LoginDialogTitleMsg
+add MenuObject initFrom DialogTitleV2
+set Name LoginStatusDialogTitleV2
+set RenderCB_Text @_Arg1_@
+set RenderCB_ConsoleSymbol ""
+add MenuObject  initFrom DialogMessage
+set Name LoginStatusDialogMessage
+set RenderCB_ConsoleSymbol LoginStatusDialogMessage
+add MenuObject initFrom DialogButton0
+set Name LoginStatusDialogButton
+set CommandPress "clearmenu LoginStatus.txt"
+set CommandEnterKey "clearmenu LoginStatus.txt"
+set FocusDeathgrip 1
+add MenuObject
+set Name LoginStatusDialogMaster_Items
+set MouseInteract 1
+set Focus -2
+set Texture menus/Messages
+set CoordsStart "617 1 52 115"
+set CoordsMid "669 1 28 115"
+set CoordsEnd "697 1 91 115"
+set CoordsStartFocused "617 116 52 34"
+set CoordsMidFocused "669 116 28 34"
+set CoordsEndFocused "697 116 91 34"
+set CoordsStartDisabled "617 215 52 90"
+set CoordsMidDisabled "669 215 28 90"
+set CoordsEndDisabled "697 215 91 90"
+set RenderCB _Draw_G3x3
+set RenderCB_DX 760
+set RenderCB_DY 500
+set Coords "0 0 760 500"
+set Child "LoginStatusDialogTitle 0 50"
+set Child "LoginStatusDialogMessage 80 140"
+set Child "LoginStatusDialogButton 564 364"
+add MenuObject
+set Name LoginStatusDialogMaster_ItemsV2
+set Texture menus/DialogBox
+set CoordsStart "8 80 88 89"
+set CoordsMid "94 80 79 89"
+set CoordsEnd "174 80 93 89"
+set CoordsStartFocused "8 169 88 200"
+set CoordsMidFocused "94 169 79 200"
+set CoordsEndFocused "174 169 93 200"
+set CoordsStartDisabled "8 370 88 91"
+set CoordsMidDisabled "94 370 79 91"
+set CoordsEndDisabled "174 370 93 91"
+set Focus -2
+set MouseInteract 1
+set RenderCB _Draw_G3x3
+set Coords "0 0 700 400"
+set RenderCB_DX 700
+set RenderCB_DY 400
+set RenderCB_YClipConfigIsOffsets 1
+set Child "LoginStatusDialogTitleV2 40 20					LoginDialogTitleMsg 650"
+set Child "DialogMessageV2 40 110							LoginStatusDialogMessage 600"
+set Child "LoginStatusDialogButtonV2[LoginStatusDialogButton] 265 300"
+add MenuObject initFrom DialogButton0
+set Name LoginStatusDialogButtonV2
+set Texture menus/DialogBox
+set Coords "21 16 184 55"
+set CoordsFocused "227 16 184 55"
+set CoordsPressed  "227 16 184 55"
+set CoordsDisabled  "227 16 184 55"
+set RenderCB_Flags "/nmi /shadowed /shadowColor2"
+set RenderCB_Offset "0 -5"
+set RenderCB_OffsetPressed "0 -4"
+set RenderCB_Font Roboto
+set RenderCB_FontScale 0.7
+set RenderCB _DrawUText
+set RenderCB_Text DialogButtonOk
+set DrawWhenFocused ""
+set CommandPress "clearmenu LoginStatus.txt"
+set CommandEnterKey "clearmenu LoginStatus.txt"
+set FocusDeathgrip 1
+add MenuObject
+set Name LoginStatusDialogMaster_ItemsSteam
+add MenuObject
+set Name LoginStatusDialogMaster
+set ContainerOnly 1
+set Coords "0 0 1920 1080"
+set Child "LoginStatusDialogMaster_ItemsV2 520 230			/platform carbonPay"
+set Child "LoginStatusDialogMaster_ItemsV2 520 230			/platform steam"

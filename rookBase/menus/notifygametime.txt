@@ -1,0 +1,27 @@
+stopIfVR
+onloadrun {
+if sym MatchOverReal == 0 runnow loadmenu WhiteFlash
+}
+MO NotifyMaster {
+pos 0 360
+safezone xS
+layer 15
+}
+MO NotifySubtleMaster {
+pos 0 520
+safezone xS
+layer 15
+}
+MO NotifyFlash {
+pos 0 400
+safezone xS
+layer 14
+}
+onload {
+addUIAnim NotifyFlash mas_NotifyStreak.txt /speed 1.0
+gameui enableAll NotifySubtleMaster
+pcmd 4.0 gameui disableAll NotifyMaster
+pcmd 4.0 gameui disableAll NotifySubtleMaster
+pcmd 2.0 gameui disable NotifyFlash
+pcmd 5.0 clearmenu NotifyGametime
+}

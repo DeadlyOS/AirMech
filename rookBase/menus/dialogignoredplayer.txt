@@ -1,0 +1,14 @@
+onloadrun {
+sym set _DisableReport_ 0
+if sym _FriendName_ ==sym P_Name runnow sym set _DisableReport_ 1
+}
+MO DialogIgnoredPlayerMaster {
+pos 0 14
+layer 20
+}
+onload {
+friends reqinfosym _FriendName_
+addUIAnim DialogIgnoredPlayerMaster mas_DialogPop
+gameui promoteToTop DialogIgnoredPlayerMaster
+if usingPad gameui focusNameTry FriendButtonClose
+}

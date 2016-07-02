@@ -1,0 +1,47 @@
+stopIfSymbol TempLoadoutLoaded == 1
+onloadrun {
+sym set TempLoadoutLoaded 1
+sym set CurrentMenu TempLoadout
+gameUI ignoreInputTime 0.1
+sym cTrim RookLocal _ RookLocal_Base /chopLast U
+menucmd HangarUpdateRaritySymbols
+}
+MO MF_LoadoutMaster {
+pos -30 40
+}
+onload {
+if sym CustomizeFromLobby == 1 addUIAnim DialogOkMaster mas_DialogPopFadein
+if sym CustomizeFromLobby != 1 sym set BackgroundImage Hangar
+if sym LDL1 == Loadout sym clear LDL1
+if sym LDL2 == Loadout sym clear LDL2
+if sym LDL3 == Loadout sym clear LDL3
+if sym LDL4 == Loadout sym clear LDL4
+if sym LDL5 == Loadout sym clear LDL5
+if sym LDL6 == Loadout sym clear LDL6
+if sym LDL7 == Loadout sym clear LDL7
+if sym LDL8 == Loadout sym clear LDL8
+if sym LDL9 == Loadout sym clear LDL9
+if sym LDL10 == Loadout sym clear LDL10
+loadout customizeInit
+sym set LoadoutSetupAirMech 0
+sym set LoadoutConfigureUnits 0
+sym set SlotFlashActive 0
+sym set SelectItemActive 0
+input set padFocusFallback MainBarBackButton
+if usingpad pcmd 0.1 gameui focusnametry MainBarBackButton
+menucmd SelectFocusAirMech local $RookLocal_Base
+pcmd 0 gameui refreshFilterName CustomDrawer
+}
+onunload {
+sym set LoadoutSetupAirMech 0
+sym set LoadoutConfigureUnits 0
+sym set SlotFlashActive 0
+menuCmd StoreLoadout
+sym set TempLoadoutLoaded 0
+if sym CustomizeFromLobby == 1 sym set CurrentMenu CLobby
+sym set CustomizeFromLobby 0
+menucmd CloseUnitsFromHangar
+sym clear _CustomExecSlot
+}
+onunloadrun {
+}

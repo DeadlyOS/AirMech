@@ -1,0 +1,26 @@
+quests enumAvailableQuestsInGroupToList Mission 4 Quest VRQuestList
+sym op VRQuestList getcount VRQuestsN
+sym set _PosQuests "0 50"
+menu3d addChild MenusVRRoot MenuDiskQuests /model vr/MenuDisk.amf /material mat_MenuDisk /noVis /rootScale 0.7 0.7 1.0 /worldPose $$_PosQuests 0.0
+menu3d addChild MenusVRRoot MenuRingQuests /model vr/MenuRing2.amf /material mat_MenuRing2 /noVis /rootScale 0.75 /worldPose $$_PosQuests 0.0
+menu3d addChild MenusVRRoot MenuLabelQuests /model vr/MenuTextFlat.amf /material mat_RenderToTextureVR_UnlitStdBlend /noVis /worldPose 0 100 50.0 /rootScale 3.4 /rootRot -5 0 190
+menu3d addChild MenusVRRoot MenuQuestCards /rootScale 3 /rootRot 0 0 8
+menu3d setWorldPose MenuQuestCards	5 50 45
+menu3d logicFnc MenuDiskQuests amFocusCapsule /radiusInner 30.0 /height 70.0 /skinDepth 7.0 /offset 0 0 -30 /cmdfocus [menucmd TouchQuestCards] /cmdunfocus [menucmd UnTouchQuestCards]
+menu3d addChild MenuQuestCards MenuQuestCard0 /model vr/QuestCard.amf /material mat_MenuPictureFrame /material mat_QuestCardBack /noVis /worldPose 0 0 0 /hiddenCheckBySymbolValue VRQuestsN=0
+menu3d addChild MenuQuestCards MenuQuestCard1 /model vr/QuestCard.amf /material mat_MenuPictureFrame /material mat_QuestCardBack /noVis /worldPose 0 0 0 /hiddenCheckBySymbolValue VRQuestsN<2
+menu3d addChild MenuQuestCards MenuQuestCard2 /model vr/QuestCard.amf /material mat_MenuPictureFrame /material mat_QuestCardBack /noVis /worldPose 0 0 0 /hiddenCheckBySymbolValue VRQuestsN<3
+menu3d addChild MenuQuestCards MenuQuestCard3 /model vr/QuestCard.amf /material mat_MenuPictureFrame /material mat_QuestCardBack /noVis /worldPose 0 0 0 /hiddenCheckBySymbolValue VRQuestsN<4
+pcmd 0.1 menu3d addAnimScript MenuQuestCard0 as_VRQuestCard0.txt
+pcmd 0.1 menu3d addAnimScript MenuQuestCard1 as_VRQuestCard1.txt
+pcmd 0.1 menu3d addAnimScript MenuQuestCard2 as_VRQuestCard2.txt
+pcmd 0.1 menu3d addAnimScript MenuQuestCard3 as_VRQuestCard3.txt
+if sym VRQuestsN > 0 pcmd 0.1 menucmd ShowVrMenuSet Quests
+if sym VRQuestsN > 0 sym set ShowQuestCard 1
+sym set VrQuestCardActive MenuQuestCard0
+sym op VRQuestList copyFirst VrQuestActive
+if sym VRQuestsN == 1 sym set VrQuestCardList "MenuQuestCard0"
+if sym VRQuestsN > 1 sym set VrQuestCardList "MenuQuestCard0 MenuQuestCard1"
+if sym VRQuestsN > 2 sym set VrQuestCardList "MenuQuestCard0 MenuQuestCard1 MenuQuestCard2"
+if sym VRQuestsN > 3 sym set VrQuestCardList "MenuQuestCard0 MenuQuestCard1 MenuQuestCard2 MenuQuestCard3"
+if sym VRQuestsN > 0 pcmd 0.05 menucmd SetupVrQuests

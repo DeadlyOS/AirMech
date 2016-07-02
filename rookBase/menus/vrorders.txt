@@ -1,0 +1,13 @@
+onloadrun {
+]menu3d remove OrdersRoot
+]menu3d addChild BuildCubeRoot OrdersRoot /model vr/Orders.amf /material mat_InfoBannerVR_UnlitStdBlend /worldPose 0 130 0 /rootRot 10 0 180 /rootScale 0.9 /noShadowCast /hiddenCheckBySymbolInv LocalAM_CanIssueOrder
+]echo loaded Orders
+}
+MO OrdersRTT {
+pos 0 256
+layer 30
+}
+onload {
+]pcmd t1 menu3d updateORTSnapshot2 OrdersRoot 0 256 1024 256
+]pcmd t1 clearmenu VrOrders
+}

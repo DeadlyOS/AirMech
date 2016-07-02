@@ -1,0 +1,79 @@
+stopIfSymbol CurrentMenu == _SetupTransition_
+onloadrun {
+gameEvent DNACustom ShopEntry /tag Source $CurrentMenu
+menuCmd ConMenuBlur
+]gameUI saveFocusID _savefocusid_shop_
+customize clearClassFilter
+sym set _ActiveLobbySelectScript_ SelectItemDialog.txt
+sym clear _cmode
+sym setZero _FocusItemList_ _FocusItemLast_
+sym push _Bind_CycleLoadoutOnShoulders_ 0
+sym push _Bind_MatchingUIBack_ 0
+sym push _Bind_SoloLoadout_ 0
+sym push CurrentMenu ConShop
+sym push _CustomObject
+sym set ConShopMenu 1
+sym set ShopSection ButtonShop
+sym set _NoShopResults 0
+sym push _Bind_PrevNextOnShoulders_ 0
+sym set ConPromosRemaining 4
+sym set RedeemCode
+sym set ConMessageHasFocus 0
+if consoleplatform sym set Shop_Top 1
+if !consoleplatform sym set Shop_Top 0
+sym setZero ShowShopItems Shop_Diamonds Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Pets Shop_Cosmetics Shop_Ultimates Shop_Other Shop_Market Shop_Inventory
+}
+MO BlackCenterShadow +gameValidation console {
+pos 0 0
+layer 26
+}
+MO ConShopShadowVignette {
+pos -250 -180
+layer 26
+}
+MO CM_ConShopMaster +gameValidation console {
+pos -30 0
+layer 26
+}
+MO CM_ConShopMaster +gameValidation !console {
+pos -140 -50
+layer 26
+}
+onload {
+addUIAnim CM_ConShopMaster mas_DialogPop
+if sym LoadoutAutosave == 0 menuCmd StoreLocalLoadout
+sym set SelectItemActive 1
+input set padFocusFallback ConSelectItem0
+addUIAnim ConLoadoutUnitSelArrow #mas_UnitArrow@_ArmySelSlot@
+gameUI focusNameTry ShopTopGameShop $_GameShop_Last
+sym setZero ShowShopItems Shop_Diamonds Shop_Featured Shop_Market
+sym set Shop_Game 1
+pcmd t1 menucmd ShopReposition
+if sym MainMenuShopSelect == Market	sym setZero Shop_Game Sort_Reverse Shop_Top _NoShopResults Filter_MyListings
+if sym MainMenuShopSelect == Market	sym setOne ShowShopItems Shop_Market
+if sym MainMenuShopSelect == Market	menuCmd ShopButtonPressPre
+if sym MainMenuShopSelect == Market	menuCmd ButtonPressShop_Market
+if !consoleplatformHW if usingpad gameui focusNameTry Shop_AirMechs ShopItem0
+}
+onunloadrun {
+sym pop _CustomObject
+}
+onunload {
+input set padFocusFallback $_savefocusid_shop_
+gameUI restoreFocusID _savefocusid_shop_
+gameUI ignoreInputTime 0.2
+console flushAllPendingSeq 320
+sym pop _Bind_CycleLoadoutOnShoulders_
+sym pop _Bind_MatchingUIBack_
+sym pop _Bind_SoloLoadout_
+sym pop CurrentMenu
+sym set ConShopMenu 0
+sym pop _Bind_PrevNextOnShoulders_
+if sym CurrentMenu == CHome menuCmd ConMenuSharp
+if sym CurrentMenu == CRoot menuCmd ConMenuSharp
+if menuloaded SelectAirMech && sym AM_Sel_Class !empty customize slotExecClass rooks $AM_Sel_Class
+if menuloaded SelectAirMech loadout customizeInit
+if menuloaded SelectAirMech refreshFilterName CustomDrawer Customize
+sym set _ShowDescMode Default
+if ps4 ps4 hideStoreState /forced
+}

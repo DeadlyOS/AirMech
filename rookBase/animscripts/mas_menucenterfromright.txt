@@ -1,0 +1,14 @@
+absoluteTimes
+-replace
+kf time 0.0 {
+intMode square
+offset = 0 0 0
+}
+kf time 0.3 {
+offset = -1920 0 0
+}
+Cmd 0.01 "sym set _MenuTransition_ 0"
+Cmd 0.01 "gameUI show $MenuToShow"
+Cmd 0.2 "sym set _MenuTransition_ 1"
+Cmd 0.3 "gameUI mEnableAll $MenuToShow"
+Cmd 0.3 "rook inMenu $MenuToShow"

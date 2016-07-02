@@ -1,0 +1,26 @@
+onloadrun {
+]gameUI saveFocusID _savefocusid_inventory_
+sym set InventoryLoaded 1
+clearmenu UnlockDialog.txt /fadeout 0.25
+menucmd InvFilter_ClickList local 0
+}
+MO InventoryMain {
+pos 500 120
+draggableUIElement
+pos $UI_Inventory_X $UI_Inventory_Y /screenClamp 200 300
+layer 13
+preDeleteRunCmd gameUI getLastRenderPos InventoryMain UI_Inventory_X UI_Inventory_Y
+}
+onload {
+addUIAnim InventoryMain mas_DialogPopNoSrcMod
+gameui promoteToTop InventoryMain
+}
+onunloadrun {
+}
+onunload {
+input set padFocusFallback $_savefocusid_inventory_
+sym set InventoryLoaded 0
+sym setNSet 64 TR2_Hidden 1
+sym set InventorySelected -1
+sym set InventoryDisplayType 0
+}

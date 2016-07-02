@@ -1,0 +1,35 @@
+onloadrun {
+if sym CurrencyDepositSource != none runnow menucmd DepositDiamondsSetup
+}
+onunload {
+}
+MO DepositDiamondsA {
+pos $_DiamondsSrcX_ $_DiamondsSrcY_
+layer 20
+}
+MO DepositDiamondsB {
+relposx $_DiamondsSrcX_ -10
+relposy $_DiamondsSrcY_ 8
+layer 20
+}
+MO DepositDiamondsC {
+relposx $_DiamondsSrcX_ -5
+relposy $_DiamondsSrcY_ 13
+layer 20
+}
+onload {
+if sym CurrencyDepositSource != none gameUI show DepositDiamondsA
+if sym CurrencyDepositSource != none pcmd 0.1 gameUI show DepositDiamondsB
+if sym CurrencyDepositSource != none pcmd 0.2 gameUI show DepositDiamondsC
+if sym CurrencyDepositSource != none pcmd 0 addUIAnim DepositDiamondsA mas_DepositDiamonds /speed 0.95
+if sym CurrencyDepositSource != none pcmd 0.1 addUIAnim DepositDiamondsB mas_DepositDiamonds /speed 0.97
+if sym CurrencyDepositSource != none pcmd 0.2 addUIAnim DepositDiamondsC mas_DepositDiamonds
+pcmd 0.2 playSound UIOption01.wav
+if sym CurrencyDepositSource != none pcmd 0.85 gameUI disable DepositDiamondsA
+if sym CurrencyDepositSource != none pcmd 0.9 gameUI disable DepositDiamondsB
+if sym CurrencyDepositSource != none pcmd 0.95 gameUI disable DepositDiamondsC
+pcmd 1.5 clearmenu DepositDiamonds
+sym set CurrencyDepositSource none
+}
+onunload {
+}

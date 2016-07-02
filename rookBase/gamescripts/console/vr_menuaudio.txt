@@ -1,0 +1,42 @@
+menu3d addChild MenusVR MenusVRAudio  /noVis /worldPose 0 0 0
+if sym MusicVol < 10 sym set MusicVol 0
+if sym SoundVol < 10 sym set SoundVol 0
+if sym MasterVol < 10 sym set MasterVol 0
+if sym AnnouncerVol < 10 sym set AnnouncerVol 0
+if sym MenuVol < 10 sym set MenuVol 0
+sym set _PosAudioMaster "-67.5 -22.5"
+sym set _PosAudioEffects "-25 -48"
+sym set _PosAudioVoice "25 -48"
+sym set _PosAudioMusic "67.5 -22.5"
+menu3d addChild MenusVRAudio MenuAudioMasterFocus /noVis /worldPose $$_PosAudioMaster 0
+menu3d addChild MenusVRAudio MenuAudioMasterMuted /model vr/MenuAudioMuted.amf /material mat_IconsAudio /hiddenCheckBySymbolValue MasterVol!=0 /worldPose $$_PosAudioMaster 0  /rootScale 4.5
+menu3d addChild MenusVRAudio MenuAudioEffectsFocus /noVis /worldPose $$_PosAudioEffects 0
+menu3d addChild MenusVRAudio MenuAudioEffectsMuted /model vr/MenuAudioMuted.amf /material mat_IconsAudio /hiddenCheckBySymbolValue SoundVol!=0 /worldPose $$_PosAudioEffects 0  /rootScale 4.5
+menu3d addChild MenusVRAudio MenuAudioVoiceFocus /noVis /worldPose $$_PosAudioVoice 0
+menu3d addChild MenusVRAudio MenuAudioVoiceMuted /model vr/MenuAudioMuted.amf /material mat_IconsAudio /hiddenCheckBySymbolValue AnnouncerVol!=0 /worldPose $$_PosAudioVoice 0  /rootScale 4.5
+menu3d addChild MenusVRAudio MenuAudioMusicFocus /noVis /worldPose $$_PosAudioMusic 0
+menu3d addChild MenusVRAudio MenuAudioMusicMuted /model vr/MenuAudioMuted.amf /material mat_IconsAudio /hiddenCheckBySymbolValue MusicVol!=0 /worldPose $$_PosAudioMusic 0  /rootScale 4.5
+menu3d logicFnc MenuAudioMasterFocus amFocusCapsule /radiusInner 18.0 /height 30.0 /skinDepth 8.0 /cmdfocus [menucmd TouchAudio Master] /cmdunfocus [menucmd UnTouchAudio Master]
+menu3d logicFnc MenuAudioEffectsFocus amFocusCapsule /radiusInner 18.0 /height 30.0 /skinDepth 8.0 /cmdfocus [menucmd TouchAudio Effects] /cmdunfocus [menucmd UnTouchAudio Effects]
+menu3d logicFnc MenuAudioVoiceFocus amFocusCapsule /radiusInner 18.0 /height 30.0 /skinDepth 8.0 /cmdfocus [menucmd TouchAudio Voice] /cmdunfocus [menucmd UnTouchAudio Voice]
+menu3d logicFnc MenuAudioMusicFocus amFocusCapsule /radiusInner 18.0 /height 30.0 /skinDepth 8.0 /cmdfocus [menucmd TouchAudio Music] /cmdunfocus [menucmd UnTouchAudio Music]
+menu3d addChild MenusVRAudio MenuAudioMasterVisual /model vr/MenuAudioMaster.amf /material mat_IconsAudio /noVis /worldPose 0 -20 0 /rootScale 4.5
+menu3d addChild MenusVRAudio MenuAudioEffectsVisual /model vr/MenuAudioEffects.amf /material mat_IconsAudio /noVis /worldPose 0 -20 0 /rootScale 4.5
+menu3d addChild MenusVRAudio MenuAudioVoiceVisual /model vr/MenuAudioVoice.amf /material mat_IconsAudio /noVis /worldPose 0 -20 0 /rootScale 4.5
+menu3d addChild MenusVRAudio MenuAudioMusicVisual /model vr/MenuAudioMusic.amf /material mat_IconsAudio /noVis /worldPose 0 -20 0 /rootScale 4.5
+menu3d addChild MenusVRAudio MenuAudioMasterVolume /worldPose -24 26 0 /rootRot -15 0 0
+menu3d addChild MenusVRAudio MenuAudioEffectsVolume /worldPose -8 26 0 /rootRot -15 0 0
+menu3d addChild MenusVRAudio MenuAudioVoiceVolume /worldPose 8 26 0 /rootRot -15 0 0
+menu3d addChild MenusVRAudio MenuAudioMusicVolume /worldPose 24 26 0 /rootRot -15 0 0
+menucmd BuildVolumeBars Master 0.3
+menucmd BuildVolumeBars Effects 0.5
+menucmd BuildVolumeBars Voice 0.7
+menucmd BuildVolumeBars Music 0.9
+pcmd 0 spawn VRMenuSphereCol2Vis /pos $$_PosAudioMaster 0 /label MenuColLang
+pcmd 0.0 menu3d addAnimScript MenuAudioMasterVisual as_VRMenuIn.txt 1
+pcmd 0.2 menu3d addAnimScript MenuAudioEffectsVisual as_VRMenuIn.txt
+pcmd 0.4 menu3d addAnimScript MenuAudioVoiceVisual as_VRMenuIn.txt
+pcmd 0.6 menu3d addAnimScript MenuAudioMusicVisual as_VRMenuIn.txt
+pcmd 0.1 menu3d setVisible MenuAudioMasterFocus MenuAudioEffectsFocus MenuAudioVoiceFocus MenuAudioMusicFocus
+pcmd 0.5 menu3d writeWorldPos MenuAudioMasterFocus _WorldPosAudioMaster
+sym set PrevVrMenu Options

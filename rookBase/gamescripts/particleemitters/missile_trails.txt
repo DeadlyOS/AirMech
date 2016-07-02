@@ -1,0 +1,282 @@
+add ParticleEmitter
+set Name MissileTrailTemplate, MaxParticles 128, Material mat_particlePolyTrailLight, FlagPolyTrailSystem 1
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleSizeXBase 0.45 ParticleSizeXVar 0.0
+set ParticleColor 0xdfCCAA99
+set ParticleLifespanBase 1.0, ParticleLifespanVar 0.0
+set GravityScalar 0
+set VisibilitySphereSize 22.0
+set FlagActiveProcessingBeforeEmission 1
+add ParticleEmitter initFrom MissileTrailTemplate
+set Name MissileTrailRed
+set ParticleColor 0xe63215ff
+add ParticleEmitter initFrom MissileTrailTemplate
+set Name MissileTrailBlue
+set ParticleColor 0x0c65c1ff
+add ParticleEmitter initFrom MissileTrailTemplate
+set Name MissileTrailGreen
+set ParticleColor 0x8bd033ff
+add ParticleEmitter initFrom MissileTrailTemplate
+set Name MissileTrailYellow
+set ParticleColor 0xf1ae09ff
+add ParticleEmitter
+set Name FireTrail2, MaxParticles 256
+set EmitPeriodBase 0.001, EmitPeriodVar 0.0, EmitVelocityBase 1, EmitVelocityVar 1, EmitVelocityWiggle 200
+set ParticleLifespanBase 0.02, ParticleLifespanVar 0.05
+set ParticleSizeXBase 0.3, ParticleSizeXVar 0
+set ParticleGrowthXBase -0.5, ParticleGrowthXVar 0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 1.0
+set ParticleColor 0xff5400ff
+set ParticleColorSecondary 0xff5400ff
+set ColorMode eColorMode_RGBFadeToSecondary
+set VisibilitySphereSize 8.0
+add ParticleEmitter initFrom FireTrail2
+set Name FireTrail2_Mini
+set ParticleLifespanBase 0.2
+set ParticleSizeXBase 0.2
+add ParticleEmitter initFrom FireTrail2
+set Name FireTrail2_Micro
+set ParticleLifespanBase 0.15
+set ParticleSizeXBase 0.14
+add ParticleEmitter initFrom FireTrail2
+set Name AfterburnerTrail
+set ParticleLifespanBase 0.1
+set ParticleSizeXBase 0.4
+add ParticleEmitter
+set Name FireTrail, Material mat_FireRound
+set EmitVelocityBase 0, EmitVelocityVar 0.1, EmitVelocityWiggle 500
+set DragCoefficient 1.0
+set ParticleLifespanBase 0.25, ParticleLifespanVar 0.0
+set FlagOnePerFrameEmitCfg 1
+set ParticleSizeXBase 0.5, ParticleSizeXVar 0.1
+set ParticleGrowthXBase -0.8, ParticleGrowthXVar -0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set AlphaMode eAlphaMode_LinFadeOut
+set AlphaModeParam 0.5
+set GravityScalar 0
+set EmitPosConstantZOffset 0.1
+set FlagActiveProcessingBeforeEmission 1
+add ParticleEmitter initFrom FireTrail
+set Name FireTrail_Mini
+set ParticleLifespanBase 0.2
+set ParticleSizeXBase 0.4
+add ParticleEmitter initFrom FireTrail
+set Name FireTrail_Micro
+set ParticleLifespanBase 0.15
+set ParticleSizeXBase 0.34
+add ParticleEmitter initFrom FireTrail
+set Name FireTrailRed
+set ParticleColor 0xff441100
+set ParticleColorSecondary 0xfe534700
+add ParticleEmitter initFrom FireTrail
+set Name "FireTrailBooster", MaxParticles 256
+set EmitPeriodBase 0.001, EmitPeriodVar 0, EmitVelocityBase 0, EmitVelocityVar 0.0, EmitVelocityWiggle 500
+set ParticleLifespanBase 0.2, ParticleLifespanVar 0.0
+set ParticleSizeXBase 0.25, ParticleSizeXVar 0.0
+set ParticleGrowthXBase -1.0, ParticleGrowthXVar 0.0
+add ParticleEmitter
+set Name SpiderSilkTrail, MaxParticles 96
+set Material mat_spiderSilkTrail
+set EmitPeriodBase 0.01, EmitPeriodVar 0.0, EmitVelocityBase 1.0, EmitVelocityVar 0.0, EmitVelocityWiggle 800
+set ParticleLifespanBase 1.5, ParticleLifespanVar 0.0
+set ParticleSizeXBase 0.8, ParticleSizeXVar 0.4
+set ParticleGrowthXBase 5.5, ParticleGrowthXVar 0
+set ParticleGrowthYBase 5.5, ParticleGrowthYVar 0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeInHoldThenOut
+set AlphaModeParam 0.1
+set AlphaModeParam2 0.9
+set VisibilitySphereSize 12.0
+set FlagPolyTrailSystem 1
+set PolyTrailVTileDistance 8.0
+set ParticleColor 0xffffffff
+set GravityScalar 5.0
+set GravityDirection "0 0 -1"
+set FlagSphericalEmissionVelocity 1
+set DragCoefficient 3.0
+add ParticleEmitter
+set Name MissileTrailSmoke, MaxParticles 128
+set Material mat_particleSmokeTrail
+set EmitPeriodBase 0.01, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleLifespanBase 2.0, ParticleLifespanVar 0.0
+set ParticleSizeXBase 0.8
+set ParticleGrowthXBase 10.5, ParticleGrowthXVar 0
+set ParticleGrowthYBase 10.5, ParticleGrowthYVar 0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaModeParam 0.3
+set VisibilitySphereSize 12.0
+set FlagPolyTrailSystem 1
+set PolyTrailVTileDistance 8.0
+set ParticleColor 0xffffffff
+set GravityScalar 0.0
+set FlagSphericalEmissionVelocity 1
+add ParticleEmitter initFrom MissileTrailSmoke
+set Name MissileTrailSmoke_Mini
+set MaxParticles 90
+set ParticleLifespanBase 1.2
+set ParticleSizeXBase 0.6
+set ParticleGrowthXBase 8.0
+set ParticleGrowthYBase 8.0
+add ParticleEmitter initFrom MissileTrailSmoke
+set Name MissileTrailSmoke_Micro
+set MaxParticles 60
+set ParticleLifespanBase 1.0
+set ParticleSizeXBase 0.4
+set ParticleGrowthXBase 5.0
+set ParticleGrowthYBase 5.0
+add ParticleEmitter initFrom MissileTrailSmoke
+set Name MissileTrailSmokeAir
+set EmitVelocityBase 0.0, EmitVelocityVar 0.0, MaxParticles 90
+set ParticleLifespanBase 1.2
+add ParticleEmitter initFrom MissileTrailSmoke
+set Name MissileTrailSmokeArtillery
+set EmitVelocityBase 0.0, EmitVelocityVar 0.0, MaxParticles 90
+set ParticleSizeXBase 0.6
+set ParticleGrowthXBase -6.5, ParticleGrowthXVar 0
+set ParticleGrowthYBase -6.5, ParticleGrowthYVar 0
+set ParticleLifespanBase 1.2
+add ParticleEmitter initFrom MissileTrailSmokeAir
+set Name MissileTrailSmokeAir_Mini
+set MaxParticles 90
+set ParticleLifespanBase 1.0
+set ParticleSizeXBase 0.6
+set ParticleGrowthXBase 8.0
+set ParticleGrowthYBase 8.0
+add ParticleEmitter initFrom MissileTrailSmokeAir
+set Name MissileTrailSmokeAir_Micro
+set MaxParticles 60
+set ParticleLifespanBase 0.7
+set ParticleSizeXBase 0.4
+set ParticleGrowthXBase 5.0
+set ParticleGrowthYBase 5.0
+add ParticleEmitter initFrom MissileTrailSmoke
+set Name MissileTrailSmokeRed
+set ParticleColor 0xff5e3eff
+add ParticleEmitter initFrom MissileTrailSmokeAir
+set Name MissileTrailSmokeRedAir
+set ParticleColor 0xff5e3eff
+add ParticleEmitter initFrom MissileTrailSmoke
+set Name MissileTrailStreamer
+set Material mat_particleStreamer
+set PolyTrailVTileDistance 1.5
+set ParticleLifespanBase 0.8
+set ParticleSizeXBase 0.5
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set GravityScalar 1.5
+set GravityDirection "0 0 -1"
+add ParticleEmitter initFrom MissileTrailSmokeAir
+set Name MissileTrailStreamerAir
+set Material mat_particleStreamer
+set PolyTrailVTileDistance 1.5
+set ParticleLifespanBase 0.8
+set ParticleSizeXBase 0.5
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set GravityScalar 1.5
+set GravityDirection "0 0 -1"
+add ParticleEmitter initFrom MissileTrailSmoke
+set Name MissileTrailStars
+set Material mat_particleStreamerStars
+set PolyTrailVTileDistance 1.5
+set ParticleLifespanBase 0.8
+set ParticleSizeXBase 0.5
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set GravityScalar 1.5
+set GravityDirection "0 0 -1"
+add ParticleEmitter initFrom MissileTrailSmokeAir
+set Name MissileTrailStarsAir
+set Material mat_particleStreamerStars
+set PolyTrailVTileDistance 1.5
+set ParticleLifespanBase 0.8
+set ParticleSizeXBase 0.5
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set GravityScalar 1.5
+set GravityDirection "0 0 -1"
+add ParticleEmitter initFrom MissileTrailSmoke
+set Name MissileTrailRedGreen
+set Material mat_particleStreamerRedGreen
+set PolyTrailVTileDistance 1.5
+set ParticleLifespanBase 0.8
+set ParticleSizeXBase 0.5
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set GravityScalar 1.5
+set GravityDirection "0 0 -1"
+add ParticleEmitter initFrom MissileTrailSmokeAir
+set Name MissileTrailRedGreenAir
+set Material mat_particleStreamerRedGreen
+set PolyTrailVTileDistance 1.5
+set ParticleLifespanBase 0.8
+set ParticleSizeXBase 0.5
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set GravityScalar 1.5
+set GravityDirection "0 0 -1"
+add ParticleEmitter initFrom MissileTrailSmoke
+set Name MissileTrailPinkPetal
+set Material mat_particleCCPinkPetals
+set PolyTrailVTileDistance 1.5
+set ParticleLifespanBase 0.8
+set ParticleSizeXBase 0.5
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set GravityScalar 1.5
+set GravityDirection "0 0 -1"
+add ParticleEmitter initFrom MissileTrailSmokeAir
+set Name MissileTrailPinkPetalAir
+set Material mat_particleCCPinkPetals
+set PolyTrailVTileDistance 1.5
+set ParticleLifespanBase 0.8
+set ParticleSizeXBase 0.5
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set GravityScalar 1.5
+set GravityDirection "0 0 -1"
+add ParticleEmitter
+set Name ConfettiTrail, MaxParticles 128, Material mat_ConfettiParty
+set EmitPeriodBase 0.003, EmitPeriodVar 0.003, EmitVelocityBase 2, EmitVelocityVar 1.5, EmitVelocityWiggle 500
+set DragCoefficient 1.0
+set ParticleLifespanBase 0.1, ParticleLifespanVar 0.5
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.05
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -100.0, ParticleSpinVar 200.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set GravityScalar 10.0
+set GravityDirection "0 0 -1"
+set FlagActiveProcessingBeforeEmission 1
+set ParticleTexturePageDX 2
+set ParticleTexturePageDY 2
+set ParticleTexturePagePlayTime 50.0
+set FlagParticleTexturePageRandom 1
+set FlagSphericalEmissionVelocity 1
+add ParticleEmitter
+set Name ElectricTrail, MaxParticles 256, Material mat_ElectricTrail
+set EmitPeriodBase 0.01, EmitPeriodVar 0.0, EmitVelocityBase 0.0, EmitVelocityVar 0.0, EmitVelocityWiggle 0
+set ParticleLifespanBase 1.0, ParticleLifespanVar 0.0
+set ParticleSizeXBase 2.8
+set ParticleGrowthXBase 10.5, ParticleGrowthXVar 0
+set ParticleGrowthYBase 10.5, ParticleGrowthYVar 0
+set FlagProcessWhenNotVisible 1
+set AlphaMode eAlphaMode_LinFadeInThenOut
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set VisibilitySphereSize 22.0
+set FlagPolyTrailSystem 1
+set PolyTrailVTileDistance 8.0
+set GravityScalar 0.0
+set FlagSphericalEmissionVelocity 1
+add ParticleEmitter initFrom ElectricTrail
+set Name ElectricTrailBlue, Material mat_ElectricTrailBlue
+add ParticleEmitter initFrom ElectricTrail
+set Name ElectricTrailRed, Material mat_ElectricTrailRed
+add ParticleEmitter initFrom ElectricTrail
+set Name ElectricTrailGreen, Material mat_ElectricTrailGreen
+add ParticleEmitter initFrom ElectricTrail
+set Name ElectricTrailYellow, Material mat_ElectricTrailYellow

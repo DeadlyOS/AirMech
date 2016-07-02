@@ -1,0 +1,27 @@
+onloadrun {
+}
+MO SplashAirMechMaster {
+pos 0 0
+}
+onload {
+gameui enable VignetteStory
+addUIAnim AirMechLogoIntroSplash mas_CarbonSplash
+gameUI ignoreInputTime 3.0
+if !maploaded menu3d add MainMenuBack /model menus/MenuCircleTest.amf	/material mat_LoadingCircle
+if !maploaded menu3d setRootOffset MainMenuBack	0.0 3.4 0.2
+if !maploaded menu3d setRootScale MainMenuBack	6.0 6.0 6.0
+if !maploaded menu3d addzspin MainMenuBack bone_spin 3
+if !maploaded menu3d addzspin MainMenuBack bone_spin_center -8
+if !maploaded menu3d animate MainMenuBack menus/CircleBounce.aaf looping 0 0.02
+if !maploaded menu3d add MainMenuBg /model menus/MenuFullframe.amf	/material mat_MenuCircleBack
+if !maploaded menu3d setRootOffset MainMenuBg	0.0 1.1 0.0"
+if !maploaded menu3d setRootScale MainMenuBg	20 20 20"
+pcmd 1.0 gameui focusname InputCatchAirMech
+input set padFocusFallback InputCatchAirMech
+pcmd_seq 304 1.0 gameui disable SplashAirMechCover
+pcmd_seq 304 1.0 gameui enable AirMechLogoIntroSplash
+pcmd_seq 304 10.0 gameui enable SplashAirMechCover
+pcmd_seq 304 13.0 menuCmd AirMechIntro
+}
+onunload {
+}

@@ -1,0 +1,36 @@
+blockLoadOnConsoleSym MailInboxLoaded
+onloadrun {
+sym clear InboxSelectedIDs
+sym clear OutboxSelectedIDs
+sym setZero MailInboxFirstInd _InboxSelectedAll
+sym setZero MailOutboxFirstInd _OutboxSelectedAll
+mail writeInbox 0 10 Inbox
+mail writeOutbox 0 10 Outbox
+sym set MailInboxLoaded 1
+if usingpad sym set MailMessageLoaded 1
+if !usingpad sym set MailMessageLoaded 0
+sym set _InboxDeleteEn 0
+if consoleplatform sym set CurrentMenu CMail
+}
+MO MailInbox {
+pos $UI_Mail_X $UI_Mail_Y /screenClamp 200 300
+layer 13
+draggableUIElement
+preDeleteRunCmd gameUI getLastRenderPos MailInbox UI_Mail_X UI_Mail_Y
+}
+onload {
+gameui promoteToTop MailInbox
+addUIAnim MailInbox mas_DialogPopNoSrcMod
+if sym MailMessageLoaded == 1 runnow sym set MailInboxWidth 1.83
+if sym MailMessageLoaded != 1 runnow sym set MailInboxWidth 1.0
+pcmd t0 gameui refreshFilterName MailResize
+if usingPad gameui focusnametry MailInboxItem0 MailInboxButtonCompose"
+}
+onunloadrun {
+sym set MailInboxLoaded 0
+sym set _InboxDeleteEn 0
+if usingpad gameui focusnametry MailInboxButton
+if consoleplatform menucmd ConMenuMailPressCancel
+}
+onunload {
+}

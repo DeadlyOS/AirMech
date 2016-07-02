@@ -1,0 +1,20 @@
+onloadrun {
+gameui clearScrollableDrawHashes
+]gameUI saveFocusID _savefocusid_dmapinspect_
+sym set DialogPageCount 1
+sym set DialogPageDisplay 1
+}
+MO InspectMapDialogMaster {
+pos 0 14
+layer 15
+}
+onload {
+gameui promoteToTop InspectMapDialogMaster
+addUIAnim InspectMapDialogMaster mas_DialogPop
+}
+onunloadrun {
+rookMenus previewClear
+}
+onunload {
+]gameUI restoreFocusID _savefocusid_dmapinspect_
+}

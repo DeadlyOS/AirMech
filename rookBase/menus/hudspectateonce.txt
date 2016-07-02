@@ -1,0 +1,21 @@
+stopIfSymbol BlockAllUI == 1
+stopIfSymbol MatchOverInSummary == 1
+stopIfSymbol GoSpectate == 1
+MO DummyFocus {
+pos 0 0
+}
+MO InGameGlobalChat +gameValidation !console {
+pos 0 0
+layer 22
+}
+onload {
+]sym set _ChatPosX 570
+]addUIAnim InGameGlobalChat mas_ChatPosition
+]gameui hide ChatShowButton
+]gameui hide ChatHideButton
+]pcmd t2 ]gameui disable ChatShowButton
+]pcmd t2 ]gameui show InGameGlobalChat
+]gameui show ChatShowButton
+]pcmd t5 ]if sym DNA_Match == Challenge ]sym set GL_ChatMinimized 2
+]pcmd t6 menucmd GlobalChatReposition
+}

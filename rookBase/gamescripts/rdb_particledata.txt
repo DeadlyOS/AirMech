@@ -1,0 +1,150 @@
+valueMap eParticleAlphaMode = eAlphaMode_LinFadeOut, eAlphaMode_LinFadeOutAt, eAlphaMode_LinFadeInThenOut, eAlphaMode_LinFadeInHoldThenOut, eAlphaMode_One
+valueMap eParticleColorMode = eColorMode_None, eColorMode_RGBFadeToSecondary, eColorMode_HSVFadeToSecondary
+valueMap eParticleOwnerBoneEmitDir = eBoneEmitDir_PosX,	eBoneEmitDir_NegX, eBoneEmitDir_PosY, eBoneEmitDir_NegY, eBoneEmitDir_PosZ,	eBoneEmitDir_NegZ, eBoneEmitDir_BoneSpaceParticleEmissionDir
+template ParticleEmitter
+property Name flag keyfield
+property MaxParticles type uint, default 64
+property Material default "mat_particleDefault"
+property EmissionStartOffset type float, default 0.0
+property EmitPeriodBase type float, default 0.1
+property EmitPeriodVar type float, default 0.05
+property EmitPeriodBaseTimeModifier type float, default 0.0
+property EmitVelocityBase type float, default 5.0
+property EmitVelocityVar type float, default 1.0
+property EmitVelocityWiggle type int, default 200
+property EmitVelocityComponentScalar type vector3, default "1 1 1"
+property ParticleEmissionDir type vector3, default "0 0 0"
+property EmitPosRandomXExtent type float, default 0.0
+property EmitPosRandomYExtent type float, default 0.0
+property EmitPosRandomZExtent type float, default 0.0
+property EmitPosConstantZOffset type float, default 0.0
+property EmitPosOnXYCylinder type float, default 0.0
+property EmitPosOnXYCylinderTimeModifier type float, default 0.0
+property EmitPosOnXYCircle type float, default 0.0
+property EmitPosOnSphere type float, default 0.0
+property EmitPosOnSampleHeightMapOffset type float, default 0.0
+property ParticleLifespanBase type float, default 2.1
+property ParticleLifespanVar type float, default 0.3
+property ParticleSizeXBase type float, default 0.3
+property ParticleSizeXVar type float, default 0.1
+property ParticleGrowthXBase type float, default 0.0
+property ParticleGrowthXVar type float, default 0.0
+property ParticleSizeTimeModifier type vector3, default "0 0 0"
+property ParticleSizeYBase type float, default 0.0
+property ParticleSizeYVar type float, default 0.0
+property ParticleGrowthYBase type float, default 0.5
+property ParticleGrowthYVar type float, default 0.0
+property ParticleColor type uint, default 0xffffffff
+property ParticleColorSecondary type uint, default 0xffffffff
+property GravityScalar type float, default 1.0
+property GravityDirection type vector3, default "-0.7 0.7 0"
+property DragCoefficient type float, default 0.0
+property InitialRotationMin type float, default 0.0
+property InitialRotationMax type float, default 0.0
+property ParticleSpinBase type float, default 0.0
+property ParticleSpinVar type float, default 0.0
+property ParticleSystemLifespan type float, default 0.0
+property StopAfterParticleCount type uint, default 0
+property FlagProcessWhenNotVisible type bool, default 0
+property FlagOrientWithParticleTrajectory type bool, default 0
+property FlagFlatFacingParticles type bool, default 0
+property FlagZRotFacingParticles type bool, default 0
+property FlagTransitionOutWithCameraUp type bool, default 0
+property FlagPolyTrailSystem type bool, default 0
+property PolyTrailVTileDistance type float, default 3.0
+property FlagNonSquareAspect type bool, default 0
+property FlagAllParticlesToBoneLatch type bool, default 0
+property FlagCameraRelativeSystem type bool, default 0
+property FlagCameraRelativeSystemLatched type bool, default 0
+property FlagFlushWhenNotVisible type bool, default 0
+property FlagSphericalEmissionVelocity type bool, default 0
+property FlagReqZPlaneBounce type bool, default 0
+property FlagParticleTexturePageRandom type bool, default 0
+property FlagActiveProcessingBeforeEmission type bool, default 0
+property FlagEmitPosExtentsOnly type bool, default 0
+property FlagSystemLifespanGracefullTermination type bool, default 0
+property FlagOnePerFrameEmitCfg type bool, default 0
+property FlagEmissionVelocityFromOffset type bool, default 0
+property FlagRenderPfxShadows type bool, default 0
+property FlagNoWorldRenderMatrixTransform type bool, default 0
+property FlagNoWorldRenderMatrixBasisRotation type bool, default 0
+property SourceWorldVelocityPerParticle type float, default 0.0
+property AlphaMaxValue type float, default 1.0
+property AlphaMode type enum, valueMap eParticleAlphaMode, default eAlphaMode_LinFadeOut
+property AlphaModeParam type float, default 0.5
+property AlphaModeParam2 type float, default 1.0
+property ColorMode type enum, valueMap eParticleColorMode, default eColorMode_None
+property OwnerBoneEmitDir type enum, valueMap eParticleOwnerBoneEmitDir, default eBoneEmitDir_PosZ
+property CameraRelativeForward type float, default 5.0
+property CameraRelativeUp type float, default 10.0
+property CameraRelativeRight type float, default 0.0
+property ParticleTexturePageDX type int, default 1
+property ParticleTexturePageDY type int, default 1
+property ParticleTexturePagePlayTime type float, default 0.0
+property ParticleSystemPrepopulateTime type float, default 0
+property VisibilitySphereSize type float, default 4.0
+property Stub
+add ParticleEmitter
+set Name "ImpactSparksWeapon", MaxParticles 96, Material mat_particleFlare
+set EmitPeriodBase 0.001, EmitPeriodVar 0.001, EmitVelocityBase 5.0, EmitVelocityVar 5.0, FlagSphericalEmissionVelocity 1
+set ParticleSizeXBase 0.09, ParticleSizeXVar 0.09
+set ParticleLifespanBase 0.14, ParticleLifespanVar 0.1
+set ParticleSystemLifespan 1.0
+set StopAfterParticleCount 96
+set ParticleColor 0x22ff00ff
+add ParticleEmitter
+set Name "SmokeTrailBig", MaxParticles 128, Material mat_particleDirtDust
+set EmitPeriodBase 0.09, EmitPeriodVar 0.035, EmitVelocityBase -0.3, EmitVelocityVar 0.6, EmitVelocityWiggle 1200
+set ParticleLifespanBase 1.2, ParticleLifespanVar 0.8
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.1
+set ParticleGrowthXBase 0.1, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -15.0, ParticleSpinVar 30.0
+add ParticleEmitter
+set Name "SmokeTrailSm", MaxParticles 128, Material mat_particleDirtDust
+set EmitPeriodBase 0.09, EmitPeriodVar 0.035, EmitVelocityBase -0.4, EmitVelocityVar 0.8, EmitVelocityWiggle 1200
+set ParticleLifespanBase 1.2, ParticleLifespanVar 0.8
+set ParticleSizeXBase 0.12, ParticleSizeXVar 0.08
+set ParticleGrowthXBase 0.1, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -10.0, ParticleSpinVar 20.0
+add ParticleEmitter
+set Name "DestructionSparks", MaxParticles 256, Material mat_particleFlare
+set EmitPeriodBase 0.01, EmitPeriodVar 0.01, EmitVelocityBase 5.0, EmitVelocityVar 9.5, FlagSphericalEmissionVelocity 1
+set ParticleSizeXBase 0.09, ParticleSizeXVar 0.16
+set ParticleLifespanBase 0.1, ParticleLifespanVar 0.2
+set ParticleColor 0xffe000e0
+add ParticleEmitter
+set Name "DestructionFire", MaxParticles 5
+set EmitPeriodBase 0.009, EmitPeriodVar 0.006, EmitVelocityBase 1.2, EmitVelocityVar 2.2, FlagSphericalEmissionVelocity 1
+set ParticleLifespanBase 0.9, ParticleLifespanVar 0.8
+set ParticleSizeXBase 0.2, ParticleSizeXVar 0.2
+set ParticleGrowthXBase 0.1, ParticleGrowthXVar 0.1
+set InitialRotationMin -100.0, InitialRotationMax 100.0
+set ParticleSpinBase -15.0, ParticleSpinVar 30.0
+add ParticleEmitter
+set Name LoginMenuEmbers, MaxParticles 512, Material mat_PDotGold
+set EmitPeriodBase 0.2, EmitPeriodVar 0.15, EmitVelocityBase 2.0, EmitVelocityVar 3.0, EmitVelocityWiggle 100
+set DragCoefficient 0.2
+set ParticleLifespanBase 15.0, ParticleLifespanVar 2.0
+set ParticleSizeXBase 0.25, ParticleSizeXVar 0.0
+set ParticleSizeYBase 0.5, ParticleSizeYVar 0.1
+set ParticleGrowthYBase 0.005, ParticleGrowthXVar 0.0
+set AlphaMode eAlphaMode_LinFadeOutAt
+set AlphaModeParam 0.8
+set ColorMode eColorMode_RGBFadeToSecondary
+set EmitPosConstantZOffset -8.5
+set EmitPosRandomXExtent 25.0
+set EmitPosRandomYExtent 20.2
+set EmitPosRandomZExtent 1.0
+set FlagNonSquareAspect 1
+set FlagOrientWithParticleTrajectory 1
+set GravityScalar 0.25
+set GravityDirection "-2 5 2"
+set FlagActiveProcessingBeforeEmission 1
+set FlagCameraRelativeSystem 1
+set FlagCameraRelativeSystemLatched 1
+set CameraRelativeForward 20.0
+set CameraRelativeUp -5.0
+set VisibilitySphereSize 200.0
+includeFolder	data/gameScripts/ParticleEmitters
