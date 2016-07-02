@@ -1,0 +1,15 @@
+StateController BotSpawner2S {
+#include UnitImmobile_CommonStates
+State initial {
+}
+State Tick {
+Cfg timeBlock 3.0
+Do 0.0 "anim play 1 units/botspawner/Build.aaf stopandhold"
+Do 0.0 "anim setspeed 1 0.37"
+Do 0.9 "anim play 1 units/botspawner/Open.aaf stopandhold"
+Do 0.9 "anim setspeed 1 0.25"
+Do 1.4 "rook genCreep InfantryCreepLight"
+Do 2.0 "anim play 1 units/botspawner/Close.aaf stopandhold"
+Do 2.0 "anim setspeed 1 0.25"
+}
+}

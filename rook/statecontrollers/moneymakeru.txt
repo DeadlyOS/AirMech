@@ -1,0 +1,21 @@
+StateController MoneyMakerU {
+#include UnitImmobile_CommonStates
+Data int Earn 80
+Data int EarnPerSec 12
+State initial {
+Cfg timeBlock 1.0
+DoL 0.0 anim playIfDifferent 1 units/MoneyMakerU/Close.aaf stopandhold
+}
+State Tick {
+Cfg timeBlock 5.0
+Do 2.0 "pfx boneLatchNRTSpawn MoneyMakerDot bone_root /offset 0 0 0.75"
+Do 3.0 "pfx boneLatchNRTSpawn MoneyMakerDot bone_root /offset 0 0 0.75"
+DoL 0.0 anim playIfDifferent 1 units/MoneyMakerU/Close.aaf stopandhold
+DoL 1.0 anim play 1 units/MoneyMakerU/Deploy.aaf stopandhold
+DoL 2.0 anim play 1 units/MoneyMakerU/Idle.aaf loop
+DoL 4.0 anim playIfDifferent 1 units/MoneyMakerU/Close.aaf stopandhold
+}
+State UnitSetDown {
+DoL 0.0 anim playIfDifferent 1 units/MoneyMakerU/Close.aaf stopandhold
+}
+}

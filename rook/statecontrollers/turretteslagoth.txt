@@ -1,0 +1,32 @@
+StateController TurretTeslaGoth {
+#include UnitImmobile_CommonStates
+State initial {
+}
+State Tick {
+}
+State AutoDeployed {
+Do 0.1 "pfx boneLatchNRTSpawn GothAuraUnit geo_stand"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaBolts> geo_coil /offset 0 0 0.75"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaRing> geo_tube"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaCoil> geo_coil"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaCharge> bone_charge1"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaCharge> bone_charge2"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaCharge> bone_charge3"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaCharge> bone_charge4"
+}
+State UnitSetDown {
+Do 0.0 "pfx clearLatched ElectricSparkTeslaBolts*"
+Do 0.0 "pfx clearLatched ElectricSparkTeslaRing*"
+Do 0.0 "pfx clearLatched ElectricSparkTeslaCoil*"
+Do 0.0 "pfx clearLatched ElectricSparkTeslaCharge*"
+Do 0.0 "pfx clearLatched GothAuraUnit*"
+Do 0.1 "pfx boneLatchNRTSpawn GothAuraUnit geo_stand"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaBolts> geo_coil /offset 0 0 0.75"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaRing> geo_tube"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaCoil> geo_coil"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaCharge> bone_charge1"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaCharge> bone_charge2"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaCharge> bone_charge3"
+Do 0.7 "pfx boneLatchNRTSpawn ElectricSparkTeslaCharge> bone_charge4"
+}
+}

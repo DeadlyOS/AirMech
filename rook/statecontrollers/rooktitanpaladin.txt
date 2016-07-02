@@ -1,0 +1,74 @@
+StateController RookTitanPaladin {
+#include RookTitan_CommonStates
+State AirFiringStart {
+Do 0.0 "managedSoundLoop start FiringRookMG3Loop.wav 0"
+}
+State AirFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.1"
+Do 0.0 "playsound FiringRookMG3Tail.wav"
+}
+State AuraDefenseSwitchAir_L {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraDefenseActivate bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraDefenseIcon bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis QuickFlare bone_root"
+Do 0.0 "playsound mechs/MechPaladin_AuraActivate.wav"
+Do 0.0 "sym set _PaladinAuraIndex 1"
+Do 0.0 "gameui refreshfiltername AbilityCube"
+}
+State AuraOffenseSwitchAir_L {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraAttackActivate bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraAttackIcon bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis QuickFlare bone_root"
+Do 0.0 "playsound mechs/MechPaladin_AuraActivate.wav"
+Do 0.0 "sym set _PaladinAuraIndex 2"
+Do 0.0 "gameui refreshfiltername AbilityCube"
+}
+State AuraSpeedSwitchAir_L {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraSpeedActivate bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraSpeedIcon bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis QuickFlare bone_root"
+Do 0.0 "playsound mechs/MechPaladin_AuraActivate.wav"
+Do 0.0 "sym set _PaladinAuraIndex 3"
+Do 0.0 "gameui refreshfiltername AbilityCube"
+}
+State AuraDefenseSwitchGnd_L {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraDefenseActivate bone_pelvis"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraDefenseIcon bone_pelvis"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis QuickFlare bone_pelvis"
+Do 0.0 "playsound mechs/MechPaladin_AuraActivate.wav"
+Do 0.0 "sym set _PaladinAuraIndex 1"
+Do 0.0 "gameui refreshfiltername AbilityCube"
+}
+State AuraOffenseSwitchGnd_L {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraAttackActivate bone_pelvis"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraAttackIcon bone_pelvis"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis QuickFlare bone_pelvis"
+Do 0.0 "playsound mechs/MechPaladin_AuraActivate.wav"
+Do 0.0 "sym set _PaladinAuraIndex 2"
+Do 0.0 "gameui refreshfiltername AbilityCube"
+}
+State AuraSpeedSwitchGnd_L {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraSpeedActivate bone_pelvis"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AuraSpeedIcon bone_pelvis"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis QuickFlare bone_pelvis"
+Do 0.0 "playsound mechs/MechPaladin_AuraActivate.wav"
+Do 0.0 "sym set _PaladinAuraIndex 3"
+Do 0.0 "gameui refreshfiltername AbilityCube"
+}
+State ShieldImpact {
+Cfg timeBlock 0.05
+Do 0.0 "pfx boneLatchNRTSpawnIfVis HalfDamageSparks bone_shield"
+}
+State OnDestroyed {
+Do 0.0 "managedSoundLoop stop 3"
+}
+State EnterThrowMode {
+Do 0.2 "managedSoundLoop start mechs/MechPaladin_HammerChargeLoop.wav 3"
+}
+State CancelThrowMode {
+Do 0.1 "pfx clearLatched HammerSparksCharge*"
+}
+State ExitThrowMode {
+Do 0.3 "managedSoundLoop stop 3"
+}
+}

@@ -1,0 +1,28 @@
+StateController MissileSiloMarker {
+#include UnitImmobile_CommonStates
+State initial {
+}
+State Tick {
+}
+State UnitSetDown {
+}
+State TickTargeting {
+Cfg timeBlock 1.0
+DoL 0.0 pfx boneLatchNRTSpawn MineArm> bone_root
+}
+State DoLaunch {
+Cfg timeBlock 10.0
+DoL 0.0 pfx boneLatchNRTSpawn MineTriggered bone_root
+DoL 5.0 echo BANG ON TARGET
+DoL 3.5 anim playIfDifferent 1 units/MissileSiloMarker/Hit.aaf stopandhold
+DoL 3.6 pfx boneLatchNRTSpawn MissileTrailSmoke bone_missile
+DoL 3.6 pfx boneLatchNRTSpawn FireStreak bone_missile
+DoL 6.0 playsound DestroyNuke
+DoL 6.0 camshake 150.0 3.0 0.4
+DoL 6.0 pfx boneLatchNRTSpawn NukePieces bone_root
+DoL 6.0 pfx boneLatchNRTSpawn HugeGlow bone_root
+DoL 6.0 pfx boneLatchNRTSpawn NukeDust bone_root
+DoL 6.0 pfx boneLatchNRTSpawn ExplosionExpand bone_root
+DoL 6.0 kill missileMarker
+}
+}

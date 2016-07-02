@@ -1,0 +1,41 @@
+StateController FortCTF {
+#include Fort_CommonStates
+State D96 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 0.0 7.0 3.5
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "12 1.0 0.5  2.4 2.0  2 10  /mdl:units/ArmoredCar/DxCarGlass.amf /mtl:mat_DxCarGlass< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 10 structures/fortress/FortressWallCTFD01.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "4 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 19 structures/fortress/XmasFortressWallSideCTFD01.amf
+#endif
+}
+State D92 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 0.0 7.0 3.5
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "12 1.0 0.5  2.4 2.0  2 10  /mdl:units/ArmoredCar/DxCarGlass.amf /mtl:mat_DxCarGlass< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 3.0 7.0 3.5     "1  1.0 0.5  6.0 2.0  5 5  /mdl:structures/fortress/DXPanel04.amf /mtl:mat_FortressBase /trq:-15 /wgl:1000 /col [Box 0.4 1.0 0.5]"
+DoL 0.3 modelSwap this 10 structures/fortress/FortressWallCTFD02.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "4 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 19 structures/fortress/XmasFortressWallSideCTFD02.amf
+#endif
+}
+State D44 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 0.0 7.0 3.5
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/DXPanel02.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.2 spawnDestructionEffect this 2.0 7.0 3.5     "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel01.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.2 spawnDestructionEffect this -2.0 7.0 3.5    "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel01.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 10 structures/fortress/FortressWallCTFD03.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "4 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressWreath.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 1.0 1.0 0.2]"
+DoL 0.3 modelSwap this 19 structures/fortress/XmasFortressWallSideCTFD03.amf
+#endif
+}
+}

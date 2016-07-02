@@ -1,0 +1,42 @@
+StateController RookTitanStealth {
+#include RookTitan_CommonStates
+State AirFiringStart {
+Do 0.0 "managedSoundLoop start FiringRookMG4Loop.wav 0"
+}
+State AirFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.1"
+Do 0.0 "playsound FiringRookMG4Tail.wav"
+}
+State HeldActiveStart {
+Do 0.0 "anim play 9 rooks/Stealth/Stealth_Whirlwind.aaf looping"
+Do 0.0 "titan addAttachment /gnd square1m.amf mat_WhirlwindSpinLarge bone_spine_1 /fx /rot -20 90 10 /scl 7.8"
+Do 0.0 "titan addAttachment /gnd square1m.amf mat_WhirlwindSpinLarge bone_spine_1 /fx /rot 20 90 190 /scl 7.8"
+Do 0.1 "titan addAttachment /gnd square1m.amf mat_WhirlwindSpinLarge bone_spine_1 /fx /rot -20 90 10 /scl 3.9"
+Do 0.1 "titan addAttachment /gnd square1m.amf mat_WhirlwindSpinLarge bone_spine_1 /fx /rot 20 90 190 /scl 3.9"
+}
+State HeldActiveStart_L {
+Do 0.0 "managedSoundLoop start mechs/MechBomberWhirlwindLoop.wav 3"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis WhirlwindEmbers> bone_aim"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis WhirlWindSpin bone_aim"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis WhirlwindDust Stealth /offset 0 -0.4 0"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DirtFleckWhirlwind bone_spine_1"
+}
+State HeldActiveStop {
+Do 0.0 "anim setMode 9 playonce"
+Do 0.0 "anim setEaseConfig 9 -1 0 0.1 0.1"
+Do 0.0 "titan clearAttachmentsOnBone /gnd bone_spine_1"
+}
+State HeldActiveStop_L {
+Do 0.0 "managedSoundLoop fadeout 3 0.2"
+Do 0.0 "pfx clearLatched WhirlwindEmbers* WhirlWindSpin"
+Do 0.0 "pfx clearLatched WhirlwindDust"
+Do 0.0 "pfx clearLatched DirtFleckWhirlwind"
+}
+State OnDestroyed {
+Do 0.0 "managedSoundLoop stop 3"
+Do 0.0 "titan clearAttachmentsOnBone /gnd bone_spine_1"
+Do 0.0 "pfx clearLatched WhirlwindEmbers* WhirlWindSpin"
+Do 0.0 "pfx clearLatched WhirlwindDust"
+Do 0.0 "pfx clearLatched DirtFleckWhirlwind"
+}
+}

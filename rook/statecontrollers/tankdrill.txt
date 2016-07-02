@@ -1,0 +1,17 @@
+StateController TankDrill {
+#include Unit_CommonStates
+State initial {
+}
+State StartMove {
+Cfg timeBlock 1.0
+Do 0.0 "playsound UnitHeavyStart.wav"
+}
+State UnitSetDown {
+Cfg timeBlock 0.5
+}
+State MeleeDamage {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DamageSparks bone_drill /offset 0 0 0.5"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis FlashDrill bone_drill /offset 0 0 0.5"
+}
+}

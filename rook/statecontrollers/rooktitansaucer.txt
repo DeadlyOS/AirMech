@@ -1,0 +1,58 @@
+StateController RookTitanSaucer {
+#include RookTitan_CommonStates
+#include RookTitanSaucer_CommonStates
+State AirFiringStart {
+Do 0.0 "managedSoundLoop start mechs/MechSaucerLaserFiringLoop.wav 0"
+}
+State AirFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.05"
+Do 0.0 "playsound mechs/MechSaucerLaserFiringLoopTail.wav"
+}
+State GroundFiringStart {
+Do 0.0 "managedSoundLoop start mechs/MechSaucerLaserFiringLoop3.wav 0"
+}
+State GroundFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.05"
+Do 0.0 "playsound mechs/MechSaucerLaserFiringLoop3Tail.wav"
+}
+State FootStep_L_Grass {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_fl FootstepGrass GrassFleck"
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_br FootstepGrass GrassFleck"
+}
+State FootStep_R_Grass {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_fr FootstepGrass GrassFleck"
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_bl FootstepGrass GrassFleck"
+}
+State FootStep_L_Concrete {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_fl FootstepConcrete ConcreteFleck"
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_br FootstepConcrete ConcreteFleck"
+}
+State FootStep_R_Concrete {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_fr FootstepConcrete ConcreteFleck"
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_bl FootstepConcrete ConcreteFleck"
+}
+State FootStep_L_Dirt {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_fl FootstepDirt"
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_br FootstepDirt"
+}
+State FootStep_R_Dirt {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_fr FootstepDirt"
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_bl FootstepDirt"
+}
+State FootStep_L_Ice {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_fl FootstepIce IceFleck"
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_br FootstepIce IceFleck"
+}
+State FootStep_R_Ice {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_fr FootstepIce IceFleck"
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_bl FootstepIce IceFleck"
+}
+State FootStep_L_Tundra {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_fl FootstepTundra"
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_br FootstepTundra"
+}
+State FootStep_R_Tundra {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_fr FootstepTundra"
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_bl FootstepTundra"
+}
+}

@@ -1,0 +1,25 @@
+StateController BearTrap {
+#include UnitImmobile_CommonStates
+State initial {
+}
+State MineCrushed {
+Cfg timeBlock 16.0
+Do 0.0 "playsound DestroyMissile.wav"
+Do 0.0 "kill crushed"
+}
+State StartHold {
+Do 0.0 "anim play 1 units/BearTrap/BearTrapClose.aaf stopandhold"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ExplosionDust bone_root /offset 0 0 0.1"
+Do 0.0 "anim setspeed 1 0.75"
+}
+State StopHold {
+Do 0.0 "anim play 1 units/BearTrap/BearTrapOpen.aaf stopandhold"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSmall bone_root /offset 0 0 0.1"
+}
+State Disarming {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSmall bone_root /offset 0 0 0.1"
+}
+State Disarmed {
+}
+}

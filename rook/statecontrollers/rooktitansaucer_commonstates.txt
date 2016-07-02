@@ -1,0 +1,34 @@
+State DeathrayChargeStart_L {
+Do 0.0 "managedSoundLoop start DeathRayCharge 2"
+Do 0.66 "pfx boneLatchNRTSpawnIfVis SaucerDeathrayCharge_1 bone_deathring_1"
+Do 1.00 "pfx boneLatchNRTSpawnIfVis SaucerDeathrayCharge_2 bone_deathring_2"
+Do 1.33 "pfx boneLatchNRTSpawnIfVis SaucerDeathrayCharge_3 bone_deathring_3"
+}
+State DeathrayChargeStartGoth_L {
+Do 0.0 "managedSoundLoop start DeathRayCharge 2"
+Do 0.66 "pfx boneLatchNRTSpawnIfVis SaucerDeathrayChargeGoth_1 bone_deathring_1"
+Do 1.00 "pfx boneLatchNRTSpawnIfVis SaucerDeathrayChargeGoth_2 bone_deathring_2"
+Do 1.33 "pfx boneLatchNRTSpawnIfVis SaucerDeathrayChargeGoth_3 bone_deathring_3"
+}
+State DeathrayChargeStartGreen_L {
+Do 0.0 "managedSoundLoop start DeathRayCharge 2"
+Do 0.66 "pfx boneLatchNRTSpawnIfVis SaucerDeathrayChargeGreen_1 bone_deathring_1"
+Do 1.00 "pfx boneLatchNRTSpawnIfVis SaucerDeathrayChargeGreen_2 bone_deathring_2"
+Do 1.33 "pfx boneLatchNRTSpawnIfVis SaucerDeathrayChargeGreen_3 bone_deathring_3"
+}
+State DeathrayChargeStart {
+}
+State DeathrayStart_L {
+Do 0.0 "camshake 50.0 1.8 0.4"
+Do 0.0 "playsound FiringPlasmaShot"
+Do 0.0 "managedSoundLoop start DeathRayLoop 2"
+}
+State DeathrayStart {
+}
+State DeathrayStop_L {
+Do 0.0 "managedSoundLoop fadeout 2 0.05"
+Do 0.0 "pfx clearLatched SaucerDeathray*"
+}
+State DeathrayStop {
+Do 0.0 "anim playIfDifferent 8 rooks/Saucer/Saucer_Special_End.aaf playOnce /ifCond isSaucer"
+}

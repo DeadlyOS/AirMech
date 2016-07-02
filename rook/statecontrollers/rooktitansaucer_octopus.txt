@@ -1,0 +1,33 @@
+StateController RookTitanSaucer_Octopus {
+#include RookTitan_CommonStates
+#include RookTitanSaucer_CommonStates
+State AirFiringStart {
+Do 0.0 "managedSoundLoop start mechs/MechSaucerLaserFiringLoop.wav 0"
+}
+State AirFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.05"
+Do 0.0 "playsound mechs/MechSaucerLaserFiringLoopTail.wav"
+}
+State GroundFiringStart {
+Do 0.0 "managedSoundLoop start mechs/MechSaucerLaserFiringLoop3.wav 0"
+}
+State GroundFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.05"
+Do 0.0 "playsound mechs/MechSaucerLaserFiringLoop3Tail.wav"
+}
+State DeathrayStart_L {
+Do 0.0 "camshake 50.0 1.8 0.4"
+Do 0.0 "playsound FiringPlasmaShot"
+Do 0.0 "managedSoundLoop start DeathRayLoop 2"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis SaucerDeathrayFire bone_deathray"
+}
+State DeathrayStop_L {
+Do 0.0 "managedSoundLoop fadeout 2 0.05"
+Do 0.0 "pfx clearLatched SaucerDeathrayCharge_1"
+Do 0.0 "pfx clearLatched SaucerDeathrayCharge_2"
+Do 0.0 "pfx clearLatched SaucerDeathrayFire"
+}
+State DeathrayStop {
+Do 0.0 "anim playIfDifferent 8 rooks/Saucer_Octopus/Saucer_Octopus_Special_End.aaf playOnce"
+}
+}

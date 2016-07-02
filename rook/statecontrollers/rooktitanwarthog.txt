@@ -1,0 +1,21 @@
+StateController RookTitanWarthog {
+#include RookTitan_CommonStates
+State AirFiringStart {
+Do 0.0 "managedSoundLoop start FiringRookMG4Loop.wav 0"
+Do 0.0 "pfx boneLatchNRTSpawn ShellCasings mesh_barrel"
+}
+State AirFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.1"
+Do 0.0 "playsound FiringRookMG4Tail.wav"
+Do 0.0 "pfx clearLatched ShellCasings"
+}
+State GroundFiringStart {
+Do 0.0 "managedSoundLoop start FiringRookMG4Loop.wav 0"
+Do 0.0 "pfx boneLatchNRTSpawn ShellCasings mesh_barrel"
+}
+State GroundFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.1"
+Do 0.0 "playsound FiringRookMG4Tail.wav"
+Do 0.0 "pfx clearLatched ShellCasings"
+}
+}

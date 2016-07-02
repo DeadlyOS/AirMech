@@ -1,0 +1,502 @@
+Data string repairAudio MechHealBeam.wav /precache
+Data string healBeamAudio mechs/MechOsprey_HealBeam.wav /precache
+Data string salvageBeamAudio mechs/MechOsprey_ReclaimBeam.wav /precache
+State initial {
+}
+State RookDestroyed {
+Do 0.0 "if localVis $C_BINDING menuCmd UnitDropped local"
+Do 0.0 "if ssVis $C_BINDING gameUI disable FPlayerStatusEnergyFlash"
+Do 0.0 "if ssVis $C_BINDING gameUI disable FPlayerStatusHealthFlash"
+Do 0.0 "if localVis $C_BINDING cbinding enable orderMenuAlt"
+Do 0.0 "if localVis $C_BINDING inputBinding enable orderMenuAlt"
+Do 0.0 "if ssVis $C_BINDING gameUI disableAllChildOf #PlayerStatusFloat__@C_BINDING@ FSelfDestructMaster"
+Do 0.0 "if ssVis $C_BINDING gameUI disableAllChildOf #PlayerStatusFloat__@C_BINDING@ FRecycleMaster"
+Do 0.0 "if ssVis $C_BINDING gameUI hideChildOf #PlayerStatusFloat__@C_BINDING@ FHeldUnitStatus"
+Do 0.0 "managedSoundLoop fadeout 4 0.1"
+}
+State RookDestroyed_L {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis LogoRing bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis LogoEjection bone_pelvis"
+Do 0.0 "playsound DestroyNuke"
+}
+State RookDestroyed_Me {
+Do 0.0 "alienfx off 10"
+Do 0.0 "sym set RespawnFasterOk 0"
+Do 1.0 "if !spectator && !gameover && !replay runNow loadmenu RespawnInfo.txt"
+}
+State RookDestroyed_MeHC {
+Do 0.0 "alienfx off 10"
+}
+State RookRespawn {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ExplosionDust bone_root"
+}
+State RookRespawn_Me {
+Do 0.0 "alienfx on 40"
+Do 0.0 "if !spectator && !replay clearmenu RespawnInfo.txt"
+}
+State RookDmg {
+}
+State RookDmg_Me {
+Cfg timeBlock 0.1
+Do 0.0 "alienfx color white"
+Do 0.02 "alienfx color _ltc_"
+}
+State UnitPickup {
+Do 0.0 "if ssVis $C_BINDING checkRook $C_BINDING carryunit"
+Do 0.0 "if ssVis $C_BINDING sym set _PTagInd $C_BINDING"
+Do 0.0 "if ssVis $C_BINDING gameUI refreshFilterName HeldUnitInfo"
+Do 0.0 "if ssVis $C_BINDING gameUI showChildOf #PlayerStatusFloat__@C_BINDING@ FHeldUnitStatus"
+Do 0.0 "if localVis $C_BINDING cbinding disable orderMenuAlt"
+Do 0.0 "if localVis $C_BINDING inputBinding disable orderMenuAlt"
+Do 0.0 "if localVis $C_BINDING gameUI show TouchTabDrop"
+Do 0.0 "if localVis $C_BINDING gameUI hide TouchTabRobot"
+}
+State UnitPickupStacked {
+Do 0.0 "if ssVis $C_BINDING checkRook $C_BINDING carryunit"
+Do 0.0 "if ssVis $C_BINDING sym set _PTagInd $C_BINDING"
+Do 0.0 "if ssVis $C_BINDING gameUI refreshFilterName HeldUnitInfo"
+}
+State UnitDroppedStacked {
+Do 0.0 "checkRook $C_BINDING carryunit"
+Do 0.0 "if ssVis $C_BINDING sym set _PTagInd $C_BINDING"
+Do 0.0 "if ssVis $C_BINDING gameUI refreshFilterName HeldUnitInfo"
+}
+State UnitDropped {
+Do 0.0 "if ssVis $C_BINDING gameUI hideChildOf #PlayerStatusFloat__@C_BINDING@ FHeldUnitStatus"
+Do 0.0 "if localVis $C_BINDING cbinding enable orderMenuAlt"
+Do 0.0 "if localVis $C_BINDING inputBinding enable orderMenuAlt"
+Do 0.0 "if localVis $C_BINDING gameUI hide TouchTabDrop"
+Do 0.0 "if localVis $C_BINDING gameUI show TouchTabRobot"
+}
+State RecycleStart {
+Do 0.0 "if ssVis $C_BINDING gameUI enableAllChildOf #PlayerStatusFloat__@C_BINDING@ FRecycleMaster"
+}
+State RecycleStop {
+Do 0.0 "if ssVis $C_BINDING gameUI disableAllChildOf #PlayerStatusFloat__@C_BINDING@ FRecycleMaster"
+}
+State RecycledUnit {
+}
+State SelfDestructStart_L {
+Do 0.0 "if ssVis $C_BINDING gameUI enableAllChildOf #PlayerStatusFloat__@C_BINDING@ FSelfDestructMaster"
+}
+State SelfDestructStop_L {
+Do 0.0 "if ssVis $C_BINDING gameUI disableAllChildOf #PlayerStatusFloat__@C_BINDING@ FSelfDestructMaster"
+}
+State UnitPickupOrderable {
+Do 0.1 "menuCmd UnitPickedUp local"
+}
+State UnitGroupSel {
+Do 0.1 "menuCmd UnitGroupSel local"
+}
+State UnitGroupSelOrderIssued {
+Do 0.1 "menuCmd UnitGroupSelOrderIssued local"
+}
+State UnitDroppedOrderable {
+Do 0.0 "if localVis $C_BINDING menuCmd UnitDropped local"
+}
+State UnitPickupUnorderable {
+Do 0.1 "menuCmd UnitDropped local"
+}
+State LevelUp_L {
+}
+State LevelUp_Me_L {
+Do 0.0 "playsound MechLevelUp.wav"
+Do 0.0 "pfx boneLatchNRTSpawn FortPadLatch bone_root /offset 0 0 0.5"
+Do 0.0 "gameUI enable HudExperienceBarFlash"
+Do 0.0 "loadmenu NotifyLevelUpNP.txt"
+Do 1.0 "gameUI disable HudExperienceBarFlash"
+}
+State LevelUp_Watch_L {
+Do 0.0 "playsound MechLevelUp.wav"
+Do 0.0 "pfx boneLatchNRTSpawn FortPadLatch bone_root /offset 0 0 0.5"
+}
+State GroundFiringStart {
+Do 0.0 "managedSoundLoop start FiringRookMG1Loop.wav 0"
+}
+State GroundFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.1"
+Do 0.0 "playsound FiringRookMG1Tail.wav"
+}
+State AlertMissileLockStart_L {
+Cfg timeBlock 2.0
+Do 0.0 "managedSoundLoop start AlertMissileLock.wav 1 ifInactive"
+}
+State AlertMissileLockStop_L {
+Do 0.0 "managedSoundLoop fadeout 1 0.1"
+}
+State AirFiringStart {
+Do 0.0 "managedSoundLoop start FiringRookMG2Loop.wav 0"
+}
+State AirFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.1"
+Do 0.0 "playsound FiringRookMG2Tail.wav"
+}
+State RobotBodyTurnOver5Deg_L {
+Cfg timeBlock 1.5
+DoL 0.0 playsound MechSpinSmall
+}
+State RobotBodyTurnOver15Deg_L {
+Cfg timeBlock 1.5
+DoL 0.0 playsound mechs/Mech_Spin_Medium.wav
+}
+State RobotBodyTurnOver25Deg_L {
+Cfg timeBlock 1.5
+DoL 0.0 playsound mechs/Mech_Spin_Large.wav
+}
+State RobotBodyTurn90Deg_L {
+Cfg timeBlock 0.1
+DoL 0.0 playsound MechSpinMedium
+}
+State RobotBodyTurn150Deg_L {
+Cfg timeBlock 0.1
+DoL 0.0 playsound mechs/Mech_Spin_Large.wav
+}
+State FullyRecharged_Me {
+Cfg timeBlock 10.0
+Do 0.0 "playsound AlertFullRecharge.wav"
+}
+State FullyRecharged_All {
+Cfg timeBlock 10.0
+}
+State OutOfEnergy_Me {
+Cfg timeBlock 5.0
+Do 0.0 "playsound AlertOutOfFuel.wav"
+#if arc
+Do 0.0 "if sym ShowCommonGameMessages != 0 gamemsg addF_U OutOfEnergy"
+#else
+Do 0.0 "if sym ShowCommonGameMessages != 0 gamemsg addF_U outofenergy_1"
+#endif
+}
+State OutOfEnergy_All {
+Cfg timeBlock 5.0
+}
+State LowEnergy_Me {
+Do 0.0 "gameUI enableChildOf #PlayerStatusFloat__@C_BINDING@ FPlayerStatusEnergyFlash"
+}
+State LowEnergy_All {
+Cfg timeBlock 2.0
+}
+State EnergyOk_Me {
+Do 0.0 "gameUI disableChildOf #PlayerStatusFloat__@C_BINDING@ FPlayerStatusEnergyFlash"
+}
+State EnergyOk_All {
+Cfg timeBlock 2.0
+}
+State LowHealth_Me {
+Do 0.0 "gameUI enableChildOf #PlayerStatusFloat__@C_BINDING@ FPlayerStatusHealthFlash"
+}
+State LowHealth_All {
+Cfg timeBlock 2.0
+}
+State HealthOk_Me {
+Do 0.0 "gameUI disableChildOf #PlayerStatusFloat__@C_BINDING@ FPlayerStatusHealthFlash"
+}
+State HealthOk_All {
+Cfg timeBlock 2.0
+}
+State UpgradeAbility_L {
+Cfg timeBlock 0.2
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AbilityPickUp bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis LevelUpRing bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis LevelUpFlare bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis QuickFlare bone_root"
+Do 0.0 "playsound ui/AbilityPickup.wav"
+}
+State MissilesEnter {
+}
+State MissilesExit {
+}
+State MissileFired_L {
+Do 0.0 "playsound MissilesFireSingle.wav"
+}
+State AirToAirMissilesFired_L {
+Do 0.0 "playsound MissilesFireSingle.wav"
+Do 0.2 "playsound MissilesFireSingle.wav"
+}
+State MissileBurstFired_L {
+Do 0.0 "playsound MissilesFireSingle.wav"
+Do 0.2 "playsound MissilesFireSingle.wav"
+}
+State EMPFired {
+DoL 0 playsound MechEMP
+DoL 0 pfx worldSpawn ElectricSparkAoE /pfx ElectricSparkRing
+}
+State EMPFiredUberPowerup {
+DoL 0 playsound MechEMP
+DoL 0 pfx worldSpawn ElectricSparkAoE /pfx ElectricSparkRing
+}
+State MissileEMPPulse_L {
+DoL 0.0 pfx atObjectSpawnIfVis ReprogramPulse
+}
+State DebufOffenseFired {
+DoL 0.0 playsound MechEMP
+DoL 0.0 pfx worldSpawn DebufRing
+}
+State HealNovaFired {
+DoL 0.0 playsound mechs/MechOsprey_HealNova.wav
+DoL 0.0 pfx worldSpawn HealNovaDot
+Do 0.0 "pfx boneLatchNRTSpawnIfVis HealNovaRing bone_root"
+}
+State RadarDisruptFired {
+DoL 0.0 playsound MechEMP
+DoL 0.0 pfx worldSpawn ElectricSparkAoE
+DoL 0.0 pfx worldSpawn DisruptRadarRing
+}
+State UnitTP_L {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis TeleportUnitOrbs> bone_root"
+DoL 0.0 pfx worldSpawn TeleportUnit
+DoL 0.0 pfx worldSpawn SaucerTeleportDust
+DoL 0.0 pfx worldSpawn TeleportUnitPaintFleck
+DoL 0.0 playsound UnitTeleport
+}
+State BombTickLvl1 {
+Cfg timeBlock 0.26
+}
+State BombTickLvl2 {
+Cfg timeBlock 0.23
+}
+State BombTickLvl3 {
+Cfg timeBlock 0.2
+}
+State BombTickLvl1_UberPowerup {
+Cfg timeBlock 0.13
+}
+State BombTickLvl2_UberPowerup {
+Cfg timeBlock 0.115
+}
+State BombTickLvl3_UberPowerup {
+Cfg timeBlock 0.1
+}
+State BombTickLvl1_L {
+Cfg timeBlock 0.26
+Do 0 "playsound BomberDropBomb"
+}
+State BombTickLvl2_L {
+Cfg timeBlock 0.23
+Do 0 "playsound BomberDropBomb"
+}
+State BombTickLvl3_L {
+Cfg timeBlock 0.2
+Do 0 "playsound BomberDropBomb"
+}
+State BombTickLvl1_UberPowerup_L {
+Cfg timeBlock 0.13
+Do 0 "playsound BomberDropBomb"
+}
+State BombTickLvl2_UberPowerup_L {
+Cfg timeBlock 0.115
+Do 0 "playsound BomberDropBomb"
+}
+State BombTickLvl3_UberPowerup_L {
+Cfg timeBlock 0.1
+Do 0 "playsound BomberDropBomb"
+}
+State BombEnter {
+}
+State BombExit {
+}
+State ReconstructStart {
+Do 0.0 "managedSoundLoop start MechReconstruct.wav 0"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis RespawnDotsForever bone_root"
+}
+State ReconstructDone {
+Do 0.0 "pfx clearLatched RespawnDotsForever*"
+Do 0.0 "managedSoundLoop fadeout 0 0.1"
+Do 0.0 "playsound MechReconstructTail.wav"
+}
+State ShieldTick {
+}
+State ShieldOn {
+}
+State ShieldOff {
+}
+State StealthOn {
+Do 0.0 "playsound MechStealthOn.wav"
+}
+State StealthOff {
+Do 0.0 "playsound MechStealthOff.wav"
+}
+State StealthTick {
+}
+State Stasis {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis ElectricSparkMedium"
+}
+State AuraDefense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraDefense"
+}
+State AuraOffense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraAttack"
+Do 0.25 "pfx atObjectSpawnIfVis AuraAttackAlt"
+}
+State AuraSpeed {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraSpeed"
+}
+State DebufOffense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis DebufAttack"
+Do 0.25 "pfx atObjectSpawnIfVis DebufAttackAlt"
+}
+State AbductStart {
+Do 0.0 "managedSoundLoop start mechs/MechSaucerAbductLoop.wav 2"
+}
+State AbductStop {
+Do 0.0 "managedSoundLoop fadeout 2 0.05"
+}
+State SpinUpStartAir_L {
+Cfg timeBlock 0.5
+Do 0.0 "managedSoundLoop start mechs/MechWarthogGunSpinup.wav 2"
+}
+State SpinUpStartGnd_L {
+Cfg timeBlock 0.5
+Do 0.0 "managedSoundLoop start mechs/MechWarthogGunDeploy.wav 2"
+}
+State SpinUpRelax_L {
+Do 0.0 "managedSoundLoop fadeout 2 0.25"
+}
+State Blink_L {
+Do 0.0 "playsound mechs/MechSaucerBlink.wav"
+}
+State PwrShieldOn_L {
+Do 0.0 "pfx atObjectSpawnIfVis AuraDefense"
+Do 0.0 "playsound mechs/MechWarthogPowerShieldActivate.wav"
+}
+State AfterburnerStart_L {
+Cfg timeBlock 0.25
+Do 0.0 "managedSoundLoop start mechs/Mech_AfterburnerLoop.wav 3"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AfterburnerTrail bone_l_thruster"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis AfterburnerTrail bone_r_thruster"
+}
+State AfterburnerStop_L {
+Cfg timeBlock 0.25
+Do 0.0 "managedSoundLoop fadeout 3 0.25"
+Do 0.0 "pfx clearLatched AfterburnerTrail"
+}
+State EnterSwordMode_L {
+Do 0.20 "managedSoundLoop start SwordIdle.wav 4"
+}
+State TickSwordMode_L {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis SwordShieldDot> bone_shieldeffects_m"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis SwordShieldDot> bone_sword"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSwordShield> bone_shieldeffects_m /offset 0.18 0 0"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSwordShield> bone_sword"
+}
+State TickSwordModeUber_L {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis SwordShieldDot> bone_shieldeffects_m"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis SwordShieldDot> bone_sword"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSwordShieldUber> bone_shieldeffects_m /offset 0.18 0 0"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSwordShieldUber> bone_sword"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSwordShield> bone_sword /offset 0.18 0 0.5"
+}
+State LeaveSwordMode_L {
+Do 0.20 "managedSoundLoop stop 4"
+}
+State FootStep_L_Grass {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_l FootstepGrass GrassFleck"
+}
+State FootStep_R_Grass {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_r FootstepGrass GrassFleck"
+}
+State FootStep_L_Concrete {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_l FootstepConcrete ConcreteFleck"
+}
+State FootStep_R_Concrete {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_r FootstepConcrete ConcreteFleck"
+}
+State FootStep_L_Dirt {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_l FootstepDirt"
+}
+State FootStep_R_Dirt {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_r FootstepDirt"
+}
+State FootStep_L_Ice {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_l FootstepIce IceFleck"
+}
+State FootStep_R_Ice {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_r FootstepIce IceFleck"
+}
+State FootStep_L_Tundra {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_l FootstepTundra"
+}
+State FootStep_R_Tundra {
+Do 0.0 "pfx boneSpawnIfVis bone_footstep_r FootstepTundra"
+}
+State PfxHit_DotsXp_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound XpDotTouch"
+}
+State ForcedChangeTo {
+Do 0.0 "pfx clearLatched ShellCasings"
+Do 0 "managedSoundLoop fadeout 1 0.1"
+Do 0 "managedSoundLoop fadeout 4 0.1"
+}
+State PowerUp_Guardian_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound XpDotTouch"
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State PowerUp_UberSword_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound MechPowerupPickup"
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State PowerUp_UberStasis_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound MechPowerupPickup"
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State PowerUp_UberDeathray_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound MechPowerupPickup"
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State PowerUp_UberHeal_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound MechPowerupPickup"
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State PowerUp_UberMissiles_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound MechPowerupPickup"
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State PowerUp_UberGuns_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound MechPowerupPickup"
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State PowerUp_UberBombs_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound MechPowerupPickup"
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State PowerUp_UberHammer_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound MechPowerupPickup"
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State PowerUp_UberSniper_L {
+Cfg timeBlock 0.15
+Do 0.0 "pfx boneLatchNRTSpawnIfVis XPDotCollected bone_root"
+Do 0.0 "playsound MechPowerupPickup"
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State PowerUpExpired_L {
+Cfg timeBlock 0.15
+Do 0.0 "playsound MechPowerupExpire"
+}

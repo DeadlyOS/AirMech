@@ -1,0 +1,36 @@
+StateController CreeperU {
+#include Infantry_CommonStates
+State initial {
+}
+State StartMove {
+Cfg timeBlock 1.0
+}
+State UnitSetDown {
+Cfg timeBlock 0.5
+Do 0.0 "anim play 5 units/CreeperU/LightOff.aaf stopandhold"
+}
+State KamikazeeEnable {
+Cfg timeBlock 0.5
+Do 0.0 "anim play 5 units/CreeperU/LightOn.aaf stopandhold"
+}
+State KamikazeeDisable {
+Cfg timeBlock 0.5
+Do 0.0 "anim play 5 units/CreeperU/LightOff.aaf stopandhold"
+}
+State Kamikazee {
+Cfg timeBlock 1.5
+Do 0.0 "anim play 5 units/CreeperU/LightTrigger.aaf looping 0.2"
+}
+State Detonate {
+Cfg timeBlock 0.5
+Do 0.0 spawnDestructionEffect this 0.0 0.0 0.5  "1 0.2 0.0  0.5 0.0  0 0 	ExplosionSeq ExplosionSeq3 BrightFlare /reqVis"
+Do 0.0 spawnDestructionEffect this 0.0 0.0 0.5  "10 0.1 0.0  0.1 0.1  20.0 4.0  PolyTrail /reqVis"
+Do 0.0 "pfx worldSpawn Grenade_Fireball /pos 0 0 0.5"
+Do 0.0 "pfx worldSpawn ExplosionRing2 /pos 0 0 0.5"
+Do 0.0 "pfx worldSpawn ExplosionDust /pos 0 0 0.5"
+Do 0.0 "pfx worldSpawn Grenade_Flash /pos 0 0 0.5"
+Do 0.0 "pfx worldSpawn ArtilleryDust /pos 0 0 0.5"
+Do 0.0 "pfx worldSpawn ArtilleryPieces /pos 0 0 0.5"
+Do 0.0 "kill kamikazee"
+}
+}

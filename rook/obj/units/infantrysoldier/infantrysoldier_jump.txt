@@ -1,0 +1,14 @@
+weightReq 0.0
+perBoneWeighting 1.0 {
+bone_arm_upper_R	0.02
+bone_arm_upper_L	0.02
+bone_arm_lower_L	0.02
+bone_recoil		0.02
+bone_head		0.02
+}
+cfg_easeStartV3 = 0.0 30.0 0.12
+cfg_easeOutOnPlayComplete = 0.1
+at 0.35 consoleCmdVis "playsound units/infantry/InfantryJumperJump.wav"
+at 0.4 consoleCmdVis "pfx boneLatchNRTSpawn ExplosionSeqRocketJump bone_rjump /offset 0 0 0.1"
+at 0.4 queueCmdSim jump
+at 1.25 queueCmdSim land

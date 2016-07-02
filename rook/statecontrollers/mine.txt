@@ -1,0 +1,44 @@
+StateController Mine {
+#include UnitImmobile_CommonStates
+State initial {
+}
+State MineArmStart {
+Cfg timeBlock 1.0
+Do 0.0 "anim play 0 units/Mine/Arm.aaf stopandhold 0.07"
+}
+State MineArmReady {
+Cfg timeBlock 1.0
+Do 0.0 "pfx boneLatchNRTSpawnIfVis MineArm> bone_middle"
+}
+State MineArmed {
+Cfg timeBlock 1.0
+Do 0.0 "pfx boneLatchNRTSpawnIfVis MineBlink> bone_middle"
+}
+State MineTriggered {
+Cfg timeBlock 16.0
+Do 0.0 "playsound DestroyLandmine.wav"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis MineTriggered bone_middle"
+Do 0.6 "pfx worldSpawn ExplosionRing /pos 0 0 0"
+Do 0.7 "pfx worldSpawn ExplosionDust /pos 0 0 0"
+Do 0.7 "kill mine"
+}
+State MineTriggeredFast {
+Cfg timeBlock 16.0
+Do 0.0 "playsound DestroyMissile.wav"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis MineTriggered bone_middle"
+Do 0.0 "pfx worldSpawn ExplosionRing /pos 0 0 0"
+Do 0.0 "pfx worldSpawn ExplosionDust /pos 0 0 0"
+Do 0.0 "kill mine"
+}
+State MineCrushed {
+Cfg timeBlock 16.0
+Do 0.0 "playsound DestroyMissile.wav"
+Do 0.0 "kill mine"
+}
+State Disarming {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSmall bone_root /offset 0 0 0.1"
+}
+State Disarmed {
+}
+}

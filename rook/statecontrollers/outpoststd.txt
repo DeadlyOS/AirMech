@@ -1,0 +1,27 @@
+StateController OutpostSTD {
+#include Outpost_CommonStates
+Data string openAnim structures/outpost/OutpostBaseOpen.aaf /precache
+Data string closeAnim structures/outpost/OutpostBaseClose.aaf /precache
+State initial {
+}
+State OutpostCaptured {
+Cfg timeBlock 1.0
+Do 0.0 "playsound outpost\OutpostCaptured_01.wav"
+}
+State OutpostResecured {
+Cfg timeBlock 1.0
+Do 0.0 "playsound AlertOutpostEntered.wav"
+}
+State OutpostLost {
+Cfg timeBlock 1.0
+Do 0.0 "playsound AlertOutpostLost.wav"
+}
+State OutpostEnteredFriendly {
+Cfg timeBlock 0.1
+Do 0.0 "playsound AlertOutpostEntered.wav"
+}
+State OutpostEnteredEnemy {
+Cfg timeBlock 0.1
+Do 0.0 "playsound AlertOutpostEntered2.wav"
+}
+}

@@ -1,0 +1,21 @@
+StateController OutpostV2 {
+#include Outpost_CommonStates
+Data string openAnim structures/OutpostV2/OutpostV2Open.aaf /precache
+Data string openAnimNoP structures/OutpostV2/OutpostV2OpenNoP.aaf /precache
+Data string closeAnim structures/OutpostV2/OutpostV2Close.aaf /precache
+Data string closeAnimNoP structures/OutpostV2/OutpostV2CloseNoP.aaf /precache
+State initial {
+}
+State OutpostCaptured {
+Cfg timeBlock 1.0
+Do 0.0 "playsound outpost\OutpostCaptured_01.wav"
+}
+State OutpostResecured {
+Cfg timeBlock 1.0
+Do 0.0 "playsound AlertOutpostEntered.wav"
+}
+State OutpostLost {
+Cfg timeBlock 1.0
+Do 0.0 "playsound AlertOutpostLost.wav"
+}
+}

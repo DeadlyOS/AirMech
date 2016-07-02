@@ -1,0 +1,34 @@
+StateController MissileSilo {
+#include UnitImmobile_CommonStates
+State initial {
+}
+State Tick {
+Cfg timeBlock 2.0
+DoL 0.0 anim playIfDifferent 1 units/MissileSilo/Open.aaf stopandhold
+DoL 0.0 anim setspeed 1 0.05
+DoL 2.0 pfx worldSpawn MissileSiloSmoke /pos 0 0 0
+}
+State TickReady {
+Cfg timeBlock 1.5
+}
+State TickRearm {
+Cfg timeBlock 2.0
+DoL 0.0 anim playIfDifferent 1 units/MissileSilo/Close.aaf stopandhold
+DoL 0.0 anim setspeed 1 0.05
+DoL 0.0 pfx worldSpawn MissileSiloSmoke /pos 0 0 0
+}
+State TickRearmClosed {
+Cfg timeBlock 1.0
+}
+State DoLaunch {
+Cfg timeBlock 10.0
+DoL 0.0 echo BANG
+DoL 0.0 anim playIfDifferent 2 units/MissileSilo/Fire.aaf playonce
+Do 0.0 "pfx boneLatchNRTSpawn MissileTrailSmoke bone_missile"
+Do 0.0 "pfx boneLatchNRTSpawn FireStreak bone_missile"
+Do 0.0 "camshake 80.0 1.8 0.4"
+}
+State UnitSetDown {
+DoL 0.0 anim setposition 1 0.0
+}
+}

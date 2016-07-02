@@ -1,0 +1,22 @@
+StateController InfantryJetpack {
+#include Infantry_CommonStates
+State initial {
+}
+State StartMove {
+}
+State DynFlierToAir {
+DoL 0 pfx boneLatchNRTSpawn FireBurnTorch bone_l_booster
+DoL 0 pfx boneLatchNRTSpawn FireBurnTorch bone_r_booster
+}
+State DynFlierToGround {
+DoL 0 pfx clearLatched FireBurnTorch
+}
+State FiringStart {
+Cfg timeBlock 0.5
+DoL 0 anim play 0 units/InfantryJetpack/StartShoot.aaf stopandhold
+}
+State FiringStop {
+Cfg timeBlock 0.5
+DoL 0 anim play 0 units/InfantryJetpack/StopShoot.aaf stopandhold
+}
+}

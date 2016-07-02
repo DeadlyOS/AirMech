@@ -1,0 +1,22 @@
+StateController SupplyTank {
+#include Unit_CommonStates
+Data string repairAudio units/supporttruck/SupportTruckHealBeamLoop.wav /precache
+Data string workingAnim units/SupplyTank/ArmWorking.aaf /precache
+Data string extendAnim units/SupplyTank/ArmExtend.aaf /precache
+Data hash supplyBone0 bone_tip_r
+Data hash supplyBone1 bone_tip_l
+State Precache {
+Do 0 "resources precache units/SupplyTank/ArmRetract.aaf"
+Do 0 "resources precache UnitHeavyStart.wav"
+}
+State initial {
+}
+State RetractSupply {
+Cfg timeBlock 1
+Do 0 "anim playIfDifferent 1 units/SupplyTank/ArmRetract.aaf stopandhold"
+}
+State StartMove {
+Cfg timeBlock 1
+Do 0 "playsound UnitHeavyStart.wav"
+}
+}

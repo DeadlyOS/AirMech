@@ -1,0 +1,34 @@
+StateController RookTitanAngel {
+#include RookTitan_CommonStates
+State initial {
+}
+State GroundFiringStart {
+Do 0.0 "managedSoundLoop start mechs/MechAngelPistolsLoop.wav 0"
+}
+State GroundFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.1"
+Do 0.0 "playsound mechs/MechAngelPistolsTail.wav"
+}
+State AirFiringStart {
+Do 0.0 "managedSoundLoop start FiringRookMG3Loop.wav 0"
+}
+State AirFiringStop {
+Do 0.0 "managedSoundLoop fadeout 0 0.1"
+Do 0.0 "playsound FiringRookMG3Tail.wav"
+}
+State SniperFire {
+}
+State LoopAbility_L {
+Do 0.0 "playsound MissilesFireGroup.wav"
+}
+State LoopAbility {
+}
+State HeldActiveStart {
+Do 0.0 "anim stop 9"
+Do 0.0 "anim play 9 rooks/Angel/Angel_Fly.aaf looping"
+}
+State HeldActiveStop {
+Do 0.0 "anim setMode 9 playonce"
+Do 0.0 "anim setEaseConfig 9 -1 0 0.6 0.25"
+}
+}

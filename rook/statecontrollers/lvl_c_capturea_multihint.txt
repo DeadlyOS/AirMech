@@ -1,0 +1,17 @@
+StateController Lvl_C_CaptureA_MultiHint {
+#include Lvl_CommonStates
+#include Lvl_Challenge_CommonStates
+State initial {
+In 0.0 "sym set MatchOver 0"
+In 0.0 "rook powerGenMod set 100"
+}
+State Init {
+}
+State Tick {
+Cfg timeBlock 60.0
+}
+State Hint_PickupMultiple {
+Cfg timeBlock 60000.0
+DoL 0.0 gamemsg addTR_U_InputSelected Hint_PickupMultiple Hint_PickupMultiple_pad
+}
+}

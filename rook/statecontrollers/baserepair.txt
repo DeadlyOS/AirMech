@@ -1,0 +1,32 @@
+StateController BaseRepair {
+#include UnitImmobile_CommonStates
+Data float RepairRate 50.0
+Data float OutpostRepairRate 30.0
+State initial {
+In 0.0 "anim play 1 units/baserepair/LidMove.aaf looping"
+In 0.0 "anim setspeed 1 0.25"
+}
+State FortOutOfRange {
+In 0.0 "anim setspeed 1 0.0"
+}
+State FortRepairing {
+In 0.0 "anim setspeed 1 0.75"
+}
+State FortRepaired {
+In 0.0 "anim setspeed 1 0.25"
+}
+State FortRepairing_Me {
+Cfg timeBlock 2.0
+Do 0.0 "playsound AlertFortHealing.wav"
+}
+State OutpostRepairing {
+In 0.0 "anim setspeed 1 0.75"
+}
+State OutpostSupported {
+In 0.0 "anim setspeed 1 0.25"
+}
+State OutpostRepairing_Me {
+Cfg timeBlock 2.0
+Do 0.0 "playsound AlertFortHealing.wav"
+}
+}

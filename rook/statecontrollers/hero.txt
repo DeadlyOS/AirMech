@@ -1,0 +1,14 @@
+StateController Hero {
+#include UnitImmobile_CommonStates
+Data hash supplyBone0 bone_tip
+Data string workingAnim units/Hero/Working.aaf /precache
+Data string extendAnim units/Hero/Extend.aaf /precache
+State initial {
+In 0.0 "pfx boneLatchNRTSpawn FireBurnHero bone_fire1"
+In 0.0 "pfx boneLatchNRTSpawn FireBurnHero bone_fire2"
+}
+State RetractSupply {
+Cfg timeBlock 1.0
+Do 0.0 "anim playIfDifferent 1 units/Hero/Retract.aaf stopandhold"
+}
+}

@@ -1,0 +1,19 @@
+StateController OutpostFactoryV2 {
+#include Outpost_CommonStates
+Data string workingAnim structures/Factory/FactoryV2Working.aaf /precache
+Data string openAnim structures/Factory/FactoryV2Open.aaf /precache
+Data string openAnimNoP structures/Factory/FactoryV2OpenNoP.aaf /precache
+Data string closeAnim structures/Factory/FactoryV2Close.aaf /precache
+Data string closeAnimNoP structures/Factory/FactoryV2CloseNoP.aaf /precache
+Data float buildBonus 0.8
+State OutpostCaptured {
+Cfg timeBlock 1.0
+Do 0.0 "playsound AlertCaptureFactory.wav"
+}
+State TickHeld {
+Cfg timeBlock 2.0
+DoL 0.0 pfx worldSpawn FactorySmoke2s /pos 0.35 3.3 3.2
+}
+State TickNeutral {
+}
+}

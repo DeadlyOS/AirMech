@@ -1,0 +1,64 @@
+State initial {
+}
+State Stasis {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSmall> bone_root /offset 0 0 0.4"
+}
+State AuraDefense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraDefense"
+}
+State AuraOffense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraAttack"
+Do 0.25 "pfx atObjectSpawnIfVis AuraAttackAlt"
+}
+State AuraSpeed {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraSpeed"
+}
+State DebufOffense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis DebufAttack"
+Do 0.25 "pfx atObjectSpawnIfVis DebufAttackAlt"
+}
+State BuffHeal {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis BuffAuraHeal"
+}
+State BuffHealAct {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis HealEffect"
+}
+State HealNovaRcv {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis HealNovaRcv"
+Do 0.25 "pfx atObjectSpawnIfVis HealNovaRcvAlt"
+Do 0.0 "pfx atObjectSpawnIfVis HealNovaDotSmall"
+}
+State FiringStart {
+}
+State FiringStop {
+}
+State OnPwrShield {
+Do 0.0 "playsound mechs/MechOsprey_Overcharge.wav"
+}
+State TurretOnSocket {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraSpeed"
+}
+State AbductStart {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis UnitPickupFromRook bone_abduct"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis PaintFleckAbduct> bone_abduct /offset 0 0 0.4"
+Do 0.0 "anim play 7 units/UnitAbductIdle.aaf looping"
+}
+State AbductStop {
+Cfg timeBlock 0.5
+Do 0.33 "anim play 7 units/UnitAbductStop.aaf playonce"
+Do 0.33 "pfx clearLatched PaintFleckAbduct*"
+Do 0.33 "pfx boneLatchNRTSpawnIfVis UnitPlacedFromRook bone_abduct"
+Do 0.33 "pfx boneLatchNRTSpawnIfVis PaintFleckAbductExplode> bone_abduct /offset 0 0 0.4"
+}
+State OnRespawn {
+}

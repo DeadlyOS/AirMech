@@ -1,0 +1,29 @@
+objects {
+WO FortressBaseSurvival {
+pos 0 0 0
+rot_x 1 0 0
+rot_y 0 1 0
+children 1 2
+#deployArmOffset ". deployArmOffset 0 0 3"
+$team ". team 0"
+selok
+}
+WO TriggerSquare {
+pos 0 0 5
+rot_x 1 8.55462e-007 0
+rot_y -8.55462e-007 1 0
+scl 5.8 5.8 6.5
+signal 0 to 1 cmd "titan recharge"
+id 1
+editlayer 2
+}
+WO TriggerSquare {
+pos 0 0 5
+rot_x 1 8.55462e-007 0
+rot_y -8.55462e-007 1 0
+scl 6.5 6.5 6.5
+signal 0 to 2 cmd "titan set overBase 5"
+id 2
+editlayer 2
+}
+}

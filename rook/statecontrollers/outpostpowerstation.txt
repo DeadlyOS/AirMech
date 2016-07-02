@@ -1,0 +1,19 @@
+StateController OutpostPowerStation {
+#include Outpost_CommonStates
+Data string workingAnim structures/PowerStation/PowerStationWorking.aaf /precache
+Data string openAnim structures/PowerStation/PowerStationOpen.aaf /precache
+Data string closeAnim structures/PowerStation/PowerStationClose.aaf /precache
+Data float regenBonus 1.2
+State OutpostCaptured {
+Cfg timeBlock 1.0
+Do 0.0 "playsound AlertCapturePowerStation.wav"
+}
+State TickHeld {
+Cfg timeBlock 2.0
+Do 0.0 "anim playIfDifferent 2 structures/PowerStation/PowerStationSpin.aaf loop"
+Do 0.0 "anim setspeed 2 0.25"
+}
+State TickNeutral {
+Do 0.0 "anim stop 2"
+}
+}

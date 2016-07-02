@@ -1,0 +1,38 @@
+StateController ElevatorPlatform {
+State initial {
+}
+State ProduceUnit {
+Do 0.0 "anim play 0 deco/tutorial/ElevatorPlatformRise.aaf stopandhold"
+Do 0.0 "anim setspeed 0 0.85"
+DoL 0.1 >spawn @_Arg1_@ /team 1 /data ". team 1" /data ". latch @_Arg2_@ bone_spawn 2.7" /data ". dInc S_DCount" /posOwnerOffset 0 0 -0.5
+}
+State ProduceUnitCapturing {
+Do 0.0 "anim play 0 deco/tutorial/ElevatorPlatformRise.aaf stopandhold"
+Do 0.0 "anim setspeed 0 1.0"
+DoL 0.1 >spawn @_Arg1_@ /team 1 /data ". team 1" /data ". latch @_Arg2_@ bone_spawn 1.35" /data ". dInc S_DCount" /data ". order CaptureOutpost" /posOwnerOffset 0 0 -0.5
+}
+State ProduceAllyUnit {
+Do 0.0 "anim play 0 deco/tutorial/ElevatorPlatformRise.aaf stopandhold"
+Do 0.0 "anim setspeed 0 0.85"
+DoL 0.1 >spawn @_Arg1_@ /team 0 /data ". team 0" /data ". latch @_Arg2_@ bone_spawn 2.7" /data ". dInc S_ADCount" /posOwnerOffset 0 0 -0.5
+}
+State ProduceNeutralUnit {
+Do 0.0 "anim play 0 deco/tutorial/ElevatorPlatformRise.aaf stopandhold"
+Do 0.0 "anim setspeed 0 0.85"
+DoL 0.1 >spawn @_Arg1_@ /team 6 /data ". team 6" /data ". latch @_Arg2_@ bone_spawn 2.7" /data ". nosave" /posOwnerOffset 0 0 -0.5
+}
+State ProduceUnitAllyCapturing {
+Do 0.0 "anim play 0 deco/tutorial/ElevatorPlatformRise.aaf stopandhold"
+Do 0.0 "anim setspeed 0 0.85"
+DoL 0.1 >spawn @_Arg1_@ /team 0 /data ". team 0" /data ". latch @_Arg2_@ bone_spawn 2.7" /data ". dInc S_ADCount" /data ". order CaptureOutpost" /posOwnerOffset 0 0 -0.5
+}
+State ProduceUnitSurvival {
+Do 0.0 "anim play 0 deco/tutorial/ElevatorPlatformRise.aaf stopandhold"
+Do 0.0 "anim setspeed 0 0.5"
+DoL 0.1 >spawn @_Arg1_@ /team 6 /data ". team 6" /data ". latch @_Arg2_@ bone_spawn 2.7" /data ". dInc S_DCount" /data ". order AttackEnemy" /posOwnerOffset 0 0 -0.5
+}
+State ProduceUnitCustom {
+Do 0.0 "anim play 0 deco/tutorial/ElevatorPlatformRise.aaf stopandhold"
+Do 0.0 "anim setspeed 0 1.0"
+}
+}

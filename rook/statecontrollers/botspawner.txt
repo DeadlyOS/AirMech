@@ -1,0 +1,15 @@
+StateController BotSpawner {
+#include UnitImmobile_CommonStates
+State initial {
+}
+State Tick {
+Cfg timeBlock 13.0
+DoL 0.0 anim play 1 units/botspawner/Build.aaf stopandhold
+DoL 0.0 anim setspeed 1 0.037
+DoL 9.0 anim play 1 units/botspawner/Open.aaf stopandhold
+DoL 9.0 anim setspeed 1 0.25
+DoL 9.5 rook genCreep
+DoL 11.0 anim play 1 units/botspawner/Close.aaf stopandhold
+DoL 11.0 anim setspeed 1 0.25
+}
+}

@@ -1,0 +1,59 @@
+#include Unit_CommonStates
+State AutoDeployed {
+Do 0.1 "playsound units/infantry/vo/InfantryVODeployCapturing.wav"
+}
+State StartMove {
+Cfg timeBlock 1.0
+}
+State StartMoveAttack {
+Cfg timeBlock 1.0
+Do 0.4 "playsound units/infantry/vo/InfantryVODeployAttacking.wav"
+}
+State StartMovePatrol {
+Cfg timeBlock 1.0
+Do 0.4 "playsound units/infantry/vo/InfantryVODeployPatrolling.wav"
+}
+State StartMoveLink {
+Cfg timeBlock 1.0
+}
+State StartMoveCapture {
+Cfg timeBlock 1.0
+Do 0.4 "playsound units/infantry/vo/InfantryVODeployCapturing.wav"
+}
+State Stasis {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawn ElectricSparkSmall> bone_pelvis /offset 0 0 0.1"
+}
+State AuraDefense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraDefenseSmall"
+}
+State AuraOffense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraAttackSmall"
+Do 0.25 "pfx atObjectSpawnIfVis AuraAttackAltSmall"
+}
+State DebufOffense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis DebufAttackSmall"
+Do 0.25 "pfx atObjectSpawnIfVis DebufAttackAltSmall"
+}
+State AuraSpeed {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraSpeedSmall"
+}
+State BuffHeal {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis BuffAuraHealSmall"
+}
+State BuffHealAct {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis HealEffectSmall"
+}
+State FiringStart {
+}
+State FiringStop {
+}
+State OnPwrShield {
+Do 0.0 "playsound mechs/MechOsprey_Overcharge.wav"
+}

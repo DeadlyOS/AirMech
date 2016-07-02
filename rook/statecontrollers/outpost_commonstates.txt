@@ -1,0 +1,54 @@
+State initial {
+}
+State BuildingStart {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DotsStructureBuildWhite bone_root"
+}
+State BuildingDone {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DotsStructureBuildWhiteDone bone_root"
+}
+State BuildingTick {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DotsStructureBuildWhite bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis BuildStartStreak> bone_root"
+}
+State OutpostCaptured {
+Cfg timeBlock 1.0
+Do 0.0 "playsound outpost\OutpostCaptured_01.wav"
+}
+State OutpostResecured {
+Cfg timeBlock 1.0
+Do 0.0 "playsound AlertOutpostEntered.wav"
+}
+State OutpostLost {
+Cfg timeBlock 1.0
+Do 0.0 "playsound AlertOutpostLost.wav"
+}
+State OutpostChanging {
+Cfg timeBlock 1.0
+Do 0.0 "pfx boneLatchNRTSpawnIfVis PaintFleck> bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis OutpostDust bone_root"
+}
+State OutpostNeutralized {
+Cfg timeBlock 1.0
+Do 0.0 "playsound AlertOutpostNeutralized.wav"
+Do [immediate] "pfx boneLatchNRTSpawnIfVis PaintFleck> bone_root"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis OutpostDust bone_root"
+}
+State OutpostEnteredFriendly {
+Cfg timeBlock 0.1
+Do 0.0 "playsound AlertOutpostEntered.wav"
+}
+State OutpostEnteredEnemy {
+Cfg timeBlock 0.1
+Do 0.0 "playsound AlertOutpostEntered2.wav"
+}
+State TickHeld {
+}
+State TickNeutral {
+}
+State OrbUsed {
+DoL 0.0 playsound HealthOrbBurst
+}
+State OrbRegen {
+DoL 0.0 playsound HealthOrbReform
+}

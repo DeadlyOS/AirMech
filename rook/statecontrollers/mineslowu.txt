@@ -1,0 +1,22 @@
+StateController MineSlowU {
+#include UnitImmobile_CommonStates
+State initial {
+}
+State MineCrushed {
+Cfg timeBlock 16.0
+Do 0.0 "playsound DestroyMissile.wav"
+Do 0.0 "kill crushed"
+}
+State StasisTick {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSmall> bone_root /offset 0 0 0.1"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSmall> bone_spin2 /offset 0 0 0.1"
+}
+State Disarming {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSmall> bone_root /offset 0 0 0.1"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis ElectricSparkSmall> bone_spin2 /offset 0 0 0.1"
+}
+State Disarmed {
+}
+}

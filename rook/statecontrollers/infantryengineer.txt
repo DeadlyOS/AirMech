@@ -1,0 +1,23 @@
+StateController InfantryEngineer {
+#include Infantry_CommonStates
+Data string repairAudio units\infantrysupport\infantrysupport_healbeamloop.wav /precache
+Data string workingAnim units/InfantryEngineer/InfantryEngineer_Rez_Cycle.aaf /precache
+Data string extendAnim units/InfantryEngineer/InfantryEngineer_Rez_Start.aaf /precache
+Data hash supplyBone0 bone_flash_R
+State initial {
+}
+State RezComplete {
+Cfg timeBlock 100.0
+Do 0.0 "anim play 9 units/InfantryEngineer/InfantryEngineer_Rez_End.aaf stopandhold"
+Do 4.20 "kill rezComplete"
+}
+State RezFailed {
+Do 0.0 "anim playIfDifferent 1 units/InfantryEngineer/InfantryEngineer_Rez_Fail.aaf playOnce"
+}
+State UnitSetDown {
+Cfg timeBlock 0.1
+Do 0.0 "anim stop 1"
+Do 0.0 "wo clearAttachmentsOnBone bone_claw_base"
+Do 0.0 "pfx clearLatched NecroRezBath"
+}
+}

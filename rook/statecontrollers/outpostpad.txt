@@ -1,0 +1,15 @@
+StateController OutpostPad {
+State initial {
+}
+State UnitLatched {
+}
+State UnitUnlatched {
+}
+State InfLatched {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis OutpostPadLatch bone_root /offset 0 0 0.5"
+Do 0.0 "anim play 1 structures/OutpostPad/Close.aaf stopandhold"
+}
+State InfUnlatched {
+Do 0.0 "anim play 1 structures/OutpostPad/Open.aaf stopandhold"
+}
+}

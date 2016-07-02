@@ -1,0 +1,11 @@
+StateController Baloom {
+#include UnitImmobile_CommonStates
+State initial {
+}
+State BaloomTriggered {
+Cfg timeBlock 16.0
+Do 0.0 "playsound DestroyMissile.wav"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis MineTriggered bone_middle"
+Do 0.0 "kill baloom"
+}
+}

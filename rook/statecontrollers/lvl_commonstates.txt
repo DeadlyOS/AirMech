@@ -1,0 +1,301 @@
+State UpkeepTrack {
+Cfg timeBlock 20.0
+DoL 0.0 sym set #UpkeepTeam0_@_UTInc_@ $PowerMaint0
+DoL 0.0 sym set #UpkeepTeam1_@_UTInc_@ $PowerMaint1
+DoL 0.0 sym inc _UTInc_ 1
+}
+State ReleaseCreeps {
+Cfg timeBlock 30.0
+#if arc
+Do 0.0 "if sym zoba_game == 0 && sym ShowCommonGameMessages != 0 runnow gamemsg addf_u HereComeCreeps"
+#else
+Do 0.0 "if sym zoba_game == 0 && sym ShowCommonGameMessages != 0 runnow gamemsg addf_u creepsannounce"
+#endif
+Do 0.0 "if usingMouse gameUI disable HelpTipKeyboard"
+Do 0.0 "if usingPad gameUI disable HelpTipGamepad"
+Do 1.0 "clearmenu HelpTip.txt"
+}
+State PatrolOrderHelp {
+Cfg timeBlock 4.0
+DoL 0.0 if usingMouse if !tutorial gamemsg addF_U PatrolHelpMouseKeyboard_Story
+DoL 0.0 if usingPad if !tutorial gamemsg addF_U PatrolHelpPad_Story
+}
+State GameWon {
+DoL 0.0 if netgame && sym MM_PartySize >= 1 runnow sym set ReturnToLobby 1
+DoL 0.0 if netgame && sym MM_PartySize >= 1 pcmd_seq StillInPartyCheck 10.0 menucmd CheckIfStillInParty
+DoL 0.0 echo ReturnToLobby: $ReturnToLobby
+DoL 0.0 sym set EndgameWon 1
+DoL 0.0 sym set MatchOver 1
+DoL 0.0 if inputBinding cockpitOpen menuCmd CloseCockpit local
+#if vr
+DoL 0.0 gameui ignoreInputTime 4.5
+DoL 0.0 if sym SG_InGroup == 1 runnow sym set VrReturnToLobby 1
+DoL 0.1 loadmenu VrEndgame.txt
+#else
+DoL 0.1 if !challengeMap runnow menucmd DoEndGameSequenceMessage victory"
+#endif
+}
+State GameLost {
+DoL 0.0 if netgame && sym MM_PartySize >= 1 runnow sym set ReturnToLobby 1
+DoL 0.0 if netgame && sym MM_PartySize >= 1 pcmd_seq StillInPartyCheck 10.0 menucmd CheckIfStillInParty
+DoL 0.0 echo ReturnToLobby: $ReturnToLobby
+DoL 0.0 sym set EndgameWon 0
+DoL 0.0 sym set MatchOver 1
+DoL 0.0 if inputBinding cockpitOpen menuCmd CloseCockpit local
+#if vr
+DoL 0.0 gameui ignoreInputTime 4.5
+DoL 0.0 if sym SG_InGroup == 1 runnow sym set VrReturnToLobby 1
+DoL 0.1 loadmenu VrEndgame.txt
+#endif
+}
+State TutorialCompleted {
+DoL 0.0 gamemsg log_ap Tutorial <W>Complete<>
+}
+State GameWon_PVP {
+DoL 0.0 gmlc log_ap <W>/EG_Result/<> <Gd>/EG_PvPVictory/<>
+Do 0.0 "gameUI hideGroup MinimapMaster"
+Do 0.0 "sym set EndgameCoordsY 0"
+Do 0.0 "loadmenu $EndgameMenu"
+Do 0.0 "loadmenu WhiteFlash"
+Do 0.0 "sym set MatchOver 1"
+Do 0.0 "rook reqUpsellState _UpsellOkToShow"
+Do 0.0 "clearmenu WarningBorder.txt"
+Do 0.0 "clearmenu WarningBorderCritical.txt"
+Do 0.0 "gameui hide HudPowerMaster"
+}
+State GameLost_PVP {
+DoL 0.0 gmlc log_ap <W>/EG_Result/<> <Gd>/EG_PvPDefeat/<>
+Do 0.0 "gameUI hideGroup MinimapMaster"
+Do 0.0 "sym set EndgameCoordsY 256"
+Do 0.0 "loadmenu $EndgameMenu"
+Do 0.0 "loadmenu WhiteFlash"
+Do 0.0 "gfx set uniform filterargs 2 1.0"
+Do 0.0 "sym set MatchOver 1"
+Do 0.0 "rook reqUpsellState _UpsellOkToShow"
+Do 0.0 "clearmenu WarningBorder.txt"
+Do 0.0 "clearmenu WarningBorderCritical.txt"
+Do 0.0 "gameui hide HudPowerMaster"
+}
+State GameWon_PVE {
+DoL 0.0 gmlc log_ap <W>/EG_Result/<> <Gd>/EG_SurvivalVictory/<>
+Do 0.0 "gameUI hideGroup MinimapMaster"
+Do 0.0 "sym set EndgameCoordsY 0"
+Do 0.0 "loadmenu $EndgameMenu"
+Do 0.0 "loadmenu WhiteFlash"
+Do 0.0 "sym set MatchOver 1"
+Do 0.0 "rook reqUpsellState _UpsellOkToShow"
+Do 0.0 "clearmenu WarningBorder.txt"
+Do 0.0 "clearmenu WarningBorderCritical.txt"
+Do 0.0 "gameui hide HudPowerMaster"
+}
+State GameLost_PVE {
+DoL 0.0 gmlc log_ap <W>/EG_Result/<> <Gd>/EG_SurvivalDefeat/<>
+Do 0.0 "gameUI hideGroup MinimapMaster"
+Do 0.0 "sym set EndgameCoordsY 256"
+Do 0.0 "loadmenu $EndgameMenu"
+Do 0.0 "loadmenu WhiteFlash"
+Do 0.0 "gfx set uniform filterargs 2 1.0"
+Do 0.0 "sym set MatchOver 1"
+Do 0.0 "rook reqUpsellState _UpsellOkToShow"
+Do 0.0 "clearmenu WarningBorder.txt"
+Do 0.0 "clearmenu WarningBorderCritical.txt"
+Do 0.0 "gameui hide HudPowerMaster"
+}
+State GameWon_Challenge {
+Do 0.0 "gameUI hideGroup MinimapMaster"
+Do 0.0 "sym set EndgameCoordsY 256"
+Do 0.0 "loadmenu ChallengePass.txt"
+Do 0.0 "loadmenu WhiteFlash"
+Do 0.0 "sym set MatchOver 1"
+Do 0.0 "clearmenu WarningBorder.txt"
+Do 0.0 "clearmenu WarningBorderCritical.txt"
+Do 0.0 "gameui hide HudPowerMaster"
+DoL 0.0 sym set ChallengePassed 1
+DoL 0.0 playsound ChallengeComplete
+}
+State GameLost_Challenge {
+Do 0.0 "gameUI hideGroup MinimapMaster"
+Do 0.0 "sym set EndgameCoordsY 256"
+Do 0.0 "loadmenu ChallengePass.txt"
+Do 0.0 "loadmenu WhiteFlash"
+Do 0.0 "sym set MatchOver 1"
+Do 0.0 "clearmenu WarningBorder.txt"
+Do 0.0 "clearmenu WarningBorderCritical.txt"
+Do 0.0 "gameui hide HudPowerMaster"
+DoL 0.0 sym set ChallengePassed 0
+}
+State GameWon_CCap {
+DoL 0.0 rook doLevelState GameWon_Challenge
+DoL 0.0 gmlc log_ap <W>/EG_ChalCaptureResult/<> <Gd>/EG_Victory/<>
+}
+State GameLost_CCap {
+DoL 0.0 rook doLevelState GameLost_Challenge
+DoL 0.0 gmlc log_ap <W>/EG_ChalCaptureResult/<> <Gd>/EG_Defeat/<>
+}
+State GameWon_CDes {
+DoL 0.0 rook doLevelState GameWon_Challenge
+DoL 0.0 gmlc log_ap <W>/EG_ChalDestroyResult/<> <Gd>/EG_Victory/<>
+}
+State GameLost_CDes {
+DoL 0.0 rook doLevelState GameLost_Challenge
+DoL 0.0 gmlc log_ap <W>/EG_ChalDestroyResult/<> <Gd>/EG_Defeat/<>
+}
+State GameWon_CWin {
+DoL 0.0 rook doLevelState GameWon_Challenge
+DoL 0.0 gmlc log_ap <W>/EG_ChalWinResult/<> <Gd>/EG_Victory/<>
+}
+State GameLost_CWin {
+DoL 0.0 rook doLevelState GameLost_Challenge
+DoL 0.0 gmlc log_ap <W>/EG_ChalWinResult/<> <Gd>/EG_Defeat/<>
+}
+State GameWon_CMov {
+DoL 0.0 rook doLevelState GameWon_Challenge
+DoL 0.0 gmlc log_ap <W>/EG_ChalMoveResult/<> <Gd>/EG_Victory/<>
+}
+State GameLost_CMov {
+DoL 0.0 rook doLevelState GameLost_Challenge
+DoL 0.0 gmlc log_ap <W>/EG_ChalMoveResult/<> <Gd>/EG_Defeat/<>
+}
+State GameWon_CBld {
+DoL 0.0 rook doLevelState GameWon_Challenge
+DoL 0.0 gmlc log_ap <W>/EG_ChalBuildResult/<> <Gd>/EG_Victory/<>
+}
+State GameLost_CBld {
+DoL 0.0 rook doLevelState GameLost_Challenge
+DoL 0.0 gmlc log_ap <W>/EG_ChalBuildResult/<> <Gd>/EG_Defeat/<>
+}
+State PreGameStart {
+Do 0.0 "echo pregame starting"
+Do 0.0 "sym set NotifyMenu NotifyPregame"
+Do 0.0 "loadmenu NotifyGametime"
+Do 0.0 "sym set ShowIngameHotkeys 1"
+}
+State GameStart {
+Do 0.0 "echo game starting"
+Do 0.0 "sym set NotifyMenu NotifyStart"
+Do 0.0 "loadmenu NotifyGametime"
+Do 0.0 "if sym GameShowHotkeys == 0 && sym P_Level >= 4 sym set ShowIngameHotkeys 0"
+}
+State Quarter1Complete {
+Do 0.0 "echo quarter 1 complete"
+Do 0.0 "sym set NotifyMenu NotifyQ2"
+Do 0.0 "loadmenu NotifyGametime"
+}
+State Halftime {
+Do 0.0 "echo halftime!"
+Do 0.0 "rook fortHealAndCreditsEvent 4000 40000 /over 60"
+Do 0.0 "sym set NotifyMenu NotifyHalftime"
+Do 0.0 "loadmenu NotifyGametime"
+}
+State HalftimeIn30s {
+Do 0.0 "echo 30 seconds till halftime!"
+}
+State Quarter3Complete {
+Do 0.0 "echo quarter 3 complete"
+Do 0.0 "sym set NotifyMenu NotifyQ4"
+Do 0.0 "loadmenu NotifyGametime"
+}
+State Overtime1 {
+Do 0.0 "echo overtime!"
+Do 0.0 "rook allXPEvent 4000"
+Do 0.0 "sym set NotifyMenu NotifyOT1"
+Do 0.0 "loadmenu NotifyGametime"
+}
+State Overtime1In30s {
+Do 0.0 "echo 30 seconds till overtime!"
+}
+State SuddenDeath {
+Do 0.0 "echo sudden death!"
+Do 0.0 "sym set NotifyMenu NotifyOT2"
+Do 0.0 "loadmenu NotifyGametime"
+}
+State SuddenDeathIn30s {
+Do 0.0 "echo 30 seconds till sudden death!"
+}
+State DominateStartDefender {
+DoL 0.0 managedSoundLoop start DomPreDefender.wav 0
+}
+State DominateStartAttacker {
+}
+State DominateStartDmgDefender {
+DoL 0.0 managedSoundLoop start DomActiveDefender.wav 1
+}
+State DominateStartDmgAttacker {
+}
+State DominateEnd {
+DoL 0.0 managedSoundLoop fadeout 0 0.6
+DoL 0.0 managedSoundLoop fadeout 1 0.1
+}
+State Hint_BldNeedLvl {
+Cfg timeBlock 6.0
+DoL 0.0 gamemsg addTR_U Hint_BldNeedLvl
+}
+State Hint_BldNeedUpkeep {
+Cfg timeBlock 6.0
+DoL 0.0 gamemsg addTR_U Hint_BldNeedUpkeep
+}
+State Hint_BldNeedCredits {
+Cfg timeBlock 6.0
+DoL 0.0 gamemsg addTR_U Hint_BldNeedCredits
+}
+State Hint_MaxCredits {
+Cfg timeBlock 20.0
+DoL 0 if sym ShowUnitsBar != 0 && sym Hint_MaxCredits_C < 3 gamemsg addTR_U Hint_MaxCredits
+DoL 0 sym inc Hint_MaxCredits_C
+}
+State Hint_Credits40 {
+Cfg timeBlock 30.0
+DoL 0 if sym ShowUnitsBar != 0 && sym Hint_Credits40_C < 2 gamemsg addTR_U Hint_Credits40
+DoL 0 sym inc Hint_Credits40_C
+}
+State Hint_Credits20 {
+Cfg timeBlock 30.0
+DoL 0 if sym ShowUnitsBar != 0 && sym Hint_Credits20_C < 1 gamemsg addTR_U Hint_Credits20
+DoL 0 sym inc Hint_Credits20_C
+}
+State LvlUp {
+Cfg timeBlock 2.0
+DoL 0 mdlprop /mdl effects/LevelUp.amf /mtl mat_LevelUp /anim effects/LevelUpBurst.aaf 1.0 stopandhold /lifespan 3.0 /posMode lvlup_20 /offset 0 0 0 /scale 1.5
+DoL 0 camshake 20 0.2 2.2
+DoL 3.0 rook doLevelState LvlUp
+}
+State ProfileSpawn {
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 rook doLevelState WorstCase
+}
+State WorstCase {
+DoL 0.0 spawn InfantryRocket /team 0 /data ". team 0" /data ". order AttackEnemy" /circle 50 /pos -20 0 0
+DoL 0.0 spawn InfantryRocket /team 1 /data ". team 1" /data ". order AttackEnemy" /circle 50 /pos 20 0 0
+DoL 0.0 spawn Tank /team 0 /data ". team 0" /data ". order AttackEnemy" /circle 50 /pos -20 0 0
+DoL 0.0 spawn Tank /team 1 /data ". team 1" /data ". order AttackEnemy" /circle 50 /pos 20 0 0
+DoL 0.0 spawn ArmoredCar /team 0 /data ". team 0" /data ". order AttackEnemy" /circle 50 /pos -20 0 0
+DoL 0.0 spawn ArmoredCar /team 1 /data ". team 1" /data ". order AttackEnemy" /circle 50 /pos 20 0 0
+DoL 0.0 spawn TankHeavy /team 0 /data ". team 0" /data ". order AttackEnemy" /circle 50 /pos -20 0 0
+DoL 0.0 spawn TankHeavy /team 1 /data ". team 1" /data ". order AttackEnemy" /circle 50 /pos 20 0 0
+DoL 0.0 spawn SupplyTank /team 0 /data ". team 0" /data ". order AttackEnemy" /circle 50 /pos -20 0 0
+DoL 0.0 spawn SupplyTank /team 1 /data ". team 1" /data ". order AttackEnemy" /circle 50 /pos 20 0 0
+DoL 0.0 sym inc CSWaveCount
+DoL 1.0 if sym CSWaveCount <= 6 rook doLevelState WorstCase
+DoL 1.0 if sym CSWaveCount <= 6 rook doLevelState WorstCase
+DoL 1.0 if sym CSWaveCount <= 6 rook doLevelState WorstCase
+DoL 1.0 if sym CSWaveCount <= 6 rook doLevelState WorstCase
+DoL 1.0 if sym CSWaveCount <= 6 rook doLevelState WorstCase
+}
+State SuperSamSpawn {
+DoL 0.0 spawn InfantryRocket /team 0 /data ". team 0" /data ". order AttackEnemy" /circle 5 /pos -50 0 0
+DoL 0.0 spawn InfantryRocket /team 1 /data ". team 1" /data ". order AttackEnemy" /circle 5 /pos 50 0 0
+DoL 0.0 spawn InfantryRocket /team 0 /data ". team 0" /data ". order AttackEnemy" /circle 5 /pos -54 0 0
+DoL 0.0 spawn InfantryRocket /team 1 /data ". team 1" /data ". order AttackEnemy" /circle 5 /pos 54 0 0
+DoL 0.0 spawn InfantryRocket /team 0 /data ". team 0" /data ". order AttackEnemy" /circle 5 /pos -50 2 0
+DoL 0.0 spawn InfantryRocket /team 1 /data ". team 1" /data ". order AttackEnemy" /circle 5 /pos 50 2 0
+DoL 0.0 spawn InfantryRocket /team 0 /data ". team 0" /data ". order AttackEnemy" /circle 5 /pos -52 2 0
+DoL 0.0 spawn InfantryRocket /team 1 /data ". team 1" /data ". order AttackEnemy" /circle 5 /pos 52 2 0
+DoL 0.0 spawn InfantryRocket /team 0 /data ". team 0" /data ". order AttackEnemy" /circle 5 /pos -54 2 0
+DoL 0.0 spawn InfantryRocket /team 1 /data ". team 1" /data ". order AttackEnemy" /circle 5 /pos 54 2 0
+DoL 0.0 sym inc CSWaveCount
+DoL 1.0 if sym CSWaveCount <= 6 rook doLevelState Wave3Spawn
+DoL 1.0 if sym CSWaveCount <= 6 rook doLevelState Wave3Spawn
+DoL 1.0 if sym CSWaveCount <= 6 rook doLevelState Wave3Spawn
+DoL 1.0 if sym CSWaveCount <= 6 rook doLevelState Wave3Spawn
+DoL 1.0 if sym CSWaveCount <= 6 rook doLevelState Wave3Spawn
+}

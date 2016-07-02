@@ -1,0 +1,17 @@
+StateController HealPod {
+#include UnitImmobile_CommonStates
+Data string repairAudio units/supporttruck/SupportTruckHealBeamLoop.wav /precache
+Data string workingAnim units/HealPod/ArmWorking.aaf /precache
+Data string extendAnim units/HealPod/ArmExtend.aaf /precache
+Data hash supplyBone0 bone_tip
+Data hash supplyArmBone bone_dome
+State Precache {
+Do 0 "resources precache units/HealPod/ArmRetract.aaf"
+}
+State initial {
+}
+State RetractSupply {
+Cfg timeBlock 1
+Do 0 "anim playIfDifferent 1 units/HealPod/ArmRetract.aaf stopandhold"
+}
+}

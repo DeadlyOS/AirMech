@@ -1,0 +1,464 @@
+State initial {
+}
+State BuildingStart {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DotsStructureBuildWhite bone_root /offset 0 0 1.5"
+}
+State BuildingDone {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DotsStructureBuildWhiteDone bone_root /offset 0 0 1.5"
+}
+State BuildingTick {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DotsStructureBuildWhite bone_root /offset 0 0 1.5"
+}
+State FortDamaged {
+Cfg timeBlock 5.0
+Do 0.0 "playsound AlertFortAttacked.wav"
+#if vr
+Do 0.0 "gfx sinpan diffuseBlendFactor 0.15 0.7 0.8 4.5"
+Do 4.5 "gfx lerp diffuseBlendFactor /current 0 0.6"
+#else
+Do 0.0 "loadmenu WarningBorder.txt"
+Do 4.5 "gameUI disable WarningBorder"
+Do 4.8 "clearmenu WarningBorder.txt"
+#endif
+}
+State FortDamaged_Pl {
+Cfg timeBlock 5.0
+Do 0.0 "gameUI enable HudFortressHealthLocalFlash"
+Do 4.8 "gameUI disable HudFortressHealthLocalFlash"
+Do 0.0 "alienfx morph Black 20"
+Do 0.33 "alienfx morph _ltc_ 20"
+Do 1.0 "alienfx morph Black 20"
+Do 1.33 "alienfx morph _ltc_ 20"
+Do 2.0 "alienfx morph Black 20"
+Do 2.33 "alienfx morph _ltc_ 20"
+}
+State FortDamagedCritical {
+Cfg timeBlock 4.0
+Do 0.0 "playsound AlertFortHealthCritical.wav"
+#if vr
+Do 0.0 "gfx sinpan diffuseBlendFactor 0.3 0.95 0.4 3.5"
+Do 3.5 "gfx lerp diffuseBlendFactor /current 0 0.5"
+#else
+Do 0.0 "clearmenu WarningBorder.txt"
+Do 0.0 "loadmenu WarningBorderCritical.txt"
+Do 0.0 "addUIAnim WarningBorderCritical mas_WarningBorderFlash"
+Do 3.5 "gameUI disable WarningBorderCritical"
+Do 3.8 "clearmenu WarningBorderCritical.txt"
+#endif
+}
+State FortDamagedCritical_Pl {
+Cfg timeBlock 4.0
+Do 0.0 "gameUI enable HudFortressHealthLocalFlash"
+Do 3.8 "gameUI disable HudFortressHealthLocalFlash"
+Do 0.0 "alienfx morph Black 15"
+Do 0.2 "alienfx morph _ltc_ 15"
+Do 0.5 "alienfx morph Black 15"
+Do 0.7 "alienfx morph _ltc_ 15"
+Do 1.0 "alienfx morph Black 15"
+Do 1.2 "alienfx morph _ltc_ 15"
+Do 1.5 "alienfx morph Black 15"
+Do 1.7 "alienfx morph _ltc_ 15"
+Do 2.0 "alienfx morph Black 15"
+Do 2.2 "alienfx morph _ltc_ 15"
+}
+State SpawnCreepBegin {
+DoL 0.0 anim playOnSubModel 12 0 structures/fortress/FortressDoorOpen.aaf stopAndHold
+}
+State SpawnCreepEnd {
+DoL 0.0 anim playOnSubModel 12 0 structures/fortress/FortressDoorClose.aaf stopAndHold
+}
+State D96 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 0.0 7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 0.0 7.0 3.5 96
+#endif
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "12 1.0 0.5  2.4 2.0  2 10  /mdl:units/ArmoredCar/DxCarGlass.amf /mtl:mat_DxCarGlass< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 10 structures/fortress/FortressWallEntD01.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 19 structures/fortress/XmasFortressWallSideD01.amf
+#endif
+}
+State D92 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 0.0 7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 0.0 7.0 3.5 92
+#endif
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "12 1.0 0.5  2.4 2.0  2 10  /mdl:units/ArmoredCar/DxCarGlass.amf /mtl:mat_DxCarGlass< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 3.0 7.0 3.5     "1  1.0 0.5  6.0 2.0  5 5  /mdl:structures/fortress/DXPanel04.amf /mtl:mat_FortressBase /trq:-15 /wgl:1000 /col [Box 0.4 1.0 0.5]""
+DoL 0.3 modelSwap this 10 structures/fortress/FortressWallEntD02.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 19 structures/fortress/XmasFortressWallSideD02.amf
+#endif
+}
+State D88 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos -6.0 -7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect -6.0 -7.0 3.5 88
+#endif
+DoL 0.1 pfx worldSpawn FortSmoke5s /pos -5.0 -5.0 2.8
+DoL 0.2 spawnDestructionEffect this -6.0 -7.0 3.5     "1 1.0 0.5  6.0 2.0  5 5  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-15 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 13 structures/fortress/FortressTurbineD01.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this -6.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 21 structures/fortress/XmasFortressTurbineD01.amf
+#endif
+}
+State D84 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 6.0 -7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 6.0 -7.0 3.5 84
+#endif
+DoL 0.1 pfx worldSpawn FortSmoke5s /pos 5.0 -5.0 2.8
+DoL 0.2 spawnDestructionEffect this 6.0 -7.0 3.5     "1 1.0 0.5  6.0 2.0  5 10  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-85 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 14 structures/fortress/FortressTurbine02D01.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 6.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 22 structures/fortress/XmasFortressTurbineD01.amf
+#endif
+}
+State D80 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos -7.0 0.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect -7.0 0.0 3.5 80
+#endif
+DoL 0.2 spawnDestructionEffect this -7.0 0.0 3.5     "12 1.0 0.5  2.4 2.0  2 10  /mdl:units/ArmoredCar/DxCarGlass.amf /mtl:mat_DxCarGlass< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 11 structures/fortress/FortressWallSideD01.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this -7.0 0.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 20 structures/fortress/XmasFortressWallSideD01.amf
+#endif
+}
+State D76 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos -6.0 7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect -6.0 7.0 3.5 76
+#endif
+DoL 0.2 spawnDestructionEffect this -6.0 7.0 3.5     "1 1.0 0.5  6.0 2.0  5 6  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 16 structures/fortress/FortressTurbine02D01.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this -6.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 24 structures/fortress/XmasFortressTurbineD01.amf
+#endif
+}
+State D72 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 7.0 0.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 7.0 0.0 3.5 72
+#endif
+DoL 0.2 spawnDestructionEffect this 7.0 0.0 3.5     "12 1.0 0.5  2.4 2.0  2 10  /mdl:units/ArmoredCar/DxCarGlass.amf /mtl:mat_DxCarGlass< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 9 structures/fortress/FortressWallSideD01.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 7.0 0.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 18 structures/fortress/XmasFortressWallSideD01.amf
+#endif
+}
+State D68 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 0.0 -7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 0.0 -7.0 3.5 68
+#endif
+DoL 0.2 spawnDestructionEffect this 0.0 -7.0 3.5    "12 1.0 0.5  2.4 2.0  2 10  /mdl:units/ArmoredCar/DxCarGlass.amf /mtl:mat_DxCarGlass< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 8 structures/fortress/FortressWallSideD01.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 0.0 -7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 17 structures/fortress/XmasFortressWallSideD01.amf
+#endif
+}
+State D64 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 6.0 7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 6.0 7.0 3.5 64
+#endif
+DoL 0.2 spawnDestructionEffect this 6.0 7.0 3.5     "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 15 structures/fortress/FortressTurbineD01.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 6.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 6.0 7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 23 structures/fortress/XmasFortressTurbineD01.amf
+#endif
+}
+State D60 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 6.0 7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 6.0 7.0 3.5 60
+#endif
+DoL 0.2 spawnDestructionEffect this 6.0 7.0 3.5     "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 15 structures/fortress/FortressTurbineD02.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 6.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 6.0 7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 23 structures/fortress/XmasFortressTurbineD02.amf
+#endif
+}
+State D56 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 6.0 7.0 3.5 /pfx ExplosionSeq3
+DoL 0.1 vrfortdamageeffect 6.0 7.0 3.5 56
+DoL 0.2 spawnDestructionEffect this 6.0 7.0 3.5     "2 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 15 structures/fortress/FortressTurbineD03.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 6.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 6.0 7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 23 structures/fortress/XmasFortressTurbineD03.amf
+#endif
+}
+State D52 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 0.0 -7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 0.0 -7.0 3.5 52
+#endif
+DoL 0.2 spawnDestructionEffect this 0.0 -7.0 3.5     "12 1.0 0.5  2.4 2.0  2 10  /mdl:units/ArmoredCar/DxCarGlass.amf /mtl:mat_DxCarGlass< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 8 structures/fortress/FortressWallSideD02.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 0.0 -7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 0.0 -7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 17 structures/fortress/XmasFortressWallSideD02.amf
+#endif
+}
+State D48 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos -6.0 7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect -6.0 7.0 3.5 48
+#endif
+DoL 0.2 spawnDestructionEffect this -6.0 7.0 3.5     "1 1.0 0.5  6.0 2.0  2 10  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 16 structures/fortress/FortressTurbine02D02.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this -6.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this -6.0 7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 24 structures/fortress/XmasFortressTurbineD02.amf
+#endif
+}
+State D44 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 0.0 7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 0.0 7.0 3.5 44
+#endif
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/DXPanel02.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.2 spawnDestructionEffect this 2.0 7.0 3.5     "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel01.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.2 spawnDestructionEffect this -2.0 7.0 3.5    "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel01.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 10 structures/fortress/FortressWallEntD03.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 0.0 7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressWreath.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 1.0 1.0 0.2]"
+DoL 0.3 modelSwap this 19 structures/fortress/XmasFortressWallSideD03.amf
+#endif
+}
+State D40 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos -6.0 -7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect -6.0 -7.0 3.5 40
+#endif
+DoL 0.2 spawnDestructionEffect this -6.0 -7.0 3.5     "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 13 structures/fortress/FortressTurbine02D02.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this -6.0 -7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this -6.0 -7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 21 structures/fortress/XmasFortressTurbineD02.amf
+#endif
+}
+State D36 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos -6.0 -7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect -6.0 -7.0 3.5 36
+#endif
+DoL 0.2 spawnDestructionEffect this -6.0 -7.0 3.5     "2 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 13 structures/fortress/FortressTurbine02D03.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this -6.0 -7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this -6.0 -7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 21 structures/fortress/XmasFortressTurbineD03.amf
+#endif
+}
+State D32 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 0.0 -7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 0.0 -7.0 3.5 32
+#endif
+DoL 0.2 spawnDestructionEffect this 0.0 -7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/DXPanel02.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.2 spawnDestructionEffect this 2.0 -7.0 3.5      "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel01.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.2 spawnDestructionEffect this -2.0 -7.0 3.5     "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel01.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 8 structures/fortress/FortressWallSideD03.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 0.0 -7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 0.0 -7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressWreath.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 1.0 1.0 0.2]"
+DoL 0.3 modelSwap this 17 structures/fortress/XmasFortressWallSideD03.amf
+#endif
+}
+State D28 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 6.0 -7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 6.0 -7.0 3.5 28
+#endif
+DoL 0.2 spawnDestructionEffect this 6.0 -7.0 3.5     "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 14 structures/fortress/FortressTurbine02D02.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 6.0 -7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 6.0 -7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 22 structures/fortress/XmasFortressTurbineD02.amf
+#endif
+}
+State D24 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 6.0 -7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 6.0 -7.0 3.5 24
+#endif
+DoL 0.2 spawnDestructionEffect this 6.0 -7.0 3.5     "2 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 14 structures/fortress/FortressTurbine02D03.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 6.0 -7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 6.0 -7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 22 structures/fortress/XmasFortressTurbineD03.amf
+#endif
+}
+State D20 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos -7.0 0.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect -7.0 0.0 3.5 20
+#endif
+DoL 0.2 spawnDestructionEffect this -7.0 0.0 3.5     "12 1.0 0.5  2.4 2.0  2 10  /mdl:units/ArmoredCar/DxCarGlass.amf /mtl:mat_DxCarGlass< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 11 structures/fortress/FortressWallSideD02.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this -7.0 0.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this -7.0 0.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 20 structures/fortress/XmasFortressWallSideD02.amf
+#endif
+}
+State D16 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos -6.0 7.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect -6.0 7.0 3.5 16
+#endif
+DoL 0.2 spawnDestructionEffect this -6.0 7.0 3.5     "2 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel03.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.4 0.1 0.4]"
+DoL 0.3 modelSwap this 16 structures/fortress/FortressTurbine02D03.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this -6.0 7.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this -6.0 7.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 24 structures/fortress/XmasFortressTurbineD03.amf
+#endif
+}
+State D12 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+#if vr
+DoL 0.1 vrfortdamageeffect -7.0 0.0 3.5 12
+#endif
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos -7.0 0.0 3.5 /pfx ExplosionSeq3
+DoL 0.2 spawnDestructionEffect this -7.0 0.0 3.5     "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/DXPanel02.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.2 spawnDestructionEffect this -7.0 2.0 3.5     "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel01.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.2 spawnDestructionEffect this -7.0 -2.0 3.5    "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel01.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 11 structures/fortress/FortressWallSideD03.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this -7.0 0.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this -7.0 0.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressWreath.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 1.0 1.0 0.2]"
+DoL 0.3 modelSwap this 20 structures/fortress/XmasFortressWallSideD03.amf
+#endif
+}
+State D08 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+#if vr
+DoL 0.1 vrfortdamageeffect 7.0 0.0 3.5 08
+#endif
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 7.0 0.0 3.5 /pfx ExplosionSeq3
+DoL 0.2 spawnDestructionEffect this 7.0 0.0 3.5     "12 1.0 0.5  2.4 2.0  2 10  /mdl:units/ArmoredCar/DxCarGlass.amf /mtl:mat_DxCarGlass< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.3 modelSwap this 9 structures/fortress/FortressWallSideD02.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 7.0 0.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 7.0 0.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressRibbon.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 18 structures/fortress/XmasFortressWallSideD02.amf
+#endif
+}
+State D04 {
+Cfg timeBlock 10.0
+DoL 0.1 playsound $FortDmgStateSound
+DoL 0.1 playsound DestroySupplyTruckLowPass.wav
+DoL 0.1 pfx worldSpawn ExplosionSeq /pos 7.0 0.0 3.5 /pfx ExplosionSeq3
+#if vr
+DoL 0.1 vrfortdamageeffect 7.0 0.0 3.5 04
+#endif
+DoL 0.2 spawnDestructionEffect this 7.0 0.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/DXPanel02.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.2 spawnDestructionEffect this 7.0 2.0 3.5      "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel01.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.2 spawnDestructionEffect this 7.0 -2.0 3.5     "1 1.0 0.5  6.0 2.0  2 5  /mdl:structures/fortress/DXPanel01.amf /mtl:mat_FortressBase /trq:-10 /wgl:1000 /col [Box 0.6 0.6 0.2]"
+DoL 0.3 modelSwap this 9 structures/fortress/FortressWallSideD03.amf
+#if _xmas
+DoL 0.2 spawnDestructionEffect this 7.0 0.0 3.5     "6 1.0 0.5  2.4 2.0  2 10  /mdl:structures/fortress/XmasFortressLight.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Sphere 0.1]"
+DoL 0.2 spawnDestructionEffect this 7.0 0.0 3.5      "1 1.0 0.5  6.0 2.0  5 8  /mdl:structures/fortress/XmasFortressWreath.amf /mtl:mat_XmasFortress< /trq:-10 /wgl:1000 /col [Box 1.0 1.0 0.2]"
+DoL 0.3 modelSwap this 18 structures/fortress/XmasFortressWallSideD03.amf
+#endif
+}
+State Destroyed {
+Cfg timeBlock 100.0
+DoL 0.0 playsound $FortDmgStateSound
+DoL 0.0 modelSwap this 0 structures/fortress/FortressDestroyed.amf "mat_FortressBaseDestroyed"
+DoL 0.0 wo clearAllSubmodels
+DoL 0.0 anim play 0 structures/fortress/FortressDestroyedIdle.aaf looping
+#if vr
+#endif
+}
+State Destroyed_LocalPlayer {
+#if vr
+DoL 0.0 pfx menu3dspawn VREndEmbers /menu3d FortInside /bone bone_root
+DoL 0.0 pfx menu3dspawn FortVRDmgEnd /menu3d FortInside /bone bone_overtable
+DoL 0.0 if sym VrTutorial == 1 sym set TutorialVrCompleted 1
+DoL 0.0 if sym VrTutorial == 1 backend save
+#endif
+}
+State Destroyed_Enemy {
+#if vr
+#endif
+}
+State Destroyed_Spectator {
+#if vr
+#endif
+}
+State OrbUsed {
+DoL 0.0 playsound HealthOrbBurst
+}
+State OrbRegen {
+DoL 0.0 playsound HealthOrbReform
+}

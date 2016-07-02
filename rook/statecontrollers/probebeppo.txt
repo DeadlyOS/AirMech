@@ -1,0 +1,64 @@
+StateController ProbeBeppo {
+#include Unit_CommonStates
+State StartMove {
+Cfg timeBlock 1.0
+Do 0.0 "playsound units/infantry/DeployInfantryLight.wav"
+}
+State initial {
+}
+State StartMoveAttack {
+Cfg timeBlock 1.0
+Do 0.4 "playsound DeployBeppoProbe"
+}
+State AutoDeployed {
+Do 0.1 "playsound DeployBeppoProbe"
+}
+State StartMovePatrol {
+Cfg timeBlock 1.0
+Do 0.4 "playsound DeployBeppoProbe"
+}
+State StartMoveLink {
+Cfg timeBlock 1.0
+}
+State StartMoveCapture {
+Cfg timeBlock 1.0
+Do 0.4 "playsound DeployBeppoProbe"
+}
+State Stasis {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawn ElectricSparkSmall> bone_root /offset 0 0 0.1"
+}
+State AuraDefense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraDefenseSmall"
+}
+State AuraOffense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraAttackSmall"
+Do 0.25 "pfx atObjectSpawnIfVis AuraAttackAltSmall"
+}
+State DebufOffense {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis DebufAttackSmall"
+Do 0.25 "pfx atObjectSpawnIfVis DebufAttackAltSmall"
+}
+State AuraSpeed {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis AuraSpeedSmall"
+}
+State BuffHeal {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis BuffAuraHealSmall"
+}
+State BuffHealAct {
+Cfg timeBlock 0.5
+Do 0.0 "pfx atObjectSpawnIfVis HealEffectSmall"
+}
+State FiringStart {
+}
+State FiringStop {
+}
+State OnPwrShield {
+Do 0.0 "playsound mechs/MechOsprey_Overcharge.wav"
+}
+}

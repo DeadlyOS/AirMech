@@ -1,0 +1,34 @@
+StateController OutpostPowerStationV2 {
+#include Outpost_CommonStates
+Data string workingAnim structures/PowerStation/PowerStationV2Working.aaf /precache
+Data string openAnim structures/PowerStation/PowerStationV2Open.aaf /precache
+Data string openAnimNoP structures/PowerStation/PowerStationV2OpenNoP.aaf /precache
+Data string closeAnim structures/PowerStation/PowerStationV2Close.aaf /precache
+Data string closeAnimNoP structures/PowerStation/PowerStationV2CloseNoP.aaf /precache
+Data float regenBonus 1.2
+State initial {
+}
+State BuildingStart {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DotsStructureBuildWhite bone_root /offset -1.5 1.0 1.3"
+}
+State BuildingDone {
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DotsStructureBuildWhiteDone bone_root /offset -1.5 1.0 1.3"
+}
+State BuildingTick {
+Cfg timeBlock 0.5
+Do 0.0 "pfx boneLatchNRTSpawnIfVis DotsStructureBuildWhite bone_root /offset -1.5 1.0 1.3"
+Do 0.0 "pfx boneLatchNRTSpawnIfVis BuildStartStreak> bone_root /offset -1.5 1.0 1.3"
+}
+State OutpostCaptured {
+Cfg timeBlock 1.0
+Do 0.0 "playsound AlertCapturePowerStation.wav"
+}
+State TickHeld {
+Cfg timeBlock 2.0
+Do 0.0 "anim playIfDifferent 2 structures/PowerStation/PowerStationV2Spin.aaf loop"
+Do 0.0 "anim setspeed 2 0.25"
+}
+State TickNeutral {
+Do 0.0 "anim stop 2"
+}
+}

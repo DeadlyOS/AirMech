@@ -1,0 +1,19 @@
+StateController FortPadCore {
+State initial {
+}
+State UnitLatched {
+Do 0.0 "pfx worldspawn FortPadLatch /pos 0 0 0.5"
+}
+State UnitUnlatched {
+}
+State Open {
+Cfg timeBlock 0.1
+Do 0.0 "anim playIfDifferent 0 structures/fortress/FortPadCoreOpen.aaf stopandhold"
+Do 0.0 "anim play 1 structures/fortress/FortPadCoreFlash.aaf looping 1.5"
+}
+State Close {
+Cfg timeBlock 0.1
+Do 0.0 "anim playIfDifferent 0 structures/fortress/FortPadCoreClose.aaf stopandhold"
+Do 0.0 "anim stop 1"
+}
+}
