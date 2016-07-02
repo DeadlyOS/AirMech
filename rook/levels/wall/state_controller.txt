@@ -1,0 +1,202 @@
+StateController Lvl_wall {
+#include Lvl_CommonStates
+State initial {
+In 0.0 "sym setNSet 120 UpkeepTeam0_ -1"
+In 0.0 "sym setNSet 120 UpkeepTeam1_ -1"
+In 0.0 "sym set _UTInc_ 0"
+}
+State Init {
+DoL 0.0 sym set CSWave Wave1Wait
+DoL 5.0 gamemsg addf_u wall_1
+DoL 9.0 gamemsg addf_u wall_2
+DoL 13.0 gamemsg addf_u wall_3
+DoL 16.0 gamemsg addf_u wall_4
+DoL 21.0 gamemsg addf_u wall_5
+DoL 25.0 gamemsg addf_u wall_11
+DoL 11.0 playsound AmbientBed2 /busId 2
+DoL 35.0 sym set CSWave Wave1
+DoL 0.0 sym set WaveMax 3
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 rook powerGenMod set 0
+DoL 0.0 sym set spawnloc_center -8 -99 0
+DoL 0.0 sym set spawnloc_center2 -12 -99 0
+DoL 0.0 sym set spawnloc_center3 -3 -99 0
+DoL 0.0 sym set spawnloc_left -126 -4 0
+DoL 0.0 sym set spawnloc_right 123 -3 0
+DoL 0.0 pfx worldspawn WallCloud /pos 11 14 27
+}
+State Tick {
+Do 0.0 "rook doLevelState $$CSWave"
+Do 0.0 "rook doLevelState TickCreeps"
+Do 0.0 "rook doLevelState BlockCheck"
+DoL 0.0 if sym MatchOver == 0 rook doLevelState UpkeepTrack
+}
+State TickCreeps {
+Cfg timeBlock 0.25
+Do 0.0 "rook doLevelState NormalSpawn"
+}
+State BlockCheck {
+Cfg timeBlock 1.0
+Do 0.0 "rook survivalBlockCheck 240"
+}
+State NormalSpawn {
+DoL 0.0 if gameValidation spCr_p0 rook doLevelState CreepSpawnTeam0
+}
+State CreepSpawnTeam0 {
+DoL 0.0 |rook spawnCreepBegin 0
+DoL 1.0 |rook spawnCreep 0
+DoL 1.5 |rook spawnCreep 0
+DoL 2.0 |rook spawnCreep 0
+DoL 5.0 |rook spawnCreepEnd 0
+}
+State WaveCompleteCommon {
+DoL 0.0 sym set CSWave $_SArg1_
+DoL 0.0 sym append CSWave Wait
+#if arc
+DoL 0.0 |gamemsg addf_u SrvWaveCompleted
+DoL 3.0 |gamemsg addf_u SrvMorePower
+DoL 6.0 |gamemsg addf_u SrvNextWave
+#else
+DoL 0.0 |gamemsg addf_u survival_10
+DoL 5.0 |gamemsg addf_u survival_11
+#endif
+DoL 3.0 |rook powerGenMod inc 50
+DoL 9.0 |sym set S_DCount 0
+DoL 9.0 |sym set CSWaveCount 0
+DoL 9.0 |floatSym set waveProgress 1.0
+DoL 9.0 |sym set CSWave $_SArg1_
+}
+State Wave1 {
+Cfg timeBlock 3.0
+DoL 0.0 sym set S_Wave 1
+DoL 0.0 sym set S_Total /20
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 2 rook doLevelState Wave1Spawn
+DoL 0.0 if sym S_DCount >= 20 rook doLevelState Wave1Complete
+}
+State Wave1Spawn {
+DoL 80.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center
+DoL 93.5 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center2
+DoL 110.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_center3
+DoL 113.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_center3
+DoL 111.5 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center
+DoL 122.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_left
+DoL 124.5 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_left
+DoL 135.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_right
+DoL 135.5 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_right
+DoL 146.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_center2
+}
+State Wave1Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave2
+DoL 29.0 gamemsg addf_u wall_6
+DoL 32.0 gamemsg addf_u wall_7
+DoL 36.0 gamemsg addf_u wall_8
+DoL 41.0 gamemsg addf_u wall_9
+DoL 50.0 gamemsg addf_u wall_12
+DoL 71.0 gamemsg addf_u wall_14
+DoL 74.0 gamemsg addf_u wall_15
+DoL 92.0 gamemsg addf_u wall_16
+DoL 96.0 gamemsg addf_u wall_17
+DoL 101.0 gamemsg addf_u wall_18
+DoL 108.0 gamemsg addf_u wall_19
+DoL 112.0 gamemsg addf_u wall_20
+DoL 119.0 gamemsg addf_u wall_21
+DoL 124.0 state doLevelAction bombard1
+DoL 124.1 state doLevelAction bombard2
+DoL 124.2 state doLevelAction bombard3
+DoL 124.3 state doLevelAction bombard4
+DoL 124.45 state doLevelAction bombard5
+DoL 124.6 state doLevelAction bombard6
+DoL 124.7 state doLevelAction bombard7
+DoL 124.7 state doLevelAction bombard8
+DoL 124.9 state doLevelAction bombard9
+DoL 125.0 state doLevelAction bombard10
+DoL 125.15 state doLevelAction bombard11
+DoL 125.2 state doLevelAction bombard12
+DoL 125.4 state doLevelAction bombard13
+DoL 125.5 state doLevelAction bombard14
+DoL 125.63 state doLevelAction bombard15
+DoL 125.0 state doLevelAction bombard16
+DoL 125.45 state doLevelAction bombard17
+DoL 124.6 state doLevelAction bombard18
+DoL 124.7 state doLevelAction bombard19
+DoL 124.7 state doLevelAction bombard20
+DoL 124.9 state doLevelAction bombard21
+DoL 125.0 state doLevelAction bombard22
+DoL 125.15 state doLevelAction bombard23
+DoL 125.2 state doLevelAction bombard24
+DoL 125.4 state doLevelAction bombard25
+DoL 125.5 state doLevelAction bombard26
+DoL 125.63 state doLevelAction bombard27
+DoL 126.0 state doLevelAction bombard1
+DoL 126.1 state doLevelAction bombard2
+DoL 126.2 state doLevelAction bombard3
+DoL 126.3 state doLevelAction bombard4
+DoL 127.45 state doLevelAction bombard5
+DoL 127.6 state doLevelAction bombard6
+DoL 127.7 state doLevelAction bombard7
+DoL 127.7 state doLevelAction bombard8
+DoL 128.9 state doLevelAction bombard9
+DoL 128.0 state doLevelAction bombard10
+DoL 128.15 state doLevelAction bombard11
+DoL 128.2 state doLevelAction bombard12
+DoL 128.4 state doLevelAction bombard13
+DoL 128.5 state doLevelAction bombard14
+DoL 128.63 state doLevelAction bombard15
+DoL 128.0 state doLevelAction bombard16
+DoL 129.45 state doLevelAction bombard17
+DoL 129.6 state doLevelAction bombard18
+DoL 129.7 state doLevelAction bombard19
+DoL 129.7 state doLevelAction bombard20
+DoL 129.9 state doLevelAction bombard21
+DoL 130.0 state doLevelAction bombard22
+DoL 130.15 state doLevelAction bombard23
+DoL 130.2 state doLevelAction bombard24
+DoL 130.4 state doLevelAction bombard25
+DoL 130.5 state doLevelAction bombard26
+DoL 130.63 state doLevelAction bombard27
+DoL 125.0 playsound AmbientBed1 /busId 2
+DoL 128.0 gamemsg addf_u wall_22
+DoL 132.0 gamemsg addf_u wall_23
+DoL 135.0 gamemsg addf_u wall_24
+DoL 140.0 gamemsg addf_u wall_25
+}
+State Wave2 {
+Cfg timeBlock 7.0
+DoL 0.0 sym set S_Wave 2
+DoL 0.0 sym set S_Total /600
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 30 rook doLevelState Wave2Spawn
+DoL 0.0 if sym S_DCount >= 600 rook doLevelState Wave2Complete
+}
+State Wave2Spawn {
+DoL 0.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center
+DoL 3.5 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center2
+DoL 6.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_center3
+DoL 10.5 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center
+DoL 13.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center2
+DoL 20.5 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_center3
+DoL 25.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_left
+DoL 31.5 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_left
+DoL 34.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_left
+DoL 36.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center
+DoL 40.5 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center2
+DoL 44.0 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_center3
+DoL 43.5 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center
+DoL 47.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_center2
+DoL 50.5 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_center3
+DoL 52.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_right
+DoL 55.5 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_right
+DoL 60.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_right
+DoL 62.0 spawn TankHeavy /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_right
+DoL 66.0 spawn TankHeavy /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_right
+}
+State Wave2Complete {
+Cfg timeBlock 200.0
+DoL 0.0 sym set CSWave Wave3
+DoL 3.0 gamemsg addf_u wall_26
+DoL 6.0 state doLevelAction victory
+}
+}

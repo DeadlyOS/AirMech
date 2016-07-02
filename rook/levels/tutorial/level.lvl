@@ -1,0 +1,3966 @@
+// map: tutorial
+
+// level embedded console commands 
+CONSOLE_IMMEDIATE menucmd OnTutorialMapStart
+CONSOLE player 0 do transform /forcedReq  // force to ground on map start
+CONSOLE sym set TATransform 0
+CONSOLE sym set P_TotalHumansV 0 // hack bugfix for broken pause menu focus input
+CONSOLE player 1 toggleai
+CONSOLE player 1 activate 0 // turns off forcebox
+CONSOLE_IMMEDIATE sym savedSet ArmySlot0Custom0 Infantry
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_Canyon.mtl ToSand
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_EnvironmentMapped.mtl Canyon
+CONSOLE_IMMEDIATE rook setArmy Infantry NoUnit ArmoredCar NoUnit Tank NoUnit SupplyTruck NoUnit
+CONSOLE_IMMEDIATE sym push OptionShowTray 1 // enable the tray - it's needed for the tutorial
+CONSOLE_EXIT_IMMEDIATE gameMsg clearTr
+CONSOLE_EXIT_IMMEDIATE rook restoreArmy
+CONSOLE_EXIT_IMMEDIATE sym pop OptionShowTray // restore state
+
+mapInfo {
+	MAPNAME Tutorial
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION Tutorial
+	SKYBOX mat_SkyBlueSmallClouds
+	TILESET Canyon
+	EDGING ToGrass
+	GAMEMODE tutorial
+	GAMESTYLE Skirmish
+	PREGAME_RADIUS 55
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT 45
+	AutoExtShadowCheckAtZHeight 1000
+	FORCEBOX -10 12 -16 16 4 45
+	MAPEXTMIN -100 -100 0
+	MAPEXTMAX 100 100 0
+	CAMERAEXTMIN -4 -6
+	CAMERAEXTMAX 6 6
+}
+
+mapBalance {
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Canyon
+	TerrainArrayX 10
+	TerrainArrayY 10
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -6
+  TRANSFORMPLANE -10
+}
+
+fogValues {
+	FOGCOLOR 217 171 83 255
+	FOGARGS 10 9
+	DFOGCOLOR 201.210938 211.171875 239.0625 255
+	DFOGCOLOR2 201.210938 211.171875 239.0625 255
+	DFOGARGS 90 150
+	DFOGARGS2 90 150
+	CANVASCOLOR 0 0 0 0
+}
+
+airmech {
+	AILevel -1
+	Player 0 {
+		startLoc -8 -8 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 1 {
+		startLoc -246 -46 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 2 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 3 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 4 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 5 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+}
+DIR_LIGHT {
+	pos 482.859985 482.859985 730.541992
+	dir 0.48286 0.48286 0.730542
+	diff 0.6 0.6 0.6
+	amb 0.5 0.5 0.5
+}
+EventScripts {
+}
+ActionScripts {
+}
+ScriptVariables {
+}
+objects {
+	WO Canyon_B0 {
+		pos -64 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_C0 {
+		pos -64 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C0 {
+		pos -64 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C0 {
+		pos -64 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_B0 {
+		pos -64 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -64 -24 0
+	}
+	WO Canyon_A0 {
+		pos -64 -16 0
+	}
+	WO Canyon_A0 {
+		pos -64 -8 0
+	}
+	WO Canyon_A0 {
+		pos -64 0 0
+	}
+	WO Canyon_A0 {
+		pos -64 8 0
+	}
+	WO Canyon_A0 {
+		pos -64 16 0
+	}
+	WO Canyon_A0 {
+		pos -64 24 0
+	}
+	WO Canyon_A0 {
+		pos -64 32 0
+	}
+	WO Canyon_A0 {
+		pos -64 40 0
+	}
+	WO Canyon_A0 {
+		pos -64 48 0
+	}
+	WO Canyon_A0 {
+		pos -64 56 0
+	}
+	WO Canyon_A0 {
+		pos -64 64 0
+	}
+	WO Canyon_A0 {
+		pos -56 -48 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos -56 -40 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_D0 {
+		pos -56 -64 0
+	}
+	WO Canyon_A0 {
+		pos -56 -56 3
+		. mtmm 2
+	}
+	WO Canyon_C0 {
+		pos -56 -32 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos -56 -24 0
+	}
+	WO Canyon_A0 {
+		pos -56 -16 0
+	}
+	WO Canyon_A0 {
+		pos -56 -8 0
+	}
+	WO Canyon_A0 {
+		pos -56 0 0
+	}
+	WO Canyon_A0 {
+		pos -56 8 0
+	}
+	WO Canyon_A0 {
+		pos -56 16 0
+	}
+	WO Canyon_A0 {
+		pos -56 24 0
+	}
+	WO Canyon_A0 {
+		pos -56 32 0
+	}
+	WO Canyon_A0 {
+		pos -56 40 0
+	}
+	WO Canyon_A0 {
+		pos -56 48 0
+	}
+	WO Canyon_A0 {
+		pos -56 56 0
+	}
+	WO Canyon_A0 {
+		pos -56 64 0
+	}
+	WO Canyon_A8 {
+		pos -48 -64 3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -48 -56 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Canyon_A2 {
+		pos -48 -48 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Canyon_A4 {
+		pos -48 -40 3
+		. mtmm 3
+	}
+	WO Canyon_D0 {
+		pos -48 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Canyon_D0 {
+		pos -24 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_C0 {
+		pos -24 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_D0 {
+		pos -24 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Canyon_C0 {
+		pos -16 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_B0 {
+		pos -8 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_C0 {
+		pos -8 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A0 {
+		pos -48 24 0
+	}
+	WO Canyon_A0 {
+		pos -48 32 0
+	}
+	WO Canyon_A0 {
+		pos -48 40 0
+	}
+	WO Canyon_A0 {
+		pos -48 48 0
+	}
+	WO Canyon_A0 {
+		pos -48 56 0
+	}
+	WO Canyon_A0 {
+		pos -48 64 0
+	}
+	WO Canyon_A9 {
+		pos -40 -64 3
+		. mtmm 9
+	}
+	WO Canyon_A0 {
+		pos -40 -56 3
+		. mtmm 6
+	}
+	WO Canyon_A0 {
+		pos -40 -48 3
+		. mtmm 10
+	}
+	WO Canyon_B0 {
+		pos -8 -16 0
+	}
+	WO Canyon_D0 {
+		pos -16 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_B0 {
+		pos -16 -8 0
+	}
+	WO Canyon_A0 {
+		pos -40 -16 3
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos -40 -8 3
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -40 0 3
+		. mtmm 14
+	}
+	WO Canyon_A0 {
+		pos -40 8 3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Canyon_C0 {
+		pos -8 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_C0 {
+		pos -8 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C0 {
+		pos -16 40 0
+	}
+	WO Canyon_B0 {
+		pos -8 40 0
+		. mtmm 10
+	}
+	WO Canyon_A0 {
+		pos -40 48 0
+	}
+	WO Canyon_A0 {
+		pos -40 56 0
+	}
+	WO Canyon_A0 {
+		pos -40 64 0
+	}
+	WO Canyon_A5 {
+		pos -32 -64 3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Canyon_A2 {
+		pos -32 -56 3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Canyon_A2 {
+		pos -32 -48 3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 13
+	}
+	WO Canyon_C0 {
+		pos -8 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A2 {
+		pos -32 -32 3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A8 {
+		pos -32 -24 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -32 -16 3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos -32 -8 3
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos -32 0 3
+		. mtmm 5
+	}
+	WO Canyon_C0 {
+		pos -48 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos -32 16 3
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos -32 24 3
+	}
+	WO Canyon_A0 {
+		pos -32 32 3
+	}
+	WO Canyon_C0 {
+		pos -24 40 0
+	}
+	WO Canyon_A0 {
+		pos -32 48 0
+	}
+	WO Canyon_G0 {
+		pos -32 56 0
+	}
+	WO Canyon_J0 {
+		pos -8 80 0
+	}
+	WO Canyon_A4 {
+		pos -24 -64 3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Canyon_A2 {
+		pos -24 -56 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Canyon_A5 {
+		pos -24 -48 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Canyon_C0 {
+		pos -8 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A2 {
+		pos -24 -32 3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Canyon_A8 {
+		pos -24 -24 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Canyon_A1 {
+		pos -24 -16 3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Canyon_A5 {
+		pos -32 -40 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Canyon_A5 {
+		pos -24 -40 3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C0 {
+		pos -48 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -24 16 3
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos -24 24 3
+	}
+	WO Canyon_A0 {
+		pos -24 32 3
+	}
+	WO Canyon_C0 {
+		pos -32 40 0
+	}
+	WO Canyon_A0 {
+		pos -24 48 0
+	}
+	WO Canyon_G0 {
+		pos -24 56 0
+	}
+	WO Canyon_J0 {
+		pos -16 80 0
+	}
+	WO Canyon_C0 {
+		pos -16 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Canyon_C4 {
+		pos -16 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Canyon_C5 {
+		pos -16 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_B0 {
+		pos -8 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A7 {
+		pos -16 -32 3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos -16 -24 3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos -40 -24 3
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos -40 -40 3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Canyon_A8 {
+		pos -16 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos -32 8 3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Canyon_A0 {
+		pos -16 16 3
+	}
+	WO Canyon_A0 {
+		pos -16 24 3
+	}
+	WO Canyon_A0 {
+		pos -16 32 3
+	}
+	WO Canyon_C0 {
+		pos -40 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -16 48 0
+	}
+	WO Canyon_G0 {
+		pos -16 56 0
+	}
+	WO Canyon_J0 {
+		pos 8 72 0
+	}
+	WO Canyon_A0 {
+		pos -8 -64 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -8 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A2 {
+		pos -8 -48 0
+		. mtmm 2
+	}
+	WO Canyon_D0 {
+		pos -16 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Canyon_C0 {
+		pos -48 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_C0 {
+		pos -48 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -40 -32 3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos -8 -8 0
+	}
+	WO Canyon_Ab {
+		pos -8 0 0
+	}
+	WO Canyon_D0 {
+		pos -40 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_C0 {
+		pos -40 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C0 {
+		pos -48 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_B0 {
+		pos -48 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_B0 {
+		pos -40 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -8 48 0
+		. mtmm 10
+	}
+	WO Canyon_G0 {
+		pos -8 56 0
+		. mtmm 8
+	}
+	WO Canyon_J0 {
+		pos -24 80 0
+	}
+	WO Canyon_A0 {
+		pos 0 -64 0
+		. mtmm 11
+	}
+	WO Canyon_A0 {
+		pos 0 -56 0
+		. mtmm 12
+	}
+	WO Canyon_A4 {
+		pos 0 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Canyon_A2 {
+		pos 0 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Canyon_A2 {
+		pos 0 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_A2 {
+		pos 0 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A2 {
+		pos 0 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_Ab {
+		pos 0 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A3 {
+		pos 0 0 0
+	}
+	WO Canyon_Ab {
+		pos 0 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A2 {
+		pos 0 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A4 {
+		pos 0 24 0
+	}
+	WO Canyon_A0 {
+		pos 0 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 0 40 0
+		. mtmm 13
+	}
+	WO Canyon_A0 {
+		pos 0 48 0
+		. mtmm 7
+	}
+	WO Canyon_G0 {
+		pos 0 56 0
+		. mtmm 12
+	}
+	WO Canyon_J0 {
+		pos -32 80 0
+	}
+	WO Canyon_A0 {
+		pos 8 -64 0
+		. mtmm 15
+	}
+	WO Canyon_A0 {
+		pos 8 -56 0
+		. mtmm 12
+	}
+	WO Canyon_A7 {
+		pos 8 -48 0
+	}
+	WO Canyon_D0 {
+		pos 8 -40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_C0 {
+		pos 8 -32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Canyon_C0 {
+		pos 8 -24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Canyon_C4 {
+		pos 8 -16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_D0 {
+		pos 8 -8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_Ab {
+		pos 8 0 0
+	}
+	WO Canyon_A4 {
+		pos 8 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A2 {
+		pos 8 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A5 {
+		pos 8 24 0
+	}
+	WO Canyon_B0 {
+		pos 8 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Canyon_B0 {
+		pos 8 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos 8 48 0
+		. mtmm 9
+	}
+	WO Canyon_G0 {
+		pos 8 56 0
+		. mtmm 4
+	}
+	WO Canyon_J0 {
+		pos 0 80 0
+	}
+	WO Canyon_A0 {
+		pos 16 -64 0
+		. mtmm 7
+	}
+	WO Canyon_A0 {
+		pos 16 -56 0
+		. mtmm 14
+	}
+	WO Canyon_A0 {
+		pos 16 -48 0
+		. mtmm 8
+	}
+	WO Canyon_C0 {
+		pos 32 -40 -3
+		. mtmm 8
+	}
+	WO Canyon_A4 {
+		pos 16 -32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A2 {
+		pos 16 -24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A4 {
+		pos 16 -16 -3
+	}
+	WO Canyon_C1 {
+		pos 16 -8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A9 {
+		pos 16 0 0
+	}
+	WO Canyon_A9 {
+		pos 16 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos 16 16 0
+	}
+	WO Canyon_A2 {
+		pos 16 24 0
+	}
+	WO Canyon_B0 {
+		pos 16 40 0
+		. mtmm 1
+	}
+	WO Canyon_B0 {
+		pos 16 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A0 {
+		pos 16 48 0
+		. mtmm 4
+	}
+	WO Canyon_G0 {
+		pos 16 56 0
+	}
+	WO Canyon_J0 {
+		pos 80 64 0
+	}
+	WO Canyon_A0 {
+		pos 24 -64 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos 24 -56 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos 24 -48 0
+		. mtmm 4
+	}
+	WO Canyon_C4 {
+		pos 24 -40 -3
+		. mtmm 1
+	}
+	WO Canyon_A2 {
+		pos 24 -32 -3
+		. mtmm 4
+	}
+	WO Canyon_A8 {
+		pos 24 -24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A5 {
+		pos 24 -16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_C5 {
+		pos 24 -8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A5 {
+		pos 24 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A5 {
+		pos 24 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A2 {
+		pos 24 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A3 {
+		pos 24 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A2 {
+		pos 24 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A2 {
+		pos 24 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A4 {
+		pos 24 48 0
+	}
+	WO Canyon_G0 {
+		pos 24 56 0
+	}
+	WO Canyon_J0 {
+		pos 80 80 0
+	}
+	WO Canyon_A0 {
+		pos 32 -64 0
+	}
+	WO Canyon_A0 {
+		pos 32 -56 0
+	}
+	WO Canyon_A0 {
+		pos 32 -48 0
+		. mtmm 2
+	}
+	WO Canyon_C1 {
+		pos 16 -40 -3
+		. mtmm 2
+	}
+	WO Canyon_A4 {
+		pos 32 -32 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Canyon_A2 {
+		pos 32 -24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A4 {
+		pos 32 -16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_C0 {
+		pos 32 -8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A7 {
+		pos 32 0 0
+	}
+	WO Canyon_B0 {
+		pos 40 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_B0 {
+		pos 40 16 0
+	}
+	WO Canyon_A2 {
+		pos 32 24 0
+	}
+	WO Canyon_A0 {
+		pos 32 32 0
+	}
+	WO Canyon_A0 {
+		pos 32 40 0
+	}
+	WO Canyon_A2 {
+		pos 32 48 0
+	}
+	WO Canyon_G0 {
+		pos 32 56 0
+	}
+	WO Canyon_A0 {
+		pos 40 -64 0
+	}
+	WO Canyon_A0 {
+		pos 40 -56 0
+	}
+	WO Canyon_A0 {
+		pos 40 -48 0
+		. mtmm 1
+	}
+	WO Canyon_D0 {
+		pos 40 -40 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Canyon_C0 {
+		pos 40 -32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Canyon_C1 {
+		pos 40 -24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Canyon_C0 {
+		pos 40 -16 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_D0 {
+		pos 40 -8 -3
+		. mtmm 10
+	}
+	WO Canyon_A0 {
+		pos 40 0 0
+		. mtmm 8
+	}
+	WO Canyon_B0 {
+		pos 32 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_B0 {
+		pos 32 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A2 {
+		pos 40 24 0
+	}
+	WO Canyon_A0 {
+		pos 40 32 0
+	}
+	WO Canyon_A0 {
+		pos 40 40 0
+	}
+	WO Canyon_A2 {
+		pos 40 48 0
+	}
+	WO Canyon_G0 {
+		pos 40 56 0
+	}
+	WO Canyon_J0 {
+		pos 56 80 0
+	}
+	WO Canyon_A0 {
+		pos 48 -64 0
+	}
+	WO Canyon_A0 {
+		pos 48 -56 0
+	}
+	WO Canyon_A0 {
+		pos 48 -48 0
+	}
+	WO Canyon_A0 {
+		pos 48 -40 0
+	}
+	WO Canyon_A0 {
+		pos 48 -32 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos 48 -24 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos 48 -16 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 48 -8 0
+		. mtmm 13
+	}
+	WO Canyon_A0 {
+		pos 48 0 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos 48 8 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos 48 16 0
+		. mtmm 8
+	}
+	WO Canyon_A4 {
+		pos 48 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A2 {
+		pos 48 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A2 {
+		pos 48 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A4 {
+		pos 48 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 48 56 0
+	}
+	WO Canyon_J0 {
+		pos 48 80 0
+	}
+	WO Canyon_A0 {
+		pos 56 -64 0
+	}
+	WO Canyon_A0 {
+		pos 56 -56 0
+	}
+	WO Canyon_A0 {
+		pos 56 -48 0
+	}
+	WO Canyon_G0 {
+		pos 56 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 56 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 56 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 56 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Canyon_G0 {
+		pos 56 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Canyon_G0 {
+		pos 56 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 56 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Canyon_G0 {
+		pos 56 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Canyon_G0 {
+		pos 56 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 56 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 56 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 56 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F0 {
+		pos 56 56 0
+	}
+	WO Canyon_J0 {
+		pos 40 80 0
+	}
+	WO Canyon_A0 {
+		pos 64 -64 0
+	}
+	WO Canyon_A0 {
+		pos 64 -56 0
+	}
+	WO Canyon_A0 {
+		pos 64 -48 0
+	}
+	WO Canyon_J0 {
+		pos 80 56 0
+	}
+	WO Canyon_J0 {
+		pos 80 48 0
+	}
+	WO Canyon_J0 {
+		pos 80 40 0
+	}
+	WO Canyon_J0 {
+		pos 80 32 0
+	}
+	WO Canyon_J0 {
+		pos 80 24 0
+	}
+	WO Canyon_J0 {
+		pos 80 16 0
+	}
+	WO Canyon_J0 {
+		pos 80 8 0
+	}
+	WO Canyon_J0 {
+		pos 80 0 0
+	}
+	WO Canyon_J0 {
+		pos 80 -8 0
+	}
+	WO Canyon_J0 {
+		pos 80 -32 0
+	}
+	WO Canyon_J0 {
+		pos 80 -16 0
+	}
+	WO Canyon_J0 {
+		pos 80 -40 0
+	}
+	WO Canyon_J0 {
+		pos 80 -24 0
+	}
+	WO Canyon_J0 {
+		pos 24 80 0
+	}
+	WO ElevatorPlatform {
+		pos 7.820922 0.005071 0.09
+		rot_x 0 1 0
+		rot_y -1 0 0
+		label right
+	}
+	WO ElevatorPlatform {
+		pos 0.039756 7.999875 0.09
+		rot_x -1.000001 0 0
+		rot_y 0 -1.000001 0
+		label top
+	}
+	WO ElevatorPlatform {
+		pos -8 0 0.06
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		label left
+	}
+	WO ElevatorPlatform {
+		pos 0.084853 -7.957574 0.06
+		label bottom
+	}
+	WO Canyon_A0 {
+		pos -112 -112 0
+	}
+	WO Canyon_A0 {
+		pos -112 -104 0
+	}
+	WO Canyon_A0 {
+		pos -112 -96 0
+	}
+	WO Canyon_A0 {
+		pos -112 -88 0
+	}
+	WO Canyon_A0 {
+		pos -112 -80 0
+	}
+	WO Canyon_A0 {
+		pos -112 -72 0
+	}
+	WO Canyon_A0 {
+		pos -112 -64 0
+	}
+	WO Canyon_A0 {
+		pos -112 -56 0
+	}
+	WO Canyon_A0 {
+		pos -112 -48 0
+	}
+	WO Canyon_A0 {
+		pos -112 -40 0
+	}
+	WO Canyon_A0 {
+		pos -112 -32 0
+	}
+	WO Canyon_A0 {
+		pos -112 -24 0
+	}
+	WO Canyon_A0 {
+		pos -112 -16 0
+	}
+	WO Canyon_A0 {
+		pos -112 -8 0
+	}
+	WO Canyon_A0 {
+		pos -112 0 0
+	}
+	WO Canyon_A0 {
+		pos -112 8 0
+	}
+	WO Canyon_A0 {
+		pos -112 16 0
+	}
+	WO Canyon_A0 {
+		pos -112 24 0
+	}
+	WO Canyon_A0 {
+		pos -112 32 0
+	}
+	WO Canyon_A0 {
+		pos -112 40 0
+	}
+	WO Canyon_A0 {
+		pos -112 48 0
+	}
+	WO Canyon_A0 {
+		pos -112 56 0
+	}
+	WO Canyon_A0 {
+		pos -112 64 0
+	}
+	WO Canyon_A0 {
+		pos -112 72 0
+	}
+	WO Canyon_A0 {
+		pos -112 80 0
+	}
+	WO Canyon_A0 {
+		pos -112 88 0
+	}
+	WO Canyon_A0 {
+		pos -112 96 0
+	}
+	WO Canyon_A0 {
+		pos -112 104 0
+	}
+	WO Canyon_A0 {
+		pos -112 112 0
+	}
+	WO Canyon_A0 {
+		pos -104 -112 0
+	}
+	WO Canyon_A0 {
+		pos -104 -104 0
+	}
+	WO Canyon_A0 {
+		pos -104 -96 0
+	}
+	WO Canyon_A0 {
+		pos -104 -88 0
+	}
+	WO Canyon_A0 {
+		pos -104 -80 0
+	}
+	WO Canyon_A0 {
+		pos -104 -72 0
+	}
+	WO Canyon_A0 {
+		pos -104 -64 0
+	}
+	WO Canyon_A0 {
+		pos -104 -56 0
+	}
+	WO Canyon_A0 {
+		pos -104 -48 0
+	}
+	WO Canyon_A0 {
+		pos -104 -40 0
+	}
+	WO Canyon_A0 {
+		pos -104 -32 0
+	}
+	WO Canyon_A0 {
+		pos -104 -24 0
+	}
+	WO Canyon_A0 {
+		pos -104 -16 0
+	}
+	WO Canyon_A0 {
+		pos -104 -8 0
+	}
+	WO Canyon_A0 {
+		pos -104 0 0
+	}
+	WO Canyon_A0 {
+		pos -104 8 0
+	}
+	WO Canyon_A0 {
+		pos -104 16 0
+	}
+	WO Canyon_A0 {
+		pos -104 24 0
+	}
+	WO Canyon_A0 {
+		pos -104 32 0
+	}
+	WO Canyon_A0 {
+		pos -104 40 0
+	}
+	WO Canyon_A0 {
+		pos -104 48 0
+	}
+	WO Canyon_A0 {
+		pos -104 56 0
+	}
+	WO Canyon_A0 {
+		pos -104 64 0
+	}
+	WO Canyon_A0 {
+		pos -104 72 0
+	}
+	WO Canyon_A0 {
+		pos -104 80 0
+	}
+	WO Canyon_A0 {
+		pos -104 88 0
+	}
+	WO Canyon_A0 {
+		pos -104 96 0
+	}
+	WO Canyon_A0 {
+		pos -104 104 0
+	}
+	WO Canyon_A0 {
+		pos -104 112 0
+	}
+	WO Canyon_A0 {
+		pos -96 -112 0
+	}
+	WO Canyon_A0 {
+		pos -96 -104 0
+	}
+	WO Canyon_A0 {
+		pos -96 -96 0
+	}
+	WO Canyon_A0 {
+		pos -96 -88 0
+	}
+	WO Canyon_A0 {
+		pos -96 -80 0
+	}
+	WO Canyon_A0 {
+		pos -96 -72 0
+	}
+	WO Canyon_A0 {
+		pos -96 -64 0
+	}
+	WO Canyon_A0 {
+		pos -96 -56 0
+	}
+	WO Canyon_A0 {
+		pos -96 -48 0
+	}
+	WO Canyon_A0 {
+		pos -96 -40 0
+	}
+	WO Canyon_A0 {
+		pos -96 -32 0
+	}
+	WO Canyon_A0 {
+		pos -96 -24 0
+	}
+	WO Canyon_A0 {
+		pos -96 -16 0
+	}
+	WO Canyon_A0 {
+		pos -96 -8 0
+	}
+	WO Canyon_A0 {
+		pos -96 0 0
+	}
+	WO Canyon_A0 {
+		pos -96 8 0
+	}
+	WO Canyon_A0 {
+		pos -96 16 0
+	}
+	WO Canyon_A0 {
+		pos -96 24 0
+	}
+	WO Canyon_A0 {
+		pos -96 32 0
+	}
+	WO Canyon_A0 {
+		pos -96 40 0
+	}
+	WO Canyon_A0 {
+		pos -96 48 0
+	}
+	WO Canyon_A0 {
+		pos -96 56 0
+	}
+	WO Canyon_A0 {
+		pos -96 64 0
+	}
+	WO Canyon_A0 {
+		pos -96 72 0
+	}
+	WO Canyon_A0 {
+		pos -96 80 0
+	}
+	WO Canyon_A0 {
+		pos -96 88 0
+	}
+	WO Canyon_A0 {
+		pos -96 96 0
+	}
+	WO Canyon_A0 {
+		pos -96 104 0
+	}
+	WO Canyon_A0 {
+		pos -96 112 0
+	}
+	WO Canyon_A0 {
+		pos -88 -112 0
+	}
+	WO Canyon_A0 {
+		pos -88 -104 0
+	}
+	WO Canyon_A0 {
+		pos -88 -96 0
+	}
+	WO Canyon_A0 {
+		pos -88 -88 0
+	}
+	WO Canyon_A0 {
+		pos -88 -80 0
+	}
+	WO Canyon_A0 {
+		pos -88 -72 0
+	}
+	WO Canyon_A0 {
+		pos -88 -64 0
+	}
+	WO Canyon_A0 {
+		pos -88 -56 0
+	}
+	WO Canyon_A0 {
+		pos -88 -48 0
+	}
+	WO Canyon_A0 {
+		pos -88 -40 0
+	}
+	WO Canyon_A0 {
+		pos -88 -32 0
+	}
+	WO Canyon_A0 {
+		pos -88 -24 0
+	}
+	WO Canyon_A0 {
+		pos -88 -16 0
+	}
+	WO Canyon_A0 {
+		pos -88 -8 0
+	}
+	WO Canyon_A0 {
+		pos -88 0 0
+	}
+	WO Canyon_A0 {
+		pos -88 8 0
+	}
+	WO Canyon_A0 {
+		pos -88 16 0
+	}
+	WO Canyon_A0 {
+		pos -88 24 0
+	}
+	WO Canyon_A0 {
+		pos -88 32 0
+	}
+	WO Canyon_A0 {
+		pos -88 40 0
+	}
+	WO Canyon_A0 {
+		pos -88 48 0
+	}
+	WO Canyon_A0 {
+		pos -88 56 0
+	}
+	WO Canyon_A0 {
+		pos -88 64 0
+	}
+	WO Canyon_A0 {
+		pos -88 72 0
+	}
+	WO Canyon_A0 {
+		pos -88 80 0
+	}
+	WO Canyon_A0 {
+		pos -88 88 0
+	}
+	WO Canyon_A0 {
+		pos -88 96 0
+	}
+	WO Canyon_A0 {
+		pos -88 104 0
+	}
+	WO Canyon_A0 {
+		pos -88 112 0
+	}
+	WO Canyon_A0 {
+		pos -80 -112 0
+	}
+	WO Canyon_A0 {
+		pos -80 -104 0
+	}
+	WO Canyon_A0 {
+		pos -80 -96 0
+	}
+	WO Canyon_A0 {
+		pos -80 -88 0
+	}
+	WO Canyon_A0 {
+		pos -80 -80 0
+	}
+	WO Canyon_A0 {
+		pos -80 -72 0
+	}
+	WO Canyon_A0 {
+		pos -80 -64 0
+	}
+	WO Canyon_A0 {
+		pos -80 -56 0
+	}
+	WO Canyon_A0 {
+		pos -80 -48 0
+	}
+	WO Canyon_A0 {
+		pos -80 -40 0
+	}
+	WO Canyon_A0 {
+		pos -80 -32 0
+	}
+	WO Canyon_A0 {
+		pos -80 -24 0
+	}
+	WO Canyon_A0 {
+		pos -80 -16 0
+	}
+	WO Canyon_A0 {
+		pos -80 -8 0
+	}
+	WO Canyon_A0 {
+		pos -80 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 8 0
+	}
+	WO Canyon_A0 {
+		pos -80 16 0
+	}
+	WO Canyon_A0 {
+		pos -80 24 0
+	}
+	WO Canyon_A0 {
+		pos -80 32 0
+	}
+	WO Canyon_A0 {
+		pos -80 40 0
+	}
+	WO Canyon_A0 {
+		pos -80 48 0
+	}
+	WO Canyon_A0 {
+		pos -80 56 0
+	}
+	WO Canyon_A0 {
+		pos -80 64 0
+	}
+	WO Canyon_A0 {
+		pos -80 72 0
+	}
+	WO Canyon_A0 {
+		pos -80 80 0
+	}
+	WO Canyon_A0 {
+		pos -80 88 0
+	}
+	WO Canyon_A0 {
+		pos -80 96 0
+	}
+	WO Canyon_A0 {
+		pos -80 104 0
+	}
+	WO Canyon_A0 {
+		pos -80 112 0
+	}
+	WO Canyon_A0 {
+		pos -72 -112 0
+	}
+	WO Canyon_A0 {
+		pos -72 -104 0
+	}
+	WO Canyon_A0 {
+		pos -72 -96 0
+	}
+	WO Canyon_A0 {
+		pos -72 -88 0
+	}
+	WO Canyon_A0 {
+		pos -72 -80 0
+	}
+	WO Canyon_A0 {
+		pos -72 -72 0
+	}
+	WO Canyon_A0 {
+		pos -72 -64 0
+	}
+	WO Canyon_A0 {
+		pos -72 -56 0
+	}
+	WO Canyon_A0 {
+		pos -72 -48 0
+	}
+	WO Canyon_A0 {
+		pos -72 -40 0
+	}
+	WO Canyon_A0 {
+		pos -72 -32 0
+	}
+	WO Canyon_A0 {
+		pos -72 -24 0
+	}
+	WO Canyon_A0 {
+		pos -72 -16 0
+	}
+	WO Canyon_A0 {
+		pos -72 -8 0
+	}
+	WO Canyon_A0 {
+		pos -72 0 0
+	}
+	WO Canyon_A0 {
+		pos -72 8 0
+	}
+	WO Canyon_A0 {
+		pos -72 16 0
+	}
+	WO Canyon_A0 {
+		pos -72 24 0
+	}
+	WO Canyon_A0 {
+		pos -72 32 0
+	}
+	WO Canyon_A0 {
+		pos -72 40 0
+	}
+	WO Canyon_A0 {
+		pos -72 48 0
+	}
+	WO Canyon_A0 {
+		pos -72 56 0
+	}
+	WO Canyon_A0 {
+		pos -72 64 0
+	}
+	WO Canyon_A0 {
+		pos -72 72 0
+	}
+	WO Canyon_A0 {
+		pos -72 80 0
+	}
+	WO Canyon_A0 {
+		pos -72 88 0
+	}
+	WO Canyon_A0 {
+		pos -72 96 0
+	}
+	WO Canyon_A0 {
+		pos -72 104 0
+	}
+	WO Canyon_A0 {
+		pos -72 112 0
+	}
+	WO Canyon_A0 {
+		pos -64 -112 0
+	}
+	WO Canyon_A0 {
+		pos -64 -104 0
+	}
+	WO Canyon_A0 {
+		pos -64 -96 0
+	}
+	WO Canyon_A0 {
+		pos -64 -88 0
+	}
+	WO Canyon_A0 {
+		pos -64 -80 0
+	}
+	WO Canyon_A0 {
+		pos -64 -72 0
+	}
+	WO Canyon_A0 {
+		pos -64 72 0
+	}
+	WO Canyon_A0 {
+		pos -64 80 0
+	}
+	WO Canyon_A0 {
+		pos -64 88 0
+	}
+	WO Canyon_A0 {
+		pos -64 96 0
+	}
+	WO Canyon_A0 {
+		pos -64 104 0
+	}
+	WO Canyon_A0 {
+		pos -64 112 0
+	}
+	WO Canyon_A0 {
+		pos -56 -112 0
+	}
+	WO Canyon_A0 {
+		pos -56 -104 0
+	}
+	WO Canyon_A0 {
+		pos -56 -96 0
+	}
+	WO Canyon_A0 {
+		pos -56 -88 0
+	}
+	WO Canyon_A0 {
+		pos -56 -80 0
+	}
+	WO Canyon_B0 {
+		pos -56 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos -56 72 0
+	}
+	WO Canyon_A0 {
+		pos -56 80 0
+	}
+	WO Canyon_A0 {
+		pos -56 88 0
+	}
+	WO Canyon_A0 {
+		pos -56 96 0
+	}
+	WO Canyon_A0 {
+		pos -56 104 0
+	}
+	WO Canyon_A0 {
+		pos -56 112 0
+	}
+	WO Canyon_A0 {
+		pos -48 -112 0
+	}
+	WO Canyon_A0 {
+		pos -48 -104 0
+	}
+	WO Canyon_A0 {
+		pos -48 -96 0
+	}
+	WO Canyon_A0 {
+		pos -48 -88 0
+	}
+	WO Canyon_A0 {
+		pos -48 -80 0
+	}
+	WO Canyon_C0 {
+		pos -24 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos -48 72 0
+	}
+	WO Canyon_A0 {
+		pos -48 80 0
+	}
+	WO Canyon_A0 {
+		pos -48 88 0
+	}
+	WO Canyon_A0 {
+		pos -48 96 0
+	}
+	WO Canyon_A0 {
+		pos -48 104 0
+	}
+	WO Canyon_A0 {
+		pos -48 112 0
+	}
+	WO Canyon_A0 {
+		pos -40 -112 0
+	}
+	WO Canyon_A0 {
+		pos -40 -104 0
+	}
+	WO Canyon_A0 {
+		pos -40 -96 0
+	}
+	WO Canyon_A0 {
+		pos -40 -88 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -40 -80 0
+		. mtmm 8
+	}
+	WO Canyon_C0 {
+		pos -32 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Canyon_A0 {
+		pos -40 72 0
+	}
+	WO Canyon_A0 {
+		pos -40 80 0
+	}
+	WO Canyon_A0 {
+		pos -40 88 0
+	}
+	WO Canyon_A0 {
+		pos -40 96 0
+	}
+	WO Canyon_A0 {
+		pos -40 104 0
+	}
+	WO Canyon_A0 {
+		pos -40 112 0
+	}
+	WO Canyon_A0 {
+		pos -32 -112 0
+	}
+	WO Canyon_A0 {
+		pos -32 -104 0
+	}
+	WO Canyon_A0 {
+		pos -32 -96 0
+	}
+	WO Canyon_A0 {
+		pos -32 -88 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -32 -80 0
+		. mtmm 14
+	}
+	WO Canyon_C0 {
+		pos -40 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Canyon_J0 {
+		pos -8 72 0
+	}
+	WO Canyon_J0 {
+		pos 0 64 0
+	}
+	WO Canyon_J0 {
+		pos 80 96 0
+	}
+	WO Canyon_J0 {
+		pos 64 96 0
+	}
+	WO Canyon_J0 {
+		pos 80 104 0
+	}
+	WO Canyon_A0 {
+		pos -32 112 0
+	}
+	WO Canyon_A0 {
+		pos -24 -112 0
+	}
+	WO Canyon_A0 {
+		pos -24 -104 0
+	}
+	WO Canyon_A0 {
+		pos -24 -96 0
+	}
+	WO Canyon_A0 {
+		pos -24 -88 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -24 -80 0
+		. mtmm 13
+	}
+	WO Canyon_C0 {
+		pos -48 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 0 72 0
+	}
+	WO Canyon_J0 {
+		pos -8 64 0
+	}
+	WO Canyon_J0 {
+		pos 80 88 0
+	}
+	WO Canyon_J0 {
+		pos 56 96 0
+	}
+	WO Canyon_J0 {
+		pos 72 104 0
+	}
+	WO Canyon_A0 {
+		pos -24 112 0
+	}
+	WO Canyon_A0 {
+		pos -16 -112 0
+	}
+	WO Canyon_A0 {
+		pos -16 -104 0
+	}
+	WO Canyon_A0 {
+		pos -16 -96 0
+	}
+	WO Canyon_A0 {
+		pos -16 -88 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -16 -80 0
+		. mtmm 12
+	}
+	WO Canyon_B0 {
+		pos -16 -72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos 8 80 0
+	}
+	WO Canyon_J0 {
+		pos -24 64 0
+	}
+	WO Canyon_J0 {
+		pos 64 88 0
+	}
+	WO Canyon_J0 {
+		pos 56 88 0
+	}
+	WO Canyon_J0 {
+		pos 64 104 0
+	}
+	WO Canyon_A0 {
+		pos -16 112 0
+	}
+	WO Canyon_A0 {
+		pos -8 -112 0
+	}
+	WO Canyon_A0 {
+		pos -8 -104 0
+	}
+	WO Canyon_A0 {
+		pos -8 -96 0
+	}
+	WO Canyon_A0 {
+		pos -8 -88 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos -8 -80 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos -8 -72 0
+	}
+	WO Canyon_J0 {
+		pos -32 72 0
+	}
+	WO Canyon_J0 {
+		pos -32 64 0
+	}
+	WO Canyon_J0 {
+		pos 72 96 0
+	}
+	WO Canyon_J0 {
+		pos 48 88 0
+	}
+	WO Canyon_J0 {
+		pos 48 104 0
+	}
+	WO Canyon_A0 {
+		pos -8 112 0
+	}
+	WO Canyon_A0 {
+		pos 0 -112 0
+	}
+	WO Canyon_A0 {
+		pos 0 -104 0
+	}
+	WO Canyon_A0 {
+		pos 0 -96 0
+	}
+	WO Canyon_A0 {
+		pos 0 -88 0
+	}
+	WO Canyon_A0 {
+		pos 0 -80 0
+	}
+	WO Canyon_A0 {
+		pos 0 -72 0
+		. mtmm 2
+	}
+	WO Canyon_J0 {
+		pos -24 72 0
+	}
+	WO Canyon_J0 {
+		pos 8 64 0
+	}
+	WO Canyon_J0 {
+		pos 72 88 0
+	}
+	WO Canyon_J0 {
+		pos 48 96 0
+	}
+	WO Canyon_J0 {
+		pos 56 104 0
+	}
+	WO Canyon_A0 {
+		pos 0 112 0
+	}
+	WO Canyon_A0 {
+		pos 8 -112 0
+	}
+	WO Canyon_A0 {
+		pos 8 -104 0
+	}
+	WO Canyon_A0 {
+		pos 8 -96 0
+	}
+	WO Canyon_A0 {
+		pos 8 -88 0
+	}
+	WO Canyon_A0 {
+		pos 8 -80 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos 8 -72 0
+		. mtmm 11
+	}
+	WO Canyon_J0 {
+		pos -16 64 0
+	}
+	WO Canyon_J0 {
+		pos -16 72 0
+	}
+	WO Canyon_J0 {
+		pos 40 96 0
+	}
+	WO Canyon_J0 {
+		pos 40 88 0
+	}
+	WO Canyon_J0 {
+		pos 8 104 0
+	}
+	WO Canyon_A0 {
+		pos 8 112 0
+	}
+	WO Canyon_A0 {
+		pos 16 -112 0
+	}
+	WO Canyon_A0 {
+		pos 16 -104 0
+	}
+	WO Canyon_A0 {
+		pos 16 -96 0
+	}
+	WO Canyon_A0 {
+		pos 16 -88 0
+	}
+	WO Canyon_A0 {
+		pos 16 -80 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos 16 -72 0
+		. mtmm 5
+	}
+	WO Canyon_J0 {
+		pos 72 80 0
+	}
+	WO Canyon_J0 {
+		pos 72 64 0
+	}
+	WO Canyon_J0 {
+		pos 32 96 0
+	}
+	WO Canyon_J0 {
+		pos 32 88 0
+	}
+	WO Canyon_J0 {
+		pos 40 104 0
+	}
+	WO Canyon_A0 {
+		pos 16 112 0
+	}
+	WO Canyon_A0 {
+		pos 24 -112 0
+	}
+	WO Canyon_A0 {
+		pos 24 -104 0
+	}
+	WO Canyon_A0 {
+		pos 24 -96 0
+	}
+	WO Canyon_A0 {
+		pos 24 -88 0
+	}
+	WO Canyon_A0 {
+		pos 24 -80 0
+	}
+	WO Canyon_A0 {
+		pos 24 -72 0
+	}
+	WO Canyon_J0 {
+		pos 72 72 0
+	}
+	WO Canyon_J0 {
+		pos 64 64 0
+	}
+	WO Canyon_J0 {
+		pos 24 96 0
+	}
+	WO Canyon_J0 {
+		pos 24 88 0
+	}
+	WO Canyon_J0 {
+		pos 32 104 0
+	}
+	WO Canyon_A0 {
+		pos 24 112 0
+	}
+	WO Canyon_A0 {
+		pos 32 -112 0
+	}
+	WO Canyon_A0 {
+		pos 32 -104 0
+	}
+	WO Canyon_A0 {
+		pos 32 -96 0
+	}
+	WO Canyon_A0 {
+		pos 32 -88 0
+	}
+	WO Canyon_A0 {
+		pos 32 -80 0
+	}
+	WO Canyon_A0 {
+		pos 32 -72 0
+	}
+	WO Canyon_J0 {
+		pos 64 80 0
+	}
+	WO Canyon_J0 {
+		pos 64 72 0
+	}
+	WO Canyon_J0 {
+		pos 16 96 0
+	}
+	WO Canyon_J0 {
+		pos 16 88 0
+	}
+	WO Canyon_J0 {
+		pos 24 104 0
+	}
+	WO Canyon_A0 {
+		pos 32 112 0
+	}
+	WO Canyon_A0 {
+		pos 40 -112 0
+	}
+	WO Canyon_A0 {
+		pos 40 -104 0
+	}
+	WO Canyon_A0 {
+		pos 40 -96 0
+	}
+	WO Canyon_A0 {
+		pos 40 -88 0
+	}
+	WO Canyon_A0 {
+		pos 40 -80 0
+	}
+	WO Canyon_A0 {
+		pos 40 -72 0
+	}
+	WO Canyon_J0 {
+		pos 56 72 0
+	}
+	WO Canyon_J0 {
+		pos 56 64 0
+	}
+	WO Canyon_J0 {
+		pos 8 96 0
+	}
+	WO Canyon_J0 {
+		pos 8 88 0
+	}
+	WO Canyon_J0 {
+		pos 16 104 0
+	}
+	WO Canyon_A0 {
+		pos 40 112 0
+	}
+	WO Canyon_A0 {
+		pos 48 -112 0
+	}
+	WO Canyon_A0 {
+		pos 48 -104 0
+	}
+	WO Canyon_A0 {
+		pos 48 -96 0
+	}
+	WO Canyon_A0 {
+		pos 48 -88 0
+	}
+	WO Canyon_A0 {
+		pos 48 -80 0
+	}
+	WO Canyon_A0 {
+		pos 48 -72 0
+	}
+	WO Canyon_J0 {
+		pos 48 72 0
+	}
+	WO Canyon_J0 {
+		pos 48 64 0
+	}
+	WO Canyon_J0 {
+		pos -8 96 0
+	}
+	WO Canyon_J0 {
+		pos 0 96 0
+	}
+	WO Canyon_J0 {
+		pos -8 104 0
+	}
+	WO Canyon_A0 {
+		pos 48 112 0
+	}
+	WO Canyon_A0 {
+		pos 56 -112 0
+	}
+	WO Canyon_A0 {
+		pos 56 -104 0
+	}
+	WO Canyon_A0 {
+		pos 56 -96 0
+	}
+	WO Canyon_A0 {
+		pos 56 -88 0
+	}
+	WO Canyon_A0 {
+		pos 56 -80 0
+	}
+	WO Canyon_A0 {
+		pos 56 -72 0
+	}
+	WO Canyon_J0 {
+		pos 40 72 0
+	}
+	WO Canyon_J0 {
+		pos 40 64 0
+	}
+	WO Canyon_J0 {
+		pos -16 96 0
+	}
+	WO Canyon_J0 {
+		pos -24 96 0
+	}
+	WO Canyon_J0 {
+		pos 0 104 0
+	}
+	WO Canyon_A0 {
+		pos 56 112 0
+	}
+	WO Canyon_A0 {
+		pos 64 -112 0
+	}
+	WO Canyon_A0 {
+		pos 64 -104 0
+	}
+	WO Canyon_A0 {
+		pos 64 -96 0
+	}
+	WO Canyon_A0 {
+		pos 64 -88 0
+	}
+	WO Canyon_A0 {
+		pos 64 -80 0
+	}
+	WO Canyon_A0 {
+		pos 64 -72 0
+	}
+	WO Canyon_J0 {
+		pos 32 80 0
+	}
+	WO Canyon_J0 {
+		pos 32 72 0
+	}
+	WO Canyon_J0 {
+		pos -16 88 0
+	}
+	WO Canyon_J0 {
+		pos -32 96 0
+	}
+	WO Canyon_J0 {
+		pos -16 104 0
+	}
+	WO Canyon_A0 {
+		pos 64 112 0
+	}
+	WO Canyon_A0 {
+		pos 72 -112 0
+	}
+	WO Canyon_A0 {
+		pos 72 -104 0
+	}
+	WO Canyon_A0 {
+		pos 72 -96 0
+	}
+	WO Canyon_A0 {
+		pos 72 -88 0
+	}
+	WO Canyon_A0 {
+		pos 72 -80 0
+	}
+	WO Canyon_A0 {
+		pos 72 -72 0
+	}
+	WO Canyon_A0 {
+		pos 72 -64 0
+	}
+	WO Canyon_A0 {
+		pos 72 -56 0
+	}
+	WO Canyon_A0 {
+		pos 72 -48 0
+	}
+	WO Canyon_J0 {
+		pos 72 56 0
+	}
+	WO Canyon_J0 {
+		pos 72 48 0
+	}
+	WO Canyon_J0 {
+		pos 72 40 0
+	}
+	WO Canyon_J0 {
+		pos 72 32 0
+	}
+	WO Canyon_J0 {
+		pos 72 24 0
+	}
+	WO Canyon_J0 {
+		pos 72 16 0
+	}
+	WO Canyon_J0 {
+		pos 72 8 0
+	}
+	WO Canyon_J0 {
+		pos 72 0 0
+	}
+	WO Canyon_J0 {
+		pos 72 -8 0
+	}
+	WO Canyon_J0 {
+		pos 72 -16 0
+	}
+	WO Canyon_J0 {
+		pos 72 -24 0
+	}
+	WO Canyon_J0 {
+		pos 72 -32 0
+	}
+	WO Canyon_J0 {
+		pos 72 -40 0
+	}
+	WO Canyon_J0 {
+		pos 16 80 0
+	}
+	WO Canyon_J0 {
+		pos 24 72 0
+	}
+	WO Canyon_J0 {
+		pos 16 72 0
+	}
+	WO Canyon_J0 {
+		pos 0 88 0
+	}
+	WO Canyon_J0 {
+		pos -8 88 0
+	}
+	WO Canyon_J0 {
+		pos -24 104 0
+	}
+	WO Canyon_A0 {
+		pos 72 112 0
+	}
+	WO Canyon_A0 {
+		pos 80 -112 0
+	}
+	WO Canyon_A0 {
+		pos 80 -104 0
+	}
+	WO Canyon_A0 {
+		pos 80 -96 0
+	}
+	WO Canyon_A0 {
+		pos 80 -88 0
+	}
+	WO Canyon_A0 {
+		pos 80 -80 0
+	}
+	WO Canyon_A0 {
+		pos 80 -72 0
+	}
+	WO Canyon_A0 {
+		pos 80 -64 0
+	}
+	WO Canyon_A0 {
+		pos 80 -56 0
+	}
+	WO Canyon_A0 {
+		pos 80 -48 0
+	}
+	WO Canyon_J0 {
+		pos 64 48 0
+	}
+	WO Canyon_J0 {
+		pos 64 32 0
+	}
+	WO Canyon_J0 {
+		pos 64 56 0
+	}
+	WO Canyon_J0 {
+		pos 64 40 0
+	}
+	WO Canyon_J0 {
+		pos 64 24 0
+	}
+	WO Canyon_J0 {
+		pos 64 16 0
+	}
+	WO Canyon_J0 {
+		pos 64 8 0
+	}
+	WO Canyon_J0 {
+		pos 64 0 0
+	}
+	WO Canyon_J0 {
+		pos 64 -8 0
+	}
+	WO Canyon_J0 {
+		pos 64 -16 0
+	}
+	WO Canyon_J0 {
+		pos 64 -24 0
+	}
+	WO Canyon_J0 {
+		pos 64 -32 0
+	}
+	WO Canyon_J0 {
+		pos 64 -40 0
+	}
+	WO Canyon_J0 {
+		pos 16 64 0
+	}
+	WO Canyon_J0 {
+		pos 32 64 0
+	}
+	WO Canyon_J0 {
+		pos 24 64 0
+	}
+	WO Canyon_J0 {
+		pos -24 88 0
+	}
+	WO Canyon_J0 {
+		pos -32 88 0
+	}
+	WO Canyon_J0 {
+		pos -32 104 0
+	}
+	WO Canyon_A0 {
+		pos 80 112 0
+	}
+	WO Canyon_A0 {
+		pos 88 -112 0
+	}
+	WO Canyon_A0 {
+		pos 88 -104 0
+	}
+	WO Canyon_A0 {
+		pos 88 -96 0
+	}
+	WO Canyon_A0 {
+		pos 88 -88 0
+	}
+	WO Canyon_A0 {
+		pos 88 -80 0
+	}
+	WO Canyon_A0 {
+		pos 88 -72 0
+	}
+	WO Canyon_A0 {
+		pos 88 -64 0
+	}
+	WO Canyon_A0 {
+		pos 88 -56 0
+	}
+	WO Canyon_A0 {
+		pos 88 -48 0
+	}
+	WO Canyon_A0 {
+		pos 88 -40 0
+	}
+	WO Canyon_A0 {
+		pos 88 -32 0
+	}
+	WO Canyon_A0 {
+		pos 88 -24 0
+	}
+	WO Canyon_A0 {
+		pos 88 -16 0
+	}
+	WO Canyon_A0 {
+		pos 88 -8 0
+	}
+	WO Canyon_A0 {
+		pos 88 0 0
+	}
+	WO Canyon_A0 {
+		pos 88 8 0
+	}
+	WO Canyon_A0 {
+		pos 88 16 0
+	}
+	WO Canyon_A0 {
+		pos 88 24 0
+	}
+	WO Canyon_A0 {
+		pos 88 32 0
+	}
+	WO Canyon_A0 {
+		pos 88 40 0
+	}
+	WO Canyon_A0 {
+		pos 88 48 0
+	}
+	WO Canyon_A0 {
+		pos 88 56 0
+	}
+	WO Canyon_A0 {
+		pos 88 64 0
+	}
+	WO Canyon_A0 {
+		pos 88 72 0
+	}
+	WO Canyon_A0 {
+		pos 88 80 0
+	}
+	WO Canyon_A0 {
+		pos 88 88 0
+	}
+	WO Canyon_A0 {
+		pos 88 96 0
+	}
+	WO Canyon_A0 {
+		pos 88 104 0
+	}
+	WO Canyon_A0 {
+		pos 88 112 0
+	}
+	WO Canyon_A0 {
+		pos 96 -112 0
+	}
+	WO Canyon_A0 {
+		pos 96 -104 0
+	}
+	WO Canyon_A0 {
+		pos 96 -96 0
+	}
+	WO Canyon_A0 {
+		pos 96 -88 0
+	}
+	WO Canyon_A0 {
+		pos 96 -80 0
+	}
+	WO Canyon_A0 {
+		pos 96 -72 0
+	}
+	WO Canyon_A0 {
+		pos 96 -64 0
+	}
+	WO Canyon_A0 {
+		pos 96 -56 0
+	}
+	WO Canyon_A0 {
+		pos 96 -48 0
+	}
+	WO Canyon_A0 {
+		pos 96 -40 0
+	}
+	WO Canyon_A0 {
+		pos 96 -32 0
+	}
+	WO Canyon_A0 {
+		pos 96 -24 0
+	}
+	WO Canyon_A0 {
+		pos 96 -16 0
+	}
+	WO Canyon_A0 {
+		pos 96 -8 0
+	}
+	WO Canyon_A0 {
+		pos 96 0 0
+	}
+	WO Canyon_A0 {
+		pos 96 8 0
+	}
+	WO Canyon_A0 {
+		pos 96 16 0
+	}
+	WO Canyon_A0 {
+		pos 96 24 0
+	}
+	WO Canyon_A0 {
+		pos 96 32 0
+	}
+	WO Canyon_A0 {
+		pos 96 40 0
+	}
+	WO Canyon_A0 {
+		pos 96 48 0
+	}
+	WO Canyon_A0 {
+		pos 96 56 0
+	}
+	WO Canyon_A0 {
+		pos 96 64 0
+	}
+	WO Canyon_A0 {
+		pos 96 72 0
+	}
+	WO Canyon_A0 {
+		pos 96 80 0
+	}
+	WO Canyon_A0 {
+		pos 96 88 0
+	}
+	WO Canyon_A0 {
+		pos 96 96 0
+	}
+	WO Canyon_A0 {
+		pos 96 104 0
+	}
+	WO Canyon_A0 {
+		pos 96 112 0
+	}
+	WO Canyon_A0 {
+		pos 104 -112 0
+	}
+	WO Canyon_A0 {
+		pos 104 -104 0
+	}
+	WO Canyon_A0 {
+		pos 104 -96 0
+	}
+	WO Canyon_A0 {
+		pos 104 -88 0
+	}
+	WO Canyon_A0 {
+		pos 104 -80 0
+	}
+	WO Canyon_A0 {
+		pos 104 -72 0
+	}
+	WO Canyon_A0 {
+		pos 104 -64 0
+	}
+	WO Canyon_A0 {
+		pos 104 -56 0
+	}
+	WO Canyon_A0 {
+		pos 104 -48 0
+	}
+	WO Canyon_A0 {
+		pos 104 -40 0
+	}
+	WO Canyon_A0 {
+		pos 104 -32 0
+	}
+	WO Canyon_A0 {
+		pos 104 -24 0
+	}
+	WO Canyon_A0 {
+		pos 104 -16 0
+	}
+	WO Canyon_A0 {
+		pos 104 -8 0
+	}
+	WO Canyon_A0 {
+		pos 104 0 0
+	}
+	WO Canyon_A0 {
+		pos 104 8 0
+	}
+	WO Canyon_A0 {
+		pos 104 16 0
+	}
+	WO Canyon_A0 {
+		pos 104 24 0
+	}
+	WO Canyon_A0 {
+		pos 104 32 0
+	}
+	WO Canyon_A0 {
+		pos 104 40 0
+	}
+	WO Canyon_A0 {
+		pos 104 48 0
+	}
+	WO Canyon_A0 {
+		pos 104 56 0
+	}
+	WO Canyon_A0 {
+		pos 104 64 0
+	}
+	WO Canyon_A0 {
+		pos 104 72 0
+	}
+	WO Canyon_A0 {
+		pos 104 80 0
+	}
+	WO Canyon_A0 {
+		pos 104 88 0
+	}
+	WO Canyon_A0 {
+		pos 104 96 0
+	}
+	WO Canyon_A0 {
+		pos 104 104 0
+	}
+	WO Canyon_A0 {
+		pos 104 112 0
+	}
+	WO Canyon_A0 {
+		pos 112 -112 0
+	}
+	WO Canyon_A0 {
+		pos 112 -104 0
+	}
+	WO Canyon_A0 {
+		pos 112 -96 0
+	}
+	WO Canyon_A0 {
+		pos 112 -88 0
+	}
+	WO Canyon_A0 {
+		pos 112 -80 0
+	}
+	WO Canyon_A0 {
+		pos 112 -72 0
+	}
+	WO Canyon_A0 {
+		pos 112 -64 0
+	}
+	WO Canyon_A0 {
+		pos 112 -56 0
+	}
+	WO Canyon_A0 {
+		pos 112 -48 0
+	}
+	WO Canyon_A0 {
+		pos 112 -40 0
+	}
+	WO Canyon_A0 {
+		pos 112 -32 0
+	}
+	WO Canyon_A0 {
+		pos 112 -24 0
+	}
+	WO Canyon_A0 {
+		pos 112 -16 0
+	}
+	WO Canyon_A0 {
+		pos 112 -8 0
+	}
+	WO Canyon_A0 {
+		pos 112 0 0
+	}
+	WO Canyon_A0 {
+		pos 112 8 0
+	}
+	WO Canyon_A0 {
+		pos 112 16 0
+	}
+	WO Canyon_A0 {
+		pos 112 24 0
+	}
+	WO Canyon_A0 {
+		pos 112 32 0
+	}
+	WO Canyon_A0 {
+		pos 112 40 0
+	}
+	WO Canyon_A0 {
+		pos 112 48 0
+	}
+	WO Canyon_A0 {
+		pos 112 56 0
+	}
+	WO Canyon_A0 {
+		pos 112 64 0
+	}
+	WO Canyon_A0 {
+		pos 112 72 0
+	}
+	WO Canyon_A0 {
+		pos 112 80 0
+	}
+	WO Canyon_A0 {
+		pos 112 88 0
+	}
+	WO Canyon_A0 {
+		pos 112 96 0
+	}
+	WO Canyon_A0 {
+		pos 112 104 0
+	}
+	WO Canyon_A0 {
+		pos 112 112 0
+	}
+	WO Canyon_J0 {
+		pos 80 72 0
+	}
+	WO SidewalkSmall {
+		pos 41.281155 46.027798 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SidewalkStraight {
+		pos 8.839727 28.951727 0
+	}
+	WO SidewalkStraight {
+		pos 48.5798 34.677227 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 28.986584 37.626766 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 0.709969 13.341795 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 8.49 13.717315 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkL {
+		pos 5.226736 5.230801 0
+	}
+	WO SidewalkStraight {
+		pos 34.512329 48.843796 0
+	}
+	WO SidewalkStraight {
+		pos 32.377659 53.29652 0.090002
+	}
+	WO FortressPiece_Corner {
+		pos 5.382445 5.328109 -0.308676
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 0.87
+	}
+	WO SidewalkSmall {
+		pos 4.312521 17.364067 0
+	}
+	WO SimpleFortressProps_Ground3 {
+		pos -3.901037 7.663916 0.100019
+	}
+	WO SimpleFortressProps_Ground4 {
+		pos -3.610808 18.767349 0.091523
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SimpleFortressProps_Ground2 {
+		pos -3.998874 -18.692356 0.030006
+	}
+	WO SidewalkL {
+		pos 0.824428 23.207199 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleFortressProps_Ground5 {
+		pos -13.098564 4.302345 0.045543
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleFortressProps_Building1 {
+		pos 41.848106 1.962934 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 0.83
+	}
+	WO SimpleFortressProps_Building2 {
+		pos 42.595596 8.349279 0
+		scl 0.81
+	}
+	WO SimpleFortressProps_Building3 {
+		pos 13.143438 48.201477 -0.030002
+		scl 0.99
+	}
+	WO Crate2 {
+		pos 6.815665 27.855139 0
+	}
+	WO SimpleFortressProps_Tower {
+		pos 4.624192 48.265156 -0.029999
+		scl 0.85
+	}
+	WO SimpleFortressProps_Fence {
+		pos 11.712564 39.045849 -0.06
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO FortressPiece_Cover {
+		pos 18.152302 30.388519 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 0.72
+	}
+	WO SimpleFortressProps_Base {
+		pos 35.957951 36.203262 0.060006
+	}
+	WO SimpleFortressProps_Ground1 {
+		pos 3.838278 11.581507 0.03
+	}
+	WO SimpleFortressProps_Ground1 {
+		pos 13.292536 -3.734874 0.059995
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkL {
+		pos 5.081669 -5.018345 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkL {
+		pos -5.112886 -5.037407 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SidewalkL {
+		pos -4.957251 5.311665 0.100008
+		rot_x 0 1.000001 0
+		rot_y -1.000001 0 0
+	}
+	WO SidewalkStraight {
+		pos -13.097766 0.71873 0
+	}
+	WO SidewalkStraight {
+		pos -12.969389 5.387688 0
+	}
+	WO SidewalkSmall {
+		pos 45.72369 41.460003 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkSmall {
+		pos 45.736732 39.581814 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkSmall {
+		pos 39.415379 45.975826 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SidewalkSmall {
+		pos 33.304264 26.452013 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SidewalkSmall {
+		pos 31.465881 26.430174 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SidewalkSmall {
+		pos 41.334042 26.430288 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SidewalkSmall {
+		pos 39.488815 26.42325 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SidewalkSmall {
+		pos 26.18239 30.919432 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkSmall {
+		pos 26.142231 32.799553 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkSmall {
+		pos -2.116404 18.282618 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleFortressProps_Fence {
+		pos 36.904144 8.501966 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 5.203426 13.267132 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO FortressPiece_Square {
+		pos 4.021757 19.816172 0
+		scl 0.77
+	}
+	WO FortressPiece_Corner {
+		pos -5.113782 5.504589 -0.248676
+		scl 0.87
+	}
+	WO FortressPiece_Building2 {
+		pos 32.030399 -2.734148 -0.069636
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 0.48
+	}
+	WO FortressPiece_Building1 {
+		pos 4.117783 37.390427 -0.289955
+		rot_x 0 1.000001 0
+		rot_y -1.000001 0 0
+		scl 0.82
+	}
+	WO FortressPiece_3 {
+		pos 41.760143 17.80932 -0.079714
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 0.71
+	}
+	WO FortressPiece_2 {
+		pos 13.740542 34.754662 3.000001
+		rot_x 0.087156 -0.996195 0
+		rot_y 0.996195 0.087156 0
+		scl 0.640001
+	}
+	WO SidewalkSmall {
+		pos 2.927944 17.416611 0
+	}
+	WO SidewalkSmall {
+		pos 18.077065 2.411783 0
+	}
+	WO SidewalkStraight {
+		pos 13.245182 5.249587 -0.049996
+	}
+	WO FortressPiece_Square {
+		pos 19.681721 4.211976 -0.269997
+		scl 0.85
+	}
+	WO SidewalkStraight {
+		pos 13.669167 8.64509 0
+	}
+	WO SidewalkStraight {
+		pos 17.196705 28.91313 0.00023
+	}
+	WO FortressPiece_Square {
+		pos 19.408182 -3.936074 -0.180001
+		scl 0.85
+	}
+	WO SidewalkStraight {
+		pos 13.1475 0.646763 0
+	}
+	WO FortressPiece_Corner {
+		pos -5.262387 -5.135732 -0.293987
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.87
+	}
+	WO FortressPiece_Corner {
+		pos 5.222082 -5.223198 -0.271881
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 0.87
+	}
+	WO SidewalkSmall {
+		pos 8.656756 5.762096 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 1.1
+	}
+	WO SidewalkSmall {
+		pos 5.627372 8.791709 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 5.072482 -12.97595 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 0.587379 -21.095678 -0.019981
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 0.592351 -13.05858 -0.019981
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 5.088186 -21.005066 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 39.56311 24.494362 0
+	}
+	WO SidewalkL {
+		pos 24.448299 47.5359 0.090097
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 29.14184 17.922413 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 29.129658 9.872591 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkStraight {
+		pos 29.121832 1.830997 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkSmall {
+		pos 27.639652 21.589319 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SidewalkStraight {
+		pos 40.373802 53.333382 0.090002
+	}
+	WO SidewalkStraight {
+		pos 31.597244 24.504627 0
+	}
+	WO SidewalkL {
+		pos 47.563343 24.469398 -0.030002
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO SidewalkStraight {
+		pos 53.279942 31.539906 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkL {
+		pos 47.518463 47.639847 -0.029995
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SidewalkStraight {
+		pos 53.251198 39.587936 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkSmall {
+		pos 26.279436 -4.941894 -0.02818
+		rot_x 0 -0.996195 -0.087156
+		rot_y 0.996195 -0.007596 0.086824
+		rot_z -0.087156 -0.086824 0.992405
+	}
+	WO SidewalkSmall {
+		pos 26.298244 -3.118041 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleFortressProps_Ground1 {
+		pos 3.871066 6.041599 0.029998
+	}
+	WO SimpleFortressProps_Ground1 {
+		pos 13.158542 4.207613 0.03
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleFortressProps_Ground1 {
+		pos 7.6163 4.169415 0.059999
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleFortressProps_Ground1 {
+		pos 7.746921 -3.750778 0.060004
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkSmall {
+		pos 16.790602 -5.493846 0.059997
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 1.1
+	}
+	WO SidewalkStraight {
+		pos 11.781419 -2.648147 -0.000636
+	}
+	WO SidewalkSmall {
+		pos 5.538834 -16.247925 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleFortressProps_Ground4 {
+		pos 3.821502 -18.52161 0.030004
+		rot_x 1.000001 0 0
+		rot_y 0 1.000001 0
+	}
+	WO SimpleFortressProps_Ground1 {
+		pos 3.73752 -12.94805 0.029997
+	}
+	WO SidewalkStraight {
+		pos 8.407524 -11.375337 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleFortressProps_Ground1 {
+		pos -3.952752 -13.132376 0.04
+	}
+	WO SidewalkStraight {
+		pos -2.683267 -11.548159 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleFortressProps_Ground3 {
+		pos -7.453065 -4.011362 0.066245
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO SimpleFortressProps_Building3 {
+		pos 28.172993 7.90989 0.040247
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.81
+	}
+	WO SimpleFortressProps_Building1 {
+		pos 41.860184 -0.974692 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 0.83
+	}
+	WO CanyonRockE {
+		pos -29.067255 -4.537249 2.641401
+		rot_x 0.998106 0.002108 -0.061483
+		rot_y 0 0.999413 0.034266
+		rot_z 0.061519 -0.034201 0.99752
+		scl 1.649999
+	}
+	WO CanyonRockD {
+		pos -12.341155 10.314186 2.790001
+		rot_x -0.961806 -0.25672 0.095003
+		rot_y 0.258806 -0.965876 0.010121
+		rot_z 0.089163 0.034322 0.995426
+		scl 1.37
+	}
+	WO CanyonRockC {
+		pos -11.891221 13.782364 0.870799
+		rot_x 0.592704 -0.749567 0.294706
+		rot_y 0.762665 0.639952 0.093831
+		rot_z -0.25893 0.169148 0.95097
+		scl 1.48
+	}
+	WO CanyonRockB {
+		pos -10.490232 14.979198 2.400004
+		rot_x -0.555275 -0.807065 0.200787
+		rot_y 0.818493 -0.573115 -0.040104
+		rot_z 0.147441 0.142074 0.978814
+	}
+	WO CanyonRockE {
+		pos -10.245443 33.11187 2.490005
+		rot_x 0.171243 0.983309 -0.061483
+		rot_y -0.98423 0.173546 0.034266
+		rot_z 0.044365 0.054645 0.99752
+		scl 1.749999
+	}
+	WO BarrelA {
+		pos 14.62586 43.92429 0
+	}
+	WO BarrelA {
+		pos 18.023275 45.469402 0
+	}
+	WO CrateAGreen {
+		pos 8.123051 44.651451 -0.030002
+	}
+	WO Crate2 {
+		pos 4.596631 26.445826 0.149999
+	}
+	WO Crate3 {
+		pos 5.026817 28.841995 0
+	}
+	WO Crate4 {
+		pos 29.476789 18.028902 0
+		scl 0.81
+	}
+	WO Crate5 {
+		pos 4.663548 32.27813 0
+		rot_x 0.707107 -0.707107 0
+		rot_y 0.707107 0.707107 0
+	}
+	WO Crate6 {
+		pos 7.622654 29.465498 0
+	}
+	WO Container1 {
+		pos 44.753456 7.326856 0
+		scl 0.83
+	}
+	WO Container2 {
+		pos 6.401484 45.5103 -0.032834
+	}
+	WO Container3 {
+		pos 38.011482 18.696356 -0.039312
+		scl 0.88
+	}
+	WO Container4 {
+		pos -12.110913 -11.927327 0
+	}
+	WO Container5 {
+		pos -10.035359 -13.00994 0
+		rot_x 0.984808 0.173648 0
+		rot_y -0.173648 0.984808 0
+	}
+	WO Container6 {
+		pos 1.204887 28.586126 0
+	}
+	WO Container7 {
+		pos -0.892959 29.267956 0
+	}
+	WO BarrelA {
+		pos 17.510946 44.180267 0.240007
+		rot_x -0.707107 -0.183013 -0.683013
+		rot_y 0.707107 -0.183013 -0.683013
+		rot_z 0 -0.965927 0.258819
+	}
+	WO Crate2 {
+		pos 7.783869 26.779764 0
+		rot_x 0.707107 -0.707107 0
+		rot_y 0.707107 0.707107 0
+	}
+	WO Crate6 {
+		pos 36.619057 12.435183 3
+		rot_x 0.173648 -0.984808 0
+		rot_y 0.984808 0.173648 0
+	}
+	WO Crate6 {
+		pos 34.261189 10.186371 3.000009
+		rot_x -0.965926 -0.258819 0
+		rot_y 0.258819 -0.965926 0
+	}
+	WO Crate4 {
+		pos 29.438721 16.639343 0.046063
+		rot_x 0.866025 -0.5 0
+		rot_y 0.5 0.866025 0
+		scl 0.81
+	}
+	WO CanyonRockB {
+		pos -14.654751 -17.42572 2.999992
+		rot_x -0.698382 0.686985 0.200787
+		rot_y -0.706538 -0.706538 -0.040104
+		rot_z 0.114312 -0.169871 0.978814
+	}
+	WO CanyonRockB {
+		pos -22.470081 -8.57462 2.999996
+		rot_x -0.555275 -0.807065 0.200787
+		rot_y 0.818493 -0.573115 -0.040104
+		rot_z 0.147441 0.142074 0.978814
+	}
+	WO CanyonRockD {
+		pos -26.421593 7.901876 2.790767
+		rot_x 0.57177 0.814895 0.095003
+		rot_y -0.81911 0.573547 0.010121
+		rot_z -0.046241 -0.083605 0.995426
+		scl 1.37
+	}
+	WO CanyonRockC {
+		pos -28.415846 5.12058 2.340002
+		rot_x 0.003561 -0.953971 0.29988
+		rot_y 0.960439 0.086771 0.264629
+		rot_z -0.27847 0.287074 0.916539
+		scl 1.48
+	}
+	WO CanyonRockE {
+		pos -23.770092 19.648071 2.46
+		rot_x 0.260365 -0.963551 -0.061483
+		rot_y 0.965359 0.258667 0.034266
+		rot_z -0.017114 -0.068275 0.99752
+		scl 2.029999
+	}
+	WO CanyonRockE {
+		pos -28.357744 -7.206063 2.820002
+		rot_x -0.998106 -0.002108 -0.061483
+		rot_y 0 -0.999413 0.034266
+		rot_z -0.061519 0.034201 0.99752
+		scl 1.06
+	}
+	WO CanyonRockA {
+		pos -33.99033 -12.101552 2.790001
+		rot_x -0.085576 0.994412 0.061814
+		rot_y -0.995933 -0.087133 0.02293
+		rot_z 0.028188 -0.0596 0.997824
+		scl 1.629999
+	}
+	WO CanyonRockD {
+		pos -11.207158 19.545012 2.730768
+		rot_x -0.419835 0.902615 0.095003
+		rot_y -0.906261 -0.422597 0.010121
+		rot_z 0.049283 -0.081848 0.995426
+		scl 1.05
+	}
+	WO Container5 {
+		pos -18.022913 0.534758 0
+		rot_x 0.996195 -0.087156 0
+		rot_y 0.087156 0.996195 0
+	}
+	WO Container4 {
+		pos -20.089676 0.442612 0.011113
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Container4 {
+		pos -18.853678 3.949454 0.022289
+		rot_x 0.258819 -0.965926 0
+		rot_y 0.965926 0.258819 0
+	}
+	WO Container7 {
+		pos 1.068085 44.409477 0
+	}
+	WO Container7 {
+		pos 0.343781 32.944134 0
+		rot_x -0.707107 -0.707107 0
+		rot_y 0.707107 -0.707107 0
+	}
+	WO BarrelA {
+		pos 36.98394 0.440673 0.074422
+		rot_x -0.243945 0.688466 -0.683013
+		rot_y -0.120688 -0.720367 -0.683013
+		rot_z -0.962251 -0.084186 0.258819
+	}
+	WO BarrelA {
+		pos 38.070251 4.71527 0.009978
+		rot_x 0.707107 0 -0.707107
+		rot_z 0.707107 0 0.707107
+	}
+	WO BarrelA {
+		pos 39.414307 4.764564 0
+	}
+	WO BarrelA {
+		pos 31.408134 4.715182 0
+	}
+	WO CanyonRockC {
+		pos -13.633224 -22.027384 2.1
+		rot_x 0.003561 -0.953971 0.29988
+		rot_y 0.960439 0.086771 0.264629
+		rot_z -0.27847 0.287074 0.916539
+		scl 1.48
+	}
+	WO CanyonRockA {
+		pos -12.153069 -23.77256 2.430006
+		rot_x -0.763667 0.642644 0.061814
+		rot_y -0.642619 -0.765843 0.02293
+		rot_z 0.062076 -0.022212 0.997824
+		scl 1.629999
+	}
+	WO CanyonRockB {
+		pos -10.948292 24.485746 2.999997
+		rot_x -0.555275 -0.807065 0.200787
+		rot_y 0.818493 -0.573115 -0.040104
+		rot_z 0.147441 0.142074 0.978814
+		scl 1.27
+	}
+	WO CanyonRockD {
+		pos -12.418225 31.442972 2.699997
+		rot_x 0.995477 -0.000961 0.095003
+		rot_y 0 0.999949 0.010121
+		rot_z -0.095008 -0.010075 0.995426
+		scl 1.37
+	}
+	WO Crate2 {
+		pos 15.954872 29.053904 0
+		rot_x 0.707107 -0.707107 0
+		rot_y 0.707107 0.707107 0
+	}
+	WO Crate2 {
+		pos 18.624069 28.258869 0.023211
+		rot_x -0.5 -0.866026 0
+		rot_y 0.866026 -0.5 0
+	}
+	WO FortressPiece_Bars {
+		pos 44.276154 15.882343 -0.433675
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO FortressPiece_Bars {
+		pos 36.174286 12.636078 2.640004
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO FortressPiece_Bars {
+		pos 41.826599 12.638103 2.598843
+	}
+	WO FortressPiece_Bars {
+		pos 41.833397 12.635326 -0.971154
+	}
+	WO CanyonRockA {
+		pos -19.031439 -67.785934 2.429997
+		rot_x -0.763667 0.642644 0.061814
+		rot_y -0.642619 -0.765843 0.02293
+		rot_z 0.062076 -0.022212 0.997824
+		scl 1.629999
+	}
+	WO SimpleFortressProps_Base {
+		pos -46.399071 -45.94743 3.064725
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO CanyonRockA {
+		pos -19.057343 -58.549026 3.000002
+		rot_x -0.905173 -0.420525 0.061814
+		rot_y 0.422507 -0.90607 0.02293
+		rot_z 0.046365 0.046873 0.997824
+		scl 1.629999
+	}
+	WO CanyonRockA {
+		pos -45.19318 -26.747995 2.999109
+		rot_x -0.964445 -0.256954 0.061814
+		rot_y 0.258752 -0.965673 0.02293
+		rot_z 0.0538 0.038109 0.997824
+		scl 1.629999
+	}
+	WO FortressPiece_Building2 {
+		pos -48.274895 -63.974651 3.000001
+		rot_x 0 -1.000001 0
+		rot_y 1.000001 0 0
+		scl 0.48
+	}
+	WO Container4 {
+		pos -26.25754 -22.205622 2.979384
+		rot_x -0.866026 -0.5 0
+		rot_y 0.5 -0.866026 0
+	}
+	WO CanyonRockD {
+		pos -61.807671 -61.267979 2.999998
+		rot_x 0.57177 0.814895 0.095003
+		rot_y -0.81911 0.573547 0.010121
+		rot_z -0.046241 -0.083605 0.995426
+		scl 1.37
+	}
+	WO CanyonRockC {
+		pos -27.988287 -24.498352 3
+		rot_x 0.003733 -0.999993 0
+		rot_y 0.999993 0.003733 0
+		scl 1.48
+	}
+	WO Crate6 {
+		pos -47.695862 -68.425034 3.011686
+		rot_x -0.965926 -0.258819 0
+		rot_y 0.258819 -0.965926 0
+	}
+	WO CanyonRockD {
+		pos -57.211628 -62.02779 2.999965
+		rot_x 0.901802 -0.421579 0.095003
+		rot_y 0.422597 0.906261 0.010121
+		rot_z -0.090365 0.031021 0.995426
+		scl 1.37
+	}
+	WO SidewalkStraight {
+		pos 18.744686 29.651604 0.120061
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO SidewalkStraight {
+		pos 18.75675 37.598396 0.150024
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO SidewalkSmall {
+		pos 21.599897 42.563824 0.150035
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO ArmoredCarTutorial {
+		pos -23.118877 -53.521843 3.00001
+		rot_x 0.087156 -0.996195 0
+		rot_y 0.996195 0.087156 0
+		id 1
+		. team 1
+		. order HoldPosition
+	}
+	WO ArmoredCarTutorial {
+		pos -23.053997 -40.951614 2.999998
+		rot_x -0.422618 -0.906308 0
+		rot_y 0.906308 -0.422618 0
+		id 2
+		. team 1
+		. order HoldPosition
+	}
+	WO TankTutorial {
+		pos -35.203293 -49.840691 3.000001
+		rot_x -0.087156 -0.996195 0
+		rot_y 0.996195 -0.087156 0
+		id 3
+		. team 1
+		. order HoldPosition
+	}
+	WO RocketTruckTutorial {
+		pos -37.387173 -54.805527 3.12536
+		rot_x 0.258819 -0.965926 0
+		rot_y 0.965926 0.258819 0
+		id 4
+		. team 1
+		. order HoldPosition
+	}
+	WO RocketTruckTutorial {
+		pos -37.318798 -36.997009 3.12536
+		rot_x -0.34202 -0.939693 0
+		rot_y 0.939693 -0.34202 0
+		id 5
+		. team 1
+		. order HoldPosition
+	}
+	WO TankTutorial {
+		pos -35.137348 -42.213356 3.000004
+		rot_x -0.087156 -0.996195 0
+		rot_y 0.996195 -0.087156 0
+		id 6
+		. team 1
+		. order HoldPosition
+	}
+	WO RocketTruckTutorial {
+		pos -33.430363 -33.478149 2.999999
+		rot_x -0.5 -0.866026 0
+		rot_y 0.866026 -0.5 0
+		id 7
+		. team 1
+		. order HoldPosition
+	}
+}
+
+details {
+	d FillerPlate -1 1 0 0 0 1 0 0 0 1 19.503662 19.4835 0
+	d FillerPlate -1 0 1 0 -1 0 0 0 0 1 12.412404 19.870659 0.07
+	d FillerPlate -1 0 -1 0 1 0 0 0 0 1 19.563377 12.090815 0
+	d FillerPlate -1 -1 0 0 0 -1 0 0 0 1 12.369166 12.21908 0
+	d CactusA -1 0.997661 0 -0.068357 0 1 0 0.068357 0 0.997661 -3.290936 26.118191 0.000001
+	d CactusA -1 0.997661 0 -0.068357 0 1 0 0.068357 0 0.997661 6.367097 -18.490366 0
+	d CactusA -1 0.748246 0 -0.051268 0 0.75 0 0.051268 0 0.748246 30.7619 -6.655421 -0.02639
+	d CactusA -1 0.19366 -0.72275 -0.051268 0.724444 0.194114 0 0.013269 -0.049521 0.748246 36.845528 9.10708 2.99877
+	d CactusA -1 -0.993864 0.086952 -0.068357 -0.087156 -0.996195 0 -0.068097 0.005958 0.997661 -5.722889 30.441105 0.182682
+	d CactusA -1 0.997661 0 -0.068357 0 1 0 0.068357 0 0.997661 16.197115 53.880234 0.000001
+	d CactusA -1 -1.137126 -0.304692 -0.080662 0.305407 -1.139792 0 -0.077913 -0.020877 1.17724 12.61976 53.757111 0.000004
+	d CactusA -1 0.997661 0 -0.068357 0 1 0 0.068357 0 0.997661 -9.604065 -37.282417 2.996116
+	d CactusA -1 -0.641284 -0.764253 -0.068357 0.766045 -0.642788 0 -0.043939 -0.052365 0.997661 -42.431553 -26.450052 3.000022
+	d CactusA -1 0.19366 -0.72275 -0.051268 0.724444 0.194114 0 0.013269 -0.049521 0.748246 -47.065872 -59.492874 2.958415
+	d CactusB -1 0.995398 0 -0.095827 0 1 0 0.095826 0 0.995398 -17.614367 -4.134142 0
+	d CactusB -1 -0.703853 -0.703853 -0.095827 0.707107 -0.707107 0 -0.06776 -0.06776 0.995398 -20.315544 9.416092 2.999997
+	d CactusB -1 -0.086755 0.991611 -0.095827 -0.996195 -0.087156 0 -0.008352 0.095461 0.995398 -12.37038 -18.292866 2.999999
+	d CactusB -1 -0.086755 0.991611 -0.095827 -0.996195 -0.087156 0 -0.008352 0.095461 0.995398 -17.134701 -55.557068 3.00496
+	d CactusC -1 1 0 0 0 1 0 0 0 1 -5.378524 -19.84934 0.087281
+	d CactusC -1 1 0 0 0 1 0 0 0 1 -17.601784 -9.444371 3.000002
+	d CactusC -1 0.349406 -1.304 0 1.304 0.349406 0 0 0 1.35 -16.818178 -11.373141 2.999994
+	d CactusC -1 0.173648 -0.984808 0 0.984808 0.173648 0 0 0 1 -9.107564 17.641262 3.000004
+	d CactusC -1 0.605 -1.047891 0 1.047891 0.605 0 0 0 1.21 -10.316653 16.476131 3.000004
+	d CactusC -1 -0.287289 -1.072178 0 1.072178 -0.287289 0 0 0 1.11 -25.21147 -0.147771 3.000005
+	d CactusC -1 0.909259 -0.63667 0 0.63667 0.909259 0 0 0 1.11 -24.588289 -1.242387 2.971382
+	d CactusC -1 1.105696 -0.515594 0 0.515594 1.105696 0 0 0 1.22 -10.468965 -20.962276 3
+	d CactusC -1 0.383052 -1.42957 0 1.42957 0.383052 0 0 0 1.479999 -10.996511 -20.216209 2.999999
+	d CactusC -1 0.573577 -0.819152 0 0.819152 0.573577 0 0 0 1 -16.16548 -41.836887 3.12
+	d CactusD -1 0 -0.995752 -0.092076 1 0 0 0 -0.092076 0.995752 -0.637668 25.165268 0.000003
+	d CactusD -1 0 -0.995752 -0.092076 1 0 0 0 -0.092076 0.995752 6.872087 -15.0946 0.006744
+	d CactusD -1 0 0.995752 -0.092076 -1 0 0 0 0.092076 0.995752 18.454294 -7.166419 0.000001
+	d CactusD -1 0 -0.995752 -0.092076 1 0 0 0 -0.092076 0.995752 -5.229228 31.933846 -1.048731
+	d CactusD -1 0 -1.32435 -0.122461 1.33 0 0 0 -0.122461 1.32435 23.166214 54.816418 -0.000001
+	d CactusD -1 0 -1.32435 -0.122461 1.33 0 0 0 -0.122461 1.32435 15.059226 54.228958 -0.000002
+	d CactusD -1 -1.200269 -0.559694 -0.122461 0.562082 -1.205389 0 -0.110987 -0.051754 1.32435 17.956736 53.279102 -1.59
+	d CactusD -1 -0.902458 0.420823 -0.092076 -0.422618 -0.906308 0 -0.083449 0.038913 0.995752 15.213498 -7.199219 -1.296496
+	d CactusD -1 0 1.20486 -0.111412 -1.21 0 0 0 0.111412 1.20486 13.745867 -7.814657 -1.412177
+	d CactusD -1 0 1.20486 -0.111412 -1.21 0 0 0 0.111412 1.20486 33.079571 -7.062242 -1.412172
+	d CactusE -1 0.495862 -0.861248 -0.111234 0.865975 0.499971 -0.010742 0.064865 -0.090999 0.993736 -13.247038 3.353745 0.022961
+	d CactusE -1 0.933452 -0.34102 -0.111234 0.342 0.939638 -0.010742 0.108183 -0.028015 0.993736 -16.222876 -3.172874 0.000001
+	d CactusE -1 0.495862 -0.861248 -0.111234 0.865975 0.499971 -0.010742 0.064865 -0.090999 0.993736 -18.586332 9.248629 3
+	d CactusE -1 -0.569038 0.814753 -0.111234 -0.819105 -0.573544 -0.010742 -0.072549 0.085 0.993736 -10.093681 17.741266 3.000002
+	d CactusE -1 0.694207 -1.205747 -0.155728 1.212365 0.69996 -0.015039 0.090811 -0.127399 1.39123 -25.729897 -0.732945 3.000003
+	d CanyonPlantTreeD -1 1 0 0 0 1 0 0 0 1 -3.800283 21.305305 2.109999
+	d CanyonPlantTreeD -1 1 0 0 0 1 0 0 0 1 28.243742 -4.753114 1.982308
+	d CanyonPlantTreeD -1 1 0 0 0 1 0 0 0 1 -42.094139 -67.898117 5.609992
+	d CanyonPlantTreeD -1 1 0 0 0 1 0 0 0 1 -40.97665 -69.550247 5.609991
+	d CanyonPlantTreeE -1 0.34202 0.939693 0 -0.939693 0.34202 0 0 0 1 -29.010933 -20.763487 4.82993
+	d CanyonPlantTreeE -1 0.965926 0.25882 0 -0.25882 0.965926 0 0 0 1 -18.695333 -63.412132 4.497695
+	d CanyonPlantTreeE -1 0.34202 0.939693 0 -0.939693 0.34202 0 0 0 1 -9.74944 4.927883 1.533558
+	d CanyonPlantTreeE -1 0.34202 0.939693 0 -0.939693 0.34202 0 0 0 1 30.555288 18.379992 1.590007
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable false
+  layer 2 name "volumes" visible true pickable false
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible true pickable false
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+	PF BaseFighter.txt {
+		pos 36 36 0
+		rot 0 0 89.998932
+		id 10
+		/shfnv 2734521612 ". team 0"
+	}
+	PF BaseFighter.txt {
+		pos -46 -46 3
+		rot 0 0 89.998932
+		id 13
+		/shfnv 2734521612 ". team 1"
+	}
+	PF OutpostV2.txt {
+		pos 15.895849 15.904816 0
+		rot 0 0 0
+		id 14
+		/shfnv 825153392 ". latchInf Infantry Infantry Infantry Infantry"
+		/shfnv 2369371622 ". name U_Outpost"
+		/shfnv 2734521612 ". team 0"
+	}
+	PF OutpostV2.txt {
+		pos 24 -24 -3
+		rot 0 0 0
+		id 29
+		/shfnv 825153392 ". latchInf Infantry Infantry Infantry Infantry"
+		/shfnv 2369371622 ". name U_Outpost"
+		/shfnv 2734521612 ". team 1"
+	}
+}

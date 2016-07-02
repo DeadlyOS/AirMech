@@ -1,0 +1,62 @@
+Script GfxSettingApplyInitOnShowCfgMenu {
+cmd "console regQuery GameWindowed GameWindowed_CUR"
+cmd "console regQuery Resolution Resolution_CUR"
+cmd "console regQuery MSAA MSAA_CUR"
+cmd "console regQuery GfxDetail GfxDetail_CUR"
+cmd "sym set GfxSettingsApplyOk 0"
+}
+Script GfxSettingApplySettingChanged {
+cmd "sym set GfxSettingsApplyOk 0"
+cmd "if sym Resolution != $Resolution_CUR runnow sym set GfxSettingsApplyOk 1"
+cmd "if sym GameWindowed != $GameWindowed_CUR runnow sym set GfxSettingsApplyOk 1"
+cmd "if sym MSAA != $MSAA_CUR runnow sym set GfxSettingsApplyOk 1"
+cmd "if sym GfxDetail != $GfxDetail_CUR runnow sym set GfxSettingsApplyOk 1"
+}
+Script GfxSettingApplyInitiate {
+cmd "console regQuery GameWindowed GameWindowed_RSTR"
+cmd "console regQuery Resolution Resolution_RSTR"
+cmd "console regQuery MSAA MSAA_RSTR"
+cmd "console regQuery GfxDetail GfxDetail_RSTR"
+cmd "gfx set resolution $Resolution $MSAA $GfxDetail"
+cmd "gfx set windowed $GameWindowed"
+cmd "loadmenu gfxApplyConfirm.txt"
+cmd "sym set GfxAutoResetOk 1"
+}
+Script GfxSettingsAccepted {
+rcmd "sym set GfxAutoResetOk 0"
+cmd "clearmenu gfxApplyConfirm.txt"
+cmd "console regSave GameWindowed"
+cmd "console regSave Resolution"
+cmd "console regSave MSAA"
+cmd "console regSave GfxDetail"
+cmd "console flushAllPendingSeq 200"
+cmd "menucmd GfxSettingApplyInitOnShowCfgMenu"
+}
+Script GfxSettingsAutoReset {
+cmd "if menuloaded gfxApplyConfirm.txt && sym GfxAutoResetOk == 1 runnow menucmd GfxSettingsAutoResetGo"
+}
+Script GfxSettingsAutoResetGo {
+cmd "timer setAsyncWait 1"
+cmd "echo auto reset to $Resolution_RSTR $MSAA_RSTR $GfxDetail_RSTR"
+cmd "gfx set resolution $Resolution_RSTR $MSAA_RSTR $GfxDetail_RSTR"
+cmd "gfx set windowed $GameWindowed_RSTR"
+cmd "pcmd 0.12 clearmenu gfxApplyConfirm.txt"
+cmd "pcmd 0.15 timer clearAsyncWait"
+}
+Script GfxSettingCameraFXChanged {
+cmd "gfx set camerafx $CameraFX"
+cmd "console regSave CameraFX"
+}
+Script GfxSettingCameraFOChanged {
+cmd "gfx set camerafo $CameraFO"
+cmd "console regSave CameraFO"
+}
+Script GfxSettingDecalFXChanged {
+cmd "gfx set decalfx $DecalFX"
+}
+Script GfxResetFogState {
+rcmd "gfx set clearcolor 0 0 0 0"
+rcmd "gfx set uniform fogargs 10 7"
+rcmd "gfx set uniform fogcolor 255 255 255 255"
+rcmd "gfx set uniform dfogcolor 255 255 255 255"
+}

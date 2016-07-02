@@ -1,0 +1,307 @@
+Script StoreLocalLoadout {
+cmd "sym set PilotLast $PilotLocal"
+cmd "sym set ItemLast $ItemLocal"
+cmd "sym set GuardLast $GuardLocal"
+cmd "sym set Flair1Last $Flair1Local"
+cmd "sym set Flair2Last $Flair2Local"
+cmd "sym set Flair3Last $Flair3Local"
+cmd "sym set HeadLast $HeadLocal"
+cmd "sym set Pet1Last $Pet1Local"
+cmd "sym set Pet2Last $Pet2Local"
+cmd "sym set Pet3Last $Pet3Local"
+cmd "sym set RookLast $RookLocal"
+cmd "echo stored stuff"
+}
+Script UnsavedLoadoutTest {
+cmd "if sym PilotLocal != $PilotLast menuCmd UnsavedLoadoutTrue"
+cmd "if sym RookLocal != $RookLast menuCmd UnsavedLoadoutTrue"
+cmd "if sym ItemLocal != $ItemLast menuCmd UnsavedLoadoutTrue"
+cmd "if sym GuardLocal != $GuardLast menuCmd UnsavedLoadoutTrue"
+cmd "if sym Flair1Local != $Flair1Last menuCmd UnsavedLoadoutTrue"
+cmd "if sym Flair2Local != $Flair2Last menuCmd UnsavedLoadoutTrue"
+cmd "if sym Flair3Local != $Flair3Last menuCmd UnsavedLoadoutTrue"
+cmd "if sym HeadLocal != $HeadLast menuCmd UnsavedLoadoutTrue"
+cmd "if sym Pet1Local != $Pet1Last menuCmd UnsavedLoadoutTrue"
+cmd "if sym Pet2Local != $Pet2Last menuCmd UnsavedLoadoutTrue"
+cmd "if sym Pet3Local != $Pet3Last menuCmd UnsavedLoadoutTrue"
+}
+Script UnsavedLoadoutTrue {
+cmd "gameUI hide #LoadoutQuickChangeLabel@ActiveLoadout@"
+cmd "sym set UnsavedLoadout 1"
+cmd "sym set ActiveLoadout -1"
+cmd "echo unsaved loadout"
+}
+Script PricesReqOnLobbyJoin {
+cmd "log MenuCmd: PricesReqOnLobbyJoin"
+}
+Script SelectItemFromLobby {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectItemFromLobby"
+cmd "sym set _CustomObject items"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.15"
+cmd "if usingPad pcmd 0.13 gameUI focusNameTry ObjectSlot0"
+}
+Script SelectGuardianFromLobby {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectGuardianFromLobby"
+cmd "sym set _CustomObject guardians"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.15"
+cmd "gameui focusName DummyFocus"
+cmd "if usingPad pcmd 0.13 gameUI focusNameTry ObjectSlot0"
+}
+Script SelectFlairFromLobby {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectFlairFromLobby"
+cmd "sym set _CustomObject flairs"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.15"
+cmd "if usingPad pcmd 0.13 gameUI focusNameTry ObjectSlot0"
+}
+Script SelectPetFromLobby {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectPetFromLobby"
+cmd "sym set _CustomObject pets"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.15"
+cmd "if usingPad pcmd 0.13 gameUI focusNameTry ObjectSlot0"
+}
+Script SelectHeadFromLobby {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectHeadFromLobby"
+cmd "sym set _CustomObject heads"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.15"
+cmd "if usingPad pcmd 0.13 gameUI focusNameTry ObjectSlot0"
+}
+Script SelectPartFromLobby {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectPartFromLobby"
+cmd "loadout partPointsSelectSetup $_MArg2_"
+cmd "sym set _CustomObject $_MArg1_"
+cmd "sym set ShowPartCount 1"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.15"
+cmd "if usingPad pcmd 0.13 gameUI focusNameTry ObjectSlot0"
+}
+Script SelectAirMechFromLobby {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectAirMechFromLobby"
+cmd "sym set _CustomObject rooks"
+cmd "loadmenu SelectAirMech.txt /fadein 0.1"
+}
+Script SelectPilotFromLobby {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectPilotFromLobby"
+cmd "sym set _CustomObject pilots"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.15"
+cmd "if usingPad pcmd 0.13 gameUI focusNameTry ObjectSlot0"
+}
+Script SelectColorFromLobby {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectColorFromLobby"
+cmd "sym set _CustomObject colors"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.15"
+cmd "if usingPad pcmd 0.13 gameUI focusNameTry ObjectSlot0"
+}
+Script SelectSingleUnitFromLobby {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectSingleUnitFromLobby"
+cmd "sym set _CustomObject units"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.15"
+cmd "if usingPad pcmd 0.13 gameUI focusNameTry ObjectSlot0"
+}
+Script SelectUnitLoadoutCon {
+ignoreInputTime 0.15
+frame_block MenuCommand
+cmd "log MenuCmd: SelectUnitLoadoutCon"
+cmd "sym set _CustomObject units"
+cmd "customize slotLookup $$_CustomObject $_MArg1_ _LookupSlot_ /ownedOnly /customFilter $_ConUnitsFilterType_"
+cmd "loadmenu SelectUnitsCon.txt /fadein 0.15"
+}
+Script SelectUnitLoadoutConAndFocus {
+frame_block MenuCommand
+rcmd "if usingPad runnow gameui ignoreInputTime 0.2"
+cmd "log MenuCmd: SelectUnitLoadoutCon"
+cmd "sym set _CustomObject units"
+cmd "customize slotLookup $$_CustomObject $_MArg1_ _LookupSlot_ /ownedOnly /customFilter $_ConUnitsFilterType_"
+cmd "loadmenu SelectUnitsCon.txt /fadein 0.2"
+cmd "sym set _LookupOffset_ $$_LookupSlot_"
+cmd "sym multI _LookupOffset_ -150"
+cmd "gameui forceOffsetX CM_ItemSelectOwned $$_LookupOffset_"
+cmd "sym set _ConFocusUnitSwitchOk_ 0"
+cmd "sym set _FocusItemList_ $$_LookupSlot_"
+cmd "sym set _FocusItemListLast_ $$_LookupSlot_"
+cmd "sym setSumI _FocusItemListRight_ $$_LookupSlot_ 1"
+cmd "sym setSumI _FocusItemListLeft_ $$_LookupSlot_ -1"
+cmd "pcmd t3 gameUI focusNameTry ##ConSelectItem@_LookupSlot_@"
+cmd "addUIAnim ConLoadoutUnitSelArrow #mas_UnitArrow@_ArmySelSlot@"
+}
+Script FocusUnitLoadoutCon {
+frame_block MenuCommand
+rcmd "if usingPad gameui ignoreInputTime 0.2"
+cmd "log MenuCmd: SelectUnitLoadoutCon"
+cmd "sym set _CustomObject units"
+cmd "customize slotLookup $$_CustomObject $_MArg1_ _LookupSlot_ /ownedOnly /customFilter $_ConUnitsFilterType_"
+cmd "sym set _LookupOffset_ $$_LookupSlot_"
+cmd "sym multI _LookupOffset_ -150"
+cmd "gameui forceOffsetX CM_ItemSelectOwned $$_LookupOffset_"
+cmd "sym set _ConFocusUnitSwitchOk_ 0"
+cmd "sym set _FocusItemList_ $$_LookupSlot_"
+cmd "sym set _FocusItemListLast_ $$_LookupSlot_"
+cmd "sym setSumI _FocusItemListRight_ $$_LookupSlot_ 1"
+cmd "sym setSumI _FocusItemListLeft_ $$_LookupSlot_ -1"
+cmd "addUIAnim ConLoadoutUnitSelArrow #mas_UnitArrow@_ArmySelSlot@"
+}
+Script NextUnitLoadoutCon {
+frame_block MenuCommand
+rcmd "if usingPad runnow gameui ignoreInputTime 0.2"
+rcmd "sym valueCycle _ArmySelSlot 1 0 7"
+cmd "gameui refreshName ConLoadoutUnit? ConLobbyPlayerArmySlot?"
+cmd "gameui refreshFilterName CustomDrawer"
+cmd "menuCmd ChangeUnitLoadoutCon local $AS@_ArmySelSlot@P@net_local_player@"
+cmd "if sym _ConFocusUnitSwitchOk_ == 1 runnow sym sprintf _sym_ AS%sP%s $$_ArmySelSlot $net_local_player"
+}
+Script PrevUnitLoadoutCon {
+frame_block MenuCommand
+rcmd "if usingPad runnow gameui ignoreInputTime 0.2"
+rcmd "sym valueCycle _ArmySelSlot -1 0 7"
+cmd "gameui refreshName ConLoadoutUnit? ConLobbyPlayerArmySlot?"
+cmd "gameui refreshFilterName CustomDrawer"
+cmd "menuCmd ChangeUnitLoadoutCon local $AS@_ArmySelSlot@P@net_local_player@"
+cmd "if sym _ConFocusUnitSwitchOk_ == 1 runnow sym sprintf _sym_ AS%sP%s $$_ArmySelSlot $net_local_player"
+}
+Script ChangeUnitLoadoutCon {
+frame_block MenuCommand
+rcmd "if sym ConItem0 == 0 runnow gameui focusnametry ConUnitsFilterAll"
+rcmd "if usingPad runnow gameui ignoreInputTime 0.2"
+cmd "log MenuCmd: ChangeUnitLoadoutCon"
+cmd "sym set _CustomObject units"
+cmd "customize slotLookup $$_CustomObject $_MArg1_ _LookupSlot_ /ownedOnly /customFilter $_ConUnitsFilterType_"
+cmd "sym set _LookupOffset_ $$_LookupSlot_"
+cmd "sym multI _LookupOffset_ -150"
+cmd "gameui forceOffsetX CM_ItemSelectOwned $$_LookupOffset_"
+cmd "sym set _ConFocusUnitSwitchOk_ 0"
+cmd "sym set _FocusItemList_ $$_LookupSlot_"
+cmd "sym set _FocusItemListLast_ $$_LookupSlot_"
+cmd "sym setSumI _FocusItemListRight_ $$_LookupSlot_ 1"
+cmd "sym setSumI _FocusItemListLeft_ $$_LookupSlot_ -1"
+cmd "addUIAnim ConLoadoutUnitSelArrow #mas_UnitArrow@_ArmySelSlot@"
+cmd "pcmd t3 gameUI focusNameTry ##ConSelectItem@_LookupSlot_@"
+}
+Script SelectUnitsFromLobby {
+frame_block MenuCommand
+rcmd "if usingPad gameui ignoreInputTime 0.2"
+cmd "log MenuCmd: SelectUnitsFromLobby"
+cmd "sym set _CustomObject units"
+cmd "loadmenu SelectUnitsDialog.txt /fadein 0.3"
+cmd "if usingPad pcmd 0.2 gameUI focusName ObjectSlot0 ConSelectItem0"
+}
+Script CloseSelectUnitsDialog {
+ignoreInputTime 0.1
+cmd "clearmenu SelectUnitsDialog.txt /fadeout 0.1"
+}
+Script InspectOrUnlockFromLobby {
+frame_block MenuCommand
+cmd "log MenuCmd: InspectOrUnlockFromLobby"
+cmd "sym set _CustomObject $_MArg1_"
+cmd "sym setFrom _Temp_ $_MArg2_"
+cmd "customize slotInspect $_MArg1_ $$_Temp_"
+}
+Script InspectOrUnlockRefClickBuyOffer {
+cmd "if menuloaded SelectItemDialog runnow ClearMenu SelectItemDialog"
+}
+Script InspectOrUnlockRefClickRebuyDynamic {
+cmd "if menuloaded SelectItemDialog runnow ClearMenu SelectItemDialog"
+}
+Script InspectOrUnlockFromRefClick {
+frame_block MenuCommand
+ignoreInputTime 0.1
+cmd "log MenuCmd: InspectOrUnlockFromRefClick"
+cmd "sym set _CustomObject $_MArg1_"
+cmd "sym setFrom _Temp_ $_MArg2_"
+cmd "customize slotInspectOrExec $_MArg1_ $$_Temp_ _CustomSymbol _CustomValue"
+cmd "if menuloaded SelectItemDialog runnow ClearMenu SelectItemDialog"
+}
+Script InspectMapFromRefClick {
+frame_block MenuCommand
+ignoreInputTime 0.1
+cmd "sym set _UnlockDlgTitle MapInfoHeader"
+cmd "sym set UnlockObjectNameRef _InspectMapDisp_"
+cmd "sym set UnlockObjectNameRef2"
+cmd "sym set UnlockObjectNameRefPrefix"
+cmd "loadmenu InspectMapDialog.txt /fadein 0.15"
+}
+Script InspectContentFromRefClick {
+frame_block MenuCommand
+ignoreInputTime 0.1
+cmd "sym set _UnlockDlgTitle MapInfoHeader"
+cmd "sym set UnlockObjectNameRef _InspectContentDisp_"
+cmd "sym set UnlockObjectNameRef2"
+cmd "sym set UnlockObjectNameRefPrefix"
+cmd "loadmenu InspectMapDialog.txt /fadein 0.15"
+}
+Script InspectPromo {
+ignoreInputTime 0.15
+cmd "if menuloaded InspectPromoDialog.txt && sym _InspectPromo_ != $_MArg1_ clearmenu InspectPromoDialog.txt /fadeout 0.1"
+cmd "if !menuloaded InspectPromoDialog.txt || sym _InspectPromo_ != $_MArg1_ menucmd InspectPromo_Go $_MArg1_"
+}
+Script InspectPromo_Go {
+frame_block MenuCommand
+ignoreInputTime 0.1
+cmd "sym set _UnlockDlgTitle MapInfoHeader"
+cmd "sym set _InspectPromo_ $_MArg1_"
+cmd "sym setl _InspectPromoDisp_ <Gd>PROMO!</>"
+cmd "sym set UnlockObjectNameRef _InspectPromoDisp_"
+cmd "sym set UnlockObjectNameRef2"
+cmd "sym set UnlockObjectNameRefPrefix"
+cmd "loadmenu InspectPromoDialog.txt /fadein 0.15"
+}
+Script SelectPartPrimaryFromLobby {
+frame_block MenuCommand
+ignoreInputTime 0.25
+cmd "sym set _CustomObject partprimary"
+cmd "sym set ShowPartCount 1"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.2"
+cmd "if usingPad pcmd 0.2 gameUI focusName ObjectSlot0 ConSelectItem0"
+}
+Script SelectPartNoPop {
+frame_block MenuCommand
+cmd "customize clearClassFilter"
+cmd "sym clear _cmode"
+cmd "customize scrollCfgLobby $_CustomObject 35"
+cmd "if sym LoadoutAutosave == 0 menuCmd StoreLocalLoadout"
+}
+Script SelectPartEngineFromLobby {
+frame_block MenuCommand
+cmd "sym set _CustomObject partengine"
+cmd "sym set ShowPartCount 1"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.2"
+cmd "if usingPad pcmd 0.2 gameUI focusName ObjectSlot0 ConSelectItem0"
+}
+Script SelectPartStructuralFromLobby {
+frame_block MenuCommand
+cmd "sym set _CustomObject partstructural"
+cmd "sym set ShowPartCount 1"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.2"
+cmd "if usingPad pcmd 0.2 gameUI focusName ObjectSlot0 ConSelectItem0"
+}
+Script SelectPartSpecialFromLobby {
+frame_block MenuCommand
+cmd "sym set _CustomObject partspecial"
+cmd "sym set ShowPartCount 1"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.2"
+cmd "if usingPad pcmd 0.2 gameUI focusName ObjectSlot0 ConSelectItem0"
+}
+Script SelectPartCoreFromLobby {
+frame_block MenuCommand
+cmd "sym set _CustomObject partcore"
+cmd "sym set ShowPartCount 1"
+cmd "loadmenu SelectItemDialog.txt /fadein 0.2"
+cmd "if usingPad pcmd 0.2 gameUI focusName ObjectSlot0 ConSelectItem0"
+}

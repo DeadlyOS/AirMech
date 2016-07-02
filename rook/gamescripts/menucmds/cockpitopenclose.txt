@@ -1,0 +1,72 @@
+Script OpenCockpit {
+frame_block OpenCockpit
+cmd "log MenuCmd: OpenCockpit $OpenCockpitButton"
+cmd "if vr sym set OpenCockpitButton 0"
+cmd "if sym OpenCockpitButton == 0 echo OpenCockpit_is_fucked"
+cmd "if sym OpenCockpitButton == 1 menuCmd OpenCockpitRS"
+cmd "if sym OpenCockpitButton == 2 menuCmd OpenCockpitB"
+cmd "if sym OpenCockpitButton == 3 menuCmd OpenCockpitKB"
+cmd "if sym OpenCockpitButton == 4 menuCmd OpenCockpitLS"
+cmd "if sym OpenCockpitButton == 5 menuCmd OpenCockpitKB"
+cmd "if sym OpenCockpitButton == 6 menuCmd OpenCockpitMW"
+cmd "if rulesV1 sym set _RulesV2_ 0"
+cmd "if rulesV2 sym set _RulesV2_ 1"
+}
+Script OpenCockpitB {
+cmd "log MenuCmd: OpenCockpitB"
+cmd "cbinding disable orderMenuQuick"
+cmd "sym set QuickCockpitActive 0"
+cmd "menuCmd OpenCockpitFinish"
+}
+Script OpenCockpitRS {
+cmd "log MenuCmd: OpenCockpitRS"
+cmd "sym set QuickCockpitActive 1"
+cmd "cbinding enable orderMenuQuick"
+cmd "menuCmd OpenCockpitFinish"
+}
+Script OpenCockpitLS {
+cmd "log MenuCmd: OpenCockpitLS"
+cmd "sym set QuickCockpitActive 1"
+cmd "cbinding enable orderMenuQuick"
+cmd "menuCmd OpenCockpitFinish"
+}
+Script OpenCockpitKB {
+cmd "log MenuCmd: OpenCockpitKB"
+cmd "sym set QuickCockpitActive 1"
+cmd "menuCmd OpenCockpitFinish"
+}
+Script OpenCockpitMW {
+cmd "log MenuCmd: OpenCockpitMW"
+cmd "sym set QuickCockpitActive 0"
+cmd "menuCmd OpenCockpitFinish"
+}
+Script OpenCockpitFinish {
+cmd "log MenuCmd: OpenCockpitFinish"
+cmd "if !vr playerinputpause 1 local"
+cmd "checkRook local carryunit"
+cmd "sym set stickInputDelayMod 0.07"
+cmd "loadmenu CockpitBuild.txt /fadein 0.05"
+}
+Script OpenCockpitSetup {
+ignoreInputTime 0.12
+cmd "playsound $MenuSoundCockpitSwipeDown"
+cmd "pcmd 0.1 inputBinding enable cockpitOpen"
+cmd "pcmd 0.1 gameUI mEnableAll CockpitBuildUnit"
+}
+Script TryToCloseCockpit {
+cmd "log MenuCmd: TryToCloseCockpit"
+cmd "if sym QuickCockpitActive == 0 menuCmd CloseCockpit $C_BINDING"
+}
+Script CloseCockpit {
+cmd "log MenuCmd: CloseCockpit"
+cmd "gameUI mDisableAll UnitsBox"
+cmd "clearmenu CockpitBuild /fadeout 0.15"
+cmd "playerinputpause 0 local"
+cmd "inputBinding disable cockpitOpen"
+cmd "cbinding disable orderMenuQuick"
+cmd "if sym CockpitFocus == order addUIAnim UnitsBox mas_CockpitBothOut"
+cmd "gfx lerp interlace /current 0 0.15"
+cmd "gfx lerp rgbdisplacement /current 0 0.15"
+cmd "gfx lerp zoom /current 0.0 0.15"
+cmd "sym set OpenCockpitHeld 0"
+}

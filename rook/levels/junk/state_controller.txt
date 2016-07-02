@@ -1,0 +1,308 @@
+StateController Lvl_junk {
+#include Lvl_CommonStates
+State initial {
+In 0.0 "sym setNSet 60 UpkeepTeam0_ -1"
+In 0.0 "sym setNSet 60 UpkeepTeam1_ -1"
+In 0.0 "sym set _UTInc_ 0"
+}
+State Init {
+DoL 4.0 |gamemsg addf_u junk_9
+DoL 17.0 |gamemsg addf_u junk_10
+DoL 30.0 |gamemsg addf_u junk_2
+DoL 34.0 |gamemsg addf_u junk_3
+DoL 38.0 |gamemsg addf_u junk_4
+DoL 23.0 |gamemsg addf_u junk_7
+DoL 125.0 |gamemsg addf_u junk_8
+DoL 55.0 |sym set CSWave Wave1
+DoL 0.0 sym set WaveMax 9
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 rook powerGenMod set 0
+DoL 0.0 sym set spawnloc_northwest -176 114 1
+DoL 0.0 sym set spawnloc_north -28 152 0
+DoL 0.0 sym set spawnloc_northeast 80 144 0
+DoL 0.0 sym set spawnloc_southwest -172 -87 0
+DoL 0.0 sym set spawnloc_south -87 -123 0
+DoL 0.0 sym set spawnloc_southeast 112 -47 0
+DoL 0.0 pfx worldspawn JunkAmbient /pos 132 -21 -5
+DoL 0.0 pfx worldspawn JunkAmbient /pos -16.492092 -100.822548 -3.300732
+DoL 0.0 pfx worldspawn JunkAmbient /pos 83.795967 -67.493996 -3.300732
+DoL 0.0 pfx worldspawn JunkAmbient /pos 179.923935 28.26088 -3.300732
+DoL 0.0 pfx worldspawn JunkAmbient /pos 174.449966 102.476822 -3.300732
+DoL 0.0 pfx worldspawn JunkAmbient /pos 64.439941 101.148514 -3.300732
+DoL 0.0 pfx worldspawn JunkAmbient /pos -140.005814 -30.774303 -3.300732
+DoL 0.0 pfx worldspawn JunkAmbient /pos -91.666069 -60.033401 -3.300732
+DoL 0.0 pfx worldspawn JunkAmbientBlack /pos 18.995449 11.715897 -2.505527
+DoL 0.0 pfx worldspawn JunkAmbientFire /pos 18.995449 11.715897 -2.505527
+DoL 0.0 pfx worldspawn JunkAmbientBlack /pos 12.918686 10.08617 -2.471498
+DoL 0.0 pfx worldspawn JunkAmbientFire /pos 12.918686 10.08617 -2.471498
+DoL 0.0 pfx worldspawn JunkAmbientBlack /pos -19.526613 75.549805 0.584472
+DoL 0.0 pfx worldspawn JunkAmbientFire /pos -19.526613 75.549805 0.584472
+DoL 0.0 pfx worldspawn JunkAmbientBlack /pos 68.433144 43.438309 0.678502
+DoL 0.0 pfx worldspawn JunkAmbientFire /pos 68.433144 43.438309 0.678502
+DoL 0.0 pfx worldspawn JunkAmbientBlack /pos -68.940224 -27.238983 0.948501
+DoL 0.0 pfx worldspawn JunkAmbientFire /pos -68.940224 -27.238983 0.948501
+DoL 0.0 pfx worldspawn JunkAmbientBlack /pos -117.047073 -66.957016 0.948501
+DoL 0.0 pfx worldspawn JunkAmbientFire /pos -117.047073 -66.957016 0.948501
+DoL 0.0 pfx worldspawn JunkAmbientBlack /pos 78.879646 -47.727081 0.948501
+DoL 0.0 pfx worldspawn JunkAmbientFire /pos 78.879646 -47.727081 0.948501
+DoL 0.0 pfx worldspawn JunkCloud /pos 20 20 25
+}
+State Tick {
+Do 0.0 "rook doLevelState $$CSWave"
+Do 0.0 "rook doLevelState BlockCheck"
+DoL 0.0 if sym MatchOver == 0 rook doLevelState UpkeepTrack
+}
+State TickCreeps {
+Cfg timeBlock 0.25
+Do 0.0 "rook doLevelState NormalSpawn"
+}
+State BlockCheck {
+Cfg timeBlock 1.0
+Do 0.0 "rook survivalBlockCheck 240"
+}
+State NormalSpawn {
+DoL 0.0 if gameValidation spCr_p0 rook doLevelState CreepSpawnTeam0
+}
+State CreepSpawnTeam0 {
+DoL 0.0 |rook spawnCreepBegin 0
+DoL 1.0 |rook spawnCreep 0
+DoL 1.5 |rook spawnCreep 0
+DoL 2.0 |rook spawnCreep 0
+DoL 5.0 |rook spawnCreepEnd 0
+}
+State WaveWaitingDummy {
+Cfg timeBlock 20.0
+}
+State WaveCompleteCommon {
+DoL 0.0 sym set CSWave $_SArg1_
+DoL 0.0 sym append CSWave Wait
+#if arc
+DoL 0.0 |gamemsg addf_u SrvWaveCompleted
+DoL 3.0 |gamemsg addf_u SrvMorePower
+DoL 6.0 |gamemsg addf_u SrvNextWave
+#else
+DoL 0.0 |gamemsg addf_u survival_10
+DoL 5.0 |gamemsg addf_u survival_11
+#endif
+DoL 3.0 |rook powerGenMod inc 8
+DoL 9.0 |sym set S_DCount 0
+DoL 9.0 |sym set CSWaveCount 0
+DoL 9.0 |floatSym set waveProgress 1.0
+DoL 9.0 |sym set CSWave $_SArg1_
+}
+State Wave1 {
+Cfg timeBlock 3.0
+DoL 0.0 sym set S_Wave 1
+DoL 0.0 sym set S_Total /9
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 1 rook doLevelState Wave1Spawn
+DoL 0.0 if sym S_DCount >= 9 rook doLevelState Wave1Complete
+}
+State Wave1Spawn {
+DoL 0.0 spawn Vulcan /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 0.5 spawn Vulcan /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 1.0 spawn Vulcan /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 1.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 2.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_south
+DoL 4.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_north
+DoL 5.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 5.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 6.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+}
+State Wave1Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave2
+}
+State Wave2 {
+Cfg timeBlock 3.0
+DoL 0.0 sym set S_Wave 2
+DoL 0.0 sym set S_Total /27
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 3 rook doLevelState Wave2Spawn
+DoL 0.0 if sym S_DCount >= 27 rook doLevelState Wave2Complete
+}
+State Wave2Spawn {
+DoL 0.0 spawn Vulcan /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 0.5 spawn Vulcan /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 1.0 spawn SupplyTruck /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 1.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 3.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 3.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 5.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 5.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 7.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_north
+}
+State Wave2Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave3
+}
+State Wave3 {
+Cfg timeBlock 3.0
+DoL 0.0 sym set S_Wave 3
+DoL 0.0 sym set S_Total /18
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 2 rook doLevelState Wave3Spawn
+DoL 0.0 if sym S_DCount >= 18 rook doLevelState Wave3Complete
+}
+State Wave3Spawn {
+DoL 0.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 3.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 6.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 8.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 12.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 15.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 17.0 spawn SupplyTruck /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 20.5 spawn SupplyTruck /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 25.0 spawn Vulcan /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_north
+}
+State Wave3Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave4
+DoL 12.0 |gamemsg addf_u junk_11
+DoL 16.0 |gamemsg addf_u junk_12
+DoL 20.0 |gamemsg addf_u junk_13
+}
+State Wave4 {
+Cfg timeBlock 6.0
+DoL 0.0 sym set S_Wave 4
+DoL 0.0 sym set S_Total /54
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 6 rook doLevelState Wave4Spawn
+DoL 0.0 if sym S_DCount >= 54 rook doLevelState Wave4Complete
+}
+State Wave4Spawn {
+DoL 0.0 spawn TankHeavy /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 5.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 1.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+DoL 15.0 spawn TankHeavy /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 20.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 16.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 25.0 spawn SupplyTruck /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 30.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 26.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+}
+State Wave4Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave5
+DoL 19.0 |gamemsg addf_u junk_20
+}
+State Wave5 {
+Cfg timeBlock 3.0
+DoL 0.0 sym set S_Wave 5
+DoL 0.0 sym set S_Total /84
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 3 rook doLevelState Wave5Spawn
+DoL 0.0 if sym S_DCount >= 84 rook doLevelState Wave5Complete
+}
+State Wave5Spawn {
+DoL 0.0 spawn InfantryCreepL2 /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 0.5 spawn TankHeavyU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 2.0 spawn InfantryCreepL2 /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 3.5 spawn TankHeavy /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 4.0 spawn Creeper /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 5.5 spawn Creeper /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 6.0 spawn Creeper /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 7.5 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 8.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 9.0 spawn Infantry /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 9.5 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 10.0 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_north
+DoL 13.5 spawn TankHeavyU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 13.0 spawn Vulcan /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 15.5 spawn Vulcan /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_north
+DoL 16.0 spawn Vulcan /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 17.5 spawn InfantryCreepL2 /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 19.0 spawn InfantryCreepL2 /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_north
+DoL 23.0 spawn InfantryCreepL2 /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 23.5 spawn InfantryCreepL2 /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 26.0 spawn InfantryCreepL2 /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 26.5 spawn InfantryCreepL2 /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 28.0 spawn InfantryCreepL2 /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 28.5 spawn BikeSurvival /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 31.0 spawn BikeSurvival /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 31.5 spawn BikeSurvival /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 36.0 spawn BikeSurvival /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 36.0 spawn BikeSurvival /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+}
+State Wave5Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave6
+DoL 12.0 |gamemsg addf_u junk_14
+DoL 16.0 |gamemsg addf_u junk_15
+DoL 19.0 |gamemsg addf_u junk_16
+}
+State Wave6 {
+Cfg timeBlock 5.0
+DoL 0.0 sym set S_Wave 6
+DoL 0.0 sym set S_Total /27
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 3 rook doLevelState Wave6Spawn
+DoL 0.0 if sym S_DCount >= 27 rook doLevelState Wave6Complete
+}
+State Wave6Spawn {
+DoL 0.0 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 5.5 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 7.0 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 9.5 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 12.0 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 14.5 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 17.0 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 22.5 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_north
+DoL 26.0 spawn InfantryButcher /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_north
+}
+State Wave6Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave7
+}
+State Wave7 {
+Cfg timeBlock 5.0
+DoL 0.0 sym set S_Wave 7
+DoL 0.0 sym set S_Total /54
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 6 rook doLevelState Wave7Spawn
+DoL 0.0 if sym S_DCount >= 54 rook doLevelState Wave7Complete
+}
+State Wave7Spawn {
+DoL 0.0 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 1.5 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 3.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 5.5 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 7.0 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 8.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 10.0 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 15.5 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 16.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+}
+State Wave7Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave8
+DoL 20.0 |gamemsg addf_u junk_21
+DoL 23.0 |gamemsg addf_u junk_22
+DoL 25.0 |gamemsg addf_u junk_23
+}
+State Wave8 {
+Cfg timeBlock 2.0
+DoL 0.0 sym set S_Wave 8
+DoL 0.0 sym set S_Total /45
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 5 rook doLevelState Wave8Spawn
+DoL 0.0 if sym S_DCount >= 45 rook doLevelState Wave8Complete
+}
+State Wave8Spawn {
+DoL 0.0 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 1.5 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 3.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 5.5 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 7.0 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 8.5 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+DoL 10.0 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 15.5 spawn TankLight /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 16.0 spawn RocketTruckU /team 6 /data ". team 6" /data ". order CaptureOutpost" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+}
+State Wave8Complete {
+Cfg timeBlock 200.0
+DoL 0.0 sym set CSWave Wave9
+DoL 12.5 |state doLevelAction victory
+}
+}

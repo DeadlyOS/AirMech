@@ -1,0 +1,14 @@
+Script LeaderboardRowClick {
+cmd "if consolePlatform menucmd LeaderboardRowClick_Console local $_MArg1_"
+cmd "if !consolePlatform menucmd LeaderboardRowClick_NotConsole local $_MArg1_"
+}
+Script LeaderboardRowClick_Console {
+cmd "platform leaderboards inspectrow $_MArg1_"
+}
+Script LeaderboardRowClick_NotConsole {
+cmd "if sym _FriendStatusCode_ != 3 runnow loadmenu DialogFriend /fadein 0.15"
+cmd "if sym _FriendStatusCode_ == 3 runnow loadmenu DialogPendingFriend /fadein 0.15"
+}
+Script GotLeaderboardPosUpdate {
+cmd "menucmd DoEndGameSequenceMessage leaderboard $_MArg1_ $_MArg2_ $_MArg3_ $_MArg4_ $_MArg5_"
+}

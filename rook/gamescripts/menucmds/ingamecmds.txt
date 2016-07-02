@@ -1,0 +1,73 @@
+Script NotifyCameraWatchChanged {
+rcmd "clearmenu NotifyLevelUpNP.txt"
+rcmd "console flushAllPendingSeq 201"
+}
+Script NotifySpecCycleMode {
+cmd "sym toggle SpectateEconomy"
+}
+Script OnChallengeMapStart {
+cmd "party2 create challenge 1"
+rcmd "if walletUnlocked Mako runnow sym set ChalPilotComm Mako"
+rcmd "if walletUnlocked Hawk runnow sym set ChalPilotComm Hawk"
+rcmd "if walletUnlocked Raven runnow sym set ChalPilotComm Raven"
+rcmd "if walletUnlocked Kira runnow sym set ChalPilotComm Kira"
+rcmd "if walletUnlocked Samson runnow sym set ChalPilotComm Samson"
+rcmd "if walletUnlocked Erik runnow sym set ChalPilotComm Erik"
+rcmd "sym set InChallengeMap 1"
+rcmd "sym set P_Name0 $P_Name"
+rcmd "sym set P_FTag0 $FactionTag"
+rcmd "sym set ChalAIDiff 1"
+cmd "resources textures precache hud/Challenge"
+cmd "resources textures precache effects/stars4th"
+cmd "resources textures precache menus/Social"
+cmd "resources sounds precache ChallengeComplete"
+}
+Script OnTutorialMapStart {
+rcmd "party2 create tutorial 1"
+rcmd "if walletUnlocked Mako runnow sym set ChalPilotComm Mako"
+rcmd "if walletUnlocked Hawk runnow sym set ChalPilotComm Hawk"
+rcmd "if walletUnlocked Raven runnow sym set ChalPilotComm Raven"
+rcmd "if walletUnlocked Kira runnow sym set ChalPilotComm Kira"
+rcmd "if walletUnlocked Samson runnow sym set ChalPilotComm Samson"
+rcmd "if walletUnlocked Erik runnow sym set ChalPilotComm Erik"
+rcmd "pcmd t4 sym set InTutorialMap 1"
+}
+Script AdjustUIModeEnter {
+}
+Script AdjustUIModeExit {
+rcmd "sym clear _AdjustUISource_"
+cmd "gameui getLastRenderPos AB_AbilityContainer UI_Abilities_X UI_Abilities_Y
+cmd "gameui getLastRenderPos AB_UnitContainer UI_Units_X UI_Units_Y
+cmd "gameui getLastRenderPos MinimapMaster UI_Minimap_X UI_Minimap_Y
+cmd "gameui getLastRenderPos PowerUpMaster UI_PowerUp_X UI_PowerUp_Y
+cmd "backend save"
+}
+Script ResetHUD {
+rcmd "menucmd ResetAbilitiesUIPos"
+rcmd "menucmd ResetUnitsUIPos"
+rcmd "menucmd ResetMinimapPos"
+rcmd "menucmd ResetPowerUpPos"
+cmd "backend save"
+}
+Script SetHUD {
+cmd "if ingame addUIAnim AB_AbilityContainer mas_ResetAbilitiesUI.txt"
+cmd "if ingame addUIAnim AB_UnitContainer mas_ResetUnitsUI.txt"
+cmd "if ingame addUIAnim MinimapMaster mas_ResetMinimapUI.txt"
+cmd "if ingame addUIAnim PowerUpMaster mas_ResetPowerUpUI.txt"
+}
+Script ResetAbilitiesUIPos {
+rcmd "sym setPair UI_Abilities_X 720 UI_Abilities_Y 958"
+cmd "if ingame addUIAnim AB_AbilityContainer mas_ResetAbilitiesUI.txt"
+}
+Script ResetUnitsUIPos {
+rcmd "sym setPair UI_Units_X 1305 UI_Units_Y 958"
+cmd "if ingame addUIAnim AB_UnitContainer mas_ResetUnitsUI.txt"
+}
+Script ResetMinimapPos {
+rcmd "sym setPair UI_Minimap_X -35 UI_Minimap_Y 775"
+cmd "if ingame addUIAnim MinimapMaster mas_ResetMinimapUI.txt"
+}
+Script ResetPowerUpPos {
+rcmd "sym setPair UI_PowerUp_X 845 UI_PowerUp_Y 70"
+cmd "if ingame addUIAnim PowerUpMaster mas_ResetPowerUpUI.txt"
+}

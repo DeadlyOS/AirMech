@@ -1,0 +1,47 @@
+Script WishList_Req_Add {
+ignoreInputTime 0.5
+cmd "wallet wishlist add $_MArg1_"
+cmd "timer setAsyncWait 1"
+cmd "sym set UnlockInWishList 1"
+}
+Script WishList_Req_Remove {
+ignoreInputTime 0.5
+cmd "wallet wishlist remove $_MArg1_"
+cmd "timer setAsyncWait 1"
+cmd "sym set UnlockInWishList 0"
+}
+Script WishList_AlreadyAdded {
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleWishList"
+cmd "sym set DialogBoxMessage DialogMessageWishListAlreadyAdded"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script WishList_Added {
+cmd "timer clearAsyncWait"
+cmd "sym set UnlockInWishList 1"
+cmd "collection scrollUpdate paged"
+cmd "collection scrollUpdateInv2 paged"
+cmd "if usingpad pcmd 0.1 gameui focusnametry ConWishlistButtonRemove UnlockWithDiamondsFrame UnlockWithKudosFrame UnlockDialogCancel"
+}
+Script WishList_NotInList {
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleWishList"
+cmd "sym set DialogBoxMessage DialogMessageWishListNotInList"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script WishList_Removed {
+cmd "timer clearAsyncWait"
+cmd "sym set UnlockInWishList 0"
+cmd "collection scrollUpdate paged"
+cmd "collection scrollUpdateInv2 paged"
+cmd "if usingpad pcmd 0.1 gameui focusnametry ConWishlistButtonAdd UnlockWithDiamondsFrame UnlockWithKudosFrame UnlockDialogCancel"
+}
+Script WishList_Cleared {
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleWishList"
+cmd "sym set DialogBoxMessage DialogMessageWishListCleared"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}

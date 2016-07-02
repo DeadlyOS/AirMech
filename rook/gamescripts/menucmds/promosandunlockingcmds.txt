@@ -1,0 +1,579 @@
+Script ClosePromoInspect {
+ignoreInputTime 0.3
+cmd "clearmenu InspectPromoDialog /fadeout 0.15"
+}
+Script WillUseVIPShopTicketNotice {
+cmd "sym set DialogBoxTitle DialogTitleVIPShopTicketUse"
+cmd "sym set DialogBoxMessage DialogMessageVIPShopTicketUse"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "sym set DialogMenuCmdOnButton0 VIPShopTicketNoticeCancel"
+cmd "loadmenu DialogBox.txt /fadein 0.15"
+}
+Script VIPShopTicketNoticeCancel {
+ignoreInputTime 0.2
+cmd "gameUI hide UnlockKudosConfirm"
+cmd "gameUI hide UnlockDiamondsConfirm"
+cmd "gameUI hide UnlockCashChoose"
+cmd "pcmd 0.1 gameUI restoreFocusID _vipTicketNoticeRestoreFocus_"
+}
+Script PromoUnlockTry {
+frame_block PromoUnlock
+ignoreInputTime 0.2
+cmd "if sym _GotPrices_ == 1 runnow menuCmd PromoUnlockWithPrices $_MArg1_ $_MArg2_"
+cmd "if sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 0 runnow wallet updatePrices PromoUnlockWithPrices $_MArg1_ $_MArg2_"
+}
+Script PromoUnlockWithPrices {
+cmd "timer clearAsyncWait"
+cmd "sym set _CustomObject $_MArg1_"
+cmd "if walletLocked $_MArg2_ customize slotInspectOrExec $_MArg1_ $_MArg2_ _CustomSymbol _CustomValue"
+cmd "if walletUnlocked $_MArg2_ customize slotInspect $_MArg1_ $_MArg2_"
+}
+Script AirmechBaseUnlock {
+cmd "timer clearAsyncWait"
+cmd "sym set _CustomObject rooks"
+cmd "customize slotInspectOrExec rooks $_MArg1_ _CustomSymbol _CustomValue /unfilteredNameRef"
+}
+Script PromoUnlockBundleTry {
+frame_block PromoUnlock
+cmd "if sym _GotPrices_ == 1 runnow menuCmd PromoUnlockBundleWithPrices $_MArg1_"
+cmd "if sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 0 runnow wallet updatePrices PromoUnlockBundleWithPrices $_MArg1_"
+}
+Script PromoUnlockBundleWithPrices {
+cmd "timer clearAsyncWait"
+cmd "sym set _CustomObject bundle"
+cmd "if bundleLocked $_MArg1_ rook buyBundle $_MArg1_"
+cmd "if bundleUnlocked $_MArg1_ rook inspectBundle $_MArg1_"
+}
+Script BuyBundleTry {
+cmd "if sym _GotPrices_ == 1 runnow menuCmd BuyBundleTryWithPrices $_MArg1_"
+cmd "if sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 0 runnow wallet updatePrices BuyBundleTryWithPrices $_MArg1_"
+}
+Script BuyBundleTryWithPrices {
+cmd "timer clearAsyncWait"
+cmd "sym set _CustomObject bundle"
+cmd "rook buyBundle $_MArg1_"
+}
+Script OpenNewDiamondBuyDialog {
+ignoreInputTime 0.2
+cmd "if menuLoaded UnlockDialog runnow clearmenu UnlockDialog /fadeout 0.1"
+cmd "if !arc runnow pcmd t2 if !menuloaded BuyDiamonds runnow loadmenu BuyDiamonds /fadein 0.1"
+cmd "if arc runnow arc purchase"
+}
+Script StorePromoUnlockOrInspectBundleTry {
+frame_block PromoUnlock
+cmd "if sym UnlockDialogActive == 0 && sym _GotPrices_ == 1 runnow menuCmd StorePromoUnlockOrInspectBundleWithPrices $_MArg1_"
+cmd "if sym UnlockDialogActive == 0 && sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym UnlockDialogActive == 0 && sym _GotPrices_ == 0 runnow wallet updatePrices StorePromoUnlockOrInspectBundleWithPrices $_MArg1_"
+}
+Script StorePromoUnlockOrInspectBundleWithPrices {
+cmd "if bundleLocked $_MArg1_ rook buyBundle $_MArg1_"
+cmd "if bundleUnlockedSinglePurchase $_MArg1_ rook inspectBundle $_MArg1_"
+cmd "if bundleUnlockedRebuyable $_MArg1_ rook buyBundle $_MArg1_"
+cmd "rookMenus previewHide"
+}
+Script StorePromoUnlockOrInspectBetaBundleTry {
+frame_block PromoUnlock
+cmd "if sym _GotPrices_ == 1 runnow menuCmd StorePromoUnlockOrInspectBetaBundleWithPrices"
+cmd "if sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 0 runnow wallet updatePrices StorePromoUnlockOrInspectBetaBundleWithPrices"
+}
+Script StorePromoUnlockOrInspectBetaBundleWithPrices {
+cmd "if bundleLocked AlphaBundle menuCmd StorePromoUnlockOrInspectBundleTry BetaBundle"
+cmd "if bundleUnlocked AlphaBundle if bundleLocked BetaBundleA menuCmd StorePromoUnlockOrInspectBundleTry BetaBundleA"
+cmd "if bundleUnlocked AlphaBundle if bundleUnlocked BetaBundleA rook inspectBundle BetaBundle"
+}
+Script StorePromoUnlockOrInspectNYPBundleTry {
+frame_block PromoUnlock
+cmd "if sym _GotPrices_ == 1 runnow menuCmd StorePromoUnlockOrInspectNYPBundleWithPrices"
+cmd "if sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 0 runnow wallet updatePrices StorePromoUnlockOrInspectNYPBundleWithPrices"
+}
+Script StorePromoUnlockOrInspectNYPBundleWithPrices {
+cmd "if bundleLocked $_MArg1_ menuCmd StorePromoUnlockOrInspectBundleTry $_MArg1_"
+cmd "if bundleLocked $_MArg1_ rook inspectBundle $_MArg1_"
+cmd "if bundleUnlocked $_MArg1_ rook inspectBundle $_MArg1_"
+}
+Script StorePromoUnlockOrInspectPrimeBundleTry {
+frame_block PromoUnlock
+cmd "if sym _GotPrices_ == 1 runnow menuCmd StorePromoUnlockOrInspectPrimeBundleWithPrices"
+cmd "if sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 0 runnow wallet updatePrices StorePromoUnlockOrInspectPrimeBundleWithPrices"
+}
+Script StorePromoUnlockOrInspectPrimeBundleWithPrices {
+cmd "if airmechPrime menuCmd PromoUnlockTry misc PrimeCube"
+cmd "if !airmechPrime menuCmd StorePromoUnlockOrInspectCorrectPrimeBundleWithPrices_ForWhile"
+}
+Script StorePromoUnlockOrInspectCorrectPrimeBundleWithPrices_ForWhile {
+cmd "if anyBundleUnlockedOf 3 AlphaBundle BetaBundle BetaBundleA menuCmd StorePromoUnlockOrInspectBundleTry PrimeBundleA"
+cmd "if allBundleLockedOf 3 AlphaBundle BetaBundle BetaBundleA menuCmd StorePromoUnlockOrInspectBundleTry PrimeBundle"
+}
+Script OfferPrimeBundleTry {
+frame_block PromoUnlock
+cmd "if sym _GotPrices_ == 1 runnow menuCmd OfferPrimeBundleTryWithPrices"
+cmd "if sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 0 runnow wallet updatePrices OfferPrimeBundleTryWithPrices"
+}
+Script OfferPrimeBundleTryWithPrices {
+cmd "if allBundleLockedOf 3 AlphaBundle BetaBundle PrimeBundle menuCmd StorePromoUnlockOrInspectBundleTry _PrimeOffer1"
+}
+Script StorePromoUnlockOrInspectBoosterPackTry {
+frame_block PromoUnlock
+cmd "if sym _GotPrices_ == 1 runnow menuCmd StorePromoUnlockOrInspectBoosterPackWithPrices"
+cmd "if sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 0 runnow wallet updatePrices StorePromoUnlockOrInspectBoosterPackWithPrices"
+}
+Script StorePromoUnlockOrInspectBoosterPackWithPrices {
+cmd "if anyBundleUnlockedOf 2 StarterPack SteamStarterPack menuCmd StorePromoUnlockOrInspectBundleTry BoosterPack"
+cmd "if allBundleLockedOf 2 StarterPack SteamStarterPack rook inspectBundle BoosterPack"
+}
+Script StorePromoUnlockOrInspectGoldVIPTry {
+frame_block PromoUnlock
+cmd "if sym _GotPrices_ == 1 runnow menuCmd StorePromoUnlockOrInspectGoldVIPWithPrices"
+cmd "if sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 0 runnow wallet updatePrices StorePromoUnlockOrInspectGoldVIPWithPrices"
+}
+Script StorePromoUnlockOrInspectGoldVIPWithPrices {
+cmd "if anyBundleUnlockedOf 2 StarterPack SteamStarterPack menuCmd StorePromoUnlockOrInspectBundleTry BoosterPack"
+cmd "if allBundleLockedOf 2 StarterPack SteamStarterPack menuCmd StorePromoUnlockOrInspectBundleTry StarterPack"
+}
+Script StorePromoUnlockOrInspectSilverVIPTry {
+frame_block PromoUnlock
+cmd "if sym _GotPrices_ == 1 runnow menuCmd StorePromoUnlockOrInspectSilverVIPTryWithPrices"
+cmd "if sym _GotPrices_ == 0 runnow timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 0 runnow wallet updatePrices StorePromoUnlockOrInspectSilverVIPTryWithPrices"
+}
+Script StorePromoUnlockOrInspectSilverVIPTryWithPrices {
+cmd "if vip rook inspectBundle _SilverVIP"
+cmd "if !vip menuCmd StorePromoUnlockOrInspectBundleTry _SilverVIP"
+}
+Script BadgeClick_m {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_Mod"
+cmd "sym setl BackendDialogText BadgeClickMsg_Mod"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script BadgeClick_D_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_D_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_D_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_G_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_G_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_SteamPunk"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_M_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_M_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_M_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_O_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_O_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_O_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_C_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_C_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_C_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_A_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_A_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_A_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_F_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_F_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_F_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_P_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_P_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_P_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_x {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_x"
+cmd "sym setl BackendDialogText BadgeClickMsg_x"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_S_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_S_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_S_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_Z_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_Z_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_Z_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_z {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_z"
+cmd "sym setl BackendDialogText BadgeClickMsg_z"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_d {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_d"
+cmd "sym setl BackendDialogText BadgeClickMsg_d"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_f {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_f"
+cmd "sym setl BackendDialogText BadgeClickMsg_f"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_e {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_e"
+cmd "sym setl BackendDialogText BadgeClickMsg_e"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_v {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_v"
+cmd "sym setl BackendDialogText BadgeClickMsg_v"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_w {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_w"
+cmd "sym setl BackendDialogText BadgeClickMsg_w"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_V_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_V_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_V_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_g {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_g"
+cmd "sym setl BackendDialogText BadgeClickMsg_g"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_B_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_B_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_B_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_i {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_i"
+cmd "sym setl BackendDialogText BadgeClickMsg_i"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_c {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_c"
+cmd "sym setl BackendDialogText BadgeClickMsg_c"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_h {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_h"
+cmd "sym setl BackendDialogText BadgeClickMsg_h"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_H_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_H_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_H_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_X_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_X_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_X_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_W_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_W_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_W_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_a {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_a"
+cmd "sym setl BackendDialogText BadgeClickMsg_a"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_b {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_b"
+cmd "sym setl BackendDialogText BadgeClickMsg_b"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_p {
+cmd "menuCmd StorePromoUnlockOrInspectPrimeBundleTry"
+}
+Script BadgeClick_s {
+cmd "menucmd StorePromoUnlockOrInspectSilverVIPTry"
+}
+Script BadgeClick_t {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_t"
+cmd "sym setl BackendDialogText BadgeClickMsg_t"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_Y_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_Y_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_Y_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_k {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_k"
+cmd "sym setl BackendDialogText BadgeClickMsg_k"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_K_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_K_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_K_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_L_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_L_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_L_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_y {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_y"
+cmd "sym setl BackendDialogText BadgeClickMsg_y"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_I_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_I_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_I_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_E_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_E_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_E_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_N_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_N_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_N_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_n {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_n"
+cmd "sym setl BackendDialogText BadgeClickMsg_n"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_j {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_j"
+cmd "sym setl BackendDialogText BadgeClickMsg_j"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_l {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_l"
+cmd "sym setl BackendDialogText BadgeClickMsg_l"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_o {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_o"
+cmd "sym setl BackendDialogText BadgeClickMsg_o"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_Q_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_Q_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_Q_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_U_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_U_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_U_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_q {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_q"
+cmd "sym setl BackendDialogText BadgeClickMsg_q"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_u {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_u"
+cmd "sym setl BackendDialogText BadgeClickMsg_u"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_T_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_T_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_T_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_J_Cap {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_J_Cap"
+cmd "sym setl BackendDialogText BadgeClickMsg_J_Cap"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_0 {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_0"
+cmd "sym setl BackendDialogText BadgeClickMsg_48"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_49 {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_49"
+cmd "sym setl BackendDialogText BadgeClickMsg_49"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_50 {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_50"
+cmd "sym setl BackendDialogText BadgeClickMsg_50"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_51 {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_51"
+cmd "sym setl BackendDialogText BadgeClickMsg_51"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_8 {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_8"
+cmd "sym setl BackendDialogText BadgeClickMsg_8"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_9 {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_9"
+cmd "sym setl BackendDialogText BadgeClickMsg_9"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_: {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_:"
+cmd "sym setl BackendDialogText BadgeClickMsg_:"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_; {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_;"
+cmd "sym setl BackendDialogText BadgeClickMsg_;"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script BadgeClick_= {
+cmd "sym setl BackendDialogCaption BadgeClickTitle_61"
+cmd "sym setl BackendDialogText BadgeClickMsg_61"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if !menuloaded BackendDialog menucmd BackendDialog"
+}
+Script EmailLinkCheck {
+cmd "rook emailCheck EmailToAttach EmailLinkCheck_OK EmailLinkCheck_Fail"
+}
+Script EmailLinkCheck_OK {
+ignoreInputTime 0.5
+cmd "net attachemail EmailToAttach"
+cmd "rook nextPromo"
+cmd "gameui hide SubmitEmailButton"
+cmd "clearmenu InspectPromoDialog"
+}
+Script EmailLinkCheck_Fail {
+cmd "echo email check failed"
+cmd "sym set DialogBoxTitle Carbon1ValFailTitle"
+cmd "sym set DialogBoxMessage Carbon1ValFail"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.1"
+}
+Script CodePromoRedeemSuccess {
+cmd "wallet doRequestInventory"
+cmd "clearmenu DialogRedeemCode /fadeout 0.1"
+}
+Script CodePromoRedeemFail {
+}

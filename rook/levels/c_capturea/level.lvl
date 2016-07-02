@@ -1,0 +1,2188 @@
+// map: c_captureA
+
+// level embedded console commands 
+CONSOLE_IMMEDIATE rook setChallengeInfo capture 0 60 /2star 80 /1star 300 /useAirMech Chopper /loseTime 300 /allowRespawn 1
+CONSOLE_IMMEDIATE menucmd OnChallengeMapStart
+CONSOLE_IMMEDIATE sym set LessonObject LessonEmpty
+CONSOLE_IMMEDIATE sym set ChallengeNumber 14
+CONSOLE sym set HasLessonIntro 1
+CONSOLE sym set LessonIntro Chal11_LessonIntro
+CONSOLE sym set HasLessonOutro 1
+CONSOLE sym set LessonOutro Chal11_LessonOutro
+CONSOLE sym set LessonOutroFail ChalN_LessonOutroFail
+CONSOLE sym set LessonOutroVeteran ChalN_LessonOutroVeteran
+CONSOLE if sym CSCap1 < $MinChalStarsForNoTip runnow pausegame 1
+CONSOLE if sym CSCap1 < $MinChalStarsForNoTip loadmenu Lesson
+CONSOLE if sym CSCap1 < $MinChalStarsForNoTip sym set ChallengeShowNext 1
+CONSOLE player 1 toggleai
+CONSOLE player 1 activate 0 // turns off forcebox
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_Mountain.mtl ToGrass
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_EnvironmentMapped.mtl Mountain
+CONSOLE_IMMEDIATE sym savedSet PilotCustom0 $ChalPilotComm
+CONSOLE_IMMEDIATE sym savedSet ItemCustom0 NoItem
+CONSOLE_IMMEDIATE sym set LessonObject LessonBuild
+CONSOLE_IMMEDIATE rook setArmy InfantryLight BikeSidecar RocketTruck Tank TurretDual SupplyTruck ArmoredCar TurretChaingun
+CONSOLE_IMMEDIATE rook setParts PriNone PriCheatDPS StrCheatArmor StrNone SpeCheatBuild SpeCheatMoney CorNone EngNone
+CONSOLE_EXIT_IMMEDIATE sym restore PilotCustom0 ItemCustom0
+CONSOLE_EXIT_IMMEDIATE rook restoreArmy
+CONSOLE_EXIT_IMMEDIATE rook restoreParts
+
+mapInfo {
+	MAPNAME c_captureA
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION c_captureA
+	SKYBOX mat_SkyBlueSmallClouds
+	GAMEMODE challengeCapture
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT 45
+	FORCEBOX -50 40 -46 46 4 45.0
+	MAPEXTMIN -57 -57 -16
+	MAPEXTMAX 57 57 0
+	CAMERAEXTMIN -40 -30
+	CAMERAEXTMAX 30 30
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Canyon
+	TerrainArrayX 10
+	TerrainArrayY 10
+	TerrainStepZ 3.0
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -6
+  TRANSFORMPLANE -5
+}
+
+CANVASCOLOR 0 0 0 0
+fogValues {
+  FOGCOLOR 39 85 80 255
+  FOGARGS 15 13
+  DFOGCOLOR 255 255 255 255
+  DFOGARGS 90 150
+}
+
+airmech {
+	P_START 0 22.618082 -0.757508 3
+	P_START 1 -86 -86 3
+}
+DIR_LIGHT {
+	dir 0.261277 0.544939 0.796728
+	diff 0.7 0.7 0.7
+	amb 0.6 0.5 0.4
+}
+objects {
+	WO Mountain_J0 {
+		pos 80 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 80 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 -16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 -8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 -80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 -64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 -64 0
+		. nsc
+	}
+	WO Tank {
+		pos -12.846608 21.584364 0
+		rot_x -0.422618 -0.906308 0
+		rot_y 0.906308 -0.422618 0
+		id 1
+		. team 1
+		. order HoldPosition
+	}
+	WO Mountain_J0 {
+		pos 72 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 72 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 72 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 72 24 0
+		. nsc
+	}
+	WO TurretChaingun {
+		pos 19.848747 27.956745 0.074134
+		rot_x -0.905767 0.402441 0
+		rot_y -0.402441 -0.905767 0
+		id 2
+		. team 0
+		. order HoldPosition
+	}
+	WO Bike {
+		pos 35.268127 -4.356675 0.109467
+		rot_x -0.866025 0.5 0
+		rot_y -0.5 -0.866025 0
+		id 3
+		. team 0
+		. order HoldPosition
+	}
+	WO Tank {
+		pos 2.187782 -33.867863 0.27
+		rot_x -0.819152 -0.573577 0
+		rot_y 0.573577 -0.819152 0
+		id 4
+		. team 0
+		. order HoldPosition
+	}
+	WO Mountain_J0 {
+		pos 64 -16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 64 -8 0
+		. nsc
+	}
+	WO ArmoredCar {
+		pos -51.79871 -12.00935 0.046333
+		rot_x 0.571861 -0.816701 0
+		rot_y 0.816701 0.571861 0
+		id 5
+		. team 0
+		. order HoldPosition
+	}
+	WO TankLight {
+		pos -16.365894 16.781698 0.100004
+		rot_x -0.906308 -0.422619 0
+		rot_y 0.422619 -0.906308 0
+		id 6
+		. team 1
+		. order HoldPosition
+	}
+	WO Mountain_J0 {
+		pos -8 -72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 -72 0
+		. nsc
+	}
+	WO ScorpionTank {
+		pos -22.3288 12.705615 0.000075
+		rot_x -0.984808 -0.173648 0
+		rot_y 0.173648 -0.984808 0
+		id 7
+		. team 1
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 4.329066 -1.694351 -3.000004
+		rot_x 0.984808 -0.173648 0
+		rot_y 0.173648 0.984808 0
+		id 8
+		. team 0
+		. order CaptureOutpost
+	}
+	WO Infantry {
+		pos 3.95244 -3.429002 -3.000002
+		rot_x -0.173648 -0.984808 0
+		rot_y 0.984808 -0.173648 0
+		id 9
+		. team 0
+		. order CaptureOutpost
+	}
+	WO Mountain_J0 {
+		pos 64 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 64 40 0
+		. nsc
+	}
+	WO Infantry {
+		pos 1.960271 -2.157066 -3.999999
+		rot_x 0.819152 -0.573576 0
+		rot_y 0.573576 0.819152 0
+		id 10
+		. team 0
+		. order CaptureOutpost
+	}
+	WO Infantry {
+		pos 2.347132 -4.251611 -3.000004
+		rot_x -0.906308 -0.422618 0
+		rot_y 0.422618 -0.906308 0
+		id 11
+		. team 0
+		. order CaptureOutpost
+	}
+	WO Mountain_J0 {
+		pos 64 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 64 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 64 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 64 24 0
+		. nsc
+	}
+	WO MountainRock_E0 {
+		pos 31.055313 30.507381 -7.02
+		rot_x 0.573577 0.819152 0
+		rot_y -0.819152 0.573577 0
+		scl 1.32
+	}
+	WO MountainRock_E2 {
+		pos 33.358311 18.772495 -7.109993
+		rot_x 0.5 -0.866026 0
+		rot_y 0.866026 0.5 0
+	}
+	WO MountainRock_E1 {
+		pos 21.030203 48.372669 -10.040002
+		scl 1.529999
+	}
+	WO MountainRock_E2 {
+		pos 11.205663 46.903042 -5.849989
+		rot_x -0.707107 0.707107 0
+		rot_y -0.707107 -0.707107 0
+	}
+	WO Mountain_J0 {
+		pos 72 -8 0
+		. nsc
+	}
+	WO MountainRock_E1 {
+		pos -12.795041 51.185421 -3.38645
+	}
+	WO MountainRock_E0 {
+		pos 32.374855 38.712231 -7.999997
+	}
+	WO Mountain_J0 {
+		pos 8 -64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 -64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 -80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 -72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 56 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -40 40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 -72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 -8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 -16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 -16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -80 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 -64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -40 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 -24 0
+		. nsc
+	}
+	WO Mountain_F1 {
+		pos -56 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Mountain_J0 {
+		pos 32 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 0 0
+		. nsc
+	}
+	WO Mountain_A9 {
+		pos 16 -8 0
+		. mtmm 11
+	}
+	WO Mountain_A7 {
+		pos 24 -8 0
+		. mtmm 7
+	}
+	WO Mountain_J0 {
+		pos 48 -8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 -64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 -72 0
+		. nsc
+	}
+	WO Mountain_F1 {
+		pos -56 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_J0 {
+		pos -72 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 16 0
+		. nsc
+	}
+	WO Mountain_H0 {
+		pos 8 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_G1 {
+		pos 16 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Mountain_H0 {
+		pos 32 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Mountain_F1 {
+		pos 24 16 0
+	}
+	WO Mountain_J0 {
+		pos 48 -16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -40 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -40 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 48 0
+		. nsc
+	}
+	WO Mountain_F0 {
+		pos -40 0 0
+	}
+	WO Mountain_F0 {
+		pos 24 32 0
+	}
+	WO Mountain_F1 {
+		pos 24 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Mountain_F1 {
+		pos 32 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Mountain_G0 {
+		pos 24 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Mountain_A0 {
+		pos 24 0 0
+		. mtmm 13
+		. nsc
+	}
+	WO Mountain_F0 {
+		pos 40 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Mountain_H0 {
+		pos 24 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Mountain_J0 {
+		pos 48 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 40 0
+		. nsc
+	}
+	WO Mountain_H0 {
+		pos -40 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Mountain_H0 {
+		pos 8 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Mountain_H0 {
+		pos 16 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Mountain_H0 {
+		pos 16 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Mountain_Aa {
+		pos 16 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Mountain_A8 {
+		pos 16 0 0
+		. mtmm 14
+	}
+	WO Mountain_F1 {
+		pos 40 0 0
+	}
+	WO Mountain_H0 {
+		pos 32 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Mountain_J0 {
+		pos 40 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 -8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 -16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -72 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 48 0
+		. nsc
+	}
+	WO Mountain_H0 {
+		pos -40 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Mountain_H0 {
+		pos 16 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Mountain_A0 {
+		pos 8 24 0
+		. mtmm 14
+		. nsc
+	}
+	WO Mountain_A7 {
+		pos 8 16 0
+		. mtmm 7
+	}
+	WO Mountain_D0 {
+		pos 8 8 -3
+		. mtmm 1
+	}
+	WO Mountain_C3 {
+		pos 8 0 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Mountain_D0 {
+		pos 8 -8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Mountain_F0 {
+		pos 32 8 0
+	}
+	WO Mountain_H0 {
+		pos -16 -24 0
+		. mtmm 2
+	}
+	WO Mountain_G0 {
+		pos -16 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_F1 {
+		pos -16 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Mountain_J0 {
+		pos -40 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 48 0
+		. nsc
+	}
+	WO Mountain_F1 {
+		pos -40 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Mountain_F1 {
+		pos 0 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_H0 {
+		pos 0 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Mountain_A3 {
+		pos 0 16 0
+		. mtmm 10
+	}
+	WO Mountain_C0 {
+		pos 0 8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Mountain_A2 {
+		pos 0 0 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Mountain_C0 {
+		pos 0 -8 -3
+	}
+	WO Mountain_A8 {
+		pos 0 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Mountain_A0 {
+		pos 0 -24 0
+		. mtmm 9
+		. nsc
+	}
+	WO Mountain_A0 {
+		pos 0 -32 0
+		. mtmm 6
+		. nsc
+	}
+	WO Mountain_G1 {
+		pos -8 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Mountain_J0 {
+		pos -48 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 -64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 48 0
+		. nsc
+	}
+	WO Mountain_F0 {
+		pos -8 40 0
+	}
+	WO Mountain_G0 {
+		pos -8 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Mountain_H0 {
+		pos -8 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 5
+	}
+	WO Mountain_A5 {
+		pos -8 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 5
+	}
+	WO Mountain_D0 {
+		pos -8 8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Mountain_C0 {
+		pos -8 0 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Mountain_D0 {
+		pos -8 -8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Mountain_A3 {
+		pos -8 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 13
+	}
+	WO Mountain_A0 {
+		pos -8 -24 0
+		. mtmm 3
+		. nsc
+	}
+	WO Mountain_A0 {
+		pos -8 -32 0
+		. mtmm 8
+		. nsc
+	}
+	WO Mountain_G2 {
+		pos 0 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Mountain_J0 {
+		pos -56 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 48 0
+		. nsc
+	}
+	WO Mountain_G1 {
+		pos -16 40 0
+		. mtmm 4
+	}
+	WO Mountain_A0 {
+		pos -16 32 0
+		. mtmm 13
+		. nsc
+	}
+	WO Mountain_A6 {
+		pos -16 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 11
+	}
+	WO Mountain_Ad {
+		pos -16 16 0
+		. mtmm 14
+	}
+	WO Mountain_A4 {
+		pos -16 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 11
+	}
+	WO Mountain_A6 {
+		pos -16 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Mountain_A4 {
+		pos -16 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Mountain_Ac {
+		pos -16 -16 0
+		. mtmm 10
+	}
+	WO Mountain_G1 {
+		pos 8 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Mountain_G2 {
+		pos 8 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Mountain_F1 {
+		pos 8 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Mountain_J0 {
+		pos -24 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 -56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 48 0
+		. nsc
+	}
+	WO Mountain_G2 {
+		pos -24 40 0
+		. mtmm 8
+	}
+	WO Mountain_A0 {
+		pos -24 32 0
+		. mtmm 14
+		. nsc
+	}
+	WO Mountain_A0 {
+		pos -24 24 0
+		. mtmm 7
+		. nsc
+	}
+	WO Mountain_A3 {
+		pos -24 16 0
+		. mtmm 13
+	}
+	WO Mountain_F0 {
+		pos -32 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Mountain_H0 {
+		pos -32 -16 0
+		. mtmm 3
+	}
+	WO Mountain_A2 {
+		pos -24 -8 0
+		. mtmm 6
+	}
+	WO Mountain_A8 {
+		pos -24 -16 0
+		. mtmm 1
+	}
+	WO Mountain_G0 {
+		pos -32 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Mountain_J0 {
+		pos -64 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 8 0
+		. nsc
+	}
+	WO Mountain_F1 {
+		pos -48 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_H0 {
+		pos -48 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Mountain_J0 {
+		pos 16 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 48 0
+		. nsc
+	}
+	WO Mountain_F1 {
+		pos -32 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_G2 {
+		pos -40 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_A0 {
+		pos -32 24 0
+		. mtmm 10
+		. nsc
+	}
+	WO Mountain_A5 {
+		pos -32 16 0
+		. mtmm 10
+	}
+	WO Mountain_G2 {
+		pos -24 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Mountain_H0 {
+		pos -32 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Mountain_F1 {
+		pos -32 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_H0 {
+		pos -24 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Mountain_H0 {
+		pos -24 8 0
+		. mtmm 3
+	}
+	WO Mountain_J0 {
+		pos -56 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 -48 0
+		. nsc
+	}
+	WO Mountain_H0 {
+		pos -48 -16 0
+		. mtmm 2
+	}
+	WO Mountain_F0 {
+		pos -48 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Mountain_J0 {
+		pos -48 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -56 56 0
+		. nsc
+	}
+	WO Mountain_G1 {
+		pos -40 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_F1 {
+		pos -40 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Mountain_H0 {
+		pos -32 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Mountain_F0 {
+		pos -40 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_J0 {
+		pos 24 40 0
+		. nsc
+	}
+	WO Mountain_F1 {
+		pos 8 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Mountain_F1 {
+		pos 16 40 0
+	}
+	WO Mountain_J0 {
+		pos 0 40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -40 64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -40 48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 80 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 56 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -48 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 -16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 -8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -64 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -40 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -40 -40 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -40 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 48 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 -48 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -40 -64 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 40 72 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -32 88 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 88 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 88 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 88 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 88 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 88 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 88 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 88 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 32 88 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -24 96 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 96 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 96 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 96 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 96 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 96 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 24 96 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -88 -32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -88 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -88 -16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -88 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -88 -8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -88 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -88 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -88 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -88 32 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -96 -24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -96 -16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -96 -8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -96 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -96 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -96 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -96 24 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -104 -16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -104 -8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -104 0 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -104 8 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -104 16 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -16 104 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos -8 104 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 0 104 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 8 104 0
+		. nsc
+	}
+	WO Mountain_J0 {
+		pos 16 104 0
+		. nsc
+	}
+	WO GenPower {
+		pos 4.014315 -23.235224 -0.002829
+		id 12
+		. team 0
+		. order HoldPosition
+	}
+	WO GenPower {
+		pos 17.986477 8.728756 0
+		id 13
+		. team 0
+		. order HoldPosition
+	}
+	WO FortPadBase {
+		pos 13.841898 -7.999393 -0.164479
+		rot_x 0.573577 -0.819152 0
+		rot_y 0.819152 0.573577 0
+		id 14
+		. team -1
+	}
+	WO FortPadBase {
+		pos 26.362955 -11.112101 0.030323
+		id 15
+		. team -1
+	}
+	WO FortPadBase {
+		pos 12.40481 3.911694 0.025302
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		id 16
+		. team -1
+	}
+	WO BotSpawner {
+		pos 13.84748 -7.98767 0.436856
+		rot_x 0.965926 -0.258819 0
+		rot_y 0.258819 0.965926 0
+		id 17
+		. team 0
+		. order HoldPosition
+	}
+	WO MoneyMaker {
+		pos -2.537598 -18.409735 0.000324
+		id 18
+		. team 0
+		. order HoldPosition
+	}
+	WO FortPadBase {
+		pos 1.957037 -18.18012 0.029989
+		rot_x -0.965926 0.258819 0
+		rot_y -0.258819 -0.965926 0
+		id 19
+		. team -1
+	}
+	WO FortPadBase {
+		pos -30.155901 -12.523798 0.066814
+		rot_x -0.087156 -0.996196 0
+		rot_y 0.996196 -0.087156 0
+		id 20
+		. team -1
+	}
+	WO BotSpawner {
+		pos 26.379318 -11.121219 0.631654
+		rot_x 0.573577 -0.819152 0
+		rot_y 0.819152 0.573577 0
+		id 21
+		. team 0
+		. order HoldPosition
+	}
+	WO BotSpawner {
+		pos 12.455691 3.809714 0.626643
+		rot_x 0.342021 -0.939693 0
+		rot_y 0.939693 0.342021 0
+		id 22
+		. team 0
+		. order HoldPosition
+	}
+	WO BotSpawner {
+		pos -29.926392 -12.583179 0.668159
+		rot_x 0.965926 -0.258819 0
+		rot_y 0.258819 0.965926 0
+		id 23
+		. team 1
+		. order HoldPosition
+	}
+	WO ScorpionTank {
+		pos -19.905914 0.668565 0.029975
+		rot_x 0 -1.000001 0
+		rot_y 1.000001 0 0
+		id 24
+		. team 1
+		. order HoldPosition
+	}
+	WO MountainRock_E0 {
+		pos 19.530321 -25.204119 -2.406454
+		rot_x 0.173648 -0.984808 0
+		rot_y 0.984808 0.173648 0
+		scl 1.32
+	}
+	WO MountainRock_E0 {
+		pos -40.404602 -37.696674 -3.516479
+	}
+	WO MountainRock_E0 {
+		pos -22.559662 -51.259956 -2.706448
+		rot_x -0.173649 -0.984808 0
+		rot_y 0.984808 -0.173649 0
+		scl 1.32
+	}
+	WO MountainRock_E2 {
+		pos -61.706341 8.111003 -5.766447
+		rot_x -0.984808 -0.173648 0
+		rot_y 0.173648 -0.984808 0
+	}
+	WO MountainRock_E2 {
+		pos -33.241886 -31.980722 -5.739566
+		rot_x 0.984808 -0.173648 0
+		rot_y 0.173648 0.984808 0
+	}
+	WO MountainRock_E0 {
+		pos -21.592834 -44.889584 -1.116452
+		rot_x 0.707107 0.707107 0
+		rot_y -0.707107 0.707107 0
+		scl 1.32
+	}
+	WO MountainRock_E1 {
+		pos -47.915222 9.483862 -3.176447
+		rot_x 0.766044 0.642788 0
+		rot_y -0.642788 0.766044 0
+	}
+	WO MountainRock_E1 {
+		pos -60.733036 -19.010717 -3.906442
+	}
+	WO MountainRock_E2 {
+		pos 28.064608 -27.98155 -5.466449
+		rot_x 0.5 -0.866026 0
+		rot_y 0.866026 0.5 0
+	}
+	WO MountainRock_E2 {
+		pos -3.543973 -53.196728 -3.876452
+		rot_x -0.422619 -0.906309 0
+		rot_y 0.906309 -0.422619 0
+	}
+	WO MountainRock_C1 {
+		pos 20.832092 12.006691 0.417941
+	}
+	WO MountainRock_C3 {
+		pos 30.043591 4.041612 0.584052
+		rot_x 0.173648 -0.984808 0
+		rot_y 0.984808 0.173648 0
+	}
+	WO MountainRock_C4 {
+		pos 2.913893 30.624502 -3.092203
+		rot_x 0.408218 0.875426 0.258819
+		rot_y -0.906308 0.422618 0
+		rot_z -0.109382 -0.23457 0.965926
+		scl 0.84
+	}
+	WO MountainRock_C4 {
+		pos -28.694265 -1.485687 -3.634539
+		rot_x 0.408218 0.875426 0.258819
+		rot_y -0.906308 0.422618 0
+		rot_z -0.109382 -0.23457 0.965926
+		scl 0.84
+	}
+	WO MountainRock_C4 {
+		pos -43.31636 -22.499662 -3.018071
+		rot_x -0.330366 -0.907674 0.258819
+		rot_y 0.939693 -0.34202 0
+		rot_z 0.088521 0.24321 0.965926
+		scl 0.84
+	}
+	WO NesthornFortressProps_Base2 {
+		pos -23.941713 23.990294 0.150034
+		scl 1.03
+	}
+	WO NesthornFortressProps_Base2 {
+		pos -3.900405 -28.011312 0.12019
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 1.03
+	}
+	WO NesthornFortressProps_Building5 {
+		pos -12.857121 35.656361 0.010259
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO NesthornFortressProps_Building4 {
+		pos 3.277876 6.859291 -3.001795
+	}
+	WO NesthornFortressProps_Building3 {
+		pos -35.740364 20.886698 -0.04693
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO NesthornFortressProps_Building2 {
+		pos -6.297563 4.391812 -3.228772
+		rot_x 0.087156 0.996195 0
+		rot_y -0.996195 0.087156 0
+		scl 0.96
+	}
+	WO NesthornFortressProps_Ladder2 {
+		pos -1.497479 4.58656 -3.040812
+		rot_x 1 0 0.000715
+		rot_z -0.000715 0 1
+	}
+	WO NesthornFortressProps_Scaffold {
+		pos -24.735699 -36.797253 -16.577759
+		rot_x 0.98161 0.173084 0.080521
+		rot_y -0.173648 0.984808 0
+		rot_z -0.079298 -0.013982 0.996753
+		scl 1.03
+	}
+}
+
+details {
+	d FortPadCablesA -1 0 -1 0 1 0 0 0 0 1 -26.061031 -13.505187 0.063746
+	d FortPadCablesA -1 -0.984808 0.173648 0 -0.173648 -0.984808 0 0 0 1 0.10109 -22.007929 0.000194
+	d FortPadCablesA -1 0 -1 0 1 0 0 0 0 1 16.611948 3.0479 -0.004621
+	d FortPadCablesB -1 0.707107 -0.707107 0 0.707107 0.707107 0 0 0 1 17.444025 -6.168335 -0.004473
+	d FortPadCablesC -1 1 0 0 0 1 0 0 0 1 25.374956 -6.677175 -0.004674
+	d MountainRock_C0 -1 2.169999 0 0 0 2.169999 0 0 0 2.169999 19.583391 30.66596 0.116699
+	d MountainRock_C2 -1 -0.984808 0.173648 0 -0.173648 -0.984808 0 0 0 1 -3.4305 10.688285 0.096635
+	d MountainPlantTreeA -1 0.256563 0.957507 0.131743 -0.965926 0.258819 0 -0.034098 -0.127254 0.991284 -28.639719 34.445133 0.117646
+	d MountainPlantTreeA -1 0.256563 0.957507 0.131743 -0.965926 0.258819 0 -0.034098 -0.127254 0.991284 -4.047546 10.549683 1.403636
+	d MountainPlantTreeA -1 0.991284 0 0.131743 0 1 0 -0.131743 0 0.991284 -30.370756 -7.421455 0.445431
+	d MountainPlantTreeA -1 0.256563 0.957507 0.131743 -0.965926 0.258819 0 -0.034098 -0.127254 0.991284 -4.092128 -10.16958 0.55056
+	d MountainPlantTreeB -1 0.34202 0.939693 0 -0.939693 0.34202 -0.000001 -0.000001 0 1 -10.355582 28.883484 -0.0294
+	d MountainPlantTreeB -1 0.34202 0.939693 0 -0.939693 0.34202 -0.000001 -0.000001 0 1 -22.586063 -2.416394 0.15051
+	d MountainPlantTreeB -1 0.34202 0.939693 0 -0.939693 0.34202 -0.000001 -0.000001 0 1 10.531315 30.632265 0.098156
+	d MountainPlantTreeB -1 0.34202 0.939693 0 -0.939693 0.34202 -0.000001 -0.000001 0 1 -0.655897 -37.959785 0.381442
+	d MountainPlantTreeB -1 0.984808 -0.173648 0 0.173648 0.984808 -0.000001 0 0.000001 1 -14.711353 -22.691107 0.156349
+	d MountainPlantTreeB -1 0.707107 0.707107 0 -0.707107 0.707107 -0.000001 -0.000001 0 1 -9.583364 -5.522411 0.668347
+	d MountainPlantTreeB -1 0.34202 0.939693 0 -0.939693 0.34202 -0.000001 -0.000001 0 1 -21.604136 32.239468 0.000002
+	d MountainPlantTreeC -1 1 0 0 0 1 0 0 0 1 -30.682812 10.731995 0.184009
+	d MountainPlantTreeC -1 1 0 0 0 1 0 0 0 1 -43.946953 -15.53473 0.037068
+	d MountainPlantTreeC -1 1 0 0 0 1 0 0 0 1 -10.014005 8.544165 0.120639
+	d MountainPlantTreeC -1 1 0 0 0 1 0 0 0 1 -10.266711 1.047871 0.590697
+	d MountainPlantTreeC -1 1 0 0 0 1 0 0 0 1 -11.215138 -34.400154 0.02431
+	d MountainPlantTreeC -1 1 0 0 0 1 0 0 0 1 3.681631 -10.245107 0.201759
+	d MountainPlantTreeC -1 1 0 0 0 1 0 0 0 1 24.852306 -14.633374 1.382691
+	d MountainPlantTreeC -1 0.380356 -0.815677 0 0.815677 0.380356 0 0 0 0.9 -25.579981 -4.349566 -0.001339
+	d MountainPlantTreeD -1 1 0 0.000001 0 1 0 -0.000001 0 1 -16.710009 35.102249 0
+	d MountainPlantTreeD -1 1 0 0.000001 0 1 0 -0.000001 0 1 0.67537 9.949293 0.388718
+	d MountainPlantTreeE -1 0.91 0 -0.000001 0 0.91 0 0.000001 0 0.91 -30.194336 30.823553 -0.264059
+	d MountainPlantTreeE -1 0.91 0 -0.000001 0 0.91 0 0.000001 0 0.91 -33.74099 10.850307 0.130236
+	d MountainPlantTreeE -1 0.91 0 -0.000001 0 0.91 0 0.000001 0 0.91 15.263303 30.998005 0.134454
+	d MountainPlantTreeE -1 0.15802 -0.896175 -0.000001 0.896175 0.15802 0 0 -0.000001 0.91 10.355029 35.140305 0.039537
+	d MountainPlantTreeE -1 -0.384583 -0.82474 -0.000001 0.82474 -0.384583 0 0 -0.000001 0.91 -8.900763 10.699384 0.253836
+	d MountainPlantTreeE -1 -0.384583 -0.82474 -0.000001 0.82474 -0.384583 0 0 -0.000001 0.91 -29.010048 -18.464714 0.356566
+	d MountainPlantTreeE -1 -0.384583 -0.82474 -0.000001 0.82474 -0.384583 0 0 -0.000001 0.91 5.953283 -31.1619 0.484454
+	d MountainPlantTreeF -1 1 0 0 0 1 0 0 0 1 -22.163725 36.515553 0.173073
+	d MountainPlantTreeG -1 0.988726 -0.01302 0.149171 0.012874 0.999915 0.001942 -0.149183 0 0.98881 -19.771017 37.121643 0.034548
+	d MountainPlantBushA -1 0.819152 0.573576 0 -0.573576 0.819152 0 0 0 1 -21.550566 4.840579 0.276509
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 -16.785336 -1.912421 -0.15257
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 -28.747616 -4.924404 0.080165
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 -41.286499 -3.681954 0.019751
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 -45.140221 -18.533003 0.227069
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 -28.852152 -20.876127 0.095699
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 -14.053617 -28.236328 -0.003139
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 -14.590271 -29.539267 0.343134
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 -10.589888 -35.606239 -0.094836
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 4.306816 -37.46991 -0.002906
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 6.325261 -28.011324 0.000894
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 6.505353 -27.108137 0.085669
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 20.167282 -15.235929 0.204239
+	d MountainPlantBushA -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 30.078117 -11.770439 -0.246621
+	d MountainPlantBushA -1 0.573576 0.819152 0 -0.819152 0.573576 0 0 0 1 36.452847 -6.056877 -0.12235
+	d MountainPlantBushA -1 0.573576 0.819152 0 -0.819152 0.573576 0 0 0 1 29.469326 -13.102932 -0.041737
+	d MountainPlantBushA -1 0.573576 0.819152 0 -0.819152 0.573576 0 0 0 1 30.463337 3.089532 0.961208
+	d MountainPlantBushA -1 0.573576 0.819152 0 -0.819152 0.573576 0 0 0 1 28.289755 6.308376 0.092429
+	d MountainPlantBushA -1 0.573576 0.819152 0 -0.819152 0.573576 0 0 0 1 20.728453 13.671197 0.968855
+	d MountainPlantBushA -1 0.573576 0.819152 0 -0.819152 0.573576 0 0 0 1 8.849628 7.295956 0.539145
+	d MountainPlantBushA -1 0.573576 0.819152 0 -0.819152 0.573576 0 0 0 1 -0.70752 -5.297971 -3.998046
+	d MountainPlantBushA -1 0.34202 0.939693 0 -0.939693 0.34202 0 0 0 1 -5.816242 -3.2978 -3.909667
+	d MountainPlantBushA -1 0.573576 0.819152 0 -0.819152 0.573576 0 0 0 1 -6.621984 -4.789 -3.965147
+	d MountainPlantBushA -1 0.573576 0.819152 0 -0.819152 0.573576 0 0 0 1 -2.813516 -6.123336 -3.997333
+	d MountainPlantBushA -1 0.573576 0.819152 0 -0.819152 0.573576 0 0 0 1 5.351521 3.801863 -3.972961
+	d MountainPlantBushB -1 0.642788 0.766044 0 -0.763868 0.640961 0.075329 0.057705 -0.048421 0.997159 -21.132463 34.805946 -0.000024
+	d MountainPlantBushC -1 1 0 0 0 1 0 0 0 1 -29.532244 12.739508 -0.000002
+	d MountainPlantBushC -1 1 0 0 0 1 0 0 0 1 -41.990402 -8.708608 0.194457
+	d MountainPlantBushC -1 1 0 0 0 1 0 0 0 1 -15.58721 -20.116508 0.004521
+	d MountainPlantBushC -1 1 0 0 0 1 0 0 0 1 -6.526658 -37.601097 0.205479
+	d MountainPlantBushC -1 1 0 0 0 1 0 0 0 1 -2.64311 -10.352801 0.11704
+	d MountainPlantBushC -1 1 0 0 0 1 0 0 0 1 22.754126 -11.633221 -0.075667
+	d MountainPlantBushC -1 0.85 0 0 0 0.85 0 0 0 0.85 30.97649 -6.791175 0.112552
+	d MountainPlantBushC -1 0.85 0 0 0 0.85 0 0 0 0.85 13.667315 18.003128 0.290152
+	d MountainPlantBushC -1 0.85 0 0 0 0.85 0 0 0 0.85 15.568022 27.684978 0.04167
+	d MountainPlantBushC -1 0.85 0 0 0 0.85 0 0 0 0.85 -9.836952 14.257757 -0.113236
+	d MountainPlantBushC -1 0.85 0 0 0 0.85 0 0 0 0.85 -14.009746 28.173031 0.01086
+	d MountainPlantBushC -1 0.85 0 0 0 0.85 0 0 0 0.85 -26.788429 34.813545 0.010857
+	d MountainPlantBushC -1 0.85 0 0 0 0.85 0 0 0 0.85 11.97836 -4.116037 0.002629
+	d MountainPlantBushD -1 1 0 0 0 1 0 0 0 1 -34.235023 14.115724 -0.000003
+	d MountainPlantBushD -1 1 0 0 0 1 0 0 0 1 -14.762776 33.447578 0.003686
+	d MountainPlantBushD -1 1 0 0 0 1 0 0 0 1 -12.881362 24.200712 0.000092
+	d MountainPlantBushD -1 1 0 0 0 1 0 0 0 1 13.069129 29.235199 0.047133
+	d MountainPlantBushD -1 1 0 0 0 1 0 0 0 1 15.693724 29.735985 0.063057
+	d MountainPlantBushD -1 1 0 0 0 1 0 0 0 1 -17.85692 18.211472 -0.000002
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 -11.9135 25.525848 0.117045
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 -15.020695 32.569408 0.000014
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 -31.174124 28.218351 0.083071
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 -14.438768 23.812681 0.000011
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 -22.857841 14.755387 0.000001
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 -21.856504 -4.496904 0.003618
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 11.718151 30.36162 0.028533
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 2.951215 11.572289 0.028789
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 11.75875 16.098545 0.00012
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 12.313704 26.612099 0.000076
+	d MountainPlantGrassA -1 0.572336 0.572336 0.183749 -0.586899 0.586899 0 -0.12993 -0.12993 0.809405 -22.634447 9.53349 0.111002
+	d MountainPlantGrassA -1 0.689561 0.689561 0.221384 -0.707107 0.707107 0 -0.156542 -0.156542 0.975187 14.754595 -2.46745 0.00001
+	d MountainPlantGrassA -1 0.606814 0.606814 0.194818 -0.622254 0.622254 0 -0.137757 -0.137757 0.858164 18.828779 -11.697218 0
+	d MountainPlantGrassA -1 0.489589 0.489589 0.157183 -0.502046 0.502046 0 -0.111145 -0.111145 0.692383 5.466688 -25.720163 0.179782
+	d MountainPlantGrassA -1 0.606814 0.606814 0.194818 -0.622254 0.622254 0 -0.137757 -0.137757 0.858164 5.287652 -33.092148 0.249106
+	d MountainPlantGrassA -1 0.50338 0.50338 0.161611 -0.516188 0.516188 0 -0.114276 -0.114276 0.711887 -10.259066 -35.038746 0
+	d MountainPlantGrassB -1 0.422618 0.906308 0.000005 -0.906308 0.422618 -0.000003 -0.000005 -0.000004 1 -27.393856 12.163029 0.100024
+	d MountainPlantGrassB -1 0.422618 0.906308 0.000005 -0.906308 0.422618 -0.000003 -0.000005 -0.000004 1 -45.738068 -9.552934 0.105979
+	d MountainPlantGrassB -1 0.422618 0.906308 0.000005 -0.906308 0.422618 -0.000003 -0.000005 -0.000004 1 -28.302666 -15.611451 0.006531
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -27.884193 14.492505 0.000002
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -20.430391 10.182739 0.070565
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -42.924999 -14.622061 0.088074
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 13.396668 25.025341 0.084897
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -12.155001 11.854058 0.003132
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 19.528168 7.305658 0.000002
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 11.606599 -6.645179 0.113808
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 29.431896 -4.07233 0.019304
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -12.479261 -21.825207 0.072045
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -8.660718 -10.494264 0.181703
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -37.298225 -11.459703 0.031426
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -28.861912 -8.034424 0.021739
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -8.937181 21.399633 0.071021
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -34.191723 -11.813891 0.056787
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -32.140991 14.99174 0.000015
+	d MountainPlantGrassC -1 0.766044 0.642788 0 -0.642788 0.766044 0 0 0 1 -19.573101 35.083786 0.000019
+	d MountainPlantGrassC -1 0.258819 0.965926 0 -0.965926 0.258819 0 0 0 1 -14.469967 20.330727 0.000016
+	d MountainPlantGrassD -1 1 0 0 0 1 0 0 0 1 1.737277 10.611832 0.30215
+	d MountainPlantGrassD -1 1 0 0 0 1 0 0 0 1 -27.353254 13.933002 -0.000001
+	d MountainPlantGrassD -1 1 0 0 0 1 0 0 0 1 -32.368195 26.685772 -0.000009
+	d MountainPlantGrassD -1 1 0 0 0 1 0 0 0 1 -11.310733 18.984699 -0.010535
+	d MountainPlantGrassD -1 1 0 0 0 1 0 0 0 1 -11.91341 11.880395 0.001052
+	d MountainPlantGrassD -1 0.173648 -0.984808 0 0.984808 0.173648 0 0 0 1 -10.752585 22.598068 0.1355
+	d MountainPlantGrassD -1 -0.996195 0.087156 0 -0.087156 -0.996195 0 0 0 1 -19.841324 11.016623 0.000021
+	d MountainPlantGrassD -1 0.173648 -0.984808 0 0.984808 0.173648 0 0 0 1 2.587028 13.106988 -0.000001
+	d MountainPlantGrassD -1 0.173648 -0.984808 0 0.984808 0.173648 0 0 0 1 14.033709 16.303135 0.270978
+	d MountainPlantGrassD -1 0.173648 -0.984808 0 0.984808 0.173648 0 0 0 1 -11.034996 -10.80552 0.134451
+	d MountainPlantGrassD -1 0.173648 -0.984808 0 0.984808 0.173648 0 0 0 1 -29.527567 -8.896578 0.102868
+	d MountainPlantGrassD -1 -0.996195 0.087156 0 -0.087156 -0.996195 0 0 0 1 -27.122494 -7.688399 0.00093
+	d MountainPlantGrassD -1 0.173648 -0.984808 0 0.984808 0.173648 0 0 0 1 -47.16629 -10.013794 0.164648
+	d MountainPlantGrassD -1 0.173648 -0.984808 0 0.984808 0.173648 0 0 0 1 0.114958 -35.349979 -0.000002
+	d MountainPlantGrassD -1 0.173648 -0.984808 0 0.984808 0.173648 0 0 0 1 13.446153 -1.767693 0.000007
+	d MountainPlantGrassD -1 -1 0 0 0 -1 0 0 0 1 12.183241 -5.308729 0.004754
+	d MountainPlantGrassD -1 -1 0 0 0 -1 0 0 0 1 23.085537 6.909224 0.136691
+	d MountainPlantGrassD -1 -0.866026 -0.5 0 0.5 -0.866026 0 0 0 1 14.534019 -2.696193 0.004598
+	d MountainPlantGrassE -1 1 0 -0.000003 0 1 0.000002 0.000003 -0.000002 1 -20.321352 31.983921 0.100008
+	d MountainPlantGrassE -1 -0.866025 -0.5 -0.000003 0.5 -0.866025 0.000002 -0.000004 0 1 -19.922699 33.957085 -0.000003
+	d MountainPlantGrassE -1 1 0 -0.000003 0 1 0.000002 0.000003 -0.000002 1 -12.782424 26.554924 0.000336
+	d MountainPlantGrassE -1 1 0 -0.000003 0 1 0.000002 0.000003 -0.000002 1 11.976209 28.060963 0.000009
+	d MountainPlantGrassE -1 1 0 -0.000003 0 1 0.000002 0.000003 -0.000002 1 0.30884 11.667089 0.006382
+	d MountainPlantGrassE -1 1 0 -0.000003 0 1 0.000002 0.000003 -0.000002 1 -20.146217 -3.465636 0.000001
+	d MountainPlantGrassE -1 1.1 0 -0.000004 0 1.1 0.000002 0.000004 -0.000002 1.1 -11.600416 -19.939621 -0.000346
+	d MountainPlantGrassE -1 -0.284701 -1.062518 -0.000004 1.062518 -0.284701 0.000002 -0.000003 -0.000003 1.1 -33.260262 -13.288347 0.064744
+	d MountainPlantGrassE -1 1.32 0 -0.000004 0 1.32 0.000002 0.000004 -0.000002 1.32 -41.453533 -12.188115 0.0177
+	d MountainPlantGrassE -1 1.28 0 -0.000004 0 1.28 0.000002 0.000004 -0.000002 1.28 -6.172851 -36.386406 0.049068
+	d MountainPlantGrassE -1 1.1 0 -0.000004 0 1.1 0.000002 0.000004 -0.000002 1.1 -10.393284 -8.93742 0.331971
+	d MountainPlantGrassE -1 1.1 0 -0.000004 0 1.1 0.000002 0.000004 -0.000002 1.1 30.607676 -3.757401 0.021984
+	d MountainPlantGrassE -1 0.376222 1.033662 -0.000004 -1.033662 0.376222 0.000002 0.000003 0.000003 1.1 18.740313 -11.454502 0.427
+	d MountainPlantGrassE -1 0.376222 1.033662 -0.000004 -1.033662 0.376222 0.000002 0.000003 0.000003 1.1 -31.21768 16.809189 0.429334
+	d MountainPlantVine -1 0.965926 0.258819 0 -0.258819 0.965926 0 0 0 1 -47.691204 11.400386 -8.299827
+	d MountainPlantVine -1 0.866026 0.5 0 -0.5 0.866026 0 0 0 1 -40.285206 -27.743147 -6.66587
+	d MountainPlantVine -1 0.939693 0.34202 0 -0.34202 0.939693 0 0 0 1 1.122916 43.787395 -8.14638
+	d MountainPlantVine -1 0.707108 0.707107 0 -0.707107 0.707108 0 0 0 1 28.73785 38.626724 -6.964143
+	d MountainPlantVine -1 0.707108 0.707107 0 -0.707107 0.707108 0 0 0 1 16.862688 -23.127762 -6.413009
+	d SeasonalMountainPlantTreeD -1 1 0 -0.000001 0 1 0 0.000001 0 1 -32.282608 29.234524 0.263619
+	d SeasonalMountainPlantTreeD -1 -0.258819 -0.965926 -0.000001 0.965926 -0.258819 0 0 -0.000001 1 5.844042 10.326999 0.148867
+	d SeasonalMountainPlantTreeD -1 -0.258819 -0.965926 -0.000001 0.965926 -0.258819 0 0 -0.000001 1 8.103123 -9.423003 0.540732
+	d SeasonalMountainPlantTreeD -1 -0.258819 -0.965926 -0.000001 0.965926 -0.258819 0 0 -0.000001 1 22.461809 -14.077563 0.407165
+	d SeasonalMountainPlantTreeG -1 -0.422651 -0.906292 0 0.906292 -0.422651 0 0 0 1 -9.892556 5.897099 0.129538
+	d SeasonalMountainPlantTreeG -1 -0.422651 -0.906292 0 0.906292 -0.422651 0 0 0 1 -32.717934 16.776121 0.000016
+	d SeasonalMountainPlantTreeG -1 -0.422651 -0.906292 0 0.906292 -0.422651 0 0 0 1 -26.719524 10.772631 0.054844
+	d SeasonalMountainPlantTreeG -1 -0.422651 -0.906292 0 0.906292 -0.422651 0 0 0 1 -44.545444 -7.536108 0.009048
+	d SeasonalMountainPlantTreeG -1 -0.422651 -0.906292 0 0.906292 -0.422651 0 0 0 1 -15.607512 30.180208 0.529695
+	d SeasonalMountainPlantTreeG -1 -0.422651 -0.906292 0 0.906292 -0.422651 0 0 0 1 -7.715806 -8.851758 0.312383
+	d SeasonalMountainPlantTreeG -1 -0.422651 -0.906292 0 0.906292 -0.422651 0 0 0 1 -8.856307 -37.708313 0.112523
+	d SeasonalMountainPlantTreeG -1 -0.766021 0.642815 0 -0.642815 -0.766021 0 0 0 1 1.907077 -9.800395 1.003442
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable false
+  layer 2 name "volumes" visible true pickable false
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible true pickable false
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+editorCore {
+  meshGridTerrainEditor {
+    selType Canyon
+    halfDX 10
+    halfDY 10
+    zStep 3
+    genPattern Square
+  }
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+	PF OutpostV2.txt {
+		pos -24 24 0
+		rot 0 0 0
+		/s latchInf ". latchInf Infantry Infantry Infantry Infantry"
+		/s name ". name U_Outpost_NE"
+		/s team ". team 1"
+	}
+	PF OutpostPowerStationV2.txt {
+		pos 22.618082 -0.757508 0.105527
+		rot 0 0 90.000015
+		/s latchInf ". latchInf NULL NULL NULL NULL"
+		/s name ". name U_Powerstation_W"
+		/s team ". team -1"
+	}
+	PF OutpostFactoryV2.txt {
+		pos -20 -12 0
+		rot 0 0 -90.000015
+		/s latchInf ". latchInf Infantry Infantry Infantry Infantry"
+		/s name ". name U_Factory_E"
+		/s team ". team 1"
+	}
+	PF OutpostV2.txt {
+		pos 6.606121 20.58396 0.060015
+		rot 0 0 0
+		/s latchInf ". latchInf NULL NULL NULL NULL"
+		/s name ". name U_Outpost_S"
+		/s team ". team -1"
+	}
+	PF OutpostV2.txt {
+		pos -4 -28 0
+		rot 0 0 90.000015
+		/s latchInf ". latchInf NULL NULL NULL NULL"
+		/s name ". name U_Outpost_N"
+		/s team ". team -1"
+	}
+}

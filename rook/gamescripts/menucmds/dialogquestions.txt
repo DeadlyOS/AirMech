@@ -1,0 +1,64 @@
+Script DoNotDisturbConfirm {
+cmd "]log MenuCmd: DoNotDisturbConfirm"
+cmd "]sym set DialogBoxTitle TitleDND"
+cmd "]sym set DialogBoxMessage MessageDNDConfirm"
+cmd "]sym set DialogMenuCmdOnButton1 DoNotDisturbConfirmed"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBox.txt /fadein 0.15"
+}
+Script DoNotDisturbConfirmed {
+cmd "]log MenuCmd: DoNotDisturbConfirmed"
+cmd "]sym set DNDState 1"
+cmd "]net setDND 1 3600"
+}
+Script DoNotDisturbOffConfirm {
+cmd "]log MenuCmd: DoNotDisturbConfirm"
+cmd "]sym set DialogBoxTitle TitleDND"
+cmd "]sym set DialogBoxMessage MessageDNDExit"
+cmd "]sym set DialogMenuCmdOnButton1 DoNotDisturbOffConfirmed"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBox.txt /fadein 0.15"
+}
+Script DoNotDisturbOffConfirmed {
+cmd "]log MenuCmd: DoNotDisturbConfirmed"
+cmd "]sym set DNDState 0"
+cmd "]net setDND 0 0"
+}
+Script DestroyStructureConfirm {
+cmd "]log MenuCmd: DoNotDisturbConfirm"
+cmd "]sym set DialogBoxTitle TitleDestroyStructure"
+cmd "]sym set DialogBoxMessage MessageDestroyStructure"
+cmd "]sym set DialogMenuCmdOnButton1 DestroyStructureConfirmed"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBox.txt /fadein 0.15"
+}
+Script DestroyStructureConfirmed {
+ignoreInputTime 0.3
+cmd "]log MenuCmd: DestroyStructureConfirmed"
+cmd "]wallet procItem $BaseLayoutSlotP Destroy"
+cmd "]clearmenu StructureInspect /fadeout 0.1"
+}
+Script FriendRemoveConfirm {
+cmd "]log MenuCmd: FriendRemoveConfirm"
+cmd "]sym setFrom _FriendToRemove_ $_MArg1_"
+cmd "]sym set _alsoIngore 0"
+cmd "]if literal $_MArg2_ == 1 sym set _alsoIngore 1"
+cmd "]sym set DialogBoxTitle DialogTitleFriendRemove"
+cmd "]sym set DialogBoxMessage DialogMessageFriendRemove"
+cmd "]sym set DialogMenuCmdOnButton1 FriendRemoveConfirmed"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBox.txt /fadein 0.15"
+}
+Script FriendRemoveConfirmed {
+cmd "]log MenuCmd: FriendRemoveConfirmed"
+cmd "]friends removeSym _FriendToRemove_"
+cmd "]if sym _alsoIngore == 1 runnow social ignorePlayerSym _FriendToRemove_"
+cmd "]sym set _alsoIngore 0"
+cmd "]echo removed $_FriendToRemove_"
+cmd "]sym set _FriendToRemove_"
+cmd "]menucmd CloseAllFriendDialogs"
+}

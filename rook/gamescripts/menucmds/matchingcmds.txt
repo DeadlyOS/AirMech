@@ -1,0 +1,417 @@
+Script CustomMapSourceTopMaps {
+ignoreInputTime 0.1
+cmd "sym set CustomMapSource TopMaps"
+cmd "gameui refreshFilterName HLB"
+}
+Script CustomMapSourcePublic {
+cmd "sym set CustomMapSource Public"
+cmd "gameui refreshFilterName HLB"
+}
+Script CustomMapSourceMyMaps {
+cmd "sym set CustomMapSource MyMaps"
+cmd "gameui refreshFilterName HLB"
+}
+Script CustomMapSourceCache {
+cmd "sym set CustomMapSource Cache"
+cmd "gameui refreshFilterName HLB"
+}
+Script CustomMapSourcePlayer {
+ignoreInputTime 0.1
+rcmd "sym setFrom PlayerMapAuthor $_MArg1_"
+cmd "sym set CustomMapSource Player"
+cmd "tool getusermaps PlayerMapAuthor PlayerMaps 10"
+cmd "pcmd 0.1 gameui directPushNameIfEnabled CustomMapPlayerMapItem0"
+cmd "pcmd 0.1 gameui refreshFilterName HLB"
+}
+Script PvPButtonCustomPress {
+cmd "clearmenu BaseLeaderboards"
+cmd "sym setZero ConMenuPvPCustom1v1 ConMenuPvPCustom2v2 ConMenuPvPCustom3v3 CustomGameListMore"
+cmd "sym setOne ConMenuPvPCustomAny CustomGameBrowseOnly CustomGameOptionsBrowse CustomGameOptionsCreate PO_IsOwner"
+cmd "addUIAnim CM_PvPButtonsMaster mas_MenuPlayCustom"
+cmd "addUIAnim CustomGameOptionsBrowse mas_MenuPlayCustom"
+cmd "menucmd PvPCustomGameSetup"
+cmd "leaderboards get Maps"
+cmd "pcmd t0 gameui refreshfiltername HLB"
+cmd "pcmd 0.5 menucmd ChooseDefaultCustomMap"
+}
+Script ChooseDefaultCustomMap {
+cmd "if sym CF_CustomMap == 1 && sym CF_CustomMapName == _null_ && sym HLB_Meta0 !isEmpty sym setFrom CF_CustomMapName HLB_Meta0"
+cmd "if sym CF_CustomMap == 0 && sym CF_CustomMapName == _null_ sym setFrom CF_CustomMapName MapName"
+cmd "pcmd t0 gameui refreshfiltername HLB"
+}
+Script PvPButtonCustomCancel {
+cmd "sym setZero CustomGameOptionsBrowse CustomGameListMore PO_IsOwner"
+cmd "sym set CustomGameBrowseOnly 1"
+cmd "addUIAnim CM_PvPButtonsMaster mas_MenuPlayReset /speed 0.5"
+cmd "addUIAnim CustomGameOptionsBrowse mas_MenuPlayReset /speed 0.5"
+cmd "if sym CustomGameOptionsCreate == 1 menucmd PvPCustomGameSetupCancel"
+}
+Script PvPButtonCustomListMore {
+cmd "pcmd 0.1 sym set CustomGameListMore 1"
+cmd "addUIAnim CustomGameOptionsBrowse mas_MenuPlayCustomBrowseMore"
+}
+Script PvPCustomGameSetup {
+cmd "addUIAnim CustomGameOptionsBrowse mas_MenuPlayCustom"
+cmd "sym setZero CustomGameBrowseOnly CustomGameListMore"
+cmd "sym setOne CustomGameOptionsCreate"
+cmd "gameui hide CustomGamesButtonSetup"
+cmd "if sym ConMenuPvPCustomAny == 1 sym set ConMenuPvPCustom3v3 1"
+cmd "if sym ConMenuPvPCustomAny == 1 sym set ConMenuPvPCustomAny 0"
+cmd "addUIAnim CustomGameOptionsBrowseBg mas_MenuPlayCustomBgDown"
+}
+Script PvPCustomGameSetupGo {
+cmd "menucmd PvPButtonCustomCancel"
+cmd "menucmd PvPCustomGameSetupCancel"
+cmd "if sym ConMenuPvPCustom3v3 == 1 sym set DNA_GameSize 3v3"
+cmd "if sym ConMenuPvPCustom3v3 == 1 sym set MatchmakingPlayers 3v3"
+cmd "if sym ConMenuPvPCustom2v2 == 1 sym set DNA_GameSize 2v2"
+cmd "if sym ConMenuPvPCustom2v2 == 1 sym set MatchmakingPlayers 2v2"
+cmd "if sym ConMenuPvPCustom1v1 == 1 sym set DNA_GameSize 1v1"
+cmd "if sym ConMenuPvPCustom1v1 == 1 sym set MatchmakingPlayers 1v1"
+cmd "menuCmd ConMenuLobbySetup"
+}
+Script PvPCustomGameSetupCancel {
+cmd "sym setZero CustomGameOptionsCreate ConMenuPvPCustom1v1 ConMenuPvPCustom2v2 ConMenuPvPCustom3v3 CustomGameListMore"
+cmd "sym setOne CustomGameBrowseOnly ConMenuPvPCustomAny"
+cmd "gameui show CustomGamesButtonSetup"
+cmd "addUIAnim CustomGameOptionsBrowseBg mas_MenuPlayReset /speed 0.5"
+}
+Script PvPOptionsCustomReset {
+cmd "sym setZero CF_ZobaMech CF_Hyper CF_CTF CF_Hypo CF_UltimatesAllowed CF_NoParts CF_NoTraining CF_LagFest PrivateRoom CF_CustomMap ConMenuPvPCustom1v1 ConMenuPvPCustom2v2 ConMenuPvPCustom3v3"
+cmd "sym setOne ConMenuPvPCustomAny"
+cmd "if sym CustomGameBrowseOnly == 0 sym set ConMenuPvPCustom3v3 1"
+cmd "if sym CustomGameBrowseOnly == 0 sym set ConMenuPvPCustomAny 0"
+}
+Script MatchCoop {
+cmd "sym set LaunchGameMode Coop"
+cmd "if sym MatchmakingMode == Classic menuCmd MatchCoopClassic"
+cmd "if sym MatchmakingMode == Survival menuCmd MatchCoopSurvival"
+}
+Script MatchCoopClassic {
+cmd "sym set LaunchGameMode Coop"
+cmd "if sym MatchmakingPlayers2v2 == 1 runnow sym set LobbyLabelPlayers 2P"
+cmd "if sym MatchmakingPlayers2v2 == 1 runnow sym set _NumPlayers 2"
+cmd "if sym MatchmakingPlayers3v3 == 1 runnow sym set LobbyLabelPlayers 3P"
+cmd "if sym MatchmakingPlayers3v3 == 1 runnow sym set _NumPlayers 3"
+cmd "if nacl runnow sym set LobbyLabelPlayers 2P"
+cmd "if nacl runnow sym set _NumPlayers 2"
+cmd "matching join coop $$_NumPlayers"
+cmd "echo matching_join_coop"
+cmd "sym set _NumPlayers"
+}
+Script MatchCoopSurvival {
+cmd "sym set LaunchGameMode Survival"
+cmd "if sym MatchmakingPlayers2P == 1 runnow sym set LobbyLabelPlayers 2P"
+cmd "if sym MatchmakingPlayers2P == 1 runnow sym set _NumPlayers 2"
+cmd "if sym MatchmakingPlayers3P == 1 runnow sym set LobbyLabelPlayers 3P"
+cmd "if sym MatchmakingPlayers3P == 1 runnow sym set _NumPlayers 3"
+cmd "if sym MatchmakingPlayers4P == 1 runnow sym set LobbyLabelPlayers 4P"
+cmd "if sym MatchmakingPlayers4P == 1 runnow sym set _NumPlayers 4"
+cmd "if nacl runnow sym set LobbyLabelPlayers 2P"
+cmd "if nacl runnow sym set _NumPlayers 2"
+cmd "echo matching_join_survival"
+cmd "matching join survival $$_NumPlayers"
+cmd "sym set _NumPlayers"
+}
+Script MatchStandard {
+cmd ""
+}
+Script MatchRanked {
+cmd "echo Matchmaking Mode = $$MatchmakingMode"
+cmd "if sym MatchmakingMode == Classic menuCmd MatchRankedClassic"
+cmd "if sym MatchmakingMode == Ctf menuCmd MatchRankedCtf"
+}
+Script MatchRankedClassic {
+cmd "sym set LaunchGameMode PvP"
+cmd "if sym MatchmakingPlayers1v1 == 1 runnow sym set LobbyLabelPlayers 1v1"
+cmd "if sym MatchmakingPlayers1v1 == 1 runnow sym set _NumPlayers 1"
+cmd "if sym MatchmakingPlayers2v2 == 1 runnow sym set LobbyLabelPlayers 2v2"
+cmd "if sym MatchmakingPlayers2v2 == 1 runnow sym set _NumPlayers 2"
+cmd "if sym MatchmakingPlayers3v3 == 1 runnow sym set LobbyLabelPlayers 3v3"
+cmd "if sym MatchmakingPlayers3v3 == 1 runnow sym set _NumPlayers 3"
+cmd "if nacl runnow sym set LobbyLabelPlayers 1v1"
+cmd "if nacl runnow sym set _NumPlayers 1"
+cmd "matching join pvp $$_NumPlayers"
+cmd "echo matching_join_pvp"
+cmd "echo $$_NumPlayers"
+cmd "sym set _NumPlayers"
+}
+Script MatchRankedCtf {
+cmd "sym set LaunchGameMode CTF"
+cmd "if sym MatchmakingPlayers1v1 == 1 runnow sym set LobbyLabelPlayers 1v1"
+cmd "if sym MatchmakingPlayers1v1 == 1 runnow sym set _NumPlayers 1"
+cmd "if sym MatchmakingPlayers2v2 == 1 runnow sym set LobbyLabelPlayers 2v2"
+cmd "if sym MatchmakingPlayers2v2 == 1 runnow sym set _NumPlayers 2"
+cmd "if sym MatchmakingPlayers3v3 == 1 runnow sym set LobbyLabelPlayers 3v3"
+cmd "if sym MatchmakingPlayers3v3 == 1 runnow sym set _NumPlayers 3"
+cmd "matching join ctf $$_NumPlayers"
+cmd "echo matching_join_ctf"
+cmd "sym set _NumPlayers"
+}
+Script ExitMatchmaking {
+cmd "if !consoleplatform menuCmd ExitMatchmakingPC"
+cmd "sym set LocalPlayerIsReady 0"
+}
+Script ExitMatchmakingPC {
+ignoreInputTime 1.0
+cmd "echo Script_ExitMatchmaking"
+cmd "clearmenu $MainMenu"
+cmd "backend save"
+cmd "menuCmd MP_LoadMainMenu"
+}
+Script LoadLobbyMatch {
+cmd "echo Script_LoadLobbyMatch_forPC"
+cmd "sym set LobbyState 1"
+cmd "sym set CurrentMenu MKLobby"
+cmd "sym setZero u_game u_gameDetect noparts_game notraining_game"
+cmd "rook UpdateRoomStateInfo"
+cmd "sym set PlayerRook0 $RookLocal"
+cmd "if sym TopMenuHome == 1 addUIAnim MainMenuHomeFrame mas_MMExitLeft.txt"
+cmd "if sym TopMenuCustomize == 1 addUIAnim MainMenuCustomizeFrame mas_MMExitLeft.txt"
+cmd "if sym TopMenuPlay == 1 addUIAnim MainMenuPlayFrame mas_MMExitLeft.txt"
+cmd "if sym TopMenuShop == 1 addUIAnim MainMenuShopFrame mas_MMExitLeft.txt"
+cmd "if sym TopMenuWatch == 1 addUIAnim MainMenuWatchFrame mas_MMExitLeft.txt"
+cmd "if sym TopMenuLearn == 1 addUIAnim MainMenuLearnFrame mas_MMExitLeft.txt"
+cmd "if sym TopMenuSocial == 1 addUIAnim MainMenuSocialFrame mas_MMExitLeft.txt"
+cmd "gameui disableAll MainMenuButtons"
+cmd "sym set MatchingState 0"
+cmd "addUIAnim MainMenuPlayerInfo mas_BackShow"
+cmd "sym set MenuBack ExitMatchmaking"
+cmd "menu3d addAnimScript MainMenuBack as_MenuBgCustomize.txt"
+cmd "clearmenu TempLoadout.txt"
+cmd "clearmenu MenuShop.txt"
+cmd "clearmenu MenuPlay.txt"
+cmd "if !consoleplatform loadmenu LobbyMatch.txt"
+cmd "input set padFocusFallback LobbyGoButton"
+cmd "if usingPad gameUI focusNameTry LobbyGoButton"
+cmd "if sym GL_ChatHidden == 1 addUIAnim MessageChatContainer mas_ChatShow"
+cmd "sym set GChatTextEntryHidden 1"
+cmd "sym set MChatTextEntryHidden 1"
+cmd "sym set FChatTextEntryHidden 1"
+cmd "sym set PChatTextEntryHidden 0"
+cmd "sym set GameLogHidden 1"
+cmd "gameUI enable GL_ChatBgParty"
+cmd "pcmd 0 gameUI disable GL_ChatBgParty"
+cmd "if usingPad pcmd 0.1 gameUI focusName LobbyPlayerReadyCheckbox"
+cmd "if !backendIsConnected gamemsg pchat <O><System></> There appears to be a connection issue.  Try restarting your client. Error Code 13."
+cmd "if backendIsConnected gamemsg pchat <O><System></> Connection Ok."
+}
+Script MatchingPlayerSetupReady {
+cmd "echo player_setup_ready"
+cmd "sym set MatchingState 1"
+cmd "pcmd 3 menuCmd MatchingTeamSetupComplete"
+}
+Script MatchingTeamSetupComplete {
+cmd "echo Script_MatchingTeamSetupComplete"
+cmd "sym set MatchingState 2"
+cmd "sym set _PreGameTimer 45"
+}
+Script MatchPvPQuick {
+cmd "echo Script_MatchPvPQuick"
+cmd "echo match to pvp"
+cmd "sym set MatchingState 1"
+cmd "gameUI show LobbyRandomWaitContainer"
+cmd "addUIAnim MainMenuPlayerInfo mas_BackHide"
+cmd "sym set MenuBack null"
+cmd "matching join"
+cmd "gameUI show LobbyPlayerReadyCheckbox"
+cmd "if usingPad pcmd 0.1 gameUI focusName LobbyPlayerReadyCheckbox"
+}
+Script MatchSurvivalQuick {
+cmd "echo Script_MatchSurvivalQuick"
+cmd "echo match to survival"
+cmd "sym set MatchingState 1"
+}
+Script MatchTeammateJoin {
+cmd "echo teammate_join"
+cmd "if sym InputPad == 0 if sym MatchmakingType == Coop sym set LobbyStatusMessage MsgFoundTeamCoopDone"
+cmd "if sym InputPad == 1 if sym MatchmakingType == Coop sym set LobbyStatusMessage MsgFoundTeamCoopDone_pad"
+cmd "if sym InputPad == 0 if sym MatchmakingType == Standard sym set LobbyStatusMessage MsgFoundOpponents"
+cmd "if sym InputPad == 1 if sym MatchmakingType == Standard sym set LobbyStatusMessage MsgFoundOpponents_pad"
+cmd "if sym InputPad == 0 if sym MatchmakingType == Ranked sym set LobbyStatusMessage MsgFoundOpponents"
+cmd "if sym InputPad == 1 if sym MatchmakingType == Ranked sym set LobbyStatusMessage MsgFoundOpponents_pad"
+}
+Script MatchFriendInvite {
+cmd "echo initiate friend invite"
+cmd "menucmd MatchFriendWaitInvite"
+}
+Script MatchFriendWaitInvite {
+cmd "gameUI show LobbyFriendWaitContainer"
+cmd "gameUI hide LobbyGoButton"
+cmd "gameUI enable LobbySlotFadeout"
+cmd "pcmd 0.1 gameUI disable LobbySlotFadeout"
+cmd "if usingPad pcmd 0.1 gameUI focusName LobbyCancelInviteButton"
+}
+Script MatchCancelInvite {
+cmd "echo cancel friend invite"
+cmd "gameUI hide LobbyFriendWaitContainer"
+cmd "addUIAnim LobbyRandomContainer mas_LobbySlotRefresh
+cmd "gameUI enable LobbySlotFadeoutRed"
+cmd "pcmd 0.1 gameUI disable LobbySlotFadeoutRed"
+cmd "pcmd 0.2 gameUI show LobbyGoButton"
+cmd "if usingPad pcmd 0.2 gameUI focusName LobbyGoButton"
+}
+Script MatchTransitionToLobbyUI {
+ignoreInputTime 0.25
+cmd "if sym TopMenuHome != 1 runnow menucmd DoMatchTransitionToLobbyUI"
+cmd "if sym TopMenuHome == 1 pcmd 0 menucmd DoMatchTransitionToLobbyUI"
+cmd "if sym TopMenuHome == 1 runnow menucmd MenuTransitionPlay"
+}
+Script DoMatchTransitionToLobbyUI {
+ignoreInputTime 0.15
+cmd "echo Transitioning to mm lobby UI..."
+cmd "if sym MatchmakingMode == Classic sym set LobbyLabelMode PvP"
+cmd "if sym MatchmakingType == Coop sym set LobbyLabelMode Coop"
+cmd "if sym MatchmakingMode == Survival sym set LobbyLabelMode Survival"
+cmd "if sym MatchmakingMode == Ctf sym set LobbyLabelMode CTF"
+cmd "if sym MatchmakingType == Coop runNow menuCmd MatchCoop"
+cmd "if sym MatchmakingType == Standard runNow menuCmd MatchRanked"
+cmd "if sym MatchmakingType == Ranked runNow menuCmd MatchRanked"
+cmd "menuCmd LoadLobbyMatch"
+}
+Script GoMatchFromBrowse {
+cmd "sym setc _buildcmd_ GoMatch $_MArg1_"
+cmd "menucmd $$_buildcmd_"
+}
+Script GoMatchPvP {
+ignoreInputTime 0.15
+cmd "echo Transitioning to PvP mm lobby UI..."
+cmd "sym set LobbyLabelMode PvP"
+cmd "sym set MatchmakingType Standard"
+cmd "sym set MatchmakingMode Classic"
+cmd "menucmd SyncMatchmakingSymbols"
+cmd "pcmd t4 menuCmd MatchRanked"
+cmd "pcmd t4 menuCmd LoadLobbyMatch"
+}
+Script GoMatchCoop {
+ignoreInputTime 0.15
+cmd "echo Transitioning to Coop mm lobby UI..."
+cmd "sym set LobbyLabelMode Coop"
+cmd "sym set MatchmakingType Coop"
+cmd "sym set MatchmakingMode Classic"
+cmd "menucmd SyncMatchmakingSymbols"
+cmd "pcmd t4 menuCmd MatchCoop"
+cmd "pcmd t4 menuCmd LoadLobbyMatch"
+}
+Script GoMatchPvE {
+ignoreInputTime 0.15
+cmd "echo Transitioning to PvE mm lobby UI..."
+cmd "sym set LobbyLabelMode Survival"
+cmd "sym set MatchmakingType Coop"
+cmd "sym set MatchmakingMode Survival"
+cmd "menucmd SyncMatchmakingSymbols"
+cmd "pcmd t4 menuCmd MatchCoop"
+cmd "pcmd t4 menuCmd LoadLobbyMatch"
+}
+Script MM_OnTimerComplete {
+cmd "echo MM_OnTimerComplete"
+cmd "sym set _MM_TimerTick 0"
+rcmd "if menuloaded DialogBox.txt runnow clearmenu DialogBox.txt"
+rcmd "if menuloaded DialogBoxOk.txt runnow clearmenu DialogBoxOk.txt"
+rcmd "if menuloaded DialogBoxEnh.txt runnow clearmenu DialogBoxEnh.txt"
+cmd "pcmd 1.0 clearmenu ConLobbyReady /fadeout 0.25"
+}
+Script MM_OnTimerCleared {
+cmd "echo MM_OnTimerCleared"
+cmd "sym set _MM_TimerTick 0"
+cmd "clearmenu ConLobbyReady /fadeout 0.25"
+}
+Script MM_OnTimerTick {
+rcmd "echo Tick.."
+cmd "sym set _MM_TimerTick 1"
+cmd "if sym MM_Timer >= 1 pcmd t3 sym set _MM_TimerTick 0"
+cmd "if sym MM_ConfirmEnabled == 1 runnow party2 confirm"
+cmd "if sym InLobbyVis != 1 playsound UI_MatchStart_SmallBeep"
+cmd "if sym InLobbyVis == 1 playsound UI_MatchStart_SmallestBeep"
+}
+Script MM_ShowPartyInvite {
+cmd "sym set HandlePartyInviteFrom_ $PartyInviteFrom"
+cmd "sym set HandlePartyInviteMode_ $PartyInviteMode"
+cmd "sym set HandlePartyInviteSize_ $PartyInviteSize"
+cmd "sym clear PartyInviteFrom PartyInviteMode PartyInviteSize"
+cmd "sym pop PartyInviteFrom PartyInviteMode PartyInviteSize"
+cmd "sym set DialogBoxTitle PartyInviteTitle"
+cmd "sym set DialogBoxMessage PartyInviteMessage"
+cmd "if sym HandlePartyInviteMode_ == pve runnow sym set DialogBoxMessage PartyInviteMessage_Survival"
+cmd "if sym HandlePartyInviteMode_ == pvp runnow sym set DialogBoxMessage PartyInviteMessage_Unranked"
+cmd "if sym HandlePartyInviteMode_ == ranked runnow sym set DialogBoxMessage PartyInviteMessage_Ranked"
+cmd "if sym HandlePartyInviteMode_ == custom runnow sym set DialogBoxMessage PartyInviteMessage_Custom"
+cmd "if sym HandlePartyInviteMode_ == ultimate runnow sym set DialogBoxMessage PartyInviteMessage_Ultimate"
+cmd "if sym HandlePartyInviteMode_ == coop runnow sym set DialogBoxMessage PartyInviteMessage_Coop"
+cmd "if consolePlatform runnow sym set DialogBoxMessage PartyInviteMessage"
+cmd "sym set DialogMenuCmdOnButton1 MM_LastPartyInviteAccept"
+cmd "sym set DialogMenuCmdOnButton0 MM_LastPartyInviteDecline"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script MM_DiscardPartyInvite {
+cmd "sym pop PartyInviteFrom PartyInviteMode PartyInviteSize"
+}
+Script MM_CloseAnyExistingPartyInvite {
+cmd "if sym DialogMenuCmdOnButton1 == MM_LastPartyInviteAccept runnow clearmenu DialogBox.txt"
+}
+Script MM_LastPartyInviteAccept {
+cmd "if sym ConScreenInset == 1 runnow menucmd ConScreenInsetCancel"
+cmd "party2 accept $HandlePartyInviteFrom_"
+}
+Script MM_LastPartyInviteDecline {
+}
+Script MM_NotifySlot {
+cmd "echo Notify MY Slot: $_MArg1_  Player: $_MArg2_"
+}
+Script MM_NotifyPlayerSlot {
+cmd "echo Notify PLAYER Slot: $_MArg1_  Player: $_MArg2_"
+cmd "if sym MM_PartyMembers > 1 party focusChat"
+cmd "if sym MM_PartyMembers > 1 if sym GL_ChatMinimized == 1 menuCmd RestoreChat"
+cmd "gmlC pchat $_MArg2_ /SYS_Party_PlayerJoin/"
+cmd "if sym InLobbyVis != 1 sym set LobbyEventNotice 1"
+cmd "menucmd MM_ConLobbyMessageUpdate"
+}
+Script MM_NotifyPlayerSlotLeft {
+cmd "echo Notify PLAYER Slot: $_MArg1_  Player: $_MArg2_"
+cmd "gmlC pchat $_MArg2_ /SYS_Party_PlayerLeave/"
+cmd "if sym InLobbyVis != 1 sym set LobbyEventNotice 1"
+cmd "menucmd MM_ConLobbyMessageUpdate"
+}
+Script MM_PartyLeave {
+cmd "gmlc pchat /SYS_Party_Leave/"
+}
+Script MM_Party2Notify {
+cmd "echo Generic Party2Notify: $_MArg1_"
+cmd "menuCmd MM_ConLobbyMessageUpdate"
+cmd "if sym MM_PartySize > 0 if sym InLobbyVis != 1 sym set LobbyEventNotice 1"
+}
+Script MM_ConLobbyMessageUpdate {
+cmd "]if usingMouse menuCmd MM_ConLobbyMessageUpdateMouse"
+cmd "]if usingPad menuCmd MM_ConLobbyMessageUpdateGamepad"
+}
+Script MM_ConLobbyMessageUpdateMouse {
+cmd "]if sym MM_Lobby == 1 ]if sym MM_PartySize > $MM_PartyMembers ]sym set LobbyStatusMessage MsgEnterQueueTeamIncompleteMouse"
+cmd "]if sym MM_Lobby == 1 ]if sym MM_PartySize == $MM_PartyMembers ]sym set LobbyStatusMessage MsgEnterQueueTeamCompleteMouse"
+cmd "]if sym MM_Lobby == 1 ]if sym MatchmakingType == Custom ]sym set LobbyStatusMessage MsgWhenReadyPressStartMouse"
+cmd "]if sym MM_Lobby == 1 ]if sym MatchmakingType == Coop ]sym set LobbyStatusMessage MsgWhenReadyPressStartMouse"
+cmd "]if sym MM_Lobby == 1 ]if sym MatchmakingType == Survival ]sym set LobbyStatusMessage MsgWhenReadyPressStartMouse"
+cmd "]if sym InputPad == 0 ]if sym MM_Queue == 1 ]if sym MM_PartySize > $MM_PartyMembers ]sym set LobbyStatusMessage MsgInQueueTeamIncomplete"
+cmd "]if sym InputPad == 1 ]if sym MM_Queue == 1 ]if sym MM_PartySize > $MM_PartyMembers ]sym set LobbyStatusMessage MsgInQueueTeamIncomplete_pad"
+cmd "]if sym MM_Queue == 1 ]if sym MM_PartySize == $MM_PartyMembers ]sym set LobbyStatusMessage $_QueueMessage_"
+cmd "]if sym MM_Coordinate == 1 ]sym set LobbyStatusMessage MsgFinalReadyTimerMouse"
+}
+Script MM_ConLobbyMessageUpdateGamepad {
+cmd "]if sym InputPad == 0 ]if sym MM_Lobby == 1 ]if sym MM_PartySize > $MM_PartyMembers ]sym set LobbyStatusMessage MsgEnterQueueTeamIncomplete"
+cmd "]if sym InputPad == 1 ]if sym MM_Lobby == 1 ]if sym MM_PartySize > $MM_PartyMembers ]sym set LobbyStatusMessage MsgEnterQueueTeamIncomplete_pad"
+cmd "]if sym InputPad == 0 ]if sym MM_Lobby == 1 ]if sym MM_PartySize == $MM_PartyMembers ]sym set LobbyStatusMessage MsgEnterQueueTeamComplete"
+cmd "]if sym InputPad == 1 ]if sym MM_Lobby == 1 ]if sym MM_PartySize == $MM_PartyMembers ]sym set LobbyStatusMessage MsgEnterQueueTeamComplete_pad"
+cmd "]if sym InputPad == 0 ]if sym MM_Lobby == 1 ]if sym MatchmakingType == Custom ]sym set LobbyStatusMessage MsgWhenReadyPressStart"
+cmd "]if sym InputPad == 1 ]if sym MM_Lobby == 1 ]if sym MatchmakingType == Custom ]sym set LobbyStatusMessage MsgWhenReadyPressStart_pad"
+cmd "]if sym InputPad == 0 ]if sym MM_Lobby == 1 ]if sym MatchmakingType == Coop ]sym set LobbyStatusMessage MsgWhenReadyPressStart"
+cmd "]if sym InputPad == 1 ]if sym MM_Lobby == 1 ]if sym MatchmakingType == Coop ]sym set LobbyStatusMessage MsgWhenReadyPressStart_pad"
+cmd "]if sym InputPad == 0 ]if sym MM_Lobby == 1 ]if sym MatchmakingType == Survival ]sym set LobbyStatusMessage MsgWhenReadyPressStart"
+cmd "]if sym InputPad == 1 ]if sym MM_Lobby == 1 ]if sym MatchmakingType == Survival ]sym set LobbyStatusMessage MsgWhenReadyPressStart_pad"
+cmd "]if sym InputPad == 0 ]if sym MM_Queue == 1 ]if sym MM_PartySize > $MM_PartyMembers ]sym set LobbyStatusMessage MsgInQueueTeamIncomplete"
+cmd "]if sym InputPad == 1 ]if sym MM_Queue == 1 ]if sym MM_PartySize > $MM_PartyMembers ]sym set LobbyStatusMessage MsgInQueueTeamIncomplete_pad"
+cmd "]if sym InputPad == 0 ]if sym MM_Queue == 1 ]if sym MM_PartySize > $MM_PartyMembers ]sym set LobbyStatusMessage MsgInQueueTeamIncomplete"
+cmd "]if sym InputPad == 1 ]if sym MM_Queue == 1 ]if sym MM_PartySize > $MM_PartyMembers ]sym set LobbyStatusMessage MsgInQueueTeamIncomplete_pad"
+cmd "]if sym MM_Queue == 1 ]if sym MM_PartySize == $MM_PartyMembers ]sym set LobbyStatusMessage $_QueueMessage_"
+cmd "]if sym InputPad == 0 ]if sym MM_Coordinate == 1 ]sym set LobbyStatusMessage MsgCoordinateTimer"
+cmd "]if sym InputPad == 1 ]if sym MM_Coordinate == 1 ]sym set LobbyStatusMessage MsgCoordinateTimer_pad"
+}

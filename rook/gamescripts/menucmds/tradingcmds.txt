@@ -1,0 +1,38 @@
+Script CantAddItemToTrade {
+cmd "sym set DialogBoxTitle DialogTitleCantTradeItem"
+cmd "sym set DialogBoxMessage DialogMessageCantTradeItem"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script TradeStateInitialize {
+rcmd "sym set TR_HiddenTrade0 1"
+rcmd "sym set TR_HiddenTrade1 1"
+rcmd "sym set TR_HiddenTrade2 1"
+rcmd "sym set TR_HiddenTrade3 1"
+rcmd "sym set TR_HiddenTradeIn0 1"
+rcmd "sym set TR_HiddenTradeIn1 1"
+rcmd "sym set TR_HiddenTradeIn2 1"
+rcmd "sym set TR_HiddenTradeIn3 1"
+rcmd "collection clearCollectionExclusions trade"
+cmd "collection scrollUpdate paged"
+}
+Script RemoveItemFromTrade0 {
+rcmd "sym set TR_HiddenTrade0 1"
+rcmd "collection updateTradeCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+}
+Script RemoveItemFromTrade1 {
+rcmd "sym set TR_HiddenTrade1 1"
+rcmd "collection updateTradeCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+}
+Script RemoveItemFromTrade2 {
+rcmd "sym set TR_HiddenTrade2 1"
+rcmd "collection updateTradeCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+}
+Script RemoveItemFromTrade3 {
+rcmd "sym set TR_HiddenTrade3 1"
+rcmd "collection updateTradeCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+}

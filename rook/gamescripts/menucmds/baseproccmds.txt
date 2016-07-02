@@ -1,0 +1,153 @@
+Script ProcStartBuild {
+pendingOnIgnoreInputTime
+cmd "gmlC log <Y> /${_MArg1_}/ /BaseCampConstructionStarted/"
+}
+Script ProcStartUpgrade {
+pendingOnIgnoreInputTime
+cmd "gmlC log <Y> /${_MArg1_}/ /BaseCampUpgradeStarted/"
+}
+Script ProcFailCantBuildInSlot {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailCantBuildInSlot"
+cmd "sym set DialogBoxMessage DialogMessageProcFailCantBuildInSlot"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailNoSkill {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailNoSkill"
+cmd "sym set DialogBoxMessage DialogMessageProcFailNoSkill"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailNoPrereq {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailNoPrereq"
+cmd "sym set DialogBoxMessage DialogMessageProcFailNoPrereq"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailBusy {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailBusy"
+cmd "sym set DialogBoxMessage DialogMessageProcFailBusy"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailCompleteNotReady {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailCompleteNotReady"
+cmd "sym set DialogBoxMessage DialogMessageProcFailCompleteNotReady"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailULvlReq {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailULvlReq"
+cmd "sym set DialogBoxMessage DialogMessageProcFailULvlReq"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailPLvlReq {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailPLvlReq"
+cmd "sym set DialogBoxMessage DialogMessageProcFailPLvlReq"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailSVipReq {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailSVipReq"
+cmd "sym set DialogBoxMessage DialogMessageProcFailSVipReq"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailAdminReq {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailAdminReq"
+cmd "sym set DialogBoxMessage DialogMessageProcFailAdminReq"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailEventReq {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailEventReq"
+cmd "sym set DialogBoxMessage DialogMessageProcFailEventReq"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailCostKudos {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailCostKudos"
+cmd "sym set DialogBoxMessage DialogMessageProcFailCostKudos"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcFailCostDiamonds {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleProcFailCostDiamonds"
+cmd "sym set DialogBoxMessage DialogMessageProcFailCostDiamonds"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcCompleteSuccessfull {
+pendingOnIgnoreInputTime
+}
+Script BaseCampActionCost_NotEnoughKudos {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleBaseCampActionCostInsufficient"
+cmd "sym set DialogBoxMessage DialogMsgBaseCampActionCostInsufficientKudos"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "sym set _ActionAmount_ $_MArg1_"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script BaseCampActionCost_NotEnoughDiamonds {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleBaseCampActionCostInsufficient"
+cmd "sym set DialogBoxMessage DialogMsgBaseCampActionCostInsufficientDiamonds"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "sym set _ActionAmount_ $_MArg1_"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script BaseCampActionCost_NotEnoughScrap {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleBaseCampActionCostInsufficient"
+cmd "sym set DialogBoxMessage DialogMsgBaseCampActionCostInsufficientScrap"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "sym set _ActionAmount_ $_MArg1_"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script BaseCampActionCost_NotEnoughFineScrap {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleBaseCampActionCostInsufficient"
+cmd "sym set DialogBoxMessage DialogMsgBaseCampActionCostInsufficientFineScrap"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "sym set _ActionAmount_ $_MArg1_"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script BaseCampActionCost_NotEnoughAlloy {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleBaseCampActionCostInsufficient"
+cmd "sym set DialogBoxMessage DialogMsgBaseCampActionCostInsufficientAlloy"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "sym set _ActionAmount_ $_MArg1_"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script BaseCampActionCost_NotEnoughHonor {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleBaseCampActionCostInsufficient"
+cmd "sym set DialogBoxMessage DialogMsgBaseCampActionCostInsufficientHonor"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "sym set _ActionAmount_ $_MArg1_"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ProcShovelClearFailed {
+pendingOnIgnoreInputTime
+ignoreInputTime 0.75
+cmd "sym set DialogBoxTitle DialogTitleBasecampCellClear"
+cmd "sym set DialogBoxMessage DialogMessageCellClearFailed_AlreadyCleared"
+cmd "if literal $_MArg1_ == NoShovel runnow sym set DialogBoxMessage DialogMessageCellClearFailed_NoShovel"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "sym set _ActionAmount_ $_MArg1_"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}

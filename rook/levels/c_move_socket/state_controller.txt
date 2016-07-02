@@ -1,0 +1,54 @@
+StateController Lvl_C_MoveSocket {
+#include Lvl_CommonStates
+#include Lvl_Challenge_CommonStates
+State initial {
+In 0.0 "sym set MatchOver 0"
+In 0.0 "rook powerGenMod set 100"
+}
+State Init {
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos -8.509483 -9.313881 0.6 /id 1
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos -8.509483 -9.313881 0.2 /scale 5.0 /id 1
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos 8.474868 -8.582179 0.6 /id 2
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos 8.474868 -8.582179 0.2 /scale 5.0 /id 2
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos 8.585033 8.678409 0.6 /id 3
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos 8.585033 8.678409 0.2 /scale 5.0 /id 3
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos -8.841946 8.285480 0.6 /id 4
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos -8.841946 8.285480 0.2 /scale 5.0 /id 4
+}
+State ClearTgt1Mk {
+Cfg timeBlock 2.0
+DoL 0.0 mdlprop clearids 1
+}
+State ClearTgt2Mk {
+Cfg timeBlock 2.0
+DoL 0.0 mdlprop clearids 2
+}
+State ClearTgt3Mk {
+Cfg timeBlock 2.0
+DoL 0.0 mdlprop clearids 3
+}
+State ClearTgt4Mk {
+Cfg timeBlock 2.0
+DoL 0.0 mdlprop clearids 4
+}
+State Tick {
+DoL 0.0 player 0 countOccupiedSockets S_DCount
+DoL 0.0 player 0 incIfUnitNear tgt1 2.0 S_DCount_NA /lvlStateYes ClearTgt1Mk
+DoL 0.0 player 0 incIfUnitNear tgt2 2.0 S_DCount_NA /lvlStateYes ClearTgt2Mk
+DoL 0.0 player 0 incIfUnitNear tgt3 2.0 S_DCount_NA /lvlStateYes ClearTgt3Mk
+DoL 0.0 player 0 incIfUnitNear tgt4 2.0 S_DCount_NA /lvlStateYes ClearTgt4Mk
+DoL 0.0 if sym S_DCount >= $S_DLimit runNow sym set MatchOver 1
+}
+State Hint_CarryMM {
+Cfg timeBlock 8.0
+DoL 0.0 gamemsg addTR_U Hint_CarryMM
+}
+State Hint_CarryGen {
+Cfg timeBlock 8.0
+DoL 0.0 gamemsg addTR_U Hint_CarryGen
+}
+State Hint_CarryTur {
+Cfg timeBlock 8.0
+DoL 0.0 gamemsg addTR_U Hint_CarryTur
+}
+}

@@ -1,0 +1,2816 @@
+// map: spiral
+
+// level embedded console commands 
+CONSOLE gameUI enable PressAText
+CONSOLE gameUI disable LoadingText
+CONSOLE sym set IsLoaded 1
+CONSOLE_IMMEDIATE rook setChallengeInfo survival 1 0 // index, unused
+CONSOLE_IMMEDIATE rook setCreepLimit 6
+CONSOLE_IMMEDIATE rook setLevelExpReqMult 2.0
+CONSOLE_IMMEDIATE sym set S_Wave 0
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_EnvironmentMapped.mtl Mountain
+CONSOLE_IMMEDIATE sym set IronHandSurvivalEnemies 1
+CONSOLE_EXIT_IMMEDIATE sym set IronHandSurvivalEnemies 0
+
+mapInfo {
+	MAPNAME Spiral
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION Spiral
+	SKYBOX mat_SkyBlueSmallClouds
+	GAMEMODE survival
+	GAMESTYLE Skirmish
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT 45
+	FORCEBOX -60 60 -60 60 4 45
+	MAPEXTMIN -70 -70 0
+	MAPEXTMAX 70 70 0
+	CAMERAEXTMIN -52 -45
+	CAMERAEXTMAX 48 45
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Canyon
+	TerrainArrayX 10
+	TerrainArrayY 10
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -2
+  TRANSFORMPLANE -1
+}
+
+fogValues {
+	FOGCOLOR 115 103 91 255
+	FOGARGS 15 15
+	DFOGCOLOR 201.210938 211.171875 239.0625 255
+	DFOGARGS 90 150
+	CANVASCOLOR 0 0 0 0
+}
+
+airmech {
+	AILevel -1
+	Player 0 {
+		startLoc 0 0 3
+		startLevel 0
+		pilot 
+		airmech 
+		aiScript 
+	}
+	Player 1 {
+		startLoc 2 0 3
+		startLevel 0
+		pilot 
+		airmech 
+		aiScript 
+	}
+	Player 2 {
+		startLoc -2 0 3
+		startLevel 0
+		pilot 
+		airmech 
+		aiScript 
+	}
+	Player 3 {
+		startLoc 2 2 3
+		startLevel 0
+		pilot 
+		airmech 
+		aiScript 
+	}
+	Player 4 {
+		startLoc -2 2 3
+		startLevel 0
+		pilot 
+		airmech 
+		aiScript 
+	}
+	Player 5 {
+		startLoc 1 2 3
+		startLevel 0
+		pilot 
+		airmech 
+		aiScript 
+	}
+}
+DIR_LIGHT {
+	dir 0.519245 0.413107 0.748149
+	diff 0.7 0.6 0.5
+	amb 0.6 0.6 0.5
+}
+EventScripts {
+}
+ActionScripts {
+}
+ScriptVariables {
+}
+objects {
+	WO Spiral_J0 {
+		pos 24 128 0
+	}
+	WO Spiral_J0 {
+		pos 16 128 0
+	}
+	WO Spiral_J0 {
+		pos 8 128 0
+	}
+	WO Spiral_J0 {
+		pos 0 128 0
+	}
+	WO Spiral_J0 {
+		pos 24 120 0
+	}
+	WO Spiral_J0 {
+		pos 16 120 0
+	}
+	WO Spiral_J0 {
+		pos 8 120 0
+	}
+	WO Spiral_J0 {
+		pos 0 120 0
+	}
+	WO Spiral_J0 {
+		pos -8 120 0
+	}
+	WO Spiral_A0 {
+		pos 48 80 0
+	}
+	WO Spiral_G3 {
+		pos 48 88 0
+	}
+	WO Spiral_J0 {
+		pos 32 112 0
+	}
+	WO Spiral_J0 {
+		pos 24 112 0
+	}
+	WO Spiral_J0 {
+		pos 16 112 0
+	}
+	WO Spiral_J0 {
+		pos 8 112 0
+	}
+	WO Spiral_J0 {
+		pos 0 112 0
+	}
+	WO Spiral_J0 {
+		pos -8 112 0
+	}
+	WO Spiral_J0 {
+		pos -16 112 0
+	}
+	WO Spiral_J0 {
+		pos 40 104 0
+	}
+	WO Spiral_J0 {
+		pos 32 104 0
+	}
+	WO Spiral_J0 {
+		pos 24 104 0
+	}
+	WO Spiral_J0 {
+		pos 16 104 0
+	}
+	WO Spiral_J0 {
+		pos -56 -24 0
+	}
+	WO Spiral_J0 {
+		pos -56 -16 0
+	}
+	WO Spiral_G3 {
+		pos 56 88 0
+	}
+	WO Spiral_J0 {
+		pos 8 104 0
+	}
+	WO Spiral_J0 {
+		pos 0 104 0
+	}
+	WO Spiral_J0 {
+		pos -8 104 0
+	}
+	WO Spiral_J0 {
+		pos -16 104 0
+	}
+	WO Spiral_J0 {
+		pos -24 104 0
+	}
+	WO Spiral_A0 {
+		pos 56 80 0
+	}
+	WO Spiral_A0 {
+		pos 48 72 0
+	}
+	WO Spiral_G3 {
+		pos 48 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_F1 {
+		pos 56 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 56 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_F1 {
+		pos 56 8 0
+		. escc
+	}
+	WO Spiral_J0 {
+		pos -104 8 0
+	}
+	WO Spiral_J0 {
+		pos -104 16 0
+	}
+	WO Spiral_J0 {
+		pos -112 8 0
+	}
+	WO Spiral_J0 {
+		pos -104 -8 0
+	}
+	WO Spiral_A0 {
+		pos 72 72 0
+	}
+	WO Spiral_A0 {
+		pos 56 72 0
+	}
+	WO Spiral_G4 {
+		pos 56 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_J0 {
+		pos -104 0 0
+	}
+	WO Spiral_J0 {
+		pos -112 0 0
+	}
+	WO Spiral_J0 {
+		pos -112 -8 0
+	}
+	WO Spiral_J0 {
+		pos -112 -16 0
+	}
+	WO Spiral_J0 {
+		pos -104 -16 0
+	}
+	WO Spiral_G2 {
+		pos 48 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_A0 {
+		pos 48 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 48 8 0
+		. escc
+	}
+	WO Spiral_J0 {
+		pos -104 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_J0 {
+		pos -32 96 0
+	}
+	WO Spiral_J0 {
+		pos -32 88 0
+	}
+	WO Spiral_G2 {
+		pos 32 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G3 {
+		pos 32 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G2 {
+		pos 32 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G3 {
+		pos 32 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G0 {
+		pos -16 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G2 {
+		pos 40 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_G3 {
+		pos 40 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G0 {
+		pos 32 80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G2 {
+		pos 40 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_G4 {
+		pos 40 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_H1 {
+		pos 8 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. escc
+	}
+	WO Spiral_A1 {
+		pos 40 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_H1 {
+		pos -8 -40 0
+	}
+	WO Spiral_G2 {
+		pos 40 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 40 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_F0 {
+		pos 40 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_J0 {
+		pos -32 -88 0
+	}
+	WO Spiral_J0 {
+		pos 32 96 0
+	}
+	WO Spiral_G3 {
+		pos 40 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos 40 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_H0 {
+		pos 40 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. escc
+	}
+	WO Spiral_A0 {
+		pos 64 80 0
+	}
+	WO Spiral_A0 {
+		pos 64 72 0
+	}
+	WO Spiral_G1 {
+		pos -32 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 32 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G4 {
+		pos 32 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 32 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 32 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G3 {
+		pos 32 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G2 {
+		pos 32 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G3 {
+		pos 32 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G3 {
+		pos 32 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_H0 {
+		pos 32 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_H1 {
+		pos 40 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. escc
+	}
+	WO Spiral_J0 {
+		pos -40 88 0
+	}
+	WO Spiral_J0 {
+		pos -40 -88 0
+	}
+	WO Spiral_J0 {
+		pos 48 96 0
+	}
+	WO Spiral_J0 {
+		pos 32 120 0
+	}
+	WO Spiral_J0 {
+		pos 40 96 0
+	}
+	WO Spiral_J0 {
+		pos 24 96 0
+	}
+	WO Spiral_J0 {
+		pos 24 88 0
+	}
+	WO Spiral_J0 {
+		pos 16 96 0
+	}
+	WO Spiral_G2 {
+		pos -16 40 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos -24 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 24 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 24 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_G3 {
+		pos 24 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G3 {
+		pos 16 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G3 {
+		pos 24 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G0 {
+		pos 24 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_F0 {
+		pos 24 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos -8 -32 0
+	}
+	WO Spiral_G0 {
+		pos 16 40 0
+		. escc
+	}
+	WO Spiral_J0 {
+		pos 16 88 0
+	}
+	WO Spiral_J0 {
+		pos 16 -88 0
+	}
+	WO Spiral_J0 {
+		pos 8 96 0
+	}
+	WO Spiral_J0 {
+		pos 8 88 0
+	}
+	WO Spiral_J0 {
+		pos 88 -16 0
+	}
+	WO Spiral_J0 {
+		pos 88 -8 0
+	}
+	WO Spiral_J0 {
+		pos 88 0 0
+	}
+	WO Spiral_J0 {
+		pos 88 8 0
+	}
+	WO Spiral_J0 {
+		pos 88 16 0
+	}
+	WO Spiral_J0 {
+		pos 88 24 0
+	}
+	WO Spiral_G3 {
+		pos -24 40 0
+	}
+	WO Spiral_G2 {
+		pos 0 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G0 {
+		pos -24 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G2 {
+		pos 16 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G2 {
+		pos 24 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 16 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G3 {
+		pos 16 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_H0 {
+		pos 16 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G1 {
+		pos 16 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos 8 -32 0
+	}
+	WO Spiral_A0 {
+		pos 0 -48 0
+		. escc
+	}
+	WO Spiral_J0 {
+		pos 88 32 0
+	}
+	WO Spiral_J0 {
+		pos 88 40 0
+	}
+	WO Spiral_J0 {
+		pos 8 -88 0
+	}
+	WO Spiral_J0 {
+		pos 8 -96 0
+	}
+	WO Spiral_J0 {
+		pos 0 96 0
+	}
+	WO Spiral_J0 {
+		pos 0 88 0
+	}
+	WO Spiral_J0 {
+		pos 0 -88 0
+	}
+	WO Spiral_J0 {
+		pos -88 48 0
+	}
+	WO Spiral_F1 {
+		pos -8 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G2 {
+		pos 8 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_H1 {
+		pos 8 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos -8 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G1 {
+		pos -16 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_H0 {
+		pos -8 16 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 8 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos 8 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos 8 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_H0 {
+		pos 8 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G2 {
+		pos 8 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G3 {
+		pos 16 -32 0
+	}
+	WO Spiral_H1 {
+		pos 40 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G2 {
+		pos 8 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_F1 {
+		pos 8 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_J0 {
+		pos -88 40 0
+	}
+	WO Spiral_J0 {
+		pos -88 32 0
+	}
+	WO Spiral_J0 {
+		pos -88 24 0
+	}
+	WO Spiral_J0 {
+		pos -88 16 0
+	}
+	WO Spiral_J0 {
+		pos -88 8 0
+	}
+	WO Spiral_J0 {
+		pos -88 0 0
+	}
+	WO Spiral_G2 {
+		pos -8 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_A0 {
+		pos 0 48 0
+		. escc
+	}
+	WO Spiral_A1 {
+		pos 0 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos -16 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 16 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G0 {
+		pos 0 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G3 {
+		pos 0 -32 0
+	}
+	WO Spiral_G2 {
+		pos 16 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_A1 {
+		pos 0 -40 0
+	}
+	WO Spiral_G2 {
+		pos 0 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. escc
+	}
+	WO Spiral_J0 {
+		pos -88 -8 0
+	}
+	WO Spiral_J0 {
+		pos 0 -96 0
+	}
+	WO Spiral_J0 {
+		pos -8 96 0
+	}
+	WO Spiral_J0 {
+		pos -8 88 0
+	}
+	WO Spiral_J0 {
+		pos -8 -88 0
+	}
+	WO Spiral_J0 {
+		pos -8 -96 0
+	}
+	WO Spiral_F1 {
+		pos 8 56 0
+	}
+	WO Spiral_G2 {
+		pos 0 56 0
+	}
+	WO Spiral_H1 {
+		pos -8 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos 8 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G3 {
+		pos -8 24 0
+	}
+	WO Spiral_G1 {
+		pos -8 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G3 {
+		pos -8 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G2 {
+		pos -8 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G2 {
+		pos -8 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G1 {
+		pos 8 16 0
+		. escc
+	}
+	WO Spiral_F0 {
+		pos -8 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G2 {
+		pos 24 -32 0
+		. escc
+	}
+	WO Spiral_G1 {
+		pos 32 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos -8 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_F1 {
+		pos -8 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_J0 {
+		pos -16 96 0
+	}
+	WO Spiral_J0 {
+		pos -16 88 0
+	}
+	WO Spiral_J0 {
+		pos -16 -88 0
+	}
+	WO Spiral_J0 {
+		pos -16 -96 0
+	}
+	WO Spiral_J0 {
+		pos -24 96 0
+	}
+	WO Spiral_J0 {
+		pos -24 88 0
+	}
+	WO Spiral_J0 {
+		pos -24 -88 0
+	}
+	WO Spiral_J0 {
+		pos -96 40 0
+	}
+	WO Spiral_G0 {
+		pos -40 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. escc
+	}
+	WO Spiral_H0 {
+		pos 16 32 0
+	}
+	WO Spiral_F0 {
+		pos 8 24 0
+		. escc
+	}
+	WO Spiral_H0 {
+		pos -16 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. escc
+	}
+	WO Spiral_G3 {
+		pos -16 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G3 {
+		pos -16 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G4 {
+		pos -16 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G3 {
+		pos -16 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos -16 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_H0 {
+		pos -16 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G3 {
+		pos 24 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_J0 {
+		pos -96 32 0
+	}
+	WO Spiral_J0 {
+		pos -96 24 0
+	}
+	WO Spiral_J0 {
+		pos -96 16 0
+	}
+	WO Spiral_J0 {
+		pos -96 8 0
+	}
+	WO Spiral_J0 {
+		pos -96 0 0
+	}
+	WO Spiral_J0 {
+		pos -96 -8 0
+	}
+	WO Spiral_J0 {
+		pos -96 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_J0 {
+		pos -96 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_J0 {
+		pos -96 -32 0
+	}
+	WO Spiral_J0 {
+		pos -96 -40 0
+	}
+	WO Spiral_F0 {
+		pos 24 40 0
+		. escc
+	}
+	WO Spiral_G1 {
+		pos 24 32 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos -24 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G3 {
+		pos -24 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G1 {
+		pos -24 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G3 {
+		pos -24 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G2 {
+		pos -24 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_F0 {
+		pos -24 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G0 {
+		pos 0 24 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos -24 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_F0 {
+		pos -24 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_J0 {
+		pos -96 -48 0
+	}
+	WO Spiral_J0 {
+		pos -24 -96 0
+	}
+	WO Spiral_J0 {
+		pos 96 -8 0
+	}
+	WO Spiral_J0 {
+		pos 96 0 0
+	}
+	WO Spiral_J0 {
+		pos 96 8 0
+	}
+	WO Spiral_J0 {
+		pos 96 16 0
+	}
+	WO Spiral_J0 {
+		pos 96 24 0
+	}
+	WO Spiral_J0 {
+		pos -80 -8 0
+	}
+	WO Spiral_J0 {
+		pos -80 0 0
+	}
+	WO Spiral_J0 {
+		pos -80 8 0
+	}
+	WO Spiral_G2 {
+		pos 32 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_H0 {
+		pos -32 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. escc
+	}
+	WO Spiral_G2 {
+		pos -32 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos -32 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G3 {
+		pos -32 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G4 {
+		pos -32 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos -32 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G3 {
+		pos -32 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos -32 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G3 {
+		pos -32 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G3 {
+		pos -32 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G3 {
+		pos -32 -72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos -32 -80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G2 {
+		pos -32 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G3 {
+		pos -32 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_G4 {
+		pos -32 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_J0 {
+		pos -80 16 0
+	}
+	WO Spiral_J0 {
+		pos -80 24 0
+	}
+	WO Spiral_J0 {
+		pos -80 32 0
+	}
+	WO Spiral_J0 {
+		pos -80 40 0
+	}
+	WO Spiral_J0 {
+		pos -80 48 0
+	}
+	WO Spiral_G4 {
+		pos -40 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G3 {
+		pos -40 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G5 {
+		pos -40 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G5 {
+		pos -40 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G4 {
+		pos -40 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G4 {
+		pos -40 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G0 {
+		pos 40 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO Spiral_F0 {
+		pos -40 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. escc
+	}
+	WO Spiral_J0 {
+		pos -48 -16 0
+	}
+	WO Spiral_G3 {
+		pos -40 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G4 {
+		pos -40 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G4 {
+		pos -40 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_G3 {
+		pos -80 -64 0
+	}
+	WO Spiral_A1 {
+		pos -72 -80 0
+	}
+	WO Spiral_A1 {
+		pos -80 -80 0
+	}
+	WO Spiral_J0 {
+		pos -72 32 0
+	}
+	WO Spiral_J0 {
+		pos -72 40 0
+	}
+	WO Spiral_J0 {
+		pos -72 48 0
+	}
+	WO Spiral_J0 {
+		pos -72 56 0
+	}
+	WO Spiral_J0 {
+		pos -56 -32 0
+	}
+	WO Spiral_J0 {
+		pos -48 16 0
+	}
+	WO Spiral_J0 {
+		pos -48 24 0
+	}
+	WO Spiral_J0 {
+		pos -80 -56 0
+	}
+	WO Spiral_J0 {
+		pos -40 -48 -6
+	}
+	WO Spiral_J0 {
+		pos -40 -32 -6
+	}
+	WO Spiral_J0 {
+		pos -80 -16 0
+	}
+	WO Spiral_J0 {
+		pos -40 16 -3
+	}
+	WO Spiral_H0 {
+		pos -40 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_A1 {
+		pos -72 -72 0
+	}
+	WO Spiral_A1 {
+		pos -80 -72 0
+	}
+	WO Spiral_J0 {
+		pos -64 16 0
+	}
+	WO Spiral_J0 {
+		pos -64 24 0
+	}
+	WO Spiral_J0 {
+		pos -64 32 0
+	}
+	WO Spiral_J0 {
+		pos -64 40 0
+	}
+	WO Spiral_J0 {
+		pos -64 48 0
+	}
+	WO Spiral_J0 {
+		pos -64 56 0
+	}
+	WO Spiral_J0 {
+		pos -64 64 0
+	}
+	WO Spiral_J0 {
+		pos -56 -48 0
+	}
+	WO Spiral_J0 {
+		pos -40 8 -3
+	}
+	WO Spiral_J0 {
+		pos -72 -56 0
+	}
+	WO Spiral_J0 {
+		pos -48 -48 0
+	}
+	WO Spiral_J0 {
+		pos -64 -40 0
+	}
+	WO Spiral_J0 {
+		pos -64 -24 0
+	}
+	WO Spiral_G3 {
+		pos -72 -64 0
+	}
+	WO Spiral_A1 {
+		pos -64 -72 0
+	}
+	WO Spiral_A1 {
+		pos -64 -80 0
+	}
+	WO Spiral_J0 {
+		pos -56 32 0
+	}
+	WO Spiral_J0 {
+		pos -56 40 0
+	}
+	WO Spiral_J0 {
+		pos -56 48 0
+	}
+	WO Spiral_J0 {
+		pos -56 56 0
+	}
+	WO Spiral_J0 {
+		pos -56 64 0
+	}
+	WO Spiral_J0 {
+		pos -56 72 0
+	}
+	WO Spiral_J0 {
+		pos -48 32 0
+	}
+	WO Spiral_J0 {
+		pos -72 -16 0
+	}
+	WO Spiral_J0 {
+		pos -64 -56 0
+	}
+	WO Spiral_J0 {
+		pos -64 -48 0
+	}
+	WO Spiral_J0 {
+		pos -64 -32 0
+	}
+	WO Spiral_J0 {
+		pos -40 -80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_J0 {
+		pos -64 -16 0
+	}
+	WO Spiral_G3 {
+		pos -64 -64 0
+	}
+	WO Spiral_A1 {
+		pos -56 -72 0
+	}
+	WO Spiral_A1 {
+		pos -56 -80 0
+	}
+	WO Spiral_J0 {
+		pos -48 40 0
+	}
+	WO Spiral_J0 {
+		pos -48 48 0
+	}
+	WO Spiral_J0 {
+		pos -48 56 0
+	}
+	WO Spiral_J0 {
+		pos -48 64 0
+	}
+	WO Spiral_J0 {
+		pos -48 72 0
+	}
+	WO Spiral_J0 {
+		pos -72 24 0
+	}
+	WO Spiral_J0 {
+		pos -64 -64 -6
+	}
+	WO Spiral_J0 {
+		pos -72 8 0
+	}
+	WO Spiral_J0 {
+		pos -72 16 0
+	}
+	WO Spiral_J0 {
+		pos -56 -56 0
+	}
+	WO Spiral_J0 {
+		pos -40 -72 0
+	}
+	WO Spiral_J0 {
+		pos -72 -48 0
+	}
+	WO Spiral_J0 {
+		pos -80 -40 0
+	}
+	WO Spiral_J0 {
+		pos -56 -64 -6
+	}
+	WO Spiral_G3 {
+		pos -56 -64 0
+	}
+	WO Spiral_A1 {
+		pos -48 -72 0
+	}
+	WO Spiral_J0 {
+		pos -80 -32 0
+	}
+	WO Spiral_J0 {
+		pos -48 80 0
+	}
+	WO Spiral_J0 {
+		pos -40 48 0
+	}
+	WO Spiral_J0 {
+		pos -40 56 0
+	}
+	WO Spiral_J0 {
+		pos -40 64 0
+	}
+	WO Spiral_J0 {
+		pos -40 72 0
+	}
+	WO Spiral_J0 {
+		pos -40 80 0
+	}
+	WO Spiral_J0 {
+		pos -32 48 0
+	}
+	WO Spiral_J0 {
+		pos -32 56 0
+	}
+	WO Spiral_J0 {
+		pos -32 64 0
+	}
+	WO Spiral_J0 {
+		pos -72 -24 0
+	}
+	WO Spiral_J0 {
+		pos -48 -56 0
+	}
+	WO Spiral_J0 {
+		pos -80 -48 0
+	}
+	WO Spiral_J0 {
+		pos -72 -40 0
+	}
+	WO Spiral_J0 {
+		pos -72 -32 0
+	}
+	WO Spiral_J0 {
+		pos -80 -24 0
+	}
+	WO Spiral_G3 {
+		pos -48 -64 0
+	}
+	WO Spiral_A1 {
+		pos -48 -80 0
+	}
+	WO Spiral_J0 {
+		pos -40 -16 -6
+	}
+	WO FortPadBase {
+		pos 9.252768 8.19602 0.200787
+		rot_x -0.642788 0.766044 0
+		rot_y -0.766044 -0.642788 0
+		id 1
+		. escc
+		. team 0
+	}
+	WO FortPadBase {
+		pos -9.095684 -8.92398 0.319405
+		rot_x 0.642788 -0.766045 0
+		rot_y 0.766045 0.642788 0
+		id 2
+		. escc
+		. team 0
+	}
+	WO FortPadBase {
+		pos 9.781357 -8.248599 0.101804
+		rot_x 0.866026 0.5 0
+		rot_y -0.5 0.866026 0
+		id 3
+		. escc
+		. team 0
+	}
+	WO FortPadBase {
+		pos -2.812816 36.106575 0.192278
+		id 4
+		. team -1
+	}
+	WO FortPadBase {
+		pos 38.211224 -4.011865 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		id 5
+		. team -1
+	}
+	WO FortPadBase {
+		pos -38.454025 -0.873231 0.179946
+		rot_x -0.173648 0.984808 0
+		rot_y -0.984808 -0.173648 0
+		id 6
+		. team -1
+	}
+	WO FortPadBase {
+		pos 2.727365 -36.474205 0
+		rot_x -0.984808 -0.173648 0
+		rot_y 0.173648 -0.984808 0
+		id 7
+		. team -1
+	}
+	WO FortPadBase {
+		pos -38.488968 3.023025 0.179946
+		rot_x -0.173648 0.984808 0
+		rot_y -0.984808 -0.173648 0
+		id 8
+		. team -1
+	}
+	WO Spiral_J0 {
+		pos -32 72 0
+	}
+	WO Spiral_J0 {
+		pos -32 80 0
+	}
+	WO Spiral_J0 {
+		pos -24 -80 0
+	}
+	WO Spiral_J0 {
+		pos -24 -72 0
+	}
+	WO Spiral_J0 {
+		pos -24 -64 0
+	}
+	WO Spiral_J0 {
+		pos -24 -56 0
+	}
+	WO Spiral_J0 {
+		pos -24 -48 0
+	}
+	WO Spiral_J0 {
+		pos -24 48 0
+	}
+	WO Spiral_J0 {
+		pos -24 56 0
+	}
+	WO Spiral_J0 {
+		pos -24 64 0
+	}
+	WO Spiral_J0 {
+		pos -24 72 0
+	}
+	WO Spiral_J0 {
+		pos -24 80 0
+	}
+	WO Spiral_J0 {
+		pos -16 -80 0
+	}
+	WO Spiral_J0 {
+		pos -16 -72 0
+	}
+	WO Spiral_J0 {
+		pos -16 -64 0
+	}
+	WO Spiral_J0 {
+		pos -16 -56 0
+	}
+	WO Spiral_J0 {
+		pos -16 -48 0
+	}
+	WO Spiral_J0 {
+		pos -16 48 0
+	}
+	WO Spiral_J0 {
+		pos -16 56 0
+	}
+	WO Spiral_J0 {
+		pos -16 64 0
+	}
+	WO Spiral_J0 {
+		pos -16 72 0
+	}
+	WO Spiral_J0 {
+		pos -16 80 0
+	}
+	WO Spiral_J0 {
+		pos -8 -80 0
+	}
+	WO Spiral_J0 {
+		pos -8 -72 0
+	}
+	WO Spiral_J0 {
+		pos -8 -64 0
+	}
+	WO Spiral_J0 {
+		pos -8 64 0
+	}
+	WO Spiral_J0 {
+		pos -8 72 0
+	}
+	WO Spiral_J0 {
+		pos -8 80 0
+	}
+	WO Spiral_J0 {
+		pos 0 -80 0
+	}
+	WO Spiral_J0 {
+		pos 0 -72 0
+	}
+	WO Spiral_J0 {
+		pos -88 -24 0
+	}
+	WO Spiral_J0 {
+		pos -88 -32 0
+	}
+	WO Spiral_J0 {
+		pos -80 -64 -6
+	}
+	WO Spiral_J0 {
+		pos -88 -40 0
+	}
+	WO Spiral_J0 {
+		pos -88 -48 0
+	}
+	WO Spiral_J0 {
+		pos -40 -56 -6
+	}
+	WO Spiral_J0 {
+		pos 0 -64 0
+	}
+	WO Spiral_J0 {
+		pos 0 64 0
+	}
+	WO Spiral_J0 {
+		pos 0 72 0
+	}
+	WO Spiral_J0 {
+		pos 0 80 0
+	}
+	WO Spiral_J0 {
+		pos 8 -80 0
+	}
+	WO Spiral_J0 {
+		pos 8 -72 0
+	}
+	WO Spiral_J0 {
+		pos 8 -64 0
+	}
+	WO Spiral_J0 {
+		pos 8 64 0
+	}
+	WO Spiral_J0 {
+		pos 8 72 0
+	}
+	WO Spiral_J0 {
+		pos 8 80 0
+	}
+	WO Spiral_J0 {
+		pos 16 -80 0
+	}
+	WO Spiral_J0 {
+		pos 16 -72 0
+	}
+	WO Spiral_J0 {
+		pos 16 -64 0
+	}
+	WO Spiral_J0 {
+		pos 16 -56 0
+	}
+	WO Spiral_J0 {
+		pos 16 -48 0
+	}
+	WO Spiral_J0 {
+		pos 16 48 0
+	}
+	WO Spiral_J0 {
+		pos 16 56 0
+	}
+	WO Spiral_J0 {
+		pos 16 64 0
+	}
+	WO Spiral_J0 {
+		pos 16 72 0
+	}
+	WO Spiral_J0 {
+		pos 16 80 0
+	}
+	WO Spiral_J0 {
+		pos 24 -80 0
+	}
+	WO Spiral_J0 {
+		pos 24 -72 0
+	}
+	WO Spiral_J0 {
+		pos 24 -64 0
+	}
+	WO Spiral_G3 {
+		pos 64 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_J0 {
+		pos 24 -56 0
+	}
+	WO Spiral_J0 {
+		pos 24 -48 0
+	}
+	WO Spiral_J0 {
+		pos 24 48 0
+	}
+	WO Spiral_G3 {
+		pos 72 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Spiral_G1 {
+		pos 40 88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_J0 {
+		pos 24 56 0
+	}
+	WO Spiral_J0 {
+		pos 24 64 0
+	}
+	WO Spiral_J0 {
+		pos 24 72 0
+	}
+	WO Spiral_J0 {
+		pos 24 80 0
+	}
+	WO Spiral_J0 {
+		pos 32 -64 0
+	}
+	WO Spiral_F0 {
+		pos 32 88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_J0 {
+		pos 32 -56 0
+	}
+	WO Spiral_J0 {
+		pos 32 -48 0
+	}
+	WO Spiral_J0 {
+		pos 40 -64 0
+	}
+	WO Spiral_J0 {
+		pos 40 -56 0
+	}
+	WO Spiral_J0 {
+		pos 40 -48 0
+	}
+	WO Spiral_J0 {
+		pos 48 -56 0
+	}
+	WO Spiral_J0 {
+		pos 48 -48 0
+	}
+	WO Spiral_J0 {
+		pos 48 -40 0
+	}
+	WO Spiral_J0 {
+		pos 48 -32 0
+	}
+	WO Spiral_J0 {
+		pos 48 -24 0
+	}
+	WO Spiral_J0 {
+		pos 48 -16 0
+	}
+	WO Spiral_J0 {
+		pos 48 16 0
+	}
+	WO Spiral_J0 {
+		pos 48 24 0
+	}
+	WO Spiral_J0 {
+		pos 48 32 0
+	}
+	WO Spiral_J0 {
+		pos 48 40 0
+	}
+	WO Spiral_J0 {
+		pos 48 48 0
+	}
+	WO Spiral_J0 {
+		pos 48 56 0
+	}
+	WO Spiral_J0 {
+		pos 56 -48 0
+	}
+	WO Spiral_J0 {
+		pos 56 -40 0
+	}
+	WO Spiral_J0 {
+		pos 56 -32 0
+	}
+	WO Spiral_J0 {
+		pos 56 -24 0
+	}
+	WO Spiral_J0 {
+		pos 56 -16 0
+	}
+	WO Spiral_J0 {
+		pos 56 16 0
+	}
+	WO Spiral_J0 {
+		pos 56 24 0
+	}
+	WO Spiral_J0 {
+		pos 56 32 0
+	}
+	WO Spiral_J0 {
+		pos 56 40 0
+	}
+	WO Spiral_J0 {
+		pos 56 48 0
+	}
+	WO Spiral_J0 {
+		pos 56 56 0
+	}
+	WO Spiral_J0 {
+		pos 64 -40 0
+	}
+	WO Spiral_J0 {
+		pos 64 -32 0
+	}
+	WO Spiral_J0 {
+		pos 64 -24 0
+	}
+	WO Spiral_J0 {
+		pos 64 -16 0
+	}
+	WO Spiral_J0 {
+		pos 64 -8 0
+	}
+	WO Spiral_J0 {
+		pos 64 0 0
+	}
+	WO Spiral_J0 {
+		pos 64 8 0
+	}
+	WO Spiral_J0 {
+		pos 64 16 0
+	}
+	WO Spiral_J0 {
+		pos 64 24 0
+	}
+	WO Spiral_J0 {
+		pos 64 32 0
+	}
+	WO Spiral_J0 {
+		pos 64 40 0
+	}
+	WO Spiral_J0 {
+		pos 64 48 0
+	}
+	WO Spiral_J0 {
+		pos 64 56 0
+	}
+	WO Spiral_J0 {
+		pos 72 -32 0
+	}
+	WO Spiral_J0 {
+		pos 72 -24 0
+	}
+	WO Spiral_J0 {
+		pos 72 -16 0
+	}
+	WO Spiral_J0 {
+		pos 72 -8 0
+	}
+	WO Spiral_J0 {
+		pos 72 0 0
+	}
+	WO Spiral_J0 {
+		pos 72 8 0
+	}
+	WO Spiral_J0 {
+		pos 72 16 0
+	}
+	WO Spiral_J0 {
+		pos 72 24 0
+	}
+	WO Spiral_J0 {
+		pos 72 32 0
+	}
+	WO Spiral_J0 {
+		pos 72 40 0
+	}
+	WO Spiral_J0 {
+		pos 72 48 0
+	}
+	WO Spiral_J0 {
+		pos 72 56 0
+	}
+	WO FortPadBase {
+		pos -8.960176 8.754697 0.220559
+		rot_x -0.642788 -0.766045 0
+		rot_y 0.766045 -0.642788 0
+		id 9
+		. escc
+		. team 0
+	}
+	WO Spiral_J0 {
+		pos 80 -24 0
+	}
+	WO Spiral_J0 {
+		pos 80 -16 0
+	}
+	WO Spiral_J0 {
+		pos 80 -8 0
+	}
+	WO Spiral_J0 {
+		pos 80 0 0
+	}
+	WO Spiral_J0 {
+		pos 80 8 0
+	}
+	WO Spiral_J0 {
+		pos 80 16 0
+	}
+	WO Spiral_J0 {
+		pos 80 24 0
+	}
+	WO Spiral_J0 {
+		pos 80 32 0
+	}
+	WO Spiral_J0 {
+		pos 80 40 0
+	}
+	WO Spiral_J0 {
+		pos 80 48 0
+	}
+	WO Spiral_J0 {
+		pos 80 56 0
+	}
+	WO Spiral_J0 {
+		pos 32 -72 0
+	}
+	WO Spiral_G5 {
+		pos -40 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO SpiralProps_Outpost {
+		pos -63.686699 0.807023 -3.980287
+		rot_x 0 -1 0
+		rot_y 1.000001 0 0
+		rot_z 0 0 1.000001
+		scl 0.87
+	}
+	WO Spiral_J0 {
+		pos -88 -56 0
+	}
+	WO Spiral_A0 {
+		pos 0 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. escc
+	}
+	WO Spiral_J0 {
+		pos -40 -64 -6
+	}
+	WO Spiral_A0 {
+		pos 0 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO SpiralProps_MiddleCurve {
+		pos -0.459434 -11.95875 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SpiralProps_MiddleCurve {
+		pos -0.232074 11.142319 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_J0 {
+		pos -40 -40 -6
+	}
+	WO Spiral_J0 {
+		pos -56 -40 0
+	}
+	WO Spiral_J0 {
+		pos -48 -40 0
+	}
+	WO Spiral_J0 {
+		pos -40 -24 -6
+	}
+	WO Spiral_J0 {
+		pos -88 -16 0
+	}
+	WO Spiral_J0 {
+		pos -56 24 0
+	}
+	WO Spiral_J0 {
+		pos -48 -64 -6
+	}
+	WO Spiral_J0 {
+		pos -40 24 -3
+	}
+	WO Spiral_J0 {
+		pos -56 16 0
+	}
+	WO Spiral_J0 {
+		pos -88 -64 0
+	}
+	WO Spiral_J0 {
+		pos -48 -24 0
+	}
+	WO Spiral_G2 {
+		pos -40 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_J0 {
+		pos -72 -64 -6
+	}
+	WO Spiral_J0 {
+		pos 40 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_J0 {
+		pos 40 80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_J0 {
+		pos -48 -32 0
+	}
+	WO Spiral_A0 {
+		pos 0 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. escc
+	}
+	WO SpiralProps_Square {
+		pos -0.014676 48.107212 -0.7167
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 1.909999
+	}
+	WO SpiralProps_Square {
+		pos -0.121835 -48.217331 -0.800002
+		scl 1.909999
+	}
+	WO SpiralProps_Square {
+		pos 48.144375 0.011528 -0.720001
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 1.909999 1.909999 1.639999
+	}
+	WO SpiralProps_Rocks6 {
+		pos -42.86916 57.664104 -14.99156
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 6.71
+	}
+	WO SpiralProps_Rocks6 {
+		pos -50.181114 30.55205 -17.301556
+		rot_x -0.766046 -0.642789 0
+		rot_y 0.642789 -0.766046 0
+		scl 7.030002
+	}
+	WO SpiralProps_Rocks6 {
+		pos -95.212631 -20.284796 -20.991566
+		rot_x 0.984809 0.173648 0
+		rot_y -0.173648 0.984809 0
+		scl 0.99
+	}
+	WO SpiralProps_Rocks6 {
+		pos -86.105072 -37.418312 -21.741564
+		rot_x 0.90631 0.422619 0
+		rot_y -0.422619 0.90631 0
+		scl 0.66
+	}
+	WO SpiralProps_Square2 {
+		pos -53.364548 -9.063253 -7.221553
+		scl 2.829999
+	}
+	WO SpiralProps_Rocks6 {
+		pos 25.822695 99.10051 -14.751566
+		rot_x -0.996195 -0.087156 0
+		rot_y 0.087156 -0.996195 0
+		scl 9.410004
+	}
+	WO SpiralProps_Rocks6 {
+		pos 82.77253 15.753533 -24.179356
+		rot_x -0.781155 0.358459 0.511182
+		rot_y -0.341808 -0.930693 0.130307
+		rot_z 0.522463 -0.072936 0.849538
+		scl 1.09
+	}
+	WO SpiralProps_Outpost {
+		pos 71.830864 6.189312 -14.369982
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.43
+	}
+	WO SpiralProps_Rocks6 {
+		pos 70.764252 41.630604 -22.019617
+		rot_x -0.805829 -0.298891 0.511182
+		rot_y 0.416405 -0.899794 0.130307
+		rot_z 0.421011 0.317863 0.849538
+		scl 0.8
+	}
+	WO SpiralProps_Drain1 {
+		pos -26.544344 -15.757198 -14.270543
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SpiralProps_Drain1 {
+		pos 42.808281 -16.003933 -23.155941
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SpiralProps_Drain1 {
+		pos 41.163807 -15.609575 -18.684496
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SpiralProps_Drain1 {
+		pos 54.305412 -15.601753 -20.735828
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SpiralProps_Drain1 {
+		pos 67.4673 -15.606514 -22.805843
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SpiralProps_Drain1 {
+		pos -58.309669 -22.180061 -3.993004
+		rot_x -0.996195 -0.087156 0
+		rot_y 0.087156 -0.996195 0
+	}
+	WO SpiralProps_Drain1 {
+		pos -57.142609 -35.020454 -5.999944
+		rot_x -0.996195 -0.087156 0
+		rot_y 0.087156 -0.996195 0
+	}
+	WO SpiralProps_Drain1 {
+		pos -56.042637 -47.892612 -8.040018
+		rot_x -0.996195 -0.087156 0
+		rot_y 0.087156 -0.996195 0
+	}
+	WO SpiralProps_Drain1 {
+		pos -54.905006 -60.858887 -10.078649
+		rot_x -0.996195 -0.087156 0
+		rot_y 0.087156 -0.996195 0
+	}
+	WO SpiralProps_Drain1 {
+		pos -46.445869 15.992317 -8.790739
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 1.000001
+	}
+	WO SpiralProps_Drain2 {
+		pos 6.995817 -21.885738 -15.589701
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 1.000001
+	}
+	WO SpiralProps_Drain2 {
+		pos -30.176422 -41.810787 -11.850004
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 1.000001
+	}
+	WO SpiralProps_Drain2 {
+		pos 50.755413 39.435444 -15.840012
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 1.000001
+	}
+	WO SpiralProps_Square2 {
+		pos -48.418434 -24.589048 -6.891559
+		scl 2.079999
+	}
+	WO SpiralProps_Square2 {
+		pos -58.523438 -43.351166 -6.748788
+		scl 2.079999
+	}
+	WO SpiralProps_Square {
+		pos -45.748207 -58.335938 -7.011568
+		scl 2.109999
+	}
+	WO SpiralProps_Square {
+		pos -48.569866 -58.305111 -7.070303
+		scl 2.109999
+	}
+	WO SpiralProps_Square2 {
+		pos -44.710629 -41.738132 -6.778794
+		scl 2.079999
+	}
+	WO SpiralProps_Square {
+		pos -49.710831 19.586662 -8.061562
+		scl 2.109999
+	}
+	WO Spiral_A2 {
+		pos 0 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. escc
+	}
+	WO Spiral_A2 {
+		pos 0 16 0
+	}
+	WO Spiral_A1 {
+		pos -40 -72 0
+	}
+	WO Spiral_A1 {
+		pos -40 -80 0
+	}
+	WO Spiral_A1 {
+		pos -48 -80 0
+	}
+	WO Spiral_A2 {
+		pos 40 80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_A2 {
+		pos 40 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Spiral_J0 {
+		pos -72 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Spiral_J0 {
+		pos -72 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO SpiralProps_Rocks1 {
+		pos -9.362639 -9.401947 -5.523394
+		rot_x -0.000998 0.999775 -0.021181
+		rot_y -0.999885 -0.001319 -0.015135
+		rot_z -0.015159 0.021163 0.999661
+		scl 1.270002
+	}
+	WO SpiralProps_Rocks2 {
+		pos 9.154377 -8.204926 -6.669284
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 1.469999
+	}
+	WO SpiralProps_Rocks2 {
+		pos -9.19062 9.288548 -6.676198
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 1.54
+	}
+	WO SpiralProps_Rocks1 {
+		pos 9.77356 8.809316 -6.078122
+		rot_x -0.08915 -0.995833 -0.019227
+		rot_y 0.995512 -0.089704 0.030154
+		rot_z -0.031753 -0.016452 0.99936
+		scl 1.390001
+	}
+	WO SpiralProps_Rocks6 {
+		pos -5.077211 -83.183556 -11.871567
+		scl 4.209998
+	}
+	WO SpiralProps_Rocks8 {
+		pos 15.990738 -71.529251 -14.991564
+		scl 4.7
+	}
+	WO SpiralProps_Rocks6 {
+		pos -20.385073 65.865181 -16.161568
+		rot_x -0.819153 -0.573577 0
+		rot_y 0.573577 -0.819153 0
+		scl 6.790001
+	}
+	WO SpiralProps_Rocks6 {
+		pos -2.370108 75.71772 -15.291562
+		rot_x -0.642789 -0.766045 0
+		rot_y 0.766045 -0.642789 0
+		scl 6.790001
+	}
+	WO SpiralProps_Rocks8 {
+		pos 69.098061 -20.267872 -14.991567
+		rot_x -0.642788 -0.766045 0
+		rot_y 0.766045 -0.642788 0
+		scl 4.7
+	}
+	WO SpiralProps_Rocks8 {
+		pos 74.328957 40.585804 -14.991548
+		rot_x 0.642788 -0.766045 0
+		rot_y 0.766045 0.642788 0
+		scl 4.7
+	}
+	WO SpiralProps_Rocks6 {
+		pos 68.028099 23.263603 -14.69157
+		rot_x 0.98481 -0.173649 0
+		rot_y 0.173649 0.98481 0
+		scl 4.659995
+	}
+	WO SpiralProps_Rocks8 {
+		pos 34.846779 -60.364254 -14.99158
+		rot_x 0.906308 0.422618 0
+		rot_y -0.422618 0.906308 0
+		scl 4.7
+	}
+	WO Spiral_J1 {
+		pos -37 -16 0
+	}
+	WO Spiral_J1 {
+		pos -23 -16 0
+	}
+	WO SpiralProps_Square2 {
+		pos -62.231247 -26.202091 -6.861553
+		scl 2.079999
+	}
+	WO SpiralProps_Square2 {
+		pos -45.016674 -8.903736 -7.13227
+		rot_x 0.999972 -0.007499 0
+		rot_y 0.007499 0.999972 0
+		scl 2.829999
+	}
+	WO SpiralProps_Square {
+		pos -50.036587 32.298698 -8.061558
+		scl 2.109999
+	}
+	WO Spiral_J0 {
+		pos -64 8 0
+	}
+	WO Spiral_J0 {
+		pos -56 8 0
+	}
+	WO Spiral_J0 {
+		pos -48 8 0
+	}
+	WO FortPadBase {
+		pos 38.137852 0.739462 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		id 10
+		. team -1
+	}
+}
+
+details {
+	d FortPadCablesA -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 2.251574 -40.655434 0.016181
+	d FortPadCablesA -1 -0.965927 -0.258819 0 0.258819 -0.965927 0 0 0 1.000001 -2.582507 40.449532 0.149999
+	d FortPadCablesA -1 0.422619 -0.906308 0 0.906308 0.422619 0 0 0 1 -42.866226 2.30988 0.179945
+	d FortPadCablesA -1 -0.642788 0.766044 0 -0.766044 -0.642788 0 0 0 1 -5.294532 -6.734256 0.286046
+	d FortPadCablesA -1 0.866026 -0.5 0 0.5 0.866026 0 0 0 1 5.863482 5.4671 0.154725
+	d FortPadCablesC -1 0 -1 0 1 0 0 0 0 1 41.976635 -3.112415 0.027145
+	d FortPadCablesC -1 0.866025 0.5 0 -0.5 0.866025 0 0 0 1 6.946319 -5.080039 0.311733
+	d FortPadCablesC -1 0.866025 0.5 0 -0.5 0.866025 0 0 0 1 -5.526231 5.99576 0.335343
+	d FortPadCablesB -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 -42.567867 -0.585469 0.179946
+	d FortPadCablesB -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 42.370186 1.568107 0.027146
+	d SpiralProps_Sign3 -1 0.635818 0.533514 0 -0.533515 0.635817 0 0 0 0.830001 -1.48078 16.354736 0
+	d SpiralProps_Sign3 -1 -0.584937 -0.697102 0 0.697102 -0.584937 0 0 0 0.910001 1.250943 -17.847157 0.499982
+	d SpiralProps_Rocks3 -1 -2.511129 -2.216622 -0.371104 2.214991 -2.535131 0.15438 -0.380712 -0.128882 3.345946 -21.646023 84.130272 20.708429
+	d SpiralProps_Rocks3 -1 0 -1.037782 0.15971 1.05 0 0 0 0.15971 1.037782 26.300699 10.096828 -5.467795
+	d SpiralProps_Rocks3 -1 0 -1.037782 0.15971 1.05 0 0 0 0.15971 1.037782 42.124088 35.923119 -7.428131
+	d SpiralProps_Rocks3 -1 0 -1.037782 0.15971 1.05 0 0 0 0.15971 1.037782 -29.630711 -36.860508 -8.104708
+	d SpiralProps_Rocks3 -1 -1.037782 0 0.15971 0 -1.05 0 0.15971 0 1.037782 20.006235 -41.583858 -5.617089
+	d SpiralProps_Rocks3 -1 -1.037782 0 0.15971 0 -1.05 0 0.15971 0 1.037782 6.402672 -24.720526 -5.955559
+	d SpiralProps_Rocks3 -1 0.228641 3.670381 -0.407444 -3.687748 0.24854 0.169497 0.195508 0.395622 3.673589 83.544167 19.922531 1.928437
+	d SpiralProps_Rocks3 -1 0.083906 -3.348453 -0.371105 3.365792 0.067232 0.15438 -0.145988 -0.374485 3.345946 -80.955254 -42.348488 19.726885
+	d SpiralProps_Rocks4 -1 -0.818584 0.57438 0.003926 -0.574374 -0.818477 -0.014038 -0.00485 -0.013746 0.999898 23.187904 -22.904478 -6.909112
+	d SpiralProps_Rocks4 -1 0.716214 1.237705 0.005614 -1.237552 0.71622 -0.020074 -0.020186 0.005197 1.429852 -21.211864 -38.853382 -8.301566
+	d SpiralProps_Rocks4 -1 -0.965667 0.259768 0.003926 -0.259799 -0.965565 -0.014038 0.000144 -0.014576 0.999898 40.409927 -34.896378 -6.064546
+	d SpiralProps_Rocks4 -1 -0.172678 0.984974 0.003926 -0.984894 -0.172607 -0.014038 -0.013149 -0.00629 0.999897 -1.084174 -57.418457 -5.913169
+	d SpiralProps_Rocks4 -1 -0.572768 0.819713 0.003926 -0.819671 -0.572669 -0.014038 -0.009259 -0.011258 0.999898 35.179211 -41.161495 -5.518362
+	d SpiralProps_Rocks4 -1 -0.818584 0.57438 0.003926 -0.574374 -0.818477 -0.014038 -0.00485 -0.013746 0.999898 47.580109 63.749271 -7.178196
+	d SpiralProps_Rocks5 -1 -1.052507 0.751403 0.132752 -0.745649 -1.060845 0.092812 0.161975 -0.001001 1.289869 -19.874727 -42.401505 -9.471567
+	d SpiralProps_Rocks5 -1 -0.111985 -1.279984 0.197737 1.295053 -0.113302 0 0.017234 0.196982 1.284874 43.176102 18.638319 -6.800653
+	d SpiralProps_Rocks5 -1 -0.825902 0.984272 0.197736 -0.995859 -0.835626 0 0.127102 -0.151475 1.284875 -8.498256 -57.261974 -9.051578
+	d SpiralProps_Rocks5 -1 -0.108713 -1.295275 -0.021219 1.294617 -0.107866 -0.048337 0.046401 -0.025173 1.298929 -28.785894 -62.633984 -8.628677
+	d SpiralProps_Rocks5 -1 0.004592 -1.299821 -0.021219 1.299092 0.005378 -0.048337 0.048419 -0.021033 1.298929 10.899855 -48.819847 -7.63812
+	d SpiralProps_Rocks5 -1 -1.295275 0.108713 -0.021219 -0.107866 -1.294617 -0.048337 -0.025173 -0.046401 1.298929 -3.883031 29.202463 -9.751973
+	d SpiralProps_Sign1 -1 -1 0 0 0 -0.999999 -0.001247 0 -0.001247 0.999999 -23.906326 -28.998703 -0.055569
+	d SpiralProps_Sign1 -1 0 -0.999956 0.009409 1 0 0 0 0.009409 0.999956 16.480488 -13.289557 -14.988134
+	d SpiralProps_Sign1 -1 0 -1 0 0.999999 0 -0.001247 0.001247 0 0.999999 -2.499413 -32.35648 0.103196
+	d SpiralProps_Sign1 -1 1 0 0 0 0.999999 -0.001247 0 0.001247 0.999999 16.244024 -11.668283 0.461185
+	d SpiralProps_Sign1 -1 -1 0 0 0 -0.999999 -0.001247 0 -0.001247 0.999999 -16.208216 11.407245 -0.000814
+	d SpiralProps_Sign1 -1 0 -1 0 0.999999 0 -0.001247 0.001247 0 0.999999 -7.335098 23.609163 0.159454
+	d SpiralProps_Sign1 -1 -1 0 0 0 -0.999999 -0.001247 0 -0.001247 0.999999 -32.10096 19.751394 0.419708
+	d SpiralProps_Sign1 -1 0 -1 0 0.999999 0 -0.001247 0.001247 0 0.999999 -7.283758 39.793762 0.001588
+	d SpiralProps_Sign1 -1 0 1 0 -0.999999 0 -0.001247 -0.001247 0 0.999999 7.349622 -40.498672 0.070152
+	d SpiralProps_Sign1 -1 1 0 0 0 0.999999 -0.001247 0 0.001247 0.999999 32.247013 -19.645947 0.000369
+	d SpiralProps_Sign2 -1 0 -0.809999 -0.00101 0.81 0 0 0 -0.00101 0.809999 1.527749 11.322081 0.539998
+	d SpiralProps_Sign4 -1 0 -0.819964 0.007715 0.82 0 0 0 0.007715 0.819964 -7.162842 -14.396221 0.403214
+	d SpiralProps_Sign4 -1 -0.727222 0.063624 0 -0.063624 -0.727222 0 0 0 0.73 13.275805 39.562519 0.002755
+	d SpiralGrassA -1 1.171291 0.854695 -0.170792 -0.769646 1.148504 0.469235 0.409046 -0.286412 1.371949 19.219006 -30.689058 -12.798121
+	d SpiralGrassA -1 0 0.64 0 -0.64 0 0 0 0 0.64 -1.550069 -11.516586 1.029269
+	d SpiralGrassA -1 0.253571 0.543785 0 -0.543785 0.253571 0 0 0 0.6 -0.538863 -11.927448 1.080008
+	d SpiralGrassA -1 0 1 -0.001247 -1.000001 0 0 0 0.001247 1 25.248186 5.563016 -5.031356
+	d SpiralGrassA -1 0.900516 1.286069 0 -1.286069 0.900516 0 0 0 1.57 14.376982 8.638004 -10.728132
+	d SpiralGrassA -1 0.824999 1.428939 0 -1.428939 0.824999 0 0 0 1.649998 -65.035416 -45.654251 -12.990007
+	d SpiralGrassA -1 0.533514 0.635818 0 -0.635818 0.533514 0 0 0 0.830001 1.308123 -24.0853 -5.087039
+	d SpiralGrassA -1 0.777773 0.926915 0 -0.926915 0.777773 0 0 0 1.210001 -5.882406 -29.662245 -14.298122
+	d SpiralGrassA -1 0.762857 1.089472 0 -1.089472 0.762857 0 0 0 1.33 -3.28702 30.802113 -14.268124
+	d SpiralGrassA -1 0.422618 0.906308 0 -0.906308 0.422618 0 0 0 1 -6.041586 -20.251488 -13.461569
+	d SpiralGrassA -1 0.350773 0.752236 0 -0.752236 0.350773 0 0 0 0.83 -6.195963 -28.554676 -13.848133
+	d SpiralGrassA -1 0.136835 1.564027 0 -1.564027 0.136835 0 0 0 1.570001 15.378239 10.979645 -14.988114
+	d SpiralGrassA -1 0.350773 0.752236 0 -0.752236 0.350773 0 0 0 0.83 -55.169987 6.248435 -0.381859
+	d SpiralGrassA -1 0 0.999999 0.001247 -1 0 0 0 -0.001247 0.999999 -54.261021 -3.69849 -0.381869
+	d SpiralGrassB -1 0.478957 1.797153 0.021035 -1.624805 0.423662 0.800073 0.768249 -0.224398 1.679 -30.585176 -54.843639 -13.707655
+	d SpiralGrassB -1 0.87 0 0 0 0.87 0 0 0 0.87 -1.411986 -13.424613 0.100002
+	d SpiralGrassB -1 -0.573577 0.819152 0 -0.819152 -0.573577 0 0 0 1 -1.006138 10.912617 1.464242
+	d SpiralGrassB -1 0.939651 0.342005 -0.009409 -0.34202 0.939693 0 0.008841 0.003218 0.999956 -1.171706 9.851091 1.170001
+	d SpiralGrassB -1 0.906268 0.422599 -0.009409 -0.422618 0.906308 0 0.008527 0.003976 0.999956 12.980189 -25.822554 -13.256948
+	d SpiralGrassB -1 1.386479 1.163393 -0.01703 -1.163446 1.386539 0 0.013045 0.010947 1.809919 14.281484 -31.127531 -13.548124
+	d SpiralGrassB -1 0.849962 1.472177 -0.015995 -1.472242 0.85 0 0.007997 0.013852 1.699924 -1.535331 28.517481 -9.009225
+	d SpiralGrassB -1 1.233331 1.034889 0 -1.034889 1.233331 0 0 0 1.61 9.461902 -23.683805 -14.062868
+	d SpiralGrassB -1 0.849962 1.472177 -0.015995 -1.472242 0.85 0 0.007997 0.013852 1.699924 5.235843 24.976431 -12.531567
+	d SpiralGrassB -1 -0.418763 1.554479 0.018207 -1.401352 -0.385622 0.692537 0.673015 0.164281 1.453328 -68.167755 -48.499886 -11.640033
+	d SpiralGrassB -1 0 0.999999 -0.001247 -1 0 0 0 0.001247 0.999999 -54.306732 -7.109138 0.964483
+	d SpiralGrassC -1 -0.248027 1.122306 0.994639 -1.406631 0.175384 -0.548657 -0.519872 -1.009983 1.009983 -31.741743 -55.126194 -13.621255
+	d SpiralGrassC -1 0.469804 1.529607 0.252968 -1.240389 0.529408 -0.897532 -0.93012 0.066597 1.324705 5.824637 -30.30204 -14.986882
+	d SpiralGrassC -1 0.408707 0.495384 -0.152164 -0.283382 0.051389 -0.593847 -0.433883 0.433075 0.244523 -1.333502 10.764464 0.209999
+	d SpiralGrassC -1 -0.120856 2.143447 -0.316112 -1.977201 -0.238574 -0.861774 -0.885984 0.24003 1.966294 -31.628542 -10.241548 -14.988122
+	d SpiralGrassC -1 1.021767 1.238459 -0.380409 -0.708454 0.128472 -1.484617 -1.084708 1.082687 0.611307 -29.521303 30.327206 -14.993449
+	d SpiralGrassC -1 0.536568 1.513237 -0.380409 -0.709668 -0.12158 -1.484617 -1.389592 0.646402 0.611307 -29.675671 27.907492 -14.990813
+	d SpiralGrassC -1 -0.120856 2.143447 -0.316112 -1.977201 -0.238574 -0.861774 -0.885984 0.24003 1.966294 -29.754923 -8.794308 -14.988134
+	d SpiralGrassC -1 -0.17623 0.797431 0.706718 -0.99945 0.124615 -0.389836 -0.369383 -0.717621 0.717621 -67.971115 -46.365894 -12.179993
+	d SpiralGrassC -1 0.408707 0.495384 -0.152164 -0.283382 0.051389 -0.593847 -0.433883 0.433075 0.244523 -52.110531 -5.654363 -0.381863
+	d SpiralGrassC -1 0.000802 0.999999 -0.000955 -0.766044 0 -0.642788 -0.642787 0.001247 0.766044 -53.781105 -6.094434 -0.381863
+	d SpiralGrassD -1 1 0 0 0 1 0 0 0 1 -43.911659 -5.114125 0.07803
+	d SpiralGrassD -1 0.999999 0 -0.001247 0 1 0 0.001247 0 0.999999 0.471927 -16.362669 0.869141
+	d SpiralGrassD -1 0.999999 0 -0.001247 0 1 0 0.001247 0 0.999999 -41.347137 8.56399 -0.446781
+	d SpiralGrassD -1 0.999999 0 -0.001247 0 1 0 0.001247 0 0.999999 0.927417 -12.078847 0.000116
+	d SpiralGrassD -1 0.999999 0 -0.001247 0 1 0 0.001247 0 0.999999 1.17695 -9.454139 0.54
+	d MountainPlantTreeB -1 -0.649999 1.125832 0 -1.125832 -0.649999 0 0 0 1.299999 -27.726561 -10.462337 -10.728133
+	d MountainPlantTreeB -1 0.883292 1.894162 -0.006529 -1.894166 0.883265 -0.008799 -0.005212 0.009635 2.08997 2.935133 27.311686 -14.538135
+	d MountainPlantTreeB -1 0.883292 1.894162 -0.006529 -1.894166 0.883265 -0.008799 -0.005212 0.009635 2.08997 27.795366 24.871082 -16.363171
+	d MountainPlantTreeB -1 0.883292 1.894162 -0.006529 -1.894166 0.883265 -0.008799 -0.005212 0.009635 2.08997 13.337431 51.551239 -15.501573
+	d MountainPlantTreeB -1 1.319993 -0.000017 -0.004124 0 1.319988 -0.005557 0.004124 0.005556 1.319982 26.699118 29.070848 -10.551562
+	d MountainPlantTreeB -1 -0.442557 1.651734 -0.005342 -1.65172 -0.442576 -0.007199 -0.008335 0.003297 1.709978 28.01796 39.317173 -14.991571
+	d MountainPlantTreeB -1 -0.362949 -2.058234 -0.006529 2.05823 -0.362922 -0.008799 0.007528 -0.007957 2.089971 8.695911 59.796829 -15.321567
+	d MountainPlantTreeB -1 1.477865 1.477826 -0.006529 -1.477838 1.47784 -0.008799 -0.001603 0.010837 2.08997 21.527397 53.464863 -15.051564
+	d MountainPlantTreeB -1 0.463308 1.728996 -0.005592 -1.728994 0.463283 -0.007536 -0.00583 0.007352 1.789978 23.426655 48.390282 -14.991562
+	d MountainPlantTreeB -1 1.150604 1.371198 -0.005592 -1.371207 1.15058 -0.007536 -0.002177 0.009125 1.789976 28.296503 42.920486 -14.988128
+	d MountainPlantTreeB -1 1.516505 0.406325 -0.004905 -0.406343 1.516493 -0.00661 0.003027 0.007652 1.569981 -11.006889 -28.53207 -14.988128
+	d MountainPlantTreeB -1 1.319993 -0.000017 -0.004124 0 1.319988 -0.005557 0.004124 0.005556 1.319982 -14.156205 -23.358103 -11.619139
+	d MountainPlantTreeB -1 1.319993 -0.000017 -0.004124 0 1.319988 -0.005557 0.004124 0.005556 1.319982 -9.811628 -29.822268 -13.188129
+	d MountainPlantTreeB -1 -0.676166 1.450094 -0.004998 -1.45008 -0.676184 -0.006736 -0.008216 0.001683 1.599977 -11.439679 -12.701001 -14.991014
+	d MountainPlantTreeB -1 1.028469 1.22565 -0.004998 -1.225659 1.02845 -0.006736 -0.001946 0.008158 1.599975 -27.57435 -2.675075 -9.288132
+	d MountainPlantTreeB -1 0.34202 0.939693 0 -0.939693 0.34202 0 0 0 1 -29.874447 2.145909 -13.338125
+	d MountainPlantTreeB -1 1.028473 1.225652 -0.004998 -1.225661 1.028452 -0.006736 -0.001946 0.008158 1.599979 -28.837395 -22.454235 -11.658123
+	d MountainPlantTreeB -1 1.028473 1.225652 -0.004998 -1.225661 1.028452 -0.006736 -0.001946 0.008158 1.599979 -26.582253 -44.65065 -14.988126
+	d MountainPlantTreeB -1 -0.547211 1.503511 -0.004998 -1.503497 -0.547228 -0.006736 -0.008038 0.002394 1.599981 -28.048857 -54.26017 -12.558124
+	d MountainPlantTreeB -1 -0.547211 1.503511 -0.004998 -1.503497 -0.547228 -0.006736 -0.008038 0.002394 1.599981 -28.001076 -34.908806 -12.34813
+	d MountainPlantTreeB -1 1.028473 1.225652 -0.004998 -1.225661 1.028452 -0.006736 -0.001946 0.008158 1.599979 -29.691326 -29.793634 -13.098131
+	d MountainPlantTreeB -1 -0.547211 1.503511 -0.004998 -1.503497 -0.547228 -0.006736 -0.008038 0.002394 1.599981 -12.50317 -46.465378 -14.991565
+	d MountainPlantTreeB -1 1.028473 1.225652 -0.004998 -1.225661 1.028452 -0.006736 -0.001946 0.008158 1.599979 -16.956375 -46.976059 -14.991563
+	d MountainPlantTreeB -1 1.319993 -0.000017 -0.004124 0 1.319988 -0.005557 0.004124 0.005556 1.319982 -23.291187 -45.008423 -14.991576
+	d MountainPlantTreeB -1 1.319993 -0.000017 -0.004124 0 1.319988 -0.005557 0.004124 0.005556 1.319982 -30.188627 -37.249252 -14.988138
+	d MountainPlantTreeB -1 1.028473 1.225652 -0.004998 -1.225661 1.028452 -0.006736 -0.001946 0.008158 1.599979 -17.174416 -55.588314 -13.341567
+	d MountainPlantTreeB -1 -0.547211 1.503511 -0.004998 -1.503497 -0.547228 -0.006736 -0.008038 0.002394 1.599981 -27.107569 -61.145641 -14.99156
+	d MountainPlantTreeB -1 1.503511 0.547211 -0.004998 -0.547228 1.503497 -0.006736 0.002394 0.008038 1.599981 -23.046907 -58.220341 -14.991549
+	d MountainPlantTreeB -1 1.503511 0.547211 -0.004998 -0.547228 1.503497 -0.006736 0.002394 0.008038 1.599981 -9.939079 -60.98381 -14.991567
+	d MountainPlantTreeB -1 -0.277815 1.575689 -0.004998 -1.575679 -0.277835 -0.006736 -0.007499 0.003754 1.599979 -5.747936 -63.136635 -14.991559
+	d MountainPlantTreeB -1 1.028469 1.22565 -0.004998 -1.225659 1.02845 -0.006736 -0.001946 0.008158 1.599975 -20.621407 -67.717072 -14.99156
+	d MountainPlantTreeB -1 0.000021 1.599993 -0.004998 -1.599987 0 -0.006736 -0.006734 0.004998 1.599979 -21.636305 -63.148335 -14.99157
+	d MountainPlantTreeB -1 1.018243 1.018216 -0.004499 -1.018226 1.018226 -0.006062 -0.001104 0.007466 1.439981 -15.910795 -62.838295 -14.99156
+	d MountainPlantTreeB -1 0.997029 0.997003 -0.004405 -0.997012 0.997012 -0.005936 -0.001081 0.007311 1.40998 -2.969735 -63.041122 -14.991572
+	d MountainPlantTreeB -1 1.018243 1.018216 -0.004499 -1.018226 1.018226 -0.006062 -0.001104 0.007466 1.439981 4.695773 -60.58215 -14.991569
+	d MountainPlantTreeB -1 1.028469 1.22565 -0.004998 -1.225659 1.02845 -0.006736 -0.001946 0.008158 1.599975 11.468905 -47.221619 -14.988128
+	d MountainPlantTreeB -1 0.748052 1.604148 -0.005529 -1.604151 0.748029 -0.007452 -0.004414 0.00816 1.769975 13.262834 20.501686 -14.988122
+	d MountainPlantTreeB -1 1.011186 0.848464 -0.004124 -0.848473 1.011171 -0.005557 -0.000412 0.006908 1.319983 29.596989 -0.224036 -14.988128
+	d MountainPlantTreeB -1 1.011186 0.848464 -0.004124 -0.848473 1.011171 -0.005557 -0.000412 0.006908 1.319983 21.802195 -26.299141 -12.594903
+	d MountainPlantTreeB -1 1.011186 0.848464 -0.004124 -0.848473 1.011171 -0.005557 -0.000412 0.006908 1.319983 4.273923 -31.188173 -11.508128
+	d MountainPlantTreeB -1 1.028469 1.22565 -0.004998 -1.225659 1.02845 -0.006736 -0.001946 0.008158 1.599975 21.85438 -46.566021 -14.99157
+	d MountainPlantTreeB -1 -0.408912 1.526163 -0.004936 -1.526151 -0.408931 -0.006652 -0.007701 0.003046 1.57998 17.144444 -47.805397 -14.99157
+	d MountainPlantTreeB -1 0.676205 1.450078 -0.004998 -1.450081 0.676183 -0.006736 -0.00399 0.007376 1.599979 12.40968 -56.736168 -14.991561
+	d MountainPlantTreeB -1 0.676205 1.450078 -0.004998 -1.450081 0.676183 -0.006736 -0.00399 0.007376 1.599979 29.004047 -49.850964 -14.991559
+	d MountainPlantTreeB -1 1.450095 0.676167 -0.004998 -0.676183 1.450081 -0.006736 0.001683 0.008214 1.599979 22.568928 -52.334034 -14.991564
+	d MountainPlantTreeB -1 1.593903 -0.139469 -0.004998 0.139448 1.593899 -0.006736 0.005566 0.006274 1.599979 30.210741 -44.45364 -14.99156
+	d MountainPlantTreeB -1 0.676205 1.450078 -0.004998 -1.450081 0.676183 -0.006736 -0.00399 0.007376 1.599979 45.608627 -34.829609 -14.991562
+	d MountainPlantTreeB -1 1.593903 -0.139469 -0.004998 0.139448 1.593899 -0.006736 0.005566 0.006274 1.599979 43.829178 -28.449093 -14.991574
+	d MountainPlantTreeB -1 -1.545479 -0.414088 -0.004998 0.414107 -1.545466 -0.006736 -0.003085 -0.007798 1.599977 40.711506 -43.503933 -14.991559
+	d MountainPlantTreeB -1 1.54547 -0.414128 -0.004998 0.414106 1.545468 -0.006736 0.006571 0.005211 1.599979 45.140709 -41.200211 -14.991564
+	d MountainPlantTreeB -1 0.676205 1.450078 -0.004998 -1.450081 0.676183 -0.006736 -0.00399 0.007376 1.599979 42.834187 -39.80793 -12.651563
+	d MountainPlantTreeB -1 1.54547 -0.414128 -0.004998 0.414106 1.545468 -0.006736 0.006571 0.005211 1.599979 49.798035 10.662198 -14.991558
+	d MountainPlantTreeB -1 0.676205 1.450078 -0.004998 -1.450081 0.676183 -0.006736 -0.00399 0.007376 1.599979 57.059517 14.616727 -13.791571
+	d MountainPlantTreeB -1 0.528014 1.970475 -0.006373 -1.970473 0.527987 -0.008588 -0.006644 0.008378 2.039973 48.962593 27.968296 -14.991566
+	d MountainPlantTreeB -1 0.990019 1.714713 -0.006186 -1.714718 0.989992 -0.008336 -0.004124 0.009524 1.979975 48.134113 34.419125 -14.991566
+	d MountainPlantTreeB -1 0.77341 1.658526 -0.005715 -1.65853 0.773384 -0.007704 -0.004566 0.008436 1.829975 58.226524 9.631137 -14.991565
+	d MountainPlantTreeB -1 0.343847 1.949909 -0.006186 -1.949905 0.34382 -0.008336 -0.007134 0.00754 1.979975 53.120255 -36.76833 -14.991562
+	d MountainPlantTreeB -1 0.34202 0.939693 0 -0.939693 0.34202 0 0 0 1 -26.055223 9.747499 -14.988124
+	d MountainPlantTreeB -1 1.503511 0.547211 -0.004998 -0.547228 1.503497 -0.006736 0.002394 0.008038 1.599981 -65.982796 -32.643524 -11.106368
+	d MountainPlantTreeB -1 -0.547211 1.503511 -0.004998 -1.503497 -0.547228 -0.006736 -0.008038 0.002394 1.599981 -67.658035 -38.863796 -12.300002
+	d MountainPlantTreeB -1 1.028473 1.225652 -0.004998 -1.225661 1.028452 -0.006736 -0.001946 0.008158 1.599979 -71.422585 -30.661861 -10.64909
+	d MountainPlantTreeB -1 -0.547211 1.503511 -0.004998 -1.503497 -0.547228 -0.006736 -0.008038 0.002394 1.599981 -61.802673 -53.219955 -8.864363
+	d MountainPlantTreeB -1 -0.547211 1.503511 -0.004998 -1.503497 -0.547228 -0.006736 -0.008038 0.002394 1.599981 -67.833893 -60.855221 -10.583323
+	d MountainPlantTreeB -1 2.208276 0.803716 -0.007341 -0.80374 2.208256 -0.009893 0.003516 0.011804 2.349966 -15.734777 49.085316 -15.459998
+	d MountainPlantTreeB -1 0.883292 1.894162 -0.006529 -1.894166 0.883265 -0.008799 -0.005212 0.009635 2.08997 -34.956631 43.408947 -14.99157
+	d MountainPlantTreeB -1 1.253447 1.493761 -0.006092 -1.493773 1.253424 -0.008209 -0.002371 0.009943 1.949971 -22.238462 45.17123 -15.099995
+	d MountainPlantTreeB -1 1.045018 1.809968 -0.006529 -1.809976 1.044991 -0.008799 -0.004353 0.010053 2.089969 17.703003 76.66304 -15.059713
+	d MountainPlantTreeB -1 1.371799 1.371762 -0.006061 -1.371773 1.371775 -0.008167 -0.001488 0.010059 1.939972 20.238539 62.988911 -16.919985
+	d MountainPlantTreeB -1 1.011186 0.848464 -0.004124 -0.848473 1.011171 -0.005557 -0.000412 0.006908 1.319983 30.914635 -4.651458 -14.988121
+	d MountainPlantTreeB -1 -0.804977 1.394305 -0.00503 -1.394289 -0.804994 -0.006778 -0.008383 0.000968 1.609977 29.838972 3.199782 -13.248133
+	d MountainPlantTreeB -1 1.503511 0.547211 -0.004998 -0.547228 1.503497 -0.006736 0.002394 0.008038 1.599981 -77.323418 -25.47287 -9.351559
+	d MountainPlantTreeB -1 -0.701114 1.926374 -0.006404 -1.926356 -0.701136 -0.008631 -0.010299 0.003067 2.049975 -76.364403 -31.41317 -11.991554
+	d MountainPlantTreeB -1 -1.503511 -0.547211 -0.004998 0.547228 -1.503497 -0.006736 -0.002394 -0.008038 1.599981 -70.578529 -22.845421 -8.451571
+	d MountainPlantTreeB -1 0.547211 -1.503511 -0.004998 1.503497 0.547228 -0.006736 0.008038 -0.002394 1.599981 -73.42926 -39.596012 -14.121568
+	d MountainPlantTreeA -1 1.99 0 0 0 1.989911 -0.018947 0 0.018947 1.989911 -16.524555 43.013466 -12.519994
+	d MountainPlantTreeA -1 2.369999 0 0 0 2.369892 -0.022565 0 0.022565 2.369892 10.773984 28.499886 -15.918134
+	d MountainPlantTreeA -1 1.22567 1.028461 0 -1.028413 1.225616 -0.015234 -0.009792 0.011669 1.599928 -11.094198 29.031897 -13.608125
+	d MountainPlantTreeA -1 1.85 0 0 0 1.849917 -0.017614 0 0.017614 1.849917 29.635046 17.201424 -14.988127
+	d MountainPlantTreeA -1 1.22567 1.028461 0 -1.028413 1.225616 -0.015234 -0.009792 0.011669 1.599928 19.432941 41.9767 -14.361575
+	d MountainPlantTreeA -1 2.119999 0 0 0 2.119904 -0.020185 0 0.020185 2.119904 26.273764 58.839264 -14.991569
+	d MountainPlantTreeA -1 0.184771 2.111933 0 -2.111838 0.184762 -0.020185 -0.020106 0.00176 2.119905 18.588387 48.277542 -14.991563
+	d MountainPlantTreeA -1 0.933986 2.002941 0 -2.00285 0.933944 -0.021041 -0.01907 0.008893 2.209901 -23.074026 26.85141 -14.98814
+	d MountainPlantTreeA -1 1.99 0 0 0 1.989911 -0.018947 0 0.018947 1.989911 -17.01993 28.233385 -14.988137
+	d MountainPlantTreeA -1 0 1.97 0 -1.969911 0 -0.018756 -0.018756 0 1.969911 -11.38591 0.092686 -13.158834
+	d MountainPlantTreeA -1 1.22567 1.028461 0 -1.028413 1.225616 -0.015234 -0.009792 0.011669 1.599928 -28.350573 11.677451 -11.808118
+	d MountainPlantTreeA -1 1.50351 0.547232 0 -0.547208 1.503441 -0.015234 -0.00521 0.014314 1.599929 -28.151695 -7.431032 -10.531113
+	d MountainPlantTreeA -1 1.50351 0.547232 0 -0.547208 1.503441 -0.015234 -0.00521 0.014314 1.599929 -21.91824 -48.796192 -14.99156
+	d MountainPlantTreeA -1 1.813607 0.660099 0 -0.66007 1.813525 -0.018376 -0.006284 0.017268 1.929913 12.547954 2.331739 -14.988127
+	d MountainPlantTreeA -1 0.73113 1.567914 0 -1.567843 0.731097 -0.016471 -0.014928 0.006962 1.729923 11.13733 -3.32849 -14.988124
+	d MountainPlantTreeA -1 1.813607 0.660099 0 -0.66007 1.813525 -0.018376 -0.006284 0.017268 1.929913 13.715196 13.649658 -14.988133
+	d MountainPlantTreeA -1 1.85 0 0 0 1.849917 -0.017614 0 0.017614 1.849917 28.976545 -9.306023 -14.988139
+	d MountainPlantTreeA -1 1.47 0 0 0 1.469934 -0.013996 0 0.013996 1.469934 13.087955 -31.201103 -10.758129
+	d MountainPlantTreeA -1 1.335218 0.934931 0 -0.934888 1.335157 -0.015519 -0.008901 0.012712 1.629927 -12.686506 6.47093 -14.988121
+	d MountainPlantTreeA -1 2.369999 0 0 0 2.369892 -0.022565 0 0.022565 2.369892 45.913937 -22.872738 -14.991566
+	d MountainPlantTreeA -1 1.675843 1.675843 0 -1.675768 1.675768 -0.022565 -0.015955 0.015955 2.369893 32.217411 -51.360016 -14.991584
+	d MountainPlantTreeA -1 1.456641 1.456641 0 -1.456575 1.456575 -0.019613 -0.013868 0.013868 2.059908 45.373722 56.412994 -13.828708
+	d MountainPlantTreeA -1 -0.20656 2.360983 0 -2.360874 -0.20655 -0.022565 -0.022477 -0.001967 2.369895 45.494972 11.979522 -14.991557
+	d MountainPlantTreeA -1 -2.227071 0.810587 0 -0.810552 -2.226969 -0.022565 -0.007717 -0.021202 2.369892 54.081352 30.934267 -14.99157
+	d MountainPlantTreeA -1 1.184998 2.052476 0 -2.052383 1.184946 -0.022565 -0.019541 0.011281 2.369889 51.005573 43.655483 -14.991563
+	d MountainPlantTreeA -1 0 -2.369999 0 2.369892 0 -0.022565 0.022565 0 2.369892 53.886013 49.691654 -14.991566
+	d MountainPlantTreeA -1 1.22567 1.028461 0 -1.028413 1.225616 -0.015234 -0.009792 0.011669 1.599928 -27.072018 22.471056 -14.988136
+	d MountainPlantTreeA -1 0.390816 1.458547 0 -1.458481 0.390798 -0.014377 -0.013886 0.003721 1.509931 8.453034 23.196722 -14.991563
+	d MountainPlantTreeA -1 0.994999 1.723388 0 -1.72331 0.994955 -0.018947 -0.01641 0.009474 1.989908 -28.410337 46.974789 -15.880005
+	d MountainPlantTreeA -1 1.99 0 0 0 1.989911 -0.018947 0 0.018947 1.989911 -30.864695 44.195614 -10.77
+	d MountainPlantTreeA -1 2.119999 0 0 0 2.119904 -0.020185 0 0.020185 2.119904 20.664587 70.442627 -13.889999
+	d MountainPlantTreeA -1 -0.435856 2.471868 0 -2.471755 -0.435836 -0.023898 -0.023534 -0.004149 2.509887 9.331292 82.917534 -16.65
+	d MountainPlantTreeA -1 2.119999 0 0 0 2.119904 -0.020185 0 0.020185 2.119904 26.464939 77.52372 -14.219997
+	d MountainPlantTreeA -1 0.548696 2.047762 0 -2.047669 0.548673 -0.020185 -0.019496 0.005224 2.119904 15.658783 66.634079 -14.01
+	d MountainPlantTreeA -1 1.85 0 0 0 1.849917 -0.017614 0 0.017614 1.849917 30.051441 8.897118 -14.988116
+	d MountainPlantTreeE -1 1.589996 0 -0.001983 0 1.589998 0 0.001983 0 1.589996 27.568207 -4.723547 -14.988129
+	d MountainPlantTreeE -1 1.589996 0 -0.001983 0 1.589998 0 0.001983 0 1.589996 11.205074 47.99601 -14.988126
+	d MountainPlantTreeE -1 1.589996 0 -0.001983 0 1.589998 0 0.001983 0 1.589996 24.733639 44.398994 -14.991567
+	d MountainPlantTreeE -1 1.589996 0 -0.001983 0 1.589998 0 0.001983 0 1.589996 13.937903 58.670265 -14.991561
+	d MountainPlantTreeE -1 1.589996 0 -0.001983 0 1.589998 0 0.001983 0 1.589996 11.982203 -11.263393 -14.988141
+	d MountainPlantTreeE -1 1.589996 0 -0.001983 0 1.589998 0 0.001983 0 1.589996 27.053328 -13.406265 -14.991575
+	d MountainPlantTreeE -1 1.589996 0 -0.001983 0 1.589998 0 0.001983 0 1.589996 29.144817 -27.906677 -13.035296
+	d MountainPlantTreeE -1 1.389998 0 -0.001733 0 1.389999 0 0.001733 0 1.389998 0.197986 -60.579975 -14.991576
+	d MountainPlantTreeE -1 1.389998 0 -0.001733 0 1.389999 0 0.001733 0 1.389998 -13.246598 -64.37059 -14.991561
+	d MountainPlantTreeE -1 1.389998 0 -0.001733 0 1.389999 0 0.001733 0 1.389998 26.822384 -44.992973 -14.991555
+	d MountainPlantTreeE -1 1.389998 0 -0.001733 0 1.389999 0 0.001733 0 1.389998 18.109503 -51.346611 -14.991562
+	d MountainPlantTreeE -1 1.389998 0 -0.001733 0 1.389999 0 0.001733 0 1.389998 9.310744 -61.652931 -14.991564
+	d MountainPlantTreeE -1 1.389998 0 -0.001733 0 1.389999 0 0.001733 0 1.389998 36.0905 -48.263504 -14.99156
+	d MountainPlantTreeE -1 1.389998 0 -0.001733 0 1.389999 0 0.001733 0 1.389998 50.107624 -26.863396 -14.991559
+	d MountainPlantTreeE -1 1.849996 0 -0.002307 0 1.849998 0 0.002307 0 1.849996 56.011406 20.075832 -14.991569
+	d MountainPlantTreeE -1 0 1.849996 -0.002307 -1.849998 0 0 0 0.002307 1.849996 53.329086 24.935423 -14.991579
+	d MountainPlantTreeE -1 1.849996 0 -0.002307 0 1.849998 0 0.002307 0 1.849996 57.246086 38.752224 -14.991566
+	d MountainPlantTreeE -1 1.589996 0 -0.001983 0 1.589998 0 0.001983 0 1.589996 -27.946081 -11.809709 -14.987157
+	d MountainPlantTreeE -1 1.179999 0 -0.001471 0 1.18 0 0.001471 0 1.179999 -25.841511 -4.733935 -12.198128
+	d MountainPlantTreeE -1 1.179999 0 -0.001471 0 1.18 0 0.001471 0 1.179999 -25.787077 2.633504 -11.89813
+	d MountainPlantTreeE -1 1.179999 0 -0.001471 0 1.18 0 0.001471 0 1.179999 -30.074097 24.762741 -14.988113
+	d MountainPlantTreeE -1 1.179999 0 -0.001471 0 1.18 0 0.001471 0 1.179999 -10.490599 -42.027771 -14.99232
+	d MountainPlantTreeE -1 1.179999 0 -0.001471 0 1.18 0 0.001471 0 1.179999 -20.921297 -43.417717 -14.141691
+	d MountainPlantTreeE -1 1.179999 0 -0.001471 0 1.18 0 0.001471 0 1.179999 -26.388927 -23.894485 -12.038244
+	d MountainPlantTreeE -1 1.179999 0 -0.001471 0 1.18 0 0.001471 0 1.179999 -25.880438 -26.743544 -12.708123
+	d MountainPlantTreeE -1 1.389998 0 -0.001733 0 1.389999 0 0.001733 0 1.389998 -68.659279 -58.035473 -8.397292
+	d MountainPlantTreeE -1 1.389998 0 -0.001733 0 1.389999 0 0.001733 0 1.389998 -64.594093 -38.976868 -9.246542
+	d MountainPlantTreeE -1 1.389998 0 -0.001733 0 1.389999 0 0.001733 0 1.389998 -66.210258 -23.748455 -10.594721
+	d MountainPlantTreeE -1 0.999999 0 -0.001247 0 1 0 0.001247 0 0.999999 -72.444275 -57.320461 -7.620319
+	d MountainPlantTreeE -1 1.589996 0 -0.001983 0 1.589998 0 0.001983 0 1.589996 14.202802 74.06308 -14.879996
+	d MountainPlantTreeE -1 1.589996 0 -0.001983 0 1.589998 0 0.001983 0 1.589996 26.997787 69.395859 -14.711589
+	d MountainPlantTreeE -1 1.539998 0 -0.00192 0 1.539999 0 0.00192 0 1.539998 49.621574 14.399273 -13.949976
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 -0.150234 -12.073732 0.51
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 0.749919 -8.648385 0
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 -0.077678 -16.580242 0
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 -1.43363 13.581095 0.450002
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 0.159611 10.001881 0.42
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 -0.964688 -11.367496 0.450002
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 -44.030224 6.172913 0.33813
+	d MountainPlantBushA -1 -0.499999 0.866026 0.001247 -0.866026 -0.500001 0 0.000623 -0.00108 1 -52.734573 -7.920224 -0.291964
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 -0.588467 -10.413156 0.48
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 -1.210329 16.383991 0
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 -1.556292 15.793978 0.570012
+	d MountainPlantBushA -1 0.5 0.866025 0.001247 -0.866026 0.5 0 -0.000624 -0.00108 0.999999 -0.271252 16.019478 0.480002
+	d MountainPlantBushB -1 0.362347 1.352295 -0.001746 -1.352296 0.362347 0 0.000452 0.001687 1.399999 26.328743 -20.242376 -14.991565
+	d MountainPlantBushB -1 0.478828 1.315568 -0.001746 -1.315569 0.478828 0 0.000596 0.001641 1.399998 23.548309 -22.72015 -14.991564
+	d MountainPlantBushB -1 1.268829 0.591665 -0.001746 -0.591665 1.26883 0 0.001582 0.000738 1.399998 16.236446 -25.282839 -12.866165
+	d MountainPlantBushB -1 1.268829 0.591665 -0.001746 -0.591665 1.26883 0 0.001582 0.000738 1.399998 18.723961 -30.91186 -13.428119
+	d MountainPlantBushB -1 0.478828 1.315568 -0.001746 -1.315569 0.478828 0 0.000596 0.001641 1.399998 23.145615 -30.746294 -13.578137
+	d MountainPlantBushD -1 0.999999 0 -0.001247 0 1 0 0.001247 0 0.999999 -0.89195 -8.513063 0.810021
+	d MountainPlantBushD -1 0.889999 0 -0.00111 0 0.89 0 0.00111 0 0.889999 0.86952 14.586547 1.050031
+	d MountainPlantBushD -1 0.999999 0 -0.001247 0 1 0 0.001247 0 0.999999 -53.396591 -8.825222 -0.381865
+	d MountainPlantBushD -1 0.999999 0 -0.001247 0 1 0 0.001247 0 0.999999 -52.011456 -8.853139 -0.381864
+	d MountainPlantBushD -1 0.999999 0 -0.001247 0 1 0 0.001247 0 0.999999 -49.6521 -6.927643 -5.849272
+	d MountainPlantBushD -1 0.999999 0 -0.001247 0 1 0 0.001247 0 0.999999 -49.398479 6.976453 -0.351863
+	d MountainPlantBushD -1 0.889999 0 -0.00111 0 0.89 0 0.00111 0 0.889999 0.761675 13.796077 0
+	d MountainPlantBushD -1 -0.629324 -0.629325 -0.00111 0.629325 -0.629325 0 -0.000785 -0.000785 0.889999 0.581128 13.319983 0.900001
+	d SpiralTreeC -1 -0.763675 0.763675 0 -0.763675 -0.763675 0 0 0 1.079999 46.265488 15.398228 -14.991563
+	d SpiralTreeC -1 0.485 0.840043 0 -0.840043 0.485 0 0 0 0.969999 54.875237 -12.095708 -14.991566
+	d SpiralTreeC -1 0.311237 -0.85512 0 0.85512 0.311237 0 0 0 0.909999 14.807551 6.925013 -14.988125
+	d SpiralTreeC -1 -0.476068 0.679896 0 -0.679896 -0.476068 0 0 0 0.83 -8.688901 27.367105 -14.988132
+	d SpiralTreeC -1 -0.453125 0.64713 0 -0.64713 -0.453125 0 0 0 0.79 -61.412128 -60.928997 -9.659998
+	d SpiralTreeC -1 -0.476068 0.679896 0 -0.679896 -0.476068 0 0 0 0.83 11.585201 17.564068 -14.991569
+	d SpiralTreeC -1 -0.476068 0.679896 0 -0.679896 -0.476068 0 0 0 0.83 29.707209 22.637239 -14.988131
+	d SpiralTreeC -1 -0.476068 0.679896 0 -0.679896 -0.476068 0 0 0 0.83 10.796902 43.42366 -14.988126
+	d SpiralTreeC -1 0.350773 0.752236 0 -0.752236 0.350773 0 0 0 0.83 15.965336 43.006313 -14.991555
+	d SpiralTreeC -1 -0.83 0 0 0 -0.83 0 0 0 0.83 24.748743 39.286221 -14.991567
+	d SpiralTreeC -1 -0.586898 0.586899 0 -0.586899 -0.586898 0 0 0 0.83 26.018555 34.621151 -12.861565
+	d SpiralTreeC -1 -0.83 0 0 0 -0.83 0 0 0 0.83 18.20767 53.879627 -14.991567
+	d SpiralTreeC -1 0.283876 -0.779945 0 0.779945 0.283876 0 0 0 0.83 28.432856 53.300781 -14.99157
+	d SpiralTreeC -1 -0.678822 0.678823 0 -0.678823 -0.678822 0 0 0 0.96 27.684803 48.949139 -13.011559
+	d SpiralTreeC -1 0.131973 0.748454 0 -0.748454 0.131973 0 0 0 0.76 22.061262 45.183811 -14.991565
+	d SpiralTreeC -1 0.283876 -0.779945 0 0.779945 0.283876 0 0 0 0.83 -13.617787 -27.555429 -14.988127
+	d SpiralTreeC -1 0.51325 -0.430668 0 0.430668 0.51325 0 0 0 0.67 -12.851226 -8.675762 -14.988122
+	d SpiralTreeC -1 -0.453125 0.64713 0 -0.64713 -0.453125 0 0 0 0.79 -28.341928 5.392683 -14.598135
+	d SpiralTreeC -1 -0.453125 0.64713 0 -0.64713 -0.453125 0 0 0 0.79 -29.222347 -24.608442 -14.38812
+	d SpiralTreeC -1 0.283876 -0.779945 0 0.779945 0.283876 0 0 0 0.83 -12.844489 -52.24049 -14.991562
+	d SpiralTreeC -1 0.283876 -0.779945 0 0.779945 0.283876 0 0 0 0.83 -25.436535 -54.373558 -14.991567
+	d SpiralTreeC -1 0.817391 -0.144128 0 0.144128 0.817391 0 0 0 0.83 -18.721088 -63.077007 -14.121565
+	d SpiralTreeC -1 -0.6108 0.222313 0 -0.222313 -0.6108 0 0 0 0.65 -24.621944 -64.793106 -13.311563
+	d SpiralTreeC -1 0.311237 -0.85512 0 0.85512 0.311237 0 0 0 0.909999 13.865352 -7.041687 -14.988122
+	d SpiralTreeC -1 0.239414 -0.657785 0 0.657785 0.239414 0 0 0 0.7 0.111162 -30.375814 -14.988125
+	d SpiralTreeC -1 0.350773 0.752236 0 -0.752236 0.350773 0 0 0 0.83 -0.248337 -64.435692 -14.991563
+	d SpiralTreeC -1 0.300059 0.643479 0 -0.643479 0.300059 0 0 0 0.71 9.112498 -58.988934 -14.991565
+	d SpiralTreeC -1 -0.407239 -0.581598 0 0.581598 -0.407239 0 0 0 0.71 19.339561 -47.419827 -14.991557
+	d SpiralTreeC -1 -0.144128 -0.817391 0 0.817391 -0.144128 0 0 0 0.83 19.211891 -55.84132 -14.991562
+	d SpiralTreeC -1 -0.144128 -0.817391 0 0.817391 -0.144128 0 0 0 0.83 36.610184 -44.800846 -14.991564
+	d SpiralTreeC -1 -0.144128 -0.817391 0 0.817391 -0.144128 0 0 0 0.83 51.263935 -31.193129 -14.99157
+	d SpiralTreeC -1 -0.18754 -1.063593 0 1.063593 -0.18754 0 0 0 1.08 53.564346 37.695099 -14.99157
+	d SpiralTreeC -1 -0.180594 -1.024199 0 1.024199 -0.180594 0 0 0 1.039999 -64.784668 -43.06918 -17.121571
+	d SpiralTreeC -1 0.817391 -0.144128 0 0.144128 0.817391 0 0 0 0.83 -73.516586 -59.785854 -12.089993
+	d SpiralTreeC -1 -0.476068 0.679896 0 -0.679896 -0.476068 0 0 0 0.83 -11.307092 42.945103 -9.989999
+	d SpiralTreeC -1 0.21482 0.80172 0 -0.80172 0.21482 0 0 0 0.830001 17.314161 60.817486 -15.809991
+	d SpiralTreeC -1 -0.283877 0.779945 0 -0.779945 -0.283877 0 0 0 0.83 21.629576 74.746582 -13.559742
+	d SpiralTreeC -1 0.279525 1.0432 0 -1.0432 0.279525 0 0 0 1.08 57.470802 47.076363 -17.94001
+	d SpiralTreeC -1 0.458861 -0.655322 0 0.655322 0.458861 0 0 0 0.8 61.556927 4.407512 -15.864215
+	d SpiralTreeC -1 0.283876 -0.779945 0 0.779945 0.283876 0 0 0 0.83 29.009964 -2.405395 -14.988131
+	d SpiralTreeC -1 -0.779945 -0.283876 0 0.283876 -0.779945 0 0 0 0.83 27.95985 -10.555371 -13.188137
+	d SpiralTreeC -1 0.752236 -0.350773 0 0.350773 0.752236 0 0 0 0.83 6.87741 27.234446 -14.991569
+	d SpiralTreeC -1 -0.144128 -0.817391 0 0.817391 -0.144128 0 0 0 0.83 -70.828827 -45.927288 -19.431559
+	d SpiralTreeD -1 0 0.76 0 -0.76 0 0 0 0 0.76 25.140232 -48.372162 -14.991566
+	d SpiralTreeD -1 -0.629595 0.229154 0 -0.229154 -0.629595 0 0 0 0.670001 43.883785 -45.079441 -14.991568
+	d SpiralTreeD -1 -0.239414 -0.657785 0 0.657785 -0.239414 0 0 0 0.7 25.910696 -20.888891 -14.991566
+	d SpiralTreeD -1 -0.892708 0.324919 0 -0.324919 -0.892708 0 0 0 0.95 51.303062 22.12319 -14.99156
+	d SpiralTreeD -1 -0.642789 -0.766045 0 0.766045 -0.642789 0 0 0 1.000001 -21.48168 -55.2924 -14.991566
+	d SpiralTreeD -1 -0.82693 0.300978 0 -0.300978 -0.82693 0 0 0 0.88 -24.396152 -69.571335 -14.991566
+	d SpiralTreeD -1 1 0 0 0 1 0 0 0 1 29.290146 11.733743 -19.698128
+	d SpiralTreeD -1 -0.51423 -0.612836 0 0.612836 -0.51423 0 0 0 0.8 -12.522129 -57.647732 -14.99157
+	d SpiralTreeD -1 0.74 0 0 0 0.74 0 0 0 0.74 -24.680099 -40.921757 -14.991569
+	d SpiralTreeD -1 0.77 0 0 0 0.77 0 0 0 0.77 29.073025 34.084507 -14.898119
+	d SpiralTreeD -1 -0.642789 -0.766045 0 0.766045 -0.642789 0 0 0 1.000001 -71.630219 -32.968433 -14.73
+	d SpiralTreeD -1 1 0 0 0 1 0 0 0 1 4.707105 59.299061 -16.350004
+	d SpiralTreeD -1 -0.965926 -0.258819 0 0.258819 -0.965926 0 0 0 1 24.437971 65.839096 -18.989998
+	d SpiralTreeD -1 -0.811378 -0.217408 0 0.217408 -0.811378 0 0 0 0.84 21.62134 82.756935 -16.139952
+	d SpiralTreeD -1 1 0 0 0 1 0 0 0 1 -25.017082 46.162689 -15.910007
+	d SpiralTreeD -1 1 0 0 0 1 0 0 0 1 -18.418839 27.704391 -14.991572
+	d SpiralTreeD -1 -0.258819 0.965926 0 -0.965926 -0.258819 0 0 0 1 -67.402245 -27.112627 -13.409952
+	d SpiralTreeD -1 1 0 0 0 1 0 0 0 1 -17.334604 -50.235703 -14.991569
+	d SpiralTreeD -1 0.68 0 0 0 0.68 0 0 0 0.68 30.157068 59.928936 -14.991563
+	d SpiralTreeD -1 1 0 0 0 1 0 0 0 1 -62.706856 -55.638741 -10.049862
+	d SpiralTreeD -1 -0.067982 -0.777032 0 0.777032 -0.067982 0 0 0 0.78 42.866756 22.208773 -14.988135
+	d SpiralTreeD -1 1 0 0 0 1 0 0 0 1 44.199558 47.144039 -14.988132
+	d SpiralTreeD -1 1 0 0 0 1 0 0 0 1 -27.050449 17.387922 -17.310005
+	d SpiralTreeD -1 -0.629595 0.229154 0 -0.229154 -0.629595 0 0 0 0.670001 47.759956 -11.35473 -14.988132
+	d SpiralTreeD -1 -0.649973 -0.114608 0 0.114608 -0.649973 0 0 0 0.66 -16.216963 -59.332329 -14.991566
+	d SpiralTreeD -1 0.8 0 0 0 0.8 0 0 0 0.8 27.98246 -17.202188 -14.991566
+	d SpiralTreeD -1 -0.856782 -0.151074 0 0.151074 -0.856782 0 0 0 0.869999 14.131518 -50.948189 -14.991561
+	d SpiralTreeD -1 -1 0 0 0 -1 0 0 0 1 -72.399673 -51.996361 -15.801565
+	d SpiralProps_Lamp -1 0.087156 -0.996195 0 0.996195 0.087156 0.000001 -0.000001 0 1 32.350655 -25.033005 0.003454
+	d SpiralProps_Lamp -1 0.996195 0.087156 0 -0.087156 0.996195 0.000001 -0 -0.000001 1 27.847488 -39.87529 0.003452
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0.000001 0.000001 -0 1 39.835831 -25.631954 0.003452
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 39.740486 -8.772915 -0.000001
+	d SpiralProps_Lamp -1 0.087156 -0.996195 0 0.996195 0.087156 0.000001 -0.000001 0 1 32.346695 -7.753817 0.003452
+	d SpiralProps_Lamp -1 0.087156 -0.996195 0 0.996195 0.087156 0.000001 -0.000001 0 1 32.391335 27.011339 0.003455
+	d SpiralProps_Lamp -1 0.087156 -0.996195 0 0.996195 0.087156 0.000001 -0.000001 0 1 32.44986 9.599884 0.003453
+	d SpiralProps_Lamp -1 0.087156 -0.996195 0 0.996195 0.087156 0.000001 -0.000001 0 1 32.328465 45.581619 0.003452
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 40.053711 46.231575 0.443254
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0.000001 0.000001 -0 1 39.887211 27.736685 0.003453
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 39.895523 8.598114 -0.000001
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 40.437107 60.885994 0.924908
+	d SpiralProps_Lamp -1 0.087156 -0.996195 0 0.996195 0.087156 0.000001 -0.000001 0 1 32.329235 61.644009 0.003452
+	d SpiralProps_Lamp -1 0.993419 -0.114535 -0 0.114535 0.993419 0 -0 -0 1 14.829333 -23.866911 -0
+	d SpiralProps_Lamp -1 0.087156 -0.996195 0 0.996195 0.087156 0 -0 0 1 1.372888 -12.704048 0.000001
+	d SpiralProps_Lamp -1 0.087156 -0.996195 -0 0.996195 0.087156 0 -0 -0 1 32.597061 77.928894 -0.000001
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 7.902125 -12.393 -0.000001
+	d SpiralProps_Lamp -1 0.178058 -0.98402 0 0.98402 0.178058 0.000001 -0.000001 0 1 -7.358099 -11.93889 0.003455
+	d SpiralProps_Lamp -1 0 1 0 -1 0 0 0 0 1 23.71553 -14.015988 0
+	d SpiralProps_Lamp -1 0 -1 0 1 0 0 0 0 1 15.949562 -13.283104 0.038997
+	d SpiralProps_Lamp -1 0 1 0 -1 0 0.000001 0.000001 -0 1 23.854946 1.030214 0.003452
+	d SpiralProps_Lamp -1 -0 -1 0 1 0 0.000001 -0.000001 0 1 16.312117 0.337173 0.003451
+	d SpiralProps_Lamp -1 0 1 0 -1 0 0 0 0 1 24.046835 16.952978 0.452368
+	d SpiralProps_Lamp -1 -0 -1 0 1 0 0.000001 -0.000001 0 1 16.271938 17.620476 0.003452
+	d SpiralProps_Lamp -1 0.996195 0.087156 0 -0.087156 0.996195 0.000001 -0 -0.000001 1 10.465621 32.008373 0.003453
+	d SpiralProps_Lamp -1 -1 0 0 0 -1 0 0 0 1 10.714112 39.59874 -0.000001
+	d SpiralProps_Lamp -1 0.996195 0.087156 0 -0.087156 0.996195 0.000001 -0 -0.000001 1 -9.484998 32.042038 0.003453
+	d SpiralProps_Lamp -1 -1 0 0 0 -1 0 0 0 1 -10.244145 39.723984 -0
+	d SpiralProps_Lamp -1 0.996195 0.087156 0 -0.087156 0.996195 0.000001 -0 -0.000001 1 -26.854929 32.13364 0.003453
+	d SpiralProps_Lamp -1 -1 0 0 0 -1 0.000001 0 0.000001 1 -27.552856 39.713188 0.003453
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 -31.894104 26.260393 0.432596
+	d SpiralProps_Lamp -1 0 -1 0 1 0 -0 0 0 1 -39.636784 26.977482 0.003452
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 -31.953629 10.233219 0.463939
+	d SpiralProps_Lamp -1 0 -1 0 1 0 -0 0 0 1 -39.594288 10.986153 0.003452
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 -32.181953 -5.824551 0.488176
+	d SpiralProps_Lamp -1 0 -1 0 1 0 -0 0 0 1 -39.555546 -6.490703 0.003452
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0.000001 0.000001 -0 1 -32.121983 -21.72422 0.003452
+	d SpiralProps_Lamp -1 0 -1 0 1 0 -0 0 0 1 -39.591507 -21.030134 0.003452
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0.000001 0.000001 -0 1 -31.996532 -37.73357 0.003452
+	d SpiralProps_Lamp -1 -0 -1 0 1 0 0.000001 -0.000001 0 1 -39.549408 -55.803459 0.003454
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0.000001 0.000001 -0 1 -32.000977 -55.043407 0.003453
+	d SpiralProps_Lamp -1 0.087156 -0.996195 -0 0.996195 0.087156 -0 0 0 1 -39.61953 -37.074989 0.003452
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0.000001 0.000001 -0 1 -32.180405 -70.861023 0.003452
+	d SpiralProps_Lamp -1 0 -1 -0 1 0 0 -0 -0 1 -23.423136 -30.807077 -0.000001
+	d SpiralProps_Lamp -1 -0 -1 0 1 0 0.000001 -0.000001 0 1 -23.691105 -14.405704 0.003452
+	d SpiralProps_Lamp -1 -0.087156 0.996195 -0 -0.996195 -0.087156 -0 -0 -0 1 -16.126717 -13.627631 0.003452
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 -15.937155 -28.471655 0.450467
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 -16.101591 3.595422 0.003453
+	d SpiralProps_Lamp -1 -0 -1 0 1 0 0.000001 -0.000001 0 1 -23.663261 2.955781 0.003452
+	d SpiralProps_Lamp -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 -12.284982 15.993595 0.514673
+	d SpiralProps_Lamp -1 -1 -0 -0 0 -1 0 -0 0 1 -13.129375 23.422228 -0.000001
+	d SpiralProps_Lamp -1 -0.087156 0.996195 0 -0.996195 -0.087156 0 0 0 1 7.859238 14.450269 0.506841
+	d SpiralProps_Lamp -1 0.087156 -0.996195 0 0.996195 0.087156 0.000001 -0.000001 0 1 -7.822856 10.919988 0.003453
+	d SpiralProps_Lamp -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 -8.755376 -39.938477 -0
+	d SpiralProps_Lamp -1 -0.996195 -0.087156 0 0.087156 -0.996195 0.000001 0 0.000001 1 -7.7187 -32.184902 0.003453
+	d SpiralProps_Lamp -1 -0.996195 -0.087156 0 0.087156 -0.996195 0.000001 0 0.000001 1 9.861171 -32.345524 0.003453
+	d SpiralProps_Lamp -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 10.551735 -39.973225 -0
+	d SpiralProps_Lamp -1 -0.996195 -0.087156 0 0.087156 -0.996195 0.000001 0 0.000001 1 26.971973 -32.211639 0.003453
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable false
+  layer 2 name "volumes" visible true pickable false
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible true pickable false
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+editorCore {
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+	PF BaseFighterSurvival.txt {
+		pos -0.450787 0.739854 0.003448
+		rot 0 0 179.998642
+		id 13
+		/s team ". team 0"
+	}
+	PF OutpostSurvival.txt {
+		pos -0.479547 48.097641 0.000001
+		rot 0 0 0
+		id 14
+		/s latchInf ". latchInf NULL NULL NULL NULL"
+		/s name ". name U_Outpost_NE"
+		/s team ". team -1"
+	}
+	PF OutpostSurvival.txt {
+		pos 47.343796 0.259237 -0.003452
+		rot 0 0 0
+		id 18
+		/s latchInf ". latchInf NULL NULL NULL NULL"
+		/s name ". name U_Outpost_SE"
+		/s team ". team -1"
+	}
+	PF OutpostSurvival.txt {
+		pos -0.244608 -47.545506 -0.000005
+		rot 0 0 0
+		id 22
+		/s latchInf ". latchInf NULL NULL NULL NULL"
+		/s name ". name U_Outpost_SW"
+		/s team ". team -1"
+	}
+	PF OutpostSurvival.txt {
+		pos -49.364975 0.031021 -0.343435
+		rot 0 0 0
+		id 26
+		/s latchInf ". latchInf NULL NULL NULL NULL"
+		/s name ". name U_Outpost_NW"
+		/s team ". team -1"
+	}
+}

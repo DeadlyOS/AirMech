@@ -1,0 +1,15 @@
+StateController Lvl_C_Build_Simple {
+#include Lvl_CommonStates
+#include Lvl_Challenge_CommonStates
+State initial {
+In 0.0 "sym set MatchOver 0"
+In 0.0 "rook powerGenMod set 100"
+}
+State Tick {
+Cfg timeBlock 60.0
+}
+State Hint_CarryTur {
+Cfg timeBlock 8.0
+DoL 0.0 gamemsg addTR_U Hint_CarryTur
+}
+}

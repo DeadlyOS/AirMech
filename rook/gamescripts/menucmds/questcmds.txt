@@ -1,0 +1,178 @@
+Script SetupQuestSections {
+ignoreInputTime 0.25
+cmd "sym set ShowQuestItems 0"
+cmd "sym setOne QuestsAdvancedLocked QuestsPvPLocked QuestsDailyLocked QuestsCoopLocked QuestsCoreLocked "
+cmd "sym setZero QuestsRookieLocked QuestsReadyLocked QuestsDoneLocked QuestsSocialLocked QuestsAirMechsLocked"
+cmd "if sym StatMMWon >= $UnlockPvP_MMWon runnow sym set QuestsPvPLocked 0"
+cmd "if sym StatOfflineWins > 0 runnow sym set QuestsCoopLocked 0"
+cmd "if sym QuestsGroupCompleteRookie == 1 runnow sym set QuestsCoreLocked 0"
+cmd "if sym QuestsGroupCompleteRookie == 1 runnow sym set QuestsDailyLocked 0"
+cmd "if sym QuestsGroupCompleteCore == 1 runnow sym set QuestsAdvancedLocked 0"
+cmd "if sym Lock_Quests == 0 sym setZero QuestsAdvancedLocked QuestsPvPLocked QuestsDailyLocked QuestsCoopLocked QuestsCoreLocked "
+}
+Script SetupQuestSectionsPW {
+ignoreInputTime 0.25
+cmd "sym set ShowQuestItems 1"
+cmd "if sym QuestsGroupCompleteReady != 0 sym set QuestsHeaderLabel QuestSec_Daily_PW"
+cmd "if sym QuestsGroupCompleteReady != 0 quests setV2Filter Daily"
+cmd "if sym QuestsGroupCompleteReady == 0 sym set QuestsHeaderLabel QuestSec_Ready"
+cmd "if sym QuestsGroupCompleteReady == 0 quests setV2Filter Ready"
+cmd "pcmd 0.1 quests scrollupdate Quest /totop"
+cmd "pcmd 0.1 sym set ShowQuestItems 1"
+}
+Script OnYQuestCompletePopup {
+ignoreInputTime 0.25
+cmd "if !menuLoaded ConQuests runnow loadmenu ConQuests"
+cmd "clearmenu QuestCompletePopup /fadeout 0.2"
+}
+Script OnYUplayQuestCompletePopup {
+ignoreInputTime 0.25
+cmd "clearmenu UplayQuestCompletePopup /fadeout 0.1"
+cmd "pcmd 0.2 if !menuLoaded ConQuests runnow loadmenu ConQuests"
+}
+Script QInfo_Creeps {
+cmd "echo you clicked a button"
+}
+Script QuestCompleteNotify {
+cmd "sym set QuestNotifyEx $_MArg1_"
+cmd "if menuLoaded QuestCompletePopup runnow clearmenu QuestCompletePopup /fadeout 0.2"
+cmd "if !menuLoaded ConQuests pcmd_seq QuestNotify 0.3 if sym EndgameContinue == 1 runnow loadmenu QuestCompletePopup /fadein 0.2"
+cmd "if !menuLoaded ConQuests pcmd_seq QuestNotify 0.3 if sym InTutorialMap == 1 runnow loadmenu QuestCompletePopup /fadein 0.2"
+cmd "if !menuLoaded ConQuests pcmd_seq QuestNotify 0.3 if sym InChallengeMap == 1 runnow loadmenu QuestCompletePopup /fadein 0.2"
+}
+Script UplayQuestCompleteNotify {
+rcmd "sym set UplayPendingQuestRedeem 0"
+rcmd "if !menuLoaded UplayQuestCompletePopup && !menuLoaded ConQuests runnow sym set UplayPendingQuestRedeem 1"
+rcmd "if sym UplayPendingQuestRedeem == 1 runnow sym set QuestNotifyEx $_MArg1_"
+rcmd "if sym UplayPendingQuestRedeem == 1 && !menuLoaded QuestCompletePopup && sym CurrentMenu == CRoot runnow loadmenu UplayQuestCompletePopup"
+rcmd "if sym UplayPendingQuestRedeem == 1 && !menuLoaded QuestCompletePopup && sym CurrentMenu == CRoot runnow sym set UplayPendingQuestRedeem 0"
+rcmd "if sym UplayPendingQuestRedeem == 1 && !menuLoaded QuestCompletePopup && sym CurrentMenu == CHome runnow loadmenu UplayQuestCompletePopup"
+rcmd "if sym UplayPendingQuestRedeem == 1 && !menuLoaded QuestCompletePopup && sym CurrentMenu == CHome runnow sym set UplayPendingQuestRedeem 0"
+rcmd "if sym UplayPendingQuestRedeem == 1 && !menuLoaded QuestCompletePopup && sym CurrentMenu == InGame && sym EndgameContinue == 1 runnow loadmenu UplayQuestCompletePopup"
+rcmd "if sym UplayPendingQuestRedeem == 1 && !menuLoaded QuestCompletePopup && sym CurrentMenu == InGame && sym EndgameContinue == 1 runnow sym set UplayPendingQuestRedeem 0"
+rcmd "if sym UplayPendingQuestRedeem == 1 && !menuLoaded QuestCompletePopup && sym CurrentMenu == InGame && sym MatchOver == 1 && sym InChallengeMap == 1 runnow loadmenu UplayQuestCompletePopup"
+rcmd "if sym UplayPendingQuestRedeem == 1 && !menuLoaded QuestCompletePopup && sym CurrentMenu == InGame && sym MatchOver == 1 && sym InChallengeMap == 1 runnow sym set UplayPendingQuestRedeem 0"
+rcmd "pcmd 1.0 if sym UplayPendingQuestRedeem == 1 runnow menucmd UplayQuestCompleteNotify $_MArg1_"
+}
+Script UplayBannerNotify {
+pendingOnLoadedMenu UplayBanner
+rcmd "sym set _UplayBannerQuest_ $_MArg1_"
+rcmd "sym set _UplayBannerPoints_ +"
+rcmd "sym append _UplayBannerPoints_ $_MArg2_"
+rcmd "if !menuLoaded UplayBanner runnow loadmenu UplayBanner /fadein 0.2 /requireExplicitClear"
+}
+Script UplayBannerOfflineNotify {
+pendingOnLoadedMenu UplayBannerOffline
+rcmd "if !menuLoaded UplayBannerOffline runnow loadmenu UplayBannerOffline /fadein 0.2 /requireExplicitClear"
+}
+Script QInfo_FB1 {
+cmd "net openlink http://www.facebook.com/AirMechGame"
+}
+Script QInfo_GP1 {
+cmd "net openlink http://plus.google.com/u/0/104246068515082200053/posts"
+}
+Script QInfo_TW1 {
+cmd "net openlink http://twitter.com/AirMech"
+}
+Script QInfo_YT1 {
+cmd "net openlink http://www.youtube.com/AirMech"
+}
+Script QInfo_RaptrS1 {
+cmd "net openlink http://raptr.com/game/AirMech/wall"
+cmd "backend stat raptr:slink"
+}
+Script QInfo_Raptr1 {
+cmd "net openlink http://www.raptr.com/rewards/airmech-newbie"
+cmd "timer setAsyncWait 1"
+cmd "quests completePromoQuest Raptr1"
+cmd "pcmd 2.0 timer clearAsyncWait"
+cmd "backend stat raptr:qlink"
+}
+Script QInfo_Raptr2 {
+cmd "net openlink http://www.raptr.com/rewards/airmech-amateur"
+cmd "timer setAsyncWait 1"
+cmd "quests completePromoQuest Raptr2"
+cmd "pcmd 2.0 timer clearAsyncWait"
+cmd "backend stat raptr:qlink2"
+}
+Script QInfo_SFG {
+cmd "net openlink http://steamcommunity.com/games/AirMech"
+}
+Script QInfo_CarbonAcct {
+cmd "if consolePlatformHW runNow menuCmd QInfo_CarbonAcct_360"
+cmd "if !consolePlatformHW runNow menuCmd InspectPromo PromoUplink"
+}
+Script QInfo_CarbonAcct_360 {
+cmd "sym set DialogBoxTitle AcctLinkConfDialogTitle"
+cmd "sym set DialogBoxMessage AcctLinkConfDialogMessage360_2"
+cmd "sym set DialogMenuCmdOnButton1 QInfo_CarbonAcct_360_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "sym set EnhDialogActionX MP_NOP"
+cmd "sym set EnhDialogActionY QInfo_CarbonAcct_360_ShowPP"
+cmd "sym set EnhDialogButtonYes AcctLinkConfYes"
+cmd "sym set EnhDialogButtonNo AcctLinkConfNo"
+cmd "loadmenu DialogBoxEnh.txt"
+}
+Script QInfo_CarbonAcct_360_ToggleSubscribe {
+cmd "sym toggle ContactSubscribe"
+cmd "if sym ContactSubscribe == 0 runnow sym setl ContactSubscribeChk <:a>"
+cmd "if sym ContactSubscribe == 1 runnow sym setl ContactSubscribeChk <:b>"
+}
+Script QInfo_CarbonAcct_360_ShowPP {
+cmd "loadmenu privpolicy.txt"
+}
+Script QInfo_CarbonAcct_360_Go {
+cmd "sym set ConfirmedEmail $UbiSrvEmail"
+cmd "platform keyboard /mode email /symbol ConfirmedEmail /initialSym ConfirmedEmail /menuCmd ConEmailCheck /prompt Carbon1Prompt"
+}
+Script NamedLink_Raptr_Client {
+cmd "net openlink http://s3.amazonaws.com/raptrclient/airmech/raptr_installer.exe"
+cmd "backend stat raptr:clt_link"
+}
+Script NamedLink_Raptr {
+cmd "net openlink http://raptr.com/game/AirMech/wall"
+cmd "backend stat raptr:r_link"
+}
+Script NamedLink_Challenges {
+cmd "menucmd UI_Nav_Challenges"
+}
+Script NamedLink_Tutorial {
+cmd "menucmd UI_Nav_Tutorial"
+}
+Script QuestRedeemFocusUpFail0 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 0 6 -1  /tryOnFail .QuestsPagePrevious"
+}
+Script QuestRedeemFocusUpFail1 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 1 6 -1  /tryOnFail .QuestsPagePrevious"
+}
+Script QuestRedeemFocusUpFail2 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 2 6 -1  /tryOnFail .QuestsPagePrevious"
+}
+Script QuestRedeemFocusUpFail3 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 3 6 -1  /tryOnFail .QuestsPagePrevious"
+}
+Script QuestRedeemFocusUpFail4 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 0 6 -1  /tryOnFail .QuestsPagePrevious"
+}
+Script QuestRedeemFocusUpFail5 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 1 6 -1  /tryOnFail .QuestsPagePrevious"
+}
+Script QuestRedeemFocusDownFail0 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 0 6 1  /tryOnFail .QuestsPageNext"
+}
+Script QuestRedeemFocusDownFail1 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 1 6 1  /tryOnFail .QuestsPageNext"
+}
+Script QuestRedeemFocusDownFail2 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 2 6 1  /tryOnFail .QuestsPageNext"
+}
+Script QuestRedeemFocusDownFail3 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 3 6 1  /tryOnFail .QuestsPageNext"
+}
+Script QuestRedeemFocusDownFail4 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 4 6 1  /tryOnFail .QuestsPageNext"
+}
+Script QuestRedeemFocusDownFail5 {
+cmd "gameUI focusNameTryList AirMechQuest2_ 5 6 1  /tryOnFail .QuestsPageNext"
+}

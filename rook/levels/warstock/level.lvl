@@ -1,0 +1,5688 @@
+// map: warstock
+
+// level embedded console commands 
+CONSOLE gameUI enable PressAText
+CONSOLE gameUI disable LoadingText
+CONSOLE menuCmd GetReadyArmySlot0 local
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_Canyon.mtl ToSand
+CONSOLE gfx set uniform filterargs 3 1
+CONSOLE gfx set uniform shadowcolor 0 0 0 100
+
+mapInfo {
+	MAPNAME Warstock
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION Warstock
+	SKYBOX mat_SkyBlueSmallClouds
+	GAMEMODE default
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT -45
+	FORCEBOX -113 113 -113 113 4 -45.0
+	MAPEXTMIN -120 -120 0
+	MAPEXTMAX 120 120 0
+	CAMERAEXTMIN -105 -105
+	CAMERAEXTMAX 105 105
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Canyon
+	TerrainArrayX 10
+	TerrainArrayY 10
+	TerrainStepZ 3.0
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -6
+  TRANSFORMPLANE -10
+}
+
+CANVASCOLOR 0 0 0 0
+fogValues {
+  FOGCOLOR 217 171 83 255
+  FOGARGS 10 9
+  DFOGCOLOR 201.210938 211.171875 239.0625 255
+  DFOGARGS 90 150
+}
+
+airmech {
+	P_START 0 0 112 3
+	P_START 1 0 -112 3
+	P_START 2 112 0 3
+	P_START 3 -112 0 3
+}
+// Cameras //
+cameras {
+      /name main /pos -2.0 7 20 /at -2.0 30 4.5 /fov 24.0
+      /name top /pos 0 0 30 /at 0 1 0 /fov 60.0
+}
+
+DIR_LIGHT {
+	dir 0.416209 0.424957 0.803854
+	diff 0.5 0.5 0.5
+	amb 0.9 0.9 0.95
+}
+objects {
+	WO Urban_A0 {
+		pos 0 8 0
+		. mtmm 7
+	}
+	WO Urban_A0 {
+		pos 0 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 0 24 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 0 32 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 0 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 24 96 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 0 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 0 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 0 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 0 80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos -80 16 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 80 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 48 -80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 8 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 8 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 8 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 8 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 8 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 16 -128 0
+	}
+	WO Urban_D0 {
+		pos 16 -120 -4.5
+	}
+	WO Urban_C0 {
+		pos 16 -112 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 32 96 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 96 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -72 16 4.5
+	}
+	WO Urban_C0 {
+		pos -72 24 0
+	}
+	WO Urban_A0 {
+		pos -72 32 0
+	}
+	WO Urban_C0 {
+		pos 72 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 72 24 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 72 16 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 48 -88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 48 -96 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 40 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 16 -40 0
+	}
+	WO Urban_C0 {
+		pos 16 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 16 -24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 16 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 16 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos 24 -120 -4.5
+	}
+	WO Urban_C0 {
+		pos -64 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -64 16 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -64 24 0
+	}
+	WO Urban_A0 {
+		pos -64 32 0
+	}
+	WO Urban_A0 {
+		pos -64 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 -112 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 24 -104 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 64 40 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 64 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 64 24 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C1 {
+		pos 64 16 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 64 8 -4.5
+	}
+	WO Urban_C0 {
+		pos 40 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 40 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -56 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -56 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -56 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -56 24 0
+	}
+	WO Urban_A0 {
+		pos -56 32 0
+	}
+	WO Urban_A0 {
+		pos -56 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -56 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 40 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 40 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 40 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 24 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 24 -24 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 24 -16 4.5
+	}
+	WO Urban_C0 {
+		pos 24 -8 0
+	}
+	WO Urban_A0 {
+		pos 24 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 56 48 0
+	}
+	WO Urban_A1 {
+		pos 56 40 4.5
+	}
+	WO Urban_C1 {
+		pos 56 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 56 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -48 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -48 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -48 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -48 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -48 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -48 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -48 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C1 {
+		pos -40 -104 0
+	}
+	WO Urban_B0 {
+		pos -40 -96 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 56 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 56 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 56 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO UrbanBlockB {
+		pos -14 -70 0
+		rot_x 0 1.000001 0
+		rot_y -1.000001 0 0
+	}
+	WO UrbanBlockA {
+		pos -14 -20 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 32 -112 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 32 -104 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 32 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -40 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -40 -8 0
+	}
+	WO Urban_A0 {
+		pos -40 0 0
+	}
+	WO Urban_C0 {
+		pos -40 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -40 16 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -40 24 4.5
+	}
+	WO Urban_C0 {
+		pos -40 32 0
+	}
+	WO Urban_A0 {
+		pos -32 -112 4.5
+	}
+	WO Urban_C0 {
+		pos -32 -104 0
+	}
+	WO Urban_A0 {
+		pos -24 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -40 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 32 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 40 -8 0
+	}
+	WO Urban_A0 {
+		pos 40 -16 4.5
+	}
+	WO Urban_C0 {
+		pos 40 -104 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 40 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 56 -88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 48 48 0
+	}
+	WO Urban_A0 {
+		pos 48 40 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 48 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -24 -16 0
+	}
+	WO Urban_A0 {
+		pos -32 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -32 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -32 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -32 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -32 16 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -32 24 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -24 -120 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -24 -112 4.5
+	}
+	WO Urban_C0 {
+		pos -24 -104 0
+	}
+	WO Urban_C1 {
+		pos -32 32 0
+	}
+	WO Urban_C0 {
+		pos -32 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos -32 48 0
+	}
+	WO Urban_C0 {
+		pos 48 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 48 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 48 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 48 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 48 -8 0
+	}
+	WO Urban_A0 {
+		pos 40 -88 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -24 -8 0
+	}
+	WO Urban_A0 {
+		pos -16 -8 0
+	}
+	WO Urban_A0 {
+		pos -32 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -24 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -24 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -24 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -24 16 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos -16 -128 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -16 -120 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -16 -112 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -24 24 4.5
+	}
+	WO Urban_C0 {
+		pos -24 32 0
+	}
+	WO Urban_C0 {
+		pos -24 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -24 48 0
+	}
+	WO Urban_A0 {
+		pos -24 56 0
+		. mtmm 1
+	}
+	WO Urban_A1 {
+		pos 32 -24 4.5
+	}
+	WO Urban_A0 {
+		pos 32 -16 4.5
+	}
+	WO Urban_C0 {
+		pos 32 -8 0
+	}
+	WO Urban_A0 {
+		pos 32 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -8 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -8 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -8 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -16 -16 0
+	}
+	WO Urban_A0 {
+		pos -24 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -16 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -16 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -8 -136 0
+	}
+	WO Urban_A0 {
+		pos -8 -128 0
+	}
+	WO Urban_A0 {
+		pos -8 -120 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos -16 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -16 24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -16 32 0
+	}
+	WO Urban_C0 {
+		pos -16 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -16 48 0
+	}
+	WO Urban_A1 {
+		pos -16 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C1 {
+		pos -16 64 -4.5
+	}
+	WO Urban_A0 {
+		pos -16 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -16 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -16 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -16 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -8 -16 0
+	}
+	WO Urban_A0 {
+		pos -8 -8 0
+	}
+	WO Urban_A0 {
+		pos -8 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 0 -144 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 0 -136 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 0 -128 0
+	}
+	WO Urban_A0 {
+		pos -8 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Urban_B0 {
+		pos -8 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Urban_C0 {
+		pos -8 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Urban_B0 {
+		pos -8 32 0
+		. mtmm 10
+	}
+	WO Urban_B0 {
+		pos -8 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Urban_B0 {
+		pos -8 48 0
+		. mtmm 10
+	}
+	WO Urban_A0 {
+		pos -8 56 0
+		. mtmm 10
+	}
+	WO Urban_D0 {
+		pos -8 64 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Urban_C0 {
+		pos -8 72 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Urban_A0 {
+		pos 0 -56 0
+	}
+	WO Urban_A0 {
+		pos 0 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 0 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 -16 0
+	}
+	WO Urban_A0 {
+		pos 0 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 8 -136 0
+	}
+	WO Urban_A0 {
+		pos 8 -128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 8 -120 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 0 0
+		. mtmm 5
+	}
+	WO Urban_A0 {
+		pos 160 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 152 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 152 0 0
+	}
+	WO Urban_B0 {
+		pos 152 -8 0
+	}
+	WO Urban_A1 {
+		pos 144 16 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 144 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -144 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 144 -8 0
+	}
+	WO Urban_A0 {
+		pos 144 -16 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -136 0 0
+	}
+	WO Urban_B0 {
+		pos -136 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 128 32 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos 128 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -128 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -128 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -128 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -128 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -128 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 128 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 128 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 120 40 -4.5
+	}
+	WO Urban_B0 {
+		pos 120 32 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos -120 -24 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos -120 -16 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -120 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -120 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -120 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -120 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -120 24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 120 -32 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 120 -40 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 112 48 -4.5
+	}
+	WO Urban_A0 {
+		pos 112 40 -4.5
+	}
+	WO Urban_A0 {
+		pos -112 -32 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -112 -24 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -112 -16 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -112 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -112 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -112 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -112 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -112 24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -112 32 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 112 -40 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 112 -48 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 104 56 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 48 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 -40 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 -32 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 -24 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -104 -16 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -104 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -104 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -104 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -104 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C1 {
+		pos -104 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos 96 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 96 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -96 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -96 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -96 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -96 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -96 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -96 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -96 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -96 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos -96 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -96 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -96 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -96 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -96 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 96 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 96 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 88 64 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -88 -56 0
+	}
+	WO Urban_C0 {
+		pos -88 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -88 -40 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -88 -32 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -88 -24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -88 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -88 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -88 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -88 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos -88 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -88 24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -88 32 0
+	}
+	WO Urban_C0 {
+		pos -88 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -88 48 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -88 56 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 88 -64 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 88 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 88 -80 0
+	}
+	WO Urban_C0 {
+		pos -80 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -80 -56 0
+	}
+	WO Urban_C0 {
+		pos -80 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -80 -40 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -80 -32 0
+	}
+	WO Urban_C1 {
+		pos -80 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -80 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -80 -8 0
+	}
+	WO Urban_A0 {
+		pos -80 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -80 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos -80 24 0
+	}
+	WO Urban_B0 {
+		pos -80 32 0
+	}
+	WO Urban_B0 {
+		pos -80 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -80 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos -80 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -80 64 4.5
+	}
+	WO Urban_C0 {
+		pos 80 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 80 -80 0
+	}
+	WO Urban_A0 {
+		pos 80 -88 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -80 80 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -72 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -72 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -72 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -72 -40 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -72 -32 0
+	}
+	WO Urban_D0 {
+		pos -72 -24 -4.5
+	}
+	WO Urban_C0 {
+		pos -72 -16 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos -72 -8 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -72 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C1 {
+		pos -72 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -72 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -72 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos -72 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -72 64 4.5
+	}
+	WO Urban_A0 {
+		pos -64 -80 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 72 -80 0
+	}
+	WO Urban_A0 {
+		pos 72 -88 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -72 72 0
+	}
+	WO Urban_C0 {
+		pos -72 80 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -72 88 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos -64 -72 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -64 -64 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -64 -56 0
+	}
+	WO Urban_C0 {
+		pos -64 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -64 -40 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -64 -32 0
+	}
+	WO Urban_D0 {
+		pos -64 -24 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos -64 -16 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -64 -8 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -64 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -64 48 0
+	}
+	WO Urban_C0 {
+		pos -64 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -56 -88 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos -56 -80 0
+	}
+	WO Urban_A1 {
+		pos 64 -88 4.5
+	}
+	WO Urban_A1 {
+		pos -64 64 4.5
+	}
+	WO Urban_C0 {
+		pos -64 72 0
+	}
+	WO Urban_C0 {
+		pos -64 80 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -64 88 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C1 {
+		pos -64 96 0
+	}
+	WO Urban_C0 {
+		pos 64 -128 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos -56 -72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -56 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -56 -56 0
+	}
+	WO Urban_C0 {
+		pos -56 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -56 -40 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C1 {
+		pos -56 -32 0
+	}
+	WO Urban_A0 {
+		pos -56 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -56 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -56 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -48 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -48 -88 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -48 -80 0
+	}
+	WO Urban_B0 {
+		pos -56 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -56 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -56 72 0
+	}
+	WO Urban_B0 {
+		pos -56 80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -56 88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -56 96 -4.5
+	}
+	WO Urban_A0 {
+		pos -56 104 -4.5
+	}
+	WO Urban_D0 {
+		pos 56 -128 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 56 -136 0
+	}
+	WO Urban_A0 {
+		pos -48 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -48 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -48 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -48 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -48 -40 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -48 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -48 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -48 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -40 -88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -48 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -48 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -48 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -48 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -48 80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -48 88 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -48 96 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -48 104 -4.5
+		. mtmm 2
+	}
+	WO Urban_A0 {
+		pos -48 112 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Urban_C0 {
+		pos 48 -128 -4.5
+	}
+	WO Urban_C0 {
+		pos 48 -136 0
+	}
+	WO Urban_A1 {
+		pos 48 -144 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -40 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -40 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -40 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos -40 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -40 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -40 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -40 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -40 48 4.5
+	}
+	WO Urban_A1 {
+		pos -40 56 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -40 64 4.5
+	}
+	WO Urban_A0 {
+		pos -40 72 4.5
+	}
+	WO Urban_A0 {
+		pos -40 80 4.5
+	}
+	WO Urban_A0 {
+		pos -40 88 -4.5
+	}
+	WO Urban_A0 {
+		pos -40 96 -4.5
+	}
+	WO Urban_A0 {
+		pos -40 104 -4.5
+		. mtmm 1
+	}
+	WO Urban_A0 {
+		pos -40 112 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Urban_A0 {
+		pos -40 120 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Urban_C0 {
+		pos 40 -128 -4.5
+	}
+	WO Urban_C0 {
+		pos 40 -136 0
+	}
+	WO Urban_A1 {
+		pos 40 -144 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 40 -152 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -32 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -32 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -32 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -32 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -32 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -32 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos -32 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Urban_C0 {
+		pos -32 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Urban_C0 {
+		pos -32 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Urban_A0 {
+		pos -32 80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -32 88 -4.5
+	}
+	WO Urban_A0 {
+		pos -32 96 -4.5
+	}
+	WO Urban_A0 {
+		pos -32 104 -4.5
+	}
+	WO Urban_A0 {
+		pos -32 112 -4.5
+		. mtmm 2
+	}
+	WO Urban_B0 {
+		pos -32 120 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Urban_D0 {
+		pos -32 128 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 32 -128 -4.5
+	}
+	WO Urban_C0 {
+		pos 32 -136 0
+	}
+	WO Urban_A1 {
+		pos 32 -144 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 32 -152 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 32 -160 0
+	}
+	WO Urban_A0 {
+		pos -16 -96 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -32 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -32 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -24 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -24 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos -24 64 -4.5
+		. mtmm 5
+	}
+	WO Urban_A0 {
+		pos -24 72 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Urban_A0 {
+		pos -24 80 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Urban_A0 {
+		pos -24 88 -4.5
+	}
+	WO Urban_A0 {
+		pos -24 96 -4.5
+	}
+	WO Urban_A0 {
+		pos -24 104 -4.5
+	}
+	WO Urban_A0 {
+		pos -24 112 -4.5
+		. mtmm 1
+	}
+	WO Urban_C1 {
+		pos -24 120 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Urban_A1 {
+		pos -24 128 0
+	}
+	WO Urban_C0 {
+		pos -24 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 24 -128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 24 -136 0
+	}
+	WO Urban_A1 {
+		pos 24 -144 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 24 -152 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 24 -160 0
+	}
+	WO Urban_A1 {
+		pos 24 -168 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -16 -80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -24 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -24 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -8 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -16 72 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Urban_A0 {
+		pos -16 80 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Urban_B0 {
+		pos -16 88 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Urban_C0 {
+		pos -16 96 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Urban_C0 {
+		pos -16 104 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Urban_C0 {
+		pos -16 112 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -16 120 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -16 128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -16 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -16 144 4.5
+	}
+	WO Urban_A0 {
+		pos -16 -88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 16 -136 0
+	}
+	WO Urban_A1 {
+		pos 16 -144 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 16 -152 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 16 -160 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 16 -168 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos 16 -176 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -8 -72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -32 -88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -24 -88 0
+	}
+	WO Urban_C0 {
+		pos -8 80 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Urban_D0 {
+		pos -8 88 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 11
+	}
+	WO Urban_A0 {
+		pos -8 96 0
+		. mtmm 13
+	}
+	WO Urban_A0 {
+		pos -8 104 0
+		. mtmm 6
+	}
+	WO Urban_A0 {
+		pos -8 112 0
+		. mtmm 10
+	}
+	WO Urban_A0 {
+		pos -8 120 0
+		. mtmm 10
+	}
+	WO Urban_A0 {
+		pos -8 128 0
+		. mtmm 8
+	}
+	WO Urban_C0 {
+		pos -8 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos -8 144 0
+	}
+	WO Urban_B0 {
+		pos -8 152 0
+	}
+	WO Urban_A0 {
+		pos 0 -88 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 -80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 8 -144 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 8 -152 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 8 -160 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 8 -168 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 8 -176 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos 8 -184 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 -72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 0 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 0 88 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 0 96 0
+		. mtmm 14
+	}
+	WO Urban_A0 {
+		pos 0 104 0
+		. mtmm 11
+	}
+	WO Urban_A0 {
+		pos 0 112 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 0 120 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 0 128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Urban_B0 {
+		pos 0 136 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 0 144 0
+	}
+	WO Urban_A0 {
+		pos 0 152 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 0 160 0
+	}
+	WO Urban_B0 {
+		pos 8 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 8 -72 -4.5
+	}
+	WO Urban_A0 {
+		pos 0 -152 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 0 -160 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 -168 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 0 -176 0
+	}
+	WO Urban_A1 {
+		pos 0 -184 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 0 -192 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 8 -64 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 32 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 32 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 104 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 8 112 0
+		. mtmm 13
+	}
+	WO Urban_A0 {
+		pos 8 120 0
+		. mtmm 5
+	}
+	WO Urban_A0 {
+		pos 8 128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Urban_B0 {
+		pos 8 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 8 144 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 8 152 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 16 -72 -4.5
+	}
+	WO Urban_C0 {
+		pos -8 -144 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -8 -152 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -8 -160 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos -8 -168 0
+	}
+	WO Urban_D0 {
+		pos -8 -176 0
+	}
+	WO Urban_A1 {
+		pos -8 -184 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C1 {
+		pos 16 -64 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 16 -56 0
+	}
+	WO Urban_C0 {
+		pos 16 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 24 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 16 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 5
+	}
+	WO Urban_C0 {
+		pos 16 112 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Urban_C0 {
+		pos 16 120 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 16 128 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 16 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 16 144 4.5
+	}
+	WO Urban_C0 {
+		pos -16 -136 0
+	}
+	WO Urban_A0 {
+		pos -16 -144 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos -16 -152 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -16 -160 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos -16 -168 0
+	}
+	WO Urban_A1 {
+		pos -16 -176 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 24 -64 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 24 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 24 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 24 -40 0
+	}
+	WO UrbanBlockA {
+		pos 20 28 0.1
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 32 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 24 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 24 112 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 24 120 4.5
+	}
+	WO Urban_C0 {
+		pos 24 128 0
+	}
+	WO Urban_C0 {
+		pos 24 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -24 -136 0
+	}
+	WO Urban_A0 {
+		pos -24 -144 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -24 -152 4.5
+	}
+	WO Urban_A0 {
+		pos -24 -160 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -24 -168 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 32 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos 32 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 32 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 32 -40 0
+	}
+	WO Urban_C1 {
+		pos 32 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 32 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 32 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 32 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 32 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 32 112 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 32 120 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 32 128 0
+	}
+	WO Urban_C0 {
+		pos -32 -136 0
+	}
+	WO Urban_A0 {
+		pos -32 -144 4.5
+	}
+	WO Urban_A0 {
+		pos -32 -152 4.5
+	}
+	WO Urban_A1 {
+		pos -32 -160 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 40 -64 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 40 -56 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 40 -48 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 40 -40 0
+	}
+	WO Urban_C0 {
+		pos 40 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 40 -24 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 40 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 40 56 0
+	}
+	WO Urban_A0 {
+		pos 40 64 0
+	}
+	WO Urban_A0 {
+		pos 40 72 0
+	}
+	WO Urban_B0 {
+		pos 40 80 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 40 88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 40 96 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos 40 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 40 112 4.5
+	}
+	WO Urban_A0 {
+		pos 40 120 4.5
+	}
+	WO Urban_C0 {
+		pos -40 -136 0
+	}
+	WO Urban_A1 {
+		pos -40 -144 4.5
+	}
+	WO Urban_A1 {
+		pos -40 -152 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 48 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 48 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 48 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 48 -40 0
+	}
+	WO Urban_B0 {
+		pos 48 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 48 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 48 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 56 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 56 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 48 56 0
+	}
+	WO Urban_A0 {
+		pos 48 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 48 72 0
+	}
+	WO Urban_C0 {
+		pos 48 80 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 48 88 4.5
+	}
+	WO Urban_C0 {
+		pos 48 96 0
+	}
+	WO Urban_C0 {
+		pos 48 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 48 112 4.5
+	}
+	WO Urban_C0 {
+		pos -48 -136 0
+	}
+	WO Urban_A1 {
+		pos -48 -144 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 56 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 56 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 56 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 56 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 56 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 56 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 56 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 56 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 56 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 64 -80 0
+	}
+	WO Urban_C0 {
+		pos 64 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -56 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 56 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos 56 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 56 80 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 56 88 4.5
+	}
+	WO Urban_C0 {
+		pos 56 96 0
+	}
+	WO Urban_C0 {
+		pos 56 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -56 -136 0
+	}
+	WO Urban_A1 {
+		pos 64 -64 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 64 -56 0
+	}
+	WO Urban_A0 {
+		pos 64 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 64 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 64 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 64 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 64 -16 4.5
+	}
+	WO Urban_C0 {
+		pos 64 -8 0
+	}
+	WO Urban_A0 {
+		pos 64 0 0
+	}
+	WO Urban_C0 {
+		pos 64 48 0
+	}
+	WO Urban_C0 {
+		pos 64 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 64 64 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 72 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -64 -88 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -64 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 64 72 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 64 80 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 64 88 4.5
+	}
+	WO Urban_C0 {
+		pos 64 96 0
+	}
+	WO Urban_A1 {
+		pos 72 -64 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C1 {
+		pos 72 -56 0
+	}
+	WO Urban_A0 {
+		pos 72 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 72 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 72 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 72 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 72 -16 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C1 {
+		pos 72 -8 0
+	}
+	WO Urban_A0 {
+		pos 72 0 0
+	}
+	WO Urban_D0 {
+		pos 72 8 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 72 40 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 72 48 0
+	}
+	WO Urban_B0 {
+		pos 72 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 72 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 72 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -72 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -72 -88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -72 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 72 80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 72 88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 80 -64 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 80 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 80 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 80 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 80 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 80 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 80 -16 4.5
+	}
+	WO Urban_C0 {
+		pos 80 -8 0
+	}
+	WO Urban_A0 {
+		pos 80 0 0
+	}
+	WO Urban_B0 {
+		pos 80 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C1 {
+		pos 80 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 80 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 80 40 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 80 48 0
+	}
+	WO Urban_B0 {
+		pos 80 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 80 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -80 -72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -80 -80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -80 -88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -80 -96 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -88 64 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 88 -56 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 88 -48 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 88 -40 0
+	}
+	WO Urban_C0 {
+		pos 88 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 88 -24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 88 -16 0
+	}
+	WO Urban_B0 {
+		pos 88 -8 0
+	}
+	WO Urban_A0 {
+		pos 88 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 88 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 88 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 88 24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 88 32 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 88 40 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 88 48 0
+	}
+	WO Urban_C0 {
+		pos 88 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -88 -64 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -88 -72 4.5
+	}
+	WO Urban_A0 {
+		pos -88 -80 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -96 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -96 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 96 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 96 -40 0
+	}
+	WO Urban_B0 {
+		pos 96 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 96 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 96 -16 0
+	}
+	WO Urban_A0 {
+		pos 96 -8 0
+	}
+	WO Urban_A0 {
+		pos 96 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 96 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 96 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 96 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 96 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 96 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 96 48 0
+	}
+	WO Urban_B0 {
+		pos -96 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos -96 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C1 {
+		pos 104 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 104 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 104 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 104 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 104 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 104 16 -4.5
+	}
+	WO Urban_C0 {
+		pos 104 24 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 32 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 40 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 -48 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -104 -56 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -112 48 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -112 40 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 112 -32 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 112 -24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 112 -16 0
+	}
+	WO Urban_A0 {
+		pos 112 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 112 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 112 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 112 16 -4.5
+	}
+	WO Urban_A0 {
+		pos 112 24 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 112 32 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -112 -40 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -112 -48 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -120 40 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -120 32 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 120 -24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 120 -16 0
+	}
+	WO Urban_A0 {
+		pos 120 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 120 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 120 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 120 16 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C1 {
+		pos 120 24 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -120 -32 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -120 -40 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -128 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -128 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 128 -16 0
+	}
+	WO Urban_A0 {
+		pos 128 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 128 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 128 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 128 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -128 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -128 -32 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 136 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 136 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 136 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -144 16 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -144 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 144 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos -144 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -144 -16 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -152 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -152 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos -152 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -160 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos 192 0 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 184 8 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 184 0 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 184 -8 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 176 16 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 176 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 176 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 176 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos 176 -16 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 168 24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 168 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 168 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 168 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 168 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 168 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos 168 -24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 160 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 160 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 160 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 160 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 160 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 160 -16 0
+	}
+	WO Urban_A0 {
+		pos 160 -24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 160 -32 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 152 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 152 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 152 24 0
+	}
+	WO Urban_D0 {
+		pos 152 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos 152 -16 0
+	}
+	WO Urban_A0 {
+		pos 152 -24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 152 -32 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos 152 -40 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 144 48 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 144 40 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 144 32 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos 144 24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 144 -24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 144 -32 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos 144 -40 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos 144 -48 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 136 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 128 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 128 56 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 128 48 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 128 40 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 128 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 128 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 128 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 128 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 120 72 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 120 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 120 56 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 120 48 -4.5
+	}
+	WO Urban_A0 {
+		pos 120 -48 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 120 -56 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 120 -64 4.5
+	}
+	WO Urban_A0 {
+		pos 120 -72 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 112 80 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 112 72 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 112 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 112 56 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 112 -56 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 112 -64 4.5
+	}
+	WO Urban_A0 {
+		pos 112 -72 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 112 -80 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 104 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 104 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 104 -88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 96 96 0
+	}
+	WO Urban_C0 {
+		pos 96 88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 96 80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos 96 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 96 -72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 96 -80 0
+	}
+	WO Urban_C0 {
+		pos 96 -88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -96 96 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 96 -96 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 88 88 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 88 80 4.5
+	}
+	WO Urban_A0 {
+		pos 88 72 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 88 -88 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -88 88 4.5
+	}
+	WO Urban_C0 {
+		pos -88 96 0
+	}
+	WO Urban_C0 {
+		pos -88 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 88 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 88 -104 0
+	}
+	WO Urban_C0 {
+		pos 80 80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 80 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -80 88 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -80 96 0
+	}
+	WO Urban_C0 {
+		pos -80 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -80 112 4.5
+	}
+	WO Urban_C0 {
+		pos 80 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 80 -104 0
+	}
+	WO Urban_A0 {
+		pos 80 -112 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -72 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -72 96 0
+	}
+	WO Urban_C0 {
+		pos -72 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -72 112 4.5
+	}
+	WO Urban_A0 {
+		pos -72 120 4.5
+	}
+	WO Urban_C0 {
+		pos 72 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 72 -104 0
+	}
+	WO Urban_A0 {
+		pos 72 -112 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 72 -120 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos -64 104 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -64 112 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -64 120 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -64 128 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C1 {
+		pos 64 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 64 -104 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 64 -112 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 64 -120 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -56 112 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Urban_A0 {
+		pos -56 120 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Urban_D0 {
+		pos -56 128 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -56 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 56 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 56 -104 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 56 -112 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 56 -120 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -48 120 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Urban_C0 {
+		pos -48 128 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Urban_C0 {
+		pos -48 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -48 144 4.5
+	}
+	WO Urban_B0 {
+		pos -40 -80 0
+	}
+	WO Urban_C0 {
+		pos 48 -104 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 48 -112 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 48 -120 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -40 128 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Urban_C0 {
+		pos -40 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -40 144 4.5
+	}
+	WO Urban_C0 {
+		pos -40 152 0
+	}
+	WO Urban_A0 {
+		pos -8 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -24 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 40 -112 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 40 -120 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -32 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -32 144 4.5
+	}
+	WO Urban_C0 {
+		pos -32 152 0
+	}
+	WO Urban_C0 {
+		pos -32 160 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -16 -56 0
+	}
+	WO Urban_A0 {
+		pos -8 -56 0
+	}
+	WO Urban_A0 {
+		pos -16 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 32 -120 -4.5
+	}
+	WO Urban_A1 {
+		pos -24 144 4.5
+	}
+	WO Urban_D0 {
+		pos -24 152 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -24 160 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos -24 168 4.5
+	}
+	WO Urban_B0 {
+		pos -16 -104 0
+	}
+	WO Urban_A0 {
+		pos -24 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -8 -80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -16 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -16 152 0
+	}
+	WO Urban_C0 {
+		pos -16 160 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos -16 168 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos -16 176 4.5
+	}
+	WO Urban_A0 {
+		pos -8 -112 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -8 -104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -8 -96 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -8 -88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -8 160 0
+	}
+	WO Urban_B0 {
+		pos -8 168 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos -8 176 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos -8 184 4.5
+	}
+	WO Urban_A0 {
+		pos 0 -120 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 -112 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 -104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 0 168 0
+	}
+	WO Urban_C0 {
+		pos 0 176 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 0 184 4.5
+	}
+	WO Urban_A1 {
+		pos 0 192 4.5
+	}
+	WO Urban_A0 {
+		pos 8 -112 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 8 -104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 8 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 8 -88 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 8 160 0
+	}
+	WO Urban_B0 {
+		pos 8 168 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 8 176 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 8 184 4.5
+	}
+	WO Urban_D0 {
+		pos 16 -104 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos 16 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 16 -88 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 16 -80 0
+	}
+	WO Urban_D0 {
+		pos 16 152 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 16 160 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos 16 168 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 16 176 4.5
+	}
+	WO Urban_C0 {
+		pos 24 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 24 -88 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C1 {
+		pos 24 -80 0
+	}
+	WO Urban_D0 {
+		pos 24 -72 -4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 144 4.5
+	}
+	WO Urban_A0 {
+		pos 24 152 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 24 160 4.5
+	}
+	WO Urban_A1 {
+		pos 24 168 4.5
+	}
+	WO Urban_A0 {
+		pos 32 -88 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos 32 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 32 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -24 -128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 32 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 32 144 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 32 152 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 32 160 4.5
+	}
+	WO Urban_A0 {
+		pos 40 -80 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 40 -72 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -32 -120 4.5
+	}
+	WO Urban_C0 {
+		pos -32 -128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 40 128 0
+	}
+	WO Urban_C0 {
+		pos 40 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 40 144 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 40 152 4.5
+	}
+	WO Urban_C0 {
+		pos 48 -72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos -40 -112 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -40 -120 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -40 -128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 48 120 4.5
+	}
+	WO Urban_C0 {
+		pos 48 128 0
+	}
+	WO Urban_C0 {
+		pos 48 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A1 {
+		pos 48 144 4.5
+	}
+	WO Urban_C0 {
+		pos -48 -104 0
+	}
+	WO Urban_A0 {
+		pos -48 -112 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -48 -120 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -48 -128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 56 112 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 56 120 4.5
+	}
+	WO Urban_C0 {
+		pos 56 128 0
+	}
+	WO Urban_C0 {
+		pos 56 136 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -56 -104 0
+	}
+	WO Urban_A0 {
+		pos -56 -112 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -56 -120 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -56 -128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 64 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 64 112 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 64 120 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 64 128 0
+	}
+	WO Urban_C0 {
+		pos -64 -104 0
+	}
+	WO Urban_A0 {
+		pos -64 -112 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -64 -120 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -64 -128 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos 72 96 0
+	}
+	WO Urban_C0 {
+		pos 72 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 72 112 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 72 120 4.5
+	}
+	WO Urban_C0 {
+		pos -72 -104 0
+	}
+	WO Urban_A0 {
+		pos -72 -112 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -72 -120 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -80 72 0
+	}
+	WO Urban_C0 {
+		pos 80 88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos 80 96 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos 80 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos 80 112 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -80 -104 0
+	}
+	WO Urban_A0 {
+		pos -80 -112 4.5
+	}
+	WO Urban_C0 {
+		pos -88 80 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -88 72 0
+	}
+	WO Urban_A0 {
+		pos -88 -88 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -88 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos 88 96 0
+	}
+	WO Urban_C0 {
+		pos 88 104 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -88 -104 0
+	}
+	WO Urban_C0 {
+		pos -96 88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -96 80 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_B0 {
+		pos -96 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -96 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -96 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -96 -88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -96 -96 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -104 88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -104 -64 0
+	}
+	WO Urban_C0 {
+		pos -104 -72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 -80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -104 -88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -112 80 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -112 72 4.5
+	}
+	WO Urban_A0 {
+		pos -112 64 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -112 56 4.5
+	}
+	WO Urban_C0 {
+		pos -112 -56 -4.5
+	}
+	WO Urban_C0 {
+		pos -112 -64 0
+	}
+	WO Urban_A0 {
+		pos -112 -72 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -112 -80 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -120 72 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -120 64 4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -120 56 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -120 48 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -120 -48 -4.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -120 -56 -4.5
+	}
+	WO Urban_C0 {
+		pos -120 -64 0
+	}
+	WO Urban_A0 {
+		pos -120 -72 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -128 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -128 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -128 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -128 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -128 -40 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -128 -48 -4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos -128 -56 -4.5
+	}
+	WO Urban_C0 {
+		pos -128 -64 0
+	}
+	WO Urban_C0 {
+		pos -136 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -136 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos -144 48 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -144 40 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -144 32 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -144 24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -144 -24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -144 -32 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -144 -40 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -144 -48 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -152 40 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -152 32 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -152 24 4.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos -152 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_D0 {
+		pos -152 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -152 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_C0 {
+		pos -152 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -152 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -160 32 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -160 24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -160 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Urban_A0 {
+		pos -160 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos -160 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_C0 {
+		pos -160 -16 0
+	}
+	WO Urban_D0 {
+		pos -160 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -160 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A1 {
+		pos -168 24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -168 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_B0 {
+		pos -168 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos -168 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_B0 {
+		pos -168 -8 0
+	}
+	WO Urban_D0 {
+		pos -168 -16 0
+	}
+	WO Urban_A1 {
+		pos -168 -24 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -176 16 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_D0 {
+		pos -176 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_C0 {
+		pos -176 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_D0 {
+		pos -176 -8 0
+	}
+	WO Urban_A1 {
+		pos -176 -16 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -184 8 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -184 0 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -184 -8 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A1 {
+		pos -192 0 4.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO BarrelA {
+		pos 42.317799 67.555901 0
+	}
+	WO BarrelA {
+		pos 67.360199 -42.5905 0
+	}
+	WO BarrelA {
+		pos -41.808102 -68.184998 0
+	}
+	WO BuildingFaceA {
+		pos 17.708311 109.238312 -0.089999
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO BuildingFaceA {
+		pos 22.455986 105.885925 0
+		rot_x -0.999999 0 0
+		rot_y 0 -0.999999 0
+	}
+	WO BuildingFaceB {
+		pos 17.865803 117.529312 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO BuildingFaceC {
+		pos 27.812166 137.664886 -0.03
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO BuildingFaceD {
+		pos 30.304163 105.737686 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO BuildingFaceE {
+		pos 19.5 138 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO BuildingFaceF {
+		pos 49.863457 105.881462 -0.09
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO BuildingFaceE {
+		pos 9.500001 147.130768 -0.285025
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO BuildingFaceCornerA2 {
+		pos 35.5 106.5 0
+	}
+	WO BuildingFaceCornerB1 {
+		pos 18.5 125.5 0
+	}
+	WO BuildingFaceCornerB2 {
+		pos 10.5 138.5 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO BuildingFaceCornerA1 {
+		pos 44.694641 106.585205 -0.18
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 32 88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SidewalkLongA {
+		pos 19.5 116 0
+		rot_x 0 -0.999999 0
+		rot_y 0.999999 0 0
+	}
+	WO Urban_A0 {
+		pos 8 96 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO UrbanBlockB {
+		pos 20 76 0.1
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 88 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 88 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO StreetLamp {
+		pos 8 87 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 0 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 15
+	}
+	WO Urban_A0 {
+		pos 8 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 32 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 32 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 8 80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 16 80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Urban_A0 {
+		pos 24 80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Urban_A0 {
+		pos 32 80 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable true
+  layer 2 name "volumes" visible true pickable true
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible true pickable false
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+editorCore {
+  meshGridTerrainEditor {
+    selType Canyon
+    halfDX 24
+    halfDY 24
+    zStep 0.5
+    genPattern Diamond
+  }
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+	PF BaseFighter.txt {
+		pos 0 112 0
+		rot 0 0 179.998917
+		/s team ". team 0"
+	}
+	PF BaseFighter.txt {
+		pos -0.135184 -113.676857 -0.000004
+		rot 0 0 0
+		/s team ". team 1"
+	}
+}

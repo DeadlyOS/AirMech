@@ -1,0 +1,262 @@
+Script TutorialCheck {
+cmd "menuCmd #TutorialStage@TutorialStage@"
+}
+Script TutorialStage0 {
+cmd "echo you_will_be_eaten_by_a_Grue"
+}
+Script TutorialStage1 {
+ignoreInputTime 1.0
+cmd "menu3d remove *"
+cmd "sym set Background3dLoaded 0"
+cmd "clearmenu _all_ /fadeout 0.5"
+cmd "sym set HideCursor 1"
+cmd "music stop"
+cmd "pcmd 1.6 music start MusicAirMechClip"
+cmd "sym set InStorySeq 1"
+cmd "menuCmd StartBackstory"
+}
+Script StartBackstory {
+ignoreInputTime 1.0
+cmd "sym set IsFirstStartup 1"
+cmd "loadmenu Prologue"
+cmd "sym set IntroStage null"
+}
+Script IntroPrologueShowA {
+ignoreInputTime 0.2
+cmd "gameui enable TextStory0A"
+cmd "gameui enable PrologueSkip0"
+cmd "sym set IntroStage PA"
+cmd "pcmd_seq 301 6.5 menucmd IntroPrologueShowB"
+}
+Script IntroPrologueShowB {
+ignoreInputTime 0.2
+cmd "gameui enable TextStory0B"
+cmd "sym set IntroStage PB"
+cmd "pcmd_seq 301 7.5 menucmd IntroPrologueShowC"
+}
+Script IntroPrologueShowC {
+ignoreInputTime 0.2
+cmd "gameui enable TextStory0C"
+cmd "sym set IntroStage PC"
+}
+Script IntroSkipPrologue {
+cmd "if sym IntroStage == PA runnow menucmd IntroPrologueShowB"
+cmd "if sym IntroStage == PB runnow menucmd IntroPrologueShowC"
+cmd "if sym IntroStage == PC runnow menucmd IntroSkipPrologue_Go"
+cmd "gameui enable InputCatchPrologue"
+}
+Script IntroSkipPrologue_Go {
+ignoreInputTime 2.2
+cmd "echo skip_Prologue"
+cmd "console flushAllPendingSeq 301"
+cmd "gameui disableGroup TextStory0A InputCatchPrologue"
+cmd "pcmd 0.25 gameui disable VignetteStory"
+cmd "pcmd 0.25 gameui disable TextStory0B"
+cmd "pcmd 0.5 gameui disable TextStory0C"
+cmd "pcmd 1.0 menucmd IntroCarbon"
+}
+Script IntroCarbon {
+ignoreInputTime 1.0
+cmd "gameui disableGroup TextStory0A TextStory0B TextStory0C PrologueCatch"
+cmd "loadmenu IntroCarbon"
+}
+Script IntroSkipCarbon {
+cmd "if hasPendingSeq 303 runnow menucmd IntroSkipCarbon_Go"
+}
+Script IntroSkipCarbon_Go {
+ignoreInputTime 2.2
+cmd "echo skip_Carbon"
+cmd "console flushAllPendingSeq 303"
+cmd "gameui disable CarbonGamesLogoSplash
+cmd "gameui disable CarbonGamesLogoGlow
+cmd "pcmd 0.8 gameui disable CarbonGamesLogoPresents
+cmd "pcmd 1.4 gameui disable VignetteStory
+cmd "pcmd 1.4 gameui enable CarbonGamesSplashCover
+cmd "pcmd 2.0 menucmd SplashAirMech"
+}
+Script SplashAirMech {
+ignoreInputTime 1.0
+cmd "clearmenu IntroCarbon"
+cmd "loadmenu IntroAirMech"
+}
+Script IntroSkipAirMech {
+cmd "if hasPendingSeq 304 runnow menucmd IntroSkipAirMech_Go"
+}
+Script IntroSkipAirMech_Go {
+ignoreInputTime 2.2
+cmd "echo skip_AirMech"
+cmd "console flushAllPendingSeq 304"
+cmd "gameui enable SplashAirMechCover"
+cmd "pcmd 3.0 menuCmd AirMechIntro"
+}
+Script AirMechIntro {
+ignoreInputTime 1.0
+cmd "menu3d remove *"
+cmd "clearmenu"
+cmd "loadmenu Intro /fadein 0.5"
+}
+Script IntroSkipStory {
+cmd "if sym IntroStage == SA runnow menucmd IntroStoryShowB"
+cmd "if sym IntroStage == SB runnow menucmd IntroStoryShowC"
+cmd "if sym IntroStage == SC runnow menucmd IntroSkipStory_Go"
+cmd "gameui enable InputCatchStory"
+}
+Script IntroStoryShowA {
+ignoreInputTime 0.2
+cmd "gameui enable TextStory1A"
+cmd "gameui enable PrologueSkip1"
+cmd "sym set IntroStage SA"
+cmd "pcmd 3.5 gameui enable Story0Background"
+cmd "pcmd_seq 305 6.5 menucmd IntroStoryShowB"
+}
+Script IntroStoryShowB {
+ignoreInputTime 0.2
+cmd "gameui enable TextStory1B"
+cmd "sym set IntroStage SB"
+cmd "pcmd_seq 305 6.0 menucmd IntroStoryShowC"
+}
+Script IntroStoryShowC {
+ignoreInputTime 0.2
+cmd "gameui enable TextStory1C"
+cmd "sym set IntroStage SC"
+}
+Script IntroSkipStory_Go {
+ignoreInputTime 2.2
+cmd "echo skip_Story0"
+cmd "console flushAllPendingSeq 305"
+cmd "gameui disableGroup TextStory1A TextStory1B TextStory1C InputCatchStory"
+cmd "pcmd 0.0 gameui disableGroup Story0Background Story0AlphaStriker
+cmd "pcmd 0.5 gameui disable VignetteStory"
+cmd "pcmd 2.0 menucmd TutorialStage2"
+}
+Script TutorialStage2 {
+ignoreInputTime 1.0
+cmd "menu3d remove *"
+cmd "sym set Background3dLoaded 0"
+cmd "clearmenu $MainMenu"
+cmd "clearmenu Intro"
+cmd "clearmenu StartingPilot"
+cmd "pcmd 0.25 menucmd ChooseStartingPilot"
+}
+Script ChoosePilotLeft {
+ignoreInputTime 0.5
+cmd "sym set HidePilotBtnHelp 1"
+cmd "gameui disableGroup BackgroundPilotLeft BackgroundPilotRight BackgroundPilotCenter"
+cmd "gameui disableAll SelectPilotCenter"
+cmd "gameui disableAll SelectPilotRight"
+cmd "gameui enableAll ConfirmPilotSelectMessage"
+cmd "addUIAnim SelectPilotLeft mas_SelectPilotLeft"
+cmd "addUIAnim PilotInfoBackgroundLeft mas_SelectPilotLeft"
+cmd "sym set PilotSelectCancelScript ResetPilots"
+cmd "sym set ConfirmPilotSelectMessage #ConfirmPilotSelectMessage@SelectPilotLeft@"
+}
+Script ChoosePilotCenter {
+ignoreInputTime 0.5
+cmd "sym set HidePilotBtnHelp 1"
+cmd "gameui disableGroup BackgroundPilotLeft BackgroundPilotRight BackgroundPilotCenter"
+cmd "gameui disableAll SelectPilotLeft"
+cmd "gameui disableAll SelectPilotRight"
+cmd "gameui enableAll ConfirmPilotSelectMessage"
+cmd "addUIAnim SelectPilotCenter mas_SelectPilotCenter"
+cmd "addUIAnim PilotInfoBackgroundCenter mas_SelectPilotCenter"
+cmd "sym set PilotSelectCancelScript ResetPilots"
+cmd "sym set ConfirmPilotSelectMessage #ConfirmPilotSelectMessage@SelectPilotCenter@"
+}
+Script ChoosePilotRight {
+ignoreInputTime 0.5
+cmd "sym set HidePilotBtnHelp 1"
+cmd "gameui disableGroup BackgroundPilotLeft BackgroundPilotRight BackgroundPilotCenter"
+cmd "gameui disableAll SelectPilotCenter"
+cmd "gameui disableAll SelectPilotLeft"
+cmd "gameui enableAll ConfirmPilotSelectMessage"
+cmd "addUIAnim SelectPilotRight mas_SelectPilotRight"
+cmd "addUIAnim PilotInfoBackgroundRight mas_SelectPilotRight"
+cmd "sym set PilotSelectCancelScript ResetPilots"
+cmd "sym set ConfirmPilotSelectMessage #ConfirmPilotSelectMessage@SelectPilotRight@"
+}
+Script ResetPilots {
+ignoreInputTime 1.0
+cmd "sym set HidePilotBtnHelp 0"
+cmd "gameui enableGroup BackgroundPilotCenter BackgroundPilotLeft BackgroundPilotRight SelectPilotCenter SelectPilotLeft SelectPilotRight"
+cmd "addUIAnim SelectPilotLeft mas_SelectPilotReset"
+cmd "addUIAnim PilotInfoBackgroundLeft mas_SelectPilotReset"
+cmd "addUIAnim SelectPilotCenter mas_SelectPilotReset"
+cmd "addUIAnim PilotInfoBackgroundCenter mas_SelectPilotReset"
+cmd "addUIAnim SelectPilotRight mas_SelectPilotReset"
+cmd "addUIAnim PilotInfoBackgroundRight mas_SelectPilotReset"
+cmd "gameui disableAll ConfirmPilotSelectMessage"
+cmd "gameui disableAll PilotInfoBackgroundLeft"
+cmd "gameui disableAll PilotInfoBackgroundCenter"
+cmd "gameui disableAll PilotInfoBackgroundRight"
+cmd "sym set PilotSelectCancelScript null"
+}
+Script TutorialAcceptPilot {
+ignoreInputTime 1.0
+cmd "sym set PilotSelectCancelScript null"
+cmd "echo $SelectPilotName"
+cmd "backend chooseReward PilotSelect $SelectPilotName"
+cmd "sym set ChalPilotComm $SelectPilotName"
+cmd "loadmenu MenuFadeOut"
+cmd "pcmd 0.18 clearmenu StartingPilot"
+cmd "pcmd 0.22 menuCmd IntroComplete"
+}
+Script TestPilots {
+ignoreInputTime 1.0
+cmd "menu3d remove *"
+cmd "sym set Background3dLoaded 0"
+cmd "clearmenu $MainMenu"
+cmd "clearmenu Intro"
+cmd "clearmenu StartingPilot"
+cmd "pcmd 0.25 menucmd ChooseStartingPilot"
+}
+Script ImmediateChooseStartingPilot {
+cmd "clearmenu"
+cmd "menu3d remove *"
+cmd "sym set Background3dLoaded 0"
+cmd "pcmd 0.4 music start MusicAirMechClip"
+cmd "sym set InStorySeq 1"
+cmd "sym set IsFirstStartup 1"
+cmd "menucmd ChooseStartingPilot"
+}
+Script ChooseStartingPilot {
+cmd "loadmenu StartingPilot"
+cmd "if !maploaded menu3d add MainMenuBack /model menus/MenuCircleTest.amf	/material mat_LoadingCircle"
+cmd "if !maploaded menu3d setRootOffset MainMenuBack	0.0 3.4 0.2"
+cmd "if !maploaded menu3d setRootScale MainMenuBack	6.0 6.0 6.0"
+cmd "if !maploaded menu3d addzspin MainMenuBack bone_spin 3"
+cmd "if !maploaded menu3d addzspin MainMenuBack bone_spin_center -8"
+cmd "if !maploaded menu3d animate MainMenuBack menus/CircleBounce.aaf looping 0 0.02"
+cmd "if !maploaded menu3d add MainMenuBg /model menus/MenuFullframe.amf	/material mat_MenuBackground"
+cmd "if !maploaded menu3d setRootOffset MainMenuBg	0.0 1.1 0.0"
+cmd "if !maploaded menu3d setRootScale MainMenuBg	20 20 20"
+}
+Script ResetIntro {
+ignoreInputTime 1.0
+cmd "echo CALLED RESET INTRO"
+cmd "heatfile flushFileCache"
+cmd "tool menureset hard"
+cmd "tool menureset animscripts"
+cmd "tool menuCmdsReload"
+cmd "cbinding reload"
+cmd "pfx stop embers"
+cmd "menuCmd ResetMainMenu"
+}
+Script IntroComplete {
+cmd "pfx stop embers"
+cmd "menu3d remove *"
+cmd "sym set Background3dLoaded 0"
+cmd "menucmd InitSpSymbols"
+cmd "menuCmd MF_ChallengeStart"
+}
+Script NukeStorySeq {
+ignoreInputTime 0.25
+cmd "console flushAllPendingSeq 301"
+cmd "console flushAllPendingSeq 302"
+cmd "console flushAllPendingSeq 303"
+cmd "console flushAllPendingSeq 304"
+cmd "console flushAllPendingSeq 305"
+cmd "clearmenu _all_ /fadeout 0.25"
+cmd "sym set InStorySeq 0"
+cmd "sym set UPlayAskForceSkip 1"
+cmd "menuCmd MP_LoadMainMenu"
+}

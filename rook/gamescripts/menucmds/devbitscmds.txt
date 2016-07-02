@@ -1,0 +1,18 @@
+Script DevBits_1_Left {
+cmd "gameui capturemode"
+}
+Script DevBits_1_Right {
+cmd "freecamera track"
+}
+Script DevBits_1_Up {
+cmd "freecamera toggle"
+}
+Script DevBits_1_Down {
+cmd "freecamera fovmode"
+}
+Script TestCurrency {
+cmd "sym set P_Currency $_MArg1_"
+cmd "lang flushDrawCaches"
+cmd "gameui refreshfiltername CurrencyText"
+cmd "exec onGotPrices.txt"
+}

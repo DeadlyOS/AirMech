@@ -1,0 +1,1238 @@
+Script ListboxInvFilter {
+ignoreInputTime 0.05
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "echo Setting up $_MArg1_ listbox."
+cmd "if sym Filter_AirMechs_Inv == 0 && sym Filter_Units_Inv == 0 && sym Filter_Cosmetics_Inv == 0 && sym Filter_Other_Inv == 0 menucmd ListboxInvFilterGeneric"
+cmd "if sym Filter_AirMechs_Inv == 1 menucmd ListboxInvFilterAirMechs"
+cmd "if sym Filter_Units_Inv == 1 menucmd ListboxInvFilterUnits"
+cmd "if sym Filter_Cosmetics_Inv == 1 menucmd ListboxInvFilterCosmetics"
+cmd "if sym Filter_Other_Inv == 1 menucmd ListboxInvFilterOther"
+}
+Script ListboxInvFilterGeneric {
+ignoreInputTime 0.05
+cmd "sym set _ListboxName_ InvFilter"
+cmd "sym setNSet 12 InvFilter"
+cmd "sym set InvFilter0 Filter_All"
+cmd "sym set InvFilter1 Shop_AirMechs"
+cmd "sym set InvFilter2 Shop_Units"
+cmd "sym set InvFilter3 Shop_Pilots"
+cmd "sym set InvFilter4 Shop_Items"
+cmd "sym set InvFilter5 Shop_Parts"
+cmd "sym set InvFilter6 Shop_Cosmetics"
+cmd "sym set InvFilter7 Filter_Crates"
+cmd "sym set InvFilter8 Filter_Badges"
+cmd "sym set InvFilter9 Shop_Other"
+cmd "sym set InvFilter10 Shop_Boosts"
+cmd "sym set InvFilter11 Shop_Bundles"
+cmd "sym set InvFilter12 Shop_Ultimates"
+cmd "loadmenu ListBox /fadein 0.1"
+}
+Script ListboxInvFilterAirMechs {
+ignoreInputTime 0.05
+cmd "sym set _ListboxName_ InvFilterAirMechs"
+cmd "sym setNSet 12 InvFilterAirMechs"
+cmd "sym set InvFilterAirMechs0 Filter_All"
+cmd "sym set InvFilterAirMechs1 FighterADisp"
+cmd "sym set InvFilterAirMechs2 ChopperDisp"
+cmd "sym set InvFilterAirMechs3 BomberDisp"
+cmd "sym set InvFilterAirMechs4 WarthogDisp"
+cmd "sym set InvFilterAirMechs5 SaucerDisp"
+cmd "sym set InvFilterAirMechs6 OspreyDisp"
+cmd "sym set InvFilterAirMechs7 FighterNeoDisp"
+cmd "sym set InvFilterAirMechs8 PaladinDisp"
+cmd "sym set InvFilterAirMechs9 AngelDisp"
+cmd "loadmenu ListBox /fadein 0.1"
+}
+Script ListboxInvFilterUnits {
+ignoreInputTime 0.05
+cmd "sym set _ListboxName_ InvFilterUnits"
+cmd "sym setNSet 12 InvFilterUnits"
+cmd "sym set InvFilterUnits0 Filter_All"
+cmd "sym set InvFilterUnits1 Filter_Infantry"
+cmd "sym set InvFilterUnits2 Filter_Combat"
+cmd "sym set InvFilterUnits3 Filter_Support"
+cmd "sym set InvFilterUnits4 Filter_Stationary"
+cmd "sym set InvFilterUnits5 Filter_Alternates"
+cmd "sym set InvFilterUnits6 Filter_Guardians"
+cmd "sym set InvFilterUnits7 Filter_Fliers"
+cmd "loadmenu ListBox /fadein 0.1"
+}
+Script ListboxInvFilterCosmetics {
+ignoreInputTime 0.05
+cmd "sym set _ListboxName_ InvFilterCosmetics"
+cmd "sym setNSet 12 InvFilterCosmetics"
+cmd "sym setNRun InvFilterCosmetics Filter_All Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras"
+cmd "loadmenu ListBox /fadein 0.1"
+}
+Script ListboxInvFilterOther {
+ignoreInputTime 0.05
+cmd "sym set _ListboxName_ InvFilterOther"
+cmd "sym setNSet 12 InvFilterOther"
+cmd "sym setNRun InvFilterOther Filter_All Filter_Nanoforge Filter_Basecamp Filter_CardsColl Filter_CapsulesCont Filter_Books Filter_Materials Filter_Various"
+cmd "loadmenu ListBox /fadein 0.1"
+}
+Script InvFilterUnits_ClickList {
+ignoreInputTime 0.1
+cmd "echo InvFilterUnits_ClickList"
+cmd "sym setZero Filter_Infantry_Inv Filter_Combat_Inv Filter_Support_Inv Filter_Stationary_Inv Filter_Alternates_Inv Filter_Guardians_Inv Filter_Fliers_Inv"
+cmd "if literal $_MArg1_ == 0 runnow sym setPair Filter_All 1 Filter Shop_Units"
+cmd "if literal $_MArg1_ == 1 runnow sym setPair Filter_Infantry_Inv 1 Filter Filter_Infantry"
+cmd "if literal $_MArg1_ == 2 runnow sym setPair Filter_Combat_Inv 1 Filter Filter_Combat"
+cmd "if literal $_MArg1_ == 3 runnow sym setPair Filter_Support_Inv 1 Filter Filter_Support"
+cmd "if literal $_MArg1_ == 4 runnow sym setPair Filter_Stationary_Inv 1 Filter Filter_Stationary"
+cmd "if literal $_MArg1_ == 5 runnow sym setPair Filter_Alternates_Inv 1 Filter Filter_Alternates"
+cmd "if literal $_MArg1_ == 6 runnow sym setPair Filter_Guardians_Inv 1 Filter Filter_Guardians"
+cmd "if literal $_MArg1_ == 7 runnow sym setPair Filter_Fliers_Inv 1 Filter Filter_Fliers"
+cmd "echo $$Filter_AirMechs_Inv $$Filter_Ultimates_Inv"
+cmd "if literal $_MArg1_ == 0 runnow sym setZero Filter_Infantry_Inv Filter_Combat_Inv Filter_Support_Inv Filter_Stationary_Inv Filter_Alternates_Inv Filter_Guardians_Inv Filter_Fliers_Inv"
+cmd "sym set InventorySelected -1"
+cmd "pcmd t0 collection scrollUpdateInv2 paged"
+cmd "clearmenu Listbox"
+cmd "if literal $_MArg1_ == 0 runnow sym set FilterSource Filter_All"
+cmd "if literal $_MArg1_ != 0 runnow sym set FilterSource Filter_Units_Inv"
+}
+Script InvFilterCosmetics_ClickList {
+ignoreInputTime 0.1
+cmd "echo InvFilterCosmetics_ClickList"
+cmd "sym setZero Filter_Colors_Inv Filter_Pets_Inv Filter_Hats_Inv Filter_Contrails_Inv Filter_EnginePfx_Inv Filter_Tracers_Inv Filter_Auras_Inv"
+cmd "if literal $_MArg1_ == 0 runnow sym setPair Filter_All 1 Filter Shop_Cosmetics"
+cmd "if literal $_MArg1_ == 1 runnow sym setPair Filter_Colors_Inv 1 Filter Filter_Colors"
+cmd "if literal $_MArg1_ == 2 runnow sym setPair Filter_Pets_Inv 1 Filter Filter_Pets"
+cmd "if literal $_MArg1_ == 3 runnow sym setPair Filter_Hats_Inv 1 Filter Filter_Hats"
+cmd "if literal $_MArg1_ == 4 runnow sym setPair Filter_Contrails_Inv 1 Filter Filter_Contrails"
+cmd "if literal $_MArg1_ == 5 runnow sym setPair Filter_EnginePfx_Inv 1 Filter Filter_EnginePfx"
+cmd "if literal $_MArg1_ == 6 runnow sym setPair Filter_Tracers_Inv 1 Filter Filter_Tracers"
+cmd "if literal $_MArg1_ == 7 runnow sym setPair Filter_Auras_Inv 1 Filter Filter_Auras"
+cmd "sym set InventorySelected -1"
+cmd "pcmd t0 collection scrollUpdateInv2 paged"
+cmd "clearmenu Listbox"
+cmd "if literal $_MArg1_ == 0 runnow sym set FilterSource Filter_All"
+cmd "if literal $_MArg1_ != 0 runnow sym set FilterSource Filter_Cosmetics_Inv"
+}
+Script InvFilterOther_ClickList {
+ignoreInputTime 0.1
+cmd "echo InvFilterOther_ClickList"
+cmd "sym setZero Filter_Nanoforge_Inv Filter_Basecamp_Inv Filter_CardsColl_Inv Filter_CapsulesCont_Inv Filter_Books_Inv Filter_Materials_Inv Filter_Various_Inv"
+cmd "if literal $_MArg1_ == 0 runnow sym setPair Filter_All 1 Filter Shop_Other"
+cmd "if literal $_MArg1_ == 1 runnow sym setPair Filter_Nanoforge_Inv 1 Filter Filter_Nanoforge"
+cmd "if literal $_MArg1_ == 2 runnow sym setPair Filter_Basecamp_Inv 1 Filter Filter_Basecamp"
+cmd "if literal $_MArg1_ == 3 runnow sym setPair Filter_CardsColl_Inv 1 Filter Filter_CardsColl"
+cmd "if literal $_MArg1_ == 4 runnow sym setPair Filter_CapsulesCont_Inv 1 Filter Filter_CapsulesCont"
+cmd "if literal $_MArg1_ == 5 runnow sym setPair Filter_Books_Inv 1 Filter Filter_Books"
+cmd "if literal $_MArg1_ == 6 runnow sym setPair Filter_Materials_Inv 1 Filter Filter_Materials"
+cmd "if literal $_MArg1_ == 7 runnow sym setPair Filter_Various_Inv 1 Filter Filter_Various"
+cmd "sym set InventorySelected -1"
+cmd "pcmd t0 collection scrollUpdateInv2 paged"
+cmd "clearmenu Listbox"
+cmd "if literal $_MArg1_ == 0 runnow sym set FilterSource Filter_All"
+cmd "if literal $_MArg1_ != 0 runnow sym set FilterSource Filter_Other_Inv"
+}
+Script InvFilter_ClickList {
+ignoreInputTime 0.1
+cmd "echo InvFilter_ClickList"
+cmd "sym setZero Filter_Variants_Inv Filter_Colors_Inv Filter_Pets_Inv Filter_Hats_Inv Filter_Contrails_Inv Filter_EnginePfx_Inv Filter_Tracers_Inv Filter_Auras_Inv Filter_FunStats_Inv Filter_AirMechOwned_Inv Filter_Limited_Inv Filter_BoostK_Inv Filter_BoostXP_Inv Filter_AirMechs_Inv Filter_Units_Inv Filter_Parts_Inv Filter_Pilots_Inv Filter_Items_Inv Filter_Cosmetics_Inv Filter_Bundles_Inv Filter_Other_Inv Filter_Sets_Inv Filter_Recipes_Inv Filter_Ultimates_Inv Filter_Boosts_Inv Filter_Duplicates_Inv Filter_Badges_Inv Filter_Crates_Inv"
+cmd "sym setZero Filter_FighterA_Inv Filter_Chopper_Inv Filter_Bomber_Inv Filter_Saucer_Inv Filter_FighterNeo_Inv Filter_Osprey_Inv Filter_Warthog_Inv Filter_Paladin_Inv Filter_Angel_Inv Filter_Infantry_Inv Filter_Combat_Inv Filter_Support_Inv Filter_Stationary_Inv Filter_Alternates_Inv Filter_Guardians_Inv"
+cmd "if literal $_MArg1_ == 0 runnow sym setPair Filter_All 1 FilterSource Filter_All Filter Filter_All"
+cmd "if literal $_MArg1_ == 1 runnow sym setPair Filter_AirMechs_Inv 1 FilterSource Filter_AirMechs_Inv1 Filter Shop_AirMechs"
+cmd "if literal $_MArg1_ == 2 runnow sym setPair Filter_Units_Inv 1 FilterSource Filter_Units_Inv1 Filter Shop_Units"
+cmd "if literal $_MArg1_ == 3 runnow sym setPair Filter_Pilots_Inv 1 FilterSource Filter_Pilots_Inv Filter Shop_Pilots"
+cmd "if literal $_MArg1_ == 4 runnow sym setPair Filter_Items_Inv 1 FilterSource Filter_Items_Inv Filter Shop_Items"
+cmd "if literal $_MArg1_ == 5 runnow sym setPair Filter_Parts_Inv 1 FilterSource Filter_Parts_Inv Filter Shop_Parts"
+cmd "if literal $_MArg1_ == 5 runnow sym setOne Filter_FighterA_Inv Filter_Chopper_Inv Filter_Saucer_Inv Filter_Bomber_Inv Filter_FighterNeo_Inv Filter_Osprey_Inv Filter_Warthog_Inv Filter_Paladin_Inv Filter_Angel_Inv"
+cmd "if literal $_MArg1_ == 6 runnow sym setPair Filter_Cosmetics_Inv 1 FilterSource Filter_Cosmetics_Inv Filter Shop_Cosmetics"
+cmd "if literal $_MArg1_ == 7 runnow sym setPair Filter_Crates_Inv 1 FilterSource Filter_Crates_Inv Filter Filter_Crates"
+cmd "if literal $_MArg1_ == 8 runnow sym setPair Filter_Badges_Inv 1 FilterSource Filter_Badges_Inv Filter Filter_Badges"
+cmd "if literal $_MArg1_ == 9 runnow sym setPair Filter_Other_Inv 1 FilterSource Filter_Other_Inv Filter Shop_Other"
+cmd "if literal $_MArg1_ == 10 runnow sym setPair Filter_Boosts_Inv 1 FilterSource Filter_Boosts_Inv Filter Shop_Boosts"
+cmd "if literal $_MArg1_ == 11 runnow sym setPair Filter_Bundles_Inv 1 FilterSource Filter_Bundles_Inv Filter Shop_Bundles"
+cmd "echo $$Filter_AirMechs_Inv $$Filter_Ultimates_Inv"
+cmd "if sym Filter_AirMechs_Inv == 1 runnow sym setOne Filter_FighterA_Inv Filter_Chopper_Inv Filter_Saucer_Inv Filter_Bomber_Inv Filter_FighterNeo_Inv Filter_Osprey_Inv Filter_Warthog_Inv Filter_Paladin_Inv Filter_Angel_Inv"
+cmd "sym set InventorySelected -1"
+cmd "pcmd t0 collection scrollUpdateInv2 paged"
+cmd "if literal $_MArg1_ == 0 runnow sym set FilterSource None"
+cmd "if literal $_MArg1_ != 0 runnow sym set FilterSource Filter_All"
+cmd "clearmenu Listbox"
+}
+Script InvFilterAirMechs_ClickList {
+ignoreInputTime 0.1
+cmd "echo InvFilterAirMechs_ClickList"
+cmd "sym setZero Filter_FighterA_Inv Filter_Chopper_Inv Filter_Bomber_Inv Filter_Saucer_Inv Filter_FighterNeo_Inv Filter_Osprey_Inv Filter_Warthog_Inv Filter_Paladin_Inv Filter_Angel_Inv Filter_Infantry_Inv Filter_Combat_Inv Filter_Support_Inv Filter_Stationary_Inv Filter_Alternates_Inv Filter_Guardians_Inv"
+cmd "if literal $_MArg1_ == 0 runnow sym setPair Filter_AirMechs_Inv 1 Filter Shop_AirMechs"
+cmd "if literal $_MArg1_ == 1 runnow sym setPair Filter_FighterA_Inv 1 Filter FighterADisp"
+cmd "if literal $_MArg1_ == 2 runnow sym setPair Filter_Chopper_Inv 1 Filter ChopperDisp"
+cmd "if literal $_MArg1_ == 3 runnow sym setPair Filter_Bomber_Inv 1 Filter BomberDisp"
+cmd "if literal $_MArg1_ == 4 runnow sym setPair Filter_Warthog_Inv 1 Filter WarthogDisp"
+cmd "if literal $_MArg1_ == 5 runnow sym setPair Filter_Saucer_Inv 1 Filter SaucerDisp"
+cmd "if literal $_MArg1_ == 6 runnow sym setPair Filter_Osprey_Inv 1 Filter OspreyDisp"
+cmd "if literal $_MArg1_ == 7 runnow sym setPair Filter_FighterNeo_Inv 1 Filter FighterNeoDisp"
+cmd "if literal $_MArg1_ == 8 runnow sym setPair Filter_Paladin_Inv 1 Filter PaladinDisp"
+cmd "if literal $_MArg1_ == 9 runnow sym setPair Filter_Angel_Inv 1 Filter AngelDisp"
+cmd "echo $$Filter_AirMechs_Inv $$Filter_Ultimates_Inv"
+cmd "if literal $_MArg1_ == 0 runnow sym setOne Filter_FighterA_Inv Filter_Chopper_Inv Filter_Saucer_Inv Filter_Bomber_Inv Filter_FighterNeo_Inv Filter_Osprey_Inv Filter_Warthog_Inv Filter_Paladin_Inv Filter_Angel_Inv"
+cmd "sym set InventorySelected -1"
+cmd "pcmd t0 collection scrollUpdateInv2 paged"
+cmd "clearmenu Listbox"
+cmd "if literal $_MArg1_ == 0 runnow sym set FilterSource Filter_All"
+cmd "if literal $_MArg1_ != 0 runnow sym set FilterSource Filter_AirMechs_Inv"
+}
+Script RightClickFriendlist {
+ignoreInputTime 0.05
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "echo Setting up $_MArg1_ rightclick."
+cmd "sym set _ListboxName_ Friendlist"
+cmd "sym setNSet 12 Friendlist"
+cmd "sym set Friendlist0 FR_InviteToGame"
+cmd "sym set Friendlist1 FR_ReportPlayer"
+cmd "sym set Friendlist2 FR_SendPrivateMessage"
+cmd "sym set Friendlist3 FR_SendMail"
+cmd "sym set Friendlist4 FR_DeleteFriend"
+cmd "loadmenu RightClick /fadein 0.1"
+}
+Script Friendlist_ClickList {
+cmd "sym set BuildListActive $BuildList@_MArg1_@"
+cmd "echo Clicked option $_MArg1_ closing rightclick."
+cmd "clearmenu RightClick"
+}
+Script ListboxCustomMaps {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "echo Setting up $_MArg1_ listbox."
+cmd "sym set _ListboxName_ $_MArg1_"
+cmd "sym setNSet 12 CustomMaps"
+cmd "sym set CustomMaps0 Simple"
+cmd "sym set CustomMaps1 Thar"
+cmd "loadmenu Listbox"
+}
+Script CustomMaps_ClickList {
+cmd "sym set MapName $CustomMaps@_MArg1_@"
+cmd "echo $CustomMaps@_MArg1_@"
+cmd "gameui refreshFilterName MapSelection"
+cmd "clearmenu Listbox"
+}
+Script ListboxBuildList {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "echo Setting up $_MArg1_ listbox."
+cmd "sym set _ListboxName_ $_MArg1_"
+cmd "basecamp genBuildList BuildList 12"
+cmd "loadmenu Listbox"
+}
+Script BuildList_ClickList {
+cmd "sym set BuildListActive $BuildList@_MArg1_@"
+cmd "echo Clicked option $_MArg1_ closing listbox."
+cmd "clearmenu Listbox"
+}
+Script ListboxPlaceableSelection {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "sym set _ListboxName_ $_MArg1_"
+cmd "sym setNSet 12 PlaceableSelection"
+cmd "sym set PlaceableSelection0 Units"
+cmd "sym set PlaceableSelection1 Editor_Props"
+cmd "sym set PlaceableSelection2 Editor_Prefabs"
+cmd "sym set PlaceableSelection3 Editor_ForceVolumes"
+cmd "sym set PlaceableSelection4 Editor_GameLocations"
+cmd "sym set PlaceableSelection5 Editor_Combos"
+cmd "sym set PlaceableSelection6 Editor_PowerUps"
+cmd "loadmenu Listbox"
+}
+Script PlaceableSelection_ClickList {
+cmd "sym set PlaceableSelectionActive $PlaceableSelection@_MArg1_@"
+cmd "sym set EditorPlaceType $_MArg1_"
+cmd "if literal $_MArg1_ == 0 runnow rook editorScrollUpdateUnits"
+cmd "if literal $_MArg1_ == 1 runnow rook editorScrollUpdateProps"
+cmd "if literal $_MArg1_ == 2 runnow rook editorScrollUpdatePrefabs"
+cmd "if literal $_MArg1_ == 3 runnow rook editorScrollUpdateForceVolumes"
+cmd "if literal $_MArg1_ == 4 runnow rook editorScrollUpdateGameLocations"
+cmd "if literal $_MArg1_ == 5 runnow rook editorScrollUpdateCombos"
+cmd "if literal $_MArg1_ == 6 runnow rook editorScrollUpdatePowerups"
+cmd "gameUI refreshfiltername CollectionUI"
+cmd "clearmenu Listbox"
+}
+Script ListboxScriptSelectionSetup {
+cmd "sym setNSet 12 ScriptSelection"
+cmd "sym set ScriptSelection0 Editor_Events"
+cmd "sym set ScriptSelection1 Editor_Actions"
+cmd "sym set ScriptSelection2 Editor_Variables"
+cmd "sym set ScriptSelection3 Editor_ScriptOptions"
+}
+Script ListboxScriptSelection {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "sym set _ListboxName_ $_MArg1_"
+cmd "menucmd ListboxScriptSelectionSetup"
+cmd "loadmenu Listbox"
+}
+Script ScriptSelection_SetFromSelection {
+rcmd "menucmd ListboxScriptSelectionSetup"
+cmd "sym set ScriptSelectionActive $ScriptSelection@EditorScriptMode@"
+}
+Script ScriptSelection_ClickList {
+cmd "sym set ScriptSelectionActive $ScriptSelection@_MArg1_@"
+cmd "if literal $_MArg1_ == 0 runnow editor do scrollEventPage"
+cmd "if literal $_MArg1_ == 1 runnow editor do scrollActionPage"
+cmd "if literal $_MArg1_ == 2 runnow editor do scrollVariablePage"
+cmd "if literal $_MArg1_ == 3 sym set EditorScriptMode 5"
+cmd "if literal $_MArg1_ != 3 sym set EditorScriptMode $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxActionDefineSetup {
+cmd "sym setNSet 12 ActionDefineSelection"
+cmd "sym set ActionDefineSelection0 Editor_Conditions"
+cmd "sym set ActionDefineSelection1 Editor_Commands"
+}
+Script ListboxActionDefineSelection {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "sym set _ListboxName_ $_MArg1_"
+cmd "menucmd ListboxActionDefineSetup"
+cmd "loadmenu Listbox"
+}
+Script ActionDefineSelection_SetFromSelection {
+rcmd "menucmd ListboxActionDefineSetup"
+cmd "sym set ActionDefineSelectionActive $ActionDefineSelection@EditorActionDefineMode@"
+cmd "sym set _ListboxName_ $ConditionCategoryActive"
+}
+Script ActionDefineSelection_ClickList {
+cmd "sym set ActionDefineSelectionActive $ActionDefineSelection@_MArg1_@"
+cmd "sym set EditorActionDefineMode $_MArg1_
+cmd "if literal $_MArg1_ == 0 runnow editor do scrollActionConditionPage"
+cmd "if literal $_MArg1_ == 1 runnow editor do scrollActionCommandPage"
+cmd "clearmenu Listbox"
+}
+Script ListboxEventCategorySetup {
+rcmd "sym setNSet 12 EventCategory"
+rcmd "sym set EventCategory0 Editor_ConditionAirmech"
+rcmd "sym set EventCategory1 Editor_CategoryCore"
+rcmd "sym set EventCategory2 Editor_CategoryFort"
+rcmd "sym set EventCategory3 Editor_ConditionOutpost"
+rcmd "sym set EventCategory4 Editor_CategoryUnits"
+}
+Script ListboxEventCategory {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "sym set _ListboxName_ $_MArg1_"
+rcmd "menucmd ListboxEventCategorySetup"
+cmd "loadmenu Listbox"
+}
+Script EventCategory_SetFromSelection {
+rcmd "menucmd ListboxEventCategorySetup"
+cmd "sym set EventCategoryActive $EventCategory@EventCategorySelection@"
+}
+Script ListboxEventOptionNone {
+rcmd "sym setNSet 12 EventOption"
+}
+Script ListboxEventAirmechOptionSetup {
+rcmd "sym set EventOption0 Editor_OptionUnitDeath"
+rcmd "sym set EventOption1 Editor_OptionKeyInput"
+rcmd "sym set EventOption2 Editor_OptionEnterLoc"
+}
+Script ListboxEventCoreOptionSetup {
+rcmd "sym set EventOption0 Editor_OptionContinuous"
+rcmd "sym set EventOption1 Editor_OptionGameStart"
+}
+Script ListboxEventFortOptionSetup {
+rcmd "sym set EventOption0 Editor_OptionUnitDeath"
+}
+Script ListboxEventOutpostOptionSetup {
+rcmd "sym set EventOption0 Editor_OptionOutpostTeam"
+}
+Script ListboxEventUnitOptionSetup {
+rcmd "sym set EventOption0 Editor_OptionUnitDeath"
+rcmd "sym set EventOption1 Editor_OptionEnterLoc"
+rcmd "sym set EventOption2 Editor_OptionActioned"
+}
+Script ListboxEventOptionSetup {
+rcmd "sym setNSet 12 EventOption"
+rcmd "if sym EventCategorySelection == 0 runnow menucmd ListboxEventAirmechOptionSetup"
+rcmd "if sym EventCategorySelection == 1 runnow menucmd ListboxEventCoreOptionSetup"
+rcmd "if sym EventCategorySelection == 2 runnow menucmd ListboxEventFortOptionSetup"
+rcmd "if sym EventCategorySelection == 3 runnow menucmd ListboxEventOutpostOptionSetup"
+rcmd "if sym EventCategorySelection == 4 runnow menucmd ListboxEventUnitOptionSetup"
+}
+Script EventCategory_ClickList {
+cmd "sym set EventCategoryActive $EventCategory@_MArg1_@"
+cmd "sym set EventCategorySelection $_MArg1_"
+cmd "sym set EventOptionSelection 0"
+cmd "menucmd EventOption_SetFromSelection"
+cmd "clearmenu Listbox"
+}
+Script ListboxEventOption {
+ignoreInputTime 0.1
+cmd "loadmenu Listbox"
+}
+Script EventOption_SetFromSelection {
+rcmd "menucmd ListboxEventOptionSetup"
+cmd "sym set EventOptionActive $EventOption@EventOptionSelection@"
+}
+Script EventOption_ClickList {
+cmd "sym set EventOptionActive $EventOption@_MArg1_@"
+cmd "sym set EventOptionSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ParamTypeSelectCommonSetup {
+rcmd "sym setNSet 12 ParamTypeSelect"
+rcmd "sym set ParamTypeSelect0 Editor_CommandEvent"
+rcmd "sym set ParamTypeSelect1 Editor_Literal"
+rcmd "sym set ParamTypeSelect2 Editor_ConditionVariable"
+}
+Script ParamTypeSelectPositionSetup {
+rcmd "sym setNSet 12 ParamTypeSelect"
+rcmd "sym set ParamTypeSelect0 Editor_CommandEvent"
+rcmd "sym set ParamTypeSelect1 Editor_ConditionVariable"
+}
+Script ListboxParamTypeSelectSetup {
+rcmd "if sym EditorFieldValueType == 0 runnow menucmd ParamTypeSelectCommonSetup"
+rcmd "if sym EditorFieldValueType == 1 runnow menucmd ParamTypeSelectCommonSetup"
+rcmd "if sym EditorFieldValueType == 2 runnow menucmd ParamTypeSelectCommonSetup"
+rcmd "if sym EditorFieldValueType == 3 runnow menucmd ParamTypeSelectCommonSetup"
+rcmd "if sym EditorFieldValueType == 4 runnow menucmd ParamTypeSelectPositionSetup"
+}
+Script ListboxParamTypeSelect {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxParamTypeSelectSetup"
+cmd "loadmenu Listbox"
+}
+Script ParamTypeSelect_SetFromSelection {
+rcmd "menucmd ListboxParamTypeSelectSetup"
+cmd "sym set ParamTypeSelectActive $ParamTypeSelect@ParamTypeSelectSelection@"
+rcmd "if sym ParamTypeSelectSelection == 0 runnow editor do scrollEventParameters"
+rcmd "if sym ParamTypeSelectSelection == 2 runnow editor do scrollVariableParameters"
+cmd "gameUI refreshfiltername CollectionUI"
+}
+Script ParamTypeSelect_ClickList {
+rcmd "sym set ParamTypeSelectActive $ParamTypeSelect@_MArg1_@"
+rcmd "sym set ParamTypeSelectSelection $_MArg1_"
+rcmd "sym set #{EditorParamTypePickSym} $_MArg1_"
+rcmd "if sym ParamTypeSelectSelection == 0 runnow editor do scrollEventParameters"
+rcmd "if sym ParamTypeSelectSelection == 2 runnow editor do scrollVariableParameters"
+cmd "gameUI refreshfiltername CollectionUI"
+cmd "clearmenu Listbox"
+}
+Script ListboxValueTypeSelectSetup {
+rcmd "sym setNSet 12 ValueTypeSelect"
+rcmd "sym set ValueTypeSelect0 Editor_ValueNumeric"
+rcmd "sym set ValueTypeSelect1 Editor_OptionOwnedTeam"
+rcmd "sym set ValueTypeSelect2 Editor_ConditionUnit"
+rcmd "sym set ValueTypeSelect3 Editor_ValueUnitType"
+rcmd "sym set ValueTypeSelect4 Editor_ValueUnitGroup"
+}
+Script ListboxValueTypeSelect {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxValueTypeSelectSetup"
+cmd "loadmenu Listbox"
+}
+Script ValueTypeSelect_SetFromSelection {
+rcmd "menucmd ListboxValueTypeSelectSetup"
+cmd "sym set ValueTypeSelectActive $ValueTypeSelect@ValueTypeSelectSelection@"
+cmd "gameUI refreshfiltername CollectionUI"
+}
+Script ValueTypeSelect_ClickList {
+cmd "sym set ValueTypeSelectActive $ValueTypeSelect@_MArg1_@"
+cmd "sym set ValueTypeSelectSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxConditionCategorySetup {
+rcmd "sym setNSet 12 ConditionCategory"
+rcmd "sym set ConditionCategory0 Editor_ConditionAirmech"
+rcmd "sym set ConditionCategory1 Editor_ConditionOutpost"
+rcmd "sym set ConditionCategory2 Editor_CommandPlayer"
+rcmd "sym set ConditionCategory3 Editor_CategoryFort"
+rcmd "sym set ConditionCategory4 Editor_ConditionUnit"
+rcmd "sym set ConditionCategory5 Editor_ConditionVariable"
+}
+Script ListboxConditionCategory {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "sym set _ListboxName_ $_MArg1_"
+rcmd "menucmd ListboxConditionCategorySetup"
+cmd "loadmenu Listbox"
+}
+Script ListboxConditionAirmechSetup {
+rcmd "sym set ConditionOption0 Editor_OptionInAirmode"
+rcmd "sym set ConditionOption1 Editor_OptionIsAlive"
+rcmd "sym set ConditionOption2 Editor_OptionInLocation"
+rcmd "sym set ConditionOption3 Editor_OptionIsType"
+}
+Script ListboxConditionOutpostSetup {
+rcmd "sym set ConditionOption0 Editor_OptionOwnedTeam"
+}
+Script ListboxConditionPlayerSetup {
+rcmd "sym set ConditionOption0 Editor_OptionCredits"
+rcmd "sym set ConditionOption1 Editor_OptionPower"
+rcmd "sym set ConditionOption2 Editor_OptionEnergy"
+rcmd "sym set ConditionOption3 Editor_OptionHealth"
+}
+Script ListboxConditionFortSetup {
+rcmd "sym set ConditionOption0 Editor_OptionIsAlive"
+}
+Script ListboxConditionUnitSetup {
+rcmd "sym set ConditionOption0 Editor_OptionInLocation"
+rcmd "sym set ConditionOption1 Editor_OptionIsAlive"
+rcmd "sym set ConditionOption2 Editor_OptionIsType"
+rcmd "sym set ConditionOption3 Editor_OptionOnTeam"
+rcmd "sym set ConditionOption4 Editor_OptionTotalRemaining"
+}
+Script ListboxConditionOptionSetup {
+rcmd "sym setNSet 12 ConditionOption"
+rcmd "if sym ConditionCategorySelection == 0 runnow menucmd ListboxConditionAirmechSetup"
+rcmd "if sym ConditionCategorySelection == 1 runnow menucmd ListboxConditionOutpostSetup"
+rcmd "if sym ConditionCategorySelection == 2 runnow menucmd ListboxConditionPlayerSetup"
+rcmd "if sym ConditionCategorySelection == 3 runnow menucmd ListboxConditionFortSetup"
+rcmd "if sym ConditionCategorySelection == 4 runnow menucmd ListboxConditionUnitSetup"
+}
+Script ConditionCategory_ClickList {
+rcmd "sym set ConditionCategoryActive $ConditionCategory@_MArg1_@"
+rcmd "sym set ConditionCategorySelection $_MArg1_"
+rcmd "sym set ConditionOptionSelection 0"
+rcmd "menucmd ListboxConditionOptionSetup"
+rcmd "sym set ConditionOptionActive $ConditionOption@ConditionOptionSelection@"
+rcmd "clearmenu Listbox"
+}
+Script ConditionCategory_SetFromSelection {
+rcmd "menucmd ListboxConditionCategorySetup"
+cmd "sym set ConditionCategoryActive $ConditionCategory@ConditionCategorySelection@"
+cmd "sym set _ListboxName_ $ConditionCategoryActive"
+}
+Script ListboxConditionOption {
+ignoreInputTime 0.1
+cmd "loadmenu Listbox"
+}
+Script ConditionOption_SetFromSelection {
+rcmd "menucmd ListboxConditionOptionSetup"
+cmd "sym set ConditionOptionActive $ConditionOption@ConditionOptionSelection@"
+cmd "sym set _ListboxName_ $ConditionOptionActive"
+}
+Script ConditionOption_ClickList {
+cmd "sym set ConditionOptionActive $ConditionOption@_MArg1_@"
+cmd "sym set ConditionOptionSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxAirmechClass {
+ignoreInputTime 0.1
+cmd "menucmd ListboxAirmechClassSetup"
+cmd "loadmenu Listbox"
+}
+Script ListboxAirmechClassSetup {
+rcmd "sym setNSet 12 AirmechClass"
+rcmd "sym set AirmechClass0 AMClass_FighterA"
+rcmd "sym set AirmechClass1 AMClass_FighterNeo"
+rcmd "sym set AirmechClass2 AMClass_Stealth"
+rcmd "sym set AirmechClass3 AMClass_Osprey"
+rcmd "sym set AirmechClass4 AMClass_Warthog"
+rcmd "sym set AirmechClass5 AMClass_Saucer"
+rcmd "sym set AirmechClass6 AMClass_Chopper"
+rcmd "sym set AirmechClass7 AMClass_Paladin"
+rcmd "sym set AirmechClass8 AMClass_Angel"
+}
+Script AirmechClass_SetFromSelection {
+rcmd "menucmd ListboxAirmechClassSetup"
+cmd "sym set AirmechClassActive $AirmechClass@AirmechClassSelection@"
+cmd "sym set _ListboxName_ $AirmechClassActive"
+}
+Script AirmechClass_ClickList {
+cmd "sym set AirmechClassActive $AirmechClass@_MArg1_@"
+cmd "sym set AirmechClassSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxPilotDialog {
+ignoreInputTime 0.1
+cmd "menucmd ListboxPilotDialogSetup"
+cmd "loadmenu Listbox"
+}
+Script ListboxPilotDialogSetup {
+rcmd "sym setNSet 12 PilotDialog"
+rcmd "sym set PilotDialog0 EditorPilot_Erik"
+rcmd "sym set PilotDialog1 EditorPilot_Hawk"
+rcmd "sym set PilotDialog2 EditorPilot_Kira"
+rcmd "sym set PilotDialog3 EditorPilot_Raven"
+rcmd "sym set PilotDialog4 EditorPilot_Samson"
+}
+Script PilotDialog_SetFromSelection {
+rcmd "menucmd ListboxPilotDialogSetup"
+cmd "sym set PilotDialogActive $PilotDialog@PilotDialogSelection@"
+cmd "sym set _ListboxName_ $PilotDialogActive"
+}
+Script PilotDialog_ClickList {
+cmd "sym set PilotDialogActive $PilotDialog@_MArg1_@"
+cmd "sym set PilotDialogSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+script ListboxSurvivalStyleOptionSetup {
+rcmd "sym setNSet 12 SurvivalStyleOption"
+rcmd "sym set SurvivalStyleOption0 Editor_SurvivalWave"
+rcmd "sym set SurvivalStyleOption1 Editor_SurvivalProgress"
+}
+script ListboxSurvivalStyleOption {
+rcmd "menucmd ListboxSurvivalStyleOptionSetup"
+cmd "loadmenu Listbox"
+}
+script SurvivalStyleOption_SetFromSelection {
+rcmd "menucmd ListboxSurvivalStyleOptionSetup"
+cmd "sym set SurvivalStyleOptionActive $SurvivalStyleOption@SurvivalStyleOptionSelection@"
+cmd "sym set _ListboxName_ $SurvivalStyleOptionActive"
+}
+script SurvivalStyleOption_ClickList {
+rcmd "sym set SurvivalStyleOptionActive $SurvivalStyleOption@_MArg1_@"
+rcmd "sym set SurvivalStyleOptionSelection $_MArg1_"
+rcmd "clearmenu Listbox"
+}
+script ListboxGameStyleOptionSetup {
+rcmd "sym setNSet 12 GameStyleOption"
+rcmd "sym set GameStyleOption0 GameStyle_Skirmish"
+rcmd "sym set GameStyleOption1 GameStyle_Survival"
+}
+script ListboxGameStyleOption {
+rcmd "menucmd ListboxGameStyleOptionSetup"
+cmd "loadmenu Listbox"
+}
+script GameStyleOption_SetFromSelection {
+rcmd "menucmd ListboxGameStyleOptionSetup"
+cmd "sym set GameStyleOptionActive $GameStyleOption@GameStyleOptionSelection@"
+cmd "sym set _ListboxName_ $GameStyleOptionActive"
+}
+script GameStyleOption_ClickList {
+rcmd "sym set GameStyleOptionActive $GameStyleOption@_MArg1_@"
+rcmd "sym set GameStyleOptionSelection $_MArg1_"
+rcmd "clearmenu Listbox"
+}
+script ListboxSpawnLocTypeSelectSetup {
+rcmd "sym setNSet 12 SpawnLocTypeSelect"
+rcmd "sym set SpawnLocTypeSelect0 Editor_OptionInLocation"
+rcmd "sym set SpawnLocTypeSelect1 Editor_PickElevator"
+rcmd "sym set SpawnLocTypeSelect2 Editor_OptionPosition"
+}
+script ListboxSpawnLocTypeSelect {
+rcmd "menucmd ListboxSpawnLocTypeSelectSetup"
+cmd "loadmenu Listbox"
+}
+script SpawnLocTypeSelect_SetFromSelection {
+rcmd "menucmd ListboxSpawnLocTypeSelectSetup"
+cmd "sym set SpawnLocTypeSelectActive $SpawnLocTypeSelect@SpawnLocTypeSelectSelection@"
+cmd "sym set _ListboxName_ $SpawnLocTypeSelectActive"
+}
+script SpawnLocTypeSelect_ClickList {
+rcmd "sym set SpawnLocTypeSelectActive $SpawnLocTypeSelect@_MArg1_@"
+rcmd "sym set SpawnLocTypeSelectSelection $_MArg1_"
+rcmd "clearmenu Listbox"
+}
+Script ListboxUnitKillOptionSetup {
+rcmd "sym setNSet 12 UnitKillOption"
+rcmd "sym set UnitKillOption0 Editor_PickUnit"
+rcmd "sym set UnitKillOption1 Editor_PickLocation"
+}
+Script ListboxUnitKillOption {
+rcmd "menucmd ListboxUnitKillOptionSetup"
+cmd "loadmenu Listbox"
+}
+Script UnitKillOption_SetFromSelection {
+rcmd "menucmd ListboxUnitKillOptionSetup"
+cmd "sym set UnitKillOptionActive $UnitKillOption@UnitKillOptionSelection@"
+cmd "sym set _ListboxName_ $UnitKillOptionActive"
+}
+Script UnitKillOption_ClickList {
+rcmd "sym set UnitKillOptionActive $UnitKillOption@_MArg1_@"
+rcmd "sym set UnitKillOptionSelection $_MArg1_"
+rcmd "clearmenu Listbox"
+}
+Script ListboxMoveLocTargetSetup {
+rcmd "sym setNSet 12 MoveLocTarget"
+rcmd "sym set MoveLocTarget0 Editor_GameLocations"
+rcmd "sym set MoveLocTarget1 Editor_CommandPlayer"
+rcmd "sym set MoveLocTarget2 Editor_ConditionUnit"
+}
+Script ListboxMoveLocTarget {
+rcmd "menucmd ListboxMoveLocTargetSetup"
+cmd "loadmenu Listbox"
+}
+Script MoveLocTarget_SetFromSelection {
+rcmd "menucmd ListboxMoveLocTargetSetup"
+cmd "sym set MoveLocTargetActive $MoveLocTarget@MoveLocTargetSelection@"
+cmd "sym set _ListboxName_ $MoveLocTargetActive"
+}
+Script MoveLocTarget_ClickList {
+rcmd "sym set MoveLocTargetActive $MoveLocTarget@_MArg1_@"
+rcmd "sym set MoveLocTargetSelection $_MArg1_"
+rcmd "clearmenu Listbox"
+}
+Script ListboxUnitForEachSetup {
+rcmd "sym setNSet 12 UnitForEach"
+rcmd "sym set UnitForEach0 Editor_UnitInLoc"
+}
+Script ListboxUnitForEach {
+rcmd "menucmd ListboxUnitForEachSetup"
+cmd "loadmenu Listbox"
+}
+Script UnitForEach_SetFromSelection {
+rcmd "menucmd ListboxUnitForEachSetup"
+cmd "sym set UnitForEachActive $UnitForEach@UnitForEachSelection@"
+cmd "sym set _ListboxName_ $UnitForEachActive"
+}
+Script UnitForEach_ClickList {
+rcmd "sym set UnitForEachActive $UnitForEach@_MArg1_@"
+rcmd "sym set UnitForEachSelection $_MArg1_"
+rcmd "clearmenu Listbox"
+}
+Script ListboxCommandCategorySetup {
+rcmd "sym setNSet 12 CommandCategory"
+rcmd "sym set CommandCategory0 Editor_CommandAction"
+rcmd "sym set CommandCategory1 Editor_CommandControl"
+rcmd "sym set CommandCategory2 Editor_CommandEvent"
+rcmd "sym set CommandCategory3 Editor_CommandGame"
+rcmd "sym set CommandCategory4 Editor_CommandPlayer"
+rcmd "sym set CommandCategory5 Editor_ConditionUnit"
+rcmd "sym set CommandCategory6 Editor_ConditionVariable"
+}
+Script ListboxCommandCategory {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "sym set _ListboxName_ $_MArg1_"
+rcmd "menucmd ListboxCommandCategorySetup"
+cmd "loadmenu Listbox"
+}
+Script CommandCategory_SetFromSelection {
+rcmd "menucmd ListboxCommandCategorySetup"
+cmd "sym set CommandCategoryActive $CommandCategory@CommandCategorySelection@"
+cmd "sym set _ListboxName_ $CommandCategoryActive"
+}
+Script ListboxControlCommandOptionSetup {
+rcmd "sym set CommandOption0 Editor_OptionBuilding"
+rcmd "sym set CommandOption1 Editor_OptionEarnCredits"
+rcmd "sym set CommandOption2 Editor_OptionEarnExp"
+rcmd "sym set CommandOption3 Editor_OptionOrders"
+rcmd "sym set CommandOption4 Editor_OptionTransforming"
+rcmd "sym set CommandOption5 Editor_OptionAIEnable"
+rcmd "sym set CommandOption6 Editor_OptionFiring"
+rcmd "sym set CommandOption7 Editor_OptionAbilities"
+rcmd "sym set CommandOption8 Editor_OptionEnergyRegen"
+rcmd "sym set CommandOption9 Editor_OptionHealthRegen"
+}
+Script ListboxGameCommandOptionSetup {
+rcmd "sym set CommandOption0 Editor_CommandEndgame"
+rcmd "sym set CommandOption1 Editor_CommandMessage"
+rcmd "sym set CommandOption2 Editor_CommandMoveLoc"
+rcmd "sym set CommandOption3 Editor_CommandPlaySound"
+rcmd "sym set CommandOption4 Editor_CommandStyle"
+rcmd "sym set CommandOption5 Editor_CommandWait"
+rcmd "sym set CommandOption6 Editor_CommandPilotDialog"
+}
+Script ListboxPlayerCommandOptionSetup {
+rcmd "sym set CommandOption0 Editor_OptionExp"
+rcmd "sym set CommandOption1 Editor_OptionCredits"
+rcmd "sym set CommandOption2 Editor_OptionEnergy"
+rcmd "sym set CommandOption3 Editor_OptionHealth"
+rcmd "sym set CommandOption4 Editor_OptionPower"
+rcmd "sym set CommandOption5 Editor_OptionRevive"
+}
+Script ListboxUnitCommandOptionSetup {
+rcmd "sym set CommandOption0 Editor_OptionKill"
+rcmd "sym set CommandOption1 Editor_OptionOrder"
+rcmd "sym set CommandOption2 Editor_OptionSpawn"
+rcmd "sym set CommandOption3 Editor_OptionHealth"
+rcmd "sym set CommandOption4 Editor_OptionForEach"
+}
+Script ListboxCommandOptionSetup {
+rcmd "sym setNSet 12 CommandOption"
+rcmd "if sym CommandCategorySelection == 1 runnow menucmd ListboxControlCommandOptionSetup"
+rcmd "if sym CommandCategorySelection == 3 runnow menucmd ListboxGameCommandOptionSetup"
+rcmd "if sym CommandCategorySelection == 4 runnow menucmd ListboxPlayerCommandOptionSetup"
+rcmd "if sym CommandCategorySelection == 5 runnow menucmd ListboxUnitCommandOptionSetup"
+}
+Script CommandCategory_ClickList {
+rcmd "sym set CommandCategoryActive $CommandCategory@_MArg1_@"
+rcmd "sym set CommandCategorySelection $_MArg1_"
+rcmd "sym set CommandOptionSelection 0"
+rcmd "menucmd ListboxCommandOptionSetup"
+rcmd "sym set CommandOptionActive $CommandOption@CommandOptionSelection@"
+rcmd "clearmenu Listbox"
+}
+Script ListboxCommandOption {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxCommandOptionSetup"
+cmd "loadmenu Listbox"
+}
+Script CommandOption_SetFromSelection {
+rcmd "menucmd ListboxCommandOptionSetup"
+cmd "sym set CommandOptionActive $CommandOption@CommandOptionSelection@"
+cmd "sym set _ListboxName_ $CommandOptionActive"
+}
+Script CommandOption_ClickList {
+cmd "sym set CommandOptionActive $CommandOption@_MArg1_@"
+cmd "sym set CommandOptionSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxCommandVariableOperationSetup {
+rcmd "sym setNSet 12 CommandVariableOperation"
+rcmd "sym set CommandVariableOperation0 Editor_Set"
+rcmd "sym set CommandVariableOperation1 Editor_Add"
+rcmd "sym set CommandVariableOperation2 Editor_Subtract"
+}
+Script ListboxCommandVariableOperation {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxCommandVariableOperationSetup"
+cmd "loadmenu Listbox"
+}
+Script CommandVariableOperation_SetFromSelection {
+rcmd "menucmd ListboxCommandVariableOperationSetup"
+cmd "sym set CommandVariableOperationActive $CommandVariableOperation@CommandVariableOperationSelection@"
+cmd "sym set _ListboxName_ $CommandVariableOperationActive"
+}
+Script CommandVariableOperation_ClickList {
+cmd "sym set CommandVariableOperationActive $CommandVariableOperation@_MArg1_@"
+cmd "sym set CommandVariableOperationSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxGameSettingLayerTemplate {
+rcmd "sym setNSet 12 EditorGameSetting#{_MArg1_}"
+rcmd "sym set EditorGameSetting#{_MArg1_}0 Editor_False"
+rcmd "sym set EditorGameSetting#{_MArg1_}1 Editor_True"
+rcmd "sym set EditorGameSettingLayerIndex $_MArg2_
+cmd "loadmenu Listbox"
+}
+Script EditorGameSettingLayerTemplate_ClickList {
+rcmd "sym set EditorGameSetting#{_MArg1_}Active $EditorGameSetting#{_MArg1_}@_MArg2_@"
+rcmd "sym set EditorGameSettingPropertyValue#{EditorGameSettingLayerIndex} $_MArg2_"
+rcmd "editor do updateActiveGameSettingProperty $EditorGameSettingLayerIndex"
+rcmd "sym set EditorMapStateDirty 1"
+rcmd "clearmenu Listbox"
+}
+Script ListboxEditorGameSettingDefault_Layer {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxGameSettingLayerTemplate local Default_Layer $_MArg1_"
+}
+Script EditorGameSettingDefault_Layer_ClickList {
+rcmd "menucmd EditorGameSettingLayerTemplate_ClickList local Default_Layer $_MArg1_"
+}
+Script ListboxEditorGameSettingTerrain_Layer {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxGameSettingLayerTemplate local Terrain_Layer $_MArg1_"
+}
+Script EditorGameSettingTerrain_Layer_ClickList {
+rcmd "menucmd EditorGameSettingLayerTemplate_ClickList local Terrain_Layer $_MArg1_"
+}
+Script ListboxEditorGameSettingPlayerStart {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxGameSettingLayerTemplate local PlayerStart $_MArg1_"
+}
+Script EditorGameSettingPlayerStart_ClickList {
+rcmd "menucmd EditorGameSettingLayerTemplate_ClickList local PlayerStart $_MArg1_"
+}
+Script ListboxEditorGameSettingGameLocation {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxGameSettingLayerTemplate local GameLocation $_MArg1_"
+}
+Script EditorGameSettingGameLocation_ClickList {
+rcmd "menucmd EditorGameSettingLayerTemplate_ClickList local GameLocation $_MArg1_"
+}
+Script ListboxEditorGameSettingSkybox {
+ignoreInputTime 0.1
+rcmd "sym setNSet 12 EditorGameSettingSkybox"
+rcmd "sym set EditorGameSettingSkybox0 Skybox_SkyBigBlue"
+rcmd "sym set EditorGameSettingSkybox1 Skybox_SkyMountains"
+rcmd "sym set EditorGameSettingSkybox2 Skybox_SkyBlueSmallClouds"
+cmd "loadmenu Listbox"
+}
+Script EditorGameSettingSkybox_ClickList {
+rcmd "sym set EditorGameSettingSkyboxActive $EditorGameSettingSkybox@_MArg1_@"
+rcmd "if sym _MArg1_ == 0 runnow sym set EditorGameSettingPropertyValue1 mat_SkyBigBlue"
+rcmd "if sym _MArg1_ == 1 runnow sym set EditorGameSettingPropertyValue1 mat_SkyMountains"
+rcmd "if sym _MArg1_ == 2 runnow sym set EditorGameSettingPropertyValue1 mat_SkyBlueSmallClouds"
+rcmd "editor do updateActiveGameSettingProperty 1"
+rcmd "gameUI refreshfiltername EditorGameSettingFilter"
+rcmd "clearmenu Listbox"
+}
+Script ListboxEditorGameSettingGameMode {
+ignoreInputTime 0.1
+rcmd "sym setNSet 12 EditorGameSettingGameMode"
+rcmd "sym set EditorGameSettingGameMode0 GameMode_default"
+rcmd "sym set EditorGameSettingGameMode1 GameMode_custom"
+rcmd "if !retail runnow sym set EditorGameSettingGameMode2 GameMode_survival"
+rcmd "if !retail runnow sym set EditorGameSettingGameMode3 GameMode_arena"
+rcmd "if !retail runnow sym set EditorGameSettingGameMode4 GameMode_tutorial"
+rcmd "if !retail runnow sym set EditorGameSettingGameMode5 GameMode_tryout"
+rcmd "if !retail runnow sym set EditorGameSettingGameMode6 GameMode_dungeon"
+rcmd "if !retail runnow sym set EditorGameSettingGameMode7 GameMode_challengeCapture"
+rcmd "if !retail runnow sym set EditorGameSettingGameMode8 GameMode_challengeDestroy"
+rcmd "if !retail runnow sym set EditorGameSettingGameMode9 GameMode_challengeMove"
+rcmd "if !retail runnow sym set EditorGameSettingGameMode10 GameMode_challengeWin"
+rcmd "if !retail runnow sym set EditorGameSettingGameMode11 GameMode_challengeBuild"
+cmd "loadmenu Listbox"
+}
+Script EditorGameSettingGameMode_ClickList {
+rcmd "sym set EditorGameSettingGameModeActive $EditorGameSettingGameMode@_MArg1_@"
+rcmd "if sym _MArg1_ == 0 rook setGameMode default"
+rcmd "if sym _MArg1_ == 1 rook setGameMode custom"
+rcmd "if !retail && sym _MArg1_ == 2 rook setGameMode survival"
+rcmd "if !retail && sym _MArg1_ == 3 rook setGameMode arena"
+rcmd "if !retail && sym _MArg1_ == 4 rook setGameMode tutorial"
+rcmd "if !retail && sym _MArg1_ == 5 rook setGameMode tryout"
+rcmd "if !retail && sym _MArg1_ == 6 rook setGameMode dungeon"
+rcmd "if !retail && sym _MArg1_ == 7 rook setGameMode challengeCapture"
+rcmd "if !retail && sym _MArg1_ == 8 rook setGameMode challengeDestroy"
+rcmd "if !retail && sym _MArg1_ == 9 rook setGameMode challengeMove"
+rcmd "if !retail && sym _MArg1_ == 10 rook setGameMode challengeWin"
+rcmd "if !retail && sym _MArg1_ == 11 rook setGameMode challengeBuild"
+rcmd "gameUI refreshfiltername EditorGameSettingFilter"
+rcmd "clearmenu Listbox"
+}
+Script ListboxEditorGameSettingGameStyle {
+ignoreInputTime 0.1
+rcmd "sym setNSet 12 EditorGameSettingGameStyle"
+rcmd "sym set EditorGameSettingGameStyle0 GameStyle_Skirmish"
+rcmd "sym set EditorGameSettingGameStyle1 GameStyle_Survival"
+cmd "loadmenu Listbox"
+}
+Script EditorGameSettingGameStyle_ClickList {
+rcmd "sym set EditorGameSettingGameStyleActive $EditorGameSettingGameStyle@_MArg1_@"
+rcmd "if sym _MArg1_ == 0 rook setGameStyle Skirmish"
+rcmd "if sym _MArg1_ == 1 rook setGameStyle Survival"
+rcmd "gameUI refreshfiltername EditorGameSettingFilter"
+rcmd "clearmenu Listbox"
+}
+Script ListboxEditorCompareSelectSetup {
+rcmd "sym setNSet 12 EditorCompareSelect"
+rcmd "sym set EditorCompareSelect0 Editor_CompareEqual"
+rcmd "sym set EditorCompareSelect1 Editor_CompareNotEqual"
+rcmd "sym set EditorCompareSelect2 Editor_CompareLess"
+rcmd "sym set EditorCompareSelect3 Editor_CompareGreater"
+}
+Script ListboxEditorCompareSelect {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxEditorCompareSelectSetup"
+cmd "loadmenu Listbox"
+}
+Script EditorCompareSelect_SetFromSelection {
+rcmd "menucmd ListboxEditorCompareSelectSetup"
+cmd "sym set EditorCompareSelectActive $EditorCompareSelect@EditorCompareSelectSelection@"
+cmd "sym set _ListboxName_ $EditorCompareSelectActive"
+}
+Script EditorCompareSelect_ClickList {
+cmd "sym set EditorCompareSelectActive $EditorCompareSelect@_MArg1_@"
+cmd "sym set EditorCompareSelectSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxEditorTeamSelectSetup {
+rcmd "sym setNSet 12 EditorTeamSelect"
+rcmd "sym set EditorTeamSelect0 Editor_Player0"
+rcmd "sym set EditorTeamSelect1 Editor_Player1"
+rcmd "sym set EditorTeamSelect2 Editor_Player2"
+rcmd "sym set EditorTeamSelect3 Editor_Player3"
+rcmd "sym set EditorTeamSelect4 Editor_Player4"
+rcmd "sym set EditorTeamSelect5 Editor_Player5"
+rcmd "sym set EditorTeamSelect6 Editor_Player6"
+}
+Script ListboxEditorTeamSelect {
+ignoreInputTime 0.1
+cmd "menucmd ListboxEditorTeamSelectSetup"
+cmd "loadmenu Listbox"
+}
+Script EditorTeamSelect_SetFromSelection {
+rcmd "menucmd ListboxEditorTeamSelectSetup"
+cmd "sym set EditorTeamSelectActive $EditorTeamSelect@EditorPlaceTeam@"
+}
+Script EditorTeamSelect_ClickList {
+cmd "sym set EditorTeamSelectActive $EditorTeamSelect@_MArg1_@"
+cmd "sym set EditorPlaceTeam $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxEditorOrderSelectSetup {
+rcmd "sym setNSet 12 EditorOrderSelect"
+rcmd "sym set EditorOrderSelect0 Editor_OrderAttack"
+rcmd "sym set EditorOrderSelect1 Editor_OrderCapture"
+rcmd "sym set EditorOrderSelect2 Editor_OrderHold"
+rcmd "sym set EditorOrderSelect3 Editor_OrderMoveTo"
+}
+Script ListboxEditorOrderSelect {
+ignoreInputTime 0.1
+cmd "menucmd ListboxEditorOrderSelectSetup"
+cmd "loadmenu Listbox"
+}
+Script EditorOrderSelect_SetFromSelection {
+rcmd "menucmd ListboxEditorOrderSelectSetup"
+cmd "sym set EditorOrderSelectActive $EditorOrderSelect@EditorOrderSelectSelection@"
+cmd "sym set _ListboxName_ $EditorOrderSelectActive"
+}
+Script EditorOrderSelect_ClickList {
+cmd "sym set EditorOrderSelectActive $EditorOrderSelect@_MArg1_@"
+cmd "sym set EditorOrderSelectSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxSpawnOrderSelectSetup {
+rcmd "sym setNSet 12 SpawnOrderSelect"
+rcmd "sym set SpawnOrderSelect0 Editor_OrderAttack"
+rcmd "sym set SpawnOrderSelect2 Editor_OrderHold"
+rcmd "sym set SpawnOrderSelect1 Editor_OrderCapture"
+}
+Script ListboxSpawnOrderSelect {
+ignoreInputTime 0.1
+cmd "menucmd ListboxSpawnOrderSelectSetup"
+cmd "loadmenu Listbox"
+}
+Script SpawnOrderSelect_SetFromSelection {
+rcmd "menucmd ListboxSpawnOrderSelectSetup"
+cmd "sym set SpawnOrderSelectActive $SpawnOrderSelect@SpawnOrderSelectSelection@"
+cmd "sym set _ListboxName_ $SpawnOrderSelectActive"
+}
+Script SpawnOrderSelect_ClickList {
+cmd "sym set SpawnOrderSelectActive $SpawnOrderSelect@_MArg1_@"
+cmd "sym set SpawnOrderSelectSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxPilotDialogOptionSetup {
+rcmd "sym setNSet 12 PilotDialogOption"
+rcmd "sym set PilotDialogOption0 Editor_Enabled"
+rcmd "sym set PilotDialogOption1 Editor_CommandMessage"
+}
+Script ListboxPilotDialogOption {
+ignoreInputTime 0.1
+cmd "menucmd ListboxPilotDialogOptionSetup"
+cmd "loadmenu Listbox"
+}
+Script PilotDialogOption_SetFromSelection {
+rcmd "menucmd ListboxPilotDialogOptionSetup"
+cmd "sym set PilotDialogOptionActive $PilotDialogOption@PilotDialogOptionSelection@"
+cmd "sym set _ListboxName_ $PilotDialogOptionActive"
+}
+Script PilotDialogOption_ClickList {
+cmd "sym set PilotDialogOptionActive $PilotDialogOption@_MArg1_@"
+cmd "sym set PilotDialogOptionSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxTerrainEditModeSetup {
+rcmd "sym setNSet 12 TerrainEditMode"
+rcmd "sym set TerrainEditMode0 Editor_TileMode"
+rcmd "sym set TerrainEditMode1 Editor_GenerateMode"
+}
+Script ListboxTerrainEditMode {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxTerrainEditModeSetup"
+cmd "loadmenu Listbox"
+}
+Script TerrainEditMode_SetFromSelection {
+rcmd "menucmd ListboxTerrainEditModeSetup"
+cmd "sym set TerrainEditModeActive $TerrainEditMode@TerrainEditModeSelection@"
+}
+Script TerrainEditMode_ClickList {
+cmd "sym set TerrainEditModeActive $TerrainEditMode@_MArg1_@"
+cmd "sym set TerrainEditModeSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxTerrainBorealEdgingSetup {
+rcmd "sym set TerrainEdging0 Editor_EdgingSalt"
+rcmd "sym set TerrainEdging1 Editor_EdgingGrass"
+}
+Script ListboxTerrainCanyonEdgingSetup {
+rcmd "sym set TerrainEdging0 Editor_EdgingGrass"
+rcmd "sym set TerrainEdging1 Editor_EdgingSand"
+rcmd "sym set TerrainEdging2 Editor_EdgingCrack"
+rcmd "sym set TerrainEdging3 Editor_EdgingMoss"
+}
+Script ListboxTerrainMountainEdgingSetup {
+rcmd "sym set TerrainEdging0 Editor_EdgingGrass"
+}
+Script ListboxTerrainSpiralEdgingSetup {
+rcmd "sym set TerrainEdging0 Editor_EdgingGrass"
+}
+Script ListboxTerrainValleyEdgingSetup {
+rcmd "sym set TerrainEdging0 Editor_EdgingDirt"
+}
+Script ListboxTerrainVirtualEdgingSetup {
+rcmd "sym set TerrainEdging0 Editor_EdgingGrass"
+}
+Script ListboxTerrainEdgingSetup {
+rcmd "sym setNSet 12 TerrainEdging"
+cmd "if sym TerrainTilesetSelection == 0 runnow menucmd ListboxTerrainBorealEdgingSetup"
+cmd "if sym TerrainTilesetSelection == 1 runnow menucmd ListboxTerrainCanyonEdgingSetup"
+cmd "if sym TerrainTilesetSelection == 2 runnow menucmd ListboxTerrainMountainEdgingSetup"
+cmd "if sym TerrainTilesetSelection == 3 runnow menucmd ListboxTerrainSpiralEdgingSetup"
+cmd "if sym TerrainTilesetSelection == 4 runnow menucmd ListboxTerrainValleyEdgingSetup"
+cmd "if sym TerrainTilesetSelection == 5 runnow menucmd ListboxTerrainVirtualEdgingSetup"
+}
+Script ListboxTerrainEdging {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxTerrainEdgingSetup"
+cmd "loadmenu Listbox"
+}
+Script TerrainEdging_SetFromSelection {
+rcmd "menucmd ListboxTerrainEdgingSetup"
+cmd "sym set TerrainEdgingActive $TerrainEdging@TerrainEdgingSelection@"
+}
+Script TerrainEdgingPick_Boreal {
+cmd "if sym TerrainEdgingSelection == 0 runnow editor set terrainEdging ToSalt"
+cmd "if sym TerrainEdgingSelection == 1 runnow editor set terrainEdging ToGrass"
+}
+Script TerrainEdgingPick_Canyon {
+cmd "if sym TerrainEdgingSelection == 0 runnow editor set terrainEdging ToGrass"
+cmd "if sym TerrainEdgingSelection == 1 runnow editor set terrainEdging ToSand"
+cmd "if sym TerrainEdgingSelection == 2 runnow editor set terrainEdging ToCrack"
+cmd "if sym TerrainEdgingSelection == 3 runnow editor set terrainEdging ToMoss"
+}
+Script TerrainEdgingPick_Mountain {
+cmd "if sym TerrainEdgingSelection == 0 runnow editor set terrainEdging ToGrass"
+}
+Script TerrainEdgingPick_Spiral {
+cmd "if sym TerrainEdgingSelection == 0 runnow editor set terrainEdging ToGrass"
+}
+Script TerrainEdgingPick_Valley {
+cmd "if sym TerrainEdgingSelection == 0 runnow editor set terrainEdging ToDirt"
+}
+Script TerrainEdgingPick_Virtual {
+cmd "if sym TerrainEdgingSelection == 0 runnow editor set terrainEdging ToGrass"
+}
+Script TerrainEdging_ClickList {
+cmd "sym set TerrainEdgingActive $TerrainEdging@_MArg1_@"
+cmd "sym set TerrainEdgingSelection $_MArg1_"
+cmd "if sym TerrainTilesetSelection == 0 runnow menucmd TerrainEdgingPick_Boreal"
+cmd "if sym TerrainTilesetSelection == 1 runnow menucmd TerrainEdgingPick_Canyon"
+cmd "if sym TerrainTilesetSelection == 2 runnow menucmd TerrainEdgingPick_Mountain"
+cmd "if sym TerrainTilesetSelection == 3 runnow menucmd TerrainEdgingPick_Spiral"
+cmd "if sym TerrainTilesetSelection == 4 runnow menucmd TerrainEdgingPick_Valley"
+cmd "if sym TerrainTilesetSelection == 5 runnow menucmd TerrainEdgingPick_Virtual"
+cmd "clearmenu Listbox"
+}
+Script ListboxTerrainSelection {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "sym set _ListboxName_ $_MArg1_"
+cmd "sym setNSet 12 TerrainSelection"
+cmd "sym set TerrainSelection0 Editor_Boreal"
+cmd "sym set TerrainType0 Boreal"
+cmd "sym set TerrainSelection1 Editor_Canyon"
+cmd "sym set TerrainType1 Canyon"
+cmd "sym set TerrainSelection2 Editor_Mountain"
+cmd "sym set TerrainType2 Mountain"
+cmd "sym set TerrainSelection3 Editor_Spiral"
+cmd "sym set TerrainType3 Spiral"
+cmd "sym set TerrainSelection4 Editor_Valley"
+cmd "sym set TerrainType4 Valley"
+cmd "sym set TerrainSelection5 Editor_Virtual"
+cmd "sym set TerrainType5 Virtual"
+cmd "loadmenu Listbox"
+}
+Script TerrainSelection_ClickList {
+cmd "sym set TerrainSelectionActive $TerrainSelection@_MArg1_@"
+cmd "sym set editorTerrainTileset $TerrainType@_MArg1_@"
+cmd "sym set TerrainTilesetSelection $_MArg1_"
+cmd "editor set terrainType $TerrainType@_MArg1_@"
+cmd "menucmd EditorRefreshTileVariants"
+cmd "clearmenu Listbox"
+}
+Script ListboxTerrainPattern {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "sym set _ListboxColor $_MArg2_"
+cmd "sym set _ListboxColorFocused $_MArg3_"
+cmd "sym set _ListboxName_ $_MArg1_"
+cmd "sym setNSet 12 TerrainPattern"
+cmd "sym set TerrainPattern0 Editor_PatternSquare"
+cmd "sym set TerrainPattern1 Editor_PatternDiamond"
+cmd "loadmenu Listbox"
+}
+Script TerrainPattern_ClickList {
+cmd "sym set TerrainPatternActive $TerrainPattern@_MArg1_@"
+cmd "sym set TerrainPatternValue $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxElevationEditLevelSetup {
+rcmd "sym setNSet 12 ElevationEditLevel"
+rcmd "sym set ElevationEditLevel0 Editor_ValueOne"
+rcmd "sym set ElevationEditLevel1 Editor_ValueThree"
+}
+Script ListboxElevationEditLevel {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxElevationEditLevelSetup"
+cmd "loadmenu Listbox"
+}
+Script ElevationEditLevel_SetFromSelection {
+rcmd "menucmd ListboxElevationEditLevelSetup"
+cmd "sym set ElevationEditLevelActive $ElevationEditLevel@ElevationEditLevelSelection@"
+}
+Script ElevationEditLevel_ClickList {
+cmd "sym set ElevationEditLevelActive $ElevationEditLevel@_MArg1_@"
+cmd "sym set ElevationEditLevelSelection $_MArg1_"
+cmd "if sym ElevationEditLevelSelection == 0 runnow sym set Editor_HeightMeshMag 1"
+cmd "if sym ElevationEditLevelSelection == 1 runnow sym set Editor_HeightMeshMag 3"
+cmd "clearmenu Listbox"
+}
+Script ListboxPaintMatValueSetup {
+rcmd "sym setNSet 12 PaintMatValue"
+rcmd "sym set PaintMatValue0 Editor_ValueOne"
+rcmd "sym set PaintMatValue1 Editor_ValueTwo"
+rcmd "sym set PaintMatValue2 Editor_ValueThree"
+}
+Script ListboxPaintMatValue {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxPaintMatValueSetup"
+cmd "loadmenu Listbox"
+}
+Script PaintMatValue_SetFromSelection {
+rcmd "menucmd ListboxPaintMatValueSetup"
+cmd "sym set PaintMatValueActive $PaintMatValue@PaintMatValueSelection@"
+}
+Script PaintMatValue_ClickList {
+cmd "sym set PaintMatValueActive $PaintMatValue@_MArg1_@"
+cmd "sym set PaintMatValueSelection $_MArg1_"
+cmd "if sym PaintMatValueSelection == 0 runnow sym set Editor_PaintedMeshMaterial 1"
+cmd "if sym PaintMatValueSelection == 1 runnow sym set Editor_PaintedMeshMaterial 2"
+cmd "if sym PaintMatValueSelection == 2 runnow sym set Editor_PaintedMeshMaterial 3"
+cmd "clearmenu Listbox"
+}
+Script ListboxIgnoreDestroySpawnSetup {
+rcmd "sym setNSet 12 IgnoreDestroySpawn"
+rcmd "sym set IgnoreDestroySpawn0 Editor_False"
+rcmd "sym set IgnoreDestroySpawn1 Editor_True"
+}
+Script ListboxIgnoreDestroySpawn {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxIgnoreDestroySpawnSetup"
+cmd "loadmenu Listbox"
+}
+Script IgnoreDestroySpawn_SetFromSelection {
+rcmd "menucmd ListboxIgnoreDestroySpawnSetup"
+cmd "sym set IgnoreDestroySpawnActive $IgnoreDestroySpawn@IgnoreDestroySpawnSelection@"
+}
+Script IgnoreDestroySpawn_ClickList {
+cmd "sym set IgnoreDestroySpawnActive $IgnoreDestroySpawn@_MArg1_@"
+cmd "sym set IgnoreDestroySpawnSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}
+Script ListboxOptionTrueFalseSetup {
+rcmd "sym setNSet 12 OptionTrueFalse"
+rcmd "sym set OptionTrueFalse0 Editor_False"
+rcmd "sym set OptionTrueFalse1 Editor_True"
+}
+Script ListboxOptionTrueFalse {
+ignoreInputTime 0.1
+rcmd "menucmd ListboxOptionTrueFalseSetup"
+cmd "loadmenu Listbox"
+}
+Script OptionTrueFalse_SetFromSelection {
+rcmd "menucmd ListboxOptionTrueFalseSetup"
+cmd "sym set OptionTrueFalseActive $OptionTrueFalse@OptionTrueFalseSelection@"
+}
+Script OptionTrueFalse_ClickList {
+cmd "sym set OptionTrueFalseActive $OptionTrueFalse@_MArg1_@"
+cmd "sym set OptionTrueFalseSelection $_MArg1_"
+cmd "clearmenu Listbox"
+}

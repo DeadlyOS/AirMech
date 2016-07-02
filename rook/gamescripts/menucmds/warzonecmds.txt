@@ -1,0 +1,41 @@
+Script WarzoneTimelineMove {
+rcmd "if sym _WarzoneMapSelectedPrev !isEmpty runnow sym setFrom _WarzoneMapSelectedPrev _WarzoneMapSelected"
+rcmd "sym set _WarzoneMapSelected $_MArg1_"
+cmd "pcmd 0 if sym _WarzoneMapSelectedPrev != $_WarzoneMapSelected && sym _WarzoneMapSelectedPrev !isEmpty addUIAnim #Warzone@_WarzoneEra@@_WarzoneMapSelectedPrev@ mas_WarzoneTimelinePlayingDown"
+cmd "gameui getLastRenderPos #Warzone@_WarzoneEra@@_MArg1_@ _TimelineMoveToX_ _TimelineMoveToY_"
+cmd "sym dec _TimelineMoveToX_ 50"
+cmd "pcmd 0 addUIAnim WarzoneTimelineCurrent mas_WarzoneTimelineCurrentMove"
+cmd "pcmd 0 if sym _WarzoneMapSelectedPrev != $_WarzoneMapSelected addUIAnim #Warzone@_WarzoneEra@@_MArg1_@ mas_WarzoneTimelinePlayingUp"
+cmd "pcmd 0.1 if sym _WarzoneMapSelectedPrev isEmpty runnow sym setFrom _WarzoneMapSelectedPrev _WarzoneMapSelected"
+cmd "pcmd 0.1 sym setFrom _TimelineMoveFromX_ _TimelineMoveToX_"
+}
+Script WriteWarzoneStats {
+rcmd "wallet writeStat MWin_Junk MWin_Junk"
+rcmd "wallet writeStat MWin_Highway MWin_Highway"
+rcmd "wallet writeStat MWin_Denev MWin_Denev"
+rcmd "wallet writeStat MWin_Siam MWin_Siam"
+rcmd "wallet writeStat MWin_Twolnsurv MWin_Twolnsurv"
+rcmd "wallet writeStat MWin_Wall MWin_Wall"
+rcmd "wallet writeStat MWin_Keep MWin_Keep"
+}
+Script CheckWarzoneMaps {
+rcmd "menucmd WriteWarzoneStats"
+cmd "sym set _WarzoneMapIndex 0"
+rcmd "sym op _WarzoneRiseMapList getcount _WarzoneMapMax"
+cmd "menucmd CheckWarzoneMapAvail"
+}
+Script CheckWarzoneMapAvail {
+rcmd "sym op _WarzoneRiseMapList copyNth $_WarzoneMapIndex _WarzoneMapActive"
+cmd "rook disabledMapCheck $_WarzoneMapActive _MapDisabled_ /nocontent"
+cmd "if sym _MapDisabled_ == 1 && sym _WarzoneMapIndex < $_WarzoneMapMax menucmd CheckWarzoneMapAvail"
+cmd "if sym _MapDisabled_ == 1 && sym _WarzoneMapIndex < $_WarzoneMapMax runnow sym inc _WarzoneMapIndex"
+cmd "if sym _MapDisabled_ == 1 && sym _WarzoneMapIndex >= $_WarzoneMapMax runnow sym set _WarzoneMapAvail 0"
+cmd "if sym _MapDisabled_ == 0 menucmd SetWarzoneMapAvail"
+}
+Script SetWarzoneMapAvail {
+rcmd "sym setFrom _WarzoneMapOfDay _WarzoneMapActive"
+rcmd "if sym #MWin_@_WarzoneMapActive@ == 0 runnow sym set _WarzoneMapAvail 1"
+}
+Script WarzoneRunMap {
+cmd "menucmd BSC_RunMap $_MArg1_ pve NA"
+}

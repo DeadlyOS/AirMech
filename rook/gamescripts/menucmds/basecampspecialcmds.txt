@@ -1,0 +1,26 @@
+Script BSC_RunMap_Solo {
+cmd "pcmd 0 sym set max_players 2"
+cmd "pcmd 0 if literal $_MArg2_ == pve runnow sym set max_players 1"
+cmd "pcmd 0 menucmd InitSpSymbols"
+cmd "pcmd 0 sym set map_cfg $_MArg3_"
+cmd "pcmd 0.1 loadmap $_MArg1_ coop prep 0"
+}
+Script BSC_RunMap_Coop {
+cmd "pcmd 0 sg startgame $_MArg1_ /mode $_MArg2_ /cfg $_MArg3_"
+}
+Script BSC_RunMap {
+cmd "if sym SG_Members < 1 runnow menucmd BSC_RunMap_Solo local $_MArg1_ $_MArg2_ $_MArg3_"
+cmd "if sym SG_Members >= 1 runnow menucmd BSC_RunMap_Coop local $_MArg1_ $_MArg2_ $_MArg3_"
+#if vr
+rcmd "sym set _EndGameSeqMsg_ 1"
+#endif
+}
+Script BCS_DungeonLilith {
+ignoreInputTime 0.2
+cmd "echo BATTLE LILITH!"
+cmd "menucmd BSC_RunMap local LilithDungeon coop NA"
+}
+Script BCS_BaseRattersButton {
+ignoreInputTime 0.2
+cmd "backend chooseReward Ratters TruckRatters"
+}

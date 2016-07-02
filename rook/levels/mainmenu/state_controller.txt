@@ -1,0 +1,13 @@
+StateController Lvl_MainMenu {
+#include Lvl_CommonStates
+State initial {
+}
+State Tick {
+Cfg timeBlock 30.0
+Do 0.0 "rook doLevelState ModLight1"
+}
+State ModLight1 {
+DoL 0.0 |dirlight fncdir /dir 0.01 0.01 0.05 /period 7 /fadeat 17 /duration 20
+DoL 0.5 |dirlight fncdir /dir 0.05 0.01 0.01 /period 5 /fadeat 17 /duration 20
+}
+}

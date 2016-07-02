@@ -1,0 +1,305 @@
+StateController Lvl_junk {
+#include Lvl_CommonStates
+State initial {
+In 0.0 "sym setNSet 60 UpkeepTeam0_ -1"
+In 0.0 "sym setNSet 60 UpkeepTeam1_ -1"
+In 0.0 "sym set _UTInc_ 0"
+}
+State Init {
+DoL 0.0 sym set CSWave Wave1Wait
+DoL 6.0 music start musicstingers/Hell
+DoL 9.0 gamemsg addf_u highway_1
+DoL 14.0 gamemsg addf_u highway_2
+DoL 18.0 gamemsg addf_u highway_3
+DoL 21.0 gamemsg addf_u highway_4
+DoL 28.0 gamemsg addf_u highway_5
+DoL 33.0 gamemsg addf_u highway_6
+DoL 39.0 gamemsg addf_u highway_7
+DoL 25.0 sym set CSWave Wave1
+DoL 0.0 sym set WaveMax 9
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 rook powerGenMod set 0
+DoL 0.0 sym set spawnloc_northwest 1.221726 156.524963 -0.000008
+DoL 0.0 sym set spawnloc_northeast 132.496246 -3.005993 -0.000008
+DoL 0.0 sym set spawnloc_southwest -127.048401 17.753613 -0.000008
+DoL 0.0 sym set spawnloc_southeast -39.001751 -97.671387 -0.000008
+DoL 0.0 pfx worldspawn HighwayAmbient /pos 60.150246 -36.437523 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos 36.45322 -12.865278 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos 51.658066 51.371197 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos 59.981297 59.769669 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos 91.75135 -3.657398 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos 4.031248 -28.438902 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos -28.031254 19.35931 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos -52.403519 -20.789465 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos -51.925686 84.243103 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos -91.334724 34.853817 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos -86.321724 -44.435093 -4
+DoL 0.0 pfx worldspawn HighwayAmbient /pos 59.881802 -60.736534 -4
+DoL 0.0 pfx worldspawn HellCloud /pos -60 0 26
+DoL 0.0 pfx worldspawn HellCloud /pos 52 58 26
+DoL 0.0 pfx worldspawn HellCloud /pos 19 -20 26
+DoL 0.0 pfx worldspawn HellEmbers /pos 19 -20 26
+DoL 0.0 pfx worldspawn HellEmbers /pos -60 0 26
+DoL 0.0 pfx worldspawn HellEmbers /pos 52 58 26
+}
+State Tick {
+Do 0.0 "rook doLevelState $$CSWave"
+Do 0.0 "rook doLevelState TickCreeps"
+Do 0.0 "rook doLevelState BlockCheck"
+DoL 0.0 if sym MatchOver == 0 rook doLevelState UpkeepTrack
+}
+State TickCreeps {
+Cfg timeBlock 0.25
+Do 0.0 "rook doLevelState NormalSpawn"
+}
+State BlockCheck {
+Cfg timeBlock 1.0
+Do 0.0 "rook survivalBlockCheck 240"
+}
+State NormalSpawn {
+DoL 0.0 if gameValidation spCr_p0 rook doLevelState CreepSpawnTeam0
+}
+State CreepSpawnTeam0 {
+DoL 0.0 |rook spawnCreepBegin 0
+DoL 1.0 |rook spawnCreep 0
+DoL 1.5 |rook spawnCreep 0
+DoL 2.0 |rook spawnCreep 0
+DoL 5.0 |rook spawnCreepEnd 0
+}
+State WaveWaitingDummy {
+Cfg timeBlock 20.0
+}
+State WaveCompleteCommon {
+DoL 0.0 sym set CSWave $_SArg1_
+DoL 0.0 sym append CSWave Wait
+#if arc
+DoL 0.0 |gamemsg addf_u SrvWaveCompleted
+DoL 3.0 |gamemsg addf_u SrvMorePower
+DoL 6.0 |gamemsg addf_u SrvNextWave
+#else
+DoL 0.0 |gamemsg addf_u survival_10
+DoL 5.0 |gamemsg addf_u survival_11
+#endif
+DoL 3.0 |rook powerGenMod inc 8
+DoL 9.0 |sym set S_DCount 0
+DoL 9.0 |sym set CSWaveCount 0
+DoL 9.0 |floatSym set waveProgress 1.0
+DoL 9.0 |sym set CSWave $_SArg1_
+}
+State Wave1 {
+Cfg timeBlock 3.0
+DoL 0.0 sym set S_Wave 1
+DoL 0.0 sym set S_Total /90
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 10 rook doLevelState Wave1Spawn
+DoL 0.0 if sym S_DCount >= 90 rook doLevelState Wave1Complete
+}
+State Wave1Spawn {
+DoL 0.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 0.5 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 1.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 1.5 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 2.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 4.5 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+DoL 5.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 5.5 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 6.0 spawn CreeperU /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+}
+State Wave1Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave2
+DoL 5.0 gamemsg addf_u highway_11
+DoL 9.0 gamemsg addf_u highway_12
+}
+State Wave2 {
+Cfg timeBlock 3.0
+DoL 0.0 sym set S_Wave 2
+DoL 0.0 sym set S_Total /27
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 3 rook doLevelState Wave2Spawn
+DoL 0.0 if sym S_DCount >= 27 rook doLevelState Wave2Complete
+}
+State Wave2Spawn {
+DoL 0.0 spawn InfantryRocket /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 0.5 spawn DroneBomber /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 1.0 spawn DroneBomber /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+DoL 1.5 spawn DroneBomber /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 3.0 spawn InfantryRocket /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 3.5 spawn InfantryRocket /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 5.0 spawn InfantryRocket /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 5.5 spawn InfantryRocket /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 7.0 spawn InfantryRocket /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+}
+State Wave2Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave3
+}
+State Wave3 {
+Cfg timeBlock 3.0
+DoL 0.0 sym set S_Wave 3
+DoL 0.0 sym set S_Total /180
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 20 rook doLevelState Wave3Spawn
+DoL 0.0 if sym S_DCount >= 180 rook doLevelState Wave3Complete
+}
+State Wave3Spawn {
+DoL 0.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 3.5 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 6.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 8.5 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 12.0 spawn GruntSwords /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 15.5 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 17.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 20.5 spawn GruntSwords /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 25.0 spawn CreeperU /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+}
+State Wave3Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave4
+}
+State Wave4 {
+Cfg timeBlock 6.0
+DoL 0.0 sym set S_Wave 4
+DoL 0.0 sym set S_Total /54
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 6 rook doLevelState Wave4Spawn
+DoL 0.0 if sym S_DCount >= 54 rook doLevelState Wave4Complete
+}
+State Wave4Spawn {
+DoL 0.0 spawn GruntSwords /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 5.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 1.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+DoL 15.0 spawn TankHeavy /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 20.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 16.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 25.0 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 30.5 spawn GruntUzi /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 26.0 spawn GruntSwords /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+}
+State Wave4Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave5
+}
+State Wave5 {
+Cfg timeBlock 3.0
+DoL 0.0 sym set S_Wave 5
+DoL 0.0 sym set S_Total /280
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 10 rook doLevelState Wave5Spawn
+DoL 0.0 if sym S_DCount >= 280 rook doLevelState Wave5Complete
+}
+State Wave5Spawn {
+DoL 0.0 spawn TruckGunZ /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 0.5 spawn TruckGunZ /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 1.0 spawn TruckGunZ /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 1.5 spawn TruckGunZ /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 2.0 spawn TruckGunZ /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 4.5 spawn TruckGunZ /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 5.0 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 5.5 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 6.0 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 7.0 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 8.5 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 9.0 spawn TruckGunZ /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 11.5 spawn TankHeavyU /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 12.0 spawn TruckGunZ /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 14.5 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 15.0 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 15.5 spawn TankFlak /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 16.0 spawn TankFlak /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northwest
+DoL 20.0 spawn TankFlak /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 20.5 spawn TankFlak /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 21.0 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 21.5 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 22.0 spawn TankRebel /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 24.5 spawn TankRebel /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_southwest
+DoL 25.0 spawn TankRebel /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 25.5 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 26.0 spawn TankRebel /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 30.0 spawn InfantryJetpack /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+}
+State Wave5Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave6
+DoL 5.0 gamemsg addf_u highway_8
+DoL 9.0 gamemsg addf_u highway_9
+DoL 14.0 gamemsg addf_u highway_10
+DoL 14.0 gamemsg addf_u highway_14
+DoL 14.0 gamemsg addf_u highway_15
+}
+State Wave6 {
+Cfg timeBlock 5.0
+DoL 0.0 sym set S_Wave 6
+DoL 0.0 sym set S_Total /27
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 3 rook doLevelState Wave6Spawn
+DoL 0.0 if sym S_DCount >= 27 rook doLevelState Wave6Complete
+}
+State Wave6Spawn {
+DoL 0.0 spawn RocketTruckVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 5.5 spawn RocketTruckVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 7.0 spawn RocketTruckVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 9.5 spawn VulcanVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southwest
+DoL 12.0 spawn VulcanVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 14.5 spawn VulcanVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 17.0 spawn InfantryVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 22.5 spawn InfantryVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 26.0 spawn TankHeavyVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+}
+State Wave6Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave7
+}
+State Wave7 {
+Cfg timeBlock 5.0
+DoL 0.0 sym set S_Wave 7
+DoL 0.0 sym set S_Total /54
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 6 rook doLevelState Wave7Spawn
+DoL 0.0 if sym S_DCount >= 54 rook doLevelState Wave7Complete
+}
+State Wave7Spawn {
+DoL 0.0 spawn InfantryPyro /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 1.5 spawn InfantryPyro /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 3.0 spawn InfantryPyro /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 5.5 spawn InfantryPyro /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 7.0 spawn InfantryPyro /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 8.5 spawn InfantryPyro /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 10.0 spawn InfantryPyro /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 15.5 spawn InfantryPyro /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northwest
+DoL 16.0 spawn CreeperU /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+}
+State Wave7Complete {
+Cfg timeBlock 200.0
+DoL 0.0 rook doLevelState WaveCompleteCommon Wave8
+DoL 9.0 gamemsg addf_u highway_16
+DoL 14.0 gamemsg addf_u highway_17
+}
+State Wave8 {
+Cfg timeBlock 2.0
+DoL 0.0 sym set S_Wave 8
+DoL 0.0 sym set S_Total /36
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 4 rook doLevelState Wave8Spawn
+DoL 0.0 if sym S_DCount >= 36 rook doLevelState Wave8Complete
+}
+State Wave8Spawn {
+DoL 0.0 spawn TankHeavyVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 1.5 spawn TankHeavyVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 3.0 spawn InfantryHeavyVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_southeast
+DoL 5.5 spawn InfantryHeavyVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_southeast
+DoL 7.0 spawn InfantryHeavyVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 8.5 spawn InfantryHeavyVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+DoL 10.0 spawn InfantryHeavyVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 15.5 spawn InfantryHeavyVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos $spawnloc_northeast
+DoL 16.0 spawn InfantryHeavyVoid /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos $spawnloc_northeast
+}
+State Wave8Complete {
+Cfg timeBlock 200.0
+DoL 0.0 sym set CSWave Wave9
+DoL 3.0 gamemsg addf_u highway_20
+DoL 6.0 gamemsg addf_u highway_21
+DoL 10.5 state doLevelAction victory
+}
+}

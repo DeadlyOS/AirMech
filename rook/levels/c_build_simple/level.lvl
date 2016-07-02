@@ -1,0 +1,1089 @@
+// map: c_build_simple
+
+// level embedded console commands 
+CONSOLE_IMMEDIATE rook setChallengeInfo destroy 4 60 /2star 120 /1star 240 /useAirMech Chopper /loseTime 240
+CONSOLE_IMMEDIATE menucmd OnChallengeMapStart
+CONSOLE_IMMEDIATE sym savedSet PilotCustom0 $ChalPilotComm
+CONSOLE_IMMEDIATE sym savedSet ItemCustom0 NoItem
+CONSOLE_IMMEDIATE sym set LessonObject LessonSocket
+CONSOLE_IMMEDIATE sym set ChallengeNumber 10
+CONSOLE sym set HasLessonIntro 1
+CONSOLE sym set LessonIntro Chal8_LessonIntro
+CONSOLE sym set HasLessonOutro 1
+CONSOLE sym set LessonOutro Chal8_LessonOutro
+CONSOLE sym set LessonOutroFail ChalN_LessonOutroFail
+CONSOLE sym set LessonOutroVeteran ChalN_LessonOutroVeteran
+CONSOLE if sym CSDes5 < $MinChalStarsForNoTip runnow pausegame 1
+CONSOLE if sym CSDes5 < $MinChalStarsForNoTip loadmenu Lesson
+CONSOLE if sym CSDes5 < $MinChalStarsForNoTip sym set ChallengeShowNext 1
+CONSOLE player 1 toggleai
+CONSOLE player 1 activate 0 // turns off forcebox
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_Canyon.mtl ToSand
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_EnvironmentMapped.mtl Canyon
+CONSOLE rook creditsIncomeMod set 500
+CONSOLE_IMMEDIATE sym set S_DLimit 12  // # of units to destroy
+CONSOLE_IMMEDIATE sym set S_DCount 0  // current # of built units - generated & checked in state controller
+CONSOLE_IMMEDIATE sym setZero ShowMinimap ShowAbilities //ShowUnitsBar
+CONSOLE_IMMEDIATE rook setArmy NoUnit NoUnit NoUnit NoUnit TurretDual NoUnit NoUnit NoUnit
+CONSOLE_IMMEDIATE rook setParts PriNone PriCheatDPS StrCheatArmor StrNone SpeCheatBuild SpeCheatMoney CorNone EngNone
+CONSOLE_EXIT_IMMEDIATE sym restore PilotCustom0 ItemCustom0
+CONSOLE_EXIT_IMMEDIATE sym setOne ShowPowerbar ShowMinimap ShowAbilities ShowUnitsBar
+CONSOLE_EXIT_IMMEDIATE rook restoreArmy
+CONSOLE_EXIT_IMMEDIATE rook restoreParts
+
+mapInfo {
+	MAPNAME c_build_simple
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION c_build_simple
+	SKYBOX mat_SkyBlueSmallClouds
+	TILESET Valley
+	EDGING ToGrass
+	GAMEMODE challengeDestroy
+	GAMESTYLE Skirmish
+	PREGAME_RADIUS 55
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT 0
+	AutoExtShadowCheckAtZHeight 1000
+	FORCEBOX -28 28 -25 30 4 0
+	MAPEXTMIN -62 -62 0
+	MAPEXTMAX 62 62 0
+	CAMERAEXTMIN -12 -35
+	CAMERAEXTMAX 12 5
+}
+
+mapBalance {
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Valley
+	TerrainArrayX 10
+	TerrainArrayY 10
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -6
+  TRANSFORMPLANE -1
+}
+
+fogValues {
+	FOGCOLOR 247 151 83 255
+	FOGARGS 14 13
+	DFOGCOLOR 255 255 255 255
+	DFOGCOLOR2 255 255 255 255
+	DFOGARGS 90 150
+	DFOGARGS2 90 150
+	CANVASCOLOR 0 0 0 0
+}
+
+airmech {
+	AILevel -1
+	Player 0 {
+		startLoc -5 5 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 1 {
+		startLoc -46 -46 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 2 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 3 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 4 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 5 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+}
+DIR_LIGHT {
+	pos 261.276978 544.938965 796.728027
+	dir 0.261277 0.544939 0.796728
+	diff 0.7 0.7 0.7
+	amb 0.6 0.5 0.4
+}
+EventScripts {
+}
+ActionScripts {
+}
+ScriptVariables {
+}
+objects {
+	WO Tank {
+		pos -41.202827 63.339024 -2.5
+		rot_x -0.996195 0.087156 0
+		rot_y -0.087156 -0.996195 0
+		id 1
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+	}
+	WO ArmoredCar {
+		pos -40.442909 51.842342 -2.499175
+		rot_x -0.965926 -0.258819 0
+		rot_y 0.258819 -0.965926 0
+		id 2
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+	}
+	WO ArmoredCar {
+		pos -41.116478 46.113308 -2.5
+		rot_x -0.965926 0.258819 0
+		rot_y -0.258819 -0.965926 0
+		id 3
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+	}
+	WO ArmoredCar {
+		pos -38.191898 60.618958 -2.500026
+		rot_x -0.939693 0.34202 0
+		rot_y -0.34202 -0.939693 0
+		id 4
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+	}
+	WO Tank {
+		pos -37.892208 45.666725 -2.499996
+		rot_x -0.996195 0.087156 0
+		rot_y -0.087156 -0.996195 0
+		id 5
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+	}
+	WO Tank {
+		pos -37.981087 54.54351 -2.499711
+		rot_x -0.965926 0.258819 0
+		rot_y -0.258819 -0.965926 0
+		id 6
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+	}
+	WO FortPadBase {
+		pos -8.841946 8.28548 0.090002
+		rot_x -0.642788 -0.766045 0
+		rot_y 0.766045 -0.642788 0
+		id 7
+		. team 0
+	}
+	WO Valley_C0 {
+		pos -32 48 -2.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A7 {
+		pos -24 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO FortPadBase {
+		pos -11.307254 4.186532 0.003174
+		rot_x -0.342021 -0.939693 0
+		rot_y 0.939693 -0.342021 0
+		id 8
+		. team 0
+	}
+	WO SurvivalProps_Tower {
+		pos -20.154837 26.321947 0
+	}
+	WO FortPadBase {
+		pos -4.968447 11.661392 0.002509
+		rot_x -0.939694 -0.342021 0
+		rot_y 0.342021 -0.939694 0
+		id 9
+		. team 0
+	}
+	WO Valley_A0 {
+		pos -32 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Valley_A0 {
+		pos -8 16 0
+		. mtmm 4
+	}
+	WO Valley_A5 {
+		pos -8 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_B0 {
+		pos -16 -8 0
+		. mtmm 8
+	}
+	WO Valley_A0 {
+		pos -16 40 0
+	}
+	WO Valley_A0 {
+		pos -16 32 0
+	}
+	WO Valley_A0 {
+		pos 24 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_D0 {
+		pos -32 40 -2.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_A1 {
+		pos -24 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_A0 {
+		pos -32 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Valley_C3 {
+		pos -32 64 -2.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos 24 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_D0 {
+		pos -16 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 24 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 16 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 8 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Valley_A8 {
+		pos -16 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Valley_A8 {
+		pos -8 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Valley_A2 {
+		pos 0 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 10
+	}
+	WO Valley_A0 {
+		pos 8 16 0
+		. mtmm 4
+	}
+	WO Valley_A0 {
+		pos 16 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_C0 {
+		pos -8 -24 0
+		. mtmm 2
+	}
+	WO Valley_C0 {
+		pos 32 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A6 {
+		pos -16 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Valley_A3 {
+		pos -8 8 0
+		. mtmm 1
+	}
+	WO Valley_Aa {
+		pos 16 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -16 24 0
+	}
+	WO Valley_A0 {
+		pos 16 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -8 32 0
+	}
+	WO Valley_A0 {
+		pos -8 40 0
+	}
+	WO Valley_A0 {
+		pos 24 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 24 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 32 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A2 {
+		pos -24 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Valley_A0 {
+		pos 8 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 16 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_A0 {
+		pos 16 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A1 {
+		pos 0 8 0
+		. mtmm 2
+	}
+	WO Valley_A0 {
+		pos 16 8 0
+	}
+	WO Valley_A0 {
+		pos 16 16 0
+	}
+	WO Valley_B0 {
+		pos 0 -24 0
+		. mtmm 1
+	}
+	WO Valley_A0 {
+		pos 8 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 40 -16 2.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_C0 {
+		pos -32 56 -2.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A2 {
+		pos -24 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_A0 {
+		pos 24 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A3 {
+		pos -24 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_A0 {
+		pos -32 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos -24 64 0
+	}
+	WO Valley_A0 {
+		pos 40 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_D0 {
+		pos -24 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -32 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos 8 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 40 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos 40 16 2.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos 32 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -8 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Valley_A0 {
+		pos 0 24 0
+	}
+	WO Valley_A0 {
+		pos 0 40 0
+	}
+	WO Valley_A8 {
+		pos -24 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Valley_B0 {
+		pos -24 0 0
+		. mtmm 2
+	}
+	WO Valley_A0 {
+		pos 24 8 0
+	}
+	WO Valley_B0 {
+		pos 24 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_B0 {
+		pos 24 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos 40 -8 2.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 40 0 2.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_A7 {
+		pos 8 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Valley_A7 {
+		pos 0 0 0
+		. mtmm 8
+	}
+	WO Valley_A0 {
+		pos 16 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_A0 {
+		pos 0 32 0
+	}
+	WO Valley_C0 {
+		pos -16 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Valley_A7 {
+		pos 8 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 5
+	}
+	WO Valley_Aa {
+		pos -24 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Valley_A0 {
+		pos 0 16 0
+		. mtmm 8
+	}
+	WO Valley_A0 {
+		pos -32 -8 2.5
+	}
+	WO Valley_A0 {
+		pos 32 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -24 -24 2.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_C0 {
+		pos -32 0 0
+	}
+	WO Valley_A8 {
+		pos -16 16 0
+		. mtmm 8
+	}
+	WO Valley_A0 {
+		pos 40 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -32 -24 2.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -32 -16 2.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -8 24 0
+	}
+	WO Valley_A0 {
+		pos 8 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_C0 {
+		pos 32 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos -24 -16 2.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 40 8 2.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_C0 {
+		pos 32 24 0
+	}
+	WO Valley_D0 {
+		pos 32 16 0
+	}
+	WO Valley_C0 {
+		pos 40 24 0
+	}
+	WO Valley_C1 {
+		pos 32 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_C6 {
+		pos 32 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos 0 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Valley_A7 {
+		pos 8 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO ValleyTrees_A {
+		pos 45.896156 4.479849 3.509996
+		rot_x -0.965926 -0.258819 0
+		rot_y 0.258819 -0.965926 0
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyTrees_A {
+		pos 9.630994 33.609032 -0.630002
+		rot_x 0.087156 -0.996195 0
+		rot_y 0.996195 0.087156 0
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyTrees_A {
+		pos 44.858719 35.876831 1.922484
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyTrees_A {
+		pos 25.963213 -19.983656 2.60649
+		rot_x -0.173648 0.984808 0
+		rot_y -0.984808 -0.173648 0
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO Valley_A0 {
+		pos -40 64 -2.5
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_A0 {
+		pos -40 56 -2.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos -40 48 -2.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_C0 {
+		pos -40 40 -2.5
+	}
+	WO Valley_A0 {
+		pos -40 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos -40 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -40 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos -40 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_C0 {
+		pos -40 0 0
+	}
+	WO Valley_A0 {
+		pos -40 -8 2.5
+	}
+	WO Valley_A0 {
+		pos -40 -16 2.5
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO ValleyTrees_A {
+		pos -41.315403 22.54487 -0.329488
+		rot_x -0.984808 -0.173648 0
+		rot_y 0.173648 -0.984808 0
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyTrees_B {
+		pos -23.254103 -15.794023 2.250015
+		rot_x -0.422618 -0.906308 0
+		rot_y 0.906308 -0.422618 0
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyTrees_B {
+		pos -32.187347 -7.498986 5.010013
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyProps_Fence {
+		pos -21.214453 -2.41559 -0.305596
+		rot_x -0.469004 0.867386 0.166366
+		rot_y -0.733194 -0.277359 -0.620885
+		rot_z -0.492404 -0.413176 0.766044
+	}
+	WO ValleyProps_Fence {
+		pos -28.655787 2.480658 0.158449
+		rot_x -0.975485 -0.144056 0.166366
+		rot_y 0.009865 -0.78384 -0.620885
+		rot_z 0.219846 -0.604023 0.766044
+	}
+	WO ValleyProps_CartEmpty {
+		pos -11.975781 -12.793338 0.01373
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO ValleyProps_Logs {
+		pos -5.17141 -12.818016 0.219355
+		scl 0.69
+	}
+	WO ValleyProps_TrainCart2 {
+		pos 5.418855 -21.616646 -0.0023
+		rot_x -0.422618 -0.906308 0
+		rot_y 0.906308 -0.422618 0
+	}
+	WO ValleyProps_LumberMill {
+		pos -3.907039 -16.97299 -0.21
+		rot_x 0 1.000001 0
+		rot_y -1.000001 0 0
+	}
+	WO ValleyProps_CartEmpty {
+		pos -11.167362 -9.415337 0.000018
+		rot_x -0.34202 -0.939693 0
+		rot_y 0.939693 -0.34202 0
+	}
+	WO ValleyProps_CartFull {
+		pos -12.816496 -7.739289 0
+		rot_x 0.707107 -0.707107 0
+		rot_y 0.707107 0.707107 0
+		scl 0.81
+	}
+	WO ValleyProps_Fence {
+		pos -12.851451 -16.330257 0.303445
+		rot_x 0.113327 0.979531 0.166366
+		rot_y -0.759684 0.193344 -0.620885
+		rot_z -0.640342 -0.056023 0.766044
+	}
+	WO ValleyProps_Fence {
+		pos -12.884834 -10.515081 0.086377
+		rot_x -0.228527 0.959218 0.166366
+		rot_y -0.779997 -0.078143 -0.620885
+		rot_z -0.582563 -0.271654 0.766044
+	}
+	WO ValleyProps_Hut {
+		pos 0.058291 19.80616 0
+		rot_x -1.000001 0 0
+		rot_y 0 -1.000001 0
+		scl 0.82
+	}
+	WO SurvivalProps_Tower {
+		pos -27.339676 26.056353 0.000298
+	}
+	WO SaltCrate {
+		pos -0.727373 15.611555 0
+		rot_x 0.707107 -0.707107 0.000014
+		rot_y 0.707107 0.707107 0
+		rot_z -0.00001 0.00001 1
+	}
+	WO SaltHouse3 {
+		pos 7.732486 22.721205 0
+		rot_x 0.999995 0.003329 0
+		rot_y -0.003329 0.999995 0
+		scl 0.67
+	}
+	WO Fence_Large {
+		pos -31.596849 26.17012 0.000456
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Fence_Large {
+		pos -28.82863 26.334648 -0.000176
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+	}
+	WO Fence_Large {
+		pos -9.697888 26.580223 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Fence_Large {
+		pos -12.496778 26.605268 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Fence_Large {
+		pos -15.255211 26.580238 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Fence_Door {
+		pos -17.974426 26.54113 0
+		rot_x 0 1.000001 0
+		rot_y -1.000001 0 0
+	}
+	WO Fence_PathOk {
+		pos -22.38138 27.372528 0.026682
+		rot_x 0.422618 0.906308 0
+		rot_y -0.906308 0.422618 0
+	}
+	WO Fence_Medium {
+		pos -2.368997 19.860729 0
+		rot_x 0 1.000001 0
+		rot_y -1.000001 0 0
+	}
+	WO ChasmProps_FenceRegular {
+		pos 14.509907 21.884094 0.000015
+		rot_x 0.087156 0.996195 0
+		rot_y -0.996195 0.087156 0
+	}
+	WO Fence_PathOk {
+		pos -25.448406 27.503843 0.027518
+		rot_x -0.573577 0.819152 0
+		rot_y -0.819152 -0.573577 0
+	}
+	WO Valley_A0 {
+		pos -48 48 -2.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO TankHeavy {
+		pos -49.159607 48.073494 -2.499844
+		rot_x -0.996195 0.087156 0
+		rot_y -0.087156 -0.996195 0
+		id 10
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+		. abductRes 0.5
+	}
+	WO Bike {
+		pos -41.449406 56.904819 -2.5
+		rot_x 0.866025 -0.5 0
+		rot_y 0.5 0.866025 0
+		id 11
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+	}
+	WO Bike {
+		pos -44.413311 49.098217 -2.5
+		rot_x 0.866025 -0.5 0
+		rot_y 0.5 0.866025 0
+		id 12
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+	}
+	WO Bike {
+		pos -37.428341 49.957615 -2.5
+		rot_x 0.866025 -0.5 0
+		rot_y 0.5 0.866025 0
+		id 13
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+	}
+	WO Valley_A0 {
+		pos -56 48 -2.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos -64 48 -2.5
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO TankHeavy {
+		pos -61.477764 48.19376 -2.499993
+		rot_x -0.996195 0.087156 0
+		rot_y -0.087156 -0.996195 0
+		id 14
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+		. abductRes 0.5
+	}
+	WO TankHeavy {
+		pos -55.2845 48.147079 -2.499994
+		rot_x -0.996195 0.087156 0
+		rot_y -0.087156 -0.996195 0
+		id 15
+		. team 1
+		. order CaptureOutpost
+		. dInc S_DCount
+		. abductRes 0.5
+	}
+	WO Valley_A0 {
+		pos -8 48 0
+	}
+	WO Valley_A0 {
+		pos -16 48 0
+	}
+	WO Valley_A0 {
+		pos -16 56 0
+	}
+	WO Valley_A0 {
+		pos -16 64 0
+	}
+	WO Valley_A0 {
+		pos -8 56 0
+	}
+	WO Valley_A0 {
+		pos -8 64 0
+	}
+	WO Valley_A0 {
+		pos 0 48 0
+	}
+	WO Valley_A0 {
+		pos 0 56 0
+	}
+	WO Valley_A0 {
+		pos 0 64 0
+	}
+	WO Valley_A0 {
+		pos 8 48 0
+	}
+	WO Valley_A0 {
+		pos 8 56 0
+	}
+	WO Valley_A0 {
+		pos 8 64 0
+	}
+	WO Valley_A0 {
+		pos 40 48 0
+	}
+	WO Valley_A0 {
+		pos 32 48 0
+	}
+	WO Valley_A0 {
+		pos 24 48 0
+	}
+	WO Valley_A0 {
+		pos 16 48 0
+	}
+	WO Valley_A0 {
+		pos 40 56 0
+	}
+	WO Valley_A0 {
+		pos 32 56 0
+	}
+	WO Valley_A0 {
+		pos 24 56 0
+	}
+	WO Valley_A0 {
+		pos 16 56 0
+	}
+	WO Valley_A0 {
+		pos 40 64 0
+	}
+	WO Valley_A0 {
+		pos 32 64 0
+	}
+	WO Valley_A0 {
+		pos 24 64 0
+	}
+	WO Valley_A0 {
+		pos 16 64 0
+	}
+}
+
+details {
+	d ValleyProps_TreeStump -1 0.61 0 0 0 0.61 0 0 0 0.61 -27.420271 20.163799 0
+	d ValleyProps_TreeStump -1 0.499683 0.349882 0 -0.349882 0.499683 0 0 0 0.61 -13.057178 22.360094 0
+	d ValleyProps_TreeStump -1 0.499683 -0.349882 0 0.349882 0.499683 0 0 0 0.61 -15.100548 33.088341 0.001582
+	d CactusA -1 1.100145 0.571864 0.224177 -0.597421 1.103078 0.117936 -0.14273 -0.209267 1.234277 -28.433708 8.300276 -9.361506
+	d CactusA -1 -0.451179 1.035061 -0.157122 -1.023186 -0.399735 0.304798 0.221647 0.261652 1.087203 22.900093 12.199101 -8.739451
+	d CactusA -1 1.080424 -0.991214 0.265098 0.984138 1.11001 0.139464 -0.29027 0.073967 1.45958 -19.173437 8.271108 -8.910991
+	d CactusA -1 -0.028528 -1.12876 -0.157122 1.096257 -0.070135 0.304798 -0.311459 -0.143466 1.087203 21.477432 11.766097 -8.646435
+	d CactusA -1 -0.061351 -1.386148 0.250865 1.403291 -0.038222 0.131976 -0.122944 0.255413 1.381214 -19.277487 10.187945 -9.254331
+	d FortPadCablesA -1 0.866026 0.500001 0 -0.500001 0.866026 0 0 0 1.000001 -3.950576 7.532457 0.00083
+	d FortPadCablesB -1 0.642789 0.766045 0 -0.766045 0.642789 0 0 0 1.000001 -4.374779 5.255322 0.176879
+	d FortPadCablesC -1 0.422618 0.906309 0 -0.906309 0.422618 0 0 0 1.000001 -7.062725 3.261175 0.183265
+	d ValePlantTreeA -1 1 0 0 0 1 0 0 0 1 -3.127191 22.212299 1.887171
+	d ValePlantTreeA -1 1 0 0 0 1 0 0 0 1 -17.843367 -4.859801 1.720013
+	d ValePlantTreeA -1 1 0 0 0 1 0 0 0 1 34.536156 -3.031491 3.029997
+	d ValePlantTreeA -1 0.34202 -0.939693 0 0.939693 0.34202 0 0 0 1 -11.55889 -5.554537 1.110032
+	d ValePlantTreeB -1 1 0 0 0 1 0 0 0 1 3.119328 21.202515 2.29
+	d ValePlantTreeB -1 1 0 0 0 1 0 0 0 1 35.292923 2.722989 4.278689
+	d ValePlantTreeD -1 1 0 0 0 1 0 0 0 1 -14.461052 -3.941928 2.110002
+	d ValePlantTreeD -1 1.23 0 0 0 1.23 0 0 0 1.23 10.942077 19.919577 2.07
+	d ValePlantTreeD -1 -1.22532 0.107202 0 -0.107202 -1.22532 0 0 0 1.23 16.091389 -9.243504 2.069998
+	d ValePlantTreeD -1 1 0 0 0 1 0 0 0 1 -15.482162 -1.798182 1.590023
+	d ValePlantTreeD -1 1 0 0 0 1 0 0 0 1 -3.105805 18.647596 1.777472
+	d ValePlantTreeE -1 0.82 0 0 0 0.82 0 0 0 0.82 -18.918699 -1.186932 0.016285
+	d ValePlantTreeE -1 0.291607 -0.625353 0 0.625353 0.291607 0 0 0 0.69 -26.695911 3.710493 0
+	d ValePlantTreeE -1 0.82 0 0 0 0.82 0 0 0 0.82 -24.907051 -7.645339 1.636285
+	d ValePlantTreeF -1 -0.866026 -0.5 0 0.5 -0.866026 0 0 0 1 -23.006397 2.913918 1.31945
+	d ValePlantTreeF -1 1 0 0 0 1 0 0 0 1 18.752007 -4.181792 1.500002
+	d ValePlantTreeF -1 1 0 0 0 1 0 0 0 1 -28.882896 14.801556 1.270001
+	d ValePlantTreeF -1 1 0 0 0 1 0 0 0 1 -5.819923 19.284563 1.500051
+	d ValePlantTreeG -1 1 0 0 0 1 0 0 0 1 -26.694206 12.83894 0.100014
+	d ValePlantTreeG -1 1 0 0 0 1 0 0 0 1 -16.312424 -1.169823 0
+	d ValePlantTreeG -1 1 0 0 0 1 0 0 0 1 2.422169 18.245369 0
+	d ValePlantTreeG -1 -0.173648 -0.984808 0 0.984808 -0.173648 0 0 0 1 -8.627588 18.248236 0.000111
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable true
+  layer 2 name "volumes" visible true pickable true
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible true pickable true
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+	PF OutpostV2.txt {
+		pos 0 0 0
+		rot 0 0 0
+		id 18
+		/shfnv 825153392 ". latchInf Infantry Infantry Infantry Infantry"
+		/shfnv 2369371622 ". name U_Outpost_C"
+		/shfnv 2734521612 ". team 0"
+	}
+}

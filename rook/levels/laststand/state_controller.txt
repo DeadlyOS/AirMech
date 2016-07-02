@@ -1,0 +1,240 @@
+StateController Lvl_LastStand {
+#include Lvl_CommonStates
+State initial {
+In 0.0 "sym setNSet 60 UpkeepTeam0_ -1"
+In 0.0 "sym setNSet 60 UpkeepTeam1_ -1"
+In 0.0 "sym set _UTInc_ 0"
+}
+State Init {
+DoL 0.0 sym set CSWave Wave1
+DoL 0.0 sym set WaveMax 100
+DoL 0.0 sym set CSWaveExe WaveInf
+DoL 0.0 sym setNSet 16 CSWaveCountT 0
+DoL 0.0 sym setNSet 16 CSWaveMaxT 0
+DoL 0.0 sym setNSet 16 CSWaveSizeT 4
+DoL 0.0 sym set CSWaveSizeT5 32
+DoL 0.0 sym setNSet 16 CSWaveUnitT Infantry
+DoL 0.0 sym setNSet 16 CSWaveProgT
+DoL 0.0 sym set CSWaveProgT0 "/unit Infantry /unit BikeSurvival /unit BikeSidecar /unitWaveMod 3 /waveMinMaxDiv 2 4 2 /stopAfterWave 10 /neverOnWaves 10 15 30 50 60 70 80 90 100"
+DoL 0.0 sym set CSWaveProgT1 "/unit TankLight /unit Tank /unitWaveSubDiv 3 5 /waveMinMaxDiv 1 3 3 /ignoreBeforeWave 3 /neverOnWaves 10 15 30 50 60 70 80 90 100"
+DoL 0.0 sym set CSWaveProgT2 "/unit InfantryRocket /unit RocketTruckSurvival /unitWaveSubMod 8 5 /waveMinMaxDiv 2 5 4 /ignoreBeforeWave 8 /neverOnWaves 10 15 30 50 60 70 80 90 100"
+DoL 0.0 sym set CSWaveProgT3 "/unit ArmoredCarSurvival /unit TankLight /unit Tank /unit MonsterTankSurvival /unitWaveSubDiv 1 6 /waveNum 1 /ignoreBeforeWave 2 /neverOnWaves 10 15 30 50 60 70 80 90 100"
+DoL 0.0 sym set CSWaveProgT4 "/unit NA /unit NA /unit SAMSurvivalL1 /unit SAMSurvivalL2 /unit SAMSurvivalL3 /unitWaveMod 5 /waveMinMaxDiv 1 3 6 /neverOnWaves 10 15 30 50 60 70 80 90 100"
+DoL 0.0 sym set CSWaveProgT5 "/unit CreeperSurvival /useUnit 0 /waveMinMaxDiv 1 6 12 /onExactWaves 10 15 30 50 60 70 80 90 100"
+DoL 0.0 sym set CSWaveProgT6 "/unit DroneBomber /useUnit 0 /waveMinMaxDiv 1 5 10"
+DoL 0.0 sym set CSWaveProgT7 "/unit DroneAbduct /useUnit 0 /waveMinMaxDiv 1 3 15"
+DoL 0.0 sym set CSWaveProgT10 "/unit BerthaUSurvival /useUnit 0 /waveNum 1 /onExactWaves 30 40 50 55 60 65 70 75 80 85 90 95 100 >100"
+DoL 0.0 sym set CSWaveProgT11 "/unit Bertha /useUnit 0 /waveNum 1 /onExactWaves 20 23 26"
+DoL 0.0 sym set CSWaveProgT12 "/unit TurretArtillery /useUnit 0 /waveNum 1 /onExactWaves 5 9 14 18"
+DoL 0.0 sym set CSWaveProgT13 "/unit TankHeavySurvival /useUnit 0 /waveNum 1 /onExactWaves 12 15 20 25 30 /neverOnWaves 10 15 30 50 60 70 80 90 100"
+DoL 0.0 sym set CSWaveProgT14 "/unit TankFlakSurvival /useUnit 0 /waveMinMaxSubDiv 1 6 18 5 /ignoreBeforeWave 18 /neverOnWaves 10 15 30 50 60 70 80 90 100"
+DoL 0.0 sym set CSWaveProgT15 "/unit MonsterTankSurvival /unit TankHeavySurvival /unitWaveMod 2 /waveMinMaxSubDiv 1 10 15 5 /ignoreBeforeWave 15 /neverOnWaves 10 15 30 50 60 70 80 90 100"
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 sym set S_Wave 1
+DoL 0.0 sym set CSWave_This 0
+DoL 0.0 rook powerGenMod set 0
+DoL 0.0 rook compute survivalInfRange 1 100
+DoL 0.0 rook compute survivalInfNext 1
+}
+State Tick {
+Do 0.0 "rook doLevelState $$CSWaveExe"
+Do 0.0 "rook doLevelState TickCreeps"
+Do 0.0 "rook doLevelState BlockCheck"
+DoL 0.0 if sym MatchOver == 0 rook doLevelState UpkeepTrack
+}
+State TickCreeps {
+Cfg timeBlock 0.25
+Do 0.0 "rook doLevelState NormalSpawn"
+}
+State BlockCheck {
+Cfg timeBlock 1.0
+Do 0.0 "rook survivalBlockCheck 240"
+}
+State NormalSpawn {
+DoL 0.0 if gameValidation spCr_p0 rook doLevelState CreepSpawnTeam0
+}
+State CreepSpawnTeam0 {
+DoL 0.0 |rook spawnCreepBegin 0
+DoL 1.0 |rook spawnCreep 0
+DoL 1.5 |rook spawnCreep 0
+DoL 2.0 |rook spawnCreep 0
+DoL 5.0 |rook spawnCreepEnd 0
+}
+State WaveWaitingDummy {
+Cfg timeBlock 5.0
+}
+State WaveCompleteCommon {
+DoL 0.0 |sym set CSWaveExe WaveWaitingDummy
+DoL 0.0 |sym inc CSWave_This
+DoL 0.0 |gamemsg addf_u SrvWaveCompleted
+DoL 3.0 |rook powerGenMod incToMax 8 64 _incres_
+DoL 3.0 |if sym _incres_ == 1 runnow gamemsg addf_u SrvMorePower
+DoL 6.0 |gamemsg addf_u SrvNextWave
+DoL 9.0 |sym set S_DCount 0
+DoL 9.0 |sym setNSet 16 CSWaveCountT 0
+DoL 9.0 |floatSym set waveProgress 1.0
+DoL 9.0 |sym inc S_Wave
+DoL 9.0 |sym setConcat2 CSWave_Next Wave $$S_Wave
+DoL 9.0 |sym set CSWave ##Wave@S_Wave@
+DoL 9.0 |rook compute survivalInfNext $$S_Wave
+DoL 9.0 |sym set CSWaveExe WaveInf
+}
+State WaveInf {
+Cfg timeBlock 4.0
+DoL 0.0 rook compute survivalInf
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCountT0 < $$CSWaveMaxT0 |rook doLevelState WaveT0Spawn
+DoL 0.0 if sym CSWaveCountT1 < $$CSWaveMaxT1 |rook doLevelState WaveT1Spawn
+DoL 0.0 if sym CSWaveCountT2 < $$CSWaveMaxT2 |rook doLevelState WaveT2Spawn
+DoL 0.0 if sym CSWaveCountT3 < $$CSWaveMaxT3 |rook doLevelState WaveT3Spawn
+DoL 0.0 if sym CSWaveCountT4 < $$CSWaveMaxT4 |rook doLevelState WaveT4Spawn
+DoL 0.0 if sym CSWaveCountT5 < $$CSWaveMaxT5 |rook doLevelState WaveT5Spawn
+DoL 0.0 if sym CSWaveCountT6 < $$CSWaveMaxT6 |rook doLevelState WaveT6Spawn
+DoL 0.0 if sym CSWaveCountT7 < $$CSWaveMaxT7 |rook doLevelState WaveT7Spawn
+DoL 0.0 if sym CSWaveCountT8 < $$CSWaveMaxT8 |rook doLevelState WaveT8Spawn
+DoL 0.0 if sym CSWaveCountT9 < $$CSWaveMaxT9 |rook doLevelState WaveT9Spawn
+DoL 0.0 if sym CSWaveCountT10 < $$CSWaveMaxT10 |rook doLevelState WaveT10Spawn
+DoL 0.0 if sym CSWaveCountT11 < $$CSWaveMaxT11 |rook doLevelState WaveT11Spawn
+DoL 0.0 if sym CSWaveCountT12 < $$CSWaveMaxT12 |rook doLevelState WaveT12Spawn
+DoL 0.0 if sym CSWaveCountT13 < $$CSWaveMaxT13 |rook doLevelState WaveT13Spawn
+DoL 0.0 if sym CSWaveCountT14 < $$CSWaveMaxT14 |rook doLevelState WaveT14Spawn
+DoL 0.0 if sym CSWaveCountT15 < $$CSWaveMaxT15 |rook doLevelState WaveT15Spawn
+DoL 0.0 if sym S_DCount >= $$S_DCount_ForInf |rook doLevelState WaveInfComplete
+}
+State WaveT0Spawn {
+DoL 0.0 sym inc CSWaveCountT0
+DoL 0.0 spawn $CSWaveUnitT0 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 0.2 spawn $CSWaveUnitT0 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 112 0 0
+DoL 0.4 spawn $CSWaveUnitT0 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -110 0 0
+DoL 0.6 spawn $CSWaveUnitT0 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 0 -112 0
+}
+State WaveT1Spawn {
+DoL 0.0 sym inc CSWaveCountT1
+DoL 0.0 spawn $CSWaveUnitT1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 0.2 spawn $CSWaveUnitT1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 112 0 0
+DoL 0.4 spawn $CSWaveUnitT1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -110 0 0
+DoL 0.6 spawn $CSWaveUnitT1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 0 -112 0
+}
+State WaveT2Spawn {
+DoL 0.0 sym inc CSWaveCountT2
+DoL 0.0 spawn $CSWaveUnitT2 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 61 60 0
+DoL 0.0 spawn $CSWaveUnitT2 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -61 60 0
+DoL 0.0 spawn $CSWaveUnitT2 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 61 -60 0
+DoL 0.0 spawn $CSWaveUnitT2 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -61 -60 0
+}
+State WaveT3Spawn {
+DoL 0.0 sym inc CSWaveCountT3
+DoL 1.0 spawn $CSWaveUnitT3 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 1.2 spawn $CSWaveUnitT3 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 112 0 0
+DoL 1.4 spawn $CSWaveUnitT3 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -110 0 0
+DoL 1.6 spawn $CSWaveUnitT3 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 0 -112 0
+}
+State WaveT4Spawn {
+DoL 0.0 sym inc CSWaveCountT4
+DoL 0.0 spawn $CSWaveUnitT4 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -60 61 0
+DoL 0.0 spawn $CSWaveUnitT4 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -60 61 0
+DoL 0.0 spawn $CSWaveUnitT4 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 60 -61 0
+DoL 0.0 spawn $CSWaveUnitT4 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 60 -61 0
+}
+State WaveT5Spawn {
+DoL 0.0 sym inc CSWaveCountT5
+DoL 0.0 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 61 61 0
+DoL 0.0 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -61 61 0
+DoL 0.0 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 61 -61 0
+DoL 0.0 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -61 -61 0
+DoL 0.2 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 60 62 0
+DoL 0.2 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -60 62 0
+DoL 0.2 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 60 -62 0
+DoL 0.2 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -60 -62 0
+DoL 0.4 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 62 60 0
+DoL 0.4 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -62 60 0
+DoL 0.4 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 62 -60 0
+DoL 0.4 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -62 -60 0
+DoL 0.6 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 61 62 0
+DoL 0.6 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -61 62 0
+DoL 0.6 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 61 -62 0
+DoL 0.6 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -61 -62 0
+DoL 1.0 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 1.0 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 112 0 0
+DoL 1.0 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -110 0 0
+DoL 1.0 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 0 -112 0
+DoL 1.2 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 1.2 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 112 0 0
+DoL 1.2 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -110 0 0
+DoL 1.2 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 0 -112 0
+DoL 1.4 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 1.4 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 112 0 0
+DoL 1.4 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -110 0 0
+DoL 1.4 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 0 -112 0
+DoL 1.6 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 1.6 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 112 0 0
+DoL 1.6 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -110 0 0
+DoL 1.6 spawn $CSWaveUnitT5 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 0 -112 0
+}
+State WaveT6Spawn {
+DoL 0.0 sym inc CSWaveCountT6
+DoL 0.0 spawn $CSWaveUnitT6 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 70 40 2
+DoL 0.0 spawn $CSWaveUnitT6 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -70 -40 2
+DoL 0.0 spawn $CSWaveUnitT6 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 40 -70 2
+DoL 0.0 spawn $CSWaveUnitT6 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -40 70 2
+}
+State WaveT7Spawn {
+DoL 0.0 sym inc CSWaveCountT7
+DoL 0.0 spawn $CSWaveUnitT7 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 70 -40 2
+DoL 0.0 spawn $CSWaveUnitT7 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -70 40 2
+DoL 0.0 spawn $CSWaveUnitT7 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -40 -70 2
+DoL 0.0 spawn $CSWaveUnitT7 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 40 70 2
+}
+State WaveT8Spawn {
+DoL 0.0 sym inc CSWaveCountT8
+}
+State WaveT9Spawn {
+DoL 0.0 sym inc CSWaveCountT9
+}
+State WaveT10Spawn {
+DoL 0.0 sym inc CSWaveCountT10
+DoL 0.0 state .left do ProduceUnitSurvival $CSWaveUnitT10 left
+DoL 0.0 state .right do ProduceUnitSurvival $CSWaveUnitT10 right
+DoL 0.0 state .top do ProduceUnitSurvival $CSWaveUnitT10 top
+DoL 0.0 state .bottom do ProduceUnitSurvival $CSWaveUnitT10 bottom
+}
+State WaveT11Spawn {
+DoL 0.0 sym inc CSWaveCountT11
+DoL 0.0 state .left do ProduceUnitSurvival $CSWaveUnitT11 left
+DoL 0.0 state .right do ProduceUnitSurvival $CSWaveUnitT11 right
+DoL 0.0 state .top do ProduceUnitSurvival $CSWaveUnitT11 top
+DoL 0.0 state .bottom do ProduceUnitSurvival $CSWaveUnitT11 bottom
+}
+State WaveT12Spawn {
+DoL 0.0 sym inc CSWaveCountT12
+DoL 0.0 state .left do ProduceUnitSurvival $CSWaveUnitT12 left
+DoL 0.0 state .right do ProduceUnitSurvival $CSWaveUnitT12 right
+DoL 0.0 state .top do ProduceUnitSurvival $CSWaveUnitT12 top
+DoL 0.0 state .bottom do ProduceUnitSurvival $CSWaveUnitT12 bottom
+}
+State WaveT13Spawn {
+DoL 0.0 sym inc CSWaveCountT13
+DoL 2.0 spawn $CSWaveUnitT13 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 60 60 0
+DoL 2.2 spawn $CSWaveUnitT13 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -60 60 0
+DoL 2.4 spawn $CSWaveUnitT13 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 60 -60 0
+DoL 2.6 spawn $CSWaveUnitT13 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -60 -60 0
+}
+State WaveT14Spawn {
+DoL 0.0 sym inc CSWaveCountT14
+DoL 2.0 spawn $CSWaveUnitT14 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 2.2 spawn $CSWaveUnitT14 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 112 0 0
+DoL 2.4 spawn $CSWaveUnitT14 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -110 0 0
+DoL 2.6 spawn $CSWaveUnitT14 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 0 -112 0
+}
+State WaveT15Spawn {
+DoL 0.0 sym inc CSWaveCountT15
+DoL 3.0 spawn $CSWaveUnitT15 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 3.2 spawn $CSWaveUnitT15 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 112 0 0
+DoL 3.4 spawn $CSWaveUnitT15 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos -110 0 0
+DoL 3.6 spawn $CSWaveUnitT15 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 0 -112 0
+}
+State WaveInfComplete {
+Cfg timeBlock 5.0
+DoL 0.0 rook doLevelState WaveCompleteCommon
+}
+}

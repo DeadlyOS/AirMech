@@ -1,0 +1,2402 @@
+// map: microtest
+
+mapInfo {
+	MAPNAME microtest
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION Arena
+	SKYBOX SkyBlueSmallClouds
+	GAMEMODE custom
+	GAMESTYLE Skirmish
+	PREGAME_RADIUS 55
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT 0
+	AutoExtShadowCheckAtZHeight 1000
+	FORCEBOX -30 30 -30 30 4 45
+	MAPEXTMIN -62 -62 0
+	MAPEXTMAX 62 62 0
+	CAMERAEXTMIN -20 -20
+	CAMERAEXTMAX 20 20
+}
+
+mapBalance {
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Canyon
+	TerrainArrayX 10
+	TerrainArrayY 10
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -6
+  TRANSFORMPLANE -4
+}
+
+fogValues {
+	FOGCOLOR 153 102 51 255
+	FOGARGS 11 16
+	DFOGCOLOR 255 255 255 255
+	DFOGCOLOR2 255 255 255 255
+	DFOGARGS 90 150
+	DFOGARGS2 90 150
+	CANVASCOLOR 0 0 0 0
+}
+
+gamelocations {
+	GL {
+		name refuel
+		shape 0
+		pos -8.239133 -7.910517 0.003441
+		radius 2
+	}
+	GL {
+		name weapon
+		shape 0
+		pos -16.951038 -4.440158 -0.000956
+		radius 2
+	}
+	GL {
+		name bomb2
+		shape 0
+		pos 36.540497 -19.438488 15.091434
+		radius 1
+	}
+	GL {
+		name bomb1
+		shape 0
+		pos 21.528603 -34.902515 15.097404
+		radius 3
+	}
+	GL {
+		name start
+		shape 0
+		pos -6.099729 9.946821 0.006279
+		radius 12
+	}
+	GL {
+		name airmech
+		shape 0
+		pos 2.609127 3.903374 0
+		radius 1
+	}
+}
+combos {
+combo repairpad {
+	pos -18.119827 -4.485317 0.135001
+	WO SandrimProps_ContainerOpen {
+		pos -19.002964 -4.952741 0.160002
+		rot_x 0.01368 0.999906 0
+		rot_y -0.999906 0.01368 0
+		scl 0.49
+		id 42
+	}
+	WO SandrimProps_Crane1 {
+		pos -18.817974 -6.500656 0.16
+		rot_x 0.9334 0.358838 0
+		rot_y -0.358838 0.9334 0
+		scl 0.62
+		id 43
+	}
+	WO SandrimProps_Crane2 {
+		pos -17.772049 -1.9332 0.160002
+		id 44
+	}
+	WO ElevatorPlatform {
+		pos -16.886318 -4.55467 0.06
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.93
+		id 45
+		. escc
+	}
+}
+combo repairpad {
+	pos -21.912214 5.260926 1.020001
+}
+combo repairpad {
+	pos -21.268398 6.735975 0.018
+}
+combo repairpad {
+	pos -20.437286 8.124093 4.570915
+}
+combo repairpad {
+	pos -19.076714 6.954095 4.588914
+}
+}
+airmech {
+	AILevel -1
+	Player 0 {
+		startLoc 21.01635 -12.297113 3
+		startLevel 0
+		pilot dynamic 
+		airmech FighterNeo
+		aiScript dynamic 
+	}
+	Player 1 {
+		startLoc -46 -46 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 2 {
+		startLoc 21.107447 -12.206247 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 3 {
+		startLoc 21.498985 -12.409882 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 4 {
+		startLoc 21.578711 -11.997423 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 5 {
+		startLoc 21.469202 -11.963144 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 6 {
+		startLoc 20.444794 -12.678453 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 7 {
+		startLoc 20.563408 -12.551075 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+}
+DIR_LIGHT {
+	dir 0.306807 0.639899 0.704555
+	diff 0.7 0.4 0.6
+	amb 0.8 0.7 0.7
+}
+EventScripts {
+	EVT game start true {
+		enabled 1
+		Core {
+			GameStart {
+			}
+		}
+	}
+	EVT continuous true {
+		enabled 1
+		Core {
+			Continuous {
+				delay 0.25
+			}
+		}
+	}
+	EVT 2 second continuous true {
+		enabled 1
+		Core {
+			Continuous {
+				delay 2
+			}
+		}
+	}
+}
+ActionScripts {
+	ACT no recharge {
+		triggerEvent game start true
+		Conditions {
+		}
+		Commands {
+			Control {
+				option energyRegen
+				player 0
+				enable 0
+			}
+		}
+	}
+	ACT no energy no fly {
+		triggerEvent continuous true
+		Conditions {
+			Player {
+				Energy {
+					index 0
+					comparison 0
+					valueType 1
+					value 0
+				}
+			}
+		}
+		Commands {
+			Control {
+				option transform
+				player 0
+				enable 0
+			}
+		}
+	}
+	ACT start empty {
+		triggerEvent game start true
+		Conditions {
+		}
+		Commands {
+			Player {
+				option 2
+				player 0
+				operation 0
+				value 0
+			}
+		}
+	}
+	ACT refuel on pad {
+		triggerEvent continuous true
+		Conditions {
+			Airmech {
+				InLocation {
+					location refuel
+					player 0
+					affirm 1
+				}
+			}
+		}
+		Commands {
+			Player {
+				option 2
+				player 0
+				operation 1
+				value 22
+			}
+		}
+	}
+	ACT if energy then can fly {
+		triggerEvent continuous true
+		Conditions {
+			Player {
+				Energy {
+					index 0
+					comparison 3
+					valueType 1
+					value 0
+				}
+			}
+		}
+		Commands {
+			Control {
+				option transform
+				player 0
+				enable 1
+			}
+		}
+	}
+	ACT energy drains fast {
+		triggerEvent continuous true
+		Conditions {
+		}
+		Commands {
+			Player {
+				option 2
+				player 0
+				operation 2
+				value 0.5
+			}
+		}
+	}
+	ACT start with no guns {
+		triggerEvent game start true
+		Conditions {
+		}
+		Commands {
+			Control {
+				option firing
+				player 0
+				enable 0
+			}
+		}
+	}
+	ACT enable guns {
+		triggerEvent continuous true
+		Conditions {
+			Airmech {
+				InLocation {
+					location weapon
+					player 0
+					affirm 1
+				}
+			}
+		}
+		Commands {
+			Control {
+				option firing
+				player 0
+				enable 1
+			}
+		}
+	}
+	ACT refuel message {
+		triggerEvent 2 second continuous true
+		Conditions {
+			Airmech {
+				InLocation {
+					location refuel
+					player 0
+					affirm 1
+				}
+			}
+		}
+		Commands {
+			Message {
+				string Refuel Complete!
+			}
+		}
+	}
+	ACT weapons live message {
+		triggerEvent 2 second continuous true
+		Conditions {
+			Airmech {
+				InLocation {
+					location weapon
+					player 0
+					affirm 1
+				}
+			}
+		}
+		Commands {
+			Message {
+				string Weapons Core enabled!
+			}
+		}
+	}
+	ACT bomb1 {
+		triggerEvent 2 second continuous true
+		Conditions {
+		}
+		Commands {
+			Spawn {
+				location bomb1
+				unitType BombsU
+				order 0
+				team 6
+				count 1
+			}
+		}
+	}
+	ACT bomb2 {
+		triggerEvent 2 second continuous true
+		Conditions {
+		}
+		Commands {
+			Spawn {
+				location bomb2
+				unitType BombsU
+				order 0
+				team 6
+				count 2
+			}
+		}
+	}
+	ACT evil infantry {
+		triggerEvent continuous true
+		Conditions {
+			Airmech {
+				InLocation {
+					location weapon
+					player 0
+					affirm 1
+				}
+			}
+		}
+		Commands {
+			OrderUnit {
+				location start
+				targetLoc airmech
+				order 3
+				team 6
+			}
+			MoveLocation {
+				pickLoc airmech
+				targetOption 1
+				playerIndex 0
+			}
+		}
+	}
+}
+ScriptVariables {
+}
+objects {
+	WO SandrimProps_ContainerOpen {
+		pos -19.002964 -4.952741 0.160002
+		rot_x 0.01368 0.999906 0
+		rot_y -0.999906 0.01368 0
+		scl 0.49
+		id 38
+	}
+	WO SandrimProps_Crane1 {
+		pos -18.817974 -6.500656 0.16
+		rot_x 0.9334 0.358838 0
+		rot_y -0.358838 0.9334 0
+		scl 0.62
+		id 39
+	}
+	WO SandrimProps_Crane2 {
+		pos -17.772049 -1.9332 0.160002
+		id 40
+	}
+	WO ElevatorPlatform {
+		pos -16.886318 -4.55467 0.06
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.93
+		id 41
+		. escc
+	}
+	WO SandrimProps_ContainerOpen {
+		pos -19.002964 -4.952741 0.160002
+		rot_x 0.01368 0.999906 0
+		rot_y -0.999906 0.01368 0
+		scl 0.49
+		id 34
+	}
+	WO SandrimProps_Crane1 {
+		pos -18.817974 -6.500656 0.16
+		rot_x 0.9334 0.358838 0
+		rot_y -0.358838 0.9334 0
+		scl 0.62
+		id 35
+	}
+	WO SandrimProps_Crane2 {
+		pos -17.772049 -1.9332 0.160002
+		id 36
+	}
+	WO ElevatorPlatform {
+		pos -16.886318 -4.55467 0.06
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.93
+		id 37
+		. escc
+	}
+	WO SandrimProps_ContainerOpen {
+		pos -19.002964 -4.952741 0.160002
+		rot_x 0.01368 0.999906 0
+		rot_y -0.999906 0.01368 0
+		scl 0.49
+		id 30
+	}
+	WO SandrimProps_Crane1 {
+		pos -18.817974 -6.500656 0.16
+		rot_x 0.9334 0.358838 0
+		rot_y -0.358838 0.9334 0
+		scl 0.62
+		id 31
+	}
+	WO SandrimProps_Crane2 {
+		pos -17.772049 -1.9332 0.160002
+		id 32
+	}
+	WO ElevatorPlatform {
+		pos -16.886318 -4.55467 0.06
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.93
+		id 33
+		. escc
+	}
+	WO SandrimProps_ContainerOpen {
+		pos -19.002964 -4.952741 0.160002
+		rot_x 0.01368 0.999906 0
+		rot_y -0.999906 0.01368 0
+		scl 0.49
+		id 26
+	}
+	WO SandrimProps_Crane1 {
+		pos -18.817974 -6.500656 0.16
+		rot_x 0.9334 0.358838 0
+		rot_y -0.358838 0.9334 0
+		scl 0.62
+		id 27
+	}
+	WO SandrimProps_Crane2 {
+		pos -17.772049 -1.9332 0.160002
+		id 28
+	}
+	WO ElevatorPlatform {
+		pos -16.886318 -4.55467 0.06
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.93
+		id 29
+		. escc
+	}
+	WO SandrimProps_ContainerOpen {
+		pos -19.002964 -4.952741 0.160002
+		rot_x 0.01368 0.999906 0
+		rot_y -0.999906 0.01368 0
+		scl 0.49
+		id 22
+	}
+	WO SandrimProps_Crane1 {
+		pos -18.817974 -6.500656 0.16
+		rot_x 0.9334 0.358838 0
+		rot_y -0.358838 0.9334 0
+		scl 0.62
+		id 23
+	}
+	WO SandrimProps_Crane2 {
+		pos -17.772049 -1.9332 0.160002
+		id 24
+	}
+	WO ElevatorPlatform {
+		pos -16.886318 -4.55467 0.06
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.93
+		id 25
+		. escc
+	}
+	WO SandrimProps_ContainerOpen {
+		pos -19.002964 -4.952741 0.160002
+		rot_x 0.01368 0.999906 0
+		rot_y -0.999906 0.01368 0
+		scl 0.49
+		id 21
+	}
+	WO SandrimProps_Crane1 {
+		pos -18.817974 -6.500656 0.16
+		rot_x 0.9334 0.358838 0
+		rot_y -0.358838 0.9334 0
+		scl 0.62
+		id 11
+	}
+	WO SandrimProps_Crane2 {
+		pos -17.772049 -1.9332 0.160002
+		id 13
+	}
+	WO ElevatorPlatform {
+		pos -16.886318 -4.55467 0.06
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.93
+		id 17
+		. escc
+	}
+	WO SandrimProps_ContainerOpen {
+		pos -19.002964 -4.952741 0.160002
+		rot_x 0.01368 0.999906 0
+		rot_y -0.999906 0.01368 0
+		scl 0.49
+		id 1
+	}
+	WO SandrimProps_Crane1 {
+		pos -18.817974 -6.500656 0.16
+		rot_x 0.9334 0.358838 0
+		rot_y -0.358838 0.9334 0
+		scl 0.62
+		id 6
+	}
+	WO SandrimProps_Crane2 {
+		pos -17.772049 -1.9332 0.160002
+		id 10
+	}
+	WO ElevatorPlatform {
+		pos -16.886318 -4.55467 0.06
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.93
+		id 8
+		. escc
+	}
+	WO Canyon_H1 {
+		pos 48 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_K4 {
+		pos 16 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G6 {
+		pos 40 72 0
+	}
+	WO Canyon_J0 {
+		pos 80 40 0
+	}
+	WO Canyon_J0 {
+		pos 80 32 0
+	}
+	WO Canyon_J0 {
+		pos 80 56 0
+	}
+	WO Canyon_J0 {
+		pos 80 48 0
+	}
+	WO Canyon_J0 {
+		pos 72 64 0
+	}
+	WO Canyon_J0 {
+		pos 56 -16 0
+	}
+	WO Canyon_J0 {
+		pos 64 -24 0
+	}
+	WO Canyon_J0 {
+		pos 64 -32 0
+	}
+	WO Canyon_J0 {
+		pos 64 -8 0
+	}
+	WO Canyon_J0 {
+		pos 72 -16 0
+	}
+	WO Canyon_H0 {
+		pos 48 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_F0 {
+		pos 32 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 64 8 0
+	}
+	WO Canyon_J0 {
+		pos 48 -56 0
+	}
+	WO Canyon_J0 {
+		pos 56 -56 0
+	}
+	WO Canyon_J0 {
+		pos 56 -72 0
+	}
+	WO Canyon_J0 {
+		pos 56 -64 0
+	}
+	WO Canyon_J0 {
+		pos 48 -64 0
+	}
+	WO Canyon_J0 {
+		pos 72 24 0
+	}
+	WO Canyon_J0 {
+		pos 64 24 0
+	}
+	WO Canyon_J0 {
+		pos 80 24 0
+	}
+	WO Canyon_H0 {
+		pos 56 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 72 40 0
+	}
+	WO Canyon_J0 {
+		pos 72 48 0
+	}
+	WO Canyon_J0 {
+		pos 64 64 0
+	}
+	WO Canyon_J0 {
+		pos 72 80 0
+	}
+	WO Canyon_J0 {
+		pos 64 -40 0
+	}
+	WO Canyon_J0 {
+		pos 72 -40 0
+	}
+	WO Canyon_J0 {
+		pos 72 -32 0
+	}
+	WO Canyon_J0 {
+		pos 64 -16 0
+	}
+	WO Canyon_J0 {
+		pos 80 -16 0
+	}
+	WO Canyon_J0 {
+		pos 64 0 0
+	}
+	WO Canyon_J0 {
+		pos 72 0 0
+	}
+	WO Canyon_J0 {
+		pos 72 8 0
+	}
+	WO Canyon_J0 {
+		pos 48 -72 0
+	}
+	WO Canyon_J0 {
+		pos 64 -64 0
+	}
+	WO Canyon_J0 {
+		pos 56 -80 0
+	}
+	WO Canyon_J0 {
+		pos 64 -72 0
+	}
+	WO Canyon_J0 {
+		pos 64 -80 0
+	}
+	WO Canyon_J0 {
+		pos 64 32 0
+	}
+	WO Canyon_H0 {
+		pos 56 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 72 32 0
+	}
+	WO Canyon_J0 {
+		pos 64 56 0
+	}
+	WO Canyon_J0 {
+		pos 72 56 0
+	}
+	WO Canyon_J0 {
+		pos 64 72 0
+	}
+	WO Canyon_J0 {
+		pos 64 80 0
+	}
+	WO Canyon_J0 {
+		pos 72 72 0
+	}
+	WO Canyon_J0 {
+		pos 56 -40 0
+	}
+	WO Canyon_J0 {
+		pos 80 -40 0
+	}
+	WO Canyon_J0 {
+		pos 72 -24 0
+	}
+	WO Canyon_J0 {
+		pos 80 -8 0
+	}
+	WO Canyon_J0 {
+		pos 72 -8 0
+	}
+	WO Canyon_J0 {
+		pos 80 8 0
+	}
+	WO Canyon_J0 {
+		pos 80 0 0
+	}
+	WO Canyon_J0 {
+		pos 72 16 0
+	}
+	WO Canyon_J0 {
+		pos 48 -80 0
+	}
+	WO Canyon_J0 {
+		pos 64 -56 0
+	}
+	WO Canyon_J0 {
+		pos 72 -56 0
+	}
+	WO Canyon_J0 {
+		pos 72 -72 0
+	}
+	WO Canyon_J0 {
+		pos 72 -80 0
+	}
+	WO Canyon_J0 {
+		pos -32 72 0
+	}
+	WO Canyon_J0 {
+		pos -24 72 0
+	}
+	WO Canyon_J0 {
+		pos -8 72 0
+	}
+	WO Canyon_J0 {
+		pos -16 72 0
+	}
+	WO Canyon_J0 {
+		pos 0 72 0
+	}
+	WO Canyon_J0 {
+		pos 80 64 0
+	}
+	WO Canyon_J0 {
+		pos 80 72 0
+	}
+	WO Canyon_J0 {
+		pos 80 80 0
+	}
+	WO Canyon_J0 {
+		pos 56 -32 0
+	}
+	WO Canyon_J0 {
+		pos 56 -24 0
+	}
+	WO Canyon_J0 {
+		pos 80 -32 0
+	}
+	WO Canyon_J0 {
+		pos 80 -24 0
+	}
+	WO Canyon_J0 {
+		pos 80 16 0
+	}
+	WO Canyon_J0 {
+		pos 56 8 0
+	}
+	WO Canyon_H1 {
+		pos 48 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 64 16 0
+	}
+	WO Canyon_J0 {
+		pos 40 -80 0
+	}
+	WO Canyon_J0 {
+		pos 80 -56 0
+	}
+	WO Canyon_J0 {
+		pos 80 -72 0
+	}
+	WO Canyon_J0 {
+		pos 80 -64 0
+	}
+	WO Canyon_J0 {
+		pos 72 -64 0
+	}
+	WO Canyon_J0 {
+		pos 24 72 0
+	}
+	WO Canyon_J0 {
+		pos 0 80 0
+	}
+	WO Canyon_J0 {
+		pos 8 72 0
+	}
+	WO Canyon_F4 {
+		pos 0 -72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 16 72 0
+	}
+	WO Canyon_H0 {
+		pos -16 -48 0
+	}
+	WO Canyon_G6 {
+		pos -48 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_F3 {
+		pos -32 -32 0
+	}
+	WO Canyon_F4 {
+		pos -56 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F4 {
+		pos -40 -24 0
+	}
+	WO Canyon_J0 {
+		pos -48 -40 0
+	}
+	WO Canyon_F3 {
+		pos -32 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G6 {
+		pos -16 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 8 -32 0
+	}
+	WO Canyon_J0 {
+		pos 16 -32 0
+	}
+	WO Canyon_J0 {
+		pos -72 -56 0
+	}
+	WO Canyon_J0 {
+		pos -80 -56 0
+	}
+	WO Canyon_J0 {
+		pos 80 -48 0
+	}
+	WO Canyon_J0 {
+		pos 80 -80 0
+	}
+	WO Canyon_J0 {
+		pos 72 -48 0
+	}
+	WO Canyon_J0 {
+		pos 64 -48 0
+	}
+	WO Canyon_J0 {
+		pos -8 80 0
+	}
+	WO Canyon_J0 {
+		pos -16 80 0
+	}
+	WO Canyon_J0 {
+		pos -32 48 0
+	}
+	WO Canyon_J0 {
+		pos -24 56 0
+	}
+	WO Canyon_J0 {
+		pos 8 64 0
+	}
+	WO Canyon_L6 {
+		pos 48 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A1 {
+		pos 24 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 16 48 0
+	}
+	WO Canyon_F0 {
+		pos 56 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F0 {
+		pos 56 24 0
+	}
+	WO Canyon_A1 {
+		pos 24 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_L0 {
+		pos 32 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F0 {
+		pos 16 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F3 {
+		pos -24 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 16 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_H0 {
+		pos -24 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -80 -64 0
+	}
+	WO Canyon_J0 {
+		pos -64 -56 0
+	}
+	WO Canyon_J0 {
+		pos -48 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -40 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 56 -48 0
+	}
+	WO Canyon_J0 {
+		pos -32 80 0
+	}
+	WO Canyon_J0 {
+		pos -40 80 0
+	}
+	WO Canyon_J0 {
+		pos -16 48 0
+	}
+	WO Canyon_J0 {
+		pos -8 56 0
+	}
+	WO Canyon_J0 {
+		pos 0 64 0
+	}
+	WO Canyon_M1 {
+		pos 32 24 0
+	}
+	WO Canyon_G0 {
+		pos 24 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_K0 {
+		pos 48 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G4 {
+		pos 8 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_L4 {
+		pos 40 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F4 {
+		pos 56 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F0 {
+		pos 56 0 0
+	}
+	WO Canyon_F4 {
+		pos 40 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_I1 {
+		pos 40 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos 32 -40 0
+	}
+	WO Canyon_J0 {
+		pos 32 -32 0
+	}
+	WO Canyon_J0 {
+		pos -72 -64 0
+	}
+	WO Canyon_J0 {
+		pos -56 -56 0
+	}
+	WO Canyon_J0 {
+		pos -48 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -48 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -40 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -24 80 0
+	}
+	WO Canyon_J0 {
+		pos 48 80 0
+	}
+	WO Canyon_H0 {
+		pos 8 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -32 56 0
+	}
+	WO Canyon_M0 {
+		pos 24 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_K4 {
+		pos 16 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G4 {
+		pos 32 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_L6 {
+		pos 40 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A0 {
+		pos 32 56 0
+	}
+	WO Canyon_L4 {
+		pos 24 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_K0 {
+		pos 40 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_H0 {
+		pos 24 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F0 {
+		pos 24 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos 24 -24 0
+	}
+	WO Canyon_J0 {
+		pos 24 -40 0
+	}
+	WO Canyon_J0 {
+		pos 24 -32 0
+	}
+	WO Canyon_J0 {
+		pos -64 -64 0
+	}
+	WO Canyon_J0 {
+		pos -40 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -32 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -32 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -24 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 8 80 0
+	}
+	WO Canyon_F4 {
+		pos 64 48 0
+	}
+	WO Canyon_J0 {
+		pos 0 48 0
+	}
+	WO Canyon_J0 {
+		pos 0 56 0
+	}
+	WO Canyon_J0 {
+		pos -16 64 0
+	}
+	WO Canyon_L0 {
+		pos 40 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_H0 {
+		pos 48 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_M0 {
+		pos 32 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_Aa {
+		pos 16 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A7 {
+		pos 16 8 0
+	}
+	WO Canyon_A7 {
+		pos 8 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A7 {
+		pos 8 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_H0 {
+		pos 16 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F0 {
+		pos 16 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos 48 -32 0
+	}
+	WO Canyon_F3 {
+		pos 32 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -72 -72 0
+	}
+	WO Canyon_J0 {
+		pos -48 -56 0
+	}
+	WO Canyon_H0 {
+		pos -16 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -32 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -24 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 16 80 0
+	}
+	WO Canyon_G6 {
+		pos 56 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_M0 {
+		pos 40 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -16 56 0
+	}
+	WO Canyon_J0 {
+		pos -24 64 0
+	}
+	WO Canyon_O0 {
+		pos 32 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_F0 {
+		pos 8 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_B0 {
+		pos 8 24 0
+	}
+	WO Canyon_B0 {
+		pos 8 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A0 {
+		pos 8 8 0
+	}
+	WO Canyon_A1 {
+		pos 16 -8 0
+	}
+	WO Canyon_A7 {
+		pos 16 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_H0 {
+		pos 8 -16 0
+	}
+	WO Canyon_F0 {
+		pos 8 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 48 -24 0
+	}
+	WO Canyon_J0 {
+		pos 40 -32 0
+	}
+	WO Canyon_J0 {
+		pos -80 -72 0
+	}
+	WO Canyon_J0 {
+		pos -40 -56 0
+	}
+	WO Canyon_K4 {
+		pos -8 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos -16 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -16 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F0 {
+		pos 32 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F4 {
+		pos 56 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_L6 {
+		pos 40 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos 16 56 0
+	}
+	WO Canyon_J0 {
+		pos 16 64 0
+	}
+	WO Canyon_J0 {
+		pos 0 40 0
+	}
+	WO Canyon_G0 {
+		pos 0 32 0
+	}
+	WO Canyon_B1 {
+		pos 0 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_B0 {
+		pos 0 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos 0 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos 0 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A7 {
+		pos 0 -8 0
+	}
+	WO Canyon_G4 {
+		pos 0 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 0 -24 0
+	}
+	WO Canyon_J0 {
+		pos 40 -40 0
+	}
+	WO Canyon_H1 {
+		pos 48 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -72 -80 0
+	}
+	WO Canyon_H1 {
+		pos -24 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F4 {
+		pos -24 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos -8 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -8 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 40 80 0
+	}
+	WO Canyon_F4 {
+		pos 24 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -24 48 0
+	}
+	WO Canyon_H1 {
+		pos 24 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -32 64 0
+	}
+	WO Canyon_J0 {
+		pos -8 40 0
+	}
+	WO Canyon_F0 {
+		pos -8 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos -8 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_H0 {
+		pos -8 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_B1 {
+		pos -8 8 0
+	}
+	WO Canyon_B0 {
+		pos -8 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_Aa {
+		pos -8 -8 0
+	}
+	WO Canyon_G6 {
+		pos -8 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos -8 -24 0
+	}
+	WO Canyon_H0 {
+		pos 0 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_H1 {
+		pos 40 -8 0
+	}
+	WO Canyon_J0 {
+		pos -64 -72 0
+	}
+	WO Canyon_G6 {
+		pos -32 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_K4 {
+		pos 0 -48 0
+	}
+	WO Canyon_G0 {
+		pos 8 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos 0 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_H1 {
+		pos 48 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_K0 {
+		pos 32 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_M0 {
+		pos 40 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 8 56 0
+	}
+	WO Canyon_K3 {
+		pos 40 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -16 40 0
+	}
+	WO Canyon_J0 {
+		pos -16 32 0
+	}
+	WO Canyon_J0 {
+		pos -16 24 0
+	}
+	WO Canyon_G0 {
+		pos -16 16 0
+	}
+	WO Canyon_B0 {
+		pos -16 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_B0 {
+		pos -16 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_H1 {
+		pos -16 -8 0
+	}
+	WO Canyon_F3 {
+		pos -16 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos -16 -24 0
+	}
+	WO Canyon_A0 {
+		pos -8 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F4 {
+		pos 64 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -80 -80 0
+	}
+	WO Canyon_K3 {
+		pos 0 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_K3 {
+		pos -8 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_H1 {
+		pos 0 -64 0
+	}
+	WO Canyon_J0 {
+		pos 8 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 24 80 0
+	}
+	WO Canyon_J0 {
+		pos 56 72 0
+	}
+	WO Canyon_A1 {
+		pos 16 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_K4 {
+		pos 24 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -8 64 0
+	}
+	WO Canyon_J0 {
+		pos -24 40 0
+	}
+	WO Canyon_J0 {
+		pos -24 32 0
+	}
+	WO Canyon_J0 {
+		pos -24 24 0
+	}
+	WO Canyon_F3 {
+		pos -24 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G1 {
+		pos -24 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G5 {
+		pos -24 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F0 {
+		pos -24 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos -24 -16 0
+	}
+	WO Canyon_J0 {
+		pos -24 -24 0
+	}
+	WO Canyon_A7 {
+		pos -16 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_F3 {
+		pos 48 72 0
+	}
+	WO Canyon_J0 {
+		pos -64 -80 0
+	}
+	WO Canyon_F4 {
+		pos 8 -72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos 16 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 16 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 24 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 32 80 0
+	}
+	WO Canyon_J0 {
+		pos 56 80 0
+	}
+	WO Canyon_J0 {
+		pos -8 48 0
+	}
+	WO Canyon_H0 {
+		pos 32 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_K3 {
+		pos 48 56 0
+	}
+	WO Canyon_J0 {
+		pos -32 40 0
+	}
+	WO Canyon_J0 {
+		pos -32 32 0
+	}
+	WO Canyon_J0 {
+		pos -32 24 0
+	}
+	WO Canyon_J0 {
+		pos -32 16 0
+	}
+	WO Canyon_J0 {
+		pos -32 8 0
+	}
+	WO Canyon_J0 {
+		pos -32 0 0
+	}
+	WO Canyon_J0 {
+		pos -32 -8 0
+	}
+	WO Canyon_J0 {
+		pos -32 -16 0
+	}
+	WO Canyon_J0 {
+		pos -32 -24 0
+	}
+	WO Canyon_F3 {
+		pos -40 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G4 {
+		pos 48 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -56 -80 0
+	}
+	WO Canyon_F0 {
+		pos -56 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 16 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 24 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 24 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A7 {
+		pos 40 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -56 8 0
+	}
+	WO Canyon_J0 {
+		pos -56 0 0
+	}
+	WO Canyon_J0 {
+		pos -56 -8 0
+	}
+	WO Canyon_H1 {
+		pos -48 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos -40 40 0
+	}
+	WO Canyon_J0 {
+		pos -40 32 0
+	}
+	WO Canyon_J0 {
+		pos -40 24 0
+	}
+	WO Canyon_J0 {
+		pos -40 16 0
+	}
+	WO Canyon_J0 {
+		pos -40 8 0
+	}
+	WO Canyon_J0 {
+		pos -40 0 0
+	}
+	WO Canyon_J0 {
+		pos -40 -8 0
+	}
+	WO Canyon_J0 {
+		pos -40 -16 0
+	}
+	WO Canyon_F4 {
+		pos -48 -16 0
+	}
+	WO Canyon_I0 {
+		pos -32 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_F3 {
+		pos 56 64 0
+	}
+	WO Canyon_J0 {
+		pos -56 -64 0
+	}
+	WO Canyon_G6 {
+		pos 8 -40 0
+	}
+	WO Canyon_J0 {
+		pos 24 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 32 -80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 40 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -80 -48 0
+	}
+	WO Canyon_J0 {
+		pos -64 8 0
+	}
+	WO Canyon_J0 {
+		pos -64 0 0
+	}
+	WO Canyon_J0 {
+		pos -64 -8 0
+	}
+	WO Canyon_J0 {
+		pos -64 -16 0
+	}
+	WO Canyon_J0 {
+		pos -48 40 0
+	}
+	WO Canyon_J0 {
+		pos -48 32 0
+	}
+	WO Canyon_J0 {
+		pos -48 24 0
+	}
+	WO Canyon_J0 {
+		pos -48 16 0
+	}
+	WO Canyon_J0 {
+		pos -48 8 0
+	}
+	WO Canyon_J0 {
+		pos -48 0 0
+	}
+	WO Canyon_J0 {
+		pos -48 -8 0
+	}
+	WO Canyon_G0 {
+		pos -56 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_I1 {
+		pos -40 -32 0
+	}
+	WO Canyon_L4 {
+		pos 32 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F3 {
+		pos 48 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -56 -72 0
+	}
+	WO Canyon_F0 {
+		pos 16 -40 0
+	}
+	WO Canyon_J0 {
+		pos 32 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 32 -72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 40 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -72 -48 0
+	}
+	WO Canyon_J0 {
+		pos -80 -40 0
+	}
+	WO Canyon_J0 {
+		pos -72 -40 0
+	}
+	WO Canyon_J0 {
+		pos -64 -48 0
+	}
+	WO Canyon_J0 {
+		pos -64 16 0
+	}
+	WO Canyon_J0 {
+		pos -64 24 0
+	}
+	WO Canyon_J0 {
+		pos -56 16 0
+	}
+	WO Canyon_J0 {
+		pos -64 32 0
+	}
+	WO Canyon_J0 {
+		pos -56 32 0
+	}
+	WO Canyon_J0 {
+		pos -40 72 0
+	}
+	WO Canyon_J0 {
+		pos -40 64 0
+	}
+	WO Canyon_J0 {
+		pos -40 56 0
+	}
+	WO Canyon_J0 {
+		pos -40 48 0
+	}
+	WO Canyon_K3 {
+		pos 32 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos 24 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -64 40 0
+	}
+	WO Canyon_J0 {
+		pos -64 48 0
+	}
+	WO Canyon_J0 {
+		pos 32 -56 0
+	}
+	WO Canyon_J0 {
+		pos -40 -48 0
+	}
+	WO Canyon_J0 {
+		pos -48 -48 0
+	}
+	WO Canyon_G0 {
+		pos -16 -32 0
+	}
+	WO Canyon_J0 {
+		pos -72 -32 0
+	}
+	WO Canyon_J0 {
+		pos -64 -24 0
+	}
+	WO Canyon_J0 {
+		pos -64 -32 0
+	}
+	WO Canyon_J0 {
+		pos -64 -40 0
+	}
+	WO Canyon_J0 {
+		pos -56 -48 0
+	}
+	WO Canyon_J0 {
+		pos -56 -40 0
+	}
+	WO Canyon_J0 {
+		pos -56 24 0
+	}
+	WO Canyon_J0 {
+		pos -56 40 0
+	}
+	WO Canyon_J0 {
+		pos -56 48 0
+	}
+	WO Canyon_J0 {
+		pos -48 72 0
+	}
+	WO Canyon_J0 {
+		pos -48 64 0
+	}
+	WO Canyon_J0 {
+		pos -48 56 0
+	}
+	WO Canyon_J0 {
+		pos -48 48 0
+	}
+	WO Canyon_J0 {
+		pos -64 72 0
+	}
+	WO Canyon_J0 {
+		pos -64 64 0
+	}
+	WO Canyon_J0 {
+		pos -64 56 0
+	}
+	WO Canyon_J0 {
+		pos -56 56 0
+	}
+	WO Canyon_J0 {
+		pos 40 -56 0
+	}
+	WO Canyon_J0 {
+		pos 24 -48 0
+	}
+	WO Canyon_A1 {
+		pos 8 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G4 {
+		pos -8 -32 0
+	}
+	WO Canyon_J0 {
+		pos -80 -32 0
+	}
+	WO Canyon_J0 {
+		pos -72 -16 0
+	}
+	WO Canyon_J0 {
+		pos -80 -16 0
+	}
+	WO Canyon_J0 {
+		pos -72 0 0
+	}
+	WO Canyon_J0 {
+		pos -80 0 0
+	}
+	WO Canyon_J0 {
+		pos -72 16 0
+	}
+	WO Canyon_J0 {
+		pos -80 16 0
+	}
+	WO Canyon_J0 {
+		pos -80 32 0
+	}
+	WO Canyon_J0 {
+		pos -72 40 0
+	}
+	WO Canyon_J0 {
+		pos -80 40 0
+	}
+	WO Canyon_J0 {
+		pos -72 56 0
+	}
+	WO Canyon_J0 {
+		pos -80 56 0
+	}
+	WO Canyon_J0 {
+		pos -72 72 0
+	}
+	WO Canyon_J0 {
+		pos -80 72 0
+	}
+	WO Canyon_J0 {
+		pos -64 80 0
+	}
+	WO Canyon_J0 {
+		pos -56 64 0
+	}
+	WO Canyon_J0 {
+		pos -56 80 0
+	}
+	WO Canyon_J0 {
+		pos 48 -40 0
+	}
+	WO Canyon_J0 {
+		pos 32 -48 0
+	}
+	WO Canyon_H1 {
+		pos 8 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_I0 {
+		pos -24 -56 0
+	}
+	WO Canyon_J0 {
+		pos -80 -24 0
+	}
+	WO Canyon_J0 {
+		pos -72 -24 0
+	}
+	WO Canyon_J0 {
+		pos -80 -8 0
+	}
+	WO Canyon_J0 {
+		pos -72 -8 0
+	}
+	WO Canyon_J0 {
+		pos -80 8 0
+	}
+	WO Canyon_J0 {
+		pos -72 8 0
+	}
+	WO Canyon_J0 {
+		pos -72 24 0
+	}
+	WO Canyon_J0 {
+		pos -80 24 0
+	}
+	WO Canyon_J0 {
+		pos -72 32 0
+	}
+	WO Canyon_J0 {
+		pos -80 48 0
+	}
+	WO Canyon_J0 {
+		pos -72 48 0
+	}
+	WO Canyon_J0 {
+		pos -80 64 0
+	}
+	WO Canyon_J0 {
+		pos -72 64 0
+	}
+	WO Canyon_J0 {
+		pos -80 80 0
+	}
+	WO Canyon_J0 {
+		pos -72 80 0
+	}
+	WO Canyon_J0 {
+		pos -56 72 0
+	}
+	WO Canyon_J0 {
+		pos -48 80 0
+	}
+	WO Canyon_J0 {
+		pos 48 -48 0
+	}
+	WO Canyon_J0 {
+		pos 40 -48 0
+	}
+	WO Canyon_G6 {
+		pos -8 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_F3 {
+		pos 0 -32 0
+	}
+	WO ElevatorPlatform {
+		pos 16.222303 16.164614 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		label sideA1
+		. escc
+	}
+	WO ElevatorPlatform {
+		pos -8.082268 -7.97519 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		label sideA3
+		. escc
+	}
+	WO SandrimProps_MiddleGround {
+		pos -17.69413 25.277092 -9.000001
+	}
+	WO SandrimProps_MiddleGround {
+		pos 37.435341 12.647901 -8.999683
+	}
+	WO SandrimProps_MiddleGround {
+		pos 3.860847 47.124622 -8.999698
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO BarrelA {
+		pos 14.930695 8.025035 -0.403254
+	}
+	WO SandrimProps_Crane1 {
+		pos -18.817974 -6.500656 0.16
+		rot_x 0.9334 0.358838 0
+		rot_y -0.358838 0.9334 0
+		scl 0.62
+		id 14
+	}
+	WO SandrimProps_Crane2 {
+		pos -17.772049 -1.9332 0.160002
+		id 15
+	}
+	WO SimpleProps_Barrel {
+		pos -10.021927 -10.610815 0.100006
+	}
+	WO SimpleProps_Barrel {
+		pos -8.938292 -10.638017 0.100006
+	}
+	WO SimpleProps_Barrel {
+		pos -6.806319 -10.648987 0.100006
+	}
+	WO SimpleProps_Barrel {
+		pos -5.70408 -10.553058 0.100006
+	}
+	WO MineLight {
+		pos -21.27248 -5.854169 0.1
+		id 9
+		. team 6
+		. order HoldPosition
+	}
+	WO SandrimProps_ContainerOpen {
+		pos -19.002964 -4.952741 0.160002
+		rot_x 0.01368 0.999906 0
+		rot_y -0.999906 0.01368 0
+		scl 0.49
+		id 12
+	}
+	WO BarrelA {
+		pos 16.697945 8.668729 -0.380208
+	}
+	WO ElevatorPlatform {
+		pos -16.886318 -4.55467 0.06
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.93
+		id 16
+		. escc
+	}
+	WO SimpleProps_FortressFenceCorner {
+		pos 2.397487 -4.791919 0.1
+		rot_x -0.030449 0.999536 0
+		rot_y -0.999536 -0.030449 0
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 15.591793 7.758476 -0.391196
+	}
+	WO Infantry {
+		pos -6.943865 9.43555 0.169985
+		rot_x 0.999924 -0.000162 -0.012374
+		rot_y 0 0.999915 -0.013081
+		rot_z 0.012375 0.01308 0.999838
+		id 2
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos -5.318466 10.550231 0.135285
+		rot_x 0.999924 -0.000162 -0.012374
+		rot_y 0 0.999915 -0.013081
+		rot_z 0.012375 0.01308 0.999838
+		id 3
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos -4.199194 8.491146 0.109559
+		rot_x 0.998851 0 -0.047934
+		rot_z 0.047934 0 0.998851
+		id 4
+		. team 6
+		. order HoldPosition
+	}
+	WO SimpleProps_FortressFence {
+		pos -0.205956 -7.840041 -0.394563
+		rot_x 0.99572 0.005887 -0.092232
+		rot_y 0 0.99797 0.063694
+		rot_z 0.092419 -0.063422 0.993698
+	}
+	WO BarrelA {
+		pos 0.959064 -6.427054 -0.310559
+	}
+	WO SimpleProps_FortressFenceCorner {
+		pos -0.842461 -11.225862 0.1
+	}
+	WO MineLight {
+		pos 16.006006 0.067502 -0.486659
+		rot_x 0.993675 -0.001463 0.112289
+		rot_y 0 0.999915 0.013024
+		rot_z -0.112298 -0.012942 0.99359
+		id 7
+		. team 6
+		. order HoldPosition
+	}
+	WO Baloom {
+		pos 21.599174 -24.474756 0.499882
+		id 18
+		. team 6
+		. order HoldPosition
+	}
+	WO Baloom {
+		pos 21.816595 -6.271498 3.700742
+		rot_x 0.999887 0.000174 0.015003
+		rot_y 0 0.999933 -0.011599
+		rot_z -0.015004 0.011598 0.99982
+		id 19
+		. team 6
+		. order HoldPosition
+	}
+	WO Baloom {
+		pos 19.756084 -0.838606 0.499882
+		id 20
+		. team 6
+		. order HoldPosition
+	}
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable true
+  layer 2 name "volumes" visible true pickable true
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible true pickable true
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+	PF outpostfactoryv2 {
+		pos 22.641607 -0.345716 -0
+		rot 0 0 0
+		id 48
+		/shfnv 825153392 ". latchInf InfantryCreepL2 InfantryCreepL2 InfantryCreepL2 InfantryCreepL2"
+		/shfnv 2166136261 "name"
+		/shfnv 2734521612 ". team 6"
+	}
+}

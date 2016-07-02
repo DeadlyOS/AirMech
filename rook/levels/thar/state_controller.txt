@@ -1,0 +1,36 @@
+StateController Lvl_Thar {
+#include Lvl_CommonStates
+State initial {
+In 0.0 "sym set MatchOver 0"
+In 0.0 "sym setNSet 60 UpkeepTeam0_ -1"
+In 0.0 "sym setNSet 60 UpkeepTeam1_ -1"
+In 0.0 "sym set _UTInc_ 0"
+}
+State Tick {
+Cfg timeBlock 0.25
+Do 0.0 "if sym MatchOver == 0 rook doLevelState NormalSpawn"
+DoL 0.0 if sym MatchOver == 0 rook doLevelState UpkeepTrack
+}
+State NormalSpawn {
+DoL 0.0 if gameValidation spCr_p0 rook doLevelState CreepSpawnTeam0
+DoL 0.0 if gameValidation spCr_p1 rook doLevelState CreepSpawnTeam1
+}
+State CreepSpawnTeam0 {
+DoL 0.0 |rook spawnCreepBegin 0
+DoL 1.0 |rook spawnCreep 0
+DoL 1.5 |rook spawnCreep 0
+DoL 2.0 |rook spawnCreep 0
+DoL 2.5 |rook spawnCreep 0
+DoL 3.0 |rook spawnCreep 0
+DoL 5.0 |rook spawnCreepEnd 0
+}
+State CreepSpawnTeam1 {
+DoL 0.0 |rook spawnCreepBegin 1
+DoL 1.0 |rook spawnCreep 1
+DoL 1.5 |rook spawnCreep 1
+DoL 2.0 |rook spawnCreep 1
+DoL 2.5 |rook spawnCreep 1
+DoL 3.0 |rook spawnCreep 1
+DoL 5.0 |rook spawnCreepEnd 1
+}
+}

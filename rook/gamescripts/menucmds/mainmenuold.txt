@@ -1,0 +1,376 @@
+Script MainMenuMyself {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuMyselfCancel"
+cmd "gameUI enableGroup MB_MyQuests MB_MyStats MB_MyReferrals MB_MySocial MB_MyTreasure"
+cmd "gameUI enable MB_MyselfActive"
+cmd "addUIAnim MB_MenuMyself mas_MenuBoxShow"
+cmd "sym set OnCancel MainMenuMyselfCancel"
+cmd "sym set MenuLevel1 MainMenuMyselfCancel"
+cmd "sym set MenuLevel2 null"
+cmd "floatsym set SocialPos 0"
+cmd "quests scrollUpdate Social"
+cmd "social scrollUpdate"
+cmd "floatsym set CollectionPos 0"
+cmd "collection scrollUpdate"
+cmd "menuCmd MainMenuQuests"
+}
+Script MainMenuMyselfCancel {
+cmd "log MenuCmd: MainMenuPlayCancel"
+cmd "gameUI disableAll MB_MenuMyself"
+cmd "gameUI disable MB_MyselfActive"
+cmd "addUIAnim MB_MenuMyself mas_MenuBoxHide"
+cmd "sym set OnCancel null"
+cmd "sym set MenuLevel1 null"
+cmd "sym set MenuLevel2 null"
+}
+Script MainMenuQuests {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuQuests"
+cmd "gameUI refreshFilterName QuestUI"
+cmd "gameUI show MF_QuestItems"
+cmd "gameUI enable MB_MyQuestsActive"
+cmd "sym set MenuLevel2 MainMenuQuestsCancel"
+cmd "sym set OnCancel MainMenuQuestsCancel"
+}
+Script MainMenuQuestsCancel {
+cmd "log MenuCmd: MainMenuQuestsCancel"
+cmd "gameUI disable MB_MyQuestsActive"
+cmd "gameUI hide MF_QuestItems"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuMyselfCancel"
+}
+Script MainMenuReferrals {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuReferrals"
+cmd "gameUI refreshFilterName ReferralUI"
+cmd "gameUI show MF_ReferralItems"
+cmd "gameUI enable MB_MyReferralsActive"
+cmd "sym set MenuLevel2 MainMenuReferralsCancel"
+cmd "sym set OnCancel MainMenuReferralsCancel"
+}
+Script MainMenuReferralsCancel {
+cmd "log MenuCmd: MainMenuReferralsCancel"
+cmd "gameUI disable MB_MyReferralsActive"
+cmd "gameUI hide MF_ReferralItems"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuMyselfCancel"
+}
+Script MainMenuSocial {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuSocial"
+cmd "gameUI show MF_SocialItems"
+cmd "gameUI enable MB_MySocialActive"
+cmd "sym set MenuLevel2 MainMenuSocialCancel"
+cmd "sym set OnCancel MainMenuSocialCancel"
+}
+Script MainMenuSocialCancel {
+cmd "log MenuCmd: MainMenuSocialCancel"
+cmd "gameUI disable MB_MySocialActive"
+cmd "gameUI hide MF_SocialItems"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuMyselfCancel"
+}
+Script MainMenuTreasure {
+frame_block MenuCommand
+cmd "timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 1 menuCmd MainMenuCollectionWithPrices"
+cmd "if sym _GotPrices_ == 0 wallet updatePrices MainMenuCollectionWithPrices"
+}
+Script MenuCustomizeCollection {
+frame_block MenuCommand
+cmd "if sym _GotPrices_ == 0 timer setAsyncWait 3"
+cmd "if sym _GotPrices_ == 1 menuCmd MenuCustomizeCollectionWithPrices"
+cmd "if sym _GotPrices_ == 0 wallet updatePrices MenuCustomizeCollectionWithPrices"
+cmd "menuCmd InterlaceAdd"
+}
+Script MenuCustomizeCollectionWithPrices {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuCollectionWithPrices"
+cmd "timer clearAsyncWait"
+cmd "gameUI enable MB_MyTreasureActive"
+cmd "sym set MenuLevel2 MainMenuTreasureCancel"
+cmd "sym set OnCancel MainMenuTreasureCancel"
+cmd "collection scrollUpdate"
+cmd "gameUI refreshFilterName CollectionUI"
+}
+Script MainMenuCollectionWithPrices {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuCollectionWithPrices"
+cmd "timer clearAsyncWait"
+cmd "gameUI enable MB_MyTreasureActive"
+cmd "sym set MenuLevel2 MainMenuTreasureCancel"
+cmd "sym set OnCancel MainMenuTreasureCancel"
+cmd "collection scrollUpdate"
+cmd "gameUI refreshFilterName CollectionUI"
+}
+Script MainMenuTreasureCancel {
+cmd "log MenuCmd: MainMenuTreasureCancel"
+cmd "gameUI disable MB_MyTreasureActive"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuMyselfCancel"
+}
+Script MainMenuPlay {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuPlay"
+cmd "gameUI enableGroup MB_PlayBrowse MB_PlayCreate"
+cmd "gameUI enable MB_PlayActive"
+cmd "sym set OnCancel MainMenuPlayCancel"
+cmd "sym set MenuLevel1 MainMenuPlayCancel"
+cmd "sym set MenuLevel2 null"
+cmd "menuCmd MainMenuGamesBrowse"
+}
+Script MainMenuPlayCancel {
+cmd "log MenuCmd: MainMenuPlayCancel"
+cmd "gameUI disable MB_PlayActive"
+cmd "sym set OnCancel null"
+cmd "sym set MenuLevel1 null"
+cmd "sym set MenuLevel2 null"
+}
+Script MainMenuStore {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuStore"
+cmd "gameUI enableGroup MB_Boosts MB_Diamonds MB_Codes"
+cmd "gameUI enable MB_StoreActive"
+cmd "addUIAnim MB_MenuStore mas_MenuBoxShow"
+cmd "sym set MenuLevel1 MainMenuStoreCancel"
+cmd "sym set OnCancel MainMenuStoreCancel"
+}
+Script MainMenuStoreCancel {
+cmd "log MenuCmd: MainMenuStoreCancel"
+cmd "gameUI disableAll MB_MenuStore"
+cmd "gameUI disable MB_StoreActive"
+cmd "addUIAnim MB_MenuStore mas_MenuBoxHide"
+cmd "sym set MenuLevel1 null"
+cmd "sym set OnCancel null"
+}
+Script MainMenuBoosts {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuBoosts"
+cmd "menuCmd MF_BoostsActivate"
+cmd "gameUI enable MB_BoostsActive"
+cmd "sym set MenuLevel2 MainMenuBoostsCancel"
+cmd "sym set OnCancel MainMenuBoostsCancel"
+}
+Script MainMenuBoostsCancel {
+cmd "log MenuCmd: MainMenuBoostsCancel"
+cmd "gameUI disable MB_BoostsActive"
+cmd "gameUI hide MF_BoostItems"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuStoreCancel"
+}
+Script MainMenuCodes {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuCodes"
+cmd "menuCmd MF_CodesActivate"
+cmd "gameUI enable MB_CodesActive"
+cmd "sym set MenuLevel2 MainMenuCodesCancel"
+cmd "sym set OnCancel MainMenuCodesCancel"
+}
+Script MainMenuCodesCancel {
+cmd "log MenuCmd: MainMenuCodesCancel"
+cmd "gameUI disable MB_CodesActive"
+cmd "gameUI hide MF_CodesItems"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuStoreCancel"
+}
+Script MainMenuHelp {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuHelp"
+cmd "gameUI enableGroup MB_Tutorial MB_FirstGame"
+cmd "gameUI enable MB_HelpActive"
+cmd "addUIAnim MB_MenuHelp mas_MenuBoxShow"
+cmd "sym set MenuLevel1 MainMenuHelpCancel"
+cmd "sym set OnCancel MainMenuHelpCancel"
+cmd "gameUI enable MB_ControlsHelp"
+}
+Script MainMenuHelpCancel {
+cmd "log MenuCmd: MainMenuHelpCancel"
+cmd "gameUI disableAll MB_MenuHelp"
+cmd "gameUI disable MB_HelpActive"
+cmd "addUIAnim MB_MenuHelp mas_MenuBoxHide"
+cmd "sym set MenuLevel1 null"
+cmd "sym set OnCancel null"
+}
+Script MainMenuSettings {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuSettings"
+cmd "gameUI enableGroup MB_Gameplay MB_Language MB_Controls MB_Graphics MB_Audio"
+cmd "gameUI enable MB_SettingsActive"
+cmd "addUIAnim MB_MenuSettings mas_MenuBoxShow"
+cmd "sym set OnCancel MainMenuSettingsCancel"
+cmd "sym set MenuLevel1 MainMenuSettingsCancel"
+}
+Script MainMenuSettingsCancel {
+cmd "log MenuCmd: MainMenuSettingsCancel"
+cmd "gameUI disableAll MB_MenuSettings"
+cmd "gameUI disable MB_SettingsActive"
+cmd "addUIAnim MB_MenuSettings mas_MenuBoxHide"
+cmd "sym set MenuLevel1 null"
+cmd "sym set OnCancel null"
+}
+Script MainMenuControls {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuControls"
+cmd "gameUI enableGroup MB_Gameplay MB_Language MB_Controls MB_Graphics MB_Audio"
+cmd "gameUI enable MB_ControlsActive"
+cmd "sym set OnCancel MainMenuControlsCancel"
+cmd "sym set MenuLevel2 MainMenuControlsCancel"
+}
+Script MainMenuControlsCancel {
+cmd "log MenuCmd: MainMenuControlsCancel"
+cmd "gameUI disable MB_ControlsActive"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuSettingsCancel"
+cmd "backend save"
+}
+Script MainMenuLanguage {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuLanguage"
+cmd "gameUI enableGroup MB_Gameplay MB_Language MB_Controls MB_Graphics MB_Audio"
+cmd "gameUI enable MB_LanguageActive"
+cmd "gameUI show MB_LanguageMaster"
+cmd "sym set OnCancel MainMenuLanguageCancel"
+cmd "sym set MenuLevel2 MainMenuLanguageCancel"
+}
+Script MainMenuLanguageCancel {
+cmd "log MenuCmd: MainMenuLanguageCancel"
+cmd "gameUI disable MB_LanguageActive"
+cmd "gameUI hide MB_LanguageMaster"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuSettingsCancel"
+}
+Script MainMenuGameplay {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuGameplay"
+cmd "gameUI enableGroup MB_Gameplay MB_Language MB_Controls MB_Graphics MB_Audio"
+cmd "gameUI enable MB_GameplayActive"
+cmd "sym set OnCancel MainMenuGameplayCancel"
+cmd "sym set MenuLevel2 MainMenuGameplayCancel"
+}
+Script MainMenuGameplayCancel {
+cmd "log MenuCmd: MainMenuGameplayCancel"
+cmd "gameUI disable MB_GameplayActive"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuSettingsCancel"
+cmd "rook gamePlayUpdate"
+cmd "backend save"
+}
+Script MainMenuGraphics {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuGraphics"
+cmd "gameUI enableGroup MB_Controls MB_Graphics MB_Audio"
+cmd "gameUI enable MB_GraphicsActive"
+cmd "sym set OnCancel MainMenuGraphicsCancel"
+cmd "sym set MenuLevel2 MainMenuGraphicsCancel"
+}
+Script MainMenuGraphicsCancel {
+cmd "log MenuCmd: MainMenuGraphicsCancel"
+cmd "gameUI disable MB_GraphicsActive"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuSettingsCancel"
+cmd "console regSave"
+}
+Script MainMenuAudio {
+frame_block MenuCommand
+cmd "log MenuCmd: MainMenuAudio"
+cmd "gameUI enable MB_AudioActive"
+cmd "gameUI show MB_AudioMaster"
+cmd "sym set OnCancel MainMenuAudioCancel"
+cmd "sym set MenuLevel2 MainMenuAudioCancel"
+}
+Script MainMenuAudioCancel {
+cmd "log MenuCmd: MainMenuAudioCancel"
+cmd "gameUI disable MB_AudioActive"
+cmd "gameUI hide MB_AudioMaster"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuSettingsCancel"
+cmd "console regSave"
+}
+Script MF_InputRebind {
+cmd "input rebind $_RebindBinding $_RebindIndex $_RequestKeyResult"
+cmd "sym set #RBK@_RebindBinding@_I@_RebindIndex@ 1"
+}
+Script DoQuestInfoEntry {
+cmd "backend referredby QuestInfoEntry"
+cmd "timer setAsyncWait 1"
+cmd "pcmd 0.75 timer clearAsyncWait"
+}
+Script TryRedeemCode {
+cmd "timer setAsyncWait 1"
+cmd "if !arc runnow backend redeem $RedeemCode"
+cmd "if arc runnow arc redeem $RedeemCode"
+cmd "pcmd 3.0 timer clearAsyncWait"
+}
+Script CodeRedeemFail {
+}
+Script TrySetReferredBy {
+cmd "timer setAsyncWait 1"
+cmd "backend referredby P_ReferredBy"
+}
+Script TrySetReferredByResultCallback {
+cmd "pcmd 1.0 clearmenu DialogSetReferral.txt"
+cmd "pcmd 1.0 timer clearAsyncWait"
+}
+Script TryQuestRedeem {
+cmd "sym set _DiamondsSrcX_ 300"
+cmd "sym set _DiamondsSrcY_ 200"
+cmd "sym set _KudosSrcX_ 290"
+cmd "sym set _KudosSrcY_ 190"
+cmd "timer setAsyncWait 3"
+cmd "wallet redeemQuest $QuestToRedeem"
+cmd "playsound UI_RedeemQuestTry"
+}
+Script TryQuest2Redeem {
+cmd "sym set _DiamondsSrcX_ 300"
+cmd "sym set _DiamondsSrcY_ 200"
+cmd "sym set _KudosSrcX_ 290"
+cmd "sym set _KudosSrcY_ 190"
+cmd "timer setAsyncWait 3"
+cmd "wallet redeemAnyQuest $Quest2ToRedeem"
+cmd "playsound UI_RedeemQuestTry"
+}
+Script ShowQuest2RedeemDialog {
+cmd "sym set _DiamondsSrcX_ 300"
+cmd "sym set _DiamondsSrcY_ 200"
+cmd "sym set _KudosSrcX_ 290"
+cmd "sym set _KudosSrcY_ 190"
+cmd "if menuloaded QuestRedeemDialog runnow clearmenu QuestRedeemDialog"
+cmd "sym set _QuestDialogName_ $_MArg1_"
+cmd "sym set _QuestDialogDesc_ $_MArg2_"
+cmd "sym set _QuestRedeemKudos_ $_MArg3_"
+cmd "sym set _QuestRedeemDiamonds_ $_MArg4_"
+cmd "sym set _QuestRedeemXP_ $_MArg5_"
+cmd "sym set _QuestRedeemItem1_ $_MArg6_"
+cmd "sym set _QuestRedeemItem2_ $_MArg7_"
+cmd "sym set _QuestRedeemItem3_ $_MArg8_"
+cmd "customize contentLookup _QuestRedeemItem1_ _QuestRedeemItem1Link_ _QuestRedeemItem1Type_ _QuestRedeemItem1Disp_"
+cmd "customize contentLookup _QuestRedeemItem2_ _QuestRedeemItem2Link_ _QuestRedeemItem2Type_ _QuestRedeemItem2Disp_"
+cmd "customize contentLookup _QuestRedeemItem3_ _QuestRedeemItem3Link_ _QuestRedeemItem3Type_ _QuestRedeemItem3Disp_"
+cmd "loadmenu QuestRedeemDialog"
+}
+Script TryReferralRedeem {
+cmd "sym set _DiamondsSrcX_ 300"
+cmd "sym set _DiamondsSrcY_ 200"
+cmd "sym set _KudosSrcX_ 290"
+cmd "sym set _KudosSrcY_ 190"
+cmd "timer setAsyncWait 3"
+cmd "wallet redeemReferralQuest $ReferralToRedeem"
+}
+Script QuestRedeemSuccess {
+cmd "echo quest redeem Success"
+cmd "pcmd 0.5 timer clearAsyncWait"
+cmd "pcmd 0.5 playsound UI_RedeemQuestSuccess"
+cmd "quests scrollUpdate Quest"
+cmd "quests scrollUpdate Referral"
+cmd "gameUI refreshFilterName QuestUI"
+cmd "if sym #QuestComplete@QuestFocusIndex@ == 0 sym set FocusedComplete 0"
+cmd "if sym #QuestComplete@QuestFocusIndex@ == 1 sym set FocusedComplete 1"
+}
+Script QuestRedeemFail {
+cmd "echo quest redeem Failed: $_QuestRedeemFailReason"
+cmd "pcmd 0.5 timer clearAsyncWait"
+cmd "pcmd 0.5 playsound UI_RedeemQuestFail"
+cmd "quests scrollUpdate Quest"
+cmd "quests scrollUpdate Referral"
+cmd "gameUI refreshFilterName QuestUI"
+}

@@ -1,0 +1,16 @@
+Script VRFort_Open {
+pendingOnBoolSym VRFortTransitionActive
+sym_value_block VRFortState!=Open
+rcmd "sym setPair VRFortTransitionActive 1 VRFortState Open"
+cmd "menu3d animate FortInside2 vr/FortUber2_doorsOpen.aaf stopAndHold 0 0.35"
+cmd "gfx lerp diffuseBlendFactor /current 0 1.0"
+cmd "pcmd 1 sym set VRFortTransitionActive 0"
+}
+Script VRFort_Close {
+pendingOnBoolSym VRFortTransitionActive
+sym_value_block VRFortState!=Closed
+rcmd "sym setPair VRFortTransitionActive 1 VRFortState Closed"
+cmd "menu3d animate FortInside2 vr/FortUber2_doorsClose.aaf stopAndHold 0 0.35"
+cmd "gfx lerp diffuseBlendFactor /current 1 1.0"
+cmd "pcmd 1 sym set VRFortTransitionActive 0"
+}

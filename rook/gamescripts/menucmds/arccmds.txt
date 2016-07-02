@@ -1,0 +1,41 @@
+Script PWAAOfflineForce {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle PWAAOfflineRestTitle"
+cmd "sym set DialogBoxMessage PWAAOfflineRestMessage"
+cmd "sym set DialogMenuCmdOnButton1 PWAAOfflineForce_Go"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script PWAAOfflineForce_Go {
+}
+Script PWAA_1Hour {
+cmd "sym set DialogBoxTitle PWAAFatigueTitle"
+cmd "sym set DialogBoxMessage PWAA_Lvl1"
+cmd "sym set DialogBoxButton0 PWAAFatigueButtonID"
+cmd "sym set DialogBoxButton1 PWAAFatigueButtonOkay"
+cmd "if menuloaded PWAADialogWindow runnow clearmenu PWAADialogWindow"
+cmd "loadmenu PWAADialogWindow /fadein 0.1"
+}
+Script PWAA_2Hour {
+cmd "sym set DialogBoxTitle PWAAFatigueTitle"
+cmd "sym set DialogBoxMessage PWAA_Lvl1"
+cmd "sym set DialogBoxButton0 PWAAFatigueButtonID"
+cmd "sym set DialogBoxButton1 PWAAFatigueButtonOkay"
+cmd "if menuloaded PWAADialogWindow runnow clearmenu PWAADialogWindow"
+cmd "loadmenu PWAADialogWindow /fadein 0.1"
+}
+Script PWA_3Hour_30Min {
+cmd "sym set DialogBoxTitle PWAAFatigueTitle"
+cmd "sym set DialogBoxMessage PWAA_Lvl2"
+cmd "sym set DialogBoxButton0 PWAAFatigueButtonID"
+cmd "sym set DialogBoxButton1 PWAAFatigueButtonOkay"
+cmd "if menuloaded PWAADialogWindow runnow clearmenu PWAADialogWindow"
+cmd "loadmenu PWAADialogWindow /fadein 0.1"
+}
+Script PWA_5Hour_15Min {
+cmd "sym set DialogBoxTitle PWAAFatigueTitle"
+cmd "sym set DialogBoxMessage PWAA_Lvl3"
+cmd "sym set DialogBoxButton0 PWAAFatigueButtonID"
+cmd "sym set DialogBoxButton1 PWAAFatigueButtonOkay"
+cmd "if menuloaded PWAADialogWindow runnow clearmenu PWAADialogWindow"
+cmd "loadmenu PWAADialogWindow /fadein 0.1"
+}

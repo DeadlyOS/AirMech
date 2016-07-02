@@ -1,0 +1,887 @@
+Script PauseMenuEditor {
+ignoreInputTime 0.1
+cmd "if !netgame sym set SandboxMode 0"
+cmd "if !netgame loadmap reloadLast"
+cmd "if !netgame menucmd EditorStartReq_Runtime"
+}
+Script PauseMenuSandbox {
+ignoreInputTime 0.1
+cmd "if !netgame menucmd SandboxStartReq"
+}
+Script SandboxStartReq {
+ignoreInputTime 0.2
+cmd "menuCmd clearFreecam local"
+cmd "menuCmd MP_ResumeGame local"
+cmd "sym set EditorUsageFull 0"
+cmd "sym set SandboxMode 1"
+cmd "loadmenu editor"
+}
+Script ClickLoadMapFromDialog {
+ignoreInputTime 0.1
+cmd "sym set EditingOfficialMap 0"
+cmd "if sym EditorOpenOfficial == 1 && !retail sym set EditingOfficialMap 1"
+cmd "if sym PickingSoloCustomMap == 0 runnow editor loadmapsym MapToLoad coop"
+cmd "if sym PickingSoloCustomMap == 1 runnow sym set MapName $MapToLoad"
+cmd "if sym PickingSoloCustomMap == 1 runnow sym set MapPreviewChange 1"
+cmd "if sym PickingSoloCustomMap == 1 runnow pcmd 0 sym set MapPreviewChange 0"
+cmd "if sym PickingSoloCustomMap == 1 runnow gameui refreshFilterName MapSelection"
+cmd "if sym PickingSoloCustomMap == 1 runnow gameUI ignoreInputTime 0.1"
+cmd "if sym PickingSoloCustomMap == 1 runnow menuCmd ConMenuMapSelectStandardCancel"
+cmd "if sym PickingSoloCustomMap == 1 runnow clearmenu EditorMapListWindow"
+}
+Script ConfirmDeleteMapFromDialog {
+ignoreInputTime 0.4
+cmd "editor deletemap $MapToLoad"
+cmd "pcmd 0.3 if sym EditorLoadCustomMapMode == 1 runnow editor do enumerateCustomMaps"
+cmd "pcmd 0.3 if sym EditorLoadCustomMapMode == 0 runnow editor do enumerateCoreMaps"
+cmd "pcmd 0.3 gameui refreshfiltername EditorMapLayout"
+}
+Script ClickDeleteMapFromDialog {
+cmd "sym set DialogBoxTitle DialogTitleConfirmDeleteMap"
+cmd "sym set DialogBoxMessage DialogMessageConfirmDeleteMap"
+cmd "sym set DialogMenuCmdOnButton1 ConfirmDeleteMapFromDialog"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt /fadein 0.15"
+}
+Script CancelLoadMapFromDialog {
+ignoreInputTime 0.1
+cmd "clearmenu EditorMapListWindow /fadeout 0.1"
+}
+Script ClickSaveAsMapFromDialog {
+ignoreInputTime 0.1
+rcmd "if sym EditorSaveAsMapName !isEmpty runnow editor set mapName EditorSaveAsMapName"
+rcmd "if sym EditorSaveAsMapName !isEmpty runnow editor savemapAs /hpk"
+cmd "clearmenu EditorMapSaveAsWindow /fadeout 0.1"
+}
+Script CancelSaveAsMapFromDialog {
+ignoreInputTime 0.1
+cmd "clearmenu EditorMapSaveAsWindow /fadeout 0.1"
+}
+Script UploadMapFromDialog {
+ignoreInputTime 0.1
+cmd "editor uploadmap $EditorUploadMapIndex"
+cmd "clearmenu EditorMapUploadWindow /fadeout 0.1"
+}
+Script CancelUploadMapFromDialog {
+ignoreInputTime 0.1
+cmd "clearmenu EditorMapUploadWindow /fadeout 0.1"
+}
+Script EditorMenuFile {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent EditorMenuFile"
+cmd "sym set ListboxType Editor"
+cmd "sym set _ListboxColor 0x3e4d52"
+cmd "sym set _ListboxColor 0x212b2f"
+cmd "sym set _ListboxColorFocused 0x3d6d77"
+cmd "sym set _ListboxColorFocused 0x555555"
+cmd "sym set _ListboxName_ EditorMenuFile"
+cmd "sym setNSet 12 EditorMenuFile"
+cmd "sym set EditorMenuFile0 EditorNewMap"
+cmd "sym set EditorMenuFile1 EditorSaveMap"
+cmd "sym set EditorMenuFile2 EditorSaveMapAs"
+cmd "sym set EditorMenuFile3 EditorLoadMap"
+cmd "sym set EditorMenuFile4 EditorRecoverLast"
+cmd "sym set EditorMenuFile5 EditorUploadMap"
+cmd "sym set EditorMenuFile6 EditorTestMap"
+cmd "sym set EditorMenuFile7 EditorResumeGame"
+cmd "sym set EditorMenuFile8 EditorExit"
+cmd "loadmenu ListboxEditor"
+}
+Script EditorMenuEdit {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent EditorMenuEdit"
+cmd "sym set ListboxType Editor"
+cmd "sym set _ListboxColor 0x3e4d52"
+cmd "sym set _ListboxColor 0x212b2f"
+cmd "sym set _ListboxColorFocused 0x3d6d77"
+cmd "sym set _ListboxColorFocused 0x555555"
+cmd "sym set _ListboxName_ EditorMenuEdit"
+cmd "sym setNSet 12 EditorMenuEdit"
+cmd "sym set EditorMenuEdit0 Editor_SelectAllNamed"
+cmd "sym set EditorMenuEdit1 Editor_SelectAllPosXIntersect"
+cmd "sym set EditorMenuEdit2 Editor_SelectAllNegXIntersect"
+cmd "sym set EditorMenuEdit3 Editor_SelectAllPosYIntersect"
+cmd "sym set EditorMenuEdit4 Editor_SelectAllNegYIntersect"
+cmd "loadmenu ListboxEditor"
+}
+Script EditorMenuEdit_ClickList {
+ignoreInputTime 0.1
+cmd "clearmenu ListboxEditor"
+cmd "if sym _MArg1_ == 0 runnow editor do selAllNamedObjs"
+cmd "if sym _MArg1_ == 1 runnow editor do selAllToPosXIntersect"
+cmd "if sym _MArg1_ == 2 runnow editor do selAllToNegXIntersect"
+cmd "if sym _MArg1_ == 3 runnow editor do selAllToPosYIntersect"
+cmd "if sym _MArg1_ == 4 runnow editor do selAllToNegYIntersect"
+}
+Script EditorMenuView {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent EditorMenuView"
+cmd "sym set ListboxType Editor"
+cmd "sym set _ListboxColor 0x3e4d52"
+cmd "sym set _ListboxColor 0x212b2f"
+cmd "sym set _ListboxColorFocused 0x3d6d77"
+cmd "sym set _ListboxColorFocused 0x555555"
+cmd "sym set _ListboxName_ EditorMenuView"
+cmd "sym setNSet 12 EditorMenuView"
+cmd "sym set EditorMenuView0 Editor_ResetCamera"
+cmd "if !retail runnow sym set EditorMenuView1 Editor_GotoObjDec"
+cmd "loadmenu ListboxEditor"
+}
+Script EditorMenuView_ClickList {
+ignoreInputTime 0.1
+cmd "clearmenu ListboxEditor"
+cmd "if sym _MArg1_ == 0 runnow rook editorResetCamera"
+cmd "if !retail && sym _MArg1_ == 1 runnow editor do displaySelectedObjectDef"
+}
+Script EditorMenuRender {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent EditorMenuRender"
+cmd "sym set ListboxType Editor"
+cmd "sym set _ListboxColor 0x3e4d52"
+cmd "sym set _ListboxColor 0x212b2f"
+cmd "sym set _ListboxColorFocused 0x3d6d77"
+cmd "sym set _ListboxColorFocused 0x555555"
+cmd "sym set _ListboxName_ EditorMenuRender"
+cmd "sym setNSet 12 EditorMenuRender"
+cmd "sym set EditorMenuRender0 Editor_ShadowCastOn"
+cmd "sym set EditorMenuRender1 Editor_ShadowCastOff"
+cmd "sym set EditorMenuRender2 Editor_SelectAllShadowCastOff"
+cmd "sym set EditorMenuRender3 Editor_ShadowCastCullCheckOn"
+cmd "sym set EditorMenuRender4 Editor_ShadowCastCullCheckOff"
+cmd "sym set EditorMenuRender5 Editor_SelectAllShadowCullObjs"
+cmd "loadmenu ListboxEditor"
+}
+Script EditorMenuRender_ClickList {
+ignoreInputTime 0.1
+cmd "clearmenu ListboxEditor"
+cmd "if sym _MArg1_ == 0 runnow editor do selShadowCastOn"
+cmd "if sym _MArg1_ == 1 runnow editor do selShadowCastOff"
+cmd "if sym _MArg1_ == 2 runnow editor do selAllShadowCastOff"
+cmd "if sym _MArg1_ == 3 runnow editor do extraShadowCullCheckOn"
+cmd "if sym _MArg1_ == 4 runnow editor do extraShadowCullCheckOff"
+cmd "if sym _MArg1_ == 5 runnow editor do selAllShadowCastCullObjs"
+}
+Script EditorMapListWindowClickout {
+cmd "]playSound AlertOutpostLost.wav"
+cmd "sym set WindowFlash 1"
+cmd "pcmd 0.5 sym set WindowFlash 0"
+}
+Script EditorGenerateSampleMap {
+cmd "editor do generateSampleMap"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorNotifyOpened {
+cmd "sym set EditorMapStateDirty 0"
+cmd "sym set EditorUnit_Page 0"
+cmd "sym set EditorProp_Page 0"
+cmd "sym set EditorPrefab_Page 0"
+cmd "sym set EditorCombo_Page 0"
+cmd "sym set EditorPowerup_Page 0"
+cmd "sym set EventSelectionPage 0"
+cmd "sym set ActionSelectionPage 0"
+cmd "sym set EditorVariableParamPage 0"
+cmd "sym set EditorPlaceType 0"
+cmd "sym set EditorPlaceTeam 0"
+cmd "sym set EditorScriptMode 0"
+cmd "sym set EditorActionIndex 0"
+cmd "sym set EditorEventIndex 0"
+cmd "sym set EditorActionDefineMode 0"
+cmd "sym set ScriptSelectionActive Editor_Events"
+cmd "sym set ActionDefineSelectionActive Editor_Conditions"
+cmd "sym set EditorTeamSelectActive Editor_Team0"
+cmd "sym set PlaceableSelectionActive Units"
+cmd "sym set editorTerrainTileset Canyon"
+cmd "sym set EditorTileVariantPage 0"
+cmd "sym set TerrainPatternValue 0"
+cmd "sym set ModifySelectionPage 0"
+cmd "sym set ActiveObjSelectionIndex 0"
+cmd "sym set GameSettingSelectionPage 0"
+cmd "sym set ActiveGameSettingIndex -1"
+cmd "sym set EditorPlaceableIndex -1"
+cmd "sym set ParamTypeSelectSelection 0"
+cmd "menucmd ListboxEventOptionNone"
+cmd "rook editorScrollUpdateUnits"
+cmd "editor do scrollGameSettings"
+cmd "sym setZero EditorPanelModify EditorPanelSMap EditorPanelTerrain EditorPanelWorld EditorPanelScripts"
+cmd "sym set EditorPanelCreate 1"
+cmd "editor set runTimeMode create"
+cmd "gameUI refreshfiltername CollectionUI"
+}
+Script EditorAddScriptEvent {
+cmd "editor do addScriptEvent"
+cmd "sym set EditorMapStateDirty 1"
+cmd "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+}
+Script EditorModifyScriptEvent {
+cmd "editor do modifyScriptEvent"
+cmd "sym set EditorMapStateDirty 1"
+cmd "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+}
+Script EditorEditScriptEvent {
+cmd "sym set EditorScriptDefinitionWindowMode 0"
+cmd "sym set EditorEditingEvent 1"
+cmd "if sym EditorEvent_Name#{EditorEventIndex} !isEmpty runnow editor do setEventSymbols"
+cmd "if sym EditorEvent_Name#{EditorEventIndex} !isEmpty runnow menucmd EventCategory_SetFromSelection"
+cmd "if sym EditorEvent_Name#{EditorEventIndex} !isEmpty runnow menucmd OptionTrueFalse_SetFromSelection"
+cmd "if sym EditorEvent_Name#{EditorEventIndex} !isEmpty runnow menucmd IgnoreDestroySpawn_SetFromSelection"
+cmd "if sym EditorEvent_Name#{EditorEventIndex} !isEmpty runnow menucmd EventOption_SetFromSelection"
+cmd "if sym EditorEvent_Name#{EditorEventIndex} !isEmpty runnow loadmenu EditorScriptDefinitionWindow /fadein 0.1"
+}
+Script EditorRemoveScriptEvent {
+cmd "editor do removeScriptEvent"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorDefineScriptEvent {
+cmd "sym set EditorScriptDefinitionWindowMode 0"
+cmd "sym set EditorEditingEvent 0"
+cmd "loadmenu EditorScriptDefinitionWindow /fadein 0.1"
+}
+Script EditorCloseDefineScriptEvent {
+cmd "sym set EditorScriptMode 0"
+}
+Script EditorAddScriptAction {
+cmd "editor do addScriptAction"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorRenameScriptAction {
+cmd "editor do renameScriptAction"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorDefineScriptAction {
+cmd "sym set ActionConditionSelectionPage 0"
+cmd "sym set ActionCommandSelectionPage 0"
+cmd "if sym EditorAction_Name#{EditorActionIndex} !isEmpty runnow sym set EditorScriptMode 3"
+cmd "if sym EditorAction_Name#{EditorActionIndex} !isEmpty runnow sym set EditorActionDefineMode 0"
+cmd "if sym EditorAction_Name#{EditorActionIndex} !isEmpty runnow menucmd ActionDefineSelection_SetFromSelection"
+cmd "if sym EditorAction_Name#{EditorActionIndex} !isEmpty runnow editor do scrollActionConditionPage"
+cmd "if sym EditorAction_Name#{EditorActionIndex} !isEmpty runnow editor do setActionSymbols"
+}
+Script EditorCloseDefineScriptAction {
+cmd "sym set EditorScriptMode 1"
+}
+Script EditorRemoveScriptAction {
+cmd "editor do removeScriptAction"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorMoveCommandUp {
+cmd "editor do moveActionCommandUp"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorMoveCommandDown {
+cmd "editor do moveActionCommandDown"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorDefineCommand {
+cmd "sym set EditorEditingActionCommand 0"
+cmd "sym set EditorScriptDefinitionWindowMode 1"
+cmd "loadmenu EditorScriptDefinitionWindow /fadein 0.1"
+}
+Script EditorEditCommand {
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow sym set EditorEditingActionCommand 1"
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow sym set EditorScriptDefinitionWindowMode 1"
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow editor do setActionCommandSymbols"
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow menucmd CommandCategory_SetFromSelection"
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow menucmd CommandOption_SetFromSelection"
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow menucmd EditorOrderSelect_SetFromSelection"
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow menucmd SpawnOrderSelect_SetFromSelection"
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow menucmd EditorTeamSelect_SetFromSelection"
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow menucmd CommandVariableOperation_SetFromSelection"
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow menucmd OptionTrueFalse_SetFromSelection"
+cmd "if sym EditorActionCommand_Name#{EditorActionCommandIndex} !isEmpty runnow loadmenu EditorScriptDefinitionWindow /fadein 0.1"
+}
+Script EditorRemoveCommand {
+cmd "editor do removeScriptActionCommand"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorAddCommand {
+cmd "editor do addScriptActionCommand"
+cmd "sym set EditorMapStateDirty 1"
+cmd "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+}
+Script EditorConfirmEditCommand {
+cmd "editor do modifyScriptActionCommand"
+cmd "sym set EditorMapStateDirty 1"
+cmd "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+}
+Script EditorFinishPickingUnitIdLiteralCallback {
+cmd "loadmenu EditorScriptDefinitionWindow /fadein 0.1"
+cmd "loadmenu EditorParamItemPickWindow /fadein 0.1"
+}
+Script EditorFinishPickingInputKeyCallback {
+}
+Script EditorMoveConditionUp {
+cmd "editor do moveActionConditionUp"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorMoveConditionDown {
+cmd "editor do moveActionConditionDown"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorAddCondition {
+cmd "editor do addScriptActionCondition"
+cmd "sym set EditorMapStateDirty 1"
+cmd "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+}
+Script EditorConfirmEditCondition {
+cmd "editor do modifyScriptActionCondition"
+cmd "sym set EditorMapStateDirty 1"
+cmd "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+}
+Script EditorDefineCondition {
+cmd "sym set EditorEditingActionCondition 0"
+cmd "sym set EditorScriptDefinitionWindowMode 1"
+cmd "loadmenu EditorScriptDefinitionWindow /fadein 0.1"
+}
+Script EditorEditCondition {
+cmd "if sym EditorActionCondition_Name#{EditorActionConditionIndex} !isEmpty runnow sym set EditorEditingActionCondition 1"
+cmd "if sym EditorActionCondition_Name#{EditorActionConditionIndex} !isEmpty runnow sym set EditorScriptDefinitionWindowMode 1"
+cmd "if sym EditorActionCondition_Name#{EditorActionConditionIndex} !isEmpty runnow editor do setActionConditionSymbols"
+cmd "if sym EditorActionCondition_Name#{EditorActionConditionIndex} !isEmpty runnow menucmd ConditionCategory_SetFromSelection"
+cmd "if sym EditorActionCondition_Name#{EditorActionConditionIndex} !isEmpty runnow menucmd ConditionOption_SetFromSelection"
+cmd "if sym EditorActionCondition_Name#{EditorActionConditionIndex} !isEmpty runnow menucmd OptionTrueFalse_SetFromSelection"
+cmd "if sym EditorActionCondition_Name#{EditorActionConditionIndex} !isEmpty runnow menucmd EditorCompareSelect_SetFromSelection"
+cmd "if sym EditorActionCondition_Name#{EditorActionConditionIndex} !isEmpty runnow loadmenu EditorScriptDefinitionWindow /fadein 0.1"
+}
+Script EditorRemoveCondition {
+cmd "editor do removeScriptActionCondition"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorConditionFinishPickingCallback {
+cmd "loadmenu EditorScriptDefinitionWindow /fadein 0.1"
+}
+Script EditorAddScriptVariable {
+cmd "editor do addScriptVariable"
+cmd "sym set EditorMapStateDirty 1"
+cmd "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+}
+Script EditorModifyScriptVariable {
+cmd "editor do modifyScriptVariable"
+cmd "sym set EditorMapStateDirty 1"
+cmd "clearmenu EditorScriptDefinitionWindow /fadeout 0.1"
+}
+Script EditorDefineScriptVariable {
+cmd "sym set EditorScriptDefinitionWindowMode 2"
+cmd "sym set EditorEditingVariable 0"
+cmd "loadmenu EditorScriptDefinitionWindow /fadein 0.1"
+}
+Script EditorRemoveScriptVariable {
+cmd "editor do removeScriptVariable"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorEditScriptVariable {
+cmd "if sym EditorVariable_Name#{EditorVariableIndex} !isEmpty runnow editor do setVariableSymbols"
+cmd "if sym EditorVariable_Name#{EditorVariableIndex} !isEmpty runnow sym set EditorEditingVariable 1"
+cmd "if sym EditorVariable_Name#{EditorVariableIndex} !isEmpty runnow sym set EditorScriptDefinitionWindowMode 2"
+cmd "if sym EditorVariable_Name#{EditorVariableIndex} !isEmpty runnow menucmd ValueTypeSelect_SetFromSelection"
+cmd "if sym EditorVariable_Name#{EditorVariableIndex} !isEmpty runnow loadmenu EditorScriptDefinitionWindow /fadein 0.1"
+}
+Script EditorPickScriptImportMap {
+cmd "editor do enumerateCustomMaps"
+cmd "loadmenu EditorImportMapScriptsWindow /fadein 0.1"
+}
+Script ClickImportScriptsFromMap {
+ignoreInputTime 0.1
+rcmd "if sym EditorImportScriptMapName !isEmpty runnow editor importMapScripts EditorImportScriptMapName"
+cmd "clearmenu EditorImportMapScriptsWindow /fadeout 0.1"
+}
+Script EditorCancelImportScriptFromMap {
+ignoreInputTime 0.1
+cmd "clearmenu EditorImportMapScriptsWindow /fadeout 0.1"
+}
+Script EditorToggleEdging {
+cmd "editor toggle meshTerrainEdgingMode"
+}
+Script EditorDisableTerrainEditing {
+cmd "editor toggle meshTerrainEdgingMode /off"
+cmd "editor toggle meshTerrainHeightEditMode /off"
+cmd "editor toggle meshTerrainPaintedMaterialEditMode /off"
+}
+Script EditorToggleHeightEdit {
+cmd "editor toggle meshTerrainHeightEditMode"
+}
+Script EditorTogglePaintedMaterialEdit {
+cmd "editor toggle meshTerrainPaintedMaterialEditMode"
+}
+Script EditorNukeVisibileTiles {
+cmd "editor do nukeVisibleTiles"
+}
+Script EditorNukeVisibileDetails {
+cmd "editor do nukeVisibleDetails"
+}
+Script EditorNukeVisibileObjects {
+cmd "editor do nukeVisibleObjects"
+}
+Script EditorGenerateVisibileTiles {
+cmd "editor do generateVisibleTiles"
+}
+Script EditorGenerateMapTiles {
+cmd "editor do generateMapTiles"
+}
+Script EditorStartReq_Runtime {
+ignoreInputTime 0.2
+cmd "menuCmd clearFreecam local"
+cmd "menuCmd MP_ResumeGame local"
+cmd "sym set EditorUsageFull 1"
+cmd "sym inc UsedRuntimeEditor"
+cmd "loadmenu editor"
+}
+Script EditorOpenPickEventWindow {
+cmd "sym set EditorScriptItemPickSym $_MArg1_"
+cmd "sym clear EditorScriptItemTypePickSym"
+cmd "sym set EditorScriptItemPickCallback $_MArg2_"
+cmd "sym set EditorScriptItemPickScroll scrollPickScriptEventPage"
+cmd "editor do scrollPickScriptEventPage"
+cmd "loadmenu EditorScriptItemPickWindow /fadein 0.1"
+}
+Script EditorOpenPickActionWindow {
+cmd "sym set EditorScriptItemPickSym $_MArg1_"
+cmd "sym clear EditorScriptItemTypePickSym"
+cmd "sym set EditorScriptItemPickCallback $_MArg2_"
+cmd "sym set EditorScriptItemPickScroll scrollPickScriptActionPage"
+cmd "editor do scrollPickScriptActionPage"
+cmd "loadmenu EditorScriptItemPickWindow /fadein 0.1"
+}
+Script EditorOpenPickVariableWindow {
+cmd "sym set EditorScriptItemPickSym $_MArg1_"
+cmd "sym set EditorScriptItemTypePickSym $_MArg2_"
+cmd "sym set EditorScriptItemPickCallback $_MArg3_"
+cmd "sym set EditorScriptItemPickScroll scrollPickScriptVariablePage"
+cmd "editor do scrollPickScriptVariablePage"
+cmd "loadmenu EditorScriptItemPickWindow /fadein 0.1"
+}
+Script EditorPickTriggerEventCallback {
+cmd "editor do updateActionTriggerEvent"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorOpenPickNumericParamMenu {
+rcmd "sym set EditorFieldValueType 0"
+rcmd "sym set EditorParamItemPickSym $_MArg1_"
+rcmd "sym set EditorParamTypePickSym ParamTypeSelectSelection"
+rcmd "menucmd ParamTypeSelect_SetFromSelection"
+cmd "loadmenu EditorParamItemPickWindow /fadein 0.1"
+}
+Script EditorOpenPickNumericParamMenuArg {
+rcmd "sym set EditorFieldValueType 0"
+rcmd "sym set EditorParamItemPickSym $_MArg1_"
+rcmd "sym set EditorParamTypePickSym $_MArg2_"
+rcmd "sym set ParamTypeSelectSelection #{#{_MArg2_}}"
+rcmd "menucmd ParamTypeSelect_SetFromSelection"
+cmd "loadmenu EditorParamItemPickWindow /fadein 0.1"
+}
+Script EditorOpenPickTeamParamMenu {
+rcmd "sym set EditorFieldValueType 1"
+rcmd "sym set EditorParamItemPickSym $_MArg1_"
+rcmd "sym set EditorParamTypePickSym ParamTypeSelectSelection"
+rcmd "menucmd ParamTypeSelect_SetFromSelection"
+cmd "loadmenu EditorParamItemPickWindow /fadein 0.1"
+}
+Script EditorOpenPickUnitIdParamMenu {
+rcmd "sym set EditorFieldValueType 2"
+rcmd "sym set EditorParamItemPickSym $_MArg1_"
+rcmd "sym set EditorParamTypePickSym ParamTypeSelectSelection"
+rcmd "menucmd ParamTypeSelect_SetFromSelection"
+cmd "loadmenu EditorParamItemPickWindow /fadein 0.1"
+}
+Script EditorOpenPickUnitIdParamMenuArg {
+rcmd "sym set EditorFieldValueType 2"
+rcmd "sym set EditorParamItemPickSym $_MArg1_"
+rcmd "sym set EditorParamTypePickSym $_MArg2_"
+rcmd "sym set ParamTypeSelectSelection #{#{_MArg2_}}"
+rcmd "menucmd ParamTypeSelect_SetFromSelection"
+cmd "loadmenu EditorParamItemPickWindow /fadein 0.1"
+}
+Script EditorOpenPickUnitTypeParamMenu {
+rcmd "sym set EditorFieldValueType 3"
+rcmd "sym set EditorParamItemPickSym $_MArg1_"
+rcmd "sym set EditorParamTypePickSym ParamTypeSelectSelection"
+rcmd "menucmd ParamTypeSelect_SetFromSelection"
+cmd "loadmenu EditorParamItemPickWindow /fadein 0.1"
+}
+Script EditorOpenPickPositionParamMenu {
+rcmd "sym set EditorFieldValueType 4"
+rcmd "sym set EditorParamItemPickSym $_MArg1_"
+rcmd "sym set EditorParamTypePickSym ParamTypeSelectSelection"
+rcmd "menucmd ParamTypeSelect_SetFromSelection"
+cmd "loadmenu EditorParamItemPickWindow /fadein 0.1"
+}
+Script EditorConfirmCommonLiteralParam {
+rcmd "sym set #{EditorParamItemPickSym} #{EditorParamItemName0}"
+rcmd "sym set #{EditorParamTypePickSym} #{ParamTypeSelectSelection}"
+rcmd "clearmenu EditorParamItemPickWindow /fadeout 0.1"
+}
+Script EditorConfirmTeamLiteralParam {
+rcmd "sym set #{EditorParamItemPickSym} #{EditorPlaceTeam}"
+rcmd "sym set #{EditorParamTypePickSym} #{ParamTypeSelectSelection}"
+rcmd "clearmenu EditorParamItemPickWindow /fadeout 0.1"
+}
+Script EditorPickParamUnitTypeCallback {
+rcmd "sym set #{EditorPickUnitStoreSym} #{EditorPickUnitValue}"
+}
+Script EditorOpenPickUnitToSymbolMenu {
+cmd "loadmenu EditorPickUnitWindow /fadein 0.1"
+cmd "sym set EditorPickUnitType 0"
+cmd "sym set EditorPickUnitStoreSym $_MArg1_"
+cmd "sym set EditorPickUnitCallbackCmd EditorPickParamUnitTypeCallback"
+cmd "rook editorScrollUpdatePickUnits"
+cmd "gameui refreshfiltername CollectionUI"
+}
+Script EditorOpenPickUnitMenu {
+cmd "loadmenu EditorPickUnitWindow /fadein 0.1"
+cmd "sym set EditorPickUnitType 0"
+cmd "rook editorScrollUpdatePickUnits"
+cmd "gameui refreshfiltername CollectionUI"
+}
+Script EditorOpenPickInfantryMenu {
+cmd "loadmenu EditorPickUnitWindow /fadein 0.1"
+cmd "sym set EditorPickUnitType 1"
+cmd "rook editorScrollUpdatePickInfantry"
+cmd "gameui refreshfiltername CollectionUI"
+}
+Script EditorAddCombo {
+cmd "editor do addCombo"
+cmd "sym set EditorMapStateDirty 1"
+}
+Script EditorTestMap {
+ignoreInputTime 0.2
+cmd "loadmenu EditorTestMapWindow"
+}
+Script EditorConfirmTestMap {
+cmd "sym set max_players $EditorTestMapMaxPlayers"
+cmd "menucmd InitSpSymbols"
+cmd "clearmenu Editor"
+cmd "if sym EditorTestMapPMask == 0 runnow loadmap reloadLast"
+cmd "if sym EditorTestMapPMask != 0 runnow loadmap reloadLast pmask $EditorTestMapPMask"
+cmd "pcmd 0.5 sym set UsedRuntimeEditor 1"
+}
+script EditorTestMap1v1 {
+cmd "sym set EditorTestMapMaxPlayers 2"
+cmd "sym set EditorTestMapPMask 0"
+cmd "menuCmd EditorConfirmTestMap"
+}
+script EditorTestMap2v2 {
+cmd "sym set EditorTestMapMaxPlayers 4"
+cmd "sym set EditorTestMapPMask 0"
+cmd "menuCmd EditorConfirmTestMap"
+}
+script EditorTestMap3v3 {
+cmd "sym set EditorTestMapMaxPlayers 6"
+cmd "sym set EditorTestMapPMask 0"
+cmd "menuCmd EditorConfirmTestMap"
+}
+script EditorTestMap2v3 {
+cmd "sym set EditorTestMapMaxPlayers 6"
+cmd "sym set EditorTestMapPMask 47"
+cmd "menuCmd EditorConfirmTestMap"
+}
+script EditorTestMap1v2 {
+cmd "sym set EditorTestMapMaxPlayers 4"
+cmd "sym set EditorTestMapPMask 11"
+cmd "menuCmd EditorConfirmTestMap"
+}
+script EditorTestMap1v3 {
+cmd "sym set EditorTestMapMaxPlayers 6"
+cmd "sym set EditorTestMapPMask 43"
+cmd "menuCmd EditorConfirmTestMap"
+}
+script EditorTestMap1P {
+cmd "sym set EditorTestMapMaxPlayers 1"
+cmd "sym set EditorTestMapPMask 0"
+cmd "menuCmd EditorConfirmTestMap"
+}
+script EditorTestMap2P {
+cmd "sym set EditorTestMapMaxPlayers 2"
+cmd "sym set EditorTestMapPMask 0"
+cmd "menuCmd EditorConfirmTestMap"
+}
+script EditorTestMap3P {
+cmd "sym set EditorTestMapMaxPlayers 3"
+cmd "sym set EditorTestMapPMask 0"
+cmd "menuCmd EditorConfirmTestMap"
+}
+script EditorTestMap4P {
+cmd "sym set EditorTestMapMaxPlayers 4"
+cmd "sym set EditorTestMapPMask 0"
+cmd "menuCmd EditorConfirmTestMap"
+}
+Script EditorModifyLatchSlot0 {
+cmd "sym set EditorPickUnitCallbackCmd EditorModifyLatchSlot0Callback"
+cmd "menucmd EditorOpenPickInfantryMenu"
+}
+Script EditorModifyLatchSlot0Callback {
+cmd "sym set EditorObjPropertyValue4 ${EditorPickUnitValue}"
+cmd "editor do updateObjSelectionProperty 4"
+}
+Script EditorModifyLatchSlot1 {
+cmd "sym set EditorPickUnitCallbackCmd EditorModifyLatchSlot1Callback"
+cmd "menucmd EditorOpenPickInfantryMenu"
+}
+Script EditorModifyLatchSlot1Callback {
+cmd "sym set EditorObjPropertyValue5 ${EditorPickUnitValue}"
+cmd "editor do updateObjSelectionProperty 5"
+}
+Script EditorModifyLatchSlot2 {
+cmd "sym set EditorPickUnitCallbackCmd EditorModifyLatchSlot2Callback"
+cmd "menucmd EditorOpenPickInfantryMenu"
+}
+Script EditorModifyLatchSlot2Callback {
+cmd "sym set EditorObjPropertyValue6 ${EditorPickUnitValue}"
+cmd "editor do updateObjSelectionProperty 6"
+}
+Script EditorModifyLatchSlot3 {
+cmd "sym set EditorPickUnitCallbackCmd EditorModifyLatchSlot3Callback"
+cmd "menucmd EditorOpenPickInfantryMenu"
+}
+Script EditorModifyLatchSlot3Callback {
+cmd "sym set EditorObjPropertyValue7 ${EditorPickUnitValue}"
+cmd "editor do updateObjSelectionProperty 7"
+}
+Script EditorMenuFile_ClickList {
+ignoreInputTime 0.1
+cmd "clearmenu ListboxEditor"
+cmd "if sym _MArg1_ == 0 runnow menucmd EditorNewMap"
+cmd "if sym _MArg1_ == 1 runnow menucmd EditorSaveMap"
+cmd "if sym _MArg1_ == 2 runnow menucmd EditorSaveAsMap"
+cmd "if sym _MArg1_ == 3 runnow menucmd EditorLoadMap"
+cmd "if sym _MArg1_ == 4 runnow menucmd EditorRecoverLast"
+cmd "if sym _MArg1_ == 5 runnow menucmd EditorUploadMap"
+cmd "if sym _MArg1_ == 6 runnow menucmd EditorTestMap"
+cmd "if sym _MArg1_ == 7 runnow menucmd EditorResumeGame"
+cmd "if sym _MArg1_ == 8 runnow menucmd EditorExit"
+}
+Script EditorLoadMap {
+ignoreInputTime 0.2
+cmd "if sym EditorOpenMy == 1 menucmd EditorMaplistMyMaps"
+cmd "if sym EditorOpenPublic == 1 menucmd EditorMaplistPublic"
+cmd "if sym EditorOpenOfficial == 1 menucmd EditorMaplistOfficial"
+cmd "loadmenu EditorMapListWindow /fadein 0.1"
+}
+Script EditorLoadCustomMap {
+ignoreInputTime 0.2
+cmd "echo Loading Map"
+cmd "editor do enumerateCustomMaps"
+cmd "sym set EditorLoadCustomMapMode 1"
+cmd "sym set PickingSoloCustomMap 0"
+cmd "gameui refreshfiltername EditorMapLayout"
+cmd "loadmenu EditorMapListWindow /fadein 0.1"
+}
+Script EditorMaplistOfficial {
+ignoreInputTime 0.2
+cmd "echo Official Maps"
+cmd "editor do enumerateCoreMaps"
+cmd "sym set EditorLoadCustomMapMode 0"
+cmd "sym set PickingSoloCustomMap 0"
+cmd "gameui refreshfiltername EditorMapLayout"
+}
+Script EditorMaplistMyMaps {
+ignoreInputTime 0.2
+cmd "echo My Maps"
+cmd "editor do enumerateCustomMaps"
+cmd "sym set EditorLoadCustomMapMode 1"
+cmd "sym set PickingSoloCustomMap 0"
+cmd "gameui refreshfiltername EditorMapLayout"
+}
+Script EditorMaplistPublic {
+ignoreInputTime 0.2
+cmd "echo Public Maps"
+cmd "leaderboards get Maps"
+cmd "sym set EditorLoadCustomMapMode 0"
+cmd "sym set PickingSoloCustomMap 0"
+cmd "pcmd 0.2 editor do enumeratePublicMaps"
+cmd "pcmd 0.2 gameui refreshfiltername EditorMapLayout"
+}
+Script EditorNewMap {
+cmd "echo new map"
+cmd "menucmd EditorNewMapConfirm"
+}
+Script EditorNewMapConfirm_Go {
+ignoreInputTime 0.5
+cmd "editor newmap coop"
+}
+Script EditorNewMapConfirm {
+cmd "]log MenuCmd: ListChallengeConfirm"
+cmd "]sym set DialogBoxTitle DialogTitleNewMap"
+cmd "]sym set DialogBoxMessage DialogMessageNewMap"
+cmd "]sym set DialogMenuCmdOnButton1 EditorNewMapConfirm_Go"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBox.txt /fadein 0.15"
+}
+Script EditorSaveMap {
+cmd "echo saving map..."
+cmd "if sym EditingOfficialMap == 1 menucmd EditorSaveMapDev"
+cmd "if sym EditingOfficialMap != 1 menucmd EditorSaveMapHpk"
+}
+Script EditorSaveAsMap {
+cmd "editor do enumerateCustomMaps"
+cmd "loadmenu EditorMapSaveAsWindow /fadein 0.1"
+}
+Script EditorSaveMapDev {
+cmd "echo ...to dev folder"
+cmd "editor savemap"
+}
+Script EditorSaveMapHpk {
+cmd "echo ...to hpk"
+cmd "editor savemap /hpk"
+}
+Script EditorExitWithoutSaveConfirm {
+cmd "]sym set DialogBoxTitle DialogTitleExitGame"
+cmd "]sym set DialogBoxMessage DialogMessageExitWithoutSave"
+cmd "]sym set DialogMenuCmdOnButton1 MP_LoadMainMenuConfirmed"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBox.txt /fadein 0.15"
+}
+Script EditorExit {
+cmd "]if sym EditorMapStateDirty == 1 runnow menuCmd EditorExitWithoutSaveConfirm local"
+cmd "]if sym EditorMapStateDirty == 0 runnow menuCmd MP_LoadMainMenuConfirmed local"
+}
+Script EditorRecoverLastConfirm_Go {
+ignoreInputTime 0.5
+cmd "loadmap local:recoverLast coop
+}
+Script EditorRecoverLastConfirm {
+cmd "]sym set DialogBoxTitle EditorRecoverLast"
+cmd "]sym set DialogBoxMessage DialogMessageRecoverLast"
+cmd "]sym set DialogMenuCmdOnButton1 EditorRecoverLastConfirm_Go"
+cmd "]sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBox.txt /fadein 0.15"
+}
+Script EditorRecoverLast {
+cmd "echo Recover Last"
+cmd "menucmd EditorRecoverLastConfirm"
+}
+Script EditorUploadMap {
+cmd "echo Attempt to Publish map..."
+cmd "if !arc && sym PublishMapsOk == 1 loadmenu EditorMapUploadWindow"
+cmd "if !arc && sym PublishMapsOk != 1 && sym HasAirMechPrime == 0 menucmd PublishMapNotOk_NoPrime"
+cmd "if !arc && sym PublishMapsOk != 1 && sym HasAirMechPrime == 1 menucmd PublishMapNotOk_General"
+cmd "if arc && sym IsMapEditorAccessOk == 1 loadmenu EditorMapUploadWindow"
+cmd "if arc && sym IsMapEditorAccessOk != 1 menucmd PublishMapNotOk_General"
+}
+Script PublishMapNotOk_General {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitlePublishNotOk"
+cmd "sym set DialogBoxMessage DialogMessagePublishNotOkGeneral"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script PublishMapNotOk_NoPrime {
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitlePublishNotOk"
+cmd "sym set DialogBoxMessage DialogMessagePublishNotOkNoPrime"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script EditorResumeGame {
+ignoreInputTime 0.2
+cmd "editor set placeUnit None"
+cmd "clearmenu editor"
+cmd "loadmenu hudMain.txt"
+}
+Script EditorSelectMove {
+cmd "sym setZero EditorTransSelect EditorTransRotate EditorTransScale EditorTransGroupSelect"
+cmd "sym set EditorTransMove 1"
+cmd "editor set transformMode move"
+}
+Script EditorSelectRotate {
+cmd "sym setZero EditorTransSelect EditorTransMove EditorTransScale EditorTransGroupSelect"
+cmd "sym set EditorTransRotate 1"
+cmd "editor set transformMode rotate"
+}
+Script EditorSelectScale {
+cmd "sym setZero EditorTransSelect EditorTransMove EditorTransRotate EditorTransGroupSelect"
+cmd "sym set EditorTransScale 1"
+cmd "editor set transformMode scale"
+}
+Script EditorSelectGroupSelect {
+cmd "sym setZero EditorTransSelect EditorTransMove EditorTransRotate EditorTransScale"
+cmd "sym set EditorTransGroupSelect 1"
+cmd "editor set transformMode boxSelect"
+}
+Script EditorScrollMapPrev {
+rcmd "if sym EditorOpenPublic == 0 runnow sym dec EditorMapListPage"
+rcmd "if sym EditorOpenPublic == 1 runnow leaderboards pageprev"
+rcmd "sym set MapToLoad"
+rcmd "if sym EditorOpenPublic == 0 && sym EditorLoadCustomMapMode == 1 runnow editor do enumerateCustomMaps"
+rcmd "if sym EditorOpenPublic == 0 && sym EditorLoadCustomMapMode == 0 runnow editor do enumerateCoreMaps"
+rcmd "if sym EditorOpenPublic == 1 runnow editor do enumeratePublicMaps"
+rcmd "gameui refreshfiltername EditorMapLayout"
+}
+Script EditorScrollMapNext {
+rcmd "if sym EditorOpenPublic == 0 runnow sym inc EditorMapListPage"
+rcmd "if sym EditorOpenPublic == 1 runnow leaderboards pagenext"
+rcmd "sym set MapToLoad"
+rcmd "if sym EditorOpenPublic == 0 && sym EditorLoadCustomMapMode == 1 runnow editor do enumerateCustomMaps"
+rcmd "if sym EditorOpenPublic == 0 && sym EditorLoadCustomMapMode == 0 runnow editor do enumerateCoreMaps"
+rcmd "if sym EditorOpenPublic == 1 runnow editor do enumeratePublicMaps"
+rcmd "gameui refreshfiltername EditorMapLayout"
+}
+Script UpdateMapsNavMesh {
+rcmd "sym incf _ToolDelay_ 0.2"
+cmd "pcmd 0.00 + $_ToolDelay_ loadmap $_MArg1_"
+cmd "pcmd 0.03 + $_ToolDelay_ editor toggle editmode"
+cmd "pcmd 0.06 + $_ToolDelay_ editor do generatenavmesh"
+cmd "pcmd 0.09 + $_ToolDelay_ editor toggle editmode"
+}
+Script UpdateMapsSampleMap {
+rcmd "sym incf _ToolDelay_ 0.2"
+cmd "pcmd 0.00 + $_ToolDelay_ loadmap $_MArg1_"
+cmd "pcmd 0.03 + $_ToolDelay_ editor toggle editmode"
+cmd "pcmd 0.06 + $_ToolDelay_ editor do generateSampleMap"
+cmd "pcmd 0.075 + $_ToolDelay_ editor do saveSampleMapToFile"
+cmd "pcmd 0.09 + $_ToolDelay_ editor toggle editmode"
+}
+Script UpdateMapsResave {
+rcmd "sym incf _ToolDelay_ 0.2"
+cmd "pcmd 0.00 + $_ToolDelay_ loadmap $_MArg1_"
+cmd "pcmd 0.03 + $_ToolDelay_ editor toggle editmode"
+cmd "pcmd 0.05 + $_ToolDelay_ editor cleanLevelConsoleCommandsContaining: rook setTransformPlane"
+cmd "pcmd 0.05 + $_ToolDelay_ editor cleanLevelConsoleCommandsContaining: rook setKillPlane"
+cmd "pcmd 0.06 + $_ToolDelay_ savemap"
+cmd "pcmd 0.09 + $_ToolDelay_ editor toggle editmode"
+}
+Script EditorRefreshTileVariants {
+cmd "sym set EditorTileVariantPage 0"
+cmd "editor do scrollTerrainVariants"
+cmd "gameui refreshfiltername EditorTileVariants"
+}
+Script EditorUploadMapFailed {
+cmd "sym set DialogBoxTitle Carbon1ValFailTitle"
+cmd "sym set DialogBoxMessage EditorUploadMapFailed"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script EditorPublishErrorToobig {
+cmd "sym set DialogBoxTitle Carbon1ValFailTitle"
+cmd "sym set DialogBoxMessage MapPublishError_TooBig"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script EditorPublishErrorNoSlots {
+cmd "sym set DialogBoxTitle Carbon1ValFailTitle"
+cmd "sym set DialogBoxMessage MapPublishError_NoSlots"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script EditorPublishErrorBadSlot {
+cmd "sym set DialogBoxTitle Carbon1ValFailTitle"
+cmd "sym set DialogBoxMessage MapPublishError_BadSlot"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script EditorPublishErrorServer {
+cmd "sym set DialogBoxTitle Carbon1ValFailTitle"
+cmd "sym set DialogBoxMessage MapPublishError_Server"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script EditorPublishServerResult {
+ignoreInputTime 0.2
+cmd "echo Map Publish Result = $_MArg1_"
+}
+Script EditorRemovePublishedMapServerResult {
+ignoreInputTime 0.2
+cmd "echo Map Remove Published Map Result = $_MArg1_"
+}

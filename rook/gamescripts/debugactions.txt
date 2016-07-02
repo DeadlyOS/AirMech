@@ -1,0 +1,470 @@
+Group "Level Loader"
+{
+defaultExpanded 0
+Action "Load warstock.lvl (urban environment)" Button {
+Do {
+"loadmap warstock.lvl"
+}
+}
+Action "Load worstcase.lvl (stress test)" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"loadmap worstcase.lvl"
+}
+}
+Action "Infinite Restart" CheckBox {
+defaultChecked	0
+Do {
+"menuCmd DebugRestart"
+}
+Undo {
+"menuCmd DebugRestartStop"
+}
+}
+}
+Group "Console Symbol Watch"
+{
+defaultExpanded 0
+Action "Watch Common Menu Symbols" Button {
+Do {
+"sym watch CurrentMenu"
+"sym watch _Title*"
+}
+}
+Action "Watch Voice Symbols" Button {
+Do {
+"sym watch P_HasVoice*"
+"sym watch P_Voice*"
+"sym watch P_Muted*"
+"sym watch P_TotalHumans*"
+}
+}
+Action "Unwatch All" Button {
+Do {
+"sym unwatch *"
+}
+}
+}
+Group "Graphics Actions"
+{
+Action "Show FPS" CheckBox {
+defaultChecked	0
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"loadmenu fps.txt"
+}
+Undo {
+"clearmenu fps.txt"
+}
+}
+Action "Free Camera" CheckBox {
+defaultChecked	0
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"menuCmd freezeFreecamToggle local"
+}
+Undo {
+"menuCmd freezeFreecamToggle local"
+}
+}
+Action "Wireframe Mode" CheckBox {
+defaultChecked	0
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"gfx toggle wireframeMode"
+}
+Undo {
+"gfx toggle wireframeMode"
+}
+}
+Action "Enable Z-PrePass" CheckBox {
+defaultChecked	1
+reqPlatform 	ZPREPASS
+Do {
+"gfx toggle dozprepass"
+}
+Undo {
+"gfx toggle dozprepass"
+}
+}
+Action "Exclude Z-PrePass" CheckBox {
+defaultChecked	0
+reqPlatform 	ZPREPASS
+Do {
+"gfx toggle excludezprepass"
+}
+Undo {
+"gfx toggle excludezprepass"
+}
+}
+Action "Show Destruction Heat Map" CheckBox {
+defaultChecked 0
+reqPlatform		WIN32 XBOX360 PS4 XBONE
+Do {
+"gfx toggle dheatmap"
+}
+Undo {
+"gfx toggle dheatmap"
+}
+}
+Action "Disable Particles" CheckBox {
+defaultChecked	0
+Do {
+"gfx toggle pfxEnabled"
+}
+Undo {
+"gfx toggle pfxEnabled"
+}
+}
+Action "Disable Unit Sim Tick" CheckBox {
+defaultChecked	0
+Do {
+"rook toggle unitSimTick"
+}
+Undo {
+"rook toggle unitSimTick"
+}
+}
+Action "Disable AirMech AI" CheckBox {
+defaultChecked	0
+Do {
+"rook toggle airmechAI"
+}
+Undo {
+"rook toggle airmechAI"
+}
+}
+}
+Group "Game Display Actions"
+{
+defaultExpanded 0
+Action "Display Unit HP" CheckBox {
+defaultChecked 0
+Do {
+"rook toggleDisplayUnitHP 1"
+}
+Undo {
+"rook toggleDisplayUnitHP 0"
+}
+}
+Action "Display UI Messages" CheckBox {
+defaultChecked	1
+Do {
+"gfx toggle uimsg"
+}
+Undo {
+"gfx toggle uimsg"
+}
+}
+Action "Display Scroll Messages" CheckBox {
+defaultChecked	1
+Do {
+"gfx toggle screenmsg"
+}
+Undo {
+"gfx toggle screenmsg"
+}
+}
+}
+Group "Pathing"
+{
+defaultExpanded 0
+Action "Toggle Pathing Debug Lines" CheckBox {
+defaultChecked 0
+Do {
+"pathing debugLines 1"
+}
+Undo {
+"pathing debugLines 0"
+}
+}
+Action "Toggle Freecam Pathing Debugging" CheckBox {
+defaultChecked 0
+Do {
+"pathing freecamPathDebug 1"
+}
+Undo {
+"pathing freecamPathDebug 0"
+}
+}
+}
+Group "Cheats"
+{
+defaultExpanded 0
+Action "Cheat Parts" ListSelect {
+ListSelect "Enable" {
+"rook setParts PriCarMissiles PriCarAmmo StrCarArmor StrNone SpeCarMoney SpeCarBuild CorNone EngNone"
+}
+ListSelect "Restore" {
+"rook restoreParts"
+}
+}
+Action "Cheat XP" ListSelect {
+ListSelect "1000" {
+"player local cheatXP 1000"
+}
+ListSelect "5000" {
+"player local cheatXP 5000"
+}
+ListSelect "20000" {
+"player local cheatXP 20000"
+}
+ListSelect "50000" {
+"player local cheatXP 50000"
+}
+}
+Action "Game Speed" ListSelect {
+ListSelect "1x" {
+"tickmult 1"
+}
+ListSelect "2x" {
+"tickmult 2"
+}
+ListSelect "5x" {
+"tickmult 5"
+}
+ListSelect "10x" {
+"tickmult 10"
+}
+}
+Action "Destroy" ListSelect {
+ListSelect "Fort0" {
+"kill fort 0"
+}
+ListSelect "Fort1" {
+"kill fort 1"
+}
+ListSelect "Units0" {
+"kill units 0"
+}
+ListSelect "Units1" {
+"kill units 1"
+}
+ListSelect "Units6" {
+"kill units 6"
+}
+}
+}
+Group "Debugging"
+{
+defaultExpanded 0
+Group "Memory"
+{
+defaultExpanded 0
+Action "Show Memory Debug Pane" Button {
+Do {
+"dview show"
+"dview clear"
+"dview group memory"
+"dactions toggle"
+}
+}
+Action "Memory Filter Single Source Allocators" Button {
+Do {
+"alloc set displayFilter Single*"
+}
+}
+Action "Memory Filter Show All" Button {
+Do {
+"alloc set displayFilter *"
+}
+}
+Action "MinDisplayMem" ListSelect {
+ListSelect "0 KB" {
+"alloc set minDisplayMem 0"
+}
+ListSelect "100 KB" {
+"alloc set minDisplayMem 100"
+}
+ListSelect "250 KB" {
+"alloc set minDisplayMem 250"
+}
+ListSelect "1024 KB" {
+"alloc set minDisplayMem 1024"
+}
+}
+}
+}
+Group "Language"
+{
+defaultExpanded 0
+Action "Select (Group 1)" ListSelect {
+ListSelect "English" {
+"lang set english /dbgForce"
+}
+ListSelect "French" {
+"lang set french /dbgForce"
+}
+ListSelect "Italian" {
+"lang set italian /dbgForce"
+}
+ListSelect "German" {
+"lang set german /dbgForce"
+}
+ListSelect "Spanish" {
+"lang set spanish /dbgForce"
+}
+ListSelect "Russian" {
+"lang set russian /dbgForce"
+}
+}
+Action "Select (Group 2)" ListSelect {
+ListSelect "Dutch" {
+"lang set dutch /dbgForce"
+}
+ListSelect "Finnish" {
+"lang set finnish /dbgForce"
+}
+ListSelect "Portuguese" {
+"lang set Portuguese /dbgForce"
+}
+ListSelect "BrazilP" {
+"lang set brazilian /dbgForce"
+}
+}
+Action "Select (Group 3)" ListSelect {
+ListSelect "Korean" {
+"lang set korean /dbgForce"
+}
+ListSelect "ChineseT" {
+"lang set tchinese /dbgForce"
+}
+ListSelect "ChineseS" {
+"lang set schinese /dbgForce"
+}
+ListSelect "Russian" {
+"lang set russian /dbgForce"
+}
+ListSelect "Japanese" {
+"lang set Japanese /dbgForce"
+}
+}
+}
+Group "Rook Classes"
+{
+defaultExpanded 0
+Action "GodMech" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"player 0 changeTo GodMech"
+}
+}
+Action "Fighter" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"player 0 changeTo FighterA"
+}
+}
+Action "Stealth" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"player 0 changeTo Stealth"
+}
+}
+Action "Helix" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"player 0 changeTo Chopper"
+}
+}
+Action "Saucer" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"player 0 changeTo Saucer"
+}
+}
+Action "Fighter Neo" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"player 0 changeTo FighterNeo"
+}
+}
+Action "Osprey" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"player 0 changeTo Osprey"
+}
+}
+Action "Paladin" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"player 0 changeTo Paladin"
+}
+}
+Action "Warthog" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"player 0 changeTo Warthog"
+}
+}
+Action "Angel" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"player 0 changeTo Angel"
+}
+}
+}
+Group "Survival Wave"
+{
+defaultExpanded 0
+Action "Wave 1" Button {
+Do {
+"sym set CSWave Wave1"
+}
+}
+Action "Wave 2" Button {
+Do {
+"sym set CSWave Wave2"
+}
+}
+Action "Wave 3" Button {
+Do {
+"sym set CSWave Wave3"
+}
+}
+Action "Wave 4" Button {
+Do {
+"sym set CSWave Wave4"
+}
+}
+Action "Wave 5" Button {
+Do {
+"sym set CSWave Wave5"
+}
+}
+Action "Wave 6" Button {
+Do {
+"sym set CSWave Wave6"
+}
+}
+Action "Wave 7" Button {
+Do {
+"sym set CSWave Wave7"
+}
+}
+Action "Wave 8" Button {
+Do {
+"sym set CSWave Wave8"
+}
+}
+Action "Wave 9" Button {
+reqPlatform 	WIN32 XBOX360 PS4 XBONE
+Do {
+"sym set CSWave Wave9"
+}
+}
+}
+Group "Sound"
+{
+defaultExpanded 0
+Action "Stop All Sound Loops" Button {
+Do {
+"soundloop stop *"
+}
+}
+Action "Play Test Sound" Button {
+Do {
+"playsound ImpactMissile.wav"
+}
+}
+}

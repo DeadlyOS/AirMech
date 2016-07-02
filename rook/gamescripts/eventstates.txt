@@ -1,0 +1,116 @@
+{
+"SymChecks": [
+"_GotAutoExecSrv_",
+"_GotBaseCampCfg_",
+"_OkToLoad_"
+],
+"InvSymChecks": [
+"SplashPromoLoaded",
+"ShowMotDHome",
+"VignetteFade",
+"EGCommonDialogLoaded",
+"ManualLoaded",
+"QuestsLoaded",
+"StructureInspectLoaded",
+"StructureBuildLoaded"
+"ArchivesLoaded"
+"WarzoneLoaded"
+],
+"States": [
+{
+"Name":"Has BaseCamp",
+"CheckPeriod":0.1,
+"MaxRuns":1,
+"SymValueChecks": [
+"CurrentMenu==MKHome"
+],
+"SymChecks": [
+"HasBaseCamp"
+],
+"Cmds":[
+"sym set _BaseCampHelpSkipBase_ 1"
+]
+},
+{
+"Name":"Has Hangar",
+"CheckPeriod":0.1,
+"MaxRuns":1,
+"SymValueChecks": [
+"CurrentMenu==MKHome"
+],
+"SymChecks": [
+"HasBaseHangar"
+],
+"Cmds":[
+"sym set _BaseCampHelpSkipHangar_ 1"
+]
+},
+{
+"Name":"First BaseCamp Intro",
+"CheckPeriod":0.1,
+"MaxRuns":1,
+"SymValueChecks": [
+"CurrentMenu==MKHome",
+"P_Kudos>=10"
+],
+"SymChecks": [
+"HasShovel"
+],
+"InvSymChecks": [
+"_BaseCampHelpSkipBase_",
+"HasBaseCamp",
+"DialogBoxLoaded",
+"_HelpDialogLoaded_"
+],
+"Cmds":[
+"menucmd ShowBaseCampHelpIntro"
+]
+},
+{
+"Name":"Build Hangar",
+"CheckPeriod":0.1,
+"MaxRuns":1,
+"SymValueChecks": [
+"CurrentMenu==MKHome",
+"P_Kudos>=10"
+],
+"SymChecks": [
+"HasBaseCamp"
+"BaseCamp_Ready"
+],
+"InvSymChecks": [
+"_BaseCampHelpSkipHangar_"
+"HasBaseHangar",
+"DialogBoxLoaded",
+],
+"Cmds":[
+"menucmd ShowBaseCampHelpBuildHangar"
+]
+},
+{
+"Name":"Buy Comms Blueprint",
+"CheckPeriod":300,
+"CheckPeriodEx":20,
+"MaxRuns":1,
+"IfChecks": [
+"if !menuloaded InspectDialog"
+"P_Kudos>=100"
+],
+"SymValueChecks": [
+"CurrentMenu==MKHome"
+],
+"SymChecks": [
+"HasBaseCamp",
+"HasBaseHangar"
+],
+"InvSymChecks": [
+"_HelpDialogLoaded_",
+"HasBaseComms",
+"DialogBoxLoaded"
+],
+"Cmds":[
+"menucmd ShowBaseCampHelpBuyComms"
+]
+}
+]
+}

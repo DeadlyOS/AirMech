@@ -1,0 +1,92 @@
+Script GlobalChatReposition {
+cmd "echo Global Chat Reposition"
+cmd "if sym GL_ChatMinimized == 0 if ingame sym set _ChatPosX 20"
+cmd "if sym GL_ChatMinimized == 1 if ingame sym set _ChatPosX 20"
+cmd "if sym GL_ChatMinimized == 0 if !ingame sym set _ChatPosX 0"
+cmd "if sym GL_ChatMinimized == 1 if !ingame sym set _ChatPosX 0"
+cmd "if sym GL_ChatMinimized == 2 sym set _ChatPosX 570"
+cmd "if sym GL_ChatMinimized == 2 adduianim ChatShowButton mas_ChatTabShow"
+cmd "if sym GL_ChatMinimized == 0 adduianim ChatShowButton mas_ChatTabHide"
+cmd "if sym GL_ChatMinimized == 0 gameui hide ChatShowButton"
+cmd "sym set _ChatPosY 0"
+cmd "if sym GL_ChatMinimized == 2 pcmd 0.2 gameui show ChatShowButton"
+cmd "if sym GL_ChatMinimized == 2 pcmd 0.2 gameUI enable ChatShowButton"
+cmd "if sym GL_ChatMinimized != 2 pcmd 0.2 gameUI disable ChatShowButton"
+cmd "if ingame pcmd t2 addUIAnim InGameGlobalChat mas_ChatPosition"
+cmd "if !ingame pcmd t2 addUIAnim MessageChatContainer mas_ChatPosition"
+}
+Script BackToHome {
+ignoreInputTime 0.09
+cmd "menuCmd MainMenuBackButton"
+cmd "if sym CurrentMenu == CPvP menuCmd ConMenuPlayPvPCancel"
+cmd "if sym CurrentMenu == CCoop menuCmd ConMenuPlayCoopCancel"
+cmd "if sym CurrentMenu == CSolo menuCmd ConMenuPlaySoloPressCancel"
+}
+Script SendFocusToChat {
+ignoreInputTime 0.09
+cmd "if sym GChatTextEntryHidden == 0 pcmd 0.1 gameui focusnametry GChatTextEntry"
+cmd "if sym FChatTextEntryHidden == 0 pcmd 0.1 gameui focusnametry FChatTextEntry"
+cmd "if sym PChatTextEntryHidden == 0 pcmd 0.1 gameui focusnametry PChatTextEntry"
+cmd "if sym MChatTextEntryHidden == 0 pcmd 0.1 gameui focusnametry MChatTextEntry"
+cmd "if sym GameLogHidden == 0 pcmd 0.1 gameui focusnametry LChatTextEntry"
+}
+Script IngameChatToggle {
+rcmd "if sym CockpitIsOpen == 0 runnow menucmd IngameChatToggle_Go"
+}
+Script IngameChatToggle_Go {
+ignoreInputTime 0.15
+rcmd "sym toggle IngameChat"
+cmd "if sym IngameChat == 0 runnow gameui focusid 0"
+cmd "if sym IngameChat == 1 && sym P_PlayerHumans != 1 runnow input set preferMouseKeyboard 1"
+cmd "if sym IngameChat == 1 && sym P_PlayerHumans != 1 runnow gameui focusnametry IngameChatEnterBox"
+}
+Script ChatFocusGlobal {
+cmd "sym setOne FChatTextEntryHidden PChatTextEntryHidden MChatTextEntryHidden GameLogHidden EChatScrollBarHidden"
+cmd "sym set GChatTextEntryHidden 0"
+cmd "gameUI enable GL_ChatBgGlobal"
+cmd "pcmd 0 gameUI disable GL_ChatBgGlobal"
+}
+Script ChatFocusParty {
+cmd "sym setOne GChatTextEntryHidden FChatTextEntryHidden MChatTextEntryHidden GameLogHidden EChatScrollBarHidden"
+cmd "sym set PChatTextEntryHidden 0"
+cmd "gameUI enable GL_ChatBgParty"
+cmd "pcmd 0 gameUI disable GL_ChatBgParty"
+}
+Script ChatFocusInfo {
+cmd "sym setOne GChatTextEntryHidden FChatTextEntryHidden MChatTextEntryHidden PChatTextEntryHidden EChatScrollBarHidden"
+cmd "sym set GameLogHidden 0"
+cmd "gameUI enable GL_ChatBgInfo"
+cmd "pcmd 0 gameUI disable GL_ChatBgInfo"
+}
+Script ChatFocusEvents {
+cmd "sym setOne GChatTextEntryHidden FChatTextEntryHidden MChatTextEntryHidden PChatTextEntryHidden GameLogHidden"
+cmd "sym set EChatScrollBarHidden 0"
+cmd "gameUI enable GL_ChatBgEvents"
+cmd "pcmd 0 gameUI disable GL_ChatBgEvents"
+}
+Script EquipChatBadge {
+cmd "sym set DialogBoxTitle BadgeEquipTitle"
+cmd "sym set DialogBoxMessage BadgeEquipMessage"
+cmd "sym set DialogMenuCmdOnButton1 EquipChatBadge_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script EquipChatBadge_Go {
+cmd "timer setAsyncWait 1"
+cmd "menuCmd UI_BadgeSetRequest"
+cmd "rook setBadge $_BadgeChar"
+}
+Script EquipNoChatBadge {
+cmd "sym set DialogBoxTitle BadgeEquipTitle"
+cmd "sym set DialogBoxMessage BadgeEquipNoneMessage"
+cmd "sym set DialogMenuCmdOnButton1 EquipNoChatBadge_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script EquipNoChatBadge_Go {
+cmd "timer setAsyncWait 1"
+cmd "menuCmd UI_BadgeSetRequest"
+cmd "rook setBadge !"
+}

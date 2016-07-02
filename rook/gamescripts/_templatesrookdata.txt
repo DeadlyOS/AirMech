@@ -1,0 +1,59 @@
+add WorldObject
+set Name TemplateUnit
+set SpecialType Unit
+add WorldObject initFrom TemplateUnit
+set Name TemplateSmall
+set Model units/bike/UnitBike.amf
+set Material mat_UnitBike
+set CollisionZRel 0.5
+set Collision "CapsuleZ 0.7 1.0"
+set DestructionEffects_1  "1 0.2 0.0  0.5 0.0    0 0 ExpBlastRingSmall  /vcb:75 /reqVis"
+set DestructionEffects_2  "1 2.0 2.0  0.5 3.0   0 0  GlassSpinSmall@TC@  /vcb:40 /reqVis"
+add WorldObject initFrom TemplateUnit
+set Name TemplateMedium
+set Model units/CarStarter/CarStarter.amf
+set Material "mat_ArmoredCar mat_UnitBike"
+set CollisionZRel 1.0
+set Collision "CapsuleZ 0.85 0.75"
+set DestructionEffects_1  "1 0.2 0.0  0.5 0.0    0 0 ExpBlastRing ExpDestroy BrightFlare /vcb:75 /reqVis"
+set DestructionEffects_2  "1 2.0 2.0  0.5 3.0   0 0  GlassSpin@TC@ /vcb:40 /reqVis"
+add WorldObject initFrom TemplateUnit
+set Name TemplateLarge
+set Model units/TurretStarter/TurretStarter.amf
+set Material "mat_TurretStand mat_TurretDual"
+set CollisionZRel 0.5
+set Collision "CapsuleZ 1.0 1.5"
+set DestructionEffects_1  "1 0.2 0.0  0.5 0.0  0 0 	ExpBlastRing ExpDestroy BrightFlare /vcb:75 /reqVis"
+set DestructionEffects_2  "1 2.0 2.0  0.5 3.0   0 0  GlassSpin@TC@ /vcb:40 /reqVis"
+add WorldObject initFrom TemplateUnit
+set Name TemplateInfantry
+set Model units/Infantry/Infantry.amf
+set Material mat_UnitInfantry
+set CollisionZRel 0.8
+set Collision "margin 0.15 CapsuleZ 0.3 1.0"
+set NavmeshIndex 1
+set PickupIndicatorScale 2.0
+set MineWeightMask 1
+set DestructionEffects_1  "1 0.2 0.0  0.5 0.0    0 0 ExpBlastRingSmall  /vcb:75 /reqVis"
+set DestructionEffects_2  "1 2.0 2.0  0.5 3.0   0 0  GlassSpinSmall@TC@  /vcb:40 /reqVis"
+add WorldObject initFrom TemplateMedium
+set Name TemplateTank
+set Model units/Tank/Tank.amf
+set Material mat_Tank
+set MustMoveInFacingDirection 1
+set CriticalHitZone Back
+add WorldObject initFrom TemplateLarge
+set Name TemplateTurret
+set NavmeshObstacle 2
+set Mass 1000000000.0
+set LinearDamp 100.0
+set AngularDamp 3.0
+set MoveSpeed 0.0
+set DestructionEffects_1  "1 0.2 0.0  0.5 0.0  0 0 	ExpBlastRing ExplosionSeq1 BrightFlare /reqVis"
+set DestructionEffects_2  "1 2.0 2.0  0.5 3.0   0 0  GlassSpin@TC@ /reqVis"
+add WorldObject initFrom TemplateTurret
+set Name TemplateArtillery
+set Model units/TurretArtillery/TurretArtillery.amf
+set Material "mat_TurretArtillery"
+set UnitSpecial Artillery
+set SocketTurretSpeedBuff 1.5

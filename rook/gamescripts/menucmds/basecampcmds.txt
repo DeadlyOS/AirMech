@@ -1,0 +1,440 @@
+Script PlayerRegionMove {
+cmd "gameUI getLastRenderPos #MapLocRegion@_MArg1_@ _RegionMoveToX_ _RegionMoveToY_"
+cmd "sym dec _RegionMoveToX_ 40"
+cmd "sym dec _RegionMoveToY_ 90"
+cmd "pcmd 0 addUIAnim PlayerRegionPictureFrame mas_PlayerRegionMove"
+cmd "pcmd 0.1 sym setFrom _RegionMoveFromX_ _RegionMoveToX_"
+cmd "pcmd 0.1 sym setFrom _RegionMoveFromY_ _RegionMoveToY_"
+cmd "menucmd #PlayerRegionMove@_MArg1_@
+}
+Script PlayerRegionMoveSimple {
+cmd "gameui disableGroup MapLocRegionMoveSimple MapLocRegionMoveCrater MapLocRegionMoveNesthorn"
+cmd "gameui enableGroup MapLocRegionMoveChasm"
+}
+Script PlayerRegionMoveChasm {
+cmd "gameui disableGroup MapLocRegionMoveChasm MapLocRegionMoveNesthorn"
+cmd "gameui enableGroup MapLocRegionMoveSimple MapLocRegionMoveCrater"
+}
+Script PlayerRegionMoveCrater {
+cmd "gameui disableGroup MapLocRegionMoveCrater MapLocRegionMoveSimple"
+cmd "gameui enableGroup MapLocRegionMoveNesthorn MapLocRegionMoveChasm"
+}
+Script PlayerRegionMoveNesthorn {
+cmd "gameui disableGroup MapLocRegionMoveCrater MapLocRegionMoveSimple MapLocRegionMoveNesthorn"
+cmd "gameui enableGroup MapLocRegionMoveChasm"
+}
+Script BasecampBuild {
+cmd "basecamp genBuildList BuildList 10"
+cmd "loadmenu StructureBuild /fadein 0.1"
+cmd "clearmenu StructureInspect"
+cmd "gameui refreshfiltername BaseLayout"
+cmd "if sym BuildList0 !isEmpty gameui directPushNameIfEnabled BaseStructure0"
+cmd "if sym _BaseCampBuildStructure_ !isEmpty menucmd CheckBaseCampBuildList"
+}
+Script BasecampInspect {
+cmd "if menuloaded StructureInspect runnow clearmenu StructureInspect"
+cmd "basecamp genProcList $BaseLayoutSlotP ProcName 3"
+cmd "if sym CurrentMenu == MKHome loadmenu StructureInspect /fadein 0.1"
+cmd "pcmd t0 gameui refreshfiltername BaseLayout"
+}
+Script BasecampSpecial {
+ignoreInputTime 0.1
+cmd "if menuloaded StructureInspect runnow clearmenu StructureInspect"
+cmd "basecamp genSpecialDoList $_MArg1_ _SpecialDoList 6
+cmd "loadmenu StructureSpecial /fadein 0.1"
+}
+Script LaunchEditor {
+cmd "echo launch editor"
+ignoreInputTime 1.0
+cmd "sym set LobbyStatusMessage MsgEnterSoloReady"
+cmd "sym set _soloLaunch_ 1"
+cmd "sym set MyId 0"
+cmd "sym set _NumPlayers 1"
+cmd "sym set MatchmakingType Solo"
+cmd "sym set P_Rdy0 0
+cmd "sym set Ally0Mode 2"
+cmd "sym set Ally1Mode 2"
+cmd "sym set Ally2Mode 2"
+cmd "sym set Ally3Mode 2"
+cmd "menuCmd ConMenuLobbyResetPlayerContainer local 1 Kira"
+cmd "menuCmd ConMenuLobbyResetPlayerContainer local 2 Petros"
+cmd "menuCmd ConMenuLobbyResetPlayerContainer local 3 Raven"
+cmd "menuCmd ConMenuLobbyResetPlayerContainer local 4 Samson"
+cmd "menuCmd ConMenuLobbyResetPlayerContainer local 5 Hawk"
+cmd "if sym ConMenuSoloSkirmish1v1 == 1 runnow sym set MatchmakingPlayers 1v1"
+cmd "if sym ConMenuSoloSkirmish2v2 == 1 runnow sym set MatchmakingPlayers 2v2"
+cmd "if sym ConMenuSoloSkirmish3v3 == 1 runnow sym set MatchmakingPlayers 3v3"
+cmd "if sym ConMenuSoloSkirmish2v3 == 1 runnow sym set MatchmakingPlayers 2v3"
+cmd "if sym ConMenuSoloSkirmish1v2 == 1 runnow sym set MatchmakingPlayers 1v2"
+cmd "if sym ConMenuSoloSkirmish1v3 == 1 runnow sym set MatchmakingPlayers 1v3"
+cmd "sym set MatchmakingType Solo"
+cmd "sym set MatchmakingMode Skirmish"
+cmd "menucmd ConMenuLobbySetupSymbols"
+cmd "party2 create solo 1"
+cmd "party2 updateloadout"
+cmd "pcmd 0.1 sym set MapName c_template"
+cmd "pcmd 0.1 timer clearAsyncWait"
+cmd "pcmd 0.1 menuCmd ConMenuPlaySoloPressStart"
+cmd "pcmd 0.1 loadmap c_template"
+cmd "pcmd 0.2 menucmd EditorStartReq_Runtime"
+}
+Script BasecampCellClear_HaveShovel {
+cmd "sym set _CellClearIndexReq_ $_MArg1_"
+cmd "sym set DialogBoxTitle DialogTitleBasecampCellClear"
+cmd "sym set DialogBoxMessage DialogMessageBasecampCellClear"
+cmd "sym set DialogMenuCmdOnButton1 BasecampCellClear_Confirmed"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt /fadein 0.10"
+}
+Script BasecampCellClear {
+ignoreInputTime 0.2
+cmd "if walletUnlocked Shovel runnow menucmd BasecampCellClear_HaveShovel local $_MArg1_"
+cmd "if walletLocked Shovel runnow menucmd ProcShovelClearFailed local NoShovel"
+}
+Script BasecampCellClear_Confirmed {
+ignoreInputTime 0.5
+cmd "wallet procItem Shovel Clear /slot $_CellClearIndexReq_"
+}
+Script BasecampCellClear_NoConfirm {
+ignoreInputTime 0.5
+cmd "sym set _CellClearIndexReq_ $_MArg1_"
+cmd "wallet procItem Shovel Clear /slot $_MArg1_"
+cmd "if MenuLoaded BaseCampHelp clearmenu BaseCampHelp /fadeOut 0.1"
+rcmd "if sym _BaseCampHelpStage_ > -1 gameui ignoreInputTime 1.0"
+cmd "pcmd 0.5 if sym _BaseCampHelpStage_ > -1 && sym _BaseCampUseSlot_ < 2 menucmd BaseCampHelpContinue"
+}
+Script BaseCamp_DragDrop_BaseScrapyard {
+cmd "echo Drag Drop $_MArg1_ onto the Scrapyard"
+cmd "menucmd ShowScrapper"
+}
+Script DismissBasecampOverlays {
+cmd "if sym ShowScrapper == 1 menucmd HideScrapper"
+cmd "if sym ShowTrainPilot == 1 menucmd HideTrainPilot"
+}
+Script ShowScrapper {
+cmd "addUIAnim BasecampScrapper mas_ScrapperUp"
+cmd "sym set ShowScrapper 1"
+cmd "sym set OvermapFade 1"
+cmd "sym set ScrapperActivated 0"
+cmd "sym set ScrapperEffect 0"
+}
+Script HideScrapper {
+cmd "addUIAnim BasecampScrapper mas_ScrapperDown"
+cmd "sym setZero ShowScrapper ShowScrapperRingHighlight SY_Scrap SY_Scrap2 SY_Scrap3"
+cmd "sym set ScrapperActivated 0"
+cmd "sym set ScrapperEffect 0"
+cmd "sym set ScrapperLoaded 0"
+}
+Script ScrapperConsume {
+ignoreInputTime 1.2
+cmd "addUIAnim ItemToScrapIcon mas_ScrapperConsume"
+cmd "pcmd 1.0 sym setZero SY_Scrap3 SY_Scrap2 SY_Scrap"
+cmd "wallet scrapItem $TR_ContentNameScrap"
+}
+Script BaseCamp_Scrapyard_Load {
+cmd "echo scrapyard setup for: $_MArg1_"
+cmd "collection copyOrInitSettings $_MArg1_ Scrap"
+cmd "sym set ScrapperLoaded 1"
+cmd "gameui refreshFilterName InvV2UI"
+cmd "pcmd 0 wallet scrapItem $$TR_ContentNameScrap /test"
+}
+Script BaseCamp_Scrapyard_LoadFail_NoScrap {
+cmd "echo scrapyard noScrap for: $_MArg1_"
+}
+Script BaseCamp_Scrapyard_LoadFail_NoScrap_CountedAlt {
+cmd "echo scrapyard noScrap for: $_MArg1_ - counted alternate content"
+}
+Script ShowTrainPilot {
+cmd "if sym GL_ChatMinimized != 2 sym set GL_ChatMinimized 2"
+cmd "if sym GL_ChatMinimized != 2 menucmd GlobalChatReposition"
+cmd "sym set ShowTrainPilot 1"
+cmd "sym setNSet 8 Train_Hide 1"
+cmd "training setMode Pilot"
+cmd "sym set _TrainOpenTraining_ 1"
+cmd "sym set _TrainOpenBuyPoints_ 0"
+cmd "sym set _TrainLoadedBuyPoints_ 0"
+cmd "sym set _TrainOpenPilots_ 1"
+cmd "if sym _GotTrainingCfg_ == 0 runnow training req"
+cmd "if sym _GotTrainingCfg_ == 0 runnow training validateState Pilot"
+cmd "loadmenu BaseCampTrainPilot /fadeIn 0.3"
+cmd "pcmd 0.1 addUIAnim BaseCampTrainPilot mas_BaseCampTrainShow"
+cmd "gameui enableAll BaseCampBuyPoints"
+cmd "playsound $MenuSoundLoadoutChanged"
+}
+Script HideTrainPilot {
+cmd "if menuloaded BaseCampTrainPilot runnow clearmenu BaseCampTrainPilot"
+cmd "sym setZero ShowTrainPilot"
+cmd "sym setNSet 8 Train_Hide 1"
+cmd "sym set TrainerLoaded 0"
+}
+Script BaseCamp_TrainPilot_Load {
+ignoreInputTime 0.25
+cmd "echo train pilot setup for: $_MArg1_"
+cmd "collection copyOrInitSettings $_MArg1_ Train"
+cmd "training setupFor $_MArg1_ Train 8"
+cmd "sym set _BaseCampToTrainPilot_ $_MArg1_"
+cmd "if sym TrainerLoaded == 0 addUIAnim BaseCampTrainingInfo mas_BaseCampTrainInfoShow""
+cmd "pcmd 0.1 gameui refreshFilterName TrainUI"
+cmd "if sym TrainerLoaded == 0 pcmd 0.15 gameui enable BaseCampTrainName"
+cmd "if sym TrainerLoaded == 0 pcmd 0.2 gameui enable BaseCampPilotToTrainIcon"
+cmd "if sym TrainerLoaded == 1 addUIAnim BaseCampPilotToTrainIcon mas_BaseCampTrainPilotSwitch"
+cmd "sym set TrainerLoaded 1"
+}
+Script BaseCamp_TrainPilot_Reload {
+cmd "training setupFor $_BaseCampToTrainPilot_ Train 8"
+cmd "sym set TrainerLoaded 1"
+}
+Script BaseCamp_TrainPilotPointsSpent {
+rcmd "training setMode Pilot"
+rcmd "sym setNSet 8 #TrainSlot@_MArg2_@_CurrPnts 0"
+rcmd "training setupFor $_MArg1_ #TrainSlot@_MArg2_@ 8"
+rcmd "sym set #TrainSlot@_MArg2_@TotalPnts 0"
+rcmd "sym inc #TrainSlot@_MArg2_@TotalPnts $TrainSlot@_MArg2_@_CurrPnts0"
+rcmd "sym inc #TrainSlot@_MArg2_@TotalPnts $TrainSlot@_MArg2_@_CurrPnts1"
+rcmd "sym inc #TrainSlot@_MArg2_@TotalPnts $TrainSlot@_MArg2_@_CurrPnts2"
+rcmd "sym inc #TrainSlot@_MArg2_@TotalPnts $TrainSlot@_MArg2_@_CurrPnts3"
+rcmd "sym inc #TrainSlot@_MArg2_@TotalPnts $TrainSlot@_MArg2_@_CurrPnts4"
+rcmd "sym inc #TrainSlot@_MArg2_@TotalPnts $TrainSlot@_MArg2_@_CurrPnts5"
+rcmd "sym inc #TrainSlot@_MArg2_@TotalPnts $TrainSlot@_MArg2_@_CurrPnts6"
+rcmd "sym inc #TrainSlot@_MArg2_@TotalPnts $TrainSlot@_MArg2_@_CurrPnts7"
+}
+Script BaseCamp_TrainPilot_Success {
+ignoreInputTime 0.4
+cmd "playsound MechLevelUp.wav"
+cmd "addUIAnim BaseCampToTrainDustPuff mas_BaseCampTrainDustPuff"
+cmd "addUIAnim BaseCampTrainName mas_BaseCampTrainNameShake"
+cmd "addUIAnim BaseCampPilotToTrainIcon mas_BaseCampTrainPilotShake"
+cmd "gameui enable BaseCampToTrainFlash"
+cmd "addUIAnim BaseCampToTrainFlash mas_BaseCampTrainFlash.txt"
+cmd "gameui refreshFilterName CustomDrawer"
+cmd "pcmd 0.2 menucmd BaseCamp_TrainPilot_Reload"
+}
+Script BaseCamp_BuyPointsPilot {
+ignoreInputTime 0.3
+cmd "echo Pilot point purchase complete"
+cmd "training reqState"
+cmd "pcmd 0.1 menucmd BaseCamp_TrainPilot_Reload"
+cmd "addUIAnim BaseCampBuyPointsPurchase mas_BaseCampTrainPilotShake"
+cmd "addUIAnim BaseCampBuyPointsDustPuff mas_BaseCampTrainDustPuff"
+cmd "playsound UI_ItemPurchaseComplete"
+}
+Script BaseCamp_BuyPointsPilotTry {
+ignoreInputTime 0.3
+rcmd "sym setFrom _PilotPointCost_ Train_PilotKudos"
+rcmd "sym multi _PilotPointCost_ $_PilotPointAmt_"
+cmd "training buypoints $_PilotPointAmt_ $_PilotPointCost_"
+}
+Script ShowBaseCampHelp {
+ignoreInputTime 0.4
+rcmd "if walletUnlocked Mako runnow sym set ChalPilotComm Mako"
+rcmd "if walletUnlocked Hawk runnow sym set ChalPilotComm Hawk"
+rcmd "if walletUnlocked Raven runnow sym set ChalPilotComm Raven"
+rcmd "if walletUnlocked Kira runnow sym set ChalPilotComm Kira"
+rcmd "if walletUnlocked Samson runnow sym set ChalPilotComm Samson"
+rcmd "if walletUnlocked Erik runnow sym set ChalPilotComm Erik"
+cmd "if literal $_MArg1_ == structure menucmd ShowBaseCampHelpStructure local $_MArg2_ $_MArg3_ $_MArg4_"
+cmd "if literal $_MArg1_ == left menucmd ShowBaseCampHelpLeft local $_MArg2_"
+}
+Script ShowBaseCampHelpStructure {
+cmd "if sym GL_ChatMinimized != 2 sym set GL_ChatMinimized 2"
+cmd "if sym GL_ChatMinimized != 2 menucmd GlobalChatReposition"
+rcmd "pcmd 0.2 sym set _BaseCampHelpDialog_ $_MArg1_"
+rcmd "sym set _BaseCampHelpClick_ $_MArg3_"
+rcmd "gameUI getLastRenderPos #@_MArg2_@ _BaseCampHelpPosX_ _BaseCampHelpPosY_"
+rcmd "sym setFrom _BaseCampHelpMovePosY_ _BaseCampHelpPosY_"
+rcmd "sym inc _BaseCampHelpPosX_ 40"
+rcmd "sym inc _BaseCampHelpPosY_ -185"
+rcmd "sym inc _BaseCampHelpMovePosY_ -145"
+rcmd "sym setFrom _FocusHighlightCirclePosX_ _BaseCampHelpPosX_"
+rcmd "sym setFrom _FocusHighlightCirclePosY_ _BaseCampHelpPosY_"
+rcmd "sym setFrom _FocusHighlightCircleMovePosX_ _BaseCampHelpPosX_"
+rcmd "sym setFrom _FocusHighlightCircleMovePosY_ _BaseCampHelpPosY_"
+rcmd "sym dec _FocusHighlightCirclePosX_ 40"
+rcmd "sym inc _FocusHighlightCirclePosY_ 230"
+rcmd "sym dec _FocusHighlightCircleMovePosX_ 40"
+rcmd "sym inc _FocusHighlightCircleMovePosY_ 230"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.1 loadmenu BaseCampHelp /fadeIn 0.1"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.1 gameui enable BaseCampHelpStructure"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.1 addUIAnim BaseCampHelpStructure mas_BaseCampHelpDialogInTop"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.1 gameui enableAll BaseCampHelpFocusCircleBackground"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.1 addUIAnim BaseCampHelpFocusCircleBackground mas_FocusHighlightCircleMove"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.1 gameui enable BaseCampHelpPilotPortraitLeft"
+}
+Script ShowBaseCampHelpLeft {
+cmd "if sym GL_ChatMinimized != 2 sym set GL_ChatMinimized 2"
+cmd "if sym GL_ChatMinimized != 2 menucmd GlobalChatReposition"
+rcmd "sym set _BaseCampHelpDialog_ $_MArg1_"
+cmd "if !MenuLoaded BaseCampHelp loadmenu BaseCampHelp /fadeIn 0.1"
+cmd "if !MenuLoaded BaseCampHelp gameui enable BaseCampHelpLeft"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.1 gameui enableAll BaseCampHelpEscapeBackground"
+cmd "if !MenuLoaded BaseCampHelp gameui enable BaseCampHelpPilotPortraitLeft"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.2 addUIAnim BaseCampHelpDialogBoxLeft mas_BaseCampHelpDialogInLeft"
+cmd "addUIAnim BaseCampHelpDialogBoxLeft mas_BaseCampHelpDialogInLeft"
+}
+Script BaseCampHelpContinue {
+cmd "sym inc _BaseCampHelpStage_ 1"
+cmd "if sym _BaseCampHelpStage_ != -1 menucmd #ShowBaseCampHelp@_BaseCampHelpType_@"
+cmd "if sym _BaseCampHelpStage_ > $_BaseCampHelpMaxStage_ menucmd BaseCampHelpDone"
+}
+Script BaseCampHelpClose {
+ignoreInputTime 0.3
+rcmd "gameui disableAll BaseCampHelpBottom"
+rcmd "gameui disableAll BaseCampHelpStructure"
+rcmd "gameui disableAll BaseCampHelpEscapeBackground"
+rcmd "gameui disableAll BaseCampHelpFocusCircleBackground"
+cmd "clearmenu BaseCampHelp"
+}
+Script BaseCampHelpDone {
+cmd "menucmd BaseCampHelpReset"
+cmd "menucmd BaseCampHelpClose"
+cmd "addUIAnim HomeExtraButtons mas_HomeExtraButtonsShow"
+}
+Script BaseCampHelpReset {
+cmd "sym set _BaseCampHelpClick_ 0"
+cmd "sym clear _BaseCampHelpType_"
+cmd "sym set _BaseCampHelpStage_ -1"
+cmd "sym set _BaseCampHelpMaxStage_ 0"
+cmd "sym clear _BaseCampHelpDialog_"
+cmd "sym set _BaseCampUseSlot_ -1"
+cmd "sym clear _BaseCampBuildStructure_"
+}
+Script ShowBaseCampHelpIntro {
+rcmd "menucmd CheckBaseCampSlots"
+cmd "if sym _BaseCampHelpStage_ == -1 echo Started BaseCamp Intro"
+cmd "if sym _BaseCampHelpStage_ == -1 sym set _BaseCampHelpType_ Intro"
+cmd "if sym _BaseCampHelpStage_ == -1 sym set _BaseCampHelpMaxStage_ 4"
+cmd "if sym _BaseCampHelpStage_ == -1 sym set _BaseCampBuildStructure_ BaseCamp"
+cmd "if sym _BaseCampHelpStage_ == -1 addUIAnim HomeExtraButtons mas_HomeExtraButtonsHide"
+cmd "if sym _BaseCampHelpStage_ == -1 && sym _BaseCampUseSlot_ > -1 && sym #BaseCampSlotUnlocked@_BaseCampUseSlot_@ == 0 sym set _BaseCampHelpStage_ 0"
+cmd "if sym _BaseCampHelpStage_ == -1 && sym _BaseCampUseSlot_ > -1 && sym #BaseCampSlotUnlocked@_BaseCampUseSlot_@ == 1 sym set _BaseCampHelpStage_ 3"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 0 menucmd ShowBaseCampHelp left BaseCampIntro01"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 1 menucmd ShowBaseCampHelp left BaseCampIntro02"
+cmd "if sym _BaseCampHelpStage_ == 2 if MenuLoaded BaseCampHelp menucmd BaseCampHelpClose"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 2 menucmd ShowBaseCampHelp structure BaseCampIntro03 #MapTileLocked@_BaseCampUseSlot_@ 0"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 3 && sym BaseCampSlotsUnlockedCount > 0 menucmd ShowBaseCampHelp structure BaseCampIntro04 #MapTile@_BaseCampUseSlot_@ 0"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 4 && sym HasShovel == 0 && sym HasBaseHangar == 0 menucmd ShowBaseCampHelp structure BaseCampIntro06 #MapTile@_BaseCampUseSlot_@ 1"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 4 && sym HasShovel == 1 && sym HasBaseHangar > 0 menucmd ShowBaseCampHelp structure BaseCampIntro06 #MapTile@_BaseCampUseSlot_@ 1"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 4 && sym HasShovel == 1 && sym HasBaseHangar == 0 menucmd ShowBaseCampHelp structure BaseCampIntro05 #MapTile@_BaseCampUseSlot_@ 2"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 4 menucmd BaseCampHelpReset"
+}
+Script ShowBaseCampHelpBuildHangar {
+rcmd "menucmd CheckBaseCampSlots"
+cmd "if sym _BaseCampHelpStage_ == -1 echo Started Build Hangar"
+cmd "if sym _BaseCampHelpStage_ == -1 sym set _BaseCampHelpType_ BuildHangar"
+cmd "if sym _BaseCampHelpStage_ == -1 sym set _BaseCampHelpMaxStage_ 4"
+cmd "if sym _BaseCampHelpStage_ == -1 sym set _BaseCampBuildStructure_ BaseHangar"
+cmd "if sym _BaseCampHelpStage_ == -1 addUIAnim HomeExtraButtons mas_HomeExtraButtonsHide"
+cmd "if sym _BaseCampHelpStage_ == -1 && sym _BaseCampUseSlot_ > -1 && sym #BaseCampSlotUnlocked@_BaseCampUseSlot_@ == 0 sym set _BaseCampHelpStage_ 0"
+cmd "if sym _BaseCampHelpStage_ == -1 && sym _BaseCampUseSlot_ > -1 && sym #BaseCampSlotUnlocked@_BaseCampUseSlot_@ == 1 sym set _BaseCampHelpStage_ 2"
+cmd "if sym _BaseCampHelpStage_ == -1 menucmd BaseCampHelpClose"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 0 menucmd ShowBaseCampHelp left BaseCampBuildHangar01"
+cmd "if sym _BaseCampHelpStage_ == 1 if MenuLoaded BaseCampHelp menucmd BaseCampHelpClose"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 1 menucmd ShowBaseCampHelp structure BaseCampBuildHangar02 #MapTileLocked@_BaseCampUseSlot_@ 0"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 2 && sym BaseCampSlotsUnlockedCount > 1 menucmd ShowBaseCampHelp structure BaseCampBuildHangar03 #MapTile@_BaseCampUseSlot_@ 0"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 3 menucmd ShowBaseCampHelp structure BaseCampBuildHangar04 #MapTile@_BaseCampUseSlot_@ 1"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 4 menucmd ShowBaseCampHelp left BaseCampBuildHangar05"
+}
+Script ShowBaseCampHelpBuyComms {
+rcmd "menucmd CheckBaseCampSlots"
+cmd "if sym _BaseCampHelpStage_ == -1 echo Started Buy Comms"
+cmd "if sym _BaseCampHelpStage_ == -1 sym set _BaseCampHelpType_ BuyComms"
+cmd "if sym _BaseCampHelpStage_ == -1 sym set _BaseCampHelpMaxStage_ 0"
+cmd "if sym _BaseCampHelpStage_ == -1 addUIAnim HomeExtraButtons mas_HomeExtraButtonsHide"
+cmd "if sym _BaseCampHelpStage_ == -1 sym set _BaseCampHelpStage_ 0"
+cmd "if sym _BaseCampHelpStage_ == -1 menucmd BaseCampHelpClose"
+cmd "pcmd 0.1 if sym _BaseCampHelpStage_ == 0 menucmd ShowBaseCampHelp left BaseCampBuyComms01"
+}
+Script CheckBaseCampSlots {
+rcmd "sym set _BaseCampLockedSlot_ -1"
+rcmd "sym set _BaseCampUnlockedSlot_ -1"
+rcmd "if sym BaseCampSlotUnlocked0 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 0"
+rcmd "if sym BaseCampSlotUnlocked1 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 1"
+rcmd "if sym BaseCampSlotUnlocked2 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 2"
+rcmd "if sym BaseCampSlotUnlocked3 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 3"
+rcmd "if sym BaseCampSlotUnlocked4 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 4"
+rcmd "if sym BaseCampSlotUnlocked5 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 5"
+rcmd "if sym BaseCampSlotUnlocked6 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 6"
+rcmd "if sym BaseCampSlotUnlocked7 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 7"
+rcmd "if sym BaseCampSlotUnlocked8 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLocked`Slot_ 8"
+rcmd "if sym BaseCampSlotUnlocked9 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 9"
+rcmd "if sym BaseCampSlotUnlocked10 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 10"
+rcmd "if sym BaseCampSlotUnlocked11 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 11"
+rcmd "if sym BaseCampSlotUnlocked12 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 12"
+rcmd "if sym BaseCampSlotUnlocked13 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 13"
+rcmd "if sym BaseCampSlotUnlocked14 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 14"
+rcmd "if sym BaseCampSlotUnlocked15 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 15"
+rcmd "if sym BaseCampSlotUnlocked16 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 16"
+rcmd "if sym BaseCampSlotUnlocked17 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 17"
+rcmd "if sym BaseCampSlotUnlocked18 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 18"
+rcmd "if sym BaseCampSlotUnlocked19 == 0 && sym _BaseCampLockedSlot_ == -1 runnow sym set _BaseCampLockedSlot_ 19"
+rcmd "if sym BaseCampSlotUnlocked0 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot0 == NULL runnow sym set _BaseCampUnlockedSlot_ 0"
+rcmd "if sym BaseCampSlotUnlocked1 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot1 == NULL runnow sym set _BaseCampUnlockedSlot_ 1"
+rcmd "if sym BaseCampSlotUnlocked2 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot2 == NULL runnow sym set _BaseCampUnlockedSlot_ 2"
+rcmd "if sym BaseCampSlotUnlocked3 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot3 == NULL runnow sym set _BaseCampUnlockedSlot_ 3"
+rcmd "if sym BaseCampSlotUnlocked4 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot4 == NULL runnow sym set _BaseCampUnlockedSlot_ 4"
+rcmd "if sym BaseCampSlotUnlocked5 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot5 == NULL runnow sym set _BaseCampUnlockedSlot_ 5"
+rcmd "if sym BaseCampSlotUnlocked6 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot6 == NULL runnow sym set _BaseCampUnlockedSlot_ 6"
+rcmd "if sym BaseCampSlotUnlocked7 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot7 == NULL runnow sym set _BaseCampUnlockedSlot_ 7"
+rcmd "if sym BaseCampSlotUnlocked8 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot8 == NULL runnow sym set _BaseCampUnlockedSlot_ 8"
+rcmd "if sym BaseCampSlotUnlocked9 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot9 == NULL runnow sym set _BaseCampUnlockedSlot_ 9"
+rcmd "if sym BaseCampSlotUnlocked10 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot10 == NULL runnow sym set _BaseCampUnlockedSlot_ 10"
+rcmd "if sym BaseCampSlotUnlocked11 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot11 == NULL runnow sym set _BaseCampUnlockedSlot_ 11"
+rcmd "if sym BaseCampSlotUnlocked12 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot12 == NULL runnow sym set _BaseCampUnlockedSlot_ 12"
+rcmd "if sym BaseCampSlotUnlocked13 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot13 == NULL runnow sym set _BaseCampUnlockedSlot_ 13"
+rcmd "if sym BaseCampSlotUnlocked14 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot14 == NULL runnow sym set _BaseCampUnlockedSlot_ 14"
+rcmd "if sym BaseCampSlotUnlocked15 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot15 == NULL runnow sym set _BaseCampUnlockedSlot_ 15"
+rcmd "if sym BaseCampSlotUnlocked16 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot16 == NULL runnow sym set _BaseCampUnlockedSlot_ 16"
+rcmd "if sym BaseCampSlotUnlocked17 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot17 == NULL runnow sym set _BaseCampUnlockedSlot_ 17"
+rcmd "if sym BaseCampSlotUnlocked18 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot18 == NULL runnow sym set _BaseCampUnlockedSlot_ 18"
+rcmd "if sym BaseCampSlotUnlocked19 == 1 && sym _BaseCampUnlockedSlot_ == -1 && sym BaseLayoutSlot19 == NULL runnow sym set _BaseCampUnlockedSlot_ 19"
+rcmd "if sym HasShovel == 0 && sym _BaseCampUnlockedSlot_ > -1 && sym _BaseCampUseSlot_ == -1 runnow sym setFrom _BaseCampUseSlot_ _BaseCampUnlockedSlot_"
+rcmd "if sym HasShovel == 1 && sym _BaseCampUnlockedSlot_ > -1 && sym _BaseCampUseSlot_ == -1 runnow sym setFrom _BaseCampUseSlot_ _BaseCampUnlockedSlot_"
+rcmd "if sym HasShovel == 1 && sym _BaseCampUnlockedSlot_ == -1 runnow sym setFrom _BaseCampUseSlot_ _BaseCampLockedSlot_"
+}
+Script CheckBaseCampBuildList {
+rcmd "if sym BuildList0 != $_BaseCampBuildStructure_ runnow sym set BuildListOk0 0"
+rcmd "if sym BuildList1 != $_BaseCampBuildStructure_ runnow sym set BuildListOk1 0"
+rcmd "if sym BuildList2 != $_BaseCampBuildStructure_ runnow sym set BuildListOk2 0"
+rcmd "if sym BuildList3 != $_BaseCampBuildStructure_ runnow sym set BuildListOk3 0"
+rcmd "if sym BuildList4 != $_BaseCampBuildStructure_ runnow sym set BuildListOk4 0"
+rcmd "if sym BuildList5 != $_BaseCampBuildStructure_ runnow sym set BuildListOk5 0"
+rcmd "if sym BuildList6 != $_BaseCampBuildStructure_ runnow sym set BuildListOk6 0"
+rcmd "if sym BuildList7 != $_BaseCampBuildStructure_ runnow sym set BuildListOk7 0"
+rcmd "if sym BuildList8 != $_BaseCampBuildStructure_ runnow sym set BuildListOk8 0"
+rcmd "if sym BuildList9 != $_BaseCampBuildStructure_ runnow sym set BuildListOk9 0"
+}
+Script ShowTutorialHelpLeft {
+ignoreInputTime 0.3
+cmd "if sym GL_ChatMinimized != 2 sym set GL_ChatMinimized 2"
+cmd "if sym GL_ChatMinimized != 2 menucmd GlobalChatReposition"
+rcmd "sym set ChalPilotComm $_MArg1_"
+rcmd "sym set _BaseCampHelpDialog_ $_MArg2_"
+cmd "if !MenuLoaded BaseCampHelp loadmenu BaseCampHelp /fadeIn 0.1"
+cmd "if !MenuLoaded BaseCampHelp gameui enable BaseCampHelpLeft"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.1 gameui enableAll TutorialHelpEscapeBackground"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.2 gameui focusNameTry TutorialHelpEscapeBackground"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.2 input set padFocusFallback TutorialHelpEscapeBackground"
+cmd "if !MenuLoaded BaseCampHelp gameui enable BaseCampHelpPilotPortraitLeft"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.2 addUIAnim BaseCampHelpDialogBoxLeft mas_BaseCampHelpDialogInLeft"
+cmd "addUIAnim BaseCampHelpDialogBoxLeft mas_BaseCampHelpDialogInLeft"
+}
+Script ShowTutorialHelpRight {
+ignoreInputTime 0.3
+cmd "if sym GL_ChatMinimized != 2 sym set GL_ChatMinimized 2"
+cmd "if sym GL_ChatMinimized != 2 menucmd GlobalChatReposition"
+rcmd "sym set ChalPilotComm $_MArg1_"
+rcmd "sym set _BaseCampHelpDialog_ $_MArg1_"
+cmd "if !MenuLoaded BaseCampHelp loadmenu BaseCampHelp /fadeIn 0.1"
+cmd "if !MenuLoaded BaseCampHelp gameui enable BaseCampHelpRight"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.1 gameui enableAll TutorialHelpEscapeBackground"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.2 gameui focusNameTry TutorialHelpEscapeBackground"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.2 input set padFocusFallback TutorialHelpEscapeBackground"
+cmd "if !MenuLoaded BaseCampHelp gameui enable BaseCampHelpPilotPortraitRight"
+cmd "if !MenuLoaded BaseCampHelp pcmd 0.2 addUIAnim BaseCampHelpDialogBoxRight mas_BaseCampHelpDialogInRight"
+cmd "addUIAnim BaseCampHelpDialogBoxRight mas_BaseCampHelpDialogInRight"
+}
+Script ClearTutorialHelp {
+cmd "clearmenu BaseCampHelp"
+cmd "sym clear _BaseCampHelpDialog_"
+}

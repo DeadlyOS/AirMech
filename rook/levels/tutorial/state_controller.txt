@@ -1,0 +1,1349 @@
+StateController Lvl_Tutorial {
+State initial {
+In 0.0 "sym set MatchOver 0"
+In 0.0 "backend statOnceClear"
+In 0.0 "backend statOnce tut2:start"
+}
+State Init {
+DoL 0.0 sym set TRComplete 0
+DoL 0.0 sym set TRFailed 0
+DoL 0.0 sym set TAMove 0
+DoL 0.0 sym set TAFire 0
+DoL 0.0 sym set TATransform 0
+DoL 0.0 sym set TAPickup 0
+DoL 0.0 sym set TABuiltPickup 0
+DoL 0.0 sym set TADropUnit 0
+DoL 0.0 sym set TALvlAbility 0
+DoL 0.0 sym set TACollectAbility 0
+DoL 0.0 sym set TATrySword 0
+DoL 0.0 sym set TABuild 0
+DoL 0.0 sym set TAOrderCap 0
+DoL 0.0 sym set TAOrderAtk 0
+DoL 0.0 sym set TStage Stage0
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 sym set S_ADCount 0
+DoL 0.0 sym set TASelfDestroyed 0
+DoL 0.0 sym set TAEnemyFortDown 0
+DoL 0.0 sym set TutorialText TutA1
+DoL 0.2 loadmenu Tutorial.txt
+DoL 0.0 sym setZero Tut1AbilityOk Tut2AbilityOk Tut3AbilityOk Tut4AbilityOk Tut5AbilityOk Tut6AbilityOk Tut7AbilityOk
+DoL 0.0 rook doLevelState CheckToTestState_None
+DoL 0.0 clearmenu hudTutorialAddCredits.txt
+DoL 0.0 clearmenu hudTutorialAddAbilities.txt
+DoL 0.0 clearmenu hudTutorialAddMiniMap.txt
+DoL 0.0 menucmd ResetHUD
+}
+State CheckToTestState_None {
+}
+State CheckToTestState_Mid {
+DoL 0.0 player 0 enableFn all
+DoL 0.0 player 0 disableFn setorder setorder_cap setorder_pat setorder_hld setorder_atk setorder_lnk
+DoL 0.0 rook setForceBox -10 12 -16 56 4
+DoL 0.0 rook setCamExtMax 6 50
+DoL 0.0 rook doLevelState StageGiveUnitSpawn
+DoL 0.0 sym set TStage StagePlaceInfantryCompleteWait
+}
+State CheckToTestState_Late {
+DoL 0.0 player 0 enableFn all
+DoL 0.0 rook setForceBox -10 47 -16 56 4
+DoL 0.0 rook setCamExtMax 42 50
+DoL 0.0 rook doLevelState StageGiveUnitSpawn
+DoL 0.0 loadmenu hudTutorialAddCredits.txt
+DoL 0.0 loadmenu hudTutorialAddAbilities.txt
+DoL 0.0 loadmenu hudTutorialAddMiniMap.txt
+DoL 0.0 sym set TStage StageMoreUICompleteWait7
+}
+State CheckToTestState_Late2 {
+DoL 0.0 rook doLevelState CheckToTestState_Late
+DoL 0.1 |sym set TStage StageAssaultWait1
+}
+State Tick {
+DoL 0.0 if sym TASelfDestroyed == 1 runnow sym set TStage StageAirMechDestroyed
+DoL 0.0 rook doLevelState $$TStage
+}
+State Stage0 {
+DoL 0.0 if inputNext rook doLevelState Stage0DialogProgress
+DoL 0.0 if inputNext sym set TStage Stage0Wait
+DoL 0.0 rook doLevelState Stage0WaitNotify
+}
+State Stage0ClickNotify {
+DoL 0.0 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State Stage0WaitNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == Stage0 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State Stage0Wait {
+Cfg timeBlock 8.0
+}
+State Stage0DialogProgress {
+DoL 0.0 sym set TutorialText TutA2
+DoL 0.0 if usingPad runnow sym set TutorialText TutA2_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 player 0 enableFn move
+DoL 0.0 player 0 enableFn aim
+DoL 0.0 player 0 enableFn fire fireGuns
+DoL 0.0 player 0 enableFn fuelRegen
+DoL 0.0 rook doLevelState Stage0Complete
+}
+State Stage0Complete {
+Do 0.0 "sym set TStage StageUnlockMove"
+}
+State StageUnlockMove {
+DoL 0.0 rook doLevelState StageUnlockMoveWaitNotify
+DoL 0.0 |if sym TAMove == 1 rook doLevelState StageUnlockMoveComplete
+}
+State StageUnlockMoveWaitNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageUnlockMove gameMsg addTR_U_InputSelected Tut_Move Tut_Move_pad
+}
+State StageUnlockMoveComplete {
+Cfg timeBlock 20.0
+DoL 0.0 gamemsg cleartr
+DoL 0.5 sym set TutorialText TutA3
+DoL 0.5 floatsym set TutorialTimer 0.0
+DoL 0.5 sym set TATgtDist 10
+DoL 1.0 |sym set TStage StageMoveToPoint1Setup
+}
+State StageMoveToPoint1Setup {
+DoL 0.0 sym set TStage StageMoveToPoint1
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos 0 0 0
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos 0 0 0.2 /scale 5.0
+}
+State StageMoveToPoint1 {
+Cfg timeBlock 0.2
+DoL 0.0 player 0 iDistTo 0 0 0 TATgtDist
+DoL 0.0 if sym TATgtDist < 2 rook doLevelState StageMoveToPoint1Complete
+}
+State StageMoveToPoint1Complete {
+DoL 0.0 sym set TStage StageMoveToPoint2Setup
+DoL 0.0 sym set TutorialText TutA3s2
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 mdlProp clearall
+}
+State StageMoveToPoint2Setup {
+DoL 0.0 sym set TStage StageMoveToPoint2
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos -14 0 0
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos -14 0 0.2 /scale 5.0
+}
+State StageMoveToPoint2 {
+Cfg timeBlock 0.2
+DoL 0.0 player 0 iDistTo -14 0 0 TATgtDist
+DoL 0.0 if sym TATgtDist < 2 rook doLevelState StageMoveToPoint2Complete
+}
+State StageMoveToPoint2Complete {
+DoL 0.0 sym set TStage StageMoveToPoint3Setup
+DoL 0.0 mdlProp clearall
+}
+State StageMoveToPoint3Setup {
+DoL 0.0 sym set TStage StageMoveToPoint3
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos -8.3 -7.9 0
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos -8.3 -7.9 0.2 /scale 5.0
+}
+State StageMoveToPoint3 {
+Cfg timeBlock 0.2
+DoL 0.0 player 0 iDistTo -8.3 -7.9 0 TATgtDist
+DoL 0.0 if sym TATgtDist < 2 rook doLevelState StageMoveToPoint3Complete
+}
+State StageMoveToPoint3Complete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:01_moved
+DoL 0.0 sym set TutorialText TutA4
+DoL 0.0 if usingPad runnow sym set TutorialText TutA4_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 mdlProp clearall
+DoL 2.0 |sym set TAFire 0
+DoL 2.0 |player 0 enableFn fire fireGuns
+DoL 2.0 |sym set TStage StageTryFiring
+}
+State StageTryFiring {
+Cfg timeBlock 0.25
+DoL 0.0 if sym TAFire == 1 sym set TStage StageTryFiringComplete
+}
+State StageTryFiringComplete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:02_fired
+DoL 1.0 |sym set TStage StageTargetPractice1Setup
+DoL 1.0 |sym set TutorialText TutA5
+DoL 1.0 |floatsym set TutorialTimer 0.0
+}
+State StageTargetPractice1Setup {
+Cfg timeBlock 5.0
+DoL 0.0 sym set TStage StageTargetPractice1
+DoL 0.0 echo spawn 1
+DoL 0.1 state .top do ProduceUnit RocketTruckBroken top
+}
+State StageTargetPractice1 {
+DoL 0.0 if sym S_DCount >= 1 rook doLevelState StageTargetPractice1Complete
+DoL 1.0 |rook doLevelState StageTargetPractice1WaitHelper
+}
+State StageTargetPractice1WaitHelper {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageTargetPractice1 gameMsg addTR_U_InputSelected Tut_Fire1 Tut_Fire1_pad
+}
+State StageTargetPractice1Complete {
+Cfg timeBlock 10.0
+DoL 0.0 backend statOnce tut2:03_targeted
+DoL 0.0 sym set TStage StageTargetPractice2Setup
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym set TutorialText TutA6
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 gamemsg clearTR
+}
+State StageTargetPractice2Setup {
+Cfg timeBlock 1.0
+DoL 0.0 sym set TStage StageTargetPractice2
+DoL 0.0 rook doLevelState StageTargetPractice2Spawn
+}
+State StageTargetPractice2 {
+DoL 0.0 if sym S_DCount >= 2 rook doLevelState StageTargetPractice2Complete
+DoL 1.0 |rook doLevelState StageTargetPractice2WaitHelper
+}
+State StageTargetPractice2WaitHelper {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageTargetPractice2 gameMsg addTR_U_InputSelected Tut_Fire2 Tut_Fire2_pad
+}
+State StageTargetPractice2Spawn {
+DoL 0.0 echo spawn 2
+DoL 3.0 state .left do ProduceUnit ArmoredCarTutorial left
+DoL 4.0 state .right do ProduceUnit RocketTruckTutorial right
+}
+State StageTargetPractice2Complete {
+DoL 0.0 backend statOnce tut2:04_fought
+DoL 2.0 |sym set TStage StageIntroTeachTransform
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym set TutorialText TutA6p1
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 gamemsg clearTR
+}
+State StageIntroTeachTransform {
+DoL 0.0 if inputNext sym set TStage StageIntroTeachTransformComplete
+DoL 0.0 rook doLevelState StageIntroTeachTransformClickNotify
+}
+State StageIntroTeachTransformClickNotify {
+Cfg timeBlock 5.0
+DoL 2.0 if sym TStage == StageIntroTeachTransform gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageIntroTeachTransformComplete {
+DoL 0.0 sym set TStage StageTeachTransformSetup
+DoL 0.0 sym setInputSelected TutorialText TutA6p2 TutA6p2_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+}
+State StageTeachTransformSetup {
+Cfg timeBlock 20.0
+DoL 2.0 |player 0 enableFn transform transformAll
+DoL 4.0 |sym set TStage StageTeachTransform
+}
+State StageTeachTransform {
+Cfg timeBlock 2.0
+DoL 3.0 |if sym TATransform == 0 if sym TStage == StageTeachTransform gamemsg addTR_U_InputSelected Tut_Trans1 Tut_Trans1_pad
+DoL 3.0 |if sym TATransform == 1 if sym TStage == StageTeachTransform sym set TStage StageTeachTransformComplete
+}
+State StageTeachTransformComplete {
+Cfg timeBlock 2.0
+DoL 0.0 backend statOnce tut2:05_transformed
+DoL 0.0 sym set TStage StageTargetPractice3
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym set TutorialText TutA6p3
+DoL 0.0 floatsym set TutorialTimer 0.0
+}
+State StageTargetPractice3 {
+Cfg timeBlock 2.0
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 1 rook doLevelState StageTargetPractice3Spawn
+DoL 0.0 if sym S_DCount >= 4 rook doLevelState StageTargetPractice3Complete
+DoL 10.0 if sym S_DCount == 0 if sym TStage == StageTargetPractice3 gamemsg addTR_U_InputSelected Tut_Fight2 Tut_Fight2_pad
+}
+State StageTargetPractice3Spawn {
+DoL 0.0 echo spawn 3
+DoL 2.0 state .left do ProduceUnit ArmoredCarTutorial left
+DoL 2.5 state .right do ProduceUnit RocketTruckTutorial right
+DoL 3.0 state .top do ProduceUnit ArmoredCarTutorial top
+DoL 3.5 state .bottom do ProduceUnit RocketTruckTutorial bottom
+}
+State StageTargetPractice3Complete {
+DoL 0.0 backend statOnce tut2:06_fought
+DoL 0.0 sym set TStage StageGiveUnit
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym set TutorialText TutA7
+DoL 0.0 floatsym set TutorialTimer 0.0
+}
+State StageGiveUnit {
+Cfg timeBlock 10.0
+DoL 0.0 rook doLevelState StageGiveUnitSpawn
+DoL 0.0 sym set TStage StageGiveUnitWait
+}
+State StageGiveUnitWait {
+DoL 0.0 if inputNext sym set TStage StageGiveUnitComplete
+DoL 0.0 rook doLevelState StageGiveUnitWaitNotify
+}
+State StageGiveUnitWaitNotify {
+Cfg timeBlock 5.0
+DoL 2.0 if sym TStage == StageGiveUnitWait gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageGiveUnitSpawn {
+DoL 0.0 echo spawn 4
+DoL 2.0 |state .left do ProduceAllyUnit TankTutorial left
+}
+State StageGiveUnitComplete {
+Cfg timeBlock 5.0
+DoL 0.0 sym set TStage StageAirTransform
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym setInputSelected TutorialText TutA8 TutA8_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+}
+State StageAirTransform {
+Cfg timeBlock 0.5
+DoL 0.0 if sym TATransform == 1 rook doLevelState StageAirTransformComplete
+DoL 2.0 player 0 enableFn transform transformAll
+}
+State StageAirTransformComplete {
+DoL 0.0 sym set TStage StagePickupTank
+DoL 0.0 sym set TutorialText TutA9
+DoL 0.0 if usingPad runnow sym set TutorialText TutA9_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+}
+State StagePickupTank {
+Cfg timeBlock 0.5
+DoL 0.0 if sym TAPickup == 1 rook doLevelState StagePickupTankComplete
+DoL 1.0 player 0 enableFn pickup
+}
+State StagePickupTankComplete {
+DoL 0.0 backend statOnce tut2:07_pickup
+DoL 0.0 sym set TStage StagePlaceTankSetup
+DoL 0.0 sym set TutorialText TutA10
+DoL 0.0 if usingPad runnow sym set TutorialText TutA10_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 player 0 enableFn setorder setorder_hld
+}
+State StagePlaceTankSetup {
+Cfg timeBlock 0.5
+DoL 0.0 sym set TStage StagePlaceTank
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos 0 0 0
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos 0 0 0.2 /scale 5.0
+DoL 5.0 if sym TADropUnit == 0 if sym TStage == StagePlaceTank gamemsg addTR_U_InputSelected Tut_Place1 Tut_Place1_pad
+}
+State StagePlaceTank {
+Cfg timeBlock 0.2
+DoL 0.0 player 0 iDistToXY 0 0 TATgtDist
+DoL 0.0 if sym TATgtDist >= 3 player 0 disableFn dropUnit
+DoL 0.0 if sym TATgtDist < 3 player 0 enableFn dropUnit
+DoL 0.0 if sym TADropUnit == 1 rook doLevelState StagePlaceTankComplete
+}
+State StagePlaceTankComplete {
+DoL 0.0 backend statOnce tut2:08_place
+DoL 0.0 sym set TStage StageFightWithTankSetup
+DoL 0.0 sym set TutorialText TutA11
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 mdlProp clearall
+DoL 0.0 player 0 enableFn dropunit
+}
+State StageFightWithTankSetup {
+DoL 3.5 |rook doLevelState StageFightWithTankSpawn
+DoL 7.5 kill units 0 hpPercent 0.25
+DoL 0.0 sym set TStage StageFightWithTank
+}
+State StageFightWithTank {
+Cfg timeBlock 1.2
+DoL 0.0 if sym S_DCount >= 4 if sym S_ADCount == 0 rook doLevelState StageFightWithTankComplete
+DoL 0.0 if sym S_DCount >= 4 if sym S_ADCount >= 1 rook doLevelState StageFightWithTankFailed
+}
+State StageFightWithTankSpawn {
+DoL 0.0 echo spawn 5
+DoL 1.0 state .left do ProduceUnit RocketTruckTutorial left
+DoL 1.2 state .right do ProduceUnit ArmoredCarTutorial right
+DoL 1.4 state .top do ProduceUnit RocketTruckTutorial top
+DoL 1.6 state .bottom do ProduceUnit ArmoredCarTutorial bottom
+}
+State StageFightWithTankComplete {
+DoL 0.0 backend statOnce tut2:09_defendTank
+DoL 0.0 sym set TStage StageAutoRepairNote1
+DoL 0.0 sym set TutorialText TutA12
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 sym set CSWaveCount 0
+}
+State StageFightWithTankFailed {
+DoL 0.0 sym set TStage StageGiveUnit
+DoL 0.0 sym set TutorialText TutA12f
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 kill units 1
+DoL 0.0 sym set TAPickup 0
+DoL 0.0 sym set TADropUnit 0
+DoL 0.0 sym set TATransform 0
+DoL 0.0 sym set S_DCount 0
+DoL 0.5 sym set S_DCount 0
+DoL 0.0 sym set S_ADCount 0
+DoL 0.0 sym set CSWaveCount 0
+}
+State StageAutoRepairNote1 {
+Cfg timeBlock 20.0
+DoL 3.0 |sym set TStage StageAutoRepairWait1
+}
+State StageAutoRepairWait1 {
+DoL 0.0 if inputNext sym set TStage StageAutoRepairNote2
+DoL 0.0 rook doLevelState StageAutoRepairWaitNotify1
+}
+State StageAutoRepairWaitNotify1 {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageAutoRepairWait1 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageAutoRepairNote2 {
+Cfg timeBlock 20.0
+Do 0.0 "sym set TutorialText TutA13"
+Do 0.0 "floatsym set TutorialTimer 0.0"
+DoL 3.0 sym set TStage StageAutoRepairWait2
+}
+State StageAutoRepairWait2 {
+DoL 0.0 if inputNext sym set TStage StageAutoRepairNoteComplete
+DoL 0.0 rook doLevelState StageAutoRepairWaitNotify2
+}
+State StageAutoRepairWaitNotify2 {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageAutoRepairWait2 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageAutoRepairNoteComplete {
+Cfg timeBlock 20.0
+Do 0.0 "sym set TutorialText TutA14"
+Do 0.0 "floatsym set TutorialTimer 0.0"
+Do 2.0 "sym set TStage StageMoveToOutpostSetup"
+}
+State StageMoveToOutpostSetup {
+Cfg timeBlock 0.5
+DoL 0.0 sym set TStage StageMoveToOutpost
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos 16 16 5
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos 16 16 5.2 /scale 5.0
+DoL 0.0 rook setForceBox -10 12 -16 30 4
+DoL 0.0 rook setCamExtMax 6 24
+}
+State StageMoveToOutpost {
+Cfg timeBlock 0.2
+DoL 0.0 player 0 iDistTo 16 16 5 TATgtDist
+DoL 0.0 if sym TATgtDist < 2 sym set TStage StageMoveToOutpostComplete
+}
+State StageMoveToOutpostComplete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:10_outpostMove
+DoL 0.0 sym set TutorialText TutA15
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 mdlProp clearall
+DoL 2.0 sym set TStage StageMoveToOutpostCompleteWait
+DoL 2.0 player 0 enableFn fire fireGuns
+}
+State StageMoveToOutpostCompleteWait {
+DoL 0.0 if inputNext sym set TStage StageMoveToOutpostWaitComplete
+DoL 0.0 rook doLevelState StageMoveToOutpostCompleteNotify
+}
+State StageMoveToOutpostCompleteNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoveToOutpostCompleteWait gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoveToOutpostWaitComplete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA15pt2
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoveToOutpostCompleteWait2
+}
+State StageMoveToOutpostCompleteWait2 {
+DoL 0.0 if inputNext sym set TStage StageMoveToOutpostWait2Complete
+DoL 0.0 rook doLevelState StageMoveToOutpostComplete2Notify
+}
+State StageMoveToOutpostComplete2Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoveToOutpostCompleteWait2 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoveToOutpostWait2Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA15pt3
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoveToOutpostCompleteWait3
+}
+State StageMoveToOutpostCompleteWait3 {
+DoL 0.0 if inputNext sym set TStage StageMoveToOutpostWait3Complete
+DoL 0.0 rook doLevelState StageMoveToOutpostComplete3Notify
+}
+State StageMoveToOutpostComplete3Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoveToOutpostCompleteWait3 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoveToOutpostWait3Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA15pt4
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoveToOutpostCompleteWait4
+}
+State StageMoveToOutpostCompleteWait4 {
+DoL 0.0 if inputNext sym set TStage StageMoveToOutpostWait4Complete
+DoL 0.0 rook doLevelState StageMoveToOutpostComplete4Notify
+}
+State StageMoveToOutpostComplete4Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoveToOutpostCompleteWait4 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoveToOutpostWait4Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA16
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoveToOutpostCompleteWait5
+}
+State StageMoveToOutpostCompleteWait5 {
+DoL 0.0 if inputNext sym set TStage StageMoveToOutpostWait5Complete
+DoL 0.0 rook doLevelState StageMoveToOutpostComplete5Notify
+}
+State StageMoveToOutpostComplete5Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoveToOutpostCompleteWait5 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoveToOutpostWait5Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA16pt2
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 3.5 sym set TStage StageBringTankToOutpostSetup
+}
+State StageBringTankToOutpostSetup {
+Cfg timeBlock 0.5
+DoL 0.0 sym set TStage StageBringTankToOutpost
+}
+State StageBringTankToOutpost {
+Cfg timeBlock 0.1
+DoL 0.0 player 0 iDistTo 16 16 5 TATgtDist
+DoL 0.0 player 0 iCarryCount TACarryCount
+DoL 0.0 if sym TATgtDist < 2 if sym TACarryCount == 1 sym set TStage StageBringTankToOutpostComplete
+DoL 0.0 rook doLevelState StageBringTankToOutpostCompleteNotify
+}
+State StageBringTankToOutpostCompleteNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageBringTankToOutpost gameMsg addTR_U Tut_HealTank
+}
+State StageBringTankToOutpostComplete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA17
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 mdlProp clearall
+DoL 0.0 player 0 disableFn move
+DoL 0.0 player 0 disableFn dropunit
+DoL 0.0 player 0 disableFn fire fireGuns
+DoL 5.0 sym set TStage StageBringTankToOutpostCompleteWait
+}
+State StageBringTankToOutpostCompleteWait {
+DoL 0.0 if inputNext sym set TStage StageBringTankToOutpostCompleteWaitComplete
+DoL 0.0 rook doLevelState StageBringTankToOutpostCompleteWaitNotify
+}
+State StageBringTankToOutpostCompleteWaitNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageBringTankToOutpostCompleteWait gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageBringTankToOutpostCompleteWaitComplete {
+Cfg timeBlock 10.0
+DoL 0.0 backend statOnce tut2:11_healTank
+DoL 0.0 sym set TutorialText TutA17pt01
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageBringTankToOutpostCompleteWait2
+}
+State StageBringTankToOutpostCompleteWait2 {
+DoL 0.0 if inputNext sym set TStage StageBringTankToOutpostCompleteWait2Complete
+DoL 0.0 rook doLevelState StageBringTankToOutpostCompleteWait2Notify
+}
+State StageBringTankToOutpostCompleteWait2Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageBringTankToOutpostCompleteWait2 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageBringTankToOutpostCompleteWait2Complete {
+Cfg timeBlock 10.0
+DoL 0.0 sym set TutorialText TutA17pt02
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageBringTankToOutpostCompleteWait3
+}
+State StageBringTankToOutpostCompleteWait3 {
+DoL 0.0 if inputNext sym set TStage StageBringTankToOutpostCompleteWait3Complete
+DoL 0.0 rook doLevelState StageBringTankToOutpostCompleteWait3Notify
+}
+State StageBringTankToOutpostCompleteWait3Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageBringTankToOutpostCompleteWait3 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageBringTankToOutpostCompleteWait3Complete {
+Cfg timeBlock 10.0
+DoL 0.0 sym set TutorialText TutA17p1
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageHereComeProbesSetup
+}
+State StageHereComeProbesSetup {
+Cfg timeBlock 1.0
+DoL 0.0 rook doLevelState StageHereComeProbesSpawn
+DoL 0.0 sym set TStage StageHereComeProbes
+DoL 8.0 |rook doLevelState StageHereComeProbesComplete
+}
+State StageHereComeProbes {
+Cfg timeBlock 1.2
+}
+State StageHereComeProbesSpawn {
+DoL 0.0 echo spawn 6
+DoL 1.0 state .left do ProduceUnitCapturing InfantryT left
+DoL 1.2 state .right do ProduceUnitCapturing InfantryT right
+DoL 1.4 state .top do ProduceUnitCapturing InfantryT top
+DoL 1.6 state .bottom do ProduceUnitCapturing InfantryT bottom
+}
+State StageHereComeProbesComplete {
+DoL 0.0 sym set TStage StageHereComeProbesCompleteWait
+DoL 0.0 sym set TutorialText TutA18
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 sym set CSWaveCount 0
+}
+State StageHereComeProbesCompleteWait {
+DoL 0.0 if inputNext sym set TStage StageHereComeProbesCompleteWaitComplete
+DoL 0.0 rook doLevelState StageHereComeProbesCompleteWaitNotify
+}
+State StageHereComeProbesCompleteWaitNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageHereComeProbesCompleteWait gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageHereComeProbesCompleteWaitComplete {
+Cfg timeBlock 10.0
+DoL 0.0 sym set TutorialText TutA18pt2
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 3.0 sym set TStage StageHereComeProbesCompleteWait2
+}
+State StageHereComeProbesCompleteWait2 {
+DoL 0.0 if inputNext sym set TStage StageHereComeProbesCompleteWait2Complete
+DoL 0.0 rook doLevelState StageHereComeProbesCompleteWait2Notify
+}
+State StageHereComeProbesCompleteWait2Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageHereComeProbesCompleteWait2 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageHereComeProbesCompleteWait2Complete {
+Cfg timeBlock 10.0
+DoL 0.0 sym set TutorialText TutA19
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 3.0 sym set TStage StageOutpostRecapture3Setup
+}
+State StageOutpostRecapture3Setup {
+Cfg timeBlock 1.0
+DoL 0.0 sym set TStage StageOutpostRecapture3
+DoL 1.0 |rook doLevelState StageOutpostRecapture3Spawn
+DoL 8.0 |rook doLevelState StageOutpostRecapture3Complete
+}
+State StageOutpostRecapture3 {
+Cfg timeBlock 1.2
+}
+State StageOutpostRecapture3Spawn {
+DoL 0.0 echo spawn 7
+DoL 0.0 state .left do ProduceUnitAllyCapturing InfantryT left
+DoL 0.2 state .right do ProduceUnitAllyCapturing InfantryT right
+DoL 0.4 state .top do ProduceUnitAllyCapturing InfantryT top
+}
+State StageOutpostRecapture3Complete {
+DoL 0.0 backend statOnce tut2:12_showCapture
+DoL 0.0 sym set TStage StagePlaceTank2Setup
+DoL 0.0 sym set TutorialText TutA20
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 sym set CSWaveCount 0
+DoL 4.0 player 0 enableFn move
+DoL 4.0 player 0 enableFn dropunit
+DoL 4.0 player 0 enableFn fire fireGuns
+}
+State StagePlaceTank2Setup {
+Cfg timeBlock 0.5
+DoL 0.0 sym set TStage StagePlaceTank2
+DoL 0.0 sym set TADropUnit 0
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos 24 24 0
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos 24 24 0.2 /scale 5.0
+DoL 5.0 if sym TADropUnit == 0 if sym TStage == StagePlaceTank2 gamemsg addTR_U_InputSelected Tut_Place1 Tut_Place1_pad
+DoL 0.0 rook setForceBox -10 12 -16 56 4
+DoL 0.0 rook setCamExtMax 6 50
+}
+State StagePlaceTank2 {
+Cfg timeBlock 0.2
+DoL 0.0 player 0 iDistToXY 24 24 TATgtDist
+DoL 0.0 if sym TATgtDist >= 3 player 0 disableFn dropUnit
+DoL 0.0 if sym TATgtDist < 3 player 0 enableFn dropUnit
+DoL 0.0 if sym TADropUnit == 1 rook doLevelState StagePlaceTank2Complete
+}
+State StagePlaceTank2Complete {
+DoL 0.0 backend statOnce tut2:13_placeTank
+DoL 0.0 sym set TStage StageAboutFortress
+DoL 0.0 sym set TutorialText TutA21
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 mdlProp clearall
+DoL 0.0 player 0 enableFn dropunit
+}
+State StageAboutFortress {
+DoL 0.0 if inputNext sym set TStage StageAboutFortressComplete
+DoL 0.0 rook doLevelState StageAboutFortressClickNotify
+}
+State StageAboutFortressClickNotify {
+Cfg timeBlock 4.0
+DoL 4.0 if sym TStage == StageAboutFortress gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageAboutFortressComplete {
+DoL 0.0 sym set TStage StageAboutCredits
+DoL 0.0 sym set TutorialText TutA22
+DoL 0.0 floatsym set TutorialTimer 0.0
+}
+State StageAboutCredits {
+DoL 0.0 if inputNext sym set TStage StageAboutCreditsComplete
+DoL 0.0 rook doLevelState StageAboutCreditsClickNotify
+}
+State StageAboutCreditsClickNotify {
+Cfg timeBlock 4.0
+DoL 4.0 if sym TStage == StageAboutCredits gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageAboutCreditsComplete {
+DoL 0.0 sym set TStage StageIntroBuilding
+DoL 0.0 sym set TutorialText TutA22pt2
+DoL 0.0 loadmenu hudTutorialAddCredits.txt
+DoL 0.0 floatsym set TutorialTimer 0.0
+}
+State StageIntroBuilding {
+DoL 0.0 if inputNext sym set TStage StageIntroBuildingComplete
+DoL 0.0 rook doLevelState StageIntroBuildingClickNotify
+}
+State StageIntroBuildingClickNotify {
+Cfg timeBlock 4.0
+DoL 0.0 if sym TStage == StageIntroBuilding gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageIntroBuildingComplete {
+DoL 0.0 sym set TStage StageBuildInfantry
+DoL 0.0 sym set TutorialText TutA23
+DoL 0.0 if usingPad runnow sym set TutorialText TutA23_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 player 0 enableFn build
+}
+State StageBuildInfantry {
+Cfg timeBlock 0.2
+DoL 0.0 if sym TABuild == 1 sym set TStage StageBuildInfantryComplete
+}
+State StageBuildInfantryComplete {
+DoL 0.0 backend statOnce tut2:14_buildInf
+DoL 0.0 if !autodeploy2 runnow sym set TStage StagePickupBuiltInfantry
+DoL 0.0 if autodeploy2 runnow sym set TStage StageAutoDeploy2TransitionToUIInfo
+DoL 0.0 sym set TutorialText TutA23pt2
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 sym set TAPickup 0
+}
+State StageBuildInfantryCompleteWait {
+DoL 0.0 if inputNext sym set TStage StageBuildInfantryCompleteWaitComplete
+DoL 0.0 rook doLevelState StageBuildInfantryCompleteWaitNotify
+}
+State StageBuildInfantryCompleteWaitNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageBuildInfantryCompleteWait gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageBuildInfantryCompleteWaitComplete {
+Cfg timeBlock 10.0
+DoL 0.0 sym set TutorialText TutA24
+DoL 0.0 if usingPad runnow sym set TutorialText TutA24
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 3.0 if !autodeploy2 runnow sym set TStage StagePickupBuiltInfantry
+DoL 3.0 if autodeploy2 runnow sym set TStage StageAutoDeploy2TransitionToUIInfo
+}
+State StagePickupBuiltInfantry {
+Cfg timeBlock 0.2
+DoL 0.0 if sym TABuiltPickup == 1 sym set TStage StagePickupBuiltInfantryComplete
+}
+State StagePickupBuiltInfantryComplete {
+DoL 0.0 sym set TABuiltPickup 0
+DoL 0.0 backend statOnce tut2:15_pickupInf
+DoL 0.0 sym set TStage StagePlaceInfantrySetup
+DoL 0.0 sym set TutorialText TutA25
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 sym set TADropUnit 0
+}
+State StagePlaceInfantrySetup {
+Cfg timeBlock 0.5
+DoL 0.0 sym set TStage StagePlaceInfantry
+DoL 0.0 sym set TADropUnit 0
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos 24 20 0
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos 24 20 0.2 /scale 5.0
+DoL 5.0 if sym TADropUnit == 0 if sym TStage == StagePlaceInfantry gamemsg addTR_U_InputSelected Tut_Place1 Tut_Place1_pad
+}
+State StagePlaceInfantry {
+Cfg timeBlock 0.1
+DoL 0.0 player 0 iDistToXY 24 20 TATgtDist
+DoL 0.0 if sym TATgtDist >= 3 player 0 disableFn dropUnit
+DoL 0.0 if sym TATgtDist < 3 player 0 enableFn dropUnit
+DoL 0.0 if sym TADropUnit == 1 sym set TStage StagePlaceInfantryComplete
+}
+State StagePlaceInfantryComplete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:16_placeInf
+DoL 0.0 mdlProp clearall
+DoL 0.0 player 0 enableFn dropunit
+DoL 2.0 sym set TStage StagePlaceInfantryCompleteWait
+DoL 2.0 sym set TutorialText TutA25pt2
+DoL 2.0 floatsym set TutorialTimer 0.0
+}
+State StagePlaceInfantryCompleteWait {
+DoL 0.0 if inputNext sym set TStage StagePlaceInfantryCompleteWaitComplete
+DoL 0.0 rook doLevelState StagePlaceInfantryCompleteWaitNotify
+}
+State StagePlaceInfantryCompleteWaitNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StagePlaceInfantryCompleteWait gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StagePlaceInfantryCompleteWaitComplete {
+Cfg timeBlock 10.0
+DoL 0.0 sym set TutorialText TutA26
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 3.0 sym set TStage StageUIInfoSetup
+}
+State StageAutoDeploy2TransitionToUIInfo {
+Cfg timeBlock 20.0
+DoL 1.0 player 0 enableFn dropUnit
+DoL 5.0 sym set TStage StageUIInfoSetup
+}
+State StageUIInfoSetup {
+Cfg timeBlock 20.0
+DoL 0.0 if !menuLoaded hudTutorialAddCredits.txt loadmenu hudTutorialAddCredits.txt
+DoL 1.0 loadmenu hudTutorialAddAbilities.txt
+DoL 0.0 rook disable unitsMenu
+DoL 1.0 player 0 enableFn earn
+DoL 2.0 sym set TStage StageUIInfoCompleteWait
+}
+State StageUIInfoCompleteWait {
+DoL 0.0 if inputNext sym set TStage StageUIInfoCompleteWaitComplete
+DoL 0.0 rook doLevelState StageUIInfoCompleteWaitNotify
+}
+State StageUIInfoCompleteWaitNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageUIInfoCompleteWait gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageUIInfoCompleteWaitComplete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA26pt2
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageUIInfoCompleteWait2
+}
+State StageUIInfoCompleteWait2 {
+DoL 0.0 if inputNext sym set TStage StageUIInfoCompleteWait2Complete
+DoL 0.0 rook doLevelState StageUIInfoCompleteWait2Notify
+}
+State StageUIInfoCompleteWait2Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageUIInfoCompleteWait2 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageUIInfoCompleteWait2Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA26pt3
+DoL 0.0 if usingPad runnow sym set TutorialText TutA26pt3_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 player 0 enableFn lvlAbility1
+DoL 0.0 sym set TraySel 9
+DoL 0.0 rook abilityFocus 0
+DoL 0.0 if usingPad runnow gameui focusname AbilityLvlUp0
+DoL 2.0 sym set TStage StageUIInfoCompleteWait3
+}
+State StageUIInfoCompleteWait3 {
+DoL 0.0 if sym TALvlAbility == 1 sym set TStage StageUIInfoCompleteWait3Complete
+DoL 0.0 player 0 enableFn actAbility anyAbility
+DoL 0.0 rook doLevelState StageUIInfoCompleteWait3Notify
+}
+State StageUIInfoCompleteWait3Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageUIInfoCompleteWait2 gameMsg addTR_U Tut_UpgradeSwordAbility
+}
+State StageUIInfoCompleteWait3Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA26pt4
+DoL 0.0 if usingPad runnow sym set TutorialText TutA26pt4_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageUIInfoCompleteWait4
+}
+State StageUIInfoCompleteWait4 {
+DoL 0.0 if sym TACollectAbility == 1 sym set TStage StageUIInfoCompleteWait4Complete
+DoL 0.0 rook doLevelState StageUIInfoCompleteWait4Notify
+}
+State StageUIInfoCompleteWait4Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageUIInfoCompleteWait4 gameMsg addTR_U Tut_UpgradeSwordAbility
+}
+State StageUIInfoCompleteWait4Complete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:17_lvlSword
+DoL 0.0 sym set TutorialText TutA30
+DoL 0.0 if usingPad runnow sym set TutorialText TutA30_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 1.0 sym setOne Tut1AbilityOk Tut2AbilityOk Tut3AbilityOk Tut4AbilityOk Tut5AbilityOk Tut6AbilityOk Tut7AbilityOk
+DoL 1.0 player 0 enableFn lvlAbility2 lvlAbility3 lvlAbility4 lvlAbility5 lvlAbility6 lvlAbility7 lvlAbility8
+DoL 2.0 sym set TStage StageTrySwordCompleteWait
+}
+State StageTrySwordCompleteWait {
+DoL 0.0 if sym TATrySword == 1 sym set TStage StageTrySwordCompleteWaitComplete
+DoL 0.0 rook doLevelState StageTrySwordCompleteWaitNotify
+}
+State StageTrySwordCompleteWaitNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageTrySwordCompleteWait gameMsg addTR_U Tut_TrySword
+}
+State StageTrySwordCompleteWaitComplete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA31
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 1.0 sym set S_DCount 0
+DoL 1.0 |rook doLevelState StageFightWithSwordSpawn
+DoL 1.0 player 0 disableFn fireGuns
+DoL 2.0 sym set TStage StageFightWithSwordCompleteWait
+}
+State StageFightWithSwordSpawn {
+DoL 0.0 echo spawn 8
+DoL 1.0 state .left do ProduceUnitCapturing ArmoredCarTutorial left
+DoL 1.2 state .right do ProduceUnitCapturing ArmoredCarTutorial right
+DoL 1.4 state .top do ProduceUnitCapturing RocketTruckTutorial top
+DoL 1.6 state .bottom do ProduceUnitCapturing RocketTruckTutorial bottom
+}
+State StageFightWithSwordCompleteWait {
+DoL 0.0 if sym S_DCount >= 4 sym set TStage StageFightWithSwordCompleteWaitComplete
+DoL 0.0 rook doLevelState StageFightWithSwordCompleteWaitNotify
+}
+State StageFightWithSwordCompleteWaitNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageFightWithSwordCompleteWait gameMsg addTR_U Tut_FightWithSword
+}
+State StageFightWithSwordCompleteWaitComplete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:18_swordFight
+DoL 0.0 sym set TutorialText TutA32
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 player 0 enableFn fireGuns
+DoL 2.0 sym set TStage StageFightWithSwordCompleteWait2
+}
+State StageFightWithSwordCompleteWait2 {
+DoL 0.0 if inputNext sym set TStage StageFightWithSwordCompleteWait2Complete
+DoL 0.0 rook doLevelState StageFightWithSwordCompleteWait2Notify
+}
+State StageFightWithSwordCompleteWait2Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageFightWithSwordCompleteWait2 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageFightWithSwordCompleteWait2Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA33
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageFightWithSwordCompleteWait3
+}
+State StageFightWithSwordCompleteWait3 {
+DoL 0.0 if inputNext sym set TStage StageFightWithSwordCompleteWait3Complete
+DoL 0.0 rook doLevelState StageFightWithSwordCompleteWait3Notify
+}
+State StageFightWithSwordCompleteWait3Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageFightWithSwordCompleteWait3 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageFightWithSwordCompleteWait3Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA34
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageFightWithSwordCompleteWait4
+}
+State StageFightWithSwordCompleteWait4 {
+DoL 0.0 if inputNext sym set TStage StageFightWithSwordCompleteWait4Complete
+DoL 0.0 rook doLevelState StageFightWithSwordCompleteWait4Notify
+}
+State StageFightWithSwordCompleteWait4Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageFightWithSwordCompleteWait4 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageFightWithSwordCompleteWait4Complete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:19_amInfo
+DoL 0.0 sym set TutorialText TutA35
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageFightWithSwordCompleteWait5
+}
+State StageFightWithSwordCompleteWait5 {
+DoL 0.0 if inputNext sym set TStage StageFightWithSwordCompleteWait5Complete
+DoL 0.0 rook doLevelState StageFightWithSwordCompleteWait5Notify
+}
+State StageFightWithSwordCompleteWait5Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageFightWithSwordCompleteWait5 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageFightWithSwordCompleteWait5Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA47
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageCaptureOrderCompleteWait1
+}
+State StageCaptureOrderCompleteWait1 {
+DoL 0.0 if inputNext sym set TStage StageCaptureOrderCompleteWait1Complete
+DoL 0.0 rook doLevelState StageCaptureOrderCompleteWait1Notify
+}
+State StageCaptureOrderCompleteWait1Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageCaptureOrderCompleteWait1 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageCaptureOrderCompleteWait1Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA48
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageCaptureOrderCompleteWait2
+}
+State StageCaptureOrderCompleteWait2 {
+DoL 0.0 if inputNext sym set TStage StageCaptureOrderCompleteWait2Complete
+DoL 0.0 rook doLevelState StageCaptureOrderCompleteWait2Notify
+}
+State StageCaptureOrderCompleteWait2Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageCaptureOrderCompleteWait2 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageCaptureOrderCompleteWait2Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA49
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageCaptureOrderCompleteWait3
+}
+State StageCaptureOrderCompleteWait3 {
+DoL 0.0 if inputNext sym set TStage StageCaptureOrderCompleteWait3Complete
+DoL 0.0 rook doLevelState StageCaptureOrderCompleteWait3Notify
+}
+State StageCaptureOrderCompleteWait3Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageCaptureOrderCompleteWait3 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageCaptureOrderCompleteWait3Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA51
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 rook setForceBox -10 47 -16 56 4
+DoL 0.0 player 0 disableFn setorder_pat setorder_hld setorder_atk setorder_lnk
+DoL 0.0 rook setCamExtMax 42 50
+DoL 2.0 sym set TStage StageCaptureOrderCompleteWait4
+}
+State StageCaptureOrderCompleteWait4 {
+DoL 0.0 if inputNext sym set TStage StageCaptureOrderCompleteWait4Complete
+DoL 0.0 rook doLevelState StageCaptureOrderCompleteWait4Notify
+}
+State StageCaptureOrderCompleteWait4Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageCaptureOrderCompleteWait4 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageCaptureOrderCompleteWait4Complete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:20_captureTalk
+DoL 0.0 sym set TutorialText TutA52
+DoL 0.0 if usingPad runnow sym set TutorialText TutA52_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 player 0 enableFn setorder setorder_cap
+DoL 2.0 sym set TStage StageCaptureOrderCompleteWait5
+}
+State StageCaptureOrderCompleteWait5 {
+DoL 0.0 if sym TAOrderCap == 1 sym set TStage StageCaptureOrderCompleteWait5Complete
+DoL 0.0 rook doLevelState StageCaptureOrderCompleteWait5Notify
+}
+State StageCaptureOrderCompleteWait5Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageCaptureOrderCompleteWait5 gameMsg addTR_U Tut_OrderTank
+}
+State StageCaptureOrderCompleteWait5Complete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:21_captureOrderGiven
+DoL 0.0 sym set TutorialText TutA63
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 player 0 enableFn setorder setorder_hld
+DoL 0.0 rook enable unitsMenu
+DoL 5.0 sym set TStage StageMoreUICompleteWait1
+}
+State StageMoreUICompleteWait1 {
+DoL 0.0 if inputNext sym set TStage StageMoreUICompleteWait1Complete
+DoL 0.0 rook doLevelState StageMoreUICompleteWait1Notify
+}
+State StageMoreUICompleteWait1Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoreUICompleteWait1 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoreUICompleteWait1Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA64
+DoL 0.0 loadmenu hudTutorialAddMiniMap.txt
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoreUICompleteWait2
+}
+State StageMoreUICompleteWait2 {
+DoL 0.0 if inputNext sym set TStage StageMoreUICompleteWait2Complete
+DoL 0.0 rook doLevelState StageMoreUICompleteWait2Notify
+}
+State StageMoreUICompleteWait2Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoreUICompleteWait2 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoreUICompleteWait2Complete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:22_radarTalk
+DoL 0.0 sym set TutorialText TutA65
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoreUICompleteWait3
+}
+State StageMoreUICompleteWait3 {
+DoL 0.0 if inputNext sym set TStage StageMoreUICompleteWait3Complete
+DoL 0.0 rook doLevelState StageMoreUICompleteWait3Notify
+}
+State StageMoreUICompleteWait3Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoreUICompleteWait3 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoreUICompleteWait3Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA66
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoreUICompleteWait5
+}
+State StageMoreUICompleteWait4 {
+DoL 0.0 if inputNext sym set TStage StageMoreUICompleteWait4Complete
+DoL 0.0 rook doLevelState StageMoreUICompleteWait4Notify
+}
+State StageMoreUICompleteWait4Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoreUICompleteWait4 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoreUICompleteWait4Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA67
+DoL 0.0 loadmenu hudTutorialAddPower.txt
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoreUICompleteWait5
+}
+State StageMoreUICompleteWait5 {
+DoL 0.0 if inputNext sym set TStage StageMoreUICompleteWait5Complete
+DoL 0.0 rook doLevelState StageMoreUICompleteWait5Notify
+}
+State StageMoreUICompleteWait5Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoreUICompleteWait5 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoreUICompleteWait5Complete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:23_powerTalk
+DoL 0.0 sym set TutorialText TutA68
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoreUICompleteWait6
+}
+State StageMoreUICompleteWait6 {
+DoL 0.0 if inputNext sym set TStage StageMoreUICompleteWait6Complete
+DoL 0.0 rook doLevelState StageMoreUICompleteWait6Notify
+}
+State StageMoreUICompleteWait6Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoreUICompleteWait6 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoreUICompleteWait6Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA69
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoreUICompleteWait7
+}
+State StageMoreUICompleteWait7 {
+DoL 0.0 if inputNext sym set TStage StageMoreUICompleteWait7Complete
+DoL 0.0 rook doLevelState StageMoreUICompleteWait7Notify
+}
+State StageMoreUICompleteWait7Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoreUICompleteWait7 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoreUICompleteWait7Complete {
+Cfg timeBlock 20.0
+DoL 0.0 player 0 enableFn recycle
+DoL 0.0 sym set TutorialText TutA70
+DoL 0.0 if usingPad runnow sym set TutorialText TutA70_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoreUICompleteWait8
+}
+State StageMoreUICompleteWait8 {
+DoL 0.0 if inputNext sym set TStage StageMoreUICompleteWait8Complete
+DoL 0.0 rook doLevelState StageMoreUICompleteWait8Notify
+}
+State StageMoreUICompleteWait8Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoreUICompleteWait8 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoreUICompleteWait8Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA71
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageMoreUICompleteWait9
+}
+State StageMoreUICompleteWait9 {
+DoL 0.0 if inputNext sym set TStage StageMoreUICompleteWait9Complete
+DoL 0.0 rook doLevelState StageMoreUICompleteWait9Notify
+}
+State StageMoreUICompleteWait9Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageMoreUICompleteWait9 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageMoreUICompleteWait8Complete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:24_moreInfo
+DoL 0.0 sym set TutorialText TutA74
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageUIInfoCompleteWaitEnd
+}
+State StageUIInfoCompleteWaitEnd {
+DoL 0.0 if inputNext sym set TStage StageUIInfoCompleteWaitEndComplete
+DoL 0.0 rook doLevelState StageUIInfoCompleteWaitEndNotify
+}
+State StageUIInfoCompleteWaitEndNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageUIInfoCompleteWaitEnd gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageUIInfoCompleteWaitEndComplete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:25_getInfo
+DoL 0.0 sym set TutorialText TutA28
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym set S_DCount 0
+DoL 2.0 state .right do ProduceAllyUnit TankTutorial right
+DoL 4.5 addUIAnim TutorialCharacter mas_TutGirlHide.txt /speed 1.0
+DoL 4.5 addUIAnim TutorialTextBubble mas_TutGirlHide.txt /speed 1.0
+DoL 1.0 sym set TStage StageDefendYourselfSetup
+}
+State StageDefendYourselfSetup {
+Cfg timeBlock 6.0
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount > 3 if sym S_DCount >= 12 sym set TStage StageDefendYourselfComplete
+DoL 0.0 if sym CSWaveCount <= 2 rook doLevelState StageDefendYourselfSpawn
+}
+State StageDefendYourselfSpawn {
+DoL 0.0 echo spawn 9
+DoL 0.0 spawn RocketTruckTutorial /pos -5 -50 0 /team 1 /data ". team 1" /data ". dInc S_DCount" /data ". order AttackEnemy"
+DoL 0.0 spawn TankTutorial /pos -3 -48 0 /team 1 /data ". team 1" /data ". dInc S_DCount" /data ". order AttackEnemy"
+DoL 0.5 spawn Infantry /pos -6 -50 0 /team 1 /data ". team 1" /data ". dInc S_DCount" /data ". order AttackEnemy"
+DoL 0.6 spawn Infantry /pos -6 -50 0 /team 1 /data ". team 1" /data ". dInc S_DCount" /data ". order AttackEnemy"
+DoL 1.5 spawn ArmoredCarTutorial /pos -4 -49 0 /team 1 /data ". team 1" /data ". dInc S_DCount" /data ". order AttackEnemy"
+DoL 1.5 spawn ArmoredCarTutorial /pos -5 -51 0 /team 1 /data ". team 1" /data ". dInc S_DCount" /data ". order AttackEnemy"
+}
+State StageDefendYourselfComplete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:26_defend
+DoL 0.0 addUIAnim TutorialCharacter mas_TutGirlShow.txt /speed 1.0
+DoL 0.0 addUIAnim TutorialTextBubble mas_TutGirlShow.txt /speed 1.0
+DoL 0.0 sym set TutorialText TutA75
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageAssaultWait1
+}
+State StageAssaultWait1 {
+DoL 0.0 if inputNext sym set TStage StageAssaultWait1Complete
+DoL 0.0 rook doLevelState StageAssaultWait1Notify
+}
+State StageAssaultWait1Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageAssaultWait1 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageAssaultWait1Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA76
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 rook setForceBox -10 47 -70 56 4
+DoL 0.0 rook setCamExtMax 42 50
+DoL 0.0 rook setCamExtMin -4 -60
+DoL 2.0 sym set TStage StageAssaultWait2
+}
+State StageAssaultWait2 {
+DoL 0.0 if inputNext sym set TStage StageAssaultWait2Complete
+DoL 0.0 rook doLevelState StageAssaultWait2Notify
+}
+State StageAssaultWait2Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageAssaultWait2 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageAssaultWait2Complete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:27_tanksForAssault
+DoL 0.0 sym set TutorialText TutA77
+DoL 1.0 state .top do ProduceAllyUnit TankTutorial top
+DoL 1.0 state .bottom do ProduceAllyUnit TankTutorial bottom
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 2.0 sym set TStage StageAssaultWait3
+}
+State StageAssaultWait3 {
+DoL 0.0 if inputNext sym set TStage StageAssaultWait3Complete
+DoL 0.0 rook doLevelState StageAssaultWait3Notify
+}
+State StageAssaultWait3Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageAssaultWait3 gameMsg addTR_U_InputSelected Tut_Cont Tut_Cont_pad
+}
+State StageAssaultWait3Complete {
+Cfg timeBlock 20.0
+DoL 0.0 sym set TutorialText TutA78
+DoL 0.0 if usingPad runnow sym set TutorialText TutA78_pad
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 player 0 enableFn setorder setorder_atk
+DoL 0.0 sym set TAOrderAtk 0
+DoL 0.5 sym set TStage StageAssaultWait4
+}
+State StageAssaultWait4 {
+DoL 0.0 if sym TAOrderAtk == 1 runnow sym set TStage StageAssaultWait4Complete
+DoL 0.0 rook doLevelState StageAssaultWait4Notify
+}
+State StageAssaultWait4Notify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageAssaultWait4 gameMsg addTR_U Tut_OrderTankAtk
+}
+State StageAssaultWait4Complete {
+Cfg timeBlock 20.0
+DoL 0.0 backend statOnce tut2:28_attackOrder
+DoL 0.0 sym set TutorialText TutA79
+DoL 0.0 floatsym set TutorialTimer 0.0
+DoL 0.0 player 0 enableFn setorder setorder_lnk
+DoL 2.0 sym set TStage StageAssaultWait5
+DoL 6.5 addUIAnim TutorialCharacter mas_TutGirlHide.txt /speed 1.0
+DoL 6.5 addUIAnim TutorialTextBubble mas_TutGirlHide.txt /speed 1.0
+}
+State StageAssaultWait5 {
+DoL 0.0 if sym TAEnemyFortDown == 1 runnow sym set TStage StageAssaultWait5Complete
+DoL 0.0 rook doLevelState StageAssaultWait5Notify
+}
+State StageAssaultWait5Notify {
+Cfg timeBlock 5.0
+}
+State StageAssaultWait5Complete {
+Cfg timeBlock 20.0
+DoL 2.0 sym set TStage StageEnd
+}
+State StageEnd {
+Cfg timeBlock 60.0
+DoL 0.0 backend statOnce tut2:end
+DoL 0.0 rook pushFetchedGameResults
+DoL 5.0 sym set TutorialText TutA90
+DoL 5.0 floatsym set TutorialTimer 0.0
+DoL 5.0 addUIAnim TutorialCharacter mas_TutGirlShow.txt /speed 1.0
+DoL 5.0 addUIAnim TutorialTextBubble mas_TutGirlShow.txt /speed 1.0
+DoL 7.0 sym set TStage StageExitClickWait
+}
+State StageAirMechDestroyed {
+Cfg timeBlock 25.0
+DoL 0.0 backend statOnce tut2:killed
+DoL 0.0 rook pushFetchedGameResults
+DoL 0.0 sym set TASelfDestroyed 0
+DoL 0.0 sym set TRFailed 1
+DoL 0.0 sym set TStage NA
+DoL 5.0 sym set TutorialText TutA50f
+DoL 5.0 floatsym set TutorialTimer 0.0
+DoL 7.0 sym set TStage StageExitClickWait
+}
+State StageExitClickWait {
+DoL 0.0 if inputNext sym set TStage StageReallyExiting
+DoL 0.0 rook doLevelState StageExitClickWaitNotify
+}
+State StageExitClickWaitNotify {
+Cfg timeBlock 5.0
+DoL 4.0 if sym TStage == StageExitClickWait gameMsg addTR_U_InputSelected Tut_Exit Tut_Exit_pad
+}
+State StageReallyExiting {
+Cfg timeBlock 60.0
+DoL 0.0 sym set TRComplete 1
+DoL 0.6 addUIAnim TutorialCharacter mas_TutGirlHide.txt /speed 1.0
+DoL 0.6 addUIAnim TutorialTextBubble mas_TutGirlHide.txt /speed 1.0
+DoL 2.2 menucmd MP_LoadMainMenu
+DoL 2.2 sym set TRComplete 0
+}
+}

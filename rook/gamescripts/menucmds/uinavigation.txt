@@ -1,0 +1,139 @@
+Script RedeemCodeLinkClick {
+ignoreInputTime 0.15
+cmd "pcmd 0.1 sym set RedeemCode $_MArg1_"
+cmd "pcmd 0.12 rook codeCheck RedeemCode CodeSubmitButton"
+cmd "if !menuloaded DialogRedeemCode.txt loadmenu DialogRedeemCode.txt /fadein 0.2"
+}
+Script UI_Nav_*Store* {
+cmd "echo clicked store ui nav link"
+cmd "if sym LobbyState == 0 && uiLinkOk runNow menuCmd JumpToShop_Featured"
+}
+Script UI_Nav_*Loadout* {
+cmd "echo clicked loadout ui nav link"
+}
+Script UI_Nav_Diamonds {
+ignoreInputTime 0.1
+cmd "if sym BuyDiamondsOld != 1 menuCmd OpenNewDiamondBuyDialog"
+}
+Script UI_Nav_Free_Diamonds {
+cmd "backend peanutlabslink"
+}
+Script UI_Nav_AirMech_Command {
+cmd "net openlink https://carbongames.com/amc/"
+}
+Script UI_Nav_Referral_Link {
+cmd "menucmd GetReferralLink"
+}
+Script UI_Nav_Attach_Email {
+cmd "if !consolePlatformHW runnow menuCmd InspectPromo PromoUplink"
+}
+Script UI_Nav_Inventory {
+cmd "if sym LobbyState == 0 && uiLinkOk runNow menuCmd JumpTo_Inventory"
+}
+Script UI_Nav_Quests {
+cmd "if sym LobbyState == 0 && uiLinkOk runNow menuCmd JumpTo_Quests"
+}
+Script UI_Nav_Sets {
+cmd "if sym LobbyState == 0 && uiLinkOk runNow menuCmd JumpTo_Sets"
+}
+Script UI_Nav_Collections {
+cmd "if sym LobbyState == 0 && uiLinkOk runNow menuCmd JumpTo_Sets"
+}
+Script UI_Nav_Blueprints {
+cmd "if sym LobbyState == 0 && uiLinkOk runNow menuCmd JumpTo_Blueprints"
+}
+Script UI_Nav_Referrals {
+cmd "menucmd InspectPromo PromoReferrals"
+}
+Script UI_Nav_Referral {
+rcmd "menucmd UI_Nav_Referrals"
+}
+Script UI_Nav_VIP {
+cmd "if sym LobbyState == 0 && uiLinkOk runNow menuCmd JumpToShop_Featured"
+}
+Script UI_Nav_FAQ {
+cmd "if sym LobbyState == 0 && uiLinkOk runNow menuCmd JumpToFAQ"
+}
+Script UI_Nav_PatchNotes {
+cmd "sym setZero ManualStats ManualQuests ManualVideos ManualHelp ManualFaq"
+cmd "sym setOne ManualPatchnotes"
+cmd "loadmenu Manual /fadein 0.1"
+}
+Script UI_Nav_Field_Guide {
+cmd "if !menuloaded Manual loadmenu Manual /fadein 0.1"
+}
+Script UI_Nav_Leaderboards {
+cmd "menucmd LoadLeaderboards"
+}
+Script UI_Nav_Forums {
+cmd "if sym LobbyState == 0 && uiLinkOk net openlink http://www.carbongames.com/forums"
+}
+Script UI_Nav_Challenges {
+cmd "if sym CurrentMenu == MKHome gameui replay challenges"
+}
+Script UI_Nav_Tutorial {
+cmd "if sym LobbyState == 0 && uiLinkOk runNow menuCmd MF_TutorialStart"
+}
+Script UI_Nav_NewVersionRestart {
+cmd "log MenuCmd: UI_Nav_NewVersionRestart"
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleNewVersion"
+cmd "sym set DialogBoxMessage DialogMessageNewVersionPC"
+cmd "if steam runnow sym set DialogBoxMessage DialogMessageNewVersionSteam"
+cmd "sym set DialogMenuCmdOnButton1 RestartGameNewVersionConfirmed"
+cmd "if steam runnow sym set DialogMenuCmdOnButton1 ExitGameNewVersionConfirmed"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script ExitGameNewVersionConfirmed {
+cmd "exit"
+}
+Script RestartGameNewVersionConfirmed {
+cmd "exit restart"
+}
+Script UI_BadgeSetRequest {
+cmd "playsound UI_BadgeEquip"
+}
+Script UI_PrivMessage {
+cmd "playsound UI_PrivateMessageReceived"
+}
+Script RPNR0_Down {
+cmd "gameui focusNameTry RoomPlayerNameRef1 RoomPlayerNameRef2 RoomPlayerNameRef3 RoomPlayerNameRef4 RoomPlayerNameRef5 SpecJoinButton"
+}
+Script RPNR1_Down {
+cmd "gameui focusNameTry RoomPlayerNameRef2 RoomPlayerNameRef3 RoomPlayerNameRef4 RoomPlayerNameRef5 SpecJoinButton"
+}
+Script RPNR2_Down {
+cmd "gameui focusNameTry RoomPlayerNameRef3 RoomPlayerNameRef4 RoomPlayerNameRef5 SpecJoinButton"
+}
+Script RPNR3_Down {
+cmd "gameui focusNameTry RoomPlayerNameRef4 RoomPlayerNameRef5 SpecJoinButton"
+}
+Script RPNR4_Down {
+cmd "gameui focusNameTry RoomPlayerNameRef5 SpecJoinButton"
+}
+Script RPNR5_Up {
+cmd "gameui focusNameTry RoomPlayerNameRef4 RoomPlayerNameRef3 RoomPlayerNameRef2 RoomPlayerNameRef1 RoomPlayerNameRef0 RoomButtonClose"
+}
+Script RPNR4_Up {
+cmd "gameui focusNameTry RoomPlayerNameRef3 RoomPlayerNameRef2 RoomPlayerNameRef1 RoomPlayerNameRef0 RoomButtonClose"
+}
+Script RPNR3_Up {
+cmd "gameui focusNameTry RoomPlayerNameRef2 RoomPlayerNameRef1 RoomPlayerNameRef0 RoomButtonClose"
+}
+Script RPNR2_Up {
+cmd "gameui focusNameTry RoomPlayerNameRef1 RoomPlayerNameRef0 RoomButtonClose"
+}
+Script RPNR_JoinUp {
+cmd "gameui focusNameTry RoomPlayerNameRef5 RoomPlayerNameRef4 RoomPlayerNameRef3 RoomPlayerNameRef2 RoomPlayerNameRef1 RoomPlayerNameRef0"
+}
+Script UnlockDialogYPageSwitch {
+ignoreInputTime 0.15
+cmd "if sym VipTicketUnderstandCtx == 1 sym inc DialogPageDisplay 1"
+cmd "if sym DialogPageDisplay >= $DialogPageCount && sym VipTicketUnderstandCtx == 1 sym set DialogPageDisplay 0"
+cmd "if sym DialogPageDisplay >= $DialogPageCount && sym VipTicketUnderstandCtx == 1 floatsym set Scrollable0Pos 0"
+cmd "if sym VipTicketUnderstandCtx == 1 runnow gameUI hideGroup UnlockDiamondsConfirm UnlockKudosConfirm"
+cmd "if sym VipTicketUnderstandCtx == 1 if usingPad gameui focusnametry UnlockWithDiamondsFrame UnlockWithKudosFrame"
+cmd "sym set UnlockOnBuyConfirmUI 0"
+}

@@ -1,0 +1,244 @@
+Script FriendOpenSym {
+ignoreInputTime 0.15
+rcmd "sym setFrom _FriendName_ $_MArg1_"
+rcmd "sym set FriendWindow 0"
+cmd "echo $_FriendName_"
+cmd "if sym AnyFriendDialogOpen == 1 echo $_FriendName1"
+cmd "if sym AnyFriendDialogOpen == 1 && sym _FriendName_ !=sym _FriendName1 menucmd CloseAllFriendDialogs"
+cmd "sym set _FriendIsFriend_ 1"
+cmd "sym set _FriendOpenInd 1"
+cmd "if sym AnyFriendDialogOpen == 1 && sym _FriendName_ !=sym _FriendName1 menucmd FriendWindowInc"
+cmd "if sym AnyFriendDialogOpen == 1 && sym _FriendName_ == $_FriendName1 sym set DisableFriendFlash 0"
+cmd "if sym AnyFriendDialogOpen == 1 && sym _FriendName_ == $_FriendName1 pcmd 0.05 sym set DisableFriendFlash 1"
+cmd "if sym AnyFriendDialogOpen == 0 menucmd FriendWindowInc"
+}
+Script NonFriendOpenSym {
+rcmd "sym setFrom _FriendName_ $_MArg1_"
+rcmd "sym set FriendWindow 0"
+rcmd "sym set _FriendStatusCode_ -1"
+cmd "echo $_FriendName_"
+cmd "if sym AnyFriendDialogOpen == 1 echo $_FriendName1"
+cmd "if sym AnyFriendDialogOpen == 1 && sym _FriendName_ !=sym _FriendName1 menucmd CloseAllFriendDialogs"
+cmd "sym set _FriendIsFriend_ 0"
+cmd "sym set _FriendOpenInd 1"
+cmd "if sym AnyFriendDialogOpen == 1 && sym _FriendName_ !=sym _FriendName1 menucmd FriendWindowInc"
+cmd "if sym AnyFriendDialogOpen == 1 && sym _FriendName_ == $_FriendName1 sym set DisableFriendFlash 0"
+cmd "if sym AnyFriendDialogOpen == 1 && sym _FriendName_ == $_FriendName1 pcmd 0.05 sym set DisableFriendFlash 1"
+cmd "if sym AnyFriendDialogOpen == 0 menucmd FriendWindowInc"
+}
+Script FriendWindowInc {
+cmd "gameUI getLastRenderPos MouseCursorMaster _DialogFriendPosX _DialogFriendPosY"
+cmd "sym dec _DialogFriendPosX 180"
+cmd "sym dec _DialogFriendPosY 50"
+cmd "if sym FriendWindow == 0 friends reqinfosym _FriendName_"
+cmd "if sym FriendMultiWindow == 1 menucmd FriendMultiWindow"
+}
+Script FriendOptionsList2 {
+cmd "if sym #_FriendIsFriend@_MArg1_@ == 1 sym set _ListboxName_0"
+cmd "sym dec _DialogFriendPosX 180"
+cmd "sym dec _DialogFriendPosY 50"
+cmd "if sym FriendWindow == 0 friends reqinfosym _FriendName_"
+cmd "if sym FriendMultiWindow == 1 menucmd FriendMultiWindow"
+}
+Script FriendOptionsList {
+ignoreInputTime 0.1
+cmd "sym set ListboxParent $_MArg1_"
+cmd "echo $_MArg1_"
+cmd "sym set ListboxType Friends"
+cmd "sym set _ListboxColor 0x3e4d52"
+cmd "sym set _ListboxColorFocused 0x3d6d77"
+cmd "sym set _ListboxName_ $_MArg1_"
+cmd "sym setNSet 12 FriendOptions1"
+cmd "sym set FriendOptions10 FR_DeleteFriend"
+cmd "sym set FriendOptions11 FR_DeleteIgnoreFriend"
+cmd "loadmenu Listbox"
+}
+Script FriendOptions1_ClickList {
+cmd "if literal $_MArg1_ == 0 menucmd FriendRemoveConfirm local _FriendName1 0"
+cmd "if literal $_MArg1_ == 1 menucmd FriendRemoveConfirm local _FriendName1 1"
+cmd "clearmenu Listbox"
+}
+Script FriendMultiWindow {
+cmd "if sym FriendWindowSetupIndex == 1 sym set FriendWindowSetupIndex 2"
+cmd "if sym FriendWindowSetupIndex == 2 sym set FriendWindowSetupIndex 1"
+}
+Script onGotFriendInfo {
+cmd "sym set #P_LevelO@_FriendOpenInd@ $P_LevelO"
+cmd "sym set #P_LevelO@_FriendOpenInd@_Icon $P_LevelO_Icon"
+cmd "sym set #TT_LevelO@_FriendOpenInd@ $TT_LevelO"
+cmd "sym set #_FriendNameDeco@_FriendOpenInd@ $_FriendNameDeco_"
+cmd "sym set #_FriendName@_FriendOpenInd@ $_FriendName_"
+cmd "sym set #_FriendIsFriend@_FriendOpenInd@ $_FriendIsFriend_"
+cmd "sym set #_DisableInvite@_FriendOpenInd@ $_DisableInvite_"
+cmd "if !console loadmenu #DialogFriend@_FriendOpenInd@ /fadein 0.1"
+}
+Script onGotFriendInfoFail {
+cmd "echo Failed to get friend info... :("
+}
+Script FriendRequest {
+cmd "log MenuCmd: FriendRequest"
+}
+Script CloseAllFriendDialogs {
+rcmd "clearmenu DialogMyself"
+rcmd "clearmenu DialogFriend"
+rcmd "if menuloaded DialogFriend1 clearmenu DialogFriend1"
+rcmd "if menuloaded DialogFriend2 clearmenu DialogFriend2"
+rcmd "if menuloaded DialogFriend3 clearmenu DialogFriend3"
+rcmd "if menuloaded DialogFriend4 clearmenu DialogFriend4"
+rcmd "if menuloaded DialogFriend5 clearmenu DialogFriend5"
+rcmd "if menuloaded DialogFriend6 clearmenu DialogFriend6"
+rcmd "if menuloaded DialogFriend7 clearmenu DialogFriend7"
+rcmd "if menuloaded DialogFriend8 clearmenu DialogFriend8"
+rcmd "if menuloaded DialogFriend9 clearmenu DialogFriend9"
+rcmd "if menuloaded DialogFriend10 clearmenu DialogFriend10"
+rcmd "clearmenu DialogNotFriend"
+rcmd "clearmenu DialogIgnoredPlayer"
+rcmd "clearmenu DialogPendingFriend"
+}
+Script CloseAllRoomDialogs {
+ignoreInputTime 0.15
+rcmd "clearmenu DialogRoom /fadeout 0.12"
+}
+Script IgnoreListFull {
+cmd "sym set DialogBoxTitle DialogTitleIgnoreListFull"
+cmd "sym set DialogBoxMessage DialogMessageIgnoreListFull"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script FriendInvitesReqNonAvailable {
+cmd "sym set DialogBoxTitle InviteNoFriendsTitle"
+cmd "sym set DialogBoxMessage InviteNoFriendsMsg"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script LoadFriendInvitesDialog {
+ignoreInputTime 0.35
+cmd "if consoleplatformHW && !ps4 runnow menucmd LoadFriendInvitesDialogPlatform"
+cmd "if !consoleplatformHW runnow menucmd LoadFriendInvitesDialogGeneric"
+cmd "if ps4 ps4 systemInvite"
+}
+Script LoadFriendInvitesDialogGeneric {
+cmd "if sym INV_EnumCount > 0 loadmenu Invite /fadein 0.15"
+cmd "if sym INV_EnumCount == 0 menucmd FriendInvitesReqNonAvailable"
+}
+Script LoadFriendInvitesDialogPlatform {
+cmd "sym setZero _InPlatformParty_"
+cmd "platform isInParty _InPlatformParty_"
+cmd "if sym _InPlatformParty_ == 0 && !xbone && sym INV_EnumCount > 0 loadmenu InviteList /fadein 0.15"
+cmd "if sym _InPlatformParty_ == 0 && !xbone && sym INV_EnumCount == 0 menucmd FriendInvitesReqNonAvailable"
+cmd "if sym _InPlatformParty_ == 0 && xbone xbone systemInvite"
+cmd "if sym _InPlatformParty_ == 1 menucmd LoadFriendInvitesDialog_PartyAsk"
+}
+Script LoadFriendInvitesDialog_Go1 {
+}
+Script LoadFriendInvitesDialog_PartyAsk {
+cmd "sym set DialogBoxTitle InviteLivePartyTitle"
+cmd "sym set DialogBoxMessage InviteLivePartyMessage"
+cmd "if ps4 runnow sym set DialogBoxTitle InviteLivePartyTitle_PS4"
+cmd "if ps4 runnow sym set DialogBoxMessage InviteLivePartyMessage_PS4"
+cmd "if xbone runnow sym set DialogBoxTitle InviteLivePartyTitle_XB1"
+cmd "if xbone runnow sym set DialogBoxMessage InviteLivePartyMessage_XB1"
+cmd "sym set DialogMenuCmdOnButton1 LoadFriendInvitesDialog_PartyInvite"
+cmd "sym set DialogMenuCmdOnButton0 LoadFriendInvitesDialog_PartyRegularInvite"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script LoadFriendInvitesDialog_PartyInvite {
+cmd "party2 inviteparty"
+}
+Script LoadFriendInvitesDialog_PartyRegularInvite {
+cmd "if !xbone && sym INV_EnumCount > 0 runnow loadmenu InviteList /fadein 0.15"
+cmd "if xbone xbone systemInvite"
+}
+Script CancelInviteOperation {
+cmd "sym set party_op_temp $_MArg1_"
+cmd "if !xbone && !ps4 menucmd CancelInviteOperation_ShowDialog"
+cmd "if xbone || ps4 menucmd CancelInviteOperation_Go"
+}
+Script CancelInviteOperation_ShowDialog {
+ignoreInputTime 0.25
+cmd "sym set DialogBoxTitle InviteCancelTitle"
+cmd "sym set DialogBoxMessage InviteCancelMessage"
+cmd "sym set DialogMenuCmdOnButton1 CancelInviteOperation_GO"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script CancelInviteOperation_GO {
+ignoreInputTime 0.5
+cmd "party2 cancelinvite $party_op_temp"
+}
+Script LobbyBecomeSpectator {
+ignoreInputTime 0.25
+cmd "sym set party_op_temp $_MArg1_"
+cmd "sym set DialogBoxTitle BecomeSpectatorTitle"
+cmd "sym set DialogBoxMessage BecomeSpectatorMessage"
+cmd "sym set DialogMenuCmdOnButton1 LobbyBecomeSpectator_GO"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script LobbyBecomeSpectator_GO {
+ignoreInputTime 0.5
+cmd "echo POSSESS_THIS_SPECTATOR_SLOT"
+cmd "party2 switchToSlot $party_op_temp"
+}
+Script GetReferralLink {
+cmd "timer setAsyncWait 2"
+ignoreInputTime 0.5
+cmd "backend copyReferralLink"
+cmd "pcmd 2.0 timer clearAsyncWait"
+}
+Script ReferralLinkToClipboard {
+cmd "sym set DialogBoxTitle ReferralLinkCopyTitle"
+cmd "sym set DialogBoxMessage ReferralLinkCopyOkTitleMsg"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+cmd "timer clearAsyncWait"
+}
+Script ReferralLinkToClipboardFail {
+cmd "sym set DialogBoxTitle ReferralLinkCopyTitle"
+cmd "sym set DialogBoxMessage ReferralLinkCopyFailTitleMsg"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+cmd "timer clearAsyncWait"
+}
+Script FriendsFilterTextChanged {
+cmd "social scrollupdate"
+}
+Script FriendRequestAccepted {
+}
+Script FriendAddV2_Success {
+pendingOnIgnoreInputTime
+cmd "sym set _NameOfPlayer_ $_MArg1_"
+cmd "sym set DialogBoxTitle MB_Friends"
+cmd "sym set DialogBoxMessage MessageFriendInviteSent"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+cmd "echo friend addv2 SUCCESS - $_MArg1_"
+cmd "sym set FriendsFilterText"
+cmd "menucmd FriendsFilterTextChanged"
+}
+Script FriendAddV2_Failed {
+pendingOnIgnoreInputTime
+cmd "sym set _NameOfPlayer_ $_MArg2_"
+cmd "sym set DialogBoxTitle MB_Friends"
+cmd "sym set DialogBoxMessage MessageFriendInviteFailUNKNOWN"
+cmd "if literal $_MArg1_ == AT_MAX sym set DialogBoxMessage MessageFriendInviteFailAT_MAX"
+cmd "if literal $_MArg1_ == UNKNOWN_USER sym set DialogBoxMessage MessageFriendInviteFailUNKNOWN_USER"
+cmd "if literal $_MArg1_ == IS_SELF sym set DialogBoxMessage MessageFriendInviteFailIS_SELF"
+cmd "if literal $_MArg1_ == ALREADY_SENT sym set DialogBoxMessage MessageFriendInviteFailALREADY_SENT"
+cmd "if literal $_MArg1_ == TGT_MAX_INV sym set DialogBoxMessage MessageFriendInviteFailTGT_MAX_INV"
+cmd "if literal $_MArg1_ == TGT_AT_MAX sym set DialogBoxMessage MessageFriendInviteFailTGT_AT_MAX"
+cmd "if literal $_MArg1_ == ALREADY_FRIENDS sym set DialogBoxMessage MessageFriendInviteFailALREADY_FRIENDS"
+cmd "if literal $_MArg1_ == UNKNOWN sym set DialogBoxMessage MessageFriendInviteFailUNKNOWN"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+cmd "echo friend addv2 FAILED: $_MArg1_ (to) $_MArg2_"
+}
+Script SetDND_Fail {
+cmd "echo set DND state - FAILED"
+}
+Script SetDND_Ok {
+cmd "echo set DND state - OK"
+}

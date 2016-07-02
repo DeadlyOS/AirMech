@@ -1,0 +1,675 @@
+Script MainMenuBackgroundBlur {
+cmd "sym set BackgroundMenuBlur 1"
+cmd "sym set VignetteFade 0"
+}
+Script MainMenuBackgroundSharp {
+cmd "sym set BackgroundMenuBlur 0"
+cmd "if sym Background3dLoaded == 1 sym set VignetteFade 1"
+}
+Script LoadLeaderboards {
+ignoreInputTime 0.1
+cmd "if !menuloaded BaseLeaderboards clearmenu Quests /fadeout 0.1"
+cmd "if !menuloaded BaseLeaderboards loadmenu BaseLeaderboards /fadein 0.15"
+}
+Script ToggleLeaderboards {
+ignoreInputTime 0.1
+cmd "if !menuloaded BaseLeaderboards clearmenu Quests /fadeout 0.1"
+cmd "if !menuloaded BaseLeaderboards loadmenu BaseLeaderboards /fadein 0.15"
+cmd "if menuloaded BaseLeaderboards menucmd ClearLeaderboards"
+}
+Script ClearLeaderboards {
+ignoreInputTime 0.25
+cmd "clearmenu BaseLeaderboards /fadeout 0.15"
+}
+Script ClearFloatingMenus {
+ignoreInputTime 0.25
+cmd "echo ClearFloatingMenus"
+cmd "if menuloaded ConQuests clearmenu ConQuests /fadeout 0.1"
+cmd "if menuloaded ConMail clearmenu ConMail /fadeout 0.1"
+cmd "if menuloaded Quests clearmenu Quests /fadeout 0.1"
+cmd "if menuloaded Inventory clearmenu Inventory /fadeout 0.1"
+cmd "if menuloaded MailInbox clearmenu MailInbox /fadeout 0.1"
+cmd "if menuloaded Friends clearmenu Friends /fadeout 0.1"
+cmd "if menuloaded Manual clearmenu Manual /fadeout 0.1"
+cmd "if menuloaded MailCompose clearmenu MailCompose /fadeout 0.1"
+cmd "if menuloaded MailMessage clearmenu MailMessage /fadeout 0.1"
+cmd "if menuloaded ConLeaderboards clearmenu ConLeaderboards /fadeout 0.1"
+cmd "if menuloaded BaseLeaderboards clearmenu BaseLeaderboards /fadeout 0.1"
+cmd "if menuloaded ConShop clearmenu ConShop /fadeout $ConShopFadeoutTime"
+cmd "if menuloaded CapsuleRareChoices clearmenu CapsuleRareChoices /fadeout 0.1"
+cmd "if menuloaded LobbyMatchCon clearmenu LobbyMatchCon /fadeout 0.1"
+cmd "if menuloaded InspectPromoDialog clearmenu InspectPromoDialog /fadeout 0.1"
+cmd "if menuloaded InspectMapDialog clearmenu InspectMapDialog /fadeout 0.1"
+cmd "if menuloaded InspectDialog clearmenu InspectDialog /fadeout 0.1"
+cmd "if menuloaded DialogMyself clearmenu DialogMyself /fadeout 0.1"
+cmd "if menuloaded DialogFriend clearmenu DialogFriend /fadeout 0.1"
+cmd "if menuloaded UnlockDialog clearmenu UnlockDialog /fadeout 0.1"
+cmd "if menuloaded DialogMarketList clearmenu DialogMarketList /fadeout 0.1"
+cmd "if menuloaded SelectAirMech clearmenu SelectAirMech /fadeout 0.1 /forced 1"
+cmd "if menuloaded SelectUnitsCon clearmenu SelectUnitsCon /fadeout 0.1 /forced 1"
+cmd "if menuloaded SelectItemDialog clearmenu SelectItemDialog /fadeout 0.1 /forced 1"
+cmd "if menuloaded ConAirMechSelect clearmenu ConAirMechSelect /fadeout 0.1 /forced 1"
+cmd "if menuloaded Promos clearmenu Promos /fadeout 0.1"
+}
+Script LoadPvPOptions {
+ignoreInputTime 0.1
+cmd "loadmenu BasePvPOptions /fadein 0.1"
+cmd "if sym PO_Hyper == 1 && sym HypoHidden == 1 runnow addUIAnim CTFMode mas_PvPCheckboxMoveUp"
+cmd "if sym PO_Hyper == 1 && sym HypoHidden == 1 runnow addUIAnim ZobaMode mas_PvPCheckboxMoveUp"
+cmd "if sym PO_Hypo == 1 && sym HyperHidden == 1 runnow addUIAnim LagFestOption mas_PvPCheckboxMoveUp"
+cmd "if sym PO_Hyper == 1 && sym HypoHidden == 1 runnow gameui disable HypoMode"
+cmd "if sym PO_Hypo == 1 && sym HyperHidden == 1 runnow addUIAnim HypoMode mas_PvPCheckboxMoveUp"
+cmd "if sym PO_Hypo == 1 && sym HyperHidden == 1 runnow addUIAnim CTFMode mas_PvPCheckboxMoveUp"
+cmd "if sym PO_Hypo == 1 && sym HyperHidden == 1 runnow addUIAnim ZobaMode mas_PvPCheckboxMoveUp"
+cmd "if sym PO_Hypo == 1 && sym HyperHidden == 1 runnow addUIAnim LagFestOption mas_PvPCheckboxMoveUp"
+cmd "if sym PO_Hypo == 1 && sym HyperHidden == 1 runnow gameui disable HyperMode"
+}
+Script ClearPvPOptions {
+ignoreInputTime 0.1
+cmd "addUIAnim MasterPvPOptions mas_MenuLeaderboardExit"
+cmd "clearmenu BasePvPOptions /fadeout 0.1"
+cmd "if sym PO_IsOwner == 1 party2 setGameOptions pin PO_Pin hyper PO_Hyper hypo PO_Hypo ctf PO_CTF zoba PO_ZobaMech ult PO_UltimatesAllowed noparts PO_NoParts notraining PO_NoTraining lagfest PO_LagFest custommap PO_CustomMap custommapname PO_CustomMapName"
+}
+Script setPvPOptions {
+cmd "if sym PO_IsOwner == 1 party2 setGameOptions pin PO_Pin hyper PO_Hyper hypo PO_Hypo ctf PO_CTF zoba PO_ZobaMech ult PO_UltimatesAllowed noparts PO_NoParts notraining PO_NoTraining lagfest PO_LagFest custommap PO_CustomMap custommapname PO_CustomMapName"
+}
+Script PushMyCustomGameOptions {
+cmd "sym setFrom PO_Pin CF_Pin"
+cmd "sym setFrom PO_Hypo CF_Hypo"
+cmd "sym setFrom PO_Hyper CF_Hyper"
+cmd "sym setFrom PO_CTF CF_CTF"
+cmd "sym setFrom PO_ZobaMech CF_ZobaMech"
+cmd "sym setFrom PO_UltimatesAllowed CF_UltimatesAllowed"
+cmd "sym setFrom PO_NoParts CF_NoParts"
+cmd "sym setFrom PO_NoTraining CF_NoTraining"
+cmd "sym setFrom PO_LagFest CF_LagFest"
+cmd "sym setFrom PO_CustomMap CF_CustomMap"
+cmd "sym setFrom PO_CustomMapName CF_CustomMapName"
+cmd "menucmd setPvPOptions"
+}
+Script MatchmakingReduceOptions {
+cmd "if sym MM_coop2 == 0 gameui disable ConMenuMultiCoop2v2
+cmd "if sym MM_coop2 == 0 sym set ConMenuMultiCoop2v2 0
+cmd "if sym MM_coop3 == 0 gameui disable ConMenuMultiCoop3v3
+cmd "if sym MM_coop3 == 0 sym set ConMenuMultiCoop3v3 0
+cmd "if sym MM_coop2b == 0 gameui disable ConMenuMultiCoop2v3
+cmd "if sym MM_coop2b == 0 sym set ConMenuMultiCoop2v3 0
+cmd "if sym MM_coop2 == 0 if sym MM_coop3 == 1 sym set ConMenuMultiCoop3v3 1
+cmd "if sym MM_coop2 == 0 if sym MM_coop3 == 0 sym set ConMenuMultiCoop3v3 0
+cmd "if sym MM_coop2 == 0 if sym MM_coop3 == 0 if sym MM_coop2b == 1 sym set ConMenuMultiCoop2v3 1
+cmd "if sym MM_coop2 == 0 if sym MM_coop3 == 0 if sym MM_coop2b == 0 sym set ConMenuMultiCoop2v3 0
+cmd "if sym MM_survival2 == 0 gameui disable ConMenuMultiSurvival2P
+cmd "if sym MM_survival2 == 0 sym set ConMenuMultiSurvival2P 0
+cmd "if sym MM_survival3 == 0 gameui disable ConMenuMultiSurvival3P
+cmd "if sym MM_survival3 == 0 sym set ConMenuMultiSurvival3P 0
+cmd "if sym MM_survival4 == 0 gameui disable ConMenuMultiSurvival4P
+cmd "if sym MM_survival4 == 0 sym set ConMenuMultiSurvival4P 0
+cmd "if sym MM_survival2 == 0 if sym MM_survival3 == 1 sym set ConMenuMultiSurvival3P 1
+cmd "if sym MM_survival2 == 0 if sym MM_survival3 == 0 sym set ConMenuMultiSurvival3P 0
+cmd "if sym MM_survival2 == 0 if sym MM_survival3 == 0 if sym MM_survival4 == 1 sym set ConMenuMultiSurvival4P 1
+cmd "if sym MM_survival2 == 0 if sym MM_survival3 == 0 if sym MM_survival4 == 0 sym set ConMenuMultiSurvival4P 0
+cmd "if sym MM_unranked1 == 0 gameui disable ConMenuPvPUnranked1v1
+cmd "if sym MM_unranked1 == 0 sym set ConMenuPvPUnranked1v1 0
+cmd "if sym MM_unranked2 == 0 gameui disable ConMenuPvPUnranked2v2
+cmd "if sym MM_unranked2 == 0 sym set ConMenuPvPUnranked2v2 0
+cmd "if sym MM_unranked3 == 0 gameui disable ConMenuPvPUnranked3v3
+cmd "if sym MM_unranked3 == 0 sym set ConMenuPvPUnranked3v3 0
+cmd "if sym MM_unranked1 == 0 if sym MM_unranked2 == 1 sym set ConMenuPvPUnranked2v2 1
+cmd "if sym MM_unranked1 == 0 if sym MM_unranked2 == 0 sym set ConMenuPvPUnranked2v2 0
+cmd "if sym MM_unranked1 == 0 if sym MM_unranked2 == 0 if sym MM_unranked3 == 1 sym set ConMenuPvPUnranked3v3 1
+cmd "if sym MM_unranked1 == 0 if sym MM_unranked2 == 0 if sym MM_unranked3 == 0 sym set ConMenuPvPUnranked3v3 0
+cmd "if sym MM_ranked1 == 0 gameui disable ConMenuPvPRanked1v1
+cmd "if sym MM_ranked1 == 0 sym set ConMenuPvPRanked1v1 0
+cmd "if sym MM_ranked2 == 0 gameui disable ConMenuPvPRanked2v2
+cmd "if sym MM_ranked2 == 0 sym set ConMenuPvPRanked2v2 0
+cmd "if sym MM_ranked3 == 0 gameui disable ConMenuPvPRanked3v3
+cmd "if sym MM_ranked3 == 0 sym set ConMenuPvPRanked3v3 0
+cmd "if sym MM_ranked1 == 0 if sym MM_ranked2 == 1 sym set ConMenuPvPRanked2v2 1
+cmd "if sym MM_ranked1 == 0 if sym MM_ranked2 == 0 sym set ConMenuPvPRanked2v2 0
+cmd "if sym MM_ranked1 == 0 if sym MM_ranked2 == 0 if sym MM_ranked3 == 1 sym set ConMenuPvPRanked3v3 1
+cmd "if sym MM_ranked1 == 0 if sym MM_ranked2 == 0 if sym MM_ranked3 == 0 sym set ConMenuPvPRanked3v3 0
+cmd "if sym MM_ultimate1 == 0 gameui disable ConMenuPvPUltimate1v1
+cmd "if sym MM_ultimate1 == 0 sym set ConMenuPvPUltimate1v1 0
+cmd "if sym MM_ultimate2 == 0 gameui disable ConMenuPvPUltimate2v2
+cmd "if sym MM_ultimate2 == 0 sym set ConMenuPvPUltimate2v2 0
+cmd "if sym MM_ultimate3 == 0 gameui disable ConMenuPvPUltimate3v3
+cmd "if sym MM_ultimate3 == 0 sym set ConMenuPvPUltimate3v3 0
+cmd "if sym MM_ultimate1 == 0 if sym MM_ultimate2 == 1 sym set ConMenuPvPUltimate2v2 1
+cmd "if sym MM_ultimate1 == 0 if sym MM_ultimate2 == 0 sym set ConMenuPvPUltimate2v2 0
+cmd "if sym MM_ultimate1 == 0 if sym MM_ultimate2 == 0 if sym MM_ultimate3 == 1 sym set ConMenuPvPUltimate3v3 1
+cmd "if sym MM_ultimate1 == 0 if sym MM_ultimate2 == 0 if sym MM_ultimate3 == 0 sym set ConMenuPvPUltimate3v3 0
+}
+Script MainMenuInParty {
+cmd "party2 nextgame"
+cmd "menucmd CMS_BackToLobby"
+cmd "gameui enable PlayMenuBackButton"
+cmd "sym setZero MatchmakingBotsAllowed ShowMotDHome"
+}
+Script MainMenuNoParty {
+}
+Script JumpToHangar {
+cmd "sym setZero TopMenuHome TopMenuCustomize TopMenuShop TopMenuWatch TopMenuLearn TopMenuSocial"
+cmd "sym set TopMenuPlay 1"
+cmd "menucmd MenuTopShow"
+cmd "sym set MMBtnNew 2"
+cmd "sym set MMFrameNew MainMenuCustomizeFrame"
+cmd "menuCmd MainBarButtonPress"
+cmd "menuCmd MainBarCustomize"
+cmd "addUIAnim CM_MasterPlay mas_MenuRight"
+cmd "sym set ConMenCancelCmd none"
+cmd "pcmd 0.1 input set padFocusFallback MainBarButtonCustomize"
+cmd "pcmd 0.1 gameui focusNameTry MainBarButtonCustomize"
+cmd "sym set GL_ChatMinimized 0"
+cmd "sym set CurrentMenu MKHome"
+}
+Script MainMenuEnterLobbyV1 {
+cmd "menucmd MenuTopHide"
+cmd "menucmd ConMenuLobbyLoadWait_Transition"
+cmd "pcmd 0.5 menucmd ConMenuLobbySetupDone"
+}
+Script MainMenuClickPlay {
+cmd "menuCmd ConMenuPlayPress"
+cmd "sym set CurrentMenu CPlay"
+cmd "pcmd 0.2 if sym ConMenuPlaySolo == 1 if sym ArcCustomized == 0 runnow addUIAnim PlayActiveMove mas_PlayActiveSolo"
+cmd "pcmd 0.2 if sym ConMenuPlaySolo == 1 if sym ArcCustomized == 1 runnow addUIAnim PlayActiveMove mas_PlayActiveSoloPW"
+cmd "pcmd 0.2 if sym ConMenuPlayCoop == 1 if sym ArcCustomized == 0 runnow addUIAnim PlayActiveMove mas_PlayActiveCoop"
+cmd "pcmd 0.2 if sym ConMenuPlayCoop == 1 if sym ArcCustomized == 1 runnow addUIAnim PlayActiveMove mas_PlayActiveCoopPW"
+cmd "pcmd 0.2 if sym ConMenuPlayPvP == 1 runnow addUIAnim PlayActiveMove mas_PlayActivePvP"
+cmd "if sym GL_ChatMinimized == 0 menuCmd MinimizeChat"
+}
+Script MainMenuPWClickTrain {
+cmd "sym set CurrentMenu CTrain"
+cmd "addUIAnim CM_MasterHome mas_MenuLeft"
+cmd "addUIAnim CM_MasterLogo mas_MenuLeft"
+cmd "addUIAnim CM_MasterTrainPW mas_MenuCenter"
+cmd "sym set PlayPanelFocusBlock 0"
+cmd "menuCmd ConMenuBlur"
+cmd "if sym GL_ChatMinimized == 0 menuCmd MinimizeChat"
+}
+Script PopFirstFriend {
+cmd "sym setFrom _FriendName_ FR_Name0"
+cmd "sym set _FriendState_ $FR_State0"
+cmd "sym set _FriendStatusCode_ $FR_StatusCode0"
+cmd "sym set _FriendFromParty_ 0"
+cmd "menucmd FriendOpenSym local FR_Name0"
+}
+Script MainMenuExitPlay {
+ignoreInputTime 0.1
+cmd "if sym ArcCustomized == 0 addUIAnim CM_MasterPlay mas_MenuRight"
+cmd "sym set ConMenCancelCmd none"
+cmd "input set padFocusFallback MainBarButtonPlay"
+cmd "gameui enable MainBarBackButton"
+cmd "if usingpad gameui focusNameTry MainBarButtonPlay"
+cmd "if sym MainMenuPromoHide != 1 addUIAnim MainMenuPromo mas_PromoEnter"
+cmd "sym set CurrentMenu MKHome"
+cmd "sym set InPlayMenus 0"
+cmd "sym set OvermapFade 0"
+cmd "sym set BackgroundImage MapBase"
+cmd "if sym ArcCustomized == 1 pcmd 0.2 sym set VignetteFade 0"
+}
+Script MainMenuBackButton {
+ignoreInputTime 0.2
+cmd "sym set ShopFromHangar 0"
+cmd "if sym CurrentMenu == Watch addUIAnim MainMenuWatchFrame mas_MenuRight"
+cmd "if sym CurrentMenu == CTraining menuCmd ConMenuPlayTrainingCancel"
+cmd "if sym CurrentMenu == CTrain menuCmd ConMenuPlayTrainCancelPW"
+cmd "if sym CurrentMenu == Basecamp sym set BackgroundImage MapBase"
+cmd "if sym CurrentMenu == CLobby sym set BackgroundImage None"
+cmd "if menuloaded TempLoadout clearmenu TempLoadout"
+cmd "if menuloaded MenuShop clearmenu MenuShop"
+cmd "if menuloaded MenuPlay clearmenu MenuPlay"
+cmd "if menuloaded MenuWatch clearmenu MenuWatch"
+cmd "if sym CurrentMenu != CLobby addUIAnim CM_MasterPlay mas_MenuRight"
+cmd "if sym MainMenuPromoHide != 1 addUIAnim MainMenuPromo mas_PromoEnter"
+cmd "sym set ConMenCancelCmd none"
+cmd "if sym CurrentMenu == MKHome sym set OvermapFade 0"
+cmd "input set padFocusFallback $MainBarButton"
+cmd "if usingpad pcmd 0.1 gameui focusNameTry $MainBarButton"
+cmd "if sym ArcCustomized == 1 pcmd 0.2 sym set VignetteFade 0"
+}
+Script BackToHangarButton {
+ignoreInputTime 0.15
+cmd "sym set ShopFromHangar 0"
+cmd "if sym CurrentMenu != MKHome menuCmd MainMenuBackButton"
+cmd "if sym CurrentMenu != MKHome pcmd 0.15 menuCmd MainBarCustomize"
+cmd "if sym CurrentMenu == MKHome menuCmd MainBarCustomize"
+}
+Script MainBarCampExit {
+cmd "loadmenu MenuBlackout"
+}
+Script CheckIfShouldBlur {
+cmd "if sym CurrentMenu == MKHome menucmd MainMenuBackgroundSharp"
+cmd "if sym CurrentMenu != MKHome menucmd MainMenuBackgroundBlur"
+}
+Script CheckIfShowMotD {
+cmd "if sym CurrentMenu == MKHome && sym ArcCustomized == 1 sym set ShowMotDHome 0"
+cmd "if sym MotDClosed == 0 && sym CurrentMenu == MKHome && sym ArcCustomized == 0 sym set ShowMotDHome 1"
+}
+Script ClearOtherMenus {
+cmd "]clearmenu MainMenuVolumePanel"
+}
+Script SummonUltimateSamsonGlobal {
+cmd "]if sym P_ChatBan != 1 menucmd SummonUltimateSamsonGlobalGo"
+}
+Script SummonUltimateSamsonGlobalGo {
+cmd "]sym set ShowUltimateSamsonGlobal 1"
+cmd "]gameUI enable UltimateSamsonWhite"
+cmd "]pcmd 0.1 ]gameUI disable UltimateSamsonWhite"
+cmd "]pcmd 0.1 ]gameUI show UltimateSamsonFrame"
+cmd "]sym set PlayerHasRolledGlobal 0"
+cmd "]sym set _RollGlobalCanDismiss 0"
+cmd "]floatsym set _RollGlobalTimer 1.0"
+cmd "]addUIAnim UltimateRollArrow mas_RollArrow"
+cmd "]addUIAnim MM_ActiveParty mas_ActivePartyDown"
+cmd "]gameui refreshFilterName DiamondRollEvent"
+}
+Script RollUltimateSamsonGlobal {
+cmd "]gameUI enable UltimateSamsonRollHide"
+cmd "]net gchatforced /roll"
+cmd "]pcmd 0.1 ]sym set PlayerHasRolledGlobal 1"
+cmd "]pcmd 0.3 ]gameUI disable UltimateSamsonRollHide"
+}
+Script DismissUltimateSamsonGlobal {
+cmd "]gameUI enable UltimateSamsonWhite"
+cmd "]pcmd 0.1 ]gameUI disable UltimateSamsonWhite"
+cmd "]pcmd 0.1 ]gameUI hide UltimateSamsonFrame"
+cmd "]pcmd 0.5 ]sym set ShowUltimateSamsonGlobal 1"
+cmd "]pcmd 0.1 ]addUIAnim MM_ActiveParty mas_ActivePartyUp"
+}
+Script DialogArmySelectFilterTextChanged {
+cmd "customize scrollCfgLobby $_CustomObject 25"
+cmd "customize scrollUpdateLobby 5 5 /paged 0"
+cmd "gameui focusNameTry DialogContentSelectFilterText"
+}
+Script DialogArmySelectFilterTextCleared {
+cmd "customize scrollCfgLobby $_CustomObject 25"
+cmd "customize scrollUpdateLobby 5 5 /paged 0"
+cmd "gameui focusNameTry DialogContentSelectFilterText"
+}
+Script DialogContentSelectFilterTextChanged {
+cmd "customize scrollCfgLobby $_CustomObject 35"
+cmd "customize scrollUpdateLobby 7 5 /paged 0"
+cmd "gameui focusNameTry DialogContentSelectFilterText"
+}
+Script DialogContentSelectFilterTextCleared {
+cmd "customize scrollCfgLobby $_CustomObject 35"
+cmd "customize scrollUpdateLobby 7 5 /paged 0"
+cmd "gameui focusNameTry DialogContentSelectFilterText"
+}
+Script CheckIfOnlineMode {
+cmd "sym set GameModeOnline 1"
+cmd "if sym LaunchGameMode == Solo runnow sym set GameModeOnline 0"
+cmd "if sym LaunchGameMode == Survival && sym NumPlayers == 1P runnow sym set GameModeOnline 0"
+cmd "if sym MenuPlayChallenge == 1 runnow sym set GameModeOnline 0"
+}
+Script CheckIfOnlineModeSurvival {
+cmd "if sym NumPlayers != 1P sym set GameModeOnline 1"
+cmd "if sym NumPlayers == 1P sym set GameModeOnline 0"
+}
+Script SetPrivateRoom {
+cmd "if sym PrivateRoom == 1 pcmd 0.1 gameUI focusNameTry PrivateRoomPinEntryBox"
+cmd "if sym PrivateRoom == 1 sym set PO_Pin $MyRoomPIN"
+cmd "if sym PrivateRoom == 1 sym set CF_Pin $MyRoomPIN"
+cmd "if sym PrivateRoom == 0 sym setZero PO_Pin CF_Pin"
+cmd "if sym PrivateRoom == 0 && sym MM_Lobby == 1 && sym PO_IsOwner == 1 party2 setGameOptions pin PO_Pin"
+}
+Script MainBarHome {
+cmd "sym set TopMenuHome 1"
+cmd "sym set TopMenuCustomize 0"
+cmd "sym set TopMenuPlay 0"
+cmd "sym set TopMenuWatch 0"
+cmd "sym set TopMenuLearn 0"
+cmd "sym set TopMenuSocial 0"
+cmd "sym set TopMenuShop 0"
+cmd "menuCmd MainBarButtonPress"
+}
+Script MainBarShop {
+cmd "sym set TopMenuHome 0"
+cmd "sym set TopMenuPlay 0"
+cmd "sym set TopMenuWatch 0"
+cmd "sym set TopMenuLearn 0"
+cmd "sym set TopMenuSocial 0"
+cmd "sym set TopMenuCustomize 0"
+cmd "sym set Shop_Sell 0"
+cmd "sym set MainMenuShopSelect Game"
+cmd "if menuloaded LobbyMatchCon menucmd ConMenuLobbyCancelConfirmed"
+cmd "if menuloaded LobbyMatchCon echo OH_NOES"
+cmd "sym set TopMenuShop 1"
+cmd "menuCmd MainBarButtonPress"
+cmd "if !consoleplatformHW if usingpad gameui focusNameTry Shop_AirMechs"
+cmd "if AnyVipStatusShown == 1 menuCmd ShopButtonPress"
+cmd "if sym Shop_Market == 1 menuCmd MarketRefreshButtonClicked"
+cmd "if sym Shop_Featured == 1 if sym AnyVipStatusShown == 0 menuCmd ButtonPressShop_Premium"
+cmd "customize clearClassFilter"
+cmd "pcmd t1 loadmenu MenuShop.txt /fadein 0.1"
+}
+Script MainMenuBarShop {
+cmd "sym set Shop_Sell 0"
+cmd "sym set MainMenuShopSelect Game"
+cmd "sym set TopMenuShop 1"
+cmd "customize clearClassFilter"
+cmd "pcmd t1 loadmenu MenuShop.txt /fadein 0.1"
+}
+Script MainBarMarket {
+cmd "sym set Shop_Sell 0"
+cmd "sym set MainMenuShopSelect Market"
+cmd "sym set Shop_Market 1
+cmd "menuCmd MarketRefreshButtonClicked"
+cmd "if sym Shop_Featured == 1 if sym AnyVipStatusShown == 0 menuCmd ButtonPressShop_Premium"
+cmd "customize clearClassFilter"
+cmd "pcmd t1 loadmenu MenuShop.txt /fadein 0.1"
+}
+Script MainBarCustomize {
+cmd "sym set CustomizeFromLobby 0"
+cmd "if sym MenuCustomizeLoadoutOld == 1 loadmenu TempLoadout.txt /fadein 0.15"
+}
+Script MainBarCamp {
+cmd "sym set CurrentMenu MKHome"
+cmd "sym set MapBase 1"
+cmd "sym set BackgroundImage MapBase"
+cmd "basecamp req"
+cmd "menucmd CheckWarzoneMaps"
+}
+Script MainBarWatch {
+cmd "loadmenu MenuWatch /fadein 0.1"
+cmd "sym set CurrentMenu Watch"
+cmd "sym set BackgroundImage Watch"
+cmd "if sym GL_ChatHidden == 1 addUIAnim MessageChatContainer mas_ChatShow"
+}
+Script MainBarPlay {
+cmd "sym set TopMenuHome 0"
+cmd "sym set TopMenuCustomize 0"
+cmd "sym set TopMenuPlay 1"
+cmd "sym set TopMenuWatch 0"
+cmd "sym set TopMenuLearn 0"
+cmd "sym set TopMenuSocial 0"
+cmd "sym set TopMenuShop 0"
+cmd "menuCmd MainBarButtonPress"
+}
+Script MainBarLearn {
+cmd "sym set TopMenuHome 0"
+cmd "sym set TopMenuCustomize 0"
+cmd "sym set TopMenuPlay 0"
+cmd "sym set TopMenuWatch 0"
+cmd "sym set TopMenuLearn 1"
+cmd "sym set TopMenuSocial 0"
+cmd "sym set TopMenuShop 0"
+cmd "menuCmd MainBarButtonPress"
+}
+Script MainBarSocial {
+cmd "sym set TopMenuHome 0"
+cmd "sym set TopMenuCustomize 0"
+cmd "sym set TopMenuPlay 0"
+cmd "sym set TopMenuWatch 0"
+cmd "sym set TopMenuLearn 0"
+cmd "sym set TopMenuSocial 1"
+cmd "sym set TopMenuShop 0"
+cmd "menuCmd MainBarButtonPress"
+}
+Script PlayToMatchmaking {
+cmd "sym set MenuPlayMatchmaking 1"
+cmd "sym set MenuPlayChallenge 0"
+cmd "sym set MenuPlayCustom 0"
+cmd "sym set MenuPlayBrowse 0"
+cmd "gameUI focusName SubBarLabelMatchmaking"
+}
+Script MainBarButtonPress {
+cmd "if sym TopMenuCustomize != 1 clearmenu TempLoadout.txt"
+cmd "if sym TopMenuShop != 1 clearmenu MenuShop.txt"
+cmd "if sym TopMenuPlay != 1 clearmenu MenuPlay.txt"
+cmd "if sym MMBtnNew > $MMBtnCurrent addUIAnim $MMFrameCurrent mas_MMExitLeft"
+cmd "if sym MMBtnNew < $MMBtnCurrent addUIAnim $MMFrameCurrent mas_MMExitRight"
+cmd "if sym MMBtnNew > $MMBtnCurrent addUIAnim $MMFrameNew mas_MMEnterRight"
+cmd "if sym MMBtnNew < $MMBtnCurrent addUIAnim $MMFrameNew mas_MMEnterLeft"
+cmd "pcmd 0 sym set MMBtnCurrent $MMBtnNew"
+cmd "pcmd 0 sym set MMFrameCurrent $MMFrameNew"
+cmd "rookMenus previewClear"
+cmd "if sym GL_ChatHidden == 1 addUIAnim MessageChatContainer mas_ChatShow"
+cmd "if sym Shop_Sell == 1 menuCmd MyCollectionSellCancel"
+cmd "if sym LoadoutSetupAirMech == 1 menuCmd StorePerAMLoadout"
+cmd "if sym LoadoutSetupAirMech == 1 menuCmd ReadyPerAMLoadout"
+cmd "if sym LoadoutSetupAirMech == 1 sym set LoadoutSetupAirMech 0"
+cmd "playSound $MenuSoundClick"
+}
+Script SyncMatchmakingSymbols {
+cmd "if sym MatchmakingType != Solo sym set MatchmakingTypeSolo 0"
+cmd "if sym MatchmakingType != Coop sym set MatchmakingTypeCoop 0"
+cmd "if sym MatchmakingType != Standard sym set MatchmakingTypeStandard 0"
+cmd "if sym MatchmakingType == Solo sym set MatchmakingTypeSolo 1"
+cmd "if sym MatchmakingType == Coop sym set MatchmakingTypeCoop 1"
+cmd "if sym MatchmakingType == Standard sym set MatchmakingTypeStandard 1"
+cmd "if sym MatchmakingType == Standard && sym MatchmakingMode == Survival runnow sym set MatchmakingMode Classic"
+cmd "if sym MatchmakingType == Coop && sym MatchmakingMode == Ctf runnow sym set MatchmakingMode Classic"
+cmd "if sym MatchmakingType == Solo && sym MatchmakingMode == Ctf runnow sym set MatchmakingMode Classic"
+cmd "if sym MatchmakingMode != Classic sym set MatchmakingModeClassic 0"
+cmd "if sym MatchmakingMode != Ctf sym set MatchmakingModeCtf 0"
+cmd "if sym MatchmakingMode != Survival sym set MatchmakingModeSurvival 0"
+cmd "if sym MatchmakingMode == Classic sym set MatchmakingModeClassic 1"
+cmd "if sym MatchmakingMode == Ctf sym set MatchmakingModeCtf 1"
+cmd "if sym MatchmakingMode == Survival sym set MatchmakingModeSurvival 1"
+cmd "if sym MatchmakingType == Solo if sym MatchmakingMode == Survival sym set MatchmakingPlayers1P 1"
+cmd "if sym MatchmakingType == Coop if sym MatchmakingMode == Survival sym set MatchmakingPlayers1P 0"
+cmd "if sym MatchmakingType == Coop if sym MatchmakingMode == Classic sym set MatchmakingPlayersTeam 1"
+cmd "if sym MatchmakingType == Standard && sym MatchmakingMode == Classic runnow sym set MatchmakingPlayersTeam 1"
+cmd "if sym MatchmakingType == Standard && sym MatchmakingPlayersTeam == 1 runnow sym set MatchmakingPlayers1v1 0"
+cmd "if sym MatchmakingPlayers2v2 == 1 runnow sym set MatchmakingPlayers1v1 0"
+cmd "if sym MatchmakingPlayers2v2 == 1 runnow sym set MatchmakingPlayers3v3 0"
+cmd "if sym MatchmakingPlayers3v3 == 1 runnow sym set MatchmakingPlayers1v1 0"
+cmd "if sym MatchmakingPlayers3v3 == 1 runnow sym set MatchmakingPlayers2v2 0"
+cmd "if sym MatchmakingPlayers1v1 == 1 runnow sym set MatchmakingPlayers3v3 0"
+cmd "if sym MatchmakingPlayers1v1 == 1 && sym MatchmakingType != Coop runnow sym set MatchmakingPlayers3v3 0"
+cmd "if sym MatchmakingPlayers1v1 == 1 && sym MatchmakingType == Coop runnow sym set MatchmakingPlayers2v2 1"
+cmd "if sym MatchmakingPlayers1v1 == 1 && sym MatchmakingType == Coop runnow sym set MatchmakingPlayers1v1 0"
+cmd "if sym MatchmakingMode == Ctf if sym MatchmakingPlayers1v1 == 0 if sym MatchmakingPlayers3v3 == 0 sym set MatchmakingPlayers2v2 1"
+cmd "if sym MatchmakingMode == Classic if sym MatchmakingPlayers1v1 == 0 if sym MatchmakingPlayers3v3 == 0 sym set MatchmakingPlayers2v2 1"
+cmd "if sym BasicMatchmaking == 1 && sym MatchmakingType == Standard if sym MatchmakingPlayers3v3 == 1 sym set MatchmakingPlayers3v3 0"
+cmd "if sym BasicMatchmaking == 1 && sym MatchmakingType == Standard if sym MatchmakingPlayers3v3 == 1 sym set MatchmakingPlayers2v2 1"
+}
+Script SyncPlayerCountSymbols {
+cmd "if sym MatchmakingPlayers1v1 == 0 if sym MatchmakingPlayers2v2 == 0 if sym MatchmakingPlayers3v3 == 0 sym set MatchmakingPlayers2v2 1"
+cmd "if sym MatchmakingPlayers1P == 0 if sym MatchmakingPlayers2P == 0 if sym MatchmakingPlayers3P == 0 if sym MatchmakingPlayers4P == 0 sym set MatchmakingPlayers2P 1"
+cmd "if sym MatchmakingType == Coop if sym MatchmakingMode == Classic MatchmakingPlayersTeam 1"
+cmd "if sym MatchmakingType == Solo if sym MatchmakingMode == Survival sym set MatchmakingPlayers1P 1"
+cmd "if sym MatchmakingType == Coop if sym MatchmakingMode == Survival sym set MatchmakingPlayers1P 0"
+cmd "if sym MatchmakingType == Coop if sym MatchmakingMode == Survival if sym MatchmakingPlayers2P == 0 if sym MatchmakingPlayers3P == 0 if sym MatchmakingPlayers4P == 0 sym set MatchmakingPlayers2P 1"
+cmd "if sym BasicMatchmaking == 0 sym setZero MatchmakingPlayers2P MatchmakingPlayers3P"
+cmd "if sym BasicMatchmaking == 0 sym set MatchmakingPlayers4P 1"
+}
+Script SetupCustomGameFrame {
+cmd "log MenuCmd: SetupCustomGameFrame"
+cmd "gameUI enable #MapPreview@MapName@"
+cmd "gameUI enableAll #LaunchGameBanner@LaunchGameMode@"
+cmd "sym set PrivateRoom 0"
+cmd "rooms genFlagCh"
+}
+Script JumpToQuests {
+ignoreInputTime 0.15
+cmd "addUIAnim MainMenuHomeFrame mas_MenuCenter.txt"
+frame_block JumpToQuests
+cmd "echo JumpToQuests"
+cmd "sym setZero TopMenuPlay TopMenuCustomize TopMenuShop TopMenuWatch TopMenuLearn TopMenuSocial"
+cmd "sym set TopMenuHome 1"
+cmd "sym set MMBtnNew 0"
+cmd "sym set MMFrameNew MainMenuHomeFrame"
+cmd "menuCmd MainBarButtonPress"
+cmd "sym set MenuHomeNews 0"
+cmd "sym set MenuHomeStats 0"
+cmd "sym set MenuHomePatchnotes 0"
+cmd "sym set MenuHomeQuests 1"
+}
+Script JumpToShop_Diamonds {
+ignoreInputTime 0.2
+cmd "if usingMouse sym set MMBtnNew 1"
+cmd "if usingMouse sym set MMFrameNew MainMenuShopFrame"
+cmd "if sym TopMenuShop == 0 menucmd MainBarShop"
+cmd "pcmd 0.1 gameui directPushName ShopTopPromoDiamonds"
+}
+Script JumpTo_Inventory {
+ignoreInputTime 0.1
+cmd "if !menuloaded Inventory loadmenu Inventory"
+cmd "if menuloaded Inventory gameui promoteToTop InventoryMain"
+cmd "pcmd 0 sym set InventoryDisplayType 0"
+cmd "pcmd 0 collection invInit InventoryV2"
+}
+Script JumpTo_Sets {
+ignoreInputTime 0.1
+cmd "if !menuloaded Inventory loadmenu Inventory"
+cmd "if menuloaded Inventory gameui promoteToTop InventoryMain"
+cmd "pcmd 0 sym set InventoryDisplayType 1"
+cmd "pcmd 0 collection invInit CollectableSets"
+}
+Script JumpTo_Blueprints {
+ignoreInputTime 0.1
+cmd "if !menuloaded Inventory loadmenu Inventory"
+cmd "if menuloaded Inventory gameui promoteToTop InventoryMain"
+cmd "pcmd 0 sym set InventoryDisplayType 2"
+cmd "pcmd 0 collection invInit BlueprintSets"
+}
+Script JumpTo_Quests {
+ignoreInputTime 0.1
+cmd "if sym QuestsLoaded == 1 addUIAnim QuestsMain mas_QuestsOut"
+cmd "if sym QuestsLoaded == 1 if sym ArcCustomized == 1 addUIAnim QuestsMainPW mas_QuestsOut"
+cmd "if sym QuestsLoaded == 1 if sym ArcCustomized == 1 addUIAnim QuestsListBackgroundPW mas_QuestsOutListPW"
+cmd "if sym QuestsLoaded != 1 addUIAnim QuestsMain mas_QuestsIn"
+cmd "if sym QuestsLoaded != 1 if sym ArcCustomized == 1 addUIAnim QuestsMainPW mas_QuestsIn"
+cmd "if sym QuestsLoaded != 1 if sym ArcCustomized == 1 addUIAnim QuestsListBackgroundPW mas_QuestsInListPW"
+cmd "if sym CurrentMenu != MKHome menuCmd MainMenuBackButton"
+cmd "if sym CurrentMenu != MKHome runnow pcmd 0.2 sym set CurrentMenu MKHome"
+cmd "pcmd 0.15 menucmd MainBarCamp"
+cmd "gameui directPushNameIfEnabled PlayMenuBackButton"
+}
+Script JumpToShop_Featured {
+ignoreInputTime 0.2
+cmd "if usingMouse sym set MMBtnNew 1"
+cmd "if usingMouse sym set MMFrameNew MainMenuShopFrame"
+cmd "menucmd MainBarShop"
+cmd "if sym Shop_Top == 1 pcmd 0.1 gameui directPushName ShopTopPromoFeatured"
+cmd "if sym Shop_Top == 0 pcmd 0.1 menuCmd ReturnToShopTop"
+cmd "if sym Shop_Top == 0 pcmd 0.15 gameui directPushName ShopTopPromoFeatured"
+}
+Script JumpToFAQ {
+ignoreInputTime 0.1
+cmd "if !menuloaded Manual loadmenu Manual /fadein 0.1"
+cmd "if menuloaded Manual gameui promoteToTop ManualMain"
+cmd "pcmd t2 gameUI directPushName ManualButtonFaq"
+cmd "if sym _GotFAQ_ == 0 runnow faq update"
+cmd "if sym _GotFAQ_ == 0 runnow sym set _GotFAQ_ 1"
+}
+Script JumpToFactionInfo {
+ignoreInputTime 0.1
+cmd "clearmenu InspectDialog.txt /fadeout 0.1"
+cmd "if !menuloaded Manual loadmenu Manual /fadein 0.1"
+cmd "if menuloaded Manual gameui promoteToTop ManualMain"
+cmd "pcmd t2 gameUI directPushName ManualButtonFaction"
+}
+Script JumpToPatchNotes {
+ignoreInputTime 0.1
+cmd "if !menuloaded Manual loadmenu Manual /fadein 0.1"
+cmd "if menuloaded Manual gameui promoteToTop ManualMain"
+cmd "pcmd t2 gameUI directPushName ManualButtonPatchnotes"
+}
+Script JumpToFriends {
+ignoreInputTime 0.15
+cmd "loadmenu Friends.txt /fadein 0.1"
+cmd "social scrollUpdate"
+}
+Script JumpToChallenges {
+ignoreInputTime 0.15
+cmd "sym set TopMenuHome 0"
+cmd "sym set TopMenuPlay 1"
+cmd "sym set TopMenuWatch 0"
+cmd "sym set TopMenuLearn 0"
+cmd "sym set TopMenuShop 0"
+cmd "sym set TopMenuSocial 0"
+cmd "sym Set TopMenuCustomize 0"
+cmd "sym set MMBtnNew 3"
+cmd "sym set MMFrameNew MainMenuPlayFrame"
+cmd "menuCmd MainBarButtonPress"
+cmd "loadmenu MenuPlay.txt"
+cmd "sym set PlayV1TopMenu 0"
+cmd "sym set MenuPlayCustom 0"
+cmd "sym set MenuPlayMatchmaking 0"
+cmd "sym set MenuPlayBrowse 0"
+cmd "sym set MenuPlayChallenge 1"
+}
+Script TabKudosNoStore {
+frame_block MenuCommand
+cmd "timer setAsyncWait 3"
+cmd "wallet updatePrices TabKudosNoStoreWithPrices"
+}
+Script TabKudosNoStoreWithPrices {
+cmd "timer clearAsyncWait"
+cmd "rook initBoostPriceSymbols"
+cmd "rook buyBoost 2"
+}
+Script TabXpNoStore {
+frame_block MenuCommand
+cmd "timer setAsyncWait 3"
+cmd "wallet updatePrices TabXpNoStoreWithPrices"
+}
+Script TabXpNoStoreWithPrices {
+cmd "timer clearAsyncWait"
+cmd "rook initBoostPriceSymbols"
+cmd "rook buyBoost 7"
+}
+Script TabDropNoStore {
+frame_block MenuCommand
+cmd "timer setAsyncWait 3"
+cmd "wallet updatePrices TabDropNoStoreWithPrices"
+}
+Script TabDropNoStoreWithPrices {
+cmd "timer clearAsyncWait"
+cmd "rook initBoostPriceSymbols"
+cmd "rook buyBoost 12"
+}
+Script OpenStore {
+frame_block MenuCommand
+cmd "wallet updatePricesN OpenStoreWithPrices"
+}
+Script OpenStoreWithPrices {
+cmd "timer clearAsyncWait"
+cmd "rook initBoostPriceSymbols"
+}
+Script MenuTransitionPlay {
+frame_block MenuCommand
+ignoreInputTime 0.15
+cmd "sym set TopMenuHome 0"
+cmd "sym set TopMenuCustomize 0"
+cmd "sym set TopMenuShop 0"
+cmd "sym set TopMenuWatch 0"
+cmd "sym set TopMenuLearn 0"
+cmd "sym set TopMenuSocial 0"
+cmd "sym set TopMenuPlay 1"
+cmd "sym set MMBtnNew 3"
+cmd "sym set MMFrameNew MainMenuPlayFrame"
+cmd "pcmd t1 loadmenu MenuPlay.txt /fadein 0.15"
+cmd "menuCmd MainBarButtonPress"
+}
+Script MenuTransitionPlayV1 {
+frame_block MenuCommand
+ignoreInputTime 0.15
+cmd "sym set TopMenuHome 0"
+cmd "sym set TopMenuCustomize 0"
+cmd "sym set TopMenuShop 0"
+cmd "sym set TopMenuWatch 0"
+cmd "sym set TopMenuLearn 0"
+cmd "sym set TopMenuSocial 0"
+cmd "sym set TopMenuPlay 1"
+cmd "sym set MMBtnNew 3"
+cmd "sym set MMFrameNew MainMenuPlayFrame"
+cmd "menuCmd MainBarButtonPress"
+}
+Script RequestSplashPromoLoad {
+ignoreInputTime 0.3
+cmd "sym setOne _OkToLoad_"
+cmd "if sym _GotBaseCampCfg_ == 0 || sym _GotQuestsData_ == 0 || sym _GotAutoExecSrv_ == 0 || sym _GotPrices_ == 0 runnow sym setZero _OkToLoad_"
+#if !arc
+cmd "if sym ArcGACustomized == 0 && sym _OkToLoad_ == 1 && sym HasBaseCamp > 0 loadmenu SplashPromo /fadein 0.1"
+#else
+cmd "if sym _OkToLoad_ == 1 loadmenu SplashPromo /fadein 0.1"
+#endif
+cmd "if sym _OkToLoad_ == 1 pcmd 0.5 gameui refreshFilterName BaseLayout"
+cmd "if sym _OkToLoad_ == 1 sym setZero ShowMotDHome VignetteFade"
+cmd "if sym _OkToLoad_ == 1 gameui disable SplashCover"
+cmd "if sym _OkToLoad_ == 0 pcmd 0.25 menucmd RequestSplashPromoLoad"
+}

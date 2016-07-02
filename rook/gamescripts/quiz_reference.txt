@@ -1,0 +1,23 @@
+func getQuizQuestion(index int) QuizQuestion {
+       var q QuizQuestion
+       switch index {
+       case 0:
+               q.Question = "How are you doing?"
+               q.Answers = append(q.Answers, "*")
+               q.ResponseCorrect = "Ok"
+       case 1:
+               q.Question = "Would you like some kudos?"
+               q.Answers = append(q.Answers, "yes")
+               q.ResponseNegative = "Ok. Maybe later"
+               q.ResponseCorrect = "Here you go!"
+               q.KudosReward = 25
+       case 2:
+               q.Question = "What's the most units an AirMech can carry?"
+               q.Answers = append(q.Answers, "4")
+               q.Answers = append(q.Answers, "four")
+               q.ResponseNegative = "Sorry. Maybe try the tutorial?"
+               q.ResponseCorrect = "Correct!"
+               q.KudosReward = 25
+       }
+       return q
+}

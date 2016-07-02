@@ -1,0 +1,85 @@
+Script LegacyMatchSolo {
+cmd "sym set PlayV1TopMenu 0"
+cmd "sym setZero MenuPlayCustom MenuPlayBrowse MenuPlayChallenge MenuPlayCampaign"
+cmd "sym set MenuPlayMatchmaking 1"
+cmd "sym set MatchmakingType Solo"
+cmd "menuCmd SyncMatchmakingSymbols"
+}
+Script LegacyMatchCoop {
+cmd "sym set PlayV1TopMenu 0"
+cmd "sym setZero MenuPlayCustom MenuPlayBrowse MenuPlayChallenge MenuPlayCampaign"
+cmd "sym set MenuPlayMatchmaking 1"
+cmd "sym set MatchmakingType Coop"
+cmd "menuCmd SyncMatchmakingSymbols"
+}
+Script LegacyMatchPvP {
+cmd "sym setZero MenuPlayCustom MenuPlayBrowse MenuPlayChallenge MenuPlayCampaign"
+cmd "sym set MenuPlayMatchmaking 1"
+cmd "sym set PlayV1TopMenu 0"
+cmd "sym set MatchmakingType Standard"
+cmd "menuCmd SyncMatchmakingSymbols"
+}
+Script SelectMatchSolo {
+cmd "addUIAnim PlayV1Solo mas_MenuPlaySolo"
+cmd "sym set MenuPlayMatchmaking 1"
+cmd "sym set MatchmakingStep 1"
+cmd "sym set PcMenuPlaySolo 1"
+cmd "gameui disableAll PlayV1Coop"
+cmd "gameui disableAll PlayV1PvP"
+cmd "menucmd MenuTopHide"
+cmd "if sym GL_ChatMinimized == 0 menuCmd MinimizeChat"
+cmd "gameui enableAll PlayV1Buttons"
+}
+Script SelectMatchCoop {
+cmd "addUIAnim PlayV1Coop mas_MenuPlayCoop"
+cmd "gameui disableAll PlayV1Solo"
+cmd "gameui disableAll PlayV1PvP"
+cmd "sym set PcMenuPlayCoop 1"
+cmd "sym set MenuPlayMatchmaking 1"
+cmd "sym set MatchmakingStep 1"
+cmd "menucmd MenuTopHide"
+cmd "if sym GL_ChatMinimized == 0 menuCmd MinimizeChat"
+cmd "gameui enableAll PlayV1Buttons"
+}
+Script SelectMatchPvP {
+cmd "addUIAnim PlayV1PvP mas_MenuPlayPvP"
+cmd "sym set MatchmakingType Standard"
+cmd "gameui disableAll PlayV1Solo PlayV1Coop"
+cmd "sym set PcMenuPlayPvP 1"
+cmd "sym set MenuPlayMatchmaking 1"
+cmd "sym set MatchmakingStep 1"
+cmd "menucmd MenuTopHide"
+cmd "if sym GL_ChatMinimized == 0 menuCmd MinimizeChat"
+cmd "gameui enableAll PlayV1Buttons"
+}
+Script SelectMatchReset {
+cmd "gameui disableAll PlayV1Buttons"
+cmd "addUIAnim PlayV1Solo mas_MenuPlayReset"
+cmd "addUIAnim PlayV1PvP mas_MenuPlayReset"
+cmd "addUIAnim PlayV1Coop mas_MenuPlayReset"
+cmd "sym set MatchmakingType Standard"
+cmd "gameui enableAll PlayV1Coop PlayV1PvP PlayV1Solo"
+cmd "menucmd MenuTopShow"
+cmd "pcmd 0.3 sym setZero MatchmakingStep PcMenuPlaySolo PcMenuPlayCoop PcMenuPlayPvP"
+}
+Script MenuTopHide {
+cmd "gameui hide MainMenuFrameNew"
+}
+Script MenuTopShow {
+cmd "gameui show MainMenuFrameNew"
+}
+Script MinimizeChat {
+cmd "sym set GL_ChatMinimized 1"
+cmd "menucmd GlobalChatScrollAllToBottom"
+cmd "menuCmd GlobalChatReposition"
+}
+Script RestoreChat {
+cmd "sym set GL_ChatMinimized 0"
+cmd "menucmd GlobalChatScrollAllToBottom"
+}
+Script GoPartyInviteExactName {
+ignoreInputTime 0.5
+cmd "party2 invite $_InviteSlot $InviteExactName"
+cmd "clearmenu InviteList /fadeout 0.15"
+cmd "sym clear InviteExactName"
+}

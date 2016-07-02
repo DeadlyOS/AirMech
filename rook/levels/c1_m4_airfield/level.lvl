@@ -1,0 +1,5853 @@
+// map: c1_m4_airfield
+
+// level embedded console commands 
+CONSOLE_IMMEDIATE sym setZero ShowPowerbar ShowMinimap ShowAbilities ShowUnitsBar ShowXpBar ShowStatusBar ShowAlliedPlayers ShowEnemyPlayers ShowCommonGameMessages
+CONSOLE_IMMEDIATE rook disable abilityMenu unitsMenu 
+CONSOLE_IMMEDIATE sym set start_ablvl 9
+CONSOLE_EXIT_IMMEDIATE sym setOne ShowPowerbar ShowMinimap ShowAbilities ShowUnitsBar ShowXpBar ShowStatusBar ShowAlliedPlayers ShowEnemyPlayers ShowCommonGameMessages
+
+mapInfo {
+	MAPNAME c1_m4_airfield
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION Tutorial
+	SKYBOX mat_SkyBigBlue
+	GAMEMODE custom
+	GAMESTYLE Skirmish
+	PREGAME_RADIUS 55
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT 45
+	AutoExtShadowCheckAtZHeight 5
+	FORCEBOX -90 90 -40 40 4 0
+	FORCEBOX2 -90 90 -40 40 4 0
+	MAPEXTMIN -90 -40 0
+	MAPEXTMAX 90 40 0
+	CAMERAEXTMIN -90 -40
+	CAMERAEXTMAX 90 40
+}
+
+mapBalance {
+	FortHealth 8000
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Canyon
+	TerrainArrayX 10
+	TerrainArrayY 10
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -10
+  TRANSFORMPLANE -9
+}
+
+fogValues {
+	FOGCOLOR 153 153 127.5 255
+	FOGARGS 12 14
+	DFOGCOLOR 143 143 115 255
+	DFOGCOLOR2 143 143 115 255
+	DFOGARGS 100 2500
+	DFOGARGS2 100 2700
+	CANVASCOLOR 66 90 130 0
+}
+
+gamelocations {
+	GL {
+		name refuel1
+		shape 0
+		pos 8.911119 14.645138 -2.41441
+		radius 2
+	}
+	GL {
+		name aggro1
+		shape 0
+		pos 76.394707 11.777456 0.003487
+		radius 22
+	}
+	GL {
+		name airmech
+		shape 0
+		pos -49.538803 4.192636 0.003487
+		radius 2
+	}
+	GL {
+		name patrollers1
+		shape 0
+		pos 47.720562 10.776886 0
+		radius 2
+	}
+	GL {
+		name patrollers2
+		shape 0
+		pos 46.889812 -7.606256 0
+		radius 2
+	}
+	GL {
+		name patrollers3
+		shape 0
+		pos 56.61562 0.035244 0
+		radius 2
+	}
+	GL {
+		name patrollers4
+		shape 0
+		pos 78.905502 0.713495 0
+		radius 2
+	}
+	GL {
+		name aggro2
+		shape 0
+		pos 83.003365 27.483736 0.003487
+		radius 50
+	}
+	GL {
+		name repair
+		shape 0
+		pos 1.925356 -19.083857 -2.77441
+		radius 1.25
+	}
+	GL {
+		name bombard1
+		shape 0
+		pos 71.845146 8.694901 15.393484
+		radius 2
+	}
+	GL {
+		name bombard2
+		shape 0
+		pos 74.190163 -15.413023 15.393484
+		radius 2
+	}
+	GL {
+		name bridge
+		shape 0
+		pos 1.333351 -0.311312 -2.486513
+		radius 8
+	}
+}
+combos {
+combo fueldepot {
+	pos 9.784903 14.770576 -2.729999
+	WO TutorialProps_Canister6 {
+		pos 16.47187 15.46199 -1.50428
+		rot_x 0.999949 0.010163 0
+		rot_y -0.010163 0.999949 0
+		scl 1.100002
+		id 1
+	}
+	WO TutorialProps_Canister6 {
+		pos 16.43619 15.449712 -2.914284
+		rot_x 0.999949 0.010163 0
+		rot_y -0.010163 0.999949 0
+		scl 1.720001
+		id 2
+	}
+	WO IronHand_LandingLight {
+		pos 16.473452 15.421545 -0.634278
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0
+		id 3
+	}
+	WO FortPadCablesA {
+		pos 13.603405 15.920759 -2.897286
+		rot_x -0.163417 0.986558 0
+		rot_y -0.986558 -0.163417 0
+		id 4
+	}
+	WO FortressPiece_Square {
+		pos 9.302828 14.669372 -3.014284
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0
+		id 5
+	}
+	WO TutorialProps_Canister2 {
+		pos 11.074827 17.643963 -2.914284
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0
+		scl 1.889999
+		id 6
+	}
+	WO TutorialProps_Canister2 {
+		pos 9.863603 17.621994 -2.914284
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0
+		scl 1.889999
+		id 7
+	}
+	WO TutorialProps_Canister2 {
+		pos 8.611749 17.554226 -2.914284
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0
+		scl 1.889999
+		id 8
+	}
+	WO FortressPiece_Pipe2 {
+		pos 9.330472 16.203972 -3.39669
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0.000644
+		rot_z 0.000024 -0.000644 1
+		scl 0.45 0.45 0.65
+		id 9
+	}
+	WO TutorialProps_Canister2 {
+		pos 7.422078 17.423061 -2.914284
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0
+		scl 1.889999
+		id 10
+	}
+	WO TutorialProps_Canister6 {
+		pos 7.369701 16.400467 -2.314398
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0
+		id 11
+	}
+	WO TutorialProps_Canister6 {
+		pos 11.067997 16.517044 -2.314398
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0
+		id 12
+	}
+	WO FortressPiece_Pipe5 {
+		pos 11.468918 14.633253 -1.714279
+		rot_x -0.000712 -0.998167 -0.060531
+		rot_y -0.088793 -0.060229 0.994227
+		rot_z -0.99605 0.006082 -0.088587
+		scl 0.55
+		id 13
+	}
+	WO TutorialProps_Ladder {
+		pos 11.840881 15.372907 -3.134284
+		rot_x 0.073779 -0.997277 0
+		rot_y 0.997277 0.073779 0
+		id 14
+	}
+	WO TutorialProps_Ladder {
+		pos 11.903466 14.344349 -3.134284
+		rot_x 0.073779 -0.997277 0
+		rot_y 0.997277 0.073779 0
+		id 15
+	}
+	WO TutorialProps_Ladder {
+		pos 11.948941 13.200197 -3.134284
+		rot_x 0.073779 -0.997277 0
+		rot_y 0.997277 0.073779 0
+		id 16
+	}
+	WO TutorialProps_Canister2 {
+		pos 11.984134 11.724242 -2.914284
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0
+		scl 1.889999
+		id 17
+	}
+	WO TutorialProps_Canister2 {
+		pos 6.908947 11.456748 -2.914284
+		rot_x 0.999332 0.036567 0
+		rot_y -0.036567 0.999332 0
+		scl 1.889999
+		id 18
+	}
+	WO TutorialProps_Ladder {
+		pos 6.621925 13.042886 -3.134284
+		rot_x -0.032325 0.99948 0
+		rot_y -0.99948 -0.032325 0
+		id 19
+	}
+	WO TutorialProps_Ladder {
+		pos 6.576435 14.187057 -3.134284
+		rot_x -0.048527 0.998825 0
+		rot_y -0.998825 -0.048527 0
+		id 20
+	}
+	WO TutorialProps_Ladder {
+		pos 6.513836 15.215604 -3.134284
+		rot_x -0.017748 0.999844 0
+		rot_y -0.999844 -0.017748 0
+		id 21
+	}
+	WO NesthornFortressProps_Debris4 {
+		pos 4.948951 13.762283 -3.01728
+		rot_x -0.882554 -0.470214 0
+		rot_y 0.470214 -0.882554 0
+		scl 1.46
+		id 22
+	}
+	WO NesthornFortressProps_Debris4 {
+		pos 4.866418 14.892933 -3.01728
+		rot_x -0.882554 -0.470214 0
+		rot_y 0.470214 -0.882554 0
+		scl 1.46
+		id 23
+	}
+	WO NesthornFortressProps_Debris4 {
+		pos 5.06185 12.640728 -3.01728
+		rot_x -0.882554 -0.470214 0
+		rot_y 0.470214 -0.882554 0
+		scl 1.46
+		id 24
+	}
+	WO TutorialProps_Arrows {
+		pos 9.424009 10.571343 -2.973874
+		rot_x 0.045998 -0.998943 0
+		rot_y 0.998943 0.045998 0.000056
+		rot_z -0.000056 0 1
+		id 25
+	}
+	WO BuildingRoofE2 {
+		pos 9.349238 12.946514 -2.914281
+		rot_x -0.036567 0.999332 0
+		rot_y -0.999332 -0.036567 0
+		scl 0.49
+		id 26
+	}
+	WO FortressPiece_Pipe5 {
+		pos 7.741175 14.51425 -1.774279
+		rot_x -0.000712 -0.998167 -0.060531
+		rot_y -0.088793 -0.060229 0.994227
+		rot_z -0.99605 0.006082 -0.088587
+		scl 0.55
+		id 27
+	}
+}
+combo ironhandbarrier1 {
+	pos 72.428139 15.267754 3.539999
+	WO FortressPiece_Bars {
+		pos 73.759155 14.755899 -0.098615
+		id 29
+	}
+	WO FortressPiece_Bars {
+		pos 70.962189 14.74637 -0.098615
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		id 30
+	}
+	WO IronHand_ArmorPlate {
+		pos 69.451065 15.045212 4.111415
+		rot_x 0.999902 0.01036 -0.009431
+		rot_y -0.013697 0.864293 -0.502803
+		rot_z 0.002943 0.502883 0.86435
+		scl 0.51
+		id 31
+	}
+	WO TutorialProps_Vent {
+		pos 70.991379 15.31146 4.383601
+		rot_x 0 0 -1
+		rot_y 1 0 0
+		rot_z 0 -1 0
+		id 115
+	}
+	WO TutorialProps_Vent {
+		pos 71.03302 15.958883 5.763604
+		rot_x 0 0 -1
+		rot_y 1 0 0
+		rot_z 0 -1 0
+		id 33
+	}
+	WO TutorialProps_Vent {
+		pos 73.976868 15.963625 5.763604
+		rot_x 0 0 -1
+		rot_y 1 0 0
+		rot_z 0 -1 0
+		id 34
+	}
+	WO TutorialProps_Vent {
+		pos 73.935226 15.316202 4.383601
+		rot_x 0 0 -1
+		rot_y 1 0 0
+		rot_z 0 -1 0
+		id 88
+	}
+	WO IronHand_ArmorPlate {
+		pos 75.316208 15.04438 4.111415
+		rot_x 0.999902 0.01036 -0.009431
+		rot_y -0.013697 0.864293 -0.502803
+		rot_z 0.002943 0.502883 0.86435
+		scl 0.51
+		id 137
+	}
+}
+combo ironhandbarrier1 {
+	pos 87.473495 15.179787 3.539999
+	WO FortressPiece_Bars {
+		pos 88.804512 14.667933 -0.098615
+		id 90
+	}
+	WO FortressPiece_Bars {
+		pos 86.007545 14.658403 -0.098615
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		id 86
+	}
+	WO IronHand_ArmorPlate {
+		pos 84.496422 14.957245 4.111415
+		rot_x 0.999902 0.01036 -0.009431
+		rot_y -0.013697 0.864293 -0.502803
+		rot_z 0.002943 0.502883 0.86435
+		scl 0.51
+		id 87
+	}
+	WO TutorialProps_Vent {
+		pos 86.036736 15.223494 4.383601
+		rot_x 0 0 -1
+		rot_y 1 0 0
+		rot_z 0 -1 0
+		id 85
+	}
+	WO TutorialProps_Vent {
+		pos 86.078377 15.870916 5.763604
+		rot_x 0 0 -1
+		rot_y 1 0 0
+		rot_z 0 -1 0
+		id 84
+	}
+	WO TutorialProps_Vent {
+		pos 89.022224 15.875658 5.763604
+		rot_x 0 0 -1
+		rot_y 1 0 0
+		rot_z 0 -1 0
+		id 82
+	}
+	WO TutorialProps_Vent {
+		pos 88.980583 15.228235 4.383601
+		rot_x 0 0 -1
+		rot_y 1 0 0
+		rot_z 0 -1 0
+		id 83
+	}
+	WO IronHand_ArmorPlate {
+		pos 90.361565 14.956413 4.111415
+		rot_x 0.999902 0.01036 -0.009431
+		rot_y -0.013697 0.864293 -0.502803
+		rot_z 0.002943 0.502883 0.86435
+		scl 0.51
+		id 81
+	}
+}
+combo ironhandbarrier1 {
+	pos 65.416412 9.687771 3.539999
+}
+combo ironhandbarrier1 {
+	pos 87.814438 3.884876 3.539999
+	WO FortressPiece_Bars {
+		pos 86.497108 4.431177 -0.098648
+		rot_x -0.999667 0.026045 0
+		rot_y -0.026045 -0.999667 0
+		id 80
+	}
+	WO FortressPiece_Bars {
+		pos 89.293312 4.367836 -0.098648
+		rot_x 0.999667 -0.026045 0
+		rot_y 0.026045 0.999667 0
+		id 79
+	}
+	WO IronHand_ArmorPlate {
+		pos 90.796188 4.029757 4.111396
+		rot_x -0.999839 0.015686 -0.009431
+		rot_y -0.008818 -0.864361 -0.502803
+		rot_z -0.01604 -0.502639 0.86435
+		scl 0.51
+		id 78
+	}
+	WO TutorialProps_Vent {
+		pos 89.24942 3.803741 4.383582
+		rot_x 0 0 -1
+		rot_y -0.999667 0.026045 0
+		rot_z 0.026045 0.999667 0
+		id 114
+	}
+	WO TutorialProps_Vent {
+		pos 89.191032 3.157632 5.763585
+		rot_x 0 0 -1
+		rot_y -0.999667 0.026045 0
+		rot_z 0.026045 0.999667 0
+		id 113
+	}
+	WO TutorialProps_Vent {
+		pos 86.247948 3.229556 5.763585
+		rot_x 0 0 -1
+		rot_y -0.999667 0.026045 0
+		rot_z 0.026045 0.999667 0
+		id 112
+	}
+	WO TutorialProps_Vent {
+		pos 86.306389 3.87566 4.383582
+		rot_x 0 0 -1
+		rot_y -0.999667 0.026045 0
+		rot_z 0.026045 0.999667 0
+		id 105
+	}
+	WO IronHand_ArmorPlate {
+		pos 84.93306 4.183381 4.111396
+		rot_x -0.999839 0.015686 -0.009431
+		rot_y -0.008818 -0.864361 -0.502803
+		rot_z -0.01604 -0.502639 0.86435
+		scl 0.51
+		id 54
+	}
+}
+combo ironhandbarrier1 {
+	pos 87.34317 -4.878157 3.539999
+	WO FortressPiece_Bars {
+		pos 88.658653 -5.428178 -0.098673
+		rot_x 0.999602 -0.028556 0
+		rot_y 0.028556 0.999602 0
+		id 91
+	}
+	WO FortressPiece_Bars {
+		pos 85.862549 -5.357763 -0.098673
+		rot_x -0.999602 0.028556 0
+		rot_y -0.028556 -0.999602 0
+		id 92
+	}
+	WO IronHand_ArmorPlate {
+		pos 84.360619 -5.015929 4.111401
+		rot_x 0.999801 -0.018197 -0.009431
+		rot_y 0.01099 0.864341 -0.502803
+		rot_z 0.017303 0.502599 0.86435
+		scl 0.51
+		id 93
+	}
+	WO TutorialProps_Vent {
+		pos 85.90786 -4.793713 4.383586
+		rot_x 0 0 -1
+		rot_y 0.999602 -0.028556 0
+		rot_z -0.028556 -0.999602 0
+		id 94
+	}
+	WO TutorialProps_Vent {
+		pos 85.967972 -4.147825 5.763589
+		rot_x 0 0 -1
+		rot_y 0.999602 -0.028556 0
+		rot_z -0.028556 -0.999602 0
+		id 95
+	}
+	WO TutorialProps_Vent {
+		pos 88.910782 -4.227166 5.763589
+		rot_x 0 0 -1
+		rot_y 0.999602 -0.028556 0
+		rot_z -0.028556 -0.999602 0
+		id 96
+	}
+	WO TutorialProps_Vent {
+		pos 88.850655 -4.873142 4.383586
+		rot_x 0 0 -1
+		rot_y 0.999602 -0.028556 0
+		rot_z -0.028556 -0.999602 0
+		id 100
+	}
+	WO IronHand_ArmorPlate {
+		pos 90.223335 -5.184208 4.111401
+		rot_x 0.999801 -0.018197 -0.009431
+		rot_y 0.01099 0.864341 -0.502803
+		rot_z 0.017303 0.502599 0.86435
+		scl 0.51
+		id 101
+	}
+}
+combo ironhandbarrier1 {
+	pos 93.12439 -0.983213 3.539999
+}
+combo fueldepot {
+	pos -53.450832 5.173331 0.390002
+}
+combo repairpad {
+	pos 0.635691 -19.047449 -2.848968
+	WO SandrimProps_ContainerOpen {
+		pos -0.247446 -19.514874 -2.823967
+		rot_x 0.01368 0.999906 0
+		rot_y -0.999906 0.01368 0
+		scl 0.49
+		id 99
+	}
+	WO SandrimProps_Crane1 {
+		pos -0.062456 -21.062788 -2.823969
+		rot_x 0.9334 0.358838 0
+		rot_y -0.358838 0.9334 0
+		scl 0.62
+		id 97
+	}
+	WO SandrimProps_Crane2 {
+		pos 0.983469 -16.495333 -2.823967
+		id 111
+	}
+	WO ElevatorPlatform {
+		pos 1.8692 -19.116802 -2.923969
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.93
+		id 104
+		. escc
+	}
+}
+combo repairpad {
+	pos 7.709906 -18.742031 -2.830964
+}
+}
+airmech {
+	AILevel -1
+	Player 0 {
+		startLoc -49.949932 -1.334985 1.140001
+		startLevel 0
+		pilot dynamic 
+		airmech Chopper
+		aiScript dynamic 
+	}
+	Player 1 {
+		startLoc 86.097763 78.598686 3
+		startLevel 0
+		pilot dynamic 
+		airmech Chopper
+		aiScript aiSettingsTutorialEasy.txt
+	}
+	Player 2 {
+		startLoc 83.713806 81.727013 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 3 {
+		startLoc 81.533035 78.892815 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 4 {
+		startLoc 83.949661 77.803612 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 5 {
+		startLoc 80.601013 78.835571 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 6 {
+		startLoc 84.918625 71.966805 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 7 {
+		startLoc 83.632904 81.243576 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+}
+DIR_LIGHT {
+	dir 0.416209 0.424957 0.803854
+	diff 0.4 0.4 0.4
+	amb 0.9 0.9 0.85
+}
+EventScripts {
+	EVT continuous true {
+		enabled 1
+		Core {
+			Continuous {
+				delay 0.25
+			}
+		}
+	}
+	EVT 2 sec true {
+		enabled 1
+		Core {
+			Continuous {
+				delay 3
+			}
+		}
+	}
+	EVT gamestart {
+		enabled 1
+		Core {
+			GameStart {
+			}
+		}
+	}
+	EVT bombard1 {
+		enabled 1
+		Core {
+			Continuous {
+				delay 7.8
+			}
+		}
+	}
+	EVT bombard2 {
+		enabled 1
+		Core {
+			Continuous {
+				delay 13.6
+			}
+		}
+	}
+	EVT 3 sec true {
+		enabled 1
+		Core {
+			Continuous {
+				delay 3
+			}
+		}
+	}
+	EVT dialogtoggle {
+		enabled 1
+		Core {
+			Continuous {
+				delay 3
+			}
+		}
+	}
+}
+ActionScripts {
+	ACT startempty {
+		triggerEvent gamestart
+		Conditions {
+		}
+		Commands {
+			Player {
+				option 2
+				player 0
+				operation 0
+				value 0
+			}
+		}
+	}
+	ACT noenergyregen {
+		triggerEvent gamestart
+		Conditions {
+		}
+		Commands {
+			Control {
+				option energyRegen
+				player 0
+				enable 0
+			}
+		}
+	}
+	ACT refuel1 {
+		triggerEvent continuous true
+		Conditions {
+			Airmech {
+				InLocation {
+					location refuel1
+					player 0
+					affirm 1
+				}
+			}
+		}
+		Commands {
+			Player {
+				option 2
+				player 0
+				operation 1
+				value 4
+			}
+		}
+	}
+	ACT refuel1message {
+		triggerEvent 2 sec true
+		Conditions {
+			Airmech {
+				InLocation {
+					location refuel1
+					player 0
+					affirm 1
+				}
+			}
+		}
+		Commands {
+			Message {
+				string <*B><*f>Refuel Complete!
+			}
+		}
+	}
+	ACT nofuelnofly {
+		triggerEvent continuous true
+		Conditions {
+			Player {
+				Energy {
+					index 0
+					comparison 2
+					valueType 1
+					value 1
+				}
+			}
+		}
+		Commands {
+			Control {
+				option transform
+				player 0
+				enable 0
+			}
+		}
+	}
+	ACT iffuelfly {
+		triggerEvent continuous true
+		Conditions {
+			Player {
+				Energy {
+					index 0
+					comparison 3
+					valueType 1
+					value 0
+				}
+			}
+		}
+		Commands {
+			Control {
+				option transform
+				player 0
+				enable 1
+			}
+		}
+	}
+	ACT escalate1 {
+		triggerEvent continuous true
+		Conditions {
+			Unit {
+				IsAlive {
+					pickId 55
+					affirm 0
+				}
+			}
+		}
+		Commands {
+			Variable {
+				varName aggro
+				operation 0
+				paramType 1
+				value 1
+			}
+		}
+	}
+	ACT airmechlocator {
+		triggerEvent continuous true
+		Conditions {
+		}
+		Commands {
+			MoveLocation {
+				pickLoc airmech
+				targetOption 1
+				playerIndex 0
+			}
+		}
+	}
+	ACT wave1 {
+		triggerEvent continuous true
+		Conditions {
+			Variable {
+				varName aggro
+				comparison 3
+				value 0
+			}
+		}
+		Commands {
+			OrderUnit {
+				location aggro1
+				targetLoc airmech
+				order 3
+				team 6
+			}
+			MoveLocation {
+				pickLoc airmech
+				targetOption 1
+				playerIndex 0
+			}
+		}
+	}
+	ACT patrollers1 {
+		triggerEvent continuous true
+		Conditions {
+		}
+		Commands {
+			OrderUnit {
+				location patrollers1
+				targetLoc patrollers2
+				order 3
+				team 6
+			}
+		}
+	}
+	ACT patrollers2 {
+		triggerEvent continuous true
+		Conditions {
+		}
+		Commands {
+			OrderUnit {
+				location patrollers2
+				targetLoc patrollers1
+				order 3
+				team 6
+			}
+		}
+	}
+	ACT patrollers3 {
+		triggerEvent continuous true
+		Conditions {
+		}
+		Commands {
+			OrderUnit {
+				location patrollers4
+				targetLoc patrollers3
+				order 3
+				team 6
+			}
+		}
+	}
+	ACT patrollers4 {
+		triggerEvent continuous true
+		Conditions {
+		}
+		Commands {
+			OrderUnit {
+				location patrollers3
+				targetLoc patrollers4
+				order 3
+				team 6
+			}
+		}
+	}
+	ACT escalate2 {
+		triggerEvent continuous true
+		Conditions {
+			Unit {
+				IsAlive {
+					pickId 107
+					affirm 0
+				}
+			}
+		}
+		Commands {
+			Variable {
+				varName aggro
+				operation 0
+				paramType 1
+				value 2
+			}
+		}
+	}
+	ACT wave2 {
+		triggerEvent continuous true
+		Conditions {
+			Variable {
+				varName aggro
+				comparison 0
+				value 2
+			}
+		}
+		Commands {
+			OrderUnit {
+				location aggro2
+				targetLoc airmech
+				order 3
+				team 6
+			}
+			MoveLocation {
+				pickLoc airmech
+				targetOption 1
+				playerIndex 0
+			}
+		}
+	}
+	ACT repair {
+		triggerEvent continuous true
+		Conditions {
+			Airmech {
+				InLocation {
+					location repair
+					player 0
+					affirm 1
+				}
+			}
+		}
+		Commands {
+			Player {
+				option 3
+				player 0
+				operation 1
+				value 100
+			}
+		}
+	}
+	ACT repairmessage {
+		triggerEvent 2 sec true
+		Conditions {
+			Airmech {
+				InLocation {
+					location repair
+					player 0
+					affirm 1
+				}
+			}
+		}
+		Commands {
+			Event {
+				evtName 3
+				enable 1
+			}
+			Message {
+				string <*B><*f>Damage Repaired!
+			}
+			Event {
+				evtName 3
+				enable 0
+			}
+		}
+	}
+	ACT noxpgain {
+		triggerEvent gamestart
+		Conditions {
+		}
+		Commands {
+			Control {
+				option experience
+				player 0
+				enable 0
+			}
+		}
+	}
+	ACT bombard1 {
+		triggerEvent bombard1
+		Conditions {
+			Variable {
+				varName aggro
+				comparison 0
+				value 2
+			}
+		}
+		Commands {
+			Spawn {
+				location bombard1
+				unitType BombsU
+				order 0
+				team 6
+				count 1
+			}
+		}
+	}
+	ACT bombard2 {
+		triggerEvent bombard2
+		Conditions {
+			Variable {
+				varName aggro
+				comparison 0
+				value 2
+			}
+		}
+		Commands {
+			Spawn {
+				location bombard2
+				unitType BombsU
+				order 0
+				team 6
+				count 1
+			}
+		}
+	}
+	ACT victory {
+		triggerEvent continuous true
+		Conditions {
+			Unit {
+				TotalRemaining {
+					team 6
+					comparison 0
+					quantity 0
+				}
+			}
+		}
+		Commands {
+			Endgame {
+				result 1
+			}
+		}
+	}
+	ACT wave2message {
+		triggerEvent continuous true
+		Conditions {
+			Variable {
+				varName aggro
+				comparison 0
+				value 2
+			}
+			Variable {
+				varName story
+				comparison 0
+				value 2
+			}
+		}
+		Commands {
+			Message {
+				string <*B><*f>Hostiles incoming!
+			}
+			Variable {
+				varName story
+				operation 0
+				paramType 1
+				value 3
+			}
+		}
+	}
+	ACT startmessage {
+		triggerEvent 3 sec true
+		Conditions {
+			Variable {
+				varName story
+				comparison 0
+				value 0
+			}
+		}
+		Commands {
+			Message {
+				string <*B><*f>Seek n' destroy!
+			}
+			Variable {
+				varName story
+				operation 0
+				paramType 1
+				value 1
+			}
+		}
+	}
+	ACT bridgemessage {
+		triggerEvent continuous true
+		Conditions {
+			Airmech {
+				InLocation {
+					location bridge
+					player 0
+					affirm 1
+				}
+			}
+			Variable {
+				varName story
+				comparison 0
+				value 1
+			}
+		}
+		Commands {
+			Message {
+				string <*B><*f>Repair & Refuel here!
+			}
+			Variable {
+				varName story
+				operation 0
+				paramType 1
+				value 2
+			}
+		}
+	}
+	ACT samsonintro {
+		triggerEvent gamestart
+		Conditions {
+		}
+		Commands {
+			PilotDialog {
+				message Use these units to win!
+				pilot EditorPilot_Samson
+			}
+			PilotDialog {
+				message Use cover! They're dug in!
+				pilot EditorPilot_Samson
+			}
+		}
+	}
+}
+ScriptVariables {
+	VAR aggro {
+		type 0 
+		value 0
+	}
+	VAR story {
+		type 0 
+		value 0
+	}
+}
+objects {
+	WO Mine {
+		pos 45.152836 1.089159 0.100001
+		id 134
+		. team 6
+		. order HoldPosition
+	}
+	WO Mine {
+		pos 45.054016 -1.163792 0.100003
+		id 133
+		. team 6
+		. order HoldPosition
+	}
+	WO SimpleProps_FortressFence {
+		pos 55.735901 4.071625 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 55.226116 -2.777391 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 54.633202 0.118218 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 17.996841 12.792252 -2.897417
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO Canyon_C4 {
+		pos 64 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 14
+	}
+	WO Canyon_A0 {
+		pos 48 24 0
+		. mtmm 15
+	}
+	WO Canyon_B0 {
+		pos 32 16 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_D1 {
+		pos 8 16 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos 24 8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Canyon_A2 {
+		pos 8 0 -3
+	}
+	WO Canyon_A7 {
+		pos 72 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Canyon_C3 {
+		pos 16 -16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Crate6 {
+		pos 71.61306 -34.76405 0
+		rot_x 0.766044 -0.642788 0
+		rot_y 0.642788 0.766044 0
+	}
+	WO SimpleProps_Antenna {
+		pos -59.983715 38.976822 0
+	}
+	WO Canyon_A1 {
+		pos 80 -8 0
+		. mtmm 1
+	}
+	WO Canyon_A5 {
+		pos 80 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Canyon_B0 {
+		pos -16 -40 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos 40 -24 0
+		. mtmm 10
+	}
+	WO Canyon_A0 {
+		pos 48 -24 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos 56 -24 0
+	}
+	WO Canyon_A0 {
+		pos 64 -24 0
+	}
+	WO Canyon_A0 {
+		pos 72 -24 0
+		. mtmm 10
+	}
+	WO Canyon_A7 {
+		pos 72 -16 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos 72 16 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 72 24 0
+		. mtmm 13
+	}
+	WO Canyon_A0 {
+		pos 72 32 0
+		. mtmm 7
+	}
+	WO DesertRock {
+		pos 23.368212 -16.976196 -2.999999
+		rot_x -0.087154 0.996196 0
+		rot_y -0.996196 -0.087154 0
+		scl 1.079999
+	}
+	WO Canyon_C1 {
+		pos 56 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C0 {
+		pos 0 40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 10
+	}
+	WO Canyon_A1 {
+		pos 8 8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C1 {
+		pos -16 -8 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Canyon_C0 {
+		pos 64 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Canyon_B1 {
+		pos -8 24 -6
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Canyon_B0 {
+		pos 32 56 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Canyon_A1 {
+		pos -80 -8 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -80 0 0
+		. mtmm 10
+	}
+	WO Canyon_A0 {
+		pos -80 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Canyon_A7 {
+		pos -80 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Canyon_A0 {
+		pos -80 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 11
+	}
+	WO SimpleProps_TrackStraight1 {
+		pos -58.462204 -13.781597 -0.000049
+		rot_x 1 0 0.000116
+		rot_y 0 1 -0.000324
+		rot_z -0.000116 0.000324 1
+	}
+	WO Canyon_A0 {
+		pos 48 8 0
+		. mtmm 2
+	}
+	WO SimpleProps_FortressGround {
+		pos -57.077938 11.67415 0.06
+	}
+	WO Canyon_A2 {
+		pos 40 0 0
+	}
+	WO Canyon_A0 {
+		pos 48 -8 0
+	}
+	WO Canyon_A0 {
+		pos 56 -8 0
+	}
+	WO Canyon_C5 {
+		pos 32 0 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos 56 8 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos -80 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Canyon_A1 {
+		pos 56 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 5
+	}
+	WO Canyon_C4 {
+		pos 40 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Canyon_B1 {
+		pos -88 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 72 40 0
+		. mtmm 14
+	}
+	WO Canyon_C4 {
+		pos 56 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Canyon_C4 {
+		pos 64 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 13
+	}
+	WO Canyon_B1 {
+		pos 40 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Canyon_B0 {
+		pos 48 48 0
+		. mtmm 3
+	}
+	WO Canyon_B0 {
+		pos 16 24 -6
+		. mtmm 11
+	}
+	WO Canyon_D0 {
+		pos -88 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 13
+	}
+	WO Canyon_A2 {
+		pos 80 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 11
+	}
+	WO Canyon_D0 {
+		pos 40 16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO SimpleProps_Tower3 {
+		pos -61.170502 -24.192074 0
+		rot_x 0.965926 -0.258819 0
+		rot_y 0.258819 0.965926 0
+		scl 0.84
+	}
+	WO Canyon_A0 {
+		pos 80 88 0
+	}
+	WO SimpleProps_FortressFence {
+		pos -43.718964 9.123207 0.10269
+	}
+	WO SimpleProps_FortressFence {
+		pos -49.739975 -11.576192 0.100402
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleProps_FortressFence {
+		pos -62.64753 -11.312667 0.102401
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleProps_FortressFenceCorner {
+		pos -43.87178 -11.516568 0.162405
+	}
+	WO Canyon_C1 {
+		pos 48 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_B0 {
+		pos 96 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Canyon_D0 {
+		pos -32 48 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos 64 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Canyon_C2 {
+		pos 0 0 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C3 {
+		pos -32 8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Canyon_A0 {
+		pos -40 40 0
+		. mtmm 15
+	}
+	WO Canyon_A0 {
+		pos -48 40 0
+		. mtmm 14
+	}
+	WO Canyon_A0 {
+		pos 104 88 0
+	}
+	WO Canyon_A2 {
+		pos 80 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleProps_FortressFence {
+		pos -49.170815 34.314796 0.000024
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C4 {
+		pos 16 56 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO ChasmProps_FeedingTrough {
+		pos 75.522835 -33.83168 -0.010365
+		rot_x 0.34202 0.939693 0
+		rot_y -0.939693 0.34202 0
+	}
+	WO Canyon_A0 {
+		pos -56 40 0
+		. mtmm 13
+	}
+	WO Crate6 {
+		pos -67.0457 17.267319 0.162403
+		rot_x -0.573576 0.819152 0
+		rot_y -0.819152 -0.573576 0
+	}
+	WO Canyon_B1 {
+		pos -16 24 -6
+		. mtmm 13
+	}
+	WO Canyon_A0 {
+		pos -64 40 0
+		. mtmm 14
+	}
+	WO Canyon_A2 {
+		pos 80 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 14
+	}
+	WO Canyon_A2 {
+		pos 80 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 14
+	}
+	WO Canyon_A0 {
+		pos -72 40 0
+		. mtmm 13
+	}
+	WO Canyon_A0 {
+		pos 72 -32 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos 64 -32 0
+	}
+	WO Canyon_A0 {
+		pos 56 -32 0
+	}
+	WO Canyon_A0 {
+		pos 48 -32 0
+		. mtmm 5
+	}
+	WO SupplyTruck {
+		pos -69.874306 -7.583701 0.262402
+		id 109
+		. team 0
+		. order HoldPosition
+	}
+	WO Canyon_A0 {
+		pos 40 -32 0
+		. mtmm 14
+	}
+	WO SimpleProps_FortressFence {
+		pos 36.510151 -10.141556 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_TrackTurn3 {
+		pos -61.520679 -28.683281 0.000328
+		rot_x -0.939692 0.34202 0
+		rot_y -0.34202 -0.939692 0
+	}
+	WO SimpleProps_Building4 {
+		pos 87.806152 19.978245 -0.050072
+		rot_x 0.999961 -0.00883 -0.000223
+		rot_y 0.008832 0.999234 0.03813
+		rot_z -0.000114 -0.038131 0.999273
+	}
+	WO Canyon_C0 {
+		pos 16 40 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Canyon_C2 {
+		pos -16 0 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Canyon_C4 {
+		pos -16 40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Canyon_C0 {
+		pos 32 32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Canyon_B1 {
+		pos 8 -16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Canyon_D1 {
+		pos 0 32 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos 16 -24 -3
+		. mtmm 11
+	}
+	WO Canyon_A0 {
+		pos 80 -24 0
+		. mtmm 5
+	}
+	WO Canyon_B0 {
+		pos -40 -32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C0 {
+		pos 16 -8 -3
+		. mtmm 12
+	}
+	WO Canyon_C0 {
+		pos 8 -40 -3
+		. mtmm 5
+	}
+	WO Canyon_B1 {
+		pos -32 -48 -6
+		. mtmm 7
+	}
+	WO Canyon_A1 {
+		pos -48 -48 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Canyon_A0 {
+		pos -56 -32 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -64 -32 0
+		. mtmm 7
+	}
+	WO Canyon_A0 {
+		pos -80 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Canyon_C1 {
+		pos 32 -24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO CanyonRockA {
+		pos 55.257561 18.920021 -3.091621
+		rot_x -0.34202 0.939693 0
+		rot_y -0.939693 -0.34202 0
+		scl 1.819999
+	}
+	WO Canyon_C4 {
+		pos 32 -16 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Canyon_C0 {
+		pos 32 -8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Canyon_A2 {
+		pos 56 0 0
+	}
+	WO Canyon_A0 {
+		pos 48 16 0
+		. mtmm 11
+	}
+	WO Canyon_C0 {
+		pos 32 8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_D0 {
+		pos 16 16 -6
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Canyon_D1 {
+		pos 40 24 -3
+		. mtmm 14
+	}
+	WO Canyon_A1 {
+		pos -8 16 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 5
+	}
+	WO Canyon_B0 {
+		pos 8 24 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C1 {
+		pos -80 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Canyon_A1 {
+		pos -8 8 -6
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Canyon_B0 {
+		pos -8 -16 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Canyon_C1 {
+		pos -32 -32 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Canyon_D1 {
+		pos 16 -40 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_B1 {
+		pos -24 -24 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Canyon_D1 {
+		pos -48 -32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO SupplyTruck {
+		pos -61.852203 -8.193652 0.262402
+		id 110
+		. team 0
+		. order HoldPosition
+	}
+	WO Canyon_B0 {
+		pos 24 -16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 15
+	}
+	WO Canyon_B1 {
+		pos -16 -16 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Canyon_D0 {
+		pos -8 32 -6
+	}
+	WO Canyon_C4 {
+		pos 16 48 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Canyon_D1 {
+		pos 24 16 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 5
+	}
+	WO Canyon_D0 {
+		pos 0 -16 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A6 {
+		pos -8 0 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_C3 {
+		pos -16 16 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 11
+	}
+	WO Canyon_C0 {
+		pos 0 8 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos 0 -24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 14
+	}
+	WO SimpleProps_Barrel {
+		pos 74.804512 15.64349 0
+		rot_x -0.983798 -0.179279 0
+		rot_y 0.179279 -0.983798 0
+	}
+	WO SimpleProps_Tower1 {
+		pos 54.964565 -27.50967 0
+	}
+	WO Canyon_B1 {
+		pos 0 16 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Crate6 {
+		pos 67.834564 -29.499264 0.162584
+		rot_x 0.5 -0.866025 0
+		rot_y 0.866025 0.5 0
+	}
+	WO SimpleProps_FortressFenceCorner {
+		pos 45.991474 13.548748 0.132428
+		rot_x -1 0 -0.000324
+		rot_y 0 -1 -0.000116
+		rot_z -0.000324 -0.000116 1
+	}
+	WO CanyonRockA {
+		pos 55.649216 30.78644 -3.32283
+		rot_x -0.996195 0.087156 0
+		rot_y -0.087156 -0.996195 0
+	}
+	WO SimpleProps_FortressFence {
+		pos -68.961945 -11.141393 0.102401
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 52.219322 14.120783 0.102583
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C0 {
+		pos -8 -40 -3
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 0 -32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Canyon_A2 {
+		pos 16 0 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos 16 8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO SimpleProps_FortressFence {
+		pos 48.159874 -24.681913 0.065129
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_B0 {
+		pos 8 -8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_B1 {
+		pos 0 24 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A0 {
+		pos 80 -16 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos 80 -32 0
+		. mtmm 9
+	}
+	WO Canyon_C4 {
+		pos -32 24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 60.598103 -30.954037 0.106731
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A0 {
+		pos -24 -8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Canyon_A7 {
+		pos -16 -24 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Canyon_C3 {
+		pos -16 -32 -6
+		. mtmm 10
+	}
+	WO Canyon_C0 {
+		pos 24 -32 -3
+		. mtmm 1
+	}
+	WO Canyon_C1 {
+		pos -40 -24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 11
+	}
+	WO Canyon_A0 {
+		pos 8 -32 -3
+		. mtmm 5
+	}
+	WO Canyon_C3 {
+		pos -32 -8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A2 {
+		pos -40 0 0
+		. mtmm 6
+	}
+	WO SimpleProps_FortressFenceCorner {
+		pos -71.729706 1.920302 0.102402
+	}
+	WO Canyon_C1 {
+		pos -8 -24 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Canyon_D1 {
+		pos -24 32 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A2 {
+		pos 80 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Canyon_A2 {
+		pos -24 0 -3
+		. mtmm 3
+	}
+	WO Canyon_A1 {
+		pos -24 8 -3
+		. mtmm 12
+	}
+	WO Canyon_A0 {
+		pos -24 16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C0 {
+		pos -32 32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Canyon_D0 {
+		pos -24 48 -3
+		. mtmm 10
+	}
+	WO Canyon_C3 {
+		pos -16 32 -6
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO SimpleProps_FortressFence {
+		pos 54.074345 -31.071018 0.227717
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 72.712097 16.4631 0.162579
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C1 {
+		pos -16 8 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Crate3 {
+		pos -57.331192 25.746611 0.162403
+	}
+	WO Canyon_B0 {
+		pos 24 -8 -3
+		. mtmm 12
+	}
+	WO Crate6 {
+		pos 67.680443 -25.532988 0.132425
+		rot_x 0.5 -0.866025 0
+		rot_y 0.866025 0.5 0
+	}
+	WO SimpleProps_Fence2 {
+		pos -70.373535 15.148411 0.162403
+	}
+	WO SimpleProps_Fence2 {
+		pos 72.803253 -7.490185 0.132422
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SimpleProps_FortressFence {
+		pos -71.873642 -6.248347 0.102401
+	}
+	WO Canyon_B1 {
+		pos -32 -40 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO SimpleProps_FortressFenceCorner {
+		pos -72.064331 -11.123591 0.102401
+		rot_x 0.999617 -0.027671 0
+		rot_y 0.027671 0.999617 0
+	}
+	WO Canyon_D0 {
+		pos 32 -32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Canyon_C1 {
+		pos -32 16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_B0 {
+		pos -32 -16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 14
+	}
+	WO Canyon_C3 {
+		pos 24 24 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 7
+	}
+	WO Canyon_A2 {
+		pos 96 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Canyon_A0 {
+		pos -40 32 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -40 24 0
+		. mtmm 4
+	}
+	WO Canyon_D1 {
+		pos -24 24 -6
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 10
+	}
+	WO Canyon_A0 {
+		pos -40 16 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos -40 8 0
+		. mtmm 9
+	}
+	WO BarrelA {
+		pos -71.166565 17.076214 0
+		rot_x 0.173648 -0.984808 0
+		rot_y 0.984808 0.173648 0
+	}
+	WO BarrelA {
+		pos -70.516602 17.849972 0
+	}
+	WO Canyon_C5 {
+		pos -32 0 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO SimpleProps_FortressFence {
+		pos -71.497864 7.41697 0.102401
+	}
+	WO Canyon_B0 {
+		pos 8 40 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 7
+	}
+	WO Canyon_A0 {
+		pos -40 -8 0
+		. mtmm 1
+	}
+	WO Canyon_C0 {
+		pos -24 -40 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Canyon_B1 {
+		pos -24 -32 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A8 {
+		pos -48 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 7
+	}
+	WO Canyon_A2 {
+		pos 24 0 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos 24 -24 -3
+		. mtmm 7
+	}
+	WO Crate6 {
+		pos -70.201736 -1.034801 -0.055285
+		rot_x 0.5 -0.866025 0
+		rot_y 0.866025 0.5 0
+	}
+	WO Crate6 {
+		pos -69.34375 10.222081 0.102404
+		rot_x 0.5 -0.866025 0
+		rot_y 0.866025 0.5 0
+	}
+	WO Canyon_A0 {
+		pos -48 -8 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -48 0 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos -48 8 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -48 16 0
+		. mtmm 15
+	}
+	WO SimpleProps_FortressFence {
+		pos 64.666924 14.560894 0.13242
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -48 24 0
+		. mtmm 12
+	}
+	WO SimpleProps_FortressFenceCorner {
+		pos 48.405235 -31.047571 0.264837
+		rot_x 0 -1 -0.000324
+		rot_y 1 0 -0.000116
+		rot_z 0.000116 -0.000324 1
+	}
+	WO Crate6 {
+		pos 49.366638 -22.292028 0.132421
+		rot_x 0.5 -0.866025 0
+		rot_y 0.866025 0.5 0
+	}
+	WO ChasmProps_WheelBarrow {
+		pos -71.798004 18.914515 -0.004264
+		rot_x -0.258819 -0.965926 -0.000564
+		rot_y 0.965926 -0.258819 0
+		rot_z -0.000146 -0.000545 1
+	}
+	WO Canyon_A0 {
+		pos -48 32 0
+		. mtmm 3
+	}
+	WO SidewalkSmall {
+		pos -42.986725 5.032754 0.09
+	}
+	WO SidewalkSmall {
+		pos -42.983009 0.197239 0.030546
+	}
+	WO Canyon_A0 {
+		pos -56 32 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -56 24 0
+		. mtmm 8
+	}
+	WO Canyon_A2 {
+		pos 80 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Crate3 {
+		pos -55.837189 25.481657 0.162409
+		rot_x -0.087156 -0.996195 0
+		rot_y 0.996195 -0.087156 0
+	}
+	WO Crate5 {
+		pos -46.096779 -7.810395 0.162407
+		rot_x 0.573577 -0.819152 0
+		rot_y 0.819152 0.573577 0
+	}
+	WO Crate6 {
+		pos -45.442665 -10.203153 0.100399
+		rot_x 0.5 -0.866025 0
+		rot_y 0.866025 0.5 0
+	}
+	WO Canyon_A0 {
+		pos 80 80 0
+	}
+	WO ChasmProps_Hut2 {
+		pos 67.830833 25.069567 0.000109
+		rot_x -0.993806 -0.111119 -0.001986
+		rot_y 0.111119 -0.993807 0
+		rot_z -0.001974 -0.000221 0.999998
+	}
+	WO ChasmProps_Tractor2 {
+		pos -57.865723 24.111332 0.162405
+		rot_x 0.087156 -0.996195 0
+		rot_y 0.996195 0.087156 0
+	}
+	WO Crate6 {
+		pos -69.425369 7.252755 0.162399
+		rot_x -0.766045 -0.642787 0
+		rot_y 0.642787 -0.766045 0
+	}
+	WO BarrelA {
+		pos -46.279564 28.049835 0.072405
+		rot_x -0.936117 0.172371 0.306551
+		rot_y -0.347857 -0.325478 -0.879239
+		rot_z -0.051779 -0.929706 0.364646
+	}
+	WO Crate6 {
+		pos 65.543694 -23.686018 0.162581
+		rot_x 0.766044 -0.642788 0
+		rot_y 0.642788 0.766044 0
+	}
+	WO SandrimProps_ContainerOpen {
+		pos -46.282364 30.937489 0.162401
+		rot_x -0.094824 0.995494 0
+		rot_y -0.995494 -0.094824 0
+	}
+	WO BarrelA {
+		pos 72.785004 -8.561502 0.372584
+		rot_x 0.915389 -0.214417 0.340719
+		rot_y -0.309169 0.16763 0.936117
+		rot_z -0.257834 -0.96225 0.087156
+	}
+	WO SimpleProps_FortressFence {
+		pos 67.98613 -30.908009 0.227717
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Crate6 {
+		pos 69.558975 -7.312277 0.162586
+		rot_x 0.984808 0.173648 0
+		rot_y -0.173648 0.984808 0
+	}
+	WO SimpleProps_Tower3 {
+		pos 63.942635 19.782394 0.001801
+		scl 0.78
+	}
+	WO Canyon_A0 {
+		pos -56 16 0
+		. mtmm 10
+	}
+	WO Canyon_A0 {
+		pos -56 8 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -56 0 0
+	}
+	WO Canyon_A0 {
+		pos -56 -8 0
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos -43.351418 -7.503688 0.162895
+		rot_x 0.971462 -0.237198 0
+		rot_y 0.237198 0.971462 0
+	}
+	WO Canyon_A0 {
+		pos -56 -16 0
+		. mtmm 12
+	}
+	WO Canyon_A8 {
+		pos -48 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos -43.075928 9.179043 0.102547
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 48.314194 -19.872486 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos -56 -24 0
+		. mtmm 15
+	}
+	WO Canyon_A0 {
+		pos -64 -24 0
+		. mtmm 14
+	}
+	WO Canyon_A0 {
+		pos -64 -16 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos -72 -24 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos -72 -16 0
+	}
+	WO Canyon_A0 {
+		pos -72 0 0
+		. mtmm 5
+	}
+	WO BarrelA {
+		pos -69.348389 17.799259 0.162403
+		rot_x -0.996195 -0.087156 0
+		rot_y 0.087156 -0.996195 0
+	}
+	WO CanyonRockD {
+		pos 50.396973 32.891365 -3.105837
+		rot_x 0.906308 0.422619 0
+		rot_y -0.422619 0.906308 0
+		scl 1.08
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos -58.326599 -10.196922 0.013236
+		rot_x 0.707107 -0.707107 0
+		rot_y 0.707107 0.707107 0
+	}
+	WO BarrelA {
+		pos 60.596237 -10.668335 0
+		rot_x 0.939693 0.34202 0
+		rot_y -0.34202 0.939693 0
+	}
+	WO BarrelA {
+		pos 70.539581 -9.300684 0
+		rot_x 0.939693 0.34202 0
+		rot_y -0.34202 0.939693 0
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos -54.304405 -11.154761 0.162401
+		rot_x -0.34202 -0.939693 0
+		rot_y 0.939693 -0.34202 0
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 57.015514 13.78768 0.102581
+		rot_x 0.34202 0.939693 0
+		rot_y -0.939693 0.34202 0
+	}
+	WO SimpleProps_TrackStraight1 {
+		pos -56.585548 -21.595484 0
+		rot_x 1 0 0.000116
+		rot_y 0 1 -0.000324
+		rot_z -0.000116 0.000324 1
+	}
+	WO Crate6 {
+		pos 58.54657 -11.50754 0.102582
+		rot_x 0.5 -0.866025 0
+		rot_y 0.866025 0.5 0
+	}
+	WO SimpleProps_FortressFenceCorner {
+		pos -43.923607 34.017822 0.000013
+		rot_x 0.087156 0.996195 0
+		rot_y -0.996195 0.087156 0
+	}
+	WO Canyon_A0 {
+		pos -72 -8 0
+		. mtmm 1
+	}
+	WO ChasmProps_Tractor1 {
+		pos -71.11937 -19.974434 0.000038
+	}
+	WO Canyon_A0 {
+		pos -64 -8 0
+	}
+	WO Canyon_A0 {
+		pos -64 0 0
+	}
+	WO Canyon_A0 {
+		pos -64 8 0
+	}
+	WO Canyon_A0 {
+		pos -64 16 0
+	}
+	WO Canyon_A0 {
+		pos -72 8 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos -72 16 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos -64 32 0
+		. mtmm 3
+	}
+	WO Canyon_B0 {
+		pos 32 24 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Canyon_A0 {
+		pos 40 8 0
+	}
+	WO Canyon_A2 {
+		pos 48 0 0
+	}
+	WO Canyon_A0 {
+		pos 40 -8 0
+	}
+	WO Canyon_A0 {
+		pos 40 -16 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos 48 -16 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos -64 24 0
+	}
+	WO Canyon_A0 {
+		pos -72 24 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos 56 -16 0
+	}
+	WO Canyon_A8 {
+		pos 64 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A0 {
+		pos -72 32 0
+		. mtmm 7
+	}
+	WO Canyon_A2 {
+		pos 64 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO BarrelA {
+		pos -72.752335 20.097895 0
+		rot_x 0.990501 -0.0865 0.10691
+		rot_y 0.099864 0.9869 -0.126731
+		rot_z -0.094547 0.136202 0.986161
+		scl 1.47
+	}
+	WO BarrelA {
+		pos -50.687111 38.44083 0.000975
+		rot_x -0.339913 -0.934363 0.10691
+		rot_y 0.927425 -0.35189 -0.126731
+		rot_z 0.156032 0.056074 0.986161
+		scl 1.47
+	}
+	WO Canyon_A5 {
+		pos 64 0 0
+		. mtmm 2
+	}
+	WO Canyon_A5 {
+		pos 80 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO BarrelA {
+		pos -49.937592 37.459026 -0.001712
+		rot_x -0.424218 0.905403 0.016976
+		rot_y -0.901231 -0.423945 0.089764
+		rot_z 0.088471 0.02278 0.99582
+		scl 1.47
+	}
+	WO SimpleProps_Tower1 {
+		pos -57.677063 37.300232 0
+	}
+	WO SimpleProps_Building1 {
+		pos -59.619595 26.690491 0.134545
+	}
+	WO SimpleProps_Tower2 {
+		pos -70.618668 35.622269 0
+		rot_x 1 0 0.000648
+		rot_y 0 1 -0.000648
+		rot_z -0.000648 0.000648 1
+	}
+	WO SimpleProps_Building2 {
+		pos -73.981583 9.336855 -0.135389
+		rot_x 1 -0.000542 0
+		rot_y 0.000542 1 0
+	}
+	WO SimpleProps_Building3 {
+		pos -75.620499 -2.675731 0.100399
+	}
+	WO SimpleProps_Building4 {
+		pos -71.053299 -15.082296 0.000036
+	}
+	WO SimpleProps_Tower3 {
+		pos -60.595226 -14.718122 0
+		scl 0.73
+	}
+	WO BarrelA {
+		pos -51.493637 39.861965 0
+		rot_x -0.770863 0.635361 -0.04574
+		rot_y -0.637006 -0.768924 0.054642
+		rot_z -0.000451 0.071258 0.99746
+		scl 1.47
+	}
+	WO SimpleProps_Barrel {
+		pos -71.772659 0.779864 -0.157686
+	}
+	WO SimpleProps_Barrel {
+		pos -74.188858 3.105734 0
+	}
+	WO ChasmProps_FeedingTrough {
+		pos -75.659958 -10.313553 0.082415
+		rot_x 0.173648 -0.984808 0
+		rot_y 0.984808 0.173648 0
+	}
+	WO ChasmProps_WheelBarrow {
+		pos -80.502182 -3.944333 0.597574
+		rot_x -0.258819 -0.965926 -0.000564
+		rot_y 0.965926 -0.258819 0
+		rot_z -0.000146 -0.000545 1
+	}
+	WO BarrelA {
+		pos -72.08287 21.189953 0
+		rot_x -0.339913 -0.934363 0.10691
+		rot_y 0.927425 -0.35189 -0.126731
+		rot_z 0.156032 0.056074 0.986161
+		scl 1.47
+	}
+	WO SimpleProps_TrackTurn1 {
+		pos -57.074921 -29.441235 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SimpleProps_TrackTurn1 {
+		pos -58.952419 -21.564999 0.009657
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A1 {
+		pos 64 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C1 {
+		pos 56 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO SimpleProps_TrackStraight1 {
+		pos -56.619026 -13.735479 0.000033
+		rot_x 1 0 0.000116
+		rot_y 0 1 -0.000324
+		rot_z -0.000116 0.000324 1
+	}
+	WO CanyonRockSandrim3 {
+		pos -93.991753 -51.121063 2.851424
+		rot_x -0.867603 0.497022 -0.015266
+		rot_y -0.489524 -0.859102 -0.149364
+		rot_z -0.087352 -0.122116 0.988665
+		scl 2.12
+	}
+	WO CanyonRockSandrim2 {
+		pos -100.525024 63.159523 6.700143
+		rot_x 0.620291 0.781932 0.061814
+		rot_y -0.784106 0.620203 0.02293
+		rot_z -0.020407 -0.062692 0.997824
+		scl 2.249999
+	}
+	WO CanyonRockA {
+		pos -98.762566 57.665211 -1.128801
+		rot_x 0.723817 -0.687218 0.061814
+		rot_y 0.687323 0.72599 0.02293
+		rot_z -0.060635 0.025889 0.997824
+		scl 3.210001
+	}
+	WO SimpleProps_Building4 {
+		pos 72.021561 20.252464 -0.050072
+		rot_x -0.000204 1 -0.000223
+		rot_y -0.999273 -0.000196 0.03813
+		rot_z 0.03813 0.00023 0.999273
+	}
+	WO SimpleProps_MiddleBarrier {
+		pos -91.347832 15.748139 -0.263583
+		rot_x -0.022035 -0.999757 0
+		rot_y 0.999757 -0.022035 -0.000058
+		rot_z 0.000058 0 1
+		scl 1.34
+	}
+	WO Canyon_D1 {
+		pos 96 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 5
+	}
+	WO Canyon_A2 {
+		pos 104 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Canyon_B1 {
+		pos 104 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos 72 56 0
+		. mtmm 4
+	}
+	WO Canyon_C0 {
+		pos 56 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 11
+	}
+	WO Canyon_C0 {
+		pos 64 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 7
+	}
+	WO Canyon_A0 {
+		pos 48 56 0
+		. mtmm 15
+	}
+	WO Canyon_B0 {
+		pos 16 32 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Canyon_D0 {
+		pos 40 56 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Canyon_C4 {
+		pos 24 48 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Canyon_C4 {
+		pos 8 48 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Canyon_C4 {
+		pos 24 40 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_B0 {
+		pos -8 56 0
+		. mtmm 7
+	}
+	WO Canyon_B1 {
+		pos -16 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Canyon_B1 {
+		pos -32 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Canyon_B1 {
+		pos -48 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Canyon_A0 {
+		pos 0 56 0
+		. mtmm 1
+	}
+	WO Canyon_B1 {
+		pos -40 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 14
+	}
+	WO Canyon_B0 {
+		pos -24 40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Canyon_D1 {
+		pos -48 56 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos -64 56 0
+		. mtmm 13
+	}
+	WO Canyon_A0 {
+		pos -72 56 0
+		. mtmm 15
+	}
+	WO Canyon_A0 {
+		pos -80 56 0
+		. mtmm 14
+	}
+	WO Canyon_C1 {
+		pos -88 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 13
+	}
+	WO Canyon_B1 {
+		pos -88 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A8 {
+		pos 96 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Canyon_B1 {
+		pos 80 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Canyon_B1 {
+		pos 80 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Canyon_A0 {
+		pos 72 -48 0
+		. mtmm 12
+	}
+	WO Canyon_A0 {
+		pos 64 -48 0
+		. mtmm 12
+	}
+	WO Canyon_A0 {
+		pos 56 -48 0
+		. mtmm 12
+	}
+	WO Canyon_B0 {
+		pos 40 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 7
+	}
+	WO Canyon_B0 {
+		pos 48 -40 0
+		. mtmm 1
+	}
+	WO Canyon_D0 {
+		pos 40 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Canyon_A0 {
+		pos 24 -48 0
+		. mtmm 10
+	}
+	WO Canyon_B1 {
+		pos 0 -48 0
+		. mtmm 14
+	}
+	WO Canyon_A0 {
+		pos 8 -24 -3
+		. mtmm 7
+	}
+	WO Canyon_D0 {
+		pos -8 -32 -6
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 15
+	}
+	WO Canyon_B0 {
+		pos -8 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Canyon_D0 {
+		pos -40 -40 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A7 {
+		pos -8 -8 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Canyon_D1 {
+		pos -40 -48 -6
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Canyon_D1 {
+		pos -64 -56 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Canyon_B1 {
+		pos -48 -40 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_D0 {
+		pos -32 -24 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 7
+	}
+	WO Canyon_C1 {
+		pos -24 -48 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Canyon_A0 {
+		pos -72 -48 0
+		. mtmm 9
+	}
+	WO Canyon_A0 {
+		pos -80 -48 0
+		. mtmm 3
+	}
+	WO Canyon_Ak {
+		pos -96 -40 3
+		. mtmm 10
+	}
+	WO Canyon_C0 {
+		pos -88 -24 0
+		. mtmm 6
+	}
+	WO Canyon_B0 {
+		pos 104 32 0
+		. mtmm 11
+	}
+	WO Canyon_A1 {
+		pos 88 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 13
+	}
+	WO Canyon_A2 {
+		pos 80 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Canyon_C4 {
+		pos 104 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_B0 {
+		pos 96 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Canyon_A2 {
+		pos 72 0 0
+		. mtmm 11
+	}
+	WO Canyon_C0 {
+		pos 104 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 14
+	}
+	WO Canyon_C4 {
+		pos 96 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 11
+	}
+	WO Canyon_A7 {
+		pos 72 -8 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos 96 -24 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos 96 -32 0
+	}
+	WO Canyon_B0 {
+		pos 88 -40 0
+		. mtmm 13
+	}
+	WO Canyon_B1 {
+		pos -96 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Canyon_C1 {
+		pos -88 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -96 32 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos -96 24 0
+		. mtmm 13
+	}
+	WO Canyon_A0 {
+		pos -96 16 0
+		. mtmm 15
+	}
+	WO Canyon_A0 {
+		pos -96 8 0
+		. mtmm 7
+	}
+	WO Canyon_A0 {
+		pos -96 0 0
+		. mtmm 13
+	}
+	WO Canyon_A0 {
+		pos -96 -8 0
+		. mtmm 7
+	}
+	WO Canyon_A0 {
+		pos -96 -16 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos -88 -32 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Canyon_D1 {
+		pos -96 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -96 -32 3
+		. mtmm 10
+	}
+	WO Canyon_A0 {
+		pos 96 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Canyon_A0 {
+		pos 88 -32 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos 88 -24 0
+	}
+	WO Canyon_A0 {
+		pos 88 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Canyon_B1 {
+		pos 112 56 0
+	}
+	WO Canyon_A0 {
+		pos 88 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C1 {
+		pos 104 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 7
+	}
+	WO Canyon_A0 {
+		pos 88 16 0
+		. mtmm 7
+	}
+	WO Canyon_C4 {
+		pos 104 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_C1 {
+		pos 104 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Canyon_C1 {
+		pos 96 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Canyon_B0 {
+		pos 88 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Canyon_A2 {
+		pos 80 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A0 {
+		pos 72 48 0
+		. mtmm 9
+	}
+	WO Canyon_B0 {
+		pos 56 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Canyon_B0 {
+		pos 64 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 11
+	}
+	WO Canyon_B0 {
+		pos 48 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Canyon_B0 {
+		pos 40 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Canyon_C4 {
+		pos 32 48 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_C0 {
+		pos 8 56 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_C0 {
+		pos 32 40 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C4 {
+		pos 24 32 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Canyon_B0 {
+		pos 0 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Canyon_C4 {
+		pos -32 40 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 5
+	}
+	WO Canyon_B0 {
+		pos -16 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 14
+	}
+	WO Canyon_A8 {
+		pos -16 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Canyon_B1 {
+		pos -56 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Canyon_Am {
+		pos -24 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos -56 48 0
+		. mtmm 7
+	}
+	WO Canyon_A0 {
+		pos -64 48 0
+		. mtmm 11
+	}
+	WO Canyon_A0 {
+		pos -72 48 0
+		. mtmm 7
+	}
+	WO Canyon_A0 {
+		pos -80 48 0
+		. mtmm 11
+	}
+	WO Canyon_A0 {
+		pos -96 56 3
+		. mtmm 11
+	}
+	WO Canyon_B1 {
+		pos 88 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 15
+	}
+	WO Canyon_A0 {
+		pos 72 -40 0
+	}
+	WO Canyon_A0 {
+		pos 64 -40 0
+	}
+	WO Canyon_A0 {
+		pos 56 -40 0
+	}
+	WO Canyon_C4 {
+		pos 48 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Canyon_B0 {
+		pos 32 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 7
+	}
+	WO Canyon_A0 {
+		pos 32 -40 0
+		. mtmm 14
+	}
+	WO Canyon_A0 {
+		pos 24 -40 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos 16 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_B0 {
+		pos 16 -32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Canyon_C1 {
+		pos 0 -40 -3
+		. mtmm 11
+	}
+	WO Canyon_A0 {
+		pos 8 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Canyon_C4 {
+		pos 0 -8 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C0 {
+		pos -16 -48 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Canyon_D0 {
+		pos -24 -16 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 13
+	}
+	WO Canyon_D1 {
+		pos -56 -40 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Canyon_D0 {
+		pos -40 -16 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Canyon_C4 {
+		pos -56 -56 -3
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -64 -40 0
+		. mtmm 9
+	}
+	WO Canyon_D1 {
+		pos -80 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Canyon_B1 {
+		pos -80 -24 0
+		. mtmm 1
+	}
+	WO Canyon_C0 {
+		pos -96 -24 0
+		. mtmm 9
+	}
+	WO Canyon_D1 {
+		pos -96 48 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -88 32 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos -88 24 0
+		. mtmm 6
+	}
+	WO Canyon_A0 {
+		pos -88 16 0
+		. mtmm 13
+	}
+	WO Canyon_A0 {
+		pos -88 8 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -88 0 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos -88 -8 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos -88 -16 0
+		. mtmm 8
+	}
+	WO Canyon_B0 {
+		pos -72 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 7
+	}
+	WO Canyon_B0 {
+		pos -72 -32 0
+		. mtmm 14
+	}
+	WO SimpleProps_Windmill {
+		pos 90.078056 -33.011448 -0.581943
+		rot_x 0.414354 -0.910116 0
+		rot_y 0.910116 0.414354 0
+	}
+	WO SimpleProps_TrackTurn2 {
+		pos -62.965302 -45.425819 0.010008
+		rot_x -0.874084 -0.485774 0
+		rot_y 0.485774 -0.874084 0
+	}
+	WO SimpleProps_MineShaft2 {
+		pos -61.960331 -54.406857 0.010045
+		rot_x -0.736221 0.676741 0
+		rot_y -0.676741 -0.736221 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 37.058968 11.167614 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO CanyonRockSandrim3 {
+		pos 97.359612 -52.075977 3.812058
+		rot_x -0.797623 -0.595127 -0.098087
+		rot_y 0.590566 -0.803631 0.073543
+		rot_z -0.122593 0.000732 0.992457
+		scl 1.539999
+	}
+	WO CanyonRockSandrim2 {
+		pos 105.474716 -10.720817 6.940018
+		rot_x 0.037264 0.999305 0
+		rot_y -0.999305 0.037264 0
+		scl 1.96
+	}
+	WO CanyonRockSandrim4 {
+		pos 99.008537 65.335236 1.54045
+		rot_x 0.039229 0.99923 -0.000789
+		rot_y -0.99923 0.039229 0
+		rot_z 0.000031 0.000788 1
+		scl 2.47
+	}
+	WO CanyonRockC {
+		pos 99.52993 22.369976 -2.600159
+		rot_x -0.663233 0.687947 0.294706
+		rot_y -0.696357 -0.711536 0.093831
+		rot_z 0.274244 -0.142989 0.95097
+		scl 3.519999 3.749999 3.749999
+	}
+	WO CanyonRockD {
+		pos 102.513832 55.492115 1.463162
+		rot_x 0.995477 -0.000962 0.095003
+		rot_y 0 0.999949 0.010121
+		rot_z -0.095008 -0.010075 0.995426
+		scl 2.83
+	}
+	WO CanyonRockSandrim2 {
+		pos 117.004135 18.778521 3.880024
+		rot_x 0.299499 0.954096 0
+		rot_y -0.954096 0.299499 0
+		scl 1.47
+	}
+	WO CanyonRockSandrim2 {
+		pos 120.814026 17.310062 4.030024
+		rot_x -0.998612 0.052671 0
+		rot_y -0.052671 -0.998612 0
+		scl 1.47
+	}
+	WO CanyonRockSandrim1 {
+		pos 119.923668 10.62925 2.530011
+		rot_x 0.044273 0.999019 0
+		rot_y -0.999019 0.044273 0
+		scl 1.36
+	}
+	WO CanyonRockB {
+		pos 87.219109 -49.605396 0.543222
+		rot_x 0.979602 0.008059 0.200787
+		rot_y 0 0.999196 -0.040104
+		rot_z -0.200948 0.039286 0.978814
+		scl 3.36
+	}
+	WO CanyonRockSandrim3 {
+		pos 106.021225 -26.37154 4.411424
+		rot_x -0.083631 -0.993011 0.083273
+		rot_y 0.996332 -0.081805 0.025106
+		rot_z -0.018118 0.085067 0.996211
+		scl 2.14
+	}
+	WO SimpleProps_Building3 {
+		pos -80.046654 27.103794 0.100399
+	}
+	WO CanyonRockC {
+		pos 86.162651 45.816357 -1.589997
+		rot_x -0.584545 -0.755947 0.294706
+		rot_y 0.804959 -0.585864 0.093831
+		rot_z 0.101726 0.292074 0.95097
+		scl 1.99 2.220001 2.220001
+	}
+	WO CanyonRockSandrim1 {
+		pos 73.248474 52.464539 2.230008
+		rot_x 0.995352 -0.096296 0
+		rot_y 0.096296 0.995352 0
+		scl 1.89
+	}
+	WO CanyonRockSandrim2 {
+		pos 56.334381 67.840714 6.399997
+		rot_x 0.994872 -0.101138 0
+		rot_y 0.101138 0.994872 0
+		scl 2.379999
+	}
+	WO CanyonRockSandrim4 {
+		pos 39.532185 57.779331 3.25
+		rot_x -0.997095 -0.076174 0
+		rot_y 0.076174 -0.997095 0
+		scl 2.570002
+	}
+	WO CanyonRockC {
+		pos 24.923035 59.812962 -9.260162
+		rot_x -0.584545 -0.755947 0.294706
+		rot_y 0.804959 -0.585864 0.093831
+		rot_z 0.101726 0.292074 0.95097
+		scl 4.229999 4.46 4.46
+	}
+	WO CanyonRockSandrim2 {
+		pos -100.576439 -27.451492 7.029995
+		rot_x 0.442948 -0.896547 0
+		rot_y 0.896547 0.442948 0
+		scl 1.32
+	}
+	WO CanyonRockSandrim3 {
+		pos 3.54385 64.459007 2.701424
+		rot_x 0.984908 -0.173022 0.004351
+		rot_y 0.17269 0.984075 0.042136
+		rot_z -0.011572 -0.040749 0.999102
+		scl 2.15
+	}
+	WO CanyonRockSandrim1 {
+		pos -10.467667 62.840179 4.840004
+		rot_x 0.897907 0.440185 0
+		rot_y -0.440185 0.897907 0
+		scl 1.46
+	}
+	WO CanyonRockC {
+		pos -24.7857 61.568878 -2.120159
+		rot_x 0.826103 -0.553675 0.104876
+		rot_y 0.559652 0.827866 -0.037774
+		rot_z -0.065908 0.0899 0.993768
+		scl 3.979997
+	}
+	WO CanyonRockSandrim4 {
+		pos -40.699654 67.797821 4.449998
+		rot_x 0.984935 -0.172922 0
+		rot_y 0.172922 0.984935 0
+		scl 2.570002
+	}
+	WO CanyonRockSandrim2 {
+		pos -58.945713 60.126598 3.789998
+		rot_x -0.847971 0.530043 0
+		rot_y -0.530043 -0.847971 0
+		scl 1.8
+	}
+	WO CanyonRockSandrim3 {
+		pos -75.451782 65.857216 3.901422
+		rot_x 0.994821 -0.101553 0.004351
+		rot_y 0.101281 0.993965 0.042136
+		rot_z -0.008604 -0.041477 0.999102
+		scl 2.15
+	}
+	WO CanyonRockC {
+		pos -103.656197 40.164291 -1.430159
+		rot_x -0.584545 -0.755947 0.294706
+		rot_y 0.804959 -0.585864 0.093831
+		rot_z 0.101726 0.292074 0.95097
+		scl 4.46
+	}
+	WO CanyonRockD {
+		pos -96.699455 42.963428 -0.933821
+		rot_x 0.016493 -0.99534 0.095003
+		rot_y 0.999795 0.017533 0.010121
+		rot_z -0.011739 0.094817 0.995426
+		scl 3.3
+	}
+	WO CanyonRockSandrim3 {
+		pos -106.096542 20.954552 5.371422
+		rot_x 0.272839 0.96205 0.004351
+		rot_y -0.961254 0.272423 0.042136
+		rot_z 0.039352 -0.015679 0.999102
+		scl 2.15
+	}
+	WO CanyonRockSandrim4 {
+		pos -99.180237 -4.053584 3.94
+		rot_x 0.070085 -0.997541 0
+		rot_y 0.997541 0.070085 0
+		scl 2.570002
+	}
+	WO CanyonRockSandrim2 {
+		pos -103.91684 -21.279366 5.08
+		rot_x 0.169497 0.985531 0
+		rot_y -0.985531 0.169497 0
+		scl 1.8
+	}
+	WO CanyonRockC {
+		pos -101.66153 -40.750923 1.539841
+		rot_x -0.584545 -0.755947 0.294706
+		rot_y 0.804959 -0.585864 0.093831
+		rot_z 0.101726 0.292074 0.95097
+		scl 4.46
+	}
+	WO CanyonRockSandrim2 {
+		pos -80.036484 -55.372032 5.08
+		scl 1.8
+	}
+	WO CanyonRockSandrim3 {
+		pos -60.097912 -64.225639 4.171423
+		rot_x -0.992481 0.122327 0.004351
+		rot_y -0.122037 -0.991631 0.042136
+		rot_z 0.009469 0.041288 0.999102
+		scl 1.7
+	}
+	WO Canyon_A0 {
+		pos -80 -56 0
+	}
+	WO Canyon_A0 {
+		pos -72 -56 0
+		. mtmm 2
+	}
+	WO Canyon_B1 {
+		pos -56 -48 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 13
+	}
+	WO Canyon_D0 {
+		pos -64 -48 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 14
+	}
+	WO CanyonRockA {
+		pos -64.881302 -58.197891 -0.1988
+		rot_x 0.720842 -0.690338 0.061814
+		rot_y 0.690452 0.723015 0.02293
+		rot_z -0.060522 0.026151 0.997824
+		scl 2.290001
+	}
+	WO CanyonRockSandrim3 {
+		pos -43.146591 -58.830601 2.971421
+		rot_x -0.998976 -0.045045 0.004351
+		rot_y 0.045188 -0.998089 0.042136
+		rot_z 0.002445 0.04229 0.999102
+		scl 2.15
+	}
+	WO CanyonRockSandrim2 {
+		pos -18.554518 -59.725025 3.760141
+		rot_x -0.997092 -0.044575 0.061814
+		rot_y 0.046067 -0.998675 0.02293
+		rot_z 0.06071 0.025711 0.997824
+		scl 2.249999
+	}
+	WO CanyonRockB {
+		pos -9.377487 -56.07618 -1.856446
+		rot_x 0.979602 0.008059 0.200787
+		rot_y 0 0.999196 -0.040104
+		rot_z -0.200948 0.039286 0.978814
+		scl 4.15
+	}
+	WO CanyonRockC {
+		pos -3.399085 -54.223793 0.75984
+		rot_x 0.955184 -0.027775 0.294706
+		rot_y 0 0.995588 0.093831
+		rot_z -0.296012 -0.089626 0.95097
+		scl 3.29
+	}
+	WO CanyonRockSandrim1 {
+		pos 2.336716 -57.374054 6.580011
+		rot_x -0.931713 -0.363195 0
+		rot_y 0.363195 -0.931713 0
+		scl 2.249999
+	}
+	WO CanyonRockSandrim2 {
+		pos 30.376804 -52.458355 5.740023
+		scl 1.949999
+	}
+	WO CanyonRockSandrim3 {
+		pos 57.896572 -52.792625 4.861423
+		rot_x 0.983909 -0.178015 -0.015266
+		rot_y 0.173794 0.973389 -0.149364
+		rot_z 0.041449 0.144307 0.988665
+		scl 2.639999
+	}
+	WO CanyonRockD {
+		pos 66.057686 -56.349182 -0.51688
+		rot_x -0.998519 -0.053715 0.00865
+		rot_y 0.053821 -0.951917 0.301591
+		rot_z -0.007965 0.301609 0.953398
+		scl 4.770001 4.770001 4.86
+	}
+	WO CanyonRockC {
+		pos 70.72345 -53.669556 -1.16016
+		rot_x 0.956573 0.287545 0.047821
+		rot_y -0.291442 0.940337 0.175579
+		rot_z 0.005519 -0.181892 0.983303
+		scl 2.669999
+	}
+	WO CanyonRockSandrim1 {
+		pos 75.214989 -54.336666 4.270009
+		rot_x -0.933097 -0.359624 0
+		rot_y 0.359624 -0.933097 0
+		scl 1.46
+	}
+	WO SimpleProps_TrackStraight1 {
+		pos -62.837841 -36.834515 0.010023
+		rot_x -0.973364 0.229263 0
+		rot_y -0.229263 -0.973364 0
+	}
+	WO SimpleProps_Tower3 {
+		pos -24.309858 51.30405 -0.196852
+		rot_x -0.033942 0.999424 0
+		rot_y -0.999424 -0.033942 0
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 18.065235 -49.407669 -0.120321
+		rot_x 0.863887 0 0.503686
+		rot_z -0.503686 0 0.863887
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 18.705107 -42.829109 -0.120321
+		rot_x 0.863887 0 0.503686
+		rot_z -0.503686 0 0.863887
+	}
+	WO SimpleProps_Tower3 {
+		pos -16.245451 51.302238 0.883149
+		rot_x -0.033942 0.999424 0
+		rot_y -0.999424 -0.033942 0
+	}
+	WO CanyonRockC {
+		pos 52.108871 58.133026 -1.910159
+		rot_x -0.584545 -0.755947 0.294706
+		rot_y 0.804959 -0.585864 0.093831
+		rot_z 0.101726 0.292074 0.95097
+		scl 3.039999 3.27 3.27
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos -48.938915 48.874367 -0.08475
+		rot_x -0.393997 -0.919112 0
+		rot_y 0.919112 -0.393997 0
+	}
+	WO SimpleProps_Windmill {
+		pos -89.133003 -28.4571 2.867716
+		rot_x 0.876282 -0.481799 0
+		rot_y 0.481799 0.876282 0
+	}
+	WO SimpleProps_Windmill {
+		pos -83.593773 -33.636921 2.867716
+		rot_x 0.876282 -0.481799 0
+		rot_y 0.481799 0.876282 0
+	}
+	WO SimpleProps_Windmill {
+		pos -76.199753 -38.21941 2.867716
+		rot_x 0.876282 -0.481799 0
+		rot_y 0.481799 0.876282 0
+	}
+	WO BarrelA {
+		pos 44.827408 -20.065338 0.037464
+	}
+	WO ValleyProps_Fence {
+		pos -61.623844 -54.055794 -0.019949
+		rot_x 0.702297 -0.711884 0
+		rot_y 0.711884 0.702297 0
+		scl 0.34
+	}
+	WO SimpleProps_FortressFence {
+		pos -53.805164 48.854256 0.100012
+		rot_x 0.186798 -0.982398 0.000011
+		rot_y 0.982398 0.186798 0
+		rot_z 0 0.000012 1
+	}
+	WO CanyonRockB {
+		pos -42.625786 -25.483589 -0.355658
+		rot_x 0.979602 0.008059 0.200787
+		rot_y 0 0.999196 -0.040104
+		rot_z -0.200948 0.039286 0.978814
+	}
+	WO CanyonRockC {
+		pos -40.069889 -27.246536 -0.290073
+		rot_x 0.955184 -0.027775 0.294706
+		rot_y 0 0.995588 0.093831
+		rot_z -0.296012 -0.089626 0.95097
+	}
+	WO SimpleProps_Antenna {
+		pos 43.905102 39.926071 2.890702
+	}
+	WO BarrelA {
+		pos 66.547821 41.256618 -0.172538
+		rot_x 0.006656 0.999978 0
+		rot_y -0.999978 0.006656 0
+	}
+	WO RocketTruck {
+		pos 52.542641 -1.117957 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 68
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 52.15134 1.29492 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 67
+		. team 6
+		. order HoldPosition
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 30.258453 31.982166 -3.055343
+		rot_x -0.854268 0.018653 0.519498
+		rot_y -0.015937 -0.999826 0.009692
+		rot_z 0.519588 0 0.854417
+	}
+	WO SandrimProps_ContainerOpen {
+		pos -92.058044 -14.796165 0.162401
+		rot_x -0.447229 0.894419 0
+		rot_y -0.894419 -0.447229 0
+	}
+	WO CanyonRockA {
+		pos -5.944396 40.63974 -0.438807
+		rot_x 0.998087 -0.001418 0.061814
+		rot_y 0 0.999737 0.02293
+		rot_z -0.06183 -0.022886 0.997824
+	}
+	WO SimpleProps_BridgeWood {
+		pos -0.020361 52.089462 0.063454
+	}
+	WO SimpleProps_Fence2 {
+		pos -83.747208 50.067104 0.04001
+		rot_x 0.001512 0.999999 0
+		rot_y -0.999999 0.001512 0
+	}
+	WO SimpleProps_Tower2 {
+		pos -78.629517 44.650364 -0.240386
+		rot_x -0.57677 -0.816907 0
+		rot_y 0.816907 -0.57677 0
+	}
+	WO SimpleProps_Tower2 {
+		pos 67.808113 -40.92033 -0.240386
+	}
+	WO CanyonRockC {
+		pos 105.028122 -7.519922 0.099841
+		rot_x 0.707263 -0.642595 0.294706
+		rot_y 0.647793 0.756016 0.093831
+		rot_z -0.283097 0.124546 0.95097
+		scl 3.519999 3.749999 3.749999
+	}
+	WO SimpleProps_Tower3 {
+		pos -97.324821 50.795864 2.833148
+		rot_x -0.033942 0.999424 0
+		rot_y -0.999424 -0.033942 0
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos -79.517731 51.950394 -0.08475
+		rot_x -0.113359 -0.993554 0
+		rot_y 0.993554 -0.113359 0
+	}
+	WO SimpleProps_FortressFence {
+		pos -74.712395 52.248951 0.100012
+		rot_x 0.186798 -0.982398 0.000011
+		rot_y 0.982398 0.186798 0
+		rot_z 0 0.000012 1
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos -69.729118 53.102715 -0.08475
+		rot_x 0.171504 -0.985183 0
+		rot_y 0.985183 0.171504 0
+	}
+	WO SimpleProps_FortressFence {
+		pos -64.92746 53.081593 0.099999
+		rot_x -0.019524 -0.999809 0
+		rot_y 0.999809 -0.019524 0
+	}
+	WO SimpleProps_FortressFenceCorner {
+		pos 4.951268 45.447533 -0.139969
+		rot_x 0.99514 0.098468 0
+		rot_y -0.098468 0.99514 0
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 7.273261 46.921989 -0.114752
+		rot_x 0.058368 0.117754 0.991326
+		rot_y -0.255969 0.961587 -0.099151
+		rot_z -0.964921 -0.247961 0.086268
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 3.731245 44.755482 -0.114752
+		rot_x -0.103224 0.08135 0.991326
+		rot_y -0.99368 -0.052624 -0.099151
+		rot_z 0.044102 -0.995295 0.086268
+	}
+	WO SimpleProps_Barrel {
+		pos 92.09726 -37.919582 -0.177335
+		rot_x 0.998882 -0.047283 0
+		rot_y 0.047283 0.998882 0
+	}
+	WO SimpleProps_Barrel {
+		pos 84.038338 -44.114193 2.942665
+		rot_x -0.984949 0.172844 0
+		rot_y -0.172844 -0.984949 0
+	}
+	WO SimpleProps_Barrel {
+		pos 85.126495 -42.921268 2.942665
+	}
+	WO SimpleProps_Fence2 {
+		pos -59.391731 50.6185 0.04001
+		rot_x -0.998022 -0.062867 0
+		rot_y 0.062867 -0.998022 0
+	}
+	WO SimpleProps_OldContainer {
+		pos -67.746506 43.618008 -0.013933
+	}
+	WO BarrelA {
+		pos -66.61853 45.777657 -0.112536
+	}
+	WO BarrelA {
+		pos -67.439667 46.061771 -0.112536
+		rot_x 0.796483 -0.604661 0
+		rot_y 0.604661 0.796483 0
+	}
+	WO SimpleProps_Tower3 {
+		pos -42.84515 51.447056 2.833148
+		rot_x -0.033942 0.999424 0
+		rot_y -0.999424 -0.033942 0
+	}
+	WO SimpleProps_Tower3 {
+		pos -34.163223 51.099895 -0.106852
+		rot_x -0.033942 0.999424 0
+		rot_y -0.999424 -0.033942 0
+	}
+	WO CanyonRockC {
+		pos 102.428574 28.545763 -6.140155
+		rot_x 0.774149 -0.560217 0.294706
+		rot_y 0.559977 0.823178 0.093831
+		rot_z -0.29516 0.092389 0.95097
+		scl 3.429999 3.659999 3.659999
+	}
+	WO CanyonRockA {
+		pos 14.51206 -52.675411 -0.1988
+		rot_x 0.364381 0.929196 0.061814
+		rot_y -0.931249 0.363661 0.02293
+		rot_z -0.001173 -0.065919 0.997824
+		scl 2.290001
+	}
+	WO CanyonRockA {
+		pos 22.129675 -53.705479 -2.2988
+		rot_x 0.364381 0.929196 0.061814
+		rot_y -0.931249 0.363661 0.02293
+		rot_z -0.001173 -0.065919 0.997824
+		scl 2.290001
+	}
+	WO CanyonRockA {
+		pos -50.186596 -53.180363 -0.7988
+		rot_x 0.840361 0.538491 0.061814
+		rot_y -0.540576 0.840982 0.02293
+		rot_z -0.039637 -0.052684 0.997824
+		scl 1.430002
+	}
+	WO BarrelA {
+		pos 76.068161 22.399988 0
+	}
+	WO BarrelA {
+		pos 75.55616 23.116201 0
+		rot_x -0.740427 0.672136 0
+		rot_y -0.672136 -0.740427 0
+	}
+	WO BarrelA {
+		pos 76.797218 21.149046 0
+		rot_x 0.37415 -0.927368 0
+		rot_y 0.927368 0.37415 0
+	}
+	WO BarrelA {
+		pos 75.373604 20.87545 0
+		rot_x -0.381091 -0.924537 0
+		rot_y 0.924537 -0.381091 0
+	}
+	WO SimpleProps_Windmill {
+		pos 92.293198 -12.139408 2.868057
+		rot_x 0.414354 -0.910116 0
+		rot_y 0.910116 0.414354 0
+	}
+	WO CanyonRockC {
+		pos 44.207661 44.235462 3.000001
+		rot_x 0.001223 -0.955587 0.294706
+		rot_y 0.99513 0.030211 0.093831
+		rot_z -0.098567 0.293156 0.95097
+	}
+	WO Canyon_C0 {
+		pos -8 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos 0 64 0
+		. mtmm 4
+	}
+	WO Canyon_C0 {
+		pos -8 40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_D1 {
+		pos -40 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Canyon_C0 {
+		pos 8 32 -6
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Canyon_C4 {
+		pos 24 56 -6
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO InfantryHeavy {
+		pos 79.63678 -0.091081 0.6
+		rot_x -0.61774 0.786382 0
+		rot_y -0.786382 -0.61774 0
+		id 55
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 48.25798 11.627252 0.100001
+		rot_x -0.847289 0.531132 0
+		rot_y -0.531132 -0.847289 0
+		id 53
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 46.910057 11.342705 0.100001
+		rot_x -0.87153 0.490341 0
+		rot_y -0.490341 -0.87153 0
+		id 52
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 48.680077 9.853739 0.100001
+		rot_x -0.960273 -0.279062 0
+		rot_y 0.279062 -0.960273 0
+		id 51
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 57.824562 0.833728 0.100001
+		rot_x -0.187521 0.982261 0
+		rot_y -0.982261 -0.187521 0
+		id 50
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 48.410046 -7.43682 0.100001
+		rot_x 0.446409 0.894829 0
+		rot_y -0.894829 0.446409 0
+		id 46
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 47.08482 -6.691971 0.100001
+		rot_x -0.382299 0.924039 0
+		rot_y -0.924039 -0.382299 0
+		id 49
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 60.829563 -8.101923 0.1
+		id 48
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 67.66349 -8.268319 0.10001
+		rot_x 1 0 -0.000032
+		rot_z 0.000032 0 1
+		id 47
+		. team 6
+		. order HoldPosition
+	}
+	WO TurretStarter {
+		pos 9.837831 -23.962105 -3.127595
+		rot_x 0.070485 -0.997513 0
+		rot_y 0.997513 0.070485 0
+		id 45
+		. team 0
+		. order HoldPosition
+	}
+	WO TurretStarter {
+		pos 5.035465 -23.983694 -3.127595
+		rot_x 0.070485 -0.997513 0
+		rot_y 0.997513 0.070485 0
+		id 43
+		. team 0
+		. order HoldPosition
+	}
+	WO TurretStarter {
+		pos 4.615751 -28.042625 -3.127595
+		rot_x 0.034162 -0.999416 0
+		rot_y 0.999416 0.034162 0
+		id 44
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -47.606171 -22.455484 0.600008
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 42
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -47.607353 -20.745167 0.600008
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 41
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -47.483574 -18.994694 0.600008
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 39
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -47.43792 -17.162611 0.600008
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 40
+		. team 0
+		. order HoldPosition
+	}
+	WO TurretStarter {
+		pos -49.529495 11.340337 0.262403
+		rot_x 0.034162 -0.999416 0
+		rot_y 0.999416 0.034162 0
+		id 35
+		. team 0
+		. order HoldPosition
+	}
+	WO TurretStarter {
+		pos -49.621136 14.24455 0.262403
+		rot_x 0.070485 -0.997513 0
+		rot_y 0.997513 0.070485 0
+		id 37
+		. team 0
+		. order HoldPosition
+	}
+	WO TurretStarter {
+		pos -49.666592 17.492428 0.262403
+		rot_x 0.070485 -0.997513 0
+		rot_y 0.997513 0.070485 0
+		id 38
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 39.605682 -3.914005 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 56
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 39.976646 4.004394 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 57
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 37.580967 1.191342 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 58
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 37.542957 -1.095282 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 59
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 33.941956 -3.883314 0.100001
+		rot_x 0.666623 0.745395 0
+		rot_y -0.745395 0.666623 0
+		id 60
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 33.694286 4.296749 0.100001
+		rot_x -0.159269 0.987235 0
+		rot_y -0.987235 -0.159269 0
+		id 61
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 51.425404 5.383983 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 66
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 51.317616 -4.746803 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 69
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -57.839394 -3.52973 0.600008
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 65
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -57.671143 1.763144 0.600008
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 62
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -57.716797 -0.06894 0.600008
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 63
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -57.840576 -1.819413 0.600008
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 64
+		. team 0
+		. order HoldPosition
+	}
+	WO Container4 {
+		pos 21.899195 -9.39638 0.03
+		rot_x -0.389937 -0.920841 0
+		rot_y 0.920841 -0.389937 0
+		scl 0.77
+	}
+	WO Container4 {
+		pos 22.001686 -14.045182 0
+		rot_x 0.749073 -0.662487 0
+		rot_y 0.662487 0.749073 0
+		scl 0.77
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 22.426529 -8.835462 -0.05057
+		rot_x 0.519012 0.854767 0
+		rot_y -0.854767 0.519012 0
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 22.608831 -14.549485 -0.05057
+		rot_x 0.82977 -0.558105 0
+		rot_y 0.558105 0.82977 0
+	}
+	WO BarrelSmokey {
+		pos 23.267584 -12.752704 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 36.008862 8.949814 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 35.61145 -8.702375 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO BarrelSmokey {
+		pos 45.070747 -3.447146 0
+	}
+	WO Infantry {
+		pos 79.4692 29.040808 0.100001
+		id 72
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 80.962746 27.84306 0.100001
+		id 70
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 78.757469 27.232727 0.100001
+		id 73
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 80.032898 26.813065 0.100001
+		id 74
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 81.116196 25.685381 0.100001
+		id 75
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 79.029961 25.351351 0.100001
+		id 76
+		. team 6
+		. order HoldPosition
+	}
+	WO Container4 {
+		pos 21.981718 -9.228946 1.05
+		rot_x -0.632147 -0.774848 0
+		rot_y 0.774848 -0.632147 0
+		scl 0.59
+	}
+	WO Container4 {
+		pos 22.103453 -13.816349 1.14
+		rot_x 0.955946 -0.293542 0
+		rot_y 0.293542 0.955946 0
+		scl 0.62
+	}
+	WO Container4 {
+		pos 42.682747 -22.426786 0.03
+		rot_x -0.389937 -0.920841 0
+		rot_y 0.920841 -0.389937 0
+		scl 0.77
+	}
+	WO Container4 {
+		pos 42.765266 -22.25935 1.05
+		rot_x -0.632147 -0.774848 0
+		rot_y 0.774848 -0.632147 0
+		scl 0.59
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 43.210079 -21.865866 -0.05057
+		rot_x 0.519012 0.854767 0
+		rot_y -0.854767 0.519012 0
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 40.347839 -21.025904 -0.05057
+		rot_x 0.237225 0.971455 0
+		rot_y -0.971455 0.237225 0
+	}
+	WO Container4 {
+		pos 39.820503 -21.586823 0.03
+		rot_x -0.147398 -0.989077 0
+		rot_y 0.989077 -0.147398 0
+		scl 0.77
+	}
+	WO Container4 {
+		pos 40.295677 -21.647396 1.05
+		rot_x -0.132465 -0.991188 0
+		rot_y 0.991188 -0.132465 0
+		scl 0.59
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 19.564287 -7.995499 -0.05057
+		rot_x 0.237225 0.971455 0
+		rot_y -0.971455 0.237225 0
+	}
+	WO Container4 {
+		pos 19.036953 -8.556417 0.03
+		rot_x -0.147398 -0.989077 0
+		rot_y 0.989077 -0.147398 0
+		scl 0.77
+	}
+	WO Container4 {
+		pos 19.512127 -8.616991 1.05
+		rot_x -0.132465 -0.991188 0
+		rot_y 0.991188 -0.132465 0
+		scl 0.59
+	}
+	WO Container7 {
+		pos -13.569714 -1.64068 -5.887686
+		rot_x -0.039452 0.999221 0
+		rot_y -0.999221 -0.039452 0
+	}
+	WO Container7 {
+		pos -9.791649 -1.526964 -5.887686
+		rot_x -0.039452 0.999221 0
+		rot_y -0.999221 -0.039452 0
+	}
+	WO Container7 {
+		pos -5.639853 -1.369749 -5.887686
+		rot_x -0.039452 0.999221 0
+		rot_y -0.999221 -0.039452 0
+	}
+	WO Container7 {
+		pos -3.50749 -1.569927 -5.887686
+		rot_x -0.039452 0.999221 0
+		rot_y -0.999221 -0.039452 0
+	}
+	WO Container7 {
+		pos -2.893082 1.628731 -5.887686
+		rot_x -0.039452 0.999221 0
+		rot_y -0.999221 -0.039452 0
+	}
+	WO Container7 {
+		pos -5.025444 1.828909 -5.887686
+		rot_x -0.039452 0.999221 0
+		rot_y -0.999221 -0.039452 0
+	}
+	WO Container7 {
+		pos -9.17724 1.671694 -5.887686
+		rot_x -0.039452 0.999221 0
+		rot_y -0.999221 -0.039452 0
+	}
+	WO Container7 {
+		pos -12.955305 1.557978 -5.887686
+		rot_x -0.039452 0.999221 0
+		rot_y -0.999221 -0.039452 0
+	}
+	WO RocketTruck {
+		pos 77.172478 29.349342 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 71
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 76.502724 27.111895 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 106
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 76.979607 24.791229 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 107
+		. team 6
+		. order HoldPosition
+	}
+	WO SimpleProps_Tower1 {
+		pos 68.301262 -27.991831 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 74.50988 -30.791027 0.106731
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 45.069569 -7.86167 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 44.393639 -6.327511 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 45.938164 7.722281 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 44.888058 5.50448 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO Container4 {
+		pos 43.344624 -4.799747 0.03
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 43.450016 4.159795 0.03
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO BarrelSmokey {
+		pos 45.239231 3.099892 0
+	}
+	WO SimpleProps_FortressFenceShort {
+		pos 46.794094 -11.215528 0
+		rot_x -0.026481 -0.999649 0
+		rot_y 0.999649 -0.026481 0
+	}
+	WO Infantry {
+		pos 46.639477 -8.54848 0.100001
+		rot_x 0.446409 0.894829 0
+		rot_y -0.894829 0.446409 0
+		id 108
+		. team 6
+		. order HoldPosition
+	}
+	WO SimpleProps_FortressFence {
+		pos 60.764366 7.494165 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 59.71426 5.276365 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO BarrelSmokey {
+		pos 59.587196 2.801254 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 59.219841 -6.555626 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 60.058277 -5.717184 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO Container4 {
+		pos 33.885674 -7.066024 0.03
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 33.699471 -10.608165 0.03
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 33.726814 -8.894107 1.499999
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 34.163597 9.031656 1.499999
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 34.136253 7.317597 0.03
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 34.322456 10.859737 0.03
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 51.103329 15.842659 1.499999
+		rot_x 0.124276 -0.992247 0
+		rot_y 0.992247 0.124276 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 48.694 15.381647 0.03
+		rot_x -0.079956 0.996798 0
+		rot_y -0.996798 -0.079956 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 52.783989 15.774717 0.03
+		rot_x -0.086526 -0.996249 0
+		rot_y 0.996249 -0.086526 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 50.250084 -12.060547 1.499999
+		rot_x 0.124276 -0.992247 0
+		rot_y 0.992247 0.124276 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 47.840755 -12.521559 0.03
+		rot_x -0.079956 0.996798 0
+		rot_y -0.996798 -0.079956 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 51.930744 -12.128489 0.03
+		rot_x -0.086526 -0.996249 0
+		rot_y 0.996249 -0.086526 0
+		scl 0.94
+	}
+	WO Canyon_A0 {
+		pos -40 -56 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -32 -56 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos -24 -64 0
+	}
+	WO Canyon_A0 {
+		pos -24 -56 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos -16 -72 0
+	}
+	WO Canyon_A0 {
+		pos -16 -64 0
+	}
+	WO Canyon_A0 {
+		pos -16 -56 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos -8 -72 0
+	}
+	WO Canyon_A0 {
+		pos -8 -64 0
+	}
+	WO Canyon_A0 {
+		pos -8 -56 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 88 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Canyon_A0 {
+		pos 0 -72 0
+	}
+	WO Canyon_A0 {
+		pos 0 -64 0
+	}
+	WO Canyon_A0 {
+		pos 0 -56 0
+		. mtmm 3
+	}
+	WO Canyon_C1 {
+		pos 96 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Canyon_A0 {
+		pos 8 -72 0
+	}
+	WO Canyon_A0 {
+		pos 8 -64 0
+	}
+	WO Canyon_A0 {
+		pos 8 -56 0
+		. mtmm 1
+	}
+	WO Canyon_C1 {
+		pos 96 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos 88 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 11
+	}
+	WO Canyon_A0 {
+		pos 16 -72 0
+	}
+	WO Canyon_A0 {
+		pos 16 -64 0
+	}
+	WO Canyon_A0 {
+		pos 16 -56 0
+	}
+	WO Canyon_A0 {
+		pos 16 64 0
+	}
+	WO Canyon_A0 {
+		pos 104 -24 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos 104 -32 0
+	}
+	WO Canyon_A0 {
+		pos 24 -72 0
+	}
+	WO Canyon_A0 {
+		pos 24 -64 0
+	}
+	WO Canyon_A0 {
+		pos 24 -56 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos 24 64 0
+	}
+	WO Canyon_A0 {
+		pos 24 72 0
+	}
+	WO Canyon_B1 {
+		pos 112 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A0 {
+		pos 104 -40 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos 104 -48 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos 32 -72 0
+	}
+	WO Canyon_A0 {
+		pos 32 -64 0
+	}
+	WO Canyon_A0 {
+		pos 32 -56 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos 32 64 0
+	}
+	WO Canyon_A0 {
+		pos 32 72 0
+	}
+	WO Canyon_A0 {
+		pos 32 80 0
+	}
+	WO Canyon_A0 {
+		pos 96 -56 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 104 -56 0
+		. mtmm 1
+	}
+	WO Canyon_A1 {
+		pos 88 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Canyon_A0 {
+		pos 40 -72 0
+	}
+	WO Canyon_A0 {
+		pos 40 -64 0
+	}
+	WO Canyon_A0 {
+		pos 40 -56 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos 40 64 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos 40 72 0
+	}
+	WO Canyon_A0 {
+		pos 40 80 0
+	}
+	WO Canyon_A0 {
+		pos 40 88 0
+	}
+	WO Canyon_A0 {
+		pos 96 -64 0
+	}
+	WO Canyon_B1 {
+		pos 96 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Canyon_B0 {
+		pos 104 64 0
+	}
+	WO Canyon_A0 {
+		pos 112 -32 0
+	}
+	WO Canyon_A0 {
+		pos 48 -72 0
+	}
+	WO Canyon_A0 {
+		pos 48 -64 0
+	}
+	WO Canyon_A0 {
+		pos 48 -56 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 48 64 0
+		. mtmm 12
+	}
+	WO Canyon_A0 {
+		pos 48 72 0
+	}
+	WO Canyon_A0 {
+		pos 48 80 0
+	}
+	WO Canyon_A0 {
+		pos 48 88 0
+	}
+	WO Canyon_A0 {
+		pos 104 80 0
+	}
+	WO Canyon_B0 {
+		pos 112 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Canyon_A0 {
+		pos 112 80 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C4 {
+		pos 112 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C4 {
+		pos 112 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos 56 -72 0
+	}
+	WO Canyon_A0 {
+		pos 56 -64 0
+	}
+	WO Canyon_A0 {
+		pos 56 -56 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 56 64 0
+		. mtmm 12
+	}
+	WO Canyon_A0 {
+		pos 56 72 0
+	}
+	WO Canyon_A0 {
+		pos 56 80 0
+	}
+	WO Canyon_A0 {
+		pos 56 88 0
+	}
+	WO Canyon_A0 {
+		pos 104 72 0
+	}
+	WO Canyon_C4 {
+		pos 96 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Canyon_A2 {
+		pos 88 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Canyon_B0 {
+		pos 112 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_D0 {
+		pos 104 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos 64 -72 0
+	}
+	WO Canyon_A0 {
+		pos 64 -64 0
+	}
+	WO Canyon_A0 {
+		pos 64 -56 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 64 64 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos 64 72 0
+	}
+	WO Canyon_A0 {
+		pos 64 80 0
+	}
+	WO Canyon_A0 {
+		pos 64 88 0
+	}
+	WO Canyon_A0 {
+		pos 112 -40 0
+	}
+	WO Canyon_A0 {
+		pos 112 -48 0
+	}
+	WO Canyon_C4 {
+		pos 112 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Canyon_A0 {
+		pos 96 88 0
+	}
+	WO Canyon_A0 {
+		pos 96 80 0
+	}
+	WO Canyon_A0 {
+		pos 72 -72 0
+	}
+	WO Canyon_A0 {
+		pos 72 -64 0
+	}
+	WO Canyon_A0 {
+		pos 72 -56 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 72 64 0
+	}
+	WO Canyon_A0 {
+		pos 72 72 0
+	}
+	WO Canyon_A0 {
+		pos 72 80 0
+	}
+	WO Canyon_A0 {
+		pos 72 88 0
+	}
+	WO Canyon_C1 {
+		pos 112 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_B1 {
+		pos 88 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Canyon_A0 {
+		pos 112 88 0
+	}
+	WO Canyon_A0 {
+		pos 112 72 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos 96 72 0
+	}
+	WO Canyon_A0 {
+		pos 80 -72 0
+	}
+	WO Canyon_A0 {
+		pos 80 -64 0
+	}
+	WO Canyon_A0 {
+		pos 80 -56 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 112 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C1 {
+		pos 104 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Canyon_C0 {
+		pos 96 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 13
+	}
+	WO Canyon_A2 {
+		pos 112 40 0
+		. mtmm 4
+	}
+	WO Canyon_A0 {
+		pos 88 -72 0
+	}
+	WO Canyon_A0 {
+		pos 88 -64 0
+	}
+	WO Canyon_A0 {
+		pos 88 -56 0
+		. mtmm 3
+	}
+	WO Canyon_A0 {
+		pos 88 64 0
+		. mtmm 8
+	}
+	WO Canyon_A0 {
+		pos 88 72 0
+	}
+	WO Canyon_A0 {
+		pos 88 80 0
+	}
+	WO Canyon_A0 {
+		pos 88 88 0
+	}
+	WO Canyon_C1 {
+		pos 112 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C1 {
+		pos 112 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO CanyonRockC {
+		pos 110.458611 58.967842 -1.589997
+		rot_x -0.584545 -0.755947 0.294706
+		rot_y 0.804959 -0.585864 0.093831
+		rot_z 0.101726 0.292074 0.95097
+		scl 3.519999 3.749999 3.749999
+	}
+	WO CanyonRockC {
+		pos 113.991318 49.651886 -5.759997
+		rot_x -0.584545 -0.755947 0.294706
+		rot_y 0.804959 -0.585864 0.093831
+		rot_z 0.101726 0.292074 0.95097
+		scl 3.519999 3.749999 3.749999
+	}
+	WO CanyonRockC {
+		pos 74.622131 46.548134 -1.589997
+		rot_x -0.83053 0.47262 0.294706
+		rot_y -0.467044 -0.879241 0.093831
+		rot_z 0.303463 -0.059711 0.95097
+		scl 2.56 2.79 2.79
+	}
+	WO RocketTruck {
+		pos 90.198051 39.836761 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 118
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 65.263168 -13.835657 0.10001
+		rot_x 1 0 -0.000032
+		rot_z 0.000032 0 1
+		id 128
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 62.83234 -13.662395 0.10001
+		rot_x 1 0 -0.000032
+		rot_z 0.000032 0 1
+		id 129
+		. team 6
+		. order HoldPosition
+	}
+	WO Container4 {
+		pos 57.210323 -14.547986 0.03
+		rot_x 0.994081 0.108636 0
+		rot_y -0.108636 0.994081 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 59.216938 -16.270081 0.03
+		rot_x 0.994081 0.108636 0
+		rot_y -0.108636 0.994081 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 57.087143 -17.959021 0.03
+		rot_x 0.890851 -0.454295 0
+		rot_y 0.454295 0.890851 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 58.154575 -16.561749 1.409999
+		rot_x 0.890851 -0.454295 0
+		rot_y 0.454295 0.890851 0
+		scl 0.94
+	}
+	WO SimpleProps_FortressFence {
+		pos 77.00898 -6.808298 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 76.020233 -6.07058 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 77.395027 6.207968 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 76.459023 6.67034 0.102583
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_Antenna {
+		pos 97.152168 2.484074 2.890702
+		rot_x -0.883278 -0.46885 0
+		rot_y 0.46885 -0.883278 0
+		scl 1.729999 1.729999 2.179999
+	}
+	WO SimpleProps_FortressFence {
+		pos 0.953613 -6.053911 -3
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 1.701351 -6.857743 -3.000312
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 1.47148 5.979671 -2.999999
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos 2.521588 8.197472 -3
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SupplyTruck {
+		pos -65.602997 -1.254523 0.262402
+		id 130
+		. team 0
+		. order HoldPosition
+	}
+	WO Container4 {
+		pos 15.101471 10.656294 -1.500001
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 15.074127 8.942234 -2.97
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO Container4 {
+		pos 15.26033 12.484375 -2.97
+		rot_x -0.998525 0.054282 0
+		rot_y -0.054282 -0.998525 0
+		scl 0.94
+	}
+	WO SimpleProps_FortressFence {
+		pos 16.946735 10.574451 -2.897417
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressGround {
+		pos 6.996963 -37.788803 -2.970001
+		rot_x 0.999602 -0.028206 0
+		rot_y 0.028206 0.999602 0
+		scl 0.67
+	}
+	WO SimpleProps_FortressFence {
+		pos 2.971479 0.038063 -2.999999
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_FortressFence {
+		pos -16.281439 0.021041 -2.999999
+		rot_x -0.997871 0.065215 0
+		rot_y -0.065215 -0.997871 0
+	}
+	WO SimpleProps_Building4 {
+		pos 9.008066 -35.062222 -3.509964
+		rot_x -0.999991 0.004186 0
+		rot_y -0.004186 -0.999991 0
+	}
+	WO SimpleProps_Building3 {
+		pos -2.617386 -22.80954 -2.959601
+		scl 0.78
+	}
+	WO Crate5 {
+		pos 15.954586 -26.386278 -3
+		rot_x 0.573577 -0.819152 0
+		rot_y 0.819152 0.573577 0
+	}
+	WO Crate6 {
+		pos 16.6087 -28.779036 -3
+		rot_x 0.5 -0.866025 0
+		rot_y 0.866025 0.5 0
+	}
+	WO Crate5 {
+		pos 13.471098 -29.60503 -3
+		rot_x 0.999948 0.010152 0
+		rot_y -0.010152 0.999948 0
+	}
+	WO Crate6 {
+		pos 14.125212 -31.997787 -3
+		rot_x 0.674665 -0.738124 0
+		rot_y 0.738124 0.674665 0
+	}
+	WO RocketTruck {
+		pos -1.610155 -36.046928 -2.901391
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 119
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -1.611338 -34.336613 -2.901391
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 117
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -1.441904 -30.754055 -2.901391
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 32
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos -1.487558 -32.58614 -2.901391
+		rot_x -0.042156 -0.999111 0
+		rot_y 0.999111 -0.042156 0
+		id 116
+		. team 0
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 93.718315 40.514328 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 120
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 96.772583 39.262894 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 121
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 107.012108 19.855114 0.1
+		rot_x 0.993811 0.111082 0
+		rot_y -0.111082 0.993811 0
+		id 122
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 107.476295 16.751974 0.1
+		rot_x 0.875309 -0.483563 0
+		rot_y 0.483563 0.875309 0
+		id 123
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 81.360802 58.808514 0.100001
+		id 124
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 80.277504 59.936199 0.100001
+		id 125
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 79.002075 60.355862 0.100001
+		id 126
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 79.274567 58.474476 0.100001
+		id 127
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 78.612343 70.463898 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 131
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 78.13546 72.784561 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 132
+		. team 6
+		. order HoldPosition
+	}
+	WO RocketTruck {
+		pos 78.805214 75.022011 0.1
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 135
+		. team 6
+		. order HoldPosition
+	}
+	WO Infantry {
+		pos 81.207352 60.96619 0.100001
+		id 136
+		. team 6
+		. order HoldPosition
+	}
+	WO InfantryHeavy {
+		pos 108.232727 6.385306 0.100007
+		rot_x 0.079528 0.996833 0
+		rot_y -0.996833 0.079528 0
+		id 143
+		. team 6
+		. order HoldPosition
+	}
+	WO PowerupGuardian {
+		pos -83.59935 -17.051014 2.100306
+		rot_x -0.353403 0.935471 0
+		rot_y -0.935471 -0.353403 0
+	}
+}
+
+details {
+	d CanyonPlantGrassE -1 1 0 0 0 1 0 0 0 1 108.557983 -20.729527 0.044727
+	d CanyonPlantGrassE -1 1 0 0 0 1 0 0 0 1 86.427277 -3.992665 0.000001
+	d SimpleProps_TileTunnel -1 0.999263 0.038386 0.000022 -0.038386 0.999263 0.000564 0 -0.000564 1 -77.016708 30.12575 -2.892326
+	d SimpleProps_Fence -1 -1 0 0 0 -1 0 0 0 1 -109.867455 -13.534691 0.102447
+	d SimpleProps_Gate -1 1 0 0 0 0.999999 0.0011 0 -0.0011 0.999999 -100.954361 0.154867 0.1628
+	d SimpleProps_Gate -1 1 0 0 0 0.999999 0.0011 0 -0.0011 0.999999 -101.008934 15.949075 0.103519
+	d CactusA -1 -0.129043 -0.991639 0 0.991639 -0.129043 0 0 0 1 92.114845 -21.696499 0.1
+	d CactusA -1 -0.951157 -0.308707 0 0.308707 -0.951157 0 0 0 1 -68.590157 -54.701557 0.1
+	d CactusA -1 1 0 0 0 1 0 0 0 1 -41.647491 -5.115168 -0.02
+	d CactusA -1 1 0 0 0 1 0 0 0 1 33.163342 -27.44211 0.1
+	d CactusA -1 0.448962 -0.893551 0 0.893551 0.448962 0 0 0 1 83.981361 -29.886948 0.1
+	d CactusA -1 1 0 0 0 1 0 0 0 1 82.449226 -11.186947 0.1
+	d CactusA -1 1 0 0 0 1 0 0 0 1 -72.653336 -51.429718 0.1
+	d CactusA -1 -0.918556 -0.39529 0.000564 0.39529 -0.918556 0 0.000518 0.000223 1 89.374405 -11.351994 3.097445
+	d CactusA -1 0.99768 0.006175 0.067796 0 0.995878 -0.090707 -0.068077 0.090497 0.993567 -11.204193 35.207905 -2.772364
+	d CactusA -1 1 0 0 0 1 0 0 0 1 33.107761 -14.842941 0.1
+	d CanyonPlantGrassJ -1 0.717687 0.177846 -0.029958 -0.126548 0.584166 0.436276 0.1285 -0.417999 0.596964 70.175919 38.603149 0.003149
+	d CanyonPlantGrassJ -1 -0.353868 -0.837569 -0.03684 0.668322 -0.30596 0.536503 -0.506186 0.181573 0.734104 97.893585 -44.158478 0
+	d CanyonPlantGrassJ -1 0.882561 0.218702 -0.03684 -0.15562 0.718365 0.536503 0.15802 -0.514026 0.734104 73.482178 -33.566101 0
+	d CanyonPlantGrassJ -1 0.834068 0.206686 -0.034815 -0.147069 0.678894 0.507024 0.149336 -0.485781 0.693769 -73.499496 -9.035564 0.000966
+	d CanyonPlantGrassJ -1 0.834068 0.206686 -0.034815 -0.147069 0.678894 0.507024 0.149336 -0.485781 0.693769 -82.453354 3.676599 0.051027
+	d CanyonPlantGrassJ -1 0.82437 0.204282 -0.034411 -0.14536 0.671 0.501129 0.147601 -0.480134 0.685702 -92.496765 -36.300293 2.85
+	d CanyonPlantGrassJ -1 0.82437 0.204282 -0.034411 -0.14536 0.671 0.501129 0.147601 -0.480134 0.685702 -92.224258 -37.536919 2.822105
+	d CanyonPlantGrassJ -1 -0.374816 -0.739787 -0.033601 0.588811 -0.320548 0.489339 -0.449128 0.197141 0.669568 91.575226 56.286308 3.034148
+	d CanyonPlantGrassJ -1 0.834068 0.206686 -0.034815 -0.147069 0.678894 0.507024 0.149336 -0.485781 0.693769 -75.059647 -0.626834 0.00006
+	d CanyonPlantGrassJ -1 0.82437 0.204282 -0.034411 -0.14536 0.671 0.501129 0.147601 -0.480134 0.685702 11.921051 -1.49984 -3.899998
+	d CanyonPlantGrassJ -1 0.834068 0.206686 -0.034815 -0.147069 0.678894 0.507024 0.149336 -0.485781 0.693769 -62.269173 -14.93391 0.000145
+	d CanyonPlantGrassJ -1 0.834068 0.206686 -0.034815 -0.147069 0.678894 0.507024 0.149336 -0.485781 0.693769 -76.912888 -5.020591 0.047781
+	d CanyonPlantGrassJ -1 0.834068 0.206686 -0.034815 -0.147069 0.678894 0.507024 0.149336 -0.485781 0.693769 -76.20137 -1.657089 0.075879
+	d CanyonPlantGrassJ -1 0.834068 0.206686 -0.034815 -0.147069 0.678894 0.507024 0.149336 -0.485781 0.693769 -80.026382 -1.825186 0.016421
+	d CanyonPlantGrassJ -1 0.834068 0.206686 -0.034815 -0.147069 0.678894 0.507024 0.149336 -0.485781 0.693769 -78.046951 10.571183 0.175463
+	d CanyonPlantGrassJ -1 0.882561 0.218702 -0.03684 -0.15562 0.718365 0.536503 0.15802 -0.514026 0.734104 95.634674 -38.462284 0
+	d CanyonPlantGrassJ -1 0.626132 -0.543812 -0.033601 0.454385 0.492933 0.48934 -0.300656 -0.387539 0.669568 98.433151 52.14912 3.034148
+	d CanyonPlantGrassJ -1 -0.781076 -0.465473 -0.03684 0.357445 -0.642261 0.536503 -0.300426 0.446024 0.734104 92.786652 -47.82066 0
+	d CanyonPlantGrassJ -1 0.717687 0.177846 -0.029958 -0.126548 0.584166 0.436276 0.1285 -0.417999 0.596964 43.727806 14.838553 0
+	d CanyonPlantGrassJ -1 0.804973 0.199475 -0.033601 -0.141938 0.655212 0.489339 0.144128 -0.468837 0.669568 68.177635 29.99641 0.154149
+	d CanyonPlantGrassJ -1 -0.033111 -0.908651 -0.03684 0.733428 -0.048477 0.536503 -0.53767 -0.01017 0.734104 97.886024 -42.412281 0
+	d CanyonPlantGrassJ -1 0.804973 0.199475 -0.033601 -0.141938 0.655212 0.489339 0.144128 -0.468837 0.669568 58.094032 34.500614 0
+	d CanyonPlantGrassJ -1 0.82437 0.204282 -0.034411 -0.14536 0.671 0.501129 0.147601 -0.480134 0.685702 -92.288162 46.091358 2.850001
+	d CanyonPlantGrassJ -1 0.892256 0.221105 -0.037245 -0.15733 0.726258 0.542397 0.159756 -0.519672 0.742169 66.426483 23.424351 0.000089
+	d CactusC -1 0 -1.250001 0 1.250001 0 0 0 0 1.250001 51.175148 -23.272448 0.020003
+	d CactusC -1 1 0 0 0 1 0 0 0 1 -15.220604 -43.220901 0.1
+	d CactusC -1 1 0 0 0 1 -0.000324 0 0.000324 1 9.53274 -49.206375 3.098011
+	d CactusC -1 1 0 0 0 1 -0.000324 0 0.000324 1 6.507567 -44.605766 3.098011
+	d CactusC -1 1.242926 -0.13279 0 0.13279 1.242926 0 0 0 1.25 -90.831146 -41.678543 3.000001
+	d CactusC -1 -0.957559 0.803484 0 -0.803484 -0.957559 0 0 0 1.250002 12.827529 -12.869129 0
+	d CactusC -1 -0.24394 -0.96979 0 0.96979 -0.24394 0 0 0 1 95.771004 0.44717 3.1
+	d CactusC -1 -0.947724 0.815061 0 -0.815061 -0.947724 0 0 0 1.250002 -93.765999 -36.976532 2.85
+	d CactusC -1 -1.231011 -0.217056 0 0.217056 -1.231011 0 0 0 1.250001 43.899368 21.527803 0
+	d CactusC -1 -0.323525 -1.20741 0 1.20741 -0.323525 0 0 0 1.250003 -59.89349 -19.962311 0
+	d CactusC -1 1 0 0 0 1 -0.000324 0 0.000324 1 -3.088609 -45.859581 3.098011
+	d CactusC -1 -0.24394 -0.96979 0 0.96979 -0.24394 0 0 0 1 90.493172 -13.392015 3.1
+	d CactusC -1 1 0 0 0 1 0 0 0 1 95.513824 -12.315312 3.1
+	d CanyonPlantGrassB -1 1.21 0 0 0 1.21 0 0 0 1.21 -94.240372 46.935371 2.850001
+	d CanyonPlantGrassB -1 1.21 0 0 0 1.21 0 0 0 1.21 12.459229 -4.413883 -3.269999
+	d CanyonPlantGrassB -1 0.313651 -1.154759 0.179628 1.164736 0.324088 0.049683 -0.095526 0.160029 1.195566 -96.243317 53.792168 2.580001
+	d CanyonPlantGrassB -1 -0.346579 1.145303 0.179627 -1.154977 -0.357296 0.049683 0.100068 -0.157229 1.195562 -98.504646 53.779152 2.580001
+	d CanyonPlantGrassB -1 1.21 0 0 0 1.21 0 0 0 1.21 -88.194893 -34.835899 2.848435
+	d CanyonPlantGrassB -1 1.21 0 0 0 1.21 0 0 0 1.21 45.62674 21.07695 -0.300045
+	d CanyonPlantGrassB -1 0.313651 -1.154759 0.179628 1.164736 0.324088 0.049683 -0.095526 0.160029 1.195566 -92.054726 43.34919 2.580001
+	d CanyonPlantGrassB -1 1.21 0 0 0 1.21 0 0 0 1.21 52.129349 -33.919376 -0.479997
+	d CanyonPlantGrassB -1 -0.346579 1.145303 0.179627 -1.154977 -0.357296 0.049683 0.100068 -0.157229 1.195562 -94.316055 43.336174 2.580001
+	d TreeDeadD -1 -0.965926 -0.258819 0 0.258819 -0.965926 0 0 0 1 -44.979572 -29.252525 0.000145
+	d TreeDeadD -1 -1 0 0 0 -1 0 0 0 1 47.27774 21.833351 0
+	d TreeDeadD -1 1 0 0 0 1 0 0 0 1 65.887756 -43.113659 0
+	d TreeDeadD -1 -1.323319 -0.354582 0 0.354582 -1.323319 0 0 0 1.37 -51.465065 41.549477 0
+	d TreeDeadD -1 0.087156 0.996195 0 -0.996195 0.087156 0 0 0 1 64.589928 27.529383 0.000216
+	d CanyonPlantGrassL -1 0.996417 -0.159518 0.042639 0.049757 0.538769 0.852855 -0.157444 -0.83928 0.53938 49.384911 34.638313 -2.699156
+	d CanyonPlantGrassL -1 0.907627 -0.145304 0.03884 0.045323 0.490761 0.776859 -0.143415 -0.764493 0.491317 18.521057 5.662989 -2.671286
+	d CanyonPlantGrassL -1 0.838568 -0.134248 0.035885 0.041875 0.453419 0.717749 -0.132503 -0.706324 0.453934 12.606679 -17.012058 -2.520001
+	d CanyonPlantGrassL -1 0.937223 -0.150042 0.040106 0.046801 0.506763 0.80219 -0.148091 -0.78942 0.507338 20.647236 -21.052818 -2.489999
+	d CanyonPlantGrassL -1 0.178471 1.114801 0.047705 -0.60278 0.055667 0.954183 0.938995 -0.17615 0.603465 15.445012 -11.150948 -2.520002
+	d CanyonPlantGrassL -1 0.947088 -0.151621 0.040529 0.047293 0.512098 0.810634 -0.14965 -0.79773 0.512679 -2.869478 -18.388548 -2.444316
+	d CanyonPlantGrassL -1 0.933347 0.356496 0.042217 -0.224054 0.4866 0.84441 0.280485 -0.797583 0.534039 -49.277206 -17.027452 -2.309864
+	d CanyonPlantGrassL -1 0.69472 0.601882 0.03884 -0.346811 0.350173 0.776857 0.493449 -0.601268 0.491315 12.410152 11.517615 -2.46983
+	d CanyonPlantGrassL -1 0.521042 0.451413 0.02913 -0.260109 0.262631 0.582645 0.370088 -0.450952 0.368488 14.920395 12.909454 -2.460002
+	d CanyonPlantGrassL -1 0.947088 -0.151621 0.040529 0.047293 0.512098 0.810634 -0.14965 -0.79773 0.512679 9.892538 -16.216551 -2.459999
+	d CanyonPlantGrassL -1 0.947088 -0.151621 0.040529 0.047293 0.512097 0.810634 -0.14965 -0.79773 0.512679 19.186497 -6.894909 -2.43
+	d CanyonPlantGrassL -1 0.996417 -0.159518 0.042639 0.049757 0.538769 0.852855 -0.157444 -0.83928 0.53938 44.957443 42.581692 -2.430733
+	d CanyonPlantGrassL -1 0.838568 -0.134248 0.035885 0.041875 0.453419 0.717749 -0.132503 -0.706324 0.453934 12.865767 -11.093024 -2.350049
+	d CanyonPlantGrassL -1 0.996417 -0.159518 0.042639 0.049757 0.538769 0.852855 -0.157444 -0.83928 0.53938 47.559883 38.306843 -2.534447
+	d SimpleProps_TelephonePole -1 1 0 0 0 1 0 0 0 1 -51.309772 -43.620419 -3.595175
+	d SimpleProps_TelephonePole -1 1 0 0 0 1 0 0 0 1 20.913361 -41.186939 -0.175177
+	d SimpleProps_TelephonePole -1 1 0 0 0 1 0 0 0 1 49.005714 -30.241394 -0.175177
+	d SimpleProps_TelephonePole -1 1 0 0 0 1 0 0 0 1 26.92453 -44.54129 -0.175177
+	d TreeDeadB -1 -0.166196 -0.986093 0.000436 0.986093 -0.166196 -0.000648 0.000709 0.000329 1 68.686935 53.740604 0
+	d TreeDeadB -1 0.820214 -1.171387 0.000623 1.171387 0.820214 -0.000927 0.0004 0.001042 1.43 53.595947 39.591152 0
+	d TreeDeadB -1 1 0 0.000436 0 1 -0.000648 -0.000436 0.000648 1 73.718239 39.237 0
+	d TreeDeadB -1 -0.565659 -0.824639 0.000436 0.824639 -0.565659 -0.000648 0.000781 0 1 46.169147 55.301243 0
+	d SimpleProps_CartFull -1 -0.5 -0.866026 0 0.866026 -0.5 0 0 0 1 11.473218 -11.71984 -2.950959
+	d SimpleProps_CartFull -1 -0.996195 0.087156 0 -0.087156 -0.996195 0 0 0 1 -66.654175 -19.26322 0.000411
+	d SimpleProps_CartFull -1 -0.985681 -0.027524 0.166366 0.126398 -0.773645 0.620886 0.111618 0.633023 0.766045 11.7311 -13.52171 -2.999034
+	d SimpleProps_CartFull -1 0.552182 -0.833621 -0.013079 0.833718 0.552052 0.012376 -0.003097 -0.017738 0.999838 -83.882507 40.557304 0.140652
+	d SimpleProps_CartFull -1 0.654667 -0.737383 0.166366 0.511399 0.594116 0.620885 -0.55667 -0.321394 0.766044 9.388619 -10.673593 -2.911582
+	d SimpleProps_CartFull -1 -0.498337 -0.866885 -0.013079 0.866812 -0.498481 0.012376 -0.017248 -0.00517 0.999838 -59.534508 46.082565 0.140652
+	d CactusD -1 -0.962445 -0.271476 0 0.271476 -0.962445 0 0 0 1 43.343864 -21.012808 -0.08
+	d CactusD -1 -0.426322 0.904571 0 -0.904571 -0.426322 0 0 0 1 33.148525 -29.578518 -0.08
+	d CactusD -1 0.251248 -0.967923 0.000324 0.967923 0.251248 0 -0.000082 0.000314 1 -84.053665 -44.895409 -0.290112
+	d CactusD -1 1 0 0 0 0.995398 0.095827 0 -0.095826 0.995398 -22.240374 37.165848 -3.207764
+	d CactusD -1 1 0 0.000324 0 1 0 -0.000324 0 1 -75.622368 -34.880001 3.099888
+	d CactusD -1 -0.562444 0.826835 0 -0.826835 -0.562444 0 0 0 1 33.63023 -18.977701 -0.08
+	d CactusD -1 1 0 0 0 1 0 0 0 1 -39.178802 26.855682 -0.23
+	d CactusD -1 1 0 0 0 1 0 0 0 1 -14.231792 -39.065605 -0.14
+	d CactusD -1 0.420131 -0.907464 0 0.907464 0.420131 0 0 0 1 45.062576 -14.257528 -0.08
+	d CactusD -1 -0.62277 -0.782405 0 0.782405 -0.62277 0 0 0 1 44.041275 7.954481 -0.08
+	d CactusD -1 1 0 0.000324 0 1 0 -0.000324 0 1 8.142794 30.725159 0.09875
+	d CactusD -1 1 0 0 0 1 0 0 0 1 37.452881 -29.58614 -0.11
+	d CanyonPlantGrassP -1 0.258389 -0.966041 0 0.966041 0.258389 0 0 0 1 72.614693 54.365871 0.034507
+	d CanyonPlantGrassP -1 0.258389 -0.966041 0 0.966041 0.258389 0 0 0 1 73.365753 51.783554 0.034507
+	d CanyonPlantGrassP -1 0.739094 -0.673603 0 0.673603 0.739094 0 0 0 1 84.534218 42.773567 0.034507
+	d CanyonPlantGrassP -1 0.973981 -0.226628 0 0.226628 0.973981 0 0 0 1 74.577087 46.187019 0.034507
+	d CanyonPlantGrassP -1 0.484491 -0.874796 0 0.874796 0.484491 0 0 0 1 97.253502 -33.165581 0.03
+	d CanyonPlantGrassP -1 -0.50931 -0.860583 0 0.860583 -0.50931 0 0 0 1 97.556557 -35.887142 0.03
+	d CanyonPlantGrassP -1 -0.259267 -0.965806 0 0.965806 -0.259267 0 0 0 1 97.276138 -30.00017 0.03
+	d CanyonPlantGrassP -1 -0.259267 -0.965806 0 0.965806 -0.259267 0 0 0 1 98.46257 -22.092245 0.03
+	d CanyonPlantGrassP -1 0.091803 -0.995777 0 0.995777 0.091803 0 0 0 1 97.351189 -19.462397 0.03
+	d CanyonPlantGrassP -1 1 0 0 0 1 0 0 0 1 -18.546026 59.115089 3.01
+	d CanyonPlantGrassP -1 0.997945 -0.06408 0 0.06408 0.997945 0 0 0 1 -24.63842 56.55159 2.999999
+	d CanyonPlantGrassP -1 1 0 0 0 1 0 0 0 1 -28.859612 56.640667 3.01
+	d CanyonPlantGrassP -1 0.996319 -0.085728 0 0.085728 0.996319 0 0 0 1 -34.038162 56.853855 3.01
+	d CanyonPlantGrassP -1 1 0 0 0 1 0 0 0 1 73.088524 25.224606 0
+	d CanyonPlantGrassP -1 1 0 0 0 1 0 0 0 1 61.402618 26.118229 0
+	d CanyonPlantGrassP -1 1 0 0 0 1 0 0 0 1 -37.267422 44.947216 -0.11
+	d CanyonPlantGrassP -1 0.986513 0.163681 0 -0.163681 0.986513 0 0 0 1 -33.596352 45.258366 -0.11
+	d CanyonPlantGrassP -1 0.953385 -0.301757 0 0.301757 0.953385 0 0 0 1 -29.375633 45.322723 -0.11
+	d CanyonPlantGrassP -1 0.997513 -0.070478 0 0.070478 0.997513 0 0 0 1 -26.087133 45.013329 -0.11
+	d CanyonPlantGrassP -1 0.997945 -0.06408 0 0.06408 0.997945 0 0 0 1 -17.844391 44.807083 -0.11
+	d CanyonPlantGrassP -1 0.956587 0.291446 0 -0.291446 0.956587 0 0 0 1 -13.385295 44.816639 -0.11
+	d CanyonPlantGrassP -1 0.913284 0.407323 0 -0.407323 0.913284 0 0 0 1 -9.445661 46.22036 -0.11
+	d CanyonPlantGrassP -1 0.03859 0.999255 0 -0.999255 0.03859 0 0 0 1 -29.638506 26.202518 -3.170002
+	d CanyonPlantGrassP -1 -0.010289 0.999947 0 -0.999947 -0.010289 0 0 0 1 -29.945089 29.620174 -3.170002
+	d CanyonPlantGrassP -1 -0.010289 0.999947 0 -0.999947 -0.010289 0 0 0 1 -30.088137 33.351299 -3.170002
+	d CanyonPlantGrassP -1 0.571796 0.820396 0 -0.820396 0.571796 0 0 0 1 -29.111845 36.147488 -3.170002
+	d CanyonPlantGrassP -1 0.989863 -0.14203 0 0.14203 0.989863 0 0 0 1.000001 -17.491821 36.892769 -3.170002
+	d CanyonPlantGrassP -1 0.757039 -0.653357 0 0.653357 0.757039 0 0 0 0.999992 -11.464878 36.342606 -3.170002
+	d CanyonPlantGrassP -1 0.757039 -0.653357 0 0.653357 0.757039 0 0 0 0.999992 27.933138 36.692966 -3.170002
+	d CanyonPlantGrassP -1 -0.954865 0.297042 0 -0.297042 -0.954865 0 0 0 1 27.388977 -29.223389 -3.079988
+	d CanyonPlantGrassP -1 -0.999859 -0.016796 0 0.016796 -0.999859 0 0 0 1 19.720861 -29.567808 -3.079988
+	d CanyonPlantGrassP -1 0.417606 -0.908628 0 0.908628 0.417606 0 0 0 1 95.137924 20.673498 0.03
+	d CanyonPlantGrassP -1 0.091803 -0.995777 0 0.995777 0.091803 0 0 0 1 96.49099 13.385997 0.03
+	d CanyonPlantGrassP -1 0.03859 0.999255 0 -0.999255 0.03859 0 0 0 1 -29.356182 20.226969 -3.170002
+	d CanyonPlantGrassP -1 0.580235 0.814449 0 -0.814449 0.580235 0 0 0 1 -29.769066 16.38147 -3.170002
+	d CanyonPlantGrassP -1 -0.096272 -0.995355 0 0.995355 -0.096272 0 0 0 1 29.355816 -25.401909 -3.079988
+	d CanyonPlantGrassP -1 0.230783 -0.973005 0 0.973005 0.230783 0 0 0 1 29.188585 -21.539085 -3.079988
+	d CanyonPlantGrassP -1 0.31396 -0.949436 0 0.949436 0.31396 0 0 0 1 29.037579 -17.716585 -3.079988
+	d CanyonPlantGrassP -1 0.144438 -0.989514 0 0.989514 0.144438 0 0 0 1 29.094387 -14.898136 -3.079988
+	d CanyonPlantGrassP -1 0.144438 -0.989514 0 0.989514 0.144438 0 0 0 1 29.433594 17.716211 -3.079988
+	d CanyonPlantGrassP -1 0.105304 -0.99444 0 0.99444 0.105304 0 0 0 1 29.43207 21.040171 -3.079988
+	d CanyonPlantGrassP -1 -0.101503 -0.994835 0 0.994835 -0.101503 0 0 0 1 28.999405 24.228371 -3.079988
+	d CanyonPlantGrassP -1 -0.404658 -0.914468 0 0.914468 -0.404658 0 0 0 1 29.535742 28.111324 -3.079988
+	d CanyonPlantGrassP -1 -0.982984 -0.18369 0 0.18369 -0.982984 0 0 0 1 3.429131 -45.373714 2.890011
+	d CanyonPlantGrassP -1 -0.589194 0.80799 0 -0.80799 -0.589194 0 0 0 0.999999 8.705534 -46.928715 0.010013
+	d CanyonPlantGrassP -1 1 0 0 0 1 0 0 0 1 -48.739075 59.462498 3.01
+	d CanyonPlantGrassP -1 1 0 0 0 1 0 0 0 1 -44.601368 59.33559 3.01
+	d CanyonPlantGrassP -1 1 0 0 0 1 0 0 0 1 -52.279625 59.177334 3.01
+	d CanyonPlantGrassP -1 0.84078 0.541377 0 -0.541377 0.84078 0 0 0 1 -38.244026 54.687363 3.01
+	d CanyonPlantGrassP -1 0.87089 0.491477 0 -0.491477 0.87089 0 0 0 1 69.435127 55.970886 0.034507
+	d CanyonPlantGrassP -1 0.978096 0.208153 0 -0.208153 0.978096 0 0 0 1 65.432083 54.506012 0.034507
+	d CactusH -1 0.78 0 0 0 0.78 0 0 0 0.78 10.16472 -13.303576 -0.14
+	d CactusE -1 1 0 0 0 1 0 0 0 1 -41.053528 28.92053 -0.14
+	d CactusE -1 0.999726 0.001601 -0.023365 0 0.997661 0.068357 0.02342 -0.068339 0.997387 -12.174559 37.340595 -3.363363
+	d CanyonPlantTreeC -1 1 0 -0.000564 0 1 0 0.000564 0 1 11.259966 -45.060791 -0.082457
+	d CanyonPlantTreeF -1 0.454308 -0.671705 0.121731 0.675815 0.463187 0.033669 -0.096342 0.081672 0.810216 10.757148 -5.251376 -2.339997
+	d CanyonPlantTreeF -1 0.734714 -0.457269 0.281427 0.305378 0.748178 0.418417 -0.441634 -0.24338 0.757513 44.591614 -26.540436 1.410003
+	d CanyonPlantTreeF -1 0.734714 -0.457269 0.281427 0.305378 0.748178 0.418417 -0.441634 -0.24338 0.757513 43.315437 12.046785 1.860001
+	d CanyonPlantTreeF -1 0.454308 -0.671705 0.121731 0.675815 0.463187 0.033669 -0.096342 0.081672 0.810216 -91.621513 47.088879 4.409998
+	d CanyonPlantTreeF -1 -0.363376 -0.724941 0.121731 0.734696 -0.362613 0.033669 0.024065 0.123988 0.810215 -91.549866 57.559013 4.409998
+	d CanyonPlantTreeF -1 0.554032 -0.819152 0.148453 0.824163 0.564863 0.04106 -0.11749 0.0996 0.988067 -90.421753 -29.990845 4.16965
+	d CanyonPlantTreeF -1 0.416773 0.695617 0.121731 -0.705403 0.416743 0.033669 -0.033305 -0.121831 0.810216 -94.310997 -33.366325 4.173291
+	d CanyonPlantTreeF -1 1 0 0 0 1 -0.000014 0 0.000014 1 -68.387062 -44.915112 1.480102
+	d CanyonPlantTreeF -1 0.078456 0.798075 0.337375 -0.795431 -0.067982 0.34579 0.343566 -0.339641 0.723539 52.3283 -35.999702 0
+	d CanyonPlantTreeF -1 -0.015052 -0.988805 0.148453 0.999116 -0.009044 0.04106 -0.039258 0.148939 0.988067 -43.664185 -46.331718 1.319651
+	d CanyonPlantTreeF -1 0.102988 -0.983542 0.148453 0.993063 0.110183 0.04106 -0.056742 0.143194 0.988067 22.946068 -48.041607 1.319651
+	d CanyonPlantTreeF -1 0.019228 0.988733 0.148453 -0.999069 0.013263 0.04106 0.038629 -0.149104 0.988067 29.316635 -37.347073 1.319651
+	d CanyonPlantTreeF -1 -0.58605 -0.796559 0.148453 0.808443 -0.587141 0.04106 0.054455 0.144079 0.988067 46.924652 -45.280716 1.319651
+	d CanyonPlantTreeF -1 -0.58605 -0.796559 0.148453 0.808443 -0.587141 0.04106 0.054455 0.144079 0.988067 73.552353 -42.919125 1.319651
+	d CanyonPlantTreeF -1 1 0 0 0 0.984808 -0.173648 0 0.173648 0.984808 69.612373 32.560471 1.17
+	d CanyonPlantTreeF -1 1 0 0 0 1 0 0 0 1 42.590569 -33.386189 1.390001
+	d CanyonPlantTreeF -1 -0.76126 -0.646672 0.047934 0.647417 -0.762136 0 0.036532 0.031033 0.998851 12.78714 41.846088 1.611332
+	d CanyonPlantTreeF -1 0.824798 -0.153984 0.230001 0.105251 0.843117 0.187025 -0.255996 -0.149484 0.817938 98.68663 56.332157 4.470572
+	d CanyonPlantTreeF -1 -0.522025 -0.608745 0.337375 0.690571 -0.400552 0.345791 -0.086623 0.475279 0.723539 64.521469 22.422264 1.409999
+	d CanyonPlantTreeF -1 -0.697071 -0.701466 0.148453 0.713059 -0.699901 0.04106 0.075099 0.134477 0.988067 -39.221729 33.322823 1.709651
+	d CanyonPlantTreeF -1 0.554032 -0.819152 0.148453 0.824163 0.564863 0.04106 -0.11749 0.0996 0.988067 -38.667484 12.329894 1.679651
+	d CanyonPlantTreeF -1 0.824798 -0.153984 0.230001 0.105251 0.843117 0.187025 -0.255996 -0.149484 0.817938 67.629265 36.162842 1.500572
+	d CanyonPlantTreeD -1 1 0 0 0 1 -0.000324 0 0.000324 1 -3.814039 -46.954365 4.928366
+	d CactusB -1 0.965926 -0.258819 0 0.258819 0.965926 0 0 0 1 43.749054 35.677925 2.819999
+	d CactusB -1 0.965926 -0.258819 0 0.258819 0.965926 0 0 0 1 45.595711 23.520306 0
+	d CactusB -1 0.965926 -0.258819 0 0.258819 0.965926 0 0 0 1 51.319664 38.657124 0
+	d CactusB -1 0.996901 -0.005378 0.078487 0 0.997661 0.068357 -0.078671 -0.068145 0.994569 -20.05492 37.50024 -3.017217
+	d CactusB -1 0.996901 -0.005378 0.078487 0 0.997661 0.068357 -0.078671 -0.068145 0.994569 11.395744 36.128605 -3.017217
+	d CactusB -1 1 0 0 0 1 0 0 0 1 -41.567699 -7.825062 0.040001
+	d CanyonPlantGrassS -1 1 0 0 0 1 0 0 0 1 -43.894501 -14.691984 0.178253
+	d CanyonPlantGrassD -1 1.32 0 0 0 1.32 0 0 0 1.32 14.524617 -5.246419 -3.389999
+	d CanyonPlantGrassD -1 1.32 0 0 0 1.32 0 0 0 1.32 65.050522 35.97113 0
+	d CanyonPlantGrassD -1 1.38 0 0 0 1.38 0 0 0 1.38 -73.28096 -21.188299 0
+	d CanyonPlantGrassD -1 1.38 0 0 0 1.379999 -0.001616 0 0.001616 1.379999 -61.952366 -21.451792 0.000131
+	d CanyonPlantGrassD -1 1.32 0 0 0 1.32 0 0 0 1.32 50.012131 31.596092 -3.000002
+	d CanyonPlantGrassD -1 1.062708 0.880371 0 -0.880371 1.062708 0 0 0 1.38 -90.095871 -11.769173 0
+	d CanyonPlantGrassD -1 -1.072227 0.868751 0 -0.86875 -1.072227 -0.001616 -0.001017 -0.001256 1.379999 -87.146523 -12.315031 0.030131
+	d CanyonPlantGrassD -1 -1.196054 -0.68837 0 0.68837 -1.196054 0 0 0 1.379999 -90.21669 -13.488964 0
+	d CanyonPlantGrassD -1 1.317406 -0.410902 0 0.410902 1.317406 -0.001616 0.000482 0.001543 1.379999 -85.92942 -11.600054 0.030131
+	d CanyonPlantGrassC -1 0.965926 -0.258819 0 0.258819 0.965926 0 0 0 1 65.484573 32.051369 0.000011
+	d CanyonPlantGrassH -1 0.99896 0.033311 -0.031128 -0.031426 0.99775 0.059228 0.033031 -0.058188 0.997759 -10.189917 55.106167 2.999604
+	d CanyonPlantGrassH -1 0.914018 -0.404477 -0.031128 0.405649 0.912108 0.059228 0.004436 -0.066762 0.997759 -11.9512 55.016724 2.999604
+	d CanyonPlantGrassH -1 0.570605 -0.820634 -0.031128 0.820642 0.568365 0.059228 -0.030912 -0.05934 0.997759 -15.44914 57.159115 2.999604
+	d CanyonPlantGrassH -1 0.756008 -0.65382 -0.031128 0.654383 0.753839 0.059228 -0.015259 -0.065146 0.997758 -13.993496 55.852261 2.999604
+	d CanyonPlantGrassH -1 0.928845 -0.369157 -0.031128 0.370401 0.926981 0.059228 0.006991 -0.066543 0.997758 -18.036024 58.545204 2.999604
+	d CanyonPlantGrassH -1 0.765807 -0.642317 -0.031128 0.642912 0.763647 0.059228 -0.014272 -0.065369 0.997759 -16.722797 58.63382 2.999604
+	d CanyonPlantGrassH -1 0.978258 -0.205042 -0.031128 0.206586 0.976634 0.059228 0.018256 -0.064371 0.997759 -18.982315 59.134647 2.999604
+	d CanyonPlantGrassH -1 0.919629 0.391551 -0.031128 -0.389356 0.91918 0.059228 0.051803 -0.042348 0.997758 -20.889822 59.09325 2.999604
+	d CanyonPlantGrassH -1 0.828522 0.55909 -0.031128 -0.55685 0.828499 0.059228 0.058903 -0.031738 0.997759 -22.047421 58.047283 2.999604
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 -50.397362 -11.840721 0.030002
+	d CanyonPlantGrassH -1 1.1 0 0 0 1.1 0 0 0 1.1 -70.913651 -21.870516 0.000022
+	d CanyonPlantGrassH -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 -53.145294 42.362785 0
+	d CanyonPlantGrassH -1 1.1 0 0 0 1.1 0 0 0 1.1 -64.134193 -19.223494 0.000053
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 -65.819473 -13.982283 0
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 -60.078228 -15.348557 0
+	d CanyonPlantGrassH -1 0.88 0 0 0 0.88 0 0 0 0.88 45.681816 -29.371952 -0.000356
+	d CanyonPlantGrassH -1 0.88 0 0 0 0.88 0 0 0 0.88 45.639755 -21.813541 -0.000353
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 -51.72538 -12.609524 -0.000703
+	d CanyonPlantGrassH -1 0.88 0 0 0 0.88 0 0 0 0.88 45.552811 10.593784 0
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 70.415939 27.51795 0
+	d CanyonPlantGrassH -1 0.075411 -0.876763 0 0.876763 0.075411 0 0 0 0.88 45.196163 -3.409408 -0.015074
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 70.298157 33.882332 0.015866
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 -55.055656 -15.03966 -0.000771
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 -43.410645 -15.918737 0
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 90.219658 51.048717 -26.580002
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 60.784576 23.901653 0
+	d CanyonPlantGrassH -1 0.999514 0.001847 -0.031128 0 0.998245 0.059228 0.031183 -0.059199 0.997759 -23.249065 44.896931 -0.045325
+	d CanyonPlantGrassH -1 0.999514 0.001847 -0.031128 0 0.998245 0.059228 0.031183 -0.059199 0.997759 -28.431892 44.866673 -0.045325
+	d CanyonPlantGrassH -1 0.999514 0.001847 -0.031128 0 0.998245 0.059228 0.031183 -0.059199 0.997759 -19.964497 45.08897 -0.045325
+	d CanyonPlantGrassH -1 0.999514 0.001847 -0.031128 0 0.998245 0.059228 0.031183 -0.059199 0.997759 -16.141375 44.770859 0.052088
+	d CanyonPlantGrassH -1 0.999514 0.001847 -0.031128 0 0.998245 0.059228 0.031183 -0.059199 0.997759 -11.400911 45.364513 0.052088
+	d CanyonPlantGrassH -1 0.828522 0.55909 -0.031128 -0.55685 0.828499 0.059228 0.058903 -0.031738 0.997759 -7.071605 47.768917 0.052088
+	d CanyonPlantGrassH -1 -0.994993 -0.099947 0 0.099947 -0.994993 0 0 0 1 -42.602161 -19.005314 -0.000703
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 -39.65736 -23.490873 -0.000703
+	d CanyonPlantGrassH -1 0.757631 0.652684 0 -0.652684 0.757631 0 0 0 1 -38.954723 -39.494507 -0.000703
+	d CanyonPlantGrassH -1 0.501695 0.865045 0 -0.865045 0.501695 0 0 0 1 -37.819481 -36.642342 -0.000703
+	d CanyonPlantGrassH -1 0.696341 -0.851533 0 0.851533 0.696341 0 0 0 1.1 -83.940285 -9.720854 0.000022
+	d CanyonPlantGrassH -1 1.1 0 0 0 1.1 0 0 0 1.1 -70.553513 -22.564913 0.000053
+	d CanyonPlantGrassH -1 1.061222 -0.289496 0 0.289496 1.061222 0 0 0 1.1 -80.307922 -11.784437 0.000022
+	d CanyonPlantGrassH -1 0.828522 0.55909 -0.031128 -0.55685 0.828499 0.059228 0.058903 -0.031738 0.997759 -29.051733 36.834724 -3.007913
+	d CanyonPlantGrassH -1 0.003725 0.999509 -0.031128 -0.998229 0.005565 0.059228 0.059372 0.030853 0.997759 -29.98004 27.787334 -3.007913
+	d CanyonPlantGrassH -1 0.982392 -0.18422 -0.031128 0.185798 0.980801 0.059228 0.01962 -0.063969 0.997759 -25.888962 37.64864 -3.007913
+	d CanyonPlantGrassH -1 0.514328 -0.857594 0 0.857594 0.514328 0 0 0 1 -37.491806 -20.973457 -0.000703
+	d CanyonPlantGrassH -1 -0.553794 0.832654 0 -0.832654 -0.553794 0 0 0 1 -37.661407 -20.351761 -0.000703
+	d CanyonPlantGrassH -1 0.979938 0.199303 0 -0.199303 0.979938 0 0 0 1 -34.452805 -28.908915 -0.000703
+	d CanyonPlantGrassH -1 -0.95928 -0.282456 0 0.282456 -0.95928 0 0 0 1 -34.936058 -28.666964 -0.000703
+	d CanyonPlantGrassH -1 0.982392 -0.18422 -0.031128 0.185798 0.980801 0.059228 0.01962 -0.063969 0.997759 -21.803677 37.764378 -3.007913
+	d CanyonPlantGrassH -1 0.982392 -0.18422 -0.031128 0.185798 0.980801 0.059228 0.01962 -0.063969 0.997759 -16.331196 36.643131 -3.007913
+	d CanyonPlantGrassH -1 0.982392 -0.18422 -0.031128 0.185798 0.980801 0.059228 0.01962 -0.063969 0.997759 -13.807669 36.542774 -3.007913
+	d CanyonPlantGrassH -1 0.982392 -0.18422 -0.031128 0.185798 0.980801 0.059228 0.01962 -0.063969 0.997759 13.509054 37.999001 -3.007913
+	d CanyonPlantGrassH -1 -0.753462 0.657491 0 -0.657491 -0.753462 0 0 0 1 -39.574505 -22.92531 -0.000703
+	d CanyonPlantGrassH -1 0.922031 -0.387115 0 0.387115 0.922031 0 0 0 1 -43.431599 -23.539204 -0.000703
+	d CanyonPlantGrassH -1 -0.838223 -0.545327 0 0.545327 -0.838223 0 0 0 1 -30.476431 -36.523666 -0.000703
+	d CanyonPlantGrassH -1 0.15362 -0.988019 -0.014809 0.983629 0.154332 -0.093036 0.094207 -0.000274 0.995553 -28.941191 -28.710476 -2.977913
+	d CanyonPlantGrassH -1 -0.898602 -0.437659 -0.031128 0.435443 -0.898266 0.059228 -0.053883 0.039668 0.997759 28.581036 -28.946032 -2.977913
+	d CanyonPlantGrassH -1 -0.973158 0.228021 -0.031128 -0.229527 -0.971498 0.059228 -0.016736 0.064783 0.997758 26.236464 -29.080797 -2.977913
+	d CanyonPlantGrassH -1 -0.985521 -0.166669 -0.031128 0.164639 -0.984574 0.059228 -0.04052 0.053245 0.997759 24.117918 -29.185118 -2.977913
+	d CanyonPlantGrassH -1 -0.995731 -0.086897 -0.031128 0.084949 -0.994623 0.059228 -0.036108 0.056331 0.997759 21.312191 -29.562843 -2.977913
+	d CanyonPlantGrassH -1 -0.981927 0.188682 -0.014809 -0.186531 -0.978034 -0.093036 -0.032037 -0.088592 0.995553 19.076492 -29.454605 -3.210953
+	d CanyonPlantGrassH -1 -0.973158 0.228021 -0.031128 -0.229527 -0.971498 0.059228 -0.016736 0.064783 0.997758 22.240694 -28.918749 -2.977913
+	d CanyonPlantGrassH -1 0.296959 0.95489 0 -0.95489 0.296959 0 0 0 1 -43.053013 -9.956695 -0.060703
+	d CanyonPlantGrassH -1 0.281549 0.959547 0 -0.959547 0.281549 0 0 0 1 -43.079433 -8.230577 -0.060703
+	d CanyonPlantGrassH -1 -0.201451 0.979499 0 -0.979499 -0.201451 0 0 0 1 -43.260864 -6.108094 -0.060703
+	d CanyonPlantGrassH -1 0.645466 0.763789 0 -0.763789 0.645466 0 0 0 1 -42.490063 -3.971788 -0.060703
+	d CanyonPlantGrassH -1 0.811406 0.584483 0 -0.584483 0.811406 0 0 0 1 -42.374622 -2.460891 -0.060703
+	d CanyonPlantGrassH -1 -0.126966 0.991907 0 -0.991907 -0.126966 0 0 0 1 -42.681976 7.811021 -0.060703
+	d CanyonPlantGrassH -1 0.431024 0.90234 0 -0.90234 0.431024 0 0 0 1 -42.316509 9.944299 -0.060703
+	d CanyonPlantGrassH -1 -0.104045 0.994573 0 -0.994573 -0.104045 0 0 0 1 -42.246231 11.935672 -0.060703
+	d CanyonPlantGrassH -1 -0.297291 0.954787 0 -0.954787 -0.297291 0 0 0 1 -41.78688 12.94553 -0.060703
+	d CanyonPlantGrassH -1 0.071398 0.997448 0 -0.997448 0.071398 0 0 0 1 -42.880497 23.056555 -0.060703
+	d CanyonPlantGrassH -1 0.296975 0.954885 0 -0.954885 0.296975 0 0 0 1 -42.900486 25.373121 -0.060703
+	d CanyonPlantGrassH -1 -0.079633 0.996824 0 -0.996824 -0.079633 0 0 0 1 -42.862446 27.479788 -0.060703
+	d CanyonPlantGrassH -1 0.51041 0.859931 0 -0.859931 0.51041 0 0 0 1 -42.614704 29.598082 -0.060703
+	d CanyonPlantGrassH -1 -0.016772 0.999859 0 -0.999859 -0.016772 0 0 0 1 -42.682812 31.581347 -0.060703
+	d CanyonPlantGrassH -1 0.355057 0.934845 0 -0.934845 0.355057 0 0 0 1 -42.56749 33.398376 -0.060703
+	d CanyonPlantGrassH -1 -0.491909 0.870646 0 -0.870646 -0.491909 0 0 0 0.999999 -43.335129 35.861748 -0.060703
+	d CanyonPlantGrassH -1 0.151618 0.987949 -0.031128 -0.986411 0.153248 0.059228 0.063284 0.021725 0.997759 -28.972937 23.359415 -3.007913
+	d CanyonPlantGrassH -1 -0.055875 0.997952 -0.031128 -0.996785 -0.053963 0.059228 0.057427 0.034338 0.997759 -28.658276 -23.356388 -2.977913
+	d CanyonPlantGrassH -1 -0.134502 0.990424 -0.031128 -0.989411 -0.132503 0.059228 0.054536 0.038765 0.997759 -29.132793 -19.735804 -2.977913
+	d CanyonPlantGrassH -1 0.093452 0.995137 -0.031128 -0.993698 0.09517 0.059228 0.061902 0.025397 0.997759 -29.944756 -16.226782 -2.977913
+	d CanyonPlantGrassH -1 -0.031031 -0.999034 -0.031128 0.997704 -0.032835 0.059228 -0.060193 -0.029219 0.997759 29.222395 -19.626463 -2.977913
+	d CanyonPlantGrassH -1 -0.031031 -0.999034 -0.031128 0.997704 -0.032835 0.059228 -0.060193 -0.029219 0.997759 28.886728 -13.597378 -2.977913
+	d CanyonPlantGrassH -1 -0.031031 -0.999034 -0.031128 0.997704 -0.032835 0.059228 -0.060193 -0.029219 0.997759 29.551842 -22.776463 -2.977913
+	d CanyonPlantGrassH -1 -0.277589 -0.960195 -0.031128 0.95846 -0.279008 0.059228 -0.065555 -0.013394 0.997758 29.586691 -27.548862 -2.977913
+	d CanyonPlantGrassH -1 -0.031031 -0.999034 -0.031128 0.997704 -0.032835 0.059228 -0.060193 -0.029219 0.997759 28.839811 4.321898 -2.977913
+	d CanyonPlantGrassH -1 -0.031031 -0.999034 -0.031128 0.997704 -0.032835 0.059228 -0.060193 -0.029219 0.997759 29.339249 14.871443 -2.977913
+	d CanyonPlantGrassH -1 -0.031031 -0.999034 -0.031128 0.997704 -0.032835 0.059228 -0.060193 -0.029219 0.997759 29.028677 19.421553 -2.977913
+	d CanyonPlantGrassH -1 -0.031031 -0.999034 -0.031128 0.997704 -0.032835 0.059228 -0.060193 -0.029219 0.997759 28.558521 22.715029 -2.977913
+	d CanyonPlantGrassH -1 -0.031031 -0.999034 -0.031128 0.997704 -0.032835 0.059228 -0.060193 -0.029219 0.997759 28.678453 26.289473 -2.977913
+	d CanyonPlantGrassH -1 0.324586 -0.945344 -0.031128 0.944739 0.322428 0.059228 -0.045954 -0.048633 0.997759 29.685335 35.003216 -2.977913
+	d CanyonPlantGrassH -1 -0.999052 -0.04095 -0.014809 0.042154 -0.99477 -0.093036 -0.010921 -0.093572 0.995553 5.296388 -46.499359 -22.260954
+	d CanyonPlantGrassH -1 -0.981927 0.188682 -0.014809 -0.186531 -0.978034 -0.093036 -0.032037 -0.088592 0.995553 6.269979 -45.661171 2.849048
+	d CanyonPlantGrassH -1 -0.981927 0.188682 -0.014809 -0.186531 -0.978034 -0.093036 -0.032037 -0.088592 0.995553 1.139205 -45.6297 2.849048
+	d CanyonPlantGrassH -1 -0.70984 -0.704208 -0.014809 0.702208 -0.705867 -0.093036 0.055064 -0.076439 0.995553 -0.599273 -47.07935 2.849048
+	d CanyonPlantGrassH -1 -0.713681 -0.700315 -0.014809 0.698336 -0.709698 -0.093036 0.054645 -0.076739 0.995553 -1.943299 -49.46471 2.849048
+	d CanyonPlantGrassH -1 0.075411 -0.876763 0 0.876763 0.075411 0 0 0 0.88 59.544128 -3.708045 -0.015074
+	d SimpleProps_CartEmpty -1 0.819152 0.573576 0 -0.573576 0.819152 0 0 0 1 -65.652756 -17.685843 0
+	d SimpleProps_CartEmpty -1 -0.993117 -0.116601 0.011079 -0.00175 -0.079807 -0.996809 0.117113 -0.989967 0.079054 -82.866776 -30.205929 3.427846
+	d SimpleProps_CartEmpty -1 1 0 0 0 1 0 0 0 1 -80.880798 39.623436 0.100013
+	d SimpleProps_CartEmpty -1 1 0 0.000648 0 1 0.000648 -0.000648 -0.000648 1 -82.832947 -28.491852 3.097846
+	d SimpleProps_CartEmpty -1 1 0 0 0 1 0 0 0 1 -61.537235 47.932461 0.100013
+	d CarC -1 0.411522 1.535822 0 -1.535822 0.411522 0 0 0 1.59 -64.420609 -15.699093 0
+	d CarC -1 0.411522 1.535822 0 -1.535822 0.411522 0 0 0 1.59 65.619576 21.545818 0.000116
+	d CanyonPlantGrassG -1 0.72 0 0 0 0.72 0 0 0 0.72 44.599892 -4.429332 0.540005
+	d CanyonPlantGrassG -1 0.84 0 0 0 0.84 0 0 0 0.84 44.681583 4.319484 0.69
+	d CanyonPlantGrassG -1 0.014452 0.999895 0 -0.999895 0.014452 0 0 0 0.999999 -43.97747 -34.982067 -2.1
+	d CanyonPlantGrassG -1 0.280722 -0.959789 0 0.959789 0.280722 0 0 0 1 -44.762135 -35.27972 3.929999
+	d CanyonPlantGrassG -1 0.838849 -0.043952 0 0.043952 0.838849 0 0 0 0.84 -49.808002 59.393318 3.838391
+	d CanyonPlantGrassG -1 -0.724595 -0.424926 0 0.424926 -0.724595 0 0 0 0.84 -47.172806 59.252296 3.838391
+	d CanyonPlantGrassG -1 0.72 0 0 0 0.72 0 0 0 0.72 44.572754 -7.210408 0.329999
+	d CanyonPlantGrassG -1 0.53994 -0.643477 0 0.643477 0.53994 0 0 0 0.839999 56.72567 -34.353065 0.930007
+	d CanyonPlantGrassG -1 0.72 0 0 0 0.72 0 0 0 0.72 44.219139 -8.954206 0.540005
+	d CanyonPlantGrassG -1 0.84 0 0 0 0.84 0 0 0 0.84 48.537254 -11.411362 0.762587
+	d CanyonPlantGrassG -1 0.84 0 0 0 0.84 0 0 0 0.84 50.564728 -34.14537 0.929999
+	d CanyonPlantGrassG -1 0.727461 -0.42 0 0.42 0.727461 0 0 0 0.84 11.446198 -3.774255 -2.429981
+	d CanyonPlantGrassG -1 0.84 0 0 0 0.84 0 0 0 0.84 59.090469 20.106522 0.569692
+	d CanyonPlantGrassG -1 0.84 0 0 0 0.84 0 0 0 0.84 44.948143 -8.41901 0.69
+	d CanyonPlantGrassG -1 0.84 0 0 0 0.84 0 0 0 0.84 -23.896889 37.514168 -2.190007
+	d CanyonPlantGrassG -1 -0.82352 0.165574 0 -0.165574 -0.82352 0 0 0 0.84 -23.847713 38.042233 -2.190007
+	d CanyonPlantGrassG -1 0.838849 -0.043952 0 0.043952 0.838849 0 0 0 0.84 -42.44558 40.400352 0.689993
+	d CanyonPlantGrassG -1 -0.839975 0.006524 0 -0.006524 -0.839975 0 0 0 0.84 -42.503799 41.246601 0.689993
+	d CanyonPlantGrassG -1 0.058923 0.837931 0 -0.837931 0.058923 0 0 0 0.84 -35.853149 33.774117 0.689993
+	d CanyonPlantGrassG -1 -0.373617 -0.752337 0 0.752337 -0.373617 0 0 0 0.84 -36.728764 33.847046 0.689993
+	d CanyonPlantGrassG -1 0.84 0 0 0 0.84 0 0 0 0.84 15.501127 37.864529 -2.190007
+	d CanyonPlantGrassG -1 1 0 0 0 1 0 0 0 1 -43.357979 -21.282621 0.820002
+	d CanyonPlantGrassG -1 -0.770009 -0.63803 0 0.63803 -0.770009 0 0 0 0.999998 -43.530643 -20.677923 0.820002
+	d CanyonPlantGrassG -1 -0.261231 0.965276 0 -0.965276 -0.261231 0 0 0 1 -43.295589 -13.891331 0.820002
+	d CanyonPlantGrassG -1 0.280722 -0.959789 0 0.959789 0.280722 0 0 0 1 -50.082447 -12.966761 0.820002
+	d CanyonPlantGrassG -1 -0.097159 -0.834362 0 0.834362 -0.097159 0 0 0 0.84 45.114265 -5.098462 0.69
+	d CanyonPlantGrassG -1 -0.717289 -0.437146 0 0.437146 -0.717289 0 0 0 0.84 45.19997 -6.687417 0.69
+	d CanyonPlantGrassG -1 0.84 0 0 0 0.84 0 0 0 0.84 59.296108 -8.717648 0.69
+	d CanyonPlantGrassG -1 -0.717289 -0.437146 0 0.437146 -0.717289 0 0 0 0.84 59.547935 -6.986054 0.69
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 9.400626 -4.492924 -3.059999
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 12.404232 -3.20036 -2.94
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 59.958679 -32.338985 -0.002287
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 44.366974 -18.59363 -0.002288
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 45.889503 -32.59182 0
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 53.726265 -32.738468 0.004348
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 -61.415192 -19.452274 0.000016
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 -75.200974 -9.529823 0.018259
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 68.987434 31.941584 0
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 9.006154 6.54306 -3.090476
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 2.258699 9.643044 -2.88
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 43.685677 -28.752338 0
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 -91.871468 47.190372 2.850001
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 -95.597824 47.658714 2.850001
+	d CanyonPlantGrassQ -1 0.625276 -0.780404 0 0.780403 0.625276 0.001084 -0.000846 -0.000678 0.999999 -93.312767 51.913563 2.850001
+	d CanyonPlantGrassQ -1 -0.541796 0.84051 0 -0.840509 -0.541796 0.001084 0.000911 0.000587 0.999999 -92.456696 52.556049 2.850001
+	d CanyonPlantGrassQ -1 0.951888 0.306445 0 -0.306445 0.951888 0.001084 0.000332 -0.001032 0.999999 -97.27034 54.288872 2.850001
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 -90.896057 -36.466476 2.85
+	d CanyonPlantGrassQ -1 -0.999921 -0.012563 0 0.012563 -0.99992 0.001084 -0.000014 0.001084 0.999999 -88.989655 -38.495636 2.862815
+	d CanyonPlantGrassQ -1 -0.073009 0.997331 0 -0.997331 -0.073009 0.001084 0.001081 0.000079 0.999999 -94.330048 -40.088013 2.862815
+	d CanyonPlantGrassQ -1 0.210223 0.977654 0 -0.977653 0.210223 0.001084 0.00106 -0.000228 0.999999 -96.49295 -35.028111 2.862815
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 -88.931091 -38.502575 2.862815
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 -67.834511 -22.793694 0.000016
+	d CanyonPlantGrassQ -1 -0.938019 -0.346585 0 0.346585 -0.938018 0.001084 -0.000376 0.001017 0.999999 -84.384499 -15.25285 0.000016
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 -84.204056 -16.200411 0.000016
+	d CanyonPlantGrassQ -1 -0.526411 -0.85023 0 0.85023 -0.52641 0.001084 -0.000922 0.000571 0.999999 -89.164085 -17.452766 0.000016
+	d CanyonPlantGrassQ -1 0.620029 0.784579 0 -0.784578 0.620029 0.001084 0.00085 -0.000672 0.999999 -88.743057 -18.016241 0.000016
+	d TreeDeadA -1 -0.707107 -0.707107 -0.000648 0.707107 -0.707107 -0.000436 -0.00015 -0.000767 1 57.298355 35.077885 -0.436757
+	d TreeDeadA -1 1 0 -0.000648 0 1 -0.000436 0.000648 0.000436 1 47.430183 24.000275 0.000287
+	d TreeDeadA -1 0.998271 0 -0.05878 0 1 0 0.05878 0 0.998271 -68.005219 -29.380215 0.100307
+	d TreeDeadA -1 0.085562 0.996333 0 -0.996333 0.085562 0 0 0 1 35.556728 -40.67625 0
+	d TreeDeadA -1 0.759343 -0.650691 0 0.650691 0.759343 0 0 0 1 33.206894 -31.20615 0
+	d SimpleProps_Station -1 -1 0 0 0 -1 0 0 0 1 -58.417175 -25.985209 0.01135
+	d CanyonPlantGrassK -1 1.03 0 0 0 1.03 0 0 0 1.03 -67.653595 -21.080336 2.610001
+	d CanyonPlantGrassK -1 0.737185 0 0.064496 0.022058 0.695374 -0.252132 -0.060606 0.253095 0.692728 8.011894 -15.197769 -1.656039
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967885 -0.350941 -0.053235 0.222314 0.608479 14.098206 12.197671 -1.542833
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967885 -0.350941 -0.060606 0.253096 0.692729 52.122131 32.022858 -1.259999
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967885 -0.350941 -0.060606 0.253096 0.692729 55.133484 28.413815 -1.472802
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967883 -0.350941 -0.084357 0.352281 0.9642 -59.647289 -14.14135 1.710079
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967883 -0.350941 -0.084357 0.352281 0.9642 -50.617668 -15.89286 -1.331658
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967885 -0.350941 -0.058968 0.246256 0.674007 -16.214731 13.485783 -1.752453
+	d CanyonPlantGrassK -1 0.786994 0 0.068854 0.023549 0.742357 -0.269168 -0.064701 0.270196 0.739532 42.720695 32.888702 -1.222314
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967883 -0.350941 -0.084357 0.352281 0.9642 13.835479 -4.654544 -1.492472
+	d CanyonPlantGrassK -1 0.737185 0 0.064496 0.022058 0.695374 -0.252132 -0.060606 0.253095 0.692728 -1.586027 -20.446192 -1.889998
+	d CanyonPlantGrassK -1 0.737185 0 0.064496 0.022058 0.695374 -0.252132 -0.060606 0.253095 0.692728 -4.983094 -15.082901 -1.997854
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967885 -0.350941 -0.060606 0.253096 0.692729 47.466438 40.001099 -1.34689
+	d CanyonPlantGrassK -1 0.830599 0.006533 -0.222853 -0.099837 0.779523 -0.349253 0.199347 0.363184 0.753631 11.829138 12.186709 -1.847287
+	d CanyonPlantGrassK -1 0.786994 0 0.068854 0.023549 0.742357 -0.269168 -0.064701 0.270196 0.739532 14.181804 -10.050067 -1.28826
+	d CanyonPlantGrassK -1 0.565713 0.860737 0 -0.860737 0.565713 0 0 0 1.03 -92.445229 -9.03149 2.280001
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 69.992569 29.80205 0.003953
+	d CanyonPlantGrassI -1 0.587756 0.051422 0 -0.051422 0.587756 0 0 0 0.590001 44.040268 -25.073816 0.569995
+	d CanyonPlantGrassI -1 -0.064446 0.887666 0 -0.887666 -0.064446 0 0 0 0.890002 -28.67523 -21.637064 -2.399999
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 52.905357 30.407726 -2.249999
+	d CanyonPlantGrassI -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 -62.392967 -14.446323 0.96
+	d CanyonPlantGrassI -1 0.687378 0.060138 0 -0.060138 0.687378 0 0 0 0.690003 68.093033 33.897858 0.776647
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 70.998459 29.473066 0.989999
+	d CanyonPlantGrassI -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 -64.76181 -21.40489 0.882529
+	d CanyonPlantGrassI -1 0.657492 0.057523 0 -0.057523 0.657492 0 0 0 0.660003 69.069389 38.360294 0.421059
+	d CanyonPlantGrassI -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 -45.128754 -14.015326 0.760779
+	d CanyonPlantGrassI -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 -52.920738 39.094952 0.479996
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 74.530525 -34.990501 0.900001
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 52.029305 37.995071 0.660004
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 67.453613 20.653088 0.659997
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 55.621544 37.770508 0.449675
+	d CanyonPlantGrassI -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 -49.136856 32.016167 0.000045
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 48.416283 -34.053925 0.750084
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 43.792366 -17.640682 1.05
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 47.040581 19.439562 0.838235
+	d CanyonPlantGrassI -1 -0.432925 -0.777612 0 0.777612 -0.432925 0 0 0 0.890002 44.503681 -23.918022 0.93
+	d CanyonPlantGrassI -1 0.872986 -0.173202 0 0.173202 0.872986 0 0 0 0.890002 36.052277 -27.914017 0.93
+	d CanyonPlantGrassI -1 -0.55047 0.699347 0 -0.699347 -0.55047 0 0 0 0.890002 35.864964 -27.939804 0.93
+	d CanyonPlantGrassI -1 0.139942 -0.99016 0 0.99016 0.139942 0 0 0 1 -57.574783 -33.374676 0.700779
+	d CanyonPlantGrassI -1 0.982494 0.186293 0 -0.186293 0.982494 0 0 0 1 -58.385647 -34.1161 0.700779
+	d CanyonPlantGrassI -1 0.886617 0.077569 0 -0.077569 0.886617 0 0 0 0.890003 -23.459576 12.463655 -2.279999
+	d CanyonPlantGrassI -1 -0.879322 0.137467 0 -0.137467 -0.879322 0 0 0 0.890002 -23.226723 12.507246 -2.279999
+	d CanyonPlantGrassI -1 0.012455 -0.889915 0 0.889915 0.012455 0 0 0 0.890002 -18.48361 10.726319 -2.399999
+	d CanyonPlantGrassI -1 -0.401878 0.794102 0 -0.794102 -0.401878 0 0 0 0.890002 -18.334368 10.649091 -2.399999
+	d CanyonPlantGrassI -1 -0.52128 -0.721367 0 0.721367 -0.52128 0 0 0 0.890002 -21.792231 -13.987885 -2.399999
+	d CanyonPlantGrassI -1 0.557393 0.693842 0 -0.693842 0.557393 0 0 0 0.890002 -21.276415 -14.509696 -2.399999
+	d CanyonPlantGrassI -1 -0.272617 -0.847221 0 0.847221 -0.272617 0 0 0 0.890002 -6.074839 -28.827208 0.660001
+	d CanyonPlantGrassI -1 -0.484216 0.746752 0 -0.746752 -0.484216 0 0 0 0.890002 9.794804 -43.523697 0.660001
+	d CanyonPlantGrassI -1 0.30834 -0.834883 0 0.834883 0.30834 0 0 0 0.890002 7.079792 -44.637646 0.660001
+	d CanyonPlantGrassI -1 -0.484216 0.746752 0 -0.746752 -0.484216 0 0 0 0.890002 54.714088 20.725418 0.660001
+	d CanyonPlantGrassI -1 -0.705049 0.543148 0 -0.543148 -0.705049 0 0 0 0.890002 38.193428 21.375206 0.660001
+	d CanyonPlantGrassI -1 0.054822 0.888312 0 -0.888312 0.054822 0 0 0 0.890002 34.908218 24.527512 0.660001
+	d CanyonPlantGrassI -1 -0.064446 0.887666 0 -0.887666 -0.064446 0 0 0 0.890002 -29.09226 -17.815937 -2.399999
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable true
+  layer 2 name "volumes" visible true pickable true
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible false pickable true
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+	PF outpostpowerstation {
+		pos 87.911163 -0.00758 0.069574
+		rot 0 0 91.667671
+		id 36
+		/shfnv 825153392 ". latchInf InfantryCreepL2 InfantryCreepL2 InfantryCreepL2 InfantryCreepL2"
+		/shfnv 2166136261 "name"
+		/shfnv 2734521612 ". team 6"
+	}
+}

@@ -1,0 +1,952 @@
+Script NoResultsShowVip {
+ignoreInputTime 0.1
+cmd "gameui directPushNameIfEnabled Filter_VipShop"
+}
+Script NoResultsShowAll {
+ignoreInputTime 0.1
+cmd "sym set ShopFilterText"
+cmd "gameui directPushNameIfEnabled ML0"
+}
+Script ButtonGameCodes {
+ignoreInputTime 0.1
+cmd "loadmenu DialogRedeemCode /fadein 0.1"
+}
+Script ButtonGameQuests {
+ignoreInputTime 0.1
+cmd "addUIAnim QuestsMain mas_QuestsIn"
+}
+Script ButtonGameHelp {
+ignoreInputTime 0.1
+cmd "if !menuloaded Manual loadmenu Manual /fadein 0.1"
+cmd "sym setZero ManualStats ManualPatchnotes ManualVideos ManualQuests ManualFaq ManualFaction"
+cmd "sym setZero ManualHelp0 ManualHelp1 ManualHelp2 ManualHelp3 ManualHelp4 ManualHelp5"
+cmd "sym setOne ManualHelp ManualHelp0"
+}
+Script ShoplistFilter {
+ignoreInputTime 0.05
+cmd "sym set _ShoplistEntries 0"
+cmd "sym set _ShoplistHeight 0"
+cmd "sym setNSet 12 ShopFilter"
+cmd "sym set ShopFilter0 Shop_Featured"
+cmd "sym set ShopFilter1 Shop_AirMechs"
+cmd "sym set ShopFilter2 Shop_Units"
+cmd "sym set ShopFilter3 Shop_Pilots"
+cmd "sym set ShopFilter4 Shop_Parts"
+cmd "sym set ShopFilter5 Shop_Items"
+cmd "sym set ShopFilter6 Shop_Cosmetics"
+cmd "sym set ShopFilter7 Shop_Other"
+cmd "sym set ShopFilter8 Shop_Boosts"
+cmd "sym set ShopFilter9 Shop_Bundles"
+}
+Script MarketlistFilter {
+ignoreInputTime 0.05
+cmd "sym set _MarketlistEntries 0"
+cmd "sym set _MarketlistHeight 0"
+cmd "sym set _MarketlistName_ MarketFilter"
+cmd "sym setNSet 12 MarketFilter"
+cmd "sym set MarketFilter0 Shop_ShowAll"
+cmd "sym set MarketFilter1 Shop_AirMechs"
+cmd "sym set MarketFilter2 Shop_Units"
+cmd "sym set MarketFilter3 Shop_Pilots"
+cmd "sym set MarketFilter4 Shop_Items"
+cmd "sym set MarketFilter5 Shop_Parts"
+cmd "sym set MarketFilter6 Shop_Cosmetics"
+cmd "sym set MarketFilter7 Shop_Other"
+cmd "sym set MarketFilter8 Shop_Crates"
+cmd "sym set MarketFilter9 Shop_Boosts"
+}
+Script ShopFilter_ClickList {
+ignoreInputTime 0.1
+rcmd "sym setZero Filter_ShowAll Filter_Featured Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Duplicates Filter_Badges Filter_Crates"
+rcmd "sym setZero Filter_FighterA Filter_Chopper Filter_Bomber Filter_Saucer Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_Fliers"
+rcmd "menucmd ClearOtherFilters"
+rcmd "if literal $_MArg1_ == Featured runnow sym set Filter_Featured 1"
+rcmd "if literal $_MArg1_ == Featured runnow sym set FilterSource Filter_Featured"
+rcmd "if literal $_MArg1_ == Featured runnow sym set Filter Filter_Featured"
+rcmd "if literal $_MArg1_ == AirMechs runnow sym set Filter_AirMechs 1"
+rcmd "if literal $_MArg1_ == AirMechs runnow sym set FilterSource Filter_AirMechs"
+rcmd "if literal $_MArg1_ == AirMechs && sym SubShopFilter != AirMechs menucmd ShoplistFilterAirMechs"
+rcmd "if literal $_MArg1_ == AirMechs && sym SubShopFilter == AirMechs menucmd ShoplistFilterCollapse"
+rcmd "if literal $_MArg1_ == Units runnow sym set Filter_Units 1"
+rcmd "if literal $_MArg1_ == Units runnow sym set FilterSource Filter_Units"
+rcmd "if literal $_MArg1_ == Units runnow sym set Filter Shop_Units"
+rcmd "if literal $_MArg1_ == Units && sym SubShopFilter != Units menucmd ShoplistFilterUnits"
+rcmd "if literal $_MArg1_ == Units && sym SubShopFilter == Units menucmd ShoplistFilterCollapse"
+rcmd "if literal $_MArg1_ == Pilots runnow sym set Filter_Pilots 1"
+rcmd "if literal $_MArg1_ == Pilots runnow sym set FilterSource Filter_Pilots"
+rcmd "if literal $_MArg1_ == Pilots runnow sym clear SubShopFilter"
+rcmd "if literal $_MArg1_ == Parts runnow sym set Filter_Parts 1"
+rcmd "if literal $_MArg1_ == Parts runnow sym set FilterSource Filter_Parts"
+rcmd "if literal $_MArg1_ == Parts runnow sym set Filter Shop_Parts"
+rcmd "if literal $_MArg1_ == Parts runnow sym setOne Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+rcmd "if literal $_MArg1_ == Parts && sym SubShopFilter != Parts menucmd ShoplistFilterParts"
+rcmd "if literal $_MArg1_ == Parts && sym SubShopFilter == Parts menucmd ShoplistFilterCollapse"
+rcmd "if literal $_MArg1_ == Boosts runnow sym set Filter_Boosts 1"
+rcmd "if literal $_MArg1_ == Boosts runnow sym set FilterSource Filter_Boosts"
+rcmd "if literal $_MArg1_ == Boosts runnow sym set Filter Shop_Boosts"
+rcmd "if literal $_MArg1_ == Items runnow sym set Filter_Items 1"
+rcmd "if literal $_MArg1_ == Items runnow sym set FilterSource Filter_Items"
+rcmd "if literal $_MArg1_ == Items runnow sym set Filter Shop_Items"
+rcmd "if literal $_MArg1_ == Cosmetics runnow sym set Filter_Cosmetics 1"
+rcmd "if literal $_MArg1_ == Cosmetics runnow sym set FilterSource Filter_Cosmetics"
+rcmd "if literal $_MArg1_ == Cosmetics runnow sym set Filter Shop_Cosmetics"
+rcmd "if literal $_MArg1_ == Cosmetics && sym SubShopFilter != Cosmetics menucmd ShoplistFilterCosmetics"
+rcmd "if literal $_MArg1_ == Cosmetics && sym SubShopFilter == Cosmetics menucmd ShoplistFilterCollapse"
+rcmd "if literal $_MArg1_ == Other runnow sym set Filter_Other 1"
+rcmd "if literal $_MArg1_ == Other runnow sym set FilterSource Filter_Other"
+rcmd "if literal $_MArg1_ == Other runnow sym set Filter Shop_Other"
+rcmd "if literal $_MArg1_ == Other && sym SubShopFilter != Other menucmd ShoplistFilterOther"
+rcmd "if literal $_MArg1_ == Other && sym SubShopFilter == Other menucmd ShoplistFilterCollapse"
+rcmd "if literal $_MArg1_ == Bundles runnow sym set Filter_Bundles 1"
+rcmd "if literal $_MArg1_ == Bundles runnow sym set FilterSource Filter_Bundles"
+rcmd "if literal $_MArg1_ == Bundles runnow sym set Filter Shop_Bundles"
+cmd "if sym ListboxExpand == 1 loadmenu ListboxShop"
+}
+Script ShoplistFilterCollapse {
+ignoreInputTime 0.05
+rcmd "sym clear SubShopFilter"
+rcmd "sym setNSet 12 SubShopFilter"
+rcmd "sym setNSet 12 SubShopFilterName"
+rcmd "sym setOne Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+}
+Script ShoplistFilterAirMechs {
+ignoreInputTime 0.05
+rcmd "sym setOne Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+rcmd "sym set SubShopFilter AirMechs"
+rcmd "sym setNSet 12 SubShopFilter"
+rcmd "sym setNSet 12 SubShopFilterName"
+rcmd "sym setPair SubShopFilter0 Filter_FighterA SubShopFilterName0 FighterADisp"
+rcmd "sym setPair SubShopFilter1 Filter_Chopper SubShopFilterName1 ChopperDisp"
+rcmd "sym setPair SubShopFilter2 Filter_Bomber SubShopFilterName2 BomberDisp"
+rcmd "sym setPair SubShopFilter3 Filter_Warthog SubShopFilterName3 WarthogDisp"
+rcmd "sym setPair SubShopFilter4 Filter_Saucer SubShopFilterName4 SaucerDisp"
+rcmd "sym setPair SubShopFilter5 Filter_Osprey SubShopFilterName5 OspreyDisp"
+rcmd "sym setPair SubShopFilter6 Filter_FighterNeo SubShopFilterName6 FighterNeoDisp"
+rcmd "sym setPair SubShopFilter7 Filter_Paladin SubShopFilterName7 PaladinDisp"
+rcmd "sym setPair SubShopFilter8 Filter_Angel SubShopFilterName8 AngelDisp"
+}
+Script ShoplistFilterParts {
+ignoreInputTime 0.05
+rcmd "sym setOne Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+rcmd "sym set SubShopFilter Parts"
+rcmd "sym setNSet 12 SubShopFilter"
+rcmd "sym setNSet 12 SubShopFilterName"
+rcmd "sym setPair SubShopFilter0 Filter_FighterA SubShopFilterName0 FighterADisp"
+rcmd "sym setPair SubShopFilter1 Filter_Chopper SubShopFilterName1 ChopperDisp"
+rcmd "sym setPair SubShopFilter2 Filter_Bomber SubShopFilterName2 BomberDisp"
+rcmd "sym setPair SubShopFilter3 Filter_Warthog SubShopFilterName3 WarthogDisp"
+rcmd "sym setPair SubShopFilter4 Filter_Saucer SubShopFilterName4 SaucerDisp"
+rcmd "sym setPair SubShopFilter5 Filter_Osprey SubShopFilterName5 OspreyDisp"
+rcmd "sym setPair SubShopFilter6 Filter_FighterNeo SubShopFilterName6 FighterNeoDisp"
+rcmd "sym setPair SubShopFilter7 Filter_Paladin SubShopFilterName7 PaladinDisp"
+rcmd "sym setPair SubShopFilter8 Filter_Angel SubShopFilterName8 AngelDisp"
+}
+Script ShoplistFilterUnits {
+ignoreInputTime 0.05
+rcmd "sym setOne Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_Fliers Filter_Ultimates"
+rcmd "sym set SubShopFilter Units"
+rcmd "sym setNSet 12 SubShopFilter"
+rcmd "sym setNSet 12 SubShopFilterName"
+rcmd "sym setPair SubShopFilter0 Filter_Infantry SubShopFilterName0 Filter_Infantry"
+rcmd "sym setPair SubShopFilter1 Filter_Combat SubShopFilterName1 Filter_Combat"
+rcmd "sym setPair SubShopFilter2 Filter_Support SubShopFilterName2 Filter_Support"
+rcmd "sym setPair SubShopFilter3 Filter_Stationary SubShopFilterName3 Filter_Stationary"
+rcmd "sym setPair SubShopFilter4 Filter_Guardians SubShopFilterName4 Filter_Guardians"
+rcmd "sym setPair SubShopFilter5 Filter_Fliers SubShopFilterName5 Filter_Fliers"
+rcmd "sym setPair SubShopFilter6 Filter_Ultimates SubShopFilterName6 Filter_Ultimates"
+}
+Script ShoplistFilterCosmetics {
+ignoreInputTime 0.05
+rcmd "sym setOne Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_Tracers Filter_EnginePfx Filter_Auras"
+rcmd "echo select ShoplistFilterCosmetics"
+rcmd "sym set SubShopFilter Cosmetics"
+rcmd "sym setNSet 12 SubShopFilter"
+rcmd "sym setNSet 12 SubShopFilterName"
+rcmd "sym setPair SubShopFilter0 Filter_Colors SubShopFilterName0 Filter_Colors"
+rcmd "sym setPair SubShopFilter1 Filter_Pets SubShopFilterName1 Filter_Pets"
+rcmd "sym setPair SubShopFilter2 Filter_Hats SubShopFilterName2 Filter_Hats"
+rcmd "sym setPair SubShopFilter3 Filter_Contrails SubShopFilterName3 Filter_Contrails"
+rcmd "sym setPair SubShopFilter4 Filter_Tracers SubShopFilterName4 Filter_Tracers"
+rcmd "sym setPair SubShopFilter5 Filter_EnginePfx SubShopFilterName5 Filter_EnginePfx"
+rcmd "sym setPair SubShopFilter6 Filter_Auras SubShopFilterName6 Filter_Auras"
+}
+Script ShoplistFilterOther {
+ignoreInputTime 0.05
+rcmd "sym setOne Filter_Nanoforge Filter_Basecamp Filter_CardsColl Filter_CapsulesCont Filter_Books Filter_Materials Filter_Various"
+rcmd "echo select ShoplistFilterOther"
+rcmd "sym set SubShopFilter Other"
+rcmd "sym setNSet 12 SubShopFilter"
+rcmd "sym setNSet 12 SubShopFilterName"
+rcmd "sym setPair SubShopFilter0 Filter_Nanoforge SubShopFilterName0 Filter_Nanoforge"
+rcmd "sym setPair SubShopFilter1 Filter_Basecamp SubShopFilterName1 Filter_Basecamp"
+rcmd "sym setPair SubShopFilter2 Filter_CardsColl SubShopFilterName2 Filter_CardsColl"
+rcmd "sym setPair SubShopFilter3 Filter_CapsulesCont SubShopFilterName3 Filter_CapsulesCont"
+rcmd "sym setPair SubShopFilter4 Filter_Books SubShopFilterName4 Filter_Books"
+rcmd "sym setPair SubShopFilter5 Filter_Materials SubShopFilterName5 Filter_Materials"
+rcmd "sym setPair SubShopFilter6 Filter_Various SubShopFilterName6 Filter_Various"
+}
+Script ShopFilterUnits_ClickList {
+ignoreInputTime 0.1
+cmd "sym setZero Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_Fliers Filter_Ultimates"
+cmd "menucmd ClearOtherFilters"
+cmd "if literal $_MArg1_ == 0 runnow sym setPair Filter_All 1 Filter Shop_Units"
+cmd "if literal $_MArg1_ == 1 runnow sym setPair Filter_Infantry 1 Filter Filter_Infantry"
+cmd "if literal $_MArg1_ == 2 runnow sym setPair Filter_Combat 1 Filter Filter_Combat"
+cmd "if literal $_MArg1_ == 3 runnow sym setPair Filter_Support 1 Filter Filter_Support"
+cmd "if literal $_MArg1_ == 4 runnow sym setPair Filter_Stationary 1 Filter Filter_Stationary"
+cmd "if literal $_MArg1_ == 5 runnow sym setPair Filter_Alternates 1 Filter Filter_Alternates"
+cmd "if literal $_MArg1_ == 6 runnow sym setPair Filter_Guardians 1 Filter Filter_Guardians"
+cmd "if literal $_MArg1_ == 7 runnow sym setPair Filter_Fliers 1 Filter Filter_Fliers"
+cmd "if literal $_MArg1_ == 8 runnow sym setPair Filter_Ultimates 1 Filter Filter_Ultimates"
+cmd "if literal $_MArg1_ == 0 runnow sym setZero Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_Fliers Filter_Ultimates"
+cmd "sym set ShopentorySelected -1"
+cmd "pcmd t0 collection scrollUpdateInv2 paged"
+cmd "if literal $_MArg1_ == 0 runnow sym set FilterSource Filter_All"
+cmd "if literal $_MArg1_ != 0 runnow sym set FilterSource Filter_Units_Inv"
+}
+Script MarketFilter_ClickList {
+ignoreInputTime 0.1
+rcmd "sym setZero Filter_ShowAll Filter_Featured Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Duplicates Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setZero Filter_FighterA Filter_Chopper Filter_Bomber Filter_Saucer Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_Fliers"
+rcmd "if sym _MArg1_ == Featured runnow sym set Filter_Featured 1"
+rcmd "if sym _MArg1_ == Featured runnow sym set FilterSource Filter_Featured"
+rcmd "if sym _MArg1_ == Featured runnow sym set Filter Filter_Featured"
+rcmd "if sym _MArg1_ == AirMechs runnow sym set Filter_AirMechs 1"
+rcmd "if sym _MArg1_ == AirMechs runnow sym set FilterSource Filter_AirMechs"
+rcmd "if sym _MArg1_ == AirMechs && sym SubShopFilter != AirMechs menucmd ShoplistFilterAirMechs"
+rcmd "if sym _MArg1_ == AirMechs && sym SubShopFilter == AirMechs menucmd ShoplistFilterCollapse"
+rcmd "if sym _MArg1_ == Units runnow sym set Filter_Units 1"
+rcmd "if sym _MArg1_ == Units runnow sym set FilterSource Filter_Units"
+rcmd "if sym _MArg1_ == Units runnow sym set Filter Shop_Units"
+rcmd "if sym _MArg1_ == Units && sym SubShopFilter != Units menucmd ShoplistFilterUnits"
+rcmd "if sym _MArg1_ == Units && sym SubShopFilter == Units menucmd ShoplistFilterCollapse"
+rcmd "if sym _MArg1_ == Pilots runnow sym set Filter_Pilots 1"
+rcmd "if sym _MArg1_ == Pilots runnow sym set FilterSource Filter_Pilots"
+rcmd "if sym _MArg1_ == Pilots runnow sym clear SubShopFilter"
+rcmd "if sym _MArg1_ == Parts runnow sym set Filter_Parts 1"
+rcmd "if sym _MArg1_ == Parts runnow sym set FilterSource Filter_Parts"
+rcmd "if sym _MArg1_ == Parts runnow sym set Filter Shop_Parts"
+rcmd "if sym _MArg1_ == Parts runnow sym setOne Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+rcmd "if sym _MArg1_ == Parts && sym SubShopFilter != Parts menucmd ShoplistFilterParts"
+rcmd "if sym _MArg1_ == Parts && sym SubShopFilter == Parts menucmd ShoplistFilterCollapse"
+rcmd "if sym _MArg1_ == Boosts runnow sym set Filter_Boosts 1"
+rcmd "if sym _MArg1_ == Boosts runnow sym set FilterSource Filter_Boosts"
+rcmd "if sym _MArg1_ == Boosts runnow sym set Filter Shop_Boosts"
+rcmd "if sym _MArg1_ == Items runnow sym set Filter_Items 1"
+rcmd "if sym _MArg1_ == Items runnow sym set FilterSource Filter_Items"
+rcmd "if sym _MArg1_ == Items runnow sym set Filter Shop_Items"
+rcmd "if sym _MArg1_ == Cosmetics runnow sym set Filter_Cosmetics 1"
+rcmd "if sym _MArg1_ == Cosmetics runnow sym set FilterSource Filter_Cosmetics"
+rcmd "if sym _MArg1_ == Cosmetics runnow sym set Filter Shop_Cosmetics"
+rcmd "if sym _MArg1_ == Cosmetics && sym SubShopFilter != Cosmetics menucmd ShoplistFilterCosmetics"
+rcmd "if sym _MArg1_ == Cosmetics && sym SubShopFilter == Cosmetics menucmd ShoplistFilterCollapse"
+rcmd "if sym _MArg1_ == ShowAll runnow sym set Filter_ShowAll 1"
+rcmd "if sym _MArg1_ == ShowAll runnow sym set FilterSource Filter_ShowAll"
+rcmd "if sym _MArg1_ == ShowAll runnow sym set Filter Filter_ShowAll"
+rcmd "if sym _MArg1_ == Crates runnow sym set Filter_Crates 1"
+rcmd "if sym _MArg1_ == Crates runnow sym set FilterSource Filter_Crates"
+rcmd "if sym _MArg1_ == Crates runnow sym set Filter Filter_Crates"
+rcmd "if sym _MArg1_ == Other runnow sym set Filter_Other 1"
+rcmd "if sym _MArg1_ == Other runnow sym set FilterSource Filter_Other"
+rcmd "if sym _MArg1_ == Other runnow sym set Filter Shop_Other"
+rcmd "if sym _MArg1_ == Other && sym SubShopFilter != Other menucmd ShoplistFilterOther"
+rcmd "if sym _MArg1_ == Other && sym SubShopFilter == Other menucmd ShoplistFilterCollapse"
+rcmd "if sym _MArg1_ == Bundles runnow sym set Filter_Bundles 1"
+rcmd "if sym _MArg1_ == Bundles runnow sym set FilterSource Filter_Bundles"
+rcmd "if sym _MArg1_ == Bundles runnow sym set Filter Shop_Bundles"
+cmd "if sym ListboxExpand == 1 loadmenu ListboxMarket"
+}
+Script ShopButtonPress {
+cmd "collection scrollUpdate paged"
+cmd "customize clearClassFilter"
+}
+Script ShopButtonPressPre {
+rcmd "customize clearClassFilter"
+cmd "pcmd 0.5 if usingPad if sym _NoShopResults == 1 && sym DialogBoxLoaded == 0 && sym MarketAcceptTerms == 1 runnow gameui focusnametry Filter_MyListings Filter_NotOwned GameShopButtonBack"
+}
+Script JumpToShopParts {
+cmd "sym set ListboxExpand 1"
+cmd "if sym ListboxExpand == 1 pcmd 0 clearmenu ListboxShop /fadeout 0.1"
+cmd "sym setZero Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Parts Shop_Cosmetics Shop_Flair Shop_Other Shop_Boosts Shop_Inventory Shop_Ultimates Shop_Pets Shop_Market Shop_Ultimates"
+cmd "]sym set Shop_Parts 1"
+cmd "sym setNSet 12 SubShopFilter"
+cmd "sym setNSet 12 SubShopFilterName"
+cmd "menuCmd ShopButtonPressPre"
+cmd "]menucmd ShopFilter_ClickList local Parts 1"
+cmd "]collection shopInit Parts"
+cmd "]pcmd 0.1 menucmd JumpToShopPartsFilter"
+}
+Script JumpToShopPartsFilter {
+rcmd "if sym RookLocal_Class == Striker runnow sym set _SelectedFilter $SubShopFilter0"
+rcmd "if sym RookLocal_Class == Helix runnow sym set _SelectedFilter $SubShopFilter1"
+rcmd "if sym RookLocal_Class == Bomber runnow sym set _SelectedFilter $SubShopFilter2"
+rcmd "if sym RookLocal_Class == Warthog runnow sym set _SelectedFilter $SubShopFilter3"
+rcmd "if sym RookLocal_Class == Saucer runnow sym set _SelectedFilter $SubShopFilter4"
+rcmd "if sym RookLocal_Class == Osprey runnow sym set _SelectedFilter $SubShopFilter5"
+rcmd "if sym RookLocal_Class == Neo runnow sym set _SelectedFilter $SubShopFilter6"
+rcmd "if sym RookLocal_Class == Paladin runnow sym set _SelectedFilter $SubShopFilter7"
+rcmd "if sym RookLocal_Class == Angel runnow sym set _SelectedFilter $SubShopFilter8"
+cmd "sym setZero Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_Fliers Filter_Ultimates"
+cmd "sym setZero Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+cmd "sym setZero Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_Tracers Filter_EnginePfx Filter_Auras"
+cmd "menucmd ClearOtherFilters"
+cmd "]sym set $_SelectedFilter 1"
+cmd "menuCmd ShopButtonPressPre"
+cmd "collection scrollUpdate paged"
+}
+Script ButtonPressShop_Premium {
+cmd "sym set GL_ChatHidden 1"
+cmd "sym set ShowShopItems 1"
+}
+Script ButtonPressShop_Pilots {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_ShowAll Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_Pilots"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Pilots"
+rcmd "menuCmd ShopSortPriceK"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_Units {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_ShowAll Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Sets Filter_Recipes Filter_Other Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_Units"
+rcmd "sym setOne Filter_Guardians Filter_Alternates Filter_Combat Filter_Infantry Filter_Stationary Filter_Support"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Units"
+rcmd "floatsym set _fs1 0"
+rcmd "menuCmd ShopSortLvlReq"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ListBoxFilterShop_Units {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_ShowAll Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Sets Filter_Recipes Filter_Other Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_Units"
+rcmd "sym setOne Filter_Guardians Filter_Alternates Filter_Combat Filter_Infantry Filter_Stationary Filter_Support"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Units"
+rcmd "floatsym set _fs1 0"
+rcmd "menuCmd ShopSortPriceK"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_Parts {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_ShowAll Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+rcmd "sym setOne Filter_NotOwned Filter_Parts"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Parts"
+rcmd "floatsym set _fs1 0"
+rcmd "menuCmd ShopSortPriceK"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_Items {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_ShowAll Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_Items"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Items"
+rcmd "menuCmd ShopSortPriceK"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_Other {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_Other Filter_Crates Filter_Recipes"
+rcmd "sym setOne Filter_Nanoforge Filter_Basecamp Filter_CardsColl Filter_CapsulesCont Filter_Books Filter_Materials Filter_Various"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Other"
+rcmd "menuCmd ShopSortReleaseDate"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_Crates {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_Crates"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Crates"
+rcmd "menuCmd ShopSortReleaseDate"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_Boosts {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setZero Filter_NotOwned"
+rcmd "sym setOne Filter_BoostK Filter_BoostXP Filter_Boosts Filter_Other"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Boosts"
+rcmd "menuCmd ShopSortReleaseDate"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_Cosmetics {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_ShowAll Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_Cosmetics"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Cosmetics"
+rcmd "menuCmd ShopSortReleaseDate"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_Pets {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_ShowAll Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_Pets Filter_Cosmetics"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Pets"
+rcmd "menuCmd ShopSortReleaseDate"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_AirMechs {
+rcmd "sym setZero Filter_Wishlist Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_Tracers Filter_EnginePfx Filter_Auras Filter_FunStats Filter_ShowAll Filter_OnSale Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_AirMechs"
+rcmd "sym setOne Filter_FighterA Filter_Chopper Filter_Bomber Filter_Saucer Filter_Osprey Filter_Warthog Filter_FighterNeo Filter_Paladin Filter_Angel"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_AirMechs"
+rcmd "menuCmd ShopSortDeclOrder"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ListBoxFilterShop_AirMechs {
+rcmd "sym setZero Filter_Wishlist Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_Tracers Filter_EnginePfx Filter_Auras Filter_FunStats Filter_ShowAll Filter_OnSale Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_AirMechs"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_AirMechs"
+rcmd "menuCmd ShopSortDeclOrder"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_Ultimates {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_ShowAll Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "sym setZero Filter_FighterA Filter_Chopper Filter_Bomber Filter_Saucer Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym setOne Filter_NotOwned Filter_ShowAll"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Ultimates"
+rcmd "menuCmd ShopSortReleaseDate"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 ShopItemZero"
+}
+Script ButtonPressShop_Market {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_NotOwned Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym set Filter_ShowAll 1"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Market"
+rcmd "collection shopInit Shop_Market /run"
+rcmd "menuCmd ShopSortReleaseDate"
+cmd "menucmd MarketUpdateViaRefresh"
+}
+Script ButtonPressShop_Inventory {
+rcmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_NotOwned Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates Filter_Duplicates"
+rcmd "menucmd ClearOtherFilters"
+rcmd "sym set Filter_ShowAll 1"
+rcmd "sym set ShowShopItems 1"
+rcmd "sym set ShopSection Shop_Inventory"
+rcmd "menuCmd ShopSortReleaseDate"
+rcmd "collection shopInit Shop_Inventory /run"
+cmd "pcmd 0.1 if usingPad gameui focusnametry ShopItem0 GameShopButtonBack"
+}
+Script ButtonPressShop_Diamonds {
+cmd "sym set Shop_Diamonds 1"
+cmd "sym setZero _NoShopResults ShowShopItems Shop_Inventory Shop_Featured Shop_Game"
+cmd "sym set ShopSection Shop_Diamonds"
+cmd "if usingPad pcmd t2 gameui focusnametry DiamondBundle5"
+}
+Script ButtonPressShop_Featured {
+cmd "sym setZero ShowShopItems Shop_Game Shop_Diamonds"
+cmd "sym set ShopSection Shop_Featured"
+cmd "if usingPad pcmd t2 gameui focusnametry StoreTilePrimeBundle StoreTileBooster4x"
+}
+Script ButtonPressShop_FeaturedList {
+cmd "sym setZero Filter_Wishlist Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_NotOwned Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+cmd "menucmd ClearOtherFilters"
+cmd "sym set Filter_ShowAll 1"
+cmd "sym set ShowShopItems 1"
+cmd "sym set ShopSection Shop_Featured"
+cmd "menuCmd ShopSortReleaseDate"
+cmd "if usingPad pcmd t2 gameui focusnametry ShopItem0 ShopItemEmpty"
+}
+Script CancelShop_Diamonds {
+cmd "sym setZero ShowShopItems Shop_Featured Shop_Diamonds"
+cmd "sym set Shop_Game 1"
+cmd "sym set ShopSection ButtonShop"
+cmd "pcmd t1 gameui focusnametry GameShopButtonDiamonds Shop_AirMechs"
+}
+Script CancelShop_Featured {
+cmd "sym setZero ShowShopItems Shop_Featured Shop_Diamonds"
+cmd "sym set Shop_Game 1"
+cmd "sym set ShopSection ButtonShop"
+cmd "pcmd t1 gameui focusnametry GameShopButtonFeatured Shop_AirMechs"
+cmd "if usingPad pcmd t2 gameui focusnametry ShopItem0 ShopItemEmpty"
+}
+Script CancelShop_Sections {
+cmd "sym setZero ShowShopItems Shop_Diamonds Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Pets Shop_Cosmetics Shop_Ultimates Shop_Other Shop_Featured"
+cmd "sym set Shop_Game 1"
+cmd "sym set ShopSection ButtonShop"
+cmd "pcmd t0 gameui focusnametry $_GameShop_Last Shop_AirMechs"
+}
+Script ButtonPressShop_Game {
+cmd "sym set ShowShopItems 0"
+cmd "addUIAnim Shop_Diamonds mas_ShopButtonReset"
+cmd "addUIAnim Shop_Game mas_ShopButtonReset"
+cmd "addUIAnim Shop_Market mas_ShopButtonLower"
+cmd "addUIAnim Shop_MyCollection mas_ShopButtonLower"
+}
+Script FilterSelectJustMe {
+cmd "sym setZero Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_NotOwned Filter_OnSale Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_Boosts Filter_Badges Filter_Crates"
+cmd "menucmd ClearOtherFilters"
+cmd "sym set Filter_ShowAll 1"
+}
+Script ShopClickGiftwrap {
+cmd "if sym Shop_Giftwrap == 0 menuCmd ShopAddGiftwrap"
+}
+Script ShopClickGoToMarketAfterList {
+cmd "menucmd SellOptionFee"
+cmd "menucmd ListMarketPriceEdited"
+}
+Script ShopAddGiftwrap {
+cmd "if sym Sell_FeeK == 1 sym set Sell_FeeD 1"
+cmd "if sym Sell_FeeK == 1 sym set Sell_FeeK 0"
+cmd "menucmd SellOptionFee"
+cmd "menucmd ListMarketPriceEdited"
+}
+Script ShopRemoveGiftwrap {
+cmd "if sym Sell_FeeK == 1 sym set Sell_FeeD 1"
+cmd "if sym Sell_FeeK == 1 sym set Sell_FeeK 0"
+cmd "menucmd SellOptionFee"
+}
+Script ShopFilterResetAll {
+cmd "sym setOne Filter_RarityA Filter_RarityB Filter_RarityC Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_OnSale Filter_NotOwned Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_MyListings Filter_Duplicates Filter_NotInShop Filter_Badges Filter_Crates"
+cmd "menucmd ClearOtherFilters"
+cmd "collection scrollUpdate paged"
+}
+Script ShopFilterShowAll {
+cmd "sym setZero Filter_Variants Filter_Colors Filter_Pets Filter_Hats Filter_Contrails Filter_EnginePfx Filter_Tracers Filter_Auras Filter_FunStats Filter_OnSale Filter_NotOwned Filter_AirMechOwned Filter_Limited Filter_BoostK Filter_BoostXP Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians Filter_AirMechs Filter_Units Filter_Parts Filter_Pilots Filter_Items Filter_Cosmetics Filter_Bundles Filter_Other Filter_Sets Filter_Recipes Filter_Ultimates Filter_MyListings Filter_Duplicates Filter_NotInShop Filter_Badges Filter_Crates"
+cmd "menucmd ClearOtherFilters"
+cmd "sym set Filter_ShowAll 1"
+cmd "sym set ShopFilterText"
+cmd "collection scrollUpdate paged"
+cmd "if usingPad gameui focusNameTry ShopItem0"
+}
+Script ShopFilterClick {
+cmd "sym set Filter_ShowAll 0"
+cmd "sym set Filter_HalfUnits 0"
+cmd "sym set Filter_HalfAirMechs 0"
+cmd "if sym Filter_Units == 1 menucmd ShopFilterSupUnitsClick"
+cmd "if sym Filter_AirMechs == 1 menucmd ShopFilterSupAirMechsClick"
+cmd "if sym ShopSection == Shop_Market menuCmd ShopFilterClickMarket"
+cmd "if sym ShopSection != Shop_Market collection scrollUpdate paged"
+}
+Script InventoryFilterClick {
+cmd "sym set Filter_ShowAll_Inv 0"
+cmd "sym set Filter_HalfUnits_Inv 0"
+cmd "sym set Filter_HalfAirMechs_Inv 0"
+cmd "if sym Filter_Units_Inv == 1 menucmd InventoryFilterSupUnitsClick"
+cmd "if sym Filter_AirMechs_Inv == 1 menucmd InventoryFilterSupAirMechsClick"
+cmd "pcmd t0 collection scrollUpdateInv2 paged"
+}
+Script ShopFilterClickMarket {
+cmd "if sym Filter_AirMechs == 0 && sym Filter_Units == 0 && sym Filter_Pilots == 0 && sym Filter_Parts == 0 && sym Filter_Boosts == 0 && sym Filter_Items == 0 && sym Filter_Other == 0 && sym Filter_Cosmetics == 0 && sym Filter_Ultimates == 0 runnow sym set Filter_ShowAll 1
+cmd "collection scrollUpdate paged"
+}
+Script ShopFilterClickPartsMaster {
+cmd "sym set Filter_ShowAll 0"
+cmd "sym set Filter_HalfUnits 0"
+cmd "sym set Filter_HalfAirMechs 0"
+cmd "sym setOne Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+cmd "if sym ShopSection == Shop_Market menuCmd ShopFilterClickMarket"
+cmd "if sym ShopSection != Shop_Market collection scrollUpdate paged"
+}
+Script InventoryFilterClickPartsMaster {
+cmd "sym set Filter_ShowAll_Inv 0"
+cmd "sym set Filter_HalfUnits_Inv 0"
+cmd "sym set Filter_HalfAirMechs_Inv 0"
+cmd "sym setOne Filter_FighterA_Inv Filter_Chopper_Inv Filter_Saucer_Inv Filter_Bomber_Inv Filter_FighterNeo_Inv Filter_Osprey_Inv Filter_Warthog_Inv Filter_Paladin_Inv Filter_Angel_Inv"
+cmd "pcmd t0 collection scrollUpdateInv2 paged"
+}
+Script ShopFilterToggleClick {
+rcmd "collection scrollUpdate paged"
+}
+Script InventoryFilterToggleClick {
+rcmd "collection scrollUpdateInv2 paged"
+}
+Script ShopFilterPartsClick {
+rcmd "collection scrollUpdate paged /run"
+}
+Script ShopFilterUnitsClick {
+cmd "sym set Filter_ShowAll 0"
+cmd "sym set Filter_HalfUnits 0"
+cmd "sym set Filter_AirMechs 0"
+cmd "if sym Filter_Units == 1 runnow sym setOne Filter_Infantry Filter_Combat Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians"
+cmd "if sym Filter_Units == 1 gameui focusNameTry Filter_Combat Filter_Infantry Filter_Support Filter_Stationary Filter_Alternates Filter_Guardians"
+cmd "if sym Filter_Units == 0 gameui focusNameTry Filter_Units"
+cmd "if sym ShopSection == Shop_Market menuCmd ShopFilterClickMarket"
+cmd "if sym ShopSection != Shop_Market collection scrollUpdate paged"
+}
+Script InventoryFilterUnitsClick {
+cmd "sym set Filter_ShowAll_Inv 0"
+cmd "sym set Filter_HalfUnits_Inv 0"
+cmd "sym set Filter_AirMechs_Inv 0"
+cmd "if sym Filter_Units_Inv == 1 runnow sym setOne Filter_Infantry_Inv Filter_Combat_Inv Filter_Support_Inv Filter_Stationary_Inv Filter_Alternates_Inv Filter_Guardians_Inv"
+cmd "if sym Filter_Units_Inv == 1 gameui focusNameTry Filter_Combat_Inv Filter_Infantry_Inv Filter_Support_Inv Filter_Stationary_Inv Filter_Alternates_Inv Filter_Guardians_Inv"
+cmd "if sym Filter_Units_Inv == 0 gameui focusNameTry Filter_Units_Inv"
+cmd "collection scrollUpdateInv2 paged"
+}
+Script ShopFilterAirMechsClick {
+cmd "sym set Filter_ShowAll 0"
+cmd "sym set Filter_HalfAirMechs 0"
+cmd "sym set Filter_Units 0"
+cmd "if sym Filter_AirMechs == 1 runnow sym setOne Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+cmd "if sym Filter_AirMechs == 1 gameui focusNameTry Filter_FighterA Filter_Chopper Filter_Saucer Filter_Bomber Filter_FighterNeo Filter_Osprey Filter_Warthog Filter_Paladin Filter_Angel"
+cmd "if sym Filter_AirMechs == 0 gameui focusNameTry Filter_AirMechs"
+cmd "if sym ShopSection == Shop_Market menuCmd ShopFilterClickMarket"
+cmd "if sym ShopSection != Shop_Market collection scrollUpdate paged"
+}
+Script InventoryFilterAirMechsClick {
+cmd "sym set Filter_ShowAll_Inv 0"
+cmd "sym set Filter_HalfAirMechs_Inv 0"
+cmd "sym set Filter_Units_Inv 0"
+cmd "if sym Filter_AirMechs_Inv == 1 runnow sym setOne Filter_FighterA_Inv Filter_Chopper_Inv Filter_Saucer_Inv Filter_Bomber_Inv Filter_FighterNeo_Inv Filter_Osprey_Inv Filter_Warthog_Inv Filter_Paladin_Inv Filter_Angel_Inv"
+cmd "if sym Filter_AirMechs_Inv == 1 gameui focusNameTry Filter_FighterA_Inv Filter_Chopper_Inv Filter_Saucer_Inv Filter_Bomber_Inv Filter_FighterNeo_Inv Filter_Osprey_Inv Filter_Warthog_Inv Filter_Paladin_Inv Filter_Angel_Inv"
+cmd "if sym Filter_AirMechs_Inv == 0 gameui focusNameTry Filter_AirMechs_Inv"
+cmd "collection scrollUpdateInv2 paged"
+}
+Script ShopFilterSupUnitsClick {
+cmd "sym set Filter_ShowAll 0"
+cmd "if sym Filter_Infantry == 0 && sym Filter_Combat == 0 && sym Filter_Support == 0 && sym Filter_Stationary == 0 && sym Filter_Alternates == 0 && sym Filter_Guardians == 0 runnow sym set Filter_Units 0"
+cmd "if sym Filter_Units == 0 if usingPad gameui focusnametry Filter_Units ShopItem0 Shop_AirMechs"
+cmd "sym set Filter_HalfUnits 0"
+cmd "if sym Filter_Combat == 0 runnow sym set Filter_HalfUnits 1"
+cmd "if sym Filter_Support == 0 runnow sym set Filter_HalfUnits 1"
+cmd "if sym Filter_Stationary == 0 runnow sym set Filter_HalfUnits 1"
+cmd "if sym Filter_Alternates == 0 runnow sym set Filter_HalfUnits 1"
+cmd "if sym Filter_Guardians == 0 runnow sym set Filter_HalfUnits 1"
+cmd "if sym Filter_Infantry == 0 runnow sym set Filter_HalfUnits 1"
+cmd "if sym Filter_Units == 0 runnow sym set Filter_HalfUnits 1"
+cmd "collection scrollUpdate paged"
+}
+Script InventoryFilterSupUnitsClick {
+cmd "sym set Filter_ShowAll_Inv 0"
+cmd "if sym Filter_Infantry_Inv == 0 && sym Filter_Combat_Inv == 0 && sym Filter_Support_Inv == 0 && sym Filter_Stationary_Inv == 0 && sym Filter_Alternates_Inv == 0 && sym Filter_Guardians_Inv == 0 runnow sym set Filter_Units_Inv 0"
+cmd "if sym Filter_Units_Inv == 0 if usingPad gameui focusnametry Filter_Units_Inv"
+cmd "sym set Filter_HalfUnits_Inv 0"
+cmd "if sym Filter_Combat_Inv == 0 runnow sym set Filter_HalfUnits_Inv 1"
+cmd "if sym Filter_Support_Inv == 0 runnow sym set Filter_HalfUnits_Inv 1"
+cmd "if sym Filter_Stationary_Inv == 0 runnow sym set Filter_HalfUnits_Inv 1"
+cmd "if sym Filter_Alternates_Inv == 0 runnow sym set Filter_HalfUnits_Inv 1"
+cmd "if sym Filter_Guardians_Inv == 0 runnow sym set Filter_HalfUnits_Inv 1"
+cmd "if sym Filter_Infantry_Inv == 0 runnow sym set Filter_HalfUnits_Inv 1"
+cmd "if sym Filter_Units_Inv == 0 runnow sym set Filter_HalfUnits_Inv 1"
+cmd "collection scrollUpdateInv2 paged"
+}
+Script ShopFilterSupUnitsOnlyClick {
+cmd "sym set Filter_ShowAll 0"
+cmd "sym set Filter_Units 1"
+cmd "if sym Filter_Infantry == 0 && sym Filter_Combat == 0 && sym Filter_Support == 0 && sym Filter_Stationary == 0 && sym Filter_Alternates == 0 && sym Filter_Guardians == 0 runnow sym set Filter_Units 0"
+cmd "collection scrollUpdate paged"
+}
+Script ShopFilterSupAirMechsClick {
+cmd "sym set Filter_ShowAll 0"
+cmd "if sym Filter_FighterA == 0 && sym Filter_Chopper == 0 && sym Filter_Saucer == 0 && sym Filter_Bomber == 0 && sym Filter_FighterNeo == 0 && sym Filter_Osprey == 0 && sym Filter_Warthog == 0 && sym Filter_Paladin == 0 && sym Filter_Angel == 0 runnow sym set Filter_AirMechs 0"
+cmd "if sym Filter_AirMechs == 0 if usingPad gameui focusnametry Filter_Units ShopItem0 Shop_AirMechs"
+cmd "sym set Filter_HalfAirMechs 0"
+cmd "if sym Filter_FighterA == 0 runnow sym set Filter_HalfAirMechs 1"
+cmd "if sym Filter_Chopper == 0 runnow sym set Filter_HalfAirMechs 1"
+cmd "if sym Filter_Saucer == 0 runnow sym set Filter_HalfAirMechs 1"
+cmd "if sym Filter_Bomber == 0 runnow sym set Filter_HalfAirMechs 1"
+cmd "if sym Filter_FighterNeo == 0 runnow sym set Filter_HalfAirMechs 1"
+cmd "if sym Filter_Osprey == 0 runnow sym set Filter_HalfAirMechs 1"
+cmd "if sym Filter_Warthog == 0 runnow sym set Filter_HalfAirMechs 1"
+cmd "if sym Filter_Paladin == 0 runnow sym set Filter_HalfAirMechs 1"
+cmd "if sym Filter_Angel == 0 runnow sym set Filter_HalfAirMechs 1"
+cmd "if sym Filter_AirMechs == 0 runnow sym set Filter_HalfAirMechs 0"
+cmd "if sym Filter_FighterA == 1 && sym Filter_Chopper == 1 && sym Filter_Saucer == 1 && sym Filter_Bomber == 1 && sym Filter_FighterNeo == 1 && sym Filter_Osprey == 1 && sym Filter_Warthog == 1 && sym Filter_Paladin == 1 && sym Filter_Angel == 1 runnow sym set Filter_HalfAirMechs 0"
+cmd "if sym Filter_AirMechs == 0 if usingPad gameui focusnametry Filter_Units ShopItem0 Shop_AirMechs"
+cmd "collection scrollUpdate paged"
+}
+Script InventoryFilterSupAirMechsClick {
+cmd "sym set Filter_ShowAll_Inv 0"
+cmd "if sym Filter_FighterA_Inv == 0 && sym Filter_Chopper_Inv == 0 && sym Filter_Saucer_Inv == 0 && sym Filter_Bomber_Inv == 0 && sym Filter_FighterNeo_Inv == 0 && sym Filter_Osprey_Inv == 0 && sym Filter_Warthog_Inv == 0 && sym Filter_Paladin_Inv == 0 && sym Filter_Angel_Inv == 0 runnow sym set Filter_AirMechs_Inv 0"
+cmd "if sym Filter_AirMechs_Inv == 0 if usingPad gameui focusnametry Filter_Units_Inv"
+cmd "sym set Filter_HalfAirMechs_Inv 0"
+cmd "if sym Filter_FighterA_Inv == 0 runnow sym set Filter_HalfAirMechs_Inv 1"
+cmd "if sym Filter_Chopper_Inv == 0 runnow sym set Filter_HalfAirMechs_Inv 1"
+cmd "if sym Filter_Saucer_Inv == 0 runnow sym set Filter_HalfAirMechs_Inv 1"
+cmd "if sym Filter_Bomber_Inv == 0 runnow sym set Filter_HalfAirMechs_Inv 1"
+cmd "if sym Filter_FighterNeo_Inv == 0 runnow sym set Filter_HalfAirMechs_Inv 1"
+cmd "if sym Filter_Osprey_Inv == 0 runnow sym set Filter_HalfAirMechs_Inv 1"
+cmd "if sym Filter_Warthog_Inv == 0 runnow sym set Filter_HalfAirMechs_Inv 1"
+cmd "if sym Filter_Paladin_Inv == 0 runnow sym set Filter_HalfAirMechs_Inv 1"
+cmd "if sym Filter_Angel_Inv == 0 runnow sym set Filter_HalfAirMechs_Inv 1"
+cmd "if sym Filter_AirMechs_Inv == 0 runnow sym set Filter_HalfAirMechs_Inv 0"
+cmd "if sym Filter_FighterA_Inv == 1 && sym Filter_Chopper_Inv == 1 && sym Filter_Saucer_Inv == 1 && sym Filter_Bomber_Inv == 1 && sym Filter_FighterNeo_Inv == 1 && sym Filter_Osprey_Inv == 1 && sym Filter_Warthog_Inv == 1 && sym Filter_Paladin_Inv == 1 && sym Filter_Angel_Inv == 1 runnow sym set Filter_HalfAirMechs_Inv 0"
+cmd "if sym Filter_AirMechs_Inv == 0 if usingPad gameui focusnametry Filter_Units_Inv"
+cmd "collection scrollUpdateInv2 paged"
+}
+Script ShopFilterUpdateClick {
+cmd "collection scrollUpdate paged"
+}
+Script ShopFilterClickVariants {
+cmd "sym set Filter_ShowAll 0"
+cmd "if sym Filter_Variants == 0 if sym Filter_AirMechOwned == 1 runnow sym set Filter_AirMechOwned 0
+cmd "collection scrollUpdate paged"
+}
+Script ShopFilterClickOwned {
+cmd "sym set Filter_ShowAll 0"
+cmd "if sym Filter_AirMechOwned == 1 if sym Filter_Variants == 0 sym set Filter_Variants 1
+cmd "collection scrollUpdate paged"
+}
+Script ShopSortAlphabetical {
+rcmd "sym setZero Sort_Reverse Sort_ReleaseDate Sort_PurchaseDate Sort_PriceK Sort_PriceD Sort_Popularity Sort_Exclusivity Sort_LvlReq"
+rcmd "sym set Sort_Alphabetical 1"
+rcmd "collection scrollUpdate paged_reset"
+}
+Script ShopSortDeclOrder {
+rcmd "sym setZero Sort_Reverse Sort_ReleaseDate Sort_Alphabetical Sort_PurchaseDate Sort_PriceK Sort_PriceD Sort_Popularity Sort_Exclusivity Sort_LvlReq"
+rcmd "collection scrollUpdate paged_reset"
+}
+Script ShopSortReleaseDate {
+rcmd "sym setZero Sort_Alphabetical Sort_PurchaseDate Sort_PriceK Sort_PriceD Sort_Popularity Sort_Exclusivity Sort_Reverse Sort_LvlReq"
+rcmd "sym set Sort_ReleaseDate 1"
+}
+Script ShopSortReleaseDateToggle {
+rcmd "sym setZero Sort_Alphabetical Sort_PurchaseDate Sort_PriceK Sort_PriceD Sort_Popularity Sort_Exclusivity Sort_LvlReq"
+rcmd "sym set Sort_ReleaseDate 1"
+}
+Script ShopSortReleaseDateGo {
+rcmd "sym setZero Sort_Reverse Sort_Alphabetical Sort_PurchaseDate Sort_PriceK Sort_PriceD Sort_Popularity Sort_Exclusivity Sort_LvlReq"
+rcmd "sym set Sort_ReleaseDate 1"
+rcmd "collection scrollUpdate paged_reset"
+}
+Script ShopSortPurchaseDate {
+rcmd "sym setZero Sort_Reverse Sort_Alphabetical Sort_PriceK Sort_ReleaseDate Sort_PriceD Sort_Popularity Sort_Exclusivity Sort_LvlReq"
+rcmd "sym set Sort_PurchaseDate 1"
+rcmd "collection scrollUpdate paged_reset"
+}
+Script ShopSortPriceD {
+rcmd "sym setZero Sort_Alphabetical Sort_ListTime Sort_PriceK Sort_ReleaseDate Sort_PurchaseDate Sort_Popularity Sort_Exclusivity Sort_LvlReq"
+rcmd "sym set Sort_PriceD 1"
+}
+Script ShopSortPriceDGo {
+rcmd "sym setZero Sort_Reverse Sort_Alphabetical Sort_ListTime Sort_PriceK Sort_ReleaseDate Sort_PurchaseDate Sort_Popularity Sort_Exclusivity Sort_LvlReq"
+rcmd "sym set Sort_PriceD 1"
+rcmd "collection scrollUpdate paged_reset"
+}
+Script ShopSortExclusivity {
+rcmd "sym setZero Sort_Reverse Sort_Alphabetical Sort_PriceK Sort_ReleaseDate Sort_PurchaseDate Sort_Popularity Sort_PriceD Sort_LvlReq"
+rcmd "sym set Sort_Exclusivity 1"
+rcmd "collection scrollUpdate paged_reset"
+}
+Script ShopSortPopularity {
+rcmd "sym setZero Sort_Reverse Sort_Alphabetical Sort_PriceK Sort_ReleaseDate Sort_PurchaseDate Sort_PriceD Sort_Exclusivity Sort_LvlReq"
+rcmd "sym set Sort_Popularity 1"
+rcmd "collection scrollUpdate paged_reset"
+}
+Script ShopSortPriceK {
+rcmd "sym setZero Sort_Reverse Sort_Alphabetical Sort_ReleaseDate Sort_PriceD Sort_Popularity Sort_PurchaseDate Sort_Exclusivity Sort_LvlReq"
+rcmd "sym set Sort_PriceK 1"
+rcmd "collection scrollUpdate paged_reset"
+}
+Script ShopSortLvlReq {
+rcmd "sym setZero Sort_Reverse Sort_Alphabetical Sort_PriceK Sort_ReleaseDate Sort_PriceD Sort_Popularity Sort_PurchaseDate Sort_Exclusivity"
+rcmd "sym set Sort_LvlReq 1"
+rcmd "collection scrollUpdate paged_reset"
+}
+Script ShopSortForward {
+rcmd "sym set Sort_Reverse 0"
+rcmd "collection scrollUpdate paged"
+}
+Script ShopSortReverse {
+rcmd "sym set Sort_Reverse 1"
+rcmd "collection scrollUpdate paged"
+}
+Script ShopFilterTextChanged {
+rcmd "if sym Shop_Market == 1 runnow menuCmd ShopSortPriceD"
+cmd "collection scrollUpdate paged"
+}
+Script ShopFilterTextCleared {
+rcmd "sym set Sort_ReleaseDate 1"
+rcmd "menuCmd ShopSortReleaseDate"
+rcmd "collection scrollUpdate paged"
+}
+Script SellOptionWho {
+cmd "if sym Sell_Anyone == 1 sym set SellToOption _All"
+cmd "if sym Sell_Faction == 1 sym set SellToOption _Faction"
+cmd "if sym Sell_Friends == 1 sym set SellToOption _Friends"
+cmd "if sym Sell_Player == 1 sym set SellToOption _Player"
+cmd "if sym Sell_Player == 1 gameUI focusNameTry SellToPlayerNameBox"
+cmd "if sym Sell_Anyone != 1 sym set Sell_FeeK 0"
+cmd "if sym Sell_Anyone != 1 sym set Sell_FeeD 1"
+}
+Script SellOptionFee {
+cmd "if sym Sell_Anyone != 1 sym set Sell_FeeK 0"
+cmd "if sym Sell_Anyone != 1 sym set Sell_FeeD 1"
+cmd "if sym Sell_FeeK == 1 sym set Shop_Giftwrap 0"
+cmd "menucmd ListMarketPriceEdited"
+}
+Script SellOptionTime {
+cmd "if sym Sell_Time1 == 1 sym set SellTimeOption 3600"
+cmd "if sym Sell_Time2 == 1 sym set SellTimeOption 28800"
+cmd "if sym Sell_Time3 == 1 sym set SellTimeOption 86400"
+cmd "if sym Sell_Time4 == 1 sym set SellTimeOption 259200"
+cmd "menucmd ListMarketPriceEdited"
+}
+Script ReturnToShopTop {
+ignoreInputTime 0.1
+cmd "sym set Shop_Top 1"
+cmd "if usingPad if sym Shop_Game == 1 gameui focusnametry ShopTopGameShop"
+cmd "if usingPad if sym Shop_Inventory == 1 gameui focusnametry ShopTopInventory"
+cmd "if usingPad if sym Shop_Market == 1 gameui focusnametry ShopTopMarket"
+cmd "pcmd t5 sym setZero ShowShopItems Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Parts Shop_Cosmetics Shop_Flair Shop_Other Shop_Boosts Shop_Inventory Shop_Ultimates Shop_Pets Shop_Market"
+}
+Script SellFromInspect {
+ignoreInputTime 0.2
+cmd "clearmenu InspectDialog.txt /fadeout 0.15"
+cmd "rook do listOnMarket $ShopItemActive"
+cmd "pcmd 0.1 gameui focusnametry SellPriceDiamondsBox"
+}
+Script FocusShopLeft {
+ignoreInputTime 0.1
+cmd "collection page Shop -1"
+}
+Script FocusShopItemL1 {
+ignoreInputTime 0.1
+cmd "collection page Shop -1"
+cmd "if sym _menucond == 1 runnow gameUI focusNameTry ShopItem4 ShopItem3 ShopItem2 ShopItem1 ShopItem0"
+}
+Script FocusShopRight1 {
+ignoreInputTime 0.1
+cmd "collection page Shop 1"
+cmd "gameUI focusNameTry ShopItem4 ShopItem3 ShopItem2 ShopItem1 ShopItem0 ShopButtonNoResults $_Shop_Last"
+}
+Script FocusShopRight2 {
+ignoreInputTime 0.1
+cmd "collection page Shop 1"
+cmd "gameUI focusNameTry ShopItem9 ShopItem4 ShopItem8 ShopItem3 ShopItem7 ShopItem2 ShopItem6 ShopItem1 ShopItem5 ShopItem0 ShopButtonNoResults $_Shop_Last"
+}
+Script FocusShopRight3 {
+ignoreInputTime 0.1
+cmd "collection page Shop 1"
+cmd "gameUI focusNameTry ShopItem14 ShopItem13 ShopItem12 ShopItem11 ShopItem10 ShopItem9 ShopItem8 ShopItem7 ShopItem6 ShopItem5 ShopItem4 ShopItem3 ShopItem2 ShopItem1 ShopItem0 ShopButtonNoResults $_Shop_Last"
+}
+Script FocusShopItemR1 {
+cmd "gameUI focusNameTry ShopItem4 ShopItem3 ShopItem2 ShopItem1 ShopItem0 ShopButtonNoResults $_Shop_Last"
+}
+Script FocusShopItemR2 {
+cmd "gameUI focusNameTry ShopItem9 ShopItem4 ShopItem8 ShopItem3 ShopItem7 ShopItem2 ShopItem6 ShopItem1 ShopItem5 ShopItem0 ShopButtonNoResults $_Shop_Last"
+}
+Script FocusShopItemR3 {
+cmd "gameUI focusNameTry ShopItem14 ShopItem13 ShopItem12 ShopItem11 ShopItem10 ShopItem9 ShopItem8 ShopItem7 ShopItem6 ShopItem5 ShopItem4 ShopItem3 ShopItem2 ShopItem1 ShopItem0 ShopButtonNoResults $_Shop_Last"
+}
+Script FocusShopAllTicketGroupR {
+cmd "gameUI focusNameTry CSF_Common_VIPShop CSF_Common_ShowAll"
+}
+Script FocusShopItem0R {
+cmd "gameUI focusNameTry ShopItem1 CSF_First"
+}
+Script FocusShopItem1R {
+cmd "gameUI focusNameTry ShopItem2 CSF_First"
+}
+Script FocusShopItem2R {
+cmd "gameUI focusNameTry ShopItem3 CSF_First"
+}
+Script FocusShopItem3R {
+cmd "gameUI focusNameTry ShopItem4 CSF_First"
+}
+Script FocusShopItem4R {
+ignoreInputTime 0.1
+cmd "collection page Shop 1"
+cmd "if sym _menucond == 1 gameUI focusNameTry ShopItem0"
+}
+Script FocusShopItem0L {
+ignoreInputTime 0.1
+cmd "collection page Shop -1"
+cmd "if sym _menucond == 1 gameUI focusNameTry ShopItem4"
+cmd "if sym _menucond != 1 gameUI focusNameTry Filter_Pilots Filter_Units Filter_AirMechs Filter_Ultimates Filter_Bomber Filter_Stationary Filter_NotOwned GameShopButtonDiamonds"
+}
+Script FocusShopItem5L {
+ignoreInputTime 0.1
+cmd "collection page Shop -1"
+cmd "if sym _menucond == 1 gameUI focusNameTry ShopItem9"
+cmd "if sym _menucond != 1 gameUI focusNameTry Filter_Items Filter_Pilots Filter_Units Filter_AirMechs Filter_Warthog Filter_Ultimates Filter_Stationary Filter_NotOwned GameShopButtonDiamonds"
+}
+Script FocusShopItem10L {
+ignoreInputTime 0.1
+cmd "collection page Shop -1"
+cmd "if sym _menucond == 1 gameUI focusNameTry ShopItem14"
+cmd "if sym _menucond != 1 gameUI focusNameTry Filter_Ultimates Filter_Items Filter_Pilots Filter_Units Filter_AirMechs Filter_Angel Filter_Stationary Filter_NotOwned GameShopButtonDiamonds"
+}
+Script FocusShopItem5R {
+cmd "gameUI focusNameTry ShopItem6 CSF_First"
+}
+Script FocusShopItem6R {
+cmd "gameUI focusNameTry ShopItem7 CSF_First"
+}
+Script FocusShopItem7R {
+cmd "gameUI focusNameTry ShopItem8 CSF_First"
+}
+Script FocusShopItem8R {
+cmd "gameUI focusNameTry ShopItem9 CSF_First"
+}
+Script FocusShopItem9R {
+ignoreInputTime 0.1
+cmd "collection page Shop 1"
+cmd "if sym _menucond == 1 gameUI focusNameTry ShopItem5 ShopItem0"
+}
+Script FocusShopItem10R {
+cmd "gameUI focusNameTry ShopItem11 CSF_First"
+}
+Script FocusShopItem11R {
+cmd "gameUI focusNameTry ShopItem12 CSF_First"
+}
+Script FocusShopItem12R {
+cmd "gameUI focusNameTry ShopItem13 CSF_First"
+}
+Script FocusShopItem13R {
+cmd "gameUI focusNameTry ShopItem14 CSF_First"
+}
+Script FocusShopItem14R {
+ignoreInputTime 0.1
+cmd "collection page Shop 1"
+cmd "if sym _menucond == 1 gameUI focusNameTry ShopItem10 ShopItem5 ShopItem0"
+}
+Script FocusGameEventCache {
+cmd "if consoleplatform gameUI pushFocusID _gec_focusSave"
+cmd "if consoleplatform gameUI focusNameTry ConMessage0 ConMessage1 ConMessage2 ConMessage3 ConMessage4 ConMessage5 ConMessage6 ConMessage7 ConMessage8 ConMessage9 ConMessage10 ConMessage11 ConMessage12 ConMessage13 ConMessage14 ConMessage15"
+}
+Script FocusGameEventCacheBack {
+cmd "gameUI popFocusID _gec_focusSave"
+}
+Script Con_WatchFilterFocusRight {
+cmd "gameUI focusNameTry Con_NetGameBrowseJoinRoom0 .FocusGameEventCache"
+}
+Script FocusFeaturedR1C1 {
+cmd "gameUI focusNameTry $Ftr_R1C1_5 $Ftr_R1C1_4 $Ftr_R1C1_3 $Ftr_R1C1_2 $Ftr_R1C1_1 $Ftr_R1C1_0"
+}
+Script FocusFeaturedR1C2 {
+cmd "gameUI focusNameTry $Ftr_R1C2_5 $Ftr_R1C2_4 $Ftr_R1C2_3 $Ftr_R1C2_2 $Ftr_R1C2_1 $Ftr_R1C2_0"
+}
+Script FocusFeaturedR2C1 {
+cmd "gameUI focusNameTry $Ftr_R2C1_5 $Ftr_R2C1_4 $Ftr_R2C1_3 $Ftr_R2C1_2 $Ftr_R2C1_1 $Ftr_R2C1_0"
+}
+Script FocusFeaturedR2C2 {
+cmd "gameUI focusNameTry $Ftr_R2C2_5 $Ftr_R2C2_4 $Ftr_R2C2_3 $Ftr_R2C2_2 $Ftr_R2C2_1 $Ftr_R2C2_0"
+}
+Script FocusFeaturedR3C1 {
+cmd "gameUI focusNameTry $Ftr_R3C1_5 $Ftr_R3C1_4 $Ftr_R3C1_3 $Ftr_R3C1_2 $Ftr_R3C1_1 $Ftr_R3C1_0"
+}
+Script FocusFeaturedR3C2 {
+cmd "gameUI focusNameTry $Ftr_R3C2_5 $Ftr_R3C2_4 $Ftr_R3C2_3 $Ftr_R3C2_2 $Ftr_R3C2_1 $Ftr_R3C2_0"
+}
+Script FocusFeaturedR3C3 {
+cmd "gameUI focusNameTry $Ftr_R3C3_5 $Ftr_R3C3_4 $Ftr_R3C3_3 $Ftr_R3C3_2 $Ftr_R3C3_1 $Ftr_R3C3_0"
+}
+Script To_Shop_Featured {
+cmd "gameUI focusNameTry Shop_Featured Shop_Premium"
+}
+Script ConShopCyclePage {
+rcmd "collection page Shop $_MArg1_"
+rcmd "gameUI focusNameTry DummyFocus"
+cmd "gameUI focusNameTry CheckboxMarketTerms _MarketStop_ ShopItem0 DiamondBundle5 ShopBoostItem0 StoreTilePrimeBundle GameShopButtonBack"
+cmd "gameUI regetFocusIfFocused ShopItem0"
+}

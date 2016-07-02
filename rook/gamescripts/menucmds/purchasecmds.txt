@@ -1,0 +1,27 @@
+Script OnPurchaseSuccess {
+cmd "echo ON PURCHASE SUCCESS: $_MArg1_ $_MArg2_"
+cmd "menucmd TryBackoutBuyDiamonds"
+}
+Script PurchaseNYPSetup {
+rcmd "sym set MinPrice1 BuyPricePrefix${P_Currency}"
+rcmd "sym setFrom MinPrice2 UnlockDialogDisplayCostCash"
+rcmd "sym set MinPrice3 BuyPricePostfix${P_Currency}"
+rcmd "sym set UnlockDialogDisplayCostCash -"
+rcmd "sym set _NYPAvg_ 0"
+rcmd "sym set _NYPAvg_Edit_ 0"
+rcmd "sym set _NYPMin_ $_MArg2_"
+rcmd "sym set UnlockDialogCurrentNYPAvg -"
+rcmd "leaderboards getNYPAvg $_MArg1_"
+}
+Script PurchaseNYPGetPrice {
+cmd "gameui show NYPWindow"
+cmd "gameui hide UnlockCashConfirm"
+cmd "sym setFrom NYP_Edit _NYPAvg_Edit_"
+cmd "pcmd 0.2 gameUI focusNametry NYPTextField"
+}
+Script ValidateNYP {
+cmd "leaderboards validateNYP NYP_Edit UnlockDialogDisplayCostCash _NYPEnt_"
+cmd "echo $NYP_Edit"
+cmd "gameui hide NYPWindow"
+cmd "if carbonpayment runnow gameui show UnlockCashConfirm"
+}

@@ -1,0 +1,61 @@
+Script OptionsCTFToggle {
+cmd "sym set PO_ZobaMech 0"
+cmd "if sym PO_IsOwner == 1 party2 setGameOptions  ctf PO_CTF zoba PO_ZobaMech"
+}
+Script OptionsCTFToggle_CF {
+cmd "sym set CF_ZobaMech 0"
+}
+Script OptionsZobaToggle {
+cmd "sym set PO_CTF 0"
+cmd "if sym PO_IsOwner == 1 party2 setGameOptions  ctf PO_CTF zoba PO_ZobaMech"
+}
+Script OptionsZobaToggle_CF {
+cmd "sym set CF_CTF 0"
+}
+Script OptionsUltimatesAllowedToggle {
+cmd "if sym PO_IsOwner == 1 party2 setGameOptions ult PO_UltimatesAllowed"
+}
+Script OptionsHyperModeToggle {
+cmd "sym set PO_Hypo 0"
+cmd "if sym PO_IsOwner == 1 party2 setGameOptions hyper PO_Hyper hypo PO_Hypo"
+}
+Script OptionsHyperModeToggle_CF {
+cmd "sym set CF_Hypo 0"
+}
+Script OptionsHypoModeToggle {
+cmd "sym set PO_Hyper 0"
+cmd "if sym PO_IsOwner == 1 party2 setGameOptions hyper PO_Hyper hypo PO_Hypo"
+}
+Script OptionsHypoModeToggle_CF {
+cmd "sym set CF_Hyper 0"
+}
+Script OptionsNoPartsToggle {
+cmd "if sym PO_IsOwner == 1 party2 setGameOptions noparts PO_NoParts"
+}
+Script OptionsNoTrainingToggle {
+cmd "if sym PO_IsOwner == 1 party2 setGameOptions notraining PO_NoTraining"
+}
+Script OptionsLagFestToggle {
+cmd "if sym PO_IsOwner == 1 party2 setGameOptions lagfest PO_LagFest"
+}
+Script OptionsCustomMapToggle {
+cmd "if sym PO_IsOwner == 1 menucmd OptionsCustomMapToggleGo"
+}
+Script OptionsCustomMapToggleGo {
+cmd "if sym PO_CustomMap == 1 sym clear PO_CustomMapName"
+cmd "if sym PO_CustomMap == 1 loadmenu LobbyMapListWindow /fadein 0.1"
+cmd "if sym PO_CustomMap == 0 party2 setGameOptions custommap 0"
+}
+Script OptionsCustomMapToggleValidate {
+cmd "if sym PO_CustomMapName isEmpty sym setZero PO_CustomMap CF_CustomMap"
+cmd "if sym PO_CustomMapName isEmpty party2 setGameOptions custommap 0"
+cmd "if sym PO_CustomMapName !isEmpty sym setFrom MapName PO_CustomMapName"
+cmd "if sym PO_CustomMapName !isEmpty sym setFrom LastMapName PO_CustomMapName"
+cmd "if sym PO_CustomMapName !isEmpty sym setOne PO_CustomMap CF_CustomMap"
+cmd "if sym PO_CustomMapName !isEmpty sym setFrom CF_CustomMapName PO_CustomMapName"
+cmd "if sym PO_CustomMapName !isEmpty party2 setGameOptions custommap 1 custommapname PO_CustomMapName"
+}
+Script OptionsCustomMapToggle_CF {
+cmd "if sym CF_CustomMap == 0 sym clear CF_CustomMapName"
+cmd "if sym CF_CustomMap == 1 && sym CF_CustomMapName isEmpty sym setFrom CF_CustomMapName HLB_Meta0"
+}

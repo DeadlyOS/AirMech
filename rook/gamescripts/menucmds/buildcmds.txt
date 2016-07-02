@@ -1,0 +1,11 @@
+Script UnitCarryStart {
+rcmd "checkRook local carryunit"
+cmd "gameUI enable #&HeldUnitOrder@C_BINDING@&Status"
+}
+Script NotifyUnitsReady {
+cmd "loadmenu NotifyUnitReady.txt /fadein 0.15"
+}
+Script AutoDeployStateChanged {
+rcmd "if sym ActiveAutoDeployPath == 1 addUIAnim HotkeyHintDeploy mas_DeployBindingUp"
+rcmd "if sym ActiveAutoDeployPath == 0 addUIAnim HotkeyHintDeploy mas_DeployBindingDown"
+}

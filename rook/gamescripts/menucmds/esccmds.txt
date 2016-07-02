@@ -1,0 +1,351 @@
+Script LoadEscMenu_MKHome {
+cmd "sym set EscMenuButton0 Esc_Settings"
+cmd "if !steam && !arc runnow sym set EscMenuButton1 Esc_Logout"
+cmd "if !steam && !arc runnow sym set EscMenuButton2 Esc_Exit"
+cmd "if steam || arc runnow sym set EscMenuButton1 Esc_Exit"
+cmd "loadmenu EscMenu /fadein 0.15"
+}
+Script LoadEscMenu_VRHome {
+cmd "sym set EscMenuButton0 Esc_Solo"
+cmd "sym set EscMenuButton1 Esc_Settings"
+cmd "sym set EscMenuButton2 Esc_Exit"
+cmd "loadmenu EscMenu /fadein 0.15"
+}
+Script LoadEscMenu_CLobby {
+cmd "gameui directPushNameIfEnabled PlayMenuBackButton"
+}
+Script LoadEscMenu_CPlay {
+cmd "gameui directPushNameIfEnabled PlayMenuBackButton"
+}
+Script LoadEscMenu_CSolo {
+cmd "menucmd ConMenuPlaySoloPressCancel"
+}
+Script LoadEscMenu_CCoop {
+cmd "menucmd ConMenuPlayCoopCancel"
+}
+Script LoadEscMenu_CPvP {
+cmd "menucmd ConMenuPlayPvPCancel"
+}
+Script LoadEscMenu_CTraining {
+cmd "if sym ArcCustomized == 0 menucmd ConMenuPlayTrainingCancel"
+cmd "pcmd 0.1 if sym ArcCustomized == 1 menucmd ConMenuPlayTrainingCancelPW"
+}
+Script LoadEscMenu_Watch {
+cmd "gameui directPushNameIfEnabled MainBarBackButton"
+cmd "gameui directPushNameIfEnabled BackgroundLobbyBackButton"
+}
+Script LoadEscMenu_TempLoadout {
+cmd "gameui directPushNameIfEnabled MainBarBackButton"
+cmd "gameui directPushNameIfEnabled BackgroundLobbyBackButton"
+}
+Script LoadEscMenu_MenuShop {
+cmd "gameui directPushNameIfEnabled MainBarBackButton"
+cmd "gameui directPushNameIfEnabled BackgroundLobbyBackButton"
+}
+Script LoadEscMenu_Basecamp {
+cmd "gameui directPushNameIfEnabled MainBarBackButton"
+cmd "gameui directPushNameIfEnabled BackgroundLobbyBackButton"
+}
+Script LoadEscMenu_StdDialog {
+cmd "gameui directPushNameIfEnabled DialogButton0"
+}
+Script LoadEscMenu_UnlockDialog {
+cmd "gameui directPushNameIfEnabled InspectDialogCancel"
+}
+Script LoadEscMenu_InspectDialog {
+cmd "gameui directPushNameIfEnabled InspectDialogCancel"
+}
+Script EscMenu_Esc_Exit {
+cmd "if sym LobbyState == 0 menuCmd ExitGameMainMenuConfirm"
+cmd "if sym CurrentMenu != MKHome menuCmd MainMenuBackButton"
+cmd "pcmd 0.2 sym set CurrentMenu MKHome"
+cmd "pcmd 0.15 menucmd MainBarCamp"
+cmd "if sym LobbyState == 1 if sym MatchingState == 1 menuCmd ExitMatchmakingConfirm"
+cmd "if sym LobbyState == 1 if sym MatchingState == 0 menucmd ExitMatchmaking"
+}
+Script EscMenu_Esc_Logout {
+cmd "gameEvent systemNotify MsgLoggingOut 1"
+cmd "menuCmd MF_Logout"
+cmd "pcmd 2.0 gameEvent systemNotify MsgLoggingOut 0"
+}
+Script EscMenu_Esc_Solo {
+cmd "menuCmd QuickSoloGame"
+}
+Script EscMenu_Esc_Settings {
+cmd "]loadmenu Settings"
+}
+Script EscMenu_Back {
+cmd "if sym CurrentMenu == CPvP menuCmd ConMenuPlayPvPCancel"
+cmd "if sym CurrentMenu == CCoop menuCmd ConMenuPlayCoopCancel"
+cmd "if sym CurrentMenu == CSolo menuCmd ConMenuPlaySoloPressCancel"
+cmd "if sym CurrentMenu == CPlay menuCmd MainMenuExitPlay"
+cmd "if sym CurrentMenu == CLobby menuCmd ConMenuLobbyCancel"
+cmd "if sym CurrentMenu == CTraining menuCmd ConMenuPlayTrainingCancel"
+}
+Script EscMenu_Shop {
+cmd "sym set MainMenuShopSelect Game"
+cmd "if !menuloaded ConShop loadmenu ConShop /fadein 0.15"
+}
+Script EscMenu_Market {
+cmd "sym set MainMenuShopSelect Market"
+cmd "if !menuloaded ConShop loadmenu ConShop /fadein 0.15"
+}
+Script PauseMenu_ManageVoice {
+cmd "if sym VoiceListEmpty == 0 menuCmd PauseMenu_ManageVoiceGo"
+}
+Script PauseMenu_Resize {
+cmd "menuCmd ConScreenInsetToggle"
+}
+Script PauseMenu_ManageVoiceGo {
+cmd "gameui hide PauseButtons"
+cmd "gameui show VoiceButtons"
+cmd "gameui focusnametry VoiceList0 VoiceList2 VoiceList4 VoiceList1 VoiceList3 VoiceList5"
+cmd "sym push CurrentMenu InGameVoice"
+}
+Script PauseMenu_ManageVoiceCancel {
+cmd "gameui show PauseButtons"
+cmd "gameui hide VoiceButtons"
+cmd "gameui focusnametry PauseButtonVoiceChat PauseMenuButton0"
+cmd "sym pop CurrentMenu"
+}
+Script PauseMenu_CheatsOpen {
+cmd "gameui hide PauseButtons"
+cmd "gameui show CheatButtons"
+cmd "if usingPad gameui focusnametry CheatButton0 CheatButton2 CheatButton4 CheatButton1 CheatButton3 CheatButton5"
+}
+Script PauseMenu_CheatsCancel {
+cmd "gameui show PauseButtons"
+cmd "gameui hide CheatButtons"
+cmd "if usingPad gameui focusnametry PauseButtonCheats PauseMenuButton0"
+}
+Script CheatsCheckState {
+cmd "sym set CheatsEnabled 1"
+cmd "]if sym CheatIncome == 0 && sym CheatBuild == 0 && sym CheatArmor == 0 && sym CheatAttack == 0 runnow ]sym set CheatsEnabled 0"
+cmd "]if sym CheatIncome == 0 ]sym set CheatsUsed 1"
+cmd "]if sym CheatBuild == 0 ]sym set CheatsUsed 1"
+cmd "]if sym CheatArmor == 0 ]sym set CheatsUsed 1"
+cmd "]if sym CheatAttack == 0 ]sym set CheatsUsed 1"
+}
+Script PauseButtonSpectateUp {
+cmd "]gameui focusnametry PauseButtonList PauseButtonResize PauseButtonRestart PauseMenuButton0"
+}
+Script PauseMenu_SpectateOpen {
+cmd "gameui hide PauseButtons"
+cmd "gameui show SpectateButtons"
+cmd "if usingPad gameui focusnametry SpectateButton0"
+cmd "if sym SpectateControlsFirstShown == 0 sym set SpectateControlsFirstShown 1"
+}
+Script PauseMenu_SpectateCancel {
+cmd "gameui show PauseButtons"
+cmd "gameui hide SpectateButtons"
+cmd "if usingPad gameui focusnametry PauseButtonCheats PauseMenuButton0"
+}
+Script SpectatePlay {
+cmd "echo Play!"
+cmd "sym set SpectateFF 0"
+cmd "spec extraSimTicks 0"
+}
+Script SpectateFF {
+cmd "echo Fast-Foward!"
+cmd "sym set SpectateFF 1"
+cmd "spec extraSimTicks 2"
+}
+Script RefreshUpkeepStats {
+cmd "if sym SpectateUpkeep == 1 runnow gameui refreshFilterName UpkeepBars"
+cmd "pcmd 10.0 if sym SpectateUpkeep == 1 runnow menucmd RefreshUpkeepStats"
+}
+Script ResetUpkeepStats {
+cmd "sym setZero UpkeepTeam0_0"
+cmd "sym setZero UpkeepTeam0_1"
+cmd "sym setZero UpkeepTeam0_2"
+cmd "sym setZero UpkeepTeam0_3"
+cmd "sym setZero UpkeepTeam0_4"
+cmd "sym setZero UpkeepTeam0_5"
+cmd "sym setZero UpkeepTeam0_6"
+cmd "sym setZero UpkeepTeam0_7"
+cmd "sym setZero UpkeepTeam0_8"
+cmd "sym setZero UpkeepTeam0_9"
+cmd "sym setZero UpkeepTeam0_10"
+cmd "sym setZero UpkeepTeam0_11"
+cmd "sym setZero UpkeepTeam0_12"
+cmd "sym setZero UpkeepTeam0_13"
+cmd "sym setZero UpkeepTeam0_14"
+cmd "sym setZero UpkeepTeam0_15"
+cmd "sym setZero UpkeepTeam0_16"
+cmd "sym setZero UpkeepTeam0_17"
+cmd "sym setZero UpkeepTeam0_18"
+cmd "sym setZero UpkeepTeam0_19"
+cmd "sym setZero UpkeepTeam0_20"
+cmd "sym setZero UpkeepTeam0_21"
+cmd "sym setZero UpkeepTeam0_22"
+cmd "sym setZero UpkeepTeam0_23"
+cmd "sym setZero UpkeepTeam0_24"
+cmd "sym setZero UpkeepTeam0_25"
+cmd "sym setZero UpkeepTeam0_26"
+cmd "sym setZero UpkeepTeam0_27"
+cmd "sym setZero UpkeepTeam0_28"
+cmd "sym setZero UpkeepTeam0_29"
+cmd "sym setZero UpkeepTeam0_30"
+cmd "sym setZero UpkeepTeam0_31"
+cmd "sym setZero UpkeepTeam0_32"
+cmd "sym setZero UpkeepTeam0_33"
+cmd "sym setZero UpkeepTeam0_34"
+cmd "sym setZero UpkeepTeam0_35"
+cmd "sym setZero UpkeepTeam0_36"
+cmd "sym setZero UpkeepTeam0_37"
+cmd "sym setZero UpkeepTeam0_38"
+cmd "sym setZero UpkeepTeam0_39"
+cmd "sym setZero UpkeepTeam0_40"
+cmd "sym setZero UpkeepTeam0_41"
+cmd "sym setZero UpkeepTeam0_42"
+cmd "sym setZero UpkeepTeam0_43"
+cmd "sym setZero UpkeepTeam0_44"
+cmd "sym setZero UpkeepTeam0_45"
+cmd "sym setZero UpkeepTeam0_46"
+cmd "sym setZero UpkeepTeam0_47"
+cmd "sym setZero UpkeepTeam0_48"
+cmd "sym setZero UpkeepTeam0_49"
+cmd "sym setZero UpkeepTeam0_50"
+cmd "sym setZero UpkeepTeam0_51"
+cmd "sym setZero UpkeepTeam0_52"
+cmd "sym setZero UpkeepTeam0_53"
+cmd "sym setZero UpkeepTeam0_54"
+cmd "sym setZero UpkeepTeam0_55"
+cmd "sym setZero UpkeepTeam0_56"
+cmd "sym setZero UpkeepTeam0_57"
+cmd "sym setZero UpkeepTeam0_58"
+cmd "sym setZero UpkeepTeam0_59"
+cmd "sym setZero UpkeepTeam1_0"
+cmd "sym setZero UpkeepTeam1_1"
+cmd "sym setZero UpkeepTeam1_2"
+cmd "sym setZero UpkeepTeam1_3"
+cmd "sym setZero UpkeepTeam1_4"
+cmd "sym setZero UpkeepTeam1_5"
+cmd "sym setZero UpkeepTeam1_6"
+cmd "sym setZero UpkeepTeam1_7"
+cmd "sym setZero UpkeepTeam1_8"
+cmd "sym setZero UpkeepTeam1_9"
+cmd "sym setZero UpkeepTeam1_10"
+cmd "sym setZero UpkeepTeam1_11"
+cmd "sym setZero UpkeepTeam1_12"
+cmd "sym setZero UpkeepTeam1_13"
+cmd "sym setZero UpkeepTeam1_14"
+cmd "sym setZero UpkeepTeam1_15"
+cmd "sym setZero UpkeepTeam1_16"
+cmd "sym setZero UpkeepTeam1_17"
+cmd "sym setZero UpkeepTeam1_18"
+cmd "sym setZero UpkeepTeam1_19"
+cmd "sym setZero UpkeepTeam1_20"
+cmd "sym setZero UpkeepTeam1_21"
+cmd "sym setZero UpkeepTeam1_22"
+cmd "sym setZero UpkeepTeam1_23"
+cmd "sym setZero UpkeepTeam1_24"
+cmd "sym setZero UpkeepTeam1_25"
+cmd "sym setZero UpkeepTeam1_26"
+cmd "sym setZero UpkeepTeam1_27"
+cmd "sym setZero UpkeepTeam1_28"
+cmd "sym setZero UpkeepTeam1_29"
+cmd "sym setZero UpkeepTeam1_30"
+cmd "sym setZero UpkeepTeam1_31"
+cmd "sym setZero UpkeepTeam1_32"
+cmd "sym setZero UpkeepTeam1_33"
+cmd "sym setZero UpkeepTeam1_34"
+cmd "sym setZero UpkeepTeam1_35"
+cmd "sym setZero UpkeepTeam1_36"
+cmd "sym setZero UpkeepTeam1_37"
+cmd "sym setZero UpkeepTeam1_38"
+cmd "sym setZero UpkeepTeam1_39"
+cmd "sym setZero UpkeepTeam1_40"
+cmd "sym setZero UpkeepTeam1_41"
+cmd "sym setZero UpkeepTeam1_42"
+cmd "sym setZero UpkeepTeam1_43"
+cmd "sym setZero UpkeepTeam1_44"
+cmd "sym setZero UpkeepTeam1_45"
+cmd "sym setZero UpkeepTeam1_46"
+cmd "sym setZero UpkeepTeam1_47"
+cmd "sym setZero UpkeepTeam1_48"
+cmd "sym setZero UpkeepTeam1_49"
+cmd "sym setZero UpkeepTeam1_50"
+cmd "sym setZero UpkeepTeam1_51"
+cmd "sym setZero UpkeepTeam1_52"
+cmd "sym setZero UpkeepTeam1_53"
+cmd "sym setZero UpkeepTeam1_54"
+cmd "sym setZero UpkeepTeam1_55"
+cmd "sym setZero UpkeepTeam1_56"
+cmd "sym setZero UpkeepTeam1_57"
+cmd "sym setZero UpkeepTeam1_58"
+cmd "sym setZero UpkeepTeam1_59"
+}
+Script PauseButtonCheatsUp {
+cmd "]gameui focusnametry PauseButtonList PauseButtonResize PauseButtonRestart PauseMenuButton0"
+}
+Script PauseButtonQuitUp {
+cmd "]gameui focusnametry PauseButtonUplay PauseButtonCheats PauseButtonList PauseButtonResize PauseButtonRestart PauseMenuButton0"
+}
+Script PauseButtonUplayUp {
+cmd "]gameui focusnametry PauseButtonCheats PauseButtonList PauseButtonResize PauseButtonVoiceChat PauseButtonRestart PauseMenuButton0"
+}
+Script PauseButtonRestartDown {
+cmd "]gameui focusnametry PauseButtonSettings PauseButtonResize PauseButtonList PauseButtonCheats PauseButtonUplay PauseButtonQuit"
+}
+Script PauseButtonResizeDown {
+cmd "]gameui focusnametry PauseButtonList PauseButtonCheats PauseButtonUplay PauseButtonQuit"
+}
+Script PauseButtonListDown {
+cmd "]gameui focusnametry PauseButtonCheats PauseButtonUplay PauseButtonQuit"
+}
+Script PauseButtonCheatsDown {
+cmd "]gameui focusnametry PauseButtonUplay PauseButtonQuit"
+}
+Script PauseButtonListUp {
+cmd "]gameui focusnametry PauseButtonResize PauseButtonRestart PauseMenuButton0"
+}
+Script PauseButtonQuitUp2 {
+cmd "]gameui focusnametry PauseButtonUplay PauseButtonResize PauseButtonVoiceChat PauseMenuButton0"
+}
+Script PauseButtonQuitUp3 {
+cmd "]gameui focusnametry PauseButtonUplay PauseButtonResize PauseButtonVoiceChat PauseMenuButton0"
+}
+Script PauseButtonResizeUp2 {
+cmd "]gameui focusnametry PauseButtonVoiceChat PauseMenuButton0"
+}
+Script PauseButtonRestartDown2 {
+cmd "]gameui focusnametry PauseButtonResize PauseButtonResize PauseButtonUplay PauseButtonQuit"
+}
+Script PauseButtonRestartDown2_2 {
+cmd "]gameui focusnametry PauseButtonVoiceChat PauseButtonResize PauseButtonUplay PauseButtonQuit"
+}
+Script PauseMenu_Resume {
+cmd "]menuCmd MP_ResumeGame local"
+}
+Script PauseMenu_Quit {
+cmd "echo menucmd: PauseMenu_Quit"
+cmd "]if !gameover ]menuCmd MP_LoadMainMenuReqConfirm local"
+cmd "]if gameover ]menuCmd MP_LoadMainMenu local"
+cmd "]if gameover ]sym set _EgFinishOk_ 0"
+cmd "]if gameover ]sym set _EgRewardCountOk_ 0"
+}
+Script VListDown0 {
+cmd "gameui focusnametry VoiceList2 VoiceList4 VoiceList1 VoiceList3 VoiceList5"
+}
+Script VListDown2 {
+cmd "gameui focusnametry VoiceList4 VoiceList1 VoiceList3 VoiceList5"
+}
+Script VListDown4 {
+cmd "gameui focusnametry VoiceList1 VoiceList3 VoiceList5"
+}
+Script VListDown1 {
+cmd "gameui focusnametry VoiceList3 VoiceList5"
+}
+Script VListUp5 {
+cmd "gameui focusnametry VoiceList3 VoiceList1 VoiceList4 VoiceList2 VoiceList0"
+}
+Script VListUp3 {
+cmd "gameui focusnametry VoiceList1 VoiceList4 VoiceList2 VoiceList0"
+}
+Script VListUp1 {
+cmd "gameui focusnametry VoiceList4 VoiceList2 VoiceList0"
+}
+Script VListUp4 {
+cmd "gameui focusnametry VoiceList2 VoiceList0"
+}

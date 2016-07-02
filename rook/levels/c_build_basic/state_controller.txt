@@ -1,0 +1,47 @@
+StateController Lvl_C_BuildUnits_06 {
+#include Lvl_CommonStates
+#include Lvl_Challenge_CommonStates
+State initial {
+In 0.0 "sym set MatchOver 0"
+In 0.0 "rook powerGenMod set 100"
+}
+State Init {
+DoL 23.0 rook doLevelState CheckSpawnPlacementMarkers
+}
+State CheckSpawnPlacementMarkers {
+DoL 0.0 if sym S_DCount == 0 && sym _AutoDeployV2 == 0 rook doLevelState SpawnPlacementMarkers
+}
+State SpawnPlacementMarkers {
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos -7.797007 -6.714166 0.4 /id 1
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos -7.797007 -6.714166 0.4 /scale 5.0 /id 1
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos 7.779852 -6.580718 0.4 /id 1
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos 7.779852 -6.580718 0.4 /scale 5.0 /id 1
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos 7.506685 8.127169 0.4 /id 1
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos 7.506685 8.127169 0.4 /scale 5.0 /id 1
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos -7.661578 8.394199 0.4 /id 1
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos -7.661578 8.394199 0.4 /scale 5.0 /id 1
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos -17.376013 0.230849 0.4 /id 1
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos -17.376013 0.230849 0.4 /scale 5.0 /id 1
+DoL 0.0 mdlprop /mdl effects/PointerDown.amf /mtl mat_ArrowBlue /anim effects/PointerBounce.aaf 0.5 looping /lifespan 9000000 /pos 16.195030 0.150043 0.4 /id 1
+DoL 0.0 mdlprop /mdl square1m.amf /mtl mat_GoalRingAreaBlue /lifespan 9000000 /pos 16.195030 0.150043 0.4 /scale 5.0 /id 1
+}
+State ClearTgts {
+Cfg timeBlock 2.0
+DoL 0.0 mdlprop clearids 1
+}
+State Tick {
+DoL 0.0 sym set S_DCount $PowerMaintOnField0
+DoL 0.0 if sym S_DCount >= $S_DLimit runNow sym set MatchOver 1
+DoL 0.0 sym set _Cnt_ 0
+DoL 0.0 player 0 incIfUnitNearPos -7.797007 -6.714166 0.4 2.0 _Cnt_ /lvlStateYes ClearTgts
+DoL 0.0 player 0 incIfUnitNearPos 7.779852 -6.580718 0.4 2.0 _Cnt_ /lvlStateYes ClearTgts
+DoL 0.0 player 0 incIfUnitNearPos 7.506685 8.127169 0.4 2.0 _Cnt_ /lvlStateYes ClearTgts
+DoL 0.0 player 0 incIfUnitNearPos -7.661578 8.394199 0.4 2.0 _Cnt_ /lvlStateYes ClearTgts
+DoL 0.0 player 0 incIfUnitNearPos -17.376013 0.230849 0.4 2.0 _Cnt_ /lvlStateYes ClearTgts
+DoL 0.0 player 0 incIfUnitNearPos 16.195030 0.150043 0.4 2.0 _Cnt_ /lvlStateYes ClearTgts
+}
+State Hint_DropOnOutposts {
+Cfg timeBlock 6.0
+DoL 0.0 gamemsg addTR_U_InputSelected Hint_RepeatBuild Hint_RepeatBuild_pad
+}
+}

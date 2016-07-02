@@ -1,0 +1,2688 @@
+unitType EnvObj {
+category			Environmental
+notBuildable
+}
+unitType Infantry {
+commonName			Soldier
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+cost 				500
+buildtime 			3.5
+dispSymbol			DispUnitInfantry
+descSymbol			MF_CustomTip_Infantry
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0.4
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		4 8
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/Infantry/Infantry.amf mat_UnitInfantry /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/Infantry/InfantryWalk.aaf 0 looping 1.0 /scaleMult 0.915
+}
+unitType InfantryVoid initFrom Infantry {
+variantCfg "Void Infantry"
+aiFortify			0
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+}
+unitType InfantryCreep {
+category 			Creep
+cost 				0
+buildtime 			1.0
+dispSymbol			DispUnitInfantry
+descSymbol			MF_CustomTip_Infantry
+defaultOrder		CaptureOutpost
+acceptsOrders		false
+aiFortify			0.0
+aiDirectEngage		0.4
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	0
+expValues			15 10
+}
+unitType InfantryCreepL1 {
+category 			Creep
+cost 				0
+buildtime 			1.0
+dispSymbol			DispUnitInfantry
+descSymbol			MF_CustomTip_Infantry
+defaultOrder		CaptureOutpost
+acceptsOrders		false
+aiFortify			0.0
+aiDirectEngage		0.4
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	0
+expValues			20 15
+}
+unitType InfantryCreepL2 {
+category 			Creep
+cost 				0
+buildtime 			1.0
+dispSymbol			DispUnitInfantry
+descSymbol			MF_CustomTip_Infantry
+defaultOrder		CaptureOutpost
+acceptsOrders		false
+aiFortify			0.0
+aiDirectEngage		0.5
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	0
+expValues			25 20
+}
+unitType InfantryCreepL3 {
+category 			Creep
+cost 				0
+buildtime 			1.0
+dispSymbol			DispUnitInfantry
+descSymbol			MF_CustomTip_Infantry
+defaultOrder		CaptureOutpost
+acceptsOrders		false
+aiFortify			0.0
+aiDirectEngage		0.6
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	0
+expValues			30 25
+}
+unitType InfantryCreepLight {
+category 			Creep
+cost 				0
+buildtime 			1.0
+dispSymbol			DispUnitInfantryLight
+descSymbol			MF_CustomTip_InfantryLight
+defaultOrder		CaptureOutpost
+acceptsOrders		false
+aiFortify			0.0
+aiDirectEngage		0.4
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	0
+expValues			15 10
+}
+unitType InfantryLight {
+commonName			Runner
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+cost 				900
+buildtime 			3.5
+dispSymbol			DispUnitInfantryLight
+descSymbol			MF_CustomTip_InfantryLight
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0.4
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		4
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantryLight/InfantryLight_Ref.amf mat_UnitInfantry /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/InfantryLight/InfantryLight_Run.aaf 0 looping 1.0 /scaleMult 0.915
+}
+unitType InfantryLightSkel {
+commonName			"Skeleton Runner"
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+platformContent		!vr
+cost 				900
+buildtime 			3.5
+dispSymbol			DispUnitInfantryLightSkel
+descSymbol			MF_CustomTip_InfantryLightSkel
+defaultOrder		CaptureOutpost
+acceptsOrders		true
+rarity				3
+aiFortify			0.0
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantryLightSkel/InfantryLightSkel_Ref.amf mat_InfantryLightSkel /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/InfantryLightSkel/InfantryLightSkel_Walk.aaf 0 looping 1.0 /scaleMult 0.915
+}
+unitType InfantrySargent {
+commonName			Sergeant
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+cost 				1200
+buildtime 			3.5
+ability				AttractInfantryLinks
+abilityRange		10.0
+abilityParamCount	3
+dispSymbol			DispUnitInfantrySargent
+descSymbol			MF_CustomTip_InfantrySargent
+aiFortify			0.0
+aiDirectEngage		0.7
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantrySargent/InfantrySargent.amf mat_UnitInfantry /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/InfantrySargent/Walk.aaf 0 looping 1.0 /scaleMult 0.915
+areaDisplay			apc
+}
+unitType InfantrySargent_ initFrom InfantrySargent {
+commonName			"Trial Sergeant"
+trialStackCfg
+}
+unitType InfantrySoldier {
+commonName			Jumper
+autoTag				cased
+searchTerm			"infantry"
+category 			Infantry
+cost 				500
+buildtime 			3.5
+dispSymbol			DispUnitInfantrySoldier
+descSymbol			MF_CustomTip_InfantrySoldier
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0.6
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantrySoldier/InfantrySoldier_Ref.amf mat_Infantry /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/InfantrySoldier/InfantrySoldier_Walk.aaf 0 looping 1.2 /scaleMult 0.915
+}
+unitType InfantrySniper {
+commonName			Shooter
+autoTag				cased
+searchTerm			"infantry"
+category 			Infantry
+cost 				500
+buildtime 			3.5
+dispSymbol			DispUnitInfantrySniper
+descSymbol			MF_CustomTip_InfantrySniper
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0.9
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		4
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantrySniper/InfantrySniper_Ref.amf mat_Infantry /rotSpeed 4 /pos 2.0 -0.25 0 /animation units/InfantrySniper/InfantrySniper_Fire_Full.aaf 0 looping 1.0 /scaleMult 1.20
+}
+unitType InfantrySniperU {
+commonName			"Ultimate Shooter"
+autoTag
+rarity				4
+searchTerm			"infantry"
+category 			Infantry
+cost 				500
+buildtime 			3.5
+dispSymbol			DispUnitInfantrySniperU
+descSymbol			MF_CustomTip_InfantrySniperU
+defaultOrder		CaptureOutpost
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantrySniperU/InfantrySniperU_Ref.amf mat_Infantry /rotSpeed 4 /pos 2.0 -0.25 0 /animation units/InfantrySniper/InfantrySniper_Fire_Full.aaf 0 looping 1.0 /scaleMult 1.20
+property			UltimateLvl				10			/trailingNum
+}
+unitType Shooter_01 initFrom InfantrySniper {
+variantCfg "Fine Shooter"
+rarity 2
+}
+unitType InfantryDemo {
+commonName			"Morty"
+autoTag				cased
+searchTerm			"infantry"
+category 			Infantry
+cost 				500
+buildtime 			3.5
+dispSymbol			DispUnitInfantryDemo
+descSymbol			MF_CustomTip_InfantryDemo
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0.7
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		4
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantryDemo/InfantryDemo_Ref.amf mat_Infantry /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/InfantryDemo/InfantryDemo_Walk.aaf 0 looping 1.2 /scaleMult 0.915
+}
+unitType InfantryPyro {
+commonName			Flamer
+autoTag				cased
+searchTerm			"infantry"
+category 			Infantry
+cost 				500
+buildtime 			3.5
+dispSymbol			DispUnitInfantryPyro
+descSymbol			MF_CustomTip_InfantryPyro
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0.6
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		4
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantryPyro/InfantryPyro_Ref.amf mat_Infantry /rotSpeed 4.0 /pos 2.0 -0.25 0 /animation units/InfantryPyro/InfantryPyro_Berserk_Run.aaf 0 looping 1.0 /scaleMult 0.85
+}
+unitType InfantryHeavy {
+commonName			Brute
+autoTag				cased
+searchTerm			"infantry"
+category 			Infantry
+canAPC				false
+cost 				500
+buildtime 			3.5
+dispSymbol			DispUnitInfantryHeavy
+descSymbol			MF_CustomTip_InfantryHeavy
+defaultOrder		CaptureOutpost
+nplevelreq			4
+aiFortify			0.0
+aiDirectEngage		0.7
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		5
+commandPointValue	2
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantryHeavy/InfantryHeavy_Ref.amf mat_Infantry /rotSpeed 8 /pos 2.0 -0.25 0 /animation units/InfantryHeavy/InfantryHeavy_Walk.aaf 0 looping 1.0 /scaleMult 0.915
+}
+unitType Brute_01 initFrom InfantryHeavy {
+variantCfg "Hellstorm Brute"
+rarity				2
+}
+unitType InfantryHeavyVoid initFrom InfantryHeavy {
+variantCfg "Void Brute"
+aiFortify			0
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+}
+unitType InfantryHeavyU {
+commonName			"Ultimate Brute"
+autoTag
+rarity				4
+searchTerm			"infantry"
+category 			Infantry
+canAPC				false
+cost 				1200
+buildtime 			4.8
+dispSymbol			DispUnitInfantryHeavyU
+descSymbol			MF_CustomTip_InfantryHeavyU
+defaultOrder		CaptureOutpost
+nplevelreq			4
+aiFortify			0.0
+aiDirectEngage		0.7
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantryHeavyU/InfantryHeavyU_Ref.amf mat_Infantry /rotSpeed 8 /pos 2.0 -0.25 0 /animation units/InfantryHeavy/InfantryHeavy_Walk.aaf 0 looping 1.0 /scaleMult 0.95
+property			UltimateLvl				10			/trailingNum
+}
+unitType InfantrySpy {
+commonName			Assassin
+autoTag				cased
+searchTerm			"infantry"
+category 			Infantry
+cost 				500
+buildtime 			3.5
+dispSymbol			DispUnitInfantrySpy
+descSymbol			MF_CustomTip_InfantrySpy
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0.6
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantrySpy/InfantrySpy_Ref.amf mat_Infantry /rotSpeed 4 /pos 2.0 -0.25 0 /animation units/InfantrySpy/InfantrySpy_Walk.aaf 0 looping 1.0 /scaleMult 1.20
+ability				Spy
+}
+unitType InfantryButcher {
+commonName			Butcher
+autoTag				cased
+searchTerm			"infantry"
+category 			Infantry
+cost 				1800
+buildtime 			4.5
+dispSymbol			DispUnitInfantryButcher
+descSymbol			MF_CustomTip_InfantryButcher
+defaultOrder		CaptureOutpost
+nplevelreq			3
+aiFortify			0.0
+aiDirectEngage		0.6
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	2
+expValues			81 53
+OnInspectOrUnlock	rookMenus previewInit units/InfantryButcher/InfantryButcher.amf mat_Infantry /rotSpeed 4 /pos 2.0 -0.25 0 /animation units/InfantrySpy/InfantrySpy_Walk.aaf 0 looping 1.0 /scaleMult 1.40
+ability				SpyNoCloak
+}
+unitType Butcher_01 initFrom InfantryButcher {
+variantCfg "Swift Butcher"
+rarity				2
+}
+unitType InfantryEngineer {
+commonName			Necro
+autoTag				cased
+searchTerm			"infantry"
+category 			Infantry
+cost 				500
+buildtime 			3.5
+dispSymbol			DispUnitInfantryEngineer
+descSymbol			MF_CustomTip_InfantryEngineer
+defaultOrder		CaptureOutpost
+ability				UnitRez
+abilityRange		10.0
+aiFortify			0.0
+aiDirectEngage		0.7
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantryEngineer/InfantryEngineer_Ref.amf mat_Infantry /addlMaterial mat_TreadPanXHunter< /rotSpeed 4.0 /pos 2.0 -0.25 0 /animation units/InfantryEngineer/InfantryEngineer_Rez_Preview.aaf 0 looping 0.80 /scaleMult 1.10
+}
+unitType InfantryJetpack {
+commonName			Rocketeer
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+cost 				500
+buildtime 			3.5
+dispSymbol			DispUnitInfantryJetpack
+descSymbol			MF_CustomTip_InfantryJetpack
+defaultOrder		CaptureOutpost
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/InfantryJetpack/InfantryJetpack_Ref.amf mat_InfantryJetpack /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/InfantryJetpack/Fly.aaf 0 looping 1.0 /scaleMult 1.0
+}
+unitType GruntUzi {
+commonName			"Grunt Runner"
+searchTerm			"infantry"
+category 			Infantry
+platformContent		!vr
+cost 				900
+buildtime 			3.5
+rarity				2
+dispSymbol			DispUnitGruntUzi
+descSymbol			MF_CustomTip_GruntUzi
+defaultOrder		CaptureOutpost
+acceptsOrders		false
+aiFortify			0.0
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/GruntUzi/GruntUzi_Ref.amf mat_Grunt /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/InfantryLight/InfantryLight_Run.aaf 0 looping 1.0 /scaleMult 1.1
+}
+unitType GruntShield {
+commonName			"Grunt Shield"
+searchTerm			"infantry"
+category 			Infantry
+platformContent		!vr
+cost 				900
+buildtime 			3.5
+dispSymbol			DispUnitGruntShield
+descSymbol			MF_CustomTip_GruntShield
+defaultOrder		CaptureOutpost
+acceptsOrders		false
+rarity				2
+aiFortify			0.0
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/GruntShield/GruntShield_Ref.amf mat_Grunt /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/InfantryLight/InfantryLight_Run.aaf 0 looping 1.0 /scaleMult 1.1
+}
+unitType GruntSwords {
+commonName			"Grunt Assassin"
+searchTerm			"infantry"
+category 			Infantry
+platformContent		!vr
+cost 				500
+buildtime 			3.5
+rarity				2
+dispSymbol			DispUnitGruntSwords
+descSymbol			MF_CustomTip_GruntSwords
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/GruntSwords/GruntSwords_Ref.amf mat_Grunt /rotSpeed 4 /pos 2.0 -0.25 0 /animation units/InfantrySpy/InfantrySpy_Walk.aaf 0 looping 1.0 /scaleMult 1.1
+ability				Spy
+}
+unitType Probe {
+commonName			"Probe"
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+cost 				700
+buildtime 			2.5
+okOnOutpostPad		false
+dispSymbol			DispUnitProbe
+descSymbol			MF_CustomTip_Probe
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0.2
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+expValues			25 20
+hasWeaponLvl		0
+OnInspectOrUnlock	rookMenus previewInit units/Probe/Probe.amf mat_Probe /pos 2.0 -0.25 0 /animation units/Probe/Bounce.aaf 0 looping 1.0 /zSpinDef bone_spinner 220.0 /zSpinDef spinner1 120.0
+}
+unitType ProbeU {
+commonName			"Ultimate Probe"
+rarity				4
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+platformContent		!vr
+cost 				700
+buildtime 			2.5
+okOnOutpostPad		false
+dispSymbol			DispUnitProbeU
+descSymbol			MF_CustomTip_ProbeU
+defaultOrder		CaptureOutpost
+acceptsOrders		true
+expValues			25 20
+hasWeaponLvl		0
+OnInspectOrUnlock	rookMenus previewInit units/ProbeU/ProbeU.amf mat_Probe /pos 2.0 -0.25 0 /animation units/ProbeU/Bounce.aaf 0 looping 1.0 /zSpinDef bone_spinner 220.0 /zSpinDef spinner1 120.0
+property			UltimateLvl				5			/trailingNum
+}
+unitType ProbeAlien {
+commonName			"Alien Probe"
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+platformContent		pc_only !arc !vr
+cost 				700
+buildtime 			2.5
+okOnOutpostPad		false
+dispSymbol			DispUnitProbeAlien
+descSymbol			MF_CustomTip_ProbeAlien
+defaultOrder		CaptureOutpost
+acceptsOrders		true
+aiFortify			0.0
+aiDirectEngage		0.2
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+expValues			25 20
+hasWeaponLvl		0
+rarity				5
+OnInspectOrUnlock	rookMenus previewInit units/ProbeAlien/ProbeAlien.amf mat_ProbeAlien /pos 2.0 -0.25 0 /animation units/ProbeAlien/Bounce.aaf 0 looping 1.0
+}
+unitType ProbeBeppo {
+commonName			"Beppo Probe"
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+platformContent		!vr
+cost 				700
+buildtime 			2.5
+okOnOutpostPad		false
+dispSymbol			DispUnitProbeBeppo
+descSymbol			MF_CustomTip_ProbeBeppo
+defaultOrder		CaptureOutpost
+acceptsOrders		true
+expValues			25 20
+hasWeaponLvl		0
+rarity				3
+OnInspectOrUnlock	rookMenus previewInit units/ProbeBeppo/ProbeBeppo.amf mat_ProbeBeppo /pos 2.5 -0.25 0 /animation units/ProbeBeppo/Bounce.aaf 0 looping 1.0
+}
+unitType Probe_ initFrom Probe {
+commonName			"Probe Trial"
+trialStackCfg
+rarity			3
+}
+unitType Creeper {
+commonName			Boomer
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+cost 				600
+buildtime 			4.0
+okOnOutpostPad		false
+dispSymbol			DispUnitCreeper
+descSymbol			MF_CustomTip_Creeper
+defaultOrder		CaptureOutpost
+acceptsOrders		true
+aiFortify			0.0
+aiDirectEngage		0.7
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+ability				Kamikazee
+expValues			25 20
+OnInspectOrUnlock	rookMenus previewInit units/Creeper/Creeper.amf mat_UnitInfantry /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/Creeper/Walk.aaf 0 looping 1.0 /scaleMult 0.915
+}
+unitType CreeperU {
+commonName			"Ultimate Boomer"
+autoTag
+rarity				4
+searchTerm			"infantry"
+category 			Infantry
+cost 				600
+buildtime 			4.0
+okOnOutpostPad		false
+dispSymbol			DispUnitCreeperU
+descSymbol			MF_CustomTip_CreeperU
+defaultOrder		CaptureOutpost
+acceptsOrders		true
+aiFortify			0.0
+aiDirectEngage		0.8
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+ability				Kamikazee
+expValues			25 20
+OnInspectOrUnlock	rookMenus previewInit units/CreeperU/CreeperU.amf mat_UnitInfantry /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/CreeperU/Walk.aaf 0 looping 1.0 /scaleMult 0.915
+property			UltimateLvl				8			/trailingNum
+}
+unitType CreeperMC {
+commonName			"Creeper"
+platformContent		pc_only !arc !vr
+autoTag				cased
+rarity				2
+searchTerm			"infantry"
+category 			Infantry
+cost 				600
+buildtime 			4.0
+okOnOutpostPad		false
+dispSymbol			DispUnitCreeperMC
+descSymbol			MF_CustomTip_CreeperMC
+defaultOrder		CaptureOutpost
+acceptsOrders		true
+aiFortify			0.0
+aiDirectEngage		0.6
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+ability				Kamikazee
+expValues			25 20
+}
+unitType InfantryRocket {
+commonName			SAM
+autoTag				cased
+searchTerm			"infantry"
+category 			Infantry
+cost 				900
+buildtime 			4.5
+dispSymbol			DispUnitInfantryRocket
+descSymbol			MF_CustomTip_InfantryRocket
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0.6
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		4
+expValues			30 25
+OnInspectOrUnlock	rookMenus previewInit units/InfantryRocket/InfantryRocket.amf mat_UnitInfantry /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/InfantryRocket/InfantryRocketWalk.aaf 0 looping 1.0 /scaleMult 0.825
+}
+unitType InfantryRocket_ initFrom InfantryRocket {
+commonName			"Trial SAM"
+aiCaptureWeight		0
+trialStackCfg
+}
+unitType SAM_01 initFrom InfantryRocket {
+variantCfg "Hyper SAM"
+rarity			2
+}
+unitType Engineer {
+commonName			Fixer
+autoTag
+searchTerm			"infantry"
+category 			Infantry
+cost 				700
+buildtime 			4.0
+dispSymbol			DispUnitEngineer
+descSymbol			MF_CustomTip_Engineer
+defaultOrder		CaptureOutpost
+aiFortify			0.0
+aiDirectEngage		0.5
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		2
+ability				Supply
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/Engineer/Engineer.amf mat_Engineer /rotSpeed 0 /pos 2.0 -0.25 0 /animation units/Engineer/EngineerWalk.aaf 0 looping 1.0 /scaleMult 0.85
+}
+unitType Fixer_01 initFrom Engineer {
+variantCfg "Hyper Fixer"
+rarity			2
+}
+unitType Engineer_ initFrom Engineer {
+commonName			"Trial Fixer"
+aiCaptureWeight		0
+trialStackCfg
+}
+unitType Bike {
+commonName			Zipper
+autoTag
+category 			Combat
+cost 				900
+group_tunc			1
+buildtime 			2.5
+dispSymbol			DispUnitBike
+descSymbol			MF_CustomTip_Bike
+aiFortify			0.0
+aiDirectEngage		0.5
+aiAssaultWeight		0 0
+aiSecureWeight		3 0
+expValues			30 25
+OnInspectOrUnlock	rookMenus previewInit units/bike/UnitBike.amf mat_UnitBike /pos 2.0 -0.25 0 /animation units/Bike/Idle.aaf 0 looping 0.25
+}
+unitType BikeSidecar {
+commonName			Tango
+autoTag
+category 			Combat
+cost 				1200
+buildtime 			3.2
+dispSymbol			DispUnitBikeSidecar
+descSymbol			MF_CustomTip_BikeSidecar
+aiFortify			0.0
+aiDirectEngage		0.5
+aiAssaultWeight		0 0
+aiSecureWeight		4
+expValues			35 25
+OnInspectOrUnlock	rookMenus previewInit units/BikeSidecar/UnitBikeCar.amf mat_UnitBike /pos 2.0 -0.25 0 /animation units/BikeSidecar/Idle.aaf 0 looping 0.25
+}
+unitType CarStarter {
+commonName			Joker
+autoTag
+category 			Combat
+cost 				1800
+buildtime 			4.0
+dispSymbol			DispUnitCarStarter
+descSymbol			MF_CustomTip_CarStarter
+aiFortify			0.0
+aiDirectEngage		0.5
+aiAssaultWeight		0
+aiSecureWeight		3
+expValues			45 35
+OnInspectOrUnlock	rookMenus previewInit units/CarStarter/CarStarter.amf mat_ArmoredCar /addlMaterial mat_UnitBike /pos 2.0 -0.25 0 /animation units/CarStarter/CarWait.aaf 0 looping 0.25
+}
+unitType ArmoredCar {
+commonName			Jackal
+autoTag
+category 			Combat
+cost 				1800
+buildtime 			4.0
+dispSymbol			DispUnitArmoredCar
+descSymbol			MF_CustomTip_ArmoredCar
+aiFortify			0.0
+aiDirectEngage		0.5
+aiAssaultWeight		3
+aiSecureWeight		3
+expValues			45 35
+OnInspectOrUnlock	rookMenus previewInit units/ArmoredCar/ArmoredCar.amf mat_ArmoredCar /pos 2.0 -0.25 0 /animation units/ArmoredCar/CarWait.aaf 0 looping 0.25
+}
+unitType ArmoredCarU {
+commonName			"Ultimate Jackal"
+autoTag
+rarity				4
+category 			Combat
+cost 				2500
+buildtime 			4.8
+dispSymbol			DispUnitArmoredCarU
+descSymbol			MF_CustomTip_ArmoredCarU
+expValues			45 35
+OnInspectOrUnlock	rookMenus previewInit units/ArmoredCarU/ArmoredCarU_Ref.amf mat_ArmoredCar /addlMaterial mat_Infantry /pos 2.0 -0.25 0 /animation units/ArmoredCarU/CarDeploy.aaf 0 stopandhold 1.0
+property			UltimateLvl				10			/trailingNum
+}
+unitType Tank {
+commonName			Longhorn
+autoTag
+searchTerm			"tank"
+category 			Combat
+isHeavy				1
+isTank				1
+cost 				4500
+buildtime 			8.0
+dispSymbol			DispUnitTank
+descSymbol			MF_CustomTip_Tank
+aiFortify			0.9
+aiDirectEngage		0.5
+aiAssaultWeight		12
+aiSecureWeight		12
+expValues			70 60
+OnInspectOrUnlock	rookMenus previewInit units/Tank/Tank.amf mat_Tank /pos 2.0 -0.25 0
+areaDisplay			oRC
+}
+unitType Tank_ initFrom Tank {
+commonName			"Trial Longhorn"
+aiFortify			0.0
+aiAssaultWeight		0
+aiSecureWeight		0
+trialStackCfg
+}
+unitType Tank_01 initFrom Tank {
+variantCfg "Fine Longhorn"
+rarity			2
+}
+unitType TankVoid initFrom Tank {
+variantCfg "Longhorn Void"
+aiFortify			0
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+}
+unitType ScorpionTank {
+commonName			Gemini
+autoTag
+searchTerm			"tank"
+category 			Combat
+isHeavy				1
+isTank				1
+cost 				5000
+buildtime 			9.0
+dispSymbol			DispUnitScorpionTank
+descSymbol			MF_CustomTip_ScorpionTank
+aiFortify			0.9
+aiDirectEngage		0.5
+aiAssaultWeight		8
+aiSecureWeight		10
+expValues			75 65
+OnInspectOrUnlock	rookMenus previewInit units/ScorpionTank/ScorpionTank.amf mat_ScorpionTank /pos 2.0 -0.25 0
+areaDisplay			oRC
+}
+unitType Gemini_01 initFrom ScorpionTank {
+variantCfg "Fine Gemini"
+rarity 2
+}
+unitType ScorpionTank_ initFrom ScorpionTank {
+commonName			"Trial Gemini"
+aiFortify			0.0
+aiAssaultWeight		0
+aiSecureWeight		0
+trialStackCfg
+}
+unitType TankMonster {
+commonName			Devastator
+autoTag
+searchTerm			"tank"
+category 			Combat
+isHeavy				1
+isTank				1
+cost 				48000
+buildtime 			48.0
+dispSymbol			DispUnitTankMonster
+descSymbol			MF_CustomTip_TankMonster
+aiFortify			0.0
+aiDirectEngage		0.5
+aiAssaultWeight		0
+aiSecureWeight		0
+nplevelreq			9
+expValues			750 650
+OnInspectOrUnlock	rookMenus previewInit units/TankMonster/TankMonster.amf mat_TankHeavy /addlMaterial mat_Tank /pos 2.0 -0.25 0
+areaDisplay			oRC
+}
+unitType Devastator_01 initFrom TankMonster {
+variantCfg "Hellstorm Devastator"
+rarity 2
+}
+unitType TankLight {
+commonName			Armadillo
+autoTag
+searchTerm			"tank"
+category 			Combat
+isHeavy				1
+isTank				1
+cost 				2700
+buildtime 			6.0
+dispSymbol			DispUnitTankLight
+descSymbol			MF_CustomTip_TankLight
+aiFortify			0.0
+aiDirectEngage		0.4
+aiAssaultWeight		8
+aiSecureWeight		8
+expValues			60 55
+OnInspectOrUnlock	rookMenus previewInit units/TankLight/TankLight.amf mat_TankLight /addlMaterial mat_TreadPanXLight< /pos 2.0 -0.25 0
+areaDisplay			oRC
+}
+unitType TankLight_ initFrom TankLight {
+commonName			"Armadillo Trial"
+aiAssaultWeight		0
+aiSecureWeight		0
+trialStackCfg
+}
+unitType Armadillo_01 initFrom TankLight {
+variantCfg "Hyper Armadillo"
+rarity			2
+}
+unitType TankHeavy {
+commonName			Goliath
+autoTag
+searchTerm			"tank"
+category 			Combat
+isHeavy				1
+isTank				1
+cost 				16500
+buildtime 			20.0
+dispSymbol			DispUnitTankHeavy
+descSymbol			MF_CustomTip_TankHeavy
+aiFortify			0.0
+aiDirectEngage		0.5
+aiAssaultWeight		8
+aiSecureWeight		8
+aiSurvivalWeight	8
+expValues			500 250
+nplevelreq			7
+OnInspectOrUnlock	rookMenus previewInit units/TankHeavy/TankHeavy.amf mat_TankHeavy /scale 1.2 /pos 2.0 -0.25 0
+areaDisplay			oRC
+}
+unitType Goliath_01 initFrom TankHeavy {
+variantCfg "Goliath Aggressor"
+rarity 2
+}
+unitType TankHeavyGoth initFrom TankHeavy {
+commonName			"Gothic Goliath"
+platformContent		!vr
+autoTag
+rarity				3
+dispSymbol			DispUnitTankHeavyGoth
+descSymbol			MF_CustomTip_TankHeavyGoth
+OnInspectOrUnlock	rookMenus previewInit units/TankHeavyGoth/TankHeavyGoth.amf mat_TankHeavyGoth /scale 1.2 /pos 2.0 -0.25 0
+}
+unitType TankHeavyVoid initFrom TankHeavy {
+variantCfg "Void Goliath"
+aiFortify			0
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+}
+unitType TankHeavyU {
+commonName			"Ultimate Goliath"
+autoTag
+searchTerm			"tank"
+category 			Combat
+isHeavy				1
+isTank				1
+rarity				4
+cost 				16500
+buildtime 			20.0
+dispSymbol			DispUnitTankHeavyU
+descSymbol			MF_CustomTip_TankHeavyU
+aiFortify			0
+aiDirectEngage		0.5
+aiAssaultWeight		0
+aiSecureWeight		0
+expValues			500 250
+nplevelreq			7
+OnInspectOrUnlock	rookMenus previewInit units/TankHeavyU/TankHeavyU.amf mat_TankHeavy /scale 1.25 /pos 2.0 -0.25 0
+areaDisplay			oRC
+property			UltimateLvl				10			/trailingNum
+}
+unitType TankHeavy_ initFrom TankHeavy {
+commonName			"Trial Goliath"
+aiFortify			0.0
+aiAssaultWeight		0
+aiSecureWeight		0
+trialStackCfg
+}
+unitType TankFlak {
+commonName			Gorgon
+category 			Combat
+#if vr
+notSelectable
+#endif
+isHeavy				1
+isTank				1
+cost 				4500
+buildtime 			8.0
+dispSymbol			DispUnitTankFlak
+descSymbol			MF_CustomTip_TankFlak
+aiFortify			0.0
+aiDirectEngage		0.5
+expValues			270 240
+OnInspectOrUnlock	rookMenus previewInit units/TankFlak/TankFlak.amf mat_MissileTank /addlMaterial mat_TurretFlak /addlMaterial mat_TruckJammer /pos 2.0 -0.25 0 /zSpinDef mesh_antenna 220.0
+nplevelreq			4
+areaDisplay			oRC
+}
+unitType TankDrill {
+commonName			Grinder
+autoTag
+category 			Combat
+isHeavy				1
+isTank				1
+okOnOutpostPad		false
+cost 				9800
+buildtime 			18.0
+dispSymbol			DispUnitTankDrill
+descSymbol			MF_CustomTip_TankDrill
+ability				Driller
+aiFortify			0.9
+aiDirectEngage		0.4
+aiAssaultWeight		2
+aiSecureWeight		0
+nplevelreq			5
+expValues			60 55
+OnInspectOrUnlock	rookMenus previewInit units/TankDrill/TankDrill.amf mat_TankDrill /animation units/TankDrill/Idle.aaf 0 loop 0.5 /addlMaterial mat_TreadPanX< /pos 2.0 -0.25 0 /zSpinDef mesh_drill 220.0 /zSpinDef bone_gear1 -52 /zSpinDef bone_gear2 87
+}
+unitType TankDrill_ initFrom TankDrill {
+commonName			"Trial Grinder"
+aiFortify			0.0
+aiAssaultWeight		0
+trialStackCfg
+}
+unitType TankRebel {
+commonName			Rebel
+autoTag				cased
+category 			Combat
+cost 				2700
+buildtime 			6.0
+dispSymbol			DispUnitTankRebel
+descSymbol			MF_CustomTip_TankRebel
+aiFortify			0.0
+aiDirectEngage		0.4
+aiAssaultWeight		0
+aiSecureWeight		0
+expValues			60 55
+OnInspectOrUnlock	rookMenus previewInit units/TankRebel/TankRebel.amf mat_TankRebel /pos 2.0 -0.25 0 /animation units/TankRebel/Drive.aaf 0 looping 0.5
+}
+unitType TankRebel_ initFrom TankRebel {
+commonName			"Trial Rebel"
+trialStackCfg
+}
+unitType Rebel_01 initFrom TankRebel {
+variantCfg "Cheap Rebel"
+OnInspectOrUnlock	rookMenus previewInit units/Rebel_01/TankRebelCheap.amf mat_TankRebelCheap /pos 2.0 -0.25 0 /animation units/TankRebel/Drive.aaf 0 looping 0.5
+rarity			1
+}
+unitType Rebel_02 initFrom TankRebel {
+variantCfg "Swift Rebel"
+OnInspectOrUnlock	rookMenus previewInit units/Rebel_02/TankRebelSwift.amf mat_TankRebelSwift /pos 2.0 -0.25 0 /animation units/TankRebel/Drive.aaf 0 looping 0.5
+rarity			2
+}
+unitType TankHunter {
+commonName			"Buster"
+autoTag
+searchTerm			"tank"
+category 			Combat
+isHeavy				1
+isTank				1
+cost 				2700
+buildtime 			6.0
+nplevelreq			3
+dispSymbol			DispUnitTankHunter
+descSymbol			MF_CustomTip_TankHunter
+aiFortify			0.9
+aiDirectEngage		0.4
+aiAssaultWeight		0
+aiSecureWeight		5
+expValues			60 55
+OnInspectOrUnlock	rookMenus previewInit units/TankHunter/TankHunter.amf mat_TankHunter /addlMaterial mat_TreadPanXHunter< /pos 2.0 -0.25 0
+areaDisplay			oRC
+}
+unitType TankJammer {
+commonName			"Sonya"
+autoTag
+#if vr
+notSelectable
+#endif
+searchTerm			"tank"
+category 			Combat
+isHeavy				1
+isTank				1
+cost 				2700
+buildtime 			6.0
+dispSymbol			DispUnitTankJammer
+descSymbol			MF_CustomTip_TankJammer
+aiFortify			0.3
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+hasWeaponLvl		0
+nplevelreq			4
+expValues			60 55
+OnInspectOrUnlock	rookMenus previewInit units/TankJammer/TankJammer_Ref.amf mat_TankJammer /addlMaterial mat_TreadPanXJammer< /animation units/TankJammer/TankJammer_Idle.aaf 0 looping 1.0 /zSpinDef mesh_center 100.0 /zSpinDef mesh_prong_l -160.0 /zSpinDef mesh_prong_r -160.0 /pos 2.0 -0.25 0
+areaDisplay			jam
+}
+unitType Steamroller {
+commonName			Roller
+autoTag
+category 			Combat
+isHeavy				1
+isTank				1
+okOnOutpostPad		false
+cost 				9800
+buildtime 			18.0
+dispSymbol			DispUnitSteamroller
+descSymbol			MF_CustomTip_Steamroller
+ability				Driller
+aiFortify			0.0
+aiDirectEngage		0.4
+aiAssaultWeight		0
+aiSecureWeight		0
+nplevelreq			3
+expValues			60 55
+OnInspectOrUnlock	rookMenus previewInit units/Steamroller/Steamroller.amf mat_Steamroller /animation units/Steamroller/Idle.aaf 0 loop 0.5 /pos 2.0 -0.25 0 /zSpinDef mesh_roller -220.0
+}
+unitType TruckJammer {
+commonName			Jammer
+autoTag
+#if vr
+notSelectable
+#endif
+category 			Combat
+cost 				2900
+buildtime 			5.0
+dispSymbol			DispUnitTruckJammer
+descSymbol			MF_CustomTip_TruckJammer
+aiFortify			0.0
+aiDirectEngage		0.8
+aiDirectEngage		0.6
+aiAssaultWeight		0 0
+aiSecureWeight		0
+hasWeaponLvl		0
+expValues			55 45
+OnInspectOrUnlock	rookMenus previewInit units/TruckJammer/TruckJammer.amf mat_TruckJammer /animation units/TruckJammer/Open.aaf 0 stopandhold 1.0 /zSpinDef bone_spin 75.0 /pos 2.0 -0.25 0
+areaDisplay			jam
+}
+unitType TruckJammer_ initFrom TruckJammer {
+commonName			"Trial Jammer"
+aiFortify			0.0
+trialStackCfg
+}
+unitType TruckRatters {
+commonName			Ratters
+autoTag
+category 			Combat
+platformContent		!vr
+cost 				2200
+buildtime 			5.0
+dispSymbol			DispUnitTruckRatters
+descSymbol			MF_CustomTip_TruckRatters
+aiFortify			0.0
+aiDirectEngage		0.8
+aiDirectEngage		0.6
+aiAssaultWeight		0 0
+aiSecureWeight		0
+expValues			55 45
+OnInspectOrUnlock	rookMenus previewInit units/TruckRatters/TruckRatters.amf mat_TruckRatters /animation units/ArmoredCar/CarWait.aaf 0 looping 0.25 /pos 2.0 -0.25 0
+}
+unitType TruckGunZ {
+commonName			"Gunner Z"
+autoTag
+category 			Combat
+platformContent		pc_only !arc !vr
+cost 				2200
+buildtime 			5.0
+rarity				5
+dispSymbol			DispUnitTruckGunZ
+descSymbol			MF_CustomTip_TruckGunZ
+aiFortify			0
+aiDirectEngage		0.5
+aiDirectEngage		0
+aiAssaultWeight		0 0
+aiSecureWeight		0
+expValues			55 45
+}
+unitType SupplyTruck {
+commonName			Patcher
+autoTag
+category 			Support
+cost 				1500
+buildtime 			5.0
+dispSymbol			DispUnitSupplyTruck
+descSymbol			MF_CustomTip_SupplyTruck
+aiFortify			0.6
+aiDirectEngage		0.9
+aiSecureWeight		3
+ability				Supply
+expValues			45 35
+OnInspectOrUnlock	rookMenus previewInit units/SupplyTruck/SupplyTruck.amf mat_SupplyTruck /pos 2.0 -0.25 0
+}
+unitType SupplyTank {
+commonName			Ratchet
+autoTag
+category 			Support
+cost 				2200
+buildtime 			7.0
+dispSymbol			DispUnitSupplyTank
+descSymbol			MF_CustomTip_SupplyTank
+aiFortify			0.3
+aiSurvivalWeight    4
+aiDirectEngage		1.0
+aiSecureWeight		5
+ability				Supply
+expValues			60 50
+OnInspectOrUnlock	rookMenus previewInit units/SupplyTank/SupplyTank.amf mat_SupplyTank /pos 2.0 -0.25 0
+}
+unitType SupplyTank_ initFrom SupplyTank {
+commonName			"Trial Ratchet"
+aiFortify			0.0
+trialStackCfg
+}
+unitType Ratchet_01 initFrom SupplyTank {
+variantCfg "Heavy Ratchet"
+OnInspectOrUnlock	rookMenus previewInit units/Ratchet_01/SupplyTankHeavy.amf mat_SupplyTank /pos 2.0 -0.25 0
+rarity 2
+}
+unitType MissileTank {
+commonName			Seeker
+autoTag
+category 			Support
+isAA				1
+cost 				4000
+buildtime 			6.0
+dispSymbol			DispUnitMissileTank
+descSymbol			MF_CustomTip_MissileTank
+aiFortify			0.6
+aiDirectEngage		0.6
+aiAssaultWeight		2 10
+aiSecureWeight		5
+expValues			70 60
+OnInspectOrUnlock	rookMenus previewInit units/MissileTank/MissileTank.amf mat_MissileTank /pos 2.0 -0.25 0 /animation units/MissileTank/DoorsOpen.aaf 0 stopandhold 0.5 /zSpinDef mesh_antenna 220.0
+areaDisplay			oRC
+}
+unitType Seeker_01 initFrom MissileTank {
+variantCfg "Hunter Seeker"
+OnInspectOrUnlock	rookMenus previewInit units/Seeker_01/MissileTankHunter.amf mat_MissileTank /pos 2.0 -0.25 0 /animation units/MissileTank/DoorsOpen.aaf 0 stopandhold 0.5 /zSpinDef mesh_antenna 220.0
+rarity 2
+}
+unitType APC {
+commonName			Boxer
+autoTag
+category 			Combat
+isHeavy				1
+isTank				1
+cost 				4500
+buildtime 			8.0
+ability				AttractInfantryCarry
+abilityRange		13.0
+abilityParamCount	4
+dispSymbol			DispUnitAPC
+descSymbol			MF_CustomTip_APC
+aiFortify			0.5
+aiDirectEngage		0.4
+aiAssaultWeight		0
+aiSecureWeight		0
+expValues			70 60
+OnInspectOrUnlock	rookMenus previewInit units/APC/APC.amf mat_APC /pos 2.0 -0.25 0
+areaDisplay			apc
+}
+unitType APC_ initFrom APC {
+commonName			"Trial Boxer"
+aiFortify			0.0
+trialStackCfg
+}
+unitType APCU {
+commonName			"Ultimate Boxer"
+autoTag
+rarity				4
+category 			Combat
+isHeavy				1
+isTank				1
+cost 				6000
+buildtime 			12.0
+ability				AttractInfantryCarry
+abilityRange		13.0
+abilityParamCount	6
+dispSymbol			DispUnitAPCU
+descSymbol			MF_CustomTip_APCU
+expValues			70 60
+OnInspectOrUnlock	rookMenus previewInit units/APCU/APCU.amf mat_APC /pos 2.0 -0.25 0
+areaDisplay			apc
+property			UltimateLvl				10			/trailingNum
+}
+unitType RocketTruck {
+commonName			Bucky
+autoTag
+category 			Combat
+cost 				2900
+buildtime 			5.0
+dispSymbol			DispUnitRocketTruck
+descSymbol			MF_CustomTip_RocketTruck
+aiFortify			0.0
+aiDirectEngage		0.6
+aiSecureWeight		3
+aiAssaultWeight		3 3
+expValues			55 45
+OnInspectOrUnlock	rookMenus previewInit units/RocketTruck/RocketTruck.amf mat_RocketTruck /pos 2.0 -0.25 0 /animation units/RocketTruck/DoorsOpen.aaf 0 stopandhold 0.5
+areaDisplay			oRC
+}
+unitType Bucky_01 initFrom RocketTruck {
+OnInspectOrUnlock	rookMenus previewInit units/Bucky_01/RocketTruckA.amf mat_RocketTruck /pos 2.0 -0.25 0 /animation units/RocketTruck/DoorsOpen.aaf 0 stopandhold 0.5
+variantCfg "Bucky Aggressor"
+rarity 2
+}
+unitType Bucky_02 initFrom RocketTruck {
+OnInspectOrUnlock	rookMenus previewInit units/Bucky_02/RocketTruckC.amf mat_RocketTruck /pos 2.0 -0.25 0 /animation units/RocketTruck/DoorsOpen.aaf 0 stopandhold 0.5
+variantCfg "Cheap Bucky"
+rarity 1
+}
+unitType RocketTruckVoid initFrom RocketTruck {
+variantCfg "Void Bucky"
+aiFortify			0
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+}
+unitType RocketTruckIC {
+commonName			"Ice Cream Buck"
+autoTag
+category 			Combat
+platformContent		!vr
+rarity				3
+cost 				2900
+buildtime 			5.0
+rarity				3
+dispSymbol			DispUnitRocketTruckIC
+descSymbol			MF_CustomTip_RocketTruckIC
+aiFortify			0.0
+aiDirectEngage		0
+aiAssaultWeight		0 0
+expValues			55 45
+OnInspectOrUnlock	rookMenus previewInit units/RocketTruckIC/RocketTruckIC_Ref.amf mat_RocketTruckIC /pos 2.0 -0.25 0 /animation units/RocketTruckIC/RocketTruckIC_Move.aaf 0 looping 1.0
+}
+unitType TruckFlak {
+commonName			Flakker
+autoTag
+category 			Combat
+isAA				1
+cost 				3300
+buildtime 			5.0
+dispSymbol			DispUnitTruckFlak
+descSymbol			MF_CustomTip_TruckFlak
+aiFortify			0.4
+aiDirectEngage		0.4
+expValues			80 60
+OnInspectOrUnlock	rookMenus previewInit units/TruckFlak/TruckFlak.amf mat_RocketTruck /addlMaterial mat_TurretFlak /pos 2.0 -0.25 0 /animation units/TruckFlak/Menu.aaf 0 loop 0.3 /rotSpeed 0
+}
+unitType Flakker_01 initFrom TruckFlak {
+variantCfg "Heavy Flakker"
+rarity 				2
+}
+unitType RocketTruckU {
+commonName			"Ultimate Bucky"
+autoTag
+rarity				4
+category 			Combat
+cost 				2900
+buildtime 			5.0
+dispSymbol			DispUnitRocketTruckU
+descSymbol			MF_CustomTip_RocketTruckU
+aiFortify			0.0
+aiDirectEngage		0.6
+expValues			55 45
+OnInspectOrUnlock	rookMenus previewInit units/RocketTruckU/RocketTruckU.amf mat_RocketTruck /pos 2.0 -0.25 0 /animation units/RocketTruck/DoorsOpen.aaf 0 stopandhold 0.5
+areaDisplay			oRC
+rarity				4
+property			UltimateLvl				10			/trailingNum
+}
+unitType TurretStarter {
+commonName			T45
+autoTag				cased
+searchTerm			"turret"
+category 			Special
+isTurret			1
+cost 				4300
+buildtime 			4.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitTurretStarter
+descSymbol			MF_CustomTip_TurretStarter
+aiDirectEngage		0.4
+expValues			90 60
+OnInspectOrUnlock	rookMenus previewInit units/TurretStarter/TurretStarter.amf mat_TurretStand /addlMaterial mat_TurretDual /pos 2.0 -0.25 0 /animation units/TurretDual/LegsDown.aaf 0 playonce 0.75
+areaDisplay			oRC
+}
+unitType TurretDual {
+commonName			T99
+autoTag				cased
+searchTerm			"turret"
+category 			Special
+isTurret			1
+cost 				8300
+buildtime 			12.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitTurretDual
+descSymbol			MF_CustomTip_TurretDual
+aiFortify			3.0
+aiSurvivalWeight    8
+aiDirectEngage		0.4
+expValues			125 110
+OnInspectOrUnlock	rookMenus previewInit units/TurretDual/TurretDual.amf mat_TurretStand /addlMaterial mat_TurretDual /pos 2.0 -0.25 0 /animation units/TurretDual/LegsDown.aaf 0 playonce 0.75 /switchAnims units/TurretDual/DoorOpen.aaf units/TurretDual/DoorClose.aaf 1 5.2 4.9
+areaDisplay			oRC
+}
+unitType TurretDual_ initFrom TurretDual {
+commonName			"Trial T99"
+aiFortify			0.0
+trialStackCfg
+}
+unitType TurretMissile {
+commonName			Stinger
+autoTag				cased
+searchTerm			"turret"
+category 			Special
+isTurret			1
+cost 				4500
+buildtime 			11.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitTurretMissile
+descSymbol			MF_CustomTip_TurretMissile
+expValues			159 105
+OnInspectOrUnlock	rookMenus previewInit units/TurretMissile/TurretMissile.amf mat_TurretStand /addlMaterial mat_MissileTank /pos 2.0 -0.25 0 /animation units/TurretMissile/LegsDown.aaf 0 playonce 0.75 /switchAnims units/TurretMissile/DoorsOpen.aaf units/TurretMissile/DoorsClose.aaf 1 5.2 4.9 /zSpinDef mesh_antenna 150.0
+areaDisplay			oRC
+}
+unitType TurretChaingun {
+commonName			Gatty
+autoTag
+searchTerm			"turret"
+category 			Special
+isTurret			1
+isGrinder			1
+cost 				4500
+buildtime 			8.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitTurretChaingun
+descSymbol			MF_CustomTip_TurretChaingun
+aiFortify			1.0
+aiDirectEngage		0.4
+expValues			90 80
+OnInspectOrUnlock	rookMenus previewInit units/TurretChaingun/TurretChaingun.amf mat_TurretStand /addlMaterial mat_TurretChaingun /pos 2.0 -0.25 0 /animation units/TurretChaingun/LegsDown.aaf 0 stopandhold 0.75
+areaDisplay			oRC
+}
+unitType Gatty_01 initFrom TurretChaingun {
+variantCfg "Hellstorm Gatty"
+rarity				2
+aiFortify			0.0
+}
+unitType TurretChaingun_ initFrom TurretChaingun {
+commonName			"Trial Gatty"
+aiFortify			0.0
+trialStackCfg
+}
+unitType TurretChaingunU {
+commonName			"Ultimate Gatty"
+autoTag
+rarity				4
+searchTerm			"turret"
+category 			Special
+isTurret			1
+isGrinder			1
+cost 				4500
+buildtime 			8.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitTurretChaingunU
+descSymbol			MF_CustomTip_TurretChaingunU
+expValues			90 80
+OnInspectOrUnlock	rookMenus previewInit units/TurretChaingunU/TurretChaingunU.amf mat_TurretStand /addlMaterial mat_TurretChaingun /pos 2.0 -0.25 0 /animation units/TurretChaingunU/LegsDown.aaf 0 stopandhold 0.75
+areaDisplay			oRC
+property			UltimateLvl				10			/trailingNum
+}
+unitType TurretFlak {
+commonName			HAAT
+autoTag
+searchTerm			"turret"
+category 			Special
+isTurret			1
+isAA				1
+cost 				7300
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitTurretFlak
+descSymbol			MF_CustomTip_TurretFlak
+aiFortify			0.35
+aiDirectEngage		0.4
+expValues			110 90
+OnInspectOrUnlock	rookMenus previewInit units/TurretFlak/TurretFlak.amf mat_TurretStand /addlMaterial mat_TurretFlak /pos 2.0 -0.25 0 /animation units/TurretFlak/LegsDown.aaf 0 stopandhold 0.75 /zSpinDef mesh_antenna 220.0
+areaDisplay			oRC
+}
+unitType HAAT_01 initFrom TurretFlak {
+variantCfg "Hellstorm HAAT"
+rarity				2
+}
+unitType TurretFlak_ initFrom TurretFlak {
+commonName			"Trial HAAT"
+aiFortify			0.0
+trialStackCfg
+}
+unitType TurretFlakU {
+commonName			"Ultimate HAAT"
+autoTag
+rarity				4
+searchTerm			"turret"
+category 			Special
+isTurret			1
+isAA				1
+cost 				8300
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitTurretFlakU
+descSymbol			MF_CustomTip_TurretFlakU
+expValues			110 90
+OnInspectOrUnlock	rookMenus previewInit units/TurretFlakU/TurretFlakU.amf mat_TurretStand /addlMaterial mat_TurretFlak /pos 2.0 -0.25 0 /animation units/TurretFlakU/LegsDown.aaf 0 stopandhold 0.75 /zSpinDef mesh_antenna 220.0
+areaDisplay			oRC
+property			UltimateLvl				10			/trailingNum
+}
+unitType TurretAegis {
+commonName			Aegis
+autoTag
+searchTerm			"turret"
+category 			Special
+isTurret			1
+isAA				1
+cost 				5000
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitTurretAegis
+descSymbol			MF_CustomTip_TurretAegis
+aiFortify			0.3
+aiDirectEngage		0.4
+ability				Aegis
+expValues			110 90
+OnInspectOrUnlock	rookMenus previewInit units/TurretAegis/TurretAegis.amf mat_TurretStand /addlMaterial mat_TurretAegis /pos 2.0 -0.25 0 /animation units/TurretAegis/LegsDown.aaf 0 stopandhold 1.5
+areaDisplay			sC2
+}
+unitType TurretAegis_ initFrom TurretAegis {
+commonName			"Trial Aegis"
+aiFortify			0.0
+trialStackCfg
+}
+unitType TurretJammer {
+commonName			Dinger
+autoTag
+#if vr
+notSelectable
+#endif
+searchTerm			"turret"
+category 			Special
+isTurret			1
+isAA				0
+cost 				7300
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitTurretJammer
+descSymbol			MF_CustomTip_TurretJammer
+aiFortify			0
+aiDirectEngage		0.5
+nplevelreq			5
+expValues			110 90
+OnInspectOrUnlock	rookMenus previewInit units/TurretJammer/TurretJammer.amf mat_TurretStand /addlMaterial mat_TurretJammer /pos 2.0 -0.25 0 /animation units/TurretJammer/LegsDown.aaf 0 stopandhold 0.75 /zSpinDef mesh_antenna 100.0 /zSpinDef mesh_radar_l 150.0 /zSpinDef mesh_radar_r -150.0
+areaDisplay			jam
+}
+unitType TurretTesla {
+commonName			"Tesla Tower"
+autoTag				cased
+searchTerm			"turret"
+category 			Special
+isTurret			1
+isAA				0
+cost 				10000
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitTurretTesla
+descSymbol			MF_CustomTip_TurretTesla
+aiFortify			0
+aiDirectEngage		1
+expValues			110 90
+OnInspectOrUnlock	rookMenus previewInit units/TurretTesla/TurretTesla.amf mat_TurretTesla /pos 2.0 -0.25 0 /animation units/TurretTesla/Idle.aaf 0 loop 0.75 /zSpinDef geo_coil 80.0 /zSpinDef geo_tube -80.0 /zSpinDef bone_ring -100.0
+areaDisplay			oRC
+}
+unitType TurretTeslaGoth initFrom TurretTesla {
+commonName			"Gothic Tesla Tower"
+platformContent		!vr
+autoTag
+rarity				3
+aiFortify			0
+aiDirectEngage		1
+dispSymbol			DispUnitTurretTeslaGoth
+descSymbol			MF_CustomTip_TurretTeslaGoth
+OnInspectOrUnlock	rookMenus previewInit units/TurretTeslaGoth/TurretTeslaGoth.amf mat_TurretTeslaGoth /pos 2.0 -0.25 0 /animation units/TurretTesla/Idle.aaf 0 loop 0.75 /zSpinDef geo_coil 80.0 /zSpinDef geo_tube -80.0 /zSpinDef bone_ring -100.0 /zSpinDef geo_stand -100.0
+}
+unitType Turtle {
+commonName			Turtle
+autoTag				cased
+cost 				7500
+buildtime 			15.0
+category 			Combat
+isHeavy				1
+isTank				1
+dispSymbol			DispUnitTurtle
+descSymbol			MF_CustomTip_Turtle
+aiFortify			0.0
+aiDirectEngage		0.5
+ability				Turtle
+expValues			80 70
+buildXPMult			0.0
+hasWeaponLvl		0
+nplevelreq			4
+OnInspectOrUnlock	rookMenus previewInit units/Turtle/Turtle.amf mat_Turtle /pos 2.0 -0.25 0 /animation units/Turtle/Open.aaf 0 stopandhold .75
+}
+unitType Turtle_ initFrom Turtle {
+commonName			"Trial Turtle"
+trialStackCfg
+}
+unitType TurretArtillery {
+commonName			Arty
+autoTag
+searchTerm			"artillery"
+category 			Special
+isTurret			1
+isArtillery			1
+cost 				3500
+buildtime 			7.0
+acceptsOrders		false
+okOnPad				true
+autoBuildOk			0
+dispSymbol			DispUnitTurretArtillery
+descSymbol			MF_CustomTip_TurretArtillery
+aiDirectEngage		1.0
+aiSecureWeight		5
+aiAssaultWeight		5
+expValues			90 70
+OnInspectOrUnlock	rookMenus previewInit units/TurretArtillery/TurretArtillery.amf mat_TurretArtillery /pos 2.0 -0.25 0 /animation units/TurretArtillery/LegsDown.aaf 0 stopandhold 0.75
+}
+unitType TurretArtillery_ initFrom TurretArtillery {
+commonName			"Trial Arty"
+trialStackCfg
+}
+unitType Arty_01 initFrom TurretArtillery {
+variantCfg "Rapid Arty"
+rarity				2
+}
+unitType TurretArtilleryV2 {
+commonName			Archy
+autoTag
+searchTerm			"artillery"
+category 			Special
+isTurret			1
+isArtillery			1
+cost 				3700
+buildtime 			8.5
+acceptsOrders		false
+okOnPad				true
+autoBuildOk			0
+dispSymbol			DispUnitTurretArtilleryV2
+descSymbol			MF_CustomTip_TurretArtilleryV2
+aiDirectEngage		1.0
+aiSecureWeight		5
+aiAssaultWeight		5
+expValues			90 70
+OnInspectOrUnlock	rookMenus previewInit units/TurretArtilleryV2/TurretArtilleryV2.amf mat_TurretArtillery /pos 2.0 -0.25 0 /animation units/TurretArtillery/LegsDown.aaf 0 stopandhold 0.75
+}
+unitType TurretArtilleryV2_ initFrom TurretArtilleryV2 {
+commonName			"Trial Archy"
+trialStackCfg
+}
+unitType Archy_01 initFrom TurretArtilleryV2 {
+variantCfg "Archy Aggressor"
+rarity				2
+}
+unitType Bertha {
+commonName			Bertha
+autoTag
+searchTerm			"artillery"
+category 			Special
+isTurret			1
+isArtillery			1
+cost 				10500
+buildtime 			18.0
+acceptsOrders		false
+okOnPad				true
+autoBuildOk			0
+dispSymbol			DispUnitBertha
+descSymbol			MF_CustomTip_Bertha
+aiDirectEngage		1.0
+nplevelreq			7
+expValues			90 70
+OnInspectOrUnlock	rookMenus previewInit units/Bertha/Bertha.amf mat_Bertha /pos 2.0 -0.25 0 /animation units/Bertha/LegsDown.aaf 0 stopandhold 0.75
+}
+unitType Bertha_ initFrom Bertha {
+commonName			"Trial Bertha"
+trialStackCfg
+}
+unitType TurretPortal {
+commonName			"Sentry Turret"
+autoTag
+searchTerm			"turret"
+category 			Special
+platformUnlock		steam_only
+platformContent		pc_only !arc !vr
+rarity				1
+isTurret			1
+isGrinder			1
+cost 				2400
+buildtime 			4.0
+acceptsOrders		false
+okOnPad				true
+autoBuildOk			0
+dispSymbol			DispUnitTurretPortal
+descSymbol			MF_CustomTip_TurretPortal
+aiFortify			0.0
+aiDirectEngage		0.4
+expValues			90 80
+areaDisplay			oRA
+}
+unitType BaseRepair {
+commonName			Lunchbox
+autoTag
+category 			Special
+cost 				2800
+buildtime 			8.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+dispSymbol			DispUnitBaseRepair
+descSymbol			MF_CustomTip_BaseRepair
+aiFortify			1.0
+aiDirectEngage		1.0
+ability				FortRepair
+abilityRange		32.0
+abilityRange2		22.0
+hasWeaponLvl		0
+pregameSale
+expValues			120 100
+OnInspectOrUnlock	rookMenus previewInit units/baserepair/BaseRepair.amf mat_BaseRepair /pos 2.0 -0.25 0 /animation units/baserepair/LidMove.aaf 0 looping 0.5
+}
+unitType BaseRepair_ initFrom BaseRepair {
+commonName		"Trial Lunchbox"
+trialStackCfg
+}
+unitType HealPod {
+commonName			Honeypot
+autoTag
+category 			Special
+cost 				2400
+buildtime 			8.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+dispSymbol			DispUnitHealPod
+descSymbol			MF_CustomTip_HealPod
+aiFortify			0.0
+aiDirectEngage		1.0
+ability				SupplyTurret
+abilityRange		8.0
+expValues			120 100
+OnInspectOrUnlock	rookMenus previewInit units/HealPod/HealPod.amf mat_HealPod /pos 2.0 -0.25 0 /animation units/HealPod/ArmWorking.aaf 0 looping 0.5
+}
+unitType HealPod_ initFrom HealPod {
+commonName			"Trial Honeypot"
+trialStackCfg
+}
+unitType Honeypot_01 initFrom HealPod {
+variantCfg "Fine Honeypot"
+rarity				2
+}
+unitType MoneyMaker {
+commonName			"MoneyMaker"
+autoTag
+category 			Special
+cost 				1400
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+dispSymbol			DispUnitMoneyMaker
+descSymbol			MF_CustomTip_MoneyMaker
+aiFortify			0.7
+aiDirectEngage		1.0
+ability				GenerateMoney
+pregameSale
+expValues			150 115
+OnInspectOrUnlock	rookMenus previewInit units/MoneyMaker/MoneyMaker.amf mat_MoneyMaker /addlMaterial mat_MoneyMakerTread< /scale 0.9 /pos 2.0 -0.25 0 /animation units/MoneyMaker/Idle.aaf 0 looping 0.75
+}
+unitType MoneyMaker_ initFrom MoneyMaker {
+commonName			"Trial MoneyMaker"
+trialStackCfg
+}
+unitType MoneyMakerU {
+commonName			"Ultimate MoneyMaker"
+autoTag
+rarity				4
+category 			Special
+cost 				1400
+buildtime 			3.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+dispSymbol			DispUnitMoneyMakerU
+descSymbol			MF_CustomTip_MoneyMakerU
+aiFortify			0.0
+aiDirectEngage		1.0
+pregameSale
+ability				GenerateMoney
+expValues			150 115
+OnInspectOrUnlock	rookMenus previewInit units/MoneyMakerU/MoneyMakerU.amf mat_MoneyMaker /addlMaterial mat_MoneyMakerTread< /pos 2.0 -0.25 0 /animation units/MoneyMakerU/Idle.aaf 0 looping 0.75
+property			UltimateLvl				10			/trailingNum
+}
+unitType GenXP {
+commonName			Leveler
+#if vr
+notSelectable
+#endif
+autoTag
+category 			Special
+cost 				1400
+buildtime 			3.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+dispSymbol			DispUnitGenXP
+descSymbol			MF_CustomTip_GenXP
+aiFortify			0.3
+aiDirectEngage		1.0
+ability				GenerateXP
+pregameSale
+expValues			150 115
+OnInspectOrUnlock	rookMenus previewInit units/GenXP/GenXP.amf mat_GenXP /pos 2.0 -0.25 0 /scale 0.9 /animation units/GenXP/Idle.aaf 0 looping 0.75
+}
+unitType GenXP_ initFrom GenXP {
+commonName			"Trial Leveler"
+trialStackCfg
+}
+unitType TechPod1 {
+notSelectable
+category 			Special
+cost 				1400			Tech1Cost
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+dispSymbol			DispUnitTechPod1
+descSymbol			MF_CustomTip_TechPod1
+aiFortify			0.0
+aiDirectEngage		1.0
+powerToBuild		0.0
+ability				TechPod
+abilityParamCount	1
+expValues			150 115
+OnInspectOrUnlock	rookMenus previewInit units/TechPod1/TechPod1.amf mat_GenPower /pos 2.0 -0.25 0 /scale 0.9
+}
+unitType TechPod2 {
+notSelectable
+category 			Special
+cost 				1400 			Tech2Cost
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+dispSymbol			DispUnitTechPod2
+descSymbol			MF_CustomTip_TechPod2
+aiFortify			0.0
+aiDirectEngage		1.0
+powerToBuild		0.0
+ability				TechPod
+abilityParamCount	2
+expValues			150 115
+OnInspectOrUnlock	rookMenus previewInit units/TechPod2/TechPod2.amf mat_GenPower /pos 2.0 -0.25 0 /scale 0.9
+}
+unitType UpgradePod {
+notSelectable
+category			Guardian
+cost				0
+buildTime			0
+commandPointValue	0
+acceptsOrders		false
+ability				UpgradePod
+}
+unitType GenPower {
+commonName			Generator
+autoTag
+category 			Special
+cost 				1400
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+dispSymbol			DispUnitGenPower
+descSymbol			MF_CustomTip_GenPower
+aiFortify			0.5
+aiDirectEngage		1.0
+powerToBuild		0.0
+pregameSale
+ability				GeneratePower
+expValues			150 115
+OnInspectOrUnlock	rookMenus previewInit units/GenPower/GenPower.amf mat_GenPower /pos 2.0 -0.25 0 /scale 0.9 /animation units/GenPower/Idle.aaf 0 looping 0.75
+}
+unitType GenPower_ initFrom GenPower {
+commonName			"Trial Generator"
+aiFortify			0.0
+trialStackCfg
+}
+unitType GenPowerU {
+commonName			"Ultimate Generator"
+autoTag
+rarity				4
+category 			Special
+cost 				1400
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+dispSymbol			DispUnitGenPowerU
+descSymbol			MF_CustomTip_GenPowerU
+aiFortify			0.0
+aiDirectEngage		1.0
+powerToBuild		0.0
+pregameSale
+ability				GeneratePower
+expValues			150 115
+OnInspectOrUnlock	rookMenus previewInit units/GenPowerU/GenPowerU.amf mat_GenPower /pos 2.0 -0.25 0 /scale 0.9 /animation units/GenPowerU/Idle.aaf 0 looping 0.75
+property			UltimateLvl				15			/trailingNum
+}
+unitType MissileSilo {
+commonName			"Missile Silo"
+category 			Special
+platformContent		!vr
+cost 				1400
+buildtime 			3.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+autoBuildOk			0
+dispSymbol			DispUnitMissileSilo
+descSymbol			MF_CustomTip_MissileSilo
+aiFortify			0
+aiDirectEngage		0
+ability				MissileSilo
+expValues			150 115
+OnInspectOrUnlock	rookMenus previewInit units/MissileSilo/MissileSilo.amf mat_MissileSilo /pos 2.0 -0.25 0 /scale 0.9
+}
+unitType MissileSiloMarker {
+commonName			"Missile Silo Marker"
+notSelectable
+category 			Special
+platformContent		!vr
+cost 				1400
+buildtime 			3.0
+acceptsOrders		false
+okOnPad				false
+okOnOutpostPad		false
+dispSymbol			DispUnitMissileSiloMarker
+descSymbol			MF_CustomTip_MissileSiloMarker
+aiFortify			0
+aiDirectEngage		0
+ability				MissileSiloMarker
+expValues			150 115
+OnInspectOrUnlock	rookMenus previewInit units/MissileSiloMarker/MissileSiloMarker.amf mat_MissileSilo /pos 2.0 -0.25 0 /scale 0.9
+}
+unitType BankSmall {
+commonName			Lockbox
+autoTag
+#if vr
+notSelectable
+#endif
+category 			Special
+cost 				10000
+buildtime 			2.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitBankSmall
+descSymbol			MF_CustomTip_BankSmall
+aiFortify			0.0
+aiDirectEngage		0.5
+ability				GenerateInterest
+expValues			80 70
+buildXPMult			0.0
+OnInspectOrUnlock	rookMenus previewInit units/BankSmall/BankSmall.amf mat_Bank /pos 2.0 -0.25 0
+}
+unitType BankMedium {
+commonName			Safebox
+autoTag
+#if vr
+notSelectable
+#endif
+category 			Special
+cost 				30000
+buildtime 			2.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitBankMedium
+descSymbol			MF_CustomTip_BankMedium
+aiFortify			0.0
+aiDirectEngage		0.5
+ability				GenerateInterest
+expValues			80 70
+buildXPMult			0.0
+OnInspectOrUnlock	rookMenus previewInit units/BankMedium/BankMedium.amf mat_Bank /pos 2.0 -0.25 0
+}
+unitType BankLarge {
+commonName			Vaultbox
+autoTag
+#if vr
+notSelectable
+#endif
+category 			Special
+cost 				75000
+buildtime 			2.0
+acceptsOrders		false
+okOnPad				true
+dispSymbol			DispUnitBankLarge
+descSymbol			MF_CustomTip_BankLarge
+aiFortify			0.0
+aiDirectEngage		0.5
+ability				GenerateInterest
+expValues			80 70
+buildXPMult			0.0
+OnInspectOrUnlock	rookMenus previewInit units/BankLarge/BankLarge.amf mat_Bank /pos 2.0 -0.25 0
+}
+unitType BotSpawner {
+commonName			"Bot Spawner"
+autoTag
+category 			Special
+cost 				5400
+buildtime 			10.0
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+dispSymbol			DispUnitBotSpawner
+descSymbol			MF_CustomTip_BotSpawner
+aiFortify			0.3
+aiDirectEngage		1.0
+ability				CreepSpawn
+expValues			110 100
+OnInspectOrUnlock	rookMenus previewInit units/BotSpawner/BotSpawner.amf mat_BotSpawner /pos 2.0 -0.25 0 /animation units/botspawner/Build.aaf 0 looping 0.25
+}
+unitType BotSpawner_ initFrom BotSpawner {
+commonName			"Trial Bot Spawner"
+aiFortify			0.0
+trialStackCfg
+}
+unitType BikeSurvival initFrom Bike {
+heldNameOverride	Bike
+category 			Survival
+}
+unitType DroneBomber {
+commonName			"Bomber Drone"
+category			Flier
+#if vr
+notSelectable
+#endif
+cost 				1000
+buildtime 			2.0
+autoBuildOk			0
+okOnPad				false
+okOnOutpostPad		false
+dispSymbol			DispUnitDroneBomber
+descSymbol			MF_CustomTip_DroneBomber
+aiDirectEngage		1.0
+ability				FlierCircleFort
+OnInspectOrUnlock	rookMenus previewInit units/DroneBomber/DroneBomber.amf mat_AirMechStealth /animation units/DroneBomber/Idle.aaf 0 looping 1.0 /pos 2.0 -0.25 0 /scale 1.0 /zSpinDef bone_r_fan 420.0
+}
+unitType DroneBomberVR {
+commonName			"Bomber Drone VR"
+notSelectable
+category			Flier
+cost 				1000
+buildtime 			2.0
+autoBuildOk			0
+okOnPad				false
+okOnOutpostPad		false
+dispSymbol			DispUnitDroneBomber
+descSymbol			MF_CustomTip_DroneBomber
+aiDirectEngage		1.0
+ability				FlierCircleFort
+OnInspectOrUnlock	rookMenus previewInit units/DroneBomber/DroneBomber.amf mat_AirMechStealth /animation units/DroneBomber/Idle.aaf 0 looping 1.0 /pos 2.0 -0.25 0 /scale 1.0 /zSpinDef bone_r_fan 420.0
+}
+unitType DroneAbduct {
+commonName			"Abduction Drone"
+notSelectable
+category			Flier
+cost 				1000
+buildtime 			2.0
+autoBuildOk			0
+okOnPad				false
+okOnOutpostPad		false
+dispSymbol			DispUnitDroneAbduct
+descSymbol			MF_CustomTip_DroneAbduct
+aiDirectEngage		1.0
+ability				FlierAbduct
+OnInspectOrUnlock	rookMenus previewInit units/DroneAbduct/DroneAbduct.amf mat_Probe /animation units/DroneAbduct/Idle.aaf 0 looping 1.0 /pos 2.0 -0.25 0 /scale 1.0
+}
+unitType Baloom {
+commonName			"Baloom"
+autoTag
+category			Flier
+cost 				2000
+buildtime 			5.0
+autoBuildOk			0
+okOnPad				false
+okOnOutpostPad		false
+dispSymbol			DispUnitBaloom
+descSymbol			MF_CustomTip_Baloom
+aiDirectEngage		1.0
+ability				FlierAirMine
+nplevelreq			4
+expValues			120 80
+acceptsOrders		false
+OnInspectOrUnlock	rookMenus previewInit units/Baloom/Baloom.amf mat_Baloom /animation units/Baloom/Shake.aaf 0 looping 1.0 /pos 2.0 -0.25 0 /scale 1.0 /zSpinDef bone_root -100.0 /zSpinDef geo_canister1 100.0 /zSpinDef geo_canister2 100.0 /zSpinDef geo_canister3 100.0 /zSpinDef geo_canister4 100.0 /zSpinDef geo_canister5 100.0
+}
+unitType Hero {
+commonName			"Hero"
+autoTag
+category			Flier
+cost 				4500
+buildtime 			6.5
+autoBuildOk			0
+okOnPad				false
+okOnOutpostPad		false
+dispSymbol			DispUnitHero
+descSymbol			MF_CustomTip_Hero
+aiDirectEngage		1.0
+ability				FlierRepair
+hasWeaponLvl		0
+expValues			150 80
+acceptsOrders		false
+OnInspectOrUnlock	rookMenus previewInit units/Hero/Hero.amf mat_Hero /animation units/Hero/Move.aaf 0 looping 1.0 /pos 2.0 -0.25 0 /scale 1.0
+}
+unitType Skyeye {
+commonName			"Skyeye"
+autoTag
+category			Flier
+#if vr
+notSelectable
+#endif
+cost 				1500
+buildtime 			4.0
+autoBuildOk			0
+okOnPad				false
+okOnOutpostPad		false
+dispSymbol			DispUnitSkyeye
+descSymbol			MF_CustomTip_Skyeye
+aiDirectEngage		1.0
+ability				FlierLoiter
+hasWeaponLvl		0
+acceptsOrders		false
+expValues			80 50
+OnInspectOrUnlock	rookMenus previewInit units/Skyeye/Skyeye.amf mat_Skyeye /animation units/Skyeye/Idle.aaf 0 looping 1.0 /pos 2.0 -0.25 0.5 /scale 1.0 /zSpinDef geo_propeller1 1500.0 /zSpinDef geo_propeller2 1500.0 /zSpinDef geo_propeller3 1500.0 /zSpinDef geo_propeller4 1500.0 /zSpinDef geo_bottom 200.0
+}
+unitType Vulcan {
+commonName			"Vulcan"
+autoTag
+category			Flier
+cost 				3000
+buildtime 			3.5
+okOnPad				false
+okOnOutpostPad		false
+dispSymbol			DispUnitVulcan
+descSymbol			MF_CustomTip_Vulcan
+aiDirectEngage		1.0
+ability				FlierVulcan
+expValues			150 80
+OnInspectOrUnlock	rookMenus previewInit units/Vulcan/Vulcan.amf mat_TurretChaingun /addlMaterial mat_Booster /rotSpeed 0 /zSpinDef bone_turbine_r -500.0 /zSpinDef bone_turbine_l 500.0 /animation units/Vulcan/Hover.aaf 0 looping 0.6 /pos 2.0 -0.25 0 /scale 1.2
+}
+unitType VulcanDrone {
+commonName			"Vulcan Drone"
+notSelectable
+autoTag
+category			Flier
+cost 				4500
+buildtime 			6.5
+autoBuildOk			0
+okOnPad				false
+okOnOutpostPad		false
+dispSymbol			DispUnitVulcan
+descSymbol			MF_CustomTip_Vulcan
+aiDirectEngage		1.0
+ability				FlierVulcan
+hasWeaponLvl		0
+expValues			150 80
+OnInspectOrUnlock	rookMenus previewInit units/Vulcan/Vulcan.amf mat_TurretChaingun /addlMaterial mat_Booster /rotSpeed 0 /zSpinDef bone_turbine_r -500.0 /zSpinDef bone_turbine_l 500.0 /animation units/Vulcan/Hover.aaf 0 looping 0.6 /pos 2.0 -0.25 0 /scale 1.2
+}
+unitType VulcanVoid initFrom Vulcan {
+variantCfg "Void Vulcan"
+aiFortify			0
+aiDirectEngage		0
+aiAssaultWeight		0
+aiSecureWeight		0
+}
+unitType ArmoredCarSurvival initFrom ArmoredCar {
+heldNameOverride	ArmoredCar
+category 			Survival
+}
+unitType RocketTruckSurvival initFrom RocketTruck {
+heldNameOverride	RocketTruck
+category 			Survival
+}
+unitType SAMSurvivalL1 initFrom InfantryRocket {
+heldNameOverride	InfantryRocket
+category 			SurvivalInfantry
+}
+unitType SAMSurvivalL2 initFrom InfantryRocket {
+heldNameOverride	InfantryRocket
+category 			SurvivalInfantry
+}
+unitType SAMSurvivalL3 initFrom InfantryRocket {
+heldNameOverride	InfantryRocket
+category 			SurvivalInfantry
+}
+unitType CreeperSurvival initFrom Creeper {
+heldNameOverride	Creeper
+category 			SurvivalInfantry
+defaultOrder		CaptureOutpost
+ability				Kamikazee
+expValues			25 20
+}
+unitType HeavySurvivalL1 initFrom InfantryHeavy {
+heldNameOverride	InfantryHeavy
+category			SurvivalInfantry
+}
+unitType HeavySurvivalL2 initFrom InfantryHeavy {
+heldNameOverride	InfantryHeavy
+category			SurvivalInfantry
+}
+unitType HeavySurvivalL3 initFrom InfantryHeavy {
+heldNameOverride	InfantryHeavy
+category			SurvivalInfantry
+}
+unitType MonsterTankSurvival initFrom TankHeavy {
+heldNameOverride	ScorpionTank
+category 			Survival
+scoreValues			500 300
+expValues			500 300
+}
+unitType TankHeavySurvival initFrom TankHeavy {
+heldNameOverride	TankHeavy
+category			Survival
+expValues			400 150
+}
+unitType BerthaUSurvival initFrom Bertha {
+heldNameOverride	Bertha
+category			Survival
+}
+unitType DevastatorSurvival initFrom TankMonster {
+heldNameOverride	TankMonster
+category			Survival
+}
+unitType TankFlakSurvival initFrom TankFlak {
+heldNameOverride	TankFlak
+category			Survival
+}
+unitType Booster {
+commonName			"Booster"
+category 			Munition
+autoTag
+isConsumableUnit	1
+cost 				5000
+buildtime 			10.0
+dispSymbol			DispUnitBooster
+descSymbol			MF_CustomTip_Booster
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+commandPointValue	0
+isBooster			1
+OnInspectOrUnlock	rookMenus previewInit units/Booster/BoosterStatic.amf mat_Booster /pos 2.0 -0.25 0
+}
+unitType Booster_ initFrom Booster {
+commonName			"Booster Trial"
+trialStackCfg
+}
+unitType BoosterJuly4th {
+commonName			"Liberty Booster"
+autoTag
+category 			Munition
+platformContent		!vr
+isConsumableUnit	1
+cost 				5000
+buildtime 			10.0
+dispSymbol			DispUnitBoosterJuly4th
+descSymbol			MF_CustomTip_BoosterJuly4th
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+commandPointValue	0
+isBooster			1
+OnInspectOrUnlock	rookMenus previewInit units/BoosterJuly4th/BoosterJuly4thStatic.amf mat_BoosterJuly4th< /pos 2.0 -0.25 0
+specialSkin			July4th
+rarity				2
+property			Freedom				10
+}
+unitType Bombs {
+commonName			"Bombs"
+autoTag
+category 			Bomb
+isConsumableUnit	1
+cost 				1800
+buildtime 			4.0
+dispSymbol			DispUnitBombs
+descSymbol			MF_CustomTip_Bombs
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+commandPointValue	0
+OnInspectOrUnlock	rookMenus previewInit units/Bombs/Bombs.amf mat_Booster /pos 1.0 -1.5 0
+}
+unitType Bombs_ initFrom Bombs {
+commonName			"Bombs Trial"
+trialStackCfg
+}
+unitType BombsU {
+commonName			"Ultimate Bombs"
+autoTag
+category 			Bomb
+isConsumableUnit	1
+cost 				2200
+buildtime 			8.0
+dispSymbol			DispUnitBombsU
+descSymbol			MF_CustomTip_BombsU
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+OnInspectOrUnlock	rookMenus previewInit units/BombsU/BombsU.amf mat_Booster /pos 1.0 -1.5 0
+rarity				4
+specialSkin			Ultimate
+specialSkinTeamColored true
+commandPointValue	0
+property			UltimateLvl				10			/trailingNum
+}
+unitType BombsAirstrike  {
+commonName 			"Airstrike Bombs"
+category 			Bomb
+isConsumableUnit	1
+notSelectable
+cost 				2200
+buildtime 			8.0
+dispSymbol			DispUnitBombsU
+descSymbol			MF_CustomTip_BombsU
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+OnInspectOrUnlock	rookMenus previewInit units/BombsU/BombsU.amf mat_Booster /pos 1.0 -1.5 0
+rarity				4
+specialSkin			Ultimate
+specialSkinTeamColored true
+commandPointValue	0
+property			UltimateLvl				10			/trailingNum
+}
+unitType BombsWaveCannon {
+commonName			"Wave Cannon Bombs"
+category 			Bomb
+isConsumableUnit	1
+notSelectable
+cost 				2200
+buildtime 			8.0
+dispSymbol			DispUnitBombsU
+descSymbol			MF_CustomTip_BombsU
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+OnInspectOrUnlock	rookMenus previewInit units/BombsU/BombsU.amf mat_Booster /pos 1.0 -1.5 0
+rarity				4
+specialSkin			Ultimate
+specialSkinTeamColored true
+commandPointValue	0
+property			UltimateLvl				10			/trailingNum
+}
+unitType BombsJuly4th {
+commonName			"Liberty Bomb"
+autoTag
+category 			Bomb
+platformContent		!vr
+isConsumableUnit	1
+cost 				1800
+buildtime 			4.0
+dispSymbol			DispUnitBombsJuly4th
+descSymbol			MF_CustomTip_BombsJuly4th
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+commandPointValue	0
+specialSkin			July4th
+rarity				3
+OnInspectOrUnlock	rookMenus previewInit units/BombsJuly4th/BombsJuly4th.amf mat_BoosterJuly4th< /pos 1.0 -1.5 0
+property			Freedom				10
+}
+unitType BombsHalloween {
+commonName			"Pumpkin Bomb"
+autoTag
+category 			Bomb
+platformContent		!vr
+isConsumableUnit	1
+cost 				1800
+buildtime 			4.0
+dispSymbol			DispUnitBombsHalloween
+descSymbol			MF_CustomTip_BombsHalloween
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+commandPointValue	0
+specialSkin			Halloween
+rarity				3
+OnInspectOrUnlock	rookMenus previewInit units/BombsHalloween/BombsHalloween.amf mat_AirMechSaucerPumpkin< /pos 1.0 -1.5 0
+}
+unitType BombsXmas {
+commonName			"Ornament Bomb"
+autoTag
+category 			Bomb
+platformContent		!vr
+isConsumableUnit	1
+cost 				1800
+buildtime 			4.0
+dispSymbol			DispUnitBombsXmas
+descSymbol			MF_CustomTip_BombsXmas
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+commandPointValue	0
+specialSkin			Xmas
+specialSkinTeamColored
+rarity				3
+OnInspectOrUnlock	rookMenus previewInit units/BombsXmas/BombsXmas.amf mat_BoosterXmas /pos 1.0 -1.5 0 /scale 1.3
+}
+unitType BombsEgg {
+commonName			"Egg Bomb"
+autoTag
+category 			Bomb
+platformContent		!vr
+isConsumableUnit	1
+cost 				1800
+buildtime 			4.0
+dispSymbol			DispUnitBombsEgg
+descSymbol			MF_CustomTip_BombsEgg
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+commandPointValue	0
+specialSkin			Egg
+rarity				3
+OnInspectOrUnlock	rookMenus previewInit units/BombsEgg/BombsEgg.amf mat_BombsEgg1< /pos 1.0 -1.5 0 /scale 1.3
+}
+unitType Mine {
+commonName			"Heavy Mine"
+autoTag
+category 			Mine
+cost 				1200
+buildtime 			5.0
+dispSymbol			DispUnitMine
+descSymbol			MF_CustomTip_Mine
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+expValues			25 20
+OnInspectOrUnlock	rookMenus previewInit units/Mine/Mine.amf mat_Mine /pos 2.0 -0.25 0 /animation units/Mine/Idle.aaf 0 looping 1.0
+}
+unitType Mine_ initFrom Mine {
+commonName			"Heavy Mine Trial"
+trialStackCfg
+}
+unitType MineLight {
+commonName			"Light Mine"
+autoTag
+category 			Mine
+cost 				300
+buildtime 			2.0
+dispSymbol			DispUnitMineLight
+descSymbol			MF_CustomTip_MineLight
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/MineLight/MineLight.amf mat_Mine /pos 2.0 -0.25 0 /animation units/MineLight/Idle.aaf 0 looping 1.0
+}
+unitType MineSlow {
+commonName			"Stasis Mine"
+autoTag
+category 			Mine
+cost 				2000
+buildtime 			6.0
+dispSymbol			DispUnitMineSlow
+descSymbol			MF_CustomTip_MineSlow
+ability				StasisMine
+abilityRange		10.0
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/MineSlow/MineSlow.amf mat_MineSlow /pos 2.0 -0.25 0 /zSpinDef bone_spin 2220.0
+areaDisplay			smC2
+}
+unitType MineSlow_ initFrom MineSlow {
+commonName			"Stasis Mine Trial"
+trialStackCfg
+}
+unitType MineSlowU {
+commonName			"Ultimate Stasis Mine"
+rarity				4
+autoTag
+category 			Mine
+cost 				2000
+buildtime 			6.0
+dispSymbol			DispUnitMineSlowU
+descSymbol			MF_CustomTip_MineSlowU
+ability				StasisMine
+abilityRange		10.0
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/MineSlowU/MineSlowU.amf mat_MineSlow /pos 2.0 -0.25 0 /zSpinDef bone_spin 2220.0 /zSpinDef bone_spin2 -500.0
+areaDisplay			smC2
+property			UltimateLvl				8			/trailingNum
+}
+unitType BearTrap {
+commonName			"Bear Trap"
+autoTag
+category 			Mine
+cost 				300
+buildtime 			1.0
+dispSymbol			DispUnitBearTrap
+descSymbol			MF_CustomTip_BearTrap
+ability				HoldTrap
+abilityRange		4.0
+aiFortify			0.0
+aiDirectEngage		0.0
+acceptsOrders		false
+expValues			15 10
+OnInspectOrUnlock	rookMenus previewInit units/BearTrap/BearTrap.amf mat_BearTrap /pos 2.0 -0.25 0 /switchAnims units/BearTrap/BearTrapClose.aaf units/BearTrap/BearTrapOpen.aaf 1 2.2 2.9
+}
+unitType RocketTruckBroken {
+category 			Combat
+cost 				400
+notSelectable
+buildtime 			1.5
+aiFortify			0.0
+aiDirectEngage		0.0
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+expValues			100 100
+}
+unitType RocketTruckTutorial {
+notSelectable
+expValues			100 100
+}
+unitType ArmoredCarTutorial {
+notSelectable
+expValues			50 50
+}
+unitType TankTutorial {
+notSelectable
+expValues			100 100
+}
+unitType RocketTruckWeak {
+notSelectable
+expValues			100 100
+}
+unitType ArmoredCarWeak {
+notSelectable
+expValues			50 50
+}
+unitType TankWeak {
+notSelectable
+expValues			100 100
+}
+unitType TankHeavyWeak {
+notSelectable
+expValues			200 200
+}
+unitType InfantryT {
+notSelectable
+category 			Infantry
+}
+unitType InfantrySlow {
+notSelectable
+heldNameOverride	Infantry
+category 			Infantry
+}
+unitType Core {
+notSelectable
+ability				CTFCore
+acceptsOrders		false
+okOnPad				true
+okOnOutpostPad		false
+expValues			100 100
+}
+unitType FF2000 {
+commonName			"FF2000"
+platformContent		pc_only !arc !vr
+autoTag				cased
+category 			Infantry
+cost 				600
+buildtime 			4.0
+okOnOutpostPad		false
+rarity				3
+dispSymbol			DispUnitFF2000
+descSymbol			MF_CustomTip_FF2000
+defaultOrder		CaptureOutpost
+acceptsOrders		false
+aiFortify			0.0
+aiDirectEngage		0.5
+aiAssaultWeight		0
+aiSecureWeight		0
+aiCaptureWeight		0
+commandPointValue	1
+ability				FF2000
+expValues			25 20
+OnInspectOrUnlock	rookMenus previewInit units/FF2000/FF2000.amf mat_FF2000 /scale 1.3 /pos 2.0 -0.25 0 /animation units/FF2000/FF2000Idle.aaf 0 looping 0.7 /rotSpeed 0
+platformUnlock		award pc_only
+}
+unitType GuardRepair {
+commonName			"Repair Guardian"
+autoTag
+category			Guardian
+cost				600
+buildtime			3.5
+dispSymbol			DispUnitGuardRepair
+descSymbol			MF_CustomTip_GuardRepair
+acceptsOrders		false
+commandPointValue	0
+respawnTime			30
+OnInspectOrUnlock	rookMenus previewInit units/GuardRepair/GuardRepair.amf mat_Engineer /pos 2.0 -0.25 0 /zSpinDef bone_spin 120.0
+}
+unitType GuardBlaster {
+commonName			"Blaster Guardian"
+autoTag
+category			Guardian
+cost				700
+buildtime			3.0
+dispSymbol			DispUnitGuardBlaster
+descSymbol			MF_CustomTip_GuardBlaster
+acceptsOrders		false
+commandPointValue	0
+respawnTime			20
+OnInspectOrUnlock	rookMenus previewInit units/GuardBlaster/GuardBlaster.amf mat_Probe /pos 2.0 -0.25 0 /zSpinDef bone_spin 120.0
+}
+unitType GuardBlasterGoth {
+commonName			"Gothic Blaster"
+rarity				3
+autoTag
+category			Guardian
+cost				700
+buildtime			3.0
+dispSymbol			DispUnitGuardBlasterGoth
+descSymbol			MF_CustomTip_GuardBlasterGoth
+acceptsOrders		false
+commandPointValue	0
+respawnTime			20
+OnInspectOrUnlock	rookMenus previewInit units/GuardBlasterGoth/GuardBlasterGoth.amf mat_GuardianGoth< /pos 2.0 -0.5 0 /animation units/GuardBlasterGoth/Idle.aaf 0 looping 0.7 /rotSpeed 10 /zSpinDef bone_spin 160.0 /zSpinDef bone_spin2 -100.0
+SpecialCfg			/pfx GuardGothTrail NULL 0.0
+}
+unitType GuardRadar {
+commonName			"Radar Guardian"
+autoTag
+category			Guardian
+cost				500
+buildtime			4.0
+dispSymbol			DispUnitGuardRadar
+descSymbol			MF_CustomTip_GuardRadar
+acceptsOrders		false
+commandPointValue	0
+respawnTime			25
+OnInspectOrUnlock	rookMenus previewInit units/GuardRadar/GuardRadar.amf mat_Probe /pos 2.0 -0.25 0 /zSpinDef bone_spinA 120.0 /zSpinDef bone_spinB 90.0 /zSpinDef bone_root 40.0
+}
+unitType GuardEnergy {
+commonName			"Energy Guardian"
+autoTag
+category			Guardian
+cost				500
+buildtime			4.0
+dispSymbol			DispUnitGuardEnergy
+descSymbol			MF_CustomTip_GuardEnergy
+acceptsOrders		false
+commandPointValue	0
+respawnTime			30
+OnInspectOrUnlock	rookMenus previewInit units/GuardEnergy/GuardEnergy.amf mat_GuardianEnergy /pos 2.0 -0.25 0 /zSpinDef bone_spinA 120.0 /zSpinDef bone_spinB 90.0 /zSpinDef bone_root 40.0
+}
+unitType GuardEnergy_ initFrom GuardEnergy {
+commonName		"Energy Guardian Trial"
+trialStackCfg
+}
+unitType GuardBlade {
+commonName			"Blade Guardian"
+autoTag
+category			Guardian
+cost				500
+buildtime			4.0
+dispSymbol			DispUnitGuardBlade
+descSymbol			MF_CustomTip_GuardBlade
+acceptsOrders		false
+commandPointValue	0
+respawnTime			20
+OnInspectOrUnlock	rookMenus previewInit units/GuardBlade/GuardBlade.amf mat_GuardianBlade /pos 2.0 -0.25 0 /zSpinDef bone_spinA 420.0
+SpecialCfg			/pfx GuardBladeSpin bone_root 1.0
+SpecialCfg			/pfx GuardBladeTrail NULL 0.0
+SpecialCfg			/impactPfx GuardBladeSlice
+}
+unitType BankSmallSp1 initFrom BankSmall {
+heldNameOverride	BankSmall
+expValues			1800 0
+notSelectable
+}
+unitType NoUnit {
+category			None
+dispSymbol			DispUnitNoUnit
+descSymbol			MF_CustomTip_NoUnit
+tags				noWishList
+cost 				0
+acceptsOrders 		false
+notBuildable
+collectionIgnore
+powerToBuild		0
+buildtime			0
+hasWeaponLvl		0
+hasArmorLvl			0
+}
+#include unitdecls/patchContent.txt

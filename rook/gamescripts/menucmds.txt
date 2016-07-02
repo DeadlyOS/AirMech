@@ -1,0 +1,1216 @@
+Include MenuCmds/AccountOpCmds.txt
+Include MenuCmds/Console.txt
+Include MenuCmds/CockpitOpenClose.txt
+Include MenuCmds/CockpitOrders.txt
+Include MenuCmds/CockpitSelectUnit.txt
+Include MenuCmds/CockpitGeneral.txt
+Include MenuCmds/CockpitSetup.txt
+Include MenuCmds/CockpitCommands.txt
+Include MenuCmds/CustomizationCmds.txt
+Include MenuCmds/BuildCmds.txt
+Include MenuCmds/DevBitsCmds.txt
+Include MenuCmds/MainMenu.txt
+Include MenuCmds/MainMenuOld.txt
+Include MenuCmds/QuestCmds.txt
+Include MenuCmds/SelectFromLobby.txt
+Include MenuCmds/MusicCmds.txt
+Include MenuCmds/MatchingCmds.txt
+Include MenuCmds/FriendsCmds.txt
+Include MenuCmds/PartyCmds.txt
+Include MenuCmds/UINavigation.txt
+Include MenuCmds/ChatCmds.txt
+Include MenuCmds/GiftCmds.txt
+Include MenuCmds/GfxSettings.txt
+Include MenuCmds/FactionCmds.txt
+Include MenuCmds/GoSpectateCmds.txt
+Include MenuCmds/PromosAndUnlockingCmds.txt
+Include MenuCmds/LoadoutCmds.txt
+Include MenuCmds/Usernames.txt
+Include MenuCmds/MarketCmds.txt
+Include MenuCmds/GameMailCmds.txt
+Include MenuCmds/InGameCmds.txt
+Include MenuCmds/TradingCmds.txt
+Include MenuCmds/ReportCmds.txt
+Include MenuCmds/HangarCmds.txt
+Include MenuCmds/HCubeCmds.txt
+Include MenuCmds/HeatLeaderboardCmds.txt
+Include MenuCmds/LeaderboardCmds.txt
+Include MenuCmds/Intro.txt
+Include MenuCmds/InfoTabCmds.txt
+Include MenuCmds/ShopCmds.txt
+Include MenuCmds/EndGameCmds.txt
+Include MenuCmds/EscCmds.txt
+Include MenuCmds/WishListCmds.txt
+Include MenuCmds/Party2.txt
+Include MenuCmds/BuyDiamonds.txt
+Include MenuCmds/PurchaseCmds.txt
+Include MenuCmds/InventoryV2Cmds.txt
+Include MenuCmds/EditorCmds.txt
+Include MenuCmds/TestingCmds.txt
+Include MenuCmds/UPlayCmds.txt
+Include MenuCmds/BaseProcCmds.txt
+Include MenuCmds/BasecampCmds.txt
+Include MenuCmds/BasecampSpecialCmds.txt
+Include MenuCmds/DialogQuestions.txt
+Include MenuCmds/CustomGameCmds.txt
+Include MenuCmds/ListboxCmds.txt
+Include MenuCmds/ChartCmds.txt
+Include MenuCmds/ARCCmds.txt
+Include MenuCmds/SimpleGroupCmds.txt
+Include MenuCmds/UberCmds.txt
+Include MenuCmds/CardCmds.txt
+Include MenuCmds/ArchivesCmds.txt
+Include MenuCmds/WarzoneCmds.txt
+Script QuickSoloGame {
+ignoreInputTime 1.0
+cmd "if sym InputPad == 0 sym set LobbyStatusMessage MsgEnterSoloReady"
+cmd "if sym InputPad == 1 sym set LobbyStatusMessage MsgEnterSoloReady_pad"
+cmd "sym set _soloLaunch_ 1"
+cmd "sym set MyId 0"
+cmd "sym set _NumPlayers 1"
+cmd "sym set MatchmakingType Solo"
+cmd "sym set P_Rdy0 0
+cmd "sym set Ally0Mode 2"
+cmd "sym set Ally1Mode 2"
+cmd "sym set Ally2Mode 2"
+cmd "sym set Ally3Mode 2"
+cmd "menuCmd ConMenuLobbyResetPlayerContainer local 1 Kira"
+cmd "menuCmd ConMenuLobbyResetPlayerContainer local 2 Petros"
+cmd "menuCmd ConMenuLobbyResetPlayerContainer local 3 Raven"
+cmd "menuCmd ConMenuLobbyResetPlayerContainer local 4 Samson"
+cmd "menuCmd ConMenuLobbyResetPlayerContainer local 5 Hawk"
+cmd "if sym ConMenuSoloSkirmish1v1 == 1 runnow sym set MatchmakingPlayers 1v1"
+cmd "if sym ConMenuSoloSkirmish2v2 == 1 runnow sym set MatchmakingPlayers 2v2"
+cmd "if sym ConMenuSoloSkirmish3v3 == 1 runnow sym set MatchmakingPlayers 3v3"
+cmd "if sym ConMenuSoloSkirmish2v3 == 1 runnow sym set MatchmakingPlayers 2v3"
+cmd "if sym ConMenuSoloSkirmish1v2 == 1 runnow sym set MatchmakingPlayers 1v2"
+cmd "if sym ConMenuSoloSkirmish1v3 == 1 runnow sym set MatchmakingPlayers 1v3"
+cmd "sym set MatchmakingType Solo"
+cmd "sym set MatchmakingMode Skirmish"
+cmd "menucmd ConMenuLobbySetupSymbols"
+cmd "party2 create solo 1"
+cmd "party2 updateloadout"
+cmd "pcmd 0.1 if !vr runnow sym set MapName $LastMapName"
+cmd "pcmd 0.1 if vr runnow sym set MapName simple"
+cmd "pcmd 0.1 timer clearAsyncWait"
+cmd "pcmd 0.1 menuCmd ConMenuPlaySoloPressStart"
+}
+Script DepositKudosSetup {
+rcmd "echo $CurrencyDepositSource"
+rcmd "gameUI getLastRenderPos $CurrencyDepositSource _KudosSrcX_ _KudosSrcY_"
+rcmd "gameUI getLastRenderPos $CurrencyDepositSource _KudosSrc1X_ _KudosSrc1Y_"
+rcmd "gameUI getLastRenderPos $CurrencyDepositSource _KudosSrc2X_ _KudosSrc2Y_"
+rcmd "sym inc _KudosSrcX_ 100"
+rcmd "pcmd 0.1 sym inc _KudosSrcX_ 10"
+rcmd "pcmd 0.2 sym dec _KudosSrcX_ 10"
+rcmd "sym inc _KudosSrc1X_ 80"
+rcmd "pcmd 0.1 sym inc _KudosSrc1X_ 40"
+rcmd "pcmd 0.2 sym dec _KudosSrc1X_ 20"
+rcmd "sym inc _KudosSrc2X_ 80"
+rcmd "pcmd 0.1 sym inc _KudosSrc2X_ 60"
+rcmd "pcmd 0.2 sym dec _KudosSrc2X_ 20"
+rcmd "sym inc _KudosSrcY_ 120"
+rcmd "sym inc _KudosSrc1Y_ 100"
+rcmd "pcmd 0.2 sym dec _KudosSrc1Y_ 20"
+rcmd "sym inc _KudosSrc2Y_ 80"
+rcmd "pcmd 0.2 sym dec _KudosSrc2Y_ 30"
+rcmd "gameUI getLastRenderPos PStatusBarKudosIcon _KudosDestX_ _KudosDestY_"
+rcmd "gameUI getLastRenderPos PStatusBarKudosIcon _KudosDest1X_ _KudosDest1Y_"
+rcmd "gameUI getLastRenderPos PStatusBarKudosIcon _KudosDest2X_ _KudosDest2Y_"
+rcmd "gameUI getLastRenderPos PStatusBarKudosIcon _KudosDest3X_ _KudosDest3Y_"
+rcmd "sym dec _KudosDestX_ 2"
+rcmd "sym dec _KudosDest1X_ 10"
+rcmd "sym dec _KudosDest2X_ 0"
+rcmd "sym inc _KudosDest3X_ 2"
+rcmd "sym dec _KudosDestY_ 1"
+rcmd "sym inc _KudosDest1Y_ 30"
+rcmd "sym inc _KudosDest2Y_ 10"
+rcmd "sym inc _KudosDest3Y_ 5"
+}
+Script DepositDiamondsSetup {
+rcmd "echo $CurrencyDepositSource"
+rcmd "gameUI getLastRenderPos $CurrencyDepositSource _DiamondsSrcX_ _DiamondsSrcY_"
+rcmd "gameUI getLastRenderPos $CurrencyDepositSource _DiamondsSrc1X_ _DiamondsSrc1Y_"
+rcmd "gameUI getLastRenderPos $CurrencyDepositSource _DiamondsSrc2X_ _DiamondsSrc2Y_"
+rcmd "sym inc _DiamondsSrcX_ 100"
+rcmd "pcmd 0.1 sym inc _DiamondsSrcX_ 10"
+rcmd "pcmd 0.2 sym dec _DiamondsSrcX_ 10"
+rcmd "sym inc _DiamondsSrc1X_ 80"
+rcmd "pcmd 0.1 sym inc _DiamondsSrc1X_ 40"
+rcmd "pcmd 0.2 sym dec _DiamondsSrc1X_ 20"
+rcmd "sym inc _DiamondsSrc2X_ 80"
+rcmd "pcmd 0.1 sym inc _DiamondsSrc2X_ 60"
+rcmd "pcmd 0.2 sym dec _DiamondsSrc2X_ 20"
+rcmd "sym inc _DiamondsSrcY_ 120"
+rcmd "sym inc _DiamondsSrc1Y_ 100"
+rcmd "pcmd 0.2 sym dec _DiamondsSrc1Y_ 20"
+rcmd "sym inc _DiamondsSrc2Y_ 80"
+rcmd "pcmd 0.2 sym dec _DiamondsSrc2Y_ 30"
+rcmd "gameUI getLastRenderPos PStatusBarDiamonds _DiamondsDestX_ _DiamondsDestY_"
+rcmd "gameUI getLastRenderPos PStatusBarDiamonds _DiamondsDest1X_ _DiamondsDest1Y_"
+rcmd "gameUI getLastRenderPos PStatusBarDiamonds _DiamondsDest2X_ _DiamondsDest2Y_"
+rcmd "gameUI getLastRenderPos PStatusBarDiamonds _DiamondsDest3X_ _DiamondsDest3Y_"
+rcmd "sym dec _DiamondsDestX_ 37"
+rcmd "sym dec _DiamondsDest1X_ 45"
+rcmd "sym dec _DiamondsDest2X_ 35"
+rcmd "sym dec _DiamondsDest3X_ 33"
+rcmd "sym dec _DiamondsDestY_ 11"
+rcmd "sym inc _DiamondsDest1Y_ 20"
+rcmd "sym inc _DiamondsDest2Y_ 0"
+rcmd "sym dec _DiamondsDest3Y_ 5"
+}
+Script CreateXPRing {
+cmd "menu3d remove *"
+cmd "menu3d add XPRingRoot "
+cmd "menu3d addChild XPRingRoot XPRingOverlay /model effects/XPRingOverlay.amf	/material mat_XPRingAdd"
+cmd "menu3d addChild XPRingRoot XPRingUnder /model effects/XPRingUnder.amf	/material mat_XPRingUnder"
+cmd "menu3d addChild XPRingRoot XPRingBase /model effects/XPRingBase.amf	/material mat_XPRing"
+cmd "menu3d setRootOffset XPRingRoot	0.0 0.8 0.01"
+cmd "menu3d setRootScale XPRingRoot	0.1 0.1 0.1"
+cmd "menu3d setRootRot XPRingRoot	0 0 0"
+cmd "menu3d animate XPRingUnder effects/XPRingEnter.aaf stopandhold 0 0.3
+cmd "menu3d animate XPRingBase effects/XPRingEnter.aaf stopandhold 0 0.3
+cmd "menu3d animate XPRingOverlay effects/XPRingEnter.aaf stopandhold 0 0.3
+}
+Script GlobalChatScrollAllToBottom {
+cmd "floatsym set GChatPos 1"
+cmd "floatsym set FChatPos 1"
+cmd "floatsym set PChatPos 1"
+cmd "floatsym set MChatPos 1"
+cmd "floatsym set EChatPos 1"
+cmd "floatsym set LChatPos 1"
+}
+Script FriendsScrollAllToTop {
+cmd "floatsym set FriendsPos 0"
+cmd "floatsym set RecentlyMetPos 0"
+cmd "floatsym set IgnoredPlayersPos 0"
+cmd "social scrollupdate"
+}
+Script DebugRestart {
+cmd "loadmap reload"
+cmd "pcmd_seq 666 t4 player 0 toggleai on"
+cmd "pcmd_seq 666 1.0 menucmd DebugRestart"
+}
+Script DebugRestartStop {
+cmd "console flushAllPendingSeq 666"
+cmd "player 0 toggleai off"
+}
+Script ButtonHover_MessageDelete {
+cmd "floatsym mod _MessageDelete 0.1 0 1"
+cmd "sym set _MessageDeleteEn 0"
+cmd "if floatsym _MessageDelete >= 1 runnow sym set _MessageDeleteEn 1"
+cmd "if floatsym _MessageDelete >= 1 &&	usingpad gameui focusnametry MailMessageButtonDelete"
+cmd "if sym _MessageDeleteStop == 0 menucmd ButtonHover_MessageDelete"
+}
+Script ButtonHover_InboxDelete {
+cmd "floatsym mod _InboxDelete 0.033 0 1"
+cmd "sym set _InboxDeleteEn 0"
+cmd "if floatsym _InboxDelete >= 1 runnow sym set _InboxDeleteEn 1"
+cmd "if floatsym _InboxDelete >= 1 && usingpad gameui focusnametry MailboxButtonDelete"
+cmd "if sym _InboxDeleteStop == 0 menucmd ButtonHover_InboxDelete"
+}
+Script TradeSetup {
+cmd "sym setZero TradeFrameHidden TradeReadySelf TradeReadyOther TradeDiamondsSelf TradeDiamondsOther"
+cmd "menucmd TradeStateInitialize"
+cmd "menucmd ChatFocusParty"
+}
+Script LaunchArena {
+cmd "sym set MapName arena"
+cmd "menuCmd LoadMapPvESolo"
+}
+Script SwitchToPadMenu {
+ignoreInputTime 1.0
+cmd "echo SwitchToPadMenu"
+cmd "gameui setSimConsoleMode 1"
+cmd "clearmenu"
+cmd "menu3d remove *"
+cmd "sym set Background3dLoaded 0"
+cmd "pcmd 0.5 sym set HideCursor 1"
+cmd "sym set MainMenu MainMenuConsole.txt"
+cmd "pcmd 0.25 loadmenu MainMenuConsole.txt"
+}
+Script SwitchToKeyboardMenu {
+ignoreInputTime 1.0
+cmd "echo SwitchToKeyboardMenu"
+cmd "gameui setSimConsoleMode 0"
+cmd "pfx stop embers"
+cmd "clearmenu"
+cmd "menu3d remove *"
+cmd "sym set Background3dLoaded 0"
+cmd "sym set HideCursor 0"
+cmd "sym set MainMenu MainMenu.txt"
+cmd "pcmd 0.25 loadmenu MainMenu.txt"
+}
+Script UnitsBarActivate {
+cmd "addUIAnim UnitIconTray0 mas_UnitsBar0"
+cmd "addUIAnim UnitIconTray1 mas_UnitsBar1"
+cmd "addUIAnim UnitIconTray2 mas_UnitsBar2"
+cmd "addUIAnim UnitIconTray3 mas_UnitsBar3"
+cmd "addUIAnim UnitIconTray4 mas_UnitsBar4"
+cmd "addUIAnim UnitIconTray5 mas_UnitsBar5"
+cmd "addUIAnim UnitIconTray6 mas_UnitsBar6"
+cmd "addUIAnim UnitIconTray7 mas_UnitsBar7"
+cmd "addUIAnim AbilityIconEdge0 mas_UnitsBarZoom"
+cmd "addUIAnim AbilityIconEdge1 mas_UnitsBarZoom"
+cmd "addUIAnim AbilityIconEdge2 mas_UnitsBarZoom"
+cmd "addUIAnim AbilityIconEdge3 mas_UnitsBarZoom"
+cmd "addUIAnim AbilityIconEdge4 mas_UnitsBarZoom"
+cmd "addUIAnim AbilityIconEdge5 mas_UnitsBarZoom"
+cmd "addUIAnim AbilityIconEdge6 mas_UnitsBarZoom"
+cmd "addUIAnim AbilityIconEdge7 mas_UnitsBarZoom"
+cmd "addUIAnim UnitIconTrayPop0 mas_UnitsBarPop"
+cmd "addUIAnim UnitIconTrayPop1 mas_UnitsBarPop"
+cmd "addUIAnim UnitIconTrayPop2 mas_UnitsBarPop"
+cmd "addUIAnim UnitIconTrayPop3 mas_UnitsBarPop"
+cmd "addUIAnim UnitIconTrayPop4 mas_UnitsBarPop"
+cmd "addUIAnim UnitIconTrayPop5 mas_UnitsBarPop"
+cmd "addUIAnim UnitIconTrayPop6 mas_UnitsBarPop"
+cmd "addUIAnim UnitIconTrayPop7 mas_UnitsBarPop"
+cmd "sym set UnitsBarActivate 1"
+}
+Script UnitsBarDeactivate {
+cmd "addUIAnim UnitIconTray0 mas_UnitsBarReset"
+cmd "addUIAnim UnitIconTray1 mas_UnitsBarReset"
+cmd "addUIAnim UnitIconTray2 mas_UnitsBarReset"
+cmd "addUIAnim UnitIconTray3 mas_UnitsBarReset"
+cmd "addUIAnim UnitIconTray4 mas_UnitsBarReset"
+cmd "addUIAnim UnitIconTray5 mas_UnitsBarReset"
+cmd "addUIAnim UnitIconTray6 mas_UnitsBarReset"
+cmd "addUIAnim UnitIconTray7 mas_UnitsBarReset"
+cmd "addUIAnim AbilityIconEdge0 mas_UnitsBarUnzoom"
+cmd "addUIAnim AbilityIconEdge1 mas_UnitsBarUnzoom"
+cmd "addUIAnim AbilityIconEdge2 mas_UnitsBarUnzoom"
+cmd "addUIAnim AbilityIconEdge3 mas_UnitsBarUnzoom"
+cmd "addUIAnim AbilityIconEdge4 mas_UnitsBarUnzoom"
+cmd "addUIAnim AbilityIconEdge5 mas_UnitsBarUnzoom"
+cmd "addUIAnim AbilityIconEdge6 mas_UnitsBarUnzoom"
+cmd "addUIAnim AbilityIconEdge7 mas_UnitsBarUnzoom"
+cmd "addUIAnim UnitIconTrayPop0 mas_UnitsBarUnzoom"
+cmd "addUIAnim UnitIconTrayPop1 mas_UnitsBarUnzoom"
+cmd "addUIAnim UnitIconTrayPop2 mas_UnitsBarUnzoom"
+cmd "addUIAnim UnitIconTrayPop3 mas_UnitsBarUnzoom"
+cmd "addUIAnim UnitIconTrayPop4 mas_UnitsBarUnzoom"
+cmd "addUIAnim UnitIconTrayPop5 mas_UnitsBarUnzoom"
+cmd "addUIAnim UnitIconTrayPop6 mas_UnitsBarUnzoom"
+cmd "addUIAnim UnitIconTrayPop7 mas_UnitsBarUnzoom"
+cmd "sym set UnitsBarActivate 0"
+}
+Script ResetMainMenu {
+cmd "echo ResetMainMenu"
+cmd "clearmenu"
+cmd "menu3d remove *"
+cmd "sym set Background3dLoaded 0"
+cmd "loadmenu $MainMenu"
+}
+Script AutoMenuRefresh {
+cmd "if sym P_AccessLevel > 0 tool menureset hard"
+cmd "if sym P_AccessLevel > 0 pcmd 0.25 menuCmd AutoMenuRefresh"
+}
+Script ResetChallenge {
+cmd "if sym CUnlock == 1 sym set CUnlock $CUnlockMax"
+cmd "if sym CUnlock != 1 sym setZero CSMov1 CSMov2 CSMov3 CSMov4 CSCap1 CSCap2 CSCap3 CSCap4 CSDes1 CSDes2 CSDes3 CSDes4 CSDes5 CSDes6 CSWin1 CSWin2 CSWin3 CSWin4 CSBld1 CSBld2 CSBld3 CSBld4"
+cmd "if sym CUnlock != 1 sym set CUnlock 1"
+cmd "pcmd 0 backend save"
+}
+Script LessonBuild {
+cmd "addUIAnim LessonBuildMenu mas_LessonBuildMenu"
+cmd "addUIAnim LessonBuildCursor mas_LessonBuildCursor"
+cmd "addUIAnim LessonBuildScrollDown mas_LessonBuildScrollDown"
+cmd "addUIAnim LessonBuildScrollUp mas_LessonBuildScrollUp"
+}
+Script LessonSocket {
+cmd "addUIAnim LessonSocketMenu mas_LessonSocketMenu"
+cmd "addUIAnim LessonBuildCursor mas_LessonSocketCursor"
+cmd "addUIAnim LessonBuildScrollDown mas_LessonSocketScrollDown"
+cmd "addUIAnim LessonSocketAirMech mas_LessonSocketAirMech"
+cmd "addUIAnim LessonSocketT99 mas_LessonSocketT99"
+}
+Script LessonCommand {
+cmd "addUIAnim LessonCommandAirMech mas_LessonAirMechAppear"
+cmd "addUIAnim LComU3 mas_LessonCommandMove3"
+cmd "addUIAnim LComU1 mas_LessonCommandMove0"
+cmd "addUIAnim LComU0 mas_LessonCommandMove1"
+cmd "addUIAnim LComU2 mas_LessonCommandMove2"
+}
+Script LessonAbilities {
+cmd "gameUI enable LessonAbilitiesWarthog"
+cmd "addUIAnim LessonAbilitiesPic mas_LessonAbilities"
+cmd "pcmd 0.5 addUIAnim LessonAbilitiesWarthog mas_LessonAbilitiesWarthog"
+cmd "pcmd 0.5 addUIAnim LessonAbilitiesWarthogShield mas_LessonAbilitiesWarthogShield"
+cmd "pcmd 0.5 addUIAnim LessonAbilitiesWarthogShoot mas_LessonAbilitiesWarthogShoot"
+cmd "pcmd 0.5 addUIAnim LessonAbilitiesCursor mas_LessonAbilitiesCursor"
+}
+Script GetRandomGameTip {
+cmd "]sym setRand GameTip Tip_DeathIsOk Tip_RepairUnitsDisarm Tip_SpendAbilityPoints Tip_ShootDownMissiles Tip_OrderLink Tip_OrderCapture Tip_OrderAttack Tip_OrderPatrol Tip_RushDefense Tip_DoNotQuit Tip_BoostsForAll Tip_ShootingPlane Tip_MultiCarry Tip_UseAbility"
+cmd "]if consolePlatformHW runnow sym setRand GameTip Tip_DeathIsOk Tip_RepairUnitsDisarm Tip_SpendAbilityPoints_X360 Tip_ShootDownMissiles Tip_OrderLink Tip_OrderCapture Tip_OrderAttack Tip_OrderPatrol_X360 Tip_RushDefense Tip_DoNotQuit Tip_BoostsForAll Tip_ShootingPlane Tip_MultiCarry_X360 Tip_UseAbility_X360"
+cmd "]sym set PauseTipTitle Tip_Title
+}
+Script ShowStar1 {
+cmd "pcmd 1.0 addUIAnim ChallengeStar11 mas_StarEnter
+cmd "pcmd 1.0 gameUI show ChallengeStar11
+cmd "pcmd 1.3 playsound ChallengeStar"
+}
+Script ShowStar2 {
+cmd "pcmd 1.0 addUIAnim ChallengeStar11 mas_StarEnter
+cmd "pcmd 1.0 gameUI show ChallengeStar11
+cmd "pcmd 1.3 playsound ChallengeStar"
+cmd "pcmd 2.0 addUIAnim ChallengeStar12 mas_StarEnter
+cmd "pcmd 2.0 gameUI show ChallengeStar12
+cmd "pcmd 2.3 playsound ChallengeStar"
+}
+Script ShowStar3 {
+cmd "pcmd 1.0 addUIAnim ChallengeStar11 mas_StarEnter
+cmd "pcmd 1.0 gameUI show ChallengeStar11
+cmd "pcmd 1.3 playsound ChallengeStar"
+cmd "pcmd 2.0 addUIAnim ChallengeStar12 mas_StarEnter
+cmd "pcmd 2.0 gameUI show ChallengeStar12
+cmd "pcmd 2.3 playsound ChallengeStar"
+cmd "pcmd 3.0 addUIAnim ChallengeStar13 mas_StarEnter
+cmd "pcmd 3.0 gameUI show ChallengeStar13
+cmd "pcmd 3.3 playsound ChallengeStar"
+cmd "pcmd 3.6 playsound Godlike"
+}
+Script SettingsClear {
+cmd "]gameUI ignoreInputTime 0.3"
+cmd "]backend save"
+cmd "]rook gamePlayUpdate"
+cmd "]gameUI disable SettingsBlack"
+cmd "]addUIAnim SettingsMaster mas_MMExitTop"
+cmd "]pcmd 0.1 ]rookMenus previewShow"
+cmd "]pcmd 0.3 ]clearmenu Settings.txt"
+}
+Script freezeFreecamToggle {
+cmd "log MenuCmd: freezeFreecamToggle"
+cmd "if tickmult tickmult 0"
+cmd "if !tickmult tickmult 1"
+cmd "freecamera toggle"
+cmd "gfx toggle screenmsg"
+}
+Script clearFreecam {
+rcmd "tickmult 1"
+rcmd "freecamera off"
+rcmd "gfx enable screenmsg"
+}
+Script freecamToggle {
+cmd "log MenuCmd: freecamToggle"
+cmd "freecamera toggle"
+cmd "gfx toggle screenmsg"
+}
+Script UnitPickedUp {
+cmd "log MenuCmd: UnitPickedUp"
+cmd "sym set OrderSlotLastSelection $$HeldUnitOrderSlot@C_BINDING@"
+cmd "sym set _GroupSel_ 0"
+cmd "if !spectator && sym _CrossOrdersOpen_ == 0 && sym _CrossOrdersCanOpen_ == 1 runNow loadmenu CrossOrders.txt"
+cmd "sym set QuickCockpitActive 3"
+}
+Script UnitGroupSel {
+cmd "sym set OrderSlotLastSelection HoldPosition"
+cmd "sym set _GroupSel_ 1"
+cmd "checkrook local carryunit"
+cmd "if !spectator && sym _CrossOrdersOpen_ == 0 && sym _CrossOrdersCanOpen_ == 1 runNow loadmenu CrossOrders.txt"
+cmd "sym set QuickCockpitActive 3"
+}
+Script UnitGroupSelOrderIssued {
+cmd "log MenuCmd: UnitGroupSelOrderIssued"
+cmd "if sym _CrossOrdersOpen_ == 1 && sym PauseUIOpen == 0 runnow gameUI focusName DummyFocus"
+cmd "if sym _CrossOrdersOpen_ == 1 runNow clearmenu CrossOrders.txt"
+cmd "if sym _CrossOrdersOpen_ == 1 runNow sym setConcat2 HeldUnitOrderSlot $net_local_player 0"
+}
+Script UnitDropped {
+cmd "log MenuCmd: UnitDropped"
+cmd "if sym _CrossOrdersOpen_ == 1 && sym PauseUIOpen == 0 runnow gameUI focusName DummyFocus"
+cmd "if sym _CrossOrdersOpen_ == 1 runNow clearmenu CrossOrders.txt"
+cmd "if sym _CrossOrdersOpen_ == 1 runNow sym setConcat2 HeldUnitOrderSlot $C_BINDING 0"
+cmd "if vr gameui focusnametry #UnitIconTray@_BuildSlot@"
+}
+Script MP_ResumeGame {
+rcmd "]echo run_MP_ResumeGame"
+rcmd "]log MenuCmd: MP_ResumeGame"
+rcmd "]if !netGame ]pausegame 0"
+rcmd "]menuCmd SettingsClear"
+rcmd "]playerinputpause 0 local"
+rcmd "]gameUI focusName DummyFocus"
+rcmd "]gfx set uniform filterargs 0"
+rcmd "]addUIAnim Vignette mas_FadeOutPause"
+rcmd "]gameUI disable PauseCenterIcon"
+rcmd "]gameui disableAll ControlsGamepad"
+rcmd "]addUIAnim ControlsGamepad mas_PauseControllerExit"
+rcmd "]addUIAnim PauseBarBottom mas_IngameBotbarExit"
+rcmd "]addUIAnim IngameTopbar mas_IngameTopbarExit"
+rcmd "]addUIAnim ChallengeTime mas_IngameTopbarExit"
+rcmd "]sym set GL_ChatMinimized 2
+rcmd "]menucmd GlobalChatReposition
+rcmd "]gameui hide ChatShowButton
+rcmd "]gameUI mDisableAll MP_PauseItems"
+rcmd "]gameUI disable MP_ControlsHelp"
+rcmd "]menucmd ResumeGameNormal"
+}
+Script ResumeGameNormal {
+rcmd "]echo run_ResumeGameNormal"
+rcmd "]sym set PauseBackgroundEnable 0"
+rcmd "]inputBinding enable cockpitClosed"
+rcmd "]addUIAnim EscMenuPause mas_IngamePauseExit"
+rcmd "]addUIAnim LessonPaused mas_IngamePauseExit"
+rcmd "]addUIAnim ChallengePilot mas_IngamePauseExit"
+rcmd "]addUIAnim EscLessonObject mas_IngamePauseExit"
+rcmd "]addUIAnim IngameChatContainer mas_IngameRestore"
+rcmd "]addUIAnim TutorialMaster mas_IngameRestore"
+rcmd "]addUIAnim GameStatusMaster mas_IngameRestore"
+rcmd "]addUIAnim HudIngameXpTop mas_IngameRestore"
+rcmd "]addUIAnim ChallengeTime mas_IngameRestore"
+rcmd "]addUIAnim PingMaster mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterLeft0 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterLeft1 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterLeft2 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterLeft3 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterLeft4 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterLeft5 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterRight0 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterRight1 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterRight2 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterRight3 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterRight4 mas_IngameRestore"
+rcmd "]addUIAnim HudInfoMasterRight5 mas_IngameRestore"
+rcmd "]gameui showGroup HudBuildTab HudBuildTab__0 HudBuildTab__1 HudBuildTab__2 HudBuildTab__3 HudBuildTab__4 HudBuildTab__5"
+rcmd "]gameui showGroup PlayerStatusFloat__0 PlayerStatusFloat__1 PlayerStatusFloat__2 PlayerStatusFloat__3 PlayerStatusFloat__4 PlayerStatusFloat__5"
+rcmd "]clearmenu MenuPause"
+rcmd "]clearmenu DialogBox"
+}
+Script OnRSTConnect {
+cmd "if sym _GotAutoExecSrv_ == 1 cfg reqAutoExecSrv"
+}
+Script OnGameOver {
+rcmd "sym set _CrossOrdersCanOpen_ 0"
+rcmd "clearmenu CrossOrders.txt"
+}
+Script OnBeginMapLoading {
+rcmd "menucmd DoCommonMenuCleanup"
+rcmd "if !menuloaded MM_Wait.txt && !fastload runnow loadmenu MenuLoadmapDefault.txt /fadein 0.2 /requireExplicitClear"
+rcmd "if !menuloaded MM_Wait.txt && !fastload pcmd 0.2 clearmenu MenuLoadmapDefault.txt /fadeout 0.5"
+rcmd "if !menuloaded MM_Wait.txt && fastload runnow loadmenu MenuLoadmapDefault.txt /fadein 0.1 /requireExplicitClear"
+rcmd "if !menuloaded MM_Wait.txt && fastload pcmd 0.2 clearmenu MenuLoadmapDefault.txt /fadeout 0.15"
+rcmd "if menuloaded MM_Wait.txt runnow clearmenu MM_Wait.txt /fadeout 0.5"
+}
+Script RemoveBackground3D {
+#if !vr
+rcmd "menu3d remove *"
+#endif
+rcmd "pfx stop embers"
+rcmd "sym set Background3dLoaded 0"
+}
+Script DoTryoutLoad {
+ignoreInputTime 1.0
+cmd "gameui saveMenuState tryout_save"
+cmd "menu3d remove *"
+cmd "pcmd 0.2 sym set BackgroundMenuBlur 0"
+cmd "sym set Background3dLoaded 0"
+cmd "sym set _tryoutLaunch_ 1"
+cmd "rookMenus previewHide"
+cmd "sym push TC0"
+cmd "sym push TeamColor"
+cmd "sym push TeamColorWithLvl"
+cmd "sym push InventoryLoaded"
+cmd "sym push Shop_Inventory"
+cmd "sym push CurrentMenu InGame"
+cmd "sym set max_players 6"
+cmd "menucmd InitSpSymbols"
+cmd "loadmap Tryout coop /noReplaySave"
+}
+Script FinishTryout {
+ignoreInputTime 1.0
+cmd "sym set BackgroundMenuBlur 1"
+cmd "pcmd 0.2 if consolePlatform menucmd MenuBackgroundBomber"
+cmd "if sym ArcCustomized == 1 || sym ArcGACustomized == 1 pcmd 0.2 menucmd MenuBackgroundBomber"
+cmd "if sym ArcGACustomized == 1 pcmd 0.2 sym set BackgroundMenuBlur 0"
+cmd "gameui capturemode 0"
+cmd "clearmap noname"
+cmd "clearmenu"
+cmd "gameui restoreMenuState tryout_save"
+cmd "sym pop CurrentMenu TC0 TeamColor TeamColorWithLvl InventoryLoaded Shop_Inventory"
+cmd "menucmd GfxResetFogState"
+cmd "music start $AlbumTrackCurrent"
+cmd "menucmd CycleMainMenuTrack"
+cmd "sym set _tryoutLaunch_ 0"
+cmd "rookMenus previewShow"
+cmd "gameUI focusNameTry UnlockWithDiamondsFrame DialogButtonTryoutEveryone"
+cmd "if sym DialogPageDisplay == 0 runnow sym inc DialogPageDisplay 1"
+cmd "]cbinding disable gamePause"
+cmd "]inputBinding disable gamePause"
+}
+Script OnLoadMap {
+cmd "sym setZero InPlayMenus CheatsAllowed CheatsEnabled CheatIncome CheatBuild CheatArmor CheatAttack CheatsUsed ReturnToLobby IngameChat SandboxUsed EditorUsageFull UsedRuntimeEditor AutoDeployDeactivate AutoDeployActive SandboxMode"
+cmd "sym setZero _Bind_MatchingUIBack_"
+cmd "sym setOne ShowIngameHotkeys"
+cmd "if vr && sym LoadNormalMapInVR == 1 runnow menu3d remove ScreenTest"
+cmd "if vr && sym LoadNormalMapInVR == 1 runnow menucmd RemoveGlobe"
+cmd "if vr && sym LoadNormalMapInVR == 1 runnow menucmd VRMapClean"
+cmd "if sym HasAirMechPrime == 1 if sym _soloLaunch_ == 1 sym set CheatsAllowed 1"
+cmd "sym set CurrentMenu InGame"
+cmd "sym set LastMapName $MapName"
+cmd "if sym P_AccessLevel == 1 backend save"
+cmd "clearmenu MenuPause"
+cmd "if sym _tryoutLaunch_ != 1 runnow gameUI clearAllMismatchingFilterName LoadMapStartup"
+cmd "if sym _tryoutLaunch_ != 1 && !vr runnow loadmenu MenuBlackout.txt /requireExplicitClear"
+cmd "sym set TraySel 8"
+rcmd "sym set _ChalRewards 0"
+rcmd "playerinputpause 0"
+rcmd "cbinding enable orderMenu"
+rcmd "cbinding enable orderMenuAlt"
+rcmd "inputBinding enable orderMenu"
+rcmd "inputBinding enable orderMenuAlt"
+rcmd "cbinding enable gamePause"
+rcmd "inputBinding enable gamePause"
+rcmd "cbinding enable gameIsLive"
+rcmd "inputBinding enable gameIsLive"
+rcmd "cbinding enable cockpitClosed"
+rcmd "inputBinding enable cockpitClosed"
+rcmd "cbinding disable frontEnd"
+rcmd "inputBinding disable frontEnd"
+rcmd "sym set MenuBack null"
+rcmd "sym initNSet 6 AMA 1"
+rcmd "sym set _InOvertime 0"
+rcmd "sym set _InQuarter 1"
+rcmd "sym set _UpsellOkToShow 0"
+rcmd "sym setNSet 6 P_LocPin 0"
+rcmd "sym setNSet 6 P_Loc 0"
+rcmd "sym setNSet 2 CTFCoreOut 0"
+rcmd "sym setNSet 6 Units 0"
+rcmd "sym setNSet 6 MaxUnits 0"
+rcmd "sym setNSet 6 Credits 0"
+rcmd "sym setNSet 6 Income 0"
+rcmd "sym setNSet 6 PowerRes 0"
+rcmd "sym setNSet 6 PowerGen 0"
+rcmd "sym setNSet 6 PowerIn 0"
+rcmd "sym setNSet 6 PowerOut 0"
+rcmd "sym setNSet 6 CarryW 0"
+rcmd "sym setNSet 6 CarryOffset 0"
+rcmd "sym setNSet 6 CarryO 0"
+rcmd "sym clear S_Total"
+rcmd "sym set _NetFallingBehind_ 0"
+rcmd "sym setOne Tut0AbilityOk Tut1AbilityOk Tut2AbilityOk Tut3AbilityOk Tut4AbilityOk Tut5AbilityOk Tut6AbilityOk Tut7AbilityOk"
+rcmd "sym set LocalRadarDisrupted 0"
+rcmd "if netgame sym set GameModeOnline 1"
+rcmd "if !netgame sym set GameModeOnline 0"
+rcmd "sym clear FinalUnitToBuild PreviousUnitBuilt FinalUnitToBuildST PreviousUnitBuiltST"
+rcmd "sym set IsSurvivalMap 0"
+rcmd "if survivalMap runnow sym set IsSurvivalMap 1"
+cmd "if nacl nacl enterGame"
+cmd "if !vr runnow music fadeout 2.0"
+cmd "sym set LobbyModeDetails 0"
+cmd "sym set netGameOrNetGameReplay 0"
+cmd "sym set InTutorialMap 0"
+cmd "if netGameOrNetGameReplay sym set netGameOrNetGameReplay 1"
+#if vr
+cmd "pcmd 0 camera watch"
+cmd "sym setZero VRAirmechCustomizeMode VRAirmechFullCustomize"
+#endif
+}
+Script OnLoadMapMenu {
+rcmd "if sym _tryoutLaunch_ != 1 && netgame runnow loadmenu MatchLoad.txt /requireExplicitClear /fadein 0.15"
+}
+Script OnExitMap {
+cmd "console flushAllPendingSeq StillInPartyCheck"
+cmd "sym setZero CheatsAllowed CheatsEnabled CheatIncome CheatBuild CheatArmor CheatAttack CheatsUsed SandboxUsed EditorUsageFull UsedRuntimeEditor SpectateFF SpectateControlsFirstShown"
+cmd "menucmd ResetUpkeepStats"
+cmd "sym set GameModeOnline 0"
+cmd "sym set LessonObject _NA_"
+cmd "playerinputpause 1"
+cmd "cbinding disable orderMenu"
+cmd "inputBinding disable orderMenu"
+cmd "cbinding disable gamePause"
+cmd "inputBinding disable gamePause"
+cmd "cbinding disable gameIsLive"
+cmd "inputBinding disable gameIsLive"
+cmd "cbinding disable cockpitClosed"
+cmd "inputBinding disable cockpitClosed"
+cmd "cbinding disable orderMenuQuick"
+cmd "inputBinding disable orderMenuQuick"
+cmd "camera watch 0"
+cmd "sym set _tryoutLaunch_ 0"
+}
+Script InitSpSymbols {
+rcmd "sym set CurrentMenu InGame"
+rcmd "sym set GameModeOnline 0"
+rcmd "sym set EndgameWon 1"
+rcmd "sym set InStorySeq 0"
+rcmd "sym set PauseUIOpen 0"
+rcmd "sym setZero P_FTagSame0 P_FTagSame1"
+rcmd "sym setFrom PilotCustom0 PilotLocal"
+rcmd "sym setFrom PlayerRook0 RookLocal"
+rcmd "sym setFrom ItemCustom0 ItemLocal"
+rcmd "sym setFrom GuardCustom0 GuardLocal"
+rcmd "sym setNSet 6 Flair1Custom NoFlair"
+rcmd "sym setNSet 6 Flair2Custom NoFlair"
+rcmd "sym setNSet 6 Flair3Custom NoFlair"
+rcmd "sym set Flair1Custom0 $Flair1Local"
+rcmd "sym set Flair2Custom0 $Flair2Local"
+rcmd "sym set Flair3Custom0 $Flair3Local"
+rcmd "sym setNSet 6 Pet1Custom NoPet"
+rcmd "sym setNSet 6 Pet2Custom NoPet"
+rcmd "sym setNSet 6 Pet3Custom NoPet"
+rcmd "sym setFrom HeadCustom0 HeadLocal"
+rcmd "sym setFrom Pet1Custom0 Pet1Local"
+rcmd "sym setFrom Pet2Custom0 Pet2Local"
+rcmd "sym setFrom Pet3Custom0 Pet3Local"
+#if vr
+rcmd "if sym TC0 == Blue runnow sym setPair TC1 Red TC2 Blue TC3 Red"
+rcmd "if sym TC0 == Red runnow sym setPair TC1 Blue TC2 Red TC3 Blue"
+rcmd "if sym TC0 == Yellow runnow sym setPair TC1 Red TC2 Yellow TC3 Red"
+rcmd "if sym TC0 == Green runnow sym setPair TC1 Red TC2 Green TC3 Red"
+#else
+rcmd "if sym TC0 == Blue runnow sym setPair TC1 Red TC2 Yellow TC3 Green"
+rcmd "if sym TC0 == Red runnow sym setPair TC1 Blue TC2 Yellow TC3 Green"
+rcmd "if sym TC0 == Yellow runnow sym setPair TC1 Red TC2 Blue TC3 Green"
+rcmd "if sym TC0 == Green runnow sym setPair TC1 Red TC2 Blue TC3 Yellow"
+#endif
+rcmd "sym setFrom AS0P0 ArmySlot0Custom0"
+rcmd "sym setFrom AS1P0 ArmySlot1Custom0"
+rcmd "sym setFrom AS2P0 ArmySlot2Custom0"
+rcmd "sym setFrom AS3P0 ArmySlot3Custom0"
+rcmd "sym setFrom AS4P0 ArmySlot4Custom0"
+rcmd "sym setFrom AS5P0 ArmySlot5Custom0"
+rcmd "sym setFrom AS6P0 ArmySlot6Custom0"
+rcmd "sym setFrom AS7P0 ArmySlot7Custom0"
+rcmd "sym set AMP0P0 $Part1Local"
+rcmd "sym set AMP1P0 $Part2Local"
+rcmd "sym set AMP2P0 $Part3Local"
+rcmd "sym set AMP3P0 $Part4Local"
+rcmd "sym set AMP4P0 $Part5Local"
+rcmd "sym set AMP5P0 $Part6Local"
+rcmd "sym set AMP6P0 $Part7Local"
+rcmd "sym set AMP7P0 $Part8Local"
+rcmd "sym set NetMode PVP"
+rcmd "sym setZero h_game hypo_game u_game noparts_game notraining_game zoba_game ot_dmg"
+rcmd "sym clear map_cfg active_mission_quest"
+rcmd "gfx set orthographicProjection 0"
+}
+Script MF_TutorialStart {
+frame_block GoStartGame
+cmd "log MenuCmd: MF_TutorialStart"
+cmd "sym set max_players 2"
+cmd "sym set MenuPlayChallenge 0"
+cmd "sym set DNA_GameMode Tutorial"
+cmd "menucmd InitSpSymbols"
+cmd "loadmap tutorial.lvl"
+}
+Script MF_ChallengeStart {
+frame_block GoStartGame
+cmd "log MenuCmd: MF_ChallengeStart"
+cmd "sym set MapNameChallenge c_destroy_easy.lvl"
+cmd "sym set ChallengeUINext Cha1_2"
+cmd "sym set DNA_GameMode Practice"
+cmd "sym set DNA_Match Challenge"
+cmd "gfx set orthographicProjection 0"
+cmd "if !consolePlatform runnow menuCmd JumpToChallenges"
+cmd "pcmd 0.1 menuCmd InterlaceDel"
+cmd "pcmd 0.1 menuCmd QuickChallenge"
+}
+Script MF_FirstGameStart {
+frame_block GoStartGame
+cmd "log MenuCmd: MF_FirstGameStart"
+cmd "sym set max_players 2"
+cmd "menucmd InitSpSymbols"
+cmd "loadmap simple.lvl /tutScript firstGame"
+}
+Script QuickChallenge {
+frame_block GoStartGame
+cmd "sym set max_players 2"
+cmd "menucmd InitSpSymbols"
+cmd "loadmap $MapNameChallenge /chalPrep 3.5"
+}
+Script QuickWinChallenge1v1 {
+frame_block GoStartGame
+cmd "sym set max_players 2"
+cmd "menucmd InitSpSymbols"
+cmd "loadmap $MapNameChallenge /winChallenge"
+}
+Script QuickWinChallenge1v2 {
+frame_block GoStartGame
+cmd "sym set max_players 4"
+cmd "menucmd InitSpSymbols"
+cmd "loadmap $MapNameChallenge coop pmask 11 /winChallenge"
+}
+Script QuickWinChallenge1v3 {
+frame_block GoStartGame
+cmd "sym set max_players 6"
+cmd "menucmd InitSpSymbols"
+cmd "loadmap $MapNameChallenge coop pmask 43 /winChallenge"
+}
+Script LoadMapPvAI1v1 {
+frame_block GoStartGame
+cmd "log MenuCmd: LoadMapPvAI1v1"
+cmd "sym set max_players 2"
+cmd "menucmd InitSpSymbols"
+cmd "if sym P_AccessLevel == 0 loadmap /sym MapName coop prep 20"
+cmd "if sym P_AccessLevel != 0 loadmap /sym MapName coop prep 5"
+}
+Script LoadMapQuickPlay2v2 {
+frame_block GoStartGame
+cmd "log MenuCmd: LoadMapQuickPlay2v2"
+cmd "sym set max_players 4"
+cmd "menucmd InitSpSymbols"
+cmd "loadmap simple.lvl coop"
+}
+Script LoadMapPvAI2v3Solo {
+frame_block GoStartGame
+cmd "log MenuCmd: LoadMapPvAI2v3Solo"
+cmd "sym set max_players 6"
+cmd "menucmd InitSpSymbols"
+cmd "if sym P_AccessLevel == 0 loadmap /sym MapName prep 20 coop pmask 47"
+cmd "if sym P_AccessLevel != 0 loadmap /sym MapName prep 5 coop pmask 47"
+}
+Script LoadMapPvAI2v2Solo {
+frame_block GoStartGame
+cmd "log MenuCmd: LoadMapPvAI2v2Solo"
+cmd "sym set max_players 4"
+cmd "menucmd InitSpSymbols"
+cmd "if sym P_AccessLevel == 0 loadmap /sym MapName prep 20 coop"
+cmd "if sym P_AccessLevel != 0 loadmap /sym MapName prep 5 coop"
+}
+Script LoadMapPvAI3v3Solo {
+frame_block GoStartGame
+cmd "log MenuCmd: LoadMapPvAI3v3Solo"
+cmd "sym set max_players 6"
+cmd "menucmd InitSpSymbols"
+cmd "if sym P_AccessLevel == 0 loadmap /sym MapName prep 20 coop"
+cmd "if sym P_AccessLevel != 0 loadmap /sym MapName prep 5 coop"
+}
+Script LoadMapPvAI1v2 {
+frame_block GoStartGame
+cmd "log MenuCmd: LoadMapPvAI1v2"
+cmd "sym set max_players 4"
+cmd "menucmd InitSpSymbols"
+cmd "if sym P_AccessLevel == 0 loadmap /sym MapName prep 20 coop pmask 11"
+cmd "if sym P_AccessLevel != 0 loadmap /sym MapName prep 5 coop pmask 11"
+}
+Script LoadMapPvAI1v3 {
+frame_block GoStartGame
+cmd "log MenuCmd: LoadMapPvAI1v3"
+cmd "sym set max_players 6"
+cmd "menucmd InitSpSymbols"
+cmd "if sym P_AccessLevel == 0 loadmap /sym MapName prep 20 coop pmask 43"
+cmd "if sym P_AccessLevel != 0 loadmap /sym MapName prep 5 coop pmask 43"
+}
+Script LoadMapPvESolo {
+frame_block GoStartGame
+cmd "log MenuCmd: LoadMapPvESolo"
+cmd "sym set max_players 1"
+cmd "menucmd InitSpSymbols"
+cmd "loadmap #@MapName@.lvl prep 15"
+}
+Script MF_PurchaseBoostSuccessful {
+cmd "echo Purchase successful :)"
+}
+Script MF_PurchaseBoostFailed {
+cmd "echo Purchase failed :("
+}
+Script MF_BoostsCancel {
+frame_block MenuCommand
+cmd "log MenuCmd: MF_BoostsCancel"
+cmd "addUIAnim MainMenuPlayerInfo mas_BackHide"
+cmd "sym set MenuBack null"
+}
+Script MF_BoostsActivate {
+frame_block MenuCommand
+cmd "log MenuCmd: MF_BoostsActivate"
+cmd "timer setAsyncWait 3"
+cmd "wallet updatePrices MF_BoostsActivateWithPrices"
+}
+Script MF_BoostsActivateWithPrices {
+cmd "log MenuCmd: MF_BoostsActivateWithPrices"
+cmd "timer clearAsyncWait"
+cmd "rook initBoostPriceSymbols"
+cmd "gameUI show MF_BoostItems"
+}
+Script MF_DiamondsActivateToStarterPack {
+frame_block MenuCommand
+cmd "log MenuCmd: MF_DiamondsActivateToStarterPack"
+cmd "timer setAsyncWait 3"
+cmd "clearmenu UnlockDialog.txt"
+cmd "rook buyBundle StarterPack"
+cmd "timer clearAsyncWait"
+}
+Script MF_DiamondsActivate {
+frame_block MenuCommand
+cmd "log MenuCmd: MF_DiamondsActivate"
+cmd "timer setAsyncWait 3"
+cmd "wallet updatePrices MF_DiamondsActivateWithPrices"
+}
+Script MF_DiamondsActivateWithPrices {
+cmd "log MenuCmd: MF_DiamondsActivateWithPrices"
+cmd "timer clearAsyncWait"
+cmd "rook initBoostPriceSymbols"
+cmd "loadmenu buydiamondsdialog.txt"
+}
+Script MF_DiamondsCancel {
+cmd "log MenuCmd: MF_DiamondsCancel"
+cmd "sym set MenuBack null"
+cmd "sym set BuyDiamondsDialogCanceled 1"
+cmd "clearmenu BuyDiamondsDialog.txt"
+}
+Script MF_ClosePurchaseDialogs {
+cmd "if menuloaded UnlockDialog clearmenu UnlockDialog /fadeout 0.10"
+cmd "if menuloaded InspectDialog clearmenu InspectDialog /fadeout 0.10"
+cmd "clearmenu BuyDiamonds /fadeout 0.15"
+}
+Script MF_CodesActivate {
+frame_block MenuCommand
+cmd "log MenuCmd: MF_CodesActivate"
+cmd "timer setAsyncWait 3"
+cmd "wallet updatePrices MF_CodesActivateWithPrices"
+}
+Script MF_CodesActivateWithPrices {
+cmd "log MenuCmd: MF_CodesActivateWithPrices"
+cmd "timer clearAsyncWait"
+cmd "rook initBoostPriceSymbols"
+cmd "gameUI show MF_CodesItems"
+}
+Script MainMenuGamesBrowse {
+cmd "log MenuCmd: MainMenuGamesBrowse"
+cmd "rooms request"
+cmd "gameUI enable MB_PlayBrowseActive"
+cmd "sym set MenuLevel2 MainMenuGamesBrowseCancel"
+cmd "sym set OnCancel MainMenuGamesBrowseCancel"
+cmd "if usingPad pcmd 0.3 gameUI focusNameTry MF_NetGameBrowseJoinRoom0 MF_NetGameBrowseJoinRoom1 MF_NetGameBrowseJoinRoom2 MF_NetGameBrowseJoinRoom3 MF_NetGameBrowseJoinRoom4 MF_NetGameBrowseJoinRoom5 MF_NetGameBrowseJoinRoom6 MF_NetGameBrowseJoinRoom7 MF_NetGameBrowseJoinRoom8 MF_NetGameBrowseJoinRoom9 MF_NetGameBrowseRefreshList"
+}
+Script MainMenuGamesBrowseCancel {
+cmd "log MenuCmd: MainMenuGamesBrowseCancel"
+cmd "gameUI disable MB_PlayBrowseActive"
+cmd "sym set MenuLevel2 null"
+cmd "sym set OnCancel MainMenuPlayCancel"
+}
+Script VoteKickDlg {
+cmd "]echo VoteKickDlg"
+cmd "]log MenuCmd: VoteKickDlg"
+cmd "]sym set DialogBoxButton2Used 0"
+cmd "]loadmenu DialogBoxVoteKick.txt"
+}
+Script VoteKickConfirmed {
+cmd "]log MenuCmd: VoteKickConfirmed"
+cmd "]echo Voting to KICK"
+cmd "]net chat /vote yes"
+cmd "]clearmenu DialogBoxVoteKick.txt"
+}
+Script VoteKickWait {
+cmd "]log MenuCmd: VoteKickWait"
+cmd "]echo Voting to WAIT"
+cmd "]net chat /vote no"
+cmd "]clearmenu DialogBoxVoteKick.txt"
+}
+Script VoteKickDismiss {
+cmd "]echo VoteKickDismiss"
+cmd "]clearmenu DialogBoxVoteKick.txt"
+}
+Script MF_ResetBindings {
+cmd "echo MF_ResetBindings"
+cmd "log MenuCmd: MF_ResetBindings"
+cmd "sym set DialogBoxTitle DialogTitleResetBindings"
+cmd "sym set DialogBoxMessage DialogMessageResetBindings"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogMenuCmdOnButton1 MF_ResetBindingsConfirmed"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script MF_ResetBindingsConfirmed {
+cmd "log MenuCmd: MF_ResetBindingsConfirmed"
+cmd "input restoreDefaultBindings"
+}
+Script MF_NetGameBrowseRefreshList {
+cmd "log MenuCmd: MF_NetGameBrowseRefreshList"
+cmd "rooms request"
+cmd "gameUI disable MF_NetGameBrowseRefreshList"
+cmd "gameUI disable MF_NetGameSpectateRefreshList"
+cmd "pcmd 2.0 gameUI enable MF_NetGameBrowseRefreshList"
+cmd "pcmd 2.0 gameUI enable MF_NetGameSpectateRefreshList"
+}
+Script MF_NetGameSessionJoined {
+cmd "echo Script_MF_NetGameSessionJoined"
+cmd "log MenuCmd: MF_NetGameSessionJoined"
+cmd "gameui disableAll MainMenuButtons"
+cmd "if sym GL_ChatHidden == 0 addUIAnim MessageChatContainer mas_ChatHide"
+cmd "clearmenu MenuPlay.txt /fadeout 0.15"
+cmd "clearmenu MenuShop.txt /fadeout 0.15"
+cmd "clearmenu TempLoadout.txt"
+cmd "echo JOINING room"
+cmd "sym set IsHost 0"
+cmd "sym set IsSpectator 0"
+cmd "sym set BackgroundMenuBlur 1"
+}
+Script MF_NetGameSessionSpectate {
+ignoreInputTime 1.0
+cmd "echo Script_MF_NetGameSessionSpectate"
+cmd "log MenuCmd: MF_NetGameSessionSpectate"
+cmd "gameui disableAll MainMenuButtons"
+cmd "if !consolePlatform && sym GL_ChatHidden == 0 addUIAnim MessageChatContainer mas_ChatHide"
+cmd "if !consolePlatform && sym TopMenuWatch == 1 addUIAnim MainMenuWatchFrame mas_MMExitLeft"
+cmd "echo SPECTATING room"
+cmd "sym set IsHost 0"
+cmd "sym set IsSpectator 1"
+cmd "sym set BackgroundMenuBlur 1"
+}
+Script MF_SteamLobbyJoined {
+rcmd "net disconnect"
+rcmd "menucmd MP_LoadCommon"
+cmd "]echo MF_SteamLobbyJoined"
+cmd "]loadmenu $MainMenu"
+cmd "]menuCmd joingedNetgameSession"
+cmd "]menuCmd MF_NetGameSessionJoined"
+cmd "]rookMenus previewClear"
+cmd "]echo MF_SteamLobbyJoined"
+}
+Script MF_SteamLobbyLeft {
+}
+Script MC_CustomDrawerCancel {
+cmd "log MenuCmd: MC_CustomDrawerCancel"
+cmd "gameUI ignoreInputTime 0.4"
+cmd "addUIAnim MF_CustomDrawer mas_CustomDrawerDown"
+cmd "addUIAnim StatCompareUnitMaster mas_StatCompareDown"
+cmd "gameUI enableAll StatSelectedUnitMaster"
+cmd "addUIAnim BlackGradientMask mas_FadeOutDrawer"
+cmd "gameUI disableAll MF_CustomDrawer"
+cmd "gameUI hideGroup MC_ActiveCustomPilot MC_ActiveCustomItem MC_ActiveCustomColor MC_ActiveCustomAirMech MC_ActiveArmySlot0 MC_ActiveArmySlot1 MC_ActiveArmySlot2 MC_ActiveArmySlot3 MC_ActiveArmySlot4 MC_ActiveArmySlot5 MC_ActiveArmySlot6 MC_ActiveArmySlot7 MC_ActiveCustomFlair1 MC_ActiveCustomFlair2 MC_ActiveCustomFlair3 MC_ActiveCustomPet1 MC_ActiveCustomPet2 MC_ActiveCustomPet3"
+cmd "gameUI hideAll MF_CustomArmySelect0"
+cmd "gameUI hideAll MF_CustomArmySelect1"
+cmd "gameUI hideAll MF_CustomArmySelect2"
+cmd "gameUI hideAll MF_CustomArmySelect3"
+cmd "gameUI hideAll MF_CustomArmySelect4"
+cmd "gameUI hideAll MF_CustomArmySelect5"
+cmd "gameUI hideAll MF_CustomArmySelect6"
+cmd "gameUI hideAll MF_CustomArmySelect7"
+cmd "pcmd 0.2 gameUI enable MainMenuPlayerInfo"
+cmd "sym set MenuBack MC_CustomArmyCancel"
+cmd "customize scrollReset"
+cmd "if usingPad gameUI focusName UnitLastFocus"
+cmd "sym set UnitLastFocus null"
+}
+Script LobbyArmyConfigUSelCancel {
+cmd "log MenuCmd: LobbyArmyConfigUSelCancel"
+cmd "sym set UnitLastFocus null"
+cmd "gameUI ignoreInputTime 0.1"
+cmd "sym set SlotFlashActive 0"
+cmd "gameUI hideAll LobbyArmySelect0 LobbyArmySelect1 LobbyArmySelect2 LobbyArmySelect3 LobbyArmySelect4 LobbyArmySelect5 LobbyArmySelect6 LobbyArmySelect7"
+cmd "gameUI hideAll HangarArmySelect0 HangarArmySelect1 HangarArmySelect2 HangarArmySelect3 HangarArmySelect4 HangarArmySelect5 HangarArmySelect6 HangarArmySelect7"
+cmd "gameUI hideAll ArmySlotFlash0 ArmySlotFlash1 ArmySlotFlash2 ArmySlotFlash3 ArmySlotFlash4 ArmySlotFlash5 ArmySlotFlash6 ArmySlotFlash7"
+cmd "gameUI hideAll SlotFlash0 SlotFlash1 SlotFlash2 SlotFlash3 SlotFlash4 SlotFlash5 SlotFlash6 SlotFlash7"
+}
+Script MC_LobbySelectObjectUpdateSym {
+cmd "sym set $_CustomSymbol $_CustomValue"
+cmd "gameui refreshFilterName Customize"
+cmd "gameui refreshfiltername CustomDrawer"
+}
+Script MC_LobbySelectObjectChoose {
+cmd "if sym UnlockDialogActive == 1 pcmd 0.5 menucmd MC_LobbySelectObjectChoose local"
+cmd "if sym UnlockDialogActive == 0 menucmd MC_LobbySelectObjectChoosePostUnlock local"
+}
+Script MC_LobbySelectObjectChoosePostUnlock {
+cmd "if sym UnlockDialogCanceled == 1 menucmd MC_LobbySelectObjectChooseComplete local"
+cmd "if sym UnlockDialogCanceled == 0 menucmd MC_LobbySelectObjectChooseCompleteAndClose local"
+cmd "pcmd t3 menucmd HangarUpdateRaritySymbols"
+}
+Script MC_LobbySelectObjectChooseCompleteAndClose {
+cmd "sym set $_CustomSymbol $_CustomValue"
+cmd "gameui refreshFilterName Customize CustomDrawer"
+cmd "clearmenu $_ActiveLobbySelectScript_"
+cmd "rook recustomizeLoadoutToServer"
+}
+Script HangarCancelAirMechSelect {
+cmd "pcmd t0 gameui refreshFilterName Customize"
+cmd "sym cTrim RookLocal _ RookLocal_Base /chopLast U"
+cmd "loadout partPointsUpdate"
+cmd "rook recustomizeLoadoutToServer"
+cmd "pcmd t1 customize slotExecPre rooks $RookLast _CustomSymbol _CustomValue
+}
+Script MC_LobbySelectObjectChooseComplete {
+cmd "sym set $_CustomSymbol $_CustomValue"
+cmd "gameui refreshFilterName Customize"
+cmd "sym set UnlockDialogCanceled 0"
+}
+Script LobbyPickAirMech {
+cmd "sym set LoadoutSetupAirMech 1"
+cmd "sym set RookLast $RookLocal"
+cmd "menucmd ReadyPerAMLoadout"
+cmd "loadout customizeInit"
+}
+Script SelectFocusAirMech {
+cmd "if sym #HasAny@_MArg1_@ == 1 runnow customize slotExecClass rooks $_MArg1_"
+cmd "if sym #HasAny@_MArg1_@ == 0 runnow sym set _LR_@_Arg2_@ $_HasFirstSkin_@_MArg1_@"
+cmd "if sym #HasAny@_MArg1_@ == 1 runnow sym set RookLocal $_LR_@_MArg1_@"
+cmd "if sym #HasAny@_MArg1_@ == 1 runnow loadout customizeInit"
+cmd "if sym #HasAny@_MArg1_@ == 1 menucmd HangarUpdateRaritySymbols"
+cmd "if sym #HasAny@_MArg1_@ == 1 menucmd CleanAirMechClassSymbols"
+cmd "pcmd 0.1 gameui refreshFilterName HangarAirMechPartHelp Customize "
+}
+Script CleanAirMechClassSymbols {
+cmd "sym cTrim RookLocal _ RookLocal_Base /chopLast U"
+cmd "sym set RookLast_Base $$RookLocal_Base"
+cmd "sym set RookLast $RookLocal"
+Script HangarUpdateRaritySymbols {
+cmd "sym cTrim RookLocal _ RookLocal_Base /chopLast U"
+cmd "loadout partPointsUpdate"
+cmd "pcmd t1 gameui refreshFilterName Customize"
+cmd "if sym CurrentMenu == CLobby pcmd t1 gameui refreshFilterName NetGameRoom"
+}
+Script MC_CustomDrawerChoose {
+cmd "if sym UnlockDialogActive == 1 pcmd 0.5 menucmd MC_CustomDrawerChoose $C_BINDING"
+cmd "if sym UnlockDialogActive == 0 menucmd MC_CustomDrawerChoosePostUnlock $C_BINDING"
+}
+Script MC_CustomDrawerChoosePostUnlock {
+cmd "if sym UnlockDialogCanceled == 1 menucmd MC_CustomDrawerChooseComplete $C_BINDING"
+cmd "if sym UnlockDialogCanceled == 0 menucmd MC_CustomDrawerChooseCompleteAndClose $C_BINDING"
+}
+Script MC_CustomDrawerChooseCompleteAndClose {
+cmd "sym set $_CustomSymbol $_CustomValue"
+cmd "gameui refreshFilterName Customize"
+cmd "menuCmd MC_CustomDrawerCancel $C_BINDING"
+}
+Script MC_CustomDrawerChooseComplete {
+cmd "sym set $_CustomSymbol $_CustomValue"
+cmd "gameui refreshFilterName Customize"
+cmd "gameUI restoreFocusID MenuPreUnlockFocus"
+cmd "sym set UnlockDialogCanceled 0"
+}
+Script MC_CustomRefresh {
+cmd "gameui refreshFilterName Customize"
+cmd "menucmd recustomizeLoadoutToServer_filtered"
+}
+Script recustomizeLoadoutToServer_filtered {
+cmd "console flushAllPendingSeq NetRoomPendingUpdate"
+cmd "pcmd_seq NetRoomPendingUpdate 0.6 rook recustomizeLoadoutToServer"
+}
+Script OnLoadoutConfigureComplete {
+rcmd "console flushAllPendingSeq 667"
+rcmd "sym set _LoadoutTransition_ 0"
+rcmd "timer clearAsyncWait"
+}
+Script MF_CustomArmyActivate {
+cmd "log MenuCmd: MF_CustomArmyActivate"
+cmd "sym set _launchingSoloFromLoadout_ $_MArg1_"
+cmd "timer setAsyncWait 3"
+cmd "wallet updatePrices MF_CustomArmyActivateWithPrices"
+cmd "sym set MenuBack MC_CustomArmyCancel"
+cmd "gameUI enable MainMenuPlayerInfo"
+cmd "addUIAnim MessageChatContainer mas_ChatHide"
+}
+Script MenuCustomizeLoadout {
+cmd "if usingMouse gameUI ignoreInputTime 0.1"
+cmd "if usingMouse gameUI focusName MC_CustomAirMech"
+cmd "wallet updatePricesN MenuCustomizeLoadoutWithPrices"
+cmd "gfx lerp interlace /current 0.0 0.5"
+cmd "loadout customizeInit"
+}
+Script MenuCustomizeLoadoutWithPrices {
+cmd "timer clearAsyncWait"
+}
+Script UnlockCashOnlyOption {
+frame_block CashOnlyOption
+cmd "echo cash only"
+cmd "gameUI disableImmediate UnlockMoreOptions"
+cmd "gameUI enable UnlockWithCashFrame"
+}
+Script UnlockCashHide {
+frame_block CashOnlyOption
+cmd "gameUI disable UnlockWithCashFrame"
+cmd "gameUI disableImmediate UnlockMoreOptions"
+}
+Script MM_CustomizePress {
+cmd "log MenuCmd: MM_CustomizePress"
+cmd "sym set _launchingSoloFromLoadout_ $_MArg1_"
+cmd "timer setAsyncWait 3"
+cmd "wallet updatePrices MM_CustomizeGotPrices"
+cmd "sym set MenuBack MC_CustomArmyCancel"
+}
+Script MM_CustomizeGotPrices {
+cmd "timer clearAsyncWait"
+cmd "loadmenu MyArmy.txt"
+cmd "gameui refreshFilterName Customize"
+cmd "sym set MenuToHide MainMenuHomeFrame"
+cmd "sym set MenuToShow MF_CustomMaster"
+cmd "addUIAnim $$MenuToShow mas_MenuCenter"
+cmd "addUIAnim $$MenuToHide mas_MenuLeft"
+cmd "addUIAnim MessageChatContainer mas_ChatHide"
+}
+Script MF_CustomArmyActivateWithPrices {
+cmd "timer clearAsyncWait"
+cmd "loadmenu MyArmy.txt"
+cmd "gameui refreshFilterName Customize"
+cmd "sym set MenuToHide MF_MainMaster"
+cmd "sym set MenuToShow MF_CustomMaster"
+cmd "addUIAnim $$MenuToShow mas_MenuCenter"
+cmd "addUIAnim $$MenuToHide mas_MenuLeft"
+cmd "addUIAnim MainMenuPlayerInfo mas_BackShow"
+cmd "sym set MenuBack MC_CustomArmyCancel"
+cmd "if usingPad pcmd 0.3 gameUI focusName MC_CustomAirMech"
+}
+Script MM_CustomizeQuit {
+cmd "log MenuCmd: MM_CustomizeQuit"
+cmd "rookMenus previewClear"
+cmd "gameui ignoreInputTime 0.25"
+cmd "log MenuCmd: MC_CustomArmyCancel_FromMainMenu"
+cmd "sym set MenuToHide MF_CustomMaster"
+cmd "sym set MenuToShow MainMenuHomeFrame"
+cmd "addUIAnim $$MenuToShow mas_MenuCenter"
+cmd "addUIAnim $$MenuToHide mas_MenuRight"
+cmd "addUIAnim MainMenuPlayerInfo mas_BackHide"
+cmd "addUIAnim MessageChatContainer mas_ChatShow"
+cmd "addUIAnim ChatShowButton mas_ChatTabHide"
+cmd "sym set MenuBack null"
+cmd "rook savePreset $ActiveLoadout"
+cmd "backend save"
+cmd "clearmenu MyArmy.txt /fadeout 0.2"
+}
+Script MC_CustomArmyCancel {
+cmd "log MenuCmd: MC_CustomArmyCancel"
+cmd "rookMenus previewClear"
+cmd "gameui ignoreInputTime 0.25"
+cmd "menuCmd MC_CustomArmyCancel_FromMainMenu"
+cmd "clearmenu MyArmy.txt /fadeout 0.2"
+}
+Script MC_CustomArmyCancel_FromMainMenu {
+cmd "log MenuCmd: MC_CustomArmyCancel_FromMainMenu"
+cmd "sym set MenuToHide MF_CustomMaster"
+cmd "sym set MenuToShow MF_MainMaster"
+cmd "addUIAnim $$MenuToShow mas_MenuCenter"
+cmd "addUIAnim $$MenuToHide mas_MenuRight"
+cmd "addUIAnim MainMenuPlayerInfo mas_BackHide"
+cmd "sym set MenuBack null"
+cmd "rook savePreset $ActiveLoadout"
+cmd "backend save"
+cmd "if usingPad pcmd 0.3 gameUI focusName MB_Army"
+}
+Script AnimCockpitFocusUnit {
+cmd "log MenuCmd: AnimCockpitFocusUnit"
+cmd "menu3d animate #Cockpit@C_BINDING@ cockpit/CockpitShowUnit.aaf stopandhold 0 0.5"
+}
+Script AnimCockpitFocusOrder {
+cmd "log MenuCmd: AnimCockpitFocusOrder"
+cmd "menu3d animate #Cockpit@C_BINDING@ cockpit/CockpitShowOrder.aaf stopandhold 0 0.5"
+}
+Script ColorCustomizeCleanup {
+#if vr
+cmd "if sym TC0 == Blue sym setPair TC1 Red TC2 Blue TC3 Red"
+cmd "if sym TC0 == Red sym setPair TC1 Blue TC2 Red TC3 Blue"
+cmd "if sym TC0 == Yellow sym setPair TC1 Red TC2 Yellow TC3 Red"
+cmd "if sym TC0 == Green sym setPair TC1 Red TC2 Green TC3 Red"
+#else
+cmd "if sym TC0 == Blue sym setPair TC1 Red TC2 Yellow TC3 Green"
+cmd "if sym TC0 == Red sym setPair TC1 Blue TC2 Yellow TC3 Green"
+cmd "if sym TC0 == Yellow sym setPair TC1 Red TC2 Blue TC3 Green"
+cmd "if sym TC0 == Green sym setPair TC1 Red TC2 Blue TC3 Yellow"
+#endif
+}
+Script InterlaceAdd {
+cmd "gfx lerp interlace /current 1.0 0.5"
+}
+Script InterlaceDel {
+cmd "gfx lerp interlace /current 0.0 0.5"
+}
+Script HangarTest {
+cmd "loadmap MainMenu.lvl /noReplaySave"
+cmd "pcmd 0.1 clearmenu"
+cmd "pcmd 0.1 loadmenu $MainMenu"
+cmd "sym set MenuCustomizeLoadoutOld 0"
+}
+Script PerfTest_1 {
+cmd "gameui refreshFilterName Customize CustomDrawer"
+cmd "menucmd PerfTest_1"
+}

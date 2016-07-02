@@ -1,0 +1,35 @@
+Script PartyRequest {
+cmd "log MenuCmd: PartyRequest"
+cmd "sym set DialogBoxTitle DialogTitlePartyRequest"
+cmd "sym set DialogBoxMessage DialogMessagePartyRequest"
+cmd "sym set DialogMenuCmdOnButton1 PartyRequestAccept"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+cmd "playsound UI_PartyRequestReceived"
+}
+Script PartyRequestAccept {
+cmd "party accept _friendName $_partyId"
+}
+Script LobbyPreInitMapSelect {
+rcmd "if sym _soloLaunch_ == 1 runnow menucmd LobbyPreInitMapSelect_solo"
+rcmd "if sym _soloLaunch_ == 0 runnow menucmd LobbyPreInitMapSelect_net"
+}
+Script LobbyPreInitMapSelect_solo {
+cmd "if sym MapListMode != Survival && sym CF_CustomMap != 1 runnow rook selectMap MapName Simple TwinPeaks Thar Chasm Vale Duel Crater Salt Nesthorn"
+cmd "if sym MapListMode == Survival && sym CF_CustomMap != 1 && sym ShowWarzoneMaps == 0 runnow rook selectMap MapName Spiral Survival Spiral Survival Spiral Survival LastStand"
+cmd "if sym MapListMode == Survival && sym CF_CustomMap != 1 && sym ShowWarzoneMaps == 1 runnow rook selectMap MapName Keep Junk Denev Twolnsurv Siam Wall Highway"
+cmd "gameui refreshFilterName MapSelection"
+}
+Script LobbyPreInitMapSelect_net {
+cmd "sym set MapName Random"
+cmd "sym setNSet 6 P_MapVote Random"
+cmd "gameui refreshFilterName MapSelection"
+}
+Script LobbyInitMapSelect {
+cmd "if sym _ServerSelectedMap == 0 runnow rook selectMap MapName Simple TwinPeaks Thar Chasm Vale Duel Crater Salt"
+cmd "if sym _ServerSelectedMap == 0 && sym MapListMode == Survival && sym ShowWarzoneMaps == 0 runnow rook selectMap MapName Spiral Survival Spiral Survival Spiral Survival LastStand"
+cmd "if sym _ServerSelectedMap == 0 && sym MapListMode == Survival && sym ShowWarzoneMaps == 1 runnow rook selectMap MapName Keep Junk Denev Twolnsurv Siam Wall Highway"
+cmd "if sym _ServerSelectedMap == 0 && sym _soloLaunch_ == 0 party2 setMapVote $$MapName"
+cmd "gameui refreshFilterName MapSelection"
+}

@@ -1,0 +1,17 @@
+Script SetupUnitsFromHangar {
+ignoreInputTime 0.25
+cmd "sym set _CustomObject units"
+cmd "sym set LoadoutConfigureUnits 1"
+cmd "customize clearClassFilter
+cmd "sym set _ActiveLobbySelectScript_ NA"
+cmd "sym clear _cmode"
+cmd "customize scrollCfgLobby $_CustomObject 25"
+cmd "floatsym set customDrawerPosLobby 0"
+}
+Script CloseUnitsFromHangar {
+cmd "menuCmd StoreLoadout"
+cmd "sym set LoadoutConfigureUnits 0"
+cmd "addUIAnim LoadoutUnitsBox mas_HangarUnitsLeft"
+cmd "if sym SlotFlashActive == 1 menuCmd LobbyArmyConfigUSelCancel"
+cmd "sym clear DialogContentSelectFilterText"
+}

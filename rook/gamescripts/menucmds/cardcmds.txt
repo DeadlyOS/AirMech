@@ -1,0 +1,14 @@
+Script MakeCardDeck {
+cmd "menu3d remove CardDeck"
+cmd "menu3d add CardDeck /model vr/CardDeck.amf /rootRot 0 0 20 /worldPose 0 0 0 /rootScale 0.15
+cmd "sym set _CardIndex 0"
+cmd "menucmd MakePlayingCard"
+}
+Script MakePlayingCard {
+rcmd "echo Making card $_CardIndex"
+rcmd "sym set _CardPosZ 52"
+rcmd "sym dec _CardPosZ $_CardIndex"
+rcmd "menu3d addChild CardDeck #Card@_CardIndex@ /model vr/PlayingCard.amf /material mat_PlayingCardBack /material mat_PlayingCardBack /worldPose 0 0 $_CardPosZ /rootScale 10"
+rcmd "sym inc _CardIndex 1"
+rcmd "if sym _CardIndex < 52 runnow menucmd MakePlayingCard"
+}

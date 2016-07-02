@@ -1,0 +1,191 @@
+Script ChangeLoadoutNext {
+ignoreInputTime 0.05
+cmd "gameUI enableAll HangarSlotsContainer"
+cmd "gameUI enableAll LoadoutSlotsContainer"
+cmd "gameUI enableAll MyArmySlotsContainer"
+cmd "if sym LoadoutSetupAirMech == 1 addUIAnim MC_CustomAirMech mas_AirMechLeft"
+cmd "if sym LoadoutSetupAirMech == 1 sym set LoadoutSetupAirMech 0"
+cmd "if sym LoadoutSetupAirMech == 1 sym set LoadoutVariantLocked 0"
+cmd "rook savePreset $ActiveLoadout"
+cmd "sym valueCycle ActiveLoadout 1 0 $OwnedLoadoutsMaxIndex"
+cmd "rook loadPreset $$ActiveLoadout"
+cmd "loadout customizeInit"
+cmd "loadout partPointsUpdate"
+cmd "playsound $MenuSoundLoadoutChanged"
+cmd "if sym ArcCustomized == 1 pcmd t1 menucmd UpdateLoadoutName"
+cmd "pcmd 0.1 gameui refreshFilterName HangarAirMechPartHelp Customize"
+}
+Script ChangeLoadoutPrev {
+ignoreInputTime 0.05
+cmd "gameUI enableAll HangarSlotsContainer"
+cmd "gameUI enableAll LoadoutSlotsContainer"
+cmd "gameUI enableAll MyArmySlotsContainer"
+cmd "if sym LoadoutSetupAirMech == 1 addUIAnim MC_CustomAirMech mas_AirMechLeft"
+cmd "if sym LoadoutSetupAirMech == 1 sym set LoadoutSetupAirMech 0"
+cmd "if sym LoadoutSetupAirMech == 1 sym set LoadoutVariantLocked 0"
+cmd "rook savePreset $ActiveLoadout"
+cmd "sym valueCycle ActiveLoadout -1 0 $OwnedLoadoutsMaxIndex"
+cmd "rook loadPreset $$ActiveLoadout
+cmd "loadout customizeInit"
+cmd "loadout partPointsUpdate"
+cmd "playsound $MenuSoundLoadoutChanged"
+cmd "if sym ArcCustomized == 1 pcmd t1 menucmd UpdateLoadoutName"
+cmd "pcmd 0.1 gameui refreshFilterName HangarAirMechPartHelp Customize"
+}
+Script UpdateLoadoutName {
+cmd "gameui refreshFilterName LoadoutName"
+}
+Script GoExecAM {
+rcmd "if sym _GoExecAMLocked_ == 0 runnow menuCmd GoExecAM_Normal"
+rcmd "if sym _GoExecAMLocked_ == 1 runnow menuCmd GoExecAM_Locked"
+}
+Script GoExecAM_ExtractP {
+rcmd "sym set $_MArg4_ $_MArg2_"
+rcmd "sym set $_MArg5_ $_MArg3_"
+}
+Script GoExecAM_Normal {
+rcmd "sym set RookLocal $_MArg1_"
+rcmd "sym set RookLocal_Req $_MArg1_"
+rcmd "sym set RookLocal_Type $_MArg2_"
+rcmd "sym set RookLocal_Class $_MArg3_"
+rcmd "loadout customizeInitNoExec"
+ignoreInputTime t3
+cmd "pcmd t3 sym set LoadoutVariantLocked 0"
+}
+Script GoExecAM_Locked {
+rcmd "sym set RookLocal_L $_MArg1_"
+rcmd "sym set RookLocal_Req $_MArg1_"
+rcmd "sym set RookLocal_L_Type $_MArg2_"
+rcmd "sym set RookLocal_L_Class $_MArg3_"
+rcmd "sym set _GoExecAMLocked_ 0"
+cmd "gameui refreshFilterName CustomDrawer Customize"
+ignoreInputTime t3
+cmd "pcmd t3 sym set LoadoutVariantLocked 1"
+}
+Script LoadoutClickCustomAirMech_Normal {
+cmd "sym toggle LoadoutSetupAirMech"
+cmd "if sym LoadoutSetupAirMech == 0 menuCmd StorePerAMLoadout"
+cmd "if sym LoadoutSetupAirMech == 1 menuCmd ReadyPerAMLoadout"
+}
+Script LoadoutClickCustomAirMech_Locked {
+cmd "customize slotExecUnlockOnly rooks $RookLocal_L _CustomSymbol _CustomValue /menuCmdOnUnavailable LoadoutClickCustomAirMech_CantUnlock"
+}
+Script LoadoutClickCustomAirMech_CantUnlock {
+ignoreInputTime 0.2
+cmd "sym set DialogBoxTitle _NONE_"
+cmd "sym set DialogBoxMessage AMClassLockMsg"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script StoreLoadout {
+cmd "rook savePreset $ActiveLoadout"
+cmd "backend save loadout"
+}
+Script StorePerAMLoadout {
+cmd "loadout storePerAMLoadout"
+cmd "rook savePreset $ActiveLoadout"
+cmd "backend save loadout"
+}
+#if vr
+Script SaveVRLoadout {
+cmd "loadout storePerAMLoadout"
+cmd "rook savePreset $ActiveLoadout"
+cmd "backend save"
+}
+#endif
+Script ReadyPerAMLoadout {
+cmd "customize slotExecClass rooks $RookLocal"
+cmd "loadout customizeInit"
+cmd "customize scrollCfgLobby"
+cmd "gameui refreshFilterName CustomDrawer Customize"
+cmd "sym clear Pet1Local_S Pet2Local_S Pet3Local_S Flair1Local_S Flair2Local_S Flair3Local_S HeadLocal_S"
+}
+Script LoadoutCopyFlair {
+cmd "sym setFrom HeadLocal_S HeadLocal"
+cmd "sym setFrom Pet1Local_S Pet1Local"
+cmd "sym setFrom Pet2Local_S Pet2Local"
+cmd "sym setFrom Pet3Local_S Pet3Local"
+cmd "sym setFrom Flair1Local_S Flair1Local"
+cmd "sym setFrom Flair2Local_S Flair2Local"
+cmd "sym setFrom Flair3Local_S Flair3Local"
+}
+Script LoadoutPasteFlair {
+cmd "if sym Pet1Local_S !isEmpty runnow menucmd LoadoutPasteFlair_Go"
+}
+Script LoadoutPasteFlair_Go {
+ignoreInputTime 0.5
+cmd "sym setFrom HeadLocal HeadLocal_S"
+cmd "sym setFrom Pet1Local Pet1Local_S"
+cmd "sym setFrom Pet2Local Pet2Local_S"
+cmd "sym setFrom Pet3Local Pet3Local_S"
+cmd "sym setFrom Flair1Local Flair1Local_S"
+cmd "sym setFrom Flair2Local Flair2Local_S"
+cmd "sym setFrom Flair3Local Flair3Local_S"
+cmd "gameui refreshFilterName Customize"
+cmd "menucmd StorePerAMLoadout"
+}
+Script OnSelectItemDialogClosed {
+cmd "if sym LoadoutSetupAirMech == 1 menucmd OnSelectItemDialogClosed_AMSetup"
+}
+Script OnSelectItemDialogClosed_AMSetup {
+cmd "sym set _CustomObject rooks"
+cmd "customize slotExecClass rooks $RookLocal"
+cmd "loadout storePerAMLoadout"
+cmd "gameui refreshFilterName CustomDrawer Customize"
+}
+Script TryUnlockAirMechLoadoutSlot {
+ignoreInputTime 0.1
+cmd "sym set _AMUnlockSlot_ $_MArg1_"
+cmd "sym set _AMUnlockSlotN_ $_MArg2_"
+cmd "sym sprintf _AMDispRef_ DispAirMech%s $_MArg1_"
+cmd "sym set DialogBoxTitle DialogTitleUnlockAirMechLoadoutSlot"
+cmd "sym set DialogBoxMessage DialogMessageUnlockAirMechLoadoutSlot"
+cmd "sym set DialogMenuCmdOnButton1 TryUnlockAirMechLoadoutSlot_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt /fadein 0.10"
+}
+Script TryUnlockAirMechLoadoutSlot_Go {
+ignoreInputTime 0.3
+cmd "wallet useItem $_AMUnlockSlot_ /slot $_AMUnlockSlotN_"
+}
+Script InitAirMechLoadoutSlotSel {
+cmd "sym setOne ActiveAMSlotFighterA ActiveAMSlotChopper ActiveAMSlotStealth ActiveAMSlotSaucer ActiveAMSlotWarthog"
+cmd "sym setOne ActiveAMSlotFighterNeo ActiveAMSlotPaladin ActiveAMSlotOsprey ActiveAMSlotAngel"
+}
+Script OnGotLoadout {
+#if vr
+cmd "rook setParts PriNone PriNone StrNone StrNone SpeNone SpeNone CorNone EngNone"
+cmd "if sym ArmySlot1Custom0 == NoUnit runnow sym setPair ArmySlot1Custom0 Bike AS1P0 Bike"
+cmd "if sym ArmySlot3Custom0 == NoUnit runnow sym setPair ArmySlot3Custom0 SupplyTruck AS3P0 SupplyTruck"
+cmd "if sym ArmySlot5Custom0 == NoUnit runnow sym setPair ArmySlot5Custom0 TruckFlak AS5P0 TruckFlak"
+cmd "if sym ArmySlot7Custom0 == NoUnit runnow sym setPair ArmySlot7Custom0 TurretArtillery AS7P0 TurretArtillery"
+#endif
+#if arc
+cmd "if sym ArmySlot0Custom0 == Infantry && sym ArmySlot1Custom0 == NoUnit && sym ArmySlot2Custom0 == CarStarter && sym ArmySlot3Custom0 == NoUnit && sym ArmySlot4Custom0 == Tank && sym ArmySlot5Custom0 == NoUnit && sym ArmySlot6Custom0 == TurretStarter && sym ArmySlot7Custom0 == NoUnit runnow menucmd SetupDefaultARCUnits"
+#endif
+}
+#if arc
+Script SetupDefaultARCUnits {
+rcmd "sym setPair ArmySlot0Custom0 InfantryRocket AS0P0 InfantryRocket"
+rcmd "sym setPair ArmySlot1Custom0 InfantrySniper AS1P0 InfantrySniper"
+rcmd "sym setPair ArmySlot2Custom0 CarStarter AS2P0 CarStarter"
+rcmd "sym setPair ArmySlot3Custom0 RocketTruck AS3P0 RocketTruck"
+rcmd "sym setPair ArmySlot4Custom0 Tank AS4P0 Tank"
+rcmd "sym setPair ArmySlot5Custom0 TruckFlak AS5P0 TruckFlak"
+rcmd "sym setPair ArmySlot6Custom0 Engineer AS6P0 Engineer"
+rcmd "sym setPair ArmySlot7Custom0 TurretStarter AS7P0 TurretStarter"
+}
+#endif
+#if vr
+Script ForceToDefaultLoadoutVR {
+cmd "sym setPair ArmySlot0Custom0 Infantry AS0P0 Infantry"
+cmd "sym setPair ArmySlot1Custom0 Bike AS1P0 Bike"
+cmd "sym setPair ArmySlot2Custom0 CarStarter AS2P0 CarStarter"
+cmd "sym setPair ArmySlot3Custom0 SupplyTruck AS3P0 SupplyTruck"
+cmd "sym setPair ArmySlot4Custom0 Tank AS4P0 Tank"
+cmd "sym setPair ArmySlot5Custom0 TruckFlak AS5P0 TruckFlak"
+cmd "sym setPair ArmySlot6Custom0 TurretStarter AS6P0 TurretStarter"
+cmd "sym setPair ArmySlot7Custom0 TurretArtillery AS7P0 TurretArtillery"
+}
+#endif

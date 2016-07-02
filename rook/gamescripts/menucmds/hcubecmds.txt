@@ -1,0 +1,199 @@
+Script HCubeInitialize {
+rcmd "sym setNSet 9 TR_HiddenHCube 1"
+rcmd "collection clearCollectionExclusions hcube"
+rcmd "menucmd HCubeCheckSlots"
+cmd "collection scrollUpdate paged"
+cmd "collection scrollUpdateInv2 paged"
+}
+Script HCubeCheckSlots {
+rcmd "sym set HCubeSlotsEmpty 0"
+rcmd "sym set HCubeSlotsEmptyCheck 1"
+rcmd "if sym TR_HiddenHCube0 == 0 runnow sym set HCubeSlotsEmptyCheck 0"
+rcmd "if sym TR_HiddenHCube1 == 0 runnow sym set HCubeSlotsEmptyCheck 0"
+rcmd "if sym TR_HiddenHCube2 == 0 runnow sym set HCubeSlotsEmptyCheck 0"
+rcmd "if sym TR_HiddenHCube3 == 0 runnow sym set HCubeSlotsEmptyCheck 0"
+rcmd "if sym TR_HiddenHCube4 == 0 runnow sym set HCubeSlotsEmptyCheck 0"
+rcmd "if sym TR_HiddenHCube5 == 0 runnow sym set HCubeSlotsEmptyCheck 0"
+rcmd "if sym TR_HiddenHCube6 == 0 runnow sym set HCubeSlotsEmptyCheck 0"
+rcmd "if sym TR_HiddenHCube7 == 0 runnow sym set HCubeSlotsEmptyCheck 0"
+rcmd "if sym TR_HiddenHCube8 == 0 runnow sym set HCubeSlotsEmptyCheck 0"
+rcmd "sym setFrom HCubeSlotsEmpty HCubeSlotsEmptyCheck"
+}
+Script HcubeReset {
+rcmd "menucmd HCubeCheckSlots"
+cmd "if sym HCubeSlotsEmpty == 0 menucmd HCubeResetReady"
+}
+Script HCubeResetReady {
+ignoreInputTime 0.7
+cmd "sym set HCubeSlotsEmpty 1"
+cmd "sym setNSet 9 TR_HiddenHCube 1"
+cmd "collection updateHCubeCollectionExclusions"
+cmd "playsound UI_ChangeLoadout"
+cmd "gameui disable NanoforgeCircuitsPulse"
+cmd "addUIAnim NanoforgeSlots mas_NanoforgeClear"
+cmd "pcmd 0.2 gmsg NF <Y>Nanoforge</> slots cleared..."
+}
+Script HCubeClose {
+rcmd "sym setNSet 9 TR_HiddenHCube 1"
+rcmd "collection clearCollectionExclusions hcube"
+cmd "collection scrollUpdate paged"
+cmd "collection scrollUpdateInv2 paged"
+}
+Script UseHCube {
+cmd "playsound UICockpitShow.wav"
+rcmd "sym set HCubeSlotsEmpty 0"
+cmd "if sym GL_ChatHidden == 1 addUIAnim MessageChatContainer mas_ChatShow"
+cmd "sym setZero HCubeFrameHidden"
+cmd "menucmd HCubeInitialize"
+cmd "clearmenu InspectDialog.txt"
+cmd "loadmenu Nanoforge /fadeIn 0.3"
+cmd "sym set HCubeInUse HCube"
+}
+Script AddItemToHCube {
+rcmd "collection copySettings $_MArg2_ #HCube@_MArg1_@"
+rcmd "sym clear #TR_DragSourceHCube@_MArg1_@"
+rcmd "sym set #TR_CountHCube@_MArg1_@ 0"
+rcmd "sym set #TR_InfCountHCube@_MArg1_@ 1"
+rcmd "sym set #TR_VipTicketHCube@_MArg1_@ 0"
+rcmd "pcmd 0.1 sym set #TR_HiddenHCube@_MArg1_@ 0"
+rcmd "pcmd 0.1 collection updateHCubeCollectionExclusions"
+rcmd "pcmd 0.1 menucmd HCubeCheckSlots"
+cmd "pcmd 0.1 if sym HCubeSlotsEmpty == 0 gameui enable NanoforgeCircuitsPulse"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "pcmd 0.1 gameui enableAll #HCubeItem@_MArg1_@"
+cmd "pcmd 0.1 addUIAnim #HCubeItem@_MArg1_@ mas_NanoforgeItemPlace"
+cmd "pcmd 0.1 playsound UICockpitFocus.wav"
+}
+Script RemoveItemFromHCube {
+rcmd "pcmd 0.1 sym set #TR_HiddenHCube@_MArg1_@ 1"
+rcmd "pcmd 0.1 sym clear #TR_IconLgHCube@_MArg1_@"
+rcmd "pcmd 0.1 sym clear #TR_IconLgAHCube@_MArg1_@"
+rcmd "pcmd 0.1 collection updateHCubeCollectionExclusions"
+rcmd "pcmd 0.1 menucmd HCubeCheckSlots"
+cmd "pcmd 0.1 if sym HCubeSlotsEmpty == 1 gameui disable NanoforgeCircuitsPulse"
+cmd "pcmd 0.1 gameui refreshFilterName CollectionUI InvV2UI"
+cmd "addUIAnim #HCubeItem@_MArg1_@ mas_NanoforgeItemRemove"
+}
+Script ExecNanoforgeRecipe {
+ignoreInputTime 0.3
+cmd "menucmd UseHCube"
+cmd "playsound UI_UseRecipe"
+}
+Script RecipePopulateHCube {
+rcmd "collection initSettings $_MArg2_ #HCube@_MArg1_@"
+rcmd "sym clear #TR_DragSourceHCube@_MArg1_@"
+rcmd "sym set #TR_CountHCube@_MArg1_@ 0"
+rcmd "sym set #TR_InfCountHCube@_MArg1_@ 1"
+rcmd "sym set #TR_VipTicketHCube@_MArg1_@ 0"
+rcmd "pcmd 0.1 sym set #TR_HiddenHCube@_MArg1_@ 0"
+rcmd "pcmd 0.1 collection updateHCubeCollectionExclusions"
+rcmd "pcmd 0.1 menucmd HCubeCheckSlots"
+cmd "pcmd 0.1 if sym HCubeSlotsEmpty == 0 gameui enable NanoforgeCircuitsPulse"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "pcmd 0.1 gameui enableAll #HCubeItem@_MArg1_@"
+}
+Script NotifyNoForgeOnRecipe {
+cmd "sym setl DialogBoxTitle DialogTitleNanoforgeError"
+cmd "sym setl DialogBoxMessage DialogMessageNanoforgeNotOwned"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script NotifyNoIngredientsOnRecipe {
+cmd "sym setl DialogBoxTitle DialogTitleNanoforgeError"
+cmd "sym setl DialogBoxMessage DialogMessageNanoforgeNoIngredients"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script AddItemToHCubeFailNoForge {
+cmd "sym setl DialogBoxTitle DialogTitleNanoforgeError"
+cmd "sym setl DialogBoxMessage DialogMessageNanoforgeNoForge"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script AddItemToHCubeFailBadAlt {
+cmd "sym setl DialogBoxTitle DialogTitleNanoforgeError"
+cmd "sym setl DialogBoxMessage DialogMessageNanoforgeBadAlt"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script SrvHCubeConsume {
+rcmd "customize contentLookupEx $_MArg1_ _ForgeConlink_"
+rcmd "if sym _MArg2_ == _Scrapyard_ runnow gmsg L Scrapyard consumed: $_ForgeConlink_"
+rcmd "if sym _MArg2_ != _Scrapyard_ runnow gmsg NF Nanoforge consumed: $_ForgeConlink_"
+}
+Script SrvHCubeHideAll {
+rcmd "sym setNSet 9 TR_HiddenHCube 1"
+}
+Script SrvHCubeRetain {
+rcmd "collection initSettings $_MArg2_ #HCube@_MArg1_@"
+rcmd "sym clear #TR_DragSourceHCube@_MArg1_@"
+rcmd "sym set #TR_CountHCube@_MArg1_@ 0"
+rcmd "sym set #TR_InfCountHCube@_MArg1_@ 1"
+rcmd "sym set #TR_VipTicketHCube@_MArg1_@ 0"
+rcmd "sym set #TR_HiddenHCube@_MArg1_@ 0"
+rcmd "customize contentLookupEx $_MArg2_ _ForgeReslink_"
+}
+Script SrvHCubeRes {
+rcmd "collection initSettings $_MArg2_ #HCube@_MArg1_@"
+rcmd "sym clear #TR_DragSourceHCube@_MArg1_@"
+rcmd "sym set #TR_CountHCube@_MArg1_@ 0"
+rcmd "sym set #TR_InfCountHCube@_MArg1_@ 1"
+rcmd "sym set #TR_VipTicketHCube@_MArg1_@ 0"
+rcmd "sym set #TR_HiddenHCube@_MArg1_@ 0"
+rcmd "customize contentLookupEx $_MArg2_ _ForgeReslink_"
+rcmd "gmsg NF Nanoforge produced: $_ForgeReslink_"
+}
+Script HCubeRecipeGo {
+ignoreInputTime 1.8
+rcmd "addUIAnim NanoforgeScan mas_NanoforgeScan"
+rcmd "addUIAnim NanoforgeScan2 mas_NanoforgeScan2"
+rcmd "timer setAsyncWait 1
+cmd "pcmd 0.5 wallet useHCube"
+cmd "pcmd 1.0 timer clearAsyncWait"
+}
+Script HCubeRecipeTest {
+ignoreInputTime 1.8
+rcmd "addUIAnim NanoforgeScan mas_NanoforgeScan"
+rcmd "addUIAnim NanoforgeScan2 mas_NanoforgeScan2"
+rcmd "timer setAsyncWait 1
+cmd "pcmd 0.5 wallet useHCube test"
+cmd "pcmd 1.0 timer clearAsyncWait"
+}
+Script HCubeRecipeSuccess {
+rcmd "gameui enable NanoforgeCircuitsSuccess"
+rcmd "pcmd 0.4 gameui disable NanoforgeCircuitsSuccess"
+cmd "pcmd t3 collection updateHCubeCollectionExclusions"
+cmd "pcmd t4 gameui refreshFilterName CollectionUI InvV2UI"
+cmd "gmsg NF <Gd>Nanoforging complete.<>"
+}
+Script HCubeRecipeFail {
+rcmd "playsound UIBadSelection.wav"
+rcmd "gameui enable NanoforgeCircuitsFailed"
+rcmd "pcmd 0.4 gameui disable NanoforgeCircuitsFailed"
+}
+Script HCubeRecipeValid {
+cmd "playsound UI_RedeemQuestSuccess"
+rcmd "gameui enable NanoforgeCircuitsSuccess"
+rcmd "pcmd 0.4 gameui disable NanoforgeCircuitsSuccess"
+}
+Script HCubeRecipeInvalid {
+cmd "playsound UIBadSelection.wav"
+rcmd "gameui enable NanoforgeCircuitsFailed"
+rcmd "pcmd 0.4 gameui disable NanoforgeCircuitsFailed"
+}
+Script ScrapyardRecipeSuccess {
+cmd "playsound UI_ItemPurchaseComplete"
+cmd "pcmd t3 collection updateHCubeCollectionExclusions"
+cmd "pcmd t4 gameui refreshFilterName CollectionUI InvV2UI"
+cmd "gmsg L <Gd>Scrapping complete.</>"
+}
+Script ScrapyardRecipeFail {
+cmd "playsound UI_RedeemQuestFail"
+cmd "gmsg L Scrapping error. <R>Terminated</>"
+}
+Script ScrapyardRecipeValid {
+cmd "echo scrapyard recipe test success"
+}
+Script ScrapyardRecipeInvalid {
+cmd "echo scrapyard recipe test fail"
+}

@@ -1,0 +1,156 @@
+group	Default	  					0
+group	World						1
+group	Debris						2
+group	DebrisM						3
+group	DynamicWorldObject			4
+group	Background					5
+group	0TU							6
+group	0TUNC						7
+group	0TP							8
+group	0AM							9
+group	0GM							10
+group	1TU							11
+group	1TUNC						12
+group	1TP							13
+group	1AM							14
+group	1GM							15
+group	2TU							16
+group	2TUNC						17
+group	2TP							18
+group	ObjectSupportGroupCol		19
+group	FlyingHeightHint			20
+group	RobotMoveBlock				21
+group	Terrain						22
+group	Triggers					23
+group	ObjectSupportGroup			24
+group	OffLimitGroup				25
+group	RookBlockGroup				26
+group	Particles					27
+group	OSG_NI						28
+group	OSGC_NI						29
+group	FireTgtOnly					30
+group	TriggersMine				31
+group	ObjectSupportGroupColAir	32
+groupAlias	Particles				NoCollision
+groupAlias	2TU						3TU
+groupAlias	2TUNC					3TUNC
+groupAlias	2TP						3TP
+groupAlias  Background				TreeCol
+groupDbgColor 	ObjectSupportGroupCol		1.0 0.6 0.6 1.0
+dontCollide		0TUNC			1TUNC 2TUNC
+dontCollide		1TUNC 			2TUNC
+dontCollide		0GM 			0TUNC 1TUNC 2TUNC
+dontCollide		1GM 			0TUNC 1TUNC 2TUNC
+dontCollide		0GM						0TU
+dontCollide		1GM						1TU
+dontCollide		0TP				0TU 0TUNC
+dontCollide		1TP				1TU	1TUNC
+dontCollide		2TP				2TU 2TUNC
+dontCollide		0TP				0AM, 0GM
+dontCollide		1TP				1AM, 1GM
+dontCollide		OSG_NI			0TP, 1TP, 2TP
+dontCollide		OSGC_NI			0TP, 1TP, 2TP
+dontCollide		0AM				1AM
+dontCollide		0AM				0GM, 1GM
+dontCollide		1AM				0GM, 1GM
+dontCollide		0GM				0GM, 1GM
+dontCollide		1GM				0GM, 1GM
+dontCollide		0TUNC			0TU
+dontCollide		1TUNC			1TU
+dontCollide		2TUNC			2TU
+dontCollide		0TP				0TP, 1TP, 2TP
+dontCollide		1TP				1TP, 2TP
+dontCollide		2TP				2TP
+dontCollide		Debris			0TP, 1TP, 2TP
+dontCollide		DebrisM			0TP, 1TP, 2TP
+dontCollide		Triggers		0TP, 1TP, 2TP
+dontCollide		Triggers		ObjectSupportGroupCol, ObjectSupportGroupColAir, Terrain, Debris
+dontCollide		Triggers		DebrisM, DynamicWorldObject, Background
+dontCollide		Triggers		World, Particles, FlyingHeightHint
+dontCollide		Triggers		ObjectSupportGroup, OffLimitGroup, OSG_NI
+dontCollide		Triggers		OSGC_NI, FireTgtOnly
+dontCollide		TriggersMine	0TP, 1TP, 2TP
+dontCollide		TriggersMine	ObjectSupportGroupCol, ObjectSupportGroupColAir, Terrain, Debris
+dontCollide		TriggersMine	DebrisM, DynamicWorldObject, Background
+dontCollide		TriggersMine	World, Particles, FlyingHeightHint
+dontCollide		TriggersMine	ObjectSupportGroup, OffLimitGroup, OSG_NI
+dontCollide		TriggersMine	OSGC_NI, FireTgtOnly
+dontCollide		TriggersMine	0AM 1AM
+dontCollide		Background		World
+dontCollide		Background		0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		0TP				Background
+dontCollide		1TP				Background
+dontCollide		2TP				Background
+dontCollide		0AM				Background
+dontCollide		1AM				Background
+dontCollide		0GM				Background
+dontCollide		1GM				Background
+dontCollide		Terrain			World
+dontCollide		Terrain			0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		0TP				Terrain
+dontCollide		1TP				Terrain
+dontCollide		2TP				Terrain
+dontCollide		0AM				Terrain
+dontCollide		1AM				Terrain
+dontCollide		0GM				Terrain
+dontCollide		1GM				Terrain
+dontCollide		OffLimitGroup	World
+dontCollide		OffLimitGroup	0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		0TP				OffLimitGroup
+dontCollide		1TP				OffLimitGroup
+dontCollide		2TP				OffLimitGroup
+dontCollide		0AM				OffLimitGroup
+dontCollide		1AM				OffLimitGroup
+dontCollide		0GM				OffLimitGroup
+dontCollide		1GM				OffLimitGroup
+dontCollide		ObjectSupportGroup			World
+dontCollide		ObjectSupportGroup			0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		ObjectSupportGroupCol		0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		ObjectSupportGroupColAir	0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		OSG_NI						0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		OSGC_NI						0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		ObjectSupportGroup		0AM, 1AM, 0GM, 1GM
+dontCollide		OSG_NI					0AM, 1AM, 0GM, 1GM
+dontCollide		World					ObjectSupportGroup, ObjectSupportGroupCol, ObjectSupportGroupColAir, OSG_NI, OSGC_NI, RobotMoveBlock, FlyingHeightHint, OffLimitGroup
+dontCollide		Particles			Particles, Background
+dontCollide		Particles			0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		0TP					Particles
+dontCollide		1TP					Particles
+dontCollide		2TP					Particles
+dontCollide		OffLimitGroup		Particles
+dontCollide		RookBlockGroup		Particles
+dontCollide		FireTgtOnly			Particles
+dontCollide		RobotMoveBlock		Particles
+dontCollide		0AM					Particles
+dontCollide		1AM					Particles
+dontCollide		0GM					Particles
+dontCollide		1GM					Particles
+dontCollide		FlyingHeightHint		Particles, Background, 0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		FlyingHeightHint		0TP, 1TP, 2TP, 0AM, 1AM
+dontCollide		FlyingHeightHint		0GM, 1GM, Triggers
+dontCollide		Debris					Particles, Background, OffLimitGroup, RookBlockGroup, FireTgtOnly, RobotMoveBlock, FlyingHeightHint, Debris, DebrisM, Triggers
+dontCollide		DebrisM					Particles, Background, OffLimitGroup, RookBlockGroup, FireTgtOnly, RobotMoveBlock, FlyingHeightHint, Debris, DebrisM, Triggers
+dontCollide		World			RookBlockGroup, RobotMoveBlock, FireTgtOnly
+dontCollide		0TP				RobotMoveBlock
+dontCollide		1TP				RobotMoveBlock
+dontCollide		2TP				RobotMoveBlock
+dontCollide		RookBlockGroup	0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		FireTgtOnly		0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC
+dontCollide		0AM				RobotMoveBlock
+dontCollide		1AM				RobotMoveBlock
+dontCollide		0AM						0AM, 0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC, ObjectSupportGroup, ObjectSupportGroupCol, OSG_NI, OSGC_NI, World
+dontCollide		1AM						1AM, 0TU, 1TU, 2TU, 0TUNC, 1TUNC, 2TUNC, ObjectSupportGroup, ObjectSupportGroupCol, OSG_NI, OSGC_NI, World
+dontCollide		Debris					0GM, 1GM, 0AM, 1AM
+dontCollide		DebrisM					0GM, 1GM, 0AM, 1AM
+dontCollide		DebrisM					0TU, 0TUNC, 1TU, 1TUNC, 2TU, 2TUNC
+groupMask	rookSupportSeg			ObjectSupportGroup OSG_NI OSGC_NI ObjectSupportGroupCol ObjectSupportGroupColAir
+groupMask	glidingRookSupportSeg	ObjectSupportGroup OSG_NI OSGC_NI ObjectSupportGroupCol ObjectSupportGroupColAir FlyingHeightHint
+groupMask	supportSeg				ObjectSupportGroup OSG_NI OSGC_NI World
+groupMask	archtypeSeg				ObjectSupportGroup OSG_NI OSGC_NI ObjectSupportGroupCol ObjectSupportGroupColAir FlyingHeightHint World
+groupMask	LOSSeg					World	ObjectSupportGroup ObjectSupportGroupCol ObjectSupportGroupColAir FireTgtOnly
+groupMask	LOSSeg_Sub				OSG_NI OSGC_NI
+groupMask	editorSeg				World   Terrain ObjectSupportGroup OSG_NI OSGC_NI ObjectSupportGroupCol ObjectSupportGroupColAir
+groupMask	decalSeg				Terrain ObjectSupportGroup OSG_NI OSGC_NI
+groupMask	sampleMapSeg			World   Terrain ObjectSupportGroup OSG_NI OSGC_NI ObjectSupportGroupCol ObjectSupportGroupColAir FlyingHeightHint
+groupMask   sampleTerrainSeg        World Terrain ObjectSupportGroup ObjectSupportGroupCol ObjectSupportGroupColAir
+groupMask	MouseCheckSeg			World   Terrain ObjectSupportGroup OSG_NI OSGC_NI ObjectSupportGroupCol ObjectSupportGroupColAir 0TU 1TU 2TU 0TUNC 1TUNC 2TUNC 0AM 1AM 0GM 1GM

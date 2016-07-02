@@ -1,0 +1,14 @@
+Script BuildUnitSetup {
+cmd "log MenuCmd: BuildUnitSetup"
+cmd "gameUI enable #@ArmySlotLastSelection@Pic"
+cmd "gameUI enableAll #@OrderSlotLastSelection@Pic"
+cmd "gameUI focusName $ArmySlotLastSelection"
+cmd "gameUI set bungieMaster $ArmySlotLastSelection UnitsBoxBungie"
+}
+Script UpgradeAirMechSetup {
+cmd "log MenuCmd: UpgradeAirMechSetup"
+cmd "if consolePlatform input set mousePos 0 10"
+cmd "gameUI show UpgradeBox"
+cmd "gameUI focusName UpgradeSlot0"
+cmd "gameUI set bungieMaster UpgradeSlot0 UpgradeBoxBungie"
+}

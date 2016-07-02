@@ -1,0 +1,2004 @@
+// map: MainMenu.lvl
+
+// level embedded console commands 
+CONSOLE_IMMEDIATE rook setGameMode mainmenu
+CONSOLE camera to main 0.5
+CONSOLE rookMenus setUnitProp 0 $ArmySlot0Custom0
+CONSOLE rookMenus setUnitProp 1 $ArmySlot1Custom0
+CONSOLE rookMenus setUnitProp 2 $ArmySlot2Custom0
+CONSOLE rookMenus setUnitProp 3 $ArmySlot3Custom0
+CONSOLE rookMenus setUnitProp 4 $ArmySlot4Custom0
+CONSOLE rookMenus setUnitProp 5 $ArmySlot5Custom0
+CONSOLE rookMenus setUnitProp 6 $ArmySlot6Custom0
+CONSOLE rookMenus setUnitProp 7 $ArmySlot7Custom0
+CONSOLE rookMenus setAirMechProp $RookLocal
+CONSOLE gfx lerp interlace $current 0 0.5
+CONSOLE gfx lerp rgbdisplacement $current 0 0.5
+CONSOLE player 0 do transform /forcedReq  // force to ground on map start
+CONSOLE sym set TATransform 0
+CONSOLE player 1 toggleai
+CONSOLE player 1 activate 0 // turns off forcebox
+CONSOLE_IMMEDIATE sym set SaveUnitSlot $ArmySlot0Custom0
+CONSOLE_IMMEDIATE sym set ArmySlot0Custom0 Infantry
+CONSOLE_IMMEDIATE sym set AS0P0 Infantry
+CONSOLE gfx reloadMasterMaterial master_Tutorial
+CONSOLE_EXIT sym set ArmySlot0Custom0 $SaveUnitSlot
+CONSOLE_EXIT sym set AS0P0 $SaveUnitSlot
+CONSOLE_EXIT gameMsg clearTr
+
+mapInfo {
+	MAPNAME Loadout
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION Loadout
+	SKYBOX mat_SkyBigBlue
+	GAMEMODE default
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT 0
+	FORCEBOX -127 127 -25 32 4 0.0
+	MAPEXTMIN -144 -144 0
+	MAPEXTMAX 144 144 0
+	CAMERAEXTMIN -112 -35
+	CAMERAEXTMAX 112 2
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Canyon
+	TerrainArrayX 10
+	TerrainArrayY 10
+	TerrainStepZ 3.0
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -6
+  TRANSFORMPLANE -10
+}
+
+CANVASCOLOR 0 0 0 0
+fogValues {
+  FOGCOLOR 217 171 83 255
+  FOGARGS 14 18
+  DFOGCOLOR 201.210938 211.171875 239.0625 255
+  DFOGARGS 90 150
+}
+
+airmech {
+	P_START 0 -112 0 3
+	P_START 1 112 0 3
+	P_START 2 -114 0 3
+	P_START 3 114 0 3
+	P_START 4 -112 2 3
+	P_START 5 112 2 3
+}
+DIR_LIGHT {
+	dir 0.416209 0.424957 0.803854
+	diff 0.4 0.4 0.4
+	amb 0.9 0.9 0.85
+}
+objects {
+	WO Danger_A0 {
+		pos 80 80 0
+	}
+	WO Danger_A0 {
+		pos 80 72 0
+	}
+	WO Danger_A0 {
+		pos 80 64 0
+	}
+	WO Danger_A0 {
+		pos 80 56 0
+	}
+	WO Danger_A0 {
+		pos 80 48 0
+	}
+	WO Danger_A0 {
+		pos 80 40 0
+	}
+	WO Danger_A0 {
+		pos 80 32 0
+	}
+	WO Danger_A0 {
+		pos 80 24 0
+	}
+	WO Danger_A0 {
+		pos 80 16 0
+	}
+	WO Danger_A0 {
+		pos 80 8 0
+	}
+	WO Danger_A0 {
+		pos 80 0 0
+	}
+	WO Danger_A0 {
+		pos 80 -8 0
+	}
+	WO Danger_A0 {
+		pos 80 -16 0
+	}
+	WO Danger_A0 {
+		pos 80 -24 0
+	}
+	WO Danger_A0 {
+		pos 80 -32 0
+	}
+	WO Danger_A0 {
+		pos 80 -40 0
+	}
+	WO Danger_A0 {
+		pos 80 -48 0
+	}
+	WO Danger_A0 {
+		pos 80 -56 0
+	}
+	WO Danger_A0 {
+		pos 80 -64 0
+	}
+	WO Danger_A0 {
+		pos 80 -72 0
+	}
+	WO Danger_A0 {
+		pos 80 -80 0
+	}
+	WO Danger_A0 {
+		pos 72 80 0
+	}
+	WO Danger_A0 {
+		pos 72 72 0
+	}
+	WO Danger_A0 {
+		pos 72 64 0
+	}
+	WO Danger_A0 {
+		pos 72 56 0
+	}
+	WO Danger_A0 {
+		pos 72 48 0
+	}
+	WO Danger_A0 {
+		pos 72 40 0
+	}
+	WO Danger_A0 {
+		pos 72 32 0
+	}
+	WO Danger_A0 {
+		pos 72 24 0
+	}
+	WO Danger_A0 {
+		pos 72 16 0
+	}
+	WO Danger_A0 {
+		pos 72 8 0
+	}
+	WO Danger_A0 {
+		pos 72 0 0
+	}
+	WO Danger_A0 {
+		pos 72 -8 0
+	}
+	WO Danger_A0 {
+		pos 72 -16 0
+	}
+	WO Danger_A0 {
+		pos 72 -24 0
+	}
+	WO Danger_A0 {
+		pos 72 -32 0
+	}
+	WO Danger_A0 {
+		pos 72 -40 0
+	}
+	WO Danger_A0 {
+		pos 72 -48 0
+	}
+	WO Danger_A0 {
+		pos 72 -56 0
+	}
+	WO Danger_A0 {
+		pos 72 -64 0
+	}
+	WO Danger_A0 {
+		pos 72 -72 0
+	}
+	WO Danger_A0 {
+		pos 72 -80 0
+	}
+	WO Danger_A0 {
+		pos 64 80 0
+	}
+	WO Danger_A0 {
+		pos 64 72 0
+	}
+	WO Danger_A0 {
+		pos 64 64 0
+	}
+	WO Danger_A0 {
+		pos 64 56 0
+	}
+	WO Danger_A0 {
+		pos 64 48 0
+	}
+	WO Danger_A0 {
+		pos 64 40 0
+	}
+	WO Danger_A0 {
+		pos 64 32 0
+	}
+	WO Danger_A0 {
+		pos 64 24 0
+	}
+	WO Danger_A0 {
+		pos 64 16 0
+	}
+	WO Danger_A0 {
+		pos 64 8 0
+	}
+	WO Danger_A0 {
+		pos 64 0 0
+	}
+	WO Danger_A0 {
+		pos 64 -8 0
+	}
+	WO Danger_A0 {
+		pos 64 -16 0
+	}
+	WO Danger_A0 {
+		pos 64 -24 0
+	}
+	WO Danger_A0 {
+		pos 64 -32 0
+	}
+	WO Danger_A0 {
+		pos 64 -40 0
+	}
+	WO Danger_A0 {
+		pos 64 -48 0
+	}
+	WO Danger_A0 {
+		pos 64 -56 0
+	}
+	WO Danger_A0 {
+		pos 64 -64 0
+	}
+	WO Danger_A0 {
+		pos 64 -72 0
+	}
+	WO Danger_A0 {
+		pos 64 -80 0
+	}
+	WO Danger_A0 {
+		pos 56 80 0
+	}
+	WO Danger_A0 {
+		pos 56 72 0
+	}
+	WO Danger_A0 {
+		pos 56 64 0
+	}
+	WO Danger_A0 {
+		pos 56 56 0
+	}
+	WO Danger_A0 {
+		pos 56 48 0
+	}
+	WO Danger_A0 {
+		pos 56 40 0
+	}
+	WO Danger_A0 {
+		pos 56 32 0
+	}
+	WO Danger_A0 {
+		pos 56 24 0
+	}
+	WO Danger_A0 {
+		pos 56 16 0
+	}
+	WO Danger_A0 {
+		pos 56 8 0
+	}
+	WO Danger_A0 {
+		pos 56 0 0
+	}
+	WO Danger_A0 {
+		pos 56 -8 0
+	}
+	WO Danger_A0 {
+		pos 56 -16 0
+	}
+	WO Danger_A0 {
+		pos 56 -24 0
+	}
+	WO Danger_A0 {
+		pos 56 -32 0
+	}
+	WO Danger_A0 {
+		pos 56 -40 0
+	}
+	WO Danger_A0 {
+		pos 56 -48 0
+	}
+	WO Danger_A0 {
+		pos 56 -56 0
+	}
+	WO Danger_A0 {
+		pos 56 -64 0
+	}
+	WO Danger_A0 {
+		pos 56 -72 0
+	}
+	WO Danger_A0 {
+		pos 56 -80 0
+	}
+	WO Danger_A0 {
+		pos 48 80 0
+	}
+	WO Danger_A0 {
+		pos 48 72 0
+	}
+	WO Danger_A0 {
+		pos 48 64 0
+	}
+	WO Danger_A0 {
+		pos 48 56 0
+	}
+	WO Danger_A0 {
+		pos 48 48 0
+	}
+	WO Danger_A0 {
+		pos 48 40 0
+	}
+	WO Danger_A0 {
+		pos 48 32 0
+	}
+	WO Danger_A0 {
+		pos 48 24 0
+	}
+	WO Danger_A0 {
+		pos 48 16 0
+	}
+	WO Danger_A0 {
+		pos 48 8 0
+	}
+	WO Danger_A0 {
+		pos 48 0 0
+	}
+	WO Danger_A0 {
+		pos 48 -8 0
+	}
+	WO Danger_A0 {
+		pos 48 -16 0
+	}
+	WO Danger_A0 {
+		pos 48 -24 0
+	}
+	WO Danger_A0 {
+		pos 48 -32 0
+	}
+	WO Danger_A0 {
+		pos 48 -40 0
+	}
+	WO Danger_A0 {
+		pos 48 -48 0
+	}
+	WO Danger_A0 {
+		pos 48 -56 0
+	}
+	WO Danger_A0 {
+		pos 48 -64 0
+	}
+	WO Danger_A0 {
+		pos 48 -72 0
+	}
+	WO Danger_A0 {
+		pos 48 -80 0
+	}
+	WO Danger_A0 {
+		pos 40 80 0
+	}
+	WO Danger_A0 {
+		pos 40 72 0
+	}
+	WO Danger_A0 {
+		pos 40 64 0
+	}
+	WO Danger_A0 {
+		pos 40 56 0
+	}
+	WO Danger_A0 {
+		pos 40 48 0
+	}
+	WO Danger_A0 {
+		pos 40 40 0
+	}
+	WO Danger_A0 {
+		pos 40 32 0
+	}
+	WO Danger_A0 {
+		pos 40 24 0
+	}
+	WO Danger_A0 {
+		pos 40 16 0
+	}
+	WO Danger_A0 {
+		pos 40 8 0
+	}
+	WO Danger_A0 {
+		pos 40 0 0
+	}
+	WO Danger_A0 {
+		pos 40 -8 0
+	}
+	WO Danger_A0 {
+		pos 40 -16 0
+	}
+	WO Danger_A0 {
+		pos 40 -24 0
+	}
+	WO Danger_A0 {
+		pos 40 -32 0
+	}
+	WO Danger_A0 {
+		pos 40 -40 0
+	}
+	WO Danger_A0 {
+		pos 40 -48 0
+	}
+	WO Danger_A0 {
+		pos 40 -56 0
+	}
+	WO Danger_A0 {
+		pos 40 -64 0
+	}
+	WO Danger_A0 {
+		pos 40 -72 0
+	}
+	WO Danger_A0 {
+		pos 40 -80 0
+	}
+	WO Danger_A0 {
+		pos 32 80 0
+	}
+	WO Danger_A0 {
+		pos 32 72 0
+	}
+	WO Danger_A0 {
+		pos 32 64 0
+	}
+	WO Danger_A0 {
+		pos 32 56 0
+	}
+	WO Danger_A0 {
+		pos 32 48 0
+	}
+	WO Danger_A0 {
+		pos 32 40 0
+	}
+	WO Danger_A0 {
+		pos 32 32 0
+	}
+	WO Danger_A0 {
+		pos 32 24 0
+	}
+	WO Danger_A0 {
+		pos 32 16 0
+	}
+	WO Danger_A0 {
+		pos 32 8 0
+	}
+	WO Danger_A0 {
+		pos 32 0 0
+	}
+	WO Danger_A0 {
+		pos 32 -8 0
+	}
+	WO Danger_A0 {
+		pos 32 -16 0
+	}
+	WO Danger_A0 {
+		pos 32 -24 0
+	}
+	WO Danger_A0 {
+		pos 32 -32 0
+	}
+	WO Danger_A0 {
+		pos 32 -40 0
+	}
+	WO Danger_A0 {
+		pos 32 -48 0
+	}
+	WO Danger_A0 {
+		pos 32 -56 0
+	}
+	WO Danger_A0 {
+		pos 32 -64 0
+	}
+	WO Danger_A0 {
+		pos 32 -72 0
+	}
+	WO Danger_A0 {
+		pos 32 -80 0
+	}
+	WO Danger_A0 {
+		pos 24 80 0
+	}
+	WO Danger_A0 {
+		pos 24 72 0
+	}
+	WO Danger_A0 {
+		pos 24 64 0
+	}
+	WO Danger_A0 {
+		pos 24 56 0
+	}
+	WO Danger_A0 {
+		pos 24 48 0
+	}
+	WO Danger_A0 {
+		pos 24 40 0
+	}
+	WO Danger_A0 {
+		pos 24 32 0
+	}
+	WO Danger_A0 {
+		pos 24 24 0
+	}
+	WO Danger_A0 {
+		pos 24 16 0
+	}
+	WO Danger_A0 {
+		pos 24 8 0
+	}
+	WO Danger_A0 {
+		pos 24 0 0
+	}
+	WO Danger_A0 {
+		pos 24 -8 0
+	}
+	WO Danger_A0 {
+		pos 24 -16 0
+	}
+	WO Danger_A0 {
+		pos 24 -24 0
+	}
+	WO Danger_A0 {
+		pos 24 -32 0
+	}
+	WO Danger_A0 {
+		pos 24 -40 0
+	}
+	WO Danger_A0 {
+		pos 24 -48 0
+	}
+	WO Danger_A0 {
+		pos 24 -56 0
+	}
+	WO Danger_A0 {
+		pos 24 -64 0
+	}
+	WO Danger_A0 {
+		pos 24 -72 0
+	}
+	WO Danger_A0 {
+		pos 24 -80 0
+	}
+	WO Danger_A0 {
+		pos 16 80 0
+	}
+	WO Danger_A0 {
+		pos 16 72 0
+	}
+	WO Danger_A0 {
+		pos 16 64 0
+	}
+	WO Danger_A0 {
+		pos 16 56 0
+	}
+	WO Danger_A0 {
+		pos 16 48 0
+	}
+	WO Danger_A0 {
+		pos 16 40 0
+	}
+	WO Danger_A0 {
+		pos 16 32 0
+	}
+	WO Danger_A0 {
+		pos 0 24 0
+	}
+	WO Danger_A0 {
+		pos 0 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Danger_A0 {
+		pos -16 24 0
+	}
+	WO Danger_A0 {
+		pos -24 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Danger_A0 {
+		pos -16 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Danger_A0 {
+		pos -16 8 0
+	}
+	WO Danger_A0 {
+		pos 16 -24 0
+	}
+	WO Danger_A0 {
+		pos 16 -32 0
+	}
+	WO Danger_A0 {
+		pos 16 -40 0
+	}
+	WO Danger_A0 {
+		pos 16 -48 0
+	}
+	WO Danger_A0 {
+		pos 16 -56 0
+	}
+	WO Danger_A0 {
+		pos 16 -64 0
+	}
+	WO Danger_A0 {
+		pos 16 -72 0
+	}
+	WO Danger_A0 {
+		pos 16 -80 0
+	}
+	WO Danger_A0 {
+		pos 8 80 0
+	}
+	WO Danger_A0 {
+		pos 8 72 0
+	}
+	WO Danger_A0 {
+		pos 8 64 0
+	}
+	WO Danger_A0 {
+		pos 8 56 0
+	}
+	WO Danger_A0 {
+		pos 8 48 0
+	}
+	WO Danger_A0 {
+		pos 8 40 0
+	}
+	WO Danger_A0 {
+		pos 8 32 0
+	}
+	WO Danger_A0 {
+		pos -8 24 0
+	}
+	WO Danger_A0 {
+		pos -8 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Danger_A0 {
+		pos -24 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Danger_A0 {
+		pos -24 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Danger_A0 {
+		pos -24 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Danger_A0 {
+		pos -16 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Danger_A0 {
+		pos 8 -24 0
+	}
+	WO Danger_A0 {
+		pos 8 -32 0
+	}
+	WO Danger_A0 {
+		pos 8 -40 0
+	}
+	WO Danger_A0 {
+		pos 8 -48 0
+	}
+	WO Danger_A0 {
+		pos 8 -56 0
+	}
+	WO Danger_A0 {
+		pos 8 -64 0
+	}
+	WO Danger_A0 {
+		pos 8 -72 0
+	}
+	WO Danger_A0 {
+		pos 8 -80 0
+	}
+	WO Danger_A0 {
+		pos 0 80 0
+	}
+	WO Danger_A0 {
+		pos 0 72 0
+	}
+	WO Danger_A0 {
+		pos 0 64 0
+	}
+	WO Danger_A0 {
+		pos 0 56 0
+	}
+	WO Danger_A0 {
+		pos 0 48 0
+	}
+	WO Danger_A0 {
+		pos 0 40 0
+	}
+	WO Danger_A0 {
+		pos 0 32 0
+	}
+	WO Danger_A0 {
+		pos 16 24 0
+	}
+	WO Danger_A0 {
+		pos 16 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Danger_A0 {
+		pos 0 8 0
+	}
+	WO Danger_A0 {
+		pos 0 0 0
+	}
+	WO Danger_A0 {
+		pos -24 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Danger_A0 {
+		pos -16 -8 0
+	}
+	WO Danger_A0 {
+		pos 0 -24 0
+	}
+	WO Danger_A0 {
+		pos 0 -32 0
+	}
+	WO Danger_A0 {
+		pos 0 -40 0
+	}
+	WO Danger_A0 {
+		pos 0 -48 0
+	}
+	WO Danger_A0 {
+		pos 0 -56 0
+	}
+	WO Danger_A0 {
+		pos 0 -64 0
+	}
+	WO Danger_A0 {
+		pos 0 -72 0
+	}
+	WO Danger_A0 {
+		pos 0 -80 0
+	}
+	WO Danger_A0 {
+		pos -8 80 0
+	}
+	WO Danger_A0 {
+		pos -8 72 0
+	}
+	WO Danger_A0 {
+		pos -8 64 0
+	}
+	WO Danger_A0 {
+		pos -8 56 0
+	}
+	WO Danger_A0 {
+		pos -8 48 0
+	}
+	WO Danger_A0 {
+		pos -8 40 0
+	}
+	WO Danger_A0 {
+		pos -8 32 0
+	}
+	WO Danger_A0 {
+		pos 8 24 0
+	}
+	WO Danger_A0 {
+		pos 8 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Danger_A0 {
+		pos -8 8 0
+	}
+	WO Danger_Lift {
+		pos 8 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		label left
+	}
+	WO Danger_Lift {
+		pos -8 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		label right
+	}
+	WO Danger_A0 {
+		pos -16 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Danger_A0 {
+		pos -24 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Danger_A0 {
+		pos -8 -24 0
+	}
+	WO Danger_A0 {
+		pos -8 -32 0
+	}
+	WO Danger_A0 {
+		pos -8 -40 0
+	}
+	WO Danger_A0 {
+		pos -8 -48 0
+	}
+	WO Danger_A0 {
+		pos -8 -56 0
+	}
+	WO Danger_A0 {
+		pos -8 -64 0
+	}
+	WO Danger_A0 {
+		pos -8 -72 0
+	}
+	WO Danger_A0 {
+		pos -8 -80 0
+	}
+	WO Danger_A0 {
+		pos -16 80 0
+	}
+	WO Danger_A0 {
+		pos -16 72 0
+	}
+	WO Danger_A0 {
+		pos -16 64 0
+	}
+	WO Danger_A0 {
+		pos -16 56 0
+	}
+	WO Danger_A0 {
+		pos -16 48 0
+	}
+	WO Danger_A0 {
+		pos -16 40 0
+	}
+	WO Danger_A0 {
+		pos -16 32 0
+	}
+	WO Danger_A0 {
+		pos 16 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Danger_A0 {
+		pos 16 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Danger_A0 {
+		pos 16 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Danger_A0 {
+		pos 8 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Danger_A0 {
+		pos 0 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Danger_A0 {
+		pos -8 -8 0
+	}
+	WO Danger_A0 {
+		pos -16 -24 0
+	}
+	WO Danger_A0 {
+		pos -16 -32 0
+	}
+	WO Danger_A0 {
+		pos -16 -40 0
+	}
+	WO Danger_A0 {
+		pos -16 -48 0
+	}
+	WO Danger_A0 {
+		pos -16 -56 0
+	}
+	WO Danger_A0 {
+		pos -16 -64 0
+	}
+	WO Danger_A0 {
+		pos -16 -72 0
+	}
+	WO Danger_A0 {
+		pos -16 -80 0
+	}
+	WO Danger_A0 {
+		pos -24 80 0
+	}
+	WO Danger_A0 {
+		pos -24 72 0
+	}
+	WO Danger_A0 {
+		pos -24 64 0
+	}
+	WO Danger_A0 {
+		pos -24 56 0
+	}
+	WO Danger_A0 {
+		pos -24 48 0
+	}
+	WO Danger_A0 {
+		pos -24 40 0
+	}
+	WO Danger_A0 {
+		pos -24 32 0
+	}
+	WO Danger_A0 {
+		pos 8 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Danger_A0 {
+		pos -80 -80 0
+	}
+	WO Danger_A0 {
+		pos 16 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Danger_A0 {
+		pos 8 -8 0
+	}
+	WO Danger_A0 {
+		pos 0 -8 0
+	}
+	WO Danger_A0 {
+		pos -8 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Danger_A0 {
+		pos -24 -24 0
+	}
+	WO Danger_A0 {
+		pos -24 -32 0
+	}
+	WO Danger_A0 {
+		pos -24 -40 0
+	}
+	WO Danger_A0 {
+		pos -24 -48 0
+	}
+	WO Danger_A0 {
+		pos -24 -56 0
+	}
+	WO Danger_A0 {
+		pos -24 -64 0
+	}
+	WO Danger_A0 {
+		pos -24 -72 0
+	}
+	WO Danger_A0 {
+		pos -24 -80 0
+	}
+	WO Danger_A0 {
+		pos -32 80 0
+	}
+	WO Danger_A0 {
+		pos -32 72 0
+	}
+	WO Danger_A0 {
+		pos -32 64 0
+	}
+	WO Danger_A0 {
+		pos -32 56 0
+	}
+	WO Danger_A0 {
+		pos -32 48 0
+	}
+	WO Danger_A0 {
+		pos -32 40 0
+	}
+	WO Danger_A0 {
+		pos -32 32 0
+	}
+	WO Danger_A0 {
+		pos -32 24 0
+	}
+	WO Danger_A0 {
+		pos -32 16 0
+	}
+	WO Danger_A0 {
+		pos -32 8 0
+	}
+	WO Danger_A0 {
+		pos -32 0 0
+	}
+	WO Danger_A0 {
+		pos -32 -8 0
+	}
+	WO Danger_A0 {
+		pos -32 -16 0
+	}
+	WO Danger_A0 {
+		pos -32 -24 0
+	}
+	WO Danger_A0 {
+		pos -32 -32 0
+	}
+	WO Danger_A0 {
+		pos -32 -40 0
+	}
+	WO Danger_A0 {
+		pos -32 -48 0
+	}
+	WO Danger_A0 {
+		pos -32 -56 0
+	}
+	WO Danger_A0 {
+		pos -32 -64 0
+	}
+	WO Danger_A0 {
+		pos -32 -72 0
+	}
+	WO Danger_A0 {
+		pos -32 -80 0
+	}
+	WO Danger_A0 {
+		pos -40 80 0
+	}
+	WO Danger_A0 {
+		pos -40 72 0
+	}
+	WO Danger_A0 {
+		pos -40 64 0
+	}
+	WO Danger_A0 {
+		pos -40 56 0
+	}
+	WO Danger_A0 {
+		pos -40 48 0
+	}
+	WO Danger_A0 {
+		pos -40 40 0
+	}
+	WO Danger_A0 {
+		pos -40 32 0
+	}
+	WO Danger_A0 {
+		pos -40 24 0
+	}
+	WO Danger_A0 {
+		pos -40 16 0
+	}
+	WO Danger_A0 {
+		pos -40 8 0
+	}
+	WO Danger_A0 {
+		pos -40 0 0
+	}
+	WO Danger_A0 {
+		pos -40 -8 0
+	}
+	WO Danger_A0 {
+		pos -40 -16 0
+	}
+	WO Danger_A0 {
+		pos -40 -24 0
+	}
+	WO Danger_A0 {
+		pos -40 -32 0
+	}
+	WO Danger_A0 {
+		pos -40 -40 0
+	}
+	WO Danger_A0 {
+		pos -40 -48 0
+	}
+	WO Danger_A0 {
+		pos -40 -56 0
+	}
+	WO Danger_A0 {
+		pos -40 -64 0
+	}
+	WO Danger_A0 {
+		pos -40 -72 0
+	}
+	WO Danger_A0 {
+		pos -40 -80 0
+	}
+	WO Danger_A0 {
+		pos -48 80 0
+	}
+	WO Danger_A0 {
+		pos -48 72 0
+	}
+	WO Danger_A0 {
+		pos -48 64 0
+	}
+	WO Danger_A0 {
+		pos -48 56 0
+	}
+	WO Danger_A0 {
+		pos -48 48 0
+	}
+	WO Danger_A0 {
+		pos -48 40 0
+	}
+	WO Danger_A0 {
+		pos -48 32 0
+	}
+	WO Danger_A0 {
+		pos -48 24 0
+	}
+	WO Danger_A0 {
+		pos -48 16 0
+	}
+	WO Danger_A0 {
+		pos -48 8 0
+	}
+	WO Danger_A0 {
+		pos -48 0 0
+	}
+	WO Danger_A0 {
+		pos -48 -8 0
+	}
+	WO Danger_A0 {
+		pos -48 -16 0
+	}
+	WO Danger_A0 {
+		pos -48 -24 0
+	}
+	WO Danger_A0 {
+		pos -48 -32 0
+	}
+	WO Danger_A0 {
+		pos -48 -40 0
+	}
+	WO Danger_A0 {
+		pos -48 -48 0
+	}
+	WO Danger_A0 {
+		pos -48 -56 0
+	}
+	WO Danger_A0 {
+		pos -48 -64 0
+	}
+	WO Danger_A0 {
+		pos -48 -72 0
+	}
+	WO Danger_A0 {
+		pos -48 -80 0
+	}
+	WO Danger_A0 {
+		pos -56 80 0
+	}
+	WO Danger_A0 {
+		pos -56 72 0
+	}
+	WO Danger_A0 {
+		pos -56 64 0
+	}
+	WO Danger_A0 {
+		pos -56 56 0
+	}
+	WO Danger_A0 {
+		pos -56 48 0
+	}
+	WO Danger_A0 {
+		pos -56 40 0
+	}
+	WO Danger_A0 {
+		pos -56 32 0
+	}
+	WO Danger_A0 {
+		pos -56 24 0
+	}
+	WO Danger_A0 {
+		pos -56 16 0
+	}
+	WO Danger_A0 {
+		pos -56 8 0
+	}
+	WO Danger_A0 {
+		pos -56 0 0
+	}
+	WO Danger_A0 {
+		pos -56 -8 0
+	}
+	WO Danger_A0 {
+		pos -56 -16 0
+	}
+	WO Danger_A0 {
+		pos -56 -24 0
+	}
+	WO Danger_A0 {
+		pos -56 -32 0
+	}
+	WO Danger_A0 {
+		pos -56 -40 0
+	}
+	WO Danger_A0 {
+		pos -56 -48 0
+	}
+	WO Danger_A0 {
+		pos -56 -56 0
+	}
+	WO Danger_A0 {
+		pos -56 -64 0
+	}
+	WO Danger_A0 {
+		pos -56 -72 0
+	}
+	WO Danger_A0 {
+		pos -56 -80 0
+	}
+	WO Danger_A0 {
+		pos -64 80 0
+	}
+	WO Danger_A0 {
+		pos -64 72 0
+	}
+	WO Danger_A0 {
+		pos -64 64 0
+	}
+	WO Danger_A0 {
+		pos -64 56 0
+	}
+	WO Danger_A0 {
+		pos -64 48 0
+	}
+	WO Danger_A0 {
+		pos -64 40 0
+	}
+	WO Danger_A0 {
+		pos -64 32 0
+	}
+	WO Danger_A0 {
+		pos -64 24 0
+	}
+	WO Danger_A0 {
+		pos -64 16 0
+	}
+	WO Danger_A0 {
+		pos -64 8 0
+	}
+	WO Danger_A0 {
+		pos -64 0 0
+	}
+	WO Danger_A0 {
+		pos -64 -8 0
+	}
+	WO Danger_A0 {
+		pos -64 -16 0
+	}
+	WO Danger_A0 {
+		pos -64 -24 0
+	}
+	WO Danger_A0 {
+		pos -64 -32 0
+	}
+	WO Danger_A0 {
+		pos -64 -40 0
+	}
+	WO Danger_A0 {
+		pos -64 -48 0
+	}
+	WO Danger_A0 {
+		pos -64 -56 0
+	}
+	WO Danger_A0 {
+		pos -64 -64 0
+	}
+	WO Danger_A0 {
+		pos -64 -72 0
+	}
+	WO Danger_A0 {
+		pos -64 -80 0
+	}
+	WO Danger_A0 {
+		pos -72 80 0
+	}
+	WO Danger_A0 {
+		pos -72 72 0
+	}
+	WO Danger_A0 {
+		pos -72 64 0
+	}
+	WO Danger_A0 {
+		pos -72 56 0
+	}
+	WO Danger_A0 {
+		pos -72 48 0
+	}
+	WO Danger_A0 {
+		pos -72 40 0
+	}
+	WO Danger_A0 {
+		pos -72 32 0
+	}
+	WO Danger_A0 {
+		pos -72 24 0
+	}
+	WO Danger_A0 {
+		pos -72 16 0
+	}
+	WO Danger_A0 {
+		pos -72 8 0
+	}
+	WO Danger_A0 {
+		pos -72 0 0
+	}
+	WO Danger_A0 {
+		pos -72 -8 0
+	}
+	WO Danger_A0 {
+		pos -72 -16 0
+	}
+	WO Danger_A0 {
+		pos -72 -24 0
+	}
+	WO Danger_A0 {
+		pos -72 -32 0
+	}
+	WO Danger_A0 {
+		pos -72 -40 0
+	}
+	WO Danger_A0 {
+		pos -72 -48 0
+	}
+	WO Danger_A0 {
+		pos -72 -56 0
+	}
+	WO Danger_A0 {
+		pos -72 -64 0
+	}
+	WO Danger_A0 {
+		pos -72 -72 0
+	}
+	WO Danger_A0 {
+		pos -72 -80 0
+	}
+	WO Danger_A0 {
+		pos -80 80 0
+	}
+	WO Danger_A0 {
+		pos -80 72 0
+	}
+	WO Danger_A0 {
+		pos -80 64 0
+	}
+	WO Danger_A0 {
+		pos -80 56 0
+	}
+	WO Danger_A0 {
+		pos -80 48 0
+	}
+	WO Danger_A0 {
+		pos -80 40 0
+	}
+	WO Danger_A0 {
+		pos -80 32 0
+	}
+	WO Danger_A0 {
+		pos -80 24 0
+	}
+	WO Danger_A0 {
+		pos -80 16 0
+	}
+	WO Danger_A0 {
+		pos -80 8 0
+	}
+	WO Danger_A0 {
+		pos -80 0 0
+	}
+	WO Danger_A0 {
+		pos -80 -8 0
+	}
+	WO Danger_A0 {
+		pos -80 -16 0
+	}
+	WO Danger_A0 {
+		pos -80 -24 0
+	}
+	WO Danger_A0 {
+		pos -80 -32 0
+	}
+	WO Danger_A0 {
+		pos -80 -40 0
+	}
+	WO Danger_A0 {
+		pos -80 -48 0
+	}
+	WO Danger_A0 {
+		pos -80 -56 0
+	}
+	WO Danger_A0 {
+		pos -80 -64 0
+	}
+	WO Danger_A0 {
+		pos -80 -72 0
+	}
+	WO TutorialProps_Container1 {
+		pos -15.054035 -37.825878 -0.000027
+		rot_x 0.965926 0.258819 0.000000
+		rot_y -0.258819 0.965926 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -11.927029 -44.310753 0.000010
+		rot_x 0.984808 0.173648 0.000000
+		rot_y -0.173648 0.984808 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -9.721404 -47.594963 0.000093
+		rot_x 0.173649 0.984808 0.000000
+		rot_y -0.984808 0.173649 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -2.748580 -47.516705 0.000000
+		rot_x -0.087156 -0.996196 0.000000
+		rot_y 0.996196 -0.087156 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos 1.006780 -47.367062 0.000177
+		rot_x 0.573577 -0.819153 0.000000
+		rot_y 0.819153 0.573577 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos 4.274802 -45.366219 0.006902
+		rot_x -0.500000 0.866027 0.000000
+		rot_y -0.866027 -0.500000 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -2.420386 -49.309563 0.000000
+		rot_x 0.258819 -0.965927 0.000000
+		rot_y 0.965927 0.258819 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -6.926288 -49.687290 0.000058
+		rot_x -0.173649 -0.984809 0.000000
+		rot_y 0.984809 -0.173649 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -11.534869 -48.721844 0.000120
+		rot_x -0.642789 -0.766045 0.000000
+		rot_y 0.766045 -0.642789 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -5.676182 -48.283791 0.000000
+		rot_x -0.087156 -0.996196 0.000000
+		rot_y 0.996196 -0.087156 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos 2.402281 -48.560246 0.000456
+		rot_x -0.866027 0.500001 0.000000
+		rot_y -0.500001 -0.866027 0.000000
+	}
+	WO TutorialProps_Container2 {
+		pos -14.771947 -32.826004 1.050679
+		rot_x 0.984808 0.173648 0.000000
+		rot_y -0.173648 0.984808 0.000000
+	}
+	WO TutorialProps_Transport {
+		pos -14.171359 -29.785608 -0.000040
+		rot_x 0.866026 -0.500000 0.000000
+		rot_y 0.500000 0.866026 0.000000
+	}
+	WO TutorialProps_Transport {
+		pos -14.804749 -32.821739 0.140679
+		rot_x 0.984808 0.173648 0.000000
+		rot_y -0.173648 0.984808 0.000000
+	}
+	WO TutorialProps_Ladder {
+		pos -13.489693 -21.182787 -0.000053
+		rot_x 0.173648 -0.984808 0.000000
+		rot_y 0.984808 0.173648 0.000000
+	}
+	WO TutorialProps_Container3 {
+		pos -13.613800 -26.663086 0.000000
+		rot_x -1.000000 0.000000 0.000000
+		rot_y 0.000000 -1.000001 0.000000
+		rot_z 0.000000 0.000000 1.000001
+	}
+	WO TutorialProps_Truck1 {
+		pos -12.549273 -24.347000 -0.000030
+		rot_x 0.173648 -0.984808 0.000000
+		rot_y 0.984808 0.173648 0.000000
+	}
+	WO TutorialProps_Truck2 {
+		pos -13.364554 18.088951 0.000000
+		rot_x -0.996195 -0.087156 0.000000
+		rot_y 0.087156 -0.996195 0.000000
+	}
+	WO TutorialProps_Box4 {
+		pos -14.370361 -12.021804 -0.000049
+		rot_x 0.000000 1.000000 0.000000
+		rot_y -1.000000 0.000000 0.000000
+	}
+	WO TutorialProps_Truck3 {
+		pos 5.482568 21.433413 0.029863
+		rot_x -1.000000 0.000000 0.000000
+		rot_y 0.000000 -1.000000 0.000000
+	}
+	WO TutorialProps_Ladder2 {
+		pos -37.340374 7.212301 3.000015
+		rot_x 0.984808 0.173648 0.000000
+		rot_y -0.173648 0.984808 0.000000
+	}
+	WO TutorialProps_Container4 {
+		pos -37.078815 9.456096 3.030000
+	}
+	WO TutorialProps_Truck4 {
+		pos -39.980976 11.807548 3.004897
+		rot_x -0.996195 -0.087156 0.000000
+		rot_y 0.087156 -0.996195 0.000000
+	}
+	WO TutorialProps_Truck5 {
+		pos -40.288433 5.609702 2.999998
+		rot_x 0.258819 -0.965926 0.000000
+		rot_y 0.965926 0.258819 0.000000
+	}
+	WO TutorialProps_Truck4 {
+		pos 2.337639 23.296368 0.000000
+		rot_x -0.573577 0.819152 0.000000
+		rot_y -0.819152 -0.573577 0.000000
+	}
+	WO TutorialProps_Container4 {
+		pos -13.948586 21.562906 0.035302
+		rot_x 0.500000 -0.866026 0.000000
+		rot_y 0.866026 0.500000 0.000000
+	}
+	WO TutorialProps_Truck6 {
+		pos -38.761452 1.944128 3.000000
+		rot_x -0.173649 -0.984809 0.000000
+		rot_y 0.984809 -0.173649 0.000000
+	}
+	WO TutorialProps_Platform {
+		pos -38.708858 -4.435788 3.000000
+	}
+	WO TutorialProps_Tower {
+		pos 2.902275 20.484880 0.000012
+	}
+	WO TutorialProps_Wall {
+		pos -4.028560 34.000122 -0.029971
+		rot_x 0.000000 -1.000001 0.000000
+		rot_y 1.000001 0.000000 0.000000
+	}
+	WO TutorialProps_WallGirders {
+		pos -4.028560 34.000122 -0.029971
+		rot_x 0.000000 -1.000001 0.000000
+		rot_y 1.000001 0.000000 0.000000
+	}
+	WO TutorialProps_FighterA {
+		pos -18.130875 -40.542076 3.099858
+		rot_x 0.087156 -0.996195 0.000000
+		rot_y 0.996195 0.087156 0.000000
+	}
+	WO TutorialProps_Bomber {
+		pos 8.830112 -16.323309 2.999844
+		rot_x -0.642788 0.766044 0.000000
+		rot_y -0.766044 -0.642788 0.000000
+	}
+	WO TutorialProps_Chopper {
+		pos -17.563269 -15.631739 2.939828
+		rot_x -0.707107 -0.707107 0.000000
+		rot_y 0.707107 -0.707107 0.000000
+	}
+	WO TutorialProps_Chopper {
+		pos -17.431652 -10.165336 2.939857
+		rot_x -0.707107 -0.707107 0.000000
+		rot_y 0.707107 -0.707107 0.000000
+	}
+	WO TutorialProps_Bomber {
+		pos 8.790896 -3.976810 2.999862
+		rot_x 0.642788 0.766045 0.000000
+		rot_y -0.766045 0.642788 0.000000
+	}
+	WO TutorialProps_Bomber {
+		pos 8.769357 0.837115 2.999843
+		rot_x 0.642788 0.766045 0.000000
+		rot_y -0.766045 0.642788 0.000000
+	}
+	WO TutorialProps_FighterA {
+		pos -18.302654 -36.246376 2.999832
+		rot_x -0.087156 -0.996196 0.000000
+		rot_y 0.996196 -0.087156 0.000000
+	}
+	WO TutorialProps_FighterA {
+		pos -18.163622 -28.423410 2.999834
+		rot_x 0.000000 -1.000000 0.000000
+		rot_y 1.000000 0.000000 0.000000
+	}
+	WO TutorialProps_FighterA {
+		pos -18.066854 -24.440029 2.999846
+		rot_x -0.422619 -0.906308 0.000000
+		rot_y 0.906308 -0.422619 0.000000
+	}
+	WO TutorialProps_Chopper {
+		pos -17.275366 -4.724127 2.939845
+		rot_x 0.573577 -0.819153 0.000000
+		rot_y 0.819153 0.573577 0.000000
+	}
+	WO TutorialProps_Chopper {
+		pos -17.192297 -0.103899 2.939856
+		rot_x 0.642788 -0.766045 0.000000
+		rot_y 0.766045 0.642788 0.000000
+	}
+	WO TutorialProps_Bomber {
+		pos 8.843204 -11.328035 2.999830
+		rot_x -0.642788 0.766044 0.000000
+		rot_y -0.766044 -0.642788 0.000000
+	}
+	WO TutorialProps_Ladder {
+		pos 5.722077 32.055752 2.999974
+		rot_x -0.866026 -0.500000 0.000000
+		rot_y 0.500000 -0.866026 0.000000
+	}
+	WO TutorialProps_Box4 {
+		pos -2.753268 33.616901 5.362425
+		rot_x 0.000000 -1.000001 0.000000
+		rot_y 1.000001 0.000000 0.000000
+	}
+	WO TutorialProps_Truck6 {
+		pos -13.809080 9.463310 0.399994
+		rot_x -0.819154 -0.573577 0.000000
+		rot_y 0.573577 -0.819154 0.000000
+	}
+	WO TutorialProps_Transport {
+		pos -13.790649 26.401785 0.001100
+		rot_x 0.707107 0.707107 0.000000
+		rot_y -0.707107 0.707107 0.000000
+	}
+	WO TutorialProps_Container2 {
+		pos -13.820839 26.468235 1.001099
+		rot_x 0.707107 0.707107 0.000000
+		rot_y -0.707107 0.707107 0.000000
+	}
+	WO TutorialProps_Platform {
+		pos -25.116224 -8.914788 3.000200
+		rot_x -1.000000 0.000000 0.000000
+		rot_y 0.000000 -1.000000 0.000000
+	}
+	WO TutorialProps_Platform {
+		pos 30.766670 -11.833371 3.000064
+		rot_x -1.000000 0.000000 0.000000
+		rot_y 0.000000 -1.000000 0.000000
+	}
+	WO TutorialProps_Platform {
+		pos 17.174047 -7.354371 2.999862
+	}
+	WO TutorialProps_Container4 {
+		pos -25.128382 -7.440920 3.786025
+		rot_x -0.342020 0.939693 0.000000
+		rot_y -0.939693 -0.342020 0.000000
+	}
+	WO TutorialProps_Container4 {
+		pos 31.159386 -10.470621 3.743643
+		rot_x -0.342020 0.939693 0.000000
+		rot_y -0.939693 -0.342020 0.000000
+	}
+	WO TutorialProps_Ladder {
+		pos -13.450035 24.210941 -0.000023
+		rot_x -0.707108 -0.707107 0.000000
+		rot_y 0.707107 -0.707108 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos 12.065033 28.617147 2.940074
+		rot_x -0.087156 -0.996196 0.000000
+		rot_y 0.996196 -0.087156 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos 13.315136 30.020689 2.940014
+		rot_x 0.000000 -1.000001 0.000000
+		rot_y 1.000001 0.000000 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos 9.269905 30.709509 2.940108
+		rot_x 0.087157 0.996195 0.000000
+		rot_y -0.996195 0.087157 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos 16.570930 28.994890 2.940016
+		rot_x 0.342020 -0.939694 0.000000
+		rot_y 0.939694 0.342020 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos 16.242746 30.787786 2.940015
+		rot_x 0.000000 -1.000001 0.000000
+		rot_y 1.000001 0.000000 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -7.664715 37.587757 5.220123
+		rot_x 0.087157 0.996195 0.000000
+		rot_y -0.996195 0.087157 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -4.869589 35.495396 5.220087
+		rot_x -0.087156 -0.996196 0.000000
+		rot_y 0.996196 -0.087156 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -3.619486 36.898945 5.220026
+		rot_x 0.000000 -1.000001 0.000000
+		rot_y 1.000001 0.000000 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -0.363695 35.873146 5.220028
+		rot_x 0.342020 -0.939694 0.000000
+		rot_y 0.939694 0.342020 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -0.691883 37.666035 5.220028
+		rot_x 0.000000 -1.000001 0.000000
+		rot_y 1.000001 0.000000 0.000000
+	}
+	WO TutorialProps_Tower {
+		pos 6.701324 25.887932 -0.000014
+	}
+	WO TutorialProps_Container3 {
+		pos 6.532654 -22.708069 0.000000
+		rot_x -0.866025 0.500000 0.000000
+		rot_y -0.500001 -0.866026 0.000000
+		rot_z 0.000000 0.000000 1.000001
+	}
+	WO TutorialProps_Container1 {
+		pos 6.306291 -20.509214 -0.000060
+		rot_x 0.500000 0.866026 0.000000
+		rot_y -0.866026 0.500000 0.000000
+	}
+	WO TutorialProps_FighterA {
+		pos -18.123087 -32.143448 2.999848
+		rot_x 0.000000 -1.000000 0.000000
+		rot_y 1.000000 0.000000 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -23.382601 33.629883 2.941122
+		rot_x -0.258818 0.965927 0.000000
+		rot_y -0.965927 -0.258818 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -20.587524 31.537506 2.941088
+		rot_x 0.258819 -0.965927 0.000000
+		rot_y 0.965927 0.258819 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -19.337402 32.941055 2.941028
+		rot_x 0.342020 -0.939694 0.000000
+		rot_y 0.939694 0.342020 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -16.081604 31.915253 2.941030
+		rot_x 0.642788 -0.766046 0.000000
+		rot_y 0.766046 0.642788 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -16.409790 33.708145 2.941031
+		rot_x 0.342020 -0.939694 0.000000
+		rot_y 0.939694 0.342020 0.000000
+	}
+	WO TutorialProps_Box4 {
+		pos 6.390136 25.150066 -0.000063
+		rot_x 0.000000 -1.000000 0.000000
+		rot_y 1.000000 0.000000 0.000000
+	}
+	WO TutorialProps_SandBags {
+		pos -9.389112 36.193882 5.141609
+		rot_x -0.500001 -0.866027 0.000000
+		rot_y 0.866027 -0.500001 0.000000
+	}
+	WO HangarBones {
+		pos -2.5 29.461079 -0.000062
+		rot_x -1.000000 0.000000 0.000000
+		rot_y 0.000000 -1.000000 0.000000
+		label unitprops
+	}
+	WO Bike {
+		pos -4.686578 30.209364 4.378946
+		rot_x -0.766044 -0.642787 0.000000
+		rot_y 0.642787 -0.766044 0.000000
+		id 2
+		. team 0
+		. order HoldPosition
+		. unitProp 1
+	}
+	WO Turtle {
+		pos -9.637775 28.352247 0.372471
+		rot_x -0.707107 -0.707107 0.000000
+		rot_y 0.707107 -0.707107 0.000000
+		id 3
+		. team 0
+		. order HoldPosition
+		. unitProp 5
+	}
+	WO TurretDual {
+		pos -9.684779 29.512720 2.371023
+		rot_x -0.819152 -0.573577 0.000000
+		rot_y 0.573577 -0.819152 0.000000
+		id 4
+		. team 0
+		. order HoldPosition
+		. unitProp 6
+	}
+	WO ArmoredCar {
+		pos -4.684695 29.379845 2.371036
+		rot_x -0.707107 -0.707107 0.000000
+		rot_y 0.707107 -0.707107 0.000000
+		id 5
+		. team 0
+		. order HoldPosition
+		. unitProp 2
+	}
+	WO Infantry {
+		pos -7.213991 30.468287 4.278961
+		rot_x -0.707107 -0.707107 0.000000
+		rot_y 0.707107 -0.707107 0.000000
+		id 6
+		. team 0
+		. order HoldPosition
+		. unitProp 0
+	}
+	WO MineLight {
+		pos -4.739452 28.408466 0.272474
+		id 7
+		. team 0
+		. order HoldPosition
+		. unitProp 3
+	}
+	WO Tank {
+		pos -7.130407 28.307398 0.372477
+		rot_x -0.766045 -0.642788 0.000000
+		rot_y 0.642788 -0.766045 0.000000
+		id 8
+		. team 0
+		. order HoldPosition
+		. unitProp 4
+	}
+	WO MissileTank {
+		pos -9.599248 30.334391 4.278967
+		rot_x -0.642788 -0.766045 0.000000
+		rot_y 0.766045 -0.642788 0.000000
+		id 9
+		. team 0
+		. order HoldPosition
+		. unitProp 7
+	}
+}
+
+details {
+	d TutorialProps_Vent -1 1.000000 -0.000000 -0.000014 0.000000 1.000000 -0.000005 0.000014 0.000005 1.000000 -13.315255 -0.767637 -0.000043
+	d TutorialProps_Vent -1 1.000000 -0.000000 -0.000014 0.000000 1.000000 -0.000005 0.000014 0.000005 1.000000 -13.401806 -7.958941 -0.000019
+	d TutorialProps_Vent -1 1.000000 -0.000000 -0.000014 0.000000 1.000000 -0.000005 0.000014 0.000005 1.000000 -15.430109 -23.954353 -0.000017
+	d TutorialProps_Vent -1 1.000000 -0.000000 -0.000014 0.000000 1.000000 -0.000005 0.000014 0.000005 1.000000 -15.375587 7.012711 -0.000021
+	d TutorialProps_Vent -1 1.000000 -0.000000 -0.000014 0.000000 1.000000 -0.000005 0.000014 0.000005 1.000000 -15.469626 24.985708 -0.000026
+	d TutorialProps_Vent -1 0.707107 -0.707107 -0.000014 0.707107 0.707107 -0.000005 0.000013 -0.000007 1.000000 -13.657655 29.598381 0.000000
+	d TutorialProps_Vent -1 1.000000 -0.000000 -0.000014 0.000000 1.000000 -0.000005 0.000014 0.000005 1.000000 -15.426206 -31.892763 -0.000013
+	d TutorialProps_Vent -1 0.707107 0.707107 -0.000014 -0.707107 0.707107 -0.000005 0.000006 0.000013 1.000000 -13.906146 -45.392120 -0.000044
+	d TutorialProps_Vent -1 1.000000 -0.000000 -0.000014 0.000000 1.000000 -0.000005 0.000014 0.000005 1.000000 -13.336301 -15.152902 -0.000042
+	d TutorialProps_Vent -1 1.000000 -0.000000 -0.000014 0.000000 1.000000 -0.000005 0.000014 0.000005 1.000000 -13.018340 -48.017632 -0.000049
+	d TutorialProps_Vent -1 1.000000 -0.000000 -0.000014 0.000000 1.000000 -0.000005 0.000014 0.000005 1.000000 -15.468040 -39.936668 -0.000014
+	d TutorialProps_Vent -1 0.000000 -1.000000 -0.000014 1.000000 0.000000 -0.000005 0.000004 -0.000014 1.000000 -8.108426 31.392181 0.000069
+	d TutorialProps_Vent -1 0.000000 -1.000000 -0.000014 1.000000 0.000000 -0.000005 0.000004 -0.000014 1.000000 -0.028831 31.409548 0.000002
+	d TutorialProps_Caution -1 1.000000 0.000000 -0.000009 -0.000000 1.000000 -0.000002 0.000009 0.000002 1.000000 -15.461102 3.878476 -0.000039
+	d TutorialProps_Caution -1 0.000000 -1.000001 -0.000009 1.000001 0.000000 -0.000002 0.000001 -0.000008 1.000000 -12.091936 31.500698 0.009049
+	d TutorialProps_Caution -1 1.000000 0.000000 -0.000009 -0.000000 1.000000 -0.000002 0.000009 0.000002 1.000000 -15.389809 -44.240532 0.005964
+	d TutorialProps_Caution -1 0.707107 -0.707107 -0.000009 0.707107 0.707107 -0.000009 0.000012 0.000000 1.000000 -15.738740 -20.369719 -0.000036
+	d TutorialProps_Caution -1 0.707107 -0.707107 -0.000009 0.707107 0.707107 -0.000002 0.000007 -0.000005 1.000000 -15.566164 27.659019 -0.000039
+	d TutorialProps_Caution -1 -0.707108 -0.707108 -0.000009 0.707108 -0.707108 -0.000002 -0.000005 -0.000007 1.000000 3.624865 31.654406 0.001629
+	d TutorialProps_Arrows -1 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 -13.119726 16.006111 -0.000004
+	d TutorialProps_Arrows -1 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 -15.817282 15.975857 -0.000004
+	d TutorialProps_Canister1 -1 0.999912 -0.000175 0.013242 0.000000 0.999912 0.013244 -0.013243 -0.013243 0.999825 -14.911672 -35.010342 0.000000
+	d TutorialProps_Canister1 -1 0.999912 -0.000175 0.013242 0.000000 0.999912 0.013244 -0.013243 -0.013243 0.999825 -15.350592 -35.466629 0.000000
+	d TutorialProps_Canister1 -1 0.134544 -0.891794 -0.431976 -0.134021 0.415557 -0.899641 0.981805 0.178934 -0.063608 -14.877891 -35.627293 0.090000
+	d TutorialProps_Canister1 -1 0.865862 -0.500108 0.013242 0.499956 0.865949 0.013244 -0.018090 -0.004847 0.999825 5.059326 27.457253 0.089994
+	d TutorialProps_Canister1 -1 0.865862 -0.500108 0.013242 0.499956 0.865949 0.013244 -0.018090 -0.004847 0.999825 4.620412 27.000950 0.089994
+	d TutorialProps_Canister1 -1 -0.329379 -0.839588 -0.431976 0.091713 0.426894 -0.899641 0.939735 -0.335941 -0.063608 5.093110 26.840275 0.179994
+	d TutorialProps_Canister1 -1 0.865862 -0.500108 0.013242 0.499956 0.865949 0.013244 -0.018090 -0.004847 0.999825 5.555474 21.964956 0.490012
+	d TutorialProps_Canister1 -1 0.865862 -0.500108 0.013242 0.499956 0.865949 0.013244 -0.018090 -0.004847 0.999825 5.401879 22.340437 0.490030
+	d TutorialProps_Canister1 -1 0.865862 -0.500108 0.013242 0.499956 0.865949 0.013244 -0.018090 -0.004847 0.999825 -39.811703 -4.697826 3.755825
+	d TutorialProps_Canister1 -1 0.865862 -0.500108 0.013242 0.499956 0.865949 0.013244 -0.018090 -0.004847 0.999825 16.476027 -7.727545 3.713440
+	d TutorialProps_Canister2 -1 -0.500000 -0.866025 -0.000009 0.866025 -0.500000 -0.000009 0.000003 -0.000012 1.000000 2.382555 27.853714 0.009752
+	d TutorialProps_Canister2 -1 -0.500000 -0.866025 -0.000009 0.866025 -0.500000 -0.000009 0.000003 -0.000012 1.000000 5.489457 22.851774 0.484377
+	d TutorialProps_Canister3 -1 -0.500000 -0.866025 0.000000 0.866025 -0.500000 -0.000004 0.000003 -0.000002 1.000000 3.168217 27.532152 0.000350
+	d TutorialProps_Canister3 -1 -0.118770 -0.032066 0.992404 -0.491523 -0.866526 -0.086825 0.862728 -0.498101 0.087155 2.544583 29.617210 0.199883
+	d TutorialProps_Canister3 -1 -0.500000 -0.866025 0.000000 0.866025 -0.500000 -0.000004 0.000003 -0.000002 1.000000 -38.204105 -6.136644 3.622527
+	d TutorialProps_Canister3 -1 -0.500000 -0.866025 0.000000 0.866025 -0.500000 -0.000004 0.000003 -0.000002 1.000000 15.952751 -9.093509 3.755691
+	d TutorialProps_Canister4 -1 -0.500000 -0.866025 0.000000 0.866025 -0.500000 -0.000004 0.000003 -0.000002 1.000000 2.909282 28.376484 -0.000053
+	d TutorialProps_Canister4 -1 -0.500000 -0.866025 0.000000 0.866025 -0.500000 -0.000004 0.000003 -0.000002 1.000000 -38.463032 -5.292309 3.622124
+	d TutorialProps_Canister5 -1 -0.500000 -0.866025 -0.000009 0.866025 -0.500000 -0.000009 0.000003 -0.000012 1.000000 1.921080 26.897766 -0.000004
+	d TutorialProps_Canister5 -1 0.049995 -0.071401 0.996194 0.819157 0.573569 -0.000001 -0.571387 0.816040 0.087165 -13.277966 8.702433 1.159960
+	d TutorialProps_Canister5 -1 -0.500000 -0.866025 -0.000009 0.866025 -0.500000 -0.000009 0.000003 -0.000012 1.000000 5.938300 6.447442 -0.000033
+	d TutorialProps_Canister5 -1 0.694278 -0.582556 0.422618 -0.323738 0.271661 0.906308 -0.642785 -0.766048 0.000012 5.122857 7.206476 0.329965
+	d TutorialProps_Canister6 -1 0.000000 -1.000000 -0.000009 1.000000 0.000000 -0.000009 0.000009 -0.000009 1.000000 2.437970 25.544880 -0.000013
+	d TutorialProps_Canister6 -1 0.000000 -1.000000 -0.000009 1.000000 0.000000 -0.000009 0.000009 -0.000009 1.000000 -9.562236 33.507130 5.340034
+	d TutorialProps_Canister6 -1 0.000000 -1.000000 -0.000009 1.000000 0.000000 -0.000009 0.000009 -0.000009 1.000000 -7.358282 33.487823 5.340034
+	d TutorialProps_Canister6 -1 0.000000 -1.000000 -0.000009 1.000000 0.000000 -0.000009 0.000009 -0.000009 1.000000 -0.573280 33.355328 5.340034
+	d TutorialProps_Canister6 -1 0.000000 -1.000000 -0.000009 1.000000 0.000000 -0.000009 0.000009 -0.000009 1.000000 -38.997410 -7.836308 3.000032
+	d TutorialProps_Canister6 -1 0.000000 -1.000000 -0.000009 1.000000 0.000000 -0.000009 0.000009 -0.000009 1.000000 5.057787 5.139614 -0.000046
+	d TutorialProps_Box2 -1 0.996195 0.087156 0.000000 -0.087156 0.996195 0.000000 0.000000 0.000000 1.000000 -13.757596 -42.088184 0.000000
+	d TutorialProps_Box1 -1 0.996196 0.087155 0.000000 -0.087155 0.996196 0.000000 0.000000 0.000000 1.000000 0.679049 -48.885456 -0.030000
+	d TutorialProps_Box1 -1 0.866026 0.500000 0.000000 -0.500000 0.866026 0.000000 0.000000 0.000000 1.000000 -9.646883 -49.741493 0.000000
+	d TutorialProps_Box1 -1 0.866026 0.500000 0.000000 -0.500000 0.866026 0.000000 0.000000 0.000000 1.000000 -14.785345 -43.973427 0.149953
+	d TutorialProps_Box1 -1 0.996195 0.087156 0.000000 -0.087156 0.996195 0.000000 0.000000 0.000000 1.000000 -14.714144 -42.087341 0.000000
+	d TutorialProps_Box1 -1 0.939693 -0.342021 0.000000 0.342021 0.939693 0.000000 0.000000 0.000000 1.000000 -13.777408 -43.838772 0.150002
+	d TutorialProps_Box1 -1 0.866026 0.500000 0.000000 -0.500000 0.866026 0.000000 0.000000 0.000000 1.000000 6.068552 -28.836468 0.149998
+	d TutorialProps_Box1 -1 0.939693 -0.342021 0.000000 0.342021 0.939693 0.000000 0.000000 0.000000 1.000000 7.076488 -28.701826 0.150047
+	d TutorialProps_Box1 -1 0.996195 0.087156 0.000000 -0.087156 0.996195 0.000000 0.000000 0.000000 1.000000 5.854410 -30.486149 -0.000014
+	d TutorialProps_Box1 -1 0.573576 0.819153 0.000000 -0.819153 0.573576 0.000000 0.000000 0.000000 1.000000 -12.960877 -10.761423 -0.000005
+	d TutorialProps_Box1 -1 -0.996195 -0.087156 0.000000 0.087156 -0.996195 0.000000 0.000000 0.000000 1.000000 -13.100615 -13.158957 -0.000033
+	d TutorialProps_Box1 -1 -0.996195 -0.087156 0.000000 0.087156 -0.996195 0.000000 0.000000 0.000000 1.000000 -14.467902 4.949095 -0.000032
+	d TutorialProps_Box1 -1 -0.996195 -0.087156 0.000000 0.087156 -0.996195 0.000000 0.000000 0.000000 1.000000 5.609985 -18.385422 -0.000058
+	d TutorialProps_Box1 -1 0.819152 0.573577 0.000000 -0.573577 0.819152 0.000000 0.000000 0.000000 1.000000 30.396145 -11.574211 3.665888
+	d TutorialProps_Box1 -1 0.000000 -1.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 31.158720 -12.248878 3.665895
+	d TutorialProps_Box1 -1 -0.422618 -0.906308 0.000000 0.906308 -0.422618 0.000000 0.000000 0.000000 1.000000 30.857275 -11.938334 4.415889
+	d TutorialProps_Box3 -1 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 -11.321113 18.515343 0.000001
+	d TutorialProps_Pipes1 -1 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 -15.652240 21.174221 -0.000005
+	d TutorialProps_Box5 -1 0.906308 -0.422618 -0.000009 0.422618 0.906308 0.000009 0.000004 -0.000011 1.000000 31.065359 -13.284071 3.609555
+	d TutorialProps_Box5 -1 0.996195 0.087156 -0.000009 -0.087156 0.996195 0.000009 0.000009 -0.000008 1.000000 31.750990 -13.475210 3.609559
+	d TutorialProps_Box5 -1 0.258819 0.965926 -0.000009 -0.965926 0.258819 0.000009 0.000010 0.000006 1.000000 31.385656 -13.404142 4.059560
+	d TutorialProps_Box5 -1 0.906308 -0.422618 -0.000009 0.422618 0.906308 0.000009 0.000004 -0.000011 1.000000 16.816175 -8.477674 3.609355
+	d TutorialProps_Box5 -1 0.906308 -0.422618 -0.000009 0.422618 0.906308 0.000009 0.000004 -0.000011 1.000000 -13.242704 4.748681 -0.000051
+	d TutorialProps_Box5 -1 0.906308 -0.422618 -0.000009 0.422618 0.906308 0.000009 0.000004 -0.000011 1.000000 -13.390930 6.662167 0.629968
+	d TutorialProps_Box5 -1 0.906308 0.422619 -0.000009 -0.422619 0.906308 0.000009 0.000011 -0.000004 1.000000 -14.525314 10.391333 0.799999
+	d TutorialProps_Box5 -1 0.906308 -0.422618 -0.000009 0.422618 0.906308 0.000009 0.000004 -0.000011 1.000000 -39.619751 -3.534481 4.281761
+	d TutorialProps_Box5 -1 0.906308 -0.422618 -0.000009 0.422618 0.906308 0.000009 0.000004 -0.000011 1.000000 -39.471550 -5.447958 3.651739
+	d TutorialProps_Box5 -1 0.906308 -0.422618 -0.000009 0.422618 0.906308 0.000009 0.000004 -0.000011 1.000000 -25.222349 -10.254354 3.651939
+	d TutorialProps_Box5 -1 0.996195 0.087156 -0.000009 -0.087156 0.996195 0.000009 0.000009 -0.000008 1.000000 -24.536749 -10.445492 3.651942
+	d TutorialProps_Box5 -1 0.258819 0.965926 -0.000009 -0.965926 0.258819 0.000009 0.000010 0.000006 1.000000 -24.902077 -10.374432 4.101945
+	d TutorialProps_Box6 -1 0.819152 0.573576 -0.000009 -0.573576 0.819152 0.000009 0.000012 -0.000002 1.000000 -13.236483 6.708156 -0.000037
+	d TutorialProps_Box6 -1 0.819152 0.573576 -0.000009 -0.573576 0.819152 0.000009 0.000012 -0.000002 1.000000 16.822416 -6.518194 3.609368
+	d TutorialProps_Box6 -1 0.819152 0.573576 -0.000009 -0.573576 0.819152 0.000009 0.000012 -0.000002 1.000000 -39.465309 -3.488479 3.651753
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable true
+  layer 2 name "volumes" visible true pickable true
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible true pickable true
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+editorCore {
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+
+}

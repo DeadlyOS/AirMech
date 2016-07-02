@@ -1,0 +1,9 @@
+Script GenerateIncomeChart {
+cmd "sym setNSet 80 MainChart0_"
+cmd "sym setNSet 80 MainChart1_"
+cmd "charts write credits /sym MainChart /count 80 /normalizeToMaxY 600 /over 0.1"
+}
+Script GenerateUpkeepChart {
+cmd "charts write upkeep /sym MainChart /count 80 /normalizeToMaxY 600 /over 0.1"
+cmd "gameui refreshFilterName Charts"
+}

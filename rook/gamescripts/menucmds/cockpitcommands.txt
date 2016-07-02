@@ -1,0 +1,230 @@
+Script BuildSlot0 {
+rcmd "menuCmd GetReadyArmySlot0 local"
+rcmd "if sym CockpitIsOpen == 1 runnow gameUI focusName ArmySlot0"
+rcmd "if sym CockpitIsOpen == 1 runnow sym set QuickCockpitActive 2"
+rcmd "gameui ignoreMouseFocusUntilNextMove"
+cmd "sym set _BuildSlot 0"
+cmd "player local tryBuild PlaceOrder"
+}
+Script BuildSlot1 {
+rcmd "menuCmd GetReadyArmySlot1 local"
+rcmd "if sym CockpitIsOpen == 1 gameUI focusName ArmySlot1"
+rcmd "if sym CockpitIsOpen == 1 sym set QuickCockpitActive 2"
+rcmd "gameui ignoreMouseFocusUntilNextMove"
+cmd "sym set _BuildSlot 1"
+cmd "player local tryBuild PlaceOrder"
+}
+Script BuildSlot2 {
+rcmd "menuCmd GetReadyArmySlot2 local"
+rcmd "if sym CockpitIsOpen == 1 gameUI focusName ArmySlot2"
+rcmd "if sym CockpitIsOpen == 1 sym set QuickCockpitActive 2"
+rcmd "gameui ignoreMouseFocusUntilNextMove"
+cmd "sym set _BuildSlot 2"
+cmd "player local tryBuild PlaceOrder"
+}
+Script BuildSlot3 {
+rcmd "menuCmd GetReadyArmySlot3 local"
+rcmd "if sym CockpitIsOpen == 1 gameUI focusName ArmySlot3"
+rcmd "if sym CockpitIsOpen == 1 sym set QuickCockpitActive 2"
+rcmd "gameui ignoreMouseFocusUntilNextMove"
+cmd "sym set _BuildSlot 3"
+cmd "player local tryBuild PlaceOrder"
+}
+Script BuildSlot4 {
+rcmd "menuCmd GetReadyArmySlot4 local"
+rcmd "if sym CockpitIsOpen == 1 gameUI focusName ArmySlot4"
+rcmd "if sym CockpitIsOpen == 1 sym set QuickCockpitActive 2"
+rcmd "gameui ignoreMouseFocusUntilNextMove"
+cmd "sym set _BuildSlot 4"
+cmd "player local tryBuild PlaceOrder"
+}
+Script BuildSlot5 {
+rcmd "menuCmd GetReadyArmySlot5 local"
+rcmd "if sym CockpitIsOpen == 1 gameUI focusName ArmySlot5"
+rcmd "if sym CockpitIsOpen == 1 sym set QuickCockpitActive 2"
+rcmd "gameui ignoreMouseFocusUntilNextMove"
+cmd "sym set _BuildSlot 5"
+cmd "player local tryBuild PlaceOrder"
+}
+Script BuildSlot6 {
+rcmd "menuCmd GetReadyArmySlot6 local"
+rcmd "if sym CockpitIsOpen == 1 gameUI focusName ArmySlot6"
+rcmd "if sym CockpitIsOpen == 1 sym set QuickCockpitActive 2"
+rcmd "gameui ignoreMouseFocusUntilNextMove"
+cmd "sym set _BuildSlot 6"
+cmd "player local tryBuild PlaceOrder"
+}
+Script BuildSlot7 {
+rcmd "menuCmd GetReadyArmySlot7 local"
+rcmd "if sym CockpitIsOpen == 1 gameUI focusName ArmySlot7"
+rcmd "if sym CockpitIsOpen == 1 sym set QuickCockpitActive 2"
+rcmd "gameui ignoreMouseFocusUntilNextMove"
+cmd "sym set _BuildSlot 7"
+cmd "player local tryBuild PlaceOrder"
+}
+Script RepeatBuild {
+cmd "if sym TryoutLoaded != 1 runnow sym set FinalUnitToBuild $PreviousUnitBuilt"
+cmd "if sym TryoutLoaded != 1 runnow sym set FinalUnitToBuildST $PreviousUnitBuiltST"
+cmd "if sym TryoutLoaded != 1 runnow sym set _BuildSlot $_BuildSlotPrev"
+cmd "if sym TryoutLoaded != 1 runnow player local tryBuild PlaceOrder"
+}
+Script OrderLink {
+cmd "playSound UIOrderLink.wav"
+rcmd "gameUI focusName CrossOrderLinkUnit"
+rcmd "sym set FinalOrderToBuild LinkUnit"
+rcmd "sym set SetOrderAndDrop 1"
+rcmd "menuCmd ChangeOrderOk local"
+}
+Script OrderPatrol {
+cmd "playSound UIOrderPatrol.wav"
+rcmd "gameUI focusName CrossOrderPatrolArea"
+rcmd "sym set FinalOrderToBuild PatrolArea"
+rcmd "sym set SetOrderAndDrop 0"
+rcmd "menuCmd ChangeOrderOk local"
+}
+script OrderHold {
+cmd "playSound UIOrderHold.wav"
+rcmd "gameUI focusName CrossOrderHoldPosition"
+rcmd "sym set FinalOrderToBuild HoldPosition"
+rcmd "sym set SetOrderAndDrop 1"
+rcmd "menuCmd ChangeOrderOk local"
+}
+Script OrderCapture {
+cmd "playSound UIOrderCapture.wav"
+rcmd "gameUI focusName CrossOrderCaptureOutpost"
+rcmd "sym set FinalOrderToBuild CaptureOutpost"
+rcmd "sym set SetOrderAndDrop 1"
+rcmd "menuCmd ChangeOrderOk local"
+}
+Script OrderAttack {
+cmd "playSound UIOrderAttack.wav"
+rcmd "gameUI focusName CrossOrderAttackEnemy"
+rcmd "sym set FinalOrderToBuild AttackEnemy"
+rcmd "sym set SetOrderAndDrop 1"
+rcmd "menuCmd ChangeOrderOk local"
+}
+Script OrderRepeat {
+cmd "if sym LastUnitOrder == LinkUnit playSound UIOrderLink.wav"
+cmd "if sym LastUnitOrder == PatrolArea playSound UIOrderPatrol.wav"
+cmd "if sym LastUnitOrder == HoldPosition playSound UIOrderHold.wav"
+cmd "if sym LastUnitOrder == CaptureOutpost playSound UIOrderCapture.wav"
+cmd "if sym LastUnitOrder == AttackEnemy playSound UIOrderAttack.wav"
+rcmd "sym set SetOrderAndDrop 1"
+cmd "menuCmd RepeatOrder local"
+}
+Script OrderOnNonOrderableUnit {
+cmd "player local do dropUnit"
+}
+Script OpenCockpitToMinimap {
+vis_frame_blockN InGameModeT 35
+cmd "sym set OpenCockpitButton 5"
+cmd "inputBinding disable cockpitClosed"
+cmd "cbinding disable orderMenu"
+cmd "menuCmd OpenCockpit local"
+cmd "sym set CockpitFocus map"
+}
+Script CloseCockpitToMinimap {
+cmd "if sym CockpitFocus == map menuCmd CloseCockpit local"
+cmd "if sym CockpitFocus == order gameUI focusName CockpitSideMousezoneL"
+}
+Script OpenCockpitToBuildMenu {
+vis_frame_blockN InGameModeT 35
+cmd "sym set OpenCockpitButton 3"
+cmd "inputBinding disable cockpitClosed"
+cmd "cbinding disable orderMenu"
+cmd "menuCmd OpenCockpit local"
+cmd "sym set CockpitFocus order"
+}
+Script CloseCockpitToBuildMenu {
+cmd "if sym CockpitFocus == order menuCmd CloseCockpit local"
+cmd "if sym CockpitFocus == map gameUI focusName CockpitSideMousezoneR"
+}
+Script OpenCockpitWithWheel {
+vis_frame_blockN InGameModeT 35
+cmd "sym set OpenCockpitButton 6"
+cmd "inputBinding disable cockpitClosed"
+cmd "cbinding disable orderMenu"
+cmd "menuCmd OpenCockpit local"
+cmd "sym set CockpitFocus order"
+rcmd "sym set OpenCockpitHeld 1"
+}
+Script OpenAbilitiesMenuToggled {
+vis_frame_blockN InGameModeT 35
+cmd "sym set OpenCockpitButton 5"
+cmd "inputBinding disable cockpitClosed"
+cmd "cbinding disable orderMenu"
+cmd "menuCmd OpenCockpit local"
+cmd "sym set CockpitFocus map"
+rcmd "sym set OpenCockpitHeld 1"
+}
+Script HandleEscapeKey {
+vis_frame_blockN InGameModeT 35
+rcmd "]echo run_HandleEscapeKey"
+rcmd "]if notpaused && inputBinding cockpitClosed ]menuCmd PauseGameWithEscape"
+rcmd "]if inputBinding cockpitOpen ]menuCmd CloseCockpit local"
+rcmd "]if paused ]menuCmd MP_ResumeGame local"
+rcmd "]if netgame && sym PauseUIOpen == 1 ]menuCmd MP_ResumeGame local"
+rcmd "]if sym LessonUIOpen == 1 ]clearmenu Lesson /fadeout 0.5"
+}
+Script PauseGameWithEscape {
+cmd "]echo run_PauseGameWithEscape"
+cmd "]gameUI saveFocusID FocusBeforeMenu"
+cmd "]inputBinding disable cockpitClosed"
+cmd "]if sym CockpitIsOpen == 0 && sym MatchOver == 0 ]loadmenu MenuPause.txt"
+}
+Script PauseGameWithControllerStart {
+vis_frame_blockN InGameModeT 35
+cmd "]gameUI saveFocusID FocusBeforeMenu"
+cmd "]if !challengeMap && sym ConQuestsMenu == 0 && sym MatchOver == 1 && sym MatchOverInSummary == 1 ]gameui focusNameTry EndgameContinueButton"
+cmd "]if !challengeMap && sym ConQuestsMenu == 0 && sym MatchOverReal == 1 && sym MatchOverInSummary == 0 ]menucmd EndgameShow"
+cmd "]if replay && !challengeMap && sym ConQuestsMenu == 0 && sym MatchOverReal == 0 && sym MatchOver == 1 && sym MatchOverInSummary == 0 ]menucmd EndgameShowAndStopReplay"
+cmd "]if !challengeMap && sym ConQuestsMenu == 1 clearmenu ConQuests.txt /fadeout 0.1"
+cmd "]if sym CockpitIsOpen == 0 && sym MatchOver == 0 && sym MatchOverReal == 0 ]loadmenu MenuPause.txt"
+cmd "]if sym CockpitIsOpen == 1 ]menuCmd CloseCockpit local"
+}
+Script PauseGameNormal {
+cmd "]echo run_PauseGameNormal"
+cmd "]if !netGame ]pausegame 1"
+cmd "]playerinputpause 1 local"
+cmd "]sym set PauseUIOpen 1"
+cmd "]gamemsg clearTR"
+cmd "]floatsym set S_Chal 0.0"
+cmd "]addUIAnim HudInfoMasterLeft0 mas_IngameHideLeft"
+cmd "]addUIAnim HudInfoMasterLeft1 mas_IngameHideLeft"
+cmd "]addUIAnim HudInfoMasterLeft2 mas_IngameHideLeft"
+cmd "]addUIAnim HudInfoMasterLeft3 mas_IngameHideLeft"
+cmd "]addUIAnim HudInfoMasterLeft4 mas_IngameHideLeft"
+cmd "]addUIAnim HudInfoMasterLeft5 mas_IngameHideLeft"
+cmd "]addUIAnim HudInfoMasterRight0 mas_IngameHideRight"
+cmd "]addUIAnim HudInfoMasterRight1 mas_IngameHideRight"
+cmd "]addUIAnim HudInfoMasterRight2 mas_IngameHideRight"
+cmd "]addUIAnim HudInfoMasterRight3 mas_IngameHideRight"
+cmd "]addUIAnim HudInfoMasterRight4 mas_IngameHideRight"
+cmd "]addUIAnim HudInfoMasterRight5 mas_IngameHideRight"
+cmd "]addUIAnim PingMaster mas_IngameHideRight"
+cmd "]addUIAnim EscMenuPause mas_IngamePauseEnter"
+cmd "]addUIAnim ChallengePilot mas_IngamePilotEnter"
+cmd "]addUIAnim LessonPaused mas_IngamePilotTextEnter"
+cmd "]gameui hideGroup HudBuildTab HudBuildTab__0 HudBuildTab__1 HudBuildTab__2 HudBuildTab__3 HudBuildTab__4"
+cmd "]gameui hideGroup PlayerStatusFloat__0 PlayerStatusFloat__1 PlayerStatusFloat__2 PlayerStatusFloat__3 PlayerStatusFloat__4 PlayerStatusFloat__5"
+cmd "]addUIAnim AB_AbilityRow mas_IngameHideBottom"
+cmd "]addUIAnim AB_UnitsRow mas_IngameHideBottom"
+cmd "]addUIAnim MinimapMaster mas_IngameHideBottomLeft"
+cmd "]addUIAnim TutorialMaster mas_IngameHideTutorial"
+cmd "]addUIAnim EscLessonObject mas_IngameLessonEnter"
+cmd "]addUIAnim ChallengeTime mas_IngameHideTop"
+cmd "]addUIAnim GameStatusMaster mas_IngameHideTop"
+cmd "]addUIAnim HudIngameXpTop mas_IngameHideTop"
+cmd "]if usingPad gameui focusnametry PauseMenuButton0 PauseMenuButton1 PauseMenuButton2 PauseMenuButton3 PauseMenuButton4"
+}
+Script Notify360DashUIUp {
+cmd "]if sym PauseUIOpen == 0 && sym LessonUIOpen == 0 && inGame && !netgame && !gameover runnow loadmenu MenuPause.txt"
+}
+Script Notify360DashUIDown {
+cmd "]if sym PauseUIOpen == 0 && sym LessonUIOpen == 0 && inGame && !netgame && !gameover runnow pausegame 0
+cmd "]if sym PauseUIOpen == 0 && sym LessonUIOpen == 0 && inGame && !netgame && !gameover runnow playerinputpause 0 local
+}
+Script UnPauseGameWithControllerStart {
+vis_frame_blockN InGameModeT 35
+cmd "]if sym DialogBoxLoaded == 0 runnow menuCmd MP_ResumeGame local"
+}

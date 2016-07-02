@@ -1,0 +1,59 @@
+Script PlaceOrder {
+rcmd "log MenuCmd: PlaceOrder (player $C_BINDING $ArmySlotToBuild@C_BINDING@ )"
+rcmd "checkCreditsForUnitBuild local $FinalUnitToBuild"
+rcmd "if sym _menucond == 1 runNow menuCmd PlaceOrderOk local"
+rcmd "if sym _menucond == 0 runNow menuCmd PlaceOrderFail local"
+#if vr
+rcmd "if sym VrTutorialStage == 4 runnow sym inc VrTutorialUnitsBuilt 1"
+#endif
+}
+Script PlaceOrderOk {
+cmd "log MenuCmd: PlaceOrderOk"
+cmd "playSoundForPlayer local UIPlaceOrder.wav"
+cmd "build local $FinalUnitToBuild"
+cmd "sym set PreviousUnitBuilt $FinalUnitToBuild"
+cmd "sym set PreviousUnitBuiltST $FinalUnitToBuildST"
+cmd "sym set _BuildSlotPrev $_BuildSlot"
+cmd "if sym QuickCockpitActive == 0 menuCmd CloseCockpit $C_BINDING"
+cmd "if sym QuickCockpitActive == 2 sym set QuickCockpitActive 0"
+cmd "if sym QuickCockpitActive == 1 gameUI focusName $ArmySlotLastSelection"
+cmd "if sym QuickCockpitActive == 1 gameUI set bungieMaster $ArmySlotLastSelection UnitsBoxBungie"
+#if !vr
+cmd "gameui getLastRenderPos #UnitIconTray@_BuildSlot@ _BuildSlotPosX _BuildSlotPosY"
+cmd "if sym GameMessageSubtle == 0 runnow pcmd t2 loadmenu #UnitBuilt@UnitBuiltCurrent@"
+cmd "sym op UnitBuiltNumber firstToBack"
+cmd "sym op UnitBuiltNumber copyFirst UnitBuiltCurrent"
+#else
+cmd "if sym InsideFortress == 1 menucmd AssembleUnit"
+#endif
+}
+Script PlaceOrderFail {
+cmd "log MenuCmd: PlaceOrderFail"
+cmd "if sym QuickCockpitActive == 0 menuCmd CloseCockpit $C_BINDING"
+cmd "if sym QuickCockpitActive == 2 sym set QuickCockpitActive 0"
+cmd "if sym QuickCockpitActive == 1 gameUI focusName $ArmySlotLastSelection"
+cmd "if sym QuickCockpitActive == 1 gameUI set bungieMaster $ArmySlotLastSelection UnitsBoxBungie"
+}
+Script RepeatOrder {
+cmd "log MenuCmd: RepeatOrder"
+cmd "sym set FinalOrderToBuild $LastUnitOrder"
+cmd "menuCmd ChangeOrderOk local"
+}
+Script ChangeOrderOk {
+rcmd "log MenuCmd: ChangeOrderOk (player $C_BINDING  $FinalOrderToBuild )"
+rcmd "sym set _DropUnitTag_ /noOutpostLatch"
+rcmd "if sym FinalOrderToBuild == HoldPosition runnow sym clear _DropUnitTag_"
+rcmd "player local do setorder $$FinalOrderToBuild"
+rcmd "gameUI disable #&StatusToHide@C_BINDING@&Status"
+rcmd "gameUI enable #@FinalOrderToBuild@Status"
+rcmd "sym setConcat2 HeldUnitOrderSlot $C_BINDING $OrderSlotLastSelection"
+rcmd "sym setConcat2 HeldUnitOrder $C_BINDING $$FinalOrderToBuild"
+rcmd "sym set LastUnitOrder $$FinalOrderToBuild"
+rcmd "if sym QuickCockpitActive == 0 menuCmd CloseCockpit local"
+rcmd "if sym SetOrderAndDrop == 1 player local do dropUnit $$_DropUnitTag_"
+rcmd "if sym SetOrderAndDrop == 0 sym set SetOrderAndDrop 1"
+}
+Script OrderHoldChosen {
+cmd "log MenuCmd: OrderHoldChosen"
+cmd "sym setConcat2 OrderDefaultPicture $C_BINDING OrderPictureHold"
+}

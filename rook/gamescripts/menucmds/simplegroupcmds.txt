@@ -1,0 +1,85 @@
+Script SGInvitationRespNeeded {
+cmd "if !menuloaded SGInvitation loadmenu SGInvitation"
+}
+Script SGInvitationAccept {
+ignoreInputTime 0.1
+cmd "sg inviteAccept"
+cmd "sym set SG_NeedInviteResponse 0"
+cmd "clearmenu SGInvitation /fadeout 0.1"
+cmd "if menuloaded SplashPromo clearmenu SplashPromo /fadeout 0.1"
+}
+Script SGInvitationDecline {
+ignoreInputTime 0.1
+cmd "sg inviteDecline"
+cmd "sym set SG_NeedInviteResponse 0"
+cmd "clearmenu SGInvitation /fadeout 0.1"
+}
+Script SGServerCommandResponseHandler {
+ignoreInputTime 0.1
+cmd "echo Got SGServerResponseHandler result: $_MArg1_"
+}
+Script SGServerStartGameResponseHandler {
+ignoreInputTime 0.1
+cmd "echo Got SGServerResponseHandler result: $_MArg1_"
+}
+Script SGPlayerJoined {
+ignoreInputTime 0.1
+cmd "echo player joined the simple group"
+#if vr
+cmd "menucmd SGPlayerJoined_VR"
+#endif
+}
+Script SGPlayerLeft {
+#if vr
+cmd "menucmd SGPlayerLeft_VR"
+#endif
+}
+Script SGJoinedGroup {
+cmd "echo i'm joined into simple group - size $_MArg1_"
+cmd "if vr menucmd SGJoinedGroup_VR local $_MArg1_"
+}
+Script SGSymbolsUpdated {
+cmd "gameui refreshFilterName SimpleGroup"
+#if vr
+cmd "menucmd SGSymbolsUpdated_VR local $_MArg1_"
+cmd "if !netgame menucmd UpdateMapVoteIcons"
+#endif
+}
+Script StartMapTeamColorsUpdated {
+cmd "gameui refreshFilterName SimpleGroup VrStatus"
+}
+Script ShowSGInfo {
+cmd "sym set SG_InfoShown 1"
+cmd "gameui enableAll SGControls"
+cmd "addUIAnim SGControls mas_DialogPopFadein"
+}
+Script HideSGInfo {
+cmd "sym set SG_InfoShown 0"
+cmd "gameui disableAll SGControls"
+}
+Script QuitSimpleGroup_Start {
+cmd "timer setAsyncWait 1"
+#if vr
+cmd "loadmenu AsyncNoticeDialogVr.txt"
+#endif
+rcmd "sym set SG_Quit_Active 1"
+}
+Script QuitSimpleGroup_Complete {
+cmd "timer clearAsyncWait"
+#if vr
+cmd "clearmenu AsyncNoticeDialogVr.txt"
+#endif
+cmd "sym set SG_Quit_Active 0"
+}
+Script LFGSimpleGroup_Start {
+cmd "timer setAsyncWait 1"
+#if vr
+cmd "loadmenu AsyncNoticeDialogVr.txt"
+#endif
+}
+Script LFGSimpleGroup_Complete {
+cmd "timer clearAsyncWait"
+#if vr
+cmd "clearmenu AsyncNoticeDialogVr.txt"
+#endif
+}

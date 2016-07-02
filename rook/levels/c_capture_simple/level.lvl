@@ -1,0 +1,694 @@
+// map: c_capture_simple
+
+// level embedded console commands 
+CONSOLE_IMMEDIATE rook setChallengeInfo capture 3 18 /2star 25 /1star 120 /useAirMech FighterA /loseTime 120
+CONSOLE_IMMEDIATE menucmd OnChallengeMapStart
+CONSOLE_IMMEDIATE sym savedSet PilotCustom0 $ChalPilotComm
+CONSOLE_IMMEDIATE sym savedSet ItemCustom0 NoItem
+CONSOLE_IMMEDIATE sym set LessonObject LessonCapture
+CONSOLE_IMMEDIATE sym set ChallengeNumber 9
+CONSOLE sym set HasLessonIntro 1
+CONSOLE sym set LessonIntro Chal7_LessonIntro
+CONSOLE sym set HasLessonOutro 1
+CONSOLE sym set LessonOutro Chal7_LessonOutro
+CONSOLE sym set LessonOutroFail ChalN_LessonOutroFail
+CONSOLE sym set LessonOutroVeteran ChalN_LessonOutroVeteran
+CONSOLE if sym CSCap4 < $MinChalStarsForNoTip runnow pausegame 1
+CONSOLE if sym CSCap4 < $MinChalStarsForNoTip loadmenu Lesson
+CONSOLE if sym CSCap4 < $MinChalStarsForNoTip sym set ChallengeShowNext 1
+CONSOLE player 1 toggleai
+CONSOLE player 1 activate 0 // turns off forcebox
+CONSOLE if sym CSCap4 == 0 sym set ChallengeShowNext 1
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_Canyon.mtl ToSand
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_EnvironmentMapped.mtl Canyon
+CONSOLE_IMMEDIATE sym setZero ShowPowerbar ShowMinimap ShowAbilities //ShowUnitsBar
+CONSOLE_IMMEDIATE rook disable abilityMenu
+CONSOLE_IMMEDIATE rook setArmy Infantry NoUnit InfantryLight NoUnit InfantryRocket NoUnit Probe NoUnit
+CONSOLE_IMMEDIATE rook setParts PriNone PriCheatDPS StrCheatArmor StrNone SpeCheatBuild SpeCheatMoney CorNone EngNone
+CONSOLE_EXIT_IMMEDIATE sym restore PilotCustom0 ItemCustom0
+CONSOLE_EXIT_IMMEDIATE sym setOne ShowPowerbar ShowMinimap ShowAbilities ShowUnitsBar
+CONSOLE_EXIT_IMMEDIATE rook restoreArmy
+CONSOLE_EXIT_IMMEDIATE rook restoreParts
+
+mapInfo {
+	MAPNAME c_capture_simple
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION c_capture_simple
+	SKYBOX mat_SkyBlueSmallClouds
+	TILESET Valley
+	EDGING ToGrass
+	GAMEMODE challengeCapture
+	GAMESTYLE Skirmish
+	PREGAME_RADIUS 55
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT 0
+	AutoExtShadowCheckAtZHeight 1000
+	FORCEBOX -42 26 -15 17 4 0
+	MAPEXTMIN -62 -62 0
+	MAPEXTMAX 62 62 0
+	CAMERAEXTMIN -26 -23
+	CAMERAEXTMAX 10 -9
+}
+
+mapBalance {
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Valley
+	TerrainArrayX 10
+	TerrainArrayY 10
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -6
+  TRANSFORMPLANE -1
+}
+
+fogValues {
+	FOGCOLOR 88 91 99 255
+	FOGARGS 13 18
+	DFOGCOLOR 255 255 255 255
+	DFOGCOLOR2 255 255 255 255
+	DFOGARGS 90 150
+	DFOGARGS2 90 150
+	CANVASCOLOR 0 0 0 0
+}
+
+airmech {
+	AILevel -1
+	Player 0 {
+		startLoc -30 0 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 1 {
+		startLoc -46 -46 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 2 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 3 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 4 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 5 {
+		startLoc 0 0 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+}
+DIR_LIGHT {
+	pos 261.276978 544.938965 796.728027
+	dir 0.261277 0.544939 0.796728
+	diff 0.7 0.7 0.7
+	amb 0.6 0.5 0.4
+}
+EventScripts {
+}
+ActionScripts {
+}
+ScriptVariables {
+}
+objects {
+	WO Valley_A0 {
+		pos 32 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 32 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_G0 {
+		pos 16 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Valley_G0 {
+		pos 8 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Valley_A5 {
+		pos -24 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Valley_A8 {
+		pos -24 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Valley_A0 {
+		pos -40 32 0
+	}
+	WO Valley_A0 {
+		pos 32 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -32 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Valley_A1 {
+		pos -32 0 0
+		. mtmm 6
+	}
+	WO Valley_Aa {
+		pos 8 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Valley_A0 {
+		pos -8 16 0
+		. mtmm 4
+	}
+	WO Valley_A0 {
+		pos -56 0 0
+	}
+	WO Valley_A0 {
+		pos -32 24 0
+	}
+	WO Valley_G2 {
+		pos -32 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Valley_A2 {
+		pos 0 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Valley_A7 {
+		pos -40 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Valley_A1 {
+		pos 8 0 0
+		. mtmm 9
+	}
+	WO Valley_A0 {
+		pos -40 24 0
+	}
+	WO Valley_A0 {
+		pos -40 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos 0 32 0
+	}
+	WO Valley_Ac {
+		pos -48 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_Ac {
+		pos -16 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_Ac {
+		pos -24 -16 0
+	}
+	WO Valley_Ac {
+		pos -32 -16 0
+	}
+	WO Valley_Ac {
+		pos -8 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_F0 {
+		pos 0 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 32 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 32 8 0
+	}
+	WO Valley_A0 {
+		pos 16 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 7
+	}
+	WO Valley_A5 {
+		pos 16 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Valley_A7 {
+		pos 16 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Valley_A0 {
+		pos -16 16 0
+		. mtmm 8
+	}
+	WO Valley_A0 {
+		pos -56 8 0
+	}
+	WO Valley_A0 {
+		pos -24 24 0
+	}
+	WO Valley_A0 {
+		pos 16 16 0
+		. mtmm 4
+	}
+	WO Valley_A0 {
+		pos 24 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -48 16 0
+	}
+	WO Valley_A0 {
+		pos -24 16 0
+		. mtmm 4
+	}
+	WO Valley_A0 {
+		pos 16 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -48 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Valley_A0 {
+		pos 0 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Valley_Aa {
+		pos 0 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos 32 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_G1 {
+		pos -16 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Valley_A0 {
+		pos -56 24 0
+	}
+	WO Valley_A0 {
+		pos -48 24 0
+	}
+	WO Valley_Aa {
+		pos -32 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Valley_A0 {
+		pos 8 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 24 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 24 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Valley_A0 {
+		pos 24 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Valley_A0 {
+		pos 24 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 8 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 16 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_A0 {
+		pos 0 24 0
+	}
+	WO Valley_A0 {
+		pos -8 24 0
+	}
+	WO Valley_Ac {
+		pos -40 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Valley_A0 {
+		pos 24 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Valley_Ac {
+		pos -56 -16 0
+	}
+	WO Valley_G0 {
+		pos 24 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_G0 {
+		pos -56 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos -16 24 0
+	}
+	WO Valley_A0 {
+		pos -48 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Valley_A5 {
+		pos -8 0 0
+		. mtmm 5
+	}
+	WO Valley_H0 {
+		pos 0 -8 0
+	}
+	WO Valley_A0 {
+		pos -16 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Valley_A0 {
+		pos 32 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_G1 {
+		pos -24 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_A0 {
+		pos 8 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Valley_A0 {
+		pos -56 32 0
+	}
+	WO Valley_G1 {
+		pos -40 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Valley_A8 {
+		pos -8 8 0
+		. mtmm 5
+	}
+	WO Valley_A0 {
+		pos -48 32 0
+	}
+	WO Valley_A0 {
+		pos -24 32 0
+	}
+	WO Valley_A0 {
+		pos -32 32 0
+	}
+	WO Valley_A0 {
+		pos -16 32 0
+	}
+	WO Valley_A0 {
+		pos -8 32 0
+	}
+	WO Valley_G0 {
+		pos -48 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Valley_G2 {
+		pos -8 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Valley_A3 {
+		pos -16 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 10
+	}
+	WO Valley_A5 {
+		pos -40 0 0
+		. mtmm 9
+	}
+	WO Valley_A0 {
+		pos 8 16 0
+		. mtmm 8
+	}
+	WO Valley_A0 {
+		pos -56 16 0
+	}
+	WO ValleyTrees_A {
+		pos -30.703829 26.697218 -0.030137
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyTrees_A {
+		pos -54.179245 6.941097 -0.149064
+		rot_x -0.996195 -0.087156 0
+		rot_y 0.087156 -0.996195 0
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyTrees_B {
+		pos -6.442263 11.69247 -0.419962
+		rot_x 1.000001 0 0
+		rot_y 0 1.000001 0
+		scl 0.92
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyTrees_A {
+		pos 6.242913 28.212379 -0.000042
+		rot_x 0.173648 -0.984808 0
+		rot_y 0.984808 0.173648 0
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyTrees_A {
+		pos 29.502094 5.089427 0
+		rot_x -1.000001 0 0
+		rot_y 0 -1.000001 0
+		signal 0 to 1 cmd "titan set tDel 2"
+	}
+	WO ValleyProps_LumberStorage {
+		pos 13.927588 15.58652 0
+		scl 0.6
+	}
+	WO ValleyProps_Logs {
+		pos -27.241501 12.505891 0.003257
+		scl 0.49
+	}
+	WO ValleyProps_Hut {
+		pos -26.458012 14.493645 0.395484
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 0.76
+	}
+	WO ValleyProps_CartFull {
+		pos 9.841859 -4.287004 0.000042
+		scl 0.62
+	}
+	WO ValleyProps_Hut {
+		pos 12.498116 -6.391208 0.106083
+		scl 0.86
+	}
+	WO ValleyProps_CartEmpty {
+		pos 8.111704 17.429256 -0.008093
+		rot_x 0.866025 -0.5 0
+		rot_y 0.5 0.866025 0
+		scl 0.73
+	}
+	WO ValleyProps_Logs {
+		pos 16.524546 -3.462895 -0.000226
+		rot_x -0.996195 0.087156 0
+		rot_y -0.087156 -0.996195 0
+		scl 0.49
+	}
+	WO ValleyProps_Logs {
+		pos 13.557211 -3.594639 -0.000026
+		rot_x 0.906308 0.422618 0
+		rot_y -0.422618 0.906308 0
+		scl 0.49
+	}
+	WO ValleyProps_CartFull {
+		pos 5.539959 17.67252 0.227338
+		scl 0.62
+	}
+	WO Valley_A0 {
+		pos 40 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		id 90
+	}
+	WO Valley_A0 {
+		pos 40 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		id 91
+	}
+	WO ValleyTrees_B {
+		pos 30.314423 29.092924 0.030039
+		rot_x 1.000001 0 0
+		rot_y 0 1.000001 0
+		scl 0.92
+		id 93
+	}
+	WO ValleyTrees_B {
+		pos 39.420616 25.432882 0.030039
+		rot_x 1.000001 0 0
+		rot_y 0 1.000001 0
+		scl 0.92
+		id 94
+	}
+	WO ValleyTrees_B {
+		pos 37.61945 33.146595 0.030039
+		rot_x 1.000001 0 0
+		rot_y 0 1.000001 0
+		scl 0.92
+		id 95
+	}
+}
+
+details {
+	d CactusB -1 1.112833 0.196222 0 -0.196222 1.112833 0 0 0 1.13 -4.289936 14.516925 -9.000002
+	d ValePlantTreeA -1 1 0 0 0 1 0 0 0 1 8.7482 25.982613 0.100003
+	d ValePlantTreeB -1 1 0 0 0 1 0 0 0 1 -42.96225 14.133088 2.309999
+	d ValePlantTreeB -1 0.77 0 0 0 0.77 0 0 0 0.77 -21.349779 12.496097 2.00988
+	d ValePlantTreeC -1 1 0 0 0 1 0 0 0 1 -44.482426 5.469459 1.44
+	d ValePlantTreeC -1 1 0 0 0 1 0 0 0 1 2.382518 14.489274 2.003147
+	d ValePlantTreeC -1 1 0 0 0 1 0 0 0 1 0.278993 11.752521 1.660003
+	d ValePlantTreeC -1 1 0 0 0 1 0 0 0 1 -17.902794 12.937918 2.003053
+	d ValePlantTreeC -1 1 0 0 0 1 0 0 0 1 -36.021404 14.042387 1.920002
+	d ValePlantTreeD -1 1 0 0 0 1 0 0 0 1 -22.81617 14.579479 1.470034
+	d ValePlantTreeD -1 1 0 0 0 1 0 0 0 1 -13.655887 15.48278 1.379999
+	d ValePlantTreeD -1 1 0 0 0 1 0 0 0 1 -3.307498 6.829776 1.350001
+	d ValePlantTreeD -1 1 0 0 0 1 0 0 0 1 -39.365685 14.604897 1.751567
+	d ValePlantTreeD -1 0.890954 -0.890954 0 0.890954 0.890954 0 0 0 1.259999 -38.80648 11.840596 2.100349
+	d ValePlantTreeE -1 0.52 0 0 0 0.52 0 0 0 0.52 15.516942 -6.187994 0.000017
+	d ValePlantTreeE -1 -0.17785 -0.48864 0 0.48864 -0.17785 0 0 0 0.52 -42.379585 9.769423 0.388096
+	d ValePlantTreeE -1 0.63 0 0 0 0.63 0 0 0 0.63 -32.69416 15.067608 -0.087686
+	d ValePlantTreeF -1 1 0 0 0 1 0 0 0 1 -42.178547 -2.763248 1.530001
+	d ValePlantTreeF -1 -0.087156 -0.996195 0 0.996195 -0.087156 0 0 0 1 -22.350294 10.368589 1.740005
+	d ValePlantTreeF -1 -0.087156 -0.996195 0 0.996195 -0.087156 0 0 0 1 -12.996597 15.63175 1.650036
+	d ValePlantTreeF -1 1 0 0 0 1 0 0 0 1 19.623356 7.723273 2.003189
+	d ValePlantTreeF -1 -0.766045 0.642789 0 -0.642789 -0.766045 0 0 0 1.000001 -39.059082 13.815998 1.290046
+	d ValePlantTreeF -1 0.984808 -0.173648 0 0.173648 0.984808 0 0 0 1 -17.081097 12.521549 1.72744
+	d ValePlantTreeG -1 1 0 0 0 1 0 0 0 1 -36.574554 16.164749 1.523049
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable true
+  layer 2 name "volumes" visible true pickable true
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible true pickable true
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+	PF OutpostV2.txt {
+		pos 8.36835 7.293468 0.000015
+		rot 0 0 0
+		id 1
+		/shfnv 825153392 ". latchInf Infantry Infantry Infantry Infantry"
+		/shfnv 2369371622 ". name U_Outpost_E"
+		/shfnv 2734521612 ". team 1"
+	}
+	PF OutpostV2.txt {
+		pos -32.640491 3.04201 0.06
+		rot 0 0 0
+		id 12
+		/shfnv 825153392 ". latchInf Infantry Infantry Infantry Infantry"
+		/shfnv 2369371622 ". name U_Outpost_W"
+		/shfnv 2734521612 ". team 0"
+	}
+}

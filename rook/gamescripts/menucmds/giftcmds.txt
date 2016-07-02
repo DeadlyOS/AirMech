@@ -1,0 +1,1635 @@
+Script GiftXMasPresent1 {
+cmd "customize contentLookup _Gift_ _GiftLink_"
+cmd "sym set ItemLocal NoItem"
+cmd "menucmd GiftXMasShowContents local #1"
+}
+Script GiftXMasPresent2 {
+cmd "customize contentLookup _Gift_ _GiftLink_"
+cmd "sym set ItemLocal NoItem"
+cmd "menucmd GiftXMasShowContents local #2"
+}
+Script GiftXMasPresent3 {
+cmd "customize contentLookup _Gift_ _GiftLink_"
+cmd "sym set ItemLocal NoItem"
+cmd "menucmd GiftXMasShowContents local #3"
+}
+Script GiftXMasShowContents {
+cmd "sym setl BackendDialogCaption You opened a Gift!"
+cmd "if sym _Gift_ !isEmpty runnow sym setl BackendDialogText You found the $_GiftLink_ and $_GiftD_ Diamonds in Festive Present $_MArg1_ !"
+cmd "if sym _Gift_ isEmpty runnow sym setl BackendDialogText You found $_GiftD_ Diamonds in Festive Present $_MArg1_ !"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script UseItemCommonSeq {
+ignoreInputTime 1.2
+rcmd "timer setAsyncWait 1"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+cmd "pcmd 0.5 wallet useItem $_MArg1_"
+cmd "pcmd 1.2 timer clearAsyncWait"
+}
+Script UseCapsuleRare {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleRare_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleRare _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleRare"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleRare_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleRare_V2"
+}
+Script PresentCapsuleRareChoices {
+cmd "menucmd PresentCapsuleChoices local $_MArg1_ $_MArg2_ $_MArg3_"
+}
+Script PresentCapsuleChoices {
+ignoreInputTime 1.5
+cmd "sym set _Choice1_ $_MArg1_"
+cmd "sym set _Choice2_ $_MArg2_"
+cmd "sym set _CapsuleType_ $_MArg3_"
+cmd "customize contentLookup _Choice1_ _Choice1Link_ _Choice1Type_ _Choice1Disp_"
+cmd "customize contentLookup _Choice2_ _Choice2Link_ _Choice2Type_ _Choice2Disp_"
+cmd "sym setl ChoicesCaption CapsuleGenericChoiceTitle"
+cmd "sym set ChoicesText CapsuleGenericChoiceMsg"
+cmd "if sym _CapsuleType_ == Normal runnow sym set ChoicesCaption CapsuleNormalChoiceTitle"
+cmd "if sym _CapsuleType_ == Normal runnow sym set ChoicesText CapsuleNormalChoiceMsg"
+cmd "if sym _CapsuleType_ == Recipe runnow sym set ChoicesCaption CapsuleRecipeChoiceTitle"
+cmd "if sym _CapsuleType_ == Recipe runnow sym set ChoicesText CapsuleRecipeChoiceMsg"
+cmd "if sym _CapsuleType_ == Frame runnow sym set ChoicesCaption CapsuleFrameChoiceTitle"
+cmd "if sym _CapsuleType_ == Frame runnow sym set ChoicesText CapsuleFrameChoiceMsg"
+cmd "if sym _CapsuleType_ == Rare runnow sym set ChoicesCaption CapsuleRareChoiceTitle"
+cmd "if sym _CapsuleType_ == Rare runnow sym set ChoicesText CapsuleRareChoiceMsg"
+cmd "if sym _CapsuleType_ == Ancient runnow sym set ChoicesCaption CapsuleAncientChoiceTitle"
+cmd "loadmenu CapsuleRareChoices /fadeIn 0.2"
+cmd "playsound UI_UnlockCapsuleSpecial"
+cmd "pcmd 0.3 gameUI enable ChoiceButton1"
+cmd "pcmd 0.3 gameUI enable ChoiceButton2"
+cmd "pcmd 0.4 addUIAnim CapsuleRare mas_CapsuleRareShake"
+cmd "pcmd 0.9 addUIAnim CapsuleRareTop mas_CapsuleRareTop"
+cmd "pcmd 0.9 addUIAnim CapsuleRareMiddle mas_CapsuleRareBottom"
+cmd "pcmd 0.9 addUIAnim CapsuleRareBottom mas_CapsuleRareBottom"
+cmd "pcmd 0.9 gameUI disable CapsuleRareTop"
+cmd "pcmd 0.9 gameUI disable CapsuleRareMiddle"
+cmd "pcmd 0.9 gameUI disable CapsuleRareBottom"
+cmd "pcmd 1.2 addUIAnim ChoiceButton1 mas_Choice1MoveIn"
+cmd "pcmd 1.2 addUIAnim ChoiceButton2 mas_Choice2MoveIn"
+cmd "pcmd 1.2 addUIAnim ChoiceTitle1 mas_ChoiceTitle"
+cmd "pcmd 1.2 addUIAnim ChoiceTitle2 mas_ChoiceTitle"
+cmd "pcmd 1.2 gameUI enable ChoiceTitle1"
+cmd "pcmd 1.2 gameUI enable ChoiceTitle2"
+}
+Script SelectCapsuleChoice1_CommonStuff {
+ignoreInputTime 1.6
+cmd "playsound UI_ItemPurchaseComplete"
+cmd "pcmd 0.1 addUIAnim Choice2 mas_Choice2MoveOut"
+cmd "pcmd 0.1 addUIAnim ChoiceBackground2 mas_Choice2MoveOut"
+cmd "pcmd 0.1 addUIAnim ChoiceTitle2 mas_Choice2MoveOut"
+cmd "pcmd 0.1 gameUI disable Choice2"
+cmd "pcmd 0.1 gameUI disable ChoiceBackground2"
+cmd "pcmd 0.1 gameUI disable ChoiceTitle2"
+cmd "pcmd 0.1 addUIAnim ChoiceButton1 mas_Choice1MoveCenter"
+cmd "pcmd 1.5 clearmenu CapsuleRareChoices.txt /fadeout 0.15"
+}
+Script SelectCapsuleChoice2_CommonStuff {
+ignoreInputTime 1.6
+cmd "playsound UI_ItemPurchaseComplete"
+cmd "pcmd 0.1 addUIAnim Choice1 mas_Choice1MoveOut"
+cmd "pcmd 0.1 addUIAnim ChoiceBackground1 mas_Choice1MoveOut"
+cmd "pcmd 0.1 addUIAnim ChoiceTitle1 mas_Choice1MoveOut"
+cmd "pcmd 0.1 gameUI disable Choice1"
+cmd "pcmd 0.1 gameUI disable ChoiceBackground1"
+cmd "pcmd 0.1 gameUI disable ChoiceTitle1"
+cmd "pcmd 0.1 addUIAnim ChoiceButton2 mas_Choice2MoveCenter"
+cmd "pcmd 1.5 clearmenu CapsuleRareChoices.txt /fadeout 0.15"
+}
+Script SelectCapsuleRareChoice1 {
+rcmd "menucmd UseItemCommonSeq CapsuleRare_C1"
+cmd "menucmd SelectCapsuleChoice1_CommonStuff"
+}
+Script SelectCapsuleRareChoice2 {
+rcmd "menucmd UseItemCommonSeq CapsuleRare_C2"
+cmd "menucmd SelectCapsuleChoice2_CommonStuff"
+}
+Script UseCapsuleNormal {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleNormal_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleNormal _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleNormal"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleNormal_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleNormal_V2"
+}
+Script SelectCapsuleNormalChoice1 {
+rcmd "menucmd UseItemCommonSeq CapsuleNormal_C1"
+cmd "menucmd SelectCapsuleChoice1_CommonStuff"
+}
+Script SelectCapsuleNormalChoice2 {
+rcmd "menucmd UseItemCommonSeq CapsuleNormal_C2"
+cmd "menucmd SelectCapsuleChoice2_CommonStuff"
+}
+Script UseCapsuleRecipe {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleRecipe_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleRecipe _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleRecipe"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleRecipe_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleRecipe_V2"
+}
+Script SelectCapsuleRecipeChoice1 {
+rcmd "menucmd UseItemCommonSeq CapsuleRecipe_C1"
+cmd "menucmd SelectCapsuleChoice1_CommonStuff"
+}
+Script SelectCapsuleRecipeChoice2 {
+rcmd "menucmd UseItemCommonSeq CapsuleRecipe_C2"
+cmd "menucmd SelectCapsuleChoice2_CommonStuff"
+}
+Script UseCapsuleFrame {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleFrame_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleFrame _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleFrame"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleFrame_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleFrame_V2"
+}
+Script SelectCapsuleFrameChoice1 {
+rcmd "menucmd UseItemCommonSeq CapsuleFrame_C1"
+cmd "menucmd SelectCapsuleChoice1_CommonStuff"
+}
+Script SelectCapsuleFrameChoice2 {
+rcmd "menucmd UseItemCommonSeq CapsuleFrame_C2"
+cmd "menucmd SelectCapsuleChoice2_CommonStuff"
+}
+Script UseCapsuleCrate {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleCrate_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleCrate _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleCrate"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleCrate_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleCrate_V2"
+}
+Script SelectCapsuleCrateChoice1 {
+rcmd "menucmd UseItemCommonSeq CapsuleCrate_C1"
+cmd "menucmd SelectCapsuleChoice1_CommonStuff"
+}
+Script SelectCapsuleCrateChoice2 {
+rcmd "menucmd UseItemCommonSeq CapsuleCrate_C2"
+cmd "menucmd SelectCapsuleChoice2_CommonStuff"
+}
+Script UseCapsuleVoid {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleVoid_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleVoid _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleVoid"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleVoid_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleVoid_V2"
+}
+Script SelectCapsuleVoidChoice1 {
+rcmd "menucmd UseItemCommonSeq CapsuleVoid_C1"
+cmd "menucmd SelectCapsuleChoice1_CommonStuff"
+}
+Script SelectCapsuleVoidChoice2 {
+rcmd "menucmd UseItemCommonSeq CapsuleVoid_C2"
+cmd "menucmd SelectCapsuleChoice2_CommonStuff"
+}
+Script UseCapsuleGothic {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleGothic_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleGothic _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleGothic"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleGothic_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleGothic_V2"
+}
+Script SelectCapsuleGothicChoice1 {
+rcmd "menucmd UseItemCommonSeq CapsuleGothic_C1"
+cmd "menucmd SelectCapsuleChoice1_CommonStuff"
+}
+Script SelectCapsuleGothicChoice2 {
+rcmd "menucmd UseItemCommonSeq CapsuleGothic_C2"
+cmd "menucmd SelectCapsuleChoice2_CommonStuff"
+}
+Script UseCapsuleSteampunk {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleSteampunk_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleSteampunk _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleSteampunk"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleSteampunk_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleSteampunk_V2"
+}
+Script SelectCapsuleSteampunkChoice1 {
+rcmd "menucmd UseItemCommonSeq CapsuleSteampunk_C1"
+cmd "menucmd SelectCapsuleChoice1_CommonStuff"
+}
+Script SelectCapsuleSteampunkChoice2 {
+rcmd "menucmd UseItemCommonSeq CapsuleSteampunk_C2"
+cmd "menucmd SelectCapsuleChoice2_CommonStuff"
+}
+Script UseCapsuleBlackOps {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleBlackOps_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleBlackOps _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleBlackOps"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleBlackOps_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleBlackOps_V2"
+}
+Script SelectCapsuleBlackOpsChoice1 {
+rcmd "menucmd UseItemCommonSeq CapsuleBlackOps_C1"
+cmd "menucmd SelectCapsuleChoice1_CommonStuff"
+}
+Script SelectCapsuleBlackOpsChoice2 {
+rcmd "menucmd UseItemCommonSeq CapsuleBlackOps_C2"
+cmd "menucmd SelectCapsuleChoice2_CommonStuff"
+}
+Script UseCapsuleAncient {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleAncient_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleAncient _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleAncient"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleAncient_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleAncient_V2"
+}
+Script SelectCapsuleAncientChoice1 {
+rcmd "menucmd UseItemCommonSeq CapsuleAncient_C1"
+cmd "menucmd SelectCapsuleChoice1_CommonStuff"
+}
+Script SelectCapsuleAncientChoice2 {
+rcmd "menucmd UseItemCommonSeq CapsuleAncient_C2"
+cmd "menucmd SelectCapsuleChoice2_CommonStuff"
+}
+Script UseCapsuleLoyalty {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleLoyalty_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleLoyalty _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleLoyalty"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleLoyalty_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleLoyalty"
+Script UseCapsuleLoyalty2 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseCapsuleLoyalty2_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+rcmd "customize contentLookupEx CapsuleLoyalty2 _DialogBoxItemLink_ _DialogBoxItemType_ _DialogBoxItemDisp_"
+cmd "sym set DialogBoxItemName CapsuleLoyalty2"
+cmd "loadmenu DialogBox.txt /fadeIn 0.1"
+}
+Script UseCapsuleLoyalty2_Go {
+rcmd "menucmd UseItemCommonSeq CapsuleLoyalty2"
+}
+Script UseNanoforgeRecipe {
+ignoreInputTime 0.15
+cmd "sym clear _CustomExecSlot"
+cmd "echo Use Recipe: $_MArg1_"
+cmd "clearmenu InspectDialog /fadeout 0.1"
+cmd "collection initiateNanoforgePlan $_MArg1_"
+}
+Script GiftRedEnvK {
+cmd "sym setl BackendDialogCaption You opened a Gift!"
+cmd "sym setl BackendDialogText You found $_GiftK_ Kudos in the Red Envelope!"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script GiftRedEnvD {
+cmd "sym setl BackendDialogCaption You opened a Gift!"
+cmd "sym setl BackendDialogText You found $_GiftD_ Diamonds in the Red Envelope!"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script UseRedEnv {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseRedEnv_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseRedEnv_Go {
+rcmd "menucmd UseItemCommonSeq RedEnv"
+}
+Script UseMemberCharter {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseMemberCharter_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseMemberCharter_Go {
+rcmd "menucmd UseItemCommonSeq MemberCharter"
+}
+Script UseFactionCharter {
+cmd "if sym LobbyState == 0 && uiLinkOk runNow menuCmd JumpToFactionInfo"
+}
+Script UseEbolaCure {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseEbolaCure_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseEbolaCure_Go {
+rcmd "menucmd UseItemCommonSeq EbolaCure"
+}
+Script UseEbolaVac {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseEbolaVac_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseEbolaVac_Go {
+rcmd "menucmd UseItemCommonSeq EbolaVac"
+}
+Script UseEbola {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseEbola"
+cmd "sym set DialogMenuCmdOnButton1 UseEbola_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseEbola_Go {
+rcmd "menucmd UseItemCommonSeq Ebola"
+}
+Script UseCratedAirMechGeneric {
+cmd "sym set DialogBoxTitle DialogTitleUseCratedAirMech"
+cmd "sym set DialogBoxMessage DialogMessageUseCratedAirMech"
+cmd "sym set DialogMenuCmdOnButton1 UseCratedAirMechGeneric_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "sym set _AmCrToUseName_ $_MArg1_"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseCratedAirMechGeneric_Go {
+rcmd "menucmd UseItemCommonSeq $_AmCrToUseName_"
+}
+Script UseBlueprintGeneric {
+cmd "sym set DialogBoxTitle DialogTitleUseBaseBP"
+cmd "sym set DialogBoxMessage DialogMessageUseBaseBP"
+cmd "sym set DialogMenuCmdOnButton1 UseBlueprintGeneric_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "sym set _BpToUseName_ $_MArg1_"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseBlueprintGeneric_Go {
+rcmd "menucmd UseItemCommonSeq $_BpToUseName_"
+}
+Script UseBookEcon1 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseBookEcon1_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseBookEcon1_Go {
+rcmd "menucmd UseItemCommonSeq BookEcon1"
+}
+Script UseBookEcon2 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseBookEcon2_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseBookEcon2_Go {
+rcmd "menucmd UseItemCommonSeq BookEcon2"
+}
+Script UseBookEcon3 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseBookEcon3_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseBookEcon3_Go {
+rcmd "menucmd UseItemCommonSeq BookEcon3"
+}
+Script UseBookTaxes {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseBookTaxes_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseBookTaxes_Go {
+rcmd "menucmd UseItemCommonSeq BookTaxes"
+}
+Script UseBookTaxes2 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseBookTaxes2_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseBookTaxes2_Go {
+rcmd "menucmd UseItemCommonSeq BookTaxes2"
+}
+Script UseBookTaxes3 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseBookTaxes3_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseBookTaxes3_Go {
+rcmd "menucmd UseItemCommonSeq BookTaxes3"
+}
+Script UseBookTaxesD {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseBookTaxesD_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseBookTaxesD_Go {
+rcmd "menucmd UseItemCommonSeq BookTaxesD"
+}
+Script CouldntUseItem {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsed"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_NoLearn {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedNoLearn"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_MaxFriends {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedMaxFriends"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_NoEvent {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedNoEvent"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_NeedSVIP {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedNeedSVIP"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_NotNeeded {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedNotNeeded"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_NotReady {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedNotReady"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_NoFaction {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedNoFaction"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_AlreadyChartered {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedAlreadyChartered"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_AlreadyInState {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedAlreadyInState"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_AlreadyHaveSkill {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedAlreadyHaveSkill"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_LackingPrereqSkill {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedLackingPrereqSkill"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_AirMechSlotAlreadyUnlocked {
+cmd "sym set DialogBoxTitle DialogTitleAirMechSlotOp"
+cmd "sym set DialogBoxMessage DialogMessageAirMechSlotAlreadyUnlocked"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_AirMechSlotNotEnoughBase {
+cmd "sym set DialogBoxTitle DialogTitleAirMechSlotOp"
+cmd "sym set DialogBoxMessage DialogMessageAirMechSlotNotEnoughBase"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_CrateLackingBaseAM {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageCrateLackingBaseAM"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CouldntUseItem_Unknown {
+cmd "sym set DialogBoxTitle DialogTitleItemNotUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemNotUsedUnknown"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script UsedItem_Ebola {
+cmd "sym set DialogBoxTitle DialogTitleItemUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemUsedEbola"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script UsedItem_EbolaAddl {
+cmd "sym set DialogBoxTitle DialogTitleItemUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemUsedEbolaAddl"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script UsedItem_EbolaCure {
+cmd "sym set DialogBoxTitle DialogTitleItemUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemUsedEbolaCure"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script UsedItem_EbolaVac {
+cmd "sym set DialogBoxTitle DialogTitleItemUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemUsedEbolaVac"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script UsedItem_Blueprint {
+cmd "sym set DialogBoxTitle DialogTitleItemUsed"
+cmd "sym set DialogBoxMessage DialogMessageItemUsedBlueprint"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script OpenedKBall {
+cmd "sym setl BackendDialogCaption OpenKudosBTitle"
+cmd "sym setl BackendDialogText OpenKudosBMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "playsound UI_OpenItemGeneric"
+}
+Script OpenedXPBall {
+cmd "sym setl BackendDialogCaption OpenXPBTitle"
+cmd "sym setl BackendDialogText OpenXPBMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "playsound UI_OpenItemGeneric"
+}
+Script OpenedDBox {
+cmd "sym setl BackendDialogCaption OpenDiamondBTitle"
+cmd "sym setl BackendDialogText OpenDiamondBMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "playsound UI_OpenItemGeneric"
+}
+Script OpenedCapsuleLoyalty {
+cmd "sym setl BackendDialogCaption OpenCapsuleLoyaltyTitle"
+cmd "sym setl BackendDialogText OpenCapsuleLoyaltyMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "playsound UI_OpenItemGeneric"
+}
+Script OpenedCapsuleLoyalty2 {
+cmd "sym setl BackendDialogCaption OpenCapsuleLoyalty2Title"
+cmd "sym setl BackendDialogText OpenCapsuleLoyalty2Msg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "playsound UI_OpenItemGeneric"
+}
+Script OpenedCapsuleRare {
+cmd "sym set _GiftLink_ something"
+cmd "customize contentLookup _Gift_ _GiftLink_"
+cmd "sym setl BackendDialogCaption OpenCapsuleTitle"
+cmd "sym setl BackendDialogText OpenCapsuleMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "playsound UI_UnlockCapsuleSpecial"
+}
+Script OpenedCapsuleNormal {
+cmd "sym set _GiftLink_ something"
+cmd "customize contentLookup _Gift_ _GiftLink_"
+cmd "sym setl BackendDialogCaption OpenCapsuleTitle"
+cmd "sym setl BackendDialogText OpenCapsuleMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "playsound UI_UnlockCapsuleRegular"
+}
+Script UseKudosBall {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseKudosBall_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseKudosBall_Go {
+rcmd "menucmd UseItemCommonSeq KudosBall"
+}
+Script UseKudosBallSm {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseKudosBallSm_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseKudosBallSm_Go {
+rcmd "menucmd UseItemCommonSeq KudosBallSm"
+}
+Script UseXPBall {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseXPBall_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseXPBall_Go {
+rcmd "menucmd UseItemCommonSeq XPBall"
+}
+Script UseXPBallSm {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseXPBallSm_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseXPBallSm_Go {
+rcmd "menucmd UseItemCommonSeq XPBallSm"
+}
+Script UseDiamondBox {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseDiamondBox_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDiamondBox_Go {
+rcmd "menucmd UseItemCommonSeq DiamondBox"
+}
+Script OpenedKBoostCube {
+cmd "sym set GotBoostDur $_MArg1_"
+cmd "sym setl BackendDialogCaption OpenKudosCTitle"
+cmd "sym setl BackendDialogText OpenKudosCMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "playsound UI_OpenBoost"
+}
+Script OpenedXPBoostCube {
+cmd "sym set GotBoostDur $_MArg1_"
+cmd "sym setl BackendDialogCaption OpenXPCTitle"
+cmd "sym setl BackendDialogText OpenXPCMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "playsound UI_OpenBoost"
+}
+Script OpenedDropBoostCube {
+cmd "sym setl BackendDialogCaption OpenDropCTitle"
+cmd "sym setl BackendDialogText OpenDropCMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+cmd "playsound UI_OpenBoost"
+}
+Script UseKudosBoostCube {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseKudosBoostCube_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseKudosBoostCube_Go {
+rcmd "menucmd UseItemCommonSeq KudosBoostCube"
+}
+Script UseKudosBoostCube3 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseKudosBoostCube3_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseKudosBoostCube3_Go {
+rcmd "menucmd UseItemCommonSeq KudosBoostCube3"
+}
+Script UseKudosBoostCube7 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseKudosBoostCube7_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseKudosBoostCube7_Go {
+rcmd "menucmd UseItemCommonSeq KudosBoostCube7"
+}
+Script UseKudosBoostCube30 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseKudosBoostCube30_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseKudosBoostCube30_Go {
+rcmd "menucmd UseItemCommonSeq KudosBoostCube30"
+}
+Script UseXPBoostCube {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseXPBoostCube_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseXPBoostCube_Go {
+rcmd "menucmd UseItemCommonSeq XPBoostCube"
+}
+Script UseXPBoostCube3 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseXPBoostCube3_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseXPBoostCube3_Go {
+rcmd "menucmd UseItemCommonSeq XPBoostCube3"
+}
+Script UseXPBoostCube7 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseXPBoostCube7_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseXPBoostCube7_Go {
+rcmd "menucmd UseItemCommonSeq XPBoostCube7"
+}
+Script UseXPBoostCube30 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseXPBoostCube30_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseXPBoostCube30_Go {
+rcmd "menucmd UseItemCommonSeq XPBoostCube30"
+}
+Script UseDropBoostCube {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseDropBoostCube_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDropBoostCube_Go {
+rcmd "menucmd UseItemCommonSeq DropBoostCube"
+}
+Script UseKudosUBoost {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseKudosUBoost_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseKudosUBoost_Go {
+rcmd "menucmd UseItemCommonSeq KudosUBoost"
+}
+Script UseKudosU5Boost {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseKudosU5Boost_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseKudosU5Boost_Go {
+rcmd "menucmd UseItemCommonSeq KudosU5Boost"
+}
+Script UseKudosU10Boost {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseKudosU10Boost_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseKudosU10Boost_Go {
+rcmd "menucmd UseItemCommonSeq KudosU10Boost"
+}
+Script UseXPUBoost {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseXPUBoost_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseXPUBoost_Go {
+rcmd "menucmd UseItemCommonSeq XPUBoost"
+}
+Script UseXPU5Boost {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseXPU5Boost_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseXPU5Boost_Go {
+rcmd "menucmd UseItemCommonSeq XPU5Boost"
+}
+Script UseXPU10Boost {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseXPU10Boost_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseXPU10Boost_Go {
+rcmd "menucmd UseItemCommonSeq XPU10Boost"
+}
+Script UsePrimeCube {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UsePrimeCube_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UsePrimeCube_Go {
+rcmd "menucmd UseItemCommonSeq PrimeCube"
+}
+Script UseGVIPCube7 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseGVIPCube7_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseGVIPCube7_Go {
+rcmd "menucmd UseItemCommonSeq GVIPCube7"
+}
+Script UseGVIPCube30 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseGVIPCube30_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseGVIPCube30_Go {
+rcmd "menucmd UseItemCommonSeq GVIPCube30"
+}
+Script UseDCan500 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseDCan500_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDCan500_Go {
+rcmd "menucmd UseItemCommonSeq DCan500"
+}
+Script UseDCan1000 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseDCan1000_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDCan1000_Go {
+rcmd "menucmd UseItemCommonSeq DCan1000"
+}
+Script UseDCan2000 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseDCan2000_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDCan2000_Go {
+rcmd "menucmd UseItemCommonSeq DCan2000"
+}
+Script UseDCan3000 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseDCan3000_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDCan3000_Go {
+rcmd "menucmd UseItemCommonSeq DCan3000"
+}
+Script UseDCan5000 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseDCan5000_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDCan5000_Go {
+rcmd "menucmd UseItemCommonSeq DCan5000"
+}
+Script UseDpouch50 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseDpouch50_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDpouch50_Go {
+rcmd "menucmd UseItemCommonSeq Dpouch50"
+}
+Script UseDpouch100 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseDpouch100_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDpouch100_Go {
+rcmd "menucmd UseItemCommonSeq Dpouch100"
+}
+Script UseDpouch250 {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage DialogMessageUseGeneric"
+cmd "sym set DialogMenuCmdOnButton1 UseDpouch250_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDpouch250_Go {
+rcmd "menucmd UseItemCommonSeq Dpouch250"
+}
+Script UseNameReset {
+cmd "sym set DialogBoxTitle DialogTitleUseGeneric"
+cmd "sym set DialogBoxMessage NameResetConfirmMsg"
+cmd "sym set DialogMenuCmdOnButton1 UseNameReset_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseNameReset_Go {
+rcmd "menucmd UseItemCommonSeq NameReset"
+}
+Script UseFriend10 {
+cmd "sym set DialogBoxTitle DialogTitleUseFriendAdd"
+cmd "sym set DialogBoxMessage DialogMessageUseFriendAdd"
+cmd "sym set DialogMenuCmdOnButton1 UseFriend10_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseFriend10_Go {
+rcmd "menucmd UseItemCommonSeq Friend10"
+}
+Script UseFriend25 {
+cmd "sym set DialogBoxTitle DialogTitleUseFriendAdd"
+cmd "sym set DialogBoxMessage DialogMessageUseFriendAdd"
+cmd "sym set DialogMenuCmdOnButton1 UseFriend25_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseFriend25_Go {
+rcmd "menucmd UseItemCommonSeq Friend25"
+}
+Script UseFriend100 {
+cmd "sym set DialogBoxTitle DialogTitleUseFriendAdd"
+cmd "sym set DialogBoxMessage DialogMessageUseFriendAdd"
+cmd "sym set DialogMenuCmdOnButton1 UseFriend100_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseFriend100_Go {
+rcmd "menucmd UseItemCommonSeq Friend100"
+}
+Script UsedFriendAdd {
+cmd "sym setl BackendDialogCaption DialogTitleFriendSlotsAdd"
+cmd "sym set _FriendsAdded_ $_MArg1_"
+cmd "sym set BackendDialogText DialogMessageFriendSlotsAdd"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script UseDiamondRoll {
+cmd "sym set DialogBoxTitle DialogTitleUseDiamondRoll"
+cmd "sym set DialogBoxMessage DialogMessageUseDiamondRoll"
+cmd "sym set DialogMenuCmdOnButton1 UseDiamondRoll_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseDiamondRoll_Go {
+cmd "net gchatForced /diamondroll"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+}
+Script UseBDiamondRoll {
+cmd "sym set DialogBoxTitle DialogTitleUseDiamondRoll"
+cmd "sym set DialogBoxMessage DialogMessageUseDiamondRoll"
+cmd "sym set DialogMenuCmdOnButton1 UseBDiamondRoll_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script UseBDiamondRoll_Go {
+cmd "net gchatForced /bdiamondroll"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+}
+Script DoEndGameSequenceMessage {
+pendingOnBoolSym _EndGameSeqMsg_
+ignoreInputTime 0.5
+#if !vr
+rcmd "sym set _EndGameSeqMsg_ 1"
+cmd "pcmd t5 if literal $_MArg1_ == drop menucmd CommonDropDialogLoad local $_MArg2_ $_MArg3_ $_MArg4_"
+cmd "pcmd t2 if literal $_MArg1_ == lvlup menucmd CommonLvlUpDialogLoad local $_MArg2_"
+cmd "pcmd t3 if literal $_MArg1_ == amlvlup menucmd CommonAMLvlUpDialogLoad local $_MArg2_ $_MArg3_"
+cmd "pcmd t1 if literal $_MArg1_ == reqcnt menucmd CommonAMReqCntDialogLoad"
+cmd "pcmd t1 if literal $_MArg1_ == victory menucmd CommonVictoryDialogLoad"
+cmd "pcmd t6 if literal $_MArg1_ == leaderboard menucmd CommonLeaderboardDialogLoad local $_MArg2_ $_MArg3_ $_MArg4_ $_MArg5_ $_MArg6_"
+#else
+rcmd "if literal $_MArg1_ == questReward runnow sym set _EndGameSeqMsg_ 1"
+cmd "if literal $_MArg1_ == questReward menucmd CommonQuestRewardDialogLoad local $_MArg2_ $_MArg3_"
+#endif
+}
+Script CommonQuestRewardDialogLoad {
+ignoreInputTime 1.0
+rcmd "ECHO $_MArg1_ $_MArg2_"
+#if vr
+rcmd "sym set RewardType $_MArg1_"
+cmd "sym set VrShowingRewardDialog 1"
+cmd "player 0 disableFn move aim fire fireGuns"
+cmd "sym set MenuTouch 1"
+cmd "sym set MenuDialogCmd QuestRewardItemClose"
+cmd "sym set MenuDialogCancelCmd QuestRewardItemClose"
+cmd "if sym RewardType == kudos sym clear QVRRewardDisp QVRRewardItem QVRRewardItemLink QVRRewardItemType QVRRewardItemDisp"
+cmd "if sym RewardType == kudos pcmd t1 sym set QVRRewardKudos $_MArg2_"
+cmd "if sym RewardType == kudos pcmd t2 sym set QVRRewardItemType kudos"
+cmd "if sym RewardType == item sym clear QVRRewardKudos QVRRewardItemType"
+cmd "if sym RewardType == item pcmd t1 sym set QVRRewardItem $_MArg2_"
+cmd "pcmd t3 exec vr_questRewardItem.txt"
+#endif
+}
+Script CommonDropDialogLoad {
+#if !vr
+rcmd "sym set _Drop_ $_MArg1_"
+rcmd "customize contentLookup _Drop_ _DropLink_ _DropType_ _DropDisp_"
+rcmd "sym setl DropCaption $_MArg2_"
+rcmd "sym set DropText $_MArg3_"
+rcmd "sym set DropButton0 Ok"
+rcmd "sym clear DropButton0Command"
+rcmd "sym set _DropLast_ $_MArg1_"
+cmd "menucmd SetupDropDialog"
+cmd "gameUI enable DropButton0"
+#endif
+}
+Script SetupDropDialog {
+#if !vr
+rcmd "sym set _EGType_ drop"
+rcmd "loadmenu EGCommonDialog /fadein 0.1"
+cmd "pcmd 0.1 gameUI enable DropButton0"
+cmd "playsound UI_DropFoundDialogPopup"
+cmd "addUIAnim DropButton0 mas_ContentIconHover"
+cmd "addUIAnim DropIconShadow mas_ContentShadowHover"
+cmd "pcmd 0.5 gameui enable EGCommonDialogDropTitle"
+cmd "pcmd 0.5 addUIAnim EG_RewardRubble mas_EGCommonDialogRubbleReveal"
+#endif
+}
+Script CommonDropDialogQueue {
+#if !vr
+cmd "gameEvent item /type Acquired /way Found /name $$_Drop_"
+cmd "menucmd DoEndGameSequenceMessage drop $_MArg1_ $_MArg2_ $_MArg3_"
+#endif
+}
+Script CommonLvlUpDialogLoad {
+#if !vr
+rcmd "sym set _EGType_ lvlup"
+rcmd "sym set LvlUpNum $_MArg1_"
+rcmd "loadmenu EGCommonDialog /fadein 0.1"
+#endif
+}
+Script CommonVictoryDialogLoad {
+#if !vr
+rcmd "sym set _EGType_ victory"
+rcmd "loadmenu EGCommonDialog /fadein 0.1"
+#endif
+}
+Script CommonLeaderboardDialogLoad {
+#if !vr
+rcmd "sym set _EGType_ leaderboard"
+rcmd "sym set _EGLeaderboardName_ $_MArg1_"
+rcmd "sym set _EGLeaderboardNewPos_ $_MArg2_"
+rcmd "sym set _EGLeaderboardOldPos_ $_MArg3_"
+rcmd "sym set _EGLeaderboardSize_ $_MArg4_"
+rcmd "sym set _EGLeaderboardScore_ $_MArg5_"
+rcmd "loadmenu EGCommonDialog /fadein 0.1"
+#endif
+}
+Script CommonAMLvlUpDialogLoad {
+#if !vr
+rcmd "sym set _EGType_ amlvlup"
+rcmd "sym set LvlUpAM $_MArg1_"
+rcmd "sym set LvlUpNum $_MArg2_"
+rcmd "loadmenu EGCommonDialog /fadein 0.1
+#endif
+}
+Script CommonAMReqCntDialogLoad {
+ignoreInputTime 1.0
+#if !vr
+rcmd "sym set _EgRewardCountOk_ 1"
+rcmd "sym set _EGType_ reqcnt"
+rcmd "loadmenu EGCommonDialog /fadein 0.1"
+#endif
+}
+Script FoundDropShovel {
+pendingOnIgnoreInputTime
+cmd "if sym _Drop_ !isEmpty wallet doRequestInventory"
+cmd "if sym _Drop_ !isEmpty menucmd CommonDropDialogQueue $_Drop_ FoundDropTitle FoundDropShovel"
+}
+Script FoundDropN {
+pendingOnIgnoreInputTime
+rcmd "if sym _Drop_ !isEmpty runnow customize contentLookupForActualDrop $_Drop_ _DropTitle_ FoundDropNAct FoundDropN"
+cmd "if sym _Drop_ !isEmpty wallet doRequestInventory"
+cmd "if sym _Drop_ !isEmpty menucmd CommonDropDialogQueue $_Drop_ FoundDropTitle $_DropTitle_"
+}
+Script FoundDropR {
+pendingOnIgnoreInputTime
+rcmd "if sym _Drop_ !isEmpty runnow customize contentLookupForActualDrop $_Drop_ _DropTitle_ FoundDropRAct FoundDropR"
+cmd "if sym _Drop_ !isEmpty wallet doRequestInventory"
+cmd "if sym _Drop_ !isEmpty menucmd CommonDropDialogQueue $_Drop_ FoundDropTitle $_DropTitle_"
+}
+Script FoundDropE {
+pendingOnIgnoreInputTime
+rcmd "if sym _Drop_ !isEmpty runnow customize contentLookupForActualDrop $_Drop_ _DropTitle_ FoundDropEAct FoundDropE"
+cmd "if sym _Drop_ !isEmpty wallet doRequestInventory"
+cmd "if sym _Drop_ !isEmpty menucmd CommonDropDialogQueue $_Drop_ FoundDropTitle $_DropTitle_"
+}
+Script FoundCrate {
+pendingOnIgnoreInputTime
+cmd "if sym _Drop_ !isEmpty wallet doRequestInventory"
+cmd "if sym _Drop_ !isEmpty menucmd CommonDropDialogQueue $_Drop_ FoundDropTitle FoundCrate"
+}
+Script FoundDropShovel_V2 {
+pendingOnIgnoreInputTime
+cmd "menucmd CommonDropDialogQueue $_MArg1_ FoundDropTitle FoundDropShovel"
+}
+Script FoundDropN_V2 {
+pendingOnIgnoreInputTime
+rcmd "customize contentLookupForActualDrop $_MArg1_ _DropTitle_ FoundDropNAct FoundDropN"
+cmd "menucmd CommonDropDialogQueue $_MArg1_ FoundDropTitle $_DropTitle_"
+}
+Script FoundDropR_V2 {
+pendingOnIgnoreInputTime
+rcmd "customize contentLookupForActualDrop $_MArg1_ _DropTitle_ FoundDropRAct FoundDropR"
+cmd "menucmd CommonDropDialogQueue $_MArg1_ FoundDropTitle FoundDropR"
+}
+Script FoundDropE_V2 {
+pendingOnIgnoreInputTime
+rcmd "customize contentLookupForActualDrop $_MArg1_ _DropTitle_ FoundDropEAct FoundDropE"
+cmd "menucmd CommonDropDialogQueue $_MArg1_ FoundDropTitle FoundDropE"
+}
+Script FoundCrate_V2 {
+pendingOnIgnoreInputTime
+cmd "menucmd CommonDropDialogQueue $_MArg1_ FoundDropTitle FoundCrate"
+}
+Script FoundPirateTreasure {
+pendingOnIgnoreInputTime
+cmd "menucmd CommonDropDialogQueue CratePirate FoundDropTitle FoundCratePirate"
+}
+Script FoundSpaceTreasure {
+pendingOnIgnoreInputTime
+cmd "menucmd CommonDropDialogQueue CrateSpace FoundDropTitle FoundCrateSpace"
+}
+Script OpenCrate01 {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrate01_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrate01_Go {
+cmd "timer setAsyncWait 1"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+cmd "pcmd 1.0 timer clearAsyncWait"
+cmd "wallet openCrate Crate01"
+cmd "clearmenu Drop"
+}
+Script OpenCrate02 {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrate02_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrate02_Go {
+cmd "timer setAsyncWait 1"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+cmd "pcmd 1.0 timer clearAsyncWait"
+cmd "wallet openCrate Crate02"
+cmd "clearmenu Drop"
+}
+Script OpenCrateGothic {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateGothic_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateGothic_Go {
+cmd "timer setAsyncWait 1"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+cmd "pcmd 1.0 timer clearAsyncWait"
+cmd "wallet openCrate CrateGothic"
+cmd "clearmenu Drop"
+}
+Script OpenCrateOcean {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateOcean_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateOcean_Go {
+cmd "timer setAsyncWait 1"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+cmd "pcmd 1.0 timer clearAsyncWait"
+cmd "wallet openCrate CrateOcean"
+cmd "clearmenu Drop"
+}
+Script OpenCrateSummer {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateSummer_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateSummer_Go {
+cmd "timer setAsyncWait 1"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+cmd "pcmd 1.0 timer clearAsyncWait"
+cmd "wallet openCrate CrateSummer"
+cmd "clearmenu Drop"
+}
+Script OpenCrateSpring {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateSpring_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateSpring_Go {
+cmd "timer setAsyncWait 1"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+cmd "pcmd 1.0 timer clearAsyncWait"
+cmd "wallet openCrate CrateSpring"
+cmd "clearmenu Drop"
+}
+Script OpenCratePAX {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCratePAX_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCratePAX_Go {
+cmd "timer setAsyncWait 1"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+cmd "pcmd 1.0 timer clearAsyncWait"
+cmd "wallet openCrate CratePAX"
+cmd "clearmenu Drop"
+}
+Script OpenCrateHalloween {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateHalloween_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateHalloween_Go {
+cmd "timer setAsyncWait 1"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+cmd "pcmd 1.0 timer clearAsyncWait"
+cmd "wallet openCrate CrateHalloween"
+cmd "clearmenu Drop"
+}
+Script OpenCrateWinter {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateWinter_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateWinter_Go {
+cmd "menucmd OpenCrateCommonSeq CrateWinter"
+cmd "clearmenu Drop"
+}
+Script OpenCrateFall {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateFall_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateFall_Go {
+cmd "menucmd OpenCrateCommonSeq CrateFall"
+cmd "clearmenu Drop"
+}
+Script OpenCrateVoid {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateVoid_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateVoid_Go {
+cmd "menucmd OpenCrateCommonSeq CrateVoid"
+cmd "clearmenu Drop"
+}
+Script OpenCrateAssembler {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateAssembler_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateAssembler_Go {
+cmd "menucmd OpenCrateCommonSeq CrateAssembler"
+cmd "clearmenu Drop"
+}
+Script OpenCrateCardCollector {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateCardCollector_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateCardCollector_Go {
+cmd "menucmd OpenCrateCommonSeq CrateCardCollector"
+cmd "clearmenu Drop"
+}
+Script OpenCratePet {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCratePet_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCratePet_Go {
+cmd "menucmd OpenCrateCommonSeq CratePet"
+cmd "clearmenu Drop"
+}
+Script OpenCrateU {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateU_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateU_Go {
+cmd "menucmd OpenCrateCommonSeq CrateU"
+cmd "clearmenu Drop"
+}
+Script OpenCrateCosmetic {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateCosmetic_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateCosmetic_Go {
+cmd "menucmd OpenCrateCommonSeq CrateCosmetic"
+cmd "clearmenu Drop"
+}
+Script OpenCrateAlternate {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateAlternate_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateAlternate_Go {
+cmd "menucmd OpenCrateCommonSeq CrateAlternate"
+cmd "clearmenu Drop"
+}
+Script OpenCrateSpace {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCrateSpace_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCrateSpace_Go {
+cmd "menucmd OpenCrateCommonSeq CrateSpace"
+cmd "clearmenu Drop"
+}
+Script OpenCratePirate {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCratePirate_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCratePirate_Go {
+cmd "menucmd OpenCrateCommonSeq CratePirate"
+cmd "clearmenu Drop"
+}
+Script OpenCratePW {
+cmd "sym set DialogBoxTitle DialogTitleOpenCrateConf"
+cmd "sym set DialogBoxMessage DialogMessageOpenCrateConf"
+cmd "sym set DialogMenuCmdOnButton1 OpenCratePW_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script OpenCratePW_Go {
+cmd "menucmd OpenCrateCommonSeq CratePW"
+cmd "clearmenu Drop"
+}
+Script OpenCrateCommonSeq {
+ignoreInputTime 1.0
+rcmd "timer setAsyncWait 1"
+cmd "pcmd 0.2 clearmenu InspectDialog.txt"
+cmd "wallet openCrate $_MArg1_"
+cmd "pcmd 1.0 timer clearAsyncWait"
+}
+Script OpenCrate_Common {
+cmd "customize contentLookup _Open_ _OpenLink_"
+cmd "sym setl BackendDialogCaption OpenCrateTitle"
+cmd "sym set BackendDialogText OpenCrateMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if sym _Open_ !isEmpty && sym _OpenLink_ != NA runnow menucmd BackendDialog"
+cmd "playsound UI_UnlockCrate"
+cmd "pcmd 0.01 addUIAnim OpenIconMaster mas_DropIconFadeIn"
+}
+Script OpenCrate {
+cmd "menucmd OpenCrate_Common local OpenCrateMsg"
+}
+Script OpenedCrate {
+cmd "menucmd OpenCrate_Common local OpenCrateMsg"
+}
+Script OpenedCratePirate {
+cmd "menucmd OpenCrate_Common local OpenCratePirateMsg"
+}
+Script GotQuestRewardItem {
+pendingOnLoadedMenu BackendDialog
+cmd "sym set _QuestReward_ $_MArg1_"
+cmd "customize contentLookup _QuestReward_ _OpenLink_"
+cmd "sym setl BackendDialogCaption OpenCrateTitle"
+cmd "sym set BackendDialogText GotQuestRewardItemMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if sym _QuestReward_ !isEmpty && sym _OpenLink_ != NA runnow menucmd BackendDialog"
+cmd "playsound UI_UnlockCrate"
+}
+Script GotQuestRewardItemTimedTrial {
+pendingOnLoadedMenu BackendDialog
+cmd "sym set _QuestReward_ $_MArg1_"
+cmd "customize contentLookup _QuestReward_ _OpenLink_"
+cmd "sym setl BackendDialogCaption OpenCrateTitle"
+cmd "sym set BackendDialogText GotQuestRewardItemMsg"
+cmd "sym set BackendDialogButton0 DialogButtonOk"
+cmd "sym clear BackendDialogButton0Command"
+cmd "if sym _QuestReward_ !isEmpty && sym _OpenLink_ != NA runnow menucmd BackendDialog"
+cmd "playsound UI_UnlockCrate"
+}
+Script CodeRedeemCfg {
+cmd "customize contentLookup _CodeReward_ _CodeRewardLink_"
+cmd "sym clear RedeemCode"
+cmd "playsound UI_OpenItemGeneric"
+cmd "clearmenu DialogRedeemCode.txt /fadeout 0.15"
+}
+Script DeclineAltOfferConf {
+cmd "sym set DialogBoxTitle DialogTitleDeclineAltOffer"
+cmd "sym set DialogBoxMessage DialogMessageDeclineAltOffer"
+cmd "sym set DialogMenuCmdOnButton1 DeclineAltOfferConf_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script DeclineAltOfferConf_Go {
+cmd "timer setAsyncWait 1"
+cmd "wallet lastdrop"
+cmd "backend declineDropOffer"
+cmd "pcmd 1.0 sym set UnlockDialogCanceled 1"
+cmd "pcmd 1.0 clearmenu UnlockDialog.txt"
+cmd "pcmd 1.0 timer clearAsyncWait"
+}

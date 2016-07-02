@@ -1,0 +1,20 @@
+Script TestCarbonLogo {
+cmd "menu3d remove LogoTest"
+cmd "menu3d add LogoTest /worldPose 0 80 120 /rootScale 100"
+cmd "menu3d addChild LogoTest CarbonLogoVR /model vr/LogoCarbon01.amf	/material mat_LogoCarbon01 /worldPose 0 0 0"
+cmd "menu3d animate CarbonLogoVR vr/LogoCarbonSpawn.aaf looping"
+}
+Script TestAirMechLogo1 {
+cmd "menu3d remove LogoTest"
+cmd "menu3d add LogoTest /worldPose 0 80 120 /rootScale 100"
+cmd "menu3d addChild LogoTest CarbonLogoVR /model vr/LogoCarbon01.amf	/material mat_LogoCarbon01 /worldPose 0 0 0"
+cmd "menu3d animate CarbonLogoVR vr/LogoCarbonTransform.aaf looping"
+cmd "menu3d addChild LogoTest AirMechLogoVR /model vr/LogoAirMech01.amf	/material mat_LogoAirMech01 /worldPose 0 0 0"
+cmd "menu3d animate AirMechLogoVR vr/LogoAirMechTransform.aaf looping"
+}
+Script TestAirMechLogo2 {
+cmd "menu3d remove LogoTest"
+cmd "menu3d add LogoTest /worldPose 0 80 120 /rootScale 100"
+cmd "menu3d addChild LogoTest AirMechLogoVR /model vr/LogoAirMech01.amf	/material mat_LogoAirMech01 /worldPose 0 0 0"
+cmd "menu3d animate AirMechLogoVR vr/LogoAirMechExplosion.aaf looping"
+}

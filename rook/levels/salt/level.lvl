@@ -1,0 +1,6077 @@
+// map: salt
+
+// level embedded console commands 
+CONSOLE gameUI enable PressAText
+CONSOLE gameUI disable LoadingText
+CONSOLE menuCmd GetReadyArmySlot0 local
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_Boreal.mtl ToSalt
+CONSOLE_IMMEDIATE gfx reloadMasterMaterial master_EnvironmentMapped.mtl Canyon
+CONSOLE gfx set uniform filterargs 3 1
+CONSOLE gfx set uniform shadowcolor 0 0 0 100
+
+mapInfo {
+	MAPNAME Salt
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION Salt
+	SKYBOX mat_SkyBlueSmallClouds
+	GAMEMODE default
+	GAMESTYLE Skirmish
+	PREGAME_RADIUS 55
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT 0
+	AutoExtShadowCheckAtZHeight 1000
+	FORCEBOX -151 151 -35 45 4 0
+	MAPEXTMIN -158.5 -159 0
+	MAPEXTMAX 158 159 0
+	CAMERAEXTMIN -133 -45
+	CAMERAEXTMAX 133 15
+}
+
+mapBalance {
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Canyon
+	TerrainArrayX 30
+	TerrainArrayY 30
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -6
+  TRANSFORMPLANE -4
+}
+
+fogValues {
+	FOGCOLOR 180 80 40 255
+	FOGARGS 14 18
+	DFOGCOLOR 201.210938 211.171875 239.0625 255
+	DFOGCOLOR2 201.210938 211.171875 239.0625 255
+	DFOGARGS 90 150
+	DFOGARGS2 90 150
+	CANVASCOLOR 0 0 0 0
+}
+
+airmech {
+	AILevel -1
+	Player 0 {
+		startLoc -133 0 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 1 {
+		startLoc 133 0 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 2 {
+		startLoc -135 0 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 3 {
+		startLoc 135 0 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 4 {
+		startLoc -133 2 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 5 {
+		startLoc 133 2 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+}
+DIR_LIGHT {
+	dir 0.378375 0.568147 0.730782
+	diff 0.4 0.4 0.4
+	amb 0.9 0.9 0.85
+}
+EventScripts {
+}
+ActionScripts {
+}
+ScriptVariables {
+}
+objects {
+	WO Boreal_C0 {
+		pos -88 -8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_C0 {
+		pos -96 8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A1 {
+		pos -104 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos -80 24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A3 {
+		pos -80 16 -3
+		. mtmm 6
+	}
+	WO Boreal_C3 {
+		pos -64 24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Boreal_B0 {
+		pos 16 48 -3
+		. mtmm 12
+	}
+	WO Boreal_C0 {
+		pos 8 48 -3
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos -88 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A6 {
+		pos -8 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 7
+	}
+	WO Boreal_A3 {
+		pos -8 16 -3
+	}
+	WO Boreal_A0 {
+		pos 32 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos 32 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos 32 -32 0
+		. mtmm 12
+	}
+	WO Boreal_Aa {
+		pos 32 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A5 {
+		pos 32 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos 40 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos 40 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos 40 -32 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos 40 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A4 {
+		pos 40 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A2 {
+		pos 40 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A9 {
+		pos 40 0 0
+	}
+	WO Boreal_D1 {
+		pos 40 8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C3 {
+		pos 40 16 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_C3 {
+		pos -8 8 -3
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 48 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 11
+	}
+	WO Boreal_A0 {
+		pos 48 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Boreal_A6 {
+		pos 48 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 13
+	}
+	WO Boreal_A1 {
+		pos 48 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A6 {
+		pos 48 -16 0
+	}
+	WO Boreal_A0 {
+		pos 48 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_A2 {
+		pos 48 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_B0 {
+		pos 48 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_B0 {
+		pos 48 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos 48 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Boreal_B1 {
+		pos -24 -8 -3
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -32 24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Boreal_A7 {
+		pos -32 16 -3
+		. mtmm 2
+	}
+	WO Boreal_C0 {
+		pos 56 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Boreal_B0 {
+		pos 56 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Boreal_A3 {
+		pos 56 -32 0
+		. mtmm 4
+	}
+	WO Boreal_B0 {
+		pos 56 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_C0 {
+		pos 56 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_B0 {
+		pos 56 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 11
+	}
+	WO Boreal_A1 {
+		pos 56 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_B0 {
+		pos 56 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_B0 {
+		pos 56 16 0
+	}
+	WO Boreal_A0 {
+		pos 56 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A8 {
+		pos -16 -16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_B1 {
+		pos -8 -16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Boreal_C0 {
+		pos 64 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_B0 {
+		pos 64 -40 0
+		. mtmm 2
+	}
+	WO Boreal_A3 {
+		pos 64 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_B0 {
+		pos 64 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C0 {
+		pos 64 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Boreal_B0 {
+		pos 64 -8 0
+		. mtmm 15
+	}
+	WO Boreal_A2 {
+		pos 64 0 0
+		. mtmm 12
+	}
+	WO Boreal_D0 {
+		pos 64 8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_C0 {
+		pos 64 16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C3 {
+		pos 64 24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos -120 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 72 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 72 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A5 {
+		pos 72 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A2 {
+		pos 72 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A6 {
+		pos 72 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 72 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Boreal_A3 {
+		pos 72 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_C3 {
+		pos 72 8 -3
+	}
+	WO Boreal_A7 {
+		pos 72 24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C0 {
+		pos 80 -48 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C0 {
+		pos 80 -40 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_C3 {
+		pos 80 -32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Boreal_D0 {
+		pos 80 -24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A6 {
+		pos 80 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A1 {
+		pos 80 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A9 {
+		pos 80 0 0
+	}
+	WO Boreal_C0 {
+		pos 80 8 -3
+	}
+	WO Boreal_A1 {
+		pos 80 16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 80 24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_C0 {
+		pos -56 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Boreal_B0 {
+		pos -64 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A1 {
+		pos -56 0 0
+	}
+	WO Boreal_A0 {
+		pos -48 -56 0
+	}
+	WO Boreal_A0 {
+		pos 88 -48 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 88 -40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos 88 -32 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 11
+	}
+	WO Boreal_C0 {
+		pos 88 -24 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_D1 {
+		pos 88 -16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_C0 {
+		pos 88 -8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C0 {
+		pos 88 0 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_B0 {
+		pos 88 8 -3
+	}
+	WO Boreal_A5 {
+		pos 88 16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A3 {
+		pos 88 24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos 96 -48 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos 96 -40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Boreal_B0 {
+		pos 96 -32 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 5
+	}
+	WO Boreal_D0 {
+		pos 96 -24 -3
+		. mtmm 6
+	}
+	WO Boreal_D0 {
+		pos 96 -16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_C0 {
+		pos 96 -8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_C0 {
+		pos 96 0 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_C0 {
+		pos 96 8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_C1 {
+		pos 96 16 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_C3 {
+		pos 96 24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO MissileTank {
+		pos -11.082478 17.725805 -2.999998
+		rot_x -0.98365 0.180045 -0.004174
+		rot_y -0.180027 -0.983652 -0.004336
+		rot_z -0.004886 -0.003513 0.999982
+		id 1
+		. team 6
+		. order HoldPosition
+	}
+	WO Boreal_A0 {
+		pos 104 -48 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 104 -40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Boreal_B0 {
+		pos 104 -32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_D0 {
+		pos 104 -24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Boreal_Aa {
+		pos 104 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A2 {
+		pos 104 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Boreal_A4 {
+		pos 104 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Boreal_A1 {
+		pos 104 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A2 {
+		pos 104 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A3 {
+		pos 104 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos -128 56 0
+	}
+	WO Boreal_C0 {
+		pos 112 -48 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 11
+	}
+	WO Boreal_C1 {
+		pos 112 -40 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Boreal_C3 {
+		pos 112 -32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Boreal_D1 {
+		pos 112 -24 -3
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 112 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos 112 -8 0
+		. mtmm 9
+	}
+	WO Boreal_A1 {
+		pos 112 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 5
+	}
+	WO Boreal_A0 {
+		pos 112 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 112 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos 112 24 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos -128 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A5 {
+		pos -120 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -144 32 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos -128 -8 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -96 56 0
+	}
+	WO Boreal_A0 {
+		pos -96 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 120 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 5
+	}
+	WO Boreal_A0 {
+		pos 120 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos 120 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Boreal_B0 {
+		pos 120 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Boreal_B0 {
+		pos 120 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Boreal_A0 {
+		pos 120 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A5 {
+		pos 120 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A2 {
+		pos 120 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A6 {
+		pos 120 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 120 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos -160 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -144 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Tank {
+		pos -3.059623 -20.77244 -3
+		rot_x -0.903535 0.428494 -0.004174
+		rot_y -0.428477 -0.903542 -0.004336
+		rot_z -0.005629 -0.00213 0.999982
+		id 2
+		. team 6
+		. order HoldPosition
+	}
+	WO Tank {
+		pos -7.997839 27.603889 -0.047595
+		rot_x -0.998534 0.039684 -0.036816
+		rot_y -0.034969 -0.99205 -0.120886
+		rot_z -0.04132 -0.119421 0.991983
+		id 3
+		. team 6
+		. order HoldPosition
+	}
+	WO Boreal_A0 {
+		pos -144 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos -112 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 5
+	}
+	WO Boreal_A2 {
+		pos -136 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -152 32 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -128 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 128 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos 128 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 11
+	}
+	WO Boreal_B0 {
+		pos 128 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Boreal_E0 {
+		pos 128 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 14
+	}
+	WO Boreal_B0 {
+		pos 128 -16 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 128 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 128 0 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 128 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_A1 {
+		pos 128 16 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 128 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos -120 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos -128 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_B0 {
+		pos -136 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Boreal_B0 {
+		pos -136 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos -136 -16 0
+		. mtmm 5
+	}
+	WO Boreal_A0 {
+		pos -144 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos -144 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos -120 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 14
+	}
+	WO Boreal_A5 {
+		pos -144 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos -160 32 0
+	}
+	WO Tank {
+		pos 2.800616 -20.754339 -2.999194
+		rot_x -0.909029 -0.416711 -0.004174
+		rot_y 0.416728 -0.909021 -0.004336
+		rot_z -0.001988 -0.00568 0.999982
+		id 4
+		. team 6
+		. order HoldPosition
+	}
+	WO Tank {
+		pos -13.836434 13.517442 -3
+		rot_x -0.637788 0.7702 -0.004174
+		rot_y -0.770189 -0.637802 -0.004336
+		rot_z -0.006001 0.00045 0.999982
+		id 5
+		. team 6
+		. order HoldPosition
+	}
+	WO Boreal_A0 {
+		pos -136 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos -112 32 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos 136 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 136 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Boreal_B0 {
+		pos 136 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 15
+	}
+	WO Boreal_B0 {
+		pos 136 -24 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos 136 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos 136 -8 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 136 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos 136 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A2 {
+		pos 136 16 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 136 24 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos -176 48 0
+	}
+	WO Boreal_B0 {
+		pos -56 -8 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 144 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos 144 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 11
+	}
+	WO Boreal_A0 {
+		pos 144 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos 144 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos 144 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 11
+	}
+	WO Boreal_Aa {
+		pos 144 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 14
+	}
+	WO Boreal_A2 {
+		pos 144 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Boreal_A5 {
+		pos 144 16 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos 144 24 0
+		. mtmm 10
+	}
+	WO Boreal_B0 {
+		pos -128 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Boreal_E0 {
+		pos -128 -24 0
+		. mtmm 4
+	}
+	WO Boreal_B0 {
+		pos -128 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -152 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -144 -32 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos -152 8 0
+		. mtmm 9
+	}
+	WO Boreal_A8 {
+		pos -144 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos -136 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -168 32 0
+	}
+	WO Boreal_A0 {
+		pos -152 56 0
+	}
+	WO Boreal_A0 {
+		pos -152 40 0
+	}
+	WO Boreal_A7 {
+		pos -48 -16 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos 152 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos 152 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos 152 -32 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 152 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 152 -16 0
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos 152 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos 152 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos 152 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos 152 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Boreal_A0 {
+		pos 152 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 7
+	}
+	WO Boreal_A6 {
+		pos -88 32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Boreal_B1 {
+		pos -72 32 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Boreal_B0 {
+		pos -120 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO Boreal_B0 {
+		pos -120 -16 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos -152 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos -152 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos -144 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 7
+	}
+	WO Boreal_A1 {
+		pos -144 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Boreal_A2 {
+		pos -144 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -176 32 0
+	}
+	WO Boreal_A0 {
+		pos -160 56 0
+	}
+	WO Boreal_A0 {
+		pos 160 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 160 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 160 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos 160 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 160 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 160 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 160 0 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 160 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos 160 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 160 24 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos -104 32 0
+		. mtmm 11
+	}
+	WO Boreal_A0 {
+		pos -72 64 0
+	}
+	WO Boreal_C0 {
+		pos -80 40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO BridgeSaltLong {
+		pos -20.240709 -0.296823 -2.459989
+		rot_x 0 -1 0.000595
+		rot_y 1 0 0
+		rot_z 0 0.000595 1
+	}
+	WO Boreal_C0 {
+		pos -56 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 168 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 168 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 168 -32 0
+		. mtmm 5
+	}
+	WO Boreal_A0 {
+		pos 168 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 168 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 168 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 168 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 168 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 168 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 168 24 0
+		. mtmm 1
+	}
+	WO Boreal_C0 {
+		pos -80 -64 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_C3 {
+		pos -80 -32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos -144 -16 0
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos -152 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 11
+	}
+	WO Boreal_A0 {
+		pos -160 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -152 0 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos -136 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_D0 {
+		pos -96 40 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos -144 56 0
+	}
+	WO Boreal_A0 {
+		pos -112 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_B0 {
+		pos -48 16 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -48 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_B0 {
+		pos -48 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C0 {
+		pos -48 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos -56 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_C0 {
+		pos -64 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_A6 {
+		pos -72 -16 0
+	}
+	WO Boreal_A2 {
+		pos -64 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 -32 0
+	}
+	WO Boreal_A0 {
+		pos 176 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 24 0
+	}
+	WO Boreal_A0 {
+		pos -96 -48 -3
+	}
+	WO Boreal_A0 {
+		pos -96 -64 -3
+	}
+	WO Boreal_A0 {
+		pos -72 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C3 {
+		pos -72 8 -3
+	}
+	WO Boreal_C0 {
+		pos -80 8 -3
+		. mtmm 5
+	}
+	WO Boreal_B0 {
+		pos -88 8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Boreal_C3 {
+		pos -96 24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos -112 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -144 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -104 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -48 -64 0
+	}
+	WO Boreal_B0 {
+		pos -56 -40 0
+		. mtmm 11
+	}
+	WO Boreal_C0 {
+		pos 8 64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -16 -56 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_C3 {
+		pos 0 -16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_Ad {
+		pos 0 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_A2 {
+		pos 0 0 0
+		. mtmm 9
+	}
+	WO Boreal_C1 {
+		pos 0 8 -3
+		. mtmm 4
+	}
+	WO Boreal_A9 {
+		pos 0 16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_C0 {
+		pos 0 24 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A1 {
+		pos 0 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A2 {
+		pos 0 -24 -3
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos -48 -40 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos -48 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A2 {
+		pos -104 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO MissileTank {
+		pos 10.412702 17.725805 -2.999995
+		rot_x -0.96758 -0.252532 -0.004174
+		rot_y 0.252549 -0.967574 -0.004336
+		rot_z -0.002944 -0.005249 0.999982
+		id 6
+		. team 6
+		. order HoldPosition
+	}
+	WO Tank {
+		pos 13.834637 13.009575 -3.000009
+		rot_x -0.86925 -0.494355 -0.004174
+		rot_y 0.49437 -0.869241 -0.004336
+		rot_z -0.001485 -0.005832 0.999982
+		id 7
+		. team 6
+		. order HoldPosition
+	}
+	WO Boreal_C0 {
+		pos 16 64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_D1 {
+		pos -40 32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_C1 {
+		pos -32 32 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 11
+	}
+	WO Boreal_C3 {
+		pos -8 24 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_C3 {
+		pos -40 24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_C3 {
+		pos -40 16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_C0 {
+		pos -32 0 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos -32 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos -40 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 7
+	}
+	WO Boreal_C0 {
+		pos -8 -32 -3
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos -88 -40 -3
+		. mtmm 3
+	}
+	WO Boreal_A6 {
+		pos -80 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_C0 {
+		pos -96 -8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A3 {
+		pos -72 0 0
+	}
+	WO Boreal_A9 {
+		pos -80 0 0
+		. mtmm 1
+	}
+	WO Boreal_C0 {
+		pos -88 0 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_Aa {
+		pos -104 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_C0 {
+		pos -96 32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos -24 56 -3
+		. mtmm 8
+	}
+	WO Boreal_D0 {
+		pos -40 64 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_B1 {
+		pos -16 8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Boreal_A1 {
+		pos -16 16 -3
+		. mtmm 4
+	}
+	WO Boreal_C1 {
+		pos -16 24 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -88 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 14
+	}
+	WO Boreal_A8 {
+		pos -16 32 0
+		. mtmm 11
+	}
+	WO Boreal_A0 {
+		pos -24 0 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_C0 {
+		pos -24 -24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A4 {
+		pos -40 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Boreal_C3 {
+		pos 0 -32 -3
+		. mtmm 14
+	}
+	WO FortPadBase {
+		pos 133.811859 15.701246 0
+		rot_x -0.996199 -0.087157 0
+		rot_y 0.087157 -0.996199 0
+		id 8
+		. team 1
+	}
+	WO FortPadBase {
+		pos 132.368851 -14.319979 0
+		rot_x 0.996199 -0.087155 0
+		rot_y 0.087155 0.996199 0
+		id 9
+		. team 1
+	}
+	WO FortPadBase {
+		pos 144.62709 -1.421434 0.090005
+		rot_x 0 1.000005 0
+		rot_y -1.000005 0 0
+		id 10
+		. team 1
+	}
+	WO Boreal_A0 {
+		pos -96 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO FortPadBase {
+		pos 33.991116 -13.563032 0.000203
+		rot_x -0.906311 -0.42262 0
+		rot_y 0.42262 -0.906311 0
+		id 11
+		. team -1
+	}
+	WO FortPadBase {
+		pos 118.859634 5.682989 0.000068
+		rot_x -0.342022 -0.939697 0
+		rot_y 0.939697 -0.342022 0
+		id 12
+		. team 1
+	}
+	WO Boreal_C0 {
+		pos -96 0 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A4 {
+		pos -104 0 0
+		. mtmm 8
+	}
+	WO Boreal_A8 {
+		pos -72 24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A5 {
+		pos -72 16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_C0 {
+		pos -64 16 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_D0 {
+		pos -72 40 -3
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos -64 64 0
+	}
+	WO FortPadBase {
+		pos 11.459996 32.686119 -0.000072
+		rot_x 0.342021 0.939696 0
+		rot_y -0.939696 0.342021 0
+		id 13
+		. team -1
+	}
+	WO Boreal_D0 {
+		pos -64 32 -3
+		. mtmm 12
+	}
+	WO Boreal_A5 {
+		pos -80 32 -3
+		. mtmm 3
+	}
+	WO FortPadBase {
+		pos -48.274113 -14.840842 0
+		rot_x -0.858125 -0.513444 0
+		rot_y 0.513444 -0.858125 0
+		id 14
+		. team -1
+	}
+	WO Boreal_A0 {
+		pos -32 56 -3
+	}
+	WO Boreal_C0 {
+		pos -8 72 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_Aa {
+		pos -24 8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Boreal_A9 {
+		pos -24 16 -3
+		. mtmm 9
+	}
+	WO FortPadBase {
+		pos -69.446335 17.398552 -2.999998
+		rot_x 0.173649 0.984809 0
+		rot_y -0.984809 0.173649 0
+		id 15
+		. team -1
+	}
+	WO Boreal_B0 {
+		pos -24 24 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 5
+	}
+	WO Boreal_D0 {
+		pos -24 32 -3
+		. mtmm 7
+	}
+	WO Boreal_C0 {
+		pos -16 0 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_D0 {
+		pos -40 8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A7 {
+		pos -32 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Boreal_B1 {
+		pos -16 -8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO FortPadBase {
+		pos -134.201721 -14.144098 -0.12503
+		rot_x 1.000001 0 0
+		rot_y 0 1.000001 0
+		id 16
+		. team 0
+	}
+	WO FortPadBase {
+		pos -144.710739 0.014234 0.09
+		rot_x 0 -1.000001 0
+		rot_y 1.000001 0 0
+		id 17
+		. team 0
+	}
+	WO FortPadBase {
+		pos -119.533455 5.717218 0.000157
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 18
+		. team 0
+	}
+	WO FortPadBase {
+		pos -135.659439 15.919935 0.000021
+		rot_x -1.000001 0 0
+		rot_y 0 -1.000001 0
+		id 19
+		. team 0
+	}
+	WO Boreal_A0 {
+		pos -88 -64 -3
+	}
+	WO Boreal_D0 {
+		pos -80 -24 -3
+	}
+	WO Boreal_A1 {
+		pos -80 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Boreal_C1 {
+		pos -96 16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A2 {
+		pos -104 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A1 {
+		pos -88 24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A6 {
+		pos -88 16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_D0 {
+		pos -64 8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos -144 40 0
+	}
+	WO Boreal_A0 {
+		pos -168 40 0
+	}
+	WO Boreal_C0 {
+		pos -16 64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 8 56 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_A9 {
+		pos -8 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 5
+	}
+	WO Boreal_A9 {
+		pos -40 0 0
+	}
+	WO Boreal_A2 {
+		pos -40 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_D0 {
+		pos -32 -8 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A3 {
+		pos -8 0 0
+		. mtmm 2
+	}
+	WO Boreal_B0 {
+		pos -32 8 -3
+	}
+	WO Boreal_C3 {
+		pos -24 -16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_D1 {
+		pos -8 -8 -3
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -48 -48 0
+		. mtmm 3
+	}
+	WO Boreal_A2 {
+		pos -48 0 0
+	}
+	WO Boreal_C0 {
+		pos -48 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_B0 {
+		pos -56 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_B0 {
+		pos -56 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_B0 {
+		pos -48 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A2 {
+		pos 8 -24 -3
+		. mtmm 6
+	}
+	WO Boreal_C0 {
+		pos -56 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_B0 {
+		pos -56 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_C0 {
+		pos -80 -40 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Boreal_D0 {
+		pos -96 -16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO TurretChaingun {
+		pos 11.284057 -2.053343 0.000011
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		id 20
+		. team 6
+		. order HoldPosition
+	}
+	WO TurretChaingun {
+		pos -11.30814 -1.436427 -0.053059
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 21
+		. team 6
+		. order HoldPosition
+	}
+	WO TurretDual {
+		pos 11.042688 1.986361 0
+		rot_x 0 -1.000001 0
+		rot_y 1.000001 0 0
+		id 22
+		. team 6
+		. order HoldPosition
+	}
+	WO ArmoredCar {
+		pos -0.163326 -20.647541 -2.999979
+		rot_x -0.999929 0.01195 0
+		rot_y -0.01195 -0.999929 0
+		id 23
+		. team 6
+		. order HoldPosition
+	}
+	WO TurretDual {
+		pos -11.167034 2.342049 0.000014
+		rot_x 0 1.000001 0
+		rot_y -1.000001 0 0
+		id 24
+		. team 6
+		. order HoldPosition
+	}
+	WO Boreal_A0 {
+		pos -8 -64 -3
+	}
+	WO Boreal_C0 {
+		pos 0 -48 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Boreal_A6 {
+		pos 72 16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO SaltHill2 {
+		pos -131.984558 -48.607464 -0.062201
+		rot_x 0 0.999998 -0.001915
+		rot_y -1 0 0
+		rot_z 0 0.001915 0.999998
+		scl 0.69
+	}
+	WO ArmoredCar {
+		pos -2.396751 27.265268 0
+		rot_x -0.962765 0.270344 0
+		rot_y -0.270344 -0.962765 0
+		id 25
+		. team 6
+		. order HoldPosition
+	}
+	WO ArmoredCar {
+		pos 2.67472 27.496048 0
+		rot_x -0.911294 -0.411758 0
+		rot_y 0.411758 -0.911294 0
+		id 26
+		. team 6
+		. order HoldPosition
+	}
+	WO ArmoredCar {
+		pos -24.026131 0.066121 0.794091
+		rot_x 0.01195 0.99993 0
+		rot_y -0.99993 0.01195 0
+		id 27
+		. team 6
+		. order HoldPosition
+	}
+	WO Boreal_A0 {
+		pos -176 -48 0
+	}
+	WO Boreal_A0 {
+		pos -168 -48 0
+	}
+	WO Boreal_A0 {
+		pos -168 -40 0
+	}
+	WO Boreal_A0 {
+		pos -176 -40 0
+	}
+	WO Boreal_A0 {
+		pos -176 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -128 -64 0
+	}
+	WO Boreal_A0 {
+		pos -168 16 0
+	}
+	WO Boreal_A0 {
+		pos -176 16 0
+	}
+	WO Boreal_A0 {
+		pos -120 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos -112 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_A2 {
+		pos -120 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos -136 32 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos -160 -24 0
+	}
+	WO Boreal_A0 {
+		pos -112 56 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -128 40 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos -176 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -176 -56 0
+	}
+	WO Boreal_A0 {
+		pos -168 -56 0
+	}
+	WO Boreal_A0 {
+		pos -168 -64 0
+	}
+	WO Boreal_A0 {
+		pos -176 -64 0
+	}
+	WO Boreal_A0 {
+		pos -160 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -176 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -112 8 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -112 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Boreal_A1 {
+		pos -112 0 0
+	}
+	WO Boreal_A0 {
+		pos -120 40 0
+		. mtmm 5
+	}
+	WO Boreal_A0 {
+		pos -176 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -128 24 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos -136 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos -144 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Boreal_A1 {
+		pos -128 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos -160 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -120 -64 0
+	}
+	WO Boreal_C0 {
+		pos -88 40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos -64 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos -152 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos -120 -32 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos -128 -48 0
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos -120 -48 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos -120 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos -152 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -152 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos -120 -40 0
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos -136 -48 0
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos -120 -56 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos -128 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -136 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -160 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -128 -40 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos -136 -40 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos -128 -56 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos -136 -56 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos -80 64 0
+	}
+	WO Boreal_A0 {
+		pos -144 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -104 -56 -3
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -104 -64 -3
+		. mtmm 1
+	}
+	WO Boreal_D0 {
+		pos -88 -16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -112 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Boreal_C0 {
+		pos -80 -56 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -80 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -80 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 13
+	}
+	WO Boreal_D1 {
+		pos -112 -24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Boreal_C0 {
+		pos -88 -24 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_C0 {
+		pos -112 -64 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -88 -32 -3
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos -96 -56 -3
+	}
+	WO Boreal_A0 {
+		pos -176 40 0
+	}
+	WO Boreal_A0 {
+		pos -136 40 0
+		. mtmm 8
+	}
+	WO Boreal_C3 {
+		pos -112 -32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 15
+	}
+	WO Boreal_D0 {
+		pos -96 -24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Boreal_C0 {
+		pos -112 -56 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Boreal_B0 {
+		pos -96 -32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 15
+	}
+	WO Boreal_C0 {
+		pos -112 -48 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -88 56 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -104 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_C1 {
+		pos -112 -40 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Boreal_D0 {
+		pos -104 -24 -3
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos -96 -40 -3
+		. mtmm 3
+	}
+	WO Boreal_B0 {
+		pos -104 -32 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos -104 -48 -3
+	}
+	WO Boreal_A0 {
+		pos -160 40 0
+	}
+	WO Boreal_A0 {
+		pos -112 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -88 -56 -3
+	}
+	WO Boreal_A0 {
+		pos -104 -40 -3
+		. mtmm 3
+	}
+	WO Boreal_A8 {
+		pos -104 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 5
+	}
+	WO Boreal_C0 {
+		pos -80 -48 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -88 -48 -3
+	}
+	WO Boreal_A0 {
+		pos -160 48 0
+	}
+	WO Boreal_A0 {
+		pos -168 48 0
+	}
+	WO Boreal_C0 {
+		pos -64 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_C0 {
+		pos -64 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_C0 {
+		pos -64 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_B0 {
+		pos -64 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 7
+	}
+	WO Boreal_C0 {
+		pos -56 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos -64 56 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -64 48 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos -56 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos -64 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A8 {
+		pos -72 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos -72 -40 0
+		. mtmm 11
+	}
+	WO Boreal_C0 {
+		pos -56 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos -72 56 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -72 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos -72 -48 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -72 -56 0
+	}
+	WO Boreal_A0 {
+		pos -72 -64 0
+	}
+	WO Boreal_A0 {
+		pos -48 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Boreal_C0 {
+		pos -56 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_C0 {
+		pos -56 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_C0 {
+		pos -56 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -48 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Boreal_B0 {
+		pos -56 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_B0 {
+		pos -64 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A2 {
+		pos -72 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_C0 {
+		pos -48 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Boreal_C0 {
+		pos -48 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -40 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos -40 -40 0
+		. mtmm 12
+	}
+	WO Boreal_D0 {
+		pos -24 -48 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -40 -56 0
+	}
+	WO Boreal_A0 {
+		pos -40 -64 0
+	}
+	WO Boreal_A0 {
+		pos 16 56 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos -24 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos -32 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -32 -40 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos -32 -48 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos -32 -56 0
+	}
+	WO Boreal_A0 {
+		pos -32 -64 0
+	}
+	WO Boreal_A0 {
+		pos 0 56 -3
+	}
+	WO Boreal_B0 {
+		pos 0 64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_C0 {
+		pos 24 -64 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Boreal_C0 {
+		pos 24 -56 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 7
+	}
+	WO Boreal_D0 {
+		pos 24 -48 -3
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos 24 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Boreal_D0 {
+		pos 24 -32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 13
+	}
+	WO Boreal_C0 {
+		pos 0 48 -3
+		. mtmm 12
+	}
+	WO Boreal_C0 {
+		pos -24 40 -3
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos 16 -56 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Boreal_C0 {
+		pos -8 -48 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos 16 -64 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A1 {
+		pos -8 -24 -3
+		. mtmm 6
+	}
+	WO Boreal_A5 {
+		pos -16 -24 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_D0 {
+		pos -16 40 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 15
+	}
+	WO Boreal_B0 {
+		pos -16 48 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 15
+	}
+	WO Boreal_C0 {
+		pos 8 -48 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 8 -56 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 8 -64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 8 -40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 13
+	}
+	WO Boreal_C0 {
+		pos -16 -48 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -32 48 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos -16 56 -3
+		. mtmm 12
+	}
+	WO Boreal_A2 {
+		pos 0 40 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 0 -64 -3
+	}
+	WO Boreal_C0 {
+		pos 16 -48 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 11
+	}
+	WO Boreal_A0 {
+		pos -8 -56 -3
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos 0 -40 0
+		. mtmm 11
+	}
+	WO Boreal_A0 {
+		pos -8 56 -3
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos -24 48 -3
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos 176 64 0
+	}
+	WO Boreal_A0 {
+		pos 176 56 0
+	}
+	WO Boreal_A0 {
+		pos 176 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 176 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 168 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos 168 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos 168 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 168 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 168 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 168 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 168 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 160 64 0
+	}
+	WO Boreal_A0 {
+		pos 160 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 160 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 160 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos 160 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos 160 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 160 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos 152 64 0
+	}
+	WO Boreal_A0 {
+		pos 152 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 152 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos 152 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 152 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Boreal_A0 {
+		pos 152 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos 152 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 144 64 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 144 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 144 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos 144 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 144 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 11
+	}
+	WO Boreal_A0 {
+		pos 144 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos 144 -48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos 136 64 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 136 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos 136 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 5
+	}
+	WO Boreal_A0 {
+		pos 136 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 13
+	}
+	WO Boreal_A0 {
+		pos 136 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos 136 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 136 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos 128 64 0
+	}
+	WO Boreal_A0 {
+		pos 128 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 128 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 11
+	}
+	WO Boreal_A0 {
+		pos 128 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos 128 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos 128 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 128 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 120 64 0
+	}
+	WO Boreal_A0 {
+		pos 120 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 120 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 120 40 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 120 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos 120 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos 120 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos 112 64 0
+	}
+	WO Boreal_A0 {
+		pos 112 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 112 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos 112 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 112 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Boreal_C0 {
+		pos 112 -56 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_C0 {
+		pos 112 -64 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos 104 64 0
+	}
+	WO Boreal_A0 {
+		pos 104 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A4 {
+		pos 104 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A1 {
+		pos 104 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Boreal_A1 {
+		pos 104 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos 104 -56 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 104 -64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 96 64 0
+	}
+	WO Boreal_A0 {
+		pos 96 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A1 {
+		pos 96 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 13
+	}
+	WO Boreal_D0 {
+		pos 96 40 -3
+		. mtmm 3
+	}
+	WO Boreal_C0 {
+		pos 96 32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos 96 -56 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 96 -64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 88 64 0
+	}
+	WO Boreal_A8 {
+		pos 88 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A9 {
+		pos 88 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Boreal_C0 {
+		pos 88 40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 7
+	}
+	WO Boreal_A5 {
+		pos 88 32 -3
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 88 -56 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 88 -64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 80 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 80 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_A2 {
+		pos 80 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 13
+	}
+	WO Boreal_C0 {
+		pos 80 40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Boreal_A8 {
+		pos 80 32 -3
+		. mtmm 3
+	}
+	WO Boreal_C0 {
+		pos 80 -56 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 12
+	}
+	WO Boreal_C3 {
+		pos 80 -64 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 72 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 72 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A3 {
+		pos 72 48 0
+		. mtmm 14
+	}
+	WO Boreal_D1 {
+		pos 72 40 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 11
+	}
+	WO Boreal_B1 {
+		pos 72 32 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos 72 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos 72 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos 64 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 64 56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A5 {
+		pos 64 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 12
+	}
+	WO Boreal_A7 {
+		pos 64 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Boreal_D0 {
+		pos 64 32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_C0 {
+		pos 64 -56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 6
+	}
+	WO Boreal_C3 {
+		pos 64 -64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_C0 {
+		pos 56 64 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_C0 {
+		pos 56 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_C0 {
+		pos 56 48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Boreal_C0 {
+		pos 56 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_B0 {
+		pos 56 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_C0 {
+		pos 56 -56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 13
+	}
+	WO Boreal_C0 {
+		pos 56 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 3
+	}
+	WO Boreal_C0 {
+		pos 48 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Boreal_C0 {
+		pos 48 56 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 9
+	}
+	WO Boreal_C0 {
+		pos 48 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Boreal_C0 {
+		pos 48 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_B0 {
+		pos 48 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 12
+	}
+	WO Boreal_A0 {
+		pos 48 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos 48 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_D0 {
+		pos 40 64 -3
+		. mtmm 12
+	}
+	WO Boreal_C0 {
+		pos 40 56 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 7
+	}
+	WO Boreal_C0 {
+		pos 40 48 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 13
+	}
+	WO Boreal_D0 {
+		pos 40 40 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Boreal_D1 {
+		pos 40 32 -3
+		. mtmm 8
+	}
+	WO Boreal_C3 {
+		pos 40 24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos 40 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos 40 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_C0 {
+		pos 32 64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 32 56 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos 32 48 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 15
+	}
+	WO Boreal_C0 {
+		pos 32 40 -3
+		. mtmm 7
+	}
+	WO Boreal_C1 {
+		pos 32 32 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos 32 24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_Aa {
+		pos 32 16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_B1 {
+		pos 32 8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Boreal_C0 {
+		pos 32 0 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_D0 {
+		pos 32 -8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos 32 -56 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos 32 -64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_C0 {
+		pos 24 64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_A0 {
+		pos 24 56 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos 24 48 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Boreal_C0 {
+		pos 24 40 -3
+		. mtmm 15
+	}
+	WO Boreal_D0 {
+		pos 24 32 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 7
+	}
+	WO Boreal_B0 {
+		pos 24 24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 5
+	}
+	WO Boreal_A9 {
+		pos 24 16 -3
+		. mtmm 1
+	}
+	WO Boreal_A7 {
+		pos 24 8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos 24 0 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 2
+	}
+	WO Boreal_B1 {
+		pos 24 -8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_C3 {
+		pos 24 -16 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_C0 {
+		pos 24 -24 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 4
+	}
+	WO Boreal_C0 {
+		pos -24 -64 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 2
+	}
+	WO Boreal_C0 {
+		pos -24 -56 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -40 -48 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos -24 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 3
+	}
+	WO Boreal_D0 {
+		pos -24 -32 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos -152 -40 0
+	}
+	WO Boreal_A0 {
+		pos -152 -64 0
+	}
+	WO Boreal_A0 {
+		pos -160 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -160 -64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A6 {
+		pos -120 16 0
+		. mtmm 3
+	}
+	WO Boreal_A0 {
+		pos -168 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -176 8 0
+	}
+	WO Boreal_A0 {
+		pos -176 0 0
+	}
+	WO Boreal_A0 {
+		pos -176 -8 0
+	}
+	WO Boreal_A0 {
+		pos -176 -16 0
+	}
+	WO Boreal_A0 {
+		pos -160 -8 0
+		. mtmm 2
+	}
+	WO Boreal_A0 {
+		pos -104 40 0
+		. mtmm 14
+	}
+	WO Boreal_A0 {
+		pos -176 -24 0
+	}
+	WO Boreal_A0 {
+		pos -136 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -104 56 0
+	}
+	WO Boreal_A0 {
+		pos -160 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -152 64 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -152 -48 0
+	}
+	WO Boreal_A0 {
+		pos -152 -56 0
+	}
+	WO Boreal_A0 {
+		pos -160 -32 0
+	}
+	WO Boreal_A0 {
+		pos -168 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -136 -64 0
+	}
+	WO Boreal_A0 {
+		pos -160 24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -168 8 0
+	}
+	WO Boreal_A0 {
+		pos -168 0 0
+	}
+	WO Boreal_A0 {
+		pos -168 -8 0
+	}
+	WO Boreal_A0 {
+		pos -168 -16 0
+	}
+	WO Boreal_A0 {
+		pos -160 -16 0
+	}
+	WO Boreal_A0 {
+		pos -128 32 0
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos -168 -24 0
+	}
+	WO Boreal_A0 {
+		pos -136 56 0
+	}
+	WO Boreal_A0 {
+		pos -120 56 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -168 64 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos -168 56 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_B0 {
+		pos -8 64 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C0 {
+		pos -32 40 -3
+		. mtmm 15
+	}
+	WO Boreal_D0 {
+		pos -40 40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 10
+	}
+	WO Boreal_D0 {
+		pos 16 40 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 15
+	}
+	WO Boreal_Aa {
+		pos 16 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 11
+	}
+	WO Boreal_C0 {
+		pos 16 24 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 10
+	}
+	WO Boreal_A1 {
+		pos 16 16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_B1 {
+		pos 16 8 -3
+	}
+	WO Boreal_C2 {
+		pos 16 0 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_B1 {
+		pos 16 -8 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A1 {
+		pos 16 -16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_C0 {
+		pos -16 -32 -3
+		. mtmm 7
+	}
+	WO Boreal_A0 {
+		pos -16 -64 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 1
+	}
+	WO Boreal_C1 {
+		pos 8 -32 -3
+		. mtmm 5
+	}
+	WO Boreal_A6 {
+		pos 16 -24 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Boreal_C0 {
+		pos 16 -32 -3
+		. mtmm 10
+	}
+	WO Boreal_A0 {
+		pos 16 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 14
+	}
+	WO Boreal_C0 {
+		pos -8 48 -3
+		. mtmm 13
+	}
+	WO Boreal_C0 {
+		pos -40 56 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 4
+	}
+	WO Boreal_C0 {
+		pos -40 48 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Boreal_A5 {
+		pos 8 40 0
+		. mtmm 11
+	}
+	WO Boreal_A9 {
+		pos 8 32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 2
+	}
+	WO Boreal_C3 {
+		pos 8 24 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A2 {
+		pos 8 16 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_C3 {
+		pos 8 8 -3
+	}
+	WO Boreal_A1 {
+		pos 8 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		. mtmm 4
+	}
+	WO Boreal_D1 {
+		pos 8 -8 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+		. mtmm 1
+	}
+	WO Boreal_B1 {
+		pos 8 -16 -3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 8
+	}
+	WO Boreal_A0 {
+		pos -16 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 9
+	}
+	WO Boreal_A0 {
+		pos -8 -40 0
+		. mtmm 6
+	}
+	WO Boreal_A0 {
+		pos 0 -56 -3
+		. mtmm 1
+	}
+	WO Boreal_A0 {
+		pos -16 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C0 {
+		pos -32 64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos -32 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_C0 {
+		pos -24 64 -3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_C0 {
+		pos 0 72 -3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Boreal_A0 {
+		pos 40 72 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Boreal_A0 {
+		pos 32 72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 24 72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 16 72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Boreal_A0 {
+		pos 8 72 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO FortPadBase {
+		pos -33.896053 -14.415162 -0.000074
+		rot_x -0.866028 0.500001 0
+		rot_y -0.500001 -0.866028 0
+		id 28
+		. team -1
+	}
+	WO SaltHill2 {
+		pos -157.500839 -30.58493 -0.061451
+		rot_x 0 -0.999998 -0.001915
+		rot_y 1.000001 0 0
+		rot_z 0 -0.001914 0.999998
+		scl 0.69 0.69 0.67
+	}
+	WO SaltHill2 {
+		pos -38.470772 -52.070442 -0.020341
+		rot_x 0.087156 -0.996193 -0.001915
+		rot_y 0.996195 0.087156 0
+		rot_z 0.000167 -0.001908 0.999998
+		scl 0.65
+	}
+	WO FortPadBase {
+		pos 47.845169 -14.931487 -0.002438
+		rot_x -0.707109 0.707109 0
+		rot_y -0.707109 -0.707109 0
+		id 29
+		. team -1
+	}
+	WO FortPadBase {
+		pos 90.058792 14.94779 -3.000001
+		rot_x 0.342021 0.939697 0
+		rot_y -0.939697 0.342021 0
+		id 30
+		. team -1
+	}
+	WO FortPadBase {
+		pos 70.596138 16.038748 -3.000071
+		rot_x 0.70711 -0.70711 0
+		rot_y 0.70711 0.70711 0
+		id 31
+		. team -1
+	}
+	WO FortPadBase {
+		pos -10.913049 31.570879 -0.000055
+		rot_x 0.342022 -0.939696 0
+		rot_y 0.939696 0.342022 0
+		id 32
+		. team -1
+	}
+	WO FortPadBase {
+		pos -89.340683 16.408466 -3.000001
+		rot_x 0.707108 -0.707108 0
+		rot_y 0.707108 0.707108 0
+		id 33
+		. team -1
+	}
+	WO HealPod {
+		pos 9.239645 0.036781 0
+		id 34
+		. team 6
+		. order HoldPosition
+	}
+	WO HealPod {
+		pos -9.78012 0.572099 0
+		id 35
+		. team 6
+		. order HoldPosition
+	}
+	WO Tank {
+		pos 7.751888 26.990324 -0.137325
+		rot_x -0.998233 0.02055 0.055762
+		rot_y -0.035627 -0.95794 -0.284748
+		rot_z 0.047565 -0.286232 0.956979
+		id 36
+		. team 6
+		. order HoldPosition
+	}
+	WO ArmoredCar {
+		pos 23.297806 0.138207 0.884291
+		rot_x -0.01195 -0.999931 0
+		rot_y 0.999931 -0.01195 0
+		id 37
+		. team 6
+		. order HoldPosition
+	}
+	WO ElevatorPlatform {
+		pos -0.08057 -8.080753 0
+		label income1
+	}
+	WO Boreal_A1 {
+		pos 144 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		. mtmm 10
+	}
+	WO SaltMountain {
+		pos -158.337189 6.144678 0
+		rot_x 0 -0.999998 -0.001915
+		rot_y 1 0 0
+		rot_z 0 -0.001915 0.999998
+		scl 0.73
+		. nsc
+	}
+	WO SaltMountainBlock {
+		pos 143.806808 55.535542 0.267932
+		rot_x -0.993354 0.115114 0
+		rot_y -0.115114 -0.993355 0
+		scl 0.84
+	}
+	WO SaltHill2 {
+		pos 39.766064 -46.52713 0.00001
+		rot_x 0.087156 -0.996195 0
+		rot_y 0.996195 0.087156 0
+		scl 0.64
+	}
+	WO SaltHill1 {
+		pos -95.361259 -45.463463 -3.238717
+		rot_x -0.984807 0.173648 -0.001915
+		rot_y -0.173648 -0.984809 0
+		rot_z -0.001886 0.000333 0.999998
+		scl 0.64
+	}
+	WO SaltHill2 {
+		pos -72.717155 -48.714279 0.061103
+		rot_x -0.984807 -0.173648 -0.001915
+		rot_y 0.173648 -0.984808 0
+		rot_z -0.001886 -0.000332 0.999998
+		scl 0.37
+	}
+	WO SaltMountainBlock {
+		pos -130.199417 42.563122 -0.038194
+		rot_x -0.999606 0.028099 0
+		rot_y -0.028099 -0.999608 0
+		scl 0.73
+	}
+	WO SaltMountainBlock {
+		pos -85.363701 57.663704 0.029996
+		rot_x 0.999606 -0.028099 0
+		rot_y 0.028099 0.999608 0
+		scl 0.87
+	}
+	WO SaltMountainBlock {
+		pos -13.299706 60.443722 -2.870826
+		rot_x 0.999606 -0.028099 0
+		rot_y 0.028099 0.999607 0
+		scl 1.03
+	}
+	WO SaltHill1 {
+		pos 20.960445 59.42421 -3.000145
+		rot_x -0.965925 0.258819 -0.001915
+		rot_y -0.258819 -0.965927 0
+		rot_z -0.00185 0.000496 0.999998
+		scl 0.59
+	}
+	WO SaltHill2 {
+		pos 96.440903 -49.947403 -3.029966
+		rot_x 0 -0.999998 -0.001915
+		rot_y 1 0 0
+		rot_z 0 -0.001915 0.999998
+		scl 0.65
+	}
+	WO SaltHill1 {
+		pos 135.188995 -48.346371 0
+		rot_x 0.996193 -0.087155 -0.001915
+		rot_y 0.087156 0.996195 0
+		rot_z 0.001908 -0.000167 0.999998
+		scl 0.91
+	}
+	WO SaltHill1 {
+		pos 71.788696 -50.494572 0.090013
+		rot_x -0.173648 -0.984807 -0.001915
+		rot_y 0.984809 -0.173648 0
+		rot_z -0.000333 -0.001886 0.999998
+		scl 0.53
+	}
+	WO SaltMountain {
+		pos 159.033951 -2.495293 0
+		rot_x 0 -0.999998 -0.001915
+		rot_y 1 0 0
+		rot_z 0 -0.001915 0.999998
+		. nsc
+	}
+	WO SaltHill1 {
+		pos -138.135895 58.65176 0.480018
+		rot_x -0.984806 0.173648 -0.001915
+		rot_y -0.173648 -0.984808 0
+		rot_z -0.001886 0.000332 0.999998
+		scl 1.04
+	}
+	WO SaltBottomStructure {
+		pos 60.387802 -10.904192 1.352013
+		rot_x 0.997015 0.077229 0
+		rot_y -0.077229 0.997015 0
+		scl 0.7
+	}
+	WO SaltBuilding1 {
+		pos -121.524399 31.598103 0.21
+		rot_x -0.999999 0.000016 -0.001672
+		rot_y 0 -0.999953 -0.009703
+		rot_z -0.001672 -0.009703 0.999952
+		scl 0.86
+	}
+	WO SaltBuilding2 {
+		pos -136.701523 30.858973 -0.251759
+		rot_x -0.999998 -0.001714 0.000914
+		rot_y 0.001705 -0.999952 -0.00966
+		rot_z 0.000931 -0.009659 0.999953
+		scl 1.09
+	}
+	WO SaltBuilding3 {
+		pos -120.051788 39.81636 -0.039232
+		rot_x -0.998431 -0.05583 0.004745
+		rot_y 0.056023 -0.996195 0.066765
+		rot_z 0.001 0.066926 0.997759
+		scl 1.1
+	}
+	WO SaltBuilding4 {
+		pos -142.363739 37.982044 -0.665754
+		rot_x -0.996195 -0.087156 0
+		rot_y 0.087156 -0.996195 0
+		scl 1.19
+	}
+	WO BridgeSalt {
+		pos -91.187843 -0.095486 -2.551778
+		rot_x 0 -1 0.000595
+		rot_y 1.000001 0 0
+		rot_z 0 0.000595 1
+	}
+	WO SaltBag {
+		pos -142.298401 22.837063 0
+	}
+	WO SaltCrate2 {
+		pos -114.719711 28.087143 0
+		scl 1.38
+	}
+	WO SaltCrate {
+		pos -147.489838 -3.581615 -0.012613
+		scl 1.23
+	}
+	WO SaltHouse {
+		pos 44.722626 48.035625 0.093474
+		rot_x 0 -1.000001 0
+		rot_y 1.000001 0 0
+		scl 0.75
+	}
+	WO SaltBag {
+		pos -147.884109 -7.603304 0.000501
+		rot_x -0.766044 -0.642788 0
+		rot_y 0.642788 -0.766044 0
+	}
+	WO SaltBag {
+		pos -148.415207 5.259676 0.049709
+		rot_x -0.642788 -0.766045 0
+		rot_y 0.766045 -0.642788 0
+	}
+	WO SaltBag {
+		pos -148.449234 -5.99633 0.09514
+		rot_x 0.766045 -0.642788 0
+		rot_y 0.642788 0.766045 0
+	}
+	WO SaltBag {
+		pos -150.392639 1.926207 0.102047
+		rot_x -0.087156 -0.996195 0
+		rot_y 0.996195 -0.087156 0
+	}
+	WO SaltBag {
+		pos -149.991577 9.893295 0
+		rot_x -0.707107 0.707107 0
+		rot_y -0.707107 -0.707107 0
+	}
+	WO SaltBag {
+		pos -149.61293 4.019707 0.000141
+		rot_x -0.965926 -0.258819 0
+		rot_y 0.258819 -0.965926 0
+	}
+	WO SaltBag {
+		pos -148.901154 6.994652 0
+		rot_x -0.939693 0.34202 0
+		rot_y -0.34202 -0.939693 0
+	}
+	WO SaltBag {
+		pos -144.924484 19.967587 0
+		rot_x -0.5 -0.866025 0
+		rot_y 0.866025 -0.5 0
+	}
+	WO SaltBag {
+		pos -146.526321 19.643961 0
+		rot_x 0.766045 -0.642788 0
+		rot_y 0.642788 0.766045 0
+	}
+	WO SaltBag {
+		pos -141.978149 24.576643 0
+		rot_x -0.258819 -0.965926 0
+		rot_y 0.965926 -0.258819 0
+	}
+	WO SaltBuilding5 {
+		pos -131.315186 -21.815474 0.600862
+		rot_x -0.993729 0.099038 0.051937
+		rot_y -0.096606 -0.994194 0.047397
+		rot_z 0.05633 0.042082 0.997526
+		scl 0.54
+	}
+	WO SaltCrate2 {
+		pos -100.442825 16.40415 -0.180001
+		rot_x -0.258819 -0.965926 0
+		rot_y 0.965926 -0.258819 0
+		scl 1.38
+	}
+	WO SaltBag {
+		pos -147.447998 17.490765 0.005072
+		rot_x -0.965926 0.258819 0
+		rot_y -0.258819 -0.965926 0
+	}
+	WO SaltTower {
+		pos -99.383919 27.68055 -0.394537
+	}
+	WO SaltPackages {
+		pos 0.553607 46.252243 0.002696
+		rot_x 0 -0.994462 -0.105095
+		rot_y 1 0 0
+		rot_z 0 -0.105095 0.994462
+		scl 0.42
+	}
+	WO SaltCrate2 {
+		pos -19.159813 27.647755 0.017193
+		scl 1.38
+	}
+	WO SaltCrate {
+		pos -99.761017 17.382034 0
+		rot_x -0.766044 -0.642788 0
+		rot_y 0.642788 -0.766044 0
+		scl 1.23
+	}
+	WO SaltTank {
+		pos -99.329376 19.750574 0.02
+		rot_x -0.78063 -0.624994 0
+		rot_y 0.624994 -0.78063 0
+		scl 0.67
+	}
+	WO SaltCrate {
+		pos -113.318794 27.993856 0.009033
+		rot_x 0.258819 0.965926 0
+		rot_y -0.965926 0.258819 0
+		scl 1.23
+	}
+	WO SaltBuilding4 {
+		pos -141.608459 -35.616394 0.55451
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 1.19
+	}
+	WO SaltTower {
+		pos -101.527733 -29.646193 0
+	}
+	WO SaltHill2 {
+		pos -163.584381 44.758102 0
+		rot_x 0.707105 0.707105 -0.001915
+		rot_y -0.707107 0.707107 0
+		rot_z 0.001353 0.001353 0.999998
+		scl 0.83
+	}
+	WO SaltBuilding5 {
+		pos -141.268173 31.554659 -0.000038
+		rot_x -0.998579 0.012052 0.051937
+		rot_y -0.009589 -0.998831 0.047397
+		rot_z 0.052448 0.046831 0.997526
+		scl 0.54
+	}
+	WO SaltBuilding5 {
+		pos -144.705673 32.380348 0.000013
+		rot_x -0.099038 -0.99373 0.051937
+		rot_y 0.994195 -0.096606 0.047397
+		rot_z -0.042082 0.05633 0.997526
+		scl 0.54
+	}
+	WO SaltBuilding6 {
+		pos 24.386786 28.087875 -0.348713
+		rot_x -0.998173 0.060424 0
+		rot_y -0.060424 -0.998173 0
+		scl 0.77
+	}
+	WO SaltBuilding7 {
+		pos -21.769566 28.478533 0.021484
+		rot_x -0.999026 -0.044121 0
+		rot_y 0.044121 -0.999026 0
+		scl 0.44
+	}
+	WO SaltBuilding8 {
+		pos -75.089462 -39.529419 0.000281
+		rot_x 1.000001 0 0
+		rot_y 0 1.000001 0
+		scl 0.82
+	}
+	WO SaltCenterStructure {
+		pos -83.405342 48.349358 0.078791
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 0.81
+	}
+	WO SaltUpperStructure {
+		pos -1.363956 47.2145 -1.270148
+		rot_x -1 0 0.001171
+		rot_y 0 -1 0
+		rot_z 0.001171 0 0.999999
+		scl 0.57
+	}
+	WO SaltBottomStructure {
+		pos -60.481396 -9.994988 1.379999
+		rot_x -0.999951 0.009961 0
+		rot_y -0.009961 -0.999951 0
+		scl 0.7
+	}
+	WO SaltArch {
+		pos 0.218844 45.929749 0.00002
+	}
+	WO SaltBag {
+		pos -145.788208 -9.345793 -0.00005
+	}
+	WO SaltMachine {
+		pos -52.824638 40.116299 3.016289
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 0.7
+	}
+	WO SaltSeesaw {
+		pos -104.226311 -23.095036 0
+		rot_x 0.870058 -0.49176 -0.034233
+		rot_y 0.492354 0.870322 0.011297
+		rot_z 0.024238 -0.026683 0.999351
+		scl 0.67
+	}
+	WO SaltPackages {
+		pos -26.453011 -24.964169 0.005139
+		rot_x -0.994462 0 -0.105095
+		rot_y 0 -1 0
+		rot_z -0.105095 0 0.994462
+		scl 0.55
+	}
+	WO SaltPile {
+		pos -169.848679 24.84391 -0.000016
+		rot_x 0.91336 0.407152 0
+		rot_y -0.407152 0.91336 0
+	}
+	WO BridgeSalt {
+		pos 92.891991 -0.696943 -2.471307
+		rot_x 0 -1 0.000595
+		rot_y 1.000001 0 0
+		rot_z 0 0.000595 1
+	}
+	WO SaltBuilding1 {
+		pos 120.963852 31.840973 0.000017
+		rot_x -1 0.000016 0
+		rot_y -0.000016 -1 0
+		scl 0.86
+	}
+	WO SaltMachine {
+		pos 53.009846 40.366951 3.041529
+		scl 0.7
+	}
+	WO SaltBuilding8 {
+		pos 82.098885 49.175045 0.556394
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO SaltBuilding5 {
+		pos 140.933075 33.497055 -0.419958
+		rot_x -0.998579 0.012052 0.051937
+		rot_y -0.009589 -0.998831 0.047397
+		rot_z 0.052448 0.046831 0.997526
+		scl 0.64
+	}
+	WO SaltBuilding2 {
+		pos 138.509933 33.499405 -0.64
+		rot_x -0.999998 -0.001714 0.000914
+		rot_y 0.001705 -0.999952 -0.00966
+		rot_z 0.000931 -0.009659 0.999953
+		scl 1.09
+	}
+	WO SaltBuilding3 {
+		pos 124.440704 39.561043 -0.415772
+		rot_x 0.999498 -0.031401 0.004745
+		rot_y 0.031014 0.997288 0.066765
+		rot_z -0.006829 -0.066584 0.997759
+		scl 1.1
+	}
+	WO SaltHill1 {
+		pos 159.064011 38.815384 0
+		rot_x 0.965925 -0.258818 -0.001915
+		rot_y 0.258819 0.965926 0
+		rot_z 0.00185 -0.000496 0.999998
+		scl 0.76
+	}
+	WO SaltTower {
+		pos 98.55024 -29.506721 0
+	}
+	WO SaltTower {
+		pos 106.640045 38.821632 0.0005
+	}
+	WO SaltBuilding4 {
+		pos 141.956863 38.084583 0.164579
+		rot_x -0.996195 -0.087156 0
+		rot_y 0.087156 -0.996195 0
+		scl 0.99
+	}
+	WO SaltSeesaw {
+		pos 103.793251 -23.87302 -0.000199
+		rot_x -0.700191 -0.713134 -0.034233
+		rot_y 0.713236 -0.700834 0.011297
+		rot_z -0.032047 -0.016506 0.999351
+		scl 0.67
+	}
+	WO SaltCrate {
+		pos 131.0466 27.923756 0.000447
+		rot_x 0.422618 -0.906308 0
+		rot_y 0.906308 0.422618 0
+		scl 1.23
+	}
+	WO SaltCrate {
+		pos 99.594788 17.109951 0.000172
+		rot_x 0.258819 0.965926 0
+		rot_y -0.965926 0.258819 0
+		scl 1.23
+	}
+	WO SaltBag {
+		pos 143.763306 20.898565 0.000166
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO SaltTank {
+		pos 98.994728 19.003117 0
+		rot_x -0.78063 -0.624994 0
+		rot_y 0.624994 -0.78063 0
+		scl 0.93
+	}
+	WO SaltBag {
+		pos 146.915497 23.095736 0.110511
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+	}
+	WO SaltBag {
+		pos 144.110886 19.34568 0
+		rot_x -0.939693 -0.34202 0
+		rot_y 0.34202 -0.939693 0
+	}
+	WO SaltBag {
+		pos 147.394394 11.982031 0.273977
+		rot_x -0.258819 0.965926 0
+		rot_y -0.965926 -0.258819 0
+	}
+	WO SaltBag {
+		pos 147.056259 17.720732 0.279816
+		rot_x -0.965926 0.258819 0
+		rot_y -0.258819 -0.965926 0
+	}
+	WO SaltBag {
+		pos 142.658295 22.578526 0.000162
+		rot_x -0.573577 0.819152 0
+		rot_y -0.819152 -0.573577 0
+	}
+	WO SaltBag {
+		pos 143.111755 19.513926 0.000161
+		rot_x -0.707107 0.707107 0
+		rot_y -0.707107 -0.707107 0
+	}
+	WO SaltBag {
+		pos 145.497787 20.04287 0.000163
+		rot_x -0.173648 0.984808 0
+		rot_y -0.984808 -0.173648 0
+	}
+	WO SaltBag {
+		pos 148.708237 -5.41483 -0.039924
+		rot_x -0.173648 0.984808 0
+		rot_y -0.984808 -0.173648 0
+	}
+	WO SaltBag {
+		pos 150.442245 -2.877342 0.404737
+		rot_x 0.573576 0.819152 0
+		rot_y -0.819152 0.573576 0
+	}
+	WO SaltBag {
+		pos 148.261337 4.356561 0.129134
+		rot_x -0.5 0.866026 0
+		rot_y -0.866026 -0.5 0
+	}
+	WO SaltBag {
+		pos 147.569946 5.491407 0.093869
+		rot_x 0.766044 0.642788 0
+		rot_y -0.642788 0.766044 0
+	}
+	WO SaltBag {
+		pos 149.732071 4.240809 0.434432
+		rot_x 0.965926 0.258819 0
+		rot_y -0.258819 0.965926 0
+	}
+	WO SaltBag {
+		pos 148.02356 2.149483 0
+		rot_x 0.866026 0.5 0
+		rot_y -0.5 0.866026 0
+	}
+	WO BridgeSaltLong {
+		pos 27.900164 -0.277092 -2.408243
+		rot_x 0 -1 0.000595
+		rot_y 1 0 0
+		rot_z 0 0.000595 1
+	}
+	WO SaltPile {
+		pos -145.683609 24.05998 -0.029999
+		rot_x 0.91336 0.407153 0.000011
+		rot_y -0.407153 0.91336 0
+		rot_z -0.000011 0 1
+	}
+	WO SaltPile {
+		pos -144.6604 -14.27104 0.030025
+		rot_x 0.91336 0.407153 0.000011
+		rot_y -0.407153 0.91336 0
+		rot_z -0.000011 0 1
+	}
+	WO SaltPile {
+		pos -140.674103 -19.312155 0.002176
+		rot_x -0.104075 -0.994569 0.000011
+		rot_y 0.994569 -0.104075 0
+		rot_z 0 0.000011 1
+		scl 0.92
+	}
+	WO SaltPile {
+		pos -121.287865 -27.987757 0
+		rot_x -0.104075 -0.994569 0.000011
+		rot_y 0.994569 -0.104075 0
+		rot_z 0 0.000011 1
+		scl 0.76
+	}
+	WO SaltPile {
+		pos -107.322319 -20.590988 -0.000699
+		rot_x 0.77686 0.629675 0.000011
+		rot_y -0.629675 0.77686 0
+		rot_z -0.00001 0 1
+		scl 0.61
+	}
+	WO SaltPile {
+		pos -99.941338 -28.53507 0.060613
+		rot_x -0.857402 0.514648 0.000011
+		rot_y -0.514648 -0.857402 0
+		scl 0.5
+	}
+	WO SaltPile {
+		pos -124.374588 -27.713217 0.000833
+		rot_x -0.857402 0.514648 0.000011
+		rot_y -0.514648 -0.857402 0
+		scl 0.5
+	}
+	WO SaltPile {
+		pos -100.667816 -24.94755 0.027818
+		rot_x 0.587416 0.809285 0.000011
+		rot_y -0.809285 0.587416 0
+		scl 0.64
+	}
+	WO SaltPile {
+		pos -137.429321 -33.988781 -0.00042
+		rot_x -0.898993 0.437961 0.000011
+		rot_y -0.437961 -0.898993 0
+		rot_z 0.00001 0 1
+		scl 0.64
+	}
+	WO SaltPile {
+		pos -133.974564 -35.442657 0
+		rot_x -0.776859 -0.629674 0.000011
+		rot_y 0.629674 -0.776859 0
+		scl 0.49
+	}
+	WO SaltPile {
+		pos -99.33847 40.433094 0.033917
+		rot_x 0.94537 0.325999 0.000011
+		rot_y -0.325999 0.94537 0
+		scl 0.76
+	}
+	WO SaltPile {
+		pos -102.180862 46.126331 0.095383
+		rot_x -0.987617 -0.156885 0.000011
+		rot_y 0.156885 -0.987617 0
+		rot_z 0.000011 0 1
+		scl 0.76
+	}
+	WO SaltPile {
+		pos -79.982529 50.168037 0.085916
+		rot_x 0.94537 0.325999 0.000011
+		rot_y -0.325999 0.94537 0
+		scl 1.389999
+	}
+	WO SaltMountainBlock {
+		pos 87.801781 55.802528 0.063287
+		rot_x -0.999607 0.028099 0
+		rot_y -0.028099 -0.999608 0
+		scl 0.74
+	}
+	WO SaltHouse {
+		pos 132.07814 -20.311905 0.001577
+		rot_x 0 1 0
+		rot_y -1 0 0
+		scl 0.71
+	}
+	WO SaltHill1 {
+		pos 130.663544 43.102207 0
+		rot_x -0.996193 0.087155 -0.001915
+		rot_y -0.087156 -0.996195 0
+		rot_z -0.001908 0.000167 0.999998
+		scl 0.63
+	}
+	WO SaltHouse2 {
+		pos -29.494961 44.598682 -2.997574
+		scl 0.63
+	}
+	WO SaltCrate {
+		pos 113.110741 27.440571 0
+		rot_x 0.819152 -0.573576 0
+		rot_y 0.573576 0.819152 0
+		scl 1.23
+	}
+	WO SaltCrate {
+		pos 99.80658 15.189258 0
+		rot_x 0.819152 -0.573576 0
+		rot_y 0.573576 0.819152 0
+		scl 1.23
+	}
+	WO SaltPackages {
+		pos 98.670097 13.765181 -0.005072
+		rot_x 0.994462 0 -0.105095
+		rot_z 0.105095 0 0.994462
+		scl 0.5
+	}
+	WO SaltPackages {
+		pos 26.943121 -25.824684 -0.007188
+		rot_x 0.994462 0 -0.105095
+		rot_z 0.105095 0 0.994462
+		scl 0.51
+	}
+	WO SaltStairs {
+		pos -0.277259 23.973301 -0.118474
+		rot_x -0.005222 -0.999986 0
+		rot_y 0.999986 -0.005222 0
+		scl 0.49
+	}
+	WO SaltStairs {
+		pos 16.049847 42.312405 0.061456
+		rot_x 0.999986 -0.005222 0
+		rot_y 0.005222 0.999986 0
+		scl 0.44
+	}
+	WO SaltStairs {
+		pos -16.118023 43.411884 -0.043748
+		rot_x -0.999986 0.005222 0
+		rot_y -0.005222 -0.999986 0
+		scl 0.49
+	}
+	WO SaltPile {
+		pos 7.009482 44.266666 0.003566
+		rot_x 0.587416 0.809285 0.000011
+		rot_y -0.809285 0.587416 0
+		scl 0.64
+	}
+	WO SaltPile {
+		pos 11.062452 41.839436 -0.029994
+		rot_x -0.016996 -0.999856 0.000011
+		rot_y 0.999856 -0.016996 0
+		scl 0.77
+	}
+	WO SaltPackages {
+		pos -6.095195 46.168102 0.004588
+		rot_x 0 -0.994462 -0.105095
+		rot_y 1 0 0
+		rot_z 0 -0.105095 0.994462
+		scl 0.42
+	}
+	WO SaltStairs {
+		pos -12.348392 -7.891123 0.040087
+		rot_x -0.577847 -0.816146 0
+		rot_y 0.816146 -0.577847 0
+		scl 0.49
+	}
+	WO SaltStairs {
+		pos 13.328237 -8.200349 0.192634
+		rot_x 0.638778 -0.769391 0
+		rot_y 0.769391 0.638778 0
+		scl 0.49
+	}
+	WO SaltPile {
+		pos 68.222839 45.286747 0.102518
+		rot_x -0.587416 -0.809285 0.000011
+		rot_y 0.809285 -0.587416 0
+		scl 0.98
+	}
+	WO SaltBuilding3 {
+		pos 148.91539 26.802639 0
+		rot_x -0.05583 0.998432 0.004745
+		rot_y -0.996196 -0.056023 0.066765
+		rot_z 0.066926 -0.001 0.997759
+		scl 1.1
+	}
+	WO SaltBuilding3 {
+		pos -149.972595 30.122099 0.282736
+		rot_x -0.05583 0.998431 0.004745
+		rot_y -0.996195 -0.056023 0.066765
+		rot_z 0.066926 -0.001 0.997759
+		scl 0.9
+	}
+	WO SaltCenterStructure {
+		pos 89.871162 47.919983 1.108848
+		rot_x -1 0 0
+		rot_y 0 -1 0
+		scl 0.81
+	}
+	WO SaltPile {
+		pos 151.168945 -12.254725 -0.88223
+		rot_x -0.189636 -0.981714 0.016602
+		rot_y 0.977978 -0.190361 -0.085562
+		rot_z 0.08716 0 0.996194
+		scl 1.31
+	}
+	WO SaltPile {
+		pos 139.035736 -33.185001 0.062117
+		rot_x 0.242364 -0.970185 0.000011
+		rot_y 0.970185 0.242364 0
+		rot_z 0 0.00001 1
+		scl 0.57
+	}
+	WO SaltPile {
+		pos 140.946259 -29.641922 0.060001
+		rot_x 0.242364 -0.970185 0.000011
+		rot_y 0.970185 0.242364 0
+		rot_z 0 0.00001 1
+		scl 0.81
+	}
+	WO SaltPile {
+		pos 106.414726 -21.029938 -0.016585
+		rot_x -0.981714 0.190361 0.000011
+		rot_y -0.190361 -0.981714 0
+		rot_z 0.000011 0 1
+		scl 0.38
+	}
+	WO SaltPile {
+		pos 99.589684 -27.240911 -0.118179
+		rot_x -0.981714 0.190361 0.000011
+		rot_y -0.190361 -0.981714 0
+		rot_z 0.000011 0 1
+		scl 0.81
+	}
+	WO SaltPile {
+		pos 114.077393 -21.274673 -0.21
+		rot_x 0.437961 0.898994 0.000011
+		rot_y -0.898994 0.437961 0
+		rot_z 0 -0.00001 1
+		scl 0.84
+	}
+	WO SaltCrate {
+		pos 118.056709 -32.322685 0.000035
+		rot_x 0.422618 -0.906308 0
+		rot_y 0.906308 0.422618 0
+		scl 1.23
+	}
+	WO SaltBag {
+		pos 117.324493 -13.640417 0.375707
+		rot_x 0.766045 -0.642788 0
+		rot_y 0.642788 0.766045 0
+	}
+	WO SaltBag {
+		pos 109.435959 -20.409002 0
+		rot_x 0.500001 0.866026 0
+		rot_y -0.866026 0.500001 0
+	}
+	WO SaltBag {
+		pos 110.91349 -18.755707 0.000034
+		rot_x 0.866026 0.5 0
+		rot_y -0.5 0.866026 0
+	}
+	WO SaltBuilding4 {
+		pos 151.610733 -34.607143 -0.391601
+		rot_x -0.996195 -0.087156 0
+		rot_y 0.087156 -0.996195 0
+		scl 1.14
+	}
+	WO SaltHouse {
+		pos 116.036285 -36.605 0
+		rot_x 0.087156 -0.996195 -0.000018
+		rot_y 0.996195 0.087156 0
+		rot_z 0 -0.000019 1
+		scl 0.97
+	}
+	WO SaltPile {
+		pos -12.86369 43.43256 -0.266391
+		rot_x -0.156885 0.987617 0.000011
+		rot_y -0.987617 -0.156885 0
+		scl 0.6
+	}
+	WO SaltPile {
+		pos -25.164421 44.534733 -2.983173
+		rot_x -0.970185 -0.242365 0.000011
+		rot_y 0.242365 -0.970185 0
+		scl 0.77
+	}
+	WO SaltPile {
+		pos -9.920821 43.015015 0
+		rot_x -0.961388 0.275199 0.000011
+		rot_y -0.275199 -0.961388 0
+		scl 0.77
+	}
+	WO SaltPile {
+		pos 20.679852 46.932335 -2.999509
+		rot_x 0.587416 0.809285 0.000011
+		rot_y -0.809285 0.587416 0
+		scl 0.81
+	}
+	WO SaltPile {
+		pos 36.124722 48.409889 -2.412039
+		rot_x 0.99457 -0.104075 0.000011
+		rot_y 0.104075 0.99457 0
+		scl 1.04
+	}
+	WO SaltPile {
+		pos 23.623175 50.635242 -2.894265
+		rot_x 0.587416 0.809285 0.000011
+		rot_y -0.809285 0.587416 0
+		scl 0.81
+	}
+	WO SaltCrate2 {
+		pos -45.298626 42.095432 0.01061
+		scl 1.38
+	}
+	WO SaltPile {
+		pos 111.933037 42.727283 -0.41685
+		rot_x -0.587416 -0.809285 0.000011
+		rot_y 0.809285 -0.587416 0
+		scl 1.559999
+	}
+	WO SaltCenterStructure {
+		pos -1.535418 -47.062943 1.003762
+		scl 0.81
+	}
+	WO SaltPackages {
+		pos 7.250821 46.324661 0.006177
+		rot_x 0 -0.994462 -0.105095
+		rot_y 1 0 0
+		rot_z 0 -0.105095 0.994462
+		scl 0.42
+	}
+	WO SaltTower {
+		pos 31.533861 48.913727 -3.234207
+	}
+	WO SaltTower {
+		pos -59.142731 45.836433 0.117797
+	}
+	WO SaltPile {
+		pos -34.540489 49.165356 -2.887706
+		rot_x -0.970185 -0.242365 0.000011
+		rot_y 0.242365 -0.970185 0
+		scl 0.77
+	}
+	WO SaltPile {
+		pos -20.078325 46.457443 -2.899837
+		rot_x -0.970185 -0.242365 0.000011
+		rot_y 0.242365 -0.970185 0
+		scl 0.77
+	}
+	WO SaltPile {
+		pos -8.638338 53.569267 -1.680813
+		rot_x -0.961388 0.275199 0.000011
+		rot_y -0.275199 -0.961388 0
+		scl 0.77
+	}
+	WO SaltBag {
+		pos -27.554932 45.907303 -3.000001
+		rot_x 0.906308 -0.422618 0
+		rot_y 0.422618 0.906308 0
+		scl 0.91
+	}
+	WO SaltBag {
+		pos -29.021873 46.489326 -3.000002
+		rot_x 0.819152 0.573577 0
+		rot_y -0.573577 0.819152 0
+		scl 0.91
+	}
+	WO SaltBag {
+		pos -36.052963 45.516644 -2.985106
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 0.91
+	}
+	WO SaltBag {
+		pos -23.208948 46.759338 -3.000002
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 0.86
+	}
+	WO SaltBag {
+		pos -24.936659 47.126644 -3.000002
+		rot_x -0.965926 0.258819 0
+		rot_y -0.258819 -0.965926 0
+		scl 0.87
+	}
+	WO SaltBag {
+		pos 4.185688 44.542999 0
+		rot_x 0.906308 -0.422618 0
+		rot_y 0.422618 0.906308 0
+		scl 0.91
+	}
+	WO SaltBag {
+		pos 13.870854 46.162094 0
+		rot_x 0.819152 0.573577 0
+		rot_y -0.573577 0.819152 0
+		scl 0.91
+	}
+	WO SaltBag {
+		pos -13.631696 39.831097 0
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 0.91
+	}
+	WO SaltBag {
+		pos 20.365774 32.110779 0.006576
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 0.86
+	}
+	WO SaltBag {
+		pos 9.47049 45.642063 0
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 0.86
+	}
+	WO SaltBag {
+		pos -14.23467 37.153866 -0.001898
+		rot_x 0.906308 -0.422618 0
+		rot_y 0.422618 0.906308 0
+		scl 0.91
+	}
+	WO SaltBag {
+		pos -4.624752 44.968212 0
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 0.86
+	}
+	WO SaltBag {
+		pos -6.534754 44.114605 0
+		rot_x 0.906308 -0.422618 0
+		rot_y 0.422618 0.906308 0
+		scl 0.91
+	}
+	WO SaltBag {
+		pos 20.049849 30.599316 0
+		rot_x 0.766045 -0.642788 0
+		rot_y 0.642788 0.766045 0
+		scl 0.86
+	}
+	WO SaltBag {
+		pos 22.986166 46.387192 -2.99999
+		rot_x 0.906308 0.422618 0
+		rot_y -0.422618 0.906308 0
+		scl 0.86
+	}
+	WO SaltBag {
+		pos 24.674469 44.006954 -2.999985
+		rot_x -0.906308 0.422618 0
+		rot_y -0.422618 -0.906308 0
+		scl 0.86
+	}
+	WO SaltBag {
+		pos 24.396044 45.230747 -2.999997
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 0.86
+	}
+	WO SaltSeesaw {
+		pos 50.267563 -36.163975 0.447387
+		rot_x -0.860906 -0.507612 -0.034233
+		rot_y 0.507544 -0.861552 0.011297
+		rot_z -0.035227 -0.007649 0.999351
+		scl 0.67
+	}
+	WO SaltSeesaw {
+		pos -50.315647 -38.2131 0.000045
+		rot_x 0.870058 -0.49176 -0.034233
+		rot_y 0.492354 0.870322 0.011297
+		rot_z 0.024238 -0.026683 0.999351
+		scl 0.67
+	}
+	WO SaltHouse2 {
+		pos 67.62326 -16.210701 0.00264
+		rot_x 0.007429 -0.999972 0
+		rot_y 0.999972 0.007429 0
+		scl 0.7
+	}
+	WO SaltHouse3 {
+		pos 43.300228 51.561832 0
+		rot_x 0.999995 0.003329 0
+		rot_y -0.003329 0.999995 0
+		scl 0.54
+	}
+	WO SaltHouse2 {
+		pos -67.061607 -24.369825 0.008855
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		scl 0.58
+	}
+	WO SaltHouse3 {
+		pos -67.048836 -18.624969 -0.026081
+		rot_x 0.003329 -0.999995 0
+		rot_y 0.999995 0.003329 0
+		scl 0.48
+	}
+	WO SaltHouse3 {
+		pos 67.761604 -23.443892 0.002142
+		rot_x 0.003329 -0.999995 0
+		rot_y 0.999995 0.003329 0
+		scl 0.48
+	}
+	WO SaltBuilding8 {
+		pos 75.916046 -38.262047 0.015155
+		rot_x -1.000001 0 0
+		rot_y 0 -1.000001 0
+		scl 0.82
+	}
+	WO SaltPile {
+		pos -69.140556 -37.039806 0
+		rot_x 0.587416 0.809285 0.000011
+		rot_y -0.809285 0.587416 0
+		scl 0.64
+	}
+	WO Crate6 {
+		pos 144.613113 25.206182 0.000021
+	}
+	WO Crate5 {
+		pos 119.562263 31.105297 0.709333
+		rot_x -0.173648 -0.984808 0
+		rot_y 0.984808 -0.173648 0
+	}
+	WO Crate4 {
+		pos 141.397018 30.704523 0.090002
+	}
+	WO Crate2 {
+		pos 144.16481 27.638216 0.000252
+		rot_x 0.258819 -0.965926 0
+		rot_y 0.965926 0.258819 0
+	}
+	WO Crate2 {
+		pos 142.00145 24.866333 0.00003
+	}
+	WO BarrelA {
+		pos 126.813057 28.170115 0.003307
+	}
+	WO ChasmProps_Tractor2 {
+		pos 115.373619 -18.330935 0.000113
+		rot_x 0.766044 -0.642788 0
+		rot_y 0.642788 0.766044 0
+		scl 0.87
+	}
+	WO ChasmProps_Tractor1 {
+		pos 97.00502 45.374466 0.000021
+		rot_x 0.173648 -0.984808 0
+		rot_y 0.984808 0.173648 0
+	}
+	WO BarrelA {
+		pos 58.983356 42.937733 0.011176
+	}
+	WO FortressPiece_Shed2 {
+		pos 126.848358 37.409843 0.921935
+		rot_x 0.087156 -0.996195 0
+		rot_y 0.996195 0.087156 0
+	}
+	WO SaltBag {
+		pos 145.762115 -12.269567 0.000021
+		rot_x -0.707107 0.707107 0
+		rot_y -0.707107 -0.707107 0
+	}
+	WO SaltBag {
+		pos 133.487381 -18.144049 0.000151
+		rot_x 0.906308 0.422618 0
+		rot_y -0.422618 0.906308 0
+	}
+	WO SaltBag {
+		pos 135.039566 -18.963528 0
+		rot_x -0.173648 0.984808 0
+		rot_y -0.984808 -0.173648 0
+	}
+	WO SaltBag {
+		pos 143.282867 -13.473619 0.000078
+		rot_x -0.173648 0.984808 0
+		rot_y -0.984808 -0.173648 0
+	}
+	WO SaltBag {
+		pos 144.250961 -14.648285 0.000087
+		rot_x 0.866026 0.5 0
+		rot_y -0.5 0.866026 0
+	}
+	WO SaltPackages {
+		pos 98.806076 5.985892 0.03989
+		rot_x 0.994462 0 -0.105095
+		rot_z 0.105095 0 0.994462
+		scl 0.5
+	}
+	WO SaltPackages {
+		pos 98.7799 -7.471576 0.036061
+		rot_x 0.994462 0 -0.105095
+		rot_z 0.105095 0 0.994462
+		scl 0.5
+	}
+	WO SaltPackages {
+		pos 98.424423 31.289135 0.035688
+		rot_x 0.994462 0 -0.105095
+		rot_z 0.105095 0 0.994462
+		scl 0.5
+	}
+	WO ChasmProps_Tractor2 {
+		pos 67.155655 -36.25803 0.008019
+		rot_x 0.087156 -0.996195 0
+		rot_y 0.996195 0.087156 0
+		scl 0.87
+	}
+	WO ChasmProps_Tractor1 {
+		pos 42.694794 44.498978 0.01188
+		rot_x -0.573577 0.819152 0
+		rot_y -0.819152 -0.573577 0
+	}
+	WO Crate6 {
+		pos -17.701933 26.866249 0
+		scl 0.93
+	}
+	WO SaltPile {
+		pos 66.6175 11.893513 -2.992112
+		rot_x -0.981714 0.190361 0.000011
+		rot_y -0.190361 -0.981714 0
+		rot_z 0.000011 0 1
+		scl 0.62
+	}
+	WO SaltPile {
+		pos 84.229408 36.105106 -3
+		rot_x 0.655715 0.755009 0.000011
+		rot_y -0.755009 0.655715 0
+		scl 0.55
+	}
+	WO SaltPile {
+		pos 79.325905 35.251148 -3.000003
+		rot_x -0.981714 0.190361 0.000011
+		rot_y -0.190361 -0.981714 0
+		rot_z 0.000011 0 1
+		scl 0.62
+	}
+	WO SaltPile {
+		pos 75.901283 35.768265 -3.000002
+		rot_x -0.104075 -0.994569 0.000011
+		rot_y 0.994569 -0.104075 0
+		rot_z 0 0.000011 1
+		scl 0.51
+	}
+	WO SaltPile {
+		pos 34.917824 53.795311 -3.009945
+		rot_x -0.91336 -0.407154 0.000011
+		rot_y 0.407154 -0.91336 0
+		scl 0.81
+	}
+	WO BarrelA {
+		pos 31.879799 45.269634 -2.999998
+	}
+	WO Crate2 {
+		pos 45.419743 44.394714 0.013075
+		rot_x 0.258819 -0.965926 0
+		rot_y 0.965926 0.258819 0
+	}
+	WO SaltCrate2 {
+		pos -36.924877 37.669464 0
+		rot_x 0.707107 -0.707107 0
+		rot_y 0.707107 0.707107 0
+		scl 1.28
+	}
+	WO SaltBuilding7 {
+		pos -61.295502 -17.85557 3.000003
+		rot_x -0.999026 -0.044121 0
+		rot_y 0.044121 -0.999026 0
+		scl 0.44
+	}
+	WO SaltBuilding7 {
+		pos 60.441719 -15.230604 3
+		rot_x -0.999026 -0.044121 0
+		rot_y 0.044121 -0.999026 0
+		scl 0.44
+	}
+	WO ChasmProps_Tractor1 {
+		pos -17.666845 29.59276 0.000032
+		rot_x 0.34202 0.939693 0
+		rot_y -0.939693 0.34202 0
+	}
+	WO Crate2 {
+		pos 27.445219 -12.62894 0.009668
+		rot_x 0.258819 -0.965926 0
+		rot_y 0.965926 0.258819 0
+	}
+	WO ChasmProps_Tractor2 {
+		pos 21.050508 -28.270105 -2.898059
+		rot_x 0.642788 -0.766044 0
+		rot_y 0.766044 0.642788 0
+		scl 0.87
+	}
+	WO SaltHouse {
+		pos -64.834045 -25.614117 0
+		rot_x 0 1.000001 0
+		rot_y -1.000001 0 0
+		scl 0.62
+	}
+	WO SaltPile {
+		pos -35.76405 44.546772 -2.902469
+		rot_x -0.809285 0.587416 0.000011
+		rot_y -0.587416 -0.809285 0
+		scl 0.57
+	}
+	WO ChasmProps_Tractor1 {
+		pos -77.115768 46.979202 -0.002905
+		rot_x 0.965926 0.258819 0
+		rot_y -0.258819 0.965926 0
+	}
+	WO Crate6 {
+		pos -140.191574 27.491774 -0.001779
+		scl 0.93
+	}
+	WO BarrelA {
+		pos -117.692299 27.275835 0.003992
+	}
+	WO SaltCrate2 {
+		pos -139.495621 29.090435 0
+		rot_x -0.258819 -0.965926 0
+		rot_y 0.965926 -0.258819 0
+		scl 1.38
+	}
+	WO ChasmProps_Tractor2 {
+		pos -74.254837 -36.659336 0
+		rot_x 0.642788 -0.766044 0
+		rot_y 0.766044 0.642788 0
+		scl 0.87
+	}
+	WO BarrelA {
+		pos -123.68528 26.743429 0
+		rot_x -0.573576 -0.819152 0
+		rot_y 0.819152 -0.573576 0
+	}
+	WO SaltPile {
+		pos -146.128922 37.124447 0
+		rot_x 0.91336 0.407153 0.000011
+		rot_y -0.407153 0.91336 0
+		rot_z -0.000011 0 1
+	}
+	WO Crate6 {
+		pos -142.750549 28.962502 0
+		rot_x -0.965926 0.258819 0
+		rot_y -0.258819 -0.965926 0
+		scl 0.93
+	}
+	WO SaltPackages {
+		pos -98.701912 31.233915 0
+		rot_x -0.994462 0 -0.105095
+		rot_y 0 -1 0
+		rot_z -0.105095 0 0.994462
+		scl 0.55
+	}
+	WO SaltPackages {
+		pos -98.577919 15.782789 -0.000401
+		rot_x -0.994462 0 -0.105095
+		rot_y 0 -1 0
+		rot_z -0.105095 0 0.994462
+		scl 0.55
+	}
+	WO SaltPackages {
+		pos -98.446877 6.912832 0.008005
+		rot_x -0.994462 0 -0.105095
+		rot_y 0 -1 0
+		rot_z -0.105095 0 0.994462
+		scl 0.55
+	}
+	WO SaltPackages {
+		pos -98.52076 -7.561054 0.001562
+		rot_x -0.994462 0 -0.105095
+		rot_y 0 -1 0
+		rot_z -0.105095 0 0.994462
+		scl 0.55
+	}
+	WO SaltPackages {
+		pos 97.601433 -26.521391 0
+		rot_x 0.934489 0.340126 -0.105095
+		rot_y -0.34202 0.939693 0
+		rot_z 0.098757 0.035945 0.994462
+		scl 0.5
+	}
+	WO SaltPackages {
+		pos -97.955284 -26.513596 0.011723
+		rot_x -0.86123 0.497231 -0.105095
+		rot_y -0.5 -0.866026 0
+		rot_z -0.091015 0.052548 0.994462
+		scl 0.55
+	}
+	WO BarrelA {
+		pos -68.640541 -20.245804 0.000914
+	}
+	WO Crate6 {
+		pos -69.057098 -22.165365 0.005571
+		rot_x 0.087156 -0.996195 0
+		rot_y 0.996195 0.087156 0
+		scl 0.93
+	}
+	WO ChasmProps_Tractor1 {
+		pos -144.556763 -17.947092 0
+		rot_x 0.965926 0.258819 0
+		rot_y -0.258819 0.965926 0
+	}
+	WO SaltPile {
+		pos -90.89402 34.196507 -2.996207
+		rot_x 0.629675 -0.776859 0.000011
+		rot_y 0.776859 0.629675 0
+		scl 0.71
+	}
+	WO SaltPile {
+		pos -76.927658 35.854492 -2.994755
+		rot_x -0.981714 0.190361 0.000011
+		rot_y -0.190361 -0.981714 0
+		rot_z 0.000011 0 1
+		scl 0.62
+	}
+	WO SaltPile {
+		pos -87.464035 35.518791 -2.940016
+		rot_x -0.776859 -0.629675 0.000011
+		rot_y 0.629675 -0.776859 0
+		scl 0.44
+	}
+	WO SaltPile {
+		pos -68.682785 27.9886 -2.994517
+		rot_x -0.776859 -0.629675 0.000011
+		rot_y 0.629675 -0.776859 0
+		scl 0.44
+	}
+	WO SaltTank {
+		pos 59.938774 -10.09376 3.000003
+		rot_x -0.78063 -0.624994 0
+		rot_y 0.624994 -0.78063 0
+		scl 0.67
+	}
+	WO SaltCrate {
+		pos 68.773033 -20.242527 0.010218
+		rot_x 0.422618 -0.906308 0
+		rot_y 0.906308 0.422618 0
+		scl 1.11
+	}
+	WO Crate6 {
+		pos 70.114502 -15.278871 -0.003999
+		scl 0.73
+	}
+	WO SaltPile {
+		pos -121.852272 21.592033 -0.06
+		rot_x -0.898993 0.437961 0.000011
+		rot_y -0.437961 -0.898993 0
+		rot_z 0.00001 0 1
+		scl 0.73
+	}
+	WO SaltPile {
+		pos -126.076233 20.491035 -0.000471
+		rot_x 0.156885 -0.987617 0.000011
+		rot_y 0.987617 0.156885 0
+		scl 0.64
+	}
+	WO SaltPile {
+		pos -142.187973 -35.320221 -0.000806
+		rot_x -0.104075 -0.994569 0.000011
+		rot_y 0.994569 -0.104075 0
+		rot_z 0 0.000011 1
+		scl 0.92
+	}
+	WO FortPadBase {
+		pos 118.798843 -4.416119 0.08983
+		rot_x 0.17365 -0.984812 0
+		rot_y 0.984812 0.17365 0
+		id 38
+		. team 1
+	}
+	WO FortPadBase {
+		pos -119.834023 -5.240382 -0.004374
+		rot_x 0.342021 0.939694 0
+		rot_y -0.939694 0.342021 0
+		id 39
+		. team 0
+	}
+	WO SaltPile {
+		pos 29.899509 45.118984 -2.99922
+		rot_x 0.587416 0.809285 0.000011
+		rot_y -0.809285 0.587416 0
+		scl 0.81
+	}
+	WO SaltBag {
+		pos 25.927105 46.198788 -3.000024
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 0.86
+	}
+	WO SaltBag {
+		pos -13.7586 45.780621 0
+		rot_x -0.087156 0.996195 0
+		rot_y -0.996195 -0.087156 0
+		scl 0.91
+	}
+	WO OutpostPad {
+		pos -124.68158 -2.909673 0.12778
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		id 40
+		. team 0
+	}
+	WO OutpostPad {
+		pos -124.521858 4.454091 0.092185
+		rot_x 0 -1 0
+		rot_y 1 0 0
+		id 41
+		. team 0
+	}
+	WO OutpostPad {
+		pos 124.477242 4.255895 0.099995
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 42
+		. team 1
+	}
+	WO OutpostPad {
+		pos 124.477386 -3.259411 0.099242
+		rot_x 0 1 0
+		rot_y -1 0 0
+		id 43
+		. team 1
+	}
+	WO SaltPile {
+		pos -115.796822 -50.544117 0
+		rot_x -0.104075 -0.994569 0.000011
+		rot_y 0.994569 -0.104075 0
+		rot_z 0 0.000011 1
+		scl 0.76
+	}
+}
+
+details {
+	d CanyonPlantGrassE -1 1 0 0 0 1 0 0 0 1 108.557983 -20.729527 0.044727
+	d CanyonPlantGrassE -1 1 0 0 0 1 0 0 0 1 86.427277 -3.992665 0.000001
+	d CactusC -1 -0.957559 0.803484 0 -0.803484 -0.957559 0 0 0 1.250002 51 11.5 0
+	d CactusC -1 -0.883883 0.883886 0 -0.883886 -0.883883 0 0 0 1.250001 -98.080284 25.030363 -2.99994
+	d CactusC -1 -0.957559 0.803484 0 -0.803484 -0.957559 0 0 0 1.250002 -51 11.5 0
+	d CanyonPlantGrassB -1 1.21 0 0 0 1.21 0 0 0 1.21 58.420719 -23.53104 -0.05628
+	d CanyonPlantGrassB -1 1.21 0 0 0 1.21 0 0 0 1.21 -58.420719 -23.53104 -0.05628
+	d CanyonPlantGrassD -1 1.38 0 0 0 1.379999 -0.001616 0 0.001616 1.379999 -68.16758 -3.722827 -0.597721
+	d FortPadCablesA -1 -0.819153 0.573577 0 -0.573577 -0.819153 0 0 0 1.000001 73.973969 18.774548 -2.939907
+	d FortPadCablesA -1 -0.707107 0.707106 0 -0.707106 -0.707107 0 0 0 1 -85.707481 18.713978 -3
+	d FortPadCablesA -1 0.422619 -0.906308 0 0.906308 0.422619 0 0 0 1 -6.409645 32.547073 0.000565
+	d FortPadCablesA -1 0.087156 -0.996195 0 0.996195 0.087156 0 0 0 1 140.392899 -0.689279 0.196877
+	d FortPadCablesA -1 -0.866026 -0.5 0 0.5 -0.866026 0 0 0 1 35.253212 -17.811892 0
+	d FortPadCablesA -1 0 -1.000001 0 1.000001 0 0 0 0 1.000001 -73.178452 18.674044 -2.973325
+	d FortPadCablesA -1 0.087156 -0.996195 0 0.996195 0.087156 0 0 0 1 -140.392899 -0.689279 0.196877
+	d FortPadCablesB -1 -0.573577 -0.819153 0 0.819153 -0.573577 0 0 0 1.000001 85.076279 17.170685 -2.999949
+	d FortPadCablesB -1 -0.25882 -0.965926 0 0.965926 -0.25882 0 0 0 1 122.404282 3.647011 -0.003599
+	d FortPadCablesB -1 1 0 0 0 1 0 0 0 1 133.392319 -10.433406 0.060676
+	d FortPadCablesB -1 1 0 0 0 1 0 0 0 1 -133.548584 -10.569447 0
+	d FortPadCablesB -1 0.422619 0.906308 0 -0.906308 0.422619 0 0 0 1 -123.05719 -2.890631 -0.088141
+	d FortPadCablesB -1 1 0 0 0 1 0 0 0 1 -133.362442 -4.929401 0.000011
+	d FortPadCablesC -1 0.087156 -0.996195 0 0.996195 0.087156 0 0 0 1 123.096581 -2.910749 -0.116908
+	d FortPadCablesC -1 0 -1 0 1 0 0 0 0 1 -123.465599 4.857247 -0.037967
+	d FortPadCablesC -1 -0.422619 -0.906308 0 0.906308 -0.422619 0 0 0 1 7.24139 33.394962 -0.000044
+	d FortPadCablesC -1 0.866025 -0.5 0 0.5 0.866025 0 0 0 1 -35.117149 -18.317451 0
+	d FortPadCablesC -1 1 0 0 0 1 0 0 0 1 134.844498 11.607351 0
+	d FortPadCablesC -1 0.707107 -0.707107 0 0.707107 0.707107 0 0 0 1 45.777634 -18.231865 0.115743
+	d FortPadCablesC -1 0.906308 0.422618 0 -0.422618 0.906308 0 0 0 1 -45.471619 -18.16877 0.113276
+	d FortPadCablesC -1 1 0 0 0 1 0 0 0 1 -134.783813 11.896642 0.000099
+	d FortPadCablesC -1 1 0 0 0 1 0 0 0 1 -132.979965 7.00789 0.000122
+	d TreeDeadB -1 0.587441 -1.259768 0.000606 1.259768 0.587441 -0.000901 0.00056 0.00093 1.390001 40.977348 29.646284 0
+	d TreeDeadB -1 -1 0 0 0 -1 0 0 0 1 26.27047 -19.77215 0
+	d TreeDeadD -1 1 0 0 0 1 0 0 0 1 50.69315 34.933174 3
+	d TreeDeadD -1 0.173648 -0.984808 0 0.984808 0.173648 0 0 0 1 -4.048242 6.021243 0.000466
+	d CanyonPlantGrassG -1 1 0 0 0 1 0 0 0 1 -56.795906 -6.272995 0.112582
+	d CanyonPlantGrassG -1 1 0 0 0 1 0 0 0 1 59.160522 -23.211374 0.985406
+	d CanyonPlantGrassG -1 1 0 0 0 1 0 0 0 1 -59.160522 -23.211374 0.985406
+	d CanyonPlantGrassG -1 1 0 -0.000018 0 1 0 0.000018 0 1 90.452347 12.731258 -2.13949
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 -69.003494 15.453734 -2.998256
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 60.450005 -21.81641 0
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 -68.60804 -12.170234 0
+	d CanyonPlantGrassH -1 1 0 0 0 1 0 0 0 1 -43.853195 37.015099 0.017045
+	d CanyonPlantGrassJ -1 0.969847 0.240332 -0.040483 -0.17101 0.789413 0.589564 0.173648 -0.564864 0.806708 -63.034592 -6.595964 0.091082
+	d CanyonPlantGrassJ -1 0.969847 0.240332 -0.040483 -0.17101 0.789413 0.589564 0.173648 -0.564864 0.806708 -64.453049 -7.344511 0.06581
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967884 -0.350941 -0.084357 0.352281 0.9642 -29.03306 -4.034606 -0.673798
+	d CanyonPlantGrassK -1 0.846768 0 0.074083 0.025337 0.798741 -0.289612 -0.047502 0.198373 0.542951 -37.732418 33.546917 -1.299192
+	d CanyonPlantGrassK -1 0.846768 0 0.074083 0.025337 0.798741 -0.289612 -0.047502 0.198373 0.542951 37.732418 33.546917 -1.299192
+	d CanyonPlantGrassK -1 0.737185 0 0.064496 0.022058 0.695373 -0.252132 -0.060606 0.253095 0.692728 -18.774296 -3.613608 -1.25357
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967884 -0.350941 -0.084357 0.352281 0.9642 67.02401 29.640392 -0.657298
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967884 -0.350941 -0.084357 0.352281 0.9642 -94.905945 -3.986045 -0.52017
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967884 -0.350941 -0.084357 0.352281 0.9642 88.344826 -7.672038 0.582268
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967884 -0.350941 -0.084357 0.352281 0.9642 94.905945 -3.986045 -0.52017
+	d CanyonPlantGrassK -1 1.026081 0 0.089771 0.030703 0.967884 -0.350941 -0.084357 0.352281 0.9642 -86.858391 -5.157293 2.099999
+	d CanyonPlantGrassK -1 0.737185 0 0.064496 0.022058 0.695373 -0.252132 -0.060606 0.253095 0.692728 -9.590343 -18.248413 -1.41821
+	d CanyonPlantGrassL -1 1.059557 0.204126 0.045595 -0.147046 0.559562 0.911963 0.148742 -0.900905 0.576763 -20.65176 -11.478323 -2.211084
+	d CanyonPlantGrassL -1 1.065474 -0.170574 0.045595 0.053204 0.57611 0.911963 -0.168355 -0.897447 0.576762 -26.111568 -3.654752 -2.62248
+	d CanyonPlantGrassL -1 0.98655 -0.157939 0.042217 0.049264 0.533434 0.84441 -0.155885 -0.830969 0.534039 -37.226528 32.234943 -2.498387
+	d CanyonPlantGrassL -1 0.98655 -0.157939 0.042217 0.049264 0.533434 0.84441 -0.155885 -0.830969 0.534039 37.226528 32.234943 -2.498387
+	d CanyonPlantGrassL -1 1.065474 -0.170574 0.045595 0.053204 0.57611 0.911963 -0.168355 -0.897447 0.576762 -17.296124 -7.691944 -2.477343
+	d CanyonPlantGrassL -1 1.065474 -0.170574 0.045595 0.053204 0.57611 0.911963 -0.168355 -0.897447 0.576762 18.851004 -5.636255 -2.287113
+	d CanyonPlantGrassL -1 1.065474 -0.170574 0.045595 0.053204 0.57611 0.911963 -0.168355 -0.897447 0.576762 29.17392 -3.745211 -2.927865
+	d CanyonPlantGrassQ -1 1 0 0 0 0.999999 0.001084 0 -0.001084 0.999999 84.77285 -11.639972 0
+	d SaltLight -1 -0.34202 -0.939693 0 0.939693 -0.34202 0 0 0 1 101.999702 11.934845 0.000702
+	d SaltLight -1 -0.984808 -0.173648 0 0.173648 -0.984808 0 0 0 1 14.164579 3.01225 0
+	d SaltLight -1 0.984808 0.173648 0 -0.173648 0.984808 0 0 0 1 -84.736107 -4.207755 0
+	d SaltLight -1 -0.766045 -0.642789 0 0.642789 -0.766045 0 0 0 1.000001 117.630966 3.131414 -0.127893
+	d SaltLight -1 -0.984808 -0.173648 0 0.173648 -0.984808 0 0 0 1 -99.684853 2.96617 -0.250366
+	d SaltLight -1 -0.866026 0.5 0 -0.5 -0.866026 0 0 0 1 -72.95433 -14.794645 0.000011
+	d SaltLight -1 -0.984808 -0.173648 0 0.173648 -0.984808 0 0 0 1 -37.31826 2.192685 0
+	d SaltLight -1 -0.984808 -0.173649 0 0.173649 -0.984808 0 0 0 1 67.63475 2.188989 0
+	d SaltLight -1 0.087156 -0.996195 0 0.996195 0.087156 0 0 0 1 -146.867371 2.996794 0.000022
+	d SaltLight -1 -0.996195 -0.087156 0 0.087156 -0.996195 0 0 0 1 100.03965 2.460932 0
+	d SaltLight -1 -0.087155 -0.996195 0 0.996195 -0.087155 0 0 0 1 69.873894 -19.744314 0
+	d SaltLight -1 -0.984808 -0.173648 0 0.173648 -0.984808 0 0 0 1 35.340717 3.946272 0
+	d SaltLight -1 0.996195 -0.087156 0 0.087156 0.996195 0 0 0 1 -54.405952 -2.019722 0.000069
+	d SaltLight -1 -0.766044 0.642788 0 -0.642788 -0.766044 0 0 0 1 -117.72908 13.289069 0.000023
+	d SaltLight -1 0.984808 -0.173648 0 0.173648 0.984808 0 0 0 1 -12.501827 -4.277903 0.001722
+	d SaltLight -1 -0.173648 0.984808 0 -0.984808 -0.173648 0 0 0 1 -100.711685 19.570465 -0.250364
+	d SaltLight -1 0.173648 0.984809 0 -0.984809 0.173648 0 0 0 1.000001 106.695518 -12.899849 -0.126252
+	d SaltLight -1 0.996195 0.087156 0 -0.087156 0.996195 0 0 0 1 82.82193 -2.580045 0.000054
+	d SaltLight -1 -0.258819 0.965926 0 -0.965926 -0.258819 0 0 0 1 -101.199043 -12.190145 0.002049
+	d SaltLight -1 -0.766045 -0.642789 0 0.642789 -0.766045 0 0 0 1.000001 120.822166 16.542196 0
+	d SaltLight -1 1.000001 0 0 0 1.000001 0 0 0 1.000001 53.362411 -3.353557 -0.000018
+	d SaltLight -1 -0.984808 -0.173648 0 0.173648 -0.984808 0 0 0 1 -70.566338 2.05842 0.000019
+	d SaltLight -1 -0.819153 0.573577 0 -0.573577 -0.819153 0 0 0 1.000001 144.856323 17.041582 -0.000072
+	d SaltLight -1 0.642788 0.766046 0 -0.766046 0.642788 0 0 0 1.000001 146.044083 -9.338923 0.000037
+	d SaltLight -1 -0.34202 -0.939693 0 0.939693 -0.34202 0 0 0 1 102.965195 29.034657 0.000685
+	d SaltPink -1 0.514452 0.774755 0 -0.774755 0.514452 0 0 0 0.930003 36.801537 43.673336 -2.924293
+	d SaltPink -1 0.804738 0.593631 0 -0.593631 0.804738 0 0 0 1 138.278366 -22.721441 0
+	d SaltPink -1 -0.998044 0.062528 0 -0.062528 -0.998044 0 0 0 1.000001 135.289841 -21.331518 0.029709
+	d SaltPink -1 0.724354 -0.689429 0 0.689429 0.724354 0 0 0 1 -120.936958 -13.373091 0
+	d SaltPink -1 -0.904304 -0.101675 0 0.101675 -0.904304 0 0 0 0.910002 -118.37207 -14.599083 0.066471
+	d SaltPink -1 -0.781685 0.623674 0 -0.623674 -0.781685 0 0 0 1 130.207336 -16.147833 0.030001
+	d SaltPink -1 -0.804738 -0.593631 0 0.593631 -0.804738 0 0 0 1 120.310196 -13.757858 0.074398
+	d SaltPink -1 0.400108 0.916468 0 -0.916468 0.400108 0 0 0 1 118.277893 -15.964247 0.153148
+	d SaltPink -1 -0.993739 -0.11173 0 0.11173 -0.993739 0 0 0 1 124.545273 -13.157769 0.082506
+	d SaltPink -1 0.234887 0.972023 0 -0.972023 0.234887 0 0 0 1 -130.126038 -16.296444 0.031075
+	d SaltPink -1 -0.478461 -0.878109 0 0.878109 -0.478461 0 0 0 1 -128.002289 -13.611373 0.008452
+	d SaltPink -1 -0.9998 -0.015781 0.012282 0.016733 -0.996522 0.081634 0.010951 0.081823 0.996587 -125.237694 -13.230586 0.066663
+	d SaltPink -1 0.593631 -0.804738 0 0.804738 0.593631 0 0 0 1 -116.686867 -17.02586 0
+	d SaltPink -1 -0.959241 -0.282596 0 0.282596 -0.959241 0 0 0 1.000002 -114.881325 -18.143402 0.000101
+	d SaltPink -1 0.149275 0.988796 0 -0.988796 0.149275 0 0 0 1 -132.358551 -17.29759 0.003659
+	d SaltPink -1 0.062528 0.998044 0 -0.998044 0.062528 0 0 0 1.000001 -116.849251 -20.20838 0.02064
+	d SaltPink -1 -0.988796 0.149275 0 -0.149275 -0.988796 0 0 0 1 139.317551 -24.35582 0
+	d SaltPink -1 0.149275 0.988797 0 -0.988797 0.149275 0 0 0 1.000001 -37.169811 27.273083 -2.99092
+	d SaltPink -1 0.478461 0.878111 0 -0.878111 0.478461 0 0 0 1.000002 -33.396622 28.509361 -2.969689
+	d SaltPink -1 -0.31871 -0.947856 0 0.947856 -0.31871 0 0 0 1.000003 -35.575714 28.753725 -2.976872
+	d SaltPink -1 -0.244281 -1.010906 0 1.010906 -0.244281 0 0 0 1.040002 -37.595955 19.89348 -2.714678
+	d SaltPink -1 0.9682 0.379728 0 -0.379728 0.9682 0 0 0 1.040002 -31.239511 27.790989 -2.981782
+	d SaltPink -1 0.9682 0.379728 0 -0.379728 0.9682 0 0 0 1.040002 -27.089838 27.815863 -2.945098
+	d SaltPink -1 0.969707 0.023956 0 -0.023956 0.969707 0 0 0 0.970003 -29.310097 29.307951 -2.942002
+	d SaltPink -1 0.5753 0.866391 0 -0.866391 0.5753 0 0 0 1.040002 -26.998426 19.142347 -3.001319
+	d SaltPink -1 0.687972 -0.779936 0 0.779936 0.687972 0 0 0 1.040003 -36.505764 11.33584 -2.956264
+	d SaltPink -1 0.727663 -0.824933 0 0.824933 0.727663 0 0 0 1.100003 -28.078682 25.110924 -2.99468
+	d SaltPink -1 0.293898 -0.997612 0 0.997612 0.293898 0 0 0 1.040002 -27.361 22.251406 -2.993461
+	d SaltPink -1 0.95313 -0.416112 0 0.416112 0.95313 0 0 0 1.040003 -33.69714 11.630508 -2.999995
+	d SaltPink -1 -0.836929 -0.617378 0 0.617378 -0.836929 0 0 0 1.040003 -12.74733 20.224712 -2.943067
+	d SaltPink -1 -1.037968 0.065028 0 -0.065028 -1.037968 0 0 0 1.040003 -2.169569 21.11434 -2.864788
+	d SaltPink -1 0.997611 0.2939 0 -0.2939 0.997611 0 0 0 1.040003 2.476637 21.115974 -2.989971
+	d SaltPink -1 -0.836929 -0.617378 0 0.617378 -0.836929 0 0 0 1.040003 -0.231283 11.69383 -3
+	d SaltPink -1 1.010907 -0.244282 0 0.244282 1.010907 0 0 0 1.040003 -3.203686 11.143635 -2.963196
+	d SaltPink -1 -0.93142 -0.462668 0 0.462668 -0.93142 0 0 0 1.040003 12.380781 -10.843339 -2.842095
+	d SaltPink -1 0.836929 0.617379 0 -0.617379 0.836929 0 0 0 1.040003 2.768201 10.861805 -2.976474
+	d SaltPink -1 -1.028351 0.155246 0 -0.155246 -1.028351 0 0 0 1.040003 12.365981 20.142929 -2.934135
+	d SaltPink -1 -0.025684 1.039686 0 -1.039686 -0.025684 0 0 0 1.040003 23.844835 21.732347 -2.999999
+	d SaltPink -1 0.1162 -1.033489 0 1.033489 0.1162 0 0 0 1.040002 25.550425 22.341585 -2.999996
+	d SaltPink -1 0.1162 -1.033489 0 1.033489 0.1162 0 0 0 1.040002 30.828785 28.752747 -2.938658
+	d SaltPink -1 -0.812955 0.648622 0 -0.648622 -0.812955 0 0 0 1.040003 36.194572 28.597942 -2.948904
+	d SaltPink -1 -0.812955 0.648622 0 -0.648622 -0.812955 0 0 0 1.040003 34.143463 27.557133 -3.032045
+	d SaltPink -1 -0.1162 1.033489 0 -1.033489 -0.1162 0 0 0 1.040002 29.08736 28.918171 -2.999964
+	d SaltPink -1 -0.1162 1.033489 0 -1.033489 -0.1162 0 0 0 1.040002 27.356409 26.733393 -2.994351
+	d SaltPink -1 -0.065028 -1.037968 0 1.037968 -0.065028 0 0 0 1.040003 27.261997 23.350664 -2.989409
+	d SaltPink -1 0.913237 -0.4976 0 0.4976 0.913237 0 0 0 1.040004 33.050247 29.989388 -2.989493
+	d SaltPink -1 -0.138825 -0.919583 0 0.919583 -0.138825 0 0 0 0.930003 26.999874 29.58882 -2.830321
+	d CanyonPlantGrassW -1 1 0 0 0 1 0 0 0 1 108.214584 17.728113 0
+	d CanyonPlantGrassU -1 1 0 0 0 1 0 0 0 1 119.271584 12.285377 0.1
+	d NesthornFortressProps_Debris7 -1 1 0 0 0 1 0 0 0 1 116.339638 30.292603 0.00005
+	d NesthornFortressProps_Debris7 -1 0.68 0 0 0 0.68 0 0 0 0.68 -61.426849 -13.384336 3.000004
+	d NesthornFortressProps_Debris7 -1 1 0 0 0 1 0 0 0 1 -127.075127 29.174429 0.000034
+	d NesthornFortressProps_Debris6 -1 0 -0.707107 -0.707107 1 0 0 0 -0.707107 0.707107 -67.358269 -27.06908 0.424867
+	d NesthornFortressProps_Debris6 -1 1 0 0 0 1 0 0 0 1 122.790085 27.377735 0.000046
+	d NesthornFortressProps_Debris6 -1 0.707107 0 -0.707107 0 1 0 0.707107 0 0.707107 89.575134 44.80661 0.299593
+	d NesthornFortressProps_Debris6 -1 0.707107 0 -0.707107 0 1 0 0.707107 0 0.707107 30.318617 -13.953735 0.30044
+	d NesthornFortressProps_Debris6 -1 0.707107 0 -0.707107 0 1 0 0.707107 0 0.707107 -19.879444 29.314745 0.659623
+	d NesthornFortressProps_Debris6 -1 0.707107 0 -0.707107 0 1 0 0.707107 0 0.707107 -83.754532 44.265903 0.3312
+	d NesthornFortressProps_Debris6 -1 -0.696366 -0.122788 -0.707107 0.173649 -0.98481 0 -0.696365 -0.122789 0.707108 61.649193 -11.858778 3.002141
+	d NesthornFortressProps_Debris5 -1 1 0 0 0 1 0 0 0 1 106.924095 29.092882 0
+	d NesthornFortressProps_Debris4 -1 1 0 0 0 1 0 0 0 1 106.051155 30.805698 0
+	d NesthornFortressProps_Debris4 -1 0 -1 0 1 0 0 0 0 1 112.605247 31.224539 1.282405
+	d NesthornFortressProps_Debris4 -1 0.89 0 0 0 0.89 0 0 0 0.89 60.394276 43.889915 -0.000061
+	d NesthornFortressProps_Debris4 -1 0.87 0 0 0 0.87 0 0 0 0.87 33.117756 44.797749 -2.999999
+	d NesthornFortressProps_Debris4 -1 0 -1 0 1 0 0 0 0 1 -82.869522 47.958416 4.693596
+	d NesthornFortressProps_Debris4 -1 0 -1 0 1 0 0 0 0 1 -113.368546 32.202393 -0.118934
+	d NesthornFortressProps_Debris4 -1 1 0 0 0 1 0 0 0 1 59.72728 -11.513006 2.994768
+	d NesthornFortressProps_Debris3 -1 -0.573576 -0.819152 0 0.819152 -0.573576 0 0 0 1 -83.249039 -18.885036 0
+	d NesthornFortressProps_Debris3 -1 -0.707107 -0.707107 0 0.707107 -0.707107 0 0 0 1 121.949219 31.24136 0
+	d NesthornFortressProps_Debris3 -1 1 0 0 0 1 0 0 0 1 121.452164 30.285429 0.000167
+	d NesthornFortressProps_Debris3 -1 -0.422618 -0.906308 0 0.906308 -0.422618 0 0 0 1 91.948021 45.066036 0
+	d NesthornFortressProps_Debris3 -1 1 0 0 0 1 0 0 0 1 24.22674 43.581062 -2.999986
+	d NesthornFortressProps_Debris3 -1 -0.258819 -0.965926 0 0.965926 -0.258819 0 0 0 1 21.037956 29.441402 -0.004883
+	d NesthornFortressProps_Debris3 -1 1 0 0 0 1 0 0 0 1 -20.5242 31.444773 0.000246
+	d NesthornFortressProps_Debris3 -1 -0.258819 -0.965926 0 0.965926 -0.258819 0 0 0 1 -27.635031 -11.908491 -0.00003
+	d NesthornFortressProps_Debris3 -1 1 0 0 0 1 0 0 0 1 -41.775475 41.843971 -0.000314
+	d NesthornFortressProps_Debris3 -1 1 0 0 0 1 0 0 0 1 -87.229149 44.423164 0.006207
+	d NesthornFortressProps_Debris3 -1 1 0 0 0 1 0 0 0 1 -100.059731 27.886311 -0.000017
+	d NesthornFortressProps_Debris3 -1 -0.866025 -0.5 0 0.5 -0.866025 0 0 0 1 -115.675163 31.410587 -0.000276
+	d NesthornFortressProps_Debris3 -1 1 0 0 0 1 0 0 0 1 84.839859 -21.298134 0.00003
+	d NesthornFortressProps_Debris2 -1 -0.866026 -0.5 0 0.5 -0.866026 0 0 0 1 -84.42247 -14.595352 0
+	d NesthornFortressProps_Debris2 -1 -0.866026 -0.5 0 0.5 -0.866026 0 0 0 1 -125.338264 27.238554 0
+	d NesthornFortressProps_Debris2 -1 -0.766044 -0.642788 0 0.642788 -0.766044 0 0 0 1 94.4561 46.352947 0
+	d NesthornFortressProps_Debris2 -1 1 0 0 0 1 0 0 0 1 103.853806 30.357796 0
+	d NesthornFortressProps_Debris2 -1 1 0 0 0 1 0 0 0 1 85.696899 45.070995 0.003905
+	d NesthornFortressProps_Debris2 -1 1 0 0 0 1 0 0 0 1 41.64024 40.966488 0
+	d NesthornFortressProps_Debris2 -1 -0.866026 -0.5 0 0.5 -0.866026 0 0 0 1 28.882877 -14.285928 0.000266
+	d NesthornFortressProps_Debris2 -1 1 0 0 0 1 0 0 0 1 28.825989 -13.485885 0.000542
+	d NesthornFortressProps_Debris2 -1 -0.866026 -0.5 0 0.5 -0.866026 0 0 0 1 -43.794334 41.96244 0.000671
+	d NesthornFortressProps_Debris2 -1 -0.866026 -0.5 0 0.5 -0.866026 0 0 0 1 -146.018967 29.828047 0
+	d NesthornFortressProps_Debris2 -1 -0.866026 -0.5 0 0.5 -0.866026 0 0 0 1 58.332096 -10.314577 2.999997
+	d NesthornFortressProps_Debris2 -1 -0.573577 0.819152 0 -0.819152 -0.573577 0 0 0 1 61.262112 -9.982341 3.006865
+	d NesthornFortressProps_Debris2 -1 -0.866026 -0.5 0 0.5 -0.866026 0 0 0 1 83.727493 -21.586193 -0.000583
+	d SurvivalProps_Lamp -1 0.173648 -0.984808 -0.000648 0.984808 0.173648 -0.000436 0.000542 -0.000562 1 32.896919 -27.293259 0.000062
+	d SurvivalProps_Lamp -1 -0.965926 -0.258819 -0.000648 0.258819 -0.965926 -0.000436 -0.000513 -0.000589 1 -5.45429 41.946617 0.000052
+	d SurvivalProps_Lamp -1 -0.422618 0.906308 -0.000648 -0.906307 -0.422619 -0.000436 -0.000669 0.000403 1 7.591141 41.202545 0.000063
+	d SurvivalProps_Lamp -1 -0.422618 0.906308 -0.000648 -0.906307 -0.422619 -0.000436 -0.000669 0.000403 1 11.306004 35.353653 0.005147
+	d SurvivalProps_Lamp -1 0.5 -0.866025 -0.000648 0.866025 0.5 -0.000436 0.000701 -0.000343 1 -70.280022 21.198292 -3
+	d SurvivalProps_Lamp -1 0.996195 0.087155 -0.000648 -0.087156 0.996195 -0.000436 0.000607 0.000491 1 -42.51392 -13.562597 0.000687
+	d SurvivalProps_Lamp -1 0.819152 0.573577 -0.000648 -0.573577 0.819152 -0.000436 0.000281 0.000729 1 77.156105 31.523975 -3.000004
+	d SurvivalProps_Lamp -1 -0.5 -0.866025 -0.000648 0.866025 -0.5 -0.000436 0.000054 -0.000779 1 89.714355 30.144203 -2.998373
+	d SurvivalProps_Lamp -1 -0.573576 -0.819152 -0.000648 0.819152 -0.573576 -0.000436 -0.000015 -0.000781 1 49.951927 -28.232063 0.000141
+	d SurvivalProps_Lamp -1 0.087156 -0.996194 -0.000648 0.996195 0.087156 -0.000436 0.000491 -0.000607 1 49.554558 -18.305325 0
+	d SurvivalProps_Lamp -1 -0.996194 0.087156 -0.000648 -0.087156 -0.996195 -0.000436 -0.000683 -0.000378 1 75.016365 14.032289 -2.99842
+	d SurvivalProps_Lamp -1 -0.965926 0.258819 -0.000648 -0.258819 -0.965926 -0.000436 -0.000739 -0.000253 1 -5.101721 29.935612 0.000011
+	d SurvivalProps_Lamp -1 0.087156 -0.996194 -0.000648 0.996195 0.087156 -0.000436 0.000491 -0.000607 1 69.873344 24.979507 -2.998414
+	d SurvivalProps_Lamp -1 -0.965926 0.258819 -0.000648 -0.258819 -0.965926 -0.000436 -0.000739 -0.000253 1 5.561111 29.865175 0
+	d SurvivalProps_Lamp -1 -0.996194 0.087156 -0.000648 -0.087156 -0.996195 -0.000436 -0.000683 -0.000378 1 86.530083 14.143889 -2.998417
+	d SurvivalProps_Lamp -1 -0.766044 -0.642788 -0.000648 0.642788 -0.766044 -0.000436 -0.000216 -0.00075 1 89.868118 20.51038 -2.998415
+	d SurvivalProps_Lamp -1 -0.906308 -0.422618 -0.000648 0.422618 -0.906308 -0.000436 -0.000403 -0.000669 1 -90.072525 26.946653 -2.999999
+	d SurvivalProps_Lamp -1 1 0 -0.000648 0 1 -0.000436 0.000648 0.000436 1 -81.387238 33.757378 -3.000001
+	d SurvivalProps_Lamp -1 -0.258819 -0.965926 -0.000648 0.965926 -0.258819 -0.000436 0.000253 -0.000739 1 30.64187 -16.769245 0.000084
+	d SurvivalProps_Lamp -1 0.996195 0.087155 -0.000648 -0.087156 0.996195 -0.000436 0.000607 0.000491 1 -74.773926 14.044629 -3.000003
+	d SurvivalProps_Lamp -1 -0.984808 0.173648 -0.000648 -0.173648 -0.984808 -0.000436 -0.000714 -0.000317 1 -85.886398 14.266067 -2.998795
+	d SurvivalProps_Lamp -1 -0.5 -0.866025 -0.000648 0.866025 -0.5 -0.000436 0.000054 -0.000779 1 -10.769419 34.839359 0.000053
+	d SurvivalProps_Lamp -1 0.34202 -0.939692 -0.000648 0.939693 0.34202 -0.000436 0.000631 -0.00046 1 -37.561432 -13.714406 0.000688
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable true
+  layer 2 name "volumes" visible true pickable true
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible true pickable true
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+	PF BaseFighter.txt {
+		pos -133.665695 1.53791 -0.000004
+		rot 0 0 90.000038
+		id 46
+		/shfnv 2734521612 ". team 0"
+	}
+	PF BaseFighter.txt {
+		pos 133 0.5 0
+		rot 0 0 -90.000038
+		id 49
+		/shfnv 2734521612 ". team 1"
+	}
+	PF OutpostV2.txt {
+		pos 0 36.5 0
+		rot 0 0 0
+		id 50
+		/shfnv 825153392 ". latchInf InfantryHeavy InfantryHeavy InfantryHeavy InfantryHeavy"
+		/shfnv 2369371622 ". name U_Outpost_C"
+		/shfnv 2734521612 ". team -1"
+	}
+	PF OutpostV2.txt {
+		pos -79 23 -3
+		rot 0 0 0
+		id 61
+		/shfnv 825153392 ". latchInf InfantryCreepL2 InfantryCreepL2 InfantryCreepL2 InfantryCreepL2"
+		/shfnv 2369371622 ". name U_Outpost_W"
+		/shfnv 2734521612 ". team 0"
+	}
+	PF OutpostV2.txt {
+		pos 79.5 22.5 -3
+		rot 0 0 -180.000076
+		id 72
+		/shfnv 825153392 ". latchInf InfantryCreepL2 InfantryCreepL2 InfantryCreepL2 InfantryCreepL2"
+		/shfnv 2369371622 ". name U_Outpost_E"
+		/shfnv 2734521612 ". team 1"
+	}
+	PF OutpostV2.txt {
+		pos -40 -23.5 0
+		rot 0 0 0
+		id 83
+		/shfnv 825153392 ". latchInf InfantryHeavy InfantryHeavy InfantryHeavy InfantryHeavy"
+		/shfnv 2369371622 ". name U_Outpost"
+		/shfnv 2734521612 ". team -1"
+	}
+	PF OutpostV2.txt {
+		pos 40 -23.5 0
+		rot 0 0 -180.000076
+		id 94
+		/shfnv 825153392 ". latchInf InfantryHeavy InfantryHeavy InfantryHeavy InfantryHeavy"
+		/shfnv 2369371622 ". name U_Outpost"
+		/shfnv 2734521612 ". team -1"
+	}
+}

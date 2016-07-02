@@ -1,0 +1,429 @@
+Script GameMailSendSuccessfull {
+ignoreInputTime 0.1
+cmd "echo Mail Sent Successfully"
+cmd "clearmenu MailCompose.txt /fadeout 0.15"
+cmd "clearmenu MailReply.txt /fadeout 0.15"
+}
+Script GameMailSendFailed {
+ignoreInputTime 0.5
+cmd "echo Mail Send Failed"
+cmd "sym set MailFailMessage MailFailGeneric"
+cmd "sym set MailSendFailed 1"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_Banned {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailBanned"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - you are banned"
+}
+Script GameMailSendFailed_AttachmentsBanned {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailAttachmentsBanned"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - you are attachments banned"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_TargetBanned {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailTargetBanned"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - target account is banned"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_NoVipNoFriend {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailNoVipNoFriend"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - can't send to a non friends without Silver VIP or better"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_LackingFee {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailLackingFee"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - you don't have the fee required"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_BadTarget {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailBadTarget"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - bad username target specified"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_BadTargetSelf {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailBadTargetSelf"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - self target specified"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_BadTargetList {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailBadTargetList"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - bad/unknown target list specified"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_UnownedAttachments {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailUnownedAttachments"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - you dont own attachments"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_CantAttachToList {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailCantAttachToList"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - can't attach to user accessible list"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_MailboxFull {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailMailboxFull"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - username target mailbox is full"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_MailOutboxFull {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailMailOutboxFull"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - mail outbox is full"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_OnIgnoreList {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailOnIgnoreList"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - on ignore list"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_OnMyIgnoreList {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailOnMyIgnoreList"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - on my ignore list"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_AttachLvlReq {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailAttachLvlReq"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - on my ignore list"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailSendFailed_Local {
+ignoreInputTime 0.5
+cmd "sym set MailFailMessage MailFailLocal"
+cmd "sym set MailSendFailed 1"
+cmd "echo Mail Send Failed - Local Setup Problem"
+cmd "pcmd 0.5 gameui enable MailComposeButtonSend"
+}
+Script GameMailTakeAttachmentSuccessfull {
+cmd "wallet doRequestInventory"
+}
+Script GameMailTakeAttachmentFailed {
+}
+Script GameMailTakeAttachedAmountSuccessfull {
+cmd "wallet doRequestInventory"
+}
+Script GameMailTakeAttachedAmountFailed {
+}
+Script GameMailDeleteSuccessfull {
+ignoreInputTime 0.12
+cmd "sym set _InboxSelectedAll 0"
+rcmd "mail page 0 10 MailInboxFirstInd"
+cmd "echo deleted_in"
+cmd "pcmd t1 menucmd GameMailUpdateCurrentMessage"
+cmd "pcmd t3 sym set MailMessageDeleteFinished 1"
+cmd "pcmd 0.1 if usingpad menucmd FocusLastSelectedMessage"
+cmd "pcmd 0.1 if usingpad && sym GameMailCount == 0 menucmd ConMenuMailPressCancel"
+}
+Script GameMailSentDeleteSuccessfull {
+ignoreInputTime 0.1
+cmd "sym set _OutboxSelectedAll 0"
+rcmd "mail pageOutbox 0 10 MailOutboxFirstInd"
+cmd "echo deleted_out"
+cmd "sym set MailMessageDeleteFinished 1"
+}
+Script GameMailDeleteFailed {
+ignoreInputTime 0.1
+cmd "sym set MailMessageDeleteFinished 1"
+cmd "mail get"
+}
+Script GameMailSentDeleteFailed {
+ignoreInputTime 0.1
+cmd "sym set MailMessageDeleteFinished 1"
+cmd "mail getoutbox"
+}
+Script GameMailDeleteReqNoSelections {
+ignoreInputTime 0.25
+cmd "sym set MailMessageDeleteFinished 1"
+}
+Script GameMailDeleteAttemptOnMailWithAttachment {
+ignoreInputTime 0.1
+cmd "sym clear _CustomExecSlot"
+cmd "sym set DialogBoxTitle DialogMessageDelAttachmentTitle"
+cmd "sym set DialogBoxMessage TT_NoDeleteHasItem"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script GameMailUpdateCurrentMessage {
+cmd "echo updating message"
+cmd "echo $MailInboxSelected"
+cmd "mail writeToSymbols #InboxId@MailInboxSelected@ ViewMail"
+}
+Script GameMailNotifyCount {
+cmd "sym set GameMailCount $_MArg1_"
+cmd "sym set GameMailUnread $_MArg2_"
+cmd "if sym MailInboxLoaded == 1 mail writeInbox $MailInboxFirstInd 10 Inbox"
+cmd "if MenuLoaded MailMessage mail writeToSymbols $ViewMailId ViewMail"
+}
+Script GameMailInboxUpdateAfterPaging {
+cmd "mail writeInbox $MailInboxFirstInd 10 Inbox"
+cmd "sym clear InboxSelectedIDs"
+cmd "sym set _InboxSelectedAll 0"
+cmd "if usingpad && sym GameMailPageDir == Next runnow gameui focusnametry MailOutboxItem0 MailInboxItem0"
+cmd "if usingpad && sym GameMailPageDir == Next runnow echo try"
+cmd "if usingpad if sym GameMailPageDir == Prev gameui focusnametry MailOutboxItem9 MailInboxItem9"
+cmd "pcmd t1 sym set GameMailPageDir null"
+}
+Script GameMailInboxPageNext {
+cmd "if sym InboxPageNextOk == 1 runnow mail page 1 10 MailInboxFirstInd"
+cmd "sym set GameMailPageDir Next"
+}
+Script GameMailInboxPagePrev {
+cmd "if sym InboxPagePrevOk == 1 runnow mail page -1 10 MailInboxFirstInd"
+cmd "sym set GameMailPageDir Prev"
+}
+Script GameMailOutboxPageNext {
+cmd "if sym OutboxPageNextOk == 1 runnow mail pageOutbox 1 10 MailOutboxFirstInd"
+cmd "if sym OutboxPageNextOk == 1 runnow sym set GameMailPageDir Prev"
+}
+Script GameMailOutboxPagePrev {
+cmd "if sym OutboxPagePrevOk == 1 runnow mail pageOutbox -1 10 MailOutboxFirstInd"
+cmd "if sym OutboxPagePrevOk == 1 sym set GameMailPageDir Prev"
+}
+Script FocusLastSelectedMessage {
+cmd "gameui focusNameTry #MailInboxItem@MailInboxSelected@"
+cmd "echo throw_focus"
+}
+Script DeleteFocusBounceAttachment {
+cmd "gameui enable DeleteFocusBounce"
+cmd "pcmd 0.2 addUIAnim DeleteFocusBounce mas_DeleteFocusBounce"
+cmd "gameui focusNameTry MessageAttachment0 MessageAttachment1 MessageAttachment2 MessageAttachment3 MailBonus"
+cmd "pcmd 0.8 gameui disable DeleteFocusBounce"
+}
+Script GameMailDoSend {
+cmd "mail send /to MailComposeTo /subject MailComposeSubject /msg MailComposeBody"
+}
+Script GameMailDoSendReply {
+cmd "mail send /to MailComposeTo /subject MailComposeSubject /msg MailComposeBody /reply 1"
+}
+Script GameMailOutboxNotifyCount {
+cmd "sym set GameMailOutboxCount $_MArg1_"
+cmd "if sym MailInboxLoaded == 1 mail writeOutbox $MailOutboxFirstInd 10 Outbox"
+}
+Script GameMailOutboxUpdateAfterPaging {
+cmd "mail writeOutbox $MailOutboxFirstInd 10 Outbox"
+cmd "sym clear OutboxSelectedIDs"
+cmd "sym set _OutboxSelectedAll 0"
+}
+Script GameMailInboxInitialize {
+ignoreInputTime 0.1
+rcmd "sym set MailOutbox 0"
+rcmd "sym set _InboxSelectedAll 0"
+rcmd "sym clear InboxSelectedIDs"
+rcmd "sym set MailInboxFirstInd 0"
+rcmd "sym setNSet 10 InboxHasMsg 0"
+rcmd "sym set MailMessageSent 0"
+rcmd "sym set ViewSentMailId 0"
+rcmd "sym clear OutboxSelectedIDs"
+rcmd "sym setNSet 4 TR_HiddenMailIn 1"
+cmd "mail writeInbox $MailInboxFirstInd 10 Inbox"
+cmd "menucmd GameMailSwitchBoxes"
+}
+Script GameMailOutboxInitialize {
+ignoreInputTime 0.1
+rcmd "sym set MailOutbox 1"
+rcmd "sym set _OutboxSelectedAll 0"
+rcmd "sym clear OutboxSelectedIDs"
+rcmd "sym set MailOutboxFirstInd 0"
+rcmd "sym setNSet 10 OutboxHasMsg 0"
+rcmd "sym set MailMessageSent 1"
+rcmd "sym set ViewMailId 0"
+rcmd "sym clear InboxSelectedIDs"
+rcmd "sym setNSet 4 TR_HiddenMailOut 1"
+cmd "mail writeOutbox $MailOutboxFirstInd 10 Outbox"
+cmd "menucmd GameMailSwitchBoxes"
+}
+Script GameMailSwitchBoxes {
+cmd "if sym MailOutbox == 1 && sym OutboxHasMsg0 == 1 gameui directPushName MailOutboxItem0"
+cmd "if sym MailOutbox == 1 && sym OutboxHasMsg0 != 1 menucmd CloseMailPane"
+cmd "if sym MailOutbox != 1 && sym InboxHasMsg0 == 1 gameui directPushName MailInboxItem0"
+cmd "if sym MailOutbox != 1 && sym InboxHasMsg0 != 1 menucmd CloseMailPane"
+}
+Script CloseMailPane {
+cmd "sym set MailInboxWidth 1.0"
+cmd "pcmd t0 gameui refreshFilterName MailResize"
+cmd "sym set MailMessageLoaded 0"
+}
+Script GameMailComposeInitialize {
+rcmd "sym set TR_HiddenMail0 1"
+rcmd "sym set TR_HiddenMail1 1"
+rcmd "sym set TR_HiddenMail2 1"
+rcmd "sym set TR_HiddenMail3 1"
+rcmd "collection clearCollectionExclusions mail"
+cmd "collection scrollUpdate paged"
+cmd "collection scrollUpdateInv2 paged"
+cmd "mail updateSendCosts"
+}
+Script CantAddItemToMail {
+cmd "sym set DialogBoxTitle DialogTitleCantTradeItem"
+cmd "sym set DialogBoxMessage DialogMessageCantTradeItem"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script AddItemToMail0 {
+rcmd "collection copySettings $_MArg1_ Mail0"
+rcmd "sym clear TR_DragSourceMail0"
+rcmd "sym set TR_CountMail0 0"
+rcmd "sym set TR_InfCountMail0 1"
+rcmd "sym set TR_VipTicketMail0 0"
+rcmd "sym set TR_HiddenMail0 0"
+rcmd "collection updateMailCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "mail updateSendCosts"
+}
+Script AddItemToMail1 {
+rcmd "collection copySettings $_MArg1_ Mail1"
+rcmd "sym clear TR_DragSourceMail1"
+rcmd "sym set TR_CountMail1 0"
+rcmd "sym set TR_InfCountMail1 1"
+rcmd "sym set TR_VipTicketMail1 0"
+rcmd "sym set TR_HiddenMail1 0"
+rcmd "collection updateMailCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "mail updateSendCosts"
+}
+Script AddItemToMail2 {
+rcmd "collection copySettings $_MArg1_ Mail2"
+rcmd "sym clear TR_DragSourceMail2"
+rcmd "sym set TR_CountMail2 0"
+rcmd "sym set TR_InfCountMail2 1"
+rcmd "sym set TR_VipTicketMail2 0"
+rcmd "sym set TR_HiddenMail2 0"
+rcmd "collection updateMailCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "mail updateSendCosts"
+}
+Script AddItemToMail3 {
+rcmd "collection copySettings $_MArg1_ Mail3"
+rcmd "sym clear TR_DragSourceMail3"
+rcmd "sym set TR_CountMail3 0"
+rcmd "sym set TR_InfCountMail3 1"
+rcmd "sym set TR_VipTicketMail3 0"
+rcmd "sym set TR_HiddenMail3 0"
+rcmd "collection updateMailCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "mail updateSendCosts"
+}
+Script RemoveItemFromMail0 {
+rcmd "sym set TR_HiddenMail0 1"
+rcmd "collection updateMailCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "mail updateSendCosts"
+}
+Script RemoveItemFromMail1 {
+rcmd "sym set TR_HiddenMail1 1"
+rcmd "collection updateMailCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "mail updateSendCosts"
+}
+Script RemoveItemFromMail2 {
+rcmd "sym set TR_HiddenMail2 1"
+rcmd "collection updateMailCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "mail updateSendCosts"
+}
+Script RemoveItemFromMail3 {
+rcmd "sym set TR_HiddenMail3 1"
+rcmd "collection updateMailCollectionExclusions"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "mail updateSendCosts"
+}
+Script EditMailTo {
+cmd "mail updateSendCosts"
+}
+Script SetupMailInAttachment {
+rcmd "collection initSettings $_MArg2_ #MailIn@_MArg1_@"
+rcmd "sym clear #TR_DragSourceMailIn@_MArg1_@"
+rcmd "sym set #TR_CountMailIn@_MArg1_@ 0"
+rcmd "sym set #TR_InfCountMailIn@_MArg1_@ 1"
+rcmd "sym set #TR_VipTicketMailIn@_MArg1_@ 0"
+rcmd "sym set #TR_HiddenMailIn@_MArg1_@ 0"
+}
+Script RemoveAttachedAmountFromViewMail {
+cmd "echo try to take an attached amount: $_MArg1_ $_MArg2_"
+cmd "mail takeattachedamount $ViewMailId $_MArg1_ $_MArg2_"
+}
+Script RemoveItemFromMailInRC {
+cmd "echo try to take attachment 0"
+cmd "mail takeattachments $ViewMailId 0"
+cmd "gameui hide MessageAttachment0"
+cmd "sym set TR_HiddenMailIn0 1"
+}
+Script RemoveItemFromMailIn0 {
+cmd "echo try to take attachment 0"
+cmd "mail takeattachments $ViewMailId 0"
+cmd "gameui hide MessageAttachment0"
+cmd "sym set TR_HiddenMailIn0 1"
+}
+Script RemoveItemFromMailIn1 {
+cmd "echo try to take attachment 1"
+cmd "mail takeattachments $ViewMailId 1"
+cmd "gameui hide MessageAttachment1"
+cmd "sym set TR_HiddenMailIn1 1"
+}
+Script RemoveItemFromMailIn2 {
+cmd "echo try to take attachment 2"
+cmd "mail takeattachments $ViewMailId 2"
+cmd "gameui hide MessageAttachment2"
+cmd "sym set TR_HiddenMailIn2 1"
+}
+Script RemoveItemFromMailIn3 {
+cmd "echo try to take attachment 3"
+cmd "mail takeattachments $ViewMailId 3"
+cmd "gameui hide MessageAttachment3"
+cmd "sym set TR_HiddenMailIn3 1"
+}
+Script SetupMailOutAttachment {
+rcmd "collection initSettings $_MArg2_ #MailOut@_MArg1_@"
+rcmd "sym clear #TR_DragSourceMailOut@_MArg1_@"
+rcmd "sym set #TR_CountMailOut@_MArg1_@ 0"
+rcmd "sym set #TR_InfCountMailOut@_MArg1_@ 1"
+rcmd "sym set #TR_VipTicketMailOut@_MArg1_@ 0"
+rcmd "sym set #TR_HiddenMainOut@_MArg1_@ 0"
+}
+Script SetupMailboxAttachmentViewPost {
+rcmd "gameui refreshFilterName CollectionUI InvV2UI"
+}
+Script StartGameMailTo {
+ignoreInputTime 0.25
+cmd "sym set MailSendFailed 0"
+cmd "sym clear MailComposeTo"
+cmd "sym clear MailComposeSubject"
+cmd "sym clear MailComposeBody"
+cmd "gameui promoteToTop MailCompose"
+cmd "loadmenu MailCompose.txt /fadein 0.15"
+cmd "pcmd 0.1 gameui focusnametry MailComposeTo"
+cmd "pcmd 0.1 sym setFrom MailComposeTo $_MArg1_"
+}
+Script ReqGameMailClose {
+ignoreInputTime 0.1
+cmd "if !consoleplatform clearmenu MailInbox /fadeout 0.15"
+cmd "if consoleplatform menucmd ConMenuMailPressCancel"
+}

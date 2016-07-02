@@ -1,0 +1,278 @@
+Script UnlockUnknownError {
+cmd "]gamemsg add Unlock: Unknown Error. Please retry."
+cmd "]timer clearAsyncWait"
+}
+Script TryUnlockKudos {
+ignoreInputTime 1.2
+cmd "echo trying to unlock (kudos) $_CustomObject $_CustomExecContentName"
+cmd "timer setAsyncWait 2"
+cmd "sym set UnlockFail2 UnlockInsfFundsK"
+cmd "if sym _UnlockMode == default runNow customize slotUnlock kudos $_CustomObject $_CustomExecContentName _UnlockResult /clearAsyncOnFail /allowRebuyDynamic"
+cmd "if sym _UnlockMode == altoffer runNow customize slotUnlock kudos $_CustomObject $_CustomExecContentName _UnlockResult /clearAsyncOnFail"
+cmd "if sym _UnlockMode != default && sym _UnlockMode != altoffer pcmd 1.0 menuCmd UnlockUnknownError"
+cmd "sym setFrom _DialogBoxContentName_ _CustomExecContentName"
+}
+Script TryUnlockDiamonds {
+ignoreInputTime 1.2
+cmd "echo trying to unlock (diamonds)"
+cmd "timer setAsyncWait 2"
+cmd "sym set UnlockFail2 UnlockInsfFundsD"
+cmd "if sym _UnlockMode == bundle runNow customize slotUnlock diamonds bundle $_CustomExecSlot _UnlockResult /clearAsyncOnFail"
+cmd "if sym _UnlockMode == boost runNow customize slotUnlock diamonds boost $_CustomExecSlot _UnlockResult /clearAsyncOnFail"
+cmd "if sym _UnlockMode == default runNow customize slotUnlock diamonds $_CustomObject $_CustomExecContentName _UnlockResult /clearAsyncOnFail /allowRebuyDynamic"
+cmd "if sym _UnlockMode == altoffer runNow customize slotUnlock diamonds $_CustomObject $_CustomExecContentName _UnlockResult /clearAsyncOnFail"
+cmd "if sym _UnlockMode == market runNow customize marketBuyId $_MarketBuyId $_MarketBuyCost"
+cmd "if sym _UnlockMode == market sym setFrom _DialogBoxContentName_ UnlockIconBase"
+cmd "if sym _UnlockMode == bundle || sym _UnlockMode == boost sym setFrom _DialogBoxContentName_ _CustomExecSlot"
+cmd "if sym _UnlockMode == default || sym _UnlockMode == altoffer sym setFrom _DialogBoxContentName_ _CustomExecContentName"
+cmd "if sym _UnlockMode != bundle && sym _UnlockMode != boost && sym _UnlockMode != default && sym _UnlockMode != altoffer && sym _UnlockMode != market pcmd 1.0 menuCmd UnlockUnknownError"
+}
+Script TryUnlockCash {
+ignoreInputTime 0.15
+cmd "if sym UnlockDialogDisplayCostCash == - && sym UnlockOnSaleNYP == 1 menucmd TryUnlockCash_GetNYP"
+cmd "if sym UnlockDialogDisplayCostCash != - && sym UnlockOnSaleNYP == 0 menucmd TryUnlockCash_STD"
+cmd "if sym UnlockDialogDisplayCostCash != - && sym UnlockOnSaleNYP == 1 menucmd TryUnlockCash_NYP"
+}
+Script ShowCarbonPayment {
+ignoreInputTime 0.15
+cmd "if sym GetDiamondsPanelHidden != 1 runnow addUIAnim QuickBuyDiamondsItems mas_BuyDiamondsPanelHide"
+cmd "if sym GetDiamondsPanelHidden != 1 runnow addUIAnim UnlockDialogMaster mas_UnlockDialogRight"
+cmd "if sym DialogPageDisplay != 0 runNow gameUI show UnlockCashConfirm"
+cmd "if sym DialogPageDisplay != 0 && sym UnlockDialogDisplayCostCash == - && sym UnlockOnSaleNYP == 1 runnow menucmd PurchaseNYPGetPrice"
+cmd "gameUI hide UnlockDiamondsConfirm"
+cmd "gameUI hide UnlockKudosConfirm"
+cmd "gameui enable UnlockCashArrow"
+cmd "addUIAnim UnlockCashArrow mas_BuyDiamondsArrowL /speed 1.2"
+cmd "sym set DialogPageDisplay 0"
+cmd "floatsym set Scrollable0Pos 0"
+cmd "if usingPad runNow gameUI ignoreInputTime 0.7"
+cmd "if usingPad runNow gameUI disable UnlockCashPaypal"
+cmd "if usingPad runNow pcmd 0.5 gameUI enable UnlockCashPaypal"
+cmd "if usingPad runNow pcmd 0.5 gameUI focusNameTry UnlockCashPaypal"
+cmd "if usingPad runNow gameUI focusNameTry UnlockCashPaypal"
+}
+Script TryUnlockCash_STD {
+ignoreInputTime 1.2
+cmd "echo trying to unlock (cash)"
+cmd "sym set UnlockFail2 UnlockInsfFundsC"
+cmd "if sym _UnlockMode == bundle runNow customize slotUnlock cash bundle $_CustomExecSlot _UnlockResult"
+cmd "if sym _UnlockMode == boost runNow customize slotUnlock cash boost $_CustomExecSlot _UnlockResult"
+cmd "if sym _UnlockMode == default runNow customize slotUnlock cash $_CustomObject $_CustomExecContentName _UnlockResult"
+}
+Script TryUnlockCash_NYP {
+ignoreInputTime 1.2
+cmd "echo trying to unlock (cash)"
+cmd "sym set UnlockFail2 UnlockInsfFundsC"
+cmd "if sym _UnlockMode == bundle runNow customize slotUnlock cash bundle $_CustomExecSlot _UnlockResult /nyp _NYPEnt_ /nyp_avg _NYPAvg_"
+cmd "if sym _UnlockMode == boost runNow customize slotUnlock cash boost $_CustomExecSlot _UnlockResult /nyp _NYPEnt_ /nyp_avg _NYPAvg_"
+cmd "if sym _UnlockMode == default runNow customize slotUnlock cash $_CustomObject $_CustomExecContentName _UnlockResult /nyp _NYPEnt_ /nyp_avg _NYPAvg_"
+}
+Script TryUnlockCash_GetNYP {
+cmd "menucmd PurchaseNYPGetPrice"
+}
+Script UnlockSuccessfull {
+pendingOnBoolSym DialogBoxLoaded
+ignoreInputTime 1.0
+cmd "timer clearAsyncWait"
+cmd "playsound $MenuItemUnlock"
+cmd "customize contentLookupEx $_MArg1_ _UnlockLink_"
+cmd "gmlC log /SYS_InfoUnlockedNotify/ $$_UnlockLink_"
+cmd "customize reinitLockedSlotItemState"
+cmd "gameui refreshFilterName Customize CustomDrawer"
+cmd "clearmenu UnlockDialog.txt"
+cmd "pcmd 0.75 rook notifyWalletUpdated"
+cmd "sym set DialogBoxTitle DialogTitlePurchaseSuccess"
+cmd "sym set DialogBoxMessage DialogMessagePurchaseSuccess"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+cmd "playsound UI_ItemPurchaseComplete"
+cmd "if sym _BuyItemEventDecl_ !isEmpty gameEvent $_BuyItemEventDecl_"
+cmd "sym clear _BuyItemEventDecl_"
+cmd "if sym ReqCnt_N > 0 collection generateSuggestedContent ReqCnt 4 /noPriceCheck"
+cmd "if sym ReqCnt_N > 0 gameui refreshFilterName CollectionUI"
+}
+Script UnlockFailed {
+ignoreInputTime 2.0
+cmd "timer clearAsyncWait"
+cmd "if sym _UnlockResult == 0 echo Unlock: error - wasn't locked..."
+cmd "if sym _UnlockResult == 2 menucmd UnlockFailedStd local $_MArg1_"
+cmd "playsound AlertOutpostLost.wav"
+cmd "sym clear _BuyItemEventDecl_"
+}
+Script UnlockFailedStd {
+pendingOnBoolSym DialogBoxLoaded
+ignoreInputTime 2.0
+cmd "customize contentLookupEx $_MArg1_ _UnlockLink_"
+cmd "gmlC log /SYS_Info_UnlockFail/ $$_UnlockLink_"
+cmd "sym set DialogBoxTitle DialogTitlePurchaseFailed"
+cmd "sym set DialogBoxMessage DialogMessagePurchaseFailed"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+cmd "sym clear _BuyItemEventDecl_"
+}
+Script UnlockFailed_NotEnoughDiamonds {
+pendingOnBoolSym DialogBoxLoaded
+pendingOnLoadedMenu BackendDialog
+ignoreInputTime 0.15
+cmd "customize contentLookupEx $_MArg1_ _UnlockLink_"
+cmd "gmlC log /SYS_Info_UnlockFail/ $$_UnlockLink_"
+cmd "sym set DialogNotEnoughtDiamonds 1
+cmd "sym set DialogBoxTitle DialogTitlePurchaseFailed_NotEnoughDiamonds"
+cmd "sym set DialogBoxMessage DialogMessagePurchaseFailed_NotEnoughDiamonds"
+cmd "sym set DialogMenuCmdOnButton1 UnlockFailed_GetMoreDiamonds"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "loadmenu DialogBox.txt /fadein 0.15"
+cmd "sym clear _BuyItemEventDecl_"
+}
+Script UnlockFailed_GetMoreDiamonds {
+ignoreInputTime 0.5
+cmd "clearmenu UnlockDialog.txt /fadeout 0.1"
+cmd "if !arc pcmd 0.15 if anyBundleUnlockedOf 2 StarterPack SteamStarterPack menuCmd StorePromoUnlockOrInspectBundleTry D2Pack10"
+cmd "if !arc pcmd 0.15 if allBundleLockedOf 2 StarterPack SteamStarterPack menuCmd StorePromoUnlockOrInspectBundleTry StarterPack"
+cmd "if arc pcmd 0.15 arc purchase"
+}
+Script UnlockFailed_NotEnoughKudos {
+ignoreInputTime 0.5
+cmd "customize contentLookupEx $_MArg1_ _UnlockLink_"
+cmd "gmlC log /SYS_Info_UnlockFail/ $$_UnlockLink_"
+cmd "sym set DialogBoxTitle DialogTitlePurchaseFailed_NotEnoughKudos"
+cmd "sym set DialogBoxMessage DialogMessagePurchaseFailed_NotEnoughKudos"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+cmd "sym clear _BuyItemEventDecl_"
+}
+Script UnlockDropOfferSuccessfull {
+ignoreInputTime 0.5
+cmd "timer clearAsyncWait"
+cmd "playsound $MenuItemUnlock"
+cmd "customize contentLookupEx $_MArg1_ _UnlockLink_"
+cmd "gmlC log /SYS_InfoUnlockedNotify/ $$_UnlockLink_"
+cmd "customize reinitLockedSlotItemState"
+cmd "clearmenu UnlockDialog.txt"
+cmd "sym set DialogBoxTitle DialogTitlePurchaseSuccess"
+cmd "sym set DialogBoxMessage DialogMessagePurchaseSuccess_AltContent"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script UnlockDropOfferFailed {
+cmd "timer clearAsyncWait"
+cmd "if sym _UnlockResult == 0 echo Unlock: error - wasn't locked..."
+cmd "if sym _UnlockResult == 2 menucmd UnlockDropOfferFailedStd $_MArg1_"
+cmd "playsound AlertOutpostLost.wav"
+}
+Script UnlockDropOfferFailedStd {
+cmd "gamemsg addF_U $UnlockFail2"
+cmd "customize contentLookupEx $_MArg1_ _UnlockLink_"
+cmd "gmlC log /SYS_Info_UnlockFail/ $$_UnlockLink_"
+}
+Script TryItemTrial {
+cmd "echo trying item trial"
+cmd "timer setAsyncWait 2"
+cmd "customize slotTrial $_CustomObject $_CustomExecSlot"
+}
+Script ItemTrialSuccessfull {
+cmd "timer clearAsyncWait"
+cmd "playsound $MenuItemUnlock"
+cmd "echo Item Trial Successful!"
+cmd "customize slotExec $_CustomObject $_UnlockObjectName _CustomSymbol _CustomValue /allowTrialSelection"
+cmd "clearmenu UnlockDialog.txt"
+}
+Script ItemTrialFailed {
+cmd "timer clearAsyncWait"
+cmd "echo Trail Failed: error - up for trial..."
+}
+Script BoostPurchaseSuccessfull {
+cmd "timer clearAsyncWait"
+cmd "playsound $MenuItemUnlock"
+cmd "echo Unlock: Boost Purchase Successful!"
+cmd "clearmenu UnlockDialog.txt"
+cmd "sym set DialogBoxTitle DialogTitlePurchaseSuccess"
+cmd "sym set DialogBoxMessage DialogMessagePurchaseBoostSuccess"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+cmd "playsound UI_ItemPurchaseComplete"
+cmd "gameEvent item /type Acquired /way BuyShop /itype Boost /name $_BoostPAttempt_N /q 1 /dSpent $_BoostPAttempt_D"
+}
+Script BoostPurchaseFailed {
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitlePurchaseFailed"
+cmd "sym set DialogBoxMessage DialogMessagePurchaseBoostFailed"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script FactionTagPurchaseSuccessfull {
+cmd "timer clearAsyncWait"
+cmd "playsound $MenuItemUnlock"
+cmd "echo Unlock: Faction Tag Purchase Successful!"
+cmd "clearmenu UnlockDialog.txt"
+}
+Script FactionTagPurchaseFailed {
+cmd "timer clearAsyncWait"
+cmd "gamemsg addF_U UnlockInsfFundsD"
+}
+Script GfxDestructionDetailUpdate {
+cmd "gfx updateGfxDestructionDetail GfxDestructionDetail"
+}
+Script MasterVolUpdate {
+cmd "sound updateVolumes"
+cmd "console regSave MasterVol"
+}
+Script SoundVolUpdate {
+cmd "sound updateVolumes"
+cmd "playSound SfxVolUpdate"
+cmd "console regSave SoundVol"
+}
+Script MenuVolUpdate {
+cmd "sound updateVolumes"
+cmd "playSound MenuVolUpdate"
+cmd "console regSave MenuVol"
+}
+Script MusicVolUpdate {
+cmd "sound updateVolumes"
+cmd "console regSave MusicVol"
+}
+Script AnnouncerVolUpdate {
+cmd "sound updateVolumes"
+cmd "playSound $MenuSoundVolAnnouncerAdjust"
+cmd "console regSave AnnouncerVol"
+}
+Script PurchaseBadCurrency {
+cmd "sym set BackendDialogCaption [Invalid Currency]"
+cmd "sym set BackendDialogText [Your steam account uses a currency that we don't support yet. Please email support@carbongames.com so we can fix it!]"
+cmd "sym set BackendDialogButton0 DialogButtonCancel"
+cmd "sym clear BackendDialogButton0Command"
+cmd "menucmd BackendDialog"
+}
+Script OptionsNOP {
+}
+Script OptionsColorBlindUpdate {
+cmd "rook toggleColorBlind $ColorBlind"
+}
+Script BadLangFilterUpdate {
+cmd "rook toggleBadLangFilter $BadLangFilter"
+}
+Script OptionsRightClickUnitOpsUpdate {
+cmd "rook toggleRightClickUnitOps $RightClickUnitOps"
+}
+Script OptionsDropUnitDirControlUpdate {
+cmd "rook toggleDropUnitDirControl $DropUnitDirControl"
+}
+Script OptionsGameRangeMarkersUpdate {
+cmd "rook toggleGameRangeMarkers $GameRangeMarkers"
+}
+Script OptionsShowHealthBarsUpdate {
+cmd "rook toggleDisplayUnitHPBar $GameShowUnitHPBar"
+cmd "rook toggleDisplayUnitHP $GameShowUnitHPNum"
+}
+Script OptionsSpecChatUpdate {
+cmd "rook toggleSpecChat $SpecChat"
+Script OptionsShowTooltipsInGameUpdate {
+cmd "rook toggleGameShowTT $GameShowTT"
+}
+Script OptionsMouseLockUpdate {
+cmd "rook updateMouseLock"
+}
+Script OptionsRoomFilterChanged {
+cmd "if sym GF_PVP == 0 && sym GF_PVE == 0 && sym GF_COOP == 0 && sym GF_CTF == 0 runnow sym set GF_PVP 1"
+cmd "rooms scrollUpdate init"
+}

@@ -1,0 +1,99 @@
+Script CycleMainMenuTrack {
+cmd "if sym AlbumTrackCurrent == 10_Stealth_Mech sym set AlbumTrackCurrent 01_AirMech"
+cmd "if sym AlbumTrackCurrent == 01_AirMech sym set AlbumTrackCurrent 04_Prep_for_Combat"
+cmd "if sym AlbumTrackCurrent == 04_Prep_for_Combat sym set AlbumTrackCurrent 06_Mech_Killer"
+cmd "if sym AlbumTrackCurrent == 06_Mech_Killer sym set AlbumTrackCurrent 10_Stealth_Mech"
+}
+Script PlayNextTrack {
+cmd "music stop"
+cmd "if sym AlbumTrackCurrent == 12_Prime_Empiricism menuCmd PlayTrack01"
+cmd "if sym AlbumTrackCurrent == 11_Death_Level menuCmd PlayTrack12"
+cmd "if sym AlbumTrackCurrent == 10_Stealth_Mech menuCmd PlayTrack11"
+cmd "if sym AlbumTrackCurrent == 09_Burning_Skyline menuCmd PlayTrack10"
+cmd "if sym AlbumTrackCurrent == 08_Lose menuCmd PlayTrack09"
+cmd "if sym AlbumTrackCurrent == 07_Everything_That_Was_Before menuCmd PlayTrack08"
+cmd "if sym AlbumTrackCurrent == 06_Mech_Killer menuCmd PlayTrack07"
+cmd "if sym AlbumTrackCurrent == 05_System_Anomaly menuCmd PlayTrack06"
+cmd "if sym AlbumTrackCurrent == 04_Prep_for_Combat menuCmd PlayTrack05"
+cmd "if sym AlbumTrackCurrent == 03_Pulse_Charge menuCmd PlayTrack04"
+cmd "if sym AlbumTrackCurrent == 02_Arise menuCmd PlayTrack03"
+cmd "if sym AlbumTrackCurrent == 01_AirMech menuCmd PlayTrack02"
+}
+Script PlayLastTrack {
+cmd "music stop"
+cmd "if sym AlbumTrackCurrent == 12_Prime_Empiricism menuCmd PlayTrack11"
+cmd "if sym AlbumTrackCurrent == 11_Death_Level menuCmd PlayTrack10"
+cmd "if sym AlbumTrackCurrent == 10_Stealth_Mech menuCmd PlayTrack09"
+cmd "if sym AlbumTrackCurrent == 09_Burning_Skyline menuCmd PlayTrack08"
+cmd "if sym AlbumTrackCurrent == 08_Lose menuCmd PlayTrack07"
+cmd "if sym AlbumTrackCurrent == 07_Everything_That_Was_Before menuCmd PlayTrack06"
+cmd "if sym AlbumTrackCurrent == 06_Mech_Killer menuCmd PlayTrack05"
+cmd "if sym AlbumTrackCurrent == 05_System_Anomaly menuCmd PlayTrack04"
+cmd "if sym AlbumTrackCurrent == 04_Prep_for_Combat menuCmd PlayTrack03"
+cmd "if sym AlbumTrackCurrent == 03_Pulse_Charge menuCmd PlayTrack02"
+cmd "if sym AlbumTrackCurrent == 02_Arise menuCmd PlayTrack01"
+cmd "if sym AlbumTrackCurrent == 01_AirMech menuCmd PlayTrack12"
+}
+Script PlayEndgameMusic {
+cmd "music start EndingClip"
+}
+Script PlayTrack01 {
+cmd "sym set AlbumTrackCurrent 01_AirMech"
+cmd "music start 01_AirMech"
+cmd "gameMsg add $01_AirMech"
+}
+Script PlayTrack02 {
+cmd "sym set AlbumTrackCurrent 02_Arise"
+cmd "music start 02_Arise"
+cmd "gameMsg add $02_Arise"
+}
+Script PlayTrack03 {
+cmd "sym set AlbumTrackCurrent 03_Pulse_Charge"
+cmd "music start 03_Pulse_Charge"
+cmd "gameMsg add $03_Pulse_Charge"
+}
+Script PlayTrack04 {
+cmd "sym set AlbumTrackCurrent 04_Prep_for_Combat"
+cmd "music start 04_Prep_for_Combat"
+cmd "gameMsg add $04_Prep_for_Combat"
+}
+Script PlayTrack05 {
+cmd "sym set AlbumTrackCurrent 05_System_Anomaly"
+cmd "music start 05_System_Anomaly"
+cmd "gameMsg add $05_System_Anomaly"
+}
+Script PlayTrack06 {
+cmd "sym set AlbumTrackCurrent 06_Mech_Killer"
+cmd "music start 06_Mech_Killer"
+cmd "gameMsg add $06_Mech_Killer"
+}
+Script PlayTrack07 {
+cmd "sym set AlbumTrackCurrent 07_Everything_That_Was_Before"
+cmd "music start 07_Everything_That_Was_Before"
+cmd "gameMsg add $07_Everything_That_Was_Before"
+}
+Script PlayTrack08 {
+cmd "sym set AlbumTrackCurrent 08_Lose"
+cmd "music start 08_Lose"
+cmd "gameMsg add $08_Lose"
+}
+Script PlayTrack09 {
+cmd "sym set AlbumTrackCurrent 09_Burning_Skyline"
+cmd "music start 09_Burning_Skyline"
+cmd "gameMsg add $09_Burning_Skyline"
+}
+Script PlayTrack10 {
+cmd "sym set AlbumTrackCurrent 10_Stealth_Mech"
+cmd "music start 10_Stealth_Mech"
+cmd "gameMsg add $10_Stealth_Mech"
+}
+Script PlayTrack11 {
+cmd "sym set AlbumTrackCurrent 11_Death_Level"
+cmd "music start 11_Death_Level"
+cmd "gameMsg add $11_Death_Level"
+}
+Script PlayTrack12 {
+cmd "sym set AlbumTrackCurrent 12_Prime_Empiricism"
+cmd "music start 12_Prime_Empiricism"
+cmd "gameMsg add $12_Prime_Empiricism"
+}

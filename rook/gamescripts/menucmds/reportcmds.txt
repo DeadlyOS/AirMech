@@ -1,0 +1,96 @@
+Script TryIssueReport {
+cmd "sym set _UserReportType_ $_MArg1_"
+cmd "if sym ReportCardCount == 0 menucmd IssueReportNoReportCards"
+cmd "if sym ReportCardCount > 0 menucmd IssueReportConfirm"
+}
+Script IssueReportNoReportCards {
+cmd "sym set DialogBoxTitle DialogTitleNoReportCards"
+cmd "sym set DialogBoxMessage DialogMessageNoReportCards"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script IssueReportConfirm {
+cmd "sym set DialogBoxTitle DialogTitleUserReportConf"
+cmd "sym set DialogBoxMessage DialogMessageUserReportConf"
+cmd "sym set DialogMenuCmdOnButton1 IssueReportConfirm_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script IssueReportConfirm_Go {
+ignoreInputTime 0.1
+cmd "clearmenu DialogReport"
+cmd "wallet reportUser _FriendName_ $_UserReportType_"
+cmd "timer setAsyncWait 1"
+}
+Script TryIssueReportDRoll {
+cmd "if sym ReportCardCount == 0 menucmd IssueReportNoReportCards"
+cmd "if sym ReportCardCount > 0 menucmd IssueDRollReportConfirm"
+}
+Script TryIssueReportPos {
+cmd "sym setFrom _UserToReport $_MArg1_"
+cmd "if sym ReportCardCount == 0 menucmd IssueReportNoReportCards"
+cmd "if sym ReportCardCount > 0 menucmd IssueReportPosConfirm"
+}
+Script TryIssueReportNeg {
+cmd "sym setFrom _UserToReport $_MArg1_"
+cmd "if sym ReportCardCount == 0 menucmd IssueReportNoReportCards"
+cmd "if sym ReportCardCount > 0 menucmd IssueReportNegConfirm"
+}
+Script IssueReportPosConfirm {
+cmd "sym set DialogBoxTitle DialogTitleUserReportConf"
+cmd "sym set DialogBoxMessage DialogMessagePosReportConf"
+cmd "sym set DialogMenuCmdOnButton1 IssueReportPosConfirm_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script IssueReportPosConfirm_Go {
+ignoreInputTime 0.1
+cmd "wallet reportUser _UserToReport PosInspect"
+cmd "sym clear _UserToReport"
+cmd "timer setAsyncWait 1"
+}
+Script IssueReportNegConfirm {
+cmd "sym set DialogBoxTitle DialogTitleUserReportConf"
+cmd "sym set DialogBoxMessage DialogMessageNegReportConf"
+cmd "sym set DialogMenuCmdOnButton1 IssueReportNegConfirm_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script IssueReportNegConfirm_Go {
+ignoreInputTime 0.1
+cmd "wallet reportUser _UserToReport NegInspect"
+cmd "sym clear _UserToReport"
+cmd "timer setAsyncWait 1"
+}
+Script IssueDRollReportConfirm {
+cmd "sym set DialogBoxTitle DialogTitleUserReportConf"
+cmd "sym set DialogBoxMessage DialogMessageDiamondReportConf"
+cmd "sym set DialogMenuCmdOnButton1 IssueDRollReportConfirm_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script IssueDRollReportConfirm_Go {
+ignoreInputTime 0.1
+cmd "gameui directPushNameIfEnabled UltimateSamsonBg"
+cmd "wallet reportUser _RollGlobalBy PosDiamondRoll"
+cmd "sym clear _RollGlobalBy"
+cmd "timer setAsyncWait 1"
+}
+Script FailedToReportUser {
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleFailedToReportUser"
+cmd "sym set DialogBoxMessage DialogMessageFailedToReportUser"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ReportUserCompleted {
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleReportUserCompleted"
+cmd "sym set DialogBoxMessage DialogMessageReportUserCompleted"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}

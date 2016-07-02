@@ -1,0 +1,183 @@
+Script SelectPaymentCheckoutProvider {
+ignoreInputTime 0.2
+cmd "pcmd 0.15 gameui enableAll BuyDiamondsPaymentOptions"
+cmd "pcmd 0.25 gameui enable BuyDiamondsBackButton"
+cmd "pcmd 0.35 gameui enable BuyDiamondsNote"
+cmd "pcmd 0.1 gameui enable BuyDiamondsCharacters"
+cmd "addUIAnim BuyDiamondsCharacters mas_BuyDiamondsCharacters"
+cmd "addUIAnim BuyDiamondsPaymentBigArrowL mas_BuyDiamondsArrowL"
+cmd "addUIAnim BuyDiamondsPaymentBigArrowR mas_BuyDiamondsArrowR"
+cmd "gameui showGroup PArrow0 PArrow1 PArrow2"
+cmd "if usingpad pcmd 0.2 gameui focusnametry BuyDiamondsPaymentPaypal"
+cmd "if sym BuyDiamondsSelection == D2Pack5 menucmd SelectPaymentCheckoutD2Pack5"
+cmd "if sym BuyDiamondsSelection == D2Pack10 menucmd SelectPaymentCheckoutD2Pack10"
+cmd "if sym BuyDiamondsSelection == D2Pack20 menucmd SelectPaymentCheckoutD2Pack20"
+cmd "if sym BuyDiamondsSelection == D2Pack50 menucmd SelectPaymentCheckoutD2Pack50"
+cmd "if sym BuyDiamondsSelection == D2Pack100 menucmd SelectPaymentCheckoutD2Pack100"
+cmd "if sym BuyDiamondsSelection == D2Pack200 menucmd SelectPaymentCheckoutD2Pack200"
+}
+Script TryBackoutBuyDiamonds {
+ignoreInputTime 0.2
+cmd "if sym BuyDiamondsSelection == none clearmenu BuyDiamonds /fadeout 0.1"
+cmd "if sym BuyDiamondsSelection != none menuCmd SelectPaymentBackProvider"
+}
+Script SelectPaymentBackProvider {
+ignoreInputTime 0.2
+cmd "gameui disableAll BuyDiamondsPaymentOptions"
+cmd "gameui hideGroup PArrow0 PArrow1 PArrow2"
+cmd "addUIAnim BuyDiamondsCharacters mas_D2PackReset"
+cmd "gameui disableGroup BuyDiamondsBackButton BuyDiamondsNote BuyDiamondsCharacters"
+cmd "if sym BuyDiamondsSelection == D2Pack5 menucmd SelectPaymentBackD2Pack5"
+cmd "if sym BuyDiamondsSelection == D2Pack10 menucmd SelectPaymentBackD2Pack10"
+cmd "if sym BuyDiamondsSelection == D2Pack20 menucmd SelectPaymentBackD2Pack20"
+cmd "if sym BuyDiamondsSelection == D2Pack50 menucmd SelectPaymentBackD2Pack50"
+cmd "if sym BuyDiamondsSelection == D2Pack100 menucmd SelectPaymentBackD2Pack100"
+cmd "if sym BuyDiamondsSelection == D2Pack200 menucmd SelectPaymentBackD2Pack200"
+cmd "sym set BuyDiamondsSelection none"
+}
+Script SelectPaymentCheckoutD2Pack5 {
+ignoreInputTime 0.2
+cmd "gameui hide D2Pack10"
+cmd "pcmd 0.05 gameui hide D2Pack20"
+cmd "pcmd 0.1 gameui hide D2Pack50"
+cmd "pcmd 0.2 gameui hide D2Pack100"
+cmd "pcmd 0.3 gameui hide D2Pack200"
+cmd "gameui disable D2Pack5"
+cmd "addUIAnim D2Pack5 mas_D2Pack5Center"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2Pack5Option"
+}
+Script SelectPaymentBackD2Pack5 {
+ignoreInputTime 0.25
+cmd "pcmd 0.25 gameui show D2Pack10"
+cmd "pcmd 0.20 gameui show D2Pack20"
+cmd "pcmd 0.15 gameui show D2Pack50"
+cmd "pcmd 0.10 gameui show D2Pack100"
+cmd "pcmd 0.05 gameui show D2Pack200"
+cmd "pcmd 0.25 gameui enable D2Pack5"
+cmd "addUIAnim D2Pack5 mas_D2PackReset"
+cmd "pcmd 0.25 if usingpad gameui focusnametry D2Pack5"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2PackOptionReset"
+}
+Script SelectPaymentCheckoutD2Pack10 {
+ignoreInputTime 0.2
+cmd "gameui hide D2Pack5"
+cmd "gameui hide D2Pack20"
+cmd "pcmd 0.05 gameui hide D2Pack50"
+cmd "pcmd 0.1 gameui hide D2Pack100"
+cmd "pcmd 0.2 gameui hide D2Pack200"
+cmd "gameui disable D2Pack10"
+cmd "addUIAnim D2Pack10 mas_D2Pack10Center"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2Pack10Option"
+}
+Script SelectPaymentBackD2Pack10 {
+ignoreInputTime 0.25
+cmd "pcmd 0.25 gameui show D2Pack5"
+cmd "pcmd 0.20 gameui show D2Pack20"
+cmd "pcmd 0.15 gameui show D2Pack50"
+cmd "pcmd 0.10 gameui show D2Pack100"
+cmd "pcmd 0.05 gameui show D2Pack200"
+cmd "pcmd 0.25 gameui enable D2Pack10"
+cmd "addUIAnim D2Pack10 mas_D2PackReset"
+cmd "pcmd 0.25 if usingpad gameui focusnametry D2Pack10"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2PackOptionReset"
+}
+Script SelectPaymentCheckoutD2Pack20 {
+ignoreInputTime 0.2
+cmd "pcmd 0.15 gameui hide D2Pack5"
+cmd "gameui hide D2Pack10"
+cmd "pcmd 0.1 gameui hide D2Pack50"
+cmd "pcmd 0.2 gameui hide D2Pack100"
+cmd "pcmd 0.3 gameui hide D2Pack200"
+cmd "gameui disable D2Pack20"
+cmd "addUIAnim D2Pack20 mas_D2Pack20Center"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2Pack20Option"
+}
+Script SelectPaymentBackD2Pack20 {
+ignoreInputTime 0.25
+cmd "pcmd 0.25 gameui show D2Pack5"
+cmd "pcmd 0.2 gameui show D2Pack10"
+cmd "pcmd 0.15 gameui show D2Pack50"
+cmd "pcmd 0.10 gameui show D2Pack100"
+cmd "pcmd 0.05 gameui show D2Pack200"
+cmd "pcmd 0.25 gameui enable D2Pack20"
+cmd "addUIAnim D2Pack20 mas_D2PackReset"
+cmd "pcmd 0.25 if usingpad gameui focusnametry D2Pack20"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2PackOptionReset"
+}
+Script SelectPaymentCheckoutD2Pack50 {
+ignoreInputTime 0.2
+cmd "pcmd 0.15 gameui hide D2Pack5"
+cmd "pcmd 0.05 gameui hide D2Pack10"
+cmd "gameui hide D2Pack20"
+cmd "pcmd 0.1 gameui hide D2Pack100"
+cmd "pcmd 0.2 gameui hide D2Pack200"
+cmd "gameui disable D2Pack50"
+cmd "addUIAnim D2Pack50 mas_D2Pack50Center"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2Pack50Option"
+}
+Script SelectPaymentBackD2Pack50 {
+ignoreInputTime 0.25
+cmd "pcmd 0.25 gameui show D2Pack5"
+cmd "pcmd 0.2 gameui show D2Pack10"
+cmd "pcmd 0.15 gameui show D2Pack20"
+cmd "pcmd 0.10 gameui show D2Pack100"
+cmd "pcmd 0.05 gameui show D2Pack200"
+cmd "pcmd 0.25 gameui enable D2Pack50"
+cmd "addUIAnim D2Pack50 mas_D2PackReset"
+cmd "pcmd 0.25 if usingpad gameui focusnametry D2Pack50"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2PackOptionReset"
+}
+Script SelectPaymentCheckoutD2Pack100 {
+ignoreInputTime 0.25
+cmd "pcmd 0.15 gameui hide D2Pack5"
+cmd "pcmd 0.10 gameui hide D2Pack10"
+cmd "pcmd 0.05 gameui hide D2Pack20"
+cmd "gameui hide D2Pack50"
+cmd "pcmd 0.1 gameui hide D2Pack200"
+cmd "gameui disable D2Pack100"
+cmd "addUIAnim D2Pack100 mas_D2Pack100Center"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2Pack100Option"
+}
+Script SelectPaymentBackD2Pack100 {
+ignoreInputTime 0.25
+cmd "gameui show D2Pack5"
+cmd "pcmd 0.05 gameui show D2Pack10"
+cmd "pcmd 0.10 gameui show D2Pack20"
+cmd "pcmd 0.15 gameui show D2Pack50"
+cmd "pcmd 0.25 gameui show D2Pack200"
+cmd "pcmd 0.25 gameui enable D2Pack100"
+cmd "addUIAnim D2Pack100 mas_D2PackReset"
+cmd "pcmd 0.25 if usingpad gameui focusnametry D2Pack100"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2PackOptionReset"
+}
+Script SelectPaymentCheckoutD2Pack200 {
+ignoreInputTime 0.25
+cmd "pcmd 0.15 gameui hide D2Pack5"
+cmd "pcmd 0.10 gameui hide D2Pack10"
+cmd "pcmd 0.05 gameui hide D2Pack20"
+cmd "pcmd 0.025 gameui hide D2Pack50"
+cmd "gameui hide D2Pack100"
+cmd "gameui disable D2Pack200"
+cmd "addUIAnim D2Pack200 mas_D2Pack200Center"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2Pack100Option"
+}
+Script SelectPaymentBackD2Pack200 {
+ignoreInputTime 0.25
+cmd "gameui show D2Pack5"
+cmd "pcmd 0.10 gameui show D2Pack10"
+cmd "pcmd 0.15 gameui show D2Pack20"
+cmd "pcmd 0.20 gameui show D2Pack50"
+cmd "pcmd 0.25 gameui show D2Pack100"
+cmd "pcmd 0.25 gameui enable D2Pack200"
+cmd "addUIAnim D2Pack200 mas_D2PackReset"
+cmd "pcmd 0.25 if usingpad gameui focusnametry D2Pack200"
+cmd "addUIAnim BuyDiamondsPaymentOptions mas_D2PackOptionReset"
+}
+Script NotifyExpiredDiamondsPS4 {
+pendingOnIgnoreInputTime
+cmd "sym set _PS4DiamondExpired_ $_MArg1_"
+cmd "sym set DialogBoxTitle TODO"
+cmd "sym set DialogBoxMessage DiamondExpire_PS4"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}

@@ -1,0 +1,27 @@
+onload {
+echo Loaded firstGame Tutorial Script
+}
+state {
+enableTime = 4.0
+req !Moved
+onshow {
+loadmenu tutmove.txt
+}
+onclear {
+clearmenu tutmove.txt
+}
+}
+state tformToGnd {
+enableTime 6.0
+req Moved !TFormToGnd
+onshow {
+echo Hey, use the transform command to land on the ground
+}
+}
+state tformToAir {
+reqState tformToGnd
+req Moved !TFormToAir TFormToGnd
+onshow {
+echo Hey, good job, now transform again to get into the air
+}
+}

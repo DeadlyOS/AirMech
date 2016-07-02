@@ -1,0 +1,28 @@
+Script UpdateFactionTagPreview {
+cmd "rook updateFactionPreview CreateFactionStyle CreateFactionTag CreateFactionTagPreview CreateFactionTagPreviewNN"
+}
+Script UpdateFactionTagPreviewInternal {
+cmd "rook updateFactionPreview 0 CreateFactionTag CreateFactionTagPreview CreateFactionTagPreviewNN"
+}
+Script CreateFaction {
+cmd "sym set DialogBoxTitle DialogTitleCreateFaction"
+cmd "sym set DialogBoxMessage DialogMessageCreateFaction"
+cmd "sym set DialogMenuCmdOnButton1 CreateFactionConfirmed"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script CreateFactionConfirmed {
+cmd "timer setAsyncWait 1"
+cmd "wallet factionCreate CreateFactionName CreateFactionTag CreateFactionStyle"
+cmd "pcmd 1.5 wallet doRequestInventory"
+cmd "pcmd 2.0 timer clearAsyncWait"
+}
+Script CreateFactionResult {
+pendingOnIgnoreInputTime
+ignoreInputTime 0.25
+cmd "sym set DialogBoxTitle FactionCreateTitle"
+cmd "sym set DialogBoxMessage $_MArg1_"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}

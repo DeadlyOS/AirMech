@@ -1,0 +1,131 @@
+Script EndgameButtonContinue {
+cmd "if sym MatchOverInSummary == 0 && usingmouse menucmd EndgameShow"
+cmd "if sym MatchOverInSummary == 1 menucmd EndgameFinish"
+}
+Script EndgameFinish {
+ignoreInputTime 0.5
+cmd "console flushAllPendingSeq 743"
+cmd "echo menucmd: EndgameFinish"
+cmd "menuCmd MP_LoadMainMenu local"
+cmd "sym set _EgFinishOk_ 0"
+cmd "sym set _EgRewardCountOk_ 0"
+}
+Script EndgameButtonCancel {
+cmd "if sym MatchOverInSummary == 1 menucmd EndgameHide"
+}
+Script EndgameButtonFocusUp {
+cmd "if sym EndgameFocusPage == EndgameV2Stats runnow gameui focusnametry EndgamePName5 EndgamePName3 EndgamePName1 EndgamePName4 EndgamePName2 EndgamePName0"
+}
+Script EndgamePName0_Up {
+}
+Script EndgamePName0_Down {
+cmd "gameui focusNameTry EndgamePName2 EndgamePName4 EndgamePName1 EndgamePName3 EndgamePName5 EndgameContinueButton"
+}
+Script EndgamePName2_Up {
+cmd "gameui focusNameTry EndgamePName0"
+}
+Script EndgamePName2_Down {
+cmd "gameui focusNameTry EndgamePName4 EndgamePName1 EndgamePName3 EndgamePName5 EndgameContinueButton"
+}
+Script EndgamePName4_Up {
+cmd "gameui focusNameTry EndgamePName2 EndgamePName0"
+}
+Script EndgamePName4_Down {
+cmd "gameui focusNameTry EndgamePName1 EndgamePName3 EndgamePName5 EndgameContinueButton"
+}
+Script EndgamePName1_Up {
+cmd "gameui focusNameTry EndgamePName4 EndgamePName2 EndgamePName0"
+}
+Script EndgamePName1_Down {
+cmd "gameui focusNameTry EndgamePName3 EndgamePName5 EndgameContinueButton"
+}
+Script EndgamePName3_Up {
+cmd "gameui focusNameTry EndgamePName1 EndgamePName4 EndgamePName2 EndgamePName0"
+}
+Script EndgamePName3_Down {
+cmd "gameui focusNameTry EndgamePName5 EndgameContinueButton"
+}
+Script EndgamePName5_Up {
+cmd "gameui focusNameTry EndgamePName3 EndgamePName1 EndgamePName4 EndgamePName2 EndgamePName0"
+}
+Script EndgamePName5_Down {
+cmd "gameui focusNameTry EndgameContinueButton"
+}
+Script EndgameShowAndStopReplay {
+cmd "replay stop"
+rcmd "menucmd EndgameShow"
+}
+Script EndgameShow {
+cmd "sym set MatchOverInSummary 1"
+cmd "gameui enable EndgameOverlay"
+cmd "gameui enable EndgameLinesA"
+cmd "gameui enable EndgameLinesB"
+cmd "addUIAnim EndgameTitle mas_EndgameHeaderEnter.txt"
+cmd "addUIAnim PlayerPortaitEndgame mas_EndgamePortraitEnter.txt"
+cmd "addUIAnim BlackBarTop mas_BlackBarTop.txt"
+cmd "addUIAnim $EndgameFocusPage mas_MenuCenterFromRight.txt"
+cmd "addUIAnim BlackBarBottom mas_BlackBarBottom.txt"
+rcmd "addUIAnim EndgameV2StatsPWContainer mas_MenuLeft.txt"
+rcmd "addUIAnim EndgameContinueButton mas_EndgameButtonRight.txt"
+rcmd "addUIAnim EndgameReplayButton mas_EndgameButtonLeft.txt"
+rcmd "addUIAnim EndgameProgressXP mas_EndgameXPShow.txt"
+rcmd "addUIAnim EndgameContinueButtonA mas_EndgameButtonShow.txt"
+cmd "addUIAnim EG_Reward mas_ContentIconHover"
+cmd "if sym MatchOverInSummary == 1 addUIAnim EG_RewardShadow mas_DropShadowHover"
+cmd "playerinputpause 1 local"
+cmd "input set padFocusFallback EndgameContinueButton"
+cmd "pcmd t3 gameui focusNameTry EndgameContinueButton"
+cmd "rook pushFetchedGameResults"
+}
+Script EndgameHide {
+cmd "sym set MatchOverInSummary 0"
+rcmd "if usingpad runnow addUIAnim EndgameContinueButton mas_EndgameButtonHideCon.txt"
+rcmd "if usingpad runnow addUIAnim EndgameReplayButton mas_EndgameButtonHideCon.txt"
+rcmd "if usingpad runnow addUIAnim EndgameContinueButtonA mas_EndgameButtonHideCon.txt"
+rcmd "addUIAnim EndgameProgressXP mas_EndgameXPHide.txt"
+rcmd "if usingmouse runnow addUIAnim EndgameContinueButton mas_EndgameButtonHide.txt"
+rcmd "if usingmouse runnow addUIAnim EndgameReplayButton mas_EndgameButtonHide.txt"
+rcmd "if usingmouse runnow addUIAnim EndgameContinueButtonA mas_EndgameButtonHide.txt"
+cmd "playerinputpause 0 local"
+cmd "gameUI focusNameTry DummyFocus"
+cmd "addUIAnim EndgameV2StatsPWContainer mas_MenuRight.txt"
+cmd "addUIAnim $EndgameFocusPage mas_MenuLeft.txt"
+cmd "addUIAnim EndgameV2Rewards mas_MenuRight.txt"
+cmd "addUIAnim EndgameTitle mas_EndgameHeaderHide.txt"
+cmd "addUIAnim PlayerPortaitEndgame mas_EndgamePortraitHide.txt"
+cmd "addUIAnim BlackBarTop mas_BlackBarTopHide.txt"
+cmd "addUIAnim BlackBarBottom mas_BlackBarBottomHide.txt"
+}
+Script EG_ToPlayerRows {
+cmd "gameUI focusNameTry EG_Player0 EG_Player2 EG_Player4 EG_Player1 EG_Player3 EG_Player5"
+}
+Script EG_P0Down {
+cmd "gameUI focusNameTry EG_Player2 EG_Player4 EG_Player1 EG_Player3 EG_Player5"
+}
+Script EG_P2Down {
+cmd "gameUI focusNameTry EG_Player4 EG_Player1 EG_Player3 EG_Player5"
+}
+Script EG_P4Down {
+cmd "gameUI focusNameTry EG_Player1 EG_Player3 EG_Player5"
+}
+Script EG_P1Down {
+cmd "gameUI focusNameTry EG_Player3 EG_Player5"
+}
+Script EG_P3Down {
+cmd "gameUI focusNameTry EG_Player5"
+}
+Script EG_P5Up {
+cmd "gameUI focusNameTry EG_Player3 EG_Player1 EG_Player4 EG_Player2 EG_Player0 EndgameFinishButton"
+}
+Script EG_P3Up {
+cmd "gameUI focusNameTry EG_Player1 EG_Player4 EG_Player2 EG_Player0 EndgameFinishButton"
+}
+Script EG_P1Up {
+cmd "gameUI focusNameTry EG_Player4 EG_Player2 EG_Player0 EndgameFinishButton"
+}
+Script EG_P4Up {
+cmd "gameUI focusNameTry EG_Player2 EG_Player0 EndgameFinishButton"
+}
+Script EG_P2Up {
+cmd "gameUI focusNameTry EG_Player0 EndgameFinishButton"
+}

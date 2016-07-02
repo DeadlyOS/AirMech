@@ -1,0 +1,291 @@
+StateController Lvl_Survival {
+#include Lvl_CommonStates
+State initial {
+In 0.0 "sym setNSet 60 UpkeepTeam0_ -1"
+In 0.0 "sym setNSet 60 UpkeepTeam1_ -1"
+In 0.0 "sym set _UTInc_ 0"
+}
+State Init {
+DoL 0.0 sym set CSWave Wave1
+DoL 0.0 sym set WaveMax 10
+DoL 0.0 sym set CSWaveCount 0
+DoL 0.0 sym set S_DCount 0
+DoL 0.0 rook powerGenMod set 0
+}
+State Tick {
+Do 0.0 "rook doLevelState $$CSWave"
+Do 0.0 "rook doLevelState TickCreeps"
+Do 0.0 "rook doLevelState BlockCheck"
+DoL 0.0 if sym MatchOver == 0 rook doLevelState UpkeepTrack
+}
+State TickCreeps {
+Cfg timeBlock 0.25
+Do 0.0 "rook doLevelState NormalSpawn"
+}
+State BlockCheck {
+Cfg timeBlock 1.0
+Do 0.0 "rook survivalBlockCheck 240"
+}
+State NormalSpawn {
+DoL 0.0 if gameValidation spCr_p0 rook doLevelState CreepSpawnTeam0
+}
+State CreepSpawnTeam0 {
+DoL 0.0 |rook spawnCreepBegin 0
+DoL 1.0 |rook spawnCreep 0
+DoL 1.5 |rook spawnCreep 0
+DoL 2.0 |rook spawnCreep 0
+DoL 5.0 |rook spawnCreepEnd 0
+}
+State WaveWaitingDummy {
+Cfg timeBlock 5.0
+}
+State WaveCompleteCommon {
+DoL 0.0 |sym set CSWaveCount 0
+DoL 0.0 |sym set CSWave WaveWaitingDummy
+DoL 0.0 |gamemsg addf_u SrvWaveCompleted
+DoL 3.0 |gamemsg addf_u SrvMorePower
+DoL 3.0 |rook powerGenMod inc 8
+DoL 6.0 |gamemsg addf_u SrvNextWave
+DoL 9.0 |sym set S_DCount 0
+DoL 9.0 |floatSym set waveProgress 1.0
+DoL 9.0 |sym set CSWave $CSWave_Next
+}
+State Wave1 {
+Cfg timeBlock 10.0
+DoL 0.0 sym set S_Wave 1
+DoL 0.0 sym set S_Total /30
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 6 rook doLevelState Wave1Spawn
+DoL 0.0 if sym S_DCount >= 30 rook doLevelState Wave1Complete
+}
+State Wave1Spawn {
+DoL 0.0 spawn BikeSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 0.2 spawn BikeSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 0.4 spawn BikeSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 0.6 spawn BikeSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 0.8 spawn BikeSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+}
+State Wave1Complete {
+DoL 0.0 sym set CSWave_Next Wave2
+DoL 0.0 sym set CSWave_This 1
+DoL 0.0 rook doLevelState WaveCompleteCommon
+}
+State Wave2 {
+Cfg timeBlock 5.0
+DoL 0.0 sym set S_Wave 2
+DoL 0.0 sym set S_Total /60
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 12 rook doLevelState Wave2Spawn
+DoL 0.0 if sym S_DCount >= 60 rook doLevelState Wave2Complete
+}
+State Wave2Spawn {
+DoL 0.0 spawn InfantryCreep /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 0.0 spawn BikeSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 0.0 spawn InfantryCreep /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 0.0 spawn BikeSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 0.0 spawn InfantryCreep /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+}
+State Wave2Complete {
+DoL 0.0 sym set CSWave_Next Wave3
+DoL 0.0 sym set CSWave_This 2
+DoL 0.0 rook doLevelState WaveCompleteCommon
+}
+State Wave3 {
+Cfg timeBlock 12.0
+DoL 0.0 sym set S_Wave 3
+DoL 0.0 sym set S_Total /30
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 6 rook doLevelState Wave3Spawn
+DoL 0.0 if sym S_DCount >= 30 rook doLevelState Wave3Complete
+}
+State Wave3Spawn {
+DoL 0.0 spawn Tank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -110 0 0
+DoL 0.0 spawn BikeSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -114 0 0
+DoL 0.0 spawn ArmoredCarSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -110 2 0
+DoL 0.0 spawn InfantryCreep /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -112 2 0
+DoL 0.0 spawn MissileTank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -114 2 0
+}
+State Wave3Complete {
+DoL 0.0 sym set CSWave_Next Wave4
+DoL 0.0 sym set CSWave_This 3
+DoL 0.0 rook doLevelState WaveCompleteCommon
+}
+State Wave4 {
+Cfg timeBlock 10.0
+DoL 0.0 sym set S_Wave 4
+DoL 0.0 sym set S_Total /60
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 6 rook doLevelState Wave4Spawn
+DoL 0.0 if sym S_DCount >= 60 rook doLevelState Wave4Complete
+}
+State Wave4Spawn {
+DoL 0.0 rook doLevelState Wave1Spawn
+DoL 0.0 rook doLevelState Wave3Spawn
+}
+State Wave4Complete {
+DoL 0.0 sym set CSWave_Next Wave5
+DoL 0.0 sym set CSWave_This 4
+DoL 0.0 rook doLevelState WaveCompleteCommon
+}
+State Wave5 {
+Cfg timeBlock 9.0
+DoL 0.0 sym set S_Wave 5
+DoL 0.0 sym set S_Total /90
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 6 rook doLevelState Wave5Spawn
+DoL 0.0 if sym S_DCount >= 90 rook doLevelState Wave5Complete
+}
+State Wave5Spawn {
+DoL 0.0 rook doLevelState Wave1Spawn
+DoL 0.0 rook doLevelState Wave2Spawn
+DoL 0.0 rook doLevelState Wave3Spawn
+}
+State Wave5Complete {
+DoL 0.0 sym set CSWave_Next Wave6
+DoL 0.0 sym set CSWave_This 5
+DoL 0.0 rook doLevelState WaveCompleteCommon
+}
+State Wave6 {
+Cfg timeBlock 11.0
+DoL 0.0 sym set S_Wave 6
+DoL 0.0 sym set S_Total /90
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount <= 10 rook doLevelState Wave6Spawn
+DoL 0.0 if sym S_DCount >= 90 rook doLevelState Wave6Complete
+}
+State Wave6Spawn {
+DoL 2.0 spawn Tank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 1.0 spawn RocketTruckSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 0.0 spawn ArmoredCarSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 2.0 spawn Tank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 1.0 spawn RocketTruckSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 0.0 spawn ArmoredCarSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 2.0 spawn Tank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -110 0 0
+DoL 1.0 spawn RocketTruckSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -114 0 0
+DoL 0.0 spawn ArmoredCarSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -110 2 0
+}
+State Wave6Complete {
+DoL 0.0 sym set CSWave_Next Wave7
+DoL 0.0 sym set CSWave_This 6
+DoL 0.0 rook doLevelState WaveCompleteCommon
+}
+State Wave7 {
+Cfg timeBlock 5.0
+DoL 0.0 sym set S_Wave 7
+DoL 0.0 sym set S_Total /84
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount == 5 rook doLevelState Wave7Special
+DoL 0.0 if sym CSWaveCount <= 10 rook doLevelState Wave7Spawn
+DoL 0.0 if sym S_DCount >= 84 rook doLevelState Wave7Complete
+}
+State Wave7Spawn {
+DoL 0.0 spawn SAMSurvivalL1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 60 60 0
+DoL 2.0 spawn HeavySurvivalL1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 60 60 0
+DoL 0.0 spawn SAMSurvivalL1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -60 60 0
+DoL 2.0 spawn HeavySurvivalL1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -60 60 0
+DoL 0.0 spawn SAMSurvivalL1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 60 -60 0
+DoL 2.0 spawn HeavySurvivalL1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 60 -60 0
+DoL 0.0 spawn SAMSurvivalL1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -60 -60 0
+DoL 2.0 spawn HeavySurvivalL1 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -60 -60 0
+}
+State Wave7Special {
+DoL 0.0 spawn MonsterTankSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos 0 114 0
+DoL 5.0 spawn MonsterTankSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 114 0 0
+DoL 10.0 spawn MonsterTankSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -114 0 0
+DoL 15.0 spawn MonsterTankSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 0 -114 0
+}
+State Wave7Complete {
+DoL 0.0 sym set CSWave_Next Wave8
+DoL 0.0 sym set CSWave_This 7
+DoL 0.0 rook doLevelState WaveCompleteCommon
+}
+State Wave8 {
+Cfg timeBlock 11.0
+DoL 0.0 sym set S_Wave 8
+DoL 0.0 sym set S_Total /116
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount == 4 rook doLevelState Wave9Special3
+DoL 0.0 if sym CSWaveCount <= 8 rook doLevelState Wave8Spawn
+DoL 0.0 if sym S_DCount >= 116 rook doLevelState Wave8Complete
+}
+State Wave8SpawnArmor {
+DoL 1.5 spawn Tank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 0.0 spawn RocketTruckSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 1.5 spawn Tank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 0.0 spawn RocketTruckSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 1.5 spawn Tank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -110 0 0
+DoL 0.0 spawn RocketTruckSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -114 0 0
+}
+State Wave8Spawn {
+DoL 0.0 rook doLevelState Wave8SpawnArmor
+DoL 0.0 rook doLevelState Wave7Spawn
+}
+State Wave8Complete {
+DoL 0.0 sym set CSWave_Next Wave9
+DoL 0.0 sym set CSWave_This 8
+DoL 0.0 rook doLevelState WaveCompleteCommon
+}
+State Wave9 {
+Cfg timeBlock 16.0
+DoL 0.0 sym set S_Wave 9
+DoL 0.0 sym set S_Total /100
+DoL 0.0 sym inc CSWaveCount
+DoL 0.0 if sym CSWaveCount == 2 rook doLevelState Wave9Special
+DoL 0.0 if sym CSWaveCount == 5 rook doLevelState Wave9Special
+DoL 0.0 if sym CSWaveCount <= 7 rook doLevelState Wave9Spawn
+DoL 0.0 if sym CSWaveCount == 7 rook doLevelState Wave9Special2
+DoL 0.0 if sym S_DCount >= 100 rook doLevelState Wave9Complete
+}
+State Wave9Spawn {
+DoL 0.0 rook doLevelState Wave9Special4
+DoL 0.0 rook doLevelState Wave9Special3
+DoL 0.0 |if sym CSWaveCount isOdd |rook doLevelState Wave9SpawnOdd
+DoL 0.0 |if sym CSWaveCount isEven |rook doLevelState Wave9SpawnEven
+}
+State Wave9SpawnOdd {
+DoL 0.0 spawn ScorpionTank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 0.0 spawn ScorpionTank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 0.0 spawn ScorpionTank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -110 0 0
+DoL 0.0 spawn ScorpionTank /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 -114 0
+}
+State Wave9SpawnEven {
+DoL 0.0 spawn RocketTruckSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 114 0
+DoL 0.0 spawn RocketTruckSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 112 0 0
+DoL 0.0 spawn RocketTruckSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -114 0 0
+DoL 0.0 spawn RocketTruckSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 5 /pos 2 -114 0
+}
+State Wave9Special {
+DoL 0.0 spawn TankFlakSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 60 60 0
+DoL 0.0 spawn TankFlakSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 60 -60 0
+DoL 0.0 spawn TankFlakSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -60 60 0
+DoL 0.0 spawn TankFlakSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -60 -60 0
+}
+State Wave9Special2 {
+DoL 4.0 spawn DevastatorSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 60 60 0
+DoL 4.0 spawn DevastatorSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 60 -60 0
+DoL 4.0 spawn DevastatorSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -60 60 0
+DoL 4.0 spawn DevastatorSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -60 -60 0
+DoL 10.0 spawn DevastatorSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 60 60 0
+DoL 10.0 spawn DevastatorSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 60 -60 0
+DoL 10.0 spawn DevastatorSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -60 60 0
+DoL 10.0 spawn DevastatorSurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -60 -60 0
+}
+State Wave9Special3 {
+DoL 6.0 spawn TankHeavySurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount"  /pos 0 114 0
+DoL 6.0 spawn TankHeavySurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 114 0 0
+DoL 6.0 spawn TankHeavySurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos -114 0 0
+DoL 6.0 spawn TankHeavySurvival /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /pos 0 -114 0
+}
+State Wave9Special4 {
+DoL 2.0 spawn HeavySurvivalL2 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 60 60 0
+DoL 2.0 spawn HeavySurvivalL2 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -60 60 0
+DoL 2.0 spawn HeavySurvivalL2 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos 60 -60 0
+DoL 2.0 spawn HeavySurvivalL2 /team 6 /data ". team 6" /data ". order AttackEnemy" /data ". dInc S_DCount" /circle 1 /pos -60 -60 0
+}
+State Wave9Complete {
+DoL 0.0 sym set CSWave Wave10
+DoL 0.0 sym set CSWave_This 9
+DoL 0.0 gamemsg addf_u SrvWaveCompleted
+DoL 0.0 player 0 wonSpecialGameMode
+}
+}

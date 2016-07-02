@@ -1,0 +1,341 @@
+Script OnMarketListEnumTimeExcl {
+cmd "echo OnMarketListEnumTimeExcl called - excluded too frequency collection marketupdate call"
+}
+Script OnMarketListEnumStart {
+ignoreInputTime 8.0
+cmd "echo OnMarketListEnumStart called"
+cmd "gameui focusnametry ShopMarketBlocker"
+cmd "if sym MarketAcceptTerms == 0 sym set MarketAcceptTermsCheck 0"
+}
+Script OnMarketListEnumComplete {
+rcmd "gameui ignoreInputTimeForce 0.1"
+cmd "collection scrollupdate paged"
+cmd "menuCmd OnMarketListOpDoFocus"
+}
+Script OnMarketListEnumFail {
+rcmd "gameui ignoreInputTimeForce 0.1"
+cmd "menuCmd OnMarketListOpDoFocus"
+}
+Script OnMarketListEnumSkipped {
+cmd "echo Market List Enumeration Skipped"
+rcmd "gameui ignoreInputTimeForce 0.1"
+cmd "menuCmd OnMarketListOpDoFocus"
+}
+Script OnMarketListOpDoFocus {
+pendingOnBoolSym DialogBoxLoaded
+pendingOnIgnoreInputTime
+cmd "if usingPad if sym MarketAcceptTerms == 1 gameui focusnametry ShopItem0"
+cmd "if usingPad if sym MarketAcceptTerms == 0 gameui focusnametry CheckboxMarketTerms"
+cmd "gameUI regetFocusIfFocused ShopItem0"
+}
+Script CantListForSaleOnMarket {
+pendingOnBoolSym DialogBoxLoaded
+pendingOnIgnoreInputTime
+cmd "sym set DialogBoxTitle DialogTitleCantListItemToMkt"
+cmd "sym set DialogBoxMessage DialogMessageCantListItemToMkt"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketCanListFail {
+cmd "sym set DialogBoxTitle DialogTitleCantListItemToMkt"
+cmd "sym set DialogBoxMessage DialogMessageCantListItemToMkt"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CantListForSaleOnMarket_InfTrade {
+cmd "sym set DialogBoxTitle DialogTitleCantListItemToMkt"
+cmd "sym set DialogBoxMessage DialogMessageCantListItemToMkt_InfTrade"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MyCollectionSellCancel {
+ignoreInputTime 0.1
+cmd "clearmenu DialogMarketList"
+cmd "pcmd t4 sym set Shop_Sell 0"
+cmd "pcmd 0 sym set ShowShopItems 1"
+cmd "pcmd 0 sym set Shop_Sell 1"
+cmd "pcmd 0 sym set Shop_Market 0"
+cmd "pcmd 0 sym set Shop_Giftwrap 0"
+cmd "pcmd 0 sym set Shop_MyCollection 1"
+cmd "pcmd 0 menuCmd ShopButtonPress"
+cmd "pcmd 0 menuCmd ButtonPressShop_Market"
+cmd "collection shopInit Shop_MyCollection"
+cmd "if usingpad gameui focusNameTry Shop_MyCollection"
+}
+Script ListForSaleOnMarket {
+ignoreInputTime 0.15
+rcmd "rookMenus previewClear"
+rcmd "sym set MenuPreMarketListFocus $MenuPreInspectFocus"
+rcmd "collection copyOrInitSettings $_MArg1_ List"
+rcmd "sym clear TR_DragSourceList"
+rcmd "sym set TR_PriceModeList NA"
+rcmd "sym set TR_IsOwnedList 1"
+rcmd "sym set TR_CountList 0"
+rcmd "sym set TR_InfCountList 1"
+rcmd "sym set TR_VipTicketList 0"
+cmd "clearmenu InspectDialog"
+cmd "sym set SellPriceDiamonds 100"
+cmd "collection lookupDiamondPrice $_MArg1_ SellPriceDiamonds /mktlist"
+cmd "menucmd ListMarketPriceEdited_Checked"
+cmd "sym set Shop_Giftwrap 0"
+cmd "loadmenu DialogMarketList /fadein 0.15"
+}
+Script ListForSaleOnMarket_old {
+rcmd "collection copySettings $_MArg1_ List"
+rcmd "sym clear TR_DragSourceList"
+rcmd "sym set TR_CountList 0"
+rcmd "sym set TR_InfCountList 1"
+rcmd "sym set TR_VipTicketList 0"
+cmd "sym setZero Shop_Featured Shop_MyCollection Shop_Codes Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Parts Shop_Cosmetics Shop_Flair Shop_Other Shop_Sets Shop_Sale Shop_Diamonds Shop_Purchases Shop_Boosts Shop_ShowAll"
+cmd "sym set SellPriceDiamonds 100"
+cmd "collection lookupDiamondPrice $_MArg1_ SellPriceDiamonds /mktlist"
+cmd "menucmd ListMarketPriceEdited_Checked"
+cmd "sym set Shop_Market 1"
+cmd "sym set Shop_Sell 1"
+cmd "sym set Shop_Giftwrap 0"
+cmd "sym set ShowShopItems 0"
+cmd "menuCmd ShopButtonPress"
+cmd "menuCmd ButtonPressShop_Market"
+cmd "gameui refreshFilterName CollectionUI InvV2UI"
+cmd "if usingPad gameui focusNameTry SellPriceDiamondsBox"
+}
+Script ListMarketPriceEdited {
+cmd "collection marketUpdateListCost"
+}
+Script ListMarketPriceEdited_Checked {
+cmd "rook listPriceCheck SellPriceDiamonds"
+cmd "collection marketUpdateListCost"
+}
+Script GoCreateMarketListing {
+cmd "sym set DialogBoxTitle DialogTitlePostToMarketConf"
+cmd "sym set DialogBoxMessage DialogMessagePostToMarketConf"
+cmd "sym set DialogMenuCmdOnButton1 GoCreateMarketListing_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script GoCreateMarketListing_GoToMarket {
+cmd "echo _GoToMarket"
+ignoreInputTime 0.1
+cmd "gameUI enable ShopMarketTrans"
+cmd "pcmd t1 gameUI disable ShopMarketTrans"
+cmd "sym setZero ShowShopItems Shop_AirMechs Shop_Units Shop_Pilots Shop_Items Shop_Parts Shop_Cosmetics Shop_Flair Shop_Other Shop_Boosts Shop_Inventory Shop_Ultimates Shop_Pets Shop_Market"
+cmd "sym set Shop_Market 1"
+cmd "sym set Shop_Top 0"
+cmd "sym set Shop_Game 0"
+cmd "sym set _NoShopResults 0"
+cmd "menuCmd ShopButtonPressPre"
+cmd "menuCmd ButtonPressShop_Market"
+cmd "pcmd t2 gameui focusnametry ShopItem0"
+}
+Script GoCreateMarketListing_Go {
+cmd "echo GoCreateMarketListing_Go"
+cmd "clearmenu DialogMarketList /fadeout 0.15"
+ignoreInputTime 0.5
+cmd "menucmd SellOptionTime"
+cmd "menucmd SellOptionWho"
+cmd "pcmd t4 sym set Shop_Sell 0"
+cmd "if sym GoToMarketAfterList == 1 menuCmd GoCreateMarketListing_GoToMarket"
+cmd "sym set _Mkt_Dur_ 1d"
+cmd "if sym Sell_Time1 == 1 runnow sym set _Mkt_Dur_ 1hr"
+cmd "if sym Sell_Time2 == 1 runnow sym set _Mkt_Dur_ 8hr"
+cmd "sym setQuoted _Mkt_Tgt_ $$Sell_PlayerName"
+cmd "if sym Sell_Anyone == 1 runnow sym set _Mkt_Tgt_ !everyone"
+cmd "if sym Sell_Faction == 1 runnow sym set _Mkt_Tgt_ !faction"
+cmd "if sym Sell_FeeD == 1 runnow sym set _Mkt_Fee_ d"
+cmd "if sym Sell_FeeD == 1 runnow sym set _Mkt_FeeAmt_ $$_ListCostD"
+cmd "if sym Sell_FeeK == 1 runnow sym set _Mkt_Fee_ k"
+cmd "if sym Sell_FeeK == 1 runnow sym set _Mkt_FeeAmt_ $$_ListCostK"
+cmd "customize marketPostItem $$TR_ContentNameList $$_Mkt_Dur_ $$_Mkt_Tgt_ $$SellPriceDiamonds $$_Mkt_Fee_ $$_Mkt_FeeAmt_"
+cmd "timer setAsyncWait 2"
+}
+Script MarketRefreshButtonClicked {
+cmd "collection marketupdate /sourceNote RefreshButtonClicked"
+cmd "gameui disable ShopMarketRefresh"
+cmd "pcmd 5.0 gameui enable ShopMarketRefresh"
+}
+Script MarketUpdateViaRefresh {
+cmd "if menuObjEnabled ShopMarketRefresh runnow menucmd MarketRefreshButtonClicked"
+cmd "if menuObjDisabled ShopMarketRefresh runnow menucmd OnMarketListEnumSkipped"
+}
+Script MarketPostItemSuccessfull {
+pendingOnBoolSym DialogBoxLoaded
+cmd "sym set DialogBoxTitle DialogTitleMarketPostSuccess"
+cmd "sym set DialogBoxMessage DialogMessageMarketPostSuccess"
+cmd "sym set DialogMenuCmdOnButton1 MarketOperationComplete_OKRefreshAndVerifyBadge"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+cmd "timer clearAsyncWait"
+}
+Script MarketPostItemFailed {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleMarketPostUnknownFailure"
+cmd "sym set DialogBoxMessage DialogMessageMarketPostUnknownFailure"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketPostItemFailed_DownTime {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleMarketPostDownTime"
+cmd "sym set DialogBoxMessage DialogMessageMarketPostDownTime"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketPostItemFailed_TooManyOrders {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleTooManyMarketListings"
+cmd "sym set DialogBoxMessage DialogMessageTooManyMarketListings"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketPostItemFailed_BadFaction {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleMarketPostBadFactionFailure"
+cmd "sym set DialogBoxMessage DialogMessageMarketPostBadFactionFailure"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketPostItemFailed_BadTarget {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleMarketPostBadTargetFailure"
+cmd "sym set DialogBoxMessage DialogMessageMarketPostBadTargetFailure"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketPostItemFailed_LackingFee {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleMarketPostLackingFee"
+cmd "sym set DialogBoxMessage DialogMessageMarketPostLackingFee"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketPostItemFailed_AccountBlock {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleMarketPostAccountBlock"
+cmd "sym set DialogBoxMessage DialogMessageMarketPostAccountBlock"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketPostItemFailed_TargetBanned {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleMarketPostTargetBanned"
+cmd "sym set DialogBoxMessage DialogMessageMarketPostTargetBanned"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketYouAreBanned {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleMarketBanned"
+cmd "sym set DialogBoxMessage DialogMessageMarketBanned"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketBuyIdSuccessfull {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "clearmenu UnlockDialog.txt"
+cmd "sym set DialogBoxTitle DialogTitleMarketBuyItemSuccess"
+cmd "sym set DialogBoxMessage DialogMessageMarketBuyItemSuccess"
+cmd "sym set DialogMenuCmdOnButton1 MarketOperationComplete_OKRefresh"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketBuyIdFailed {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "clearmenu UnlockDialog.txt"
+cmd "sym set DialogBoxTitle DialogTitleMarketBuyItemFailure"
+cmd "sym set DialogBoxMessage DialogMessageMarketBuyItemFailure"
+cmd "sym set DialogMenuCmdOnButton1 MarketOperationComplete_OKRefresh"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketBuyIdFailedTooFewDiamonds {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "clearmenu UnlockDialog.txt"
+cmd "sym set DialogBoxTitle DialogTitleMarketBuyItemTooFewDiamonds"
+cmd "sym set DialogBoxMessage DialogMessageMarketBuyItemTooFewDiamonds"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketBuyIdFailed_AccountBlock {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym clear _CustomExecSlot"
+cmd "sym set DialogBoxTitle DialogTitleMarketBuyItemAccountBlock"
+cmd "sym set DialogBoxMessage DialogMessageMarketBuyItemAccountBlock"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script CancelMarketListingConf {
+pendingOnBoolSym _AsyncWait_
+pendingOnBoolSym DialogBoxLoaded
+cmd "sym set DialogBoxTitle DialogTitleCancelMktListing"
+cmd "sym set DialogBoxMessage DialogMessageCancelMktListing"
+cmd "sym set DialogMenuCmdOnButton1 CancelMarketListingConf_Go"
+cmd "sym set DialogMenuCmdOnButton0 MP_NOP"
+cmd "sym set DialogBoxButton2Used 0"
+cmd "loadmenu DialogBox.txt"
+}
+Script CancelMarketListingConf_Go {
+cmd "timer setAsyncWait 1"
+cmd "collection marketCancel $_MktIdToCancel_"
+}
+Script MarketCancelSuccessful {
+pendingOnBoolSym DialogBoxLoaded
+pendingOnBoolSym _SysNotifyActive
+cmd "sym set DialogBoxTitle DialogTitleMarketCancelSuccess"
+cmd "sym set DialogBoxMessage DialogMessageMarketCancelSuccess"
+cmd "sym set DialogMenuCmdOnButton1 MarketOperationComplete_OKRefresh"
+cmd "if ubiServicesRunningAndLoggedIn runnow loadmenu DialogBoxOk.txt /fadein 0.15"
+cmd "timer clearAsyncWait"
+}
+Script MarketCancelFailed {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleMarketCancelFailure"
+cmd "sym set DialogBoxMessage DialogMessageMarketCancelFailure"
+cmd "sym set DialogMenuCmdOnButton1 MP_NOP"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script MarketOperationComplete_OKRefresh {
+cmd "collection marketupdate /sourceNote OkRefresh"
+}
+Script MarketOperationComplete_OKRefreshAndVerifyBadge {
+cmd "collection marketupdate /sourceNote OkRefreshAndVerifyBadge"
+cmd "rook verifyBadge"
+}
+Script SteamNotifyOverlayNotEnabled {
+pendingOnIgnoreInputTime
+cmd "timer clearAsyncWait"
+cmd "sym set DialogBoxTitle DialogTitleSteamPurchaseNeedOverlay"
+cmd "sym set DialogBoxMessage DialogMessageSteamPurchaseNeedOverlay"
+cmd "sym set DialogMenuCmdOnButton1 MarketOperationComplete_OKRefresh"
+cmd "loadmenu DialogBoxOk.txt /fadein 0.15"
+}
+Script ConListPriceVKBDEntry {
+cmd "platform keyboard /mode numeric /symbol SellPriceDiamonds /initialSym SellPriceDiamonds /menuCmd ConListPriceCheck /prompt MarketListPricePrompt"
+}
+Script ConListPriceCheck {
+cmd "rook listPriceCheck SellPriceDiamonds"
+cmd "collection marketUpdateListCost"
+}
+Script ConSellToVKBDEntry {
+cmd "platform keyboard /mode gamertag /symbol Sell_PlayerName /initialSym Sell_PlayerName /prompt $PlatformMktSellToPrompt"
+}
+Script ShopSellToPlayerFocusDown {
+cmd "gameUI focusNameTry ShopSellFeeKudos ShopSellGiftwrap SellCreateListingButton"
+}
+Script ShopSellFeeDiamondsFocusRight {
+cmd "gameUI focusNameTry ShopSellFeeKudos ShopSellGiftwrap"
+}
+Script ShopSellGiftwrapFocusLeft {
+cmd "gameUI focusNameTry ShopSellFeeKudos ShopSellFeeDiamonds"
+}

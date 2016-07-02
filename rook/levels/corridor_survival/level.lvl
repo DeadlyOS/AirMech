@@ -1,0 +1,1732 @@
+// map: corridor_survival
+
+// level embedded console commands 
+CONSOLE_IMMEDIATE sym set _MiniMapTx_ Sandrim //test override
+CONSOLE player 0 do transform /forcedReq  // force to ground on map start
+CONSOLE player 1 toggleai
+CONSOLE player 1 activate 0 // turns off forcebox
+
+mapInfo {
+	MAPNAME Corridor_Survival
+	MAPAUTHOR CarbonGames
+	MAPDESCRIPTION Corridor Survival
+	SKYBOX mat_SkyBlueSmallClouds
+	GAMEMODE survival
+	GAMESTYLE Skirmish
+	PREGAME_RADIUS 55
+}
+
+mapBounds {
+	LEVELCAMERA_ZROT 0
+	AutoExtShadowCheckAtZHeight 1000
+	FORCEBOX -60 30 -30 30 4 0
+	MAPEXTMIN -100 -80 -500
+	MAPEXTMAX 80 80 500
+	CAMERAEXTMIN -70 -40
+	CAMERAEXTMAX 40 40
+}
+
+mapBalance {
+}
+
+editorSettings {
+	TerrainSelectionActive Editor_Canyon
+	TerrainArrayX 10
+	TerrainArrayY 10
+	TerrainPatternActive Editor_PatternSquare
+}
+
+planeZones {
+  KILLPLANE -6
+  TRANSFORMPLANE -1
+}
+
+fogValues {
+	FOGCOLOR 247 151 83 255
+	FOGARGS 14 13
+	DFOGCOLOR 201.210938 211.171875 239.0625 255
+	DFOGCOLOR2 201.210938 211.171875 239.0625 255
+	DFOGARGS 90 150
+	DFOGARGS2 90 150
+	CANVASCOLOR 0 0 0 0
+}
+
+gamelocations {
+	GL {
+		name MiddleWaveSpawn
+		shape 0
+		pos 55.762009 -0.120598 0.000004
+		radius 5
+	}
+	GL {
+		name TopWaveSpawn
+		shape 0
+		pos 55.877098 23.791931 0.00008
+		radius 5
+	}
+	GL {
+		name LowerWaveSpawn
+		shape 0
+		pos 55.931377 -23.818642 0.000095
+		radius 5
+	}
+}
+airmech {
+	AILevel -1
+	Player 0 {
+		startLoc -41.173122 1.876608 3
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 1 {
+		startLoc -39.078362 3.797207 2.91
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 2 {
+		startLoc -41.193153 -0.924707 2.97
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 3 {
+		startLoc -38.794682 -3.216703 3.03
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 4 {
+		startLoc 38.888214 0.96334 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+	Player 5 {
+		startLoc 38.903561 -0.830265 0
+		startLevel 0
+		pilot dynamic 
+		airmech dynamic 
+		aiScript dynamic 
+	}
+}
+DIR_LIGHT {
+	dir 0.261277 0.544939 0.796728
+	diff 0.7 0.7 0.7
+	amb 0.6 0.5 0.4
+}
+EventScripts {
+	EVT MapStart {
+		enabled 1
+		Core {
+			GameStart {
+			}
+		}
+	}
+	EVT UpdateWaveTimer {
+		enabled 1
+		Core {
+			Continuous {
+				delay 1
+			}
+		}
+	}
+	EVT FortDeath {
+		enabled 1
+		Fort {
+			Destroyed {
+			}
+		}
+	}
+	EVT UnitDeath {
+		enabled 1
+		Units {
+			Destroyed {
+				IgnoreSpawned
+			}
+		}
+	}
+}
+ActionScripts {
+	ACT MapInit {
+		triggerEvent MapStart
+		Conditions {
+		}
+		Commands {
+			Player {
+				option 4
+				player 0
+				operation 0
+				value 100
+			}
+		}
+	}
+	ACT SwitchWave {
+		triggerEvent UpdateWaveTimer
+		Conditions {
+			Unit {
+				TotalRemaining {
+					team 6
+					comparison 0
+					quantity 0
+				}
+			}
+			Variable {
+				varName WaveComplete
+				comparison 0
+				value 1
+			}
+		}
+		Commands {
+			Variable {
+				varName CurrentWave
+				operation 1
+				paramType 1
+				value 1
+			}
+			Variable {
+				varName WaveComplete
+				operation 0
+				paramType 1
+				value 0
+			}
+			Variable {
+				varName DestroyedWaveEnemies
+				operation 0
+				paramType 1
+				value 0
+			}
+			Style {
+				Survival {
+					SetWave {
+						WaveValueType 2
+						WaveValue CurrentWave
+					}
+				}
+			}
+			Action {
+				actName SpawnWave1
+			}
+			Action {
+				actName SpawnWave2
+			}
+			Action {
+				actName SpawnWave3
+			}
+			Action {
+				actName CheckVictory
+			}
+		}
+	}
+	ACT SpawnWave1 {
+		triggerEvent 
+		Conditions {
+			Variable {
+				varName CurrentWave
+				comparison 0
+				value 1
+			}
+		}
+		Commands {
+			Variable {
+				varName TotalWaveEnemies
+				operation 0
+				paramType 1
+				value 24
+			}
+			Action {
+				actName UpdateWaveProgress
+			}
+			Action {
+				actName SpawnSoldiers
+			}
+			Wait {
+				paramType 1
+				time 2.0
+			}
+			Action {
+				actName SpawnSoldiers
+			}
+			Variable {
+				varName WaveComplete
+				operation 0
+				paramType 1
+				value 1
+			}
+		}
+	}
+	ACT SpawnSoldiers {
+		triggerEvent 
+		Conditions {
+		}
+		Commands {
+			Spawn {
+				location TopWaveSpawn
+				spawnRotZ 0
+				unitType Infantry
+				order 1
+				team 6
+				count 4
+			}
+			Spawn {
+				location MiddleWaveSpawn
+				spawnRotZ 0
+				unitType Infantry
+				order 1
+				team 6
+				count 4
+			}
+			Spawn {
+				location LowerWaveSpawn
+				spawnRotZ 0
+				unitType Infantry
+				order 1
+				team 6
+				count 4
+			}
+		}
+	}
+	ACT CheckVictory {
+		triggerEvent 
+		Conditions {
+			Variable {
+				varName CurrentWave
+				comparison 0
+				value 4
+			}
+		}
+		Commands {
+			Endgame {
+				result 1
+			}
+		}
+	}
+	ACT CheckDefeat {
+		triggerEvent FortDeath
+		Conditions {
+			Fort {
+				IsAlive {
+					pickId 5
+					affirm 0
+				}
+			}
+		}
+		Commands {
+			Endgame {
+				result 0
+			}
+		}
+	}
+	ACT SpawnDillos {
+		triggerEvent 
+		Conditions {
+		}
+		Commands {
+			Spawn {
+				location TopWaveSpawn
+				spawnRotZ 0
+				unitType TankLight
+				order 0
+				team 6
+				count 3
+			}
+			Spawn {
+				location MiddleWaveSpawn
+				spawnRotZ 0
+				unitType TankLight
+				order 0
+				team 6
+				count 3
+			}
+			Spawn {
+				location LowerWaveSpawn
+				spawnRotZ 0
+				unitType TankLight
+				order 0
+				team 6
+				count 3
+			}
+		}
+	}
+	ACT SpawnWave2 {
+		triggerEvent 
+		Conditions {
+			Variable {
+				varName CurrentWave
+				comparison 0
+				value 2
+			}
+		}
+		Commands {
+			Variable {
+				varName TotalWaveEnemies
+				operation 0
+				paramType 1
+				value 18
+			}
+			Action {
+				actName UpdateWaveProgress
+			}
+			Action {
+				actName SpawnDillos
+			}
+			Wait {
+				paramType 1
+				time 4.0
+			}
+			Action {
+				actName SpawnDillos
+			}
+			Variable {
+				varName WaveComplete
+				operation 0
+				paramType 1
+				value 1
+			}
+		}
+	}
+	ACT UpdateWaveProgress {
+		triggerEvent 
+		Conditions {
+		}
+		Commands {
+			Style {
+				Survival {
+					SetProgress {
+						Progress Variable DestroyedWaveEnemies 
+						WaveTotal Variable TotalWaveEnemies 
+					}
+				}
+			}
+		}
+	}
+	ACT UpdateDefeatedEnemies {
+		triggerEvent UnitDeath
+		Conditions {
+			Unit {
+				OnTeam {
+					affirm 1
+					team 6
+					paramType 0
+					query DestroyedUnitTeam
+				}
+			}
+		}
+		Commands {
+			Variable {
+				varName DestroyedWaveEnemies
+				operation 1
+				paramType 1
+				value 1
+			}
+			Action {
+				actName UpdateWaveProgress
+			}
+		}
+	}
+	ACT SpawnWave3 {
+		triggerEvent 
+		Conditions {
+			Variable {
+				varName CurrentWave
+				comparison 0
+				value 3
+			}
+		}
+		Commands {
+			Variable {
+				varName TotalWaveEnemies
+				operation 0
+				paramType 1
+				value 36
+			}
+			Action {
+				actName UpdateWaveProgress
+			}
+			Action {
+				actName SpawnSoldiers
+			}
+			Wait {
+				paramType 1
+				time 2.0
+			}
+			Action {
+				actName SpawnDillos
+			}
+			Wait {
+				paramType 1
+				time 3.0
+			}
+			Action {
+				actName SpawnDillos
+			}
+			Wait {
+				paramType 1
+				time 3.0
+			}
+			Action {
+				actName SpawnGolis
+			}
+			Variable {
+				varName WaveComplete
+				operation 0
+				paramType 1
+				value 1
+			}
+		}
+	}
+	ACT SpawnGolis {
+		triggerEvent 
+		Conditions {
+		}
+		Commands {
+			Spawn {
+				location TopWaveSpawn
+				spawnRotZ 0
+				unitType TankHeavy
+				order 0
+				team 6
+				count 2
+			}
+			Spawn {
+				location MiddleWaveSpawn
+				spawnRotZ 0
+				unitType TankHeavy
+				order 0
+				team 6
+				count 2
+			}
+			Spawn {
+				location LowerWaveSpawn
+				spawnRotZ 0
+				unitType TankHeavy
+				order 0
+				team 6
+				count 2
+			}
+		}
+	}
+}
+ScriptVariables {
+	VAR CurrentWave {
+		type 0 
+		value 0
+	}
+	VAR WaveComplete {
+		type 0 
+		value 1
+	}
+	VAR TotalWaveEnemies {
+		type 0 
+		value 0
+	}
+	VAR DestroyedWaveEnemies {
+		type 0 
+		value 0
+	}
+}
+objects {
+	WO Canyon_A0 {
+		pos 0 0 0
+	}
+	WO Canyon_H0 {
+		pos 8 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 0 8 0
+	}
+	WO Canyon_H0 {
+		pos -8 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos -8 0 0
+	}
+	WO Canyon_H0 {
+		pos -8 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 0 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos 8 0 0
+	}
+	WO Canyon_H0 {
+		pos 8 -8 0
+	}
+	WO Canyon_A0 {
+		pos -16 8 0
+	}
+	WO Canyon_A0 {
+		pos -16 0 0
+	}
+	WO Canyon_A0 {
+		pos -16 -8 0
+	}
+	WO Canyon_H0 {
+		pos 16 8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos 16 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_H0 {
+		pos 16 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 24 8 0
+	}
+	WO Canyon_A0 {
+		pos 24 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 24 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 32 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos 32 0 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 32 8 0
+	}
+	WO Canyon_A0 {
+		pos -24 8 0
+	}
+	WO Canyon_A0 {
+		pos -24 0 0
+	}
+	WO Canyon_A0 {
+		pos -24 -8 0
+	}
+	WO Canyon_C0 {
+		pos -40 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos -40 -8 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A1 {
+		pos -48 -8 3
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_C0 {
+		pos -48 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_H0 {
+		pos -24 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -16 16 0
+	}
+	WO Canyon_F0 {
+		pos -8 16 0
+	}
+	WO Canyon_J0 {
+		pos 0 16 0
+	}
+	WO Canyon_G0 {
+		pos 8 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_H0 {
+		pos 16 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 24 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 32 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 32 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 24 -16 0
+	}
+	WO Canyon_H0 {
+		pos 16 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 8 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos 0 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F0 {
+		pos -8 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos -16 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_H0 {
+		pos -24 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_B1 {
+		pos -32 16 0
+	}
+	WO Canyon_C0 {
+		pos -32 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A7 {
+		pos -56 0 3
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C0 {
+		pos -40 16 0
+	}
+	WO Canyon_C0 {
+		pos -56 16 0
+	}
+	WO Canyon_Ak {
+		pos -56 8 3
+	}
+	WO Canyon_A1 {
+		pos -40 8 3
+	}
+	WO Canyon_C1 {
+		pos -56 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_C3 {
+		pos -32 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_C4 {
+		pos -32 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_B0 {
+		pos -32 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A1 {
+		pos -56 -8 3
+	}
+	WO Canyon_C0 {
+		pos -48 16 0
+	}
+	WO Canyon_A0 {
+		pos -48 8 3
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos -48 0 3
+	}
+	WO Canyon_A0 {
+		pos -40 0 3
+	}
+	WO Canyon_G0 {
+		pos -32 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_F0 {
+		pos -24 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos -56 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -48 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -40 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 0 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -8 -24 0
+	}
+	WO Canyon_F0 {
+		pos 8 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 16 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 24 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 32 -16 0
+	}
+	WO Canyon_J0 {
+		pos -8 24 0
+	}
+	WO Canyon_J0 {
+		pos -16 24 0
+	}
+	WO Canyon_F0 {
+		pos -24 24 0
+	}
+	WO Canyon_G0 {
+		pos -32 24 0
+	}
+	WO Canyon_G0 {
+		pos -40 24 0
+	}
+	WO Canyon_G0 {
+		pos -48 24 0
+	}
+	WO Canyon_G0 {
+		pos -56 24 0
+	}
+	WO Canyon_A0 {
+		pos -24 32 -9
+	}
+	WO Canyon_A0 {
+		pos -40 32 -9
+	}
+	WO Canyon_A0 {
+		pos -72 32 -9
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos -64 32 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -32 32 -9
+	}
+	WO Canyon_A0 {
+		pos -16 32 -9
+	}
+	WO Canyon_A0 {
+		pos 0 32 -9
+	}
+	WO Canyon_A0 {
+		pos -8 32 -9
+	}
+	WO Canyon_F0 {
+		pos 8 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 16 24 0
+	}
+	WO Canyon_G0 {
+		pos 24 24 0
+	}
+	WO Canyon_G0 {
+		pos 32 24 0
+	}
+	WO Canyon_J0 {
+		pos 0 24 0
+	}
+	WO Canyon_A0 {
+		pos 16 32 -9
+	}
+	WO Canyon_A0 {
+		pos 8 32 -9
+	}
+	WO Canyon_A0 {
+		pos 24 32 -9
+	}
+	WO Canyon_A0 {
+		pos 32 32 -9
+	}
+	WO Canyon_B0 {
+		pos -64 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C0 {
+		pos -64 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C0 {
+		pos -64 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_C0 {
+		pos -64 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_B0 {
+		pos -64 -16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -64 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos 32 -32 -9
+	}
+	WO Canyon_A0 {
+		pos 24 -32 -9
+	}
+	WO Canyon_A0 {
+		pos 16 -32 -9
+	}
+	WO Canyon_A0 {
+		pos 0 -32 -9
+	}
+	WO Canyon_A0 {
+		pos 8 -32 -9
+	}
+	WO Canyon_A0 {
+		pos -8 -32 -9
+	}
+	WO Canyon_A0 {
+		pos -16 -32 -9
+	}
+	WO Canyon_A0 {
+		pos -24 -32 -9
+	}
+	WO Canyon_A0 {
+		pos -40 -32 -9
+	}
+	WO Canyon_A0 {
+		pos -32 -32 -9
+	}
+	WO Canyon_A0 {
+		pos -48 -32 -9
+	}
+	WO Canyon_A0 {
+		pos -56 -32 -9
+	}
+	WO Canyon_A0 {
+		pos -64 -32 -9
+	}
+	WO Canyon_G0 {
+		pos -72 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos -72 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F0 {
+		pos -72 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos -72 -32 -9
+	}
+	WO Canyon_G0 {
+		pos -72 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos -72 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos -72 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_F0 {
+		pos -72 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos -64 24 0
+	}
+	WO Canyon_A0 {
+		pos -56 32 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -48 32 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO FortPadBaseNoLand {
+		pos -35.549381 -12.316193 3.05354
+		rot_x 0.020829 0.999783 0
+		rot_y -0.999783 0.020829 0
+		id 7
+		. team 0
+	}
+	WO FortPadBaseNoLand {
+		pos -35.719448 -6.35548 2.933539
+		rot_x 0.411409 0.911451 0
+		rot_y -0.911451 0.411409 0
+		id 6
+		. team 0
+	}
+	WO FortPadBaseNoLand {
+		pos -35.791519 5.481838 2.87354
+		rot_x 0.039987 0.9992 0
+		rot_y -0.9992 0.039987 0
+		id 8
+		. team 0
+	}
+	WO FortPadBaseNoLand {
+		pos -35.90044 11.843464 2.84354
+		rot_x 0.029608 0.999562 0
+		rot_y -0.999562 0.029608 0
+		id 9
+		. team 0
+	}
+	WO FortPadBaseNoLand {
+		pos -39.299721 8.630104 2.84354
+		rot_x -0.32342 0.946256 0
+		rot_y -0.946256 -0.32342 0
+		id 10
+		. team 0
+	}
+	WO FortPadBaseNoLand {
+		pos -39.003281 -9.187736 3.05354
+		rot_x 0.271143 0.962539 0
+		rot_y -0.962539 0.271143 0
+		id 11
+		. team 0
+	}
+	WO Canyon_A0 {
+		pos 40 32 -9
+	}
+	WO Canyon_G0 {
+		pos 40 24 0
+	}
+	WO Canyon_G0 {
+		pos 40 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 40 8 0
+	}
+	WO Canyon_A0 {
+		pos 40 0 0
+	}
+	WO Canyon_G0 {
+		pos 40 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 40 -16 0
+	}
+	WO Canyon_G0 {
+		pos 40 -24 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos -64 -40 0
+	}
+	WO Canyon_A0 {
+		pos 40 -32 -9
+	}
+	WO Canyon_H0 {
+		pos 48 -24 0
+	}
+	WO Canyon_G0 {
+		pos 48 -16 0
+	}
+	WO Canyon_G0 {
+		pos 48 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_A0 {
+		pos 48 0 0
+	}
+	WO Canyon_G0 {
+		pos 48 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_H0 {
+		pos 48 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos 64 40 0
+	}
+	WO Canyon_G0 {
+		pos 48 8 0
+	}
+	WO Canyon_G0 {
+		pos 56 -16 0
+	}
+	WO Canyon_A0 {
+		pos 56 -24 0
+	}
+	WO Canyon_J0 {
+		pos -56 -40 0
+	}
+	WO Canyon_F0 {
+		pos 64 -16 0
+	}
+	WO Canyon_G0 {
+		pos 64 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -48 -40 0
+	}
+	WO Canyon_J0 {
+		pos 56 40 0
+	}
+	WO Canyon_A0 {
+		pos 56 24 0
+	}
+	WO Canyon_G0 {
+		pos 56 16 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 56 8 0
+	}
+	WO Canyon_A0 {
+		pos 56 0 0
+	}
+	WO Canyon_G0 {
+		pos 56 -8 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 48 40 0
+	}
+	WO Canyon_G0 {
+		pos 64 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F0 {
+		pos 64 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F0 {
+		pos 64 8 0
+	}
+	WO Canyon_G0 {
+		pos 64 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F0 {
+		pos 64 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 24 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 -32 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 -24 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 -16 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 -8 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 0 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 8 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 16 -9
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_A0 {
+		pos -80 32 -9
+	}
+	WO Canyon_J0 {
+		pos -16 -24 0
+	}
+	WO Canyon_J0 {
+		pos 40 40 0
+	}
+	WO Canyon_J0 {
+		pos 32 40 0
+	}
+	WO Canyon_J0 {
+		pos 24 40 0
+	}
+	WO Canyon_J0 {
+		pos 16 40 0
+	}
+	WO Canyon_J0 {
+		pos 8 40 0
+	}
+	WO Canyon_J0 {
+		pos 0 40 0
+	}
+	WO Canyon_J0 {
+		pos -8 40 0
+	}
+	WO Canyon_J0 {
+		pos -16 40 0
+	}
+	WO Canyon_J0 {
+		pos -24 40 0
+	}
+	WO Canyon_J0 {
+		pos -32 40 0
+	}
+	WO Canyon_J0 {
+		pos -40 40 0
+	}
+	WO Canyon_J0 {
+		pos -48 40 0
+	}
+	WO Canyon_J0 {
+		pos -56 40 0
+	}
+	WO Canyon_H0 {
+		pos -88 48 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_J0 {
+		pos -72 40 0
+	}
+	WO Canyon_G0 {
+		pos -88 40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F0 {
+		pos 64 32 0
+	}
+	WO Canyon_G0 {
+		pos 56 32 0
+	}
+	WO Canyon_F0 {
+		pos 48 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 64 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 56 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 48 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 40 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 32 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 24 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 16 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 8 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos 0 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -8 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -16 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -24 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -32 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -40 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -48 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -56 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -64 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -88 32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos -72 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -88 24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos -88 16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos -88 8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos -88 0 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos -88 -8 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos -88 -16 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos -88 -24 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos -40 -40 0
+	}
+	WO Canyon_G0 {
+		pos -80 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos -80 40 0
+	}
+	WO Canyon_J0 {
+		pos -64 40 0
+	}
+	WO Canyon_G0 {
+		pos 72 48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_J0 {
+		pos 72 -24 0
+	}
+	WO Canyon_J0 {
+		pos -32 -40 0
+	}
+	WO Canyon_J0 {
+		pos 72 -16 0
+	}
+	WO Canyon_J0 {
+		pos 72 -8 0
+	}
+	WO Canyon_J0 {
+		pos 72 0 0
+	}
+	WO Canyon_J0 {
+		pos 72 8 0
+	}
+	WO Canyon_J0 {
+		pos 72 16 0
+	}
+	WO Canyon_J0 {
+		pos 72 24 0
+	}
+	WO Canyon_J0 {
+		pos 72 40 0
+	}
+	WO Canyon_J0 {
+		pos 72 32 0
+	}
+	WO Canyon_J0 {
+		pos -24 -40 0
+	}
+	WO Canyon_G0 {
+		pos 80 -24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 80 -16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 80 0 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 80 -8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 80 8 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 80 16 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 80 24 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 80 32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_G0 {
+		pos 80 40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_H0 {
+		pos 80 48 0
+	}
+	WO Canyon_J0 {
+		pos -16 -40 0
+	}
+	WO Canyon_J0 {
+		pos -8 -40 0
+	}
+	WO Canyon_J0 {
+		pos 0 -40 0
+	}
+	WO Canyon_G0 {
+		pos -72 -48 0
+	}
+	WO Canyon_G0 {
+		pos -64 -48 0
+	}
+	WO Canyon_G0 {
+		pos -56 -48 0
+	}
+	WO Canyon_G0 {
+		pos -48 -48 0
+	}
+	WO Canyon_G0 {
+		pos -40 -48 0
+	}
+	WO Canyon_G0 {
+		pos -32 -48 0
+	}
+	WO Canyon_G0 {
+		pos -24 -48 0
+	}
+	WO Canyon_G0 {
+		pos -16 -48 0
+	}
+	WO Canyon_G0 {
+		pos -8 -48 0
+	}
+	WO Canyon_G0 {
+		pos 0 -48 0
+	}
+	WO Canyon_G0 {
+		pos 8 -48 0
+	}
+	WO Canyon_G0 {
+		pos 16 -48 0
+	}
+	WO Canyon_G0 {
+		pos 24 -48 0
+	}
+	WO Canyon_G0 {
+		pos 32 -48 0
+	}
+	WO Canyon_G0 {
+		pos 40 -48 0
+	}
+	WO Canyon_G0 {
+		pos 48 -48 0
+	}
+	WO Canyon_G0 {
+		pos 56 -48 0
+	}
+	WO Canyon_G0 {
+		pos 64 -48 0
+	}
+	WO Canyon_G0 {
+		pos 72 -48 0
+	}
+	WO Canyon_J0 {
+		pos 8 -40 0
+	}
+	WO Canyon_G0 {
+		pos 80 -40 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_H0 {
+		pos 80 -48 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_J0 {
+		pos 16 -40 0
+	}
+	WO Canyon_J0 {
+		pos 24 -40 0
+	}
+	WO Canyon_J0 {
+		pos 40 -40 0
+	}
+	WO Canyon_J0 {
+		pos 32 -40 0
+	}
+	WO Canyon_J0 {
+		pos 48 -40 0
+	}
+	WO Canyon_J0 {
+		pos 56 -40 0
+	}
+	WO Canyon_J0 {
+		pos 64 -40 0
+	}
+	WO Canyon_J0 {
+		pos 72 -40 0
+	}
+	WO Canyon_J0 {
+		pos -72 -40 0
+	}
+	WO Canyon_J0 {
+		pos -80 -40 0
+	}
+	WO Canyon_G0 {
+		pos -88 -40 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 80 -32 0
+		rot_x 0 1 0
+		rot_y -1 0 0
+	}
+	WO Canyon_H0 {
+		pos -88 -48 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -88 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_F0 {
+		pos 64 -32 0
+		rot_x 0 -1 0
+		rot_y 1 0 0
+	}
+	WO Canyon_G0 {
+		pos 56 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_F0 {
+		pos 48 -32 0
+		rot_x -1 0 0
+		rot_y 0 -1 0
+	}
+	WO Canyon_G0 {
+		pos -80 -48 0
+	}
+	WO Canyon_J0 {
+		pos 72 -32 0
+	}
+}
+editorLayers {
+  layer 0 name "default" visible true pickable true
+  layer 1 name "something" visible true pickable true
+  layer 2 name "volumes" visible true pickable true
+  layer 3 name "[unused]" visible true pickable true
+  layer 4 name "[unused]" visible true pickable true
+  layer 5 name "[unused]" visible true pickable true
+  layer 6 name "mesh_tiles" visible true pickable true
+  layer 7 name "[unused]" visible true pickable true
+  layer 8 name "[unused]" visible true pickable true
+  layer 9 name "[unused]" visible true pickable true
+  layer 10 name "[unused]" visible true pickable true
+  layer 11 name "[unused]" visible true pickable true
+  layer 12 name "[unused]" visible true pickable true
+  layer 13 name "[unused]" visible true pickable true
+  layer 14 name "[unused]" visible true pickable true
+  layer 15 name "[unused]" visible true pickable true
+}
+PHYSICS_GRAVITY 0 0 -9.8
+prefabs {
+	PF basefighter {
+		pos -52.106705 0.114582 3.000016
+		rot 0 0 0
+		id 5
+		/shfnv 2734521612 "team"
+	}
+	PF outpostv2 {
+		pos -15.341604 -0.287704 0.000001
+		rot 0 0 0
+		id 12
+		/shfnv 825153392 ". latchInf Engineer InfantryHeavy InfantryHeavy Engineer"
+		/shfnv 2369371622 "name"
+		/shfnv 2734521612 ". team 0"
+	}
+}

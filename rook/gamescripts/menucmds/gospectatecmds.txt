@@ -1,0 +1,38 @@
+Script StartGoSpectateMode {
+cmd "sym set GoSpectate 1"
+cmd "gamemsg log Starting Cycling Spectator Mode..."
+cmd "gameui replay spectate"
+}
+Script OnSpectatorModeGo {
+cmd "sym set GoSpectate 1"
+cmd "gamemsg log Looking for a game to spectate..."
+cmd "pcmd 0.5 gameui replay spectate"
+}
+Script OnSpectatorGameComplete {
+cmd "echo menucmd: OnSpectatorGameComplete"
+cmd "if sym GoSpectate == 1 gameui ignoreInputTime 5.1"
+cmd "if sym GoSpectate == 1 pcmd 5.0 menucmd MP_LoadMainMenu"
+}
+Script OnSpectatorGameDisconnect {
+cmd "if sym GoSpectate == 1 gamemsg log Looking for another game to spectate..."
+}
+Script StartupSpectateMode {
+cmd "sym set GoSpectate 1"
+cmd "sym set HideCursor 1"
+ignoreInputTime 5.0
+cmd "gamemsg log Starting Cycling Spectator Mode..."
+cmd "pcmd 1.0 gameui directPushName MainBarButtonWatch"
+cmd "pcmd 1.1 sym setZero GF_PVE GF_COOP"
+cmd "pcmd 1.1 sym setOne GF_PVP GF_CTF"
+cmd "pcmd 1.2 menuCmd MF_NetGameBrowseRefreshList"
+cmd "pcmd 1.2 menuCmd MF_NetGameBrowseRefreshList"
+cmd "pcmd 2.5 menuCmd ClickOnFirstGameToWatch"
+}
+Script ClickOnFirstGameToWatch {
+cmd "if sym Spec0Hidden == 0 gameui directPushName MF_NetGameBrowseJoinRoom0"
+cmd "pcmd 1.0 if menuloaded DialogRoom gameui directPushName SpecJoinButton"
+cmd "pcmd 1.0 if menuloaded DialogRoom pcmd 0.1 loadmenu Standby"
+cmd "pcmd 1.0 if menuloaded DialogRoom console flushAllPendingSeq 321"
+cmd "pcmd 1.0 if !menuloaded DialogRoom pcmd_seq 321 14.0 menuCmd MF_NetGameBrowseRefreshList"
+cmd "pcmd 1.0 if !menuloaded DialogRoom pcmd_seq 321 16.0 menucmd ClickOnFirstGameToWatch"
+}
